@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 09:55:02 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/08 08:05:32 by minh-ngu         ###   ########.fr       */
+/*   Created: 2022/11/08 07:47:36 by minh-ngu          #+#    #+#             */
+/*   Updated: 2022/11/09 12:01:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "libft.h"
 
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	char	*s;
-	char	*d;
-	size_t	size_src;
-	size_t	i;
+	size_t			i;
+	unsigned char	*s0;
 
-	size_src = ft_strlen(src);
-	s = src;
-	d = dest;
+	s0 = (unsigned char *) s;
 	i = 0;
-	while (i < (size - 1) && i < size_src && size != 0)
-	{
-		*dest = *src;
-		src++;
-		dest++;
-		i++;
-	}
-	*dest = 0;
-	dest = d;
-	src = s;
-	return (size_src);
+	while (i < n)
+		s0[i++] = c;
+	return (s);
 }

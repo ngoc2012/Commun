@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 09:55:02 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/08 08:05:32 by minh-ngu         ###   ########.fr       */
+/*   Created: 2022/11/08 13:48:48 by minh-ngu          #+#    #+#             */
+/*   Updated: 2022/11/08 16:38:51 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
+#include <limits.h>
+#include <errno.h>
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char	*s;
-	char	*d;
-	size_t	size_src;
-	size_t	i;
+	void	*o;
 
-	size_src = ft_strlen(src);
-	s = src;
-	d = dest;
-	i = 0;
-	while (i < (size - 1) && i < size_src && size != 0)
-	{
-		*dest = *src;
-		src++;
-		dest++;
-		i++;
-	}
-	*dest = 0;
-	dest = d;
-	src = s;
-	return (size_src);
+	o = 0;
+	if ((nmemb * size) == 0)
+		return (o);
+	if (nmemb > (INT_MAX / size))
+		return (o);
+	o = malloc(nmemb * size);
+	ft_memset(o, 0, nmemb * size);
+	return (o);
 }

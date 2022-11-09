@@ -6,13 +6,13 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 08:45:31 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/09/20 16:50:31 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/08 07:58:13 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<unistd.h>
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int		nbr;
 	int		sign;

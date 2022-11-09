@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 09:55:02 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/08 08:05:32 by minh-ngu         ###   ########.fr       */
+/*   Created: 2022/11/08 12:25:20 by minh-ngu          #+#    #+#             */
+/*   Updated: 2022/11/08 13:17:43 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "libft.h"
 
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
+void	*ft_memrchr(const void *s, int c, size_t n)
 {
-	char	*s;
-	char	*d;
-	size_t	size_src;
-	size_t	i;
+	size_t			i;
+	unsigned char	*s0;
+	void			*o;
 
-	size_src = ft_strlen(src);
-	s = src;
-	d = dest;
+	s0 = (unsigned char *) s;
 	i = 0;
-	while (i < (size - 1) && i < size_src && size != 0)
+	while (i < n)
 	{
-		*dest = *src;
-		src++;
-		dest++;
+		if (s0[i] == c)
+			o = &(s0[i]);
 		i++;
 	}
-	*dest = 0;
-	dest = d;
-	src = s;
-	return (size_src);
+	return (o);
 }

@@ -1,38 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 09:55:02 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/08 08:05:32 by minh-ngu         ###   ########.fr       */
+/*   Created: 2022/11/08 13:28:59 by minh-ngu          #+#    #+#             */
+/*   Updated: 2022/11/08 15:20:31 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	char	*s;
-	char	*d;
-	size_t	size_src;
 	size_t	i;
+	size_t	m;
+	size_t	l;
+	char	*o;
 
-	size_src = ft_strlen(src);
-	s = src;
-	d = dest;
+	l = ft_strlen(little);
+	if (l == 0)
+		return ((char *) big);
+	m = 0;
 	i = 0;
-	while (i < (size - 1) && i < size_src && size != 0)
+	while (i < len && big[i])
 	{
-		*dest = *src;
-		src++;
-		dest++;
+		if (big[i] == little[m])
+			m++;
+		else
+			m = 0;
+		if (m == l)
+		{
+			o = (char *) &(big[i - m + 1]);
+			return (o);
+		}
 		i++;
 	}
-	*dest = 0;
-	dest = d;
-	src = s;
-	return (size_src);
+	return (0);
 }

@@ -6,29 +6,19 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 09:55:02 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/09/23 08:38:58 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/08 08:02:55 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<unistd.h>
+#include <unistd.h>
+#include "libft.h"
 
-unsigned int	str_len(char *str)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	unsigned int	size;
+	size_t	size_dst;
+	size_t	i;
 
-	size = 0;
-	while (*str != '\0')
-	{
-		str++;
-		size++;
-	}
-	return (size);
-}
-
-void	process(char *dest, char *src, unsigned int size)
-{
-	unsigned int	i;
-
+	size_dst = ft_strlen(dest);
 	i = 0;
 	while (*dest)
 	{
@@ -43,16 +33,8 @@ void	process(char *dest, char *src, unsigned int size)
 		i++;
 	}
 	*dest = 0;
-}
-
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
-{
-	unsigned int	size_dst;
-
-	size_dst = str_len(dest);
-	process(dest, src, size);
 	if (size_dst > size)
-		return (size + str_len(src));
+		return (size + ft_strlen(src));
 	else
-		return (size_dst + str_len(src));
+		return (size_dst + ft_strlen(src));
 }

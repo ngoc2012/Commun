@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 09:55:02 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/08 08:05:32 by minh-ngu         ###   ########.fr       */
+/*   Created: 2022/11/08 12:25:20 by minh-ngu          #+#    #+#             */
+/*   Updated: 2022/11/08 13:19:05 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft.h"
-
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
+char	*ft_strrchr(const char *s, int c)
 {
-	char	*s;
-	char	*d;
-	size_t	size_src;
-	size_t	i;
+	char	*o;
 
-	size_src = ft_strlen(src);
-	s = src;
-	d = dest;
-	i = 0;
-	while (i < (size - 1) && i < size_src && size != 0)
+	while (*s)
 	{
-		*dest = *src;
-		src++;
-		dest++;
-		i++;
+		if (*s == c)
+			o = (char *) s;
+		s++;
 	}
-	*dest = 0;
-	dest = d;
-	src = s;
-	return (size_src);
+	return (o);
 }

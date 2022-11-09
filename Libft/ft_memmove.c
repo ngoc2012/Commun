@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 09:55:02 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/08 08:05:32 by minh-ngu         ###   ########.fr       */
+/*   Created: 2022/11/08 07:47:36 by minh-ngu          #+#    #+#             */
+/*   Updated: 2022/11/09 14:52:33 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "libft.h"
 
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*s;
-	char	*d;
-	size_t	size_src;
 	size_t	i;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	size_src = ft_strlen(src);
-	s = src;
-	d = dest;
+	d = (unsigned char *) dest;
+	s = (unsigned char *) src;
 	i = 0;
-	while (i < (size - 1) && i < size_src && size != 0)
-	{
-		*dest = *src;
-		src++;
-		dest++;
-		i++;
-	}
-	*dest = 0;
-	dest = d;
-	src = s;
-	return (size_src);
+	if (((size_t) (d - s) > 0) && ((size_t) (d - s) < n))
+		while (i < n)
+		{
+			d[n - 1 - i] = s[n - 1 - i];
+			i++;
+		}
+	else
+		while (i < n)
+		{
+			d[i] = s[i];
+			i++;
+		}
+	return (dest);
 }
