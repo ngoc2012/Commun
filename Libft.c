@@ -8,6 +8,7 @@
 
 int	main()
 {
+	/*
 	printf("========\n");
 	printf("isalpha\n");
 	printf("%d %d\n", isalpha(1), ft_isalpha(1));
@@ -87,23 +88,26 @@ int	main()
 	char sm14[7] = "abcdef"; ft_print_memory(sm14, 32); ft_memmove(&sm14[2], sm14, 4); ft_print_memory(sm14, 32);
 	printf("========\n");
 	char sm15[7] = "abcdef"; ft_print_memory(sm15, 32); ft_memmove(sm15, &sm15[2], 4); ft_print_memory(sm15, 32);
-
-	char *s = malloc(sizeof(char) * 10);
-	printf("========\n");
+*/
+/*	printf("========\n");
 	printf("strlcpy\n");
-	printf("%ld %ld\n", strlcpy(s, "1234", 3), ft_strlcpy(s, "1234", 3));
-	strlcpy(s, "1234", 3);printf("%s ", s);
-	ft_strlcpy(s, "1234", 3);printf("%s\n", s);
+	char *s100 = malloc(sizeof(char) * 10);
+	char *s101 = malloc(sizeof(char) * 10);
+	printf("%ld %ld\n", strlcpy(s100, "abcdef", 3), ft_strlcpy(s101, "abcdef", 3));
+	printf("%s %s\n", s100, s101);
+	free(s100);
+	free(s101);
 
 	printf("========\n");
 	printf("strlcat\n");
-	s[0] = 0;
-	printf("%ld %ld\n", strlcat(s, "1234", 3), ft_strlcat(s, "1234", 3));
-	printf("s = %s\n", s);
-	strlcat(s, "1234", 5);printf("%s ", s);
-	ft_strlcat(s, "1234", 7);printf("%s\n", s);
-
-	free(s);
+	s100 = malloc(sizeof(char) * 10);
+	s101 = malloc(sizeof(char) * 10);
+	s100[0] = 0;
+	s101[0] = 0;
+	printf("%ld %ld\n", strlcat(s100, "abcdef", 3), ft_strlcat(s101, "abcdef", 3));
+	printf("%s %s\n", s100, s101);
+	free(s100);
+	free(s101);
 
 	printf("========\n");
 	printf("toupper\n");
@@ -129,15 +133,15 @@ int	main()
 	printf("%d %d\n", strncmp("abcdefgdhijk", "abcdennn", 5), ft_strncmp("abcdefgdhijk", "abcdennn", 5));
 	printf("%d %d\n", strncmp("abcdefgdhijk", "abcdennn", 6), ft_strncmp("abcdefgdhijk", "abcdennn", 6));
 
-	//printf("========\n");
-	//printf("memchr\n");
-	//printf("%s %s\n", (char *) memchr("abcdefgdhijk", 'd', 10), (char *) ft_memchr("abcdefgdhijk", 'd', 10));
-	//printf("%s %s\n", (char *) memchr("abcdefgdhijk", 'd', 3), (char *) ft_memchr("abcdefgdhijk", 'd', 3));
+	printf("========\n");
+	printf("memchr\n");
+	printf("%s %s\n", (char *) memchr("abcdefgdhijk", 'd', 10), (char *) ft_memchr("abcdefgdhijk", 'd', 10));
+	printf("%s %s\n", (char *) memchr("abcdefgdhijk", 'd', 3), (char *) ft_memchr("abcdefgdhijk", 'd', 3));
 
-	//printf("========\n");
-	//printf("memcmp\n");
-	//printf("%d %d\n", memcmp("abcdefgdhijk", "abcdennn", 5), ft_memcmp("abcdefgdhijk", "abcdennn", 5));
-	//printf("%d %d\n", memcmp("abcdefgdhijk", "abcdennn", 6), ft_memcmp("abcdefgdhijk", "abcdennn", 6));
+	printf("========\n");
+	printf("memcmp\n");
+	printf("%d %d\n", memcmp("abcdefgdhijk", "abcdennn", 5), ft_memcmp("abcdefgdhijk", "abcdennn", 5));
+	printf("%d %d\n", memcmp("abcdefgdhijk", "abcdennn", 6), ft_memcmp("abcdefgdhijk", "abcdennn", 6));
 
 	printf("========\n");
 	printf("strnstr\n");
@@ -151,39 +155,28 @@ int	main()
 	printf("%d %d\n", atoi("0"), ft_atoi("0"));
 	printf("%d %d\n", atoi("1"), ft_atoi("1"));
 	printf("%d %d\n", atoi("4213"), ft_atoi("4213"));
-
+*/
 	printf("========\n");
 	printf("calloc\n");
-	//printf("%d\n", sizeof(char));
-	//char	*s1 = calloc(10, sizeof(char));
-	//char	*s2 = ft_calloc(10, sizeof(char));
-	//for (int i = 0; i < 10; i++)
-	//	printf("%d", s1[i]);
-	//printf(" ");
-	//for (int i = 0; i < 10; i++)
-	//	printf("%d", s2[i]);
-	//printf("\n");
-	//free(s1);
-	//free(s2);
+	char *sc1 = calloc(32, sizeof(char)); if (sc1) {ft_print_memory(sc1, 32); free(sc1);}
+	char *sc2 = ft_calloc(32, sizeof(char)); if (sc2) {ft_print_memory(sc2, 32); free(sc2);}
 
-	//printf("========\n");
-	//printf("strdup\n");
-	//char	*s11 = strdup("abcde");
-	//char	*s12 = ft_strdup("abcde");
-	//printf("%s %s\n", s11, s12);
-	//free(s11);
-	//free(s12);
+	printf("========\n");
+	printf("strdup\n");
+	char *s11 = strdup("abcde"); if (s11) {ft_print_memory(s11, 32); free(s11);}
+	char *s12 = ft_strdup("abcde"); if (s12) {ft_print_memory(s12, 32); free(s12);}
 
-	//printf("========\n");
-	//printf("ft_substr\n");
-	//char	*s21 = ft_substr("abcdefghij", 3, 3); printf("%s\n", s21); free(s21);
-	//char	*s22 = ft_substr("abcdefghij", 10, 10); printf("%s\n", s22); free(s22);
-	//printf("%s\n", ft_substr("abcdefghij", 10, 10));
-	//printf("%s\n", ft_substr("abcdefghij", 20, 20));
+	printf("========\n");
+	printf("ft_substr\n");
+	char	*s21 = ft_substr("abcdefghij", 3, 3); if (s21) {ft_print_memory(s21, 32); free(s21);}
+	printf("========\n");
+	s21 = ft_substr("abcdefghij", 9, 10); if (s21) {ft_print_memory(s21, 32); free(s21);}
+	printf("========\n");
+	s21 = ft_substr("abcdefghij", 20, 20); if (s21) {ft_print_memory(s21, 32); free(s21);} 
 
-	//printf("========\n");
-	//printf("ft_strjoin\n");
-	//printf("%s\n", ft_strjoin("abcdefghij", "4322"));
+	printf("========\n");
+	printf("ft_strjoin\n");
+	s21 = ft_strjoin("abcdefghij", "4322"); if (s21) {ft_print_memory(s21, 32); free(s21);}
 	//printf("%s\n", ft_strjoin("", "4322"));
 	//printf("%s\n", ft_strjoin("abcdefghij", ""));
 
