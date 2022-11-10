@@ -6,6 +6,17 @@
 #include <bsd/string.h>
 #include <stdlib.h>
 
+void	print_str(void *sc1)
+{
+	if (sc1) {
+		printf("%s\n", (char *) sc1);
+		ft_print_memory(sc1, 32);
+		free(sc1);
+	}
+	else
+		printf("string NULL\n");
+}
+
 int	main()
 {
 	/*
@@ -158,30 +169,32 @@ int	main()
 */
 	printf("========\n");
 	printf("calloc\n");
-	char *sc1 = calloc(32, sizeof(char)); if (sc1) {ft_print_memory(sc1, 32); free(sc1);}
-	char *sc2 = ft_calloc(32, sizeof(char)); if (sc2) {ft_print_memory(sc2, 32); free(sc2);}
+	char *sc1 = calloc(32, sizeof(char)); print_str(sc1);
+	char *sc2 = ft_calloc(32, sizeof(char)); print_str(sc2);
 
 	printf("========\n");
 	printf("strdup\n");
-	char *s11 = strdup("abcde"); if (s11) {ft_print_memory(s11, 32); free(s11);}
-	char *s12 = ft_strdup("abcde"); if (s12) {ft_print_memory(s12, 32); free(s12);}
+	char *s11 = strdup("abcde"); print_str(s11);
+	char *s12 = ft_strdup("abcde"); print_str(s12);
 
 	printf("========\n");
 	printf("ft_substr\n");
-	char	*s21 = ft_substr("abcdefghij", 3, 3); if (s21) {ft_print_memory(s21, 32); free(s21);}
+	char	*s21 = ft_substr("abcdefghij", 3, 3); print_str(s21);
 	printf("========\n");
-	s21 = ft_substr("abcdefghij", 9, 10); if (s21) {ft_print_memory(s21, 32); free(s21);}
+	s21 = ft_substr("abcdefghij", 9, 10); print_str(s21);
 	printf("========\n");
-	s21 = ft_substr("abcdefghij", 20, 20); if (s21) {ft_print_memory(s21, 32); free(s21);} 
+	s21 = ft_substr("abcdefghij", 20, 20); print_str(s21);
 
 	printf("========\n");
 	printf("ft_strjoin\n");
-	s21 = ft_strjoin("abcdefghij", "4322"); if (s21) {ft_print_memory(s21, 32); free(s21);}
-	//printf("%s\n", ft_strjoin("", "4322"));
-	//printf("%s\n", ft_strjoin("abcdefghij", ""));
+	s21 = ft_strjoin("abcdefghij", "4322"); print_str(s21);
+	s21 = ft_strjoin("", "4322"); print_str(s21);
+	s21 = ft_strjoin("abcdefghij", ""); print_str(s21);
+	s21 = ft_strjoin("", ""); print_str(s21);
 
-	//printf("========\n");
-	//printf("ft_strtrim\n");
+	printf("========\n");
+	printf("ft_strtrim\n");
+	s21 = ft_strtrim("abcdefghij", "abij"); print_str(s21);
 	//printf("%s\n", ft_strtrim("abcdefghij", "def"));
 	//printf("%s\n", ft_strtrim("abcdefghij", ""));
 	//printf("%s\n", ft_strtrim("", "def"));
