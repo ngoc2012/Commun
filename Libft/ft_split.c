@@ -6,13 +6,12 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 08:45:31 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/11 11:15:33 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/11 22:06:51 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include "libft.h"
 
 // Get number of strings at the out put, must be 0 if all match
@@ -51,10 +50,12 @@ void	get_strs(char *str, char *charset, char **out)
 		start = i;
 		while (!ft_strchr(charset, str[i]) && str[i])
 			i++;
-		printf("get strs %d %d\n", start, i);
-		out[j] = malloc(sizeof(char) * (i - start + 1));
-		ft_strlcpy(out[j], &(str[start]), i - start + 1);
-		j++;
+		if (i > start)
+		{
+			out[j] = malloc(sizeof(char) * (i - start + 1));
+			ft_strlcpy(out[j], &(str[start]), i - start + 1);
+			j++;
+		}
 	}
 }
 
