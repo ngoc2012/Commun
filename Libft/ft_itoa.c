@@ -6,9 +6,12 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:11:40 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/11 22:12:26 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/11 22:20:47 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
+#include <stdlib.h>
 
 void	get_num(int len, int n, char *s, int level)
 {
