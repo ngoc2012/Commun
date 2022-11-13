@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 09:55:02 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/09/26 10:18:33 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/12 17:42:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ void	write_characters(unsigned char *str, unsigned int size)
 	i = 0;
 	while (i < 16 && i < size)
 	{
-		if (str[i] >= 32 && str[i] <= 126)
-			write(1, &str[i], 1);
+		if (str[i] != 0)
+			if (str[i] >= 32 && str[i] <= 126)
+				write(1, &(str[i]), 1);
+			else
+				write(1, ".", 1);
 		else
 			write(1, ".", 1);
 		i++;
@@ -36,11 +39,17 @@ void	write_hex(unsigned char *str, unsigned int size)
 	i = 0;
 	while (i < 16 && i < size)
 	{
-		write(1, &hex[((str[i] - str[i] % 16) / 16) % 16], 1);
-		write(1, &hex[str[i] % 16], 1);
+		if (*str != 0)
+		{
+			write(1, &hex[((*str - *str % 16) / 16) % 16], 1);
+			write(1, &hex[*str % 16], 1);
+		}
+		else
+			write(1, "00", 2);
 		if (i % 2 == 1)
 			write(1, " ", 1);
 		i++;
+		str++;
 	}
 	while (i < 16)
 	{

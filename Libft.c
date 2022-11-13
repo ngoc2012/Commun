@@ -1,3 +1,4 @@
+#include <limits.h>
 #include <stdio.h>
 #include "Libft/libft.h"
 #include "Libs/libft.h"
@@ -55,23 +56,19 @@ int	main()
 	printf("%ld %ld\n", strlen(""), ft_strlen(""));
 	printf("%ld %ld\n", strlen("45"), ft_strlen("45"));
 	printf("%ld %ld\n", strlen("300"), ft_strlen("300"));
-
+	*/
 	printf("========\n");
 	printf("memset\n");
-	char *sm = malloc(sizeof(char) * 10); ft_print_memory(sm, 32); sm = memset(sm, 'A', 10); ft_print_memory(sm, 32);
+	char *sm = calloc(32, sizeof(char)); ft_print_memory(sm, 32); sm = memset(sm, 'A', 10); print_str(sm);
 	printf("========\n");
-	char *sm1 = malloc(sizeof(char) * 10); ft_print_memory(sm1, 32); sm1 = ft_memset(sm1, 'A', 10); ft_print_memory(sm1, 32);
-	printf("========\n");
-	char *sm2 = malloc(sizeof(char) * 10); ft_print_memory(sm2, 32); sm2 = memset(sm2, 'A', 20); ft_print_memory(sm2, 32); free(sm2);
-	printf("========\n");
-	char *sm3 = malloc(sizeof(char) * 10); ft_print_memory(sm3, 32); sm3 = ft_memset(sm3, 'A', 20); ft_print_memory(sm3, 32); free(sm3);
+	sm = calloc(32, sizeof(char)); ft_print_memory(sm, 32); sm = ft_memset(sm, 'A', 10); print_str(sm);
 
 	printf("========\n");
 	printf("bzero\n");
-	ft_print_memory(sm, 32); bzero(sm, 5); ft_print_memory(sm, 32); free(sm);
+	sm = calloc(32, sizeof(char)); sm = ft_memset(sm, 'A', 32); ft_print_memory(sm, 32);    bzero(sm, 5); print_str(sm);
 	printf("========\n");
-	ft_print_memory(sm1, 32); ft_bzero(sm1, 5); ft_print_memory(sm1, 32); free(sm1);
-
+	sm = calloc(32, sizeof(char)); sm = ft_memset(sm, 'A', 32); ft_print_memory(sm, 32); ft_bzero(sm, 5); print_str(sm);
+/*
 	printf("========\n");
 	printf("memcpy\n");
 	char *sm4 = malloc(sizeof(char) * 100); ft_print_memory(sm4, 32); sm4 = memcpy(sm4, "abcdefghijk", 7); ft_print_memory(sm4, 32); free(sm4);
@@ -99,8 +96,8 @@ int	main()
 	char sm14[7] = "abcdef"; ft_print_memory(sm14, 32); ft_memmove(&sm14[2], sm14, 4); ft_print_memory(sm14, 32);
 	printf("========\n");
 	char sm15[7] = "abcdef"; ft_print_memory(sm15, 32); ft_memmove(sm15, &sm15[2], 4); ft_print_memory(sm15, 32);
-*/
-/*	printf("========\n");
+
+	printf("========\n");
 	printf("strlcpy\n");
 	char *s100 = malloc(sizeof(char) * 10);
 	char *s101 = malloc(sizeof(char) * 10);
@@ -143,7 +140,8 @@ int	main()
 	printf("strncmp\n");
 	printf("%d %d\n", strncmp("abcdefgdhijk", "abcdennn", 5), ft_strncmp("abcdefgdhijk", "abcdennn", 5));
 	printf("%d %d\n", strncmp("abcdefgdhijk", "abcdennn", 6), ft_strncmp("abcdefgdhijk", "abcdennn", 6));
-
+*/
+/*
 	printf("========\n");
 	printf("memchr\n");
 	printf("%s %s\n", (char *) memchr("abcdefgdhijk", 'd', 10), (char *) ft_memchr("abcdefgdhijk", 'd', 10));
@@ -198,7 +196,7 @@ int	main()
 	//printf("%s\n", ft_strtrim("abcdefghij", "def"));
 	//printf("%s\n", ft_strtrim("abcdefghij", ""));
 	//printf("%s\n", ft_strtrim("", "def"));
-*/
+
 	printf("========\n");
 	printf("ft_split\n");
 	int i;
@@ -230,5 +228,12 @@ int	main()
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
 	out = ft_split("owaaNTKwCcN8Cb    Hfg3a P5Di1cabSFVflXMihAfBc0C","");
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-
+*/
+	/*
+	char *s29;
+	s29 = ft_itoa(0); printf("%d %s\n", 0, s29); if (s29) {free(s29);}
+	s29 = ft_itoa(1234); printf("%d ", 1234); print_str(s29);
+	s29 = ft_itoa(INT_MIN); printf("%d ", INT_MIN); print_str(s29);
+	s29 = ft_itoa(INT_MAX); printf("%d ", INT_MAX); print_str(s29);
+	*/
 }
