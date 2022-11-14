@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 18:58:42 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/14 13:20:31 by minh-ngu         ###   ########.fr       */
+/*   Created: 2022/11/14 12:23:27 by minh-ngu          #+#    #+#             */
+/*   Updated: 2022/11/14 12:40:52 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include "libft.h"
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	return ((c >= 9 && c <= 11) || (c >= 32 && c <= 126));
+	int		i;
+	char	*o;
+
+	o = ft_strdup(s);
+	if (!o)
+		return (0);
+	i = 0;
+	while (o[i])
+	{
+		o[i] = f(i, o[i]);
+		i++;
+	}
+	return (o);
 }

@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:09:14 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/12 14:55:21 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/14 09:49:01 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	char			*o;
 
 	if (len == 0 || (size_t) ft_strlen(s) <= start)
-		return (0);
+		return (ft_strdup(""));
 	o = malloc(sizeof(char) * (len + 1));
 	if (o == NULL)
 		return (0);

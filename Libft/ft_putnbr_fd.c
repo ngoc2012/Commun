@@ -1,16 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 18:58:42 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/14 13:20:31 by minh-ngu         ###   ########.fr       */
+/*   Created: 2022/11/14 12:51:10 by minh-ngu          #+#    #+#             */
+/*   Updated: 2022/11/14 13:26:43 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c)
+#include <stdlib.h>
+#include "libft.h"
+
+void	ft_putnbr_fd(int n, int fd)
 {
-	return ((c >= 9 && c <= 11) || (c >= 32 && c <= 126));
+	char	*s;
+
+	s = ft_itoa(n);
+	if (s)
+	{
+		ft_putstr_fd(s, fd);
+		free(s);
+	}	
 }
