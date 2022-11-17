@@ -175,6 +175,18 @@ int	main()
 	printf("%s %s\n", s100, s101);
 	free(s100);
 	free(s101);
+	s100 = ft_strdup("123456789");
+	s101 = ft_strdup("123456789");
+	printf("%ld %ld\n", strlcpy(s100, "abcdef", 5), ft_strlcpy(s101, "abcdef", 5));
+	printf("%s %s\n", s100, s101);
+	free(s100);
+	free(s101);
+	s100 = ft_strdup("123456789");
+	s101 = ft_strdup("123456789");
+	printf("%ld %ld\n", strlcpy(s100, "abcdef", 10), ft_strlcpy(s101, "abcdef", 10));
+	printf("%s %s\n", s100, s101);
+	free(s100);
+	free(s101);
 
 	printf("========\n");
 	printf("strlcat\n");

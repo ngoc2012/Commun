@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 07:47:36 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/10 16:32:08 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/16 11:02:57 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	unsigned char	*d;
 	unsigned char	*s;
 
+	if ((!dest) || (!src) || (n <= 0))
+		return (0);
 	d = (unsigned char *) dest;
 	s = (unsigned char *) src;
 	i = 0;

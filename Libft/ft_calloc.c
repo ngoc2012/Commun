@@ -6,13 +6,12 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:48:48 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/12 10:04:00 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/16 10:58:02 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <limits.h>
-#include <errno.h>
 #include "libft.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
@@ -26,6 +25,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	o = malloc(nmemb * size);
 	if (o == NULL)
 		return (0);
-	ft_memset(o, 0, nmemb * size);
+	ft_bzero(o, nmemb * size);
 	return (o);
 }
