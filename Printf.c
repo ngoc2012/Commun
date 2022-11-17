@@ -3,8 +3,9 @@
 
 int	main()
 {
-
+/*
 	//cspdiuxX%
+	printf("================= cispdiuxX%% =================\n");
 	//
 	// c : int -> unsigned char
 	printf ("%%c : int -> unsigned char. Characters: 'z': %c, 122: %c \n", 'z', 122);
@@ -20,24 +21,49 @@ int	main()
 	// u,x,X : The  unsigned  int argument is converted to unsigned octal
         //      (o), unsigned decimal (u), or unsigned hexadecimal (x  and
         //      X)  notation.
-	printf("%%u: Unsigned int -> unsigned decimal: %d: %u\n", 2000, 2000);
-	printf("%%x: Unsigned int -> unsigned hexadecimal (miniscule): %d: %x\n", 2000, 2000);
-	printf("%%X: Unsigned int -> unsigned hexadecimal (majuscule): %d: %X\n", 2000, 2000);
-	printf("%%u: Unsigned int -> unsigned decimal: %d: %u\n", -2000, -2000);
-	printf("%%x: Unsigned int -> unsigned hexadecimal (miniscule): %d: %x\n", -2000, -2000);
-	printf("%%X: Unsigned int -> unsigned hexadecimal (majuscule): %d: %X\n", -2000, -2000);
+	printf("%%u: Unsigned int -> unsigned decimal: %d: %u\n", 4242, 4242);
+	printf("%%x: Unsigned int -> unsigned hexadecimal (miniscule): %d: %x\n", 4242, 4242);
+	printf("%%X: Unsigned int -> unsigned hexadecimal (majuscule): %d: %X\n", 4242, 4242);
+	printf("%%u: Unsigned int -> unsigned decimal: %d: %u\n", -4242, -4242);
+	printf("%%x: Unsigned int -> unsigned hexadecimal (miniscule): %d: %x\n", -4242, -4242);
+	printf("%%X: Unsigned int -> unsigned hexadecimal (majuscule): %d: %X\n", -4242, -4242);
 	printf("Just print the percentage sign %%\n");
+*/
+	printf("================= BONUS =================\n");
+	printf("The character %% is followed by zero or more of the following flags\n");
 	//Manage any combination of the following flags: ’-0.’
 	// and the field minimum width under all conversions.
 	//
+	pritnf("0      The value should be zero padded\n");
+	printf("%09d\n", 4242);
+	printf("%09d\n", 0);
+	printf("-      The  converted  value  is  to  be left adjusted on the field boundary\n");
+	printf("#%- 9d#\n", 4242 );
+	printf("A -  overrides  a  0  if  both  are given\n");
 	// Manage all the following flags: ’# +’
+	printf("Manage all the following flags: ’# +’\n");
+	printf("%%#x: Unsigned int -> unsigned hexadecimal (miniscule): %d: %#x\n", 4242, 4242);
+	printf("%%#X: Unsigned int -> unsigned hexadecimal (majuscule): %d: %#X\n", 4242, 4242);
+	printf("%%#x: Unsigned int -> unsigned hexadecimal (miniscule): %d: %#x\n", 0, 0);
+	printf("%%#X: Unsigned int -> unsigned hexadecimal (majuscule): %d: %#X\n", 0, 0);
+	printf("' '    (a space) A blank should be left before a positive number (or empty string) produced by a signed conversion\n");
+	printf("#% 9d#\n", 4242 );
+	printf("+      A  sign  (+  or -) should always be placed before a number produced by a signed conversion.  By default, a sign is used only for negative numbers.\n");
+	printf("A + overrides a space if both are used.\n");
+
+	// s : const char *
+	printf("================= ERRORS =================\n");
+	printf("unknown conversion type character ‘...’ in format\n");
+	printf("%%#c : '#' flag used with ‘%%c’ gnu_printf format\n");
+	printf("%%#s : '#' flag used with ‘%%s’ gnu_printf format\n");
+	printf("%%#p : '#' flag used with ‘%%p’ gnu_printf format\n");
+	printf("%%##x: repeated '#' flag in format\n");
+	printf("%%009d : repeated '0' flag in format\n");
+	printf("%% c : ' ' flag used with ‘%%c’ gnu_printf format\n");
 	//printf ("Integers: %i %u \n", -3456, 3456);
-	ft_printf ("Integers: %i %u \n", -3456, 3456);
+	//ft_printf ("Integers: %i %u \n", -3456, 3456);
 	
 	//printf( "%+09d\n", 452 );
-	//printf( "%09d\n", 452 );
-	//printf( "%09d\n", 0 );
-	//printf( "% 9d\n", 452 );
 	//printf( "%-09d\n", 452 );
 	//printf( "%.09d\n", 452 );
 	//printf( "%-.9d\n", 452 );

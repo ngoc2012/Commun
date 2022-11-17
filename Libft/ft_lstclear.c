@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 06:41:32 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/14 17:12:42 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:25:05 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		ft_lstdelone(begin, del);
 		begin = next;
 	}
-	free(lst);
+	*lst = 0;
 }

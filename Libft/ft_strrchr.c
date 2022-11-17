@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:25:20 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/14 19:02:13 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/17 12:31:30 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ char	*ft_strrchr(const char *s, int c)
 	o = 0;
 	while (*s)
 	{
-		if (*s == c)
+		if (*s == (char) c)
 			o = (char *) s;
 		s++;
 	}
+	if (*s == (char) c)
+		o = (char *) s;
 	return (o);
 }

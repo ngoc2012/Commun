@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2022/11/15 21:30:38 by minh-ngu         ###   ########.fr        #
+#    Updated: 2022/11/17 10:32:31 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,12 @@ LIBN = libft.a
 all: $(LIBN)
 .c.o:
 	gcc -Wall -Wextra -Werror -c $< -o ${<:.c=.o} -I.
-bonus: $(BONO)
+bonus: $(BONO) $(OBJS)
 	ar rc $(LIBN) $(BONO) $(OBJS)
 $(LIBN): $(OBJS)
 	ar rc $(LIBN) $(OBJS)
 clean:
-	rm -f $(OBJS)
-	rm -f $(BONO)
+	rm -f $(BONO) $(OBJS)
 fclean: clean
 	rm -f $(LIBN)
 re: fclean all

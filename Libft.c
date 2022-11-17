@@ -7,6 +7,39 @@
 #include <bsd/string.h>
 #include <stdlib.h>
 
+void	ft_print_result(t_list *elem)
+{
+	write(1, elem->content, strlen(elem->content));
+}
+
+static int	nb_free_done;
+
+void	ft_del(void *content)
+{
+	free(content);
+	nb_free_done++;
+}
+
+t_list	*ft_lstnewone(void *content)
+{
+	t_list	*elem;
+
+	elem = (t_list *)malloc(sizeof(t_list));
+	if (!elem)
+		return (NULL);
+	if (!content)
+		elem->content = NULL;
+	else
+		elem->content = content;
+	elem->next = NULL;
+	return (elem);
+}
+/*
+void
+iter(unsigned int i, char * s) {
+	*s += i;
+}
+
 void	test1(unsigned int i, char *s) { s[i] = ft_toupper(s[i]); }
 void	test2(unsigned int i, char *s) { s[i] = ft_tolower(s[i]); }
 char	test3(unsigned int i, char s) 
@@ -40,7 +73,7 @@ void	print_str(void *s)
 	else
 		printf("string NULL\n");
 }
-
+*/
 void	ft_list_print(t_list *lst)
 {
 	int	i;
@@ -50,7 +83,7 @@ void	ft_list_print(t_list *lst)
 	len = ft_lstsize(lst);
 	while (lst)
 	{
-		if (lst->content)
+		if (*((char *) lst->content))
 		{
 			if (i == 0)
 				printf("[%s, ", (char *) lst->content);
@@ -64,7 +97,7 @@ void	ft_list_print(t_list *lst)
 	}
 	printf("\n");
 }
-
+/*
 t_list	*ft_list_push_strs(char **strs)
 {
 	t_list	*begin;
@@ -89,10 +122,10 @@ void	ft_free(void *content)
 {
 	free(content);
 }
-
+*/
 int	main()
 {
-	
+/*	
 	printf("========\n");
 	printf("isalpha\n");
 	printf("%d %d\n", isalpha(1), ft_isalpha(1));
@@ -117,11 +150,20 @@ int	main()
 	printf("%d %d\n", isascii(45), ft_isascii(45));
 	printf("%d %d\n", isascii(300), ft_isascii(300));
 
+
+
 	printf("========\n");
 	printf("isprint\n");
 	printf("%d %d\n", isprint(1), ft_isprint(1));
 	printf("%d %d\n", isprint(45), ft_isprint(45));
 	printf("%d %d\n", isprint(300), ft_isprint(300));
+	int	i;
+	i = 0;
+	while (i <= 127)
+	{
+		printf("%d %d %d\n", i, ft_isprint(i), isprint(i));
+		i++;
+	}
 
 	printf("========\n");
 	printf("strlen\n");
@@ -188,6 +230,20 @@ int	main()
 	free(s100);
 	free(s101);
 
+	s100 = ft_strdup("123456789");
+	s101 = ft_strdup("123456789");
+	printf("%ld %ld\n", strlcpy(s100, "abcdef", 0), ft_strlcpy(s101, "abcdef", 0));
+	printf("%s %s\n", s100, s101);
+	free(s100);
+	free(s101);
+
+	s100 = ft_strdup("123456789");
+	s101 = ft_strdup("123456789");
+	printf("%ld %ld\n", strlcpy(s100, "abcdef", -1), ft_strlcpy(s101, "abcdef", -1));
+	printf("%s %s\n", s100, s101);
+	free(s100);
+	free(s101);
+
 	printf("========\n");
 	printf("strlcat\n");
 	s100 = malloc(sizeof(char) * 10);
@@ -198,6 +254,48 @@ int	main()
 	printf("%s %s\n", s100, s101);
 	free(s100);
 	free(s101);
+
+	s100 = calloc(15, sizeof(char));
+	s101 = calloc(15, sizeof(char));
+	s100[10] = 'a';
+	s101[10] = 'a';
+	printf("%ld %ld\n", strlcat(s100, "lorem ipsum dolor sit amet", 0), ft_strlcat(s101, "lorem ipsum dolor sit amet", 0));
+	printf("#%s# #%s#\n", s100, s101);
+	free(s100);
+	free(s101);
+
+	s100 = calloc(15, sizeof(char));
+	s101 = calloc(15, sizeof(char));
+	s100[10] = 'a';
+	s101[10] = 'a';
+	printf("%ld %ld\n", strlcat(s100, "lorem ipsum dolor sit amet", 1), ft_strlcat(s101, "lorem ipsum dolor sit amet", 1));
+	printf("#%s# #%s#\n", s100, s101);
+	free(s100);
+	free(s101);
+
+	s100 = calloc(15, sizeof(char));
+	s101 = calloc(15, sizeof(char));
+	s100[10] = 'a';
+	s101[10] = 'a';
+	printf("%ld %ld\n", strlcat(s100, "lorem ipsum dolor sit amet", 5), ft_strlcat(s101, "lorem ipsum dolor sit amet", 5));
+	printf("#%s# #%s#\n", s100, s101);
+	free(s100);
+	free(s101);
+
+
+
+	char dest[30]; memset(dest, 0, 30);
+	char * src = (char *)"AAAAAAAAA";
+	dest[0] = 'B';
+	printf("%d %d\n", ft_strlcat(dest, src, 0), strlen(src));
+	printf("%s\n", dest);
+	printf("%d\n", !strcmp(dest, "B"));
+
+	char dest1[30]; memset(dest1, 0, 30);
+	dest1[0] = 'B';
+	printf("%d %d\n", strlcat(dest1, src, 0), strlen(src));
+	printf("%s\n", dest1);
+	printf("%d\n", !strcmp(dest1, "B"));
 
 	printf("========\n");
 	printf("toupper\n");
@@ -213,24 +311,39 @@ int	main()
 	printf("strchr\n");
 	printf("%s %s\n", strchr("abcdefgdhijk", 'd'), ft_strchr("abcdefgdhijk", 'd'));
 	printf("%s %s\n", strchr("abcdefgdhijk", 'z'), ft_strchr("abcdefgdhijk", 'z'));
+	printf("#%s# #%s#\n", strchr("abcdefgdhijk", 0), ft_strchr("abcdefgdhijk", 0));
+	printf("#%s# #%s#\n", strchr("abcdetfgdhijk", 't' + 256), ft_strchr("abcdetfgdhijk", 't' + 256));
 
 	printf("========\n");
 	printf("strrchr\n");
-	printf("%s %s\n", strrchr("abcdefgdhijk", 'd'), ft_strrchr("abcdefgdhijk", 'd'));
+	printf("#%s# #%s#\n", strrchr("abcdefgdhijk", 'd'), ft_strrchr("abcdefgdhijk", 'd'));
+	printf("#%s# #%s#\n", strrchr("abcdefgdhijk", 0), ft_strrchr("abcdefgdhijk", 0));
+	printf("#%s# #%s#\n", strrchr("abcdetfgdhijk", 't' + 256), ft_strrchr("abcdetfgdhijk", 't' + 256));
 
 	printf("========\n");
 	printf("strncmp\n");
 	printf("%d %d\n", strncmp("abcdefgdhijk", "abcdennn", 5), ft_strncmp("abcdefgdhijk", "abcdennn", 5));
 	printf("%d %d\n", strncmp("abcdefgdhijk", "abcdennn", 6), ft_strncmp("abcdefgdhijk", "abcdennn", 6));
+	printf("%d %d\n", strncmp("test\200", "test\0", 6), ft_strncmp("test\200", "test\0", 6));
 
 
 	printf("========\n");
 	printf("memchr\n");
 	printf("%s %s\n", (char *) memchr("abcdefgdhijk", 'd', 10), (char *) ft_memchr("abcdefgdhijk", 'd', 10));
 	printf("%s %s\n", (char *) memchr("abcdefgdhijk", 'd', 3), (char *) ft_memchr("abcdefgdhijk", 'd', 3));
+	char s[] = {0, 1, 2 ,3 ,4 ,5};
+	char *st;
+	st = (char *) memchr(s, 2 + 256, 3);
+	printf("=%i=", st[0]);
+	printf("#%s#", (char *) memchr(s, 2 + 256, 3));
+	st = (char *) ft_memchr(s, 2 + 256, 3);
+	printf("=%i=", st[0]);
+	printf("#%s#\n", (char *) ft_memchr(s, 2 + 256, 3));
+
 
 	printf("========\n");
 	printf("memcmp\n");
+	printf("%d %d\n", memcmp("t\200", "t\0", 2), ft_memcmp("t\200", "t\0", 2));
 	printf("%d %d\n", memcmp("abcdefgdhijk", "abcdennn", 5), ft_memcmp("abcdefgdhijk", "abcdennn", 5));
 	printf("%d %d\n", memcmp("abcdefgdhijk", "abcdennn", 6), ft_memcmp("abcdefgdhijk", "abcdennn", 6));
 
@@ -240,12 +353,23 @@ int	main()
 	const char *smallstring = "Bar";
 	printf("%s %s\n", strnstr(largestring, smallstring, 4), ft_strnstr(largestring, smallstring, 4));
 	printf("%s %s\n", strnstr(largestring, smallstring, 10), ft_strnstr(largestring, smallstring, 10));
+	char haystack[30] = "aaabcabcd";
+	char needle[10] = "aabc";
+	printf("%s %s\n", ft_strnstr(haystack, needle, -1), haystack + 1);
+	printf("%s %s\n", ft_strnstr(haystack, needle, 0), strnstr(haystack, needle, 0));
+	printf("%s %s\n", ft_strnstr(haystack, needle, -1), strnstr(haystack, needle, -1));
+	printf("%s %s\n", ft_strnstr(haystack, needle, -2), strnstr(haystack, needle, -2));
+	printf("%s %s\n", ft_strnstr(haystack, "aaabc", 5), strnstr(haystack, "aaabc", 5));
+	printf("%s %s\n", ft_strnstr(haystack, "abcd", 9), strnstr(haystack, "abcd", 9));
 
 	printf("========\n");
 	printf("atoi\n");
 	printf("%d %d\n", atoi("0"), ft_atoi("0"));
 	printf("%d %d\n", atoi("1"), ft_atoi("1"));
 	printf("%d %d\n", atoi("4213"), ft_atoi("4213"));
+	printf("%d %d\n", atoi("--1"), ft_atoi("--1"));
+	printf("%d %d\n", atoi("++1"), ft_atoi("++1"));
+
 
 	printf("========\n");
 	printf("calloc\n");
@@ -266,6 +390,7 @@ int	main()
 	s21 = ft_substr("abcdefghij",  3,  3); printf("%s\n", s21); if(s21) {free(s21);}
 	s21 = ft_substr("abcdefghij",  9, 10); printf("%s\n", s21); if(s21) {free(s21);}
 	s21 = ft_substr("abcdefghij", 20, 20); printf("%s\n", s21); if(s21) {free(s21);}
+	s21 = ft_substr("abcdefghij", 0, 20); printf("%s\n", s21); if(s21) {free(s21);}
 
 	printf("========\n");
 	printf("ft_strjoin\n");
@@ -280,6 +405,8 @@ int	main()
 	s21 = ft_strtrim("abcdefghij", ""); printf("%s\n", s21); if(s21) {free(s21);}
 	s21 = ft_strtrim("abcdefghij", "def"); printf("%s\n", s21); if(s21) {free(s21);}
 	s21 = ft_strtrim("abcdefghij", "abcdefghij"); printf("%s\n", s21); if(s21) {free(s21);}
+	s21 = ft_strtrim("abcdefghij", "abcdefghij"); printf("%s\n", s21); if(s21) {free(s21);}
+	s21 = ft_strtrim("   xxxtripouille", " x"); printf("%s\n", s21); if(s21) {free(s21);}
 	//printf("%s\n", ft_strtrim("abcdefghij", "def"));
 	//printf("%s\n", ft_strtrim("abcdefghij", ""));
 	//printf("%s\n", ft_strtrim("", "def"));
@@ -289,31 +416,31 @@ int	main()
 	int i;
 	char **out;
 	char **ss;
-	out = ft_split("             ","     ");
+	out = ft_split("             ", ' ');
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("                 ","     ");
+	out = ft_split("                 ", ' ');
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("yAqQ3CZ","yAqQ3CZ");
+	out = ft_split("yAqQ3CZ", ' ');
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("wkiMU","wkiMU");
+	out = ft_split("wkiMU", ' ');
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("hX7znA5kIZJmGk0qvEmi7nnWEvC uVWMMAnWhncuu","MApm");
+	out = ft_split("hX7znA5kIZJmGk0qvEmi7nnWEvC uVWMMAnWhncuu", ' ');
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("j EWYPJrAYn84QcxPCvfE1zSGavBfWa","SbPRYtf");
+	out = ft_split("j EWYPJrAYn84QcxPCvfE1zSGavBfWa", ' ');
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("hn8UnRhrCUwQGrQoS1Y0    PIuYTEpr","5Z2w");
+	out = ft_split("hn8UnRhrCUwQGrQoS1Y0    PIuYTEpr", ' ');
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("UsXMRa1JtpU7ig7MhMcYoSkkPZFrGlWyp8clSMm02wJAdsj","DJ");
+	out = ft_split("UsXMRa1JtpU7ig7MhMcYoSkkPZFrGlWyp8clSMm02wJAdsj", ' ');
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("sjGpjG0iuz14BUzWYqoNdwtJJNGqwkQdEH    rCNjoEr","MO");
+	out = ft_split("sjGpjG0iuz14BUzWYqoNdwtJJNGqwkQdEH    rCNjoEr", ' ');
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("OpzRLhpjFlyoTDdiKK UMsFAvLNTx2YAVRnDSoOdzUgMkJ9","LnCx");
+	out = ft_split("OpzRLhpjFlyoTDdiKK UMsFAvLNTx2YAVRnDSoOdzUgMkJ9", ' ');
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("  gh  "," gh");
+	out = ft_split("  gh  ", ' ');
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("  gh  "," ");
+	out = ft_split("  gh  ", ' ');
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("owaaNTKwCcN8Cb    Hfg3a P5Di1cabSFVflXMihAfBc0C","");
+	out = ft_split("owaaNTKwCcN8Cb    Hfg3a P5Di1cabSFVflXMihAfBc0C", ' ');
 	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
 
 	
@@ -331,6 +458,10 @@ int	main()
 	s29 = ft_strdup("owaaNTKwCcN8Cb"); printf("%s\n", s29); ft_striteri(s29, &test1); printf("%s\n", s29); if (s29) {free(s29);}
 	printf("========\n");
 	s29 = ft_strdup("owaaNTKwCcN8Cb"); printf("%s\n", s29); ft_striteri(s29, &test2); printf("%s\n", s29); if (s29) {free(s29);}
+	printf("========\n");
+	s29 = ft_strdup("0000000000"); printf("%s\n", s29); ft_striteri(s29, iter); printf("%s\n", s29); if (s29) {free(s29);}
+
+
 	
 	printf("========\n");
 	printf("ft_strmapi\n");
@@ -344,6 +475,13 @@ int	main()
 	ft_putchar_fd(0, 1);
 	ft_putchar_fd(200, 1);
 	ft_putchar_fd('\n', 1);
+	for (int j = 0; j <= 47; j++)
+	{
+		ft_putchar_fd(j, 1);
+		write(1, ' ', 1);
+		putchar(j);
+		write(1, '\n', 1);
+	}
 
 	printf("========\n");
 	printf("ft_putstr_fd\n");
@@ -379,7 +517,7 @@ int	main()
 	ft_lstclear(new, &free);
 
 	printf("========\n");
-	char **out1 = ft_split("OpzRLhpjFlyoTDdiKK UMsFAvLNTx2YAVRnDSoOdzUgMkJ9","LnCx");
+	char	**out1 = ft_split("OpzRLhpj Flyo TDdiKK UMsFAvLNTx2YAV RnDSoO dzUgMkJ9", ' ');
 	new = malloc(sizeof(t_list *));
 	new[0] = ft_list_push_strs(out1);
 	ft_list_print(new[0]);
@@ -393,7 +531,7 @@ int	main()
 
 	printf("========\n");
 	printf("ft_lstiter\n");
-	out1 = ft_split("OpzRLhpjFlyoTDdiKK UMsFAvLNTx2YAVRnDSoOdzUgMkJ9","LnCx");
+	out1 = ft_split("OpzRLhpj Flyo TDdiKK UMsFAvLNTx2YAV RnDSoO dzUgMkJ9", ' ');
 	new = malloc(sizeof(t_list *));
 	new[0] = ft_list_push_strs(out1);
 	ft_list_print(new[0]);
@@ -403,7 +541,7 @@ int	main()
 	free(out1);
 
 	printf("========\n");
-	out1 = ft_split("OpzRLhpjFlyoTDdiKK UMsFAvLNTx2YAVRnDSoOdzUgMkJ9","LnCx");
+	out1 = ft_split("OpzRLhpj Flyo TDdiKK UMsFAvLNTx2YAV RnDSoO dzUgMkJ9", ' ');
 	new = malloc(sizeof(t_list *));
 	new[0] = ft_list_push_strs(out1);
 	ft_list_print(new[0]);
@@ -414,7 +552,7 @@ int	main()
 
 	printf("========\n");
 	printf("ft_lstmap\n");
-	out1 = ft_split("OpzRLhpjFlyoTDdiKK UMsFAvLNTx2YAVRnDSoOdzUgMkJ9","LnCx");
+	out1 = ft_split("OpzRLhpj Flyo TDdiKK UMsFAvLNTx2YAV RnDSoO dzUgMkJ9", ' ');
 	new = malloc(sizeof(t_list *));
 	new1 = malloc(sizeof(t_list *));
 	new[0] = ft_list_push_strs(out1);
@@ -426,7 +564,7 @@ int	main()
 	free(out1);
 
 	printf("========\n");
-	out1 = ft_split("OpzRLhpjFlyoTDdiKK UMsFAvLNTx2YAVRnDSoOdzUgMkJ9","LnCx");
+	out1 = ft_split("OpzRLhpj Flyo TDdiKK UMsFAvLNTx2YAV RnDSoO dzUgMkJ9", ' ');
 	new = malloc(sizeof(t_list *));
 	new1 = malloc(sizeof(t_list *));
 	new[0] = ft_list_push_strs(out1);
@@ -436,5 +574,61 @@ int	main()
 	ft_lstclear(new, &free);
 	ft_lstclear(new1, &free);
 	free(out1);
+*/
 
+
+	t_list		*elem;
+	t_list		*elem2;
+	t_list		*elem3;
+	t_list		*elem4;
+	t_list		*begin;
+	char		*str = strdup("lorem");
+	char		*str2 = strdup("ipsum");
+	char		*str3 = strdup("dolor");
+	char		*str4 = strdup("sit");
+
+	elem = ft_lstnewone(str);
+	elem2 = ft_lstnewone(str2);
+	elem3 = ft_lstnewone(str3);
+	elem4 = ft_lstnewone(str4);
+	alarm(5);
+	elem->next = elem2;
+	elem2->next = elem3;
+	elem3->next = elem4;
+	//ft_list_print(elem);
+	begin = elem;
+	while (begin)
+	{
+		ft_print_result(begin);
+		printf("\n");
+		begin = begin->next;
+	}
+	//nb_free_done = 0;
+	//ft_lstclear(&elem3, &ft_del);
+	//ft_list_print(elem);
+	//ft_lstclear(&elem, &ft_del);
+	//if (elem)
+	//	ft_print_result(elem);
+	//else
+	//	write(1, "NULL", 4);
+	ft_lstclear(&elem, &ft_del);
+	//write(1, "\n", 1);
+	//if (elem2)
+	//	ft_print_result(elem2);
+	//else
+	//	write(1, "NULL", 4);
+	//write(1, "\n", 1);
+	//if (elem3)
+	//	ft_print_result(elem3);
+	//else
+	//	write(1, "NULL", 4);
+	//write(1, "\n", 1);
+	//if (elem4)
+	//{
+	//	write(1, "nb_free_done = ", 15);
+	//	nb_free_done += '0';
+	//	write(1, &nb_free_done, 1);
+	//}
+	//else
+	//	write(1, "NULL", 4);
 }

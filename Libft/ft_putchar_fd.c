@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:51:10 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/14 13:19:34 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/17 15:46:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	if (ft_isprint(c))
-		write(fd, &c, 1);
+	write(fd, &c, 1);
 }

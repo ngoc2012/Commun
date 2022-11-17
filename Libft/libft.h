@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:08:19 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/14 17:26:58 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/17 09:18:48 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		ft_isascii(int c);
 char	*ft_itoa(int n);
 void	ft_putchar_fd(char c, int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	**ft_split(char *str, char *charset);
+char	**ft_split(char *str, char charset);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
