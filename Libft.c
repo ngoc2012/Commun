@@ -34,7 +34,7 @@ t_list	*ft_lstnewone(void *content)
 	elem->next = NULL;
 	return (elem);
 }
-/*
+
 void
 iter(unsigned int i, char * s) {
 	*s += i;
@@ -73,24 +73,25 @@ void	print_str(void *s)
 	else
 		printf("string NULL\n");
 }
-*/
+
 void	ft_list_print(t_list *lst)
 {
 	int	i;
-	int	len;
+	//int	len;
 
 	i = 0;
-	len = ft_lstsize(lst);
+	//len = ft_lstsize(lst);
 	while (lst)
 	{
-		if (*((char *) lst->content))
+		if (lst->content)
 		{
-			if (i == 0)
-				printf("[%s, ", (char *) lst->content);
-			else if (i == len - 1)
-				printf("%s]", (char *) lst->content);
-			else
-				printf("%s, ", (char *) lst->content);
+			printf("%s, ", (char *) lst->content);
+			//if (i == 0)
+			//	printf("[%s, ", (char *) lst->content);
+			//else if (i == len - 1)
+			//	printf("%s]", (char *) lst->content);
+			//else
+			//	printf("%s, ", (char *) lst->content);
 		}
 		lst = lst->next;
 		i++;
@@ -123,9 +124,64 @@ void	ft_free(void *content)
 	free(content);
 }
 */
+
+void	set_null(t_list **node)
+{
+	*node = 0;
+}
+
 int	main()
 {
-/*	
+	/*
+	t_list		*elem;
+	t_list		*elem2;
+	t_list		*elem3;
+	t_list		*elem4;
+	t_list		*begin;
+	t_list		*next;
+	char		*str = strdup("lorem");
+	char		*str2 = strdup("ipsum");
+	char		*str3 = strdup("dolor");
+	char		*str4 = strdup("sit");
+
+	elem = ft_lstnewone(str);
+	elem2 = ft_lstnewone(str2);
+	elem3 = ft_lstnewone(str3);
+	elem4 = ft_lstnewone(str4);
+	alarm(5);
+	elem->next = elem2;
+	elem2->next = elem3;
+	elem3->next = elem4;
+	ft_list_print(elem);
+	nb_free_done = 0;
+	//ft_list_print(elem);
+	ft_lstclear(&elem, &ft_del);
+	//if (elem)
+	//	ft_print_result(elem);
+	//else
+	//	write(1, "NULL", 4);
+	//ft_lstclear(&elem, &ft_del);
+	//write(1, "\n", 1);
+	//if (elem2)
+	//	ft_print_result(elem2);
+	//else
+	//	write(1, "NULL", 4);
+	//write(1, "\n", 1);
+	//if (elem3)
+	//	ft_print_result(elem3);
+	//else
+	//	write(1, "NULL", 4);
+	//write(1, "\n", 1);
+	//if (elem4)
+	//{
+	//	write(1, "nb_free_done = ", 15);
+	//	nb_free_done += '0';
+	//	write(1, &nb_free_done, 1);
+	//}
+	//else
+	//	write(1, "NULL", 4);
+*/
+	/*	
 	printf("========\n");
 	printf("isalpha\n");
 	printf("%d %d\n", isalpha(1), ft_isalpha(1));
@@ -171,11 +227,35 @@ int	main()
 	printf("%ld %ld\n", strlen("45"), ft_strlen("45"));
 	printf("%ld %ld\n", strlen("300"), ft_strlen("300"));
 	
+
+
 	printf("========\n");
 	printf("memset\n");
-	char *sm = calloc(32, sizeof(char)); ft_print_memory(sm, 32); sm = memset(sm, 'A', 10); print_str(sm);
-	printf("========\n");
-	sm = calloc(32, sizeof(char)); ft_print_memory(sm, 32); sm = ft_memset(sm, 'A', 10); print_str(sm);
+	//char *sm = calloc(32, sizeof(char)); ft_print_memory(sm, 32); sm = memset(sm, 'A', 10); print_str(sm);
+	//printf("========\n");
+	//sm = calloc(32, sizeof(char)); ft_print_memory(sm, 32); sm = ft_memset(sm, 'A', 10); print_str(sm);
+
+	const int size = 18;
+	char b1[0xF00];
+
+	memset(b1, 'B', 0xF00);
+	char *r1 = memset(b1, 'A', size);
+	char *r2 = ft_memset(b1, 'A', size);
+	//ft_print_memory(r1, size);
+	//ft_print_memory(r2, size);
+	//for (register int __i = 0; __i < size; ++__i)
+	//for (register int __i = 0; __i < size; ++__i)
+	//if (r1 != r2)
+	//	printf("TEST_FAILED\n");
+	r1 = memset("", 'A', (0));
+	r2 = ft_memset("", 'A', 0);
+	ft_print_memory(r1, size);
+	ft_print_memory(r2, size);
+	//if (r1 != r2)
+	//	printf("TEST_FAILED\n");
+	//else
+	//	printf("TEST_SUCCESS\n");
+
 
 	printf("========\n");
 	printf("bzero\n");
@@ -297,6 +377,20 @@ int	main()
 	printf("%s\n", dest1);
 	printf("%d\n", !strcmp(dest1, "B"));
 
+	char b[0xF] = "nyan !";
+
+	printf("strcat\n");
+	strlcat(((void*)0), b, 0);
+	printf("ft_strcat\n");
+	ft_strlcat(((void*)0), b, 0);
+	printf("strcat\n");
+	//strlcat(((void*)0), b, 2);
+	printf("ft_strcat\n");
+	ft_strlcat(((void*)0), b, 2);
+
+	//ft_strlcat(((void*)0), b, 0);
+*/	
+	/*
 	printf("========\n");
 	printf("toupper\n");
 	printf("%d %d\n", toupper('a'), ft_toupper('a'));
@@ -361,6 +455,7 @@ int	main()
 	printf("%s %s\n", ft_strnstr(haystack, needle, -2), strnstr(haystack, needle, -2));
 	printf("%s %s\n", ft_strnstr(haystack, "aaabc", 5), strnstr(haystack, "aaabc", 5));
 	printf("%s %s\n", ft_strnstr(haystack, "abcd", 9), strnstr(haystack, "abcd", 9));
+	ft_strnstr(((void*)0), "fake", 0);
 
 	printf("========\n");
 	printf("atoi\n");
@@ -410,6 +505,12 @@ int	main()
 	//printf("%s\n", ft_strtrim("abcdefghij", "def"));
 	//printf("%s\n", ft_strtrim("abcdefghij", ""));
 	//printf("%s\n", ft_strtrim("", "def"));
+	char *s1 = "\t   \n\n\n  \n\n\t    Hello \t  Please\n Trim me !\t\t\t\n  \t\t\t\t  ";
+	char *s2 = "Hello \t  Please\n Trim me !";
+	int r_size = strlen(s2);
+	int size;
+
+	ft_strtrim(s1, " \n\t");
 
 	printf("========\n");
 	printf("ft_split\n");
@@ -447,11 +548,13 @@ int	main()
 	printf("========\n");
 	printf("ft_itoa\n");
 	char *s29;
-	s29 = ft_itoa(0); printf("%d %s\n", 0, s29); if (s29) {free(s29);}
-	s29 = ft_itoa(-0); printf("%d %s\n", -0, s29); if (s29) {free(s29);}
-	s29 = ft_itoa(100234); printf("%d %s\n", 100234, s29); if (s29) {free(s29);}
-	s29 = ft_itoa(INT_MIN); printf("%d %s\n", INT_MIN, s29); if (s29) {free(s29);}
-	s29 = ft_itoa(INT_MAX); printf("%d %s\n", INT_MAX, s29); if (s29) {free(s29);}
+	s29 = ft_itoa(-5859); printf("%d %s\n", 0, s29); if (s29) {free(s29);}
+	//s29 = ft_itoa(0); printf("%d %s\n", 0, s29); if (s29) {free(s29);}
+	//s29 = ft_itoa(-0); printf("%d %s\n", -0, s29); if (s29) {free(s29);}
+	//s29 = ft_itoa(100234); printf("%d %s\n", 100234, s29); if (s29) {free(s29);}
+	//s29 = ft_itoa(INT_MIN); printf("%d %s\n", INT_MIN, s29); if (s29) {free(s29);}
+	//s29 = ft_itoa(INT_MAX); printf("%d %s\n", INT_MAX, s29); if (s29) {free(s29);}
+
 
 	printf("========\n");
 	printf("ft_striteri\n");
@@ -495,7 +598,7 @@ int	main()
 	ft_putendl_fd("c", 1);
 	ft_putendl_fd("", 1);
 	ft_putendl_fd("10 00", 1);
-
+*/
 	printf("========\n");
 	printf("ft_putnbr_fd\n");
 	ft_putnbr_fd(0, 1); ft_putchar_fd('\n', 1);
@@ -503,7 +606,7 @@ int	main()
 	ft_putnbr_fd(100234, 1); ft_putchar_fd('\n', 1);
 	ft_putnbr_fd(INT_MIN, 1); ft_putchar_fd('\n', 1);
 	ft_putnbr_fd(INT_MAX, 1); ft_putchar_fd('\n', 1);
-
+/*
 	printf("========\n");
 	printf("ft_lstadd_front, ft_lstaddback, ft_lstclear\n");
 	t_list	**new, **new1;
@@ -577,58 +680,4 @@ int	main()
 */
 
 
-	t_list		*elem;
-	t_list		*elem2;
-	t_list		*elem3;
-	t_list		*elem4;
-	t_list		*begin;
-	char		*str = strdup("lorem");
-	char		*str2 = strdup("ipsum");
-	char		*str3 = strdup("dolor");
-	char		*str4 = strdup("sit");
-
-	elem = ft_lstnewone(str);
-	elem2 = ft_lstnewone(str2);
-	elem3 = ft_lstnewone(str3);
-	elem4 = ft_lstnewone(str4);
-	alarm(5);
-	elem->next = elem2;
-	elem2->next = elem3;
-	elem3->next = elem4;
-	//ft_list_print(elem);
-	begin = elem;
-	while (begin)
-	{
-		ft_print_result(begin);
-		printf("\n");
-		begin = begin->next;
-	}
-	//nb_free_done = 0;
-	//ft_lstclear(&elem3, &ft_del);
-	//ft_list_print(elem);
-	//ft_lstclear(&elem, &ft_del);
-	//if (elem)
-	//	ft_print_result(elem);
-	//else
-	//	write(1, "NULL", 4);
-	ft_lstclear(&elem, &ft_del);
-	//write(1, "\n", 1);
-	//if (elem2)
-	//	ft_print_result(elem2);
-	//else
-	//	write(1, "NULL", 4);
-	//write(1, "\n", 1);
-	//if (elem3)
-	//	ft_print_result(elem3);
-	//else
-	//	write(1, "NULL", 4);
-	//write(1, "\n", 1);
-	//if (elem4)
-	//{
-	//	write(1, "nb_free_done = ", 15);
-	//	nb_free_done += '0';
-	//	write(1, &nb_free_done, 1);
-	//}
-	//else
-	//	write(1, "NULL", 4);
 }

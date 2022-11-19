@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2022/11/17 16:12:44 by minh-ngu         ###   ########.fr        #
+#    Updated: 2022/11/19 04:24:54 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ Printf: fclean
 #	valgrind -s --leak-check=full ./a.out
 #	./a.out
 Libft: fclean
-	gcc -Wall -g $@.c $@/*.c -I./$@
+	gcc -Wall -g $@.c $@/*.c Libs/*.c -I./$@ -lbsd
 	valgrind -s --leak-check=full ./a.out
 	./a.out
 #Libft: fclean

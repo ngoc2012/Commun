@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:11:40 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/14 10:50:05 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/19 05:06:44 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ char	*ft_itoa(int n)
 	i = len;
 	if (n < 0)
 		i++;
-	s = malloc(sizeof(char) * (i + 2));
-	if (s == NULL)
+	s = malloc(sizeof(char) * (i + 1));
+	if (!s)
 		return (0);
 	s0 = s;
 	if (n < 0)

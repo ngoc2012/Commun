@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:26:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/14 09:55:47 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/19 04:59:54 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = ft_strlen(s1) - 1;
 	while (end && ft_strchr(set, s1[end]) != NULL)
 		end--;
-	o = malloc(sizeof(char) * (end - start + 3));
-	if (o == NULL)
+	o = malloc(sizeof(char) * (end - start + 2));
+	if (!o)
 		return (0);
 	ft_strlcpy(o, (char *) &s1[start], end - start + 2);
 	return (o);
