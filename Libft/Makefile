@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2022/11/18 22:10:52 by minh-ngu         ###   ########.fr        #
+#    Updated: 2022/11/19 05:55:20 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,9 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(LIBN)
 so:
 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(LIBS) $(BONS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS) $(BONO)
+	$(CC) -nostartfiles -shared -o libft.so $(OBJS) $(BONO)
 .c.o:
-	gcc -Wall -Wextra -Werror -c $< -o ${<:.c=.o} -I.
+	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o} -I.
 bonus: $(BONO) $(OBJS)
 	ar rc $(LIBN) $(BONO) $(OBJS)
 $(LIBN): $(OBJS)

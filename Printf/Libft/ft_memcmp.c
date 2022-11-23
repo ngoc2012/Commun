@@ -6,11 +6,12 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:23:10 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/08 16:30:39 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/17 10:40:34 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

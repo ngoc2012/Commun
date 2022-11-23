@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 08:45:31 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/17 10:10:46 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/22 07:54:01 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 
 // Get number of strings at the out put, must be 0 if all match
-int	get_n_strs(char *str, char charset)
+static int	get_n_strs(char *str, char charset)
 {
 	int	i;
 	int	n_strs;
@@ -35,7 +35,7 @@ int	get_n_strs(char *str, char charset)
 }
 
 // Get chunks (begin and end) of string to output
-void	get_strs(char *str, char charset, char **out)
+static void	get_strs(char *str, char charset, char **out)
 {
 	int		i;
 	int		start;

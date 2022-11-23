@@ -6,19 +6,14 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 07:47:36 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/08 13:15:24 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/16 11:13:10 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
-	char	*s0;
-
-	s0 = (char *) s;
-	i = 0;
-	while (i < n)
-		s0[i++] = 0;
+	s = ft_memset(s, 0, n);
 }

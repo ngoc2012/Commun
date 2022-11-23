@@ -6,14 +6,14 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 12:51:10 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/19 05:29:37 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/22 08:02:02 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
 
-void	write_nbr(long x, int fd)
+static void	write_nbr(long x, int fd)
 {
 	char	*base;
 

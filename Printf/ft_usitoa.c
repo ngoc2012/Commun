@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_usitoa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:11:40 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/22 07:54:56 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/22 08:21:00 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
-#include "libft.h"
+#include "Libft/libft.h"
 
-static int	pow_(int n)
+static unsigned long	pow_(int n)
 {
 	int	i;
 	int	o;
@@ -22,16 +22,14 @@ static int	pow_(int n)
 	i = 0;
 	o = 1;
 	while (i++ < n)
-		o *= (int) 10;
+		o *= (unsigned long) 10;
 	return (o);
 }
 
-static int	get_len(long n)
+static int	get_len(unsigned long n)
 {
 	int	i;
 
-	if (n < 0)
-		n = -n;
 	i = 0;
 	while (n != 0)
 	{
@@ -41,14 +39,12 @@ static int	get_len(long n)
 	return (i);
 }
 
-static void	get_num(long n, char *s, int len)
+static void	get_num(unsigned long n, char *s, int len)
 {
-	int		i;
-	char	*base;
+	unsigned long	i;
+	char			*base;
 
 	base = "0123456789";
-	if (n < 0)
-		n = -n;
 	while (len)
 	{
 		i = n / pow_(len - 1);
@@ -60,25 +56,17 @@ static void	get_num(long n, char *s, int len)
 	*s = 0;
 }
 
-char	*ft_itoa(int n)
+char	*ft_usitoa(unsigned int n)
 {
-	int		i;
 	int		len;
 	char	*s;
-	char	*s0;
 
 	if (n == 0)
 		return (ft_strdup("0"));
 	len = get_len(n);
-	i = len;
-	if (n < 0)
-		i++;
-	s = malloc(sizeof(char) * (i + 1));
+	s = malloc(sizeof(char) * (len + 1));
 	if (!s)
 		return (0);
-	s0 = s;
-	if (n < 0)
-		*s++ = '-';
-	get_num((long) n, s, len);
-	return (s0);
+	get_num((unsigned long) n, s, len);
+	return (s);
 }

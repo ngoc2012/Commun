@@ -3,7 +3,7 @@ $> hostname; uname -msr
 hang-VPCS13M1E
 Linux 5.15.0-52-generic x86_64
 $> date
-sam. 19 nov. 2022 05:29:52 CET
+sam. 19 nov. 2022 06:02:18 CET
 $> gcc --version
 gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0
 Copyright (C) 2021 Free Software Foundation, Inc.
@@ -106,7 +106,7 @@ gcc -Wall -Wextra -Werror -c ft_strlcpy.c -o ft_strlcpy.o -I.
 ar rc libft.a  ft_lstdelone.o ft_lstadd_front.o ft_lstclear.o ft_lstadd_back.o ft_lstnew.o ft_lstsize.o ft_lstiter.o ft_lstmap.o ft_lstlast.o ft_memcmp.o ft_memcpy.o ft_calloc.o ft_putendl_fd.o ft_strnstr.o ft_isalpha.o ft_strtrim.o ft_memmove.o ft_isalnum.o ft_isdigit.o ft_isprint.o ft_tolower.o ft_toupper.o ft_strncmp.o ft_strlen.o ft_putstr_fd.o ft_bzero.o ft_memset.o ft_substr.o ft_strmapi.o ft_strchr.o ft_atoi.o ft_isascii.o ft_itoa.o ft_putchar_fd.o ft_strjoin.o ft_split.o ft_strlcat.o ft_putnbr_fd.o ft_memchr.o ft_strrchr.o ft_striteri.o ft_strdup.o ft_strlcpy.o
 
 $> ls -la libft.a
--rw-rw-r-- 1 hang hang 67576 nov.  19 05:29 /home/hang/Commun/Libft/libft-war-machine/dirlibft/libft.a
+-rw-rw-r-- 1 hang hang 67576 nov.  19 06:02 /home/hang/Commun/Libft/libft-war-machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 

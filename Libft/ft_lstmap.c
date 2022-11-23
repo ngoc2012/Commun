@@ -6,14 +6,14 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:08:55 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/14 18:38:49 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/22 07:57:52 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-void	list_clear(t_list *lst, void (*del)(void *))
+static void	list_clear(t_list *lst, void (*del)(void *))
 {
 	t_list	*next;
 

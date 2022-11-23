@@ -477,16 +477,22 @@ int	main()
 	char *s12 = ft_strdup("abcde"); printf("%s\n", s12); free(s12);
 	s11 =    strdup(""); printf("%s\n", s11); free(s11);
 	s12 = ft_strdup(""); printf("%s\n", s12); free(s12);
-
+*/
 	printf("========\n");
 	printf("ft_substr\n");
 	char	*s21;
-	s21 = ft_substr("abcdefghij",  3,  0); printf("%s\n", s21); if(s21) {free(s21);}
-	s21 = ft_substr("abcdefghij",  3,  3); printf("%s\n", s21); if(s21) {free(s21);}
-	s21 = ft_substr("abcdefghij",  9, 10); printf("%s\n", s21); if(s21) {free(s21);}
-	s21 = ft_substr("abcdefghij", 20, 20); printf("%s\n", s21); if(s21) {free(s21);}
-	s21 = ft_substr("abcdefghij", 0, 20); printf("%s\n", s21); if(s21) {free(s21);}
+	//s21 = ft_substr("abcdefghij",  3,  0); printf("%s\n", s21); if(s21) {free(s21);}
+	//s21 = ft_substr("abcdefghij",  3,  3); printf("%s\n", s21); if(s21) {free(s21);}
+	//s21 = ft_substr("abcdefghij",  9, 10); printf("%s\n", s21); if(s21) {free(s21);}
+	//s21 = ft_substr("abcdefghij", 20, 20); printf("%s\n", s21); if(s21) {free(s21);}
+	//s21 = ft_substr("abcdefghij", 0, 20); printf("%s\n", s21); if(s21) {free(s21);}
+	s21 = ft_substr("tripouille", 0, 42000); printf("%s\n", s21); if(s21) {free(s21);}
+	char	*str;
+	str = strdup("0123456789");
+	s21 = ft_substr(str, 9, 10); printf("%s\n", s21); if(s21) {free(s21);}
+	free(str);
 
+/*
 	printf("========\n");
 	printf("ft_strjoin\n");
 	s21 = ft_strjoin("abcdefghij", "4322"); printf("%s\n", s21); if(s21) {free(s21);}
