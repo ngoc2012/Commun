@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:23:54 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/23 08:48:31 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/23 22:19:36 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	ft_printf(const char *s, ...)
 {
 	va_list	ap;
 	int	ar;
-	int	flag_len;
 	int	i;
 	int	start;
 	int	limit;
@@ -103,7 +102,6 @@ int	ft_printf(const char *s, ...)
 				free(str);
 			}
 			i++;
-			flag_len = 0;
 			//printf("%c %d %d %d\n", s[i], ft_strchr(base10, s[i]), ft_strchr(all_flags, s[i]), ft_strchr(types, s[i])); 
 			while (s[i] && (ft_strchr(all_flags, s[i])) && !ft_strchr(types, s[i]))
 			{
@@ -122,23 +120,30 @@ int	ft_printf(const char *s, ...)
 						free(str);
 					}
 				}
+				while (s[i] && (ft_strchr(all_flags, s[i])) && !ft_strchr(types, s[i]))
+				{
+					if (!ft_strchr(flag, s[i]))
+						ft_strlcat(flag, &s[i], ft_strlen(flag) + 2);
+					i++;
+				}
+				if (ft_strchr(base10, s[i]))
+				{
+					start = i;
+					while (s[i] && ft_strchr(base10, s[i]))
+						i++;
+					str = ft_substr(s, start, i - start);
+					//printf("number = %s\n", str);
+					limit = ft_atoi(str);
+					//printf("limit = %d\n", limit);
+					free(str);
+					//printf("1 s[i] = %c\n", s[i]);
+				}
 				if (s[i])
 					i++;
-				flag_len++;
 			}
-			flag = ft_substr(&s[i - flag_len], 0, flag_len);
-			start = i;
-			while (s[i] && ft_strchr(base10, s[i]))
-				i++;
-			str = ft_substr(s, start, i - start);
-			//printf("number = %s\n", str);
-			limit = ft_atoi(str);
-			//printf("limit = %d\n", limit);
-			free(str);
-			//printf("1 s[i] = %c\n", s[i]);
 			if (ft_strchr(types, s[i]))
 				type = s[i];
-			//printf("type = %c, flag = %s, flag_len = %d\n", type, flag, flag_len); 
+			printf("type = %c, flag = %s, flag_len = %d\n", type, flag, ft_strlen(flag)); 
 
 			if (type == 'c')
 			{
