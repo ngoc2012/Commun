@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 08:45:31 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/17 10:10:46 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/24 17:51:31 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "libft.h"
 
 // Get number of strings at the out put, must be 0 if all match
-int	get_n_strs(char *str, char charset)
+static int	get_n_strs(char *str, char charset)
 {
 	int	i;
 	int	n_strs;
@@ -35,7 +35,7 @@ int	get_n_strs(char *str, char charset)
 }
 
 // Get chunks (begin and end) of string to output
-void	get_strs(char *str, char charset, char **out)
+static int	get_strs(char *str, char charset, char **out)
 {
 	int		i;
 	int		start;
@@ -53,23 +53,36 @@ void	get_strs(char *str, char charset, char **out)
 		if (i > start)
 		{
 			out[j] = malloc(sizeof(char) * (i - start + 1));
+			if (!out[j])
+				return (0);
 			ft_strlcpy(out[j], &(str[start]), i - start + 1);
 			j++;
 		}
 	}
+	return (1);
 }
 
 char	**ft_split(char *str, char charset)
 {
 	int		n_strs;
 	char	**out;
+	char	**out0;
 
 	n_strs = get_n_strs(str, charset);
 	out = malloc(sizeof(char *) * (n_strs + 1));
 	if (!out)
 		return (NULL);
 	if (n_strs > 0)
-		get_strs(str, charset, out);
+	{
+		if (!get_strs(str, charset, out))
+		{
+			out0 = out;
+			while (*out)
+				free(*(out++));
+			free(out0);
+			return (0);
+		}
+	}
 	out[n_strs] = 0;
 	return (out);
 }

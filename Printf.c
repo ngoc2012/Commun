@@ -3,7 +3,7 @@
 
 int	main()
 {
-/*
+
 	//cspdiuxX%
 	printf("================= cispdiuxX%% =================\n");
 	ft_printf("================= cispdiuxX%% =================\n");
@@ -16,11 +16,11 @@ int	main()
 	ft_printf ("%%s : const char *. Exemple:  %s sdhfiofdsi\n", "Educative");
 	// p : The void * pointer argument is printed in
 	// hexadecimal  (as if by %#x or %#lx).
-	unsigned int	a = 10;
+	unsigned int	aa = 10;
 	printf("%%p : The void * pointer argument is printed in\n \
-	hexadecimal  (as if by %%#x or %%#lx). %p %#x\n", &a, &a);
+	hexadecimal  (as if by %%#x or %%#lx). %p %#x\n", &aa, &aa);
 	ft_printf("%%p : The void * pointer argument is printed in\n \
-	hexadecimal  (as if by %%#x or %%#lx). %p %#x\n", &a, &a);
+	hexadecimal  (as if by %%#x or %%#lx). %p %#x\n", &aa, &aa);
 	// d,i : The int argument is converted to signed decimal  notation
 	//
 	// u,x,X : The  unsigned  int argument is converted to unsigned octal
@@ -81,9 +81,13 @@ int	main()
 	// Manage all the following flags: ’# +’
 	printf("Manage all the following flags: ’# +’\n");
 	printf("%%#x: Unsigned int -> unsigned hexadecimal (miniscule): %d: %#x\n", 4242, 4242);
+	ft_printf("%%#x: Unsigned int -> unsigned hexadecimal (miniscule): %d: %#x\n", 4242, 4242);
 	printf("%%#X: Unsigned int -> unsigned hexadecimal (majuscule): %d: %#X\n", 4242, 4242);
+	ft_printf("%%#X: Unsigned int -> unsigned hexadecimal (majuscule): %d: %#X\n", 4242, 4242);
 	printf("%%#x: Unsigned int -> unsigned hexadecimal (miniscule): %d: %#x\n", 0, 0);
+	ft_printf("%%#x: Unsigned int -> unsigned hexadecimal (miniscule): %d: %#x\n", 0, 0);
 	printf("%%#X: Unsigned int -> unsigned hexadecimal (majuscule): %d: %#X\n", 0, 0);
+	ft_printf("%%#X: Unsigned int -> unsigned hexadecimal (majuscule): %d: %#X\n", 0, 0);
 	printf("' '    (a space) A blank should be left before a positive number (or empty string) produced by a signed conversion\n");
 	printf("#% 9d#\n", 4242 );
 	printf("+      A  sign  (+  or -) should always be placed before a number produced by a signed conversion.  By default, a sign is used only for negative numbers.\n");
@@ -103,7 +107,7 @@ int	main()
 
 	//printf ("Integers: %+019i jsadlfd %+u oiodfsi %#0  -%  \n", -3456, 3456);
 	//ft_printf ("Integers: %+019i jsadlfd %+u oiodfsi %#0  -%  \n", -3456, 3456);
-	
+/*	
 	printf( "%+09d\n", 452 );
 	ft_printf( "%+09d\n", 452 );
 	printf( "#%-09d#\n", 452 );
@@ -116,7 +120,7 @@ int	main()
 	ft_printf( "%-0.9d\n", 452 );
 	printf( "%.-09d\n", 452 );
 	ft_printf( "%.-09d\n", 452 );
-	
+*/	
 	
 	printf ("Integers: %i %u \n", -3456, 3456);
 	ft_printf ("Integers: %i %u \n", -3456, 3456);
@@ -157,7 +161,7 @@ int	main()
 	ft_printf(":%5s:\n", "Hello, world!");
 	printf(":%15s:\n", "Hello, world!");
 	ft_printf(":%15s:\n", "Hello, world!");
-*/	printf(":%.10s:\n", "Hello, world!");
+	printf(":%.10s:\n", "Hello, world!");
 	ft_printf(":%.10s:\n", "Hello, world!");
 	printf(":%-10s:\n", "Hello, world!");
 	ft_printf(":%-10s:\n", "Hello, world!");

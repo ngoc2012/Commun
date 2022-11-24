@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:11:40 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/19 05:06:44 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/22 07:54:56 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int	pow_(int n)
+static int	pow_(int n)
 {
 	int	i;
 	int	o;
@@ -26,7 +26,7 @@ int	pow_(int n)
 	return (o);
 }
 
-int	get_len(long n)
+static int	get_len(long n)
 {
 	int	i;
 
@@ -41,7 +41,7 @@ int	get_len(long n)
 	return (i);
 }
 
-void	get_num(long n, char *s, int len)
+static void	get_num(long n, char *s, int len)
 {
 	int		i;
 	char	*base;

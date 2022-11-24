@@ -6,24 +6,12 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 14:08:55 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/14 18:38:49 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:56:05 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
-
-void	list_clear(t_list *lst, void (*del)(void *))
-{
-	t_list	*next;
-
-	while (lst)
-	{
-		next = lst->next;
-		ft_lstdelone(lst, del);
-		lst = next;
-	}
-}
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
@@ -38,7 +26,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		if (!new)
 		{
 			if (begin)
-				list_clear(begin, del);
+				ft_lstclear(&begin, del);
 			return (0);
 		}
 		new->content = f(lst->content);

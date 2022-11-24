@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:08:19 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/17 09:18:48 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/24 14:46:16 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ char	*ft_strrchr(const char *s, int c);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strdup(const char *src);
 t_list	*ft_lstlast(t_list *lst);
-size_t	ft_strlcpy(char *dest, char *src, size_t size);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
 #endif

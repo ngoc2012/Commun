@@ -1,4 +1,5 @@
 #include <limits.h>
+#include <stdint.h>
 #include <stdio.h>
 #include "Libft/libft.h"
 #include "Libs/libft.h"
@@ -470,6 +471,12 @@ int	main()
 	printf("calloc\n");
 	char *sc1 = calloc(32, sizeof(char)); print_str(sc1);
 	char *sc2 = ft_calloc(32, sizeof(char)); print_str(sc2);
+	sc1 = calloc(SIZE_MAX - 1, sizeof(char)); print_str(sc1);
+	sc2 = ft_calloc(SIZE_MAX - 1, sizeof(char)); print_str(sc2);
+	sc1 = calloc(SIZE_MAX, sizeof(char)); print_str(sc1);
+	sc2 = ft_calloc(SIZE_MAX, sizeof(char)); print_str(sc2);
+	sc1 = calloc(INT_MAX, sizeof(char)); print_str(sc1);
+	sc2 = ft_calloc(INT_MAX, sizeof(char)); print_str(sc2);
 
 	printf("========\n");
 	printf("strdup\n");
@@ -477,7 +484,7 @@ int	main()
 	char *s12 = ft_strdup("abcde"); printf("%s\n", s12); free(s12);
 	s11 =    strdup(""); printf("%s\n", s11); free(s11);
 	s12 = ft_strdup(""); printf("%s\n", s12); free(s12);
-*/
+
 	printf("========\n");
 	printf("ft_substr\n");
 	char	*s21;
@@ -492,7 +499,7 @@ int	main()
 	s21 = ft_substr(str, 9, 10); printf("%s\n", s21); if(s21) {free(s21);}
 	free(str);
 
-/*
+
 	printf("========\n");
 	printf("ft_strjoin\n");
 	s21 = ft_strjoin("abcdefghij", "4322"); printf("%s\n", s21); if(s21) {free(s21);}
@@ -517,40 +524,40 @@ int	main()
 	int size;
 
 	ft_strtrim(s1, " \n\t");
-
+*/
 	printf("========\n");
 	printf("ft_split\n");
 	int i;
 	char **out;
 	char **ss;
-	out = ft_split("             ", ' ');
-	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("                 ", ' ');
-	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("yAqQ3CZ", ' ');
-	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("wkiMU", ' ');
-	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("hX7znA5kIZJmGk0qvEmi7nnWEvC uVWMMAnWhncuu", ' ');
-	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("j EWYPJrAYn84QcxPCvfE1zSGavBfWa", ' ');
-	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("hn8UnRhrCUwQGrQoS1Y0    PIuYTEpr", ' ');
-	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("UsXMRa1JtpU7ig7MhMcYoSkkPZFrGlWyp8clSMm02wJAdsj", ' ');
-	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("sjGpjG0iuz14BUzWYqoNdwtJJNGqwkQdEH    rCNjoEr", ' ');
-	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("OpzRLhpjFlyoTDdiKK UMsFAvLNTx2YAVRnDSoOdzUgMkJ9", ' ');
-	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("  gh  ", ' ');
-	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("  gh  ", ' ');
-	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
-	out = ft_split("owaaNTKwCcN8Cb    Hfg3a P5Di1cabSFVflXMihAfBc0C", ' ');
-	ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
+	//out = ft_split("             ", ' ');
+	//ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
+	//out = ft_split("                 ", ' ');
+	//ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
+	//out = ft_split("yAqQ3CZ", ' ');
+	//ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
+	//out = ft_split("wkiMU", ' ');
+	//ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
+	//out = ft_split("hX7znA5kIZJmGk0qvEmi7nnWEvC uVWMMAnWhncuu", ' ');
+	//ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
+	//out = ft_split("j EWYPJrAYn84QcxPCvfE1zSGavBfWa", ' ');
+	//ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
+	//out = ft_split("hn8UnRhrCUwQGrQoS1Y0    PIuYTEpr", ' ');
+	//ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
+	//out = ft_split("UsXMRa1JtpU7ig7MhMcYoSkkPZFrGlWyp8clSMm02wJAdsj", ' ');
+	//ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
+	//out = ft_split("sjGpjG0iuz14BUzWYqoNdwtJJNGqwkQdEH    rCNjoEr", ' ');
+	//ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
+	//out = ft_split("OpzRLhpjFlyoTDdiKK UMsFAvLNTx2YAVRnDSoOdzUgMkJ9", ' ');
+	//ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
+	//out = ft_split("  gh  ", ' ');
+	//ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
+	//out = ft_split("  gh  ", ' ');
+	//ss = out; printf("tab start\n"); i=0;while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);
+	out = ft_split("owaaNT KwCcN8Cb    Hfg3a P5Di1cabSFV flXMihAfBc0C", ' ');
+	if(out) {ss = out; printf("tab start\n"); i=0; while (*out){ printf("tab[%d]: %s\n",i++,  *out); out++; } printf("tab end\n"); ft_free_strs(ss);}
 
-	
+/*	
 	printf("========\n");
 	printf("ft_itoa\n");
 	char *s29;

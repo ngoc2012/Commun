@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:23:54 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/23 22:19:36 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/24 18:01:45 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,37 +16,6 @@
 #include <limits.h>
 #include "Libft/libft.h"
 #include "libftprintf.h"
-
-char*	hex_address(char *hex, void *addr)
-{
-	long unsigned int i;
-	long unsigned int i0;
-	int		j;
-	int		mod;
-	char	*str;
-
-	i = (long unsigned int) addr;
-	i0 = i;
-	j = 0;
-	while (i != 0)
-	{
-		i = (i - i % 16) / 16;
-		j++;
-	}
-	str = malloc(sizeof(char) * (j + 1));
-	if (!str)
-		return (0);
-	str[j] = 0;
-	i = i0;
-	j--;
-	while (i != 0)
-	{
-		mod = i % 16;
-		i = (i - mod) / 16;
-		str[j--] = hex[mod];
-	}
-	return str;
-}
 
 int	ft_printf(const char *s, ...)
 {
@@ -81,10 +50,11 @@ int	ft_printf(const char *s, ...)
 	all_flags = "-0.# +";
 	type = 0;
 	prefix = 0;
-	//printf("string = ###%s###\n", s);
+	//printf("string = ###%s\n", s);
 	size = INT_MAX;
 	i = 0;
 	start = 0;
+	limit = 0;
 	out = 0;
 	flag = ft_calloc(7, sizeof(char));
 	while (s[i])
@@ -103,21 +73,25 @@ int	ft_printf(const char *s, ...)
 			}
 			i++;
 			//printf("%c %d %d %d\n", s[i], ft_strchr(base10, s[i]), ft_strchr(all_flags, s[i]), ft_strchr(types, s[i])); 
-			while (s[i] && (ft_strchr(all_flags, s[i])) && !ft_strchr(types, s[i]))
+			while (s[i] && (ft_strchr(all_flags, s[i]) || ft_strchr(base10, s[i])) && !ft_strchr(types, s[i]))
 			{
 				if (s[i] == '.')
 				{
 					i++;
-					start = i;
-					while (s[i] && ft_strchr(base10, s[i]))
-						i++;
-					if (i > start)
+					if (s[i] != '0')
 					{
-						str = ft_substr(s, start, i - start);
-						//printf("number = %s\n", str);
-						size = ft_atoi(str);
-						//printf("size = %d\n", size);
-						free(str);
+						start = i;
+						while (s[i] && ft_strchr(base10, s[i]))
+							i++;
+						if (i > start)
+						{
+							str = ft_substr(s, start, i - start);
+							//printf("number = %s\n", str);
+							size = ft_atoi(str);
+							//printf("size = %d\n", size);
+							//printf("2 s[i] = %c\n", s[i]);
+							free(str);
+						}
 					}
 				}
 				while (s[i] && (ft_strchr(all_flags, s[i])) && !ft_strchr(types, s[i]))
@@ -138,12 +112,10 @@ int	ft_printf(const char *s, ...)
 					free(str);
 					//printf("1 s[i] = %c\n", s[i]);
 				}
-				if (s[i])
-					i++;
 			}
 			if (ft_strchr(types, s[i]))
 				type = s[i];
-			printf("type = %c, flag = %s, flag_len = %d\n", type, flag, ft_strlen(flag)); 
+			//printf("type = %c, flag = |%s|, flag_len = %d\n", type, flag, ft_strlen(flag)); 
 
 			if (type == 'c')
 			{
@@ -161,12 +133,20 @@ int	ft_printf(const char *s, ...)
 			}
 			if (type == 'p')
 			{
-				str = hex_address(hex, va_arg(ap, void *));
-				str2 = malloc(sizeof(char) * (ft_strlen(str) + 3));
-				ft_strlcpy(str2, "0x", 3);
-				ft_strlcat(str2, str, ft_strlen(str) + 3);
-				ft_lstadd_back(&out, ft_lstnew(str2));
-				free(str);
+				str = ft_itoa_base(hex, va_arg(ap, void *));
+				if (ft_strncmp(str, "0", 2) != 0)
+				{
+					str2 = malloc(sizeof(char) * (ft_strlen(str) + 3));
+					ft_strlcpy(str2, "0x", 3);
+					ft_strlcat(str2, str, ft_strlen(str) + 3);
+					ft_lstadd_back(&out, ft_lstnew(str2));
+					free(str);
+				}
+				else
+				{
+					free(str);
+					ft_lstadd_back(&out, ft_lstnew(ft_strdup("(nil)")));
+				}
 			}
 			if (type == 'u')
 			{
@@ -185,10 +165,10 @@ int	ft_printf(const char *s, ...)
 			}
 			if (type == 'x')
 			{
-				str = hex_address(hex, va_arg(ap, void *));
+				str = ft_itoa_base(hex, va_arg(ap, void *));
 				if (ft_strlen(str) > 8)
 					ft_memmove(str, &str[ft_strlen(str) - 8], 9);
-				if (ft_strchr(flag, '#'))
+				if (ft_strchr(flag, '#') && (ft_strncmp(str, "0", 2) != 0))
 				{
 					str2 = malloc(sizeof(char) * (ft_strlen(str) + 3));
 					ft_strlcpy(str2, "0x", 3);
@@ -201,8 +181,8 @@ int	ft_printf(const char *s, ...)
 			}
 			if (type == 'X')
 			{
-				str = hex_address(HEX, va_arg(ap, void *));
-				if (ft_strchr(flag, '#'))
+				str = ft_itoa_base(HEX, va_arg(ap, void *));
+				if (ft_strchr(flag, '#') &&(ft_strncmp(str, "0", 2) != 0))
 				{
 					str2 = malloc(sizeof(char) * (ft_strlen(str) + 3));
 					ft_strlcpy(str2, "0x", 3);
@@ -228,7 +208,7 @@ int	ft_printf(const char *s, ...)
 			}
 			if (ft_strchr(types, type) && limit > 0)
 			{
-				printf("limit = %d, size  = %d\n", limit, size);
+				//printf("limit = %d, size  = %ld\n", limit, size);
 				last = ft_lstlast(out);
 				if (limit > ft_strlen(last->content))
 				{
@@ -241,16 +221,9 @@ int	ft_printf(const char *s, ...)
 					fill = ' ';
 					prefix = 0;
 					if (ft_strchr(flag, ' '))
-					{
 						prefix = ' ';
-					}
-					if (ft_strchr(flag, '+') && ft_strchr(numbers, type))
-					{
-						if (!ft_memcmp(last->content, "-", 1))
-							prefix = '-';
-						else
-							prefix = '+';
-					}
+					if (ft_strchr(flag, '+') && ft_strchr(numbers, type) && (ft_memcmp(last->content, "-", 1)))
+						prefix = '+';
 					if (ft_strchr(flag, '0'))
 						fill = '0';
 					if (ft_strchr(flag, '-'))
@@ -259,21 +232,31 @@ int	ft_printf(const char *s, ...)
 						fill = ' ';
 					}
 					//printf("last->content = %s\n", (char *) last->content);
-					//printf("start = %d, fill = #%c#, prefix = #%c#\n", start, fill, prefix);
+					//printf("start = %d, fill = |%c|, prefix = |%c|\n", start, fill, prefix);
 					ft_memset(str, fill, limit);
-					if (prefix)
+					if (fill == '0' && prefix && ft_strlen(last->content) < limit)
 						ft_memset(str, prefix, 1);
+					if (fill == ' ' && prefix && ft_strlen(last->content) < limit)
+					{
+						if (start == 0)
+						{
+							ft_memset(str, prefix, 1);
+							start++;
+						}
+						else
+							ft_memset(str + start - 1, prefix, 1);
+					}
 					ft_memcpy(str + start, last->content, ft_strlen(last->content));
 					free(last->content);
 					last->content = str;
 				}
 			}
-			free(flag);
 			start = i + 1;
 		}
 		if (s[i])
 			i++;
 	}
+	free(flag);
 	//printf("i = %d, start = %d\n", i, start);
 	if (i > start)
 	{
