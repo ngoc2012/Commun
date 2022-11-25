@@ -1,0 +1,15 @@
+============ vim split ============
+:resize 60
+:res +3.5
+:res 4
+
+:vertical resize 80
+Ctrl-w + and Ctrl-w - to resize the height
+Ctrl-w > and Ctrl-w < to resize the width
+Ctrl-w 10 +
+
+
+============ macro =============
+record: q (a...z) smt q
+use: @ (a...z)
+select block of lines -> :'<,'>norm@a

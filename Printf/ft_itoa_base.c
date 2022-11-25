@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:58:11 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/24 22:24:43 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/25 12:27:46 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ static int	get_base(char *base)
 
 static char	*itoa_base(char *base, int n_base, long unsigned int i)
 {
-	int		j;
-	int		mod;
-	char	*str;
-	long unsigned int i0;
+	int					j;
+	int					mod;
+	char				*str;
+	long unsigned int	i0;
 
 	i0 = i;
 	j = 0;
@@ -71,9 +71,9 @@ static char	*itoa_base(char *base, int n_base, long unsigned int i)
 
 char	*ft_itoa_base(char *base, void *nbr)
 {
-	long unsigned int i;
-	int			n_base;
-	char		*str;
+	long unsigned int	i;
+	int					n_base;
+	char				*str;
 
 	i = (long unsigned int) nbr;
 	if (i == 0)
@@ -85,7 +85,7 @@ char	*ft_itoa_base(char *base, void *nbr)
 		return (str);
 	}
 	n_base = get_base(base);
-	if(n_base == 0)
+	if (n_base == 0)
 		return (0);
-	return (itoa_base(base, n_base, i));	
+	return (itoa_base(base, n_base, i));
 }

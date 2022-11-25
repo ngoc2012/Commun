@@ -1,9 +1,13 @@
 #include <stdio.h>
-#include "Printf/libftprintf.h"
+#include "Printf/ft_printf.h"
 
 int	main()
 {
-
+	int	orgi, test;
+	orgi = printf("# %c %c %c #\n", '0', 0, '1');
+	test = ft_printf("# %c %c %c #\n", '0', 0, '1');
+	printf("orgi = %d, test = %d\n", orgi, test);
+/*
 	//cspdiuxX%
 	printf("================= cispdiuxX%% =================\n");
 	ft_printf("================= cispdiuxX%% =================\n");
@@ -107,7 +111,7 @@ int	main()
 
 	//printf ("Integers: %+019i jsadlfd %+u oiodfsi %#0  -%  \n", -3456, 3456);
 	//ft_printf ("Integers: %+019i jsadlfd %+u oiodfsi %#0  -%  \n", -3456, 3456);
-/*	
+	
 	printf( "%+09d\n", 452 );
 	ft_printf( "%+09d\n", 452 );
 	printf( "#%-09d#\n", 452 );
@@ -120,7 +124,7 @@ int	main()
 	ft_printf( "%-0.9d\n", 452 );
 	printf( "%.-09d\n", 452 );
 	ft_printf( "%.-09d\n", 452 );
-*/	
+	
 	
 	printf ("Integers: %i %u \n", -3456, 3456);
 	ft_printf ("Integers: %i %u \n", -3456, 3456);
@@ -173,5 +177,5 @@ int	main()
 	ft_printf(":%15.10s:\n", "Hello, world!");
 	printf(":%-15.10s:\n", "Hello, world!");
 	ft_printf(":%-15.10s:\n", "Hello, world!");
-
+*/
 }

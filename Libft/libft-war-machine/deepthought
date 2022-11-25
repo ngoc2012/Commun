@@ -1,17 +1,17 @@
 = Host-specific information ====================================================
 $> hostname; uname -msr
-e3r6p2.clusters.42paris.fr
-Linux 5.15.0-52-generic x86_64
+e1r1p12.clusters.42paris.fr
+Linux 5.4.0-132-generic x86_64
 $> date
-Thu Nov 24 05:53:02 PM CET 2022
+Fri 25 Nov 2022 04:14:14 PM CET
 $> gcc --version
-gcc (Ubuntu 10.4.0-4ubuntu1~22.04) 10.4.0
+gcc (Ubuntu 10.3.0-1ubuntu1~20.04) 10.3.0
 Copyright (C) 2020 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 $> clang --version
-Ubuntu clang version 12.0.1-19ubuntu3
+Ubuntu clang version 12.0.0-3ubuntu1~20.04.5
 Target: x86_64-pc-linux-gnu
 Thread model: posix
 InstalledDir: /usr/bin
@@ -106,7 +106,7 @@ gcc -Wall -Wextra -Werror -c ft_strlcpy.c -o ft_strlcpy.o -I.
 ar rc libft.a  ft_lstdelone.o ft_lstadd_front.o ft_lstclear.o ft_lstadd_back.o ft_lstnew.o ft_lstsize.o ft_lstiter.o ft_lstmap.o ft_lstlast.o ft_memcmp.o ft_memcpy.o ft_calloc.o ft_putendl_fd.o ft_strnstr.o ft_isalpha.o ft_strtrim.o ft_memmove.o ft_isalnum.o ft_isdigit.o ft_isprint.o ft_tolower.o ft_toupper.o ft_strncmp.o ft_strlen.o ft_putstr_fd.o ft_bzero.o ft_memset.o ft_substr.o ft_strmapi.o ft_strchr.o ft_atoi.o ft_isascii.o ft_itoa.o ft_putchar_fd.o ft_strjoin.o ft_split.o ft_strlcat.o ft_putnbr_fd.o ft_memchr.o ft_strrchr.o ft_striteri.o ft_strdup.o ft_strlcpy.o
 
 $> ls -la libft.a
--rw-r--r-- 1 minh-ngu 2022_paris 67462 Nov 24 17:53 /mnt/nfs/homes/minh-ngu/Commun/Libft/libft-war-machine/dirlibft/libft.a
+-rw-r--r-- 1 minh-ngu 2022_paris 74726 Nov 25 16:14 /mnt/nfs/homes/minh-ngu/Commun/Libft/libft-war-machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 

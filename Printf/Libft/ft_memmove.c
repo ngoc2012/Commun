@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 07:47:36 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/19 04:18:22 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/25 16:10:27 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	d = (unsigned char *) dest;
 	s = (unsigned char *) src;
 	i = 0;
-	if (((size_t)(d - s) > 0) && ((size_t)(d - s) < n))
+	if (((d - s) > 0) && ((size_t)(d - s) < n))
 	{
 		while (i < n)
 		{
