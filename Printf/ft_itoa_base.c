@@ -6,11 +6,12 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:58:11 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/25 12:27:46 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/28 08:31:36 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <limits.h>
 #include "Libft/libft.h"
 
 static int	get_base(char *base)
@@ -76,6 +77,7 @@ char	*ft_itoa_base(char *base, void *nbr)
 	char				*str;
 
 	i = (long unsigned int) nbr;
+	//if (i == 0 || (long int) i == LONG_MIN)
 	if (i == 0)
 	{
 		str = malloc(sizeof(char) * 2);

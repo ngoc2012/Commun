@@ -1,13 +1,18 @@
+#include <limits.h>
 #include <stdio.h>
 #include "Printf/ft_printf.h"
 
 int	main()
 {
+	ft_printf(" %p %p \n", LONG_MIN, LONG_MAX);
+/*	printf(" NULL %s NULL ", NULL);
+	ft_printf(" NULL %s NULL ", NULL);
+	
 	int	orgi, test;
 	orgi = printf("# %c %c %c #\n", '0', 0, '1');
 	test = ft_printf("# %c %c %c #\n", '0', 0, '1');
 	printf("orgi = %d, test = %d\n", orgi, test);
-/*
+
 	//cspdiuxX%
 	printf("================= cispdiuxX%% =================\n");
 	ft_printf("================= cispdiuxX%% =================\n");

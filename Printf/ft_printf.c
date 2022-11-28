@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:23:54 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/25 14:28:39 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/27 13:31:30 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,19 @@ int	init(t_printf	*tp)
 	return (1);
 }
 
-int	set_fill_prefix(t_printf *tp, t_list *last)
+char	*set_fill_prefix(t_printf *tp, char *lcs)
 {
 	char	*str;
 
+	//printf("fill = #%c#", tp->fill);
+	//printf("limit = #%d#", tp->limit);
 	str = ft_calloc(tp->limit + 1, sizeof(char));
 	if (!str)
 		return (0);
 	ft_memset(str, tp->fill, tp->limit);
-	if (tp->fill == '0' && tp->prefix && ft_strlen(last->content) < tp->limit)
+	if (tp->fill == '0' && tp->prefix && ft_strlen(lcs) < tp->limit)
 		ft_memset(str, tp->prefix, 1);
-	if (tp->fill == ' ' && tp->prefix && ft_strlen(last->content) < tp->limit)
+	if (tp->fill == ' ' && tp->prefix && ft_strlen(lcs) < tp->limit)
 	{
 		if (tp->start == 0)
 		{
@@ -58,10 +60,8 @@ int	set_fill_prefix(t_printf *tp, t_list *last)
 		else
 			ft_memset(str + tp->start - 1, tp->prefix, 1);
 	}
-	ft_memcpy(str + tp->start, last->content, ft_strlen(last->content));
-	free(last->content);
-	last->content = str;
-	return (1);
+	ft_memcpy(str + tp->start, lcs, ft_strlen(lcs));
+	return (str);
 }
 
 int	get_out(const char *s, t_printf *tp)
@@ -80,7 +80,7 @@ int	get_out(const char *s, t_printf *tp)
 
 void	free_all(t_printf *tp)
 {
-	ft_lstclear(&tp->out, free);
+	ft_lstclear(&tp->out, free_content);
 	va_end(tp->ap);
 	free(tp->flag);
 	free(tp);
@@ -90,7 +90,6 @@ int	ft_printf(const char *s, ...)
 {
 	int			n;
 	t_printf	*tp;
-	t_list		*out;
 
 	tp = malloc(sizeof(t_printf));
 	if (!tp)
@@ -98,20 +97,8 @@ int	ft_printf(const char *s, ...)
 	va_start(tp->ap, s);
 	n = 0;
 	if (init(tp))
-	{
 		if (get_out(s, tp))
-		{
-			out = tp->out;
-			while (out)
-			{
-				n += ft_strlen(out->content);
-				if (ft_strlen(out->content) == 0)
-					n++;
-				ft_putstr_fd(out->content, 1);
-				out = out->next;
-			}
-		}
-	}
+			n = ft_print_out(tp);
 	free_all(tp);
 	return (n);
 }

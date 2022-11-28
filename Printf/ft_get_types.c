@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:23:54 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/25 14:06:11 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/28 08:42:14 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,85 +45,76 @@ void	get_type_prop(const char *s, t_printf *tp)
 		tp->type = s[tp->i];
 }
 
-void	get_cspu(t_printf *tp)
+t_content	*get_xx(t_printf *tp, char *hex)
 {
-	int		ar;
+	void	*a;
+	long int	i;
 	char	*str;
 
-	if (tp->type == 's')
+	a = va_arg(tp->ap, void *);
+	i = (long int) a;
+	if (i == LONG_MIN)
 	{
-		str = ft_strdup((const char *) va_arg(tp->ap, char *));
-		ft_lstadd_back(&tp->out, ft_lstnew(str));
+		str = ft_strdup("0");
+		if (!str)
+			return (0);
+		return (ft_new_content(tp->type, str));
 	}
-	if (tp->type == 'p')
-	{
-		str = ft_itoa_base(tp->hex, va_arg(tp->ap, void *));
-		ft_lstadd_back(&tp->out, ft_lstnew(get_0x(str, "(nil)")));
-	}
-	if (tp->type == 'u')
-	{
-		ar = va_arg(tp->ap, int);
-		if (ar >= 0)
-			ft_lstadd_back(&tp->out, ft_lstnew(ft_itoa(ar)));
-		else
-			ft_lstadd_back(&tp->out, ft_lstnew(ft_usitoa(ar)));
-	}
-}
-
-int	get_xx(t_printf *tp, char *hex)
-{
-	char	*str;
-
-	str = ft_itoa_base(hex, va_arg(tp->ap, void *));
+	str = ft_itoa_base(hex, a);
 	if (!str)
 		return (0);
 	if (ft_strlen(str) > 8)
 		ft_memmove(str, &str[ft_strlen(str) - 8], 9);
 	if (ft_strchr(tp->flag, '#'))
 		str = get_0x(str, "0");
-	ft_lstadd_back(&tp->out, ft_lstnew(str));
-	return (1);
+	return (ft_new_content(tp->type, str));
 }
 
 void	get_idxx(t_printf *tp)
 {
 	int	ar;
+	t_content	*new;
 
+	new = 0;
 	if (tp->type == 'i' || tp->type == 'd')
 	{
 		ar = va_arg(tp->ap, int);
-		ft_lstadd_back(&tp->out, ft_lstnew(ft_itoa(ar)));
+		new = ft_new_content(tp->type, ft_itoa(ar));
 	}
 	if (tp->type == 'x')
-		get_xx(tp, tp->hex);
+		new = get_xx(tp, tp->hex);
 	if (tp->type == 'X')
-		get_xx(tp, tp->hex_cap);
+		new = get_xx(tp, tp->hex_cap);
 	if (tp->type == '%')
-		ft_lstadd_back(&tp->out, ft_lstnew(ft_strdup("%")));
+		new = ft_new_content(tp->type, ft_strdup("%"));
+	if (new)
+		ft_lstadd_back(&tp->out, ft_lstnew(new));
 }
 
 int	get_type(const char *s, t_printf *tp)
 {
 	char	*str;
 	t_list	*last;
+	t_content	*cont;
 
 	get_type_prop(s, tp);
-	if (tp->type == 'c')
-	{
-		str = ft_strdup(" ");
-		str[0] = (char) va_arg(tp->ap, int);
-		ft_lstadd_back(&tp->out, ft_lstnew(str));
-	}
-	get_cspu(tp);
+	if (!get_cs(tp))
+		return (0);
+	if (!get_pu(tp))
+		return (0);
 	get_idxx(tp);
-	set_size(tp);
+	if (!set_size(tp))
+		return (0);
 	if (ft_strchr(tp->types, tp->type) && tp->limit > 0)
 	{
 		last = ft_lstlast(tp->out);
-		if (tp->limit > ft_strlen(last->content))
+		cont = (t_content *) last->content;
+		if (tp->limit > ft_strlen(cont->str))
 		{
-			get_fill_prefix(tp, last);
-			set_fill_prefix(tp, last);
+			get_fill_prefix(tp, cont->str);
+			str = set_fill_prefix(tp, cont->str);
+			free(cont->str);
+			cont->str = str;
 		}
 	}
 	tp->start = tp->i + 1;
