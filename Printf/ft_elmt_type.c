@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:23:04 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/30 17:38:49 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/30 18:40:47 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ static void	set_prop(t_elmt	*e)
 {
 	char	prefix;
 	char	fill;
+	char	*fills;
 	int	i;
 
 	i = -1;
@@ -134,13 +135,14 @@ static void	set_prop(t_elmt	*e)
 			e->str[i] = ft_toupper(e->str[i]);
 	if (ft_strchr(e->tp->nums, e->type))
 	{
-		if (ft_strchr("xX", e->type))
+		if (ft_strchr("xX", e->type) && ft_strlen(e->str) > 8)
 			ft_lstadd_back(&e->lst, ft_lstnew(ft_strdup(&e->str[ft_strlen(e->str) - 8])));
 		else
 			ft_lstadd_back(&e->lst, ft_lstnew(ft_strdup(e->str)));
 	}
 	if (e->type == 'p' || (ft_strchr("xX", e->type) && ft_strchr(e->flag, '#')))
-		ft_lstadd_front(&e->lst, ft_lstnew(ft_strdup("0x")));
+		if (ft_strncmp(e->str, "0", 2) != 0)
+			ft_lstadd_front(&e->lst, ft_lstnew(ft_strdup("0x")));
 	prefix = 0;
 	fill = ' ';
 	if (e->flag)
@@ -152,6 +154,7 @@ static void	set_prop(t_elmt	*e)
 		if (ft_strchr(e->flag, '0'))
 			fill = '0';
 	}
+	if (print_lst(e, 0) < e->limit)
 }
 
 t_elmt	*ft_new_elmt(char type, t_prtf *tp, size_t start, size_t end)
