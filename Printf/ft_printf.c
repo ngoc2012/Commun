@@ -6,99 +6,116 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:23:54 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/30 06:23:51 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:37:53 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
-#include <limits.h>
-#include "Libft/libft.h"
 #include "ft_printf.h"
 
-static int	init(t_printf	*tp)
-{
-	tp->hex = "0123456789abcdef";
-	tp->hex_cap = "0123456789ABCDEF";
-	tp->base10 = "0123456789";
-	tp->all_types = "cspdiuxX%";
-	tp->numbers = "pdiuxX";
-	tp->all_flags = "-0.# +";
-	tp->i = 0;
-	tp->start = 0;
-	tp->elmnts = 0;
-	return (1);
-}
-
-void	get_str(const char *s, t_printf *tp, char type, int is_flag)
+static void	get_elmt(char type, t_prtf *tp, size_t start, size_t end)
 {
 	t_elmt	*new;
+	t_list	*lst;
 
-	if (tp->i > tp->start)
+	if (end > start || type != '_')
 	{
-		if (is_flag)
-		new = ft_new_elmt(type, ft_substr(s, tp->start, tp->i - tp->start));
-		if (tp->elmnts)
-			ft_lstadd_back(&tp->elmnts, ft_lstnew(new));
+		new = ft_new_elmt(type, tp, start, end);
+		if (!new)
+			tp->error = 1;
+		lst = ft_lstnew(new);
+		if (!lst)
+			tp->error = 1;
+		if (tp->elmts)
+			ft_lstadd_back(&tp->elmts, lst);
 		else
-			tp->elmnts = ft_lstnew(new);
+			tp->elmts = lst;
 	}
 }
 
-int	get_elmnts(const char *s, t_printf *tp)
+static void	get_elmts(t_prtf *tp, const char *s)
 {
-	while (s[tp->i])
+	size_t	i;
+	size_t	start;
+
+	start = 0;
+	i = 0;
+	while (s[i])
 	{
-		if (s[tp->i] == '%')
+		if (s[i] == '%')
 		{
-			get_str(s, tp, '_', 0);
-			tp->i++;
-			while ((ft_strchr(tp->all_flags, s[tp->i])
-				|| ft_strchr(tp->base10, s[tp->i]))
-					&& s[tp->i] && !ft_strchr(tp->types, s[tp->i]))
-			{
-				if (s[tp->i] == '.')
-				{
-					tp->i++;
-					if (s[tp->i] != '0')
-						tp->size = get_number(s, tp);
-				}
-				while (s[tp->i] && (ft_strchr(tp->all_flags, s[tp->i]))
-						&& !ft_strchr(tp->types, s[tp->i]))
-				{
-					if (!ft_strchr(tp->flag, s[tp->i]))
-						ft_strlcat(tp->flag, &s[tp->i], ft_strlen(tp->flag) + 2);
-					tp->i++;
-				}
-				if (ft_strchr(tp->base10, s[tp->i]))
-					tp->limit = get_number(s, tp);
-			}	
-			if (ft_strchr(tp->types, s[tp->i]))
-				tp->type = s[tp->i];
-			tp->start = tp->i + 1;
+			get_elmt('_', tp, start, i);
+			i++;
+			start = i;
+			while (ft_strchr(tp->numflags, s[i]) && s[i] && !ft_strchr(tp->types, s[i]))
+				i++;
+			if (ft_strchr(tp->types, s[i]))
+				get_elmt(s[i], tp, start, i);
+			i++;
+			start = i;
 		}
-		if (s[tp->i])
-			tp->i++;
+		if (s[i])
+			i++;
 	}
-	get_str(s, tp, '_');
-	return (1);
+	get_elmt('_', tp, start, i);
 }
 
-int	ft_printf(const char *s, ...)
+static char	*get_cc(t_prtf *tp, char c)
 {
-	int			n;
-	t_printf	*tp;
+	char	*s;
 
-	tp = malloc(sizeof(t_printf));
+	s = ft_calloc(2, sizeof(char));
+	if (!s)
+		tp->error = 1;
+	if (!s)
+		return (0);
+	s[0] = c;
+	return (s);
+}
+
+static void	get_values(t_prtf *tp, va_list ap)
+{
+	t_list	*lst;
+	t_elmt	*elt;
+	long unsigned int	i;
+
+	lst = tp->elmts;
+	while (lst)
+	{
+		elt = (t_elmt *) lst->content;
+		if (elt->type == 'c')
+			elt->str = get_cc(tp, (char) va_arg(ap, int));
+		if (elt->type == 's')
+			elt->str = va_arg(ap, char *);
+		if (ft_strchr("pxX", elt->type))
+			i = (long unsigned int) va_arg(ap, void *);
+		if (ft_strchr("pxX", elt->type))
+			elt->str = ft_itoa_base("0123456789abcdef", &i);
+		if (elt->type == 'u')
+			elt->str =  ft_usitoa(va_arg(ap, unsigned int));
+		if (elt->type == 'i' || elt->type == 'd')
+			elt->str = ft_itoa(va_arg(ap, int));
+		lst = lst->next;
+	}
+}
+
+//va_start(ap, s);
+size_t	ft_printf(const char *s, ...)
+{
+	va_list	ap;
+	size_t		n;
+	t_prtf	*tp;
+
+	va_start(ap, s);
+	tp = ft_new_prtf(s);
 	if (!tp)
 		return (0);
-	//va_start(tp->ap, s);
 	n = 0;
-	init(tp);
-	get_elmnts(s, tp);
-	//	if (get_elmnts(s, tp))
-	//		n = ft_print_elmnts(tp);
-	free(tp);
+	get_elmts(tp, s);
+	if (tp->error)
+		return (0);
+	get_values(tp, ap);
+	n = tp->print_elmts(tp);
+	tp->free_prtf(tp);
+	va_end(ap);
 	return (n);
 }

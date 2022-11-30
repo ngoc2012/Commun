@@ -4,8 +4,8 @@
 
 int	main()
 {
-	ft_printf(" %x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-/*	printf(" NULL %s NULL ", NULL);
+/*	ft_printf(" %x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	printf(" NULL %s NULL ", NULL);
 	ft_printf(" NULL %s NULL ", NULL);
 	
 	int	orgi, test;
@@ -25,11 +25,13 @@ int	main()
 	ft_printf ("%%s : const char *. Exemple:  %s sdhfiofdsi\n", "Educative");
 	// p : The void * pointer argument is printed in
 	// hexadecimal  (as if by %#x or %#lx).
-	unsigned int	aa = 10;
+*/	unsigned int	aa = 10;
 	printf("%%p : The void * pointer argument is printed in\n \
 	hexadecimal  (as if by %%#x or %%#lx). %p %#x\n", &aa, &aa);
+	
 	ft_printf("%%p : The void * pointer argument is printed in\n \
 	hexadecimal  (as if by %%#x or %%#lx). %p %#x\n", &aa, &aa);
+	/*
 	// d,i : The int argument is converted to signed decimal  notation
 	//
 	// u,x,X : The  unsigned  int argument is converted to unsigned octal
@@ -114,12 +116,13 @@ int	main()
 	//printf ("Integers: %i %u \n", -3456, 3456);
 
 
-	//printf ("Integers: %+019i jsadlfd %+u oiodfsi %#0  -%  \n", -3456, 3456);
-	//ft_printf ("Integers: %+019i jsadlfd %+u oiodfsi %#0  -%  \n", -3456, 3456);
-	
+	printf ("Integers: %+019i jsadlfd %+u oiodfsi %#0  -%  \n", -3456, 3456);
+	ft_printf ("Integers: %+019i jsadlfd %+u oiodfsi %#0  -%  \n", -3456, 3456);
+*/	
 	printf( "%+09d\n", 452 );
 	ft_printf( "%+09d\n", 452 );
-	printf( "#%-09d#\n", 452 );
+	ft_printf( "%-.9d\n", 452 );
+/*	printf( "#%-09d#\n", 452 );
 	ft_printf( "#%-09d#\n", 452 );
 	printf( "%.09d\n", 452 );
 	ft_printf( "%.09d\n", 452 );
