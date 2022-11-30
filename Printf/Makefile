@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2022/11/27 14:05:33 by minh-ngu         ###   ########.fr        #
+#    Updated: 2022/11/29 08:46:17 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ BONO = ${BONS:.c=.o}
 LIBN = libftprintf.a 
 all: $(LIBN)
 .c.o:
-	gcc -Wall -Wextra -Werror -c $< -o ${<:.c=.o} -I.
+	gcc -Wall -Wextra -Werror -g -c $< -o ${<:.c=.o} -I.
 bonus: $(BONO)
 	ar rc $(LIBN) $(BONO) $(OBJS)
 $(LIBN): $(OBJS)

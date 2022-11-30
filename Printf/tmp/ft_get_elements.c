@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:23:54 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/27 13:45:05 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:40:20 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ int	get_number(const char *s, t_printf *tp)
 
 void	get_str(const char *s, t_printf *tp)
 {
-	t_content	*new;
+	t_elmt	*new;
 
 	if (tp->i > tp->start)
 	{
-		new = ft_new_content('s', ft_substr(s, tp->start, tp->i - tp->start));
-		if (tp->out)
-			ft_lstadd_back(&tp->out, ft_lstnew(new));
+		new = ft_new_elmt('s', ft_substr(s, tp->start, tp->i - tp->start));
+		if (tp->elmnts)
+			ft_lstadd_back(&tp->elmnts, ft_lstnew(new));
 		else
-			tp->out = ft_lstnew(new);
+			tp->elmnts = ft_lstnew(new);
 	}
 }
 
@@ -80,8 +80,8 @@ int	set_size(t_printf *tp)
 
 	if (ft_strchr(tp->types, tp->type) && tp->type != 'c')
 	{
-		last = ft_lstlast(tp->out);
-		str0 = ((t_content *) last->content)->str;
+		last = ft_lstlast(tp->elmnts);
+		str0 = ((t_elmt *) last->elmt)->str;
 		if (tp->size < ft_strlen(str0))
 		{
 			str = ft_calloc(tp->size + 1, sizeof(char));

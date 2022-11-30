@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:23:54 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/28 08:42:14 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/11/29 09:03:53 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,24 @@ void	get_type_prop(const char *s, t_printf *tp)
 
 t_content	*get_xx(t_printf *tp, char *hex)
 {
-	void	*a;
+	//void	*a;
 	long int	i;
 	char	*str;
 
-	a = va_arg(tp->ap, void *);
-	i = (long int) a;
-	if (i == LONG_MIN)
+	//if (!(a = va_arg(tp->ap, void *)))
+	//	return (0);
+	str = 0;
+	if ((i = va_arg(tp->ap, long int)))
 	{
-		str = ft_strdup("0");
-		if (!str)
-			return (0);
-		return (ft_new_content(tp->type, str));
+		if (i == LONG_MIN)
+		{
+			str = ft_strdup("0");
+			if (!str)
+				return (0);
+			return (ft_new_content(tp->type, str));
+		}
+		str = ft_itoa_base(hex, &i);
 	}
-	str = ft_itoa_base(hex, a);
 	if (!str)
 		return (0);
 	if (ft_strlen(str) > 8)

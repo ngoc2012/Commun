@@ -4,7 +4,7 @@
 
 int	main()
 {
-	ft_printf(" %p %p \n", LONG_MIN, LONG_MAX);
+	ft_printf(" %x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
 /*	printf(" NULL %s NULL ", NULL);
 	ft_printf(" NULL %s NULL ", NULL);
 	
