@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:08:19 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/01 21:31:38 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/01 22:50:12 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ struct s_elmt
 	void	(*free_elmt)(void *);
 	void	(*get_flags)(t_elmt *);
 	void	(*set_flags)(t_elmt *);
-	size_t	(*print_lst)(t_elmt *);
 };
 
 t_elmt	*ft_new_elmt(char type, t_prtf *tp, size_t start, size_t end);

@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:23:04 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/01 22:05:02 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/01 22:49:59 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,6 @@ static size_t	print_lst(t_elmt *e)
 
 static size_t	print_elmt(t_elmt *e)
 {	
-	//printf("\nstr = #%s#\n", e->tp->str);
-	//printf("type = #%c#\n", e->type);
-	//printf("str = #%s#\n", e->str);
-	//printf("flag = #%s#\n", e->flag);
-	//printf("size = #%d#\n", e->size);
-	//printf("precision = #%d#\n", e->precision);
-	//printf("start = #%d#\n", e->start);
-	//printf("end = #%d#\n", e->end);
 	if (e->type == '_')
 	{
 		write(1, &(e->tp->str[e->start]), e->end - e->start);
@@ -66,8 +58,6 @@ static size_t	print_elmt(t_elmt *e)
 		else
 			return (1);
 	}
-	//if (ft_strchr("xX", e->type))
-	//	printf("test ==%s==\n", e->str);
 	if (e->type == 'p' && ft_strncmp(e->str, "0", 2) == 0)
 	{
 		ft_putstr_fd("(nil)", 1);
@@ -122,6 +112,5 @@ t_elmt	*ft_new_elmt(char type, t_prtf *tp, size_t start, size_t end)
 	e->free_elmt = &free_elmt;
 	e->get_flags = &get_flags;
 	e->set_flags = &set_flags;
-	e->print_lst = &print_lst;
 	return (e);
 }
