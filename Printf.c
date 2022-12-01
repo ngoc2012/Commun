@@ -119,9 +119,20 @@ int	main()
 	printf ("Integers: %+019i jsadlfd %+u oiodfsi %#0  -%  \n", -3456, 3456);
 	ft_printf ("Integers: %+019i jsadlfd %+u oiodfsi %#0  -%  \n", -3456, 3456);
 */	
-	printf( "%+09d\n", 452 );
-	ft_printf( "%+09d\n", 452 );
-	ft_printf( "%-.9d\n", 452 );
+	printf( "#%+9d#\n", 452 );
+	ft_printf( "#%+9d#\n", 452 );
+	printf( "#%+09d#\n", 452 );
+	ft_printf( "#%+09d#\n", 452 );
+	printf( "#%-019.29d#\n", 452 );
+	ft_printf( "#%-019.29d#\n", 452 );
+	printf( "#%-019.9d#\n", 452 );
+	ft_printf( "#%-019.9d#\n", 452 );
+	printf( "#%- 19.9d#\n", 452 );
+	ft_printf( "#%- 19.9d#\n", 452 );
+	printf( "#%- 19d#\n", 452 );
+	ft_printf( "#%- 19d#\n", 452 );
+	printf( "#%- .09d#\n", 452 );
+	ft_printf( "#%- .09d#\n", 452 );
 /*	printf( "#%-09d#\n", 452 );
 	ft_printf( "#%-09d#\n", 452 );
 	printf( "%.09d\n", 452 );
