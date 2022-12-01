@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:23:04 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/01 17:25:43 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/01 22:36:08 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,12 @@ static void	set_px(t_elmt *e)
 
 	if (e->type == 'p' || (ft_strchr("xX", e->type) && ft_strchr(e->flag, '#')))
 		if (ft_strncmp(e->str, "0", 2) != 0)
-			ft_lstadd_front(&e->lst, ft_lstnew(ft_strdup("0x")));
+		{
+			if (e->type == 'X')
+				ft_lstadd_front(&e->lst, ft_lstnew(ft_strdup("0X")));
+			else
+				ft_lstadd_front(&e->lst, ft_lstnew(ft_strdup("0x")));
+		}
 	i = -1;
 	if (e->type == 'X')
 		while (e->str[++i])
@@ -90,6 +95,7 @@ static void	set_space(t_elmt *e)
 	i = e->size - size_lst(e);
 	if (i > 0)
 	{
+		//printf("set_space\n");
 		fills = ft_calloc(sizeof(char), i + 1);
 		ft_memset(fills, ' ', i);
 		if (e->minus_flag)
@@ -105,8 +111,9 @@ static void	set_flags(t_elmt *e)
 		return ;
 	set_px(e);
 	set_precision_zero(e);
-	if (e->space_flag && e->sign != -1)
+	if (e->space_flag && e->sign != -1 && e->type != 's')
 		ft_lstadd_front(&e->lst, ft_lstnew(ft_strdup(" ")));
+		//printf("set_flags1\n");
 	if (e->plus_flag && e->sign == 1)
 		ft_lstadd_front(&e->lst, ft_lstnew(ft_strdup("+")));
 	if (e->sign == -1)

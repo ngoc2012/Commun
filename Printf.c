@@ -4,7 +4,12 @@
 
 int	main()
 {
-	int	orgi, test;
+	ft_printf("#% s#\n", "");
+	printf("#% d#\n", 1);
+	printf("#% s#\n", "a");
+	//ft_printf(" %+d ", 0);
+	//ft_printf(" %.1s#\n", "a");
+	/*int	orgi, test;
 	//orgi = printf(" #%.1s# #%.2s# #%.3s# #%.4s# \n", " - ", "", "4", "");
 	//test = ft_printf(" #%.1s# #%.2s# #%.3s# #%.4s# \n", " - ", "", "4", "");
 	//orgi = printf(" #%.2s# \n", "");
@@ -12,7 +17,7 @@ int	main()
 	orgi = printf(" #%.2s# \n", " - ");
 	test = ft_printf(" #%.2s# \n", " - ");
 	//test = ft_printf(" #%.1s# #%.2s# #%.3s# #%.4s# \n", " - ", "", "4", "");
-	printf("orgi = %d, test = %d\n", orgi, test);
+	printf("orgi = %d, test = %d\n", orgi, test);*/
 	//ft_printf(" %.1s#\n", "a");
 	//ft_printf(" %.3s#\n", "a");
 	//ft_printf(" %.1s#\n", "");

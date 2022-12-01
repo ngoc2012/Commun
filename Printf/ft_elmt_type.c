@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:23:04 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/01 17:34:05 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/01 22:05:02 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static size_t	print_elmt(t_elmt *e)
 		ft_putstr_fd("(nil)", 1);
 		return (5);
 	}
-	if (e->type == 's' && e->precision < ft_strlen(e->str))
+	if (e->type == 's' && e->dot_flag && e->precision < ft_strlen(e->str))
 	{
 		write(1, e->str, e->precision);
 		return (e->precision);
@@ -114,6 +114,7 @@ t_elmt	*ft_new_elmt(char type, t_prtf *tp, size_t start, size_t end)
 	e->space_flag = 0;
 	e->minus_flag = 0;
 	e->plus_flag = 0;
+	e->dot_flag = 0;
 	e->flag = 0;
 	e->str = 0;
 	e->lst = 0;

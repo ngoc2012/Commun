@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:08:19 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/01 13:58:27 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/01 21:31:38 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ struct s_elmt
 	int		space_flag;
 	int		minus_flag;
 	int		plus_flag;
+	int		dot_flag;
 	char	*flag;
 	char	*str;
 	t_list	*lst;
