@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 07:11:02 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/30 17:05:24 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:53:23 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static size_t	print_elmts(t_prtf	*tp)
 	while (lst)
 	{
 		elt = (t_elmt *) lst->content;
-		elt->get_prop(elt);
-		elt->set_prop(elt);
+		elt->get_flags(elt);
+		elt->set_flags(elt);
 		n += elt->print_elmt(elt);
 		lst = lst->next;
 	}
@@ -45,7 +45,7 @@ t_prtf	*ft_new_prtf(const char *str)
 	if (!new)
 		return (0);
 	new->types = "cspdiuxX%";
-	new->nums = "pdiuxX";
+	new->nums = "cspdiuxX";
 	new->flags = "-0.# +";
 	new->numflags = "123456789-0.# +";
 	new->elmts = 0;

@@ -4,9 +4,38 @@
 
 int	main()
 {
-/*	ft_printf(" %x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
-	printf(" NULL %s NULL ", NULL);
-	ft_printf(" NULL %s NULL ", NULL);
+	int	orgi, test;
+	//orgi = printf(" #%.1s# #%.2s# #%.3s# #%.4s# \n", " - ", "", "4", "");
+	//test = ft_printf(" #%.1s# #%.2s# #%.3s# #%.4s# \n", " - ", "", "4", "");
+	//orgi = printf(" #%.2s# \n", "");
+	//test = ft_printf(" #%.2s# \n", "");
+	orgi = printf(" #%.2s# \n", " - ");
+	test = ft_printf(" #%.2s# \n", " - ");
+	//test = ft_printf(" #%.1s# #%.2s# #%.3s# #%.4s# \n", " - ", "", "4", "");
+	printf("orgi = %d, test = %d\n", orgi, test);
+	//ft_printf(" %.1s#\n", "a");
+	//ft_printf(" %.3s#\n", "a");
+	//ft_printf(" %.1s#\n", "");
+	//ft_printf(" %.3s#\n", "");
+	//printf(" %.s #\n", "-");
+	//ft_printf(" %.s #\n", "-");
+	//printf(" %.s #\n", "sdjfposa-");
+	//ft_printf(" %.s #\n", "sdjfposa-");
+	//printf(" #%02d# \n", 1);
+	//ft_printf(" #%02d# \n", 1);
+	//printf(" #%02d# \n", -1);
+	//ft_printf(" #%02d# \n", -1);
+	//printf( "#%+9d#\n", 452 );
+	//ft_printf( "#%+9d#\n", 452 );
+	//ft_printf(" NULL %s NULL ", NULL);
+	//ft_printf(" %p %p ", 0, 0);
+	//ft_printf(" %x ", LONG_MIN);
+	//ft_printf(" %%%% ");
+	//ft_printf(" %-2c ", '0');
+	//printf(" %-9X %-10X %-11X %-12X %-13X %-14X %-15X\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	//ft_printf(" %-9X %-10X %-11X %-12X %-13X %-14X %-15X\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	//ft_printf(" %x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+/*	printf(" NULL %s NULL ", NULL);
 	
 	int	orgi, test;
 	orgi = printf("# %c %c %c #\n", '0', 0, '1');
@@ -25,13 +54,13 @@ int	main()
 	ft_printf ("%%s : const char *. Exemple:  %s sdhfiofdsi\n", "Educative");
 	// p : The void * pointer argument is printed in
 	// hexadecimal  (as if by %#x or %#lx).
-*/	unsigned int	aa = 10;
+	unsigned int	aa = 10;
 	printf("%%p : The void * pointer argument is printed in\n \
 	hexadecimal  (as if by %%#x or %%#lx). %p %#x\n", &aa, &aa);
 	
 	ft_printf("%%p : The void * pointer argument is printed in\n \
 	hexadecimal  (as if by %%#x or %%#lx). %p %#x\n", &aa, &aa);
-	/*
+	
 	// d,i : The int argument is converted to signed decimal  notation
 	//
 	// u,x,X : The  unsigned  int argument is converted to unsigned octal
@@ -118,11 +147,13 @@ int	main()
 
 	printf ("Integers: %+019i jsadlfd %+u oiodfsi %#0  -%  \n", -3456, 3456);
 	ft_printf ("Integers: %+019i jsadlfd %+u oiodfsi %#0  -%  \n", -3456, 3456);
-*/	
+	
 	printf( "#%+9d#\n", 452 );
 	ft_printf( "#%+9d#\n", 452 );
 	printf( "#%+09d#\n", 452 );
 	ft_printf( "#%+09d#\n", 452 );
+	printf( "#%+09.12d#\n", 452 );
+	ft_printf( "#%+09.12d#\n", 452 );
 	printf( "#%-019.29d#\n", 452 );
 	ft_printf( "#%-019.29d#\n", 452 );
 	printf( "#%-019.9d#\n", 452 );
@@ -133,7 +164,9 @@ int	main()
 	ft_printf( "#%- 19d#\n", 452 );
 	printf( "#%- .09d#\n", 452 );
 	ft_printf( "#%- .09d#\n", 452 );
-/*	printf( "#%-09d#\n", 452 );
+	printf( "#%- .09d#\n", -452 );
+	ft_printf( "#%- .09d#\n", -452 );
+	printf( "#%-09d#\n", 452 );
 	ft_printf( "#%-09d#\n", 452 );
 	printf( "%.09d\n", 452 );
 	ft_printf( "%.09d\n", 452 );

@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:58:11 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/30 13:32:34 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:57:26 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,11 @@ static char	*itoa_base(char *base, int n_base, long unsigned int i)
 	return (str);
 }
 
-char	*ft_itoa_base(char *base, void *nbr)
+char	*ft_itoa_base(char *base, long unsigned int i)
 {
-	long unsigned int	i;
 	int					n_base;
 	char				*str;
 
-	i = *((long unsigned int *) nbr);
 	if (i == 0)
 	{
 		str = malloc(sizeof(char) * 2);
