@@ -1,12 +1,32 @@
 #include <limits.h>
 #include <stdio.h>
-#include "Printf/ft_printf.h"
+#include "Printf/printf.h"
 
 int	main()
 {
-	ft_printf("#% s#\n", "");
-	printf("#% d#\n", 1);
-	printf("#% s#\n", "a");
+	char *s;
+	printf("#%01.d#\n", 0);
+	printf("#%5d#\n", 0);
+	printf("#%05d#\n", 0);
+	printf("#%05.d#\n", 0);
+	printf("#%0 1.d#\n", 0);
+	ft_printf("%01.d", 0);
+	//printf("%.0d", 5);
+	//ft_printf("%.d", 0);
+	//ft_printf("%.5s", s);
+	//ft_printf(" %p ", -1);
+	//printf("%7s\n", s);
+	//ft_printf("%7s\n", s);
+	//ft_printf(" %d ", -1);
+	//ft_printf("#%1c#\n", '\0');
+	//ft_printf("#%10c#", '\0');
+	//printf("%X\n", 0);
+	//ft_printf("%X\n", 0);
+	//printf("%p", ((void*)0));
+	//ft_printf("%p", ((void*)0));
+	//ft_printf("#% s#\n", "");
+	//printf("#% d#\n", 1);
+	//printf("#% s#\n", "a");
 	//ft_printf(" %+d ", 0);
 	//ft_printf(" %.1s#\n", "a");
 	/*int	orgi, test;
