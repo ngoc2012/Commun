@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_elmt_type.c                                     :+:      :+:    :+:   */
+/*   elmt_type.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:23:04 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/03 12:26:14 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/10 22:32:18 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "ft_get_flags.h"
-#include "ft_set_flags.h"
+#include "prtf.h"
+#include "get_flags.h"
+#include "set_flags.h"
 
 static void	free_elmt(void	*c0)
 {
@@ -76,6 +76,7 @@ t_elmt	*ft_new_elmt(char type, t_prtf *tp, size_t start, size_t end)
 	t_elmt	*e;
 
 	e = malloc(sizeof(t_elmt));
+	//free(e);e=0;
 	if (!e)
 		return (0);
 	e->type = type;

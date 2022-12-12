@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   prtf.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:08:19 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/01 22:50:12 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/11 10:26:54 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef PRTF_H
+# define PRTF_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
@@ -64,6 +63,5 @@ t_elmt	*ft_new_elmt(char type, t_prtf *tp, size_t start, size_t end);
 t_prtf	*ft_new_prtf(const char *str);
 char	*ft_itoa_base(char *base, long unsigned int i);
 char	*ft_usitoa(unsigned int n);
-size_t	ft_printf(const char *s, ...);
 
 #endif

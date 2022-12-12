@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:11:40 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/22 08:21:00 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/10 12:21:10 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ char	*ft_usitoa(unsigned int n)
 		return (ft_strdup("0"));
 	len = get_len(n);
 	s = malloc(sizeof(char) * (len + 1));
+	//free(s);s=0;
 	if (!s)
 		return (0);
 	get_num((unsigned long) n, s, len);

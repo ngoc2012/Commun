@@ -6,32 +6,20 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2022/12/11 21:50:30 by minh-ngu         ###   ########.fr        #
+#    Updated: 2022/12/10 14:40:03 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBS = ft_printf.c elmt_type.c prtf.c ft_usitoa.c ft_itoa_base.c
-BONS = ft_printf.c elmt_type.c prtf.c ft_usitoa.c ft_itoa_base.c
-OBJS = ${LIBS:.c=.o}
-BONO = ${BONS:.c=.o}
-LIBFT = Libft
-LIBN = libftprintf.a 
+FILE = push_swap
 CC = cc
-FLAGS = -Wall -Wextra -Werror
-all: $(LIBN)
-.c.o:
-	$(CC) $(FLAGS) -c $< -o ${<:.c=.o} -I. -L./Libft -lft
-bonus: $(BONO)
-	ar rc $(LIBN) $(BONO) $(OBJS)
-$(LIBFT):
-	make bonus -C Libft
-$(LIBN): $(LIBFT) $(OBJS)
-	ar rc $(LIBN) $(OBJS)
+CFLAGS = -Wall -Wextra -Werror
+all: $(FILE)
+bonus:
+	$(CC) $(CFLAGS) *.c -L. -lftprintf -o $(FILE)
+$(FILE):
+	$(CC) $(CFLAGS) *.c *.h -L. -lftprintf -I. -o $(FILE)
 clean:
-	rm -f $(OBJS)
-	rm -f $(BONO)
+	rm -f *.o
 fclean: clean
-	rm -f $(LIBN)
+	rm -f $(FILE)
 re: fclean all
-
-.PNONY: Libft

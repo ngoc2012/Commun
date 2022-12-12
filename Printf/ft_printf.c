@@ -6,14 +6,14 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:23:54 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/03 12:10:56 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/11 10:25:18 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-#include "ft_printf/ft_printf.h"
-#include "ft_printf/ft_get_values.h"
-#include "ft_printf/ft_set_values.h"
+#include "ft_printf.h"
+#include "prtf.h"
+#include "get_values.h"
+#include "set_values.h"
 
 static void	get_elmt(char type, t_prtf *tp, size_t start, size_t end)
 {
@@ -24,10 +24,10 @@ static void	get_elmt(char type, t_prtf *tp, size_t start, size_t end)
 	{
 		new = ft_new_elmt(type, tp, start, end);
 		if (!new)
-			tp->error = 1;
+			return ;
 		lst = ft_lstnew(new);
 		if (!lst)
-			tp->error = 1;
+			return ;
 		if (tp->elmts)
 			ft_lstadd_back(&tp->elmts, lst);
 		else

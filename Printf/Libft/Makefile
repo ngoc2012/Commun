@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2022/11/19 05:55:20 by minh-ngu         ###   ########.fr        #
+#    Updated: 2022/12/11 21:49:09 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ BONS = ft_lstdelone.c ft_lstadd_front.c ft_lstclear.c ft_lstadd_back.c ft_lstnew
 OBJS = ${LIBS:.c=.o}
 BONO = ${BONS:.c=.o}
 LIBN = libft.a 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 all: $(LIBN)
 so:

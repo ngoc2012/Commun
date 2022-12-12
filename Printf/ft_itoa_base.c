@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:58:11 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/01 23:15:31 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/10 11:58:37 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static char	*itoa_base(char *base, int n_base, long unsigned int i)
 		j++;
 	}
 	str = malloc(sizeof(char) * (j + 1));
+	//free(str);str=0;
 	if (!str)
 		return (0);
 	str[j] = 0;
@@ -78,6 +79,7 @@ char	*ft_itoa_base(char *base, long unsigned int i)
 	if (!i)
 	{
 		str = malloc(sizeof(char) * 2);
+		//free(str);str=0;
 		if (!str)
 			return (0);
 		ft_strlcpy(str, "0", 2);

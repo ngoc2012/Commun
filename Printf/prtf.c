@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prtf_type.c                                     :+:      :+:    :+:   */
+/*   prtf.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 07:11:02 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/01 11:53:23 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/10 22:36:27 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "prtf.h"
 
 static size_t	print_elmts(t_prtf	*tp)
 {
@@ -33,7 +33,8 @@ static size_t	print_elmts(t_prtf	*tp)
 
 static void	free_prtf(t_prtf	*tp)
 {
-	ft_lstclear(&(tp->elmts), ((t_elmt *) tp->elmts->content)->free_elmt);
+	if (tp->elmts)
+		ft_lstclear(&(tp->elmts), ((t_elmt *) tp->elmts->content)->free_elmt);
 	free(tp);
 }
 
@@ -42,6 +43,7 @@ t_prtf	*ft_new_prtf(const char *str)
 	t_prtf	*new;
 
 	new = malloc(sizeof(t_prtf));
+	//free(new);new=0;
 	if (!new)
 		return (0);
 	new->types = "cspdiuxX%";

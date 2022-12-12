@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 17:08:19 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/03 12:09:29 by minh-ngu         ###   ########.fr       */
+/*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
+/*   Updated: 2022/12/10 14:41:41 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-
-size_t	ft_printf(const char *s, ...);
-
-#endif
+int	main(int argc, char **argv)
+{
+	if (argc < 2)
+		return (1);
+	argc--;
+	while (argc > 0)
+	{
+		ft_printf("%s\n", argv[argc]);
+		argc--;
+	}
+}

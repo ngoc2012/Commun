@@ -6,25 +6,32 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2022/12/03 12:14:10 by minh-ngu         ###   ########.fr        #
+#    Updated: 2022/12/07 21:56:34 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+MANDATORY = get_next_line.c get_next_line.h get_next_line_utils.c
+BONUS = get_next_line_bonus.c get_next_line_bonus.h get_next_line_utils_bonus.c
+
 fclean:
 	rm -f a.out
+GNL: fclean
+	cc -Wall -g $@.c $(addprefix $@/, $(MANDATORY)) -I./$@ -D BUFFER_SIZE=42
+	valgrind -s --leak-check=full ./a.out
+	./a.out
 #Printf: fclean
-#	gcc -Wall -g $@.c $@/*.c $@/ft_printf/*.c $@/Libft/*.c -I./$@
+#	cc -Wall -g $@.c $@/*.c $@/ft_printf/*.c $@/Libft/*.c -I./$@
 #	valgrind -s --leak-check=full ./a.out
 #	./a.out
 Printf: fclean
-	gcc -Wall -g $@.c -L./$@ -lftprintf -I./$@
+	cc -Wall -g $@.c -L./$@ -lftprintf -I./$@
 	valgrind -s --leak-check=full ./a.out
 	./a.out
 Libft: fclean
-	gcc -Wall -g $@.c $@/*.c Libs/*.c -I./$@ -lbsd
+	cc -Wall -g $@.c $@/*.c Libs/*.c -I./$@ -lbsd
 	valgrind -s --leak-check=full ./a.out
 	./a.out
 #Libft: fclean
-#	gcc -Wall -g $@.c -L./$@ -lft -lft1 -I./$@ -lbsd
+#	cc -Wall -g $@.c -L./$@ -lft -lft1 -I./$@ -lbsd
 #	valgrind -s --leak-check=full ./a.out
 #	./a.out

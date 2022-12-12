@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_flags.h                                     :+:      :+:    :+:   */
+/*   get_flags.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:23:04 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/03 12:27:36 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/10 22:35:55 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_GET_FLAGS_H
 # define FT_GET_FLAGS_H
 
-# include "ft_printf.h"
+# include "prtf.h"
 
 static int	get_number(char *s, int *len)
 {
