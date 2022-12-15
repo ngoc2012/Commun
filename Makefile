@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2022/12/07 21:56:34 by minh-ngu         ###   ########.fr        #
+#    Updated: 2022/12/15 09:02:36 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ BONUS = get_next_line_bonus.c get_next_line_bonus.h get_next_line_utils_bonus.c
 fclean:
 	rm -f a.out
 GNL: fclean
-	cc -Wall -g $@.c $(addprefix $@/, $(MANDATORY)) -I./$@ -D BUFFER_SIZE=42
+	cc -Wall -g $@.c $(addprefix $@/, $(MANDATORY)) $(addprefix $@/, $(BONUS)) -I./$@
+	valgrind -s --leak-check=full ./a.out
+	./a.out
+	cc -Wall -g $@.c $(addprefix $@/, $(MANDATORY)) $(addprefix $@/, $(BONUS)) -I./$@ -D BUFFER_SIZE=1
 	valgrind -s --leak-check=full ./a.out
 	./a.out
 #Printf: fclean

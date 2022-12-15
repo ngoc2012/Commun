@@ -12,10 +12,10 @@ int	main()
 
 	//fd = open("GNL.c", O_RDONLY);
 	//fd = open("GNL/gnlTester/files/42_no_nl", O_RDONLY);
-	//fd = open("GNL/gnlTester/files/41_no_nl", O_RDONLY);
+	fd = open("GNL/gnlTester/files/41_no_nl", O_RDONLY);
 	//fd = open("GNL/gnlTester/files/41_with_nl", O_RDONLY);
 	//fd = open("GNL/gnlTester/files/43_no_nl", O_RDONLY);
-	fd = open("GNL/gnlTester/files/43_nl", O_RDONLY);
+	//fd = open("GNL/gnlTester/files/43_nl", O_RDONLY);
 	i = 0;
 	while (i < 10)
 	{

@@ -6,14 +6,14 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 16:52:53 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/15 08:56:45 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/07 14:17:09 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <unistd.h>
 
-int	newline_pos(char *s)
+static int	newline_pos(char *s)
 {
 	int	pos;
 
@@ -28,8 +28,8 @@ int	newline_pos(char *s)
 		return (-1);
 }
 
-static char	*get_container_line_con(char *con, char *buf, t_str_list *strs,
-		t_containter c)
+static char	*get_container(char *buf, t_str_list *strs,
+		t_containter c, char *con)
 {
 	while (c.ret)
 	{
@@ -38,7 +38,7 @@ static char	*get_container_line_con(char *con, char *buf, t_str_list *strs,
 			t_strlst_new(&strs, con, c.icon);
 			c.icon = 0;
 		}
-		c.ret = read(c.fd, &con[c.icon], BUFFER_SIZE);
+		c.ret = read(c.fd, &con[c.icon], c.size);
 		if (c.ret == -1)
 			return (0);
 		if (c.ret)
@@ -56,6 +56,19 @@ static char	*get_container_line_con(char *con, char *buf, t_str_list *strs,
 			t_strlst_new(&strs, con, c.icon + c.ret);
 	}
 	return (get_strs(strs, buf, con, c.pos + 1));
+}
+
+static char	*get_next_line_con(int fd, char *buf, t_str_list *strs, int pos)
+{
+	t_containter	c;
+	char			con[CONTAINER_SIZE + 1];
+
+	c.fd = fd;
+	c.ret = 1;
+	c.icon = 0;
+	c.pos = pos;
+	c.size = BUFFER_SIZE;
+	return (get_container(buf, strs, c, con));
 }
 
 static char	*get_next_line_buf(int fd, char *buf, t_str_list *strs, int pos)
@@ -87,26 +100,6 @@ static char	*get_next_line_buf(int fd, char *buf, t_str_list *strs, int pos)
 	return (get_strs(strs, buf, buf, pos + 1));
 }
 
-char	*get_line(int fd, char *buf, int pos, t_str_list *strs)
-{
-	t_containter	c;
-	char			con[CONTAINER_SIZE + 1];
-	char			*b;
-
-	c.fd = fd;
-	c.ret = 1;
-	c.icon = 0;
-	c.pos = pos;
-	c.size = BUFFER_SIZE;
-	if (CONTAINER_SIZE > 10 * BUFFER_SIZE)
-		b = &con[0];
-	else
-		b = &buf[0];
-	if (CONTAINER_SIZE > 10 * BUFFER_SIZE)
-		return (get_container_line_con(b, buf, strs, c));
-	return (get_next_line_buf(fd, buf, strs, pos));
-}
-
 char	*get_next_line(int fd)
 {
 	int			pos;
@@ -129,5 +122,8 @@ char	*get_next_line(int fd)
 			return (get_strs(strs, buf, buf, pos + 1));
 		}
 	}
-	return (get_line(fd, buf, pos, strs));
+	if (CONTAINER_SIZE > 10 * BUFFER_SIZE)
+		return (get_next_line_con(fd, buf, strs, pos));
+	else
+		return (get_next_line_buf(fd, buf, strs, pos));
 }

@@ -6,17 +6,15 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:00:51 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/15 08:57:36 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/07 15:01:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
-# endif
 # define CONTAINER_SIZE 100
 
+# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -37,9 +35,8 @@ typedef struct s_container
 
 char	*get_next_line(int fd);
 void	t_strlst_new(t_str_list **strs, char *s, int len);
+//void	t_strlst_clear(t_str_list **strs);
 char	*get_strs(t_str_list *strs, char *buf, char *src, int start);
 char	*strlst_str(t_str_list *strs);
-char	*get_line(int fd, char *buf, int pos, t_str_list *strs);
-int	newline_pos(char *s);
 
 #endif
