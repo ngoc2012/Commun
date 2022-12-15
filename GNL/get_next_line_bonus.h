@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:00:51 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/15 12:57:58 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/15 13:31:07 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,23 @@ typedef struct s_container
 typedef struct s_fd
 {
 	int		fd;
-	size_t	start;
-	size_t	end;
+	char	*buf;
 }	t_fd;
 
-typedef struct s_fd_list
+char	*get_next_line_ini(int fd, char *buf);
+void	t_strlst_new(t_str_list **strs, char *s, int len);
+char	*get_strs(t_str_list *strs, char *buf, char *src, int start);
+
+char	*get_next_line(int fd)
 {
-	int		n;
-	t_fd	fds[1024];
-	char	buf[100000000];
-}	t_fd_list;
+	static t_fd	fdl[1024];
+	char				buf[BUFFER_SIZE + 1];
+	char				*out;
+
+	if (!fdl.buf[0])
+		fdl.n = 0;
+	out = get_next_line_ini(fd, buf);
+	return (out);
+}
 
 #endif

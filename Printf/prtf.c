@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 07:11:02 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/10 22:36:27 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/12 11:21:38 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ t_prtf	*ft_new_prtf(const char *str)
 	t_prtf	*new;
 
 	new = malloc(sizeof(t_prtf));
-	//free(new);new=0;
 	if (!new)
 		return (0);
 	new->types = "cspdiuxX%";

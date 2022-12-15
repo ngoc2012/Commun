@@ -6,12 +6,12 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:23:04 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/10 22:37:09 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/12 11:27:24 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SET_FLAGS_H
-# define FT_SET_FLAGS_H
+#ifndef SET_FLAGS_H
+# define SET_FLAGS_H
 
 # include "prtf.h"
 
@@ -43,7 +43,6 @@ static void	set_zero_sign(t_elmt *e)
 		if (i > 0)
 		{
 			fills = ft_calloc(sizeof(char), i + 1);
-			//free(fills);fills = 0;
 			if (fills)
 				ft_memset(fills, '0', i);
 			ft_lstadd_front(&e->lst, ft_lstnew(fills));
@@ -76,7 +75,6 @@ static void	set_precision(t_elmt *e)
 	if (i > 0)
 	{
 		fills = ft_calloc(sizeof(char), i + 1);
-		//free(fills);fills = 0;
 		if (fills)
 			ft_memset(fills, '0', i);
 		ft_lstadd_front(&e->lst, ft_lstnew(fills));
@@ -96,7 +94,6 @@ static void	set_space(t_elmt *e)
 	if (i > 0)
 	{
 		fills = ft_calloc(sizeof(char), i + 1);
-		//free(fills);fills = 0;
 		if (fills)
 			ft_memset(fills, ' ', i);
 		if (e->minus_flag)

@@ -6,12 +6,12 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:23:04 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/10 22:37:21 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/12 11:27:41 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SET_VALUES_H
-# define FT_SET_VALUES_H
+#ifndef SET_VALUES_H
+# define SET_VALUES_H
 
 # include "prtf.h"
 

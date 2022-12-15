@@ -1,0 +1,100 @@
+  235    %    0x406040    eb    Hello, World!    42  
+  eb    G    EB    Hello, World!    235    0x7ffd00406040  
+  %    42    EB    0x406040    G    Hello, World!  
+  235    %    Hello, World!    G    eb    EB  
+  42    G    eb    235    %    EB  
+  G    EB    42    %    Hello, World!    0x406040  
+  0x406040    eb    42    G    Hello, World!    235  
+  42    Hello, World!    %    235    G    eb  
+  EB    0x406040    Hello, World!    %    235    eb  
+  G    %    235    42    eb    EB  
+  42    0x406040    EB    235    Hello, World!    eb  
+  EB    G    0x406040    eb    42    235  
+  %    42    235    Hello, World!    G    EB  
+  235    G    eb    Hello, World!    EB    42  
+  Hello, World!    0x406040    EB    G    42    eb  
+  235    G    EB    eb    0x406040    Hello, World!  
+  G    %    42    EB    235    eb  
+  Hello, World!    %    eb    EB    G    235  
+  eb    Hello, World!    EB    %    0x406040    42  
+  %    0x406040    42    G    eb    EB  
+  G    Hello, World!    %    235    0x406040    eb  
+  G    42    235    Hello, World!    0x406040    eb  
+  EB    eb    Hello, World!    G    42    235  
+  eb    G    EB    0x406040    Hello, World!    0x406040  
+  EB    %    42    Hello, World!    0x406040    eb  
+  42    0x406040    eb    G    EB    0x406040  
+  EB    G    42    235    eb    0x406040  
+  42    235    G    %    EB    0x406040  
+  Hello, World!    42    G    0x406040    eb    235  
+  0x406040    %    eb    EB    42    G  
+  EB    42    Hello, World!    %    235    0x406040  
+  %    235    0x406040    42    EB    G  
+  eb    EB    0x406040    Hello, World!    42    G  
+  G    %    Hello, World!    EB    eb    0x406040  
+  eb    EB    0x406040    Hello, World!    42    235  
+  0x406040    235    Hello, World!    EB    G    0x406040  
+  EB    Hello, World!    eb    0x406040    %    42  
+  eb    Hello, World!    %    0x406040    42    G  
+  Hello, World!    235    eb    %    42    G  
+  0x406040    42    eb    %    235    EB  
+  %    G    EB    0x406040    235    eb  
+  235    G    %    0x406040    42    Hello, World!  
+  %    42    Hello, World!    235    G    EB  
+  %    42    235    Hello, World!    EB    0x406040  
+  Hello, World!    G    EB    %    42    0x406040  
+  eb    EB    235    42    %    Hello, World!  
+  eb    235    Hello, World!    42    0x406040    0x406040  
+  EB    42    Hello, World!    eb    235    0x406040  
+  G    42    %    EB    0x406040    235  
+  Hello, World!    235    42    EB    %    G  
+  %    0x406040    EB    42    Hello, World!    eb  
+  42    eb    0x406040    G    235    EB  
+  EB    G    %    42    eb    Hello, World!  
+  eb    G    235    EB    0x406040    0x406040  
+  0x406040    235    G    Hello, World!    42    0x406040  
+  eb    0x406040    Hello, World!    235    %    G  
+  %    42    EB    0x406040    235    Hello, World!  
+  %    235    G    Hello, World!    42    eb  
+  G    42    235    eb    Hello, World!    0x406040  
+  G    42    Hello, World!    235    eb    0x406040  
+  235    %    eb    42    EB    G  
+  eb    Hello, World!    235    42    G    EB  
+  %    G    42    0x406040    Hello, World!    EB  
+  Hello, World!    eb    %    EB    42    G  
+  eb    EB    235    G    %    42  
+  G    %    42    0x406040    235    EB  
+  42    G    %    235    EB    0x406040  
+  Hello, World!    42    eb    235    G    0x406040  
+  Hello, World!    eb    G    0x406040    235    EB  
+  %    Hello, World!    0x406040    42    EB    G  
+  eb    EB    42    %    Hello, World!    235  
+  Hello, World!    42    EB    G    %    0x406040  
+  eb    0x406040    G    Hello, World!    EB    235  
+  %    EB    235    eb    0x406040    G  
+  0x406040    G    Hello, World!    235    42    eb  
+  42    G    %    0x406040    235    eb  
+  EB    %    235    G    0x406040    Hello, World!  
+  EB    42    G    235    0x406040    Hello, World!  
+  0x406040    %    G    EB    235    42  
+  Hello, World!    G    42    %    0x406040    EB  
+  0x406040    %    G    235    Hello, World!    EB  
+  eb    G    %    Hello, World!    EB    42  
+  %    G    42    EB    Hello, World!    eb  
+  42    EB    %    G    235    Hello, World!  
+  0x406040    eb    G    Hello, World!    235    0x406040  
+  235    0x406040    G    EB    Hello, World!    0x406040  
+  0x406040    G    235    EB    Hello, World!    0x406040  
+  42    235    EB    0x406040    G    0x406040  
+  42    G    0x406040    %    EB    235  
+  Hello, World!    G    42    eb    0x406040    235  
+  235    Hello, World!    eb    0x406040    42    G  
+  235    0x406040    EB    G    %    eb  
+  G    0x406040    EB    eb    %    Hello, World!  
+  eb    G    Hello, World!    0x406040    235    42  
+  EB    0x406040    G    %    235    42  
+  %    42    eb    0x406040    G    Hello, World!  
+  EB    0x406040    G    Hello, World!    42    235  
+  235    42    0x406040    eb    Hello, World!    EB  
+  42    Hello, World!    %    0x406040    EB    G  
+  EB    0x406040    G    235    eb    42  

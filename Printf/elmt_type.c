@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:23:04 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/10 22:32:18 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/12 11:22:09 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ t_elmt	*ft_new_elmt(char type, t_prtf *tp, size_t start, size_t end)
 	t_elmt	*e;
 
 	e = malloc(sizeof(t_elmt));
-	//free(e);e=0;
 	if (!e)
 		return (0);
 	e->type = type;

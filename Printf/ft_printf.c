@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:23:54 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/11 10:25:18 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/15 17:15:43 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	get_elmts(t_prtf *tp, const char *s)
 	get_elmt('_', tp, start, i);
 }
 
-size_t	ft_printf(const char *s, ...)
+int	ft_printf(const char *s, ...)
 {
 	va_list	ap;
 	size_t	n;
@@ -81,5 +81,5 @@ size_t	ft_printf(const char *s, ...)
 	n = tp->print_elmts(tp);
 	tp->free_prtf(tp);
 	va_end(ap);
-	return (n);
+	return ((int) n);
 }

@@ -23,7 +23,31 @@ Type : Microprocessors
 Word size : 64 bit8 octets; 16 nibbles
 ISA : IA-32, x86-64
 
-Download Rocky Linux
-https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.1-x86_64-minimal.iso
+Download full Rocky Linux pour option server
+https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.1-x86_64-dvd.iso
+
+Software Selection -> Server (without any tools)
+
+Installation Destination -> Storage Configuration : Custom (Pour la partition)
+Mount point / 10G
+Create group : LVMGroup
+Devicetype: LVM
+Encrypt: 
+
+-> login: root
+
+
+SELINUX
+Check SELinux installed and activated
+sestatus
 
 SELinux is a set of kernel modifications and user-space tools that have been added to various Linux distributions. Its architecture strives to separate enforcement of security decisions from the security policy, and streamlines the amount of software involved with security policy enforcement.[3][4] The key concepts underlying SELinux can be traced to several earlier projects by the United States National Security Agency (NSA). 
+
+
+LVM
+LVM (Logical Volume Manager) is an abstraction layer between a storage device and a file system. 
+
+Check disks: lsblk    or     fdisk -l
+
+sd[a-z] is the most used way to refer to hard disks.
+/dev/sda[1-15] shows the partitions within our hard disk

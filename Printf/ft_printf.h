@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:08:19 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/10 22:30:24 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/15 17:15:19 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include <unistd.h>
 
-size_t	ft_printf(const char *s, ...);
+int	ft_printf(const char *s, ...);
 
 #endif
