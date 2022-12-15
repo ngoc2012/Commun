@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 16:52:53 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/13 18:04:21 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/15 12:54:00 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	strlst_size(t_str_list *strs)
 	return (size);
 }
 
-char	*strlst_str(t_str_list *strs)
+static char	*strlst_str(t_str_list *strs)
 {
 	int			i;
 	int			size;

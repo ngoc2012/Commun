@@ -1,3 +1,6 @@
+References:
+https://github.com/ayoub0x1/born2beroot
+
 Setup Virtualbox:
 
 Add the following line to your /etc/apt/sources.list. For Debian 11 and older, replace '<mydist>' with 'bullseye', 'buster', or 'stretch'. For Ubuntu 22.04 and older, 'replace '<mydist>' with 'jammy', 'eoan', 'bionic', 'xenial', 
@@ -8,3 +11,19 @@ wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --d
 
 sudo apt-get update
 sudo apt-get install virtualbox-6.1
+
+INSTALL ROCKY
+
+Ordinateur E1:
+Intel® Core™ i5-3470S CPU @ 2.90GHz × 4 
+
+architecture of intel core i5
+Socket : LGA-1151, LGA-1150, LGA-1155, LGA...
+Type : Microprocessors
+Word size : 64 bit8 octets; 16 nibbles
+ISA : IA-32, x86-64
+
+Download Rocky Linux
+https://download.rockylinux.org/pub/rocky/9/isos/x86_64/Rocky-9.1-x86_64-minimal.iso
+
+SELinux is a set of kernel modifications and user-space tools that have been added to various Linux distributions. Its architecture strives to separate enforcement of security decisions from the security policy, and streamlines the amount of software involved with security policy enforcement.[3][4] The key concepts underlying SELinux can be traced to several earlier projects by the United States National Security Agency (NSA). 

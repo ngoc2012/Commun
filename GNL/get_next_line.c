@@ -6,14 +6,14 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 16:52:53 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/15 08:56:45 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/15 12:52:51 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <unistd.h>
 
-int	newline_pos(char *s)
+static int	newline_pos(char *s)
 {
 	int	pos;
 
@@ -87,7 +87,7 @@ static char	*get_next_line_buf(int fd, char *buf, t_str_list *strs, int pos)
 	return (get_strs(strs, buf, buf, pos + 1));
 }
 
-char	*get_line(int fd, char *buf, int pos, t_str_list *strs)
+static char	*get_line(int fd, char *buf, int pos, t_str_list *strs)
 {
 	t_containter	c;
 	char			con[CONTAINER_SIZE + 1];
