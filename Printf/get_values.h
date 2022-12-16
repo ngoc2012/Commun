@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 18:23:54 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/12 11:26:31 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:36:43 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,15 @@ static void	get_values(t_prtf *tp, va_list ap)
 	{
 		e = (t_elmt *) lst->content;
 		get_csui(e, ap);
-		if (ft_strchr("pxX", e->type))
+		if (e->type == 'p')
 		{
 			i = va_arg(ap, long unsigned int);
 			e->str = ft_itoa_base("0123456789abcdef", i);
-			if (ft_strchr("xX", e->type)
-				&& ft_strncmp(e->str, "8000000000000000", 17) == 0)
-			{
-				free(e->str);
-				e->str = ft_strdup("0");
-			}
+		}
+		if (ft_strchr("xX", e->type))
+		{
+			i = va_arg(ap, unsigned int);
+			e->str = ft_usitoa_base("0123456789abcdef", i);
 		}
 		lst = lst->next;
 	}

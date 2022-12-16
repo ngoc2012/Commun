@@ -1,5 +1,3 @@
-  235    %    0x406040    eb    Hello, World!    42  
-  eb    G    EB    Hello, World!    235    0x7ffd00406040  
   %    42    EB    0x406040    G    Hello, World!  
   235    %    Hello, World!    G    eb    EB  
   42    G    eb    235    %    EB  

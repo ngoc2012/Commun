@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_usitoa_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:58:11 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/16 10:37:06 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:23:55 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ static int	get_base(char *base)
 	return (i);
 }
 
-static char	*itoa_base(char *base, int n_base, long unsigned int i)
+static char	*itoa_base(char *base, int n_base, unsigned int i)
 {
-	int					j;
-	int					mod;
-	char				*str;
-	long unsigned int	i0;
+	int				j;
+	int				mod;
+	char			*str;
+	unsigned int	i0;
 
 	i0 = i;
 	j = 0;
@@ -70,7 +70,7 @@ static char	*itoa_base(char *base, int n_base, long unsigned int i)
 	return (str);
 }
 
-char	*ft_itoa_base(char *base, long unsigned int i)
+char	*ft_usitoa_base(char *base, unsigned int i)
 {
 	int					n_base;
 	char				*str;
