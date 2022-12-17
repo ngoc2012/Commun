@@ -10,21 +10,16 @@
 #                                                                              #
 # **************************************************************************** #
 
-LIBS = ft_printf.c ft_printf/ft_elmt_type.c ft_printf/ft_prtf_type.c ft_printf/ft_usitoa.c ft_printf/ft_itoa_base.c
-BONS = ft_printf.c ft_printf/ft_elmt_type.c ft_printf/ft_prtf_type.c ft_printf/ft_usitoa.c ft_printf/ft_itoa_base.c
-OBJS = ${LIBFT:.c=.o} ${LIBS:.c=.o}
-BONO = ${BONS:.c=.o}
-LIBN = libftprintf.a 
-all: $(LIBN)
+GNLS = get_next_line_bonus.c get_next_line_utils_bonus.c
+GNLO = ${GNLS:.c=.o}
+GNLN = libftgnl.a 
+all: $(GNLN)
 .c.o:
 	cc -Wall -Wextra -Werror -g -c $< -o ${<:.c=.o} -I.
-bonus: $(BONO)
-	ar rc $(LIBN) $(BONO) $(OBJS)
-$(LIBN): $(OBJS)
-	ar rc $(LIBN) $(OBJS)
+$(GNLN): $(GNLO)
+	ar rc $(GNLN) $(GNLO)
 clean:
-	rm -f $(OBJS)
-	rm -f $(BONO)
+	rm -f $(GNLO)
 fclean: clean
-	rm -f $(LIBN)
+	rm -f $(GNLN)
 re: fclean all

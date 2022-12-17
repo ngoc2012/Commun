@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:08:19 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/16 10:27:20 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/17 13:30:27 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdarg.h>
-# include "libft/libft.h"
+# include "libft.h"
 
 typedef struct s_prtf	t_prtf;
 
