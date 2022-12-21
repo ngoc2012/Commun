@@ -6,13 +6,13 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:58:11 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/16 10:37:06 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/18 08:41:29 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <limits.h>
-#include "libft/libft.h"
+#include "libft.h"
 
 static int	get_base(char *base)
 {

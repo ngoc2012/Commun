@@ -6,13 +6,13 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 22:11:40 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/12 11:22:41 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/18 08:40:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
-#include "libft/libft.h"
+#include "libft.h"
 
 static unsigned long	pow_(int n)
 {

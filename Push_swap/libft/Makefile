@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2022/12/11 21:48:33 by minh-ngu         ###   ########.fr        #
+#    Updated: 2022/12/18 09:55:27 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,3 +25,4 @@ clean:
 fclean: clean
 	rm -f $(LIBN)
 re: fclean all
+.PHONY:	all clean fclean re
