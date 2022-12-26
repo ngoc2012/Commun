@@ -1,1 +1,1 @@
-ARG="-33 -22 -55 1 3 6 5 -8"; ./push_swap $ARG | ./checker_linux $ARG
+ARG="42 -363 -918 -460 -116 660 91 509 -815 -706 -324 283 -376 268 101 -499 440 242 808 -780"; ./push_swap $ARG | ./checker_linux $ARG

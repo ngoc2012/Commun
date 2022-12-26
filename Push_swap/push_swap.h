@@ -6,12 +6,13 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/10 14:39:23 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/24 20:35:42 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# define abs(x) ((x < 0) ? -x : x)
 
 #endif
