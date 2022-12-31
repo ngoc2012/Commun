@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/31 10:53:09 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/30 03:24:33 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,11 @@ struct s_stack
 	int	*ini;
 	int	*current;
 	int	*position;
-	int	*abs_pos;
-	int	*pos_ind;
 	int	*sorted;
 	int	push;
 	int	len;
 	int	score;
+	char	**ops;
 	void	(*calculate)(t_stack *);
 	int	(*get_score)(t_stack *, char *);
 	void	(*unset_operation)(t_stack *, char *);
@@ -75,8 +74,6 @@ void	print_position(t_stack *st)
 			ft_printf("   -------\n");
 		ft_printf("%5d", st->current[i]);
 		ft_printf("%5d", st->position[i]);
-		ft_printf("%5d", st->abs_pos[i]);
-		ft_printf("%5d", st->pos_ind[i]);
 		ft_printf("\n");
 	}
 	if (i == st->push)
@@ -86,8 +83,6 @@ void	print_position(t_stack *st)
 	ft_printf("\n");
 	ft_printf("%5s", "ini");
 	ft_printf("%5s", "pos");
-	ft_printf("%5s", "abs");
-	ft_printf("%5s", "ind");
 	ft_printf("\n");
 	ft_printf("----------\n");
 }
@@ -134,8 +129,6 @@ void	free_stack(t_stack *st)
 	free(st->ini);
 	free(st->current);
 	free(st->position);
-	free(st->abs_pos);
-	free(st->pos_ind);
 	free(st);
 }
 
@@ -473,66 +466,64 @@ int	get_score(t_stack *st, char *op)
 	return (-1);
 }
 
-char	*best_operation(t_stack *st)
+int	best_operation(t_stack *st)
 {
 	int	min;
 	int	i;
 	int	scores[8];
-	char	*ops[8] = {"sb", "rb", "rrb", "sa", "ra", "rra", "rr", "rrr"};
-	//char	*ops[8] = {"sa", "sb", "ra", "rb", "rra", "rrb", "rr", "rrr"};
-	//char	*ops[8] = {"rr", "rrr", "ra", "rb", "rra", "rrb", "sa", "sb"};
-	char	*op_min;
+	//char	*ops[8] = {"sb", "rb", "rrb", "sa", "ra", "rra", "rr", "rrr"};
+	int	op_min;
 
 	//ft_printf("push = %d\n", st->push);
 	if (SCORE)
 		ft_printf("score = %d\n", st->score);
-	op_min = 0;
+	op_min = -1;
 	min = st->score;
 	i = -1;
 	while (++i < 8)
 	{
-		scores[i] = get_score(st, ops[i]);
+		scores[i] = get_score(st, st->ops[i]);
 		if (i <= 2 && st->push < 2)
 			scores[i] = st->score + 100;
 		if (i > 2 && st->len - st->push < 2)
 			scores[i] = st->score + 100;
 		if (SCORE)
-			ft_printf("%s %d, ", ops[i], scores[i] - st->score);
+			ft_printf("%s %d, ", st->ops[i], scores[i] - st->score);
 		//st->print(st);
 		if (min >= scores[i])
 		{
 			min = scores[i];
-			op_min = ops[i];
+			op_min = i;
 			//ft_printf("op = %s, sum = %d\n", ops[i], sum);
 		}
 	}
 	if (SCORE)
 		ft_printf("\nmin = %d\n", min);
 	if (scores[1] == min && scores[6] == min)
-		op_min = ops[1];
+		op_min = 1;
 	if (scores[4] == min && scores[6] == min)
-		op_min = ops[4];
+		op_min = 4;
 	if (scores[2] == min && scores[7] == min)
-		op_min = ops[2];
+		op_min = 2;
 	if (scores[5] == min && scores[7] == min)
-		op_min = ops[5];
+		op_min = 5;
 	if (scores[4] == min && scores[5] == min)
 	{
 		if (st->current[0] > st->current[st->len - 2])
-			op_min = ops[4];
+			op_min = 4;
 		else
-			op_min = ops[5];
+			op_min = 5;
 	}
 	return (op_min);
 }
 
 void	check_best(t_stack *st, int *last_push)
 {
-	int		current_push;
-	char	*best;
+	int	current_push;
+	int	best;
 
 	best = best_operation(st);
-	while (best && st->score)
+	while (best != -1 && st->score)
 	{
 		//ft_printf("best operation = %s\n", best);
 
@@ -567,8 +558,8 @@ void	check_best(t_stack *st, int *last_push)
 			st->push--;
 		}
 		*last_push = st->push;
-		ft_printf("%s\n", best);
-		st->set_operation(st, best);
+		ft_printf("%s\n", st->ops[best]);
+		st->set_operation(st, st->ops[best]);
 		st->get_position(st);
 
 		if (SHOW == 1)
@@ -577,20 +568,6 @@ void	check_best(t_stack *st, int *last_push)
 			st->print_position(st);
 		best = best_operation(st);
 	}
-}
-
-int	abs_position(t_stack *st, int i0)
-{
-	int	i;
-	int	pos;
-
-	pos = 0;
-	i = -1;
-	while (++i < st->len)
-		if (i != i0 && st->ini[i] < st->ini[i0])
-			pos++;
-	//ft_printf("val = %d, pos = %d\n", st->ini[i0],  pos);
-	return (pos);
 }
 
 int	position(t_stack *st, int i0)
@@ -607,210 +584,61 @@ int	position(t_stack *st, int i0)
 	return (pos);
 }
 
-int	min_a(t_stack *st)
-{
-	int	i;
-	int	v_min;
-
-	if (st->len - st->push <= 0)
-		return (INT_MAX);
-	v_min = st->current[st->push];
-	i = st->push;
-	while (++i < st->len)
-		if (v_min > st->current[i])
-			v_min = st->current[i];
-	return (v_min);
-}
-
-int	max_b(t_stack *st)
-{
-	int	i;
-	int	v_max;
-
-	if (st->push == 0)
-		return (INT_MIN);
-	v_max = st->current[0];
-	i = 0;
-	while (++i < st->push)
-		if (v_max < st->current[i])
-			v_max = st->current[i];
-	return (v_max);
-}
-
-void	get_abs_position(t_stack *st)
-{
-	int	i;
-
-	i = -1;
-	while (++i < st->len)
-		st->abs_pos[i] = abs_position(st, i);
-	i = -1;
-	while (++i < st->len)
-		st->pos_ind[st->abs_pos[i]] = i;
-}
-
-
-void	get_prev(t_stack *st, int start, int end)
-{
-	ft_printf("Get prev\n");
-	j = -1;
-	if (2 * (end - start) > st->len)
-		while (++j < prev_dis)
-		{
-			ft_printf("rra\n");
-			st->set_operation(st, "rra");
-
-			if (SHOW == 1)
-				st->print_stack(st);
-			if (SHOW == 2)
-				st->print_position(st);
-		}
-	else
-		while (++j < prev_dis)
-		{
-			ft_printf("ra\n");
-			st->set_operation(st, "ra");
-
-			if (SHOW == 1)
-				st->print_stack(st);
-			if (SHOW == 2)
-				st->print_position(st);
-		}
-	ft_printf("pb\n");
-	st->push++;
-	if (SHOW == 1)
-		st->print_stack(st);
-	if (SHOW == 2)
-		st->print_position(st);
-	ft_printf("sb\n");
-	st->set_operation(st, "sb");
-
-	if (SHOW == 1)
-		st->print_stack(st);
-	if (SHOW == 2)
-		st->print_position(st);
-}
-
-void	get_next(t_stack *st, int start, int end)
-{
-	ft_printf("Get next\n");
-	j = -1;
-	if (2 * (end - start) > st->len)
-		while (++j < prev_dis)
-		{
-			ft_printf("rra\n");
-			st->set_operation(st, "rra");
-
-			if (SHOW == 1)
-				st->print_stack(st);
-			if (SHOW == 2)
-				st->print_position(st);
-		}
-	else
-		while (++j < prev_dis)
-		{
-			ft_printf("ra\n");
-			st->set_operation(st, "ra");
-
-			if (SHOW == 1)
-				st->print_stack(st);
-			if (SHOW == 2)
-				st->print_position(st);
-		}
-	ft_printf("pb\n");
-	st->push++;
-	if (SHOW == 1)
-		st->print_stack(st);
-	if (SHOW == 2)
-		st->print_position(st);
-	if (pos + 1 <= st->len - 1)
-		recursive(st, st->pos_ind[pos + 1]);
-}
-
-void	recursive(t_stack *st, int i)
-{
-	int	j;
-	int	pos;
-	int	prev_ind;
-	int	next_ind;
-	int	prev_dis;
-	int	next_dis;
-
-	ft_printf("pb\n");
-	st->push++;
-	if (SHOW == 1)
-		st->print_stack(st);
-	if (SHOW == 2)
-		st->print_position(st);
-
-	pos = st->abs_pos[i];
-	if (pos - 1 >= 0)
-		prev_ind = st->pos_ind[pos - 1];
-	if (pos + 1 <= st->len - 1)
-		next_ind = st->pos_ind[pos + 1];
-
-	prev_dis = prev_ind - i; 
-	if (prev_dis > st->len - prev_dis)
-		prev_dis = st->len - prev_dis;
-	next_dis = next_ind - i; 
-	if (next_dis > st->len - next_dis)
-		next_dis = st->len - next_dis;
-
-	ft_printf("pos - 1 = %d, pos + 1 = %d\n", st->pos_ind[pos - 1], st->pos_ind[pos + 1]);
-	ft_printf("prev_dis = %d, next_dis = %d\n", prev_dis, next_dis);
-	if (next_ind < prev_dis - 1)
-	{
-		get_next(st, i, next_ind);
-	}
-	if (pos - 1 >= 0)
-		recursive(st, st->pos_ind[pos - 1]);
-}
-
 void	calculate(t_stack *st)
 {
-	//int	last_push;
+	int		last_push;
 
 	st->score = 1;
 	st->push = 0;
 	st->get_position(st);
-	get_abs_position(st);
 	if (SHOW)
 		ft_printf("score = %d\n", st->score);
-	if (SHOW)
-	{
-		st->print_position(st);
+	if (SHOW == 1)
 		st->print_stack(st);
+	if (SHOW == 2)
+		st->print_position(st);
+
+	if (RA)
+	{
+
+		last_push = st->push;
+		st->push--;
+		while (++st->push <= st->len / 2 && st->score)
+			check_best(st, &last_push);
+		st->push = last_push;
+
 	}
 
-	// First element
-	recursive(st, 0);
-	//else {
+	else {
 
 		//ft_printf("push = %d\n", st->push);
-	//last_push = st->push;
-	//st->push--;
-	//while (st->score)
-	//{
-	//	while (++st->push <= st->len && st->score)
-	//		check_best(st, &last_push);
-	//	while (--st->push && st->score)
-	//		check_best(st, &last_push);
-	//}
-	//st->push = last_push;
-	////}
-	//while (st->push--)
-	//{
-	//	ft_printf("pa\n");
+		last_push = st->push;
+		st->push--;
+		while (st->score)
+		{
+			while (++st->push <= st->len && st->score)
+				check_best(st, &last_push);
+			while (--st->push && st->score)
+				check_best(st, &last_push);
+		}
+		st->push = last_push;
 
-	//	if (SHOW == 1)
-	//		st->print_stack(st);
+	}
 
-	//}
+	while (st->push--)
+	{
+		ft_printf("pa\n");
+
+		if (SHOW == 1)
+			st->print_stack(st);
+
+	}
 }
 
 t_stack	*new_stack(int *ini, int len)
 {
 	t_stack	*new;
+	char	*ops[8] = {"sb", "rb", "rrb", "sa", "ra", "rra", "rr", "rrr"};
 
 	new = malloc(sizeof(t_stack));
 	if (!new)
@@ -820,12 +648,7 @@ t_stack	*new_stack(int *ini, int len)
 	new->position = malloc(sizeof(int) * len);
 	if (!new->position)
 		return (0);
-	new->abs_pos = malloc(sizeof(int) * len);
-	if (!new->abs_pos)
-		return (0);
-	new->pos_ind = malloc(sizeof(int) * len);
-	if (!new->pos_ind)
-		return (0);
+	new->ops = &ops[0];
 	new->len = len;
 	new->push = 0;	
 	new->calculate = calculate;
@@ -845,7 +668,6 @@ int	main(int argc, char **argv)
 	int		*ini;
 	t_stack		*st;
 	char	*s;
-	char	*ops[8] = {"sb", "rb", "rrb", "sa", "ra", "rra", "rr", "rrr"};
 	int	scores[8];
 
 	if (argc < 2)
@@ -881,8 +703,8 @@ int	main(int argc, char **argv)
 				i = -1;
 				while (++i < 8)
 				{
-					scores[i] = get_score(st, ops[i]);
-					ft_printf("%s %d, ", ops[i], scores[i] - st->score);
+					scores[i] = get_score(st, st->ops[i]);
+					ft_printf("%s %d, ", st->ops[i], scores[i] - st->score);
 				}
 				ft_printf("\n");
 			}

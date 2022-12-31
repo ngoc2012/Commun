@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/12/31 10:53:09 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2022/12/30 09:50:42 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ struct s_stack
 	int	*ini;
 	int	*current;
 	int	*position;
-	int	*abs_pos;
-	int	*pos_ind;
 	int	*sorted;
 	int	push;
 	int	len;
@@ -75,8 +73,6 @@ void	print_position(t_stack *st)
 			ft_printf("   -------\n");
 		ft_printf("%5d", st->current[i]);
 		ft_printf("%5d", st->position[i]);
-		ft_printf("%5d", st->abs_pos[i]);
-		ft_printf("%5d", st->pos_ind[i]);
 		ft_printf("\n");
 	}
 	if (i == st->push)
@@ -86,8 +82,6 @@ void	print_position(t_stack *st)
 	ft_printf("\n");
 	ft_printf("%5s", "ini");
 	ft_printf("%5s", "pos");
-	ft_printf("%5s", "abs");
-	ft_printf("%5s", "ind");
 	ft_printf("\n");
 	ft_printf("----------\n");
 }
@@ -134,8 +128,6 @@ void	free_stack(t_stack *st)
 	free(st->ini);
 	free(st->current);
 	free(st->position);
-	free(st->abs_pos);
-	free(st->pos_ind);
 	free(st);
 }
 
@@ -579,20 +571,6 @@ void	check_best(t_stack *st, int *last_push)
 	}
 }
 
-int	abs_position(t_stack *st, int i0)
-{
-	int	i;
-	int	pos;
-
-	pos = 0;
-	i = -1;
-	while (++i < st->len)
-		if (i != i0 && st->ini[i] < st->ini[i0])
-			pos++;
-	//ft_printf("val = %d, pos = %d\n", st->ini[i0],  pos);
-	return (pos);
-}
-
 int	position(t_stack *st, int i0)
 {
 	int	i;
@@ -637,175 +615,376 @@ int	max_b(t_stack *st)
 	return (v_max);
 }
 
-void	get_abs_position(t_stack *st)
-{
-	int	i;
-
-	i = -1;
-	while (++i < st->len)
-		st->abs_pos[i] = abs_position(st, i);
-	i = -1;
-	while (++i < st->len)
-		st->pos_ind[st->abs_pos[i]] = i;
-}
-
-
-void	get_prev(t_stack *st, int start, int end)
-{
-	ft_printf("Get prev\n");
-	j = -1;
-	if (2 * (end - start) > st->len)
-		while (++j < prev_dis)
-		{
-			ft_printf("rra\n");
-			st->set_operation(st, "rra");
-
-			if (SHOW == 1)
-				st->print_stack(st);
-			if (SHOW == 2)
-				st->print_position(st);
-		}
-	else
-		while (++j < prev_dis)
-		{
-			ft_printf("ra\n");
-			st->set_operation(st, "ra");
-
-			if (SHOW == 1)
-				st->print_stack(st);
-			if (SHOW == 2)
-				st->print_position(st);
-		}
-	ft_printf("pb\n");
-	st->push++;
-	if (SHOW == 1)
-		st->print_stack(st);
-	if (SHOW == 2)
-		st->print_position(st);
-	ft_printf("sb\n");
-	st->set_operation(st, "sb");
-
-	if (SHOW == 1)
-		st->print_stack(st);
-	if (SHOW == 2)
-		st->print_position(st);
-}
-
-void	get_next(t_stack *st, int start, int end)
-{
-	ft_printf("Get next\n");
-	j = -1;
-	if (2 * (end - start) > st->len)
-		while (++j < prev_dis)
-		{
-			ft_printf("rra\n");
-			st->set_operation(st, "rra");
-
-			if (SHOW == 1)
-				st->print_stack(st);
-			if (SHOW == 2)
-				st->print_position(st);
-		}
-	else
-		while (++j < prev_dis)
-		{
-			ft_printf("ra\n");
-			st->set_operation(st, "ra");
-
-			if (SHOW == 1)
-				st->print_stack(st);
-			if (SHOW == 2)
-				st->print_position(st);
-		}
-	ft_printf("pb\n");
-	st->push++;
-	if (SHOW == 1)
-		st->print_stack(st);
-	if (SHOW == 2)
-		st->print_position(st);
-	if (pos + 1 <= st->len - 1)
-		recursive(st, st->pos_ind[pos + 1]);
-}
-
-void	recursive(t_stack *st, int i)
-{
-	int	j;
-	int	pos;
-	int	prev_ind;
-	int	next_ind;
-	int	prev_dis;
-	int	next_dis;
-
-	ft_printf("pb\n");
-	st->push++;
-	if (SHOW == 1)
-		st->print_stack(st);
-	if (SHOW == 2)
-		st->print_position(st);
-
-	pos = st->abs_pos[i];
-	if (pos - 1 >= 0)
-		prev_ind = st->pos_ind[pos - 1];
-	if (pos + 1 <= st->len - 1)
-		next_ind = st->pos_ind[pos + 1];
-
-	prev_dis = prev_ind - i; 
-	if (prev_dis > st->len - prev_dis)
-		prev_dis = st->len - prev_dis;
-	next_dis = next_ind - i; 
-	if (next_dis > st->len - next_dis)
-		next_dis = st->len - next_dis;
-
-	ft_printf("pos - 1 = %d, pos + 1 = %d\n", st->pos_ind[pos - 1], st->pos_ind[pos + 1]);
-	ft_printf("prev_dis = %d, next_dis = %d\n", prev_dis, next_dis);
-	if (next_ind < prev_dis - 1)
-	{
-		get_next(st, i, next_ind);
-	}
-	if (pos - 1 >= 0)
-		recursive(st, st->pos_ind[pos - 1]);
-}
-
 void	calculate(t_stack *st)
 {
-	//int	last_push;
+	int		i;
+	int		last_push;
 
 	st->score = 1;
 	st->push = 0;
 	st->get_position(st);
-	get_abs_position(st);
 	if (SHOW)
 		ft_printf("score = %d\n", st->score);
-	if (SHOW)
-	{
-		st->print_position(st);
+	if (SHOW == 1)
 		st->print_stack(st);
+	if (SHOW == 2)
+		st->print_position(st);
+
+	if (RA && st->len >= 10)
+	{
+		// optimize best operations
+		last_push = st->push;
+		st->push--;
+		while (++st->push <= st->len / 2 && st->score)
+			check_best(st, &last_push);
+		st->push = last_push;
+		if (SHOW)
+		{
+			ft_printf("========= End ========\n");	
+			ft_printf("min_a = %d, max_b = %d\n", min_a(st), max_b(st));
+		}
+		if (st->current[st->push] < max_b(st))
+		{
+			st->push++;
+			ft_printf("pb\n");
+			if (SHOW == 1)
+				st->print_stack(st);
+			if (SHOW == 2)
+				st->print_position(st);
+			if (st->current[st->push - 1] < st->current[st->push - 2])
+			{
+				ft_printf("sb\n");
+				st->set_operation(st, "sb");
+				st->get_position(st);
+
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+			}
+			if (st->current[st->push] > st->current[st->push + 1])
+			{
+				ft_printf("sa\n");
+				st->set_operation(st, "sa");
+				st->get_position(st);
+
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+			}
+			st->push--;
+			ft_printf("pa\n");
+			if (SHOW == 1)
+				st->print_stack(st);
+			if (SHOW == 2)
+				st->print_position(st);
+			if (st->current[st->push - 1] < st->current[st->push - 2])
+			{
+				ft_printf("sb\n");
+				st->set_operation(st, "sb");
+				st->get_position(st);
+
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+			}
+			if (st->current[st->push] > st->current[st->push + 1])
+			{
+				ft_printf("sa\n");
+				st->set_operation(st, "sa");
+				st->get_position(st);
+
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+			}
+		}
+		if (st->current[st->push - 1] > min_a(st))
+		{
+			st->push--;
+			ft_printf("pa\n");
+			if (SHOW == 1)
+				st->print_stack(st);
+			if (SHOW == 2)
+				st->print_position(st);
+			if (st->current[st->push - 1] < st->current[st->push - 2])
+			{
+				ft_printf("sb\n");
+				st->set_operation(st, "sb");
+				st->get_position(st);
+
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+			}
+			if (st->current[st->push] > st->current[st->push + 1])
+			{
+				ft_printf("sa\n");
+				st->set_operation(st, "sa");
+				st->get_position(st);
+
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+			}
+			st->push++;
+			ft_printf("pb\n");
+			if (SHOW == 1)
+				st->print_stack(st);
+			if (SHOW == 2)
+				st->print_position(st);
+			if (st->current[st->push - 1] < st->current[st->push - 2])
+			{
+				ft_printf("sb\n");
+				st->set_operation(st, "sb");
+				st->get_position(st);
+
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+			}
+			if (st->current[st->push] > st->current[st->push + 1])
+			{
+				ft_printf("sa\n");
+				st->set_operation(st, "sa");
+				st->get_position(st);
+
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+			}
+		}
+		// Check for odd numbers of arguments
+		if (SHOW)
+			ft_printf("========= Start RR ========\n");	
+		i = 0;
+		while (++i < st->len / 2 - 1)
+		{
+			ft_printf("rr\n");
+			st->set_operation(st, "rr");
+			st->get_position(st);
+
+			if (SHOW == 1)
+				st->print_stack(st);
+			if (SHOW == 2)
+				st->print_position(st);
+			if (st->current[st->push] < max_b(st))
+			{
+				st->push++;
+				ft_printf("pb\n");
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+				if (st->current[st->push - 1] < st->current[st->push - 2])
+				{
+					ft_printf("sb\n");
+					st->set_operation(st, "sb");
+					st->get_position(st);
+
+					if (SHOW == 1)
+						st->print_stack(st);
+					if (SHOW == 2)
+						st->print_position(st);
+				}
+				if (st->current[st->push] > st->current[st->push + 1])
+				{
+					ft_printf("sa\n");
+					st->set_operation(st, "sa");
+					st->get_position(st);
+
+					if (SHOW == 1)
+						st->print_stack(st);
+					if (SHOW == 2)
+						st->print_position(st);
+				}
+				st->push--;
+				ft_printf("pa\n");
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+				if (st->current[st->push - 1] < st->current[st->push - 2])
+				{
+					ft_printf("sb\n");
+					st->set_operation(st, "sb");
+					st->get_position(st);
+
+					if (SHOW == 1)
+						st->print_stack(st);
+					if (SHOW == 2)
+						st->print_position(st);
+				}
+				if (st->current[st->push] > st->current[st->push + 1])
+				{
+					ft_printf("sa\n");
+					st->set_operation(st, "sa");
+					st->get_position(st);
+
+					if (SHOW == 1)
+						st->print_stack(st);
+					if (SHOW == 2)
+						st->print_position(st);
+				}
+			}
+			if (st->current[st->push - 1] > min_a(st))
+			{
+				st->push--;
+				ft_printf("pa\n");
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+				if (st->current[st->push - 1] < st->current[st->push - 2])
+				{
+					ft_printf("sb\n");
+					st->set_operation(st, "sb");
+					st->get_position(st);
+
+					if (SHOW == 1)
+						st->print_stack(st);
+					if (SHOW == 2)
+						st->print_position(st);
+				}
+				if (st->current[st->push] > st->current[st->push + 1])
+				{
+					ft_printf("sa\n");
+					st->set_operation(st, "sa");
+					st->get_position(st);
+
+					if (SHOW == 1)
+						st->print_stack(st);
+					if (SHOW == 2)
+						st->print_position(st);
+				}
+				st->push++;
+				ft_printf("pb\n");
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+				if (st->current[st->push - 1] < st->current[st->push - 2])
+				{
+					ft_printf("sb\n");
+					st->set_operation(st, "sb");
+					st->get_position(st);
+
+					if (SHOW == 1)
+						st->print_stack(st);
+					if (SHOW == 2)
+						st->print_position(st);
+				}
+				if (st->current[st->push] > st->current[st->push + 1])
+				{
+					ft_printf("sa\n");
+					st->set_operation(st, "sa");
+					st->get_position(st);
+
+					if (SHOW == 1)
+						st->print_stack(st);
+					if (SHOW == 2)
+						st->print_position(st);
+				}
+			}
+			if (st->current[st->push - 1] < st->current[st->push - 2])
+			{
+				ft_printf("sb\n");
+				st->set_operation(st, "sb");
+				st->get_position(st);
+
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+			}
+			if (st->current[st->push] > st->current[st->push + 1])
+			{
+				ft_printf("sa\n");
+				st->set_operation(st, "sa");
+				st->get_position(st);
+
+				if (SHOW == 1)
+					st->print_stack(st);
+				if (SHOW == 2)
+					st->print_position(st);
+			}
+		}
+		if (SHOW)
+			ft_printf("========= 2 top elements RR ========\n");	
+		if (st->current[st->push - 1] < st->current[st->push - 2])
+		{
+			ft_printf("sb\n");
+			st->set_operation(st, "sb");
+			st->get_position(st);
+
+			if (SHOW == 1)
+				st->print_stack(st);
+			if (SHOW == 2)
+				st->print_position(st);
+		}
+		if (st->current[st->push] > st->current[st->push + 1])
+		{
+			ft_printf("sa\n");
+			st->set_operation(st, "sa");
+			st->get_position(st);
+
+			if (SHOW == 1)
+				st->print_stack(st);
+			if (SHOW == 2)
+				st->print_position(st);
+		}
+		if (SHOW)
+			ft_printf("========= 2 Last RR ========\n");	
+		ft_printf("rr\n");
+		st->set_operation(st, "rr");
+		st->get_position(st);
+
+		if (SHOW == 1)
+			st->print_stack(st);
+		if (SHOW == 2)
+			st->print_position(st);
+		ft_printf("rr\n");
+		st->set_operation(st, "rr");
+		st->get_position(st);
+
+		if (SHOW == 1)
+			st->print_stack(st);
+		if (SHOW == 2)
+			st->print_position(st);
+		if (SHOW)
+			ft_printf("========= End RR ========\n");	
+		st->push = last_push;
 	}
 
-	// First element
-	recursive(st, 0);
 	//else {
 
 		//ft_printf("push = %d\n", st->push);
-	//last_push = st->push;
-	//st->push--;
-	//while (st->score)
-	//{
-	//	while (++st->push <= st->len && st->score)
-	//		check_best(st, &last_push);
-	//	while (--st->push && st->score)
-	//		check_best(st, &last_push);
+		last_push = st->push;
+		st->push--;
+		while (st->score)
+		{
+			while (++st->push <= st->len && st->score)
+				check_best(st, &last_push);
+			while (--st->push && st->score)
+				check_best(st, &last_push);
+		}
+		st->push = last_push;
 	//}
-	//st->push = last_push;
-	////}
-	//while (st->push--)
-	//{
-	//	ft_printf("pa\n");
+	while (st->push--)
+	{
+		ft_printf("pa\n");
 
-	//	if (SHOW == 1)
-	//		st->print_stack(st);
+		if (SHOW == 1)
+			st->print_stack(st);
 
-	//}
+	}
 }
 
 t_stack	*new_stack(int *ini, int len)
@@ -819,12 +998,6 @@ t_stack	*new_stack(int *ini, int len)
 	new->current = cp_array(ini, len);
 	new->position = malloc(sizeof(int) * len);
 	if (!new->position)
-		return (0);
-	new->abs_pos = malloc(sizeof(int) * len);
-	if (!new->abs_pos)
-		return (0);
-	new->pos_ind = malloc(sizeof(int) * len);
-	if (!new->pos_ind)
 		return (0);
 	new->len = len;
 	new->push = 0;	
