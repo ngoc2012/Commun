@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2022/12/18 10:00:16 by minh-ngu         ###   ########.fr        #
+#    Updated: 2023/01/04 09:50:20 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CC = cc
 FLAGS = -Wall -Wextra -Werror
 all: $(LIBPR)
 .c.o:
-	$(CC) $(FLAGS) -c $< -o ${<:.c=.o} -I. -I$(LIBFTFOLDER) -L$(LIBFTFOLDER) -lft
+	$(CC) $(FLAGS) -c $< -o ${<:.c=.o} -I. -I$(LIBFTFOLDER)
 $(LIBPR): $(MANO)
 	make -C $(LIBFTFOLDER)
 	ar rc  $(LIBPR) $(addprefix $(LIBFTFOLDER), $(OBJS)) $(MANO)

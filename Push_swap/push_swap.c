@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/01/01 22:38:27 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:13:10 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,21 @@ rra (reverse rotate a) : Décale d’une position vers le bas tous les élements
 rrb (reverse rotate b) : Décale d’une position vers le bas tous les élements de
 	la pile b. Le dernier élément devient le premier.
 rrr : rra et rrb en même temps.
+
+1 - Check a best move till no better move found
+2 - Push a half of number to stack b while using insertion sort:
+2.1 - Push 1st one, check best move on stack a
+2.2 - Push 2nd one, check best move on stack a, if new one is smaller -> swap b
+2.2 - Push 3rd one, check best move on stack a:
+	(not optimize) If new one is smaller than [0] -> rb
+	If new one is smoller than [1] and bigger than [0] -> sb
+2.3 - Push 4th one, check best move on stack a,
+	rb until bigger one then sb (or smallest one in case the new one is smallest) (1 more move, must find the best distance)
+	or rrb until smaller one on top (or biggest one in case the new one is smallest)
+Check best move on stack a until score a == 0
+3 - Repush on stack a:
+	- Rotate rb and rrb untill biggest one on top,
+	- Push 
 */
 
 typedef struct s_stack	t_stack;
@@ -189,7 +204,7 @@ void	set_operation(t_stack *st, char *op)
 		st->current[st->push] = st->current[st->push + 1]; 
 		st->current[st->push + 1] = j;
 		//st->print(st);
-		//return ;
+		return ;
 	}
 	if ((ft_strncmp(op, "sb", 2) == 0 || ft_strncmp(op, "ss", 2) == 0) && st->push >= 2)
 	{
@@ -197,7 +212,7 @@ void	set_operation(t_stack *st, char *op)
 		st->current[st->push - 1] = st->current[st->push - 2]; 
 		st->current[st->push - 2] = j;
 		//st->print(st);
-		//return ;
+		return ;
 	}
 	if ((ft_strncmp(op, "ra", 3) == 0 || ft_strncmp(op, "rr", 3) == 0) && st->len - st->push >= 2)
 	{
@@ -211,7 +226,7 @@ void	set_operation(t_stack *st, char *op)
 			i++;
 		}
 		//st->print(st);
-		//return ;
+		return ;
 	}
 	if ((ft_strncmp(op, "rrb", 3) == 0 || ft_strncmp(op, "rrr", 3) == 0) && st->push >= 2)
 	{
@@ -225,7 +240,7 @@ void	set_operation(t_stack *st, char *op)
 			i++;
 		}
 		//st->print(st);
-		//return ;
+		return ;
 	}
 	if ((ft_strncmp(op, "rra", 3) == 0 || ft_strncmp(op, "rrr", 3) == 0) && st->len - st->push >= 2)
 	{
@@ -239,7 +254,7 @@ void	set_operation(t_stack *st, char *op)
 			i--;
 		}
 		//st->print(st);
-		//return ;
+		return ;
 	}
 	if ((ft_strncmp(op, "rb", 3) == 0 || ft_strncmp(op, "rr", 3) == 0) && st->push >= 2)
 	{
@@ -253,17 +268,19 @@ void	set_operation(t_stack *st, char *op)
 			i--;
 		}
 		//st->print(st);
-		//return ;
+		return ;
 	}
 	if (ft_strncmp(op, "pa", 2) == 0 && st->push > 0)
 	{
 		st->push--;
 		//st->print(st);
+		return ;
 	}
 	if (ft_strncmp(op, "pb", 2) == 0 && st->push < st->len)
 	{
 		st->push++;
 		//st->print(st);
+		return ;
 	}
 }
 
@@ -324,6 +341,32 @@ int	get_score_sb(t_stack *st)
 		else	
 			return (st->score + 1);
 	}
+}
+
+int	get_score_ss(t_stack *st)
+{
+	int	score;
+
+	score = st->score;
+	//st->print_position(st);
+	//ft_printf("st->score = %d\n", st->score);
+	if (st->len - st->push >= 2)
+	{
+		//ft_printf("st->score = %d\n", st->score);
+		if (st->current[st->push] > st->current[st->push + 1])
+			score--;
+		else	
+			score++;
+	}
+	if (st->push >= 2)
+	{
+		//ft_printf("i[push] = %d, i[push+1] = %d\n", st->current[st->push], st->current[st->push + 1]);
+		if (st->current[st->push - 2] > st->current[st->push - 1])
+			score--;
+		else	
+			score++;
+	}
+	return (score);
 }
 
 int	get_score_rra(t_stack *st)
@@ -435,6 +478,8 @@ int	get_score(t_stack *st, char *op)
 		return (get_score_sa(st));
 	if (ft_strncmp(op, "sb", 3) == 0)
 		return (get_score_sb(st));
+	if (ft_strncmp(op, "ss", 3) == 0)
+		return (get_score_ss(st));
 	if (ft_strncmp(op, "ra", 3) == 0)
 		return (get_score_ra(st));
 	if (ft_strncmp(op, "rra", 3) == 0)
@@ -481,8 +526,8 @@ char	*best_operation(t_stack *st)
 {
 	int	min;
 	int	i;
-	int	scores[8];
-	char	*ops[8] = {"sb", "rb", "rrb", "sa", "ra", "rra", "rr", "rrr"};
+	int	scores[9];
+	char	*ops[9] = {"sb", "rb", "rrb", "sa", "ra", "rra", "rr", "rrr", "ss"};
 	//char	*ops[8] = {"sa", "sb", "ra", "rb", "rra", "rrb", "rr", "rrr"};
 	//char	*ops[8] = {"rr", "rrr", "ra", "rb", "rra", "rrb", "sa", "sb"};
 	char	*op_min;
@@ -493,7 +538,7 @@ char	*best_operation(t_stack *st)
 	op_min = 0;
 	min = st->score;
 	i = -1;
-	while (++i < 8)
+	while (++i < 9)
 	{
 		scores[i] = get_score(st, ops[i]);
 		if (i <= 2 && st->push < 2)
@@ -503,29 +548,35 @@ char	*best_operation(t_stack *st)
 		if (SCORE)
 			ft_printf("%s %d, ", ops[i], scores[i] - st->score);
 		//st->print(st);
-		if (min >= scores[i])
+		if (min > scores[i])
 		{
 			min = scores[i];
 			op_min = ops[i];
 			//ft_printf("op = %s, sum = %d\n", ops[i], sum);
 		}
 	}
-	if (SCORE)
-		ft_printf("\nmin = %d\n", min);
-	if (scores[1] == min && scores[6] == min)
+	if (op_min && scores[1] == min && scores[6] == min)
 		op_min = ops[1];
-	if (scores[4] == min && scores[6] == min)
+	if (op_min && scores[4] == min && scores[6] == min)
 		op_min = ops[4];
-	if (scores[2] == min && scores[7] == min)
+	if (op_min && scores[2] == min && scores[7] == min)
 		op_min = ops[2];
-	if (scores[5] == min && scores[7] == min)
+	if (op_min && scores[5] == min && scores[7] == min)
 		op_min = ops[5];
-	if (scores[4] == min && scores[5] == min)
+	if (op_min && scores[4] == min && scores[5] == min)
 	{
 		if (st->current[0] > st->current[st->len - 2])
 			op_min = ops[4];
 		else
 			op_min = ops[5];
+	}
+	if (SCORE)
+	{
+		ft_printf("\nmin = %d\n", min);
+		if (op_min)
+			ft_printf("\nop_min = %s\n", op_min);
+		else
+			ft_printf("No op_min\n");
 	}
 	return (op_min);
 }
@@ -726,66 +777,22 @@ void	next_push(t_stack *st)
 	}
 }
 
-//void	check_best(t_stack *st, int *last_push)
 void	check_best(t_stack *st)
 {
-	//int		current_push;
 	char	*best;
-	int	last_score;
 
 	if (SHOW)
 		ft_printf("========== check best =========\n");
 	best = best_operation(st);
-	if (!best)
-	{
-		if (st->push > 0)
-		{
-			st->push--;
-			best = best_operation(st);
-			if (best)
-			{
-				ft_printf("pa\n");
-				ft_printf("%s\n", best);
-				st->set_operation(st, best);
-			}
-			else
-				st->push++;
-		}
-		if (st->push > 0)
-		{
-			st->push--;
-			best = best_operation(st);
-			if (best)
-			{
-				ft_printf("pa\n");
-				ft_printf("%s\n", best);
-				st->set_operation(st, best);
-			}
-			else
-				st->push++;
-		}
-	}
 	while (best && st->score)
 	{
-		//ft_printf("best operation = %s\n", best);
+		ft_printf("%s\n", best);
+		if (SCORE)
+			ft_printf("best operation = %s\n", best);
 
-		last_score = st->score;
 		st->set_operation(st, best);
 		st->get_position(st);
 		get_abs_position(st);
-		if (last_score == st->score && st->abs_pos[st->push] >= st->b_min_abs_pos - 1 && st->abs_pos[st->push] <= st->b_max_abs_pos + 1)
-		{
-			if (SHOW)
-			{
-				st->print_position(st);
-				ft_printf("Unset %s\n", best);
-			}
-			st->unset_operation(st, best);
-			next_push(st);
-		}
-		else	
-			ft_printf("%s\n", best);
-		st->get_position(st);
 
 		if (SHOW == 1)
 			st->print_stack(st);
@@ -813,7 +820,30 @@ void	calculate(t_stack *st)
 	{
 		//check_best(st, &last_push);
 		check_best(st);
-		if (st->score)
+		if (SCORE)
+			ft_printf("st->score = %d\n", st->score);
+		if (st->score && st->push == 0)
+		{
+			get_abs_position(st);
+			if (st->abs_pos[0] >= 2)
+			{
+				if (get_score(st, "ra") == st->score)
+				{
+					ft_printf("ra\n");
+					st->set_operation(st, "ra");
+				}
+				else if (get_score(st, "rra") == st->score)
+				{
+					ft_printf("rra\n");
+					st->set_operation(st, "rra");
+				}
+				else
+					next_push(st);
+			}
+			else
+				next_push(st);
+		}
+		else if (st->score)
 			next_push(st);
 		st->get_position(st);
 	}
@@ -880,8 +910,8 @@ int	main(int argc, char **argv)
 	int		*ini;
 	t_stack		*st;
 	char	*s;
-	char	*ops[8] = {"sb", "rb", "rrb", "sa", "ra", "rra", "rr", "rrr"};
-	int	scores[8];
+	char	*ops[9] = {"sb", "rb", "rrb", "sa", "ra", "rra", "rr", "rrr", "ss"};
+	int	scores[9];
 
 	if (argc < 2)
 		return (1);
@@ -904,6 +934,7 @@ int	main(int argc, char **argv)
 	if (MANUAL)
 	{
 		st->get_position(st);
+		get_abs_position(st);
 		if (SHOW == 1)
 			st->print_stack(st);
 		if (SHOW == 2)
@@ -914,7 +945,7 @@ int	main(int argc, char **argv)
 			if (SCORE)
 			{
 				i = -1;
-				while (++i < 8)
+				while (++i < 9)
 				{
 					scores[i] = get_score(st, ops[i]);
 					ft_printf("%s %d, ", ops[i], scores[i] - st->score);

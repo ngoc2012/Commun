@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/01/01 18:59:42 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/01/04 13:07:30 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define MANUAL 0
 # define SHOW 2
 # define SCORE 1
-# define abs(x) ((x < 0) ? -(x) : (x))
+
+enum e_ops {sb, rb, rrb, sa, ra, rra, rr, rrr, ss};
 
 #endif
