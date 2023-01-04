@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/01/01 11:58:00 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/01/01 22:38:27 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -530,61 +530,6 @@ char	*best_operation(t_stack *st)
 	return (op_min);
 }
 
-void	check_best(t_stack *st, int *last_push)
-{
-	int		current_push;
-	char	*best;
-
-	if (SHOW)
-		ft_printf("========== check best =========\n");
-	best = best_operation(st);
-	while (best && st->score)
-	{
-		//ft_printf("best operation = %s\n", best);
-
-		if (*last_push > st->push)
-		{
-			current_push = st->push;
-			st->push = *last_push;
-			while (--st->push >= current_push)
-			{
-				//ft_printf("1 ");
-				ft_printf("pa\n");
-
-				if (SHOW == 1)
-					st->print_stack(st);
-
-			}
-			st->push++;
-		}
-		else if (*last_push < st->push)
-		{
-			current_push = st->push;
-			st->push = *last_push;
-			while (++st->push <= current_push)
-			{
-				//ft_printf("1 ");
-				ft_printf("pb\n");
-
-				if (SHOW == 1)
-					st->print_stack(st);
-
-			}
-			st->push--;
-		}
-		*last_push = st->push;
-		ft_printf("%s\n", best);
-		st->set_operation(st, best);
-		st->get_position(st);
-
-		if (SHOW == 1)
-			st->print_stack(st);
-		if (SHOW == 2)
-			st->print_position(st);
-		best = best_operation(st);
-	}
-}
-
 int	abs_position(t_stack *st, int i0)
 {
 	int	i;
@@ -702,7 +647,6 @@ void	get_next(t_stack *st, int start, int end)
 void	next_push(t_stack *st)
 {
 	//int	j;
-	int	pos;
 	int	prev_dis;
 	int	next_dis;
 
@@ -713,36 +657,44 @@ void	next_push(t_stack *st)
 
 	if (SHOW)
 		ft_printf("========== next_push =========\n");
-	get_abs_position(st);
 
-	pos = st->abs_pos[st->push];
+	get_abs_position(st);
 	if (st->push == 0)
 	{
-		st->b_max_abs_pos = pos;
-		st->b_min_abs_pos = pos;
-		st->next_ind = -1;
-		st->prev_ind = -1;
-		if (pos - 1 >= 0)
-			st->prev_ind = st->pos_ind[pos - 1];
-		if (pos + 1 <= st->len - 1)
-			st->next_ind = st->pos_ind[pos + 1];
+		st->b_max_abs_pos = st->abs_pos[st->push];
+		st->b_min_abs_pos = st->abs_pos[st->push];
+
 		ft_printf("pb\n");
 		st->push++;
+
 		if (SHOW == 1)
 			st->print_stack(st);
 		if (SHOW)
 			st->print_position(st);
+
+
 		return ;
 	}
+
+	if (SHOW == 1)
+		st->print_stack(st);
+	if (SHOW)
+		st->print_position(st);
 	
-	//j = -1;
-	//while (++j < st->len - 1)
-	//{
+	if (st->b_max_abs_pos + 1 <= st->len - 1)
+		st->next_ind = st->pos_ind[st->b_max_abs_pos + 1];
+	else
+		st->next_ind = -1;
+
+	if (st->b_min_abs_pos - 1 >= 0)
+		st->prev_ind = st->pos_ind[st->b_min_abs_pos - 1];
+	else
+		st->prev_ind = -1;
 	
 	if (SHOW)
 		ft_printf("b_max_abs_pos = %d, b_min_abs_pos = %d\n", st->b_max_abs_pos, st->b_min_abs_pos);
 	if (SHOW)
-		ft_printf("push = %d, pos = %d, prev_ind = %d, next_ind = %d\n", st->push, pos, st->prev_ind, st->next_ind);
+		ft_printf("push = %d, prev_ind = %d, next_ind = %d\n", st->push, st->prev_ind, st->next_ind);
 	prev_dis = abs(st->prev_ind - st->push); 
 	if (prev_dis > st->len - prev_dis)
 		prev_dis = st->len - st->push - prev_dis;
@@ -752,29 +704,18 @@ void	next_push(t_stack *st)
 
 	if (SHOW)
 		ft_printf("prev_dis = %d, next_dis = %d\n", prev_dis, next_dis);
-	if (st->prev_ind != -1 && (prev_dis + 1 < next_dis || st->next_ind == -1))
+	if (st->prev_ind != -1 && (prev_dis < next_dis || st->next_ind == -1))
 	{
 		if (SHOW)
 			ft_printf("Get prev\n");
 		get_next(st, st->push, st->prev_ind);
 		ft_printf("rb\n");
 		st->set_operation(st, "rb");
-
 		if (SHOW == 1)
 			st->print_stack(st);
 		if (SHOW == 2)
 			st->print_position(st);
-
 		st->b_min_abs_pos--;
-		get_abs_position(st);
-		if (SHOW)
-			st->print_position(st);
-		if (st->b_max_abs_pos + 1 <= st->len - 1)
-			st->next_ind = st->pos_ind[st->b_max_abs_pos + 1];
-		if (st->b_min_abs_pos - 1 >= 0)
-			st->prev_ind = st->pos_ind[st->b_min_abs_pos - 1];
-		else
-			st->prev_ind = -1;
 	}
 	else if (st->next_ind != -1)
 	{
@@ -782,23 +723,82 @@ void	next_push(t_stack *st)
 			ft_printf("Get next\n");
 		get_next(st, st->push, st->next_ind);
 		st->b_max_abs_pos++;
-		get_abs_position(st);
-		if (SHOW)
-			st->print_position(st);
-		if (st->b_min_abs_pos - 1 >= 0)
-			st->prev_ind = st->pos_ind[st->b_min_abs_pos - 1];
-		if (st->b_max_abs_pos + 1 <= st->len - 1)
-			st->next_ind = st->pos_ind[st->b_max_abs_pos + 1];
-		else
-			st->next_ind = -1;
 	}
+}
 
-	//}
+//void	check_best(t_stack *st, int *last_push)
+void	check_best(t_stack *st)
+{
+	//int		current_push;
+	char	*best;
+	int	last_score;
+
+	if (SHOW)
+		ft_printf("========== check best =========\n");
+	best = best_operation(st);
+	if (!best)
+	{
+		if (st->push > 0)
+		{
+			st->push--;
+			best = best_operation(st);
+			if (best)
+			{
+				ft_printf("pa\n");
+				ft_printf("%s\n", best);
+				st->set_operation(st, best);
+			}
+			else
+				st->push++;
+		}
+		if (st->push > 0)
+		{
+			st->push--;
+			best = best_operation(st);
+			if (best)
+			{
+				ft_printf("pa\n");
+				ft_printf("%s\n", best);
+				st->set_operation(st, best);
+			}
+			else
+				st->push++;
+		}
+	}
+	while (best && st->score)
+	{
+		//ft_printf("best operation = %s\n", best);
+
+		last_score = st->score;
+		st->set_operation(st, best);
+		st->get_position(st);
+		get_abs_position(st);
+		if (last_score == st->score && st->abs_pos[st->push] >= st->b_min_abs_pos - 1 && st->abs_pos[st->push] <= st->b_max_abs_pos + 1)
+		{
+			if (SHOW)
+			{
+				st->print_position(st);
+				ft_printf("Unset %s\n", best);
+			}
+			st->unset_operation(st, best);
+			next_push(st);
+		}
+		else	
+			ft_printf("%s\n", best);
+		st->get_position(st);
+
+		if (SHOW == 1)
+			st->print_stack(st);
+		if (SHOW == 2)
+			st->print_position(st);
+
+		best = best_operation(st);
+	}
 }
 
 void	calculate(t_stack *st)
 {
-	int	last_push;
+	//int	last_push;
 
 	st->score = 1;
 	st->push = 0;
@@ -808,11 +808,14 @@ void	calculate(t_stack *st)
 	if (SHOW)
 		st->print_stack(st);
 
-	last_push = st->push;
-	while (st->push < st->len - 1)
+	//last_push = st->push;
+	while (st->push < st->len - 1 && st->score)
 	{
-		check_best(st, &last_push);
-		next_push(st);
+		//check_best(st, &last_push);
+		check_best(st);
+		if (st->score)
+			next_push(st);
+		st->get_position(st);
 	}
 	//else {
 
@@ -858,6 +861,8 @@ t_stack	*new_stack(int *ini, int len)
 		return (0);
 	new->len = len;
 	new->push = 0;	
+	new->b_max_abs_pos = 0;
+	new->b_min_abs_pos = 0;
 	new->calculate = calculate;
 	new->unset_operation = unset_operation;
 	new->set_operation = set_operation;

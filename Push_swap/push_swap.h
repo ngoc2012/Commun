@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/01/01 11:26:20 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/01/01 18:59:42 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PUSH_SWAP_H
 
 # define MANUAL 0
-# define SHOW 1
-# define SCORE 0
+# define SHOW 2
+# define SCORE 1
 # define abs(x) ((x < 0) ? -(x) : (x))
 
 #endif
