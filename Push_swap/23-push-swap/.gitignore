@@ -1,0 +1,15 @@
+.DS_Store
+a.out*
+*.sw*
+ref
+cpy
+*.o
+*.a
+*.d
+*.vim
+*test*
+!testers
+tags
+todo.md
+push_swap
+checker
