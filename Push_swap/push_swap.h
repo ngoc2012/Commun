@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/01/06 10:20:16 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/01/13 11:03:09 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PUSH_SWAP_H
 
 # define MANUAL 0
-# define SHOW 2
-# define SCORE 2
+# define SHOW 0
+# define SCORE 0
 
 #include <fcntl.h>
 #include <unistd.h>

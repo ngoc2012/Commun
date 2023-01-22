@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:18:11 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/01/05 22:11:00 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/01/21 15:20:15 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	set_operation(t_stack *st, enum e_ops op)
 		j = st->cur[st->push];
 		st->cur[st->push] = st->cur[st->push + 1]; 
 		st->cur[st->push + 1] = j;
-		return ;
+		if (op == sa)
+			return ;
 	}
 	if ((op == sb || op == ss) && st->push >= 2)
 	{
@@ -42,7 +43,8 @@ void	set_operation(t_stack *st, enum e_ops op)
 			st->cur[i + 1] = j;
 			i++;
 		}
-		return ;
+		if (op == ra)
+			return ;
 	}
 	if ((op == rrb || op == rrr) && st->push >= 2)
 	{
@@ -54,7 +56,8 @@ void	set_operation(t_stack *st, enum e_ops op)
 			st->cur[i + 1] = j;
 			i++;
 		}
-		return ;
+		if (op == rrb)
+			return ;
 	}
 	if ((op == rra || op == rrr) && st->len - st->push >= 2)
 	{

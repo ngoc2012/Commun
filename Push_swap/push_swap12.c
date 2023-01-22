@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/01/21 16:33:58 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/01/16 19:09:00 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -365,7 +365,7 @@ void	rot_next_b(t_stack *st, int min_a_p)
 
 void	rot_min_a(t_stack *st)
 {
-	int	min_a_p;
+	int	min_a;
 	int	i_min;
 	int	i;
 	int	d_ra;
@@ -376,20 +376,18 @@ void	rot_min_a(t_stack *st)
 	if (st->len - st->push < 2)
 		return ;
 	i_min = st->push;
-	min_a_p = st->cur[i_min].a_p;
+	min_a = st->cur[i_min].v;
 	i = st->push;
 	while (++i < st->len)
 	{
-		if (st->cur[i].a_p < min_a_p)
+		if (st->cur[i].v < min_a)
 		{
 			i_min = i;
-			min_a_p = st->cur[i].a_p;
+			min_a = st->cur[i].v;
 		}
 	}
 	d_ra = i_min - st->push;
 	d_rra = st->len - st->push - d_ra;
-	//print_position(st);
-	//ft_printf("rot_min_a: i_min = %d, min_a_p = %d, a_p = %d\n", i_min, min_a_p, st->cur[i_min].a_p);
 	//ft_printf("rot_min_a: d_ra = %d, d_rra = %d\n", d_ra, d_rra);
 	if (d_ra <= d_rra)
 	{
@@ -460,7 +458,7 @@ int	divide_times(int a)
 	d = 0;
 	while (a > 20)
 	{
-		a /= 3;
+		a /= 2;
 		//ft_printf("a = %d\n", a);
 		d++;
 	}
@@ -469,6 +467,9 @@ int	divide_times(int a)
 
 void	calculate(t_stack *st)
 {
+	int	i;
+	int	n;
+	int	n0;
 
 	if (SCORE)
 	{
@@ -557,11 +558,8 @@ void	calculate(t_stack *st)
 	}
 	else
 	{
-		//int	i;
-		//int	n;
 		int	d;
 		int	is_push_b;
-		//int	n0;
 
 		d = divide_times(st->len);
 		if (d % 2 == 0)
@@ -569,536 +567,257 @@ void	calculate(t_stack *st)
 		//ft_printf("d = %d\n", d);
 		int	j;
 		int	k;
-		//int	last1;
 		int	last0;
 		int	last;
 		int	max_b, min_a;
 		
-		get_position(st);
 		//ft_printf("START push = %d\n", st->push);
-		//j = -1;
-		//i = 1;
+		j = -1;
+		i = 1;
 		is_push_b = 1;
-		//n = st->len;
-		//while (++j < d)
-		//{
-			//i *= 3;
-			//n0 = n / i;
-			//ft_printf("n0 = %d\n", n0);
-			min_a = 0;
-			last0 = st->len - min_a;
-			last = (st->len - min_a) / 3;
-			while (st->len - st->push != last)
+		while (++j < d)
+		{
+			i *= 2;
+			n = st->len;
+			n0 = n / i;
+			while (n)
 			{
-				rot_next_a(st, st->len - last);
-				ft_printf("pb\n");
-				st->push++;
-				if (st->push > 1 && st->cur[st->push - 1].a_p < st->len - 2 * last && st->cur[st->push - 2].a_p >= st->len - 2 * last)
+				//ft_printf("i = %d, n = %d, n0 = %d, push = %d\n", i, n, n0, st->push);
+				if (is_push_b == -1 && st->len - st->push > n0 && n == st->len)
 				{
-					ft_printf("rb\n");
-					set_operation(st, rb);
-				}
-			}
-			//print_position(st);
-			min_a = st->push;
-			last0 = st->len - min_a;
-			last = (st->len - min_a) / 3;
-			while (st->len - st->push != last)
-			{
-				rot_next_a(st, st->len - last);
-				ft_printf("pb\n");
-				st->push++;
-				if (st->push > 1 && st->cur[st->push - 1].a_p < st->len - 2 * last && st->cur[st->push - 2].a_p >= st->len - 2 * last)
-				{
-					ft_printf("rb\n");
-					set_operation(st, rb);
-				}
-			}
-
-			ft_printf("=== 1 ===\n");
-			//ft_printf("ra\n");
-			//set_operation(st, ra);
-			//ft_printf("ra\n");
-			//set_operation(st, ra);
-
-			if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-			{
-				ft_printf("ss\n");
-				set_operation(st, ss);
-			}
-
-
-			while (st->len - st->push != last0)
-			{
-				rot_next_b(st, st->len - last0);
-				ft_printf("pa\n");
-				st->push--;
-			}
-
-			if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-			{
-				ft_printf("ss\n");
-				set_operation(st, ss);
-			}
-
-			last = 11;
-			while (st->len - st->push != last0 + 2 * last)
-			{
-				rot_next_b(st, st->len - last0 - 2 * last);
-				ft_printf("pa\n");
-				st->push--;
-				if (st->cur[st->push].a_p < st->len - last0 - last && st->cur[st->push + 1].a_p >= st->len - last0 - last)
-				{
-					ft_printf("ra\n");
-					set_operation(st, ra);
-				}
-			}
-
-			if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-			{
-				ft_printf("ss\n");
-				set_operation(st, ss);
-			}
-
-			k = -1;
-			while (++k < last)
-			{
-				ft_printf("rrr\n");
-				set_operation(st, rrr);
-			}
-
-			if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-			{
-				ft_printf("ss\n");
-				set_operation(st, ss);
-			}
-
-			k = -1;
-			while (++k < last)
-			{
-				ft_printf("pa\n");
-				set_operation(st, pa);
-			}
-			last = 11;
-			while (st->push != last)
-			{
-				rot_next_b(st, last);
-				ft_printf("pa\n");
-				st->push--;
-				if (st->cur[st->push].a_p < 2 * last && st->cur[st->push + 1].a_p >= 2 * last)
-				{
-					ft_printf("ra\n");
-					set_operation(st, ra);
-				}
-			}
-
-			if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-			{
-				ft_printf("ss\n");
-				set_operation(st, ss);
-			}
-
-			k = -1;
-			while (++k < last)
-			{
-				ft_printf("rra\n");
-				set_operation(st, rra);
-			}
-
-			last = 4;
-			while (st->push != last - 1)
-			{
-				rot_next_b(st, last - 1);
-				ft_printf("pa\n");
-				st->push--;
-				if (st->cur[st->push].a_p < (2 * last - 1) && st->cur[st->push + 1].a_p >= (2 * last - 1))
-				{
-					ft_printf("ra\n");
-					set_operation(st, ra);
-				}
-			}
-			k = -1;
-			while (++k < last)
-			{
-				ft_printf("rra\n");
-				set_operation(st, rra);
-			}
-
-			if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-			{
-				ft_printf("ss\n");
-				set_operation(st, ss);
-			}
-
-			k = -1;
-			while (++k < 2 * last)
-			{
-				ft_printf("pb\n");
-				set_operation(st, pb);
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-			}
-
-
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				//ft_printf("end\n");
-				max_b = st->push;
-				last = 4;
-				while (st->push != max_b + 2 * last)
-				{
-					rot_next_a(st, max_b + 2 * last);
-					ft_printf("pb\n");
-					st->push++;
-					if (st->cur[st->push - 2].a_p < (max_b + last) && st->cur[st->push - 1].a_p >= (max_b + last))
+					last0 = st->push;
+					last = st->push + n0;
+					//ft_printf("Push a, last = %d\n", last);
+					while (st->push != last)
 					{
-						ft_printf("rb\n");
-						set_operation(st, rb);
+						rot_next_a(st, last);
+						ft_printf("pb\n");
+						st->push++;
 					}
-				}
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				k = -1;
-				while (++k < last - 1)
-				{
-					ft_printf("rrr\n");
-					set_operation(st, rrr);
-				}
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				ft_printf("rrb\n");
-				set_operation(st, rrb);
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				k = -1;
-				while (++k < last - 1)
-				{
-					ft_printf("pb\n");
-					set_operation(st, pb);
-
-					if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
+					while (st->push != last0)
 					{
-						ft_printf("ss\n");
-						set_operation(st, ss);
+						ft_printf("pa\n");
+						st->push--;
 					}
-
+					n -= st->len - st->push;
+					//ft_printf("End Push a, push = %d\n", st->push);
 				}
-
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
+				else if (is_push_b == 1 && st->push > n0 && n == st->len)
 				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				//ft_printf("end\n");
-				max_b = st->push;
-				last = 4;
-				while (st->push != max_b + 2 * last)
-				{
-					rot_next_a(st, max_b + 2 * last);
-					ft_printf("pb\n");
-					st->push++;
-					if (st->cur[st->push - 2].a_p < (max_b + last) && st->cur[st->push - 1].a_p >= (max_b + last))
+					last0 = st->push;
+					last = st->push - n0;
+					//ft_printf("Push b, last = %d\n", last);
+					while (st->push != last)
 					{
-						ft_printf("rb\n");
-						set_operation(st, rb);
+						rot_next_b(st, last);
+						ft_printf("pa\n");
+						st->push--;
 					}
-				}
-				k = -1;
-				while (++k < last)
-				{
-					ft_printf("rrr\n");
-					set_operation(st, rrr);
-				}
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				k = -1;
-				while (++k < last)
-				{
-					ft_printf("pb\n");
-					set_operation(st, pb);
-
-					if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
+					while (st->push != last0)
 					{
-						ft_printf("ss\n");
-						set_operation(st, ss);
+						ft_printf("pb\n");
+						st->push++;
 					}
-
+					n -= st->push;
+					//ft_printf("End Push b, push = %d\n", st->push);
 				}
-
-				
-
-			j = -1;
-			while (++j < 3)
-			{
-
-
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
+				else
 				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				//ft_printf("end\n");
-				max_b = st->push;
-				last = 4;
-				while (st->push != max_b + 2 * last)
-				{
-					rot_next_a(st, max_b + 2 * last);
-					ft_printf("pb\n");
-					st->push++;
-					if (st->cur[st->push - 2].a_p < (max_b + last) && st->cur[st->push - 1].a_p >= (max_b + last))
+					//ft_printf("333 i = %d, n = %d, n0 = %d\n", i, n, n0);
+					max_b = st->cur[0].a_p;
+					k = -1;
+					while (++k < st->push)
 					{
-						ft_printf("rb\n");
-						set_operation(st, rb);
+						if (max_b < st->cur[k].a_p)
+							max_b = st->cur[k].a_p;
 					}
-				}
-				k = -1;
-				while (++k < last - 1)
-				{
-					ft_printf("rrr\n");
-					set_operation(st, rrr);
-				}
-				ft_printf("rrb\n");
-				set_operation(st, rrb);
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				k = -1;
-				while (++k < last - 1)
-				{
-					ft_printf("pb\n");
-					set_operation(st, pb);
-
-					if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
+					min_a = st->cur[st->push].a_p;
+					k = st->push - 1;
+					while (++k < st->len)
 					{
-						ft_printf("ss\n");
-						set_operation(st, ss);
+						if (min_a > st->cur[k].a_p)
+							min_a = st->cur[k].a_p;
 					}
-
+					//ft_printf("max_b = %d, min_a = %d\n", max_b, min_a);
+					if (n - n0 < n0)
+					{
+						n0 = n;
+						//k = -1;
+						//if (is_push_b == 1)
+						//{
+						//	while (++k < n0) 
+						//	{
+						//		ft_printf("pb\n");
+						//		st->push++;
+						//	}
+						//}
+						//else
+						//{
+						//	while (++k < n0) 
+						//	{
+						//		ft_printf("pa\n");
+						//		st->push--;
+						//	}
+						//}
+					}
+					else
+					{
+						//ft_printf("i = %d, n = %d, n0 = %d\n", i, n, n0);
+						if (is_push_b == 1)
+						{
+							last = st->push + n0;
+							//ft_printf("Push b Limite %d\n", last);
+							while (st->push != last)
+							{
+								rot_next_a(st, last);
+								ft_printf("pb\n");
+								st->push++;
+							}
+						}
+						else
+						{
+							//ft_printf("Push a Limite %d\n", n - n0);
+							while (st->push != n - n0)
+							{
+								rot_next_b(st, n - n0);
+								ft_printf("pa\n");
+								st->push--;
+							}
+						}
+					}
+					n -= n0;
 				}
-
 			}
-
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				//ft_printf("end\n");
-				max_b = st->push;
-				last = 4;
-				while (st->push != max_b + 2 * last)
-				{
-					rot_next_a(st, max_b + 2 * last);
-					ft_printf("pb\n");
-					st->push++;
-					if (st->cur[st->push - 2].a_p < (max_b + last) && st->cur[st->push - 1].a_p >= (max_b + last))
-					{
-						ft_printf("rb\n");
-						set_operation(st, rb);
-					}
-				}
-				ft_printf("rrr\n");
-				set_operation(st, rrr);
-				k = -1;
-				while (++k < last - 1)
-				{
-					ft_printf("rrb\n");
-					set_operation(st, rrb);
-				}
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				k = -1;
-				while (++k < last - 1)
-				{
-					ft_printf("pb\n");
-					set_operation(st, pb);
-
-					if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-					{
-						ft_printf("ss\n");
-						set_operation(st, ss);
-					}
-
-				}
-
-
-
-
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				//ft_printf("end\n");
-				max_b = st->push;
-				last = 4;
-				while (st->push != max_b + 2 * last)
-				{
-					rot_next_a(st, max_b + 2 * last);
-					ft_printf("pb\n");
-					st->push++;
-					if (st->cur[st->push - 2].a_p < (max_b + last) && st->cur[st->push - 1].a_p >= (max_b + last))
-					{
-						ft_printf("rb\n");
-						set_operation(st, rb);
-					}
-				}
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				k = -1;
-				while (++k < last - 1)
-				{
-					ft_printf("rrr\n");
-					set_operation(st, rrr);
-				}
-				ft_printf("rrb\n");
-				set_operation(st, rrb);
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				k = -1;
-				while (++k < last - 1)
-				{
-					ft_printf("pb\n");
-					set_operation(st, pb);
-
-					if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-					{
-						ft_printf("ss\n");
-						set_operation(st, ss);
-					}
-
-				}
-
-
-
-
-
-				if (st->cur[st->push - 2].a_p > st->cur[st->push - 1].a_p && st->cur[st->push].a_p > st->cur[st->push + 1].a_p)
-				{
-					ft_printf("ss\n");
-					set_operation(st, ss);
-				}
-
-				//ft_printf("end\n");
-				max_b = st->push;
-				last = 4;
-				while (st->push != max_b + 2 * last)
-				{
-					rot_next_a(st, max_b + 2 * last);
-					ft_printf("pb\n");
-					st->push++;
-					if (st->cur[st->push - 2].a_p < (max_b + last) && st->cur[st->push - 1].a_p >= (max_b + last))
-					{
-						ft_printf("rb\n");
-						set_operation(st, rb);
-					}
-				}
-
-				ft_printf("sa\n");
-				set_operation(st, sa);
-				ft_printf("ra\n");
-				set_operation(st, ra);
-
-
-
-			//k = -1;
-			//while (++k < last)
-			//{
-			//	ft_printf("pa\n");
-			//	set_operation(st, pa);
-			//}
-			//min_a = st->push;
-			//last0 += st->len - min_a;
-			//last1 = last0 - last;
-			//while (st->len - st->push != last1)
-			//{
-			//	rot_next_b(st, st->len - last1);
-			//	ft_printf("pa\n");
-			//	st->push--;
-			//}
-			max_b = st->cur[0].a_p;
-			k = -1;
-			while (++k < st->push)
-			{
-				if (max_b < st->cur[k].a_p)
-					max_b = st->cur[k].a_p;
-			}
-			min_a = st->cur[st->push].a_p;
-			k = st->push - 1;
-			while (++k < st->len)
-			{
-				if (min_a > st->cur[k].a_p)
-					min_a = st->cur[k].a_p;
-			}
-			//ft_printf("max_b = %d, min_a = %d\n", max_b, min_a);
 			is_push_b *= -1;
+		}
+		//ft_printf("END push = %d\n", st->push);
+		//last = st->push;
+		//while (st->push != st->len)
+		//{
+		//	rot_min_a(st);
+		//	st->push++;
+		//	ft_printf("pb\n");
+		//}
+		//while (st->push)
+		//{
+		//	rot_max_b(st);
+		//	st->push--;
+		//	ft_printf("pa\n");
+		//}
+
+		//while (st->push)
+		//{
+		//	rot_max_b(st);
+		//	st->push--;
+		//	ft_printf("pa\n");
+		//}
+		//while (last--)
+		//{
+		//	st->push--;
+		//	ft_printf("pa\n");
+		//}
+
+		//last = st->len - st->push;
+		//while (st->push != st->len)
+		//{
+		//	rot_min_a(st);
+		//	st->push++;
+		//	ft_printf("pb\n");
+		//}
+		//while (last--)
+		//{
+		//	st->push--;
+		//	ft_printf("pa\n");
+		//}
+		//while (st->push)
+		//{
+		//	rot_max_b(st);
+		//	st->push--;
+		//	ft_printf("pa\n");
+		//}
+
+		//ft_printf("END 1\n");
+		//rot_a(st);
+		//ft_printf("END 2\n");
+
+		//int	last_push_b;
+		//last_push_b = 0;
+		//n0 = st->len;
+		//n = n0 / 2;
+		//while (n0 > 2)
+		//{
+		//	last_push_b += n;
+		//	if (SHOW)
+		//		ft_printf("n0 = %d, n = %d, last_push_b = %d\n", n0, n, last_push_b);
+		//	i = -1;
+		//	while (++i < n0)
+		//	{
+		//		if (st->cur[st->push].a_p < last_push_b)
+		//		{
+		//			ft_printf("pb\n");
+		//			st->push++;
+		//		}
+		//		else if (i != n0 - 1)
+		//		{
+		//			set_operation(st, ra);
+		//			ft_printf("ra\n");
+		//		}
+		//	}
+		//	n0 -= n;
+		//	n = n0 / 2;
+		//	if (SHOW == 1)
+		//		print_stack(st);
+		//	if (SHOW == 2)
+		//		print_position(st);
+		//}
+		//rot_a(st);
+		//while (st->push)
+		//{
+		//	rot_max_b(st);
+		//	st->push--;
+		//	ft_printf("pa\n");
+		//}
+		
+		//if (SHOW)
+		//	ft_printf("2nd round, push = %d\n", st->push);
+		//int	last_push_a;
+		//last_push_a = st->push;
+		//n0 = st->push;
+		//n = n0 / 2;
+		//while (n0 > 2)
+		//{
+		//	last_push_a -= n;
+		//	if (SHOW)
+		//		ft_printf("n0 = %d, n = %d, last_push_a = %d\n", n0, n, last_push_a);
+		//	i = -1;
+		//	while (++i < n0)
+		//	{
+		//		if (st->cur[st->push - 1].a_p >= last_push_a)
+		//		{
+		//			ft_printf("pa\n");
+		//			st->push--;
+		//		}
+		//		else
+		//		{
+		//			set_operation(st, rb);
+		//			ft_printf("rb\n");
+		//		}
+		//	}
+		//	n0 -= n;
+		//	n = n0 / 2;
+		//	if (SHOW == 1)
+		//		print_stack(st);
+		//	if (SHOW == 2)
+		//		print_position(st);
+		//}
+		//rot_b(st);
+		//while (st->push < st->len - 2)
+		//{
+		//	rot_min_a(st);
+		//	st->push++;
+		//	ft_printf("pb\n");
 		//}
 	}
-	
-	while (st->push)
-	{
-		rot_max_b(st);
-		ft_printf("pa\n");
-		st->push--;
-	}
-	
 	//rot_b(st);
 	//while (st->push)
 	//	push_a(st);

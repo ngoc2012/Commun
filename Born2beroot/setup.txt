@@ -1,3 +1,16 @@
+sudo apt-get install php8.2-{fpm,mysql,cli,curl,xml}
+sudo apt-get install php-json
+sudo apt-get install php-zip
+sudo apt-get install php-mbstring
+sudo apt-get install php-gd
+sudo apt-get install php-intl
+sudo apt-get install php-cgi
+minh-ngu42
+ngoc
+Hermes2012##
+
+scp -P 4242 * ngoc@127.0.0.1:/home/ngoc/Gcpm
+
 References:
 https://github.com/ayoub0x1/born2beroot
 
