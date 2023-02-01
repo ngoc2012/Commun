@@ -6,16 +6,12 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/01/13 11:03:09 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/01 17:06:06 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-# define MANUAL 0
-# define SHOW 0
-# define SCORE 0
 
 #include <fcntl.h>
 #include <unistd.h>
@@ -74,5 +70,24 @@ int	get_score_ra(t_stack *st);
 int	get_score_rb(t_stack *st);
 int	get_score(t_stack *st, enum e_ops op);
 void	get_abs_position(t_stack *st);
+void	rot_next_a(t_stack *st, int max_a_p);
+void	rot_next_b(t_stack *st, int min_a_p);
+int	rot_min_a(t_stack *st, int right);
+int	rot_min_a_2(t_stack *st, int min_v, int right);
+void	rot_max_b(t_stack *st);
+void	calculate_3(t_stack *st);
+void	calculate_9(t_stack *st);
+void	calculate_27(t_stack *st);
+void	calculate_81(t_stack *st);
+void	calculate_243(t_stack *st);
+void	calculate_729(t_stack *st);
+void	calculate(t_stack *st);
+void	to_left(t_stack *st, int last, int last1, int set_rrr);
+void	to_left_1(t_stack *st, int last);
+void	to_left_2(t_stack *st, int last, int last1);
+int	divide_third(int n);
+void	to_right(t_stack *st, int max_b, int last, int last1);
+void	to_right_1(t_stack *st, int last, int last1);
+void	to_right_2(t_stack *st);
 
 #endif

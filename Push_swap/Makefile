@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/01/15 20:44:47 by minh-ngu         ###   ########.fr        #
+#    Updated: 2023/02/01 17:06:35 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,16 +24,16 @@ $(LIBPR):
 $(GNL):
 	make -C GNL
 $(FILE): $(LIBFT) $(LIBPR) $(GNL)
-	$(CC) $(FLAGS) -g $@.c get_score.c operations.c position.c print.c -L./libft -lft -L./ft_printf -lftprintf -L./GNL -lftgnl -I. -I./libft -I./ft_printf -I./GNL -o $(FILE)
+	$(CC) $(FLAGS) -g $@.c get_score.c operations.c position.c print.c rot.c cal.c to.c -L./libft -lft -L./ft_printf -lftprintf -L./GNL -lftgnl -I. -I./libft -I./ft_printf -I./GNL -o $(FILE)
 #	clear
-#	valgrind -q --leak-check=full ./push_swap -30 799 -806 662 -542
+	valgrind -q --leak-check=full ./push_swap -30 799 -806 662 -542
 #	valgrind -q --leak-check=full ./push_swap 46 812 386
 #	valgrind -q --leak-check=full ./push_swap 812 386 46
 #	valgrind -q --leak-check=full ./push_swap 812 46 386
 #	valgrind -q --leak-check=full ./push_swap 386 812 46
 #	valgrind -q --leak-check=full ./push_swap 386 46 812
-	valgrind -q --leak-check=full ./push_swap -238 981 -840 116 -816 -558 -389 632 704 910 -989 31 -246 93 -204 156 -713 21 267 397 -542 -762 -628 -944 120 -203 233 -979     34 -333 678 -678 625 -703 441 697 -278 489 641 -88 514 877 398 -399 887 990 799 -466 151 30 774 -71 -252 902 -655 -502 -89    9 -995 -340 -7 -101 708 -869 712 -596 248 -981 920 -171 -105 80 594 626 479 -943 -398 87 429 -826 -807 744 -543 -572 734 -5    55 -837 -720 706 380 768 -382 -282 -719 -22 -441 -519 -841 -834 175 -527
-	#valgrind -q --leak-check=full ./push_swap 42 -363 -918 -460 -116 660 91 509 -815 -706 -324 283
+#	valgrind -q --leak-check=full ./push_swap 533 -552 -861 -402 712 854 623 -62 322 0 -990 555 -304 -94 348 874 573 320 829 -461 741 -180 -913 -350 174 -138 -578 -112 281 -433 519 512 146 -974 125 -555 -646 -121 270 -621 685 -656 4 -605 -20 -436 213 261 293 -817 705 -420 -139 214 -937 -860 -653 -858 530 359 -201 130 77 640 259 -249 -818 909 -211 422 -832 -89 485 30 364 -607 -519 929 -791 504 -518 206 -896 -970 468 -554 -47 360 -926 432 168 339 -299 490 276 377 227 301 369 -192
+#	valgrind -q --leak-check=full ./push_swap 42 -363 -918 -460 -116 660 91 509 -815 -706 -324 283
 #	valgrind -q --leak-check=full ./push_swap 42 -363 -918 -460 -116 660 91 509 -815 -706 -324 283 -376 268 101 -499 440 242 808 -780
 #	valgrind -q --leak-check=full ./push_swap 304 -52 -307 -446 232 803 -661 612 202 691 -427 -907 -777 -216 -776 103 630 987 736 -105 -374 -928 887 -718 468 507 -141 -694 680 -832 -531 -440 -276 -624 -920 351 994 271 -191 319 -300 296 33 427 459 206 -151 -706 -212 298 724 -166 -930 -457 38 -420 -8 112 -45 737 496 -589 817 -37 474 -696 -894 438 -829 -852 608 -609 -523 -184 123 -827 -64 974 -21 4 -541 414 131 -34 552 -992 228 -167 257 981 856 373 637 75 635 179 299 263 554 -995 > test1.txt
 #	valgrind -q --leak-check=full ./push_swap -700 -278 -362 -767 -638 -900 739
