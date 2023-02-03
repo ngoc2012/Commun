@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:20:49 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/01/06 10:22:50 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/02 10:59:08 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ void	print_position(t_stack *st)
 		if (i == st->push)
 			ft_printf("   -------\n");
 		ft_printf("%6d", st->cur[i].v);
-		ft_printf("%6d", st->cur[i].p);
 		ft_printf("%6d", st->cur[i].r_p_a);
 		ft_printf("%6d", st->cur[i].a_p);
-		ft_printf("%6d", st->cur[i].a_p_a);
 		ft_printf("\n");
 	}
 	if (i == st->push)
@@ -33,14 +31,10 @@ void	print_position(t_stack *st)
 	ft_printf("%6s", "___");
 	ft_printf("%6s", "___");
 	ft_printf("%6s", "___");
-	ft_printf("%6s", "___");
-	ft_printf("%6s", "___");
 	ft_printf("\n");
 	ft_printf("%6s", "ini");
-	ft_printf("%6s", "pos");
 	ft_printf("%6s", "r_p_a");
 	ft_printf("%6s", "a_p");
-	ft_printf("%6s", "a_p_a");
 	ft_printf("\n");
 	ft_printf("----------\n");
 }

@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/01 16:54:44 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/02 11:23:44 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,7 @@ void	rot_next_a(t_stack *st, int max_a_p)
 		if (st->cur[i].a_p < max_a_p && d_rra > st->len - st->push - i)
 			d_rra = st->len - i;
 	}
-	if (d_ra <= d_rra)
-	{
-		while (d_ra--)
-		{
-			ft_printf("ra\n");
-			set_operation(st, ra);
-		}
-	}
-	else
-	{
-		while (d_rra--)
-		{
-			ft_printf("rra\n");
-			set_operation(st, rra);
-		}
-	}
+	set_d_ra(st, d_ra, d_rra, 0);
 }
 
 void	rot_next_b(t_stack *st, int min_a_p)
@@ -66,22 +51,7 @@ void	rot_next_b(t_stack *st, int min_a_p)
 		if (st->cur[i].a_p >= min_a_p && d_rrb > i + 1)
 			d_rrb = i + 1;
 	}
-	if (d_rb <= d_rrb)
-	{
-		while (d_rb--)
-		{
-			ft_printf("rb\n");
-			set_operation(st, rb);
-		}
-	}
-	else
-	{
-		while (d_rrb--)
-		{
-			ft_printf("rrb\n");
-			set_operation(st, rrb);
-		}
-	}
+	set_d_rb(st, d_rb, d_rrb, 0);
 }
 
 int	rot_min_a(t_stack *st, int right)
@@ -107,32 +77,7 @@ int	rot_min_a(t_stack *st, int right)
 	}
 	d_ra = i_min - st->push;
 	d_rra = st->len - st->push - d_ra;
-	if (d_ra <= d_rra)
-	{
-		while (d_ra--)
-		{
-			ft_printf("ra\n");
-			set_operation(st, ra);
-		}
-	}
-	else
-	{
-		while (d_rra--)
-		{
-			if (right > 0)
-			{
-				ft_printf("rrr\n");
-				set_operation(st, rrr);
-				right--;
-			}
-			else
-			{
-				ft_printf("rra\n");
-				set_operation(st, rra);
-			}
-		}
-	}
-	return (right);
+	return (set_d_ra(st, d_ra, d_rra, right));
 }
 
 int	rot_min_a_2(t_stack *st, int min_v, int right)
@@ -158,32 +103,7 @@ int	rot_min_a_2(t_stack *st, int min_v, int right)
 	}
 	d_ra = i_min - st->push;
 	d_rra = st->len - st->push - d_ra;
-	if (d_ra <= d_rra)
-	{
-		while (d_ra--)
-		{
-			ft_printf("ra\n");
-			set_operation(st, ra);
-		}
-	}
-	else
-	{
-		while (d_rra--)
-		{
-			if (right > 0)
-			{
-				ft_printf("rrr\n");
-				set_operation(st, rrr);
-				right--;
-			}
-			else
-			{
-				ft_printf("rra\n");
-				set_operation(st, rra);
-			}
-		}
-	}
-	return (right);
+	return (set_d_ra(st, d_ra, d_rra, right));
 }
 
 void	rot_max_b(t_stack *st)
@@ -209,20 +129,5 @@ void	rot_max_b(t_stack *st)
 	}
 	d_rb = st->push - 1 - i_max;
 	d_rrb = i_max + 1;
-	if (d_rb <= d_rrb)
-	{
-		while (d_rb--)
-		{
-			ft_printf("rb\n");
-			set_operation(st, rb);
-		}
-	}
-	else
-	{
-		while (d_rrb--)
-		{
-			ft_printf("rrb\n");
-			set_operation(st, rrb);
-		}
-	}
+	set_d_rb(st, d_rb, d_rrb, 0);
 }

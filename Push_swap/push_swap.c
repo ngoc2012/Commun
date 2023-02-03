@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/01 17:06:57 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/02 10:38:25 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ t_stack	*new_stack(int *ini, int len)
 		return (0);
 	new->len = len;
 	new->push = 0;	
-	new->score = 0;	
-	new->score_a = 0;	
 	new->ini = ini;
 	new->cur = malloc(sizeof(t_el) * len);
 	if (!new->cur)

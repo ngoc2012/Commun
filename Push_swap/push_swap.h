@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/01 17:06:06 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/02 11:25:03 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,8 @@ enum e_ops {ss, sb, rb, rrb, sa, ra, rra, rr, rrr, pa, pb};
 typedef struct s_el
 {
 	int	v;
-	int	p;
 	int	r_p_a;
 	int	a_p;
-	int	a_p_a;
 }	t_el;
 
 typedef struct s_stack	t_stack;
@@ -40,10 +38,7 @@ struct s_stack
 	t_el	*cur;
 	int	push;
 	int	len;
-	int	r_sc;
 	int	r_sc_a;
-	int	score;
-	int	score_a;
 	void	(*calculate)(t_stack *);
 	int	(*get_score)(t_stack *, enum e_ops);
 	void	(*get_position)(t_stack *);
@@ -51,7 +46,6 @@ struct s_stack
 	void	(*free)(t_stack *);
 };
 
-void	unset_operation(t_stack *, enum e_ops);
 void	set_operation(t_stack *, enum e_ops);
 void	print_position(t_stack *);
 void	print_stack(t_stack *);
@@ -75,6 +69,8 @@ void	rot_next_b(t_stack *st, int min_a_p);
 int	rot_min_a(t_stack *st, int right);
 int	rot_min_a_2(t_stack *st, int min_v, int right);
 void	rot_max_b(t_stack *st);
+int	set_d_ra(t_stack *st, int d_ra, int d_rra, int right);
+int	set_d_rb(t_stack *st, int d_rb, int d_rrb, int left);
 void	calculate_3(t_stack *st);
 void	calculate_9(t_stack *st);
 void	calculate_27(t_stack *st);

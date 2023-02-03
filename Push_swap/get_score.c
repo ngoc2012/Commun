@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:17:03 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/01/05 18:38:23 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/02 06:12:49 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	get_score_sa(t_stack *st)
 		return (st->score);
 	else
 	{
-		//ft_printf("i[push] = %d, i[push+1] = %d\n", st->cur[st->push], st->cur[st->push + 1]);
 		if (st->cur[st->push].v > st->cur[st->push + 1].v)
 			return (st->score - 1);
 		else	
@@ -28,13 +27,10 @@ int	get_score_sa(t_stack *st)
 
 int	get_score_sb(t_stack *st)
 {
-	//st->print_position(st);
-	//ft_printf("st->score = %d\n", st->score);
 	if (st->push < 2)
 		return (st->score);
 	else
 	{
-		//ft_printf("i[push] = %d, i[push+1] = %d\n", st->cur[st->push], st->cur[st->push + 1]);
 		if (st->cur[st->push - 2].v > st->cur[st->push - 1].v)
 			return (st->score - 1);
 		else	
@@ -47,11 +43,8 @@ int	get_score_ss(t_stack *st)
 	int	score;
 
 	score = st->score;
-	//st->print_position(st);
-	//ft_printf("st->score = %d\n", st->score);
 	if (st->len - st->push >= 2)
 	{
-		//ft_printf("st->score = %d\n", st->score);
 		if (st->cur[st->push].v > st->cur[st->push + 1].v)
 			score--;
 		else	
@@ -59,7 +52,6 @@ int	get_score_ss(t_stack *st)
 	}
 	if (st->push >= 2)
 	{
-		//ft_printf("i[push] = %d, i[push+1] = %d\n", st->cur[st->push], st->cur[st->push + 1]);
 		if (st->cur[st->push - 2].v > st->cur[st->push - 1].v)
 			score--;
 		else	
@@ -74,20 +66,16 @@ int	get_score_rra(t_stack *st)
 	int	score;
 	int	new_pos;
 
-	//st->print_position(st);
-	//ft_printf("st->score = %d\n", st->score);
 	if (st->len - st->push == 1 || st->push == st->len)
 		return (st->score);
 	if (st->len - st->push == 2)
 		return (get_score_sa(st));
-	//ft_printf("num = %d, abs = %d\n",  st->position[st->len - 1],  abs(st->position[st->len - 1]));
 	new_pos = 0;
 	i = -1;
 	while (++i < st->push)
 		if (st->cur[st->len - 1].v < st->cur[i].v)
 			new_pos++;
 	score = st->score - st->cur[st->len - 1].p + new_pos;
-	//ft_printf("i = %d\n", i);
 	i = st->push - 1;
 	while (++i < st->len - 1)
 		if (st->cur[st->len - 1].v > st->cur[i].v)
