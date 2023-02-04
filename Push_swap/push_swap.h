@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/02 11:25:03 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/04 11:25:26 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	calculate_729(t_stack *st);
 void	calculate(t_stack *st);
 void	to_left(t_stack *st, int last, int last1, int set_rrr);
 void	to_left_1(t_stack *st, int last);
-void	to_left_2(t_stack *st, int last, int last1);
 int	divide_third(int n);
 void	to_right(t_stack *st, int max_b, int last, int last1);
 void	to_right_1(t_stack *st, int last, int last1);

@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/04 11:50:42 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/04 11:13:42 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	to_left(t_stack *st, int last, int last1, int set_rrr)
 {
 	int	max_b;
-	//int	left, right;
-	int	right;
+	int	left, right;
 
 	max_b = st->push;
 	while (st->push != max_b - last * 2)
@@ -30,9 +29,12 @@ void	to_left(t_stack *st, int last, int last1, int set_rrr)
 			set_operation(st, ra);
 		}
 	}
-	right = 0;
-	while (right < st->len && st->cur[right].a_p >= max_b - last1)
-		right++;
+	//left = 0;
+	//while (st->cur[st->len - 1 - left].a_p < max_b)
+	//	left++;
+	//right = 0;
+	//while (right < st->len && st->cur[right].a_p >= max_b - last1)
+	//	right++;
 	get_position(st);
 	while (st->push != max_b && st->r_sc_a != 0)
 	{
@@ -83,6 +85,31 @@ void	to_left_1(t_stack *st, int last)
 	}
 }
 
+void	to_left_2(t_stack *st, int last, int last1)
+{
+	int	max_b;
+	//int	left, right;
+
+	max_b = st->push;
+	while (st->push != max_b - last * 2)
+	{
+		rot_next_b(st, max_b - last * 2);
+		ft_printf("pa\n");
+		st->push--;
+		if (st->cur[st->push].a_p < max_b - last && st->cur[st->push + 1].a_p >= max_b - last)
+		{
+			ft_printf("ra\n");
+			set_operation(st, ra);
+		}
+	}
+	//left = 0;
+	//while (st->cur[st->len - 1 - left].a_p < max_b)
+	//	left++;
+	//right = 0;
+	//while (right < st->len && st->cur[right].a_p >= max_b - last1)
+	//	right++;
+}
+
 int	divide_third(int n)
 {
 	int	o;
@@ -118,6 +145,12 @@ void	to_right(t_stack *st, int max_b, int last, int last1)
 			set_operation(st, ra);
 		}
 	}
+	//left = 0;
+	//while (st->cur[st->len - 1 - left].a_p < max_b + last1)
+	//	left++;
+	//right = 0;
+	//while (right < st->len && st->cur[right].a_p >= max_b)
+	//	right++;
 	last2 = st->push;
 	while (st->push != last2 + last1 - 2 * last)
 	{
@@ -137,6 +170,7 @@ void	to_right(t_stack *st, int max_b, int last, int last1)
 void	to_right_1(t_stack *st, int last, int last1)
 {
 	int	max_b;
+	int	left, right;
 
 	max_b = st->push;
 	while (st->push != max_b + last * 2)
@@ -150,6 +184,12 @@ void	to_right_1(t_stack *st, int last, int last1)
 			set_operation(st, rb);
 		}
 	}
+	left = 0;
+	while (st->cur[st->len - 1 - left].a_p < max_b + last1)
+		left++;
+	right = 0;
+	while (right < st->len && st->cur[right].a_p >= max_b)
+		right++;
 	while (st->push != max_b + last1)
 	{
 		rot_min_a(st, 0);
