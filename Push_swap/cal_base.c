@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/02 11:30:15 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/05 07:11:11 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	calculate_3(t_stack *st)
 {
-	get_position(st);
-	if (st->r_sc_a)
+	if (!relative_ascendant(st, st->push, st->len))
 	{
 		set_operation(st, sa);
 		ft_printf("sa\n");
@@ -25,12 +24,11 @@ void	calculate_3(t_stack *st)
 
 void	calculate_9(t_stack *st)
 {
-	while (st->r_sc_a && st->len - st->push > 3)
+	while (!relative_ascendant(st, st->push, st->len) && st->len - st->push > 3)
 	{
 		rot_min_a(st, 0);
 		ft_printf("pb\n");
 		st->push++;
-		get_position(st);
 	}
 	calculate_3(st);
 	while (st->push)
@@ -44,7 +42,6 @@ void	calculate_27(t_stack *st)
 {
 	int	last;
 
-	get_position(st);
 	to_right_2(st);
 	last = st->push;
 	while (st->len - st->push > 3)

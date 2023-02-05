@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/04 11:25:26 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/05 07:29:05 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ enum e_ops {ss, sb, rb, rrb, sa, ra, rra, rr, rrr, pa, pb};
 typedef struct s_el
 {
 	int	v;
-	int	r_p_a;
 	int	a_p;
 }	t_el;
 
@@ -46,11 +45,8 @@ struct s_stack
 	void	(*free)(t_stack *);
 };
 
-void	set_operation(t_stack *, enum e_ops);
 void	print_position(t_stack *);
 void	print_stack(t_stack *);
-void	get_position(t_stack *st);
-int	position(t_stack *st, int i0);
 void	set_operation(t_stack *st, enum e_ops op);
 char	*get_ops_str(enum e_ops op);
 enum e_ops	get_ops(char *op);
@@ -84,5 +80,6 @@ int	divide_third(int n);
 void	to_right(t_stack *st, int max_b, int last, int last1);
 void	to_right_1(t_stack *st, int last, int last1);
 void	to_right_2(t_stack *st);
+int	relative_ascendant(t_stack *st, int start, int end);
 
 #endif

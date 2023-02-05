@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/02 10:38:25 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/05 07:20:52 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_stack	*new_stack(int *ini, int len)
 	while (len--)
 		new->cur[len].v = ini[len];
 	get_abs_position(new);
-	get_position(new);
+	//get_position(new);
 	new->calculate = calculate;
 	new->free = free_stack;
 	return (new);

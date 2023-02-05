@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/02 11:29:24 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/05 07:23:41 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	calculate_81(t_stack *st)
 {
 	int	last;
 
-	get_position(st);
 	to_right_2(st);
 	last = st->push;
 	to_right_2(st);
@@ -48,7 +47,6 @@ void	calculate_729(t_stack *st)
 	int	last1;
 	int	last2;
 
-	get_position(st);
 	to_right_2(st);
 	last = st->push;
 	to_right_2(st);
