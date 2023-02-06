@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:18:11 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/02 10:18:27 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/06 01:36:04 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,17 @@ void	set_rb(t_stack *st, enum e_ops op)
 
 void	set_operation(t_stack *st, enum e_ops op)
 {
+	ft_printf("%s\n", get_ops_str(op));
+	if (op == pa && st->push > 0)
+	{
+		st->push--;
+		return ;
+	}
+	if (op == pb && st->push < st->len)
+	{
+		st->push++;
+		return ;
+	}
 	if ((op == sa || op == ss) && st->len - st->push >= 2)
 	{
 		swap(st, st->push, st->push + 1);
@@ -74,16 +85,6 @@ void	set_operation(t_stack *st, enum e_ops op)
 	if ((op == sb || op == ss) && st->push >= 2)
 	{
 		swap(st, st->push - 1, st->push - 2);
-		return ;
-	}
-	if (op == pa && st->push > 0)
-	{
-		st->push--;
-		return ;
-	}
-	if (op == pb && st->push < st->len)
-	{
-		st->push++;
 		return ;
 	}
 	set_ra(st, op);

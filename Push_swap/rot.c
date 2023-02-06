@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/02 11:23:44 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/06 01:59:23 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	rot_min_a_2(t_stack *st, int min_v, int right)
 	return (set_d_ra(st, d_ra, d_rra, right));
 }
 
-void	rot_max_b(t_stack *st)
+int	rot_max_b(t_stack *st)
 {
 	int	max_b;
 	int	i_max;
@@ -115,7 +115,7 @@ void	rot_max_b(t_stack *st)
 	int	d_rrb;
 
 	if (st->push < 2)
-		return ;
+		return (0);
 	i_max = 0;
 	max_b = st->cur[i_max].a_p;
 	i = 0;
@@ -130,4 +130,5 @@ void	rot_max_b(t_stack *st)
 	d_rb = st->push - 1 - i_max;
 	d_rrb = i_max + 1;
 	set_d_rb(st, d_rb, d_rrb, 0);
+	return (1);
 }

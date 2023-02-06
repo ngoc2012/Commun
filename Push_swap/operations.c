@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:18:11 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/02 10:16:59 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/06 01:41:37 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 char	*get_ops_str(enum e_ops op)
 {
+	if (op == pa)
+		return ("pa");
+	if (op == pb)
+		return ("pb");
 	if (op == ss)
 		return ("ss");
 	if (op == sa)

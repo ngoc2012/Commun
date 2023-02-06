@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/05 07:11:11 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/06 01:44:29 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 void	calculate_3(t_stack *st)
 {
 	if (!relative_ascendant(st, st->push, st->len))
-	{
 		set_operation(st, sa);
-		ft_printf("sa\n");
-	}
 	rot_min_a(st, 0);
 }
 
@@ -27,15 +24,11 @@ void	calculate_9(t_stack *st)
 	while (!relative_ascendant(st, st->push, st->len) && st->len - st->push > 3)
 	{
 		rot_min_a(st, 0);
-		ft_printf("pb\n");
-		st->push++;
+		set_operation(st, pb);
 	}
 	calculate_3(st);
 	while (st->push)
-	{
-		ft_printf("pa\n");
-		st->push--;
-	}
+		set_operation(st, pa);
 }
 
 void	calculate_27(t_stack *st)
@@ -47,20 +40,15 @@ void	calculate_27(t_stack *st)
 	while (st->len - st->push > 3)
 	{
 		rot_min_a(st, 0);
-		ft_printf("pb\n");
-		st->push++;
+		set_operation(st, pb);
 	}
 	calculate_3(st);
 	while (st->push != last)
-	{
-		ft_printf("pa\n");
-		st->push--;
-	}
+		set_operation(st, pa);
 	while (st->push)
 	{
 		rot_max_b(st);
-		ft_printf("pa\n");
-		st->push--;
+		set_operation(st, pa);
 	}
 }
 
@@ -70,7 +58,6 @@ void	calculate(t_stack *st)
 		return ;
 	if (st->len == 2 && st->cur[0].v > st->cur[1].v)
 	{
-		ft_printf("sa\n");
 		set_operation(st, sa);
 		return ;
 	}

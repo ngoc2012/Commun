@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/05 07:20:52 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/06 02:07:01 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ t_stack	*new_stack(int *ini, int len)
 	while (len--)
 		new->cur[len].v = ini[len];
 	get_abs_position(new);
-	//get_position(new);
-	new->calculate = calculate;
 	new->free = free_stack;
 	return (new);
 }
@@ -52,15 +50,12 @@ int	main(int argc, char **argv)
 	ini = malloc(sizeof(int) * (argc - 1));
 	if (!ini)
 		return (0);
-	i = 1;
-	while (i < argc)
-	{
+	i = 0;
+	while (++i < argc)
 		ini[i - 1] = ft_atoi(argv[i]);
-		i++;
-	}
 	st = new_stack(ini, argc - 1);
 	if (!st)
 		return (0);
-	st->calculate(st);
+	calculate(st);
 	st->free(st);
 }
