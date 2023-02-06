@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/06 02:07:01 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/06 02:49:09 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_stack	*new_stack(int *ini, int len)
 	if (!new)
 		return (0);
 	new->len = len;
-	new->push = 0;	
+	new->push = 0;
 	new->ini = ini;
 	new->cur = malloc(sizeof(t_el) * len);
 	if (!new->cur)
@@ -39,10 +39,25 @@ t_stack	*new_stack(int *ini, int len)
 	return (new);
 }
 
+int	check_arg(char *s, int *ini)
+{
+	while (*s)
+	{
+		if (!ft_isdigit(*s) && *s != '-')
+		{
+			ft_printf("Error\n");
+			free(ini);
+			return (0);
+		}
+		s++;
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
-	int		i;
-	int		*ini;
+	int			i;
+	int			*ini;
 	t_stack		*st;
 
 	if (argc < 2)
@@ -52,7 +67,11 @@ int	main(int argc, char **argv)
 		return (0);
 	i = 0;
 	while (++i < argc)
+	{
+		if (!check_arg(argv[i], ini))
+			return (0);
 		ini[i - 1] = ft_atoi(argv[i]);
+	}
 	st = new_stack(ini, argc - 1);
 	if (!st)
 		return (0);
