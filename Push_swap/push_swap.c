@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/06 02:49:09 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/07 03:24:19 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,34 +34,48 @@ t_stack	*new_stack(int *ini, int len)
 		return (0);
 	while (len--)
 		new->cur[len].v = ini[len];
-	get_abs_position(new);
 	new->free = free_stack;
 	return (new);
 }
 
+int	error(int *ini)
+{
+	ft_printf("Error\n");
+	free(ini);
+	return (0);
+}
+
 int	check_arg(char *s, int *ini)
 {
+	int		i;
+	char	*s0;
+	char	*s1;
+
+	s0 = s;
 	while (*s)
 	{
 		if (!ft_isdigit(*s) && *s != '-')
-		{
-			ft_printf("Error\n");
-			free(ini);
-			return (0);
-		}
+			return (error(ini));
 		s++;
 	}
+	i = ft_atoi(s0);
+	s1 = ft_itoa(i);
+	if ((i == 0 && ft_strncmp(s0, "0", 1) != 0)
+		|| (ft_strncmp(s1, s0, ft_strlen(s0)) != 0))
+	{
+		free(s1);
+		return (error(ini));
+	}
+	free(s1);
 	return (1);
 }
 
-int	main(int argc, char **argv)
+t_stack	*get_args(int argc, char **argv)
 {
 	int			i;
 	int			*ini;
 	t_stack		*st;
 
-	if (argc < 2)
-		return (1);
 	ini = malloc(sizeof(int) * (argc - 1));
 	if (!ini)
 		return (0);
@@ -75,6 +89,10 @@ int	main(int argc, char **argv)
 	st = new_stack(ini, argc - 1);
 	if (!st)
 		return (0);
-	calculate(st);
-	st->free(st);
+	if (!get_abs_position(st))
+	{
+		error(ini);
+		return (0);
+	}
+	return (st);
 }

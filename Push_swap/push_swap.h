@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/06 02:10:01 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/07 03:12:07 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	print_stack(t_stack *);
 void	set_operation(t_stack *st, enum e_ops op);
 char	*get_ops_str(enum e_ops op);
 enum e_ops	get_ops(char *op);
-void	get_abs_position(t_stack *st);
+int	get_abs_position(t_stack *st);
 void	rot_next_a(t_stack *st, int max_a_p);
 void	rot_next_b(t_stack *st, int min_a_p);
 int	rot_min_a(t_stack *st, int right);
@@ -63,5 +63,6 @@ void	to_right(t_stack *st, int max_b, int last, int last1);
 void	to_right_1(t_stack *st, int last, int last1);
 void	to_right_2(t_stack *st);
 int	relative_ascendant(t_stack *st, int start, int end);
+t_stack	*get_args(int argc, char **argv);
 
 #endif

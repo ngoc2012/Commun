@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:21:22 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/05 07:24:56 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:12:25 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	relative_ascendant(t_stack *st, int start, int end)
 	return (1);
 }
 
-void	get_abs_position(t_stack *st)
+int	get_abs_position(t_stack *st)
 {
 	int	i;
 	int	j;
@@ -62,8 +62,15 @@ void	get_abs_position(t_stack *st)
 	{
 		st->cur[i].a_p = 0;
 		j = -1;
-		while (++j < st->len)
-			if (j != i && st->cur[j].v < st->cur[i].v)
+		while (++j < i)
+		{
+			if (st->cur[j].v == st->cur[i].v)
+				return (0);
+			else if (st->cur[j].v < st->cur[i].v)
 				st->cur[i].a_p++;
+			else
+				st->cur[j].a_p++;
+		}
 	}
+	return (1);
 }

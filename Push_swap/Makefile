@@ -6,12 +6,12 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/02/06 02:47:37 by minh-ngu         ###   ########.fr        #
+#    Updated: 2023/02/07 03:12:30 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #LIBS = get_score.c operations.c position.c print.c rot.c cal.c cal_base.c to.c
-LIBS = push_swap.c operations.c operations_base.c position.c print.c rot.c rot_base.c cal.c cal_base.c to_left.c to_right.c
+LIBS = main.c push_swap.c operations.c operations_base.c position.c print.c rot.c rot_base.c cal.c cal_base.c to_left.c to_right.c
 FILE = push_swap
 CC = cc
 FLAGS = -Wall -Wextra -Werror
@@ -30,7 +30,7 @@ $(FILE): $(LIBFT) $(LIBPR) $(GNL)
 	valgrind -q --leak-check=full ./push_swap -30 799 -806 662 -542
 #	valgrind -q --leak-check=full ./push_swap 382 -867 763 89 -610 8 -600 -105 -730 818 584 48 766 852 -50 306 242 -886 403 753 322 -590 980 -894 771 -974 -162 -441 396 617 -396 -414 146 -781 -202 -139 -699 684 -149 -970 -638 699 -663 -820 -175 -434 -882 340 -634 525
 norm:
-	norminette $(LIBS)
+	norminette $(LIBS) push_swap.h
 clean:
 	make clean -C GNL
 	make clean -C libft
