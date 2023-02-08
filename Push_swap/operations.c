@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:18:11 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/06 01:41:37 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/08 06:27:07 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ char	*get_ops_str(enum e_ops op)
 
 enum e_ops	get_ops(char *op)
 {
+	if (ft_strncmp(op, "pa", 3) == 0)
+		return (pa);
+	if (ft_strncmp(op, "pb", 3) == 0)
+		return (pb);
 	if (ft_strncmp(op, "ss", 3) == 0)
 		return (ss);
 	if (ft_strncmp(op, "sa", 3) == 0)

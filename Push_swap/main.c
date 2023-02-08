@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/07 03:18:56 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/08 05:56:51 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ int	main(int argc, char **argv)
 		return (1);
 	calculate(st);
 	st->free(st);
+	return (1);
 }
