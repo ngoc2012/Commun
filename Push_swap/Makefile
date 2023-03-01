@@ -6,12 +6,13 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/02/08 06:21:28 by minh-ngu         ###   ########.fr        #
+#    Updated: 2023/02/27 15:51:05 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#LIBS = get_score.c operations.c position.c print.c rot.c cal.c cal_base.c to.c
-LIBS = push_swap.c operations.c operations_base.c position.c print.c rot.c rot_base.c cal.c cal_base.c to_left.c to_right.c
+LIBS = srcs/push_swap.c srcs/operations.c srcs/operations_base.c srcs/position.c srcs/print.c srcs/rot.c srcs/rot_base.c srcs/cal.c srcs/cal_base.c srcs/to_left.c srcs/to_right.c
+MANDA = $(LIBS) srcs/main.c
+BONUS = $(LIBS) srcs/checker.c
 FILE = push_swap
 CC = cc
 FLAGS = -Wall -Wextra -Werror
@@ -26,14 +27,28 @@ $(LIBPR):
 $(GNL):
 	make -C GNL
 $(FILE): $(LIBFT) $(LIBPR) $(GNL)
-	$(CC) $(FLAGS) -g main.c $(LIBS) -L./libft -lft -L./ft_printf -lftprintf -L./GNL -lftgnl -I. -I./libft -I./ft_printf -I./GNL -o $(FILE)
-	valgrind -q --leak-check=full ./push_swap -30 799 -806 662 -542
-#	valgrind -q --leak-check=full ./push_swap 382 -867 763 89 -610 8 -600 -105 -730 818 584 48 766 852 -50 306 242 -886 403 753 322 -590 980 -894 771 -974 -162 -441 396 617 -396 -414 146 -781 -202 -139 -699 684 -149 -970 -638 699 -663 -820 -175 -434 -882 340 -634 525
+	$(CC) $(FLAGS) $(MANDA) -L./libft -lft -L./ft_printf -lftprintf -L./GNL -lftgnl -I./includes -I./libft -I./ft_printf -I./GNL -o $(FILE)
 bonus: $(LIBFT) $(LIBPR) $(GNL)
-	$(CC) $(FLAGS) -g checker.c $(LIBS) -L./libft -lft -L./ft_printf -lftprintf -L./GNL -lftgnl -I. -I./libft -I./ft_printf -I./GNL -o checker
-	ARG="4 67 3 87 23"; ./push_swap $$ARG | ./checker $$ARG
+	$(CC) $(FLAGS) -g $(BONUS) -L./libft -lft -L./ft_printf -lftprintf -L./GNL -lftgnl -I./includes -I./libft -I./ft_printf -I./GNL -o checker
+check:
+	valgrind -q --leak-check=full ./checker
+	valgrind -q --leak-check=full ./checker 3
+	valgrind -q --leak-check=full ./checker 3 2 1 0 1000000000000
+	valgrind -q --leak-check=full ./checker 3 2 1 0 MAX_INT
+	valgrind -q --leak-check=full ./checker 3 2 one 0
+	valgrind -q --leak-check=full ./checker "" 1
+	valgrind -q --leak-check=full ./checker 3 2 1 0 0
+	valgrind -q --leak-check=full ./push_swap 42
+	valgrind -q --leak-check=full ./push_swap 0 1 2 3
+	valgrind -q --leak-check=full ./push_swap 0 1 2 3 4 5 6 7 8 9
+	valgrind -q --leak-check=full ./push_swap 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+	ARG="4 67 3 87 23"; ./push_swap $$ARG | valgrind -q --leak-check=full ./checker $$ARG
+	ARG="382 -867 763 89 -610 8 -600 -105 -730 818 584 48 766 852 -50 306 242 -886 403 753 322 -590 980 -894 771 -974 -162 -441 396 617 -396 -414 146 -781 -202 -139 -699 684 -149 -970 -638 699 -663 -820 -175 -434 -882 340 -634 525 4 67 3 87 23"; ./push_swap $$ARG | valgrind -q --leak-check=full ./checker $$ARG
+test:
+	make -i check
 norm:
-	norminette $(LIBS) push_swap.h
+	norminette $(MANDA) includes/*.h
+	norminette $(BONUS) includes/*.h
 clean:
 	make clean -C GNL
 	make clean -C libft

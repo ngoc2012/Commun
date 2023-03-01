@@ -6,13 +6,177 @@ sudo apt-get install php-gd
 sudo apt-get install php-intl
 sudo apt-get install php-cgi
 minh-ngu42
+
 ngoc
 Hermes2012##
 
-scp -P 4242 * ngoc@127.0.0.1:/home/ngoc/Gcpm
+sudo useradd username
+sudo passwd username
+usermod -aG sudo username (add user to sudo group)
+sudo whoami (to check)
+Get wrong (sudo) password message:
+exit (get out of user)
+sudo
+
+Terminal:
+ssh ngoc@127.0.0.1 -p 4242
+
+scp -P 4242 Gcpm.tar.gz ngoc@127.0.0.1:/home/ngoc/
+compresser
+tar czfv Gcpm.tar.gz Gcpm/
 
 References:
 https://github.com/ayoub0x1/born2beroot
+
+
+
+Check the ssh status
+sudo systemctl status ssh
+Check the status of UFW
+sudo ufw status numbered
+
+
+
+sudo vim /etc/pam.d/common-password
+sudo vim /etc/login.defs
+
+    retry=3: This option will prompt the user 3 times before exiting and returning an error.
+    minlen=12: This specifies that the password cannot be less than 12 characters.
+    maxrepeat=3: This allows implies that only a maximum of 3 repeated characters can be included in the password.
+    ucredit=-1: The option requires at least one uppercase character in the password.
+    lcredit=-1: The option requires at least one lowercase character in the password.
+    dcredit=-1: This implies that the password should have at last a numeric character.
+    ocredit=-1: The option requires at least one special character included in the password.
+    difok=3: This implies that only a  maximum of 3 character changes in the new password should be present in the old password.
+    reject_username: The option rejects a password if it consists of the username either in its normal way or in reverse.
+    enforce_for_root: This ensures that the password policies are adhered to even if it’s the root user configuring the passwords.
+
+
+sudo groupadd user42
+getent group
+
+cut -d: -f1 /etc/passwd
+sudo usermod -aG user42 your_username
+getent group user42
+
+
+
+    Type the following command to edit /etc/hostname using nano or vi text editor:
+    sudo nano /etc/hostname
+    Delete the old name and setup new name.
+    Next Edit the /etc/hosts file:
+    sudo nano /etc/hosts
+    Replace any occurrence of the existing computer name with your new one.
+    Reboot the system to changes take effect:
+    sudo reboot
+
+
+
+
+
+When requiretty is set, sudo must be run from a logged-in terminal session (a tty). This prevents sudo from being used from daemons or other detached processes like cronjobs or webserver plugins. It also means you can't run it directly from an ssh call without setting up a terminal session.
+
+
+sudo ufw allow 8080
+sudo ufw status numbered
+
+
+sudo vim /etc/ssh/sshd_config
+
+ssh newuser@127.0.0.1 -p 4242
+
+
+sudo crontab -u root -e
+* * * * * date>> /tmp/date.log
+* * * * * sleep 30; date>> /tmp/date.log 
+sudo service cron start
+sudo service cron stop
+sudo service cron restart
+
+
+export PATH=$PATH:/user/sbin/
+
+Enable php:
+
+sudo apt-get install lighttpd php5-cgi
+
+Enable the fastcgi module and the php configuration with
+
+sudo lighty-enable-mod fastcgi 
+sudo lighty-enable-mod fastcgi-php
+
+Reload the lighttpd daemon
+
+sudo service lighttpd force-reload
+
+
+chown -R www-data:www-data index1.html
+chmod -R 0755 /home/domain/www/
+
+mariadb admin hahahehe
+
+
+
+
+Build Nodejs:
+
+
+
+    Install the necessary build dependencies, C++ compiler, and build toolchain for your system.
+
+    Install Python.
+
+    Download the source code.
+    https://nodejs.org/dist/v19.7.0/node-v19.7.0.tar.gz
+
+sudo find node-main -type f -exec touch {} +
+
+sudo make clean
+
+for f in $(find deps/openssl -type f -name '*.S'); do echo $f; sed -i "s/%ifdef/#ifdef/" "$f"; sed -i "s/%endif/#endif/" "$f"; done
+
+  Launch ./configure
+
+in: /node-main/out/Makefile
+-march=native
+
+    Launch sudo make.
+
+sudo find node-main -type f -exec touch {} +
+in: /node-main/out/Makefile
+-march=native
+    Test your compiled version with make test.
+
+    Install it with make install.
+
+    Check the version with node --version.
+    
+    export NODE_OPTIONS=--openssl-legacy-provider
+
+
+
+python3 manage.py runserver
+
+python3 manage.py runserver 0.0.0.0:8000
+
+sudo apt-get install python-dev
+
+sudo apt-get install python3-scipy
+pip install scipy==0.16
+
+pip install fitz
+pip2 install PyMuPDF
+
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True 
+
+
+
+
+
+
+
+
 
 Setup Virtualbox:
 

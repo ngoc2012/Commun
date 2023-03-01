@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/06 01:46:26 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:26:45 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	rot_3(t_stack *st, int last)
 	while (st->len - st->push > 3)
 	{
 		rot_min_a(st, 0);
-		set_operation(st, pb);
+		set_operation(st, pb, 1);
 	}
 	calculate_3(st);
 	while (st->push != last)
 	{
 		rot_max_b(st);
-		set_operation(st, pa);
+		set_operation(st, pa, 1);
 	}
 }
 

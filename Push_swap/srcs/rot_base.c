@@ -1,47 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   rot_base.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/08 17:23:49 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:26:15 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int	set_d_ra(t_stack *st, int d_ra, int d_rra, int right)
 {
-	t_stack	*st;
-	char	*s;
-	enum e_ops	o;
-
-	if (argc < 2)
-		return (1);
-	st = get_args(argc, argv);
-	if (!st)
-		return (1);
-	while ((s = get_next_line(0)))
+	if (d_ra <= d_rra)
 	{
-		if (s[ft_strlen(s) - 1] == '\n')
-			s[ft_strlen(s) - 1] = 0;
-		o = get_ops(s);
-		if (!o)
-		{
-			free(s);
-			st->free(st);
-			return (1);
-		}
-		set_operation(st, o);
-		free(s);
+		while (d_ra--)
+			set_operation(st, ra, 1);
+		return (right);
 	}
-	//print_stack(st);
-	if (st->push == 0 && relative_ascendant(st, st->push, st->len))
-		ft_printf("OK\n");
-	else
-		ft_printf("KO\n");
-	st->free(st);
-	return (0);
+	while (d_rra--)
+	{
+		if (right > 0)
+		{
+			set_operation(st, rrr, 1);
+			right--;
+		}
+		else
+			set_operation(st, rra, 1);
+	}
+	return (right);
+}
+
+int	set_d_rb(t_stack *st, int d_rb, int d_rrb, int left)
+{
+	if (d_rb <= d_rrb)
+	{
+		while (d_rb--)
+			set_operation(st, rb, 1);
+		return (left);
+	}
+	while (d_rrb--)
+	{
+		if (left > 0)
+		{
+			set_operation(st, rrr, 1);
+			left--;
+		}
+		else
+			set_operation(st, rrb, 1);
+	}
+	return (left);
 }

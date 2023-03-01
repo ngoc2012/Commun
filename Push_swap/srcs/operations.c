@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:18:11 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/08 06:27:07 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:32:05 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ enum e_ops	get_ops(char *op)
 		return (sa);
 	if (ft_strncmp(op, "ra", 3) == 0)
 		return (ra);
-	if (ft_strncmp(op, "rra", 3) == 0)
+	if (ft_strncmp(op, "rra", 4) == 0)
 		return (rra);
 	if (ft_strncmp(op, "sb", 3) == 0)
 		return (sb);
 	if (ft_strncmp(op, "rb", 3) == 0)
 		return (rb);
-	if (ft_strncmp(op, "rrb", 3) == 0)
+	if (ft_strncmp(op, "rrb", 4) == 0)
 		return (rrb);
 	if (ft_strncmp(op, "rr", 3) == 0)
 		return (rr);
-	if (ft_strncmp(op, "rrr", 3) == 0)
+	if (ft_strncmp(op, "rrr", 4) == 0)
 		return (rrr);
-	return (-1);
+	return (0);
 }

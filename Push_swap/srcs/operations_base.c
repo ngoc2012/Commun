@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 15:18:11 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/06 01:36:04 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:24:49 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,10 @@ void	set_rb(t_stack *st, enum e_ops op)
 	}
 }
 
-void	set_operation(t_stack *st, enum e_ops op)
+void	set_operation(t_stack *st, enum e_ops op, int print)
 {
-	ft_printf("%s\n", get_ops_str(op));
+	if (print)
+		ft_printf("%s\n", get_ops_str(op));
 	if (op == pa && st->push > 0)
 	{
 		st->push--;

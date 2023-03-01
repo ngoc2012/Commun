@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/02/07 17:17:35 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:20:25 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ struct s_stack
 
 void		print_position(t_stack *st);
 void		print_stack(t_stack *st);
-void		set_operation(t_stack *st, enum e_ops op);
+void		set_operation(t_stack *st, enum e_ops op, int print);
 char		*get_ops_str(enum e_ops op);
 enum e_ops	get_ops(char *op);
 int			get_abs_position(t_stack *st);
@@ -62,6 +62,7 @@ int			divide_third(int n);
 void		to_right(t_stack *st, int max_b, int last, int last1);
 void		to_right_1(t_stack *st, int last, int last1);
 void		to_right_2(t_stack *st);
+int			ascendant(t_stack *st, int start, int end);
 int			relative_ascendant(t_stack *st, int start, int end);
 t_stack		*get_args(int argc, char **argv);
 
