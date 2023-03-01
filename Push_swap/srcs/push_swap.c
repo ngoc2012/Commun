@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/03/01 08:46:58 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:51:52 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	arg_error(int *ini)
 	exit(EXIT_FAILURE);
 }
 
-int	check_arg(char *s, int *ini)
+int	get_arg(char *s, int *ini)
 {
 	int		i;
 	char	*s0;
@@ -63,14 +63,14 @@ int	check_arg(char *s, int *ini)
 	}
 	i = ft_atoi(s0);
 	s1 = ft_itoa(i);
-	if ((i == 0 && ft_strncmp(s0, "0", 2) != 0)
-		|| (ft_strncmp(s1, s0, ft_strlen(s0)) != 0))
+	if ((i == 0 && s0[0] == 0)
+		|| (i < 0 && ft_strncmp(s1, s0, ft_strlen(s0)) != 0))
 	{
 		free(s1);
 		arg_error(ini);
 	}
 	free(s1);
-	return (1);
+	return (ft_atoi(s0));
 }
 
 t_stack	*get_args(int argc, char **argv)
@@ -84,8 +84,7 @@ t_stack	*get_args(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	i = 0;
 	while (++i < argc)
-		if (check_arg(argv[i], ini))
-			ini[i - 1] = ft_atoi(argv[i]);
+		ini[i - 1] = get_arg(argv[i], ini);
 	st = new_stack(ini, argc - 1);
 	if (!st)
 		return (0);
@@ -93,7 +92,7 @@ t_stack	*get_args(int argc, char **argv)
 	{
 		st->free(st);
 		ft_printf("Error\n");
-		return (0);
+		exit(EXIT_FAILURE);
 	}
 	return (st);
 }
