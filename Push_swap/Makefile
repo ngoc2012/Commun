@@ -6,57 +6,55 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/02/27 15:51:05 by minh-ngu         ###   ########.fr        #
+#    Updated: 2023/03/08 09:27:24 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBS = srcs/push_swap.c srcs/operations.c srcs/operations_base.c srcs/position.c srcs/print.c srcs/rot.c srcs/rot_base.c srcs/cal.c srcs/cal_base.c srcs/to_left.c srcs/to_right.c
-MANDA = $(LIBS) srcs/main.c
-BONUS = $(LIBS) srcs/checker.c
-FILE = push_swap
+SRCS = push_swap.c get_arg.c get_args.c operations.c operations_base.c position.c print.c rot.c rot_base.c cal.c cal_base.c to_left.c to_right.c
+MSRC = $(addprefix srcs/, $(SRCS) main.c)
+BSRC = $(addprefix srcs/, $(SRCS) checker.c)
+MOBJ = ${MSRC:.c=.o}
+BOBJ = ${BSRC:.c=.o}
+MANDA = push_swap
+BONUS = checker
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-GNL = libftgnl.a
-LIBFT = libft.a
-LIBPR = libftprintf.a
-all: $(FILE)
+GNL = GNL/libftgnl.a
+LIBFT = libft/libft.a
+LIBPR = ft_printf/libftprintf.a
+LIBS = GNL libft ft_printf
+all: $(MANDA)
 $(LIBFT):
 	make -C libft
 $(LIBPR):
 	make -C ft_printf
 $(GNL):
 	make -C GNL
-$(FILE): $(LIBFT) $(LIBPR) $(GNL)
-	$(CC) $(FLAGS) $(MANDA) -L./libft -lft -L./ft_printf -lftprintf -L./GNL -lftgnl -I./includes -I./libft -I./ft_printf -I./GNL -o $(FILE)
-bonus: $(LIBFT) $(LIBPR) $(GNL)
-	$(CC) $(FLAGS) -g $(BONUS) -L./libft -lft -L./ft_printf -lftprintf -L./GNL -lftgnl -I./includes -I./libft -I./ft_printf -I./GNL -o checker
-check:
-	valgrind -q --leak-check=full ./checker
-	valgrind -q --leak-check=full ./checker 3
-	valgrind -q --leak-check=full ./checker 3 2 1 0 1000000000000
-	valgrind -q --leak-check=full ./checker 3 2 1 0 MAX_INT
-	valgrind -q --leak-check=full ./checker 3 2 one 0
-	valgrind -q --leak-check=full ./checker "" 1
-	valgrind -q --leak-check=full ./checker 3 2 1 0 0
-	valgrind -q --leak-check=full ./push_swap 42
-	valgrind -q --leak-check=full ./push_swap 0 1 2 3
-	valgrind -q --leak-check=full ./push_swap 0 1 2 3 4 5 6 7 8 9
-	valgrind -q --leak-check=full ./push_swap 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-	ARG="4 67 3 87 23"; ./push_swap $$ARG | valgrind -q --leak-check=full ./checker $$ARG
-	ARG="382 -867 763 89 -610 8 -600 -105 -730 818 584 48 766 852 -50 306 242 -886 403 753 322 -590 980 -894 771 -974 -162 -441 396 617 -396 -414 146 -781 -202 -139 -699 684 -149 -970 -638 699 -663 -820 -175 -434 -882 340 -634 525 4 67 3 87 23"; ./push_swap $$ARG | valgrind -q --leak-check=full ./checker $$ARG
-test:
-	make -i check
+.c.o:
+	$(CC) $(FLAGS) -c $< -o ${<:.c=.o} $(addprefix -I./, $(LIBS) includes)
+$(MANDA): $(MOBJ) $(LIBFT) $(LIBPR) $(GNL)
+	$(CC) $(FLAGS) $(MOBJ) -L./libft -lft -L./ft_printf -lftprintf -L./GNL -lftgnl -o $(MANDA)
+bonus:	$(BONUS)
+$(BONUS): $(BOBJ) $(LIBFT) $(LIBPR) $(GNL)
+	$(CC) $(FLAGS) $(BOBJ) -L./libft -lft -L./ft_printf -lftprintf -L./GNL -lftgnl -o $(BONUS)
 norm:
-	norminette $(MANDA) includes/*.h
-	norminette $(BONUS) includes/*.h
+	norminette $(LIBS) srcs includes
+git:
+	git add Makefile
+	git add $(addsuffix /Makefile, $(LIBS))
+	git add $(addsuffix /*.c, $(LIBS) srcs)
+	git add $(addsuffix /*.h, $(LIBS) includes)
+	git commit -m "all"
+	git push
 clean:
 	make clean -C GNL
 	make clean -C libft
 	make clean -C ft_printf
-	rm -f *.o
+	rm -f $(MOBJ) $(BOBJ)
 fclean: clean
 	make fclean -C GNL
 	make fclean -C libft	
 	make fclean -C ft_printf
-	rm -f $(FILE)
+	rm -f $(MANDA) $(BONUS)
 re: fclean all
+.PHONY: all clean fclean re

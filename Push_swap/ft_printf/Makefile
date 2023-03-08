@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/01/04 09:50:20 by minh-ngu         ###   ########.fr        #
+#    Updated: 2023/03/07 17:09:08 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,4 +33,4 @@ fclean: clean
 	make fclean -C $(LIBFTFOLDER)
 	rm -f $(LIBPR)
 re: fclean all
-.PHONY: clean fclean re all
+.PHONY:	all clean fclean re

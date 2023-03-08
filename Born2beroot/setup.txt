@@ -21,9 +21,7 @@ sudo
 Terminal:
 ssh ngoc@127.0.0.1 -p 4242
 
-scp -P 4242 Gcpm.tar.gz ngoc@127.0.0.1:/home/ngoc/
-compresser
-tar czfv Gcpm.tar.gz Gcpm/
+
 
 References:
 https://github.com/ayoub0x1/born2beroot
@@ -39,6 +37,8 @@ sudo ufw status numbered
 
 sudo vim /etc/pam.d/common-password
 sudo vim /etc/login.defs
+
+retry=3 minlen=10 ucredit=-1 lcredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root
 
     retry=3: This option will prompt the user 3 times before exiting and returning an error.
     minlen=12: This specifies that the password cannot be less than 12 characters.
@@ -86,6 +86,11 @@ sudo vim /etc/ssh/sshd_config
 ssh newuser@127.0.0.1 -p 4242
 
 
+specifying PermitRootLogin in /etc/ssh/sshd_config
+
+
+
+
 sudo crontab -u root -e
 * * * * * date>> /tmp/date.log
 * * * * * sleep 30; date>> /tmp/date.log 
@@ -96,14 +101,25 @@ sudo service cron restart
 
 export PATH=$PATH:/user/sbin/
 
+
+
+
+
 Enable php:
 
-sudo apt-get install lighttpd php5-cgi
+sudo apt-get install lighttpd php-cgi
 
 Enable the fastcgi module and the php configuration with
 
 sudo lighty-enable-mod fastcgi 
 sudo lighty-enable-mod fastcgi-php
+
+
+Configuration is fairly simple either way. Install php-cgi or php-fpm depending on which method you chose. Then run either lighty-enable-mod fastcgi-php (For PHP-CGI) or lighty-enable-mod fastcgi-php-fpm (For PHP-FPM), and then reload your Lighttpd configuration with systemctl reload lighttpd for it to take effect. It should now be properly handling PHP files. 
+
+
+
+
 
 Reload the lighttpd daemon
 
@@ -155,20 +171,66 @@ in: /node-main/out/Makefile
 
 
 
-python3 manage.py runserver
+scp -P 4242 Gcpm.tar.gz ngoc@127.0.0.1:/home/ngoc/
+compresser
+tar czfv Gcpm.tar.gz Gcpm/
+
+tar -czvf name-of-archive.tar.gz /path/to/directory-or-file
 
 python3 manage.py runserver 0.0.0.0:8000
 
-sudo apt-get install python-dev
+python3 -m pip install --upgrade pymupdf
 
-sudo apt-get install python3-scipy
-pip install scipy==0.16
+Corrige some functions
+https://pymupdf.readthedocs.io/en/latest/znames.html
 
-pip install fitz
-pip2 install PyMuPDF
+Change folder name in
+editor/views.py
+backend/settings.py
 
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_HTTPONLY = True 
+
+
+
+#!/bin/bash
+arc=$(uname -a)
+pcpu=$(grep "physical id" /proc/cpuinfo | wc -l) 
+vcpu=$(grep "^processor" /proc/cpuinfo | wc -l)
+fram=$(free -m | grep '^Mem:' | awk '{print $2}')
+uram=$(free -m | grep '^Mem:' | awk '{print $3}')
+pram=$(printf %.2f "$((10**2 * 100*uram/fram))e-2")
+fdisk=$(df -BM | grep '^/dev/' | grep -v '/boot$' | awk '{ft += $2} END {print ft}')
+udisk=$(df -BM | grep '^/dev/' | grep -v '/boot$' | awk '{ut += $3} END {print ut}')
+pdisk=$((100*udisk/fdisk))
+fdisk=$((fdisk/1000))
+cpul=$(top -bn1 | grep '^%Cpu' | awk '{printf("%.1f%%"), $4 + $6}')
+lb=$(who -b | awk '$1 == "system" {print $3 " " $4}')
+lvmu=$(if [ $(lsblk | grep "lvm" | wc -l) -eq 0 ]; then echo no; else echo yes; fi)
+ctcp=$(ss -neopt state established | wc -l)
+ulog=$(users | wc -w)
+ip=$(hostname -I)
+mac=$(ip link | grep "ether" | awk '{print $2}')
+cmds=$(journalctl | grep "sudo" | grep COMMAND | wc -l)
+wall "	#Architecture: $arc
+	#CPU physical: $pcpu
+	#vCPU: $vcpu
+	#Memory Usage: $uram/${fram}MB ($pram%)
+	#Disk Usage: $udisk/${fdisk}Gb ($pdisk%)
+	#CPU load: $cpul
+	#Last boot: $lb
+	#LVM use: $lvmu
+	#Connections TCP: $ctcp ESTABLISHED
+	#User log: $ulog
+	#Network: IP $ip ($mac)
+	#Sudo: $cmds cmd"
+
+
+
+
+
+
+
+
+
 
 
 
@@ -263,4 +325,8 @@ Defaults        requiretty
 To set sudo paths to /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:
 
 Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
+
+
+
 

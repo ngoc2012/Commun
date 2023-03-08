@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/03/05 09:57:22 by ngoc             ###   ########.fr        #
+#    Updated: 2023/03/06 11:15:29 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ bonus: $(LIBFT) $(LIBPR) $(GNL)
 check:
 	valgrind -q --leak-check=full ./checker
 test:
-	make server && make client && ./client 1 a
+	make server && make client && ./server
 #	make server && make client && ./server
 #	make server && make client && valgrind -q --leak-check=full ./server
 norm:

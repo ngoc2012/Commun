@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2022/12/05 10:48:03 by minh-ngu         ###   ########.fr        #
+#    Updated: 2023/03/07 17:08:55 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,3 +23,4 @@ clean:
 fclean: clean
 	rm -f $(GNLN)
 re: fclean all
+.PHONY:	all clean fclean re
