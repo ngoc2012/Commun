@@ -6,18 +6,19 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:39:09 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/03/10 16:02:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/10 18:55:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 #include<signal.h>
 
-void	signal_handler(int sig, siginfo_t *info, void *)
+void	signal_handler(int sig, siginfo_t *info, void *ucontext)
 {
-	static int		i = 0;
+	static int				i = 0;
 	static unsigned char	c = 0;
 
+	(void)ucontext;
 	if (sig == SIGUSR2)
 		c |= (1 << i);
 	i++;
@@ -26,7 +27,7 @@ void	signal_handler(int sig, siginfo_t *info, void *)
 		i = 0;
 		if (c == 0)
 		{
-			write(1, "\n", 1);
+			ft_printf("Server ID: %d\n", getpid());
 			kill((int) info->si_pid, SIGUSR2);
 			return ;
 		}
@@ -37,7 +38,7 @@ void	signal_handler(int sig, siginfo_t *info, void *)
 	kill((int) info->si_pid, SIGUSR1);
 }
 
-int	main()
+int	main(void)
 {
 	struct sigaction	act;
 
@@ -46,7 +47,7 @@ int	main()
 	sigemptyset(&act.sa_mask);
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
-	ft_printf("%d\n", getpid());
+	ft_printf("Server ID: %d\n", getpid());
 	while (pause() == -1)
 	{
 		sigemptyset(&act.sa_mask);

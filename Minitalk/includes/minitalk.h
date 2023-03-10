@@ -6,16 +6,15 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/03/10 15:15:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/10 19:00:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
 
-# include <limits.h>
+# include <stdlib.h>
 # include "libft.h"
 # include "ft_printf.h"
-# include "get_next_line.h"
 
 #endif
