@@ -6,48 +6,60 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:39:09 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/03/06 15:42:47 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:34:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 #include<signal.h>
 
-int	pid;
+int	server_catched;
 
-void	convert(int n)
+void	SIGUSR_handler(int sig)
 {
-	int	i;
+	server_catched = 1;
+	if (sig == SIGUSR2)
+		ft_printf("Message sent\n");
+	return ;
+}
 
-	if (n < 0)
-		n += 256;
+void	send_bits(int server_id, unsigned char c)
+{
+	int		i;
+	unsigned char	c0;
+
+	c0 = 1;
 	i = -1;
-	while (n)
+	while (++i < 8)
 	{
-		if (n % 2 == 0)
-			kill(pid, SIGUSR1);
+		server_catched = 0;
+		if (c0 & c)
+			kill(server_id, SIGUSR2);
 		else
-			kill(pid, SIGUSR2);
-		n = n / 2;
-		i++;
-		usleep(SLEEP);
-	}
-	while (++i < BITS)
-	{
-		kill(pid, SIGUSR1);
-		usleep(SLEEP);
+			kill(server_id, SIGUSR1);
+		while (!server_catched)
+			usleep(1);
+		c0 <<= 1;
 	}
 }
 
 int	main(int argc, char **argv)
 {
 	int	i;
+	int	server_id;
+	struct sigaction	act;
 
 	if (argc != 3)
 		exit(EXIT_FAILURE);
-	pid = ft_atoi(argv[1]);
+	act.sa_flags = SA_NODEFER | SA_RESTART;
+	act.sa_handler = SIGUSR_handler;
+	sigemptyset(&act.sa_mask);
+	sigaction(SIGUSR1, &act, NULL);
+	sigaction(SIGUSR2, &act, NULL);
+	server_id = ft_atoi(argv[1]);
 	i = -1;
 	while (argv[2][++i])
-		convert((int) argv[2][i]);
+		send_bits(server_id, argv[2][i]);
+	send_bits(server_id, 0);
 	exit(EXIT_SUCCESS);
 }
