@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/03/10 19:06:04 by ngoc             ###   ########.fr       */
+/*   Created: 2022/11/08 07:47:36 by minh-ngu          #+#    #+#             */
+/*   Updated: 2022/11/16 11:13:10 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include <unistd.h>
+#include "libft.h"
 
-# include <stdlib.h>
-# include <signal.h>
-# include "libft.h"
-# include "ft_printf.h"
-
-#endif
+void	ft_bzero(void *s, size_t n)
+{
+	s = ft_memset(s, 0, n);
+}

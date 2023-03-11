@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/03/10 19:06:04 by ngoc             ###   ########.fr       */
+/*   Created: 2022/11/08 17:09:14 by minh-ngu          #+#    #+#             */
+/*   Updated: 2022/11/25 16:08:59 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include <stdlib.h>
+#include "libft.h"
 
-# include <stdlib.h>
-# include <signal.h>
-# include "libft.h"
-# include "ft_printf.h"
+char	*ft_substr(const char *s, unsigned int start, size_t len)
+{
+	char	*o;
 
-#endif
+	if (len == 0 || ft_strlen(s) <= start)
+		return (ft_strdup(""));
+	if (len > ft_strlen(&s[start]))
+		len = ft_strlen(&s[start]);
+	o = malloc(sizeof(char) * (len + 1));
+	if (!o)
+		return (0);
+	ft_strlcpy(o, (char *) &s[start], len + 1);
+	return (o);
+}
