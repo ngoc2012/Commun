@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:38:39 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/03/08 08:55:35 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/13 12:40:04 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int			ascendant(t_stack *st, int start, int end);
 int			relative_ascendant(t_stack *st, int start, int end);
 t_stack		*new_stack(int *ini, int len);
 t_stack		*get_args(int argc, char **argv);
-int			get_arg(char *s, int *ini);
+int			get_arg(char *s, int *ini, char **ss);
 void		arg_error(int *ini);
+int			free_strs(char **ss);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/13 08:58:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/13 15:04:46 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	create_trgb(int t, int r, int g, int b)
 
 enum	e_fractal {JULIA, MANDELBROT};
 
+/*
 typedef struct	s_color	t_color;
 
 struct	s_color
@@ -101,30 +102,50 @@ t_color	*new_color(float r, float g, float b, float t)
 	new->set = set_color;
 	new->convert_bits = convert_bits;
 }
-/*
-float4 get_color(float iterations, float max_iterations, float4* pallet, int colors_nb)
-{
-    float value = iterations / max_iterations;
-    float4 color = (float4)(1.f, 1.f, 1.f, 1.f);
-
-    float min_value;
-    float max_value;
-
-    for (int i = 0; i < (int)colors_nb; i++)
-    {
-        min_value = (float)i / colors_nb;
-        max_value = (float)(i + 1) / colors_nb;
-
-        if (value >= min_value && value <= max_value)
-        {
-            color = mix(pallet[i], pallet[i + 1], (value - min_value) * colors_nb);
-            break;
-        }
-    }
-
-    return color;
-}
 */
+
+
+int	get_color(int iterations, int max_iterations)
+{
+	int		above;
+	int		under;
+	float		value = (float) iterations / max_iterations;
+ 	float[5][4]	pallet = {
+		{  0. / 255.,   7. / 255., 100. / 255., 1.},
+		{ 32. / 255., 107. / 255., 203. / 255., 1.},
+		{237. / 255., 255. / 255., 255. / 255., 1.},
+		{255. / 255., 170. / 255.,   0. / 255., 1.},
+		{  0. / 255.,   2. / 255.,   0. / 255., 1.},
+		{  0. / 255.,   7. / 255., 100. / 255., 1.}
+	};
+	above = int (value * 6.0);
+	if (above == 6)
+		above = 5;
+	under = above - 1;
+	ft_printf("value = %f\n", value);
+	ft_printf("under = %d\n", above);
+	ft_printf("above = %d\n", int (value * 6.0));
+	/*
+	for (int i = 0; i < (int)colors_nb; i++)
+	{
+		min_value = (float)i / colors_nb;
+		max_value = (float)(i + 1) / colors_nb;
+		
+		if (value >= min_value && value <= max_value)
+		{
+			color = mix(pallet[i], pallet[i + 1], (value - min_value) * colors_nb);
+			break;
+		}
+	}
+	*/	
+	float	p;
+	p = value * 6.0 - under;
+	return (create_trgb((int) pallet[under][0] + p * (pallet[above][0] - pallet[under][0]),
+	(int) pallet[under][1] + p * (pallet[above][1] - pallet[under][1]),
+	(int) pallet[under][2] + p * (pallet[above][2] - pallet[under][2]),
+	(int) pallet[under][3] + p * (pallet[above][3] - pallet[under][3])));
+}
+
 
 // https://en.m.wikipedia.org/wiki/Plotting_algorithms_for_the_Mandelbrot_set
 int	main(int argc, char **argv)
@@ -209,12 +230,12 @@ int	main(int argc, char **argv)
 			//my_mlx_pixel_put(&img, xp, yp, create_trgb(0, v * 255, v * 255, v * 255));
 			//ft_printf("i = %d\n", i);
 			if (i == max_iter)
-				my_mlx_pixel_put(&img, xp, yp, create_trgb(0, 0, 0, 0));
+				my_mlx_pixel_put(&img, xp, yp, get_color(i, max_iter));
 			else
-				my_mlx_pixel_put(&img, xp, yp, create_trgb(0, 255, 255, 255));
+				my_mlx_pixel_put(&img, xp, yp, get_color(i, max_iter));
 		}
 	}
-	ft_printf("Modulos: %.2f\n", sin(2.3));
+	ft_printf("sin: %.2f\n", sin(2.3));
 	ft_printf("Done\n");
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	vars.img = &img;

@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 08:17:16 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/03/08 09:25:30 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/13 12:40:34 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	*get_array(char *s, int *len)
 	}
 	i = -1;
 	while (*ss)
-		ini[++i] = get_arg(*ss++, ini);
+		ini[++i] = get_arg(*ss++, ini, ss0);
 	free_strs(ss0);
 	return (ini);
 }
