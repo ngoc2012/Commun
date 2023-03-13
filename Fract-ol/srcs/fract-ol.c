@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/12 17:34:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/13 08:58:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,35 @@ int	create_trgb(int t, int r, int g, int b)
 
 enum	e_fractal {JULIA, MANDELBROT};
 
+typedef struct	s_color	t_color;
+
+struct	s_color
+{
+	float	r;
+	float	g;
+	float	b;
+	float	t;
+	void	(*set)(t_color *, float r, float g, float b, float t);
+	int	(*convert_bits)(t_color *);
+};
+
+void	set_color(t_color *c, float r, float g, float b, float t);
+{
+	c.r = r;
+	c.g = g;
+	c.b = b;
+	c.t = t;
+}
+
+int	(*convert_bits)(t_color *);
+t_color	*new_color(float r, float g, float b, float t)
+{
+	new = malloc(sizeof(t_color));
+	if (!new)
+		return (0);
+	new->set = set_color;
+	new->convert_bits = convert_bits;
+}
 /*
 float4 get_color(float iterations, float max_iterations, float4* pallet, int colors_nb)
 {
