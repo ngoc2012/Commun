@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/03/11 09:49:10 by ngoc             ###   ########.fr        #
+#    Updated: 2023/03/14 10:40:49 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = fract-ol.c
+SRCS = draw.c fract-ol.c
 MSRC = $(addprefix srcs/, $(SRCS))
 MOBJ = ${MSRC:.c=.o}
 MANDA = fract-ol
@@ -27,7 +27,7 @@ $(LIBFT):
 $(LIBPR):
 	make -C ft_printf
 .c.o:
-	$(CC) $(FLAGS) $(INCL_MINILIBX) -c $< -o ${<:.c=.o} $(addprefix -I./, $(LIBS) includes)
+	$(CC) $(FLAGS) $(INCL_MINILIBX) -g -c $< -o ${<:.c=.o} $(addprefix -I./, $(LIBS) includes)
 $(MANDA):	$(MOBJ) $(LIBFT) $(LIBPR)
 	$(CC) $(FLAGS) $(MOBJ) $(OBJ_MINILIBX) -L./libft -lft -L./ft_printf -lftprintf -o $(MANDA)
 bonus:	$(MANDA)
