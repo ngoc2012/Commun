@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/14 11:21:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/14 20:01:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,23 @@ int	get_color(float value)
 {
 	int		above;
 	int		under;
-	int		dim = 6;
- 	float	pallet[6][4] = {
-		{  0.,   7., 100., 1.},
-		{ 32., 107., 203., 1.},
-		{237., 255., 255., 1.},
-		{255., 170.,   0., 1.},
-		{  0.,   2.,   0., 1.},
-		{  0.,   7., 100., 1.}
+	int		dim = 7;
+ 	float	pallet[7][4] = {
+		{255.,   0.,   0., 1.},
+		{255., 255.,   0., 1.},
+		{  0., 255.,   0., 1.},
+		{  0., 255., 255., 1.},
+		{  0.,   0., 255., 1.},
+		{255.,   0., 255., 1.},
+		{255.,   0.,   0., 1.}
 	};
+//		{  0.,   7., 100., 1.},
+//		{ 32., 107., 203., 1.},
+//		{237., 255., 255., 1.},
+//		{255., 170.,   0., 1.},
+//		{  0.,   2.,   0., 1.},
+//		{  0.,   7., 100., 1.}
+//	};
 //		{ 20.,   0.,   0., 1.},
 //		{255.,  20.,   0., 1.},
 //		{255., 200.,   0., 1.},
@@ -78,6 +86,8 @@ void	draw(t_vars *vars, t_img *img)
 
 	if (vars->in_process)
 	       return ;
+	vars->in_process++;
+	//g_process++;
 	max_i = 0;
 	min_i = MAX_ITER;
 	xp = 0;
@@ -122,10 +132,11 @@ void	draw(t_vars *vars, t_img *img)
 			my_mlx_pixel_put(img, xp, yp, get_color((float) (i - vars->min_iter) / (vars->max_iter- vars->min_iter)));
 		}
 	}
-	vars->in_process = 0;
+	vars->in_process--;
+	//g_process--;
 	vars->min_iter = min_i;
 	if (max_i <= MAX_ITER)
 		vars->max_iter = max_i;
-	ft_printf("max_iter = %d, min_iter = %d\n", vars->max_iter, vars->min_iter);
+	//ft_printf("max_iter = %d, min_iter = %d\n", vars->max_iter, vars->min_iter);
 	mlx_put_image_to_window(vars->mlx, vars->win, img->img, 0, 0);
 }

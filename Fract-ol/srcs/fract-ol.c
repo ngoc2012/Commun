@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/14 11:25:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/15 17:42:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,10 @@ int	key_hook(int keycode, t_vars *vars)
 	return (0);
 }
 
-
 int	mouse_hook(int button, int px, int py, t_vars *vars)
 {
 	//ft_printf("Button: %d, x = %d, y = %d \n", button, px, py);
-	ft_printf("In_process = %d\n", vars->in_process);
+	//ft_printf("In_process = %d\n", g_process);
 	if (vars->in_process)
 		return (0);
 	vars->cx += vars->left - px * vars->scale;
@@ -44,8 +43,33 @@ int	mouse_hook(int button, int px, int py, t_vars *vars)
 		vars->scale *= 2.0;
 	vars->left = vars->scale * vars->w / 2;
 	vars->top = vars->scale * vars->h / 2;
-	draw(vars, vars->img);
+	//draw(vars, vars->img);
 	return (0);
+}
+
+int	**creat_vp(int h, int w)
+{
+	int	**vp;
+	int	i;
+	int	j;
+
+	vp = malloc(sizeof(int*) * h);
+	if (!vp)
+		return (0);
+	i = -1;
+	while (++i < w)
+	{
+		vp[i] = malloc(sizeof(int) * w);
+		if (!vp[i])
+		{
+			j = -1;
+			while (++j < i)
+				free(vp[i]);
+			free(vp);
+			return (0);
+		}
+	}
+	return (vp);
 }
 
 // https://en.m.wikipedia.org/wiki/Plotting_algorithms_for_the_Mandelbrot_set
@@ -70,6 +94,7 @@ int	main(int argc, char **argv)
 	vars.max_iter = MAX_ITER;
 	vars.min_iter = 0;
 	vars.in_process = 0;
+	//g_process = 0;
 	vars.scale = (double) 4 / vars.w;
 	vars.left = vars.scale * vars.w / 2;
 	vars.top = vars.scale * vars.h / 2;

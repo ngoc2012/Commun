@@ -6,12 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/14 11:38:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/15 17:07:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
-# define FRACTO_H
+# define FRACTOL_H
 
 # include <stdlib.h>
 # include <X11/keysym.h>
@@ -21,7 +21,7 @@
 # include "ft_printf.h"
 # include "libft.h"
 
-# define MAX_ITER 200
+# define MAX_ITER 100
 
 enum	e_fractal {JULIA, MANDELBROT};
 
@@ -48,6 +48,12 @@ typedef struct	s_vars {
 	double	top;
 	double	cx;
 	double	cy;
+	double	vp1_tl_x;
+	double	vp1_tl_y;
+	double	vp1_br_x;
+	double	vp1_br_y;
+	int	**vp0;
+	int	**vp1;
 }	t_vars;
 
 void	draw(t_vars *vars, t_img *img);
