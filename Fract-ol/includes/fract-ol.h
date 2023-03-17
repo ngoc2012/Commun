@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/17 12:22:21 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/17 22:19:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@
 # define MAX_ITER 1000
 # define MIN_ITER 100
 # define ZOOM 1.2
-# define RADIUS 4
+# define MOVE 0.05
+# define RADIUS 40
 
 enum	e_fractal {JULIA, MANDELBROT};
 
@@ -51,6 +52,7 @@ typedef	struct	s_viewport {
 	int	**iters;
 	double	**xn;
 	double	**yn;
+	double	**colors;
 }	t_viewport;
 
 typedef struct	s_vars {
@@ -60,6 +62,8 @@ typedef struct	s_vars {
 	enum e_fractal	type;
 	int	max_iter;
 	int	in_process;
+	double	cx;
+	double	cy;
 	double	left;
 	double	right;
 	double	top;
@@ -75,5 +79,6 @@ void	del_vp(int **vp, int w);
 double	**creat_vp_d(double h, int w);
 void	del_vp_d(double **vp, int w);
 void	cal(t_vars *vars, t_viewport *vp);
+void	colors(t_vars *vars, t_viewport *vp);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/17 12:03:38 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/17 22:18:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ int	get_color(float value)
 
 	//if (value > 1.0)
 	//	value = 1.0;
+	if (value == 0.0)
+		return (create_trgb(1.0, pallet[0][0], pallet[0][1], pallet[0][2])); 
+	if (value == 1.0)
+		return (create_trgb(1.0, pallet[dim][0], pallet[dim][1], pallet[dim][2])); 
 	above = (int) (value * (float) dim);
 	if (above == dim)
 		above = dim - 1;
@@ -84,75 +88,47 @@ int	get_color(float value)
 		(int) (pallet[under][1] + p * (pallet[above][1] - pallet[under][1])),
 		(int) (pallet[under][2] + p * (pallet[above][2] - pallet[under][2])));
 	return (create_trgb(1.0,
-	(int) pallet[under][0] + p * (pallet[above][0] - pallet[under][0]),
-	(int) pallet[under][1] + p * (pallet[above][1] - pallet[under][1]),
-	(int) pallet[under][2] + p * (pallet[above][2] - pallet[under][2])));
+	(int) (pallet[under][0] + p * (pallet[above][0] - pallet[under][0])),
+	(int) (pallet[under][1] + p * (pallet[above][1] - pallet[under][1])),
+	(int) (pallet[under][2] + p * (pallet[above][2] - pallet[under][2]))));
 }
 
-void	draw(t_vars *vars, t_img *img, t_viewport *vp)
+void	draw(t_vars *vars, t_img *img)
 {
-	//double	x;
-	//double	y;
+	double	x;
+	double	y;
 	int	xp;
 	int	yp;
-	int	i;
-	//double	smooth;
+	int	xp0;
+	int	yp0;
+	t_viewport	*vp0;
 
+	vp0 = &vars->vp0; 
 	xp = -1;
 	while (++xp < WIDTH)
 	{
 		yp = -1;
 		while (++yp < HEIGHT)
 		{
-			//x0 = vp->left + vp->scale * xp;
-			//y0 = vp->top  - vp->scale * yp;
-			i = vp->iters[xp][yp];
-			//x = vp->xn[xp][yp];
-			//y = vp->yn[xp][yp];
-			//if (vars->type == JULIA)
-			//{
-			//	smooth = exp(i);
-			//	i = smooth;
-			//}
-			//else if (vars->type == MANDELBROT)
-			//{
-			//	if (i < vars->max_iter)
-			//		i = i + 1 - log(log(sqrt(x * x + y * y)) / log(RADIUS)) / log(2);
-			//}
-			my_mlx_pixel_put(img, xp + 1, yp + 1, get_color((float) i / vars->max_iter));
+			x = vars->left + vars->scale * (double) xp;
+			y = vars->top  - vars->scale * (double) yp;
+			if (x <= vp0->left || x >= vp0->right
+				|| y <= vp0->bottom || y >= vp0->top )
+				my_mlx_pixel_put(img, xp + 1, yp + 1, 0.0);
+			else
+			{
+				xp0 = (int) ((x - vp0->left) / vp0->scale); 
+				yp0 = (int) ((vp0->top - y) / vp0->scale); 
+				if (xp0 == WIDTH)
+					xp0--;
+				if (yp0 == HEIGHT)
+					yp0--;
+				my_mlx_pixel_put(img, xp, yp, get_color((float) vp0->colors[xp0][yp0]));
+			}
 		}
 	}
-	/*
-	total = 0;
-	i = -1;
-	while (++i < vars->max_iter)
-		total += NumIterationsPerPixel[i];
-	max_hue = 0.0;
-	xp = 0;
-	while (++xp < vars->w)
-	{
-		yp = 0;
-		while (++yp < vars->h)
-		{
-			hue[xp][yp] = 0.0;
-			i = -1;
-			while(++i <= IterationCounts[xp][yp])
-				hue[xp][yp] += NumIterationsPerPixel[i] / total;
-			if (hue[xp][yp] > max_hue)
-				max_hue = hue[xp][yp];
-		}
-	}
-	xp = 0;
-	while (++xp < vars->w)
-	{
-		yp = 0;
-		while (++yp < vars->h)
-		{
-			//my_mlx_pixel_put(img, xp, yp, get_color((float) hue[xp][yp]));
-			my_mlx_pixel_put(img, xp, yp, get_color((float) IterationCounts[xp][yp] / vars->max_iter));
-			//printf("%f\n", hue[xp][yp]);
-		}
-	}
-	*/
+	//printf("vars->scale = %f, vp0->scale = %f\n", vars->scale, vp0->scale);
+	//printf("vars->left = %f, vp0->left = %f\n", vars->left, vp0->left);
+	//printf("vars->top = %f, vp0->top = %f\n", vars->top, vp0->top);
 	mlx_put_image_to_window(vars->mlx, vars->win, img->img, 0, 0);
 }

@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/03/17 11:02:31 by minh-ngu         ###   ########.fr        #
+#    Updated: 2023/03/17 14:28:07 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = cal.c draw.c fract-ol.c
+SRCS = color.c cal.c draw.c fract-ol.c
 MSRC = $(addprefix srcs/, $(SRCS))
 MOBJ = ${MSRC:.c=.o}
 MANDA = fract-ol
