@@ -1,2 +1,2 @@
-make && valgrind --leak-check=full ./fract-ol JULIA
-#make && valgrind --leak-check=full ./fract-ol MANDELBROT
+#make && valgrind --leak-check=full ./fract-ol Julia
+make && valgrind --leak-check=full ./fract-ol Mandelbrot

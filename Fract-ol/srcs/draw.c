@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/17 09:05:32 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:03:38 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,98 +89,37 @@ int	get_color(float value)
 	(int) pallet[under][2] + p * (pallet[above][2] - pallet[under][2])));
 }
 
-void	draw(t_vars *vars, t_img *img)
+void	draw(t_vars *vars, t_img *img, t_viewport *vp)
 {
-	double   x;
-	double   y;
-	double   x0;
-	double   y0;
-	double   x2;
-	double   y2;
-	double   xtemp;
+	//double	x;
+	//double	y;
 	int	xp;
 	int	yp;
 	int	i;
-	int	max_i;
-	int	min_i;
-	//int	total;
-	int	NumIterationsPerPixel[MAX_ITER];
-	int	**IterationCounts;
-	//double	**hue;
-	//double	max_hue;
+	//double	smooth;
 
-	if (vars->in_process)
-	       return ;
-	vars->in_process++;
-	//g_process++;
-	i = -1;
-	while (++i < MAX_ITER)
-		NumIterationsPerPixel[i] = 0;
-	IterationCounts = creat_vp(vars->h, vars->w);
-	//hue = creat_vp_d(vars->h, vars->w);
-	max_i = 0;
-	min_i = vars->max_iter;
-	xp = 0;
-	while (++xp < vars->w)
+	xp = -1;
+	while (++xp < WIDTH)
 	{
-		yp = 0;
-		while (++yp < vars->h)
+		yp = -1;
+		while (++yp < HEIGHT)
 		{
-			x0 = vars->scale * xp - vars->left - vars->cx;
-			y0 = vars->scale * yp - vars->top - vars->cy;
-			i = 0;
-			if (vars->type == JULIA)
-			{
-				x = x0;
-				y = y0;
-				while (x * x + y * y < 1600 && ++i < vars->max_iter)
-				{
-					xtemp = x;
-					x = x * x - y * y + 0.285;
-					y = 2 * xtemp * y + 0.01;
-				}
-				IterationCounts[xp][yp] = i;
-				NumIterationsPerPixel[i]++;
-			}
-			else if (vars->type == MANDELBROT)
-			{
-				x = 0.0;
-				y = 0.0;
-				x2 = 0.0;
-				y2 = 0.0;
-				while (x2 + y2 < 1600 && ++i < vars->max_iter)
-				{
-					y = 2 * x * y +y0;
-					x = x2 - y2 + x0;
-					x2 = x * x;
-					y2 = y * y;
-					//xtemp = x * x - y * y + x0;
-					//y = 2 * x * y + y0;
-					//x = xtemp;
-				}
-				IterationCounts[xp][yp] = i;
-				NumIterationsPerPixel[i]++;
-			}
-			//v = math.pow(math.pow(i/max_iter, S) * N, 1.5) % N;
-			//v = i / max_iter;
-			//my_mlx_pixel_put(&img-> xp, yp, create_trgb(0, v * 255, v * 255, v * 255));
-			//ft_printf("i = %d\n", i);
-
-			//double logzn;
-			//double nu;
-			if (i < vars->max_iter)
-			{
-				//logzn = log(x * x + y * y) / 2;
-				//nu = log(logzn) / log(2);
-				i = i + 1 - log(log(sqrt(x * x + y * y)) / log(40)) / log(2);
-			}
-
-			//my_mlx_pixel_put(img, xp, yp, get_color((float) IterationCounts[xp][yp] / vars->max_iter));
-			my_mlx_pixel_put(img, xp, yp, get_color((float) i / vars->max_iter));
-			if (i < min_i)
-				min_i = i;
-			if (i > max_i)
-				max_i = i;
+			//x0 = vp->left + vp->scale * xp;
+			//y0 = vp->top  - vp->scale * yp;
+			i = vp->iters[xp][yp];
+			//x = vp->xn[xp][yp];
+			//y = vp->yn[xp][yp];
+			//if (vars->type == JULIA)
+			//{
+			//	smooth = exp(i);
+			//	i = smooth;
+			//}
+			//else if (vars->type == MANDELBROT)
+			//{
+			//	if (i < vars->max_iter)
+			//		i = i + 1 - log(log(sqrt(x * x + y * y)) / log(RADIUS)) / log(2);
+			//}
+			my_mlx_pixel_put(img, xp + 1, yp + 1, get_color((float) i / vars->max_iter));
 		}
 	}
 	/*
@@ -215,13 +154,5 @@ void	draw(t_vars *vars, t_img *img)
 		}
 	}
 	*/
-	vars->in_process--;
-	//g_process--;
-	vars->min_iter = min_i;
-	if (max_i <= MAX_ITER)
-		vars->max_iter = max_i;
-	del_vp(IterationCounts, vars->w);
-	//del_vp_d(hue, vars->w);
-	//ft_printf("max_iter = %d, min_iter = %d\n", vars->max_iter, vars->min_iter);
 	mlx_put_image_to_window(vars->mlx, vars->win, img->img, 0, 0);
 }
