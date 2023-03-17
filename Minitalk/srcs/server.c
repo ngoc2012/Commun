@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:39:09 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/03/13 22:01:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/16 14:56:45 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ unsigned char	*g_s;
 
 void	end(int *len)
 {
-	write(1, g_s, *len);
+	write(1, g_s, *len + 1);
 	free(g_s);
 	g_s = malloc(sizeof(unsigned char));
 	if (!g_s)
@@ -45,7 +45,7 @@ void	get_char(unsigned char c, int *len)
 		g_s = new;
 		free(tmp);
 	}
-	ft_memcpy(&s[*len], &c, 1);
+	ft_memcpy(&g_s[*len], &c, 1);
 	g_s[*len + 1] = 0;
 }
 

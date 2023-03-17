@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/03/15 17:40:52 by ngoc             ###   ########.fr        #
+#    Updated: 2023/03/16 21:36:19 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,10 @@ FLAGS = -Wall -Wextra -Werror
 LIBFT = libft/libft.a
 LIBPR = ft_printf/libftprintf.a
 LIBS = libft ft_printf
-INCL_MINILIBX = -I/usr/local/include -lmlx_Linux -O3
-OBJ_MINILIBX = -L/usr/local/lib -lmlx_Linux -lXext -lX11 -lm -lz
+#INCL_MINILIBX = -I/usr/local/include -lmlx_Linux -O3
+#OBJ_MINILIBX = -L/usr/local/lib -lmlx_Linux -lXext -lX11 -lm -lz
+INCL_MINILIBX = -I./minilibx-linux
+OBJ_MINILIBX = -L./minilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
 all:	$(MANDA)
 $(LIBFT):
 	make -C libft

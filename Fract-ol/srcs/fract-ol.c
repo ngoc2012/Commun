@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/15 17:42:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/17 08:33:42 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,27 @@ int	mouse_hook(int button, int px, int py, t_vars *vars)
 {
 	//ft_printf("Button: %d, x = %d, y = %d \n", button, px, py);
 	//ft_printf("In_process = %d\n", g_process);
+	double	zoom;
+	double	x0, y0;
 	if (vars->in_process)
 		return (0);
-	vars->cx += vars->left - px * vars->scale;
-	vars->cy += vars->top - py * vars->scale;
-	if (button == 1)
-		vars->scale /= 2.0;
-	if (button == 3)
-		vars->scale *= 2.0;
-	vars->left = vars->scale * vars->w / 2;
-	vars->top = vars->scale * vars->h / 2;
-	//draw(vars, vars->img);
+	if (button == 4 || button == 5)
+	{
+		if (button == 4)
+			zoom = 1 / ZOOM;
+		if (button == 5)
+			zoom = ZOOM;
+		x0 = vars->left + vars->cx - px * vars->scale;
+		y0 = vars->top + vars->cy - py * vars->scale;
+		//vars->cx = x0 * zoom - vars->left + px * vars->scale;
+		//vars->cy = y0 * zoom - vars->top + py * vars->scale;
+		vars->cx = x0;
+		vars->cy = y0;
+		vars->scale *= zoom;
+		vars->left = vars->scale * vars->w / 2;
+		vars->top = vars->scale * vars->h / 2;
+		draw(vars, vars->img);
+	}
 	return (0);
 }
 
@@ -70,6 +80,51 @@ int	**creat_vp(int h, int w)
 		}
 	}
 	return (vp);
+}
+
+void	del_vp(int **vp, int w)
+{
+	int	i;
+
+	i = -1;
+	while (++i < w)
+		free(vp[i]);
+	free(vp);
+}
+
+double	**creat_vp_d(double h, int w)
+{
+	double	**vp;
+	int	i;
+	int	j;
+
+	vp = malloc(sizeof(double*) * h);
+	if (!vp)
+		return (0);
+	i = -1;
+	while (++i < w)
+	{
+		vp[i] = malloc(sizeof(double) * w);
+		if (!vp[i])
+		{
+			j = -1;
+			while (++j < i)
+				free(vp[i]);
+			free(vp);
+			return (0);
+		}
+	}
+	return (vp);
+}
+
+void	del_vp_d(double **vp, int w)
+{
+	int	i;
+
+	i = -1;
+	while (++i < w)
+		free(vp[i]);
+	free(vp);
 }
 
 // https://en.m.wikipedia.org/wiki/Plotting_algorithms_for_the_Mandelbrot_set
