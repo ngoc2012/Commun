@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/03/17 14:28:07 by ngoc             ###   ########.fr        #
+#    Updated: 2023/03/19 15:21:43 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ $(LIBPR):
 .c.o:
 	$(CC) $(FLAGS) $(INCL_MINILIBX) -g -c $< -o ${<:.c=.o} $(addprefix -I./, $(LIBS) includes)
 $(MANDA):	$(MOBJ) $(LIBFT) $(LIBPR)
-	$(CC) $(FLAGS) $(MOBJ) $(OBJ_MINILIBX) -L./libft -lft -L./ft_printf -lftprintf -o $(MANDA)
+	$(CC) $(FLAGS) $(MOBJ) $(OBJ_MINILIBX) -L./libft -lft -L./ft_printf -lftprintf -l pthread -o $(MANDA)
 bonus:	$(MANDA)
 norm:
 	norminette $(LIBS) srcs includes

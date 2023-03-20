@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/17 23:41:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/20 08:38:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,67 @@ void	print_viewport(t_viewport *vp)
 
 int	key_hook(int keycode, t_vars *vars)
 {
-	double	d;
+	VAR_TYPE	d;
+	VAR_TYPE	zoom;
 
 	//ft_printf("keycode: %d\n", keycode);
-	if (keycode == XK_q || keycode == 65507 || keycode == XK_Escape)
+	if (keycode == XK_p)
+	{
+		vars->pallet++;
+		vars->pallet %= N_PALLETS;
+		draw(vars, vars->img);
+	}
+	if (keycode == XK_s)
+	{
+		if (vars->smooth)
+			vars->smooth = 0;
+		else
+			vars->smooth = 1;
+		cal2(vars, &vars->vp0);
+		colors(vars, &vars->vp0);
+		draw(vars, vars->img);
+	}
+	if (keycode == XK_i && vars->max_iter + STEP_ITER <= MAX_ITER)
+	{
+		vars->max_iter += STEP_ITER;
+		ft_printf("MAX_ITER = %d\n", vars->max_iter);
+		cal2(vars, &vars->vp0);
+		colors(vars, &vars->vp0);
+		draw(vars, vars->img);
+	}
+	if (keycode == XK_u && vars->max_iter - STEP_ITER >= MIN_ITER)
+	{
+		vars->max_iter -= STEP_ITER;
+		ft_printf("MAX_ITER = %d\n", vars->max_iter);
+		cal2(vars, &vars->vp0);
+		colors(vars, &vars->vp0);
+		draw(vars, vars->img);
+	}
+	if (keycode == XK_q || keycode == XK_Escape)
 		end_prog(vars);
+	if (keycode == 61 || keycode == XK_minus)
+	{
+		if (keycode == 61)
+			zoom = 1 / ZOOM;
+		else
+			zoom = ZOOM;
+		d = (vars->right - vars->left) * zoom;
+		vars->left = vars->right * 0.5 + vars->left * 0.5 - d * 0.5;
+		vars->right = vars->left + d;
+		d = (vars->top - vars->bottom) * zoom;
+		vars->top = vars->bottom * 0.5 + vars->top * 0.5 + d * 0.5;
+		vars->bottom = vars->top - d;
+		vars->scale *= zoom;
+		vars->vp0.left = vars->left;
+		vars->vp0.right = vars->right;
+		vars->vp0.top = vars->top;
+		vars->vp0.bottom = vars->bottom;
+		vars->vp0.scale *= zoom;
+		//print_viewport(&vars->vp0);
+		cal2(vars, &vars->vp0);
+		colors(vars, &vars->vp0);
+		draw(vars, vars->img);
+	}
 	if (keycode == XK_Right || keycode == XK_Left)
 	{
 		d = (vars->right - vars->left) * MOVE;
@@ -47,7 +103,7 @@ int	key_hook(int keycode, t_vars *vars)
 		vars->vp0.left += d;
 		vars->vp0.right += d;
 		//print_viewport(&vars->vp0);
-		cal(vars, &vars->vp0);
+		cal2(vars, &vars->vp0);
 		colors(vars, &vars->vp0);
 		draw(vars, vars->img);
 	}
@@ -61,7 +117,7 @@ int	key_hook(int keycode, t_vars *vars)
 		vars->vp0.top += d;
 		vars->vp0.bottom += d;
 		//print_viewport(&vars->vp0);
-		cal(vars, &vars->vp0);
+		cal2(vars, &vars->vp0);
 		colors(vars, &vars->vp0);
 		draw(vars, vars->img);
 	}
@@ -75,12 +131,12 @@ int	mouse_hook(int button, int px, int py, t_vars *vars)
 {
 	//ft_printf("Button: %d, x = %d, y = %d \n", button, px, py);
 	//ft_printf("In_process = %d\n", g_process);
-	double	zoom;
-	double	Lx;
-	double	Ly;
-	double	dx;
-	double	dy;
-	//double	x0, y0;
+	VAR_TYPE	zoom;
+	VAR_TYPE	Lx;
+	VAR_TYPE	Ly;
+	VAR_TYPE	dx;
+	VAR_TYPE	dy;
+	//VAR_TYPE	x0, y0;
 	if (vars->in_process)
 		return (0);
 	if (button == 4 || button == 5)
@@ -104,7 +160,16 @@ int	mouse_hook(int button, int px, int py, t_vars *vars)
 		vars->vp0.bottom = vars->vp0.top - Ly * zoom;
 		vars->vp0.scale *= zoom;
 		//print_viewport(&vars->vp0);
-		cal(vars, &vars->vp0);
+		cal2(vars, &vars->vp0);
+		colors(vars, &vars->vp0);
+		draw(vars, vars->img);
+	}
+	if (button == 3 && vars->type == JULIA)
+	{
+		vars->cx = (vars->left + px * vars->scale) * 0.5;
+		vars->cy = (vars->top - py * vars->scale) * 0.5;
+		printf("cx: %f, cy = %f\n", vars->cx, vars->cy);
+		cal2(vars, &vars->vp0);
 		colors(vars, &vars->vp0);
 		draw(vars, vars->img);
 	}
@@ -146,19 +211,19 @@ void	del_vp(int **vp, int w)
 	free(vp);
 }
 
-double	**creat_vp_d(double h, int w)
+VAR_TYPE	**creat_vp_d(VAR_TYPE h, int w)
 {
-	double	**vp;
+	VAR_TYPE	**vp;
 	int	i;
 	int	j;
 
-	vp = malloc(sizeof(double*) * w);
+	vp = malloc(sizeof(VAR_TYPE*) * w);
 	if (!vp)
 		return (0);
 	i = -1;
 	while (++i < w)
 	{
-		vp[i] = malloc(sizeof(double) * h);
+		vp[i] = malloc(sizeof(VAR_TYPE) * h);
 		if (!vp[i])
 		{
 			j = -1;
@@ -171,7 +236,7 @@ double	**creat_vp_d(double h, int w)
 	return (vp);
 }
 
-void	del_vp_d(double **vp, int w)
+void	del_vp_d(VAR_TYPE **vp, int w)
 {
 	int	i;
 
@@ -187,6 +252,78 @@ void	help()
 	ft_printf("./fract-ol Mandelbrot\n");
 }
 
+void	reset(t_vars *vars)
+{
+	if (vars->type == JULIA)
+	{
+		vars->cx = 0.285;
+		vars->cy = 0.01;
+		vars->left = -1.5;
+		vars->right = 1.5;
+		vars->scale = (vars.right - vars.left) / WIDTH;
+		vars->top = vars.scale * HEIGHT * 0.5;
+		vars->bottom = -vars.scale * HEIGHT * 0.5;
+
+		vars->vp0.left = vars.left;
+		vars->vp0.right = vars.right;
+		vars->vp0.scale = vars.scale;
+		vars->vp0.top = vars.top;
+		vars->vp0.bottom = vars.bottom;
+		vars->vp0.iters = creat_vp(HEIGHT, WIDTH);
+		vars->vp0.xn = creat_vp_d(HEIGHT, WIDTH);
+		vars->vp0.yn = creat_vp_d(HEIGHT, WIDTH);
+		vars->vp0.colors = creat_vp_d(HEIGHT, WIDTH);
+		if (!vars->vp0.iters || !vars->vp0.xn ||  !vars->vp0.yn ||  !vars->vp0.colors)
+		{
+			if (vars->vp0.iters)
+				free(vars->vp0.iters);
+			if (vars->vp0.xn)
+				free(vars->vp0.xn);
+			if (vars->vp0.yn)
+				free(vars->vp0.yn);
+			if (vars->vp0.colors)
+				free(vars->vp0.yn);
+			exit(EXIT_FAILURE);
+		}
+	}
+	else if (vars->type == MANDELBROT)
+	{
+		vars->left = -2.0;
+		vars->right = 1.0;
+		vars->scale = (vars->right - vars->left) / WIDTH;
+		vars->top = vars->scale * HEIGHT * 0.5;
+		vars->bottom = -vars->scale * HEIGHT * 0.5;
+
+		//vars->left = -1.253537;
+		//vars->right = -1.253142;
+		//vars->scale = (vars->right - vars->left) / WIDTH;
+		//vars->top = -0.378073;
+		//vars->bottom = vars->top - vars->scale * HEIGHT;
+
+		vars->vp0.left = vars->left;
+		vars->vp0.right = vars->right;
+		vars->vp0.scale = vars->scale;
+		vars->vp0.top = vars->top;
+		vars->vp0.bottom = vars->bottom;
+		vars->vp0.iters = creat_vp(HEIGHT, WIDTH);
+		vars->vp0.xn = creat_vp_d(HEIGHT, WIDTH);
+		vars->vp0.yn = creat_vp_d(HEIGHT, WIDTH);
+		vars->vp0.colors = creat_vp_d(HEIGHT, WIDTH);
+		if (!vars->vp0.iters || !vars->vp0.xn ||  !vars->vp0.yn ||  !vars->vp0.colors)
+		{
+			if (vars->vp0.iters)
+				free(vars->vp0.iters);
+			if (vars->vp0.xn)
+				free(vars->vp0.xn);
+			if (vars->vp0.yn)
+				free(vars->vp0.yn);
+			if (vars->vp0.colors)
+				free(vars->vp0.yn);
+			exit(EXIT_FAILURE);
+		}
+	}
+}
+
 // https://en.m.wikipedia.org/wiki/Plotting_algorithms_for_the_Mandelbrot_set
 int	main(int argc, char **argv)
 {
@@ -198,13 +335,15 @@ int	main(int argc, char **argv)
 		exit(EXIT_SUCCESS);
 	vars.max_iter = MIN_ITER;
 	vars.in_process = 0;
+	vars.smooth = 0;
+	vars.pallet = 0;
 	if (ft_strncmp(argv[1], "Julia", 6) == 0)
 	{
 		vars.type = JULIA;
 		vars.cx = 0.285;
 		vars.cy = 0.01;
-		vars.left = -2.0;
-		vars.right = 1.0;
+		vars.left = -1.5;
+		vars.right = 1.5;
 		vars.scale = (vars.right - vars.left) / WIDTH;
 		vars.top = vars.scale * HEIGHT * 0.5;
 		vars.bottom = -vars.scale * HEIGHT * 0.5;
