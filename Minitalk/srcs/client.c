@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:39:09 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/03/10 19:06:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/21 09:21:37 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,13 @@ void	sigusr_handler(int sig)
 	return ;
 }
 
-int	send_bits(int server_id, unsigned char c)
+void	connection_fail(void)
+{
+	ft_printf("Connection to server failed\n");
+	exit(EXIT_FAILURE);
+}
+
+void	send_bits(int server_id, unsigned char c)
 {
 	int				i;
 	int				j;
@@ -42,11 +48,10 @@ int	send_bits(int server_id, unsigned char c)
 		{
 			usleep(1);
 			if (j > 10000)
-				return (0);
+				connection_fail();
 		}
 		c0 <<= 1;
 	}
-	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -66,11 +71,8 @@ int	main(int argc, char **argv)
 	i = -1;
 	while (argv[2][++i])
 	{
-		if (!send_bits(server_id, argv[2][i]))
-		{
-			ft_printf("Connection to server failed\n");
-			exit(EXIT_FAILURE);
-		}
+		if (!send_unicode(&argv[2][i], server_id, &i))
+			send_bits(server_id, argv[2][i]);
 	}
 	send_bits(server_id, 0);
 	exit(EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/19 22:48:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/20 16:50:23 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,9 +127,7 @@ void	draw(t_vars *vars, t_img *img)
 	int	yp;
 	int	xp0;
 	int	yp0;
-	t_viewport	*vp0;
 
-	vp0 = &vars->vp0; 
 	xp = -1;
 	while (++xp < WIDTH)
 	{
@@ -138,23 +136,23 @@ void	draw(t_vars *vars, t_img *img)
 		{
 			x = vars->left + vars->scale * (VAR_TYPE) xp;
 			y = vars->top  - vars->scale * (VAR_TYPE) yp;
-			if (x <= vp0->left || x >= vp0->right
-				|| y <= vp0->bottom || y >= vp0->top )
+			if (x <= vars->left || x >= vars->right
+				|| y <= vars->bottom || y >= vars->top )
 				my_mlx_pixel_put(img, xp + 1, yp + 1, 0.0);
 			else
 			{
-				xp0 = (int) ((x - vp0->left) / vp0->scale); 
-				yp0 = (int) ((vp0->top - y) / vp0->scale); 
+				xp0 = (int) ((x - vars->left) / vars->scale); 
+				yp0 = (int) ((vars->top - y) / vars->scale); 
 				if (xp0 == WIDTH)
 					xp0--;
 				if (yp0 == HEIGHT)
 					yp0--;
-				my_mlx_pixel_put(img, xp, yp, get_color((float) vp0->colors[xp0][yp0], vars->pallet));
+				my_mlx_pixel_put(img, xp, yp, get_color((float) vars->colors[xp0][yp0], vars->pallet));
 			}
 		}
 	}
-	//printf("vars->scale = %f, vp0->scale = %f\n", vars->scale, vp0->scale);
-	//printf("vars->left = %f, vp0->left = %f\n", vars->left, vp0->left);
-	//printf("vars->top = %f, vp0->top = %f\n", vars->top, vp0->top);
+	//printf("vars->scale = %f, vars->scale = %f\n", vars->scale, vars->scale);
+	//printf("vars->left = %f, vars->left = %f\n", vars->left, vars->left);
+	//printf("vars->top = %f, vars->top = %f\n", vars->top, vars->top);
 	mlx_put_image_to_window(vars->mlx, vars->win, img->img, 0, 0);
 }

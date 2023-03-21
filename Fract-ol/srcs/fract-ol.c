@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/20 08:38:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/20 19:54:01 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,16 @@ int	end_prog(t_vars *vars)
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_display(vars->mlx);
 	free(vars->mlx);
-	del_vp(vars->vp0.iters, WIDTH);
-	del_vp_d(vars->vp0.xn, WIDTH);
-	del_vp_d(vars->vp0.yn, WIDTH);
-	del_vp_d(vars->vp0.colors, WIDTH);
+	del_vp(vars->iters, WIDTH);
+	del_vp_d(vars->xn, WIDTH);
+	del_vp_d(vars->yn, WIDTH);
+	del_vp_d(vars->colors, WIDTH);
 	exit(EXIT_SUCCESS);
-}
-
-void	print_viewport(t_viewport *vp)
-{
-	printf("Top = %.10f, bottom = %.10f, left = %.10f, right = %.10f\n", vp->top, vp->bottom, vp->left, vp->right);
 }
 
 int	key_hook(int keycode, t_vars *vars)
 {
+	int		dp;
 	VAR_TYPE	d;
 	VAR_TYPE	zoom;
 
@@ -48,24 +44,24 @@ int	key_hook(int keycode, t_vars *vars)
 			vars->smooth = 0;
 		else
 			vars->smooth = 1;
-		cal2(vars, &vars->vp0);
-		colors(vars, &vars->vp0);
+		cal_th(vars, 0, HEIGHT, 'v');
+		colors(vars);
 		draw(vars, vars->img);
 	}
 	if (keycode == XK_i && vars->max_iter + STEP_ITER <= MAX_ITER)
 	{
 		vars->max_iter += STEP_ITER;
 		ft_printf("MAX_ITER = %d\n", vars->max_iter);
-		cal2(vars, &vars->vp0);
-		colors(vars, &vars->vp0);
+		cal_th(vars, 0, HEIGHT, 'v');
+		colors(vars);
 		draw(vars, vars->img);
 	}
 	if (keycode == XK_u && vars->max_iter - STEP_ITER >= MIN_ITER)
 	{
 		vars->max_iter -= STEP_ITER;
 		ft_printf("MAX_ITER = %d\n", vars->max_iter);
-		cal2(vars, &vars->vp0);
-		colors(vars, &vars->vp0);
+		cal_th(vars, 0, HEIGHT, 'v');
+		colors(vars);
 		draw(vars, vars->img);
 	}
 	if (keycode == XK_q || keycode == XK_Escape)
@@ -83,28 +79,43 @@ int	key_hook(int keycode, t_vars *vars)
 		vars->top = vars->bottom * 0.5 + vars->top * 0.5 + d * 0.5;
 		vars->bottom = vars->top - d;
 		vars->scale *= zoom;
-		vars->vp0.left = vars->left;
-		vars->vp0.right = vars->right;
-		vars->vp0.top = vars->top;
-		vars->vp0.bottom = vars->bottom;
-		vars->vp0.scale *= zoom;
+		vars->left = vars->left;
+		vars->right = vars->right;
+		vars->top = vars->top;
+		vars->bottom = vars->bottom;
+		vars->scale *= zoom;
 		//print_viewport(&vars->vp0);
-		cal2(vars, &vars->vp0);
-		colors(vars, &vars->vp0);
+		cal_th(vars, 0, HEIGHT, 'v');
+		colors(vars);
 		draw(vars, vars->img);
 	}
 	if (keycode == XK_Right || keycode == XK_Left)
 	{
 		d = (vars->right - vars->left) * MOVE;
+		dp = (int) d / vars->scale;
+		d = dp * vars->scale;
 		if (keycode == XK_Left)
 			d = -d;
 		vars->left += d;
 		vars->right += d;
-		vars->vp0.left += d;
-		vars->vp0.right += d;
-		//print_viewport(&vars->vp0);
-		cal2(vars, &vars->vp0);
-		colors(vars, &vars->vp0);
+		vars->left += d;
+		vars->right += d;
+		if (keycode == XK_Right)
+		{
+			i = 0;
+			while (i < d)
+			{
+				j = -1;
+				while (j < WIDTH)
+					vars
+			}
+			cal_th(vars, &vars->vp0, 0, HEIGHT, 'v');
+		}
+		else
+		{
+		}
+		//cal_th(vars, 0, HEIGHT, 'v');
+		colors(vars);
 		draw(vars, vars->img);
 	}
 	else if (keycode == XK_Up || keycode == XK_Down)
@@ -114,11 +125,11 @@ int	key_hook(int keycode, t_vars *vars)
 			d = -d;
 		vars->top += d;
 		vars->bottom += d;
-		vars->vp0.top += d;
-		vars->vp0.bottom += d;
+		vars->top += d;
+		vars->bottom += d;
 		//print_viewport(&vars->vp0);
-		cal2(vars, &vars->vp0);
-		colors(vars, &vars->vp0);
+		cal_th(vars, 0, HEIGHT, 'v');
+		colors(vars);
 		draw(vars, vars->img);
 	}
 	else if (keycode == XK_r)
@@ -154,14 +165,13 @@ int	mouse_hook(int button, int px, int py, t_vars *vars)
 		vars->top += dy;
 		vars->bottom = vars->top - Ly * zoom;
 		vars->scale *= zoom;
-		vars->vp0.left += dx;
-		vars->vp0.right = Lx * zoom + vars->vp0.left;
-		vars->vp0.top += dy;
-		vars->vp0.bottom = vars->vp0.top - Ly * zoom;
-		vars->vp0.scale *= zoom;
-		//print_viewport(&vars->vp0);
-		cal2(vars, &vars->vp0);
-		colors(vars, &vars->vp0);
+		vars->left += dx;
+		vars->right = Lx * zoom + vars->left;
+		vars->top += dy;
+		vars->bottom = vars->top - Ly * zoom;
+		vars->scale *= zoom;
+		cal_th(vars, 0, HEIGHT, 'v');
+		colors(vars);
 		draw(vars, vars->img);
 	}
 	if (button == 3 && vars->type == JULIA)
@@ -169,8 +179,8 @@ int	mouse_hook(int button, int px, int py, t_vars *vars)
 		vars->cx = (vars->left + px * vars->scale) * 0.5;
 		vars->cy = (vars->top - py * vars->scale) * 0.5;
 		printf("cx: %f, cy = %f\n", vars->cx, vars->cy);
-		cal2(vars, &vars->vp0);
-		colors(vars, &vars->vp0);
+		cal(vars);
+		colors(vars);
 		draw(vars, vars->img);
 	}
 	return (0);
@@ -252,78 +262,6 @@ void	help()
 	ft_printf("./fract-ol Mandelbrot\n");
 }
 
-void	reset(t_vars *vars)
-{
-	if (vars->type == JULIA)
-	{
-		vars->cx = 0.285;
-		vars->cy = 0.01;
-		vars->left = -1.5;
-		vars->right = 1.5;
-		vars->scale = (vars.right - vars.left) / WIDTH;
-		vars->top = vars.scale * HEIGHT * 0.5;
-		vars->bottom = -vars.scale * HEIGHT * 0.5;
-
-		vars->vp0.left = vars.left;
-		vars->vp0.right = vars.right;
-		vars->vp0.scale = vars.scale;
-		vars->vp0.top = vars.top;
-		vars->vp0.bottom = vars.bottom;
-		vars->vp0.iters = creat_vp(HEIGHT, WIDTH);
-		vars->vp0.xn = creat_vp_d(HEIGHT, WIDTH);
-		vars->vp0.yn = creat_vp_d(HEIGHT, WIDTH);
-		vars->vp0.colors = creat_vp_d(HEIGHT, WIDTH);
-		if (!vars->vp0.iters || !vars->vp0.xn ||  !vars->vp0.yn ||  !vars->vp0.colors)
-		{
-			if (vars->vp0.iters)
-				free(vars->vp0.iters);
-			if (vars->vp0.xn)
-				free(vars->vp0.xn);
-			if (vars->vp0.yn)
-				free(vars->vp0.yn);
-			if (vars->vp0.colors)
-				free(vars->vp0.yn);
-			exit(EXIT_FAILURE);
-		}
-	}
-	else if (vars->type == MANDELBROT)
-	{
-		vars->left = -2.0;
-		vars->right = 1.0;
-		vars->scale = (vars->right - vars->left) / WIDTH;
-		vars->top = vars->scale * HEIGHT * 0.5;
-		vars->bottom = -vars->scale * HEIGHT * 0.5;
-
-		//vars->left = -1.253537;
-		//vars->right = -1.253142;
-		//vars->scale = (vars->right - vars->left) / WIDTH;
-		//vars->top = -0.378073;
-		//vars->bottom = vars->top - vars->scale * HEIGHT;
-
-		vars->vp0.left = vars->left;
-		vars->vp0.right = vars->right;
-		vars->vp0.scale = vars->scale;
-		vars->vp0.top = vars->top;
-		vars->vp0.bottom = vars->bottom;
-		vars->vp0.iters = creat_vp(HEIGHT, WIDTH);
-		vars->vp0.xn = creat_vp_d(HEIGHT, WIDTH);
-		vars->vp0.yn = creat_vp_d(HEIGHT, WIDTH);
-		vars->vp0.colors = creat_vp_d(HEIGHT, WIDTH);
-		if (!vars->vp0.iters || !vars->vp0.xn ||  !vars->vp0.yn ||  !vars->vp0.colors)
-		{
-			if (vars->vp0.iters)
-				free(vars->vp0.iters);
-			if (vars->vp0.xn)
-				free(vars->vp0.xn);
-			if (vars->vp0.yn)
-				free(vars->vp0.yn);
-			if (vars->vp0.colors)
-				free(vars->vp0.yn);
-			exit(EXIT_FAILURE);
-		}
-	}
-}
-
 // https://en.m.wikipedia.org/wiki/Plotting_algorithms_for_the_Mandelbrot_set
 int	main(int argc, char **argv)
 {
@@ -347,64 +285,45 @@ int	main(int argc, char **argv)
 		vars.scale = (vars.right - vars.left) / WIDTH;
 		vars.top = vars.scale * HEIGHT * 0.5;
 		vars.bottom = -vars.scale * HEIGHT * 0.5;
-
-		vars.vp0.left = vars.left;
-		vars.vp0.right = vars.right;
-		vars.vp0.scale = vars.scale;
-		vars.vp0.top = vars.top;
-		vars.vp0.bottom = vars.bottom;
-		vars.vp0.iters = creat_vp(HEIGHT, WIDTH);
-		vars.vp0.xn = creat_vp_d(HEIGHT, WIDTH);
-		vars.vp0.yn = creat_vp_d(HEIGHT, WIDTH);
-		vars.vp0.colors = creat_vp_d(HEIGHT, WIDTH);
-		if (!vars.vp0.iters || !vars.vp0.xn ||  !vars.vp0.yn ||  !vars.vp0.colors)
+		vars.iters = creat_vp(HEIGHT, WIDTH);
+		vars.xn = creat_vp_d(HEIGHT, WIDTH);
+		vars.yn = creat_vp_d(HEIGHT, WIDTH);
+		vars.colors = creat_vp_d(HEIGHT, WIDTH);
+		if (!vars.iters || !vars.xn ||  !vars.yn ||  !vars.colors)
 		{
-			if (vars.vp0.iters)
-				free(vars.vp0.iters);
-			if (vars.vp0.xn)
-				free(vars.vp0.xn);
-			if (vars.vp0.yn)
-				free(vars.vp0.yn);
-			if (vars.vp0.colors)
-				free(vars.vp0.yn);
+			if (vars.iters)
+				free(vars.iters);
+			if (vars.xn)
+				free(vars.xn);
+			if (vars.yn)
+				free(vars.yn);
+			if (vars.colors)
+				free(vars.yn);
 			exit(EXIT_FAILURE);
 		}
 	}
 	else if (ft_strncmp(argv[1], "Mandelbrot", 11) == 0)
 	{
 		vars.type = MANDELBROT;
-
 		vars.left = -2.0;
 		vars.right = 1.0;
 		vars.scale = (vars.right - vars.left) / WIDTH;
 		vars.top = vars.scale * HEIGHT * 0.5;
 		vars.bottom = -vars.scale * HEIGHT * 0.5;
-
-		//vars.left = -1.253537;
-		//vars.right = -1.253142;
-		//vars.scale = (vars.right - vars.left) / WIDTH;
-		//vars.top = -0.378073;
-		//vars.bottom = vars.top - vars.scale * HEIGHT;
-
-		vars.vp0.left = vars.left;
-		vars.vp0.right = vars.right;
-		vars.vp0.scale = vars.scale;
-		vars.vp0.top = vars.top;
-		vars.vp0.bottom = vars.bottom;
-		vars.vp0.iters = creat_vp(HEIGHT, WIDTH);
-		vars.vp0.xn = creat_vp_d(HEIGHT, WIDTH);
-		vars.vp0.yn = creat_vp_d(HEIGHT, WIDTH);
-		vars.vp0.colors = creat_vp_d(HEIGHT, WIDTH);
-		if (!vars.vp0.iters || !vars.vp0.xn ||  !vars.vp0.yn ||  !vars.vp0.colors)
+		vars.iters = creat_vp(HEIGHT, WIDTH);
+		vars.xn = creat_vp_d(HEIGHT, WIDTH);
+		vars.yn = creat_vp_d(HEIGHT, WIDTH);
+		vars.colors = creat_vp_d(HEIGHT, WIDTH);
+		if (!vars.iters || !vars.xn ||  !vars.yn ||  !vars.colors)
 		{
-			if (vars.vp0.iters)
-				free(vars.vp0.iters);
-			if (vars.vp0.xn)
-				free(vars.vp0.xn);
-			if (vars.vp0.yn)
-				free(vars.vp0.yn);
-			if (vars.vp0.colors)
-				free(vars.vp0.yn);
+			if (vars.iters)
+				free(vars.iters);
+			if (vars.xn)
+				free(vars.xn);
+			if (vars.yn)
+				free(vars.yn);
+			if (vars.colors)
+				free(vars.yn);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -424,8 +343,8 @@ int	main(int argc, char **argv)
 	img.img = mlx_new_image(vars.mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	vars.img = &img;
-	cal(&vars, &vars.vp0);
-	colors(&vars, &vars.vp0);
+	cal(&vars);
+	colors(&vars);
 	draw(&vars, &img);
 	mlx_loop(vars.mlx);
 }

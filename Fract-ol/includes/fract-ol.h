@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/20 08:35:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/20 19:49:54 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 #  define RADIUS 4
 # endif
 # ifndef THREADS
-#  define THREADS 10
+#  define THREADS 8
 # endif
 # define N_PALLETS 7
 # define VAR_TYPE float
@@ -66,18 +66,6 @@ typedef struct	s_img {
 	int		endian;
 }	t_img;
 
-typedef	struct	s_viewport {
-	VAR_TYPE	left;
-	VAR_TYPE	right;
-	VAR_TYPE	top;
-	VAR_TYPE	bottom;
-	VAR_TYPE	scale;
-	int	**iters;
-	VAR_TYPE	**xn;
-	VAR_TYPE	**yn;
-	VAR_TYPE	**colors;
-}	t_viewport;
-
 typedef struct	s_vars {
 	void	*mlx;
 	void	*win;
@@ -94,15 +82,21 @@ typedef struct	s_vars {
 	VAR_TYPE	scale;
 	int	pallet;
 	int	smooth;
-	t_viewport	vp0;
-	//t_viewport	vp1;
+	int		**iters;
+	VAR_TYPE	**xn;
+	VAR_TYPE	**yn;
+	int		**iters0;
+	VAR_TYPE	**xn0;
+	VAR_TYPE	**yn0;
+	VAR_TYPE	**colors;
 }	t_vars;
 
 typedef struct	s_thread
 {
 	unsigned char	id;
 	t_vars		*vars;
-	t_viewport	*vp;
+	int	start;
+	int	end;
 }	t_thread;
 
 void	draw(t_vars *vars, t_img *img);
@@ -110,8 +104,8 @@ int	**creat_vp(int h, int w);
 void	del_vp(int **vp, int w);
 VAR_TYPE	**creat_vp_d(VAR_TYPE h, int w);
 void	del_vp_d(VAR_TYPE **vp, int w);
-void	cal(t_vars *vars, t_viewport *vp);
-void	cal2(t_vars *vars, t_viewport *vp);
-void	colors(t_vars *vars, t_viewport *vp);
+void	cal_th(t_vars *vars, int start, int end, char direction);
+void	cal(t_vars *vars);
+void	colors(t_vars *vars);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/19 18:30:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/20 16:49:05 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract-ol.h"
 
-void	colors(t_vars *vars, t_viewport *vp)
+void	colors(t_vars *vars)
 {
 	int	xp;
 	int	yp;
@@ -32,11 +32,11 @@ void	colors(t_vars *vars, t_viewport *vp)
 		yp = -1;
 		while (++yp < HEIGHT)
 		{
-			i = vp->iters[xp][yp];
+			i = vars->iters[xp][yp];
 			if (vars->smooth)
 			{
-				x = vp->xn[xp][yp];
-				y = vp->yn[xp][yp];
+				x = vars->xn[xp][yp];
+				y = vars->yn[xp][yp];
 				len = sqrt(x * x + y * y);
 				if (vars->type == JULIA)
 				{
@@ -58,11 +58,11 @@ void	colors(t_vars *vars, t_viewport *vp)
 						smooth = (VAR_TYPE) i;
 				}
 				else
-					vp->colors[xp][yp] = (VAR_TYPE) i ;
-				vp->colors[xp][yp] = smooth / (VAR_TYPE) vars->max_iter;
+					vars->colors[xp][yp] = (VAR_TYPE) i ;
+				vars->colors[xp][yp] = smooth / (VAR_TYPE) vars->max_iter;
 			}
 			else
-				vp->colors[xp][yp] = (VAR_TYPE) i / (VAR_TYPE) vars->max_iter;
+				vars->colors[xp][yp] = (VAR_TYPE) i / (VAR_TYPE) vars->max_iter;
 		}
 	}
 }

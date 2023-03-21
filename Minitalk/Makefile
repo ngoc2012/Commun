@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/03/13 21:25:34 by ngoc             ###   ########.fr        #
+#    Updated: 2023/03/20 22:44:22 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS1 = client.c
+SRCS1 = client.c unicode.c
 MSRC1 = $(addprefix srcs/, $(SRCS1))
 MOBJ1 = ${MSRC1:.c=.o}
 MANDA1 = client
