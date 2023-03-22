@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/20 19:54:01 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/21 20:55:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,21 +100,21 @@ int	key_hook(int keycode, t_vars *vars)
 		vars->right += d;
 		vars->left += d;
 		vars->right += d;
-		if (keycode == XK_Right)
-		{
-			i = 0;
-			while (i < d)
-			{
-				j = -1;
-				while (j < WIDTH)
-					vars
-			}
-			cal_th(vars, &vars->vp0, 0, HEIGHT, 'v');
-		}
-		else
-		{
-		}
-		//cal_th(vars, 0, HEIGHT, 'v');
+		//if (keycode == XK_Right)
+		//{
+		//	i = 0;
+		//	while (i < d)
+		//	{
+		//		j = -1;
+		//		while (j < WIDTH)
+		//			vars
+		//	}
+		//	cal_th(vars, &vars->vp0, 0, HEIGHT, 'v');
+		//}
+		//else
+		//{
+		//}
+		cal_th(vars, 0, HEIGHT, 'v');
 		colors(vars);
 		draw(vars, vars->img);
 	}
