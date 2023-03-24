@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/20 16:50:23 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/24 06:56:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int	create_trgb(int t, int r, int g, int b)
+int	create_trgb(unsigned char t, unsigned char r, unsigned char g, unsigned char b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int	get_color(float value, int i)
+int	get_color(VAR_TYPE value, int i)
 {
 	int		above;
 	int		under;
 	int		dims[N_PALLETS] = {11, 11, 5, 6, 3, 7, 5};
- 	float	pallet[N_PALLETS][12][3] =
+ 	VAR_TYPE	pallet[N_PALLETS][12][3] =
 	{
 		{
 			{  2.,   2.,  10.},
@@ -100,59 +100,44 @@ int	get_color(float value, int i)
 		return (create_trgb(1.0, pallet[i][0][0], pallet[i][0][1], pallet[i][0][2])); 
 	if (value == 1.0)
 		return (create_trgb(1.0, pallet[i][dims[i]][0], pallet[i][dims[i]][1], pallet[i][dims[i]][2])); 
-	above = (int) (value * (float) dims[i]);
+	above = (int) (value * (VAR_TYPE) dims[i]);
 	if (above == dims[i])
 		above = dims[i] - 1;
 	if (above == 0)
 		above = 1;
 	under = above - 1;
-	float	p;
-	p = value * ((float) dims[i] - 1.0) - (float) under;
-	if (value > 1.0)
-		printf("value = %f, p = %f, above = %d, under = %d, RGB =  %d, %d, %d\n", value, p, above, under,
-		(int) (pallet[i][under][0] + p * (pallet[i][above][0] - pallet[i][under][0])),
-		(int) (pallet[i][under][1] + p * (pallet[i][above][1] - pallet[i][under][1])),
-		(int) (pallet[i][under][2] + p * (pallet[i][above][2] - pallet[i][under][2])));
-	return (create_trgb(1.0,
-	(int) (pallet[i][under][0] + p * (pallet[i][above][0] - pallet[i][under][0])),
-	(int) (pallet[i][under][1] + p * (pallet[i][above][1] - pallet[i][under][1])),
-	(int) (pallet[i][under][2] + p * (pallet[i][above][2] - pallet[i][under][2]))));
+	VAR_TYPE	p;
+	p = value * ((VAR_TYPE) dims[i] - 1.0) - (VAR_TYPE) under;
+	return (create_trgb(1,
+	(unsigned char) (pallet[i][under][0] + p * (pallet[i][above][0] - pallet[i][under][0])),
+	(unsigned char) (pallet[i][under][1] + p * (pallet[i][above][1] - pallet[i][under][1])),
+	(unsigned char) (pallet[i][under][2] + p * (pallet[i][above][2] - pallet[i][under][2]))));
 }
 
-void	draw(t_vars *vars, t_img *img)
+void	draw_v(t_vars *vars, t_img *img)
 {
-	VAR_TYPE	x;
-	VAR_TYPE	y;
 	int	xp;
 	int	yp;
-	int	xp0;
-	int	yp0;
 
 	xp = -1;
 	while (++xp < WIDTH)
 	{
 		yp = -1;
 		while (++yp < HEIGHT)
-		{
-			x = vars->left + vars->scale * (VAR_TYPE) xp;
-			y = vars->top  - vars->scale * (VAR_TYPE) yp;
-			if (x <= vars->left || x >= vars->right
-				|| y <= vars->bottom || y >= vars->top )
-				my_mlx_pixel_put(img, xp + 1, yp + 1, 0.0);
-			else
-			{
-				xp0 = (int) ((x - vars->left) / vars->scale); 
-				yp0 = (int) ((vars->top - y) / vars->scale); 
-				if (xp0 == WIDTH)
-					xp0--;
-				if (yp0 == HEIGHT)
-					yp0--;
-				my_mlx_pixel_put(img, xp, yp, get_color((float) vars->colors[xp0][yp0], vars->pallet));
-			}
-		}
+			my_mlx_pixel_put(img, xp, yp, get_color(vars->colors[xp][yp], vars->pallet));
 	}
-	//printf("vars->scale = %f, vars->scale = %f\n", vars->scale, vars->scale);
-	//printf("vars->left = %f, vars->left = %f\n", vars->left, vars->left);
-	//printf("vars->top = %f, vars->top = %f\n", vars->top, vars->top);
-	mlx_put_image_to_window(vars->mlx, vars->win, img->img, 0, 0);
+}
+
+void	draw(t_vars *vars, t_img *img)
+{
+	int	xp;
+	int	yp;
+
+	xp = -1;
+	while (++xp < WIDTH)
+	{
+		yp = -1;
+		while (++yp < HEIGHT)
+			my_mlx_pixel_put(img, xp, yp, get_color(vars->colors[xp][yp], vars->pallet));
+	}
 }

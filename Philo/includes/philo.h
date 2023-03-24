@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/22 12:28:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/22 15:56:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 # define PHILO_H
 
 # include <stdlib.h>
+# include <pthread.h>
 # include <sys/time.h>
 # include "ft_printf.h"
 # include "libft.h"
 
 typedef struct	s_philo
 {
-	int	id;
-	void	(*fork)(void);
-	void	(*eating)(void);
-	void	(*sleeping)(void);
-	void	(*thinking)(void);
-	void	(*died)(void);
+	int		id;
+	int		last_eat;
+	pthread_t	th;
 }	t_philo;
 
 typedef struct	s_academy
@@ -37,6 +35,7 @@ typedef struct	s_academy
 	int	n_e;
 	int	t0;
 	t_philo	*phs;
+	pthread_mutex_t	*forks;
 }	t_academy;
 
 #endif

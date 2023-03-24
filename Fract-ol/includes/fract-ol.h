@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/20 19:49:54 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/24 06:58:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,19 @@
 # define FRACTOL_H
 
 # include <stdio.h>
-
-
-
 # include <stdlib.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <math.h>
-# include <pthread.h>
 # include "mlx.h"
 # include "ft_printf.h"
 # include "libft.h"
 
 # ifndef WIDTH
-#  define WIDTH 600
+#  define WIDTH 700
 # endif
 # ifndef HEIGHT
-#  define HEIGHT 400
+#  define HEIGHT 500
 # endif
 # define MAX_ITER 1000
 # define MIN_ITER 50
@@ -72,7 +68,6 @@ typedef struct	s_vars {
 	t_img	*img;
 	enum e_fractal	type;
 	int	max_iter;
-	int	in_process;
 	VAR_TYPE	cx;
 	VAR_TYPE	cy;
 	VAR_TYPE	left;
@@ -85,10 +80,11 @@ typedef struct	s_vars {
 	int		**iters;
 	VAR_TYPE	**xn;
 	VAR_TYPE	**yn;
-	int		**iters0;
-	VAR_TYPE	**xn0;
-	VAR_TYPE	**yn0;
+	unsigned char	*update;
 	VAR_TYPE	**colors;
+	int	**colors_p;
+	int	xp;
+	int	yp;
 }	t_vars;
 
 typedef struct	s_thread
@@ -99,13 +95,25 @@ typedef struct	s_thread
 	int	end;
 }	t_thread;
 
+void	init_data(t_vars *vars);
+void	init_graph(t_vars *vars, char *w_name);
+void	init_julia(t_vars *vars);
+void	init_mandel(t_vars *vars);
+int	key_hook(int keycode, t_vars *vars);
+int	mouse_hook(int button, int px, int py, t_vars *vars);
+int	end_prog(t_vars *vars);
 void	draw(t_vars *vars, t_img *img);
 int	**creat_vp(int h, int w);
 void	del_vp(int **vp, int w);
 VAR_TYPE	**creat_vp_d(VAR_TYPE h, int w);
 void	del_vp_d(VAR_TYPE **vp, int w);
-void	cal_th(t_vars *vars, int start, int end, char direction);
-void	cal(t_vars *vars);
-void	colors(t_vars *vars);
+void	colors_v(t_vars *vars, int start_x, int end_x);
+void	colors_h(t_vars *vars, int start_y, int end_y);
+void	cal_v(t_vars *vars, int start_x, int end_x);
+void	cal_h(t_vars *vars, int start_y, int end_y);
+void	julia(t_vars *vars, int xp, int yp, int R2);
+void	mandel(t_vars *vars, int xp, int yp, int R2);
+VAR_TYPE	color_julia(t_vars *vars, int xp, int yp, int R2);
+VAR_TYPE	color_mandel(t_vars *vars, int xp, int yp);
 
 #endif

@@ -6,29 +6,38 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/22 12:34:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/22 16:20:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	get_time(void)
+long long	get_time(void)
 {
 	struct timeval tv;
 	gettimeofday(&tv, NULL);
-	return ((int) tv.tv_usec);
+	return ((long long) (tv.tv_sec * 1000 + tv.tv_usec / 1000));
 }
 
 void	eating(t_academy *a, t_philo *ph)
 {
+	long long t0;
+
+	t0 = get_time();
 	ft_printf("%d %d is eating\n", get_time() - a->t0, ph->id);
-	//usleep(a->t_e);
+	while (get_time() - t0 < a->t_e)
+		usleep(1);
+	ph->last_eat = get_time() - a->t0;
 }
 
 void	sleeping(t_academy *a, t_philo *ph)
 {
+	long long t0;
+
+	t0 = get_time();
 	ft_printf("%d %d is sleeping\n", get_time() - a->t0, ph->id);
-	//usleep(a->t_s);
+	while (get_time() - t0 < a->t_e)
+		usleep(1);
 }
 
 void	thinking(t_academy *a, t_philo *ph)
@@ -57,6 +66,12 @@ int	main(int argc, char **argv)
 	a.phs = malloc(sizeof(t_philo) * a.n_ph);
 	if (!a.phs)
 		return (1);
+	a.forks = malloc(sizeof(pthread_mutex_t) * a.n_ph);
+	if (!a.forks)
+	{
+		free(a.forks);
+		return (1);
+	}
 	i = -1;
 	while (++i < a.n_ph)
 		init(&a.phs[i], i + 1);
@@ -67,5 +82,7 @@ int	main(int argc, char **argv)
 	eating(&a, &a.phs[0]);
 	sleeping(&a, &a.phs[0]);
 	thinking(&a, &a.phs[0]);
+	ft_printf("%d last eat at %d\n", a.phs[0].id, a.phs[0].last_eat);
 	free(a.phs);
+	free(a.forks);
 }
