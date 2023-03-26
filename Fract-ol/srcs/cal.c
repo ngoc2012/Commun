@@ -6,11 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/23 20:07:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/26 10:38:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract-ol.h"
+#include "fractol.h"
 
 void	julia(t_vars *vars, int xp, int yp, int R2)
 {
@@ -70,6 +70,14 @@ void	mandel(t_vars *vars, int xp, int yp, int R2)
 	vars->yn[xp][yp] = y;
 }
 
+void	cal(t_vars *vars, int xp, int yp, int R2)
+{
+	if (vars->type == e_julia)
+		julia(vars, xp, yp, R2);
+	else if (vars->type == e_mandelbrot)
+		mandel(vars, xp, yp, R2);
+}
+
 void	cal_v(t_vars *vars, int start_x, int end_x)
 {
 	int	xp;
@@ -83,9 +91,9 @@ void	cal_v(t_vars *vars, int start_x, int end_x)
 		yp = -1;
 		while (++yp < HEIGHT)
 		{
-			if (vars->type == JULIA)
+			if (vars->type == e_julia)
 				julia(vars, xp, yp, R2);
-			else if (vars->type == MANDELBROT)
+			else if (vars->type == e_mandelbrot)
 				mandel(vars, xp, yp, R2);
 		}
 	}
@@ -104,9 +112,9 @@ void	cal_h(t_vars *vars, int start_y, int end_y)
 		xp = -1;
 		while (++xp < WIDTH)
 		{
-			if (vars->type == JULIA)
+			if (vars->type == e_julia)
 				julia(vars, xp, yp, R2);
-			else if (vars->type == MANDELBROT)
+			else if (vars->type == e_mandelbrot)
 				mandel(vars, xp, yp, R2);
 		}
 	}

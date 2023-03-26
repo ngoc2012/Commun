@@ -6,11 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/23 12:06:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/26 10:37:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract-ol.h"
+#include "fractol.h"
 
 VAR_TYPE	color_julia(t_vars *vars, int xp, int yp, int R2)
 {
@@ -52,11 +52,23 @@ VAR_TYPE	color_mandel(t_vars *vars, int xp, int yp)
 	return ((VAR_TYPE) vars->iters[xp][yp]);
 }
 
+void	colors(t_vars *vars, int xp, int yp, int R2)
+{
+	VAR_TYPE	s;
+
+	if (vars->smooth && vars->type == e_julia)
+		s = color_julia(vars, xp, yp, R2);
+	else if (vars->smooth && vars->type == e_mandelbrot)
+		s = color_mandel(vars, xp, yp);
+	else
+		s = (VAR_TYPE) vars->iters[xp][yp];
+	vars->colors[xp][yp] = s / (VAR_TYPE) vars->max_iter;
+}
+
 void	colors_v(t_vars *vars, int start_x, int end_x)
 {
 	int	xp;
 	int	yp;
-	VAR_TYPE	s;
 	VAR_TYPE	R2;
 
 	R2 = RADIUS * RADIUS;
@@ -65,39 +77,6 @@ void	colors_v(t_vars *vars, int start_x, int end_x)
 	{
 		yp = -1;
 		while (++yp < HEIGHT)
-		{
-			if (vars->smooth && vars->type == JULIA)
-				s = color_julia(vars, xp, yp, R2);
-			else if (vars->smooth && vars->type == MANDELBROT)
-				s = color_mandel(vars, xp, yp);
-			else
-				s = (VAR_TYPE) vars->iters[xp][yp];
-			vars->colors[xp][yp] = s / (VAR_TYPE) vars->max_iter;
-		}
-	}
-}
-
-void	colors_h(t_vars *vars, int start_y, int end_y)
-{
-	int	xp;
-	int	yp;
-	VAR_TYPE	s;
-	VAR_TYPE	R2;
-
-	R2 = RADIUS * RADIUS;
-	yp = start_y - 1;
-	while (++yp < end_y)
-	{
-		xp = -1;
-		while (++xp < WIDTH)
-		{
-			if (vars->smooth && vars->type == JULIA)
-				s = color_julia(vars, xp, yp, R2);
-			else if (vars->smooth && vars->type == MANDELBROT)
-				s = color_mandel(vars, xp, yp);
-			else
-				s = (VAR_TYPE) vars->iters[xp][yp];
-			vars->colors[xp][yp] = s / (VAR_TYPE) vars->max_iter;
-		}
+			colors(vars, xp, yp, R2);
 	}
 }
