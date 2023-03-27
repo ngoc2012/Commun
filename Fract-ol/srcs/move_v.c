@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/26 12:29:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/27 10:42:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	draw_p(t_vars *vars, t_coor *p, int *addr, int r2)
 {
 	cal(vars, p->x, p->y, r2);
 	colors(vars, p->x, p->y, r2);
-	*addr = get_color(vars->colors[p->x][p->y], vars->pallet);
+	*addr = get_color(vars, vars->colors[p->x][p->y]);
 }
 
 void	move_up(int dp, t_vars *vars)
@@ -76,65 +76,5 @@ void	move_down(int dp, t_vars *vars)
 		p.x = -1;
 		while (++p.x < WIDTH)
 			draw_p(vars, &p, addr++, r2);
-	}
-}
-
-void	move_h(int keycode, int dp, t_vars *vars)
-{
-	int	i;
-	int	j;
-	int	r2;
-	int	*addr;
-
-	r2 = RADIUS * RADIUS;
-	if (keycode == XK_Right)
-	{
-		j = -1;
-		while (++j < HEIGHT)
-		{
-			addr = (int *) vars->img->addr + j * WIDTH;
-			ft_memmove(addr, addr + dp, (WIDTH - dp) * 4);
-			addr += WIDTH - dp;
-			i = -1;
-			while (++i < WIDTH - dp)
-			{
-				vars->iters[i][j] = vars->iters[i + dp][j];
-				vars->xn[i][j] = vars->xn[i + dp][j];
-				vars->yn[i][j] = vars->yn[i + dp][j];
-				vars->colors[i][j] = vars->colors[i + dp][j];
-			}
-			i--;
-			while (++i < WIDTH)
-			{
-				cal(vars, i, j, r2);
-				colors(vars, i, j, r2);
-				*(addr++) = get_color(vars->colors[i][j], vars->pallet);
-			}
-		}
-	}
-	else
-	{
-		j = -1;
-		while (++j < HEIGHT)
-		{
-			addr = (int *) vars->img->addr + j * WIDTH;
-			ft_memmove(addr + dp, addr, (WIDTH - dp) * 4);
-			addr += dp;
-			i = WIDTH;
-			while (--i >= dp)
-			{
-				vars->iters[i][j] = vars->iters[i - dp][j];
-				vars->xn[i][j] = vars->xn[i - dp][j];
-				vars->yn[i][j] = vars->yn[i - dp][j];
-				vars->colors[i][j] = vars->colors[i - dp][j];
-			}
-			i++;
-			while (--i >= 0)
-			{
-				cal(vars, i, j, r2);
-				colors(vars, i, j, r2);
-				*(addr--) = get_color(vars->colors[i][j], vars->pallet);
-			}
-		}
 	}
 }

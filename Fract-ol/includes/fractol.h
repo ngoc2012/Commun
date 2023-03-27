@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/26 23:40:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/27 21:34:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,12 @@
 #  define CY 0.01
 # endif
 
-enum	e_fractal {e_julia, e_mandelbrot};
+enum	e_fractal {e_julia, e_mandelbrot, e_burn, e_sier};
+
+typedef struct s_coor_d {
+	VAR_TYPE	x;
+	VAR_TYPE	y;
+}	t_coor_d;
 
 typedef struct s_coor {
 	int	x;
@@ -62,10 +67,15 @@ typedef struct s_coor {
 typedef struct s_img {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
+	int		bpp;
+	int		ll;
 	int		endian;
 }	t_img;
+
+typedef struct s_pallet {
+	int			d;
+	VAR_TYPE	val[12][3];
+}	t_pallet;
 
 typedef struct s_vars {
 	void			*mlx;
@@ -81,16 +91,18 @@ typedef struct s_vars {
 	VAR_TYPE		top;
 	VAR_TYPE		bottom;
 	VAR_TYPE		scale;
-	int				pallet;
 	int				smooth;
 	int				**iters;
 	int				**iters0;
 	VAR_TYPE		**xn;
 	VAR_TYPE		**yn;
-	unsigned char	*update;
-	VAR_TYPE		**colors;
 	int				xp;
 	int				yp;
+	VAR_TYPE		**colors;
+	int				pallet;
+	t_pallet		pallets[N_PALLETS];
+	VAR_TYPE		log_2;
+	VAR_TYPE		log_r;
 }	t_vars;
 
 typedef struct s_thread
@@ -102,9 +114,12 @@ typedef struct s_thread
 }	t_thread;
 
 void		init_data(t_vars *vars);
+void		secure_data(t_vars *vars);
 void		init_graph(t_vars *vars, char *w_name);
+void		init_pallets(t_vars *vars);
 void		init_julia(t_vars *vars);
 void		init_mandel(t_vars *vars);
+void		init_burn(t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);
 int			mouse_hook(int button, int px, int py, t_vars *vars);
 int			end_prog(t_vars *vars);
@@ -113,7 +128,7 @@ int			**creat_vp(int h, int w);
 void		del_vp(int **vp, int w);
 VAR_TYPE	**creat_vp_d(VAR_TYPE h, int w);
 void		del_vp_d(VAR_TYPE **vp, int w);
-int			get_color(VAR_TYPE value, int i);
+int			get_color(t_vars *vars, VAR_TYPE value);
 void		colors(t_vars *vars, int xp, int yp, int R2);
 void		colors_v(t_vars *vars, int start_x, int end_x);
 void		colors_h(t_vars *vars, int start_y, int end_y);

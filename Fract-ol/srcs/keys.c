@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/26 23:40:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/27 21:45:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,12 @@ void	key_hook1(int keycode, t_vars *vars)
 		set_zoom(vars);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 	}
-	if (keycode == XK_p)
-	{
-		vars->pallet++;
-		vars->pallet %= N_PALLETS;
-		draw(vars, vars->img);
-	}
 	if (keycode == XK_s)
 	{
-		if (vars->smooth)
+		if (vars->smooth == 1 && vars->type == e_julia)
+			vars->smooth = 2;
+		else if ((vars->smooth && (vars->type == e_mandelbrot || vars->type == e_burn))
+			|| (vars->smooth == 2 && vars->type == e_julia))
 			vars->smooth = 0;
 		else
 			vars->smooth = 1;
@@ -45,6 +42,12 @@ void	key_hook1(int keycode, t_vars *vars)
 
 void	key_hook2(int keycode, t_vars *vars)
 {
+	if (keycode == XK_p)
+	{
+		vars->pallet++;
+		vars->pallet %= N_PALLETS;
+		draw(vars, vars->img);
+	}
 	if (keycode == XK_q || keycode == XK_Escape)
 		end_prog(vars);
 	if (keycode == XK_i && vars->max_iter + STEP_ITER <= MAX_ITER)
@@ -85,6 +88,13 @@ void	key_hook3(int keycode, t_vars *vars)
 			move_right(dp, vars);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 	}
+}
+
+void	key_hook4(int keycode, t_vars *vars)
+{
+	int			dp;
+	VAR_TYPE	d;
+
 	if (keycode == XK_Up || keycode == XK_Down)
 	{
 		d = (vars->top - vars->bottom) * MOVE;
@@ -107,6 +117,7 @@ int	key_hook(int keycode, t_vars *vars)
 	key_hook1(keycode, vars);
 	key_hook2(keycode, vars);
 	key_hook3(keycode, vars);
+	key_hook4(keycode, vars);
 	if (keycode == XK_r)
 	{
 	}

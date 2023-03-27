@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/26 10:38:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/27 21:51:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,60 +14,80 @@
 
 void	julia(t_vars *vars, int xp, int yp, int R2)
 {
-	VAR_TYPE   x;
-	VAR_TYPE   y;
-	VAR_TYPE   x0;
-	VAR_TYPE   y0;
-	VAR_TYPE   x2;
-	VAR_TYPE   y2;
-	int	i;
+	t_coor_d	p;
+	t_coor_d	p0;
+	t_coor_d	p2;
+	int			i;
 
-	x0 = vars->left + vars->scale * xp;
-	y0 = vars->top  - vars->scale * yp;
-	x = x0;
-	y = y0;
-	x2 = x * x;
-	y2 = y * y;
+	p0.x = vars->left + vars->scale * xp;
+	p0.y = vars->top - vars->scale * yp;
+	p.x = p0.x;
+	p.y = p0.y;
+	p2.x = p.x * p.x;
+	p2.y = p.y * p.y;
 	i = 0;
-	while (x2 + y2 < R2 && ++i < vars->max_iter)
+	while (p2.x + p2.y < R2 && ++i < vars->max_iter)
 	{
-		y = 2 * x * y + vars->cy;
-		x = x2 - y2 + vars->cx;
-		x2 = x * x;
-		y2 = y * y;
+		p.y = 2 * p.x * p.y + vars->cy;
+		p.x = p2.x - p2.y + vars->cx;
+		p2.x = p.x * p.x;
+		p2.y = p.y * p.y;
 	}
 	vars->iters[xp][yp] = i;
-	vars->xn[xp][yp] = x;
-	vars->yn[xp][yp] = y;
+	vars->xn[xp][yp] = p.x;
+	vars->yn[xp][yp] = p.y;
 }
 
 void	mandel(t_vars *vars, int xp, int yp, int R2)
 {
-	VAR_TYPE   x;
-	VAR_TYPE   y;
-	VAR_TYPE   x0;
-	VAR_TYPE   y0;
-	VAR_TYPE   x2;
-	VAR_TYPE   y2;
-	int	i;
+	t_coor_d	p;
+	t_coor_d	p0;
+	t_coor_d	p2;
+	int			i;
 
-	x0 = vars->left + vars->scale * xp;
-	y0 = vars->top  - vars->scale * yp;
-	x = 0.0;
-	y = 0.0;
-	x2 = 0.0;
-	y2 = 0.0;
+	p0.x = vars->left + vars->scale * xp;
+	p0.y = vars->top - vars->scale * yp;
+	p.x = 0.0;
+	p.y = 0.0;
+	p2.x = 0.0;
+	p2.y = 0.0;
 	i = 0;
-	while (x2 + y2 < R2 && ++i < vars->max_iter)
+	while (p2.x + p2.y < R2 && ++i < vars->max_iter)
 	{
-		y = 2 * x * y + y0;
-		x = x2 - y2 + x0;
-		x2 = x * x;
-		y2 = y * y;
+		p.y = 2 * p.x * p.y + p0.y;
+		p.x = p2.x - p2.y + p0.x;
+		p2.x = p.x * p.x;
+		p2.y = p.y * p.y;
 	}
 	vars->iters[xp][yp] = i;
-	vars->xn[xp][yp] = x;
-	vars->yn[xp][yp] = y;
+	vars->xn[xp][yp] = p.x;
+	vars->yn[xp][yp] = p.y;
+}
+
+void	burn(t_vars *vars, int xp, int yp, int R2)
+{
+	t_coor_d	p;
+	t_coor_d	z;
+	t_coor_d	z2;
+	int			i;
+
+	p.x = vars->left + vars->scale * xp;
+	p.y = vars->top - vars->scale * yp;
+	z.x = p.x;
+	z.y = p.y;
+	z2.x = z.x * z.x;
+	z2.y = z.y * z.y;
+	i = 0;
+	while (z2.x + z2.y < R2 && ++i < vars->max_iter)
+	{
+		z.y = fabs(2 * z.x * z.y) + p.y;
+		z.x = z2.x - z2.y + p.x;
+		z2.x = z.x * z.x;
+		z2.y = z.y * z.y;
+	}
+	vars->iters[xp][yp] = i;
+	vars->xn[xp][yp] = z.x;
+	vars->yn[xp][yp] = z.y;
 }
 
 void	cal(t_vars *vars, int xp, int yp, int R2)
@@ -76,15 +96,17 @@ void	cal(t_vars *vars, int xp, int yp, int R2)
 		julia(vars, xp, yp, R2);
 	else if (vars->type == e_mandelbrot)
 		mandel(vars, xp, yp, R2);
+	else if (vars->type == e_burn)
+		burn(vars, xp, yp, R2);
 }
 
 void	cal_v(t_vars *vars, int start_x, int end_x)
 {
 	int	xp;
 	int	yp;
-	int	R2;
+	int	r2;
 
-	R2 = RADIUS * RADIUS;
+	r2 = RADIUS * RADIUS;
 	xp = start_x - 1;
 	while (++xp < end_x)
 	{
@@ -92,30 +114,11 @@ void	cal_v(t_vars *vars, int start_x, int end_x)
 		while (++yp < HEIGHT)
 		{
 			if (vars->type == e_julia)
-				julia(vars, xp, yp, R2);
+				julia(vars, xp, yp, r2);
 			else if (vars->type == e_mandelbrot)
-				mandel(vars, xp, yp, R2);
-		}
-	}
-}
-
-void	cal_h(t_vars *vars, int start_y, int end_y)
-{
-	int	xp;
-	int	yp;
-	int	R2;
-
-	R2 = RADIUS * RADIUS;
-	yp = start_y - 1;
-	while (++yp < end_y)
-	{
-		xp = -1;
-		while (++xp < WIDTH)
-		{
-			if (vars->type == e_julia)
-				julia(vars, xp, yp, R2);
-			else if (vars->type == e_mandelbrot)
-				mandel(vars, xp, yp, R2);
+				mandel(vars, xp, yp, r2);
+			else if (vars->type == e_burn)
+				burn(vars, xp, yp, r2);
 		}
 	}
 }
