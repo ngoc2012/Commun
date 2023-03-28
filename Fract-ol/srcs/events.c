@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/27 12:00:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/28 11:02:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	end_prog(t_vars *vars)
 	mlx_destroy_display(vars->mlx);
 	free(vars->mlx);
 	del_vp(vars->iters, WIDTH);
-	del_vp(vars->iters0, WIDTH);
 	del_vp_d(vars->xn, WIDTH);
 	del_vp_d(vars->yn, WIDTH);
 	del_vp_d(vars->colors, WIDTH);

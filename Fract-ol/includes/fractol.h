@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/27 21:34:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/28 22:00:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 # ifndef CY
 #  define CY 0.01
 # endif
+# define N_FRACTALS 4
 
 enum	e_fractal {e_julia, e_mandelbrot, e_burn, e_sier};
 
@@ -72,10 +73,22 @@ typedef struct s_img {
 	int		endian;
 }	t_img;
 
+typedef struct s_sier
+{
+	VAR_TYPE	a;
+	int	l;
+	t_coor_d	c;
+	t_coor_d	p;
+}	t_sier;
+
 typedef struct s_pallet {
 	int			d;
 	VAR_TYPE	val[12][3];
 }	t_pallet;
+
+typedef struct s_fractal {
+	enum e_fractal	f[N_FRACTALS];
+}	t_fractal;
 
 typedef struct s_vars {
 	void			*mlx;
@@ -93,25 +106,16 @@ typedef struct s_vars {
 	VAR_TYPE		scale;
 	int				smooth;
 	int				**iters;
-	int				**iters0;
 	VAR_TYPE		**xn;
 	VAR_TYPE		**yn;
-	int				xp;
-	int				yp;
 	VAR_TYPE		**colors;
 	int				pallet;
 	t_pallet		pallets[N_PALLETS];
+	t_fractal	fractals;
 	VAR_TYPE		log_2;
 	VAR_TYPE		log_r;
+	t_sier		start;
 }	t_vars;
-
-typedef struct s_thread
-{
-	unsigned char	id;
-	t_vars			*vars;
-	int				start;
-	int				end;
-}	t_thread;
 
 void		init_data(t_vars *vars);
 void		secure_data(t_vars *vars);
@@ -120,10 +124,13 @@ void		init_pallets(t_vars *vars);
 void		init_julia(t_vars *vars);
 void		init_mandel(t_vars *vars);
 void		init_burn(t_vars *vars);
+void		init_sier(t_vars *vars);
+void		init_draw(t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);
 int			mouse_hook(int button, int px, int py, t_vars *vars);
 int			end_prog(t_vars *vars);
 void		draw(t_vars *vars, t_img *img);
+void		draw_sier(t_vars *vars);
 int			**creat_vp(int h, int w);
 void		del_vp(int **vp, int w);
 VAR_TYPE	**creat_vp_d(VAR_TYPE h, int w);
@@ -145,6 +152,7 @@ void		move_left(int dp, t_vars *vars);
 void		move_right(int dp, t_vars *vars);
 void		move_val(t_vars *vars, t_coor *p, int dx, int dy);
 void		draw_p(t_vars *vars, t_coor *p, int *addr, int r2);
+void		sier(t_vars *vars, t_sier *r);
 VAR_TYPE	color_julia(t_vars *vars, int xp, int yp, int R2);
 VAR_TYPE	color_mandel(t_vars *vars, int xp, int yp);
 

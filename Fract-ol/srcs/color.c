@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/27 21:43:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/28 09:28:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void	colors(t_vars *vars, int xp, int yp, int R2)
 		s = color_mandel(vars, xp, yp);
 	else if (vars->smooth == 2 && vars->type == e_julia)
 		s = color_julia(vars, xp, yp, R2);
-	else if (vars->smooth && (vars->type == e_mandelbrot || vars->type == e_burn))
+	else if (vars->smooth && (vars->type == e_mandelbrot
+			|| vars->type == e_burn))
 		s = color_mandel(vars, xp, yp);
 	else
 		s = (VAR_TYPE) vars->iters[xp][yp];

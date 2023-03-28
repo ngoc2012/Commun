@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/27 21:32:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/28 16:42:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		exit(EXIT_SUCCESS);
 	if (ft_strncmp(argv[1], "Julia", 6) == 0)
-		init_julia(&vars);
+		vars.type = e_julia;
 	else if (ft_strncmp(argv[1], "Mandelbrot", 11) == 0)
-		init_mandel(&vars);
+		vars.type = e_mandelbrot;
 	else if (ft_strncmp(argv[1], "Burn", 5) == 0)
-		init_burn(&vars);
+		vars.type = e_burn;
+	else if (ft_strncmp(argv[1], "Sier", 5) == 0)
+		vars.type = e_sier;
 	else
 	{
 		ft_printf("Fractal %s unknown???\n", argv[1]);

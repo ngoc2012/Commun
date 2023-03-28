@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/27 21:51:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/28 09:28:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	burn(t_vars *vars, int xp, int yp, int R2)
 	int			i;
 
 	p.x = vars->left + vars->scale * xp;
-	p.y = vars->top - vars->scale * yp;
+	p.y = -vars->top + vars->scale * yp;
 	z.x = p.x;
 	z.y = p.y;
 	z2.x = z.x * z.x;

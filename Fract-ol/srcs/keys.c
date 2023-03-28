@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/27 21:45:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/28 21:48:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,15 @@ void	key_hook3(int keycode, t_vars *vars)
 			d = -d;
 		vars->left += d;
 		vars->right += d;
-		if (keycode == XK_Left)
-			move_left(dp, vars);
+		if (vars->type == e_sier)
+			sier(vars, &vars->start);
 		else
-			move_right(dp, vars);
+		{
+			if (keycode == XK_Left)
+				move_left(dp, vars);
+			else
+				move_right(dp, vars);
+		}
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 	}
 }
@@ -114,12 +119,19 @@ void	key_hook4(int keycode, t_vars *vars)
 
 int	key_hook(int keycode, t_vars *vars)
 {
+	int	i;
+
 	key_hook1(keycode, vars);
 	key_hook2(keycode, vars);
 	key_hook3(keycode, vars);
 	key_hook4(keycode, vars);
-	if (keycode == XK_r)
+	if (keycode == XK_Tab)
 	{
+		i = 0;
+		while (vars->fractals.f[i] != vars->type)
+			i++;
+		vars->type = vars->fractals.f[++i % N_FRACTALS];
+		init_draw(vars);
 	}
 	return (0);
 }
