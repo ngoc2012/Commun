@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/28 11:02:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/29 09:30:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	set_zoom(t_vars *vars)
 int	mouse_hook(int button, int px, int py, t_vars *vars)
 {
 	VAR_TYPE	zoom;
+	VAR_TYPE	d;
 
 	if (button == 4 || button == 5)
 	{
@@ -67,9 +68,23 @@ int	mouse_hook(int button, int px, int py, t_vars *vars)
 			zoom = 1 / ZOOM;
 		if (button == 5)
 			zoom = ZOOM;
-		set_env(zoom, px, py, vars);
-		set_zoom(vars);
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+		if (vars->type == e_sier)
+		{
+			d = (px - vars->left) * (1 - 1 / zoom);
+			vars->left += d;
+			vars->start.c.x += d;
+			d = (py - vars->top) * (1 - 1 / zoom);
+			vars->top += d;
+			vars->start.c.y += d;
+			vars->scale /= zoom;
+			draw_sier(vars);
+		}
+		else
+		{
+			set_env(zoom, px, py, vars);
+			set_zoom(vars);
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+		}
 	}
 	if (button == 3 && vars->type == e_julia)
 	{

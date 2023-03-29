@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/28 21:48:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/29 09:34:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ void	key_hook2(int keycode, t_vars *vars)
 	{
 		vars->pallet++;
 		vars->pallet %= N_PALLETS;
-		draw(vars, vars->img);
+		if (vars->type == e_sier)
+			draw_sier(vars);
+		else
+			draw(vars, vars->img);
 	}
 	if (keycode == XK_q || keycode == XK_Escape)
 		end_prog(vars);
@@ -83,15 +86,18 @@ void	key_hook3(int keycode, t_vars *vars)
 		vars->left += d;
 		vars->right += d;
 		if (vars->type == e_sier)
-			sier(vars, &vars->start);
+		{
+			vars->start.c.x -= d;
+			draw_sier(vars);
+		}
 		else
 		{
 			if (keycode == XK_Left)
 				move_left(dp, vars);
 			else
 				move_right(dp, vars);
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 		}
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 	}
 }
 
@@ -109,11 +115,19 @@ void	key_hook4(int keycode, t_vars *vars)
 			d = -d;
 		vars->top += d;
 		vars->bottom += d;
-		if (keycode == XK_Up)
-			move_up(dp, vars);
+		if (vars->type == e_sier)
+		{
+			vars->start.c.y -= d;
+			draw_sier(vars);
+		}
 		else
-			move_down(dp, vars);
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+		{
+			if (keycode == XK_Up)
+				move_up(dp, vars);
+			else
+				move_down(dp, vars);
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+		}
 	}
 }
 

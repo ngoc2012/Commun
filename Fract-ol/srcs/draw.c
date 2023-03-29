@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/28 22:15:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/29 10:31:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,7 @@ void	sier(t_vars *vars, t_sier *r)
 	int	*addr;
 	int	*addr0;
 	int	d;
-	t_sier	children[8];
-	int	i;
+	t_sier	cr;
 
 	d = vars->pallets[vars->pallet].d;
 	addr0 = (int *)vars->img->addr;
@@ -92,9 +91,8 @@ void	sier(t_vars *vars, t_sier *r)
 		while (++xp < (int) (xp0 + vars->scale * r->a) && xp < WIDTH)
 			*(addr++) = get_color(vars,(VAR_TYPE) (r->l % d) / d);
 	}
-	if (r->a / 3 < 1)
+	if (vars->scale * r->a / 3 < 1)
 		return ;
-	i = -1;
 	xp = -1;
 	while (++xp < 3)
 	{
@@ -103,13 +101,19 @@ void	sier(t_vars *vars, t_sier *r)
 		{
 			if (xp != 1 || yp != 1)
 			{
-				children[++i].a = r->a / 3;
-				children[i].p.x = xp;
-				children[i].p.y = yp;
-				children[i].c.x = r->c.x - r->a + xp * r->a;
-				children[i].c.y = r->c.y - r->a + yp * r->a;
-				children[i].l = r->l + 1;
-				sier(vars, &children[i]);
+				cr.a = r->a / 3;
+				cr.p.x = xp;
+				cr.p.y = yp;
+				cr.c.x = r->c.x - r->a + xp * r->a;
+				cr.c.y = r->c.y - r->a + yp * r->a;
+				cr.l = r->l + 1;
+				xp0 = vars->left + vars->scale * (cr.c.x - vars->left);
+				yp0 = vars->top + vars->scale * (cr.c.y - vars->top);
+				if (!(xp0 - 1.5 * vars->scale * cr.a > WIDTH
+				|| xp0 + 1.5 * vars->scale * cr.a < 0
+				|| yp0 - 1.5 * vars->scale * cr.a > HEIGHT
+				|| yp0 + 1.5 * vars->scale * cr.a < 0))
+					sier(vars, &cr);
 			}
 		}
 	}
