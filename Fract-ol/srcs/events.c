@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/30 14:04:19 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:48:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	loop_hook(t_vars *vars)
 	int		r2;
 	int		*addr;
 
+	r2 = RADIUS * RADIUS;
 	if (!vars->updated && vars->type != e_sier)
 	{
 		if (vars->p.y == HEIGHT)
@@ -29,7 +30,7 @@ int	loop_hook(t_vars *vars)
 		addr = (int *) vars->img->addr + vars->p.y * WIDTH;
 		vars->p.x = -1;
 		while (++vars->p.x < WIDTH)
-			draw_p(vars, &vars->p, addr++, RADIUS * RADIUS);
+			draw_p(vars, &vars->p, addr++, r2);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 		vars->p.y++;
 	}

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/30 00:13:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/30 21:08:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ int	get_color(t_vars *vars, VAR_TYPE value)
 	return (create_trgb(1, (unsigned char)(u[0] + n * (a[0] - u[0])),
 		(unsigned char)(u[1] + n * (a[1] - u[1])),
 		(unsigned char)(u[2] + n * (a[2] - u[2]))));
+}
+
+void	draw_p(t_vars *vars, t_coor *p, int *addr, int r2)
+{
+	cal(vars, p->x, p->y, r2);
+	colors(vars, p->x, p->y, r2);
+	*addr = get_color(vars, vars->colors[p->x][p->y]);
 }
 
 //bits_per_pixel = 32

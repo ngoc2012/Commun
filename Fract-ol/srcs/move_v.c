@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/27 10:42:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/30 21:08:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@ void	move_val(t_vars *vars, t_coor *p, int dx, int dy)
 	vars->xn[p->x][p->y] = vars->xn[p->x + dx][p->y + dy];
 	vars->yn[p->x][p->y] = vars->yn[p->x + dx][p->y + dy];
 	vars->colors[p->x][p->y] = vars->colors[p->x + dx][p->y + dy];
-}
-
-void	draw_p(t_vars *vars, t_coor *p, int *addr, int r2)
-{
-	cal(vars, p->x, p->y, r2);
-	colors(vars, p->x, p->y, r2);
-	*addr = get_color(vars, vars->colors[p->x][p->y]);
 }
 
 void	move_up(int dp, t_vars *vars)
