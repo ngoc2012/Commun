@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/29 10:31:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/30 00:13:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,79 +61,5 @@ void	draw(t_vars *vars, t_img *img)
 		while (++xp < WIDTH)
 			*(addr++) = get_color(vars, vars->colors[xp][yp]);
 	}
-	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
-}
-
-void	sier(t_vars *vars, t_sier *r)
-{
-	int	xp;
-	int	yp;
-	VAR_TYPE	xp0;
-	VAR_TYPE	yp0;
-	int	*addr;
-	int	*addr0;
-	int	d;
-	t_sier	cr;
-
-	d = vars->pallets[vars->pallet].d;
-	addr0 = (int *)vars->img->addr;
-	xp0 = vars->left + vars->scale * (r->c.x - r->a * 0.5 - vars->left);
-	yp0 = vars->top + vars->scale * (r->c.y - r->a * 0.5 - vars->top);
-	yp = (int) yp0 - 1;
-	if (yp < -1)
-		yp = -1;
-	while (++yp < (int) (yp0 + vars->scale * r->a) && yp < HEIGHT)
-	{
-		xp = xp0 - 1;
-		if (xp < -1)
-			xp = -1;
-		addr = addr0 + yp * WIDTH + xp + 1;
-		while (++xp < (int) (xp0 + vars->scale * r->a) && xp < WIDTH)
-			*(addr++) = get_color(vars,(VAR_TYPE) (r->l % d) / d);
-	}
-	if (vars->scale * r->a / 3 < 1)
-		return ;
-	xp = -1;
-	while (++xp < 3)
-	{
-		yp = -1;
-		while (++yp < 3)
-		{
-			if (xp != 1 || yp != 1)
-			{
-				cr.a = r->a / 3;
-				cr.p.x = xp;
-				cr.p.y = yp;
-				cr.c.x = r->c.x - r->a + xp * r->a;
-				cr.c.y = r->c.y - r->a + yp * r->a;
-				cr.l = r->l + 1;
-				xp0 = vars->left + vars->scale * (cr.c.x - vars->left);
-				yp0 = vars->top + vars->scale * (cr.c.y - vars->top);
-				if (!(xp0 - 1.5 * vars->scale * cr.a > WIDTH
-				|| xp0 + 1.5 * vars->scale * cr.a < 0
-				|| yp0 - 1.5 * vars->scale * cr.a > HEIGHT
-				|| yp0 + 1.5 * vars->scale * cr.a < 0))
-					sier(vars, &cr);
-			}
-		}
-	}
-}
-
-void	draw_sier(t_vars *vars)
-{
-	int	xp;
-	int	yp;
-	int	*addr;
-
-	addr = (int *)vars->img->addr;
-	yp = -1;
-	while (++yp < HEIGHT)
-	{
-		xp = -1;
-		while (++xp < WIDTH)
-			*(addr++) = 0;
-	}
-	//printf("scale = %f, left = %f, top = %f, right = %f, bottom = %f\n", vars->scale, vars->left, vars->top, vars->right, vars->bottom);
-	sier(vars, &vars->start);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/29 09:34:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/30 00:11:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,15 @@ void	key_hook1(int keycode, t_vars *vars)
 			zoom = 1 / ZOOM;
 		else
 			zoom = ZOOM;
-		set_env(zoom, 0, 0, vars);
-		set_zoom(vars);
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+		if (vars->type != e_sier)
+		{
+			set_env(zoom, 0, 0, vars);
+			set_zoom(vars);
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+		}
 	}
-	if (keycode == XK_s)
-	{
-		if (vars->smooth == 1 && vars->type == e_julia)
-			vars->smooth = 2;
-		else if ((vars->smooth && (vars->type == e_mandelbrot || vars->type == e_burn))
-			|| (vars->smooth == 2 && vars->type == e_julia))
-			vars->smooth = 0;
-		else
-			vars->smooth = 1;
-		colors_v(vars, 0, WIDTH);
-		draw(vars, vars->img);
-	}
+	if (keycode == XK_q || keycode == XK_Escape)
+		end_prog(vars);
 }
 
 void	key_hook2(int keycode, t_vars *vars)
@@ -51,23 +44,21 @@ void	key_hook2(int keycode, t_vars *vars)
 		else
 			draw(vars, vars->img);
 	}
-	if (keycode == XK_q || keycode == XK_Escape)
-		end_prog(vars);
-	if (keycode == XK_i && vars->max_iter + STEP_ITER <= MAX_ITER)
+	if (keycode == XK_s)
 	{
-		vars->max_iter += STEP_ITER;
-		ft_printf("MAX_ITER = %d\n", vars->max_iter);
-		cal_v(vars, 0, WIDTH);
-		colors_v(vars, 0, WIDTH);
-		draw(vars, vars->img);
-	}
-	if (keycode == XK_u && vars->max_iter - STEP_ITER >= MIN_ITER)
-	{
-		vars->max_iter -= STEP_ITER;
-		ft_printf("MAX_ITER = %d\n", vars->max_iter);
-		cal_v(vars, 0, WIDTH);
-		colors_v(vars, 0, WIDTH);
-		draw(vars, vars->img);
+		if (vars->type != e_sier)
+		{
+			if (vars->smooth == 1 && vars->type == e_julia)
+				vars->smooth = 2;
+			else if ((vars->smooth
+					&& (vars->type == e_mandelbrot || vars->type == e_burn))
+				|| (vars->smooth == 2 && vars->type == e_julia))
+				vars->smooth = 0;
+			else
+				vars->smooth = 1;
+			colors_v(vars, 0, WIDTH);
+			draw(vars, vars->img);
+		}
 	}
 }
 
@@ -76,7 +67,7 @@ void	key_hook3(int keycode, t_vars *vars)
 	int			dp;
 	VAR_TYPE	d;
 
-	if (keycode == XK_Right || keycode == XK_Left)
+	if ((keycode == XK_Right || keycode == XK_Left) && vars->type != e_sier)
 	{
 		d = (vars->right - vars->left) * MOVE;
 		dp = (int)(d / vars->scale);
@@ -85,19 +76,11 @@ void	key_hook3(int keycode, t_vars *vars)
 			d = -d;
 		vars->left += d;
 		vars->right += d;
-		if (vars->type == e_sier)
-		{
-			vars->start.c.x -= d;
-			draw_sier(vars);
-		}
+		if (keycode == XK_Left)
+			move_left(dp, vars);
 		else
-		{
-			if (keycode == XK_Left)
-				move_left(dp, vars);
-			else
-				move_right(dp, vars);
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
-		}
+			move_right(dp, vars);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 	}
 }
 
@@ -106,46 +89,51 @@ void	key_hook4(int keycode, t_vars *vars)
 	int			dp;
 	VAR_TYPE	d;
 
-	if (keycode == XK_Up || keycode == XK_Down)
+	if ((keycode == XK_Up || keycode == XK_Down) && vars->type != e_sier)
 	{
-		d = (vars->top - vars->bottom) * MOVE;
-		dp = (int)(d / vars->scale);
+		dp = (int)((vars->top - vars->bottom) * MOVE / vars->scale);
 		d = dp * vars->scale;
 		if (keycode == XK_Down)
 			d = -d;
 		vars->top += d;
 		vars->bottom += d;
-		if (vars->type == e_sier)
-		{
-			vars->start.c.y -= d;
-			draw_sier(vars);
-		}
+		if (keycode == XK_Up)
+			move_up(dp, vars);
 		else
-		{
-			if (keycode == XK_Up)
-				move_up(dp, vars);
-			else
-				move_down(dp, vars);
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
-		}
+			move_down(dp, vars);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+	}
+	if (keycode == XK_Tab)
+	{
+		dp = 0;
+		while (vars->fractals.f[dp] != vars->type)
+			dp++;
+		vars->type = vars->fractals.f[++dp % N_FRACTALS];
+		init_draw(vars);
 	}
 }
 
 int	key_hook(int keycode, t_vars *vars)
 {
-	int	i;
-
 	key_hook1(keycode, vars);
 	key_hook2(keycode, vars);
 	key_hook3(keycode, vars);
 	key_hook4(keycode, vars);
-	if (keycode == XK_Tab)
+	if ((keycode == XK_Up || keycode == XK_Down) && vars->type == e_sier)
 	{
-		i = 0;
-		while (vars->fractals.f[i] != vars->type)
-			i++;
-		vars->type = vars->fractals.f[++i % N_FRACTALS];
-		init_draw(vars);
+		if (keycode == XK_Down)
+			vars->start.c.y -= HEIGHT * MOVE;
+		else
+			vars->start.c.y += HEIGHT * MOVE;
+		draw_sier(vars);
+	}
+	if ((keycode == XK_Right || keycode == XK_Left) && vars->type == e_sier)
+	{
+		if (keycode == XK_Left)
+			vars->start.c.x += WIDTH * MOVE;
+		else
+			vars->start.c.x -= WIDTH * MOVE;
+		draw_sier(vars);
 	}
 	return (0);
 }

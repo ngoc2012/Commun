@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/28 22:00:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/29 23:38:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRACTOL_H
 
 # include <stdio.h>
+# include <limits.h>
 # include <stdlib.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
@@ -76,7 +77,7 @@ typedef struct s_img {
 typedef struct s_sier
 {
 	VAR_TYPE	a;
-	int	l;
+	int			l;
 	t_coor_d	c;
 	t_coor_d	p;
 }	t_sier;
@@ -111,10 +112,10 @@ typedef struct s_vars {
 	VAR_TYPE		**colors;
 	int				pallet;
 	t_pallet		pallets[N_PALLETS];
-	t_fractal	fractals;
+	t_fractal		fractals;
 	VAR_TYPE		log_2;
 	VAR_TYPE		log_r;
-	t_sier		start;
+	t_sier			start;
 }	t_vars;
 
 void		init_data(t_vars *vars);

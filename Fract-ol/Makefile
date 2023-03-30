@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/03/28 11:07:08 by ngoc             ###   ########.fr        #
+#    Updated: 2023/03/30 00:14:20 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = init.c init_fract.c data.c events.c move_v.c move_h.c keys.c color.c cal.c draw.c fract-ol.c
+SRCS = init.c init_fract.c data.c events.c move_v.c move_h.c keys.c color.c cal.c sier.c draw.c fract-ol.c
 MSRC = $(addprefix srcs/, $(SRCS))
 MOBJ = ${MSRC:.c=.o}
 MANDA = fract-ol

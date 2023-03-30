@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/28 16:42:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/30 00:26:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,4 @@ int	main(int argc, char **argv)
 	secure_data(&vars);
 	init_pallets(&vars);
 	init_graph(&vars, argv[1]);
-	while (1)
-	{
-		ft_printf("Update");
-		sleep(1);
-	}
 }
