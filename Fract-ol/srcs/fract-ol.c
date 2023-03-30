@@ -6,11 +6,25 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/30 10:21:58 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:01:35 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int	end_prog(t_vars *vars)
+{
+	mlx_destroy_image(vars->mlx, vars->img->img);
+	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_display(vars->mlx);
+	free(vars->mlx);
+	del_vp(vars->iters, WIDTH);
+	del_vp_d(vars->xn, WIDTH);
+	del_vp_d(vars->yn, WIDTH);
+	del_vp_d(vars->colors, WIDTH);
+	free(vars->img0);
+	exit(EXIT_SUCCESS);
+}
 
 void	help(void)
 {

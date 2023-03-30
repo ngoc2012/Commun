@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/30 10:42:25 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:05:22 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,7 @@ void	key_hook1(int keycode, t_vars *vars)
 		else
 			zoom = ZOOM;
 		if (vars->type != e_sier)
-		{
-			set_env(zoom, 0, 0, vars);
-			set_zoom(vars);
-			mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
-		}
+			zoom_fractal(vars, 0, 0, zoom);
 	}
 	if (keycode == XK_q || keycode == XK_Escape)
 		end_prog(vars);
@@ -135,6 +131,5 @@ int	key_hook(int keycode, t_vars *vars)
 			vars->start.c.x -= WIDTH * MOVE;
 		draw_sier(vars);
 	}
-	ft_printf("Keycode %d done\n", keycode);
 	return (0);
 }

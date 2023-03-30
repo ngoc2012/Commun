@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/30 10:39:56 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/30 13:26:29 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,15 @@ void	init_graph(t_vars *vars, char *w_name)
 		exit(EXIT_FAILURE);
 	mlx_key_hook(vars->win, key_hook, vars);
 	mlx_mouse_hook(vars->win, mouse_hook, vars);
+	mlx_loop_hook(vars->mlx, loop_hook, vars);
 	mlx_hook(vars->win, ClientMessage, LeaveWindowMask, &end_prog, vars);
 	img.img = mlx_new_image(vars->mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.ll, &img.endian);
 	vars->img = &img;
 	init_draw(vars);
 	ft_printf("Fractal generated\n");
+	vars->updated = 1;
+	vars->p.x = 0;
+	vars->p.y = 0;
 	mlx_loop(vars->mlx);
 }

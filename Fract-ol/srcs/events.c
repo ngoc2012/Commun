@@ -6,24 +6,34 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/30 10:43:14 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/30 14:04:19 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	end_prog(t_vars *vars)
+int	loop_hook(t_vars *vars)
 {
-	mlx_destroy_image(vars->mlx, vars->img->img);
-	mlx_destroy_window(vars->mlx, vars->win);
-	mlx_destroy_display(vars->mlx);
-	free(vars->mlx);
-	del_vp(vars->iters, WIDTH);
-	del_vp_d(vars->xn, WIDTH);
-	del_vp_d(vars->yn, WIDTH);
-	del_vp_d(vars->colors, WIDTH);
-	free(vars->img0);
-	exit(EXIT_SUCCESS);
+	int		r2;
+	int		*addr;
+
+	if (!vars->updated && vars->type != e_sier)
+	{
+		if (vars->p.y == HEIGHT)
+		{
+			mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+			vars->updated = 1;
+			return (0);
+		}
+		r2 = RADIUS * RADIUS;
+		addr = (int *) vars->img->addr + vars->p.y * WIDTH;
+		vars->p.x = -1;
+		while (++vars->p.x < WIDTH)
+			draw_p(vars, &vars->p, addr++, RADIUS * RADIUS);
+		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+		vars->p.y++;
+	}
+	return (0);
 }
 
 void	set_env(VAR_TYPE zoom, int px, int py, t_vars *vars)
@@ -40,25 +50,39 @@ void	set_env(VAR_TYPE zoom, int px, int py, t_vars *vars)
 	vars->scale *= zoom;
 }
 
-void	set_zoom(t_vars *vars)
+void	set_zoom(t_vars *vars, VAR_TYPE zoom, int *addr, t_coor *c)
 {
 	t_coor	p;
+	t_coor	p0;
 	int		r2;
-	int		*addr;
 
 	r2 = RADIUS * RADIUS;
-	addr = (int *) vars->img->addr;
 	p.y = -1;
 	while (++p.y < HEIGHT)
 	{
 		p.x = -1;
 		while (++p.x < WIDTH)
-			draw_p(vars, &p, addr++, r2);
+		{
+			p0.x = (p.x - c->x) * zoom + c->x;
+			p0.y = (p.y - c->y) * zoom + c->y;
+			if (p0.x < 0 || p0.x >= WIDTH || p0.y < 0 || p0.y >= HEIGHT)
+				draw_p(vars, &p, addr, r2);
+			else
+				*(addr) = *(vars->img0 + p0.y * WIDTH + p0.x);
+			addr++;
+		}
 	}
+	vars->updated = 0;
+	vars->p.x = 0;
+	vars->p.y = 0;
+	mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 }
 
 void	zoom_fractal(t_vars *vars, int px, int py, VAR_TYPE zoom)
 {
+	t_coor	c;
+	int		*addr;
+
 	if (vars->type == e_sier)
 	{
 		zoom = 1 / zoom;
@@ -72,9 +96,12 @@ void	zoom_fractal(t_vars *vars, int px, int py, VAR_TYPE zoom)
 	}
 	else
 	{
-		set_env(zoom, px, py, vars);
-		set_zoom(vars);
-		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
+		addr = (int *)vars->img->addr;
+		c.x = px;
+		c.y = py;
+		set_env(zoom, c.x, c.y, vars);
+		ft_memmove(vars->img0, addr, WIDTH * HEIGHT * 4);
+		set_zoom(vars, zoom, addr, &c);
 	}
 }
 
@@ -89,7 +116,6 @@ int	mouse_hook(int button, int px, int py, t_vars *vars)
 		if (button == 5)
 			zoom = ZOOM;
 		zoom_fractal(vars, px, py, zoom);
-		ft_printf("Zoom done\n");
 	}
 	if (button == 3 && vars->type == e_julia)
 	{

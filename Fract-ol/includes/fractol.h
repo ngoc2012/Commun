@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/30 10:49:34 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/03/30 13:59:08 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # endif
 # define STEP_ITER 50
 # ifndef ZOOM
-#  define ZOOM 1.6
+#  define ZOOM 1.2
 # endif
 # ifndef MOVE
 #  define MOVE 0.05
@@ -117,6 +117,8 @@ typedef struct s_vars {
 	VAR_TYPE		log_2;
 	VAR_TYPE		log_r;
 	t_sier			start;
+	int				updated;
+	t_coor			p;
 }	t_vars;
 
 void		init_data(t_vars *vars);
@@ -130,6 +132,7 @@ void		init_sier(t_vars *vars);
 void		init_draw(t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);
 int			mouse_hook(int button, int px, int py, t_vars *vars);
+int			loop_hook(t_vars *vars);
 int			end_prog(t_vars *vars);
 void		draw(t_vars *vars, t_img *img);
 void		draw_sier(t_vars *vars);
@@ -146,8 +149,7 @@ void		cal_v(t_vars *vars, int start_x, int end_x);
 void		cal_h(t_vars *vars, int start_y, int end_y);
 void		julia(t_vars *vars, int xp, int yp, int R2);
 void		mandel(t_vars *vars, int xp, int yp, int R2);
-void		set_env(VAR_TYPE zoom, int px, int py, t_vars *vars);
-void		set_zoom(t_vars *vars);
+void		zoom_fractal(t_vars *vars, int px, int py, VAR_TYPE zoom);
 void		move_up(int dp, t_vars *vars);
 void		move_down(int dp, t_vars *vars);
 void		move_left(int dp, t_vars *vars);
