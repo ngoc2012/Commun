@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/28 22:14:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/30 10:17:32 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	init_pallets(t_vars *vars)
 void	init_julia(t_vars *vars)
 {
 	vars->type = e_julia;
-	vars->cx = 0.285;
-	vars->cy = 0.01;
+	vars->cx = CX;
+	vars->cy = CY;
 	vars->left = -1.5;
 	vars->right = 1.5;
 }

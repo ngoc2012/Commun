@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/03/30 00:14:20 by ngoc             ###   ########.fr        #
+#    Updated: 2023/03/30 10:43:37 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ $(LIBFT):
 $(LIBPR):
 	make -C ft_printf
 .c.o:
-	$(CC) $(FLAGS) $(INCL_MINILIBX) -g -c $< -o ${<:.c=.o} $(addprefix -I./, $(LIBS) includes)
+	$(CC) $(FLAGS) $(INCL_MINILIBX) -D CX=-0.7269 -D CY=0.1889 -D MIN_ITER=50 -c $< -o ${<:.c=.o} $(addprefix -I./, $(LIBS) includes)
 $(MANDA):	$(MOBJ) $(LIBFT) $(LIBPR)
 	$(CC) $(FLAGS) $(MOBJ) $(OBJ_MINILIBX) -L./libft -lft -L./ft_printf -lftprintf -o $(MANDA)
 bonus:	$(MANDA)

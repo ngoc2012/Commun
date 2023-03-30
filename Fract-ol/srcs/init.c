@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/30 00:24:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/30 10:39:56 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ void	init_graph(t_vars *vars, char *w_name)
 	img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.ll, &img.endian);
 	vars->img = &img;
 	init_draw(vars);
+	ft_printf("Fractal generated\n");
 	mlx_loop(vars->mlx);
 }

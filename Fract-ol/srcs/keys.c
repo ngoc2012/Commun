@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/30 00:11:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/30 10:42:25 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,6 @@ int	key_hook(int keycode, t_vars *vars)
 			vars->start.c.x -= WIDTH * MOVE;
 		draw_sier(vars);
 	}
+	ft_printf("Keycode %d done\n", keycode);
 	return (0);
 }

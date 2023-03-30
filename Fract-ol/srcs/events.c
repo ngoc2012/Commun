@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/29 23:43:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/30 10:43:14 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ void	zoom_fractal(t_vars *vars, int px, int py, VAR_TYPE zoom)
 {
 	if (vars->type == e_sier)
 	{
-		if (vars->scale > 4000000)
-			return ;
 		zoom = 1 / zoom;
+		if (vars->scale * zoom > 4000000)
+			return ;
 		vars->start.c.x = px + (vars->start.c.x - px) * zoom;
 		vars->start.c.y = py + (vars->start.c.y - py) * zoom;
 		vars->start.a *= zoom;
@@ -89,15 +89,16 @@ int	mouse_hook(int button, int px, int py, t_vars *vars)
 		if (button == 5)
 			zoom = ZOOM;
 		zoom_fractal(vars, px, py, zoom);
+		ft_printf("Zoom done\n");
 	}
 	if (button == 3 && vars->type == e_julia)
 	{
 		vars->cx = (vars->left + px * vars->scale);
 		vars->cy = (vars->top - py * vars->scale) * 0.1;
-		printf("cx: %f, cy = %f\n", vars->cx, vars->cy);
 		cal_v(vars, 0, WIDTH);
 		colors_v(vars, 0, WIDTH);
 		draw(vars, vars->img);
+		ft_printf("Julia changed\n");
 	}
 	return (0);
 }

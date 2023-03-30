@@ -6,14 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/29 23:38:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/30 10:49:34 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <stdio.h>
 # include <limits.h>
 # include <stdlib.h>
 # include <X11/keysym.h>
@@ -30,10 +29,12 @@
 #  define HEIGHT 500
 # endif
 # define MAX_ITER 1000
-# define MIN_ITER 50
+# ifndef MIN_ITER
+#  define MIN_ITER 50
+# endif
 # define STEP_ITER 50
 # ifndef ZOOM
-#  define ZOOM 1.1
+#  define ZOOM 1.6
 # endif
 # ifndef MOVE
 #  define MOVE 0.05

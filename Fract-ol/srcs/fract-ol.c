@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/30 00:26:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/03/30 10:21:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	help(void)
 {
 	ft_printf("./fract-ol Julia\n");
 	ft_printf("./fract-ol Mandelbrot\n");
+	ft_printf("./fract-ol Burn\n");
+	ft_printf("./fract-ol Sier\n");
 }
 
 // https://en.m.wikipedia.org/wiki/Plotting_algorithms_for_the_Mandelbrot_set
