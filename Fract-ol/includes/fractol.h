@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/30 21:10:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/06 15:47:19 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 #  define THREADS 8
 # endif
 # define N_PALLETS 7
-# define VAR_TYPE double
+# define VAR_TYPE float
 # ifndef CX
 #  define CX 0.285
 # endif
@@ -121,6 +121,7 @@ typedef struct s_vars {
 	t_coor			p;
 }	t_vars;
 
+char		*get_str(char *s);
 void		init_data(t_vars *vars);
 void		secure_data(t_vars *vars);
 void		init_graph(t_vars *vars, char *w_name);

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/30 13:26:29 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/04/06 15:46:48 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	init_data(t_vars *vars)
 	{.f = {e_julia, e_mandelbrot, e_burn, e_sier}};
 	vars->log_2 = 1.0 / log(2.0);
 	vars->log_r = 1.0 / log(RADIUS);
-	vars->max_iter = MIN_ITER;
 	vars->smooth = 0;
 	vars->pallet = 0;
 	vars->iters = creat_vp(HEIGHT, WIDTH);
