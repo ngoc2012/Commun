@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/06 15:47:19 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/04/08 21:19:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 #  define THREADS 8
 # endif
 # define N_PALLETS 7
-# define VAR_TYPE float
+# define VAR_TYPE double
 # ifndef CX
 #  define CX 0.285
 # endif

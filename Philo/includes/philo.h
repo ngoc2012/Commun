@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/02 22:10:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/08 15:50:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ typedef struct	s_academy t_academy;
 typedef struct	s_philo
 {
 	int		id;
-	int		i;
+	t_academy	*a;
+	pthread_t	th;
 	int		if1;
 	int		if2;
 	enum e_state	state;
@@ -35,8 +36,10 @@ typedef struct	s_philo
 	struct timeval	last_eat;
 	struct timeval	last_sleep;
 	int		n_e;
-	pthread_t	th;
-	t_academy	*a;
+	char	created;
+	char	eated;
+	char	finished;
+	pthread_mutex_t	m_p;
 }	t_philo;
 
 struct	s_academy
@@ -46,13 +49,16 @@ struct	s_academy
 	int	t_e;
 	int	t_s;
 	int	n_e;
-	char	died;
 	struct timeval t0;
 	struct timeval tv;
 	t_philo	*phs;
 	pthread_t	survey;
 	pthread_mutex_t	*forks;
-	pthread_mutex_t	writing;
+	char	start;
+	char	died;
+	pthread_mutex_t	m_write;
+	pthread_mutex_t	m_order;
+	pthread_mutex_t	m_a;
 };
 
 #endif

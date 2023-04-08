@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/30 14:04:19 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/04/08 22:49:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	loop_hook(t_vars *vars)
 		addr = (int *) vars->img->addr + vars->p.y * WIDTH;
 		vars->p.x = -1;
 		while (++vars->p.x < WIDTH)
-			draw_p(vars, &vars->p, addr++, RADIUS * RADIUS);
+			draw_p(vars, &vars->p, addr++, r2);
 		mlx_put_image_to_window(vars->mlx, vars->win, vars->img->img, 0, 0);
 		vars->p.y++;
 	}
@@ -48,6 +48,7 @@ void	set_env(VAR_TYPE zoom, int px, int py, t_vars *vars)
 	vars->top += py * vars->scale * (zoom - 1);
 	vars->bottom = vars->top - l_y * zoom;
 	vars->scale *= zoom;
+	vars->max_iter = (int) (((VAR_TYPE) vars->max_iter) / pow(zoom, 0.15));
 }
 
 void	set_zoom(t_vars *vars, VAR_TYPE zoom, int *addr, t_coor *c)

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/03/28 09:28:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/08 22:43:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	colors(t_vars *vars, int xp, int yp, int R2)
 	else
 		s = (VAR_TYPE) vars->iters[xp][yp];
 	vars->colors[xp][yp] = s / (VAR_TYPE) vars->max_iter;
+	//int	d = vars->pallets[vars->pallet].d * 5;
+	//vars->colors[xp][yp] = (VAR_TYPE) ((int) s % d) / (VAR_TYPE) d;
 }
 
 void	colors_v(t_vars *vars, int start_x, int end_x)
