@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/10 20:02:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/10 20:32:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ long long	get_time(void)
 
 void	eating(t_philo *ph)
 {
-	//t_timestamp	*ts;
 	int	d;
 
 	pthread_mutex_lock(&ph->a->forks[ph->if1]);
@@ -103,7 +102,7 @@ void	eating(t_philo *ph)
 	gettimeofday(&ph->fork2, NULL);
 	pthread_mutex_lock(&ph->a->m_write);
 	pthread_mutex_lock(&ph->m_p);
-	ph->last_eat = ph->fork2;
+	ph->last_eat0 = ph->fork2;
 	pthread_mutex_unlock(&ph->m_p);
 	if (m_get(&ph->a->died, &ph->a->m_a))
 	{
@@ -126,7 +125,7 @@ void	eating(t_philo *ph)
 		pthread_mutex_unlock(&ph->a->forks[ph->if1]);
 		return ;
 	}
-	while (now_time_interval(&ph->last_eat0, &ph->fork2) <= ph->a->t_e)
+	while (now_time_interval(&ph->last_eat, &ph->fork2) <= ph->a->t_e)
 		usleep(1);
 	pthread_mutex_lock(&ph->a->m_write);
 	pthread_mutex_unlock(&ph->a->forks[ph->if2]);
@@ -135,9 +134,9 @@ void	eating(t_philo *ph)
 
 void	sleeping(t_philo *ph)
 {
-	printf("%d %d is sleeping\n", get_time_interval(&ph->last_eat0, &ph->a->t0), ph->id);
+	printf("%d %d is sleeping\n", get_time_interval(&ph->last_eat, &ph->a->t0), ph->id);
 	pthread_mutex_unlock(&ph->a->m_write);
-	while (now_time_interval(&ph->last_sleep, &ph->last_eat0) < ph->a->t_s)
+	while (now_time_interval(&ph->last_sleep, &ph->last_eat) < ph->a->t_s)
 		usleep(1);
 	if (m_get(&ph->finished, &ph->m_p) || m_get(&ph->a->died, &ph->a->m_a))
 		return ;
@@ -221,7 +220,7 @@ void	check(t_academy *a)
 			if (!finished0)
 			{
 				pthread_mutex_lock(&a->phs[i].m_p);
-				last_eat = a->phs[i].last_eat;
+				last_eat = a->phs[i].last_eat0;
 				pthread_mutex_unlock(&a->phs[i].m_p);
 				if (now_time_interval(&tv, &last_eat) > a->t_d)
 				{
