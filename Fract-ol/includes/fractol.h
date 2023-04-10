@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/08 21:19:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/10 20:15:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # include "libft.h"
 
 # ifndef WIDTH
-#  define WIDTH 700
+#  define WIDTH 1400
 # endif
 # ifndef HEIGHT
-#  define HEIGHT 500
+#  define HEIGHT 1000
 # endif
 # define MAX_ITER 1000
 # ifndef MIN_ITER

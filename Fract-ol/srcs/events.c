@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/08 22:49:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/10 20:23:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,15 @@ void	set_env(VAR_TYPE zoom, int px, int py, t_vars *vars)
 	vars->top += py * vars->scale * (zoom - 1);
 	vars->bottom = vars->top - l_y * zoom;
 	vars->scale *= zoom;
-	vars->max_iter = (int) (((VAR_TYPE) vars->max_iter) / pow(zoom, 0.15));
+	vars->max_iter = (int) (((VAR_TYPE) vars->max_iter) / pow(zoom, 0.13));
+	//if (zoom > 1)
+	//	vars->max_iter += 10;
+	//else
+	//	vars->max_iter -= 10;
+	//if (vars->max_iter < MIN_ITER)
+	//	vars->max_iter = MIN_ITER;
+	//if (vars->max_iter > MAX_ITER)
+	//	vars->max_iter = MAX_ITER;
 }
 
 void	set_zoom(t_vars *vars, VAR_TYPE zoom, int *addr, t_coor *c)

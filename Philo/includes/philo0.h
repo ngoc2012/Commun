@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/10 20:01:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/10 13:45:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@
 # include <pthread.h>
 # include <sys/time.h>
 
+//enum e_state {e_fork1, e_fork2, e_eat, e_sleep, e_think, e_die};
+
+//typedef struct	s_timestamp t_timestamp;
+//
+//struct	s_timestamp
+//{
+//	struct timeval	tv;
+//	int		id;
+//	enum e_state	state;
+//	t_timestamp	*next;
+//};
+
 typedef struct	s_academy t_academy;
 
 typedef struct	s_philo
@@ -30,9 +42,7 @@ typedef struct	s_philo
 	int		if2;
 	struct timeval	fork1;
 	struct timeval	fork2;
-	struct timeval	last_eat0;
 	struct timeval	last_eat;
-	struct timeval	last_think;
 	struct timeval	last_sleep;
 	int		n_e;
 	char	created;
