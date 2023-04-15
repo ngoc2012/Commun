@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/11 16:00:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/15 16:04:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,16 @@ void	m_set(char *v, char i, pthread_mutex_t *m)
 	pthread_mutex_unlock(m);
 }
 
-void	free_prog(t_academy *a, int erro)
+int	free_prog(t_academy *a, int erro)
 {
 	if (a->phs)
 		free(a->phs);
 	if (a->forks)
 		free(a->forks);
-	if (erro != -1)
-		exit(erro);
+	return (erro);
 }
 
-void	end_prog(t_academy *a, int erro)
+int	end_prog(t_academy *a, int erro)
 {
 	int	i;
 
@@ -55,8 +54,6 @@ void	end_prog(t_academy *a, int erro)
 		pthread_mutex_destroy(&a->m_write);
 	if (&a->m_a)
 		pthread_mutex_destroy(&a->m_a);
-	if (a->n_ph == 1)
-		pthread_mutex_destroy(&a->forks[1]);
 	free_prog(a, -1);
-	exit(erro);
+	return (erro);
 }

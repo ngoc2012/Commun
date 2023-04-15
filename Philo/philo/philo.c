@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/11 16:01:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/15 16:09:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,24 @@ int	eating2(t_philo *ph)
 	return (1);
 }
 
+void	eating3(t_philo *ph)
+{
+	m_set(&ph->eated, 1, &ph->m_p);
+	while (now_time_interval(&ph->a->tv, &ph->a->t0) < ph->a->t_d + 10)
+		usleep(1);
+	pthread_mutex_unlock(&ph->a->forks[ph->if1]);
+	pthread_mutex_lock(&ph->a->m_write);
+}
+
 void	eating(t_philo *ph)
 {
 	pthread_mutex_lock(&ph->a->forks[ph->if1]);
 	gettimeofday(&ph->fork1, NULL);
+	if (ph->if1 == ph->if2)
+	{
+		eating3(ph);
+		return ;
+	}
 	pthread_mutex_lock(&ph->a->forks[ph->if2]);
 	gettimeofday(&ph->fork2, NULL);
 	pthread_mutex_lock(&ph->a->m_write);

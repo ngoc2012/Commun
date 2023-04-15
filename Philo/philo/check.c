@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/11 16:22:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/15 00:32:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ void	start(t_academy *a)
 	gettimeofday(&a->t0, NULL);
 	i = -1;
 	while (++i < a->n_ph)
+	{
 		a->phs[i].last_eat = a->t0;
+		a->phs[i].last_eat0 = a->t0;
+	}
 }
 
 void	eated(t_academy *a)

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/11 15:57:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/12 13:19:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ int		now_time_interval(struct timeval *tv1, struct timeval *tv2);
 int		get_time_interval(struct timeval *tv1, struct timeval *tv2);
 char	m_get(char *v, pthread_mutex_t *m);
 void	m_set(char *v, char i, pthread_mutex_t *m);
-void	free_prog(t_academy *a, int erro);
-void	end_prog(t_academy *a, int erro);
+int		free_prog(t_academy *a, int erro);
+int		end_prog(t_academy *a, int erro);
 void	eating(t_philo *ph);
 void	sleeping(t_philo *ph);
 void	*life(void *ph0);
