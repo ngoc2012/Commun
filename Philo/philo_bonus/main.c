@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/15 18:38:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/17 00:26:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,30 +62,138 @@ void	get_args(int argc, char **argv, t_academy *a)
 		exit(EXIT_FAILURE);
 }
 
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t			i;
+	unsigned char	*d;
+	unsigned char	*s;
+
+	if ((!dest) && (!src))
+		return (dest);
+	d = (unsigned char *) dest;
+	s = (unsigned char *) src;
+	i = 0;
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dest);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+void	ft_itoa(char *s, int n)
+{
+	int	i;
+	char	base[10] = "0123456789";
+	
+	if (n == 0)
+	{
+		s[0] = '0';
+		s[1] = 0;
+		return;
+	}
+	i = -1;
+	while (n > 0)
+	{
+		s[++i] = base[n % 10];
+		n = n / 10;
+	}
+	s[++i] = 0;
+}
+
 int	main(int argc, char **argv)
 {
 	int			i;
-	int			j;
+	int			n;
 	t_academy	a;
 
 	get_args(argc, argv, &a);
+	a.phs = malloc(sizeof(pid_t) * a.n_ph);
+	if (!a.phs)
+		exit(EXIT_FAILURE);
+	a.sem_died = malloc(sizeof(sem_t *) * a.n_ph);
+	if (!a.sem_died)
+		exit(EXIT_FAILURE);
+	a.sem_died_str = malloc(sizeof(char *) * a.n_ph);
+	if (!a.sem_died_str)
+		exit(EXIT_FAILURE);
+	i = -1;
+	while (++i < a.n_ph)
+	{
+		n = ft_strlen(SEM_DIED);
+		a.sem_died_str[i] = malloc(sizeof(char) * (n + 5));
+		ft_memcpy(a.sem_died_str[i], SEM_DIED, n);
+		ft_itoa(&a.sem_died_str[i][n], i);
+		printf("%s\n", a.sem_died_str[i]);
+	}
+	i = -1;
+	while (++i < a.n_ph)
+	{
+		a.sem_died[i] = sem_open(a.sem_died_str[i], O_CREAT | O_EXCL, SEM_PERMS, 1);
+		if (a.sem_died[i] == SEM_FAILED)
+		{
+			printf("sem_open failed %d\n", i);
+			exit(EXIT_FAILURE);
+		}
+		if (sem_close(a.sem_died[i]) < 0)
+		{
+			printf("sem_close failed %d\n", i);
+			exit(EXIT_FAILURE);
+		}
+	}
+	a.sem_started = malloc(sizeof(sem_t *) * a.n_ph);
+	if (!a.sem_started)
+		exit(EXIT_FAILURE);
+	a.sem_started_str = malloc(sizeof(char *) * a.n_ph);
+	if (!a.sem_started_str)
+		exit(EXIT_FAILURE);
+	i = -1;
+	while (++i < a.n_ph)
+	{
+		n = ft_strlen(SEM_STARTED);
+		a.sem_started_str[i] = malloc(sizeof(char) * (n + 5));
+		ft_memcpy(a.sem_started_str[i], SEM_STARTED, n);
+		ft_itoa(&a.sem_started_str[i][n], i);
+		printf("%s\n", a.sem_started_str[i]);
+	}
+	i = -1;
+	while (++i < a.n_ph)
+	{
+		a.sem_started[i] = sem_open(a.sem_started_str[i], O_CREAT | O_EXCL, SEM_PERMS, 1);
+		if (a.sem_started[i] == SEM_FAILED)
+		{
+			printf("sem_open failed %d\n", i);
+			exit(EXIT_FAILURE);
+		}
+		if (sem_close(a.sem_started[i]) < 0)
+		{
+			printf("sem_close failed %d\n", i);
+			exit(EXIT_FAILURE);
+		}
+	}
 	a.sem_write = sem_open(SEM_WRITE, O_CREAT | O_EXCL, SEM_PERMS, 1);
-	a.sem_forks = sem_open(SEM_FORKS, O_CREAT | O_EXCL, SEM_PERMS, a.n_ph);
+	a.sem_forks = sem_open(SEM_FORKS, O_CREAT | O_EXCL, SEM_PERMS, 2 * a.n_ph);
 	if (a.sem_write == SEM_FAILED || a.sem_forks == SEM_FAILED)
 	{
 		printf("sem_open failed 1\n");
-		return (1);
-	}
-	if (sem_close(a.sem_write) < 0 || sem_close(a.sem_forks) < 0) {
-		printf("sem_close(3) failed\n");
-		sem_unlink(SEM_FORKS);
 		exit(EXIT_FAILURE);
 	}
-	a.phs = malloc(sizeof(pid_t) * a.n_ph);
-	if (!a.phs)
+	if (sem_close(a.sem_write) < 0 || sem_close(a.sem_forks) < 0)
 	{
-		printf("Malloc error\n");
-		return (1);
+		sem_unlink(SEM_FORKS);
+		exit(EXIT_FAILURE);
 	}
 	gettimeofday(&a.t0, NULL);
 	a.last_eat = a.t0;
@@ -97,11 +205,14 @@ int	main(int argc, char **argv)
 			exit(EXIT_FAILURE);
 		}
 		a.id = i + 1;
-		if (a.phs[i] == 0) {
+		if (a.phs[i] == 0)
 			philo(&a, i);
-		}
 	}
 
+	i = -1;
+	while (++i < a.n_ph)
+		waitpid(a.phs[i], NULL, 0);
+	/*
 	int	status;
 	i = -1;
 	while (++i < a.n_ph)
@@ -121,7 +232,24 @@ int	main(int argc, char **argv)
 			}
 		}
 	}
+	*/
 	if (sem_unlink(SEM_FORKS) < 0 || sem_unlink(SEM_WRITE) < 0)
 		printf("sem_unlink(3) failed\n");
+	i = -1;
+	while (++i < a.n_ph)
+		sem_unlink(a.sem_died_str[i]);
+	free(a.sem_died);
+	i = -1;
+	while (++i < a.n_ph)
+		free(a.sem_died_str[i]);
+	free(a.sem_died_str);
+	i = -1;
+	while (++i < a.n_ph)
+		sem_unlink(a.sem_started_str[i]);
+	free(a.sem_started);
+	i = -1;
+	while (++i < a.n_ph)
+		free(a.sem_started_str[i]);
+	free(a.sem_started_str);
 	free(a.phs);
 }

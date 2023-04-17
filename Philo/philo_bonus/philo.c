@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/15 18:32:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/17 00:11:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,23 @@
 
 void	end_process(t_academy *a, int erro)
 {
-	if (a->sem_forks)
-		sem_close(a->sem_forks);
-	if (a->sem_write)
-		sem_close(a->sem_write);
+	int	i;
+
+	sem_close(a->sem_forks);
+	sem_close(a->sem_write);
 	sem_destroy(&a->sem_has_fork);
+	i = -1;
+	while (++i < a->n_ph)
+	{
+		free(a->sem_died_str[i]);
+		sem_close(a->sem_died[i]);
+		free(a->sem_started_str[i]);
+		sem_close(a->sem_started[i]);
+	}
+	free(a->sem_died);
+	free(a->sem_died_str);
+	free(a->sem_started);
+	free(a->sem_started_str);
 	free(a->phs);
 	exit(erro);
 }
@@ -50,6 +62,7 @@ void    *thread_fork(void *a0)
 void    get_fork(t_academy *a)
 {
 	pthread_t	th;
+	int	i;
 	int	has_fork;
 
 	a->has_fork = 0;
@@ -60,7 +73,10 @@ void    get_fork(t_academy *a)
 	{
 		if (a->eated && now_time_interval(&a->tv, &a->last_eat) > a->t_d)
 		{
-			sem_post(a->sem_forks);
+			i = -1;
+			while (++i < a->n_ph)
+				sem_wait(a->sem_died[i]);
+			usleep((a->n_ph + 10) * DELAY);
 			if (pthread_join(th, NULL))
 				end_process(a, 1);
 			end_process(a, 4);
@@ -91,16 +107,23 @@ void	philo(t_academy	*a, int i)
 		end_process(a, 1);
 	if (a->sem_forks == SEM_FAILED || a->sem_write == SEM_FAILED)
 		end_process(a, 1);
-	if (sem_post(a->sem_forks) < 0)
-		end_process(a, 1);
+	i = -1;
+	while (++i < a->n_ph)
+	{
+		a->sem_died[i] = sem_open(a->sem_died_str[i], O_RDWR);
+		if (a->sem_died[i] == SEM_FAILED)
+			end_process(a, 1);
+	}
+	i = -1;
+	while (++i < a->n_ph)
+	{
+		a->sem_started[i] = sem_open(a->sem_started_str[i], O_RDWR);
+		if (a->sem_started[i] == SEM_FAILED)
+			end_process(a, 1);
+	}
 	usleep((i % 2) * a->t_e);
 	while (a->n_e == -1 || n_e <= a->n_e)
 	{
-		//if (sem_wait(a->sem_write) < 0)
-		//	end_process(a, 1);
-		//if (sem_post(a->sem_write) < 0)
-		//	end_process(a, 1);
-
 		get_fork(a);
 
 		if (sem_wait(a->sem_write) < 0)
