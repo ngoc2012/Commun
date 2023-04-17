@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/17 00:11:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/17 11:39:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	end_process(t_academy *a, int erro)
 	while (++i < a->n_ph)
 	{
 		free(a->sem_died_str[i]);
-		sem_close(a->sem_died[i]);
 		free(a->sem_started_str[i]);
+		sem_close(a->sem_died[i]);
 		sem_close(a->sem_started[i]);
 	}
 	free(a->sem_died);
@@ -101,26 +101,22 @@ void	philo(t_academy	*a, int i)
 	sigemptyset(&act.sa_mask);
 	sigaction(SIGINT, &act, NULL);
 	n_e = 0;
-	a->sem_forks = sem_open(SEM_FORKS, O_RDWR);
-	a->sem_write = sem_open(SEM_WRITE, O_RDWR);
 	if (sem_init(&a->sem_has_fork, 0, 1))
 		end_process(a, 1);
-	if (a->sem_forks == SEM_FAILED || a->sem_write == SEM_FAILED)
-		end_process(a, 1);
-	i = -1;
-	while (++i < a->n_ph)
-	{
-		a->sem_died[i] = sem_open(a->sem_died_str[i], O_RDWR);
-		if (a->sem_died[i] == SEM_FAILED)
-			end_process(a, 1);
-	}
-	i = -1;
-	while (++i < a->n_ph)
-	{
-		a->sem_started[i] = sem_open(a->sem_started_str[i], O_RDWR);
-		if (a->sem_started[i] == SEM_FAILED)
-			end_process(a, 1);
-	}
+	//i = -1;
+	//while (++i < a->n_ph)
+	//{
+	//	a->sem_died[i] = sem_open(a->sem_died_str[i], O_RDWR);
+	//	if (a->sem_died[i] == SEM_FAILED)
+	//		end_process(a, 1);
+	//}
+	//i = -1;
+	//while (++i < a->n_ph)
+	//{
+	//	a->sem_started[i] = sem_open(a->sem_started_str[i], O_RDWR);
+	//	if (a->sem_started[i] == SEM_FAILED)
+	//		end_process(a, 1);
+	//}
 	usleep((i % 2) * a->t_e);
 	while (a->n_e == -1 || n_e <= a->n_e)
 	{

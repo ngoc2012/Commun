@@ -6,16 +6,16 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/17 00:27:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/17 11:39:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
-# define SEM_FORKS "SEM_FORKS6"
-# define SEM_WRITE "SEM_WRITE6"
-# define SEM_DIED "SEM_DIED6"
-# define SEM_STARTED "SEM_STARTED6"
+# define SEM_FORKS "SEM_FORKS"
+# define SEM_WRITE "SEM_WRITE"
+# define SEM_DIED "SEM_DIED"
+# define SEM_STARTED "SEM_STARTED"
 # define SEM_PERMS (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP)
 # define DELAY 100
 

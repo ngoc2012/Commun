@@ -7,7 +7,7 @@ pgrep philo_bonus | xargs kill
 #./philo_bonus 4 410 200 200 5
 #./philo_bonus 1 410 200 200
 #./philo_bonus 1 11 5 5
-#valgrind --tool=helgrind ./philo_bonus 5 800 200 200 5
+valgrind --tool=helgrind ./philo_bonus 5 800 200 200 5
 valgrind --leak-check=full ./philo_bonus 5 800 200 200 5
 #valgrind --tool=helgrind ./philo_bonus 4 310 200 100 5
 #valgrind --leak-check=full ./philo_bonus 4 310 200 100 5
