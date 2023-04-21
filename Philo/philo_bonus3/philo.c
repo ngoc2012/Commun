@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/21 00:49:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/20 16:20:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void    *thread_stopped(void *a0)
 	sem_wait(a->sem_died[a->id - 1]);
 	if (!set_sem(&a->died, 1, &a->sem_die))
 		end_process(a, 1);
-	//struct timeval	tv;
-	//printf("%d %d stopped\n", now_time_interval(&tv, &a->t0), a->id);
 	return ((void *) NULL);
 }
 
@@ -65,11 +63,9 @@ void    *thread_died(void *a0)
 			i = -1;
 			while (++i < a->n_ph)
 				sem_post(a->sem_died[i]);
-			if (!set_sem(&a->died, 1, &a->sem_die))
-				end_process(a, 1);
 			if (sem_wait(a->sem_write) < 0)
 				end_process(a, 1);
-			printf("%d %d died\n", get_time_interval(&tv, &a->t0), a->id);
+			printf("%d %d died\n", get_time_interval_micro(&tv, &a->t0), a->id);
 			if (sem_post(a->sem_write) < 0)
 				end_process(a, 1);
 			if (sem_post(&a->sem_last_eat) < 0)
@@ -81,14 +77,42 @@ void    *thread_died(void *a0)
 	}
 	if (a->n_ph == 1)
 		sem_post(a->sem_forks);
-	//sem_post(a->sem_forks);
-	//printf("%d %d out of died\n", now_time_interval(&tv, &a->t0), a->id);
 	return ((void *) NULL);
 }
+/*
+void    *thread_check(void *a0)
+{
+	t_academy	*a;
+	struct timeval	tv;
 
+	a = (t_academy *) a0;
+	while (!get_sem(&a->died, &a->sem_die))
+	{
+		if (get_sem(&a->check, &a->sem_die))
+		{
+			if (sem_wait(&a->sem_check) < 0)
+				return (0);
+			if (sem_post(&a->sem_checks) < 0)
+				return (0);
+		}
+	}
+}
+
+int	check(t_academy *a)
+{
+	struct timeval	tv0;
+	struct timeval	tv;
+
+	gettimeofday(&tv0, NULL);
+	if (!set_sem(&a->check, 1, &a->sem_check))
+		end_process(a, 1);
+	while (!get_sem(&a->died, &a->sem_die))
+	gettimeofday(&tv0, NULL);
+}
+*/
 void	philo(t_academy	*a, int i)
 {
-	int	n_e;
+	int			n_e;
 
 	if (pthread_create(&a->th_stopped, NULL, &thread_stopped, a))
 		end_process(a, 1);
@@ -97,23 +121,17 @@ void	philo(t_academy	*a, int i)
 	sem_post(a->sem_started[i]);
 	sem_wait(a->sem_start);
 	n_e = 0;
-	if (a->t_d > 2 * a->t_e)
-		usleep((i % 2) * a->t_e + (i / 2) * (a->t_d - a->t_e * 2) / a->n_ph);
-	else
-		usleep((i % 2) * a->t_e + (i / 2) * a->t_e / a->n_ph);
+	usleep((i % 2) * a->t_e);
 	while (a->n_e == -1 || n_e <= a->n_e)
 	{
 		sem_wait(a->sem_forks);
 
 		if (get_sem(&a->died, &a->sem_die))
-		{
-			sem_post(a->sem_forks);
 			break ;
-		}
 
 		if (sem_wait(a->sem_write) < 0)
 			end_process(a, 1);
-		printf("%d %d has taken a fork\n", now_time_interval(&a->tv, &a->t0) / 1000, a->id);
+		printf("%d %d has taken a fork\n", now_time_interval(&a->tv, &a->t0), a->id);
 		if (sem_post(a->sem_write) < 0)
 			end_process(a, 1);
 
@@ -125,17 +143,22 @@ void	philo(t_academy	*a, int i)
 		if (sem_post(&a->sem_last_eat) < 0)
 			end_process(a, 1);
 
-		if (get_sem(&a->died, &a->sem_die))
+		if (sem_wait(&a->sem_die) < 0)
+			end_process(a, 1);
+		if (a->died)
 		{
-			sem_post(a->sem_forks);
+			if (sem_post(&a->sem_die) < 0)
+				end_process(a, 1);
 			break ;
 		}
+		if (sem_post(&a->sem_die) < 0)
+			end_process(a, 1);
 
 		if (sem_wait(a->sem_write) < 0)
 			end_process(a, 1);
-		printf("%d %d has taken a fork\n", get_time_interval(&a->last_eat, &a->t0), a->id);
-		printf("%d %d is eating\n", get_time_interval(&a->last_eat, &a->t0), a->id);
-		//printf("%d %d is eating%d\n", get_time_interval(&a->last_eat, &a->t0), a->id, n_e + 1);
+		printf("%d %d has taken a fork\n", get_time_interval_micro(&a->last_eat, &a->t0), a->id);
+		printf("%d %d is eating\n", get_time_interval_micro(&a->last_eat, &a->t0), a->id);
+		//printf("%d %d is eating%d\n", get_time_interval_micro(&a->last_eat, &a->t0), a->id, n_e + 1);
 		if (sem_post(a->sem_write) < 0)
 			end_process(a, 1);
 
@@ -152,36 +175,49 @@ void	philo(t_academy	*a, int i)
 		if (sem_post(a->sem_forks) < 0)
 			end_process(a, 1);
 		n_e++;
-		if (n_e == a->n_e)
+
+		if (sem_wait(&a->sem_die) < 0)
+			end_process(a, 1);
+		if (n_e == a->n_e || a->died)
+		{
+			if (sem_post(&a->sem_die) < 0)
+				end_process(a, 1);
 			break ;
-		if (get_sem(&a->died, &a->sem_die))
-			break ;
+		}
+		if (sem_post(&a->sem_die) < 0)
+			end_process(a, 1);
 
 		if (sem_wait(a->sem_write) < 0)
 			end_process(a, 1);
-		printf("%d %d is sleeping\n", get_time_interval(&a->last_sleep, &a->t0), a->id);
+		printf("%d %d is sleeping\n", get_time_interval_micro(&a->last_sleep, &a->t0), a->id);
 		if (sem_post(a->sem_write) < 0)
 			end_process(a, 1);
 		
 		while (now_time_interval(&a->last_think, &a->last_sleep) < a->t_s)
 			;
+		if (a->eated && now_time_interval(&a->last_think, &a->last_eat) > a->t_d)
+			end_process(a, 4);
 
-		if (get_sem(&a->died, &a->sem_die))
+		if (sem_wait(&a->sem_die) < 0)
+			end_process(a, 1);
+		if (a->died)
+		{
+			if (sem_post(&a->sem_die) < 0)
+				end_process(a, 1);
 			break ;
+		}
+		if (sem_post(&a->sem_die) < 0)
+			end_process(a, 1);
 
 		if (sem_wait(a->sem_write) < 0)
 			end_process(a, 1);
-		printf("%d %d is thinking\n", get_time_interval(&a->last_think, &a->t0), a->id);
+		printf("%d %d is thinking\n", get_time_interval_micro(&a->last_think, &a->t0), a->id);
 		if (sem_post(a->sem_write) < 0)
 			end_process(a, 1);
 
 		while (now_time_interval(&a->tv, &a->last_think) < a->t_t)
 			;
-
-		if (get_sem(&a->died, &a->sem_die))
-			break ;
 	}
-	//printf("%d %d end\n", now_time_interval(&a->last_think, &a->t0), a->id);
 	sem_post(a->sem_died[i]);
 	if (pthread_join(a->th_stopped, NULL))
 		end_process(a, 1);

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/20 23:35:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/20 15:35:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,9 +118,9 @@ void	end_prog(t_academy *a, int erro)
 {
 	int	i;
 
-	sem_unlink(a->sem_write_str);
-	sem_unlink(a->sem_forks_str);
-	sem_unlink(a->sem_start_str);
+	sem_unlink(SEM_FORKS);
+	sem_unlink(SEM_WRITE);
+	sem_unlink(SEM_START);
 	i = -1;
 	while (++i < a->n_ph)
 	{
@@ -130,23 +130,10 @@ void	end_prog(t_academy *a, int erro)
 	end_process(a, erro);
 }
 
-char	*get_str(const char *s, int j)
-{
-	char	*o;
-	int		n;
-
-	n = ft_strlen(s);
-	o = malloc(sizeof(char) * (n + 6));
-	if (!o)
-		return (0);
-	ft_memcpy(o, s, n);
-	ft_itoa(&o[n], j);
-	return (o);
-}
-
 int	main(int argc, char **argv)
 {
 	int			i;
+	int			n;
 	t_academy	a;
 
 	get_args(argc, argv, &a);
@@ -159,22 +146,23 @@ int	main(int argc, char **argv)
 	a.sem_died_str = malloc(sizeof(char *) * a.n_ph);
 	if (!a.sem_died_str)
 		exit(EXIT_FAILURE);
-	int	j;
-	j = 1;
 	i = -1;
 	while (++i < a.n_ph)
 	{
-		a.sem_died_str[i] = get_str(SEM_DIED, j * 1000 + i);
+		n = ft_strlen(SEM_DIED);
+		a.sem_died_str[i] = malloc(sizeof(char) * (n + 5));
+		ft_memcpy(a.sem_died_str[i], SEM_DIED, n);
+		ft_itoa(&a.sem_died_str[i][n], i);
+	}
+	i = -1;
+	while (++i < a.n_ph)
+	{
 		a.sem_died[i] = sem_open(a.sem_died_str[i], O_CREAT | O_EXCL, SEM_PERMS, 0);
-		while (a.sem_died[i] == SEM_FAILED && j < 1000)
-		{
-			j++;
-			free(a.sem_died_str[i]);
-			a.sem_died_str[i] = get_str(SEM_DIED, j * 1000 + i);
-			a.sem_died[i] = sem_open(a.sem_died_str[i], O_CREAT | O_EXCL, SEM_PERMS, 0);
-		}
 		if (a.sem_died[i] == SEM_FAILED)
+		{
+			printf("sem_open failed %d\n", i);
 			exit(EXIT_FAILURE);
+		}
 	}
 	a.sem_started = malloc(sizeof(sem_t *) * a.n_ph);
 	if (!a.sem_started)
@@ -185,17 +173,24 @@ int	main(int argc, char **argv)
 	i = -1;
 	while (++i < a.n_ph)
 	{
-		a.sem_started_str[i] = get_str(SEM_STARTED, j * 1000 + i);
+		n = ft_strlen(SEM_STARTED);
+		a.sem_started_str[i] = malloc(sizeof(char) * (n + 5));
+		ft_memcpy(a.sem_started_str[i], SEM_STARTED, n);
+		ft_itoa(&a.sem_started_str[i][n], i);
+	}
+	i = -1;
+	while (++i < a.n_ph)
+	{
 		a.sem_started[i] = sem_open(a.sem_started_str[i], O_CREAT | O_EXCL, SEM_PERMS, 0);
 		if (a.sem_started[i] == SEM_FAILED)
+		{
+			printf("sem_open failed %d\n", i);
 			exit(EXIT_FAILURE);
+		}
 	}
-	a.sem_write_str = get_str(SEM_WRITE, j);
-	a.sem_write = sem_open(a.sem_write_str, O_CREAT | O_EXCL, SEM_PERMS, 1);
-	a.sem_forks_str = get_str(SEM_FORKS, j);
-	a.sem_forks = sem_open(a.sem_forks_str, O_CREAT | O_EXCL, SEM_PERMS, a.n_ph);
-	a.sem_start_str = get_str(SEM_START, j);
-	a.sem_start = sem_open(a.sem_start_str, O_CREAT | O_EXCL, SEM_PERMS, 0);
+	a.sem_write = sem_open(SEM_WRITE, O_CREAT | O_EXCL, SEM_PERMS, 1);
+	a.sem_forks = sem_open(SEM_FORKS, O_CREAT | O_EXCL, SEM_PERMS, a.n_ph);
+	a.sem_start = sem_open(SEM_START, O_CREAT | O_EXCL, SEM_PERMS, 0);
 	sem_init(&a.sem_last_eat, 0, 1);
 	sem_init(&a.sem_die, 0, 1);
 	if (a.sem_write == SEM_FAILED || a.sem_forks == SEM_FAILED || a.sem_start == SEM_FAILED)
@@ -203,6 +198,10 @@ int	main(int argc, char **argv)
 		printf("sem_open failed 1\n");
 		exit(EXIT_FAILURE);
 	}
+	//if (pthread_create(&a.th_stopped, NULL, &thread_stopped, &a))
+	//	end_process(&a, 1);
+	//if (pthread_create(&a.th_died, NULL, &thread_died, &a))
+	//	end_process(&a, 1);
 	gettimeofday(&a.t0, NULL);
 	a.last_eat = a.t0;
 	i = -1;
@@ -227,5 +226,26 @@ int	main(int argc, char **argv)
 	i = -1;
 	while (++i < a.n_ph)
 		waitpid(a.phs[i], NULL, 0);
+	/*
+	int	status;
+	i = -1;
+	while (++i < a.n_ph)
+	{
+		if (waitpid(a.phs[i], &status, 0) != -1)
+		{
+			if ( WIFEXITED(status) ) {
+				if (WEXITSTATUS(status) == 4)
+				{
+					printf("%d %d died\n", now_time_interval(&a.tv, &a.t0), a.id);
+					j = -1;
+					while (++j < a.n_ph)
+						if (j != i)
+							kill(a.phs[j], SIGINT);
+					break ;
+				}
+			}
+		}
+	}
+	*/
 	end_prog(&a, 0);
 }

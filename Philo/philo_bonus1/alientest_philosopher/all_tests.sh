@@ -90,10 +90,8 @@ NB=0
 while (( NB < ${#a_philo[@]} ))
 do
 	echo
-	philo="philo_bonus"
-	philo_dir=""
-	#philo="${a_philo[$NB]}"
-	#philo_dir="${a_dir[$NB]}"/
+	philo="${a_philo[$NB]}"
+	philo_dir="${a_dir[$NB]}"/
 	echo -ne $CYAN
 	echo $philo
 	echo -ne $WHITE
@@ -323,10 +321,8 @@ rm tmp_leak.log
 NB=0
 while (( NB < ${#a_philo[@]} ))
 do
-	philo="philo_bonus"
-	philo_dir=""
-	#philo="${a_philo[$NB]}"
-	#philo_dir="${a_dir[$NB]}"/
+	philo="${a_philo[$NB]}"
+	philo_dir="${a_dir[$NB]}"/
 
 	echo -ne $CYAN
 	echo Testing $philo
@@ -482,10 +478,8 @@ rm tmp_data_race.log
 NB=0
 while (( NB < ${#a_philo[@]} ))
 do
-	philo="philo_bonus"
-	philo_dir=""
-	#philo="${a_philo[$NB]}"
-	#philo_dir="${a_dir[$NB]}"/
+	philo="${a_philo[$NB]}"
+	philo_dir="${a_dir[$NB]}"/
 
 	echo -ne $CYAN
 	echo Testing $philo

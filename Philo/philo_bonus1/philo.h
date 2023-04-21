@@ -6,17 +6,17 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/20 19:59:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/19 20:02:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
-# define SEM_FORKS "SEM_FORKS"
-# define SEM_WRITE "SEM_WRITE"
-# define SEM_DIED "SEM_DIED"
-# define SEM_START "SEM_START"
-# define SEM_STARTED "SEM_STARTED"
+# define SEM_FORKS "SEM_FORKS3"
+# define SEM_WRITE "SEM_WRITE3"
+# define SEM_DIED "SEM_DIED3"
+# define SEM_START "SEM_START3"
+# define SEM_STARTED "SEM_STARTED3"
 # define SEM_PERMS (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP)
 # define DELAY 100
 
@@ -59,9 +59,6 @@ struct	s_academy
 	char			died;
 	char			**sem_died_str;
 	char			**sem_started_str;
-	char			*sem_write_str;
-	char			*sem_forks_str;
-	char			*sem_start_str;
 };
 
 int	now_time_interval(struct timeval *tv1, struct timeval *tv2);
