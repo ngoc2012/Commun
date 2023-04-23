@@ -6,26 +6,25 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/04/12 07:58:59 by ngoc             ###   ########.fr        #
+#    Updated: 2023/04/22 20:02:17 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c check.c mutex.c time.c philo.c
+SRCS = main.c init.c check.c mutex.c time.c philo.c
 OBJS = ${SRCS:.c=.o}
 FILE = philo
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 all:	$(FILE)
 .c.o:
-	$(CC) $(FLAGS) -g -c $< -o ${<:.c=.o} -I./
+	$(CC) $(FLAGS) -c $< -o ${<:.c=.o} -I./
 $(FILE):	$(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(FILE)
 norm:
 	norminette *.c *.h
 git:
 	cd ..
-	git add philo/Makefile philo/*.c philo/*.h
-	git add philo_bonus/Makefile philo_bonus/*.c philo_bonus/*.h
+	git add Makefile *.h $(SRCS)
 	git commit -m "all"
 	git push
 clean:

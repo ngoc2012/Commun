@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/12 13:19:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/22 19:20:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ void	eating(t_philo *ph);
 void	sleeping(t_philo *ph);
 void	*life(void *ph0);
 void	check(t_academy *a);
+int		init(t_academy *a);
 
 #endif

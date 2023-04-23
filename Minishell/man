@@ -1,0 +1,154 @@
+https://tiswww.case.edu/php/chet/readline/readline.html
+
+===================================================================================================
+readline - get a line from a user with editing
+readline will read a line from the terminal and return it, using prompt as a prompt.  If prompt is NULL or the empty string, no prompt is issued.  The line returned  is  allocated  with  mal‐ loc(3);  the  caller  must  free it when finished.  The line returned has the final newline re‐ moved, so only the text of the line remains.
+#include <stdio.h>
+#include <readline/readline.h>
+#include <readline/history.h>
+
+char *readline (const char *prompt);
+const char *prompt = "minishell$ ";
+
+===================================================================================================
+Function: void rl_clear_history (void)
+    Clear the history list by deleting all of the entries, in the same manner as the History library’s clear_history() function. This differs from clear_history because it frees private data Readline saves in the history list. 
+
+===================================================================================================
+Function: int rl_on_new_line (void)
+    Tell the update functions that we have moved onto a new (empty) line, usually after outputting a newline. 
+
+===================================================================================================
+Function: void rl_replace_line (const char *text, int clear_undo)
+    Replace the contents of rl_line_buffer with text. The point and mark are preserved, if possible. If clear_undo is non-zero, the undo list associated with the current line is cleared. 
+
+===================================================================================================
+If you want the user to be able to get at the line later, (with C-p for example), you must call add_history() to save the line away in a history list of such lines.
+add_history (line);
+It is preferable to avoid saving empty lines on the history list, since users rarely have a burning need to reuse a blank line. Here is a function which usefully replaces the standard gets() library function, and has the advantage of no static buffer to overflow:
+
+/* A static variable for holding the line. */
+static char *line_read = (char *)NULL;
+
+/* Read a string, and return a pointer to it.
+   Returns NULL on EOF. */
+char *
+rl_gets ()
+{
+  /* If the buffer has already been allocated,
+     return the memory to the free pool. */
+  if (line_read)
+    {
+      free (line_read);
+      line_read = (char *)NULL;
+    }
+
+  /* Get a line from the user. */
+  line_read = readline ("");
+
+  /* If the line has any text in it,
+     save it on the history. */
+  if (line_read && *line_read)
+    add_history (line_read);
+
+  return (line_read);
+}
+
+===================================================================================================
+access, faccessat, faccessat2 - check user's permissions for a file
+access()  checks  whether  the  calling process can access the file pathname.  If pathname is a symbolic link, it is dereferenced.
+The mode specifies the accessibility check(s) to be performed, and is either the value F_OK, or a mask consisting of the bitwise OR of one or more of R_OK, W_OK, and X_OK.  F_OK tests for the existence of the file.  R_OK, W_OK, and X_OK test whether the  file  exists  and  grants  read, write, and execute permissions, respectively.
+
+#include <unistd.h>
+int access(const char *pathname, int mode);
+
+===================================================================================================
+wait3, wait4 - wait for process to change state, BSD style
+These functions are nonstandard; in new programs, the use of waitpid(2) or waitid(2) is prefer‐able.
+
+The wait3() and wait4() system calls are similar to waitpid(2),  but  additionally  return  re‐ source usage information about the child in the structure pointed to by rusage.
+
+Other than the use of the rusage argument, the following wait3() call:
+
+    wait3(wstatus, options, rusage);
+
+is equivalent to:
+
+    waitpid(-1, wstatus, options);
+
+Similarly, the following wait4() call:
+
+    wait4(pid, wstatus, options, rusage);
+
+is equivalent to:
+    waitpid(pid, wstatus, options);
+
+In  other  words,  wait3()  waits  of any child, while wait4() can be used to select a specific child, or children, on which to wait.  See wait(2) for further details.
+
+If rusage is not NULL, the struct rusage to which it points will be filled with accounting  in‐formation about the child.  See getrusage(2) for details.
+
+===================================================================================================
+getcwd, getwd, get_current_dir_name - get current working directory
+These  functions  return  a  null-terminated string containing an absolute pathname that is the current working directory of the calling process.  The pathname is returned as the function re‐ sult and via the argument buf, if present.
+
+       The getcwd() function copies an absolute pathname of the current working directory to the array pointed to by buf, which is of length size.
+
+       If the length of the absolute pathname of the current working directory, including  the  termi‐ nating null byte, exceeds size bytes, NULL is returned, and errno is set to ERANGE; an applica‐ tion should check for this error, and allocate a larger buffer if necessary.
+
+       As an extension to the POSIX.1-2001 standard, glibc's getcwd() allocates the buffer dynamically using  malloc(3) if buf is NULL.  In this case, the allocated buffer has the length size unless size is zero, when buf is allocated as big as necessary.  The caller  should  free(3)  the  re‐turned buffer.
+#include <unistd.h>
+char *getcwd(char *buf, size_t size);
+
+===================================================================================================
+chdir, fchdir - change working directory
+chdir() changes the current working directory of the calling process to the directory specified in path.
+
+#include <unistd.h>
+int chdir(const char *path);
+
+===================================================================================================
+stat, fstat, lstat, fstatat - get file status
+These  functions return information about a file, in the buffer pointed to by statbuf.  No per‐ missions are required on the file itself, but—in the case of stat(), fstatat(), and lstat()—ex‐ ecute  (search)  permission  is required on all of the directories in pathname that lead to the file.
+
+       stat() and fstatat() retrieve information about the file pointed to by  pathname;  the  differ‐ ences for fstatat() are described below.
+
+       lstat() is identical to stat(), except that if pathname is a symbolic link, then it returns in‐ formation about the link itself, not the file that the link refers to.
+
+       fstat() is identical to stat(), except that the file about which information is to be retrieved is specified by the file descriptor fd.
+
+   The stat structure
+       All of these system calls return a stat structure, which contains the following fields:
+
+           struct stat {
+               dev_t     st_dev;         /* ID of device containing file */
+ino_t     st_ino;         /* Inode number */
+               mode_t    st_mode;        /* File type and mode */
+               nlink_t   st_nlink;       /* Number of hard links */
+               uid_t     st_uid;         /* User ID of owner */
+               gid_t     st_gid;         /* Group ID of owner */
+               dev_t     st_rdev;        /* Device ID (if special file) */
+               off_t     st_size;        /* Total size, in bytes */
+               blksize_t st_blksize;     /* Block size for filesystem I/O */
+               blkcnt_t  st_blocks;      /* Number of 512B blocks allocated */
+
+               /* Since Linux 2.6, the kernel supports nanosecond
+                  precision for the following timestamp fields.
+                  For the details before Linux 2.6, see NOTES. */
+
+               struct timespec st_atim;  /* Time of last access */
+               struct timespec st_mtim;  /* Time of last modification */
+               struct timespec st_ctim;  /* Time of last status change */
+
+           #define st_atime st_atim.tv_sec      /* Backward compatibility */
+           #define st_mtime st_mtim.tv_sec
+           #define st_ctime st_ctim.tv_sec
+           };
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+int stat(const char *pathname, struct stat *statbuf);
+int fstat(int fd, struct stat *statbuf);
+int lstat(const char *pathname, struct stat *statbuf);
+

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/20 19:59:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/21 23:40:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # define SEM_DIED "SEM_DIED"
 # define SEM_START "SEM_START"
 # define SEM_STARTED "SEM_STARTED"
-# define SEM_PERMS (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP)
-# define DELAY 100
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -46,30 +44,35 @@ struct	s_academy
 	struct timeval	last_eat;
 	struct timeval	last_sleep;
 	struct timeval	last_think;
-	pthread_t	th_stopped;
-	pthread_t	th_died;
-	sem_t	*sem_forks;
-	sem_t	*sem_write;
-	sem_t	**sem_died;
-	sem_t	**sem_started;
-	sem_t	*sem_start;
-	sem_t	sem_last_eat;
-	sem_t	sem_die;
+	pthread_t		th_stopped;
+	pthread_t		th_died;
+	sem_t			*sem_forks;
+	sem_t			*sem_write;
+	sem_t			**sem_died;
+	sem_t			**sem_started;
+	sem_t			*sem_start;
+	sem_t			sem_last_eat;
+	sem_t			sem_die;
 	char			eated;
 	char			died;
 	char			**sem_died_str;
 	char			**sem_started_str;
-	char			*sem_write_str;
-	char			*sem_forks_str;
-	char			*sem_start_str;
 };
 
-int	now_time_interval(struct timeval *tv1, struct timeval *tv2);
-int	get_time_interval(struct timeval *tv1, struct timeval *tv2);
-int	get_time_interval_micro(struct timeval *tv1, struct timeval *tv2);
+int		now_time_interval(struct timeval *tv1, struct timeval *tv2);
+int		get_time_interval(struct timeval *tv1, struct timeval *tv2);
+int		get_time_interval_micro(struct timeval *tv1, struct timeval *tv2);
 void	philo(t_academy	*a, int i);
 void	end_process(t_academy *a, int erro);
-void    *thread_stopped(void *a0);
-void    *thread_died(void *a0);
+void	end_prog(t_academy *a, int erro);
+void	free1(t_academy *a, int erro);
+void	*thread_stopped(void *a0);
+void	*thread_died(void *a0);
+sem_t	*try_open(char *s, int n);
+char	*get_sem_str(const char *s, int j);
+void	init(t_academy *a);
+char	get_sem(char *v, sem_t *s);
+char	set_sem(char *v, int v0, sem_t *s);
+void	print_now_sem(t_academy *a, char *s);
 
 #endif

@@ -6,94 +6,89 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/21 00:49:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/21 22:59:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 #include <signal.h>
 
-char	get_sem(char *v, sem_t *s)
+void	print_sem(t_academy *a, struct timeval *tv, char *s)
 {
-	char	i;
-
-	if (sem_wait(s) < 0)
-		return (-1);
-	i = *v;
-	if (sem_post(s) < 0)
-		return (-1);
-	return (i);
+	sem_wait(a->sem_write);
+	printf("%d %d %s\n", get_time_interval(tv, &a->t0), a->id, s);
+	sem_post(a->sem_write);
 }
 
-char	set_sem(char *v, int v0, sem_t *s)
+int	eating(t_academy *a)
 {
-	if (sem_wait(s) < 0)
+	sem_wait(a->sem_forks);
+	if (get_sem(&a->died, &a->sem_die))
+	{
+		sem_post(a->sem_forks);
 		return (0);
-	*v = v0;
-	if (sem_post(s) < 0)
+	}
+	print_now_sem(a, "has taken a fork");
+	sem_wait(a->sem_forks);
+	sem_wait(&a->sem_last_eat);
+	gettimeofday(&a->last_eat, NULL);
+	sem_post(&a->sem_last_eat);
+	if (get_sem(&a->died, &a->sem_die))
+	{
+		sem_post(a->sem_forks);
+		return (0);
+	}
+	sem_wait(a->sem_write);
+	printf("%d %d has taken a fork\n",
+		get_time_interval(&a->last_eat, &a->t0), a->id);
+	printf("%d %d is eating\n", get_time_interval(&a->last_eat, &a->t0), a->id);
+	sem_post(a->sem_write);
+	set_sem(&a->eated, 1, &a->sem_last_eat);
+	while (now_time_interval(&a->last_sleep, &a->last_eat) < a->t_e)
+		;
+	return (1);
+}
+
+int	sleeping(t_academy *a, int *n_e)
+{
+	sem_post(a->sem_forks);
+	sem_post(a->sem_forks);
+	(*n_e)++;
+	if (*n_e == a->n_e)
+		return (0);
+	if (get_sem(&a->died, &a->sem_die))
+		return (0);
+	print_sem(a, &a->last_sleep, "is sleeping");
+	while (now_time_interval(&a->last_think, &a->last_sleep) < a->t_s)
+		;
+	if (get_sem(&a->died, &a->sem_die))
+		return (0);
+	print_sem(a, &a->last_think, "is thinking");
+	while (now_time_interval(&a->tv, &a->last_think) < a->t_t)
+		;
+	if (get_sem(&a->died, &a->sem_die))
 		return (0);
 	return (1);
 }
 
-void    *thread_stopped(void *a0)
+void	end_thread(t_academy *a, int i)
 {
-	t_academy	*a;
-
-	a = (t_academy *) a0;
-	sem_wait(a->sem_died[a->id - 1]);
-	if (!set_sem(&a->died, 1, &a->sem_die))
-		end_process(a, 1);
-	//struct timeval	tv;
-	//printf("%d %d stopped\n", now_time_interval(&tv, &a->t0), a->id);
-	return ((void *) NULL);
+	sem_post(a->sem_died[i]);
+	if (pthread_join(a->th_stopped, NULL))
+		end_process(a, EXIT_FAILURE);
+	if (pthread_join(a->th_died, NULL))
+		end_process(a, EXIT_FAILURE);
+	end_process(a, EXIT_SUCCESS);
 }
 
-void    *thread_died(void *a0)
-{
-	t_academy	*a;
-	int	i;
-	struct timeval	tv;
-
-	a = (t_academy *) a0;
-	while (!get_sem(&a->died, &a->sem_die))
-	{
-		usleep(1);
-		if (sem_wait(&a->sem_last_eat) < 0)
-			end_process(a, 1);
-		if ((a->eated || a->n_ph == 1) && now_time_interval(&tv, &a->last_eat) > a->t_d)
-		{
-			i = -1;
-			while (++i < a->n_ph)
-				sem_post(a->sem_died[i]);
-			if (!set_sem(&a->died, 1, &a->sem_die))
-				end_process(a, 1);
-			if (sem_wait(a->sem_write) < 0)
-				end_process(a, 1);
-			printf("%d %d died\n", get_time_interval(&tv, &a->t0), a->id);
-			if (sem_post(a->sem_write) < 0)
-				end_process(a, 1);
-			if (sem_post(&a->sem_last_eat) < 0)
-				end_process(a, 1);
-			break ;
-		}
-		if (sem_post(&a->sem_last_eat) < 0)
-			end_process(a, 1);
-	}
-	if (a->n_ph == 1)
-		sem_post(a->sem_forks);
-	//sem_post(a->sem_forks);
-	//printf("%d %d out of died\n", now_time_interval(&tv, &a->t0), a->id);
-	return ((void *) NULL);
-}
-
-void	philo(t_academy	*a, int i)
+void	philo(t_academy *a, int i)
 {
 	int	n_e;
 
 	if (pthread_create(&a->th_stopped, NULL, &thread_stopped, a))
-		end_process(a, 1);
+		end_process(a, EXIT_FAILURE);
 	if (pthread_create(&a->th_died, NULL, &thread_died, a))
-		end_process(a, 1);
+		end_process(a, EXIT_FAILURE);
 	sem_post(a->sem_started[i]);
 	sem_wait(a->sem_start);
 	n_e = 0;
@@ -103,89 +98,10 @@ void	philo(t_academy	*a, int i)
 		usleep((i % 2) * a->t_e + (i / 2) * a->t_e / a->n_ph);
 	while (a->n_e == -1 || n_e <= a->n_e)
 	{
-		sem_wait(a->sem_forks);
-
-		if (get_sem(&a->died, &a->sem_die))
-		{
-			sem_post(a->sem_forks);
+		if (!eating(a))
 			break ;
-		}
-
-		if (sem_wait(a->sem_write) < 0)
-			end_process(a, 1);
-		printf("%d %d has taken a fork\n", now_time_interval(&a->tv, &a->t0) / 1000, a->id);
-		if (sem_post(a->sem_write) < 0)
-			end_process(a, 1);
-
-		sem_wait(a->sem_forks);
-
-		if (sem_wait(&a->sem_last_eat) < 0)
-			end_process(a, 1);
-		gettimeofday(&a->last_eat, NULL);
-		if (sem_post(&a->sem_last_eat) < 0)
-			end_process(a, 1);
-
-		if (get_sem(&a->died, &a->sem_die))
-		{
-			sem_post(a->sem_forks);
-			break ;
-		}
-
-		if (sem_wait(a->sem_write) < 0)
-			end_process(a, 1);
-		printf("%d %d has taken a fork\n", get_time_interval(&a->last_eat, &a->t0), a->id);
-		printf("%d %d is eating\n", get_time_interval(&a->last_eat, &a->t0), a->id);
-		//printf("%d %d is eating%d\n", get_time_interval(&a->last_eat, &a->t0), a->id, n_e + 1);
-		if (sem_post(a->sem_write) < 0)
-			end_process(a, 1);
-
-		if (sem_wait(&a->sem_last_eat) < 0)
-			end_process(a, 1);
-		a->eated = 1;
-		if (sem_post(&a->sem_last_eat) < 0)
-			end_process(a, 1);
-
-		while (now_time_interval(&a->last_sleep, &a->last_eat) < a->t_e)
-			;
-		if (sem_post(a->sem_forks) < 0)
-			end_process(a, 1);
-		if (sem_post(a->sem_forks) < 0)
-			end_process(a, 1);
-		n_e++;
-		if (n_e == a->n_e)
-			break ;
-		if (get_sem(&a->died, &a->sem_die))
-			break ;
-
-		if (sem_wait(a->sem_write) < 0)
-			end_process(a, 1);
-		printf("%d %d is sleeping\n", get_time_interval(&a->last_sleep, &a->t0), a->id);
-		if (sem_post(a->sem_write) < 0)
-			end_process(a, 1);
-		
-		while (now_time_interval(&a->last_think, &a->last_sleep) < a->t_s)
-			;
-
-		if (get_sem(&a->died, &a->sem_die))
-			break ;
-
-		if (sem_wait(a->sem_write) < 0)
-			end_process(a, 1);
-		printf("%d %d is thinking\n", get_time_interval(&a->last_think, &a->t0), a->id);
-		if (sem_post(a->sem_write) < 0)
-			end_process(a, 1);
-
-		while (now_time_interval(&a->tv, &a->last_think) < a->t_t)
-			;
-
-		if (get_sem(&a->died, &a->sem_die))
+		if (!sleeping(a, &n_e))
 			break ;
 	}
-	//printf("%d %d end\n", now_time_interval(&a->last_think, &a->t0), a->id);
-	sem_post(a->sem_died[i]);
-	if (pthread_join(a->th_stopped, NULL))
-		end_process(a, 1);
-	if (pthread_join(a->th_died, NULL))
-		end_process(a, 1);
-	end_process(a, 3);
+	end_thread(a, i);
 }

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/15 16:04:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/22 19:26:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	free_prog(t_academy *a, int erro)
 
 int	end_prog(t_academy *a, int erro)
 {
-	int	i;
+	int		i;
 
 	i = -1;
 	while (++i < a->n_ph)
@@ -50,10 +50,8 @@ int	end_prog(t_academy *a, int erro)
 		if (&a->forks[i])
 			pthread_mutex_destroy(&a->forks[i]);
 	}
-	if (&a->m_write)
-		pthread_mutex_destroy(&a->m_write);
-	if (&a->m_a)
-		pthread_mutex_destroy(&a->m_a);
+	pthread_mutex_destroy(&a->m_write);
+	pthread_mutex_destroy(&a->m_a);
 	free_prog(a, -1);
 	return (erro);
 }
