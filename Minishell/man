@@ -10,18 +10,129 @@ readline will read a line from the terminal and return it, using prompt as a pro
 char *readline (const char *prompt);
 const char *prompt = "minishell$ ";
 
+Exemple:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <readline/readline.h>
+
+int main() {
+    char *input;
+    input = readline("Enter your name: ");
+    printf("Hello, %s!\n", input);
+    free(input);
+    return 0;
+}
+
+Note that in order to use readline(), you will need to link your program with the readline library using the -lreadline flag.
 ===================================================================================================
 Function: void rl_clear_history (void)
     Clear the history list by deleting all of the entries, in the same manner as the History library’s clear_history() function. This differs from clear_history because it frees private data Readline saves in the history list. 
+
+#include <stdio.h>
+#include <readline/readline.h>
+#include <readline/history.h>
+
+int main() {
+    // Add some commands to the history list
+    add_history("ls");
+    add_history("cd");
+    add_history("pwd");
+
+    // Clear the history list
+    rl_clear_history();
+
+    // Attempt to recall a command from the history list
+    char *command = readline("Enter command: ");
+    printf("Command entered: %s\n", command);
+    free(command);
+
+    return 0;
+}
 
 ===================================================================================================
 Function: int rl_on_new_line (void)
     Tell the update functions that we have moved onto a new (empty) line, usually after outputting a newline. 
 
+In the GNU Readline library for C, the rl_on_new_line function is used to inform the library that the prompt has just been printed on a new line.
+
+When the user presses the Enter key after entering a command, Readline moves the cursor to a new line to display the next prompt. If the current prompt has a continuation prompt (e.g., if the user is entering a multi-line command), Readline will use it to prompt the user for additional input. In this case, the rl_on_new_line function should not be called until the last prompt in the sequence is printed.
+
+When rl_on_new_line is called, it informs the Readline library that the cursor is now at the beginning of a new line. This information is used to correctly position the cursor when the user moves up and down through the command history or when the user uses the Emacs-style editing commands provided by Readline.
+
+#include <stdio.h>
+#include <readline/readline.h>
+#include <readline/history.h>
+
+int main() {
+    char *line;
+
+    // Read lines of input until the user enters "exit"
+    while (1) {
+        // Get a line of input from the user
+        line = readline("Enter a command: ");
+
+        // Check if the user entered "exit"
+        if (!strcmp(line, "exit")) {
+            break;
+        }
+
+        // Do something with the input
+        printf("You entered: %s\n", line);
+
+        // Free the memory allocated by Readline
+        rl_free(line);
+
+        // Inform Readline that we are starting a new line
+        rl_on_new_line();
+    }
+
+    return 0;
+}
+
+In this example, the rl_on_new_line function is called after the memory allocated by Readline for each input line is freed. This tells Readline that the cursor is at the beginning of a new line, which allows Readline to correctly position the cursor when the user navigates through the command history.
+
 ===================================================================================================
 Function: void rl_replace_line (const char *text, int clear_undo)
     Replace the contents of rl_line_buffer with text. The point and mark are preserved, if possible. If clear_undo is non-zero, the undo list associated with the current line is cleared. 
 
+The rl_replace_line function in C is a part of the GNU Readline library. This function is used to replace the entire line currently being edited by the user in the Readline interface with a new line of text.
+
+The function takes a single argument: a const char* that represents the new line to be displayed in the Readline interface. The function replaces the current line of text being edited with the new line of text.
+
+Here is an example usage of rl_replace_line:
+
+#include <stdio.h>
+#include <readline/readline.h>
+#include <readline/history.h>
+
+int main() {
+    char *input;
+    input = readline("Enter a line of text: ");
+    add_history(input);
+
+    // Replace the current input with a new line of text
+    rl_replace_line("This is a new line", 1);
+
+    // Move the cursor to the end of the new line
+    rl_on_new_line();
+
+    // Redisplay the new line
+    rl_redisplay();
+
+    // Free the memory allocated by Readline
+    free(input);
+
+    return 0;
+}
+
+In this example, the user is prompted to enter a line of text using the readline function. The entered text is then added to the history using the add_history function.
+
+Next, the rl_replace_line function is called to replace the current line of text with the string "This is a new line". The second argument to rl_replace_line is a flag that specifies whether or not to clear the input line history. In this case, we set the flag to 1 to clear the input history.
+
+The rl_on_new_line function is then called to move the cursor to the end of the new line, and rl_redisplay is used to display the new line.
+
+Finally, the memory allocated by Readline is freed using the free function, and the program exits.
 ===================================================================================================
 If you want the user to be able to get at the line later, (with C-p for example), you must call add_history() to save the line away in a history list of such lines.
 add_history (line);
@@ -53,6 +164,31 @@ rl_gets ()
 
   return (line_read);
 }
+
+===================================================================================================
+In C programming, rl_redisplay is a function provided by the readline library that allows the programmer to update the display on the terminal. This function causes the current line to be redisplayed on the terminal, taking into account any modifications that have been made to the input line buffer.
+
+When you use readline to read user input from the terminal, the input line is displayed on the screen. If your program needs to modify the input line, you can use rl_redisplay to update the display with the modified input line.
+
+For example, let's say your program reads input from the user and then adds some prefix to the input before processing it. You can use rl_redisplay to update the display with the modified input line:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <readline/readline.h>
+#include <readline/history.h>
+
+int main() {
+    char *input = readline("Enter some text: ");
+    char *modified_input = malloc(strlen(input) + 4); // Add space for prefix
+    sprintf(modified_input, "(%s)", input); // Add prefix
+    rl_redisplay(); // Update the display
+    // Process modified input
+    free(input);
+    free(modified_input);
+    return 0;
+}
+
+In this example, rl_redisplay is called after modifying the input line buffer. This causes the modified input line to be redisplayed on the terminal, with the added prefix.
 
 ===================================================================================================
 access, faccessat, faccessat2 - check user's permissions for a file
@@ -151,6 +287,47 @@ These  functions return information about a file, in the buffer pointed to by st
 int stat(const char *pathname, struct stat *statbuf);
 int fstat(int fd, struct stat *statbuf);
 int lstat(const char *pathname, struct stat *statbuf);
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+The stat() function in C is used to retrieve file status information like file size, permissions, timestamp, etc. The function takes a filename as input and fills a struct stat with the file's metadata.
+
+If the function is successful, it returns 0, and the struct stat pointed to by buf is filled with information about the file. Otherwise, the function returns -1, indicating an error, and sets the errno variable to indicate the reason for the error.
+
+#include <stdio.h>
+#include <sys/stat.h>
+
+int main() {
+    struct stat fileStat;
+    if (stat("example.txt", &fileStat) == -1) {
+        perror("stat");
+        return 1;
+    }
+    printf("File Size: %ld bytes\n", fileStat.st_size);
+    printf("Permissions: %o\n", fileStat.st_mode & 0777);
+    printf("Last Modified: %s", ctime(&fileStat.st_mtime));
+    return 0;
+}
+
+The lstat function in C is similar to the stat function, except that it provides information about the symbolic link itself, rather than the file it refers to. The lstat function takes a pathname as input and fills a struct stat with information about the symbolic link.
+
+#include <stdio.h>
+#include <sys/stat.h>
+
+int main() {
+    struct stat sb;
+    if (lstat("/path/to/symlink", &sb) == -1) {
+        perror("lstat");
+        return 1;
+    }
+    printf("File size: %ld bytes\n", sb.st_size);
+    printf("File mode: %o\n", sb.st_mode & 0777);
+    // ...
+    return 0;
+}
+
+Symbolic links are useful for a variety of reasons. One common use case is when you want to create a shortcut to a file or directory that is located in a different part of the file system. Rather than creating a duplicate copy of the file or directory, which can be wasteful in terms of disk space, you can simply create a symbolic link that points to the original location. This allows you to access the file or directory from the new location without having to move it.
+
+Another common use case for symbolic links is when you want to reference a file or directory that has a long or complicated path. By creating a symbolic link with a shorter, more convenient name, you can make it easier to access the file or directory without having to remember its full path.
 
 ===================================================================================================
 unlink, unlinkat - delete a name and possibly the file it refers to
@@ -471,3 +648,249 @@ getenv, secure_getenv - get an environment variable
 
        The  values that may be assigned to these fields are described below.  In the case of the first four bit-mask fields, the definitions of some of the associated flags that may be set  are  ex‐ posed  only  if a specific feature test macro (see feature_test_macros(7)) is defined, as noted in brackets ("[]").
 
+#include <stdio.h>
+#include <unistd.h>
+#include <termios.h>
+
+int main() {
+    struct termios termios_p;
+
+    if (tcgetattr(STDIN_FILENO, &termios_p) == -1) {
+        perror("tcgetattr");
+        return 1;
+    }
+
+    termios_p.c_lflag &= ~(ICANON | ECHO);
+    termios_p.c_cc[VMIN] = 1;
+    termios_p.c_cc[VTIME] = 0;
+
+    if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &termios_p) == -1) {
+        perror("tcsetattr");
+        return 1;
+    }
+
+    printf("Terminal in raw mode\n");
+
+    return 0;
+}
+
+In this example, we declare a struct termios variable termios_p to hold information about the terminal attributes. We then call tcgetattr() with the file descriptor STDIN_FILENO and a pointer to the termios_p struct to get the current terminal attributes. We modify the termios_p struct to set the terminal to raw mode by disabling canonical mode and echoing, and setting the minimum number of characters to read to 1 and the timeout to 0. Finally, we call tcsetattr() with the file descriptor STDIN_FILENO, the TCSAFLUSH action (which flushes both input and output queues), and a pointer to the modified termios_p struct to set the new terminal attributes. 
+
+In canonical mode, the terminal driver buffers all input until a complete line is received, and then sends the entire line to the application for processing. This can be useful in situations where the application needs to process the input line by line or where the input may be too long to fit in a single buffer.
+
+However, in some cases, canonical mode may not be desirable, for example, in applications that require real-time input processing or applications that need to process input character by character. In such cases, non-canonical mode can be used, where input is processed as soon as it is received, without waiting for a complete line.
+
+===================================================================================================
+tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs - direct curses interface to the terminfo capability database 
+
+These routines are included as a conversion aid for programs that use the termcap library. Their parameters are the same and the routines are emulated using the terminfo database. Thus, they can only be used to query the capabilities of entries for which a terminfo entry has been compiled.
+
+The tgetent routine loads the entry for name. It returns 1 on success, 0 if there is no such entry, and -1 if the terminfo database could not be found. The emulation ignores the buffer pointer bp.
+
+The tgetflag routine gets the boolean entry for id, or zero if it is not available.
+
+The tgetnum routine gets the numeric entry for id, or -1 if it is not available.
+
+The tgetstr routine returns the string entry for id, or zero if it is not available. Use tputs to output the returned string. The return value will also be copied to the buffer pointed to by area, and the area value will be updated to point past the null ending this value.
+
+Only the first two characters of the id parameter of tgetflag, tgetnum and tgetstr are compared in lookups.
+
+The tgoto routine instantiates the parameters into the given capability. The output from this routine is to be passed to tputs.
+
+The tputs routine is described on the curs_terminfo(3X) manual page. It can retrieve capabilities by either termcap or terminfo name. 
+
+#include <curses.h>
+#include <term.h>
+
+extern char PC;
+extern char * UP;
+extern char * BC;
+extern unsigned ospeed;
+
+int tgetent(char *bp, const char *name);
+int tgetflag(char *id);
+int tgetnum(char *id);
+char *tgetstr(char *id, char **area);
+char *tgoto(const char *cap, int col, int row);
+int tputs(const char *str, int affcnt, int (*putc)(int)); 
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+tgetflag is a function in the C library for manipulating terminal capabilities. It is used to get a boolean value indicating whether a particular terminal capability is present or not.
+
+The tgetflag function takes a single argument, a string representing the name of the capability to look up. It returns an integer value indicating whether the capability is present or not. Specifically, it returns a non-zero value if the capability is present, and 0 otherwise.
+
+#include <stdio.h>
+#include <curses.h>
+#include <term.h>
+
+int main() {
+    // Get the terminal name or type
+    char* term_name = getenv("TERM");
+
+    // Open the terminfo database file
+    FILE* term_file = fopen("/usr/share/terminfo", "r");
+
+    // Get the terminal description entry
+    char term_buffer[1024];
+    if (tgetent(term_buffer, term_name) < 0) {
+        printf("Error getting terminal description entry\n");
+        return 1;
+    }
+
+    // Check for the presence of the "am" capability
+    if (tgetflag("am")) {
+        printf("Automatic margins capability is present\n");
+    } else {
+        printf("Automatic margins capability is not present\n");
+    }
+
+    return 0;
+}
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+tgetnum is a function in the C library for manipulating terminal capabilities. It is used to get an integer value associated with a particular terminal capability.
+
+The tgetnum function takes a single argument, a string representing the name of the capability to look up. It returns an integer value associated with the capability, or -1 if the capability is not present.
+
+#include <stdio.h>
+#include <curses.h>
+#include <term.h>
+
+int main() {
+    // Get the terminal name or type
+    char* term_name = getenv("TERM");
+
+    // Open the terminfo database file
+    FILE* term_file = fopen("/usr/share/terminfo", "r");
+
+    // Get the terminal description entry
+    char term_buffer[1024];
+    if (tgetent(term_buffer, term_name) < 0) {
+        printf("Error getting terminal description entry\n");
+        return 1;
+    }
+
+    // Get the number of columns in the terminal
+    int num_columns = tgetnum("cols");
+    if (num_columns == -1) {
+        printf("Could not determine number of columns in the terminal\n");
+    } else {
+        printf("Number of columns in the terminal is %d\n", num_columns);
+    }
+
+    return 0;
+}
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+tgetstr is a function in the C library for manipulating terminal capabilities. It is used to retrieve a string value associated with a particular terminal capability.
+
+The tgetstr function takes two arguments: a string representing the name of the capability to look up, and a pointer to a character array where the string value will be stored. The function returns a pointer to the stored string value, or NULL if the capability is not present.
+
+Here is an example of how to use tgetstr to retrieve the "clear screen" capability for a terminal:
+
+#include <stdio.h>
+#include <curses.h>
+#include <term.h>
+
+int main() {
+    // Get the terminal name or type
+    char* term_name = getenv("TERM");
+
+    // Open the terminfo database file
+    FILE* term_file = fopen("/usr/share/terminfo", "r");
+
+    // Get the terminal description entry
+    char term_buffer[1024];
+    if (tgetent(term_buffer, term_name) < 0) {
+        printf("Error getting terminal description entry\n");
+        return 1;
+    }
+
+    // Get the "clear screen" capability
+    char clear_screen[1024];
+    char* clear_screen_ptr = tgetstr("clear", &clear_screen);
+    if (clear_screen_ptr == NULL) {
+        printf("Could not get the \"clear screen\" capability\n");
+    } else {
+        printf("The \"clear screen\" capability is: %s\n", clear_screen);
+    }
+
+    return 0;
+}
+
+In this example, we use tgetstr to retrieve the "clear screen" capability, using the "clear" capability name. If the capability is present, we print its value. If not, we print an error message.
+
+Note that the value returned by tgetstr is a string containing escape sequences that can be used to manipulate the terminal, such as moving the cursor, changing the color of text, or clearing the screen. These escape sequences are interpreted by the terminal emulator when they are printed to the screen.
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+In C, tgoto() is a function in the termcap library that generates a cursor positioning sequence, given the row and column arguments. The sequence is returned as a string that can be output to a terminal.
+
+The function takes three arguments:
+
+    *const char cap - A string that specifies the terminal capability being used. This is typically obtained using tgetstr().
+    int col - An integer representing the column position where the cursor should be placed.
+    int row - An integer representing the row position where the cursor should be placed.
+
+The function returns a pointer to a string that represents the cursor positioning sequence.
+
+#include <termcap.h>
+#include <stdio.h>
+
+int main() {
+    char buffer[1024];
+    char *cursor;
+    int row = 10;
+    int col = 20;
+    const char *cap = tgetstr("cm", &buffer);
+
+    if (cap) {
+        cursor = tgoto(cap, col, row);
+        printf("Cursor positioning sequence: %s\n", cursor);
+    }
+    else {
+        printf("Terminal capability not found.\n");
+    }
+
+    return 0;
+}
+
+In this example, tgetstr() is used to obtain the terminal capability for cursor movement (cm). If the capability is found, tgoto() is called with the desired row and column positions. The resulting cursor positioning sequence is printed to the console.
+
+Note that the actual behavior of the cursor positioning sequence will depend on the terminal being used, and may vary between different terminals and operating systems.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+The tputs() function in C is used to output the given string to the terminal. It is typically used to send control codes to the terminal for tasks such as setting the terminal's text attributes (bold, underline, color, etc.), moving the cursor around the screen, and clearing the screen.
+
+The tputs() function takes two arguments: the first is a pointer to the string of control codes to be sent to the terminal, and the second is the number of lines affected by the control codes. The second argument is usually set to 1, but can be set to a different value if the control codes affect multiple lines.
+
+Here is an example of using tputs() to move the cursor to a specific location on the screen:
+
+#include <term.h>
+#include <stdio.h>
+
+int main() {
+    char *move = tgoto(tgetstr("cm", NULL), 10, 10);
+    tputs(move, 1, putchar);
+    return 0;
+}
+
+In this example, the tgetstr() function is used to get the "cm" (cursor movement) capability for the current terminal. This capability allows you to move the cursor to a specific position on the screen.
+
+The tgoto() function takes the "cm" capability and two arguments: the row and column where you want the cursor to be moved. It returns a pointer to a string of control codes that will move the cursor to the specified position.
+
+Finally, the tputs() function is used to output the control codes returned by tgoto() to the terminal. The putchar() function is used as the output function, which means the control codes will be sent to the standard output stream (usually the terminal). The second argument to tputs() is set to 1 to indicate that the control codes only affect one line.
+
+Overall, this example will move the cursor to the 10th row and 10th column on the screen.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+the shell logical operators &&, ||
+
+https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/
+An asterisk (*) – matches one or more occurrences of any character, including no character.
+
+ls -l l*	
+
+rm *tar*
