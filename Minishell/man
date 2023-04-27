@@ -883,7 +883,7 @@ Finally, the tputs() function is used to output the control codes returned by tg
 
 Overall, this example will move the cursor to the 10th row and 10th column on the screen.
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+===================================================================================================
 
 
 the shell logical operators &&, ||
@@ -894,3 +894,23 @@ An asterisk (*) – matches one or more occurrences of any character, including 
 ls -l l*	
 
 rm *tar*
+===================================================================================================
+exit code
+When you run a command or a script in a terminal, the command or script may exit with a code, known as an "exit code". The exit code is a numeric value that represents the success or failure of the command or script.
+
+An exit code of 0 typically means that the command or script was successful and completed without any errors. Any non-zero exit code generally indicates an error or failure of some kind.
+
+The specific exit code values can vary depending on the command or script being run. Some commonly used exit codes include:
+
+    1: Catch-all for general errors
+    2: Incorrect usage or invalid arguments
+    126: Permission issues preventing execution
+    127: Command not found
+    130: Script terminated by user via Ctrl+C
+    137: Script terminated by system due to excessive resource usage
+
+Exit codes are useful for automating and scripting tasks, as they allow you to programmatically determine whether a command or script was successful or not. For example, you could use the exit code in a shell script to determine whether to continue with the next step of a process or to stop and alert the user to an error.
+
+to add the exit code of two commands, you can use the following syntax:
+expr $? + $?   # Adds the exit code of the previous two commands
+

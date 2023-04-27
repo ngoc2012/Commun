@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/24 20:14:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/26 23:16:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,21 @@ void	free_ss(char **ss)
 	free(ss0);
 }
 
-int	main()
+int	main(int argc, char **argv, char **env)
 {
+	t_m	m;
+
+	if (argc > 1)
+		return (1);
+	(void)argv;
 	// Clears the terminal screen
 	struct termios term;
 	tcgetattr(STDIN_FILENO, &term);
 	printf("\033[2J\033[1;1H");
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 
+	m.exit_code = 0;
+	m.env = env;
 	char *command;
 	while (1) {
 		command = readline("minishell$ ");
@@ -44,14 +51,8 @@ int	main()
 			exit(EXIT_SUCCESS);
 		}
 		if (!ft_strncmp(ss[0], "echo", 5))
-		{
-			char	*ss0;
-			ss0 = ss;
-			while (*(++ss))
-				ft_printf("%s\n", *ss);
-			free_ss(ss0);
-			exit(EXIT_SUCCESS);
-		}
+			echo(&m, command);
+		free_ss(ss);
 		add_history(command);
 		rl_free(command);
 		rl_on_new_line();

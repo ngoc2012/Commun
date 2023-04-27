@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/24 20:04:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/26 23:15:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,14 @@
 # include <termios.h>
 # include "ft_printf.h"
 # include "libft.h"
+
+// minishell struct
+typedef struct	s_m
+{
+	char	**env;
+	int	exit_code;
+}	t_m;
+
+void	echo(t_m *m, char *command);
 
 #endif
