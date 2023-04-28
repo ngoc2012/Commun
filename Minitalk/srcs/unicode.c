@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:39:09 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/03/21 09:24:26 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/04/27 18:06:23 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,11 @@ int	send_unicode(char *s, int server_id, int *ind)
 	if (i < 4)
 		return (0);
 	if (i == 6 && n > 1114111)
+	{
 		n = (n - base16(s[i - 1])) / 16;
-	*ind += i + 1;
+		i--;
+	}
+	*ind += i + 2;
 	send_bits_unicode(server_id, n);
 	return (1);
 }

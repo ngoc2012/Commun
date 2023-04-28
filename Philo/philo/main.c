@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/22 19:15:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/28 14:57:02 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,33 @@ int	ft_atoi(const char *str)
 	return (sign * nbr);
 }
 
+int	free_prog(t_academy *a, int erro)
+{
+	if (a->phs)
+		free(a->phs);
+	if (a->forks)
+		free(a->forks);
+	return (erro);
+}
+
+int	end_prog(t_academy *a, int erro)
+{
+	int		i;
+
+	i = -1;
+	while (++i < a->n_ph)
+	{
+		pthread_mutex_destroy(&a->phs[i].m_p);
+		pthread_mutex_destroy(&a->phs[i].m_f);
+		pthread_mutex_destroy(&a->phs[i].m_e);
+		pthread_mutex_destroy(&a->forks[i]);
+	}
+	pthread_mutex_destroy(&a->m_write);
+	pthread_mutex_destroy(&a->m_a);
+	free_prog(a, -1);
+	return (erro);
+}
+
 int	get_args(int argc, char **argv, t_academy *a)
 {
 	if (argc < 5 || argc > 6)
@@ -50,40 +77,20 @@ int	get_args(int argc, char **argv, t_academy *a)
 	a->t_s = ft_atoi(argv[4]) * 1000;
 	a->t_t = (a->t_d - a->t_e - a->t_s) / 10;
 	if (argc == 6)
+	{
 		a->n_e = ft_atoi(argv[5]);
+		if (a->n_e <= 0)
+			return (0);
+	}
 	if (a->n_ph <= 0 || a->n_ph > 200 || a->t_d <= 0
-		|| a->t_e <= 0 || a->t_s <= 0 || a->t_t <= 0)
+		|| a->t_e <= 0 || a->t_s <= 0)
 		return (0);
+	if (a->t_t < 1)
+		a->t_t = 1;
 	a->phs = malloc(sizeof(t_philo) * a->n_ph);
 	a->forks = malloc(sizeof(pthread_mutex_t) * a->n_ph);
 	if (!a->phs || !a->forks)
 		return (free_prog(a, 0));
-	return (1);
-}
-
-int	create(t_academy *a)
-{
-	int	i;
-	int	j;
-
-	a->phs[a->n_ph - 1].if1 = 0;
-	a->phs[a->n_ph - 1].if2 = a->n_ph - 1;
-	gettimeofday(&a->t0, NULL);
-	i = -1;
-	while (++i < a->n_ph)
-	{
-		if (pthread_create(&a->phs[i].th, NULL, &life, &a->phs[i]))
-		{
-			j = -1;
-			while (++j < i)
-			{
-				m_set(&a->phs[j].finished, 1, &a->phs[j].m_p);
-				m_set(&a->start, 1, &a->m_a);
-				pthread_join(a->phs[j].th, NULL);
-			}
-			return (0);
-		}
-	}
 	return (1);
 }
 

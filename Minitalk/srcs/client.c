@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 18:39:09 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/03/21 09:21:37 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/04/28 11:58:25 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,16 @@ int	main(int argc, char **argv)
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
 	server_id = ft_atoi(argv[1]);
-	i = -1;
-	while (argv[2][++i])
+	if (server_id <= 0)
+		exit(EXIT_FAILURE);
+	i = 0;
+	while (argv[2][i])
 	{
 		if (!send_unicode(&argv[2][i], server_id, &i))
+		{
 			send_bits(server_id, argv[2][i]);
+			i++;
+		}
 	}
 	send_bits(server_id, 0);
 	exit(EXIT_SUCCESS);
