@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/28 14:57:02 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:48:47 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,12 @@ int	end_prog(t_academy *a, int erro)
 		pthread_mutex_destroy(&a->phs[i].m_p);
 		pthread_mutex_destroy(&a->phs[i].m_f);
 		pthread_mutex_destroy(&a->phs[i].m_e);
+		pthread_mutex_destroy(&a->phs[i].m_s);
 		pthread_mutex_destroy(&a->forks[i]);
 	}
 	pthread_mutex_destroy(&a->m_write);
 	pthread_mutex_destroy(&a->m_a);
+	pthread_mutex_destroy(&a->m_s);
 	free_prog(a, -1);
 	return (erro);
 }
@@ -103,7 +105,6 @@ int	main(int argc, char **argv)
 	if (!get_args(argc, argv, &a))
 		return (1);
 	a.died = 0;
-	a.start = 0;
 	if (!init(&a))
 		return (free_prog(&a, 1));
 	if (create(&a))

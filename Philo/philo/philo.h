@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/28 14:04:10 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:47:32 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ typedef struct s_philo
 	struct timeval	last_sleep;
 	int				n_e;
 	char			created;
+	char			started;
 	char			eated;
 	char			finished;
 	pthread_mutex_t	m_p;
 	pthread_mutex_t	m_f;
 	pthread_mutex_t	m_e;
+	pthread_mutex_t	m_s;
 }	t_philo;
 
 struct	s_academy
@@ -55,10 +57,10 @@ struct	s_academy
 	struct timeval	tv;
 	t_philo			*phs;
 	pthread_mutex_t	*forks;
-	char			start;
 	char			died;
 	pthread_mutex_t	m_write;
 	pthread_mutex_t	m_a;
+	pthread_mutex_t	m_s;
 };
 
 int				now_time_interval(struct timeval *tv1, struct timeval *tv2);

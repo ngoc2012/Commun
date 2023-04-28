@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/28 14:44:49 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:14:45 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void	eating3(t_philo *ph)
 void	eating(t_philo *ph)
 {
 	pthread_mutex_lock(&ph->a->forks[ph->if1]);
+	pthread_mutex_lock(&ph->a->m_write);
 	gettimeofday(&ph->fork1, NULL);
 	if (!m_get(&ph->a->died, &ph->a->m_a))
 	{
-		pthread_mutex_lock(&ph->a->m_write);
 		printf("%d %d has taken a fork\n", get_time_interval(&ph->fork1, &ph->a->t0), ph->id);
 		pthread_mutex_unlock(&ph->a->m_write);
 	}
@@ -61,8 +61,8 @@ void	eating(t_philo *ph)
 		return ;
 	}
 	pthread_mutex_lock(&ph->a->forks[ph->if2]);
-	gettimeofday(&ph->fork2, NULL);
 	pthread_mutex_lock(&ph->a->m_write);
+	gettimeofday(&ph->fork2, NULL);
 	m_set_time(&ph->last_eat0, &ph->fork2, &ph->m_p);
 	if (m_get(&ph->a->died, &ph->a->m_a))
 	{
@@ -100,20 +100,24 @@ void	*life(void *ph0)
 
 	ph = (t_philo *) ph0;
 	m_set(&ph->created, 1, &ph->m_p);
-	while (!m_get(&ph->a->start, &ph->a->m_a))
+	while (!m_get(&ph->started, &ph->m_s))
 		usleep(1);
-	if (ph->a->t_d > 2 * ph->a->t_e)
-		usleep(((ph->id - 1) % 2) * ph->a->t_e + ((ph->id - 1) / 2) * (ph->a->t_d - ph->a->t_e * 2) / ph->a->n_ph);
-	else
-		usleep(((ph->id - 1) % 2) * ph->a->t_e + ((ph->id - 1) / 2) * ph->a->t_e / ph->a->n_ph);
+	//if (ph->a->t_d > 2 * ph->a->t_e)
+	//	usleep(((ph->id - 1) % 2) * ph->a->t_e + ((ph->id - 1) / 2) * (ph->a->t_d - ph->a->t_e * 2) / ph->a->n_ph);
+	//else
+	//	usleep(((ph->id - 1) % 2) * ph->a->t_e + ((ph->id - 1) / 2) * ph->a->t_e / ph->a->n_ph);
+	usleep(((ph->id - 1) % 2)* ph->a->t_e);
 	n_e = 0;
 	while (!m_get(&ph->a->died, &ph->a->m_a))
 	{
 		eating(ph);
-		if ((ph->a->n_e > 0 && n_e < ph->a->n_e) || m_get(&ph->a->died, &ph->a->m_a))
+		if (m_get(&ph->a->died, &ph->a->m_a))
+			break ;
+		if ((ph->a->n_e > 0 && n_e >= ph->a->n_e))
 			break ;
 		sleeping(ph);
 		n_e++;
 	}
+	m_set(&ph->finished, 1, &ph->m_f);
 	return ((void *) NULL);
 }

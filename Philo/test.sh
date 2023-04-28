@@ -20,6 +20,8 @@
 #./philo 5 8 2 2
 #echo "./philo 5 3 1 1 10"
 #./philo 5 3 1 1 10
+echo "./philo 5 800 200 200 1"
+./philo 5 800 200 200 1
 #echo "./philo 5 800 200 200 5"
 #./philo 5 800 200 200 5
 #echo "./philo 4 410 200 200 5"
@@ -36,8 +38,8 @@
 #./philo 4 200 300 200
 #echo "./philo 5 800 200 200 -5"
 #./philo 5 800 200 200 -5
-echo "valgrind --tool=helgrind ./philo 5 800 200 200 5"
-valgrind --tool=helgrind ./philo 5 800 200 200 5
+#echo "valgrind --tool=helgrind ./philo 5 800 200 200 5"
+#valgrind --tool=helgrind ./philo 5 800 200 200 5
 #echo "valgrind --leak-check=full ./philo 5 800 200 200 5"
 #valgrind --leak-check=full ./philo 5 800 200 200 5
 #echo "valgrind --tool=helgrind ./philo 1 11 5 5"

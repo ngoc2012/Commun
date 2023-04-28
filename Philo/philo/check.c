@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/28 14:59:29 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:07:49 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 void	start(t_academy *a)
 {
 	int		i;
-	char	start;
+	char	all_created;
 
-	//printf("start0");
-	start = 0;
-	while (!start)
+	all_created = 0;
+	while (!all_created)
 	{
-		start = 1;
+		all_created = 1;
 		i = -1;
 		while (++i < a->n_ph)
 			if (!m_get(&a->phs[i].created, &a->phs[i].m_p))
-				start = 0;
+				all_created = 0;
 		usleep(1);
 	}
-	//printf("start");
-	m_set(&a->start, 1, &a->m_a);
+	i = -1;
+	while (++i < a->n_ph)
+		m_set(&a->phs[i].started, 1, &a->phs[i].m_s);
 	gettimeofday(&a->t0, NULL);
 	i = -1;
 	while (++i < a->n_ph)
@@ -39,36 +39,20 @@ void	start(t_academy *a)
 	}
 }
 
-void	eated(t_academy *a)
-{
-	int		i;
-	char	eated;
-
-	eated = 0;
-	while (!eated)
-	{
-		eated = 1;
-		i = -1;
-		while (++i < a->n_ph)
-			if (!m_get(&a->phs[i].eated, &a->phs[i].m_p))
-				eated = 0;
-		usleep(1);
-	}
-}
-
 void	check(t_academy *a)
 {
 	int		i;
+	int		n_finished;
 	struct timeval	tv;
 	struct timeval	last_eat;
 
-	//printf("check0\n");
+	n_finished = 1;
 	start(a);
-	eated(a);
-	while (!m_get(&a->died, &a->m_a))
+	while (!m_get(&a->died, &a->m_a) && n_finished)
 	{
+		n_finished = 0;
 		i = -1;
-		while (++i < a->n_ph)
+		while (++i < a->n_ph && !m_get(&a->phs[i].finished, &a->phs[i].m_f))
 		{
 			last_eat = m_get_time(&a->phs[i].last_eat0, &a->phs[i].m_p);
 			if (now_time_interval(&tv, &last_eat) > a->t_d
@@ -80,7 +64,8 @@ void	check(t_academy *a)
 				pthread_mutex_unlock(&a->m_write);
 				return ;
 			}
+			n_finished++;
 		}
+		usleep(1);
 	}
-	//printf("check1\n");
 }

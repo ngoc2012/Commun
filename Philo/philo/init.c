@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/28 14:56:06 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:48:22 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ int	init2(t_academy *a)
 
 	if (pthread_mutex_init(&a->m_a, NULL) != 0)
 		return (0);
+	if (pthread_mutex_init(&a->m_s, NULL) != 0)
+		return (0);
 	if (pthread_mutex_init(&a->m_write, NULL) != 0)
 	{
 		pthread_mutex_destroy(&a->m_a);
+		pthread_mutex_destroy(&a->m_s);
 		return (0);
 	}
 	i = -1;
@@ -32,6 +35,7 @@ int	init2(t_academy *a)
 			|| pthread_mutex_init(&a->phs[i].m_e, NULL))
 		{
 			pthread_mutex_destroy(&a->m_a);
+			pthread_mutex_destroy(&a->m_s);
 			pthread_mutex_destroy(&a->m_write);
 			j = -1;
 			while (++j < i)
@@ -39,6 +43,7 @@ int	init2(t_academy *a)
 				pthread_mutex_destroy(&a->phs[j].m_p);
 				pthread_mutex_destroy(&a->phs[j].m_f);
 				pthread_mutex_destroy(&a->phs[j].m_e);
+				pthread_mutex_destroy(&a->phs[j].m_s);
 			}
 			return (0);
 		}
@@ -57,6 +62,7 @@ int	init3(t_academy *a)
 		if (pthread_mutex_init(&a->forks[i], NULL) != 0)
 		{
 			pthread_mutex_destroy(&a->m_a);
+			pthread_mutex_destroy(&a->m_s);
 			pthread_mutex_destroy(&a->m_write);
 			j = -1;
 			while (++j < a->n_ph)
@@ -64,6 +70,7 @@ int	init3(t_academy *a)
 				pthread_mutex_destroy(&a->phs[j].m_p);
 				pthread_mutex_destroy(&a->phs[j].m_f);
 				pthread_mutex_destroy(&a->phs[j].m_e);
+				pthread_mutex_destroy(&a->phs[j].m_s);
 			}
 			j = -1;
 			while (++j < i)
@@ -85,6 +92,7 @@ int	init(t_academy *a)
 		gettimeofday(&a->phs[i].last_eat, NULL);
 		a->phs[i].id = i + 1;
 		a->phs[i].n_e = 0;
+		a->phs[i].started = 0;
 		a->phs[i].created = 0;
 		a->phs[i].eated = 0;
 		a->phs[i].finished = 0;
@@ -119,7 +127,8 @@ int	create(t_academy *a)
 			{
 				m_set(&a->died, 1, &a->m_a);
 				m_set(&a->phs[j].finished, 1, &a->phs[j].m_p);
-				m_set(&a->start, 1, &a->m_a);
+				m_set(&a->phs[j].started, 1, &a->phs[j].m_p);
+				//m_set(&a->start, 1, &a->m_s);
 				pthread_join(a->phs[j].th, NULL);
 			}
 			return (0);
