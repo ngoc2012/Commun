@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/28 15:47:32 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/04/28 16:41:10 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char			m_get(char *v, pthread_mutex_t *m);
 void			m_set(char *v, char i, pthread_mutex_t *m);
 int				free_prog(t_academy *a, int erro);
 int				end_prog(t_academy *a, int erro);
-void			eating(t_philo *ph);
+int				eating(t_philo *ph);
 void			sleeping(t_philo *ph);
 void			*life(void *ph0);
 void			check(t_academy *a);
