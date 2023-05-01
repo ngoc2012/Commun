@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/21 12:47:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/30 09:14:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	init_open(t_academy *a)
 	a->sem_write = try_open(SEM_WRITE, 1);
 	a->sem_forks = try_open(SEM_FORKS, a->n_ph);
 	a->sem_start = try_open(SEM_START, 0);
-	sem_init(&a->sem_last_eat, 0, 1);
-	sem_init(&a->sem_die, 0, 1);
+	a->sem_last_eat = try_open(SEM_LAST_EAT, 1);
+	a->sem_die = try_open(SEM_DIE, 1);
 }
 
 int	init_start(t_academy *a)
@@ -56,6 +56,7 @@ void	init_end(t_academy *a)
 	while (++i < a->n_ph)
 	{
 		sem_post(a->sem_died[i]);
+		sem_post(a->sem_started[i]);
 		sem_post(a->sem_start);
 	}
 	i = -1;

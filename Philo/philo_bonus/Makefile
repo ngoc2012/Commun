@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/04/22 20:02:49 by ngoc             ###   ########.fr        #
+#    Updated: 2023/04/29 16:05:37 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = cc
 FLAGS = -Wall -Wextra -Werror
 all:	$(FILE)
 .c.o:
-	$(CC) $(FLAGS) -c $< -o ${<:.c=.o} -I./
+	$(CC) $(FLAGS) -g -c $< -o ${<:.c=.o} -I./
 $(FILE):	$(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(FILE)
 norm:

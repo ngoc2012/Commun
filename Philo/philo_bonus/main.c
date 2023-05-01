@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/21 12:31:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/30 08:38:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,11 @@ void	get_args(int argc, char **argv, t_academy *a)
 		if (a->n_e <= 0)
 			exit(EXIT_FAILURE);
 	}
-	if (a->n_ph <= 0 || a->n_ph > 200 || a->t_d <= 0 || a->t_e <= 0
-		|| a->t_s <= 0 || a->t_t <= 0)
+	if (a->n_ph <= 0 || a->n_ph > 200 || a->t_d <= 0
+		|| a->t_e <= 0 || a->t_s <= 0)
 		exit(EXIT_FAILURE);
+	if (a->t_t < 1)
+		a->t_t = 1;
 }
 
 int	main(int argc, char **argv)

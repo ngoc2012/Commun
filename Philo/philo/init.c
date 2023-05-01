@@ -6,33 +6,41 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/28 15:48:22 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/04/29 15:29:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	init2(t_academy *a)
+int	init1(t_academy *a)
 {
-	int	i;
-	int	j;
-
 	if (pthread_mutex_init(&a->m_a, NULL) != 0)
 		return (0);
 	if (pthread_mutex_init(&a->m_s, NULL) != 0)
+	{
+		pthread_mutex_destroy(&a->m_a);
 		return (0);
+	}
 	if (pthread_mutex_init(&a->m_write, NULL) != 0)
 	{
 		pthread_mutex_destroy(&a->m_a);
 		pthread_mutex_destroy(&a->m_s);
 		return (0);
 	}
+	return (1);
+}
+
+int	init2(t_academy *a, int i)
+{
+	int	j;
+
 	i = -1;
 	while (++i < a->n_ph)
 	{
 		if (pthread_mutex_init(&a->phs[i].m_p, NULL)
 			|| pthread_mutex_init(&a->phs[i].m_f, NULL)
-			|| pthread_mutex_init(&a->phs[i].m_e, NULL))
+			|| pthread_mutex_init(&a->phs[i].m_e, NULL)
+			|| pthread_mutex_init(&a->phs[i].m_s, NULL))
 		{
 			pthread_mutex_destroy(&a->m_a);
 			pthread_mutex_destroy(&a->m_s);
@@ -51,9 +59,8 @@ int	init2(t_academy *a)
 	return (1);
 }
 
-int	init3(t_academy *a)
+int	init3(t_academy *a, int i)
 {
-	int	i;
 	int	j;
 
 	i = -1;
@@ -85,7 +92,6 @@ int	init(t_academy *a)
 {
 	int		i;
 
-	//printf("init0\n");
 	i = -1;
 	while (++i < a->n_ph)
 	{
@@ -100,12 +106,11 @@ int	init(t_academy *a)
 		a->phs[i].if1 = i;
 		a->phs[i].if2 = i + 1;
 	}
-	if (!init2(a))
+	if (!init1(a))
 		return (0);
-	if (!init3(a))
+	if (!init2(a, i))
 		return (0);
-	//printf("init\n");
-	return (1);
+	return (init3(a, i));
 }
 
 int	create(t_academy *a)
@@ -113,7 +118,6 @@ int	create(t_academy *a)
 	int	i;
 	int	j;
 
-	//printf("created0\n");
 	a->phs[a->n_ph - 1].if1 = 0;
 	a->phs[a->n_ph - 1].if2 = a->n_ph - 1;
 	gettimeofday(&a->t0, NULL);
@@ -127,13 +131,11 @@ int	create(t_academy *a)
 			{
 				m_set(&a->died, 1, &a->m_a);
 				m_set(&a->phs[j].finished, 1, &a->phs[j].m_p);
-				m_set(&a->phs[j].started, 1, &a->phs[j].m_p);
-				//m_set(&a->start, 1, &a->m_s);
+				m_set(&a->phs[j].started, 1, &a->phs[j].m_s);
 				pthread_join(a->phs[j].th, NULL);
 			}
 			return (0);
 		}
 	}
-	//printf("created11\n");
 	return (1);
 }

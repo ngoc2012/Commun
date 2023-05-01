@@ -6,11 +6,18 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 07:53:28 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/11 16:05:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/30 07:45:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	print_sem(t_academy *a, struct timeval *tv, char *s)
+{
+	sem_wait(a->sem_write);
+	printf("%d %d %s\n", get_time_interval(tv, &a->t0), a->id, s);
+	sem_post(a->sem_write);
+}
 
 // Time in milliseconds
 int	get_time_interval(struct timeval *tv1, struct timeval *tv2)

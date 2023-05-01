@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/04/21 23:40:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/04/30 07:47:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define SEM_DIED "SEM_DIED"
 # define SEM_START "SEM_START"
 # define SEM_STARTED "SEM_STARTED"
+# define SEM_LAST_EAT "SEM_LAST_EAT"
+# define SEM_DIE "SEM_DIE"
 
 # include <stdlib.h>
 # include <stdio.h>
@@ -51,8 +53,8 @@ struct	s_academy
 	sem_t			**sem_died;
 	sem_t			**sem_started;
 	sem_t			*sem_start;
-	sem_t			sem_last_eat;
-	sem_t			sem_die;
+	sem_t			*sem_last_eat;
+	sem_t			*sem_die;
 	char			eated;
 	char			died;
 	char			**sem_died_str;
@@ -74,5 +76,6 @@ void	init(t_academy *a);
 char	get_sem(char *v, sem_t *s);
 char	set_sem(char *v, int v0, sem_t *s);
 void	print_now_sem(t_academy *a, char *s);
+void	print_sem(t_academy *a, struct timeval *tv, char *s);
 
 #endif
