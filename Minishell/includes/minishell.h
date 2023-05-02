@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/01 10:40:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/02 09:54:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <termios.h>
+# include <limits.h>
 # include "ft_printf.h"
 # include "libft.h"
 
@@ -26,9 +27,12 @@ typedef struct	s_m
 {
 	char	**env;
 	int	exit_code;
+	char	cwd[PATH_MAX];
 }	t_m;
 
 void	echo(t_m *m, char *command);
 char	*strjoinm(char *des, char *src, int len_des, int buffer);
+void	pwd(t_m *m);
+void	cd(t_m *m, char *path);
 
 #endif

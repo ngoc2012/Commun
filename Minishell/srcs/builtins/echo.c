@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/01 20:26:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/01 22:09:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int	get_env_name(char *name, char **environ)
 {
 	int	len;
 
-	//printf("name = %s", name);
 	for (char **env = environ; *env != NULL; env++) {
 		len = 0;
 		while ((*env)[len] != '=')
@@ -92,7 +91,6 @@ static int	print_del(t_echo *e, int i, int j, int pos_min)
 
 	if (pos_min == e->pos[j])
 	{
-		//write(1, "y", 1);
 		print(&e->s[e->pos[j] + 1], i - e->pos[j] - 1, e, j);
 		e->space = i + 1;
 		k = -1;
@@ -101,13 +99,8 @@ static int	print_del(t_echo *e, int i, int j, int pos_min)
 		if (e->s[i + 1] == ' ')
 		{
 			write(1, " ", 1);
-			i++;
-			e->space = i;
-			while (e->s[i + 1] == ' ')
-			{
-				i++;
-				e->space = i;
-			}
+			while (e->s[++i] == ' ')
+				e->space = i + 1;
 		}
 		return (1);
 	}
@@ -127,7 +120,6 @@ static void	check_del(t_echo *e, int i)
 		{
 			if (e->pos[j] == -1)
 			{
-				//printf("e->space = %d, i = %d\n", e->space, i);
 				if (i > e->space)
 					print_space(e, i);
 				e->pos[j] = i;
@@ -180,26 +172,33 @@ static int	check_end(t_echo *e, int *i)
 	}
 	j = -1;
 	while (++j < ECHO_DEL)
-	{
-		//printf("|%d x %d|", j, e->pos[j]);
 		if (e->pos[j] != -1)
 			return (0);
-	}
 	return (1);
 }
 
 void	echo(t_m *m, char *command)
 {
 	int		i;
+	int		nl;
 	char	*s;
 	t_echo	e;
 
+	nl = 1;
 	e.m = m;
 	e.len_o = 0;
 	e.del = "'\"";
 	s = ft_strnstr(command, "echo", ft_strlen(command)) + 4;
 	while (*s == ' ')
-		;
+		s++;
+	if (*s == '-')
+		if (*(s + 1) == 'n')
+		{
+			nl = 0;
+			s += 2;
+			while (*s == ' ')
+				s++;
+		}
 	if (*s != 0)
 	{
 		e.s = strjoinm(e.s, s, 0, ft_strlen(s));
@@ -213,7 +212,6 @@ void	echo(t_m *m, char *command)
 			e.s = strjoinm(e.s, "\n", i++, 1);
 			e.s = strjoinm(e.s, s, i, ft_strlen(s));
 		}
-		//printf("|%s|\n", e.s);
 		i = -1;
 		while (++i < ECHO_DEL)
 			e.pos[i] = -1;
@@ -221,15 +219,19 @@ void	echo(t_m *m, char *command)
 		i = -1;
 		while (e.s[++i])
 		{
-			if (e.s[i] == ' ' && e.space > i)
+			if (e.s[i] == ' ' && e.space < i)
+			{
 				print_space(&e, i);
+				while (e.s[++i] == ' ')
+					e.space = i;
+			}
 			check_del(&e, i);
 		}
-		//printf("e.space = %d, i = %d, %s|\n", e.space, i, &e.s[e.space]);
 		if (i > e.space)
 			print_space(&e, i);
 		m->exit_code = 0;
 		free(e.s);
 	}
-	write(1, "\n", 1);
+	if (nl)
+		write(1, "\n", 1);
 }
