@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/03 19:05:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/03 20:17:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_ss(char **ss)
 	free(ss0);
 }
 
-int	n_args(char *s)
+int	n_args(char *s, char *d)
 {
 	int		i;
 	char	d;
@@ -31,18 +31,27 @@ int	n_args(char *s)
 	i = -1;
 	while (s[++i] && s[i] == ' ')
 		;
-	if (s[i] == '"' || s[i] == '\'')
+	while (s[i])
 	{
-		d = s[i];
-		while (s[++i] && s[i] != d)
-			;
+		if (s[i] == '"' || s[i] == '\'')
+		{
+			d = s[i];
+			while (s[++i] && s[i] != d)
+				;
+			if (s[i] == d)
+			{
+				d = ' ';
+				i++;
+			}
+		}
 	}
 }
 
-void	split_args(char *s)
+void	split_args(char *s, char *d)
 {
-	printf("%d", n_args);
+	printf("%d", n_args(s, d));
 }
+
 int	main(int argc, char **argv, char **env)
 {
 	t_m	m;
@@ -58,10 +67,12 @@ int	main(int argc, char **argv, char **env)
 
 	m.exit_code = 0;
 	m.env = env;
-	char *command;
+	char	*command;
+	char	d;
 	while (1) {
 		command = readline("minishell$ ");
-		split_args(command);
+		d = ' ';
+		n_args(command, &d);
 		if (!ft_strncmp(command, "exit", 5)) {
 			break;
 		}
