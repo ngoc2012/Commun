@@ -571,7 +571,7 @@ For each entry, we check if the ut_type field is set to USER_PROCESS (indicating
 Finally, we call endutent() to close the utmp file.
 
 ===================================================================================================
-ioctl - control device
+ioctl - control device (terminal size ...)
 
        The ioctl() system call manipulates the underlying device parameters of special files.  In par‐ ticular, many operating characteristics of character special files  (e.g.,  terminals)  may  be controlled with ioctl() requests.  The argument fd must be an open file descriptor.
 
