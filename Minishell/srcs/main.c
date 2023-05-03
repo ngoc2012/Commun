@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/02 09:51:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/02 17:07:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,11 @@ int	main(int argc, char **argv, char **env)
 		if (!ft_strncmp(ss[0], "echo", 5))
 			echo(&m, command);
 		if (!ft_strncmp(ss[0], "pwd", 4))
+		{
 			pwd(&m);
+			ft_putstr_fd(m.cwd, 1);
+			write(1, "\n", 1);
+		}
 		if (!ft_strncmp(ss[0], "cd", 3))
 			cd(&m, ss[1]);
 		free_ss(ss);

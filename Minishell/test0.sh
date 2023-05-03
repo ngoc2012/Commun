@@ -22,3 +22,11 @@ echo   a    'a'
 echo   a"a"'a'
 echo   -n
 echo   -n  a"a'"
+echo "/home/$USER/Commun"
+echo "/home/$USER$Commun"
+echo "$USERa"
+echo "$USER+a"
+echo "$USER$+a"
+echo "$USERa+++"
+
+cd / && cd ../../

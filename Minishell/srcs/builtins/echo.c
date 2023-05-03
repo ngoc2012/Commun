@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/01 22:09:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/03 09:52:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,49 +25,46 @@ typedef struct	s_echo
 	t_m	*m;
 }	t_echo;
 
-static int	get_env_name(char *name, char **environ)
+static void	print(char *s, int len, t_echo *e, char del)
 {
-	int	len;
-
-	for (char **env = environ; *env != NULL; env++) {
-		len = 0;
-		while ((*env)[len] != '=')
-			len++;
-		if (!ft_strncmp(*env, name, len))
-		{
-			if (name[len] == ' ' || name[len] == '"' || name[len] == '\n' || !name[len])
-				ft_putstr_fd(&(*env)[len + 1], 1);
-			while (name[len] && name[len] != ' ' && name[len] != '"' && name[len] != '\n')
-				len++;
-			return (len);
-		}
-	}
-	return (0);
-}
-
-static void	print(char *s, int len, t_echo *e, int type)
-{
-	int		i;
-
-	if (len <= 0)
-		return ;
-	i = -1;
-	while (++i < len)
+	char	*s0 = str_env(s, len, e->m, del);
+	if (s0)
 	{
-		if (type != 0 && (!(s[i] == '$' && i == len - 1)))
-		{
-			if (s[i] == '$' && s[i + 1] == '?')
-			{
-				ft_putnbr_fd(e->m->exit_code, 1);
-				i += 2;
-			}
-			else if (s[i] == '$' && s[i + 1] != ' ')
-				i += get_env_name(&s[i + 1], e->m->env) + 1;
-		}
-		if (i < len)
-			write(1, &s[i], 1);
+		ft_putstr_fd(s0, 1);
+		free(s0);
 	}
 }
+
+//static void	print(char *s, int len, t_echo *e, int type)
+//{
+//	int		i;
+//	char	*s0;
+//
+//	if (len <= 0)
+//		return ;
+//	i = -1;
+//	while (++i < len)
+//	{
+//		if (type != 0 && (!(s[i] == '$' && i == len - 1)))
+//		{
+//			if (s[i] == '$' && s[i + 1] == '?')
+//			{
+//				ft_putnbr_fd(e->m->exit_code, 1);
+//				i += 2;
+//			}
+//			else if (s[i] == '$' && s[i + 1] != ' ')
+//			{
+//				s0 = get_env_name(&s[i + 1], e->m->env);
+//				ft_putstr_fd(s0, 1);
+//				i++;
+//				while (s[i] && s[i] != ' ' && s[i] != '"' && s[i] != '\n')
+//					i++;
+//			}
+//		}
+//		if (i < len)
+//			write(1, &s[i], 1);
+//	}
+//}
 
 static void	print_space(t_echo *e, int i)
 {
@@ -80,7 +77,7 @@ static void	print_space(t_echo *e, int i)
 		if (e->pos[k] != -1)
 			j = 0;
 	if (j)
-		print(&e->s[e->space], i - e->space, e, 2);
+		print(&e->s[e->space], i - e->space, e, ' ');
 	e->space = i;
 }
 
@@ -91,7 +88,7 @@ static int	print_del(t_echo *e, int i, int j, int pos_min)
 
 	if (pos_min == e->pos[j])
 	{
-		print(&e->s[e->pos[j] + 1], i - e->pos[j] - 1, e, j);
+		print(&e->s[e->pos[j] + 1], i - e->pos[j] - 1, e, e->del[j]);
 		e->space = i + 1;
 		k = -1;
 		while (++k < ECHO_DEL)
@@ -186,6 +183,7 @@ void	echo(t_m *m, char *command)
 
 	nl = 1;
 	e.m = m;
+	e.s = 0;
 	e.len_o = 0;
 	e.del = "'\"";
 	s = ft_strnstr(command, "echo", ft_strlen(command)) + 4;

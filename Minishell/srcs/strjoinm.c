@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:40:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/01 11:36:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/02 18:36:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ char	*strjoinm(char *des, char *src, int len_des, int len_src)
 	int		n0;
 	char	*new_str;
 
-	if (!len_des)
+	if (!len_des && !des)
 	{
 		des = malloc(BUFFER_STRJOIN);
+		des[0] = 0;
 		if (!des)
 			return (0);
 	}
