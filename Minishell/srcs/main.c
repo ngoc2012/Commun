@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/02 17:07:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/03 19:05:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,27 @@ void	free_ss(char **ss)
 	free(ss0);
 }
 
+int	n_args(char *s)
+{
+	int		i;
+	char	d;
+
+	d = ' ';
+	i = -1;
+	while (s[++i] && s[i] == ' ')
+		;
+	if (s[i] == '"' || s[i] == '\'')
+	{
+		d = s[i];
+		while (s[++i] && s[i] != d)
+			;
+	}
+}
+
+void	split_args(char *s)
+{
+	printf("%d", n_args);
+}
 int	main(int argc, char **argv, char **env)
 {
 	t_m	m;
@@ -40,6 +61,7 @@ int	main(int argc, char **argv, char **env)
 	char *command;
 	while (1) {
 		command = readline("minishell$ ");
+		split_args(command);
 		if (!ft_strncmp(command, "exit", 5)) {
 			break;
 		}
