@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/03 12:57:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/04 12:14:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,17 @@ void	cd(t_m *m, char *path)
 		p = strjoinm(p, m->cwd, 0, ft_strlen(m->cwd));
 		p = strjoinm(p, &path[1], ft_strlen(p), ft_strlen(&path[1]));
 		//printf("|%s|\n", p);
+		m_free = 1;
+	}
+	else if (*path == '.' && *(path + 1) == '.' && !(*(path + 2)))
+	{
+		pwd(m);
+		i = ft_strlen(m->cwd);
+		if (i > 0)
+			while (m->cwd[--i] != '/' && m->cwd[i])
+				;
+		p = 0;
+		p = strjoinm(p, m->cwd, 0, i);
 		m_free = 1;
 	}
 	else if (*path == '.' && *(path + 1) == '.' && *(path + 2) == '/')
