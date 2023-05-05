@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/04 12:14:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/04 21:34:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,70 +41,34 @@ void	cd(t_m *m, char *path)
 {
 	int		i;
 	int		m_free;
-	char	d;
 	char	*s;
 	char	*p;
 
-	d = ' ';
-	m_free = 0;
+	m_free = 1;
 	if (!path)
 	{
 		p = get_home(m);
-		m_free = 1;
+		free(p);
+		return ;
 	}
-	else if (*path == '"' || *path == '\'')
-	{
-		d = path[0];
-		path++;
-		i = -1;
-		while (path[++i] && path[i] != d)
-			;
-		if (path[i] == d)
-		{
-			path[i] = 0;
-			p = path;
-		}
-		else
-		{
-			p = 0;
-			p = strjoinm(p, path, 0, ft_strlen(path));
-			int	end;
-			end = 0;
-			while (!end)
-			{
-				p = strjoinm(p, "\\n", ft_strlen(p), 2);
-				s = readline("> ");
-				i = -1;
-				while (s[++i] && s[i] != d)
-					;
-				if (s[i] == d)
-				{
-					end = 1;
-					p = strjoinm(p, s, ft_strlen(p), i);
-				}
-				else
-					p = strjoinm(p, s, ft_strlen(p), ft_strlen(s));
-			}
-			path = p;
-			m_free = 1;
-		}
-	}
-	else if (*path == '~')
+	path = parse(path, m);
+	//printf("|%s|\n", path);
+	if (*path == '~')
 	{
 		p = get_home(m);
 		p = strjoinm(p, &path[1], ft_strlen(p), ft_strlen(&path[1]));
-		m_free = 1;
 	}
-	else if (*path == '.' && *(path + 1) == '/')
+	//else if (*path == '.' && *(path + 1) == '/')
+	else if (!ft_strncmp(path, "./", 2))
 	{
 		pwd(m);
 		p = 0;
 		p = strjoinm(p, m->cwd, 0, ft_strlen(m->cwd));
 		p = strjoinm(p, &path[1], ft_strlen(p), ft_strlen(&path[1]));
 		//printf("|%s|\n", p);
-		m_free = 1;
 	}
-	else if (*path == '.' && *(path + 1) == '.' && !(*(path + 2)))
+	//else if (*path == '.' && *(path + 1) == '.' && !(*(path + 2)))
+	else if (!ft_strncmp(path, "..", 3))
 	{
 		pwd(m);
 		i = ft_strlen(m->cwd);
@@ -113,16 +77,17 @@ void	cd(t_m *m, char *path)
 				;
 		p = 0;
 		p = strjoinm(p, m->cwd, 0, i);
-		m_free = 1;
 	}
-	else if (*path == '.' && *(path + 1) == '.' && *(path + 2) == '/')
+	//else if (*path == '.' && *(path + 1) == '.' && *(path + 2) == '/')
+	else if (!ft_strncmp(path, "../", 3))
 	{
 		pwd(m);
 		i = ft_strlen(m->cwd);
 		int	j = 1;
 		while (m->cwd[--i] != '/' && m->cwd[i])
 			;
-		while (path[j * 3] == '.' && path[j * 3 + 1] == '.' && path[j * 3 + 2] == '/')
+		//while (path[j * 3] == '.' && path[j * 3 + 1] == '.' && path[j * 3 + 2] == '/')
+		while (!ft_strncmp(&path[j * 3], "../", 3))
 		{
 			j++;
 			//printf("|j = %d|\n", j);
@@ -136,7 +101,6 @@ void	cd(t_m *m, char *path)
 		p = strjoinm(p, "/", ft_strlen(p), 1);
 		p = strjoinm(p, &path[j * 3], ft_strlen(p), ft_strlen(&path[j * 3]));
 		//printf("|%s|\n", p);
-		m_free = 1;
 	}
 	else if (*path != '/')
 	{
@@ -146,31 +110,24 @@ void	cd(t_m *m, char *path)
 		p = strjoinm(p, "/", ft_strlen(p), 1);
 		p = strjoinm(p, &path[0], ft_strlen(p), ft_strlen(&path[0]));
 		//printf("|%s|\n", p);
-		m_free = 1;
 	}
 	else
-		p = path;
-	char	*p0 = str_env(p, ft_strlen(p), m, d);
-	if (chdir(p0))
 	{
-		//printf("|%s|\n", p0);
+		p = path;
+		m_free = 0;
+	}
+	if (chdir(p))
+	{
 		s = 0;
 		s = strjoinm(s, "minishell: cd: ", 0, 15);
-		if (d != ' ')
-			s = strjoinm(s, &d, ft_strlen(s), 1);
-		char	*path0 = str_env(path, ft_strlen(path), m, d);
-		s = strjoinm(s, path0, ft_strlen(s), ft_strlen(path0));
-		if (d != ' ')
-			s = strjoinm(s, &d, ft_strlen(s), 1);
+		s = strjoinm(s, path, ft_strlen(s), ft_strlen(path));
 		perror(s);
-		free(path0);
-		if (s)
-			free(s);
+		free(s);
 		m->exit_code = 1;
 	}
 	else
 		m->exit_code = 0;
-	free(p0);
+	free(p);
 	if (m_free)
-		free(p);
+		free(path);
 }
