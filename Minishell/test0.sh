@@ -31,4 +31,5 @@ echo "$USERa+++"
 
 cd / && cd ../../
 ls "/home/$USER""/Commun/Minishell/tes t/test$" /home/$USER
+    (echo a && (echo "asidj"; || echo a'sddfsd'  )  )  
 

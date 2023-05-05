@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/05 13:58:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/05 18:40:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,17 @@ int	command(char *s, t_m *m)
 	free_ss(args);
 	return (1);
 }
-
+/*
+typedef struct	s_c
+{
+	t_m	*m;
+	char	*s;
+}	t_c;
+*/
+void	print_content(void *s)
+{
+	printf("%s,",(char *) s);
+}
 // Syntaxe error -> code 2
 // \n\n\n egals ;
 int	main(int argc, char **argv, char **env)
@@ -162,19 +172,24 @@ int	main(int argc, char **argv, char **env)
 	char	*s;
 	s = 0;
 	t_list *ops;
+	ops = 0;
 	while (1) {
 		com = readline("minishell$ ");
+		while (*com && ft_strchr(" \n", *com))
+			com++;
 		if (*com)
 		{
 			s = 0;
 			s = strjoinm(s, com, 0, ft_strlen(com));
-			while (n_args(s) == -1)
+			while (!split_ops(s, &ops))
 			{
 				s = strjoinm(s, "\n", ft_strlen(s), 1);
 				com = readline("> ");
 				s = strjoinm(s, com, ft_strlen(s), ft_strlen(com));
 			}
-			split_ops(com, ops);
+			;
+			ft_lstiter(ops, print_content);
+			ft_lstclear(&ops, free);
 			if (!command(s, &m))
 				break ;
 			add_history(s);

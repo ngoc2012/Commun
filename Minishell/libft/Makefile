@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2022/12/18 09:55:27 by minh-ngu         ###   ########.fr        #
+#    Updated: 2023/05/05 17:20:19 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 all: $(LIBN)
 .c.o:
-	$(CC) $(CFLAGS) -c $< -o ${<:.c=.o} -I.
+	$(CC) $(CFLAGS) -c -g $< -o ${<:.c=.o} -I.
 $(LIBN): $(OBJS)
 	ar rc $(LIBN) $(OBJS)
 clean:

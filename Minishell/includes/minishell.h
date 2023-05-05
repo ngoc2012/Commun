@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/05 08:46:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/05 17:24:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	cd(t_m *m, char *path);
 char	*get_env_name(char *name, char **environ);
 char	*str_env(char *s, int len, t_m *m, char del);
 char	*parse(char *s, t_m *m);
-int	split_ops(char *s, t_list ops);
+int	split_ops(char *s, t_list **ops);
 
 #endif
