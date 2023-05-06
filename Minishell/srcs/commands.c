@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/06 11:25:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/06 12:10:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,16 +100,25 @@ int	split_ops(char *s, t_m *m)
 			{
 				ops0 = ops;
 				ops = ops->next;
+				free(ops0->content);
 				free(ops0);
+				if (ops && ft_strchr("&|", ((char *)ops->content)[0]))
+				{
+					ft_lstadd_back(&postfix, ft_lstnew(ops->content));
+					ops0 = ops;
+					ops = ops->next;
+					free(ops0);
+				}
 			}
 			if (d == '(')
 				ft_lstadd_front(&ops, ft_lstnew(ft_strndup(&s[i], 1)));
 			while (s[++i] && ft_strchr(" \n", s[i]))
 				;
-			if (s[i] && (ft_strchr(";&|", s[i]) || (s[i] == ')' && d == '(')
+			if (s[i] && ((s[i] == ')' && d == '(')
 				|| (s[i] == '(' && d == ')')))
 			{
 				printf("Syntaxe error 1 |%c| |%c|\n", d, s[i]);
+				ft_lstclear(&postfix, free);
 				ft_lstclear(&infix, free);
 				ft_lstclear(&ops, free);
 				m->exit_code = 2;
