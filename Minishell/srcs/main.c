@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/05 18:40:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/06 00:18:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,10 +147,7 @@ typedef struct	s_c
 	char	*s;
 }	t_c;
 */
-void	print_content(void *s)
-{
-	printf("%s,",(char *) s);
-}
+
 // Syntaxe error -> code 2
 // \n\n\n egals ;
 int	main(int argc, char **argv, char **env)
@@ -167,12 +164,11 @@ int	main(int argc, char **argv, char **env)
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 
 	m.exit_code = 0;
+	m.syntaxe_error = 0;
 	m.env = env;
 	char	*com;
 	char	*s;
 	s = 0;
-	t_list *ops;
-	ops = 0;
 	while (1) {
 		com = readline("minishell$ ");
 		while (*com && ft_strchr(" \n", *com))
@@ -181,15 +177,15 @@ int	main(int argc, char **argv, char **env)
 		{
 			s = 0;
 			s = strjoinm(s, com, 0, ft_strlen(com));
-			while (!split_ops(s, &ops))
+			while (!split_ops(s, &m))
 			{
+				if (m.syntaxe_error)
+					break ;
 				s = strjoinm(s, "\n", ft_strlen(s), 1);
 				com = readline("> ");
 				s = strjoinm(s, com, ft_strlen(s), ft_strlen(com));
 			}
-			;
-			ft_lstiter(ops, print_content);
-			ft_lstclear(&ops, free);
+			//if (!m.syntaxe_error && !command(s, &m))
 			if (!command(s, &m))
 				break ;
 			add_history(s);

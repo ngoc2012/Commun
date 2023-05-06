@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/05/05 08:47:20 by ngoc             ###   ########.fr        #
+#    Updated: 2023/05/05 23:18:36 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ MSRC = $(addprefix srcs/, $(SRCS))
 MOBJ = ${MSRC:.c=.o}
 MANDA = minishell
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+#FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wextra -Werror
 LIBFT = libft/libft.a
 LIBPR = ft_printf/libftprintf.a
 LIBS = libft ft_printf
