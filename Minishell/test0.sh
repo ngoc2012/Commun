@@ -142,4 +142,19 @@ ngoc@ngoc-ThinkPad-W530:~$ cd Commun/Minishell/
 ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ ((echo echo) && echo b)
 echo
 b
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ (echo a &&
+> echo b ||
+> echo c
+> ;
+bash: syntax error near unexpected token `;'
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ (echo a &&
+> echo b ||
+> echo c)
+a
+b
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ (echo a &&
+> echo b) ||
+> echo c
+a
+b
 

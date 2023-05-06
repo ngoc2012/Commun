@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/06 10:03:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/06 11:25:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	split_ops(char *s, t_m *m)
 	ops = 0;
 	while (*s && ft_strchr(" \n", *s))
 		s++;
-	if (ft_strchr("&|", *s))
+	if (ft_strchr(";&|", *s))
 	{
 		m->exit_code = 2;
 		m->syntaxe_error = 1;
@@ -102,7 +102,7 @@ int	split_ops(char *s, t_m *m)
 				ops = ops->next;
 				free(ops0);
 			}
-			else
+			if (d == '(')
 				ft_lstadd_front(&ops, ft_lstnew(ft_strndup(&s[i], 1)));
 			while (s[++i] && ft_strchr(" \n", s[i]))
 				;
@@ -137,20 +137,14 @@ int	split_ops(char *s, t_m *m)
 				ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
 			}
 			ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i], 1)));
-			if (d == ')' && ops && ((char *)ops->content)[0] == '(')
-			{
-				ops0 = ops;
-				ops = ops->next;
-				free(ops0);
-			}
-			else
-				ft_lstadd_front(&ops, ft_lstnew(ft_strndup(&s[i], 1)));
+			ft_lstadd_front(&ops, ft_lstnew(ft_strndup(&s[i], 1)));
 			i++;
 			while (s[++i] && ft_strchr(" \n", s[i]))
 				;
 			if (!s[i] || ft_strchr("&|", s[i]))
 			{
 				printf("Syntaxe error 2\n");
+				ft_lstclear(&postfix, free);
 				ft_lstclear(&infix, free);
 				ft_lstclear(&ops, free);
 				m->exit_code = 2;
@@ -161,23 +155,14 @@ int	split_ops(char *s, t_m *m)
 		}
 		else if (ft_strchr("\n;", s[i]))
 		{
-			if (i > i0)
-			{
-				ft_lstadd_back(&postfix, ft_lstnew(ft_strndup(&s[i0], i - i0)));
-				if (ops && ft_strchr("&|", ((char *)ops->content)[0]))
-				{
-					ft_lstadd_back(&postfix, ft_lstnew(ops->content));
-					ops0 = ops;
-					ops = ops->next;
-					free(ops0);
-				}
-				ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i0], i - i0)));
-			}
+			ft_lstadd_back(&postfix, ft_lstnew(ft_strdup(";")));
+			ft_lstadd_back(&infix, ft_lstnew(ft_strdup(";")));
 			while (s[++i] && ft_strchr(" \n", s[i]))
 				;
-			if (s[i] == ';')
+			if (ft_strchr(";&|", s[i]))
 			{
-				printf("Syntaxe error 3\n");
+				printf("Syntaxe error 4\n");
+				ft_lstclear(&postfix, free);
 				ft_lstclear(&infix, free);
 				ft_lstclear(&ops, free);
 				m->exit_code = 2;
