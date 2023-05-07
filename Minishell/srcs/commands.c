@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/06 15:41:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/07 16:55:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,18 @@ char	*ft_strndup(char *s, int len)
 	return (o);
 }
 
-/*
-void	get_postfix(t_list *ops, t_list **ops_postfix)
-{
-}
-*/
 void	print_content(void *s)
 {
 	printf("%s,",(char *) s);
 }
-/*
-void	free_none(void *s)
+
+int	com_check(char *s)
 {
 }
-*/
 
-
-// Check syntaxe error: ( command (
-// Check syntaxe error: ) command )
-int	split_ops(char *s, t_m *m)
+// Check syntax error: ( command (
+// Check syntax error: ) command )
+t_list	*split_ops(char *s, t_m *m)
 {
 	int		i;
 	int		i0;
@@ -63,7 +56,7 @@ int	split_ops(char *s, t_m *m)
 	if (ft_strchr(";&|", *s))
 	{
 		m->exit_code = 2;
-		m->syntaxe_error = 1;
+		m->syntax_error = 1;
 		return (0);
 	}
 	n_o = 0;
@@ -116,12 +109,12 @@ int	split_ops(char *s, t_m *m)
 				;
 			if ((d == '(' && s[i] == ')') || (d == ')' && !ft_strchr(");&|", s[i])))
 			{
-				printf("Syntaxe error 1 |%c| %d |%c|\n", d, i, s[i]);
+				printf("Syntax error 1 |%c| %d |%c|\n", d, i, s[i]);
 				ft_lstclear(&postfix, free);
 				ft_lstclear(&infix, free);
 				ft_lstclear(&ops, free);
 				m->exit_code = 2;
-				m->syntaxe_error = 1;
+				m->syntax_error = 1;
 				return (0);
 			}
 			i0 = i;
@@ -151,30 +144,53 @@ int	split_ops(char *s, t_m *m)
 				;
 			if (!s[i] || ft_strchr("&|", s[i]))
 			{
-				printf("Syntaxe error 2\n");
+				printf("Syntax error 2\n");
 				ft_lstclear(&postfix, free);
 				ft_lstclear(&infix, free);
 				ft_lstclear(&ops, free);
 				m->exit_code = 2;
-				m->syntaxe_error = 1;
+				m->syntax_error = 1;
 				return (0);
 			}
 			i0 = i;
 		}
 		else if (ft_strchr("\n;", s[i]))
 		{
+			i1 = i;
+			while (--i1 >= 0 && ft_strchr(" \n", s[i1]))
+				;
+			i1++;
+			if (i1 <= i0)
+			{
+				printf("Syntax error 2\n");
+				ft_lstclear(&postfix, free);
+				ft_lstclear(&infix, free);
+				ft_lstclear(&ops, free);
+				m->exit_code = 2;
+				m->syntax_error = 1;
+				return (0);
+			}
+			ft_lstadd_back(&postfix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
 			ft_lstadd_back(&postfix, ft_lstnew(ft_strdup(";")));
+			if (ops && ft_strchr("&|", ((char *)ops->content)[0]))
+			{
+				ft_lstadd_back(&postfix, ft_lstnew(ops->content));
+				ops0 = ops;
+				ops = ops->next;
+				free(ops0);
+			}
+			ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
 			ft_lstadd_back(&infix, ft_lstnew(ft_strdup(";")));
 			while (s[++i] && ft_strchr(" \n", s[i]))
 				;
 			if (ft_strchr(";&|", s[i]))
 			{
-				printf("Syntaxe error 4\n");
+				printf("Syntax error 4\n");
 				ft_lstclear(&postfix, free);
 				ft_lstclear(&infix, free);
 				ft_lstclear(&ops, free);
 				m->exit_code = 2;
-				m->syntaxe_error = 1;
+				m->syntax_error = 1;
 				return (0);
 			}
 			i0 = i;
@@ -204,16 +220,13 @@ int	split_ops(char *s, t_m *m)
 		ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i0], i - i0)));
 	}
 	//printf("%d %d", n_o, n_c);
-	printf("Infix:");
-	ft_lstiter(infix, print_content);
+	//printf("Infix:");
+	//ft_lstiter(infix, print_content);
+	//printf("\nOps:");
+	//ft_lstiter(ops, print_content);
 	ft_lstclear(&infix, free);
-	printf("\nOps:");
-	ft_lstiter(ops, print_content);
 	ft_lstclear(&ops, free);
-	printf("\nPostfix:");
-	ft_lstiter(postfix, print_content);
-	ft_lstclear(&postfix, free);
 	if (n_o != n_c)
 		return (0);
-	return (1);
+	return (postfix);
 }

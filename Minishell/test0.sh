@@ -157,4 +157,69 @@ ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ (echo a &&
 > echo c
 a
 b
+ngoc@ngoc-ThinkPad-W530:~$ > lol echo > test "haha"
+ngoc@ngoc-ThinkPad-W530:~$ cat test
+haha
+ngoc@ngoc-ThinkPad-W530:~$ > lol > test echo "haha"
+ngoc@ngoc-ThinkPad-W530:~$ cat test
+haha
+ngoc@ngoc-ThinkPad-W530:~$ > lol echo "hehe" > test
+ngoc@ngoc-ThinkPad-W530:~$ cat test
+hehe
+ngoc@ngoc-ThinkPad-W530:~$ > lol echo "hehe" echo "haha"> test
+ngoc@ngoc-ThinkPad-W530:~$ cat test
+hehe echo haha
+goc@ngoc-ThinkPad-W530:~$ cat lol
+ngoc@ngoc-ThinkPad-W530:~$ > lol echo "hehe" > test echo haha > ls
+ngoc@ngoc-ThinkPad-W530:~$ cat ls
+hehe echo haha
+ngoc@ngoc-ThinkPad-W530:~$ cat test
+ngoc@ngoc-ThinkPad-W530:~$ > lol cd Documents > test echo haha > ls
+bash: cd: too many arguments
+ngoc@ngoc-ThinkPad-W530:~$   >   < test
+bash: syntax error near unexpected token `<'
+ngoc@ngoc-ThinkPad-W530:~$  < 
+bash: syntax error near unexpected token `newline'
+ngoc@ngoc-ThinkPad-W530:~$ < >
+bash: syntax error near unexpected token `>'
+
+
+
+ngoc@ngoc-ThinkPad-W530:~$ echo a; > lol > dsff echo b > test
+a
+ngoc@ngoc-ThinkPad-W530:~$ cat test
+b
+ngoc@ngoc-ThinkPad-W530:~$ cat lol
+ngoc@ngoc-ThinkPad-W530:~$ cat dsff
+ngoc@ngoc-ThinkPad-W530:~$ cat < test < test
+b
+ngoc@ngoc-ThinkPad-W530:~$ cat < tests < test
+bash: tests: No such file or directory
+ngoc@ngoc-ThinkPad-W530:~$ cat < test < lol < dsff < test
+b
+ngoc@ngoc-ThinkPad-W530:~$ cat > alo < test < lol < dsff < test
+ngoc@ngoc-ThinkPad-W530:~$ cat alo
+b
+ngoc@ngoc-ThinkPad-W530:~$ cat < test < lol < dsff < test > alo1 > alo
+ngoc@ngoc-ThinkPad-W530:~$ cat alo
+b
+
+
+
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo 1 && echo 2 || cd dsfsdf || echo 4
+1
+2
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo 1 && echo 2 || cd dsfsdf && echo 4
+1
+2
+4
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo 1 && cd hsadf || cd dsfsdf && echo 4
+1
+bash: cd: hsadf: No such file or directory
+bash: cd: dsfsdf: No such file or directory
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo 1 && cd hsadf || echo 3 && echo 4
+1
+bash: cd: hsadf: No such file or directory
+3
+4
 
