@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/07 17:34:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/07 18:13:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 // minishell struct
 typedef struct	s_m
 {
+	char	*s;
 	char	**env;
 	int	exit_code;
 	char	cwd[PATH_MAX];

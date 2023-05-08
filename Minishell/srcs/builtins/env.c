@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/04 18:52:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/07 18:43:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*get_env_name(char *name, char **env)
 	while (*env)
 	{
 		len = 0;
-		while ((*env)[len] != '=')
+		while ((*env)[len] && (*env)[len] != '=')
 			len++;
 		if (!ft_strncmp(*env, name, len))
 			if (!isenv(name[len]))

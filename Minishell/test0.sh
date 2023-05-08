@@ -37,6 +37,10 @@ OK:
 echo a; echo b && echo c;
     (echo a && (echo "asidj"; || echo a'sddfsd'  )  )  
    (echo 1   &&  echo 2 ||  ( (  echo 3 || echo  4  && echo 5 )  && echo 6 ) && echo 7 )     
+echo 0 && (echo 1 && (echo 11 && (echo 12 && echo 13))  &&  echo 2 ||  ( (  echo 3 || echo  4  && echo 5 )  && echo 6 ) && echo 7 )
+
+
+
 ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ (echo a
 > 
 > 

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/07 17:39:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/07 23:34:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ int	command(char *s, t_m *m)
 		return (1);
 	if (!ft_strncmp(args[0], "exit", 5)) {
 		free_ss(args);
-		return (0);
+		if (m->s)
+			free(m->s);
+		exit(EXIT_SUCCESS);
 	}
 	if (!ft_strncmp(args[0], "echo", 5))
 		echo(m, &args[1]);
@@ -56,6 +58,39 @@ typedef struct	s_c
 
 void	eval_com(t_list *postfix, t_m *m)
 {
+	t_list	*p;
+	t_list	*i;
+	t_list	*op;
+	int	n;
+
+	p = postfix;
+	while (p)
+	{
+		if (p->content && !ft_strchr(";&|", ((char *)p->content)[0]))
+		{
+			printf("\n|%s - ", (char *)p->content);
+			command((char *)p->content, m);
+			if (p->next && !ft_strchr(";&|", ((char *)p->next->content)[0]))
+			{
+				i = p;
+				n = 0;
+				while (i)
+				{
+					i = i->next;
+					if (i && !ft_strchr(";&|", ((char *)i->content)[0]))
+						n++;
+					else
+						n--;
+					if (n == 0)
+						break ;
+				}
+				op = i;
+				if (op)
+					printf("%s|", (char *)op->content);
+			}
+		}
+		p = p->next;
+	}
 }
 
 // Syntaxe error -> code 2
@@ -77,40 +112,40 @@ int	main(int argc, char **argv, char **env)
 	m.syntax_error = 0;
 	m.env = env;
 	char	*com;
-	char	*s;
 	t_list	*postfix;
-	s = 0;
+	m.s = 0;
 	while (1) {
 		com = readline("minishell$ ");
 		while (*com && ft_strchr(" \n", *com))
 			com++;
 		if (*com)
 		{
-			s = 0;
-			s = strjoinm(s, com, 0, ft_strlen(com));
-			postfix = split_ops(s, &m);
+			m.s = 0;
+			m.s = strjoinm(m.s, com, 0, ft_strlen(com));
+			postfix = split_ops(m.s, &m);
 			while (!postfix)
 			{
 				if (m.syntax_error)
 					break ;
-				s = strjoinm(s, "\n", ft_strlen(s), 1);
+				m.s = strjoinm(m.s, "\n", ft_strlen(m.s), 1);
 				com = readline("> ");
-				s = strjoinm(s, com, ft_strlen(s), ft_strlen(com));
-				postfix = split_ops(s, &m);
+				m.s = strjoinm(m.s, com, ft_strlen(m.s), ft_strlen(com));
+				postfix = split_ops(m.s, &m);
 			}
-			printf("\nPostfix:");
+			//printf("\nPostfix:");
 			ft_lstiter(postfix, print_content);
+			//printf("\n");
 			eval_com(postfix, &m);
 			ft_lstclear(&postfix, free);
 			//if (!m.syntax_error && !command(s, &m))
-			if (!command(s, &m))
-				break ;
-			add_history(s);
-			rl_free(s);
+			//if (!command(s, &m))
+			//	break ;
+			add_history(m.s);
+			rl_free(m.s);
 			rl_on_new_line();
 		}
 	}
-	if (s)
-		free(s);
+	if (m.s)
+		free(m.s);
 	return (m.exit_code);
 }

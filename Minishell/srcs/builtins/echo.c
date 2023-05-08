@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/04 22:19:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/07 19:44:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	echo(t_m *m, char **args)
 		write(1, "\n\n", 2);
 	while (*args)
 	{
-		//pwd(m);
 		s = parse(*args, m);
 		ft_putstr_fd(s, 1);
 		free(s);
@@ -51,4 +50,5 @@ void	echo(t_m *m, char **args)
 	}
 	if (!ft_strncmp(args[0], "-n", 3))
 		write(1, "\n", 1);
+	m->exit_code = 0;
 }
