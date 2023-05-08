@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/07 23:34:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/08 20:34:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	command(char *s, t_m *m)
 	}
 	if (!ft_strncmp(args[0], "cd", 3))
 		cd(m, args[1]);
+	//printf("m->exit_code = %d\n", m->exit_code);
 	free_ss(args);
 	return (1);
 }
@@ -56,37 +57,52 @@ typedef struct	s_c
 }	t_c;
 */
 
-void	eval_com(t_list *postfix, t_m *m)
+void	eval_com(t_list *infix, t_m *m)
 {
 	t_list	*p;
 	t_list	*i;
 	t_list	*op;
-	int	n;
+	int	level;
+	int	last_level;
+	int	blocked;
+	int	released;
 
-	p = postfix;
+	released = 1;
+	blocked = -1;
+	level = 0;
+	last_level = 0;
+	p = infix;
 	while (p)
 	{
-		if (p->content && !ft_strchr(";&|", ((char *)p->content)[0]))
+		if (p->content && ((char *)p->content)[0] == '(')
+			level++;
+		else if (p->content && ((char *)p->content)[0] == ')')
+			level--;
+		else if (p->content && ft_strchr(";&|", ((char *)p->content)[0]))
 		{
-			printf("\n|%s - ", (char *)p->content);
-			command((char *)p->content, m);
-			if (p->next && !ft_strchr(";&|", ((char *)p->next->content)[0]))
+			if ((!m->exit_code && ((char *)p->content)[0] == '&')
+				|| (m->exit_code && ((char *)p->content)[0] == '|'))
 			{
-				i = p;
-				n = 0;
-				while (i)
-				{
-					i = i->next;
-					if (i && !ft_strchr(";&|", ((char *)i->content)[0]))
-						n++;
-					else
-						n--;
-					if (n == 0)
-						break ;
-				}
-				op = i;
-				if (op)
-					printf("%s|", (char *)op->content);
+				//printf("XXX\n");
+				blocked = -1;
+				//released = 1;
+			}
+			else
+			{
+				//printf("YYY\n");
+				blocked = last_level;
+				//released = 0;
+			}
+		}
+		else if (p->content && !ft_strchr(";&|", ((char *)p->content)[0]))
+		{
+			//printf("\n|%s, %d, %d|", (char *)p->content, blocked, m->exit_code);
+			//printf("\n|%s, %d, %d, %d|", (char *)p->content, blocked, released, m->exit_code);
+			//if (level > blocked || (level == blocked && released))
+			if (level > blocked)
+			{
+				command((char *)p->content, m);
+				last_level = level;
 			}
 		}
 		p = p->next;
@@ -112,7 +128,7 @@ int	main(int argc, char **argv, char **env)
 	m.syntax_error = 0;
 	m.env = env;
 	char	*com;
-	t_list	*postfix;
+	t_list	*infix;
 	m.s = 0;
 	while (1) {
 		com = readline("minishell$ ");
@@ -122,21 +138,19 @@ int	main(int argc, char **argv, char **env)
 		{
 			m.s = 0;
 			m.s = strjoinm(m.s, com, 0, ft_strlen(com));
-			postfix = split_ops(m.s, &m);
-			while (!postfix)
+			infix = split_ops(m.s, &m);
+			while (!infix)
 			{
 				if (m.syntax_error)
 					break ;
 				m.s = strjoinm(m.s, "\n", ft_strlen(m.s), 1);
 				com = readline("> ");
 				m.s = strjoinm(m.s, com, ft_strlen(m.s), ft_strlen(com));
-				postfix = split_ops(m.s, &m);
+				infix = split_ops(m.s, &m);
 			}
-			//printf("\nPostfix:");
-			ft_lstiter(postfix, print_content);
-			//printf("\n");
-			eval_com(postfix, &m);
-			ft_lstclear(&postfix, free);
+			//ft_lstiter(infix, print_content);
+			eval_com(infix, &m);
+			ft_lstclear(&infix, free);
 			//if (!m.syntax_error && !command(s, &m))
 			//if (!command(s, &m))
 			//	break ;

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/08 12:42:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/07 16:55:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,14 @@ t_list	*split_ops(char *s, t_m *m)
 	int		n_o;
 	int		n_c;
 	char	d;
+	t_list	*ops;
+	t_list	*ops0;
+	t_list	*postfix;
 	t_list	*infix;
 
+	postfix = 0;
 	infix = 0;
+	ops = 0;
 	while (*s && ft_strchr(" \n", *s))
 		s++;
 	if (ft_strchr(";&|", *s))
@@ -72,14 +77,42 @@ t_list	*split_ops(char *s, t_m *m)
 				;
 			i1++;
 			if (i1 > i0)
+			{
+				ft_lstadd_back(&postfix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
+				if (ops && ft_strchr("&|", ((char *)ops->content)[0]))
+				{
+					ft_lstadd_back(&postfix, ft_lstnew(ops->content));
+					ops0 = ops;
+					ops = ops->next;
+					free(ops0);
+				}
 				ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
+			}
 			ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i], 1)));
+			if (d == ')' && ops && ((char *)ops->content)[0] == '(')
+			{
+				ops0 = ops;
+				ops = ops->next;
+				free(ops0->content);
+				free(ops0);
+				if (ops && ft_strchr("&|", ((char *)ops->content)[0]))
+				{
+					ft_lstadd_back(&postfix, ft_lstnew(ops->content));
+					ops0 = ops;
+					ops = ops->next;
+					free(ops0);
+				}
+			}
+			if (d == '(')
+				ft_lstadd_front(&ops, ft_lstnew(ft_strndup(&s[i], 1)));
 			while (s[++i] && ft_strchr(" \n", s[i]))
 				;
-			if ((d == '(' && s[i] == ')') || (d == ')' && s[i] && !ft_strchr(");&|", s[i])))
+			if ((d == '(' && s[i] == ')') || (d == ')' && !ft_strchr(");&|", s[i])))
 			{
 				printf("Syntax error 1 |%c| %d |%c|\n", d, i, s[i]);
+				ft_lstclear(&postfix, free);
 				ft_lstclear(&infix, free);
+				ft_lstclear(&ops, free);
 				m->exit_code = 2;
 				m->syntax_error = 1;
 				return (0);
@@ -93,15 +126,28 @@ t_list	*split_ops(char *s, t_m *m)
 				;
 			i1++;
 			if (i1 > i0)
+			{
+				ft_lstadd_back(&postfix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
+				if (ops && ft_strchr("&|", ((char *)ops->content)[0]))
+				{
+					ft_lstadd_back(&postfix, ft_lstnew(ops->content));
+					ops0 = ops;
+					ops = ops->next;
+					free(ops0);
+				}
 				ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
+			}
 			ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i], 1)));
+			ft_lstadd_front(&ops, ft_lstnew(ft_strndup(&s[i], 1)));
 			i++;
 			while (s[++i] && ft_strchr(" \n", s[i]))
 				;
 			if (!s[i] || ft_strchr("&|", s[i]))
 			{
 				printf("Syntax error 2\n");
+				ft_lstclear(&postfix, free);
 				ft_lstclear(&infix, free);
+				ft_lstclear(&ops, free);
 				m->exit_code = 2;
 				m->syntax_error = 1;
 				return (0);
@@ -117,10 +163,21 @@ t_list	*split_ops(char *s, t_m *m)
 			if (i1 <= i0)
 			{
 				printf("Syntax error 2\n");
+				ft_lstclear(&postfix, free);
 				ft_lstclear(&infix, free);
+				ft_lstclear(&ops, free);
 				m->exit_code = 2;
 				m->syntax_error = 1;
 				return (0);
+			}
+			ft_lstadd_back(&postfix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
+			ft_lstadd_back(&postfix, ft_lstnew(ft_strdup(";")));
+			if (ops && ft_strchr("&|", ((char *)ops->content)[0]))
+			{
+				ft_lstadd_back(&postfix, ft_lstnew(ops->content));
+				ops0 = ops;
+				ops = ops->next;
+				free(ops0);
 			}
 			ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
 			ft_lstadd_back(&infix, ft_lstnew(ft_strdup(";")));
@@ -129,7 +186,9 @@ t_list	*split_ops(char *s, t_m *m)
 			if (ft_strchr(";&|", s[i]))
 			{
 				printf("Syntax error 4\n");
+				ft_lstclear(&postfix, free);
 				ft_lstclear(&infix, free);
+				ft_lstclear(&ops, free);
 				m->exit_code = 2;
 				m->syntax_error = 1;
 				return (0);
@@ -149,8 +208,25 @@ t_list	*split_ops(char *s, t_m *m)
 			i++;
 	}
 	if (i > i0)
+	{
+		ft_lstadd_back(&postfix, ft_lstnew(ft_strndup(&s[i0], i - i0)));
+		if (ops && ft_strchr("&|", ((char *)ops->content)[0]))
+		{
+			ft_lstadd_back(&postfix, ft_lstnew(ops->content));
+			ops0 = ops;
+			ops = ops->next;
+			free(ops0);
+		}
 		ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i0], i - i0)));
+	}
+	//printf("%d %d", n_o, n_c);
+	//printf("Infix:");
+	//ft_lstiter(infix, print_content);
+	//printf("\nOps:");
+	//ft_lstiter(ops, print_content);
+	ft_lstclear(&infix, free);
+	ft_lstclear(&ops, free);
 	if (n_o != n_c)
 		return (0);
-	return (infix);
+	return (postfix);
 }
