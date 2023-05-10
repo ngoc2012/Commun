@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/09 18:07:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/10 16:16:23 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,13 @@ void	exec(t_m *m, char *command, char **args)
 	char	*s;
 	pid_t	pid;
 
-	s = check_file(args[0]);
+	if (ft_strchr(args[0], '/'))
+		s = ft_strdup(args[0]);
+	else
+		s = check_file(args[0]);
 	if (!s)
 		return ;
+	//printf("exec.c: %s\n", s);
 	pid = fork();
 	if (pid == -1)
 	{
@@ -61,6 +65,6 @@ void	exec(t_m *m, char *command, char **args)
 		return ;
 	}
 	else
-		waitpid(pid, NULL, 0);
+		waitpid(pid, &m->exit_code, 0);
 	free(s);
 }

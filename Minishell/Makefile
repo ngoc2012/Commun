@@ -6,17 +6,17 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/05/09 16:59:03 by ngoc             ###   ########.fr        #
+#    Updated: 2023/05/10 11:57:24 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c commands.c args.c strjoinm.c exec.c builtins/echo.c builtins/dir.c builtins/env.c
+SRCS = main.c commands.c args.c strjoinm.c exec.c wildcards.c builtins/echo.c builtins/dir.c builtins/env.c
 MSRC = $(addprefix srcs/, $(SRCS))
 MOBJ = ${MSRC:.c=.o}
 MANDA = minishell
 CC = cc
 #FLAGS = -Wall -Wextra -Werror
-FLAGS = -Wextra -Werror
+FLAGS = -Wextra
 LIBFT = libft/libft.a
 LIBPR = ft_printf/libftprintf.a
 LIBS = libft ft_printf

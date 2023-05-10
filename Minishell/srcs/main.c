@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/09 18:10:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/10 17:04:53 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ void	free_ss(char **ss)
 	free(ss0);
 }
 
-int	command(char *s, t_m *m)
+int	command(char *s, int n_c, t_m *m)
 {
 	char	**args;
 
-	args = split_args(s);
+	printf("n_c = %d\n", n_c);
+	args = split_args(s, m);
 	if (!args)
 		return (1);
 	else if (!ft_strncmp(args[0], "exit", 5)) {
@@ -52,6 +53,22 @@ int	command(char *s, t_m *m)
 	return (1);
 }
 
+int	pipes(char *s, t_m *m)
+{
+	int		i;
+	int		n;
+	char	**coms;
+
+	coms = ft_split(s, '|');
+	n = -1;
+	while (coms[++n])
+		;
+	i = -1;
+	while (coms[++i])
+		command(coms[i], n - i  -1, m);
+	free_ss(coms);
+}
+
 void	eval_com(t_list *p, t_m *m)
 {
 	t_list	*i;
@@ -73,8 +90,9 @@ void	eval_com(t_list *p, t_m *m)
 		{
 			if (!(blocked != -1 && level < blocked))
 			{
-				if ((!m->exit_code && ((char *)p->content)[0] == '&')
-						|| (m->exit_code && ((char *)p->content)[0] == '|'))
+				if (((char *)p->content)[0] == ';'
+					|| (!m->exit_code && ((char *)p->content)[0] == '&')
+					|| (m->exit_code && ((char *)p->content)[0] == '|'))
 				{
 					if (level <= blocked)
 						blocked = -1;
@@ -87,7 +105,7 @@ void	eval_com(t_list *p, t_m *m)
 			&& blocked == -1)
 		{
 			//printf("\n|%s, %d, %d, %d|", (char *)p->content, level, blocked, m->exit_code);
-			command((char *)p->content, m);
+			pipes((char *)p->content, m);
 			last_level = level;
 		}
 		p = p->next;

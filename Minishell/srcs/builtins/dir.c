@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/08 22:03:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/10 13:09:41 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,17 @@ void	pwd(t_m *m)
 	}
 }
 
-char	*get_home(t_m *m)
+char	*get_home()
 {
 	char	*p;
 	char	*u;
 
-	u = get_env_name("USER", m->env);
+	u = getenv("USER");
+	if (!u)
+		return (0);
 	p = 0;
-	p = strjoinm(p, "/home/", 0, 6);
-	if (!u || !p)
+	p = strjoinm(p, HOME, 0, ft_strlen(HOME));
+	if (!p)
 		return (0);
 	p = strjoinm(p, u, ft_strlen(p), ft_strlen(u));
 	return (p);
@@ -44,18 +46,11 @@ void	cd(t_m *m, char *path)
 	char	*s;
 	char	*p;
 
-	m_free = 1;
 	if (!path)
+		p = get_home();
+	else if (*path == '~')
 	{
-		p = get_home(m);
-		free(p);
-		return ;
-	}
-	path = parse(path, m);
-	//printf("|%s|\n", path);
-	if (*path == '~')
-	{
-		p = get_home(m);
+		p = get_home();
 		p = strjoinm(p, &path[1], ft_strlen(p), ft_strlen(&path[1]));
 	}
 	//else if (*path == '.' && *(path + 1) == '/')
@@ -112,15 +107,13 @@ void	cd(t_m *m, char *path)
 		//printf("|%s|\n", p);
 	}
 	else
-	{
-		p = path;
-		m_free = 0;
-	}
+		p = ft_strdup(path);
+	//printf("dir.c:|%s|\n", p);
 	if (chdir(p))
 	{
 		s = 0;
 		s = strjoinm(s, "minishell: cd: ", 0, 15);
-		s = strjoinm(s, path, ft_strlen(s), ft_strlen(path));
+		s = strjoinm(s, p, ft_strlen(s), ft_strlen(p));
 		perror(s);
 		free(s);
 		m->exit_code = 1;
@@ -128,7 +121,5 @@ void	cd(t_m *m, char *path)
 	else
 		m->exit_code = 0;
 	free(p);
-	if (m_free)
-		free(path);
 	//printf("m->exit_code = %d\n", m->exit_code);
 }

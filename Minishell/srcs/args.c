@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/10 10:22:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/10 12:48:38 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ t_list	*args_list(char *s, t_m *m)
 	while (s[i])
 	{
 		if (s[i] == '*')
+		{
 			wild = 1;
+			i++;
+		}
 		else if (ft_strchr("\"'", s[i]))
 		{
 			d = s[i];
@@ -89,7 +92,7 @@ t_list	*args_list(char *s, t_m *m)
 		else if (s[i] == ' ')
 		{
 			if (wild)
-
+				wildcards(parse(&s[i0], i - i0, m), &args, m);
 			else
 				ft_lstadd_back(&args, ft_lstnew(parse(&s[i0], i - i0, m)));
 			wild = 0;
@@ -103,7 +106,12 @@ t_list	*args_list(char *s, t_m *m)
 	while (s[i - 1] == ' ')
 		i--;
 	if (i > i0)
-		ft_lstadd_back(&args, ft_lstnew(parse(&s[i0], i - i0, m)));
+	{
+		if (wild)
+			wildcards(parse(&s[i0], i - i0, m), &args, m);
+		else
+			ft_lstadd_back(&args, ft_lstnew(parse(&s[i0], i - i0, m)));
+	}
 	return (args);
 }
 

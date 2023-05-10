@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/08 12:42:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/10 16:10:30 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strndup(char *s, int len)
 
 void	print_content(void *s)
 {
-	printf("%s,",(char *) s);
+	printf("|%s|,",(char *) s);
 }
 
 int	com_check(char *s)
@@ -126,9 +126,9 @@ t_list	*split_ops(char *s, t_m *m)
 			ft_lstadd_back(&infix, ft_lstnew(ft_strdup(";")));
 			while (s[++i] && ft_strchr(" \n", s[i]))
 				;
-			if (ft_strchr(";&|", s[i]))
+			if (s[i] && ft_strchr(";&|", s[i]))
 			{
-				printf("Syntax error 4\n");
+				//printf("Syntax error 4, |%c|\n", s[i]);
 				ft_lstclear(&infix, free);
 				m->exit_code = 2;
 				m->syntax_error = 1;
@@ -148,6 +148,8 @@ t_list	*split_ops(char *s, t_m *m)
 		else
 			i++;
 	}
+	//while (ft_strchr(" \n\t", s[i - 1]))
+	//	i--;
 	if (i > i0)
 		ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i0], i - i0)));
 	if (n_o != n_c)

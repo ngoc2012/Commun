@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/09 22:12:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/10 13:07:11 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 # include "ft_printf.h"
 # include "libft.h"
 
-// minishell struct
+# define HOME "/mnt/nfs/homes/"
+
 typedef struct	s_m
 {
 	char	*s;
@@ -47,5 +48,6 @@ void	free_ss(char **ss);
 void	free_none(void *);
 void	exec(t_m *m, char *command, char **args);
 char	*ft_strndup(char *s, int len);
+void	wildcards(char *s, t_list **args, t_m *m);
 
 #endif

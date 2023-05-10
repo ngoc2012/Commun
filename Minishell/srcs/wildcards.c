@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/10 09:08:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/10 12:14:55 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,34 +56,27 @@ int	check(char *name, char *s, char **ss)
 	return (1);
 }
 
-int	files(char *path, char *s, char **ss)
+int	files(char *path, char *s, char **ss, t_list **args)
 {
-	char	**ss0;
 	DIR *dir;
 	struct dirent *entry;
-	int	i;
 
 	dir = opendir(path);
 	if (!dir) {
 		perror("Unable to open directory");
 		return (0);
 	}
-
-	i = 0;
 	while ((entry = readdir(dir)))
 	{
-		if (!ss[0] || check(entry->d_name, s, ss))
-		{
-			if (i++)
-				write(1, " ", 1);
-			ft_putstr_fd(entry->d_name, 1);
-		}
+		if (ft_strncmp(entry->d_name, ".", 2) && ft_strncmp(entry->d_name, "..", 3))
+			if (!ss[0] || check(entry->d_name, s, ss))
+				ft_lstadd_back(args, ft_lstnew(ft_strdup(entry->d_name)));
 	}
 	closedir(dir);
-	return (i);
+	return (1);
 }
 
-void	wildcards(char *s, t_m *m)
+void	wildcards(char *s, t_list **args, t_m *m)
 {
 	char	**ss;
 	int	found;
@@ -91,7 +84,9 @@ void	wildcards(char *s, t_m *m)
 	found = 0;
 	pwd(m);
 	ss = ft_split(s, '*');
-	if (!files(m->cwd, s, ss))
-		ft_putstr_fd(s, 1);
+	if (files(m->cwd, s, ss, args))
+		free(s);
+	else
+		ft_lstadd_back(args, ft_lstnew(s));
 	free_ss(ss);
 }
