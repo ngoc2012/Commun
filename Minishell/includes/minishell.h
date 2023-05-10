@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/07 18:13:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/09 22:12:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <readline/history.h>
 # include <termios.h>
 # include <limits.h>
+# include <sys/types.h>
+# include <sys/wait.h>
 # include "ft_printf.h"
 # include "libft.h"
 
@@ -38,10 +40,12 @@ void	pwd(t_m *m);
 void	cd(t_m *m, char *path);
 char	*get_env_name(char *name, char **environ);
 char	*str_env(char *s, int len, t_m *m, char del);
-char	*parse(char *s, t_m *m);
 t_list	*split_ops(char *s, t_m *m);
 void	print_content(void *s);
-int	n_args(char *s);
-char	**split_args(char *s);
+char	**split_args(char *s, t_m *m);
+void	free_ss(char **ss);
+void	free_none(void *);
+void	exec(t_m *m, char *command, char **args);
+char	*ft_strndup(char *s, int len);
 
 #endif

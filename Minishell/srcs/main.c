@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/08 20:34:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/09 18:10:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,49 +29,40 @@ int	command(char *s, t_m *m)
 	args = split_args(s);
 	if (!args)
 		return (1);
-	if (!ft_strncmp(args[0], "exit", 5)) {
+	else if (!ft_strncmp(args[0], "exit", 5)) {
 		free_ss(args);
 		if (m->s)
 			free(m->s);
 		exit(EXIT_SUCCESS);
 	}
-	if (!ft_strncmp(args[0], "echo", 5))
+	else if (!ft_strncmp(args[0], "echo", 5))
 		echo(m, &args[1]);
-	if (!ft_strncmp(args[0], "pwd", 4))
+	else if (!ft_strncmp(args[0], "pwd", 4))
 	{
 		pwd(m);
 		ft_putstr_fd(m->cwd, 1);
 		write(1, "\n", 1);
 	}
-	if (!ft_strncmp(args[0], "cd", 3))
+	else if (!ft_strncmp(args[0], "cd", 3))
 		cd(m, args[1]);
+	else
+		exec(m, s, args);
 	//printf("m->exit_code = %d\n", m->exit_code);
 	free_ss(args);
 	return (1);
 }
-/*
-typedef struct	s_c
-{
-	t_m	*m;
-	char	*s;
-}	t_c;
-*/
 
-void	eval_com(t_list *infix, t_m *m)
+void	eval_com(t_list *p, t_m *m)
 {
-	t_list	*p;
 	t_list	*i;
 	t_list	*op;
 	int	level;
 	int	last_level;
 	int	blocked;
-	int	released;
 
-	released = 1;
 	blocked = -1;
 	level = 0;
 	last_level = 0;
-	p = infix;
 	while (p)
 	{
 		if (p->content && ((char *)p->content)[0] == '(')
@@ -80,30 +71,24 @@ void	eval_com(t_list *infix, t_m *m)
 			level--;
 		else if (p->content && ft_strchr(";&|", ((char *)p->content)[0]))
 		{
-			if ((!m->exit_code && ((char *)p->content)[0] == '&')
-				|| (m->exit_code && ((char *)p->content)[0] == '|'))
+			if (!(blocked != -1 && level < blocked))
 			{
-				//printf("XXX\n");
-				blocked = -1;
-				//released = 1;
-			}
-			else
-			{
-				//printf("YYY\n");
-				blocked = last_level;
-				//released = 0;
+				if ((!m->exit_code && ((char *)p->content)[0] == '&')
+						|| (m->exit_code && ((char *)p->content)[0] == '|'))
+				{
+					if (level <= blocked)
+						blocked = -1;
+				}
+				else
+					blocked = last_level;
 			}
 		}
-		else if (p->content && !ft_strchr(";&|", ((char *)p->content)[0]))
+		else if (p->content && !ft_strchr(";&|", ((char *)p->content)[0])
+			&& blocked == -1)
 		{
-			//printf("\n|%s, %d, %d|", (char *)p->content, blocked, m->exit_code);
-			//printf("\n|%s, %d, %d, %d|", (char *)p->content, blocked, released, m->exit_code);
-			//if (level > blocked || (level == blocked && released))
-			if (level > blocked)
-			{
-				command((char *)p->content, m);
-				last_level = level;
-			}
+			//printf("\n|%s, %d, %d, %d|", (char *)p->content, level, blocked, m->exit_code);
+			command((char *)p->content, m);
+			last_level = level;
 		}
 		p = p->next;
 	}

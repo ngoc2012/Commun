@@ -6,107 +6,17 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/07 17:34:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/10 10:22:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	n_args(char *s)
+void	free_none(void *content)
 {
-	int		i;
-	int		i0;
-	int		n;
-	char	d;
-
-	n = 0;
-	while (*s && *s == ' ')
-		s++;
-	d = ' ';
-	i0 = 0;
-	i = 0;
-	while (s[i])
-	{
-		if (ft_strchr("\"'", s[i]))
-		{
-			d = s[i];
-			while (s[++i] && s[i] != d)
-				;
-			if (s[i] == d)
-				d = ' ';
-			else
-				return (-1);
-			i++;
-		}
-		else if (s[i] == ' ')
-		{
-			n++;
-			while (s[++i] && s[i] == ' ')
-				;
-			i0 = i;
-		}
-		else
-			i++;
-	}
-	if (i > i0)
-		n++;
-	return (n);
 }
 
-
-char	**split_args(char *s)
-{
-	int		i;
-	int		i0;
-	int		n_a;
-	char	d;
-	char	**ss;
-	char	**ss0;
-
-	n_a = n_args(s);
-	if (!n_a)
-		return (0);
-	ss = malloc(sizeof(char *) * (n_a + 1));
-	ss0 = ss;
-	while (*s && ft_strchr(" \n", *s))
-		s++;
-	d = ' ';
-	i0 = 0;
-	i = 0;
-	while (s[i])
-	{
-		if (ft_strchr("\"'", s[i]))
-		{
-			d = s[i];
-			while (s[++i] && s[i] != d)
-				;
-			i++;
-		}
-		else if (s[i] == ' ')
-		{
-			*ss = malloc(i - i0 + 1);
-			ft_memcpy(*ss, &s[i0], i - i0);
-			(*ss)[i - i0] = 0;
-			ss++;
-			while (s[++i] && s[i] == ' ')
-				;
-			i0 = i;
-		}
-		else
-			i++;
-	}
-	if (i > i0)
-	{
-		*ss = malloc(i - i0 + 1);
-		ft_memcpy(*ss, &s[i0], i - i0);
-		(*ss)[i - i0] = 0;
-		ss++;
-	}
-	*ss = 0;
-	return (ss0);
-}
-
-char	*parse(char *s, t_m *m)
+char	*parse(char *s, int len, t_m *m)
 {
 	int		i;
 	int		i0;
@@ -119,13 +29,13 @@ char	*parse(char *s, t_m *m)
 	o = 0;
 	d = ' ';
 	i = 0;
-	while (s[i])
+	while (s[i] && i < len)
 	{
 		if (ft_strchr("\"'", s[i]))
 		{
 			d = s[i++];
 			i0 = i;
-			while (s[i] && s[i] != d)
+			while (s[i] && i < len && s[i] != d)
 				i++;
 			if (s[i] == d)
 			{
@@ -141,12 +51,8 @@ char	*parse(char *s, t_m *m)
 		{
 			d = ' ';
 			i0 = i;
-			while (s[i] && s[i] != '"' && s[i] != '\'')
-			//{
-			//	if (ft_strchr(sp, s[i]))
-			//		return (0);
+			while (s[i] && i < len && !ft_strchr("\"'", s[i]))
 				i++;
-			//}
 			s0 = str_env(&s[i0], i - i0, m, d);
 			o = strjoinm(o, s0, ft_strlen(o), ft_strlen(s0));
 			free(s0);
@@ -154,3 +60,77 @@ char	*parse(char *s, t_m *m)
 	}
 	return (o);
 }
+
+t_list	*args_list(char *s, t_m *m)
+{
+	int		i;
+	int		i0;
+	char	d;
+	char	*a;
+	t_list	*args;
+	int	wild;
+
+	wild = 0;
+	args = 0;
+	d = ' ';
+	i0 = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '*')
+			wild = 1;
+		else if (ft_strchr("\"'", s[i]))
+		{
+			d = s[i];
+			while (s[++i] && s[i] != d)
+				;
+			i++;
+		}
+		else if (s[i] == ' ')
+		{
+			if (wild)
+
+			else
+				ft_lstadd_back(&args, ft_lstnew(parse(&s[i0], i - i0, m)));
+			wild = 0;
+			while (s[++i] == ' ')
+				;
+			i0 = i;
+		}
+		else
+			i++;
+	}
+	while (s[i - 1] == ' ')
+		i--;
+	if (i > i0)
+		ft_lstadd_back(&args, ft_lstnew(parse(&s[i0], i - i0, m)));
+	return (args);
+}
+
+char	**split_args(char *s, t_m *m)
+{
+	char	**ss0;
+	char	**ss;
+	t_list	*args0;
+	t_list	*args;
+
+	while (*s && ft_strchr(" \n", *s))
+		s++;
+	args = args_list(s, m);
+	ss = malloc(sizeof(char *) * (ft_lstsize(args) + 1));
+	if (!ss)
+		return (0);
+	args0 = args;
+	ss0 = ss;
+	while (args)
+	{
+		*ss = (char *)args->content;
+		args = args->next;
+		ss++;
+	}
+	//ft_lstiter(args0, print_content);
+	ft_lstclear(&args0, free_none);
+	*ss = 0;
+	return (ss0);
+}
+

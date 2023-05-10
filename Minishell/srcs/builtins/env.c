@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/07 18:43:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/08 21:58:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ char	*str_env(char *s, int len, t_m *m, char del)
 		{
 			o = strjoinm(o, &s[i0], ft_strlen(o), i - i0);
 			s0 = ft_itoa(m->exit_code);
+			printf("|%d, %s|", m->exit_code, s0);
 			o = strjoinm(o, s0, ft_strlen(o), ft_strlen(s0));
 			free(s0);
 			i += 2;
