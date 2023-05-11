@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/10 13:07:11 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:52:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ typedef struct	s_m
 {
 	char	*s;
 	char	**env;
-	int	exit_code;
+	char	**coms;
+	char	**args;
+	int		exit_code;
 	char	cwd[PATH_MAX];
 	char	syntax_error;
+	t_list	*infix;
 }	t_m;
 
 void	echo(t_m *m, char **args);
@@ -46,8 +49,10 @@ void	print_content(void *s);
 char	**split_args(char *s, t_m *m);
 void	free_ss(char **ss);
 void	free_none(void *);
-void	exec(t_m *m, char *command, char **args);
+void	exec(t_m *m, char **args);
 char	*ft_strndup(char *s, int len);
 void	wildcards(char *s, t_list **args, t_m *m);
+int	pipes(char *s, t_m *m);
+void	free_m(t_m *m);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/10 16:16:23 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:53:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,70 @@ static char	*check_file(char *file)
 	return (0);
 }
 
-void	exec(t_m *m, char *command, char **args)
+int	command(t_m *m)
 {
-	char	*s;
+	char	*file;
+
+	if (!ft_strncmp(m->args[0], "echo", 5))
+		echo(m, m->args);
+	else if (!ft_strncmp(m->args[0], "pwd", 4))
+	{
+		if (getcwd(m->cwd, sizeof(m->cwd)))
+		{
+			ft_putstr_fd(m->cwd, 1);
+			write(1, "\n", 1);
+			exit(EXIT_SUCCESS);
+		}
+		perror("getcwd() error");
+		exit(EXIT_FAILURE);
+	}
+	else if (!ft_strncmp(m->args[0], "cd", 3))
+		cd(m, m->args[1]);
+	if (ft_strchr(m->args[0], '/'))
+		file = ft_strdup(m->args[0]);
+	else
+		file = check_file(m->args[0]);
+	if (file)
+		execve(file, m->args, m->env);
+	free(file);
+}
+
+int	pipes(char *s, t_m *m)
+{
+	int		i;
+	int		n;
 	pid_t	pid;
 
-	if (ft_strchr(args[0], '/'))
-		s = ft_strdup(args[0]);
-	else
-		s = check_file(args[0]);
-	if (!s)
-		return ;
-	//printf("exec.c: %s\n", s);
-	pid = fork();
-	if (pid == -1)
+	m->coms = ft_split(s, '|');
+	n = -1;
+	while (m->coms[++n])
+		;
+	i = -1;
+	while (m->coms[++i])
 	{
-		perror("fork error");
-		return ;
-	} else if (pid == 0) {
-		execve(s, args, m->env);
-		perror("execve error");
-		return ;
+		m->args = split_args(m->coms[i], m);
+		if (m->args[0])
+		{
+			if (!ft_strncmp(m->args[0], "exit", 5))
+			{
+				free_m(m);
+				exit(EXIT_SUCCESS);
+			}
+			pid = fork();
+			if (pid == -1)
+			{
+				perror("fork error");
+				return ;
+			} else if (pid == 0) {
+				command(m);
+				perror("execve error");
+				return ;
+			}
+			else
+				waitpid(pid, &m->exit_code, 0);
+		}
+		free_ss(m->args);
 	}
-	else
-		waitpid(pid, &m->exit_code, 0);
-	free(s);
+	free_ss(m->coms);
 }
+

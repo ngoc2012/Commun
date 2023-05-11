@@ -6,22 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/10 13:09:41 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:43:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	pwd(t_m *m)
-{
-	if (getcwd(m->cwd, sizeof(m->cwd)))
-		m->exit_code = 0;
-	else
-	{
-		perror("getcwd() error");
-		m->exit_code = 1;
-	}
-}
 
 char	*get_home()
 {
@@ -53,19 +42,17 @@ void	cd(t_m *m, char *path)
 		p = get_home();
 		p = strjoinm(p, &path[1], ft_strlen(p), ft_strlen(&path[1]));
 	}
-	//else if (*path == '.' && *(path + 1) == '/')
 	else if (!ft_strncmp(path, "./", 2))
 	{
-		pwd(m);
+		getcwd(m->cwd, sizeof(m->cwd));
 		p = 0;
 		p = strjoinm(p, m->cwd, 0, ft_strlen(m->cwd));
 		p = strjoinm(p, &path[1], ft_strlen(p), ft_strlen(&path[1]));
 		//printf("|%s|\n", p);
 	}
-	//else if (*path == '.' && *(path + 1) == '.' && !(*(path + 2)))
 	else if (!ft_strncmp(path, "..", 3))
 	{
-		pwd(m);
+		getcwd(m->cwd, sizeof(m->cwd));
 		i = ft_strlen(m->cwd);
 		if (i > 0)
 			while (m->cwd[--i] != '/' && m->cwd[i])
@@ -73,10 +60,9 @@ void	cd(t_m *m, char *path)
 		p = 0;
 		p = strjoinm(p, m->cwd, 0, i);
 	}
-	//else if (*path == '.' && *(path + 1) == '.' && *(path + 2) == '/')
 	else if (!ft_strncmp(path, "../", 3))
 	{
-		pwd(m);
+		getcwd(m->cwd, sizeof(m->cwd));
 		i = ft_strlen(m->cwd);
 		int	j = 1;
 		while (m->cwd[--i] != '/' && m->cwd[i])
@@ -99,7 +85,7 @@ void	cd(t_m *m, char *path)
 	}
 	else if (*path != '/')
 	{
-		pwd(m);
+		getcwd(m->cwd, sizeof(m->cwd));
 		p = 0;
 		p = strjoinm(p, m->cwd, 0, ft_strlen(m->cwd));
 		p = strjoinm(p, "/", ft_strlen(p), 1);
@@ -116,10 +102,11 @@ void	cd(t_m *m, char *path)
 		s = strjoinm(s, p, ft_strlen(s), ft_strlen(p));
 		perror(s);
 		free(s);
-		m->exit_code = 1;
+		free(p);
+		free_m(m);
+		exit(EXIT_FAILURE);
 	}
-	else
-		m->exit_code = 0;
 	free(p);
-	//printf("m->exit_code = %d\n", m->exit_code);
+	free_m(m);
+	exit(EXIT_SUCCESS);
 }

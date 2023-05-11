@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/10 12:14:55 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/05/11 13:25:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ void	wildcards(char *s, t_list **args, t_m *m)
 	int	found;
 
 	found = 0;
-	pwd(m);
+	if (!getcwd(m->cwd, sizeof(m->cwd)))
+		return ;
 	ss = ft_split(s, '*');
 	if (files(m->cwd, s, ss, args))
 		free(s);

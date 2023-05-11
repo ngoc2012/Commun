@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/10 17:04:53 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:48:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,53 +20,6 @@ void	free_ss(char **ss)
 	while (*ss)
 		free(*(ss++));
 	free(ss0);
-}
-
-int	command(char *s, int n_c, t_m *m)
-{
-	char	**args;
-
-	printf("n_c = %d\n", n_c);
-	args = split_args(s, m);
-	if (!args)
-		return (1);
-	else if (!ft_strncmp(args[0], "exit", 5)) {
-		free_ss(args);
-		if (m->s)
-			free(m->s);
-		exit(EXIT_SUCCESS);
-	}
-	else if (!ft_strncmp(args[0], "echo", 5))
-		echo(m, &args[1]);
-	else if (!ft_strncmp(args[0], "pwd", 4))
-	{
-		pwd(m);
-		ft_putstr_fd(m->cwd, 1);
-		write(1, "\n", 1);
-	}
-	else if (!ft_strncmp(args[0], "cd", 3))
-		cd(m, args[1]);
-	else
-		exec(m, s, args);
-	//printf("m->exit_code = %d\n", m->exit_code);
-	free_ss(args);
-	return (1);
-}
-
-int	pipes(char *s, t_m *m)
-{
-	int		i;
-	int		n;
-	char	**coms;
-
-	coms = ft_split(s, '|');
-	n = -1;
-	while (coms[++n])
-		;
-	i = -1;
-	while (coms[++i])
-		command(coms[i], n - i  -1, m);
-	free_ss(coms);
 }
 
 void	eval_com(t_list *p, t_m *m)
@@ -112,6 +65,19 @@ void	eval_com(t_list *p, t_m *m)
 	}
 }
 
+void	free_m(t_m *m)
+{
+	if (m->s)
+		free(m->s);
+	if (m->coms)
+		free(m->coms);
+	if (m->args)
+		free(m->args);
+	if (m->file)
+		free(m->file);
+	ft_lstclear(&m->infix, free);
+}
+
 // Syntaxe error -> code 2
 // \n\n\n egals ;
 int	main(int argc, char **argv, char **env)
@@ -129,10 +95,12 @@ int	main(int argc, char **argv, char **env)
 
 	m.exit_code = 0;
 	m.syntax_error = 0;
+	m.s = 0;
+	m.coms = 0;
+	m.args = 0;
+	m.file = 0;
 	m.env = env;
 	char	*com;
-	t_list	*infix;
-	m.s = 0;
 	while (1) {
 		com = readline("minishell$ ");
 		while (*com && ft_strchr(" \n", *com))
@@ -141,28 +109,26 @@ int	main(int argc, char **argv, char **env)
 		{
 			m.s = 0;
 			m.s = strjoinm(m.s, com, 0, ft_strlen(com));
-			infix = split_ops(m.s, &m);
-			while (!infix)
+			m.infix = split_ops(m.s, &m);
+			while (!m.infix)
 			{
 				if (m.syntax_error)
 					break ;
 				m.s = strjoinm(m.s, "\n", ft_strlen(m.s), 1);
 				com = readline("> ");
 				m.s = strjoinm(m.s, com, ft_strlen(m.s), ft_strlen(com));
-				infix = split_ops(m.s, &m);
+				m.infix = split_ops(m.s, &m);
 			}
 			//ft_lstiter(infix, print_content);
-			eval_com(infix, &m);
-			ft_lstclear(&infix, free);
+			eval_com(m.infix, &m);
 			//if (!m.syntax_error && !command(s, &m))
 			//if (!command(s, &m))
 			//	break ;
+			free_m(&m);
 			add_history(m.s);
 			rl_free(m.s);
 			rl_on_new_line();
 		}
 	}
-	if (m.s)
-		free(m.s);
 	return (m.exit_code);
 }
