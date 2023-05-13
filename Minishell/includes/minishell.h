@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/11 17:52:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/12 00:12:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct	s_m
 	char	**coms;
 	char	**args;
 	int		exit_code;
+	int		*pipefd;
 	char	cwd[PATH_MAX];
 	char	syntax_error;
 	t_list	*infix;

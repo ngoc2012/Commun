@@ -6,10 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/11 17:53:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/13 17:33:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
 #include "minishell.h"
 
 static char	*check_file(char *file)
@@ -54,25 +55,29 @@ int	command(t_m *m)
 		{
 			ft_putstr_fd(m->cwd, 1);
 			write(1, "\n", 1);
+			free_m(m);
 			exit(EXIT_SUCCESS);
 		}
+		free_m(m);
 		perror("getcwd() error");
 		exit(EXIT_FAILURE);
 	}
 	else if (!ft_strncmp(m->args[0], "cd", 3))
 		cd(m, m->args[1]);
-	if (ft_strchr(m->args[0], '/'))
+	file = check_file(m->args[0]);
+	if (!file)
 		file = ft_strdup(m->args[0]);
-	else
-		file = check_file(m->args[0]);
-	if (file)
-		execve(file, m->args, m->env);
+	execve(file, m->args, m->env);
+	perror(file);
 	free(file);
+	free_m(m);
+	exit(127);
 }
 
 int	pipes(char *s, t_m *m)
 {
 	int		i;
+	int		j;
 	int		n;
 	pid_t	pid;
 
@@ -80,6 +85,19 @@ int	pipes(char *s, t_m *m)
 	n = -1;
 	while (m->coms[++n])
 		;
+	printf("n = %d\n", n);
+	m->pipefd = 0;
+	if (n > 1)
+	{
+		m->pipefd = malloc((n - 1) * 2 * sizeof(int));
+		i = -1;
+		while (++i < n - 1)
+			if (pipe(&m->pipefd[2 * i]) == -1)
+			{
+				perror("pipe");
+				exit(EXIT_FAILURE);
+			}
+	}
 	i = -1;
 	while (m->coms[++i])
 	{
@@ -91,21 +109,65 @@ int	pipes(char *s, t_m *m)
 				free_m(m);
 				exit(EXIT_SUCCESS);
 			}
-			pid = fork();
-			if (pid == -1)
+		}
+		pid = fork();
+		if (pid == -1)
+		{
+			perror("fork error");
+			free_ss(m->args);
+			free_ss(m->coms);
+			free(m->pipefd);
+			return (0);
+		}
+		else if (!pid)
+		{
+			//printf("%d, %s\n", getpid(), m->args[1]);
+			if (n > 1 && i < n - 1)
 			{
-				perror("fork error");
-				return ;
-			} else if (pid == 0) {
-				command(m);
-				perror("execve error");
-				return ;
+				printf("%s | STDOUT_FILENO: %d %d %d\n", m->args[0], i, 2*i + 1, STDOUT_FILENO);
+				close(m->pipefd[2 * i]);
+				if (dup2(m->pipefd[2 * i + 1], STDOUT_FILENO) == -1)
+				{
+					perror("dup2");
+					free_m(m);
+					exit(EXIT_FAILURE);
+				}
+				j = -1;
+				while (++j < 2 * (n - 1))
+					if (j != 2 * i)
+						close(m->pipefd[j]);
 			}
-			else
-				waitpid(pid, &m->exit_code, 0);
+			if (i > 0)
+			{
+				printf("%s | STDIN_FILENO: %d %d %d\n", m->args[0], i, 2*(i - 1), STDIN_FILENO);
+				close(m->pipefd[2 * (i - 1) + 1]);
+				if (dup2(m->pipefd[2 * (i - 1)], STDIN_FILENO) == -1)
+				{
+					perror("dup2");
+					free_m(m);
+					exit(EXIT_FAILURE);
+				}
+				j = -1;
+				while (++j < 2 * (n - 1))
+					if (j != 2 * (i - 1) + 1)
+						close(m->pipefd[j]);
+			}
+			command(m);
+			printf("Nothing\n");
+		}
+		else
+		{
+			if (i > 0)
+			{
+				close(m->pipefd[2 * (i - 1)]);
+				close(m->pipefd[2 * (i - 1) + 1]);
+			}
+			waitpid(pid, &m->exit_code, 0);
 		}
 		free_ss(m->args);
 	}
+	free(m->pipefd);
 	free_ss(m->coms);
+	return (1);
 }
 

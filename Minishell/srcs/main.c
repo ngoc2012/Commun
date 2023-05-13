@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/11 17:48:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/12 00:13:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	free_ss(char **ss)
 {
 	char	**ss0;
 
+	if (!ss)
+		return ;
 	ss0 = ss;
 	while (*ss)
 		free(*(ss++));
@@ -57,7 +59,6 @@ void	eval_com(t_list *p, t_m *m)
 		else if (p->content && !ft_strchr(";&|", ((char *)p->content)[0])
 			&& blocked == -1)
 		{
-			//printf("\n|%s, %d, %d, %d|", (char *)p->content, level, blocked, m->exit_code);
 			pipes((char *)p->content, m);
 			last_level = level;
 		}
@@ -70,11 +71,11 @@ void	free_m(t_m *m)
 	if (m->s)
 		free(m->s);
 	if (m->coms)
-		free(m->coms);
+		free_ss(m->coms);
 	if (m->args)
-		free(m->args);
-	if (m->file)
-		free(m->file);
+		free_ss(m->args);
+	if (m->pipefd)
+		free(m->pipefd);
 	ft_lstclear(&m->infix, free);
 }
 
@@ -98,7 +99,7 @@ int	main(int argc, char **argv, char **env)
 	m.s = 0;
 	m.coms = 0;
 	m.args = 0;
-	m.file = 0;
+	m.pipefd = 0;
 	m.env = env;
 	char	*com;
 	while (1) {
@@ -121,12 +122,13 @@ int	main(int argc, char **argv, char **env)
 			}
 			//ft_lstiter(infix, print_content);
 			eval_com(m.infix, &m);
+			ft_lstclear(&m.infix, free);
 			//if (!m.syntax_error && !command(s, &m))
 			//if (!command(s, &m))
 			//	break ;
-			free_m(&m);
 			add_history(m.s);
 			rl_free(m.s);
+			//free_m(&m);
 			rl_on_new_line();
 		}
 	}
