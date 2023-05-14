@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/14 10:22:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/14 17:44:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int	pipes(char *s, t_m *m)
 	while (m->coms[++i])
 	{
 		m->args = split_args(m->coms[i], m);
+		printf("exec.c 1:%s\n", s);
 		if (m->args[0])
 		{
 			if (!ft_strncmp(m->args[0], "exit", 5))

@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 08:45:31 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/25 14:55:38 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/05/14 16:07:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,11 @@ char	**ft_split(const char *str, char charset)
 	char	**out0;
 
 	n_strs = get_n_strs(str, charset);
+	if (!n_strs)
+		return (0);
 	out = malloc(sizeof(char *) * (n_strs + 1));
 	if (!out)
-		return (NULL);
+		return (0);
 	if (n_strs > 0)
 	{
 		if (!get_strs(str, charset, out))
