@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/13 17:33:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/14 10:22:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int	pipes(char *s, t_m *m)
 	n = -1;
 	while (m->coms[++n])
 		;
-	printf("n = %d\n", n);
 	m->pipefd = 0;
 	if (n > 1)
 	{
@@ -121,39 +120,34 @@ int	pipes(char *s, t_m *m)
 		}
 		else if (!pid)
 		{
-			//printf("%d, %s\n", getpid(), m->args[1]);
-			if (n > 1 && i < n - 1)
+			if (n > 1)
 			{
-				printf("%s | STDOUT_FILENO: %d %d %d\n", m->args[0], i, 2*i + 1, STDOUT_FILENO);
-				close(m->pipefd[2 * i]);
-				if (dup2(m->pipefd[2 * i + 1], STDOUT_FILENO) == -1)
-				{
-					perror("dup2");
-					free_m(m);
-					exit(EXIT_FAILURE);
-				}
 				j = -1;
 				while (++j < 2 * (n - 1))
-					if (j != 2 * i)
+					if (!(i < n - 1 && j == 2 * i + 1) && !(i > 0 && j == 2 * (i - 1)))
 						close(m->pipefd[j]);
-			}
-			if (i > 0)
-			{
-				printf("%s | STDIN_FILENO: %d %d %d\n", m->args[0], i, 2*(i - 1), STDIN_FILENO);
-				close(m->pipefd[2 * (i - 1) + 1]);
-				if (dup2(m->pipefd[2 * (i - 1)], STDIN_FILENO) == -1)
+				if (i < n - 1)
 				{
-					perror("dup2");
-					free_m(m);
-					exit(EXIT_FAILURE);
+					if (dup2(m->pipefd[2 * i + 1], STDOUT_FILENO) == -1)
+					{
+						perror("dup2");
+						free_m(m);
+						exit(EXIT_FAILURE);
+					}
+					close(m->pipefd[2 * i + 1]);
 				}
-				j = -1;
-				while (++j < 2 * (n - 1))
-					if (j != 2 * (i - 1) + 1)
-						close(m->pipefd[j]);
+				if (i > 0)
+				{
+					if (dup2(m->pipefd[2 * (i - 1)], STDIN_FILENO) == -1)
+					{
+						perror("dup2");
+						free_m(m);
+						exit(EXIT_FAILURE);
+					}
+					close(m->pipefd[2 * (i - 1)]);
+				}
 			}
 			command(m);
-			printf("Nothing\n");
 		}
 		else
 		{
@@ -166,7 +160,8 @@ int	pipes(char *s, t_m *m)
 		}
 		free_ss(m->args);
 	}
-	free(m->pipefd);
+	if (m->pipefd)
+		free(m->pipefd);
 	free_ss(m->coms);
 	return (1);
 }
