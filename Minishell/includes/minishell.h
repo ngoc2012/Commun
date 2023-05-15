@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/12 00:12:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/15 17:15:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 # include "ft_printf.h"
 # include "libft.h"
 
-# define HOME "/mnt/nfs/homes/"
+// define HOME "/mnt/nfs/homes/"
+# define HOME "/home/"
 
 typedef struct	s_m
 {

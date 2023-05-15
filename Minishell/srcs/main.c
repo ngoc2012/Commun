@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/12 00:13:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/15 21:29:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,35 @@ void	eval_com(t_list *p, t_m *m)
 	}
 }
 
-void	free_m(t_m *m)
+t_m	*g_m;
+
+void	signal_handler(int sig, siginfo_t *info, void *ucontext)
 {
-	if (m->s)
-		free(m->s);
-	if (m->coms)
-		free_ss(m->coms);
-	if (m->args)
-		free_ss(m->args);
-	if (m->pipefd)
-		free(m->pipefd);
-	ft_lstclear(&m->infix, free);
+	(void)ucontext;
+	(void)info;
+	if (sig == SIGINT)
+	{
+		write(1, "\n", 1);
+		exit(g_m->exit_code);
+	}
+	else if (sig == SIGQUIT)
+		rl_forced_update_display();
 }
 
 // Syntaxe error -> code 2
 // \n\n\n egals ;
 int	main(int argc, char **argv, char **env)
 {
+	struct sigaction	act;
 	t_m	m;
+
+	g_m = &m;
+
+	act.sa_flags = SA_RESTART | SA_SIGINFO;
+	act.sa_sigaction = &signal_handler;
+	sigemptyset(&act.sa_mask);
+	sigaction(SIGINT, &act, NULL);
+	sigaction(SIGQUIT, &act, NULL);
 
 	if (argc > 1)
 		return (1);
@@ -104,32 +115,35 @@ int	main(int argc, char **argv, char **env)
 	char	*com;
 	while (1) {
 		com = readline("minishell$ ");
-		while (*com && ft_strchr(" \n", *com))
-			com++;
-		if (*com)
+		if (com)
 		{
-			m.s = 0;
-			m.s = strjoinm(m.s, com, 0, ft_strlen(com));
-			m.infix = split_ops(m.s, &m);
-			while (!m.infix)
+			while (*com && ft_strchr(" \n", *com))
+				com++;
+			if (*com)
 			{
-				if (m.syntax_error)
-					break ;
-				m.s = strjoinm(m.s, "\n", ft_strlen(m.s), 1);
-				com = readline("> ");
-				m.s = strjoinm(m.s, com, ft_strlen(m.s), ft_strlen(com));
+				m.s = 0;
+				m.s = strjoinm(m.s, com, 0, ft_strlen(com));
 				m.infix = split_ops(m.s, &m);
+				while (!m.infix)
+				{
+					if (m.syntax_error)
+						break ;
+					m.s = strjoinm(m.s, "\n", ft_strlen(m.s), 1);
+					com = readline("> ");
+					m.s = strjoinm(m.s, com, ft_strlen(m.s), ft_strlen(com));
+					m.infix = split_ops(m.s, &m);
+				}
+				//ft_lstiter(infix, print_content);
+				eval_com(m.infix, &m);
+				ft_lstclear(&m.infix, free);
+				//if (!m.syntax_error && !command(s, &m))
+				//if (!command(s, &m))
+				//	break ;
+				add_history(m.s);
+				rl_free(m.s);
+				//free_m(&m);
+				rl_on_new_line();
 			}
-			//ft_lstiter(infix, print_content);
-			eval_com(m.infix, &m);
-			ft_lstclear(&m.infix, free);
-			//if (!m.syntax_error && !command(s, &m))
-			//if (!command(s, &m))
-			//	break ;
-			add_history(m.s);
-			rl_free(m.s);
-			//free_m(&m);
-			rl_on_new_line();
 		}
 	}
 	return (m.exit_code);

@@ -6,11 +6,10 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/14 17:44:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/15 21:41:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include "minishell.h"
 
 static char	*check_file(char *file)
@@ -55,10 +54,20 @@ int	command(t_m *m)
 		{
 			ft_putstr_fd(m->cwd, 1);
 			write(1, "\n", 1);
-			free_m(m);
+			free_ss(m->args);
+			free_ss(m->coms);
+			rl_free(m->s);
+			if (m->pipefd)
+				free(m->pipefd);
+			ft_lstclear(&m->infix, free);
 			exit(EXIT_SUCCESS);
 		}
-		free_m(m);
+		free_ss(m->args);
+		free_ss(m->coms);
+		rl_free(m->s);
+		if (m->pipefd)
+			free(m->pipefd);
+		ft_lstclear(&m->infix, free);
 		perror("getcwd() error");
 		exit(EXIT_FAILURE);
 	}
@@ -70,7 +79,12 @@ int	command(t_m *m)
 	execve(file, m->args, m->env);
 	perror(file);
 	free(file);
-	free_m(m);
+	free_ss(m->args);
+	free_ss(m->coms);
+	rl_free(m->s);
+	if (m->pipefd)
+		free(m->pipefd);
+	ft_lstclear(&m->infix, free);
 	exit(127);
 }
 
@@ -85,6 +99,7 @@ int	pipes(char *s, t_m *m)
 	n = -1;
 	while (m->coms[++n])
 		;
+	//printf("n = %d\n", n);
 	m->pipefd = 0;
 	if (n > 1)
 	{
@@ -101,13 +116,21 @@ int	pipes(char *s, t_m *m)
 	while (m->coms[++i])
 	{
 		m->args = split_args(m->coms[i], m);
-		printf("exec.c 1:%s\n", s);
+		//m->args = ft_split(m->coms[i], ' ');
+		//if (n > 1)
+		//	printf("pipe = %d\n", m->pipefd[0]);
 		if (m->args[0])
 		{
 			if (!ft_strncmp(m->args[0], "exit", 5))
 			{
-				free_m(m);
-				exit(EXIT_SUCCESS);
+				free_ss(m->args);
+				free_ss(m->coms);
+				if (m->pipefd)
+					free(m->pipefd);
+				ft_lstclear(&m->infix, free);
+				add_history(m->s);
+				rl_free(m->s);
+				exit(m->exit_code);
 			}
 		}
 		pid = fork();
@@ -132,7 +155,9 @@ int	pipes(char *s, t_m *m)
 					if (dup2(m->pipefd[2 * i + 1], STDOUT_FILENO) == -1)
 					{
 						perror("dup2");
-						free_m(m);
+						free_ss(m->args);
+						free_ss(m->coms);
+						free(m->pipefd);
 						exit(EXIT_FAILURE);
 					}
 					close(m->pipefd[2 * i + 1]);
@@ -142,7 +167,9 @@ int	pipes(char *s, t_m *m)
 					if (dup2(m->pipefd[2 * (i - 1)], STDIN_FILENO) == -1)
 					{
 						perror("dup2");
-						free_m(m);
+						free_ss(m->args);
+						free_ss(m->coms);
+						free(m->pipefd);
 						exit(EXIT_FAILURE);
 					}
 					close(m->pipefd[2 * (i - 1)]);

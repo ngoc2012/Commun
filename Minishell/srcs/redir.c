@@ -1,38 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo.c                                             :+:      :+:    :+:   */
+/*   redir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/15 21:33:53 by ngoc             ###   ########.fr       */
+/*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
+/*   Updated: 2023/05/15 21:41:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include <dirent.h>
 
-void	echo(t_m *m, char **args)
-{
-	int	i;
-
-	if (!args)
-		write(1, "\n\n", 2);
-	i = 0;
-	while (args[++i])
-	{
-		if (i > 1)
-			write(1, " ", 1);
-		ft_putstr_fd(args[i], 1);
-	}
-	if (ft_strncmp(args[1], "-n", 3))
-		write(1, "\n", 1);
-	free_ss(m->args);
-	free_ss(m->coms);
-	rl_free(m->s);
-	if (m->pipefd)
-		free(m->pipefd);
-	ft_lstclear(&m->infix, free);
-	exit(EXIT_SUCCESS);
-}

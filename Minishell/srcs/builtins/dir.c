@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/11 22:42:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/15 21:34:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,20 @@ void	cd(t_m *m, char *path)
 		perror(s);
 		free(s);
 		free(p);
-		free_m(m);
+		free_ss(m->args);
+		free_ss(m->coms);
+		rl_free(m->s);
+		if (m->pipefd)
+			free(m->pipefd);
+		ft_lstclear(&m->infix, free);
 		exit(1);
 	}
 	free(p);
-	free_m(m);
+	free_ss(m->args);
+	free_ss(m->coms);
+	rl_free(m->s);
+	if (m->pipefd)
+		free(m->pipefd);
+	ft_lstclear(&m->infix, free);
 	exit(EXIT_SUCCESS);
 }

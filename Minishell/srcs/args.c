@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/14 17:42:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/14 19:45:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ t_list	*args_list(char *s, t_m *m)
 		else
 			i++;
 	}
-	printf("args.c 1:%s\n", s);
 	while (s[i - 1] == ' ')
 		i--;
 	if (i > i0)
@@ -113,7 +112,6 @@ t_list	*args_list(char *s, t_m *m)
 		else
 			ft_lstadd_back(&args, ft_lstnew(parse(&s[i0], i - i0, m)));
 	}
-	printf("args.c 2:%s\n", s);
 	return (args);
 }
 
@@ -127,7 +125,6 @@ char	**split_args(char *s, t_m *m)
 	while (*s && ft_strchr(" \n", *s))
 		s++;
 	args = args_list(s, m);
-	printf("args.c 3:%s\n", s);
 	ss = malloc(sizeof(char *) * (ft_lstsize(args) + 1));
 	if (!ss)
 		return (0);
