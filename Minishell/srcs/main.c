@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/15 21:29:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/16 08:43:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,10 @@ int	main(int argc, char **argv, char **env)
 	m.coms = 0;
 	m.args = 0;
 	m.pipefd = 0;
+	m.right = 0;
+	m.left = 0;
+	m.right2 = 0;
+	m.left2 = 0;
 	m.env = env;
 	char	*com;
 	while (1) {

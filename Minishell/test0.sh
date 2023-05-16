@@ -227,4 +227,77 @@ ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo 1 && cd hsadf || echo 3 && echo
 bash: cd: hsadf: No such file or directory
 3
 4
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ export a='s *'
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo $a
+s ft_printf includes input libft ls Makefile man minishell minishell-tester minishell_tester output.txt rl.supp srcs tes t test0.sh test.sh
 
+
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ export a="s *"
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo $a
+s ft_printf includes input libft ls Makefile man minishell minishell-tester minishell_tester output.txt rl.supp srcs tes t test0.sh test.sh
+
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo sadfsadf > 'ech*'
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ ls
+'$USER'      includes   ls         minishell          ngoc         srcs       test.sh
+'ech*'       input      Makefile   minishell-tester   output.txt  'tes t'
+ ft_printf   libft      man        minishell_tester   rl.supp      test0.sh
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ cat 'ech*'
+sadfsadf
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo fsdgsg > "ech*"
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ ls
+'$USER'      includes   ls         minishell          ngoc         srcs       test.sh
+'ech*'       input      Makefile   minishell-tester   output.txt  'tes t'
+ ft_printf   libft      man        minishell_tester   rl.supp      test0.sh
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ cat 'ech*'
+fsdgsg
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$
+
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ ls 'mini*'
+ls: cannot access 'mini*': No such file or directory
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ ls "mini*"
+ls: cannot access 'mini*': No such file or directory
+
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo sadfsadf > '$USER'
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ ls
+'$USER'      includes   ls         minishell          output.txt  'tes t'
+ echo        input      Makefile   minishell-tester   rl.supp      test0.sh
+ ft_printf   libft      man        minishell_tester   srcs         test.sh
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo sadfsadf > "$USER"
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ ls
+'$USER'      includes   ls         minishell          ngoc         srcs       test.sh
+ echo        input      Makefile   minishell-tester   output.txt  'tes t'
+ ft_printf   libft      man        minishell_tester   rl.supp      test0.sh
+
+
+
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ export a='port'
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ ex$a b='export'
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo $b
+export
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ "$b" c="export"
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo $c
+export
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ '$b' c="export"
+$b: command not found
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ "export" d="exp"
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo $d
+exp
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ $d"ort" e="xpor"
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo $e
+xpor
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ e"$e"t f="no"
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo $f
+no
+
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ "ls mini"*
+ls mini*: command not found
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo c="s *"
+c=s *
+
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo $a
+s $USER ech* ft_printf includes input libft ls Makefile man minishell minishell-tester minishell_tester ngoc output.txt rl.supp srcs tes t test0.sh test.sh
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "$a"
+s *
+
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ l"$a"
+ls *: command not found

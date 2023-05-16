@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/15 21:38:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/15 22:33:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,25 @@ int	files(char *path, char *s, char **ss, t_list **args)
 {
 	DIR *dir;
 	struct dirent *entry;
+	int	i;
 
 	dir = opendir(path);
 	if (!dir) {
 		perror("Unable to open directory");
 		return (0);
 	}
+	i = 0;
 	while ((entry = readdir(dir)))
 	{
 		if (ft_strncmp(entry->d_name, ".", 2) && ft_strncmp(entry->d_name, "..", 3))
 			if (!ss[0] || check(entry->d_name, s, ss))
+			{
 				ft_lstadd_back(args, ft_lstnew(ft_strdup(entry->d_name)));
+				i++;
+			}
 	}
 	closedir(dir);
-	return (1);
+	return (i);
 }
 
 void	wildcards(char *s, t_list **args, t_m *m)

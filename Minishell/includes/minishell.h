@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/15 17:15:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/16 15:53:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ typedef struct	s_m
 	int		*pipefd;
 	char	cwd[PATH_MAX];
 	char	syntax_error;
+	char	*right;
+	char	*left;
+	char	*right2;
+	char	*left2;
 	t_list	*infix;
 }	t_m;
 
@@ -45,7 +49,7 @@ char	*strjoinm(char *des, char *src, int len_des, int buffer);
 void	pwd(t_m *m);
 void	cd(t_m *m, char *path);
 char	*get_env_name(char *name, char **environ);
-char	*str_env(char *s, int len, t_m *m, char del);
+char	*str_env(char *s, int len, t_m *m);
 t_list	*split_ops(char *s, t_m *m);
 void	print_content(void *s);
 char	**split_args(char *s, t_m *m);

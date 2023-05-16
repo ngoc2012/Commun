@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/14 19:45:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/16 16:05:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_none(void *content)
 {
 }
-
+/*
 char	*parse(char *s, int len, t_m *m)
 {
 	int		i;
@@ -39,7 +39,7 @@ char	*parse(char *s, int len, t_m *m)
 				i++;
 			if (s[i] == d)
 			{
-				s0 = str_env(&s[i0], i - i0, m, d);
+				s0 = ft_strndup(&s[i0], i - i0);
 				o = strjoinm(o, s0, ft_strlen(o), ft_strlen(s0));
 				free(s0);
 			}
@@ -60,7 +60,7 @@ char	*parse(char *s, int len, t_m *m)
 	}
 	return (o);
 }
-
+*/
 t_list	*args_list(char *s, t_m *m)
 {
 	int		i;
@@ -82,6 +82,12 @@ t_list	*args_list(char *s, t_m *m)
 			wild = 1;
 			i++;
 		}
+		//else if (ft_strchr("<>", s[i]))
+		//{
+		//	i++;
+		//	if (ft_strchr("<>", s[i]))
+		//		else
+		//}
 		else if (ft_strchr("\"'", s[i]))
 		{
 			d = s[i];
@@ -92,9 +98,9 @@ t_list	*args_list(char *s, t_m *m)
 		else if (s[i] == ' ')
 		{
 			if (wild)
-				wildcards(parse(&s[i0], i - i0, m), &args, m);
+				wildcards(ft_strndup(&s[i0], i - i0), &args, m);
 			else
-				ft_lstadd_back(&args, ft_lstnew(parse(&s[i0], i - i0, m)));
+				ft_lstadd_back(&args, ft_lstnew(ft_strndup(&s[i0], i - i0)));
 			wild = 0;
 			while (s[++i] == ' ')
 				;
@@ -108,9 +114,9 @@ t_list	*args_list(char *s, t_m *m)
 	if (i > i0)
 	{
 		if (wild)
-			wildcards(parse(&s[i0], i - i0, m), &args, m);
+			wildcards(ft_strndup(&s[i0], i - i0), &args, m);
 		else
-			ft_lstadd_back(&args, ft_lstnew(parse(&s[i0], i - i0, m)));
+			ft_lstadd_back(&args, ft_lstnew(ft_strndup(&s[i0], i - i0)));
 	}
 	return (args);
 }
@@ -121,10 +127,13 @@ char	**split_args(char *s, t_m *m)
 	char	**ss;
 	t_list	*args0;
 	t_list	*args;
+	char	*s_env;
 
 	while (*s && ft_strchr(" \n", *s))
 		s++;
-	args = args_list(s, m);
+	s_env = str_env(s, ft_strlen(s), m);
+	args = args_list(s_env, m);
+	free(s_env);
 	ss = malloc(sizeof(char *) * (ft_lstsize(args) + 1));
 	if (!ss)
 		return (0);

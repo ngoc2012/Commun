@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/14 17:12:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/16 16:04:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,37 @@ int	isenv(char c)
 	return (ft_isalnum(c) || c == '_');
 }
 
-char	*str_env(char *s, int len, t_m *m, char del)
+char	*str_env(char *s, int len, t_m *m)
 {
 	int		i0;
 	int		i;
 	char	*s0;
 	char	*s1;
 	char	*o;
+	char	d;
 
 	if (len <= 0)
 		return (0);
 	o = 0;
-	if (del == '\'')
-		return (strjoinm(o, s, 0, len));
 	i = 0;
 	i0 = i;
-	while (i < len)
+	while (s[i] && i < len)
 	{
-		if (s[i] == '$' && s[i + 1] == '?')
+		if (ft_strchr("'", s[i]))
+		{
+			o = strjoinm(o, &s[i0], ft_strlen(o), i - i0);
+			i0 = i;
+			d = s[i++];
+			while (s[i] && i < len && s[i] != d)
+				i++;
+			if (s[i] == d)
+				o = strjoinm(o, &s[i0], ft_strlen(o), i - i0 + 1);
+			else
+				return (0);
+			i++;
+			i0 = i;
+		}
+		else if (s[i] == '$' && s[i + 1] == '?')
 		{
 			o = strjoinm(o, &s[i0], ft_strlen(o), i - i0);
 			s0 = ft_itoa(m->exit_code);
