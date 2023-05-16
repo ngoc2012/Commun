@@ -6,14 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/15 22:33:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/16 20:27:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <dirent.h>
 
-static int	pos(char *s, char *big)
+int	chr_pos(char *s, char *big)
 {
 	int	i;
 	int	len;
@@ -39,7 +39,7 @@ int	check(char *name, char *s, char **ss)
 	i = -1;
 	while (ss[++i])
 	{
-		p = pos(ss[i], name);
+		p = chr_pos(ss[i], name);
 		if (p == -1)
 			return (0);
 		if (p < last_p)
@@ -84,7 +84,9 @@ int	files(char *path, char *s, char **ss, t_list **args)
 void	wildcards(char *s, t_list **args, t_m *m)
 {
 	char	**ss;
+	char	*s0;
 	int	found;
+	int	i;
 
 	if (!s)
 		return ;
@@ -92,6 +94,13 @@ void	wildcards(char *s, t_list **args, t_m *m)
 	if (!getcwd(m->cwd, sizeof(m->cwd)))
 		return ;
 	ss = ft_split(s, '*');
+	i = -1;
+	while (ss[++i])
+	{
+		s0 = parse(ss[i], ft_strlen(ss[i]), m);
+		free(ss[i]);
+		ss[i] = s0;
+	}
 	if (!files(m->cwd, s, ss, args))
 		ft_lstadd_back(args, ft_lstnew(ft_strdup(s)));
 	free(s);

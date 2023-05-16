@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/15 22:34:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/16 20:18:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	command(t_m *m)
 
 	if (!ft_strncmp(m->args[0], "echo", 5))
 		echo(m, m->args);
+	else if (!ft_strncmp(m->args[0], "export", 7))
+		exp(m, m->args);
 	else if (!ft_strncmp(m->args[0], "pwd", 4))
 	{
 		if (getcwd(m->cwd, sizeof(m->cwd)))

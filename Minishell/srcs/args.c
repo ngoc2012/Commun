@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/16 16:05:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/16 20:09:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_none(void *content)
 {
 }
-/*
+
 char	*parse(char *s, int len, t_m *m)
 {
 	int		i;
@@ -23,9 +23,7 @@ char	*parse(char *s, int len, t_m *m)
 	char	d;
 	char	*s0;
 	char	*o;
-	//const char	*sp;
 
-	//sp = "`\\?[]{}()";
 	o = 0;
 	d = ' ';
 	i = 0;
@@ -53,14 +51,14 @@ char	*parse(char *s, int len, t_m *m)
 			i0 = i;
 			while (s[i] && i < len && !ft_strchr("\"'", s[i]))
 				i++;
-			s0 = str_env(&s[i0], i - i0, m, d);
+			s0 = ft_strndup(&s[i0], i - i0);
 			o = strjoinm(o, s0, ft_strlen(o), ft_strlen(s0));
 			free(s0);
 		}
 	}
 	return (o);
 }
-*/
+
 t_list	*args_list(char *s, t_m *m)
 {
 	int		i;
@@ -100,7 +98,7 @@ t_list	*args_list(char *s, t_m *m)
 			if (wild)
 				wildcards(ft_strndup(&s[i0], i - i0), &args, m);
 			else
-				ft_lstadd_back(&args, ft_lstnew(ft_strndup(&s[i0], i - i0)));
+				ft_lstadd_back(&args, ft_lstnew(parse(&s[i0], i - i0, m)));
 			wild = 0;
 			while (s[++i] == ' ')
 				;
@@ -116,7 +114,7 @@ t_list	*args_list(char *s, t_m *m)
 		if (wild)
 			wildcards(ft_strndup(&s[i0], i - i0), &args, m);
 		else
-			ft_lstadd_back(&args, ft_lstnew(ft_strndup(&s[i0], i - i0)));
+			ft_lstadd_back(&args, ft_lstnew(parse(&s[i0], i - i0, m)));
 	}
 	return (args);
 }
@@ -145,7 +143,6 @@ char	**split_args(char *s, t_m *m)
 		args = args->next;
 		ss++;
 	}
-	//ft_lstiter(args0, print_content);
 	ft_lstclear(&args0, free_none);
 	*ss = 0;
 	return (ss0);
