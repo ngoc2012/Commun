@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/15 21:33:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/17 12:15:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,5 @@ void	echo(t_m *m, char **args)
 	}
 	if (ft_strncmp(args[1], "-n", 3))
 		write(1, "\n", 1);
-	free_ss(m->args);
-	free_ss(m->coms);
-	rl_free(m->s);
-	if (m->pipefd)
-		free(m->pipefd);
-	ft_lstclear(&m->infix, free);
-	exit(EXIT_SUCCESS);
+	m->exit_code = 0;
 }

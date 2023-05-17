@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/17 08:37:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/17 12:15:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ void	expt(t_m *m, char **args)
 	//if (m->pipefd)
 	//	free(m->pipefd);
 	//ft_lstclear(&m->infix, free);
-	exit(EXIT_SUCCESS);
+	m->exit_code = 0;
 }

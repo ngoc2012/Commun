@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/17 08:10:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/17 12:14:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,8 @@ static char	*check_file(char *file)
 	return (0);
 }
 
-int	command(t_m *m)
+int	builtins(t_m *m)
 {
-	char	*file;
-
 	if (!ft_strncmp(m->args[0], "echo", 5))
 		echo(m, m->args);
 	else if (!ft_strncmp(m->args[0], "export", 7))
@@ -56,25 +54,33 @@ int	command(t_m *m)
 		{
 			ft_putstr_fd(m->cwd, 1);
 			write(1, "\n", 1);
-			free_ss(m->args);
-			free_ss(m->coms);
-			rl_free(m->s);
-			if (m->pipefd)
-				free(m->pipefd);
-			ft_lstclear(&m->infix, free);
-			exit(EXIT_SUCCESS);
+			m->exit_code = 0;
+			return (1);
 		}
-		free_ss(m->args);
-		free_ss(m->coms);
-		rl_free(m->s);
-		if (m->pipefd)
-			free(m->pipefd);
-		ft_lstclear(&m->infix, free);
 		perror("getcwd() error");
-		exit(EXIT_FAILURE);
+		m->exit_code = 1;
+		return (1);
 	}
 	else if (!ft_strncmp(m->args[0], "cd", 3))
 		cd(m, m->args[1]);
+	else if (!ft_strncmp(m->args[0], "exit", 5))
+	{
+		free_ss(m->args);
+		free_ss(m->coms);
+		if (m->pipefd)
+			free(m->pipefd);
+		ft_lstclear(&m->infix, free);
+		add_history(m->s);
+		rl_free(m->s);
+		exit(m->exit_code);
+	}
+	return (0);
+}
+
+int	command(t_m *m)
+{
+	char	*file;
+
 	file = check_file(m->args[0]);
 	if (!file)
 		file = ft_strdup(m->args[0]);
@@ -123,17 +129,6 @@ int	pipes(char *s, t_m *m)
 		//	printf("pipe = %d\n", m->pipefd[0]);
 		if (m->args[0])
 		{
-			if (!ft_strncmp(m->args[0], "exit", 5))
-			{
-				free_ss(m->args);
-				free_ss(m->coms);
-				if (m->pipefd)
-					free(m->pipefd);
-				ft_lstclear(&m->infix, free);
-				add_history(m->s);
-				rl_free(m->s);
-				exit(m->exit_code);
-			}
 		}
 		pid = fork();
 		if (pid == -1)
