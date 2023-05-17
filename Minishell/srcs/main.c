@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/16 08:43:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/17 08:08:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int	main(int argc, char **argv, char **env)
 	m.s = 0;
 	m.coms = 0;
 	m.args = 0;
+	m.infix = 0;
 	m.pipefd = 0;
 	m.right = 0;
 	m.left = 0;
@@ -127,15 +128,14 @@ int	main(int argc, char **argv, char **env)
 			{
 				m.s = 0;
 				m.s = strjoinm(m.s, com, 0, ft_strlen(com));
-				m.infix = split_ops(m.s, &m);
-				while (!m.infix)
+				while (!split_ops(m.s, &m))
 				{
+					ft_lstclear(&m.infix, free);
 					if (m.syntax_error)
 						break ;
 					m.s = strjoinm(m.s, "\n", ft_strlen(m.s), 1);
 					com = readline("> ");
 					m.s = strjoinm(m.s, com, ft_strlen(m.s), ft_strlen(com));
-					m.infix = split_ops(m.s, &m);
 				}
 				//ft_lstiter(infix, print_content);
 				eval_com(m.infix, &m);

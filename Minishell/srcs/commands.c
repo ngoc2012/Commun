@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/10 16:10:30 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/05/17 08:07:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	com_check(char *s)
 
 // Check syntax error: ( command (
 // Check syntax error: ) command )
-t_list	*split_ops(char *s, t_m *m)
+int	split_ops(char *s, t_m *m)
 {
 	int		i;
 	int		i0;
@@ -43,9 +43,7 @@ t_list	*split_ops(char *s, t_m *m)
 	int		n_o;
 	int		n_c;
 	char	d;
-	t_list	*infix;
 
-	infix = 0;
 	while (*s && ft_strchr(" \n", *s))
 		s++;
 	if (ft_strchr(";&|", *s))
@@ -72,14 +70,14 @@ t_list	*split_ops(char *s, t_m *m)
 				;
 			i1++;
 			if (i1 > i0)
-				ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
-			ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i], 1)));
+				ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
+			ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[i], 1)));
 			while (s[++i] && ft_strchr(" \n", s[i]))
 				;
 			if ((d == '(' && s[i] == ')') || (d == ')' && s[i] && !ft_strchr(");&|", s[i])))
 			{
 				printf("Syntax error 1 |%c| %d |%c|\n", d, i, s[i]);
-				ft_lstclear(&infix, free);
+				ft_lstclear(&m->infix, free);
 				m->exit_code = 2;
 				m->syntax_error = 1;
 				return (0);
@@ -93,15 +91,15 @@ t_list	*split_ops(char *s, t_m *m)
 				;
 			i1++;
 			if (i1 > i0)
-				ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
-			ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i], 1)));
+				ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
+			ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[i], 1)));
 			i++;
 			while (s[++i] && ft_strchr(" \n", s[i]))
 				;
 			if (!s[i] || ft_strchr("&|", s[i]))
 			{
 				printf("Syntax error 2\n");
-				ft_lstclear(&infix, free);
+				ft_lstclear(&m->infix, free);
 				m->exit_code = 2;
 				m->syntax_error = 1;
 				return (0);
@@ -117,19 +115,19 @@ t_list	*split_ops(char *s, t_m *m)
 			if (i1 <= i0)
 			{
 				printf("Syntax error 2\n");
-				ft_lstclear(&infix, free);
+				ft_lstclear(&m->infix, free);
 				m->exit_code = 2;
 				m->syntax_error = 1;
 				return (0);
 			}
-			ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
-			ft_lstadd_back(&infix, ft_lstnew(ft_strdup(";")));
+			ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[i0], i1 - i0)));
+			ft_lstadd_back(&m->infix, ft_lstnew(ft_strdup(";")));
 			while (s[++i] && ft_strchr(" \n", s[i]))
 				;
 			if (s[i] && ft_strchr(";&|", s[i]))
 			{
 				//printf("Syntax error 4, |%c|\n", s[i]);
-				ft_lstclear(&infix, free);
+				ft_lstclear(&m->infix, free);
 				m->exit_code = 2;
 				m->syntax_error = 1;
 				return (0);
@@ -151,8 +149,8 @@ t_list	*split_ops(char *s, t_m *m)
 	//while (ft_strchr(" \n\t", s[i - 1]))
 	//	i--;
 	if (i > i0)
-		ft_lstadd_back(&infix, ft_lstnew(ft_strndup(&s[i0], i - i0)));
+		ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[i0], i - i0)));
 	if (n_o != n_c)
 		return (0);
-	return (infix);
+	return (1);
 }

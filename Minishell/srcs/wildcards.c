@@ -6,14 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/16 20:27:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/16 21:39:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <dirent.h>
 
-int	chr_pos(char *s, char *big)
+static int	str_pos(char *s, char *big)
 {
 	int	i;
 	int	len;
@@ -39,7 +39,7 @@ int	check(char *name, char *s, char **ss)
 	i = -1;
 	while (ss[++i])
 	{
-		p = chr_pos(ss[i], name);
+		p = str_pos(ss[i], name);
 		if (p == -1)
 			return (0);
 		if (p < last_p)

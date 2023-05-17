@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/16 20:30:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/17 08:10:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,17 @@ typedef struct	s_m
 	char	*right2;
 	char	*left2;
 	t_list	*infix;
+	t_list	*envs;
 }	t_m;
 
 void	echo(t_m *m, char **args);
-void	exp(t_m *m, char **args);
+void	expt(t_m *m, char **args);
 char	*strjoinm(char *des, char *src, int len_des, int buffer);
 void	pwd(t_m *m);
 void	cd(t_m *m, char *path);
 char	*get_env_name(char *name, char **environ);
 char	*str_env(char *s, int len, t_m *m);
-t_list	*split_ops(char *s, t_m *m);
+int	split_ops(char *s, t_m *m);
 void	print_content(void *s);
 char	**split_args(char *s, t_m *m);
 void	free_ss(char **ss);
