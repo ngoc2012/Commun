@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/17 12:17:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/19 19:54:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*get_home()
 	return (p);
 }
 
-void	cd(t_m *m, char *path)
+int	cd(t_m *m, char *path)
 {
 	int		i;
 	int		m_free;
@@ -104,7 +104,9 @@ void	cd(t_m *m, char *path)
 		free(s);
 		free(p);
 		m->exit_code = 0;
+		return (0);
 	}
 	free(p);
 	m->exit_code = 0;
+	return (1);
 }

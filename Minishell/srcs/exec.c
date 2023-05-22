@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/17 12:14:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/21 19:36:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,35 @@ static char	*check_file(char *file)
 	free_ss(ss0);
 	return (0);
 }
-
-int	builtins(t_m *m)
+# define BUFFER 100
+int	builtins(t_m *m, int i, int n)
 {
 	if (!ft_strncmp(m->args[0], "echo", 5))
-		echo(m, m->args);
+	{
+		if (i > 0)
+		{
+			char	buf[BUFFER];
+			int	ret = read(m->pipefd[2 * (i - 1)], buf, BUFFER);
+			while (ret)
+				write(1, buf, BUFFER);
+			close(m->pipefd[2 * (i - 1)]);
+		}
+		if (n > 1 && i < n - 1)
+		{
+			if (dup2(m->pipefd[2 * i + 1], STDOUT_FILENO) == -1)
+			{
+				perror("dup2");
+				free_ss(m->args);
+				free_ss(m->coms);
+				free(m->pipefd);
+				exit(EXIT_FAILURE);
+			}
+			close(m->pipefd[2 * i + 1]);
+		}
+		return (echo(m, m->args));
+	}
 	else if (!ft_strncmp(m->args[0], "export", 7))
-		expt(m, m->args);
+		return (expt(m, m->args));
 	else if (!ft_strncmp(m->args[0], "pwd", 4))
 	{
 		if (getcwd(m->cwd, sizeof(m->cwd)))
@@ -62,7 +84,7 @@ int	builtins(t_m *m)
 		return (1);
 	}
 	else if (!ft_strncmp(m->args[0], "cd", 3))
-		cd(m, m->args[1]);
+		return (cd(m, m->args[1]));
 	else if (!ft_strncmp(m->args[0], "exit", 5))
 	{
 		free_ss(m->args);
@@ -107,7 +129,7 @@ int	pipes(char *s, t_m *m)
 	n = -1;
 	while (m->coms[++n])
 		;
-	//printf("n = %d\n", n);
+	printf("n = %d\n", n);
 	m->pipefd = 0;
 	if (n > 1)
 	{
@@ -123,66 +145,69 @@ int	pipes(char *s, t_m *m)
 	i = -1;
 	while (m->coms[++i])
 	{
+		printf("i = %d\n", i);
 		m->args = split_args(m->coms[i], m);
-		//m->args = ft_split(m->coms[i], ' ');
-		//if (n > 1)
-		//	printf("pipe = %d\n", m->pipefd[0]);
-		if (m->args[0])
+		printf("i = %d\n", i);
+		if (!builtins(m, i, n))
 		{
-		}
-		pid = fork();
-		if (pid == -1)
-		{
-			perror("fork error");
-			free_ss(m->args);
-			free_ss(m->coms);
-			free(m->pipefd);
-			return (0);
-		}
-		else if (!pid)
-		{
-			if (n > 1)
+			printf("fork\n");
+			pid = fork();
+			if (pid == -1)
 			{
-				j = -1;
-				while (++j < 2 * (n - 1))
-					if (!(i < n - 1 && j == 2 * i + 1) && !(i > 0 && j == 2 * (i - 1)))
-						close(m->pipefd[j]);
-				if (i < n - 1)
+				perror("fork error");
+				free_ss(m->args);
+				free_ss(m->coms);
+				free(m->pipefd);
+				return (0);
+			}
+			else if (!pid)
+			{
+				if (n > 1)
 				{
-					if (dup2(m->pipefd[2 * i + 1], STDOUT_FILENO) == -1)
+					j = -1;
+					while (++j < 2 * (n - 1))
+						if (!(i < n - 1 && j == 2 * i + 1) && !(i > 0 && j == 2 * (i - 1)))
+							close(m->pipefd[j]);
+					if (i < n - 1)
 					{
-						perror("dup2");
-						free_ss(m->args);
-						free_ss(m->coms);
-						free(m->pipefd);
-						exit(EXIT_FAILURE);
+						if (dup2(m->pipefd[2 * i + 1], STDOUT_FILENO) == -1)
+						{
+							perror("dup2");
+							free_ss(m->args);
+							free_ss(m->coms);
+							free(m->pipefd);
+							exit(EXIT_FAILURE);
+						}
+						close(m->pipefd[2 * i + 1]);
 					}
-					close(m->pipefd[2 * i + 1]);
+					if (i > 0)
+					{
+						if (dup2(m->pipefd[2 * (i - 1)], STDIN_FILENO) == -1)
+						{
+							perror("dup2");
+							free_ss(m->args);
+							free_ss(m->coms);
+							free(m->pipefd);
+							exit(EXIT_FAILURE);
+						}
+						close(m->pipefd[2 * (i - 1)]);
+					}
 				}
+				command(m);
+			}
+			else
+			{
 				if (i > 0)
 				{
-					if (dup2(m->pipefd[2 * (i - 1)], STDIN_FILENO) == -1)
-					{
-						perror("dup2");
-						free_ss(m->args);
-						free_ss(m->coms);
-						free(m->pipefd);
-						exit(EXIT_FAILURE);
-					}
 					close(m->pipefd[2 * (i - 1)]);
+					close(m->pipefd[2 * (i - 1) + 1]);
 				}
+				printf("wait\n");
+				waitpid(pid, &m->exit_code, 0);
 			}
-			command(m);
 		}
-		else
-		{
-			if (i > 0)
-			{
-				close(m->pipefd[2 * (i - 1)]);
-				close(m->pipefd[2 * (i - 1) + 1]);
-			}
-			waitpid(pid, &m->exit_code, 0);
-		}
+		//else if (i > 0)
+		//	close(m->pipefd[2 * (i - 1)]);
 		free_ss(m->args);
 	}
 	if (m->pipefd)

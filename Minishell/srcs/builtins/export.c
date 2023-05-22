@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/17 12:15:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/20 20:23:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	chr_pos(char *s, char c)
 	return (-1);
 }
 
-void	expt(t_m *m, char **args)
+int	expt(t_m *m, char **args)
 {
 	int	i;
 	int	j;
@@ -54,4 +54,5 @@ void	expt(t_m *m, char **args)
 	//	free(m->pipefd);
 	//ft_lstclear(&m->infix, free);
 	m->exit_code = 0;
+	return (1);
 }
