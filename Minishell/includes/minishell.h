@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/19 19:55:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/28 08:26:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ void	wildcards(char *s, t_list **args, t_m *m);
 int	pipes(char *s, t_m *m);
 void	free_m(t_m *m);
 int	isenv(char c);
+int	builtins(t_m *m, int i, int n);
+void	process(t_m *m, int i, int n);
 
 #endif

@@ -6,117 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/21 19:36:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/28 08:27:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-static char	*check_file(char *file)
-{
-	char	*path;
-	char	**ss;
-	char	**ss0;
-	char	*s;
-
-	path = getenv("PATH");
-	if (!path)
-		return (0);
-	ss = ft_split(path, ':');
-	ss0 = ss;
-	while (*ss)
-	{
-		s = 0;
-		s = strjoinm(s, *ss, 0, ft_strlen(*ss));
-		s = strjoinm(s, "/", ft_strlen(s), 1);
-		s = strjoinm(s, file, ft_strlen(s), ft_strlen(file));
-		if (access(s, F_OK) != -1)
-		{
-			free_ss(ss0);
-			return (s);
-		}
-		ss++;
-		free(s);
-	}
-	free_ss(ss0);
-	return (0);
-}
-# define BUFFER 100
-int	builtins(t_m *m, int i, int n)
-{
-	if (!ft_strncmp(m->args[0], "echo", 5))
-	{
-		if (i > 0)
-		{
-			char	buf[BUFFER];
-			int	ret = read(m->pipefd[2 * (i - 1)], buf, BUFFER);
-			while (ret)
-				write(1, buf, BUFFER);
-			close(m->pipefd[2 * (i - 1)]);
-		}
-		if (n > 1 && i < n - 1)
-		{
-			if (dup2(m->pipefd[2 * i + 1], STDOUT_FILENO) == -1)
-			{
-				perror("dup2");
-				free_ss(m->args);
-				free_ss(m->coms);
-				free(m->pipefd);
-				exit(EXIT_FAILURE);
-			}
-			close(m->pipefd[2 * i + 1]);
-		}
-		return (echo(m, m->args));
-	}
-	else if (!ft_strncmp(m->args[0], "export", 7))
-		return (expt(m, m->args));
-	else if (!ft_strncmp(m->args[0], "pwd", 4))
-	{
-		if (getcwd(m->cwd, sizeof(m->cwd)))
-		{
-			ft_putstr_fd(m->cwd, 1);
-			write(1, "\n", 1);
-			m->exit_code = 0;
-			return (1);
-		}
-		perror("getcwd() error");
-		m->exit_code = 1;
-		return (1);
-	}
-	else if (!ft_strncmp(m->args[0], "cd", 3))
-		return (cd(m, m->args[1]));
-	else if (!ft_strncmp(m->args[0], "exit", 5))
-	{
-		free_ss(m->args);
-		free_ss(m->coms);
-		if (m->pipefd)
-			free(m->pipefd);
-		ft_lstclear(&m->infix, free);
-		add_history(m->s);
-		rl_free(m->s);
-		exit(m->exit_code);
-	}
-	return (0);
-}
-
-int	command(t_m *m)
-{
-	char	*file;
-
-	file = check_file(m->args[0]);
-	if (!file)
-		file = ft_strdup(m->args[0]);
-	execve(file, m->args, m->env);
-	perror(file);
-	free(file);
-	free_ss(m->args);
-	free_ss(m->coms);
-	rl_free(m->s);
-	if (m->pipefd)
-		free(m->pipefd);
-	ft_lstclear(&m->infix, free);
-	exit(127);
-}
 
 int	pipes(char *s, t_m *m)
 {
@@ -149,63 +43,7 @@ int	pipes(char *s, t_m *m)
 		m->args = split_args(m->coms[i], m);
 		printf("i = %d\n", i);
 		if (!builtins(m, i, n))
-		{
-			printf("fork\n");
-			pid = fork();
-			if (pid == -1)
-			{
-				perror("fork error");
-				free_ss(m->args);
-				free_ss(m->coms);
-				free(m->pipefd);
-				return (0);
-			}
-			else if (!pid)
-			{
-				if (n > 1)
-				{
-					j = -1;
-					while (++j < 2 * (n - 1))
-						if (!(i < n - 1 && j == 2 * i + 1) && !(i > 0 && j == 2 * (i - 1)))
-							close(m->pipefd[j]);
-					if (i < n - 1)
-					{
-						if (dup2(m->pipefd[2 * i + 1], STDOUT_FILENO) == -1)
-						{
-							perror("dup2");
-							free_ss(m->args);
-							free_ss(m->coms);
-							free(m->pipefd);
-							exit(EXIT_FAILURE);
-						}
-						close(m->pipefd[2 * i + 1]);
-					}
-					if (i > 0)
-					{
-						if (dup2(m->pipefd[2 * (i - 1)], STDIN_FILENO) == -1)
-						{
-							perror("dup2");
-							free_ss(m->args);
-							free_ss(m->coms);
-							free(m->pipefd);
-							exit(EXIT_FAILURE);
-						}
-						close(m->pipefd[2 * (i - 1)]);
-					}
-				}
-				command(m);
-			}
-			else
-			{
-				if (i > 0)
-				{
-					close(m->pipefd[2 * (i - 1)]);
-					close(m->pipefd[2 * (i - 1) + 1]);
-				}
-				printf("wait\n");
-				waitpid(pid, &m->exit_code, 0);
-			}
-		}
+			process(m, i, n);
 		//else if (i > 0)
 		//	close(m->pipefd[2 * (i - 1)]);
 		free_ss(m->args);
