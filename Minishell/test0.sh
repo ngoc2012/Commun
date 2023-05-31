@@ -304,6 +304,8 @@ ls *: command not found
 
 ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ export a=10 | wc
       0       0       0
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo $a
+
 ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ bash
 ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ export a=10 | wc
       0       0       0
@@ -318,4 +320,6 @@ ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ exit | wc
       0       0       0
 ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$
 
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo a | echo b | cat
+b
 

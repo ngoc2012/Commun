@@ -6,12 +6,16 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/28 08:27:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/30 18:33:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/*
+Execute a command with or without pipe.
+A command is a string between between || ; and &&.
+*/
 int	pipes(char *s, t_m *m)
 {
 	int		i;
@@ -23,7 +27,7 @@ int	pipes(char *s, t_m *m)
 	n = -1;
 	while (m->coms[++n])
 		;
-	printf("n = %d\n", n);
+	//printf("n = %d\n", n);
 	m->pipefd = 0;
 	if (n > 1)
 	{
@@ -39,13 +43,10 @@ int	pipes(char *s, t_m *m)
 	i = -1;
 	while (m->coms[++i])
 	{
-		printf("i = %d\n", i);
+		//printf("i = %d\n", i);
 		m->args = split_args(m->coms[i], m);
-		printf("i = %d\n", i);
 		if (!builtins(m, i, n))
 			process(m, i, n);
-		//else if (i > 0)
-		//	close(m->pipefd[2 * (i - 1)]);
 		free_ss(m->args);
 	}
 	if (m->pipefd)

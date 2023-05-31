@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:08:19 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/25 14:54:25 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/05/30 12:08:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strdup(const char *src);
 t_list	*ft_lstlast(t_list *lst);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+void	ft_lstremove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*del)(void *));
 
 #endif

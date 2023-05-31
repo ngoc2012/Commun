@@ -6,56 +6,51 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/28 14:33:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/30 17:43:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-# define BUFFER 100
-int	check_builtins(t_m *m, int i, int n)
-{
-	if (!ft_strncmp(m->args[0], "export", 7))
-		return (1);
-	else if (!ft_strncmp(m->args[0], "cd", 3))
-		return (1);
-	else if (!ft_strncmp(m->args[0], "exit", 5))
-		return (1);
-	return (0);
-}
-
+/*
+Execute a built-in command elementary
+*/
 int	builtins(t_m *m, int i, int n)
 {
 	if (!ft_strncmp(m->args[0], "echo", 5))
 	{
-		if (i > 0)
-		{
-			char	buf[BUFFER];
-			int	ret = read(m->pipefd[2 * (i - 1)], buf, BUFFER);
-			while (ret)
-				write(1, buf, BUFFER);
-			close(m->pipefd[2 * (i - 1)]);
-		}
 		if (n > 1 && i < n - 1)
 		{
-			if (dup2(m->pipefd[2 * i + 1], STDOUT_FILENO) == -1)
-			{
-				perror("dup2");
-				free_ss(m->args);
-				free_ss(m->coms);
-				free(m->pipefd);
-				exit(EXIT_FAILURE);
-			}
-			close(m->pipefd[2 * i + 1]);
+			if (i > 0)
+				close(m->pipefd[2 * (i - 1)]);
+			return (echo(m, m->args, m->pipefd[2 * i + 1]));
 		}
-		return (echo(m, m->args));
+		if (n > 1)
+			close(m->pipefd[2 * (i - 1)]);
+		return (echo(m, m->args, 1));
 	}
 	else if (!ft_strncmp(m->args[0], "export", 7))
-		return (expt(m, m->args));
+	{
+		if (n > 1)
+			return (1);
+		else
+			return (expt(m, m->args));
+	}
 	else if (!ft_strncmp(m->args[0], "pwd", 4))
 	{
 		if (getcwd(m->cwd, sizeof(m->cwd)))
 		{
+			if (n > 1 && i < n - 1)
+			{
+				if (i > 0)
+					close(m->pipefd[2 * (i - 1)]);
+				ft_putstr_fd(m->cwd, m->pipefd[2 * i + 1]);
+				write(m->pipefd[2 * i + 1], "\n", 1);
+				close(m->pipefd[2 * i + 1]);
+				return (1);
+			}
+			if (n > 1)
+				close(m->pipefd[2 * (i - 1)]);
 			ft_putstr_fd(m->cwd, 1);
 			write(1, "\n", 1);
 			m->exit_code = 0;
@@ -66,14 +61,22 @@ int	builtins(t_m *m, int i, int n)
 		return (1);
 	}
 	else if (!ft_strncmp(m->args[0], "cd", 3))
-		return (cd(m, m->args[1]));
+	{
+		if (n > 1)
+			return (1);
+		else
+			return (cd(m, m->args[1]));
+	}
 	else if (!ft_strncmp(m->args[0], "exit", 5))
 	{
+		if (n > 1)
+			return (1);
 		free_ss(m->args);
 		free_ss(m->coms);
 		if (m->pipefd)
 			free(m->pipefd);
 		ft_lstclear(&m->infix, free);
+		ft_lstclear(&m->envs, free);
 		add_history(m->s);
 		rl_free(m->s);
 		exit(m->exit_code);

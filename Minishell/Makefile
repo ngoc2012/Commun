@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/05/28 08:21:46 by ngoc             ###   ########.fr        #
+#    Updated: 2023/05/30 18:39:29 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c commands.c args.c strjoinm.c exec.c wildcards.c process.c builtins/echo.c builtins/dir.c builtins/env.c builtins/export.c builtins/builtin.c
+SRCS = main.c commands.c args.c strjoinm.c exec.c wildcards.c process.c redir.c builtins/echo.c builtins/dir.c builtins/env.c builtins/export.c builtins/builtin.c
 MSRC = $(addprefix srcs/, $(SRCS))
 MOBJ = ${MSRC:.c=.o}
 MANDA = minishell

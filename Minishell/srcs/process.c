@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/28 08:27:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/29 21:23:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	process(t_m *m, int i, int n)
 	int		j;
 	pid_t	pid;
 
-	printf("fork\n");
+	//printf("fork\n");
 	pid = fork();
 	if (pid == -1)
 	{

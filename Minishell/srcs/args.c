@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/16 20:09:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/30 22:21:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,6 @@ t_list	*args_list(char *s, t_m *m)
 			wild = 1;
 			i++;
 		}
-		//else if (ft_strchr("<>", s[i]))
-		//{
-		//	i++;
-		//	if (ft_strchr("<>", s[i]))
-		//		else
-		//}
 		else if (ft_strchr("\"'", s[i]))
 		{
 			d = s[i];
@@ -132,6 +126,7 @@ char	**split_args(char *s, t_m *m)
 	s_env = str_env(s, ft_strlen(s), m);
 	args = args_list(s_env, m);
 	free(s_env);
+	redir(args, m);
 	ss = malloc(sizeof(char *) * (ft_lstsize(args) + 1));
 	if (!ss)
 		return (0);
@@ -139,9 +134,34 @@ char	**split_args(char *s, t_m *m)
 	ss0 = ss;
 	while (args)
 	{
-		*ss = (char *)args->content;
-		args = args->next;
-		ss++;
+		if (args->content[0] == '>')
+		{
+			char	*s0;
+			args = args->next;
+			if (args->content)
+				s0 = args->content[1];
+			else
+			{
+				if (!args->next)
+					exit(EXIT_FAILURE);
+				else
+					s0 = args->next->content;
+
+			}
+			//if (m->fout != -1)
+			//	close(m->fout);
+			m->fout = open(s0, O_CREAT | O_WRONLY | O_TRUNC);
+			if (m->fout == -1)
+				exit(EXIT_FAILURE);
+			dup2(m->fout, STDOUT_FILENO);
+			close(m->fout);
+		}
+		else
+		{
+			*ss = (char *)args->content;
+			args = args->next;
+			ss++;
+		}
 	}
 	ft_lstclear(&args0, free_none);
 	*ss = 0;

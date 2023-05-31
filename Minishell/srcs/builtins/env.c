@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/16 16:04:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/30 14:37:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,20 @@
 int	isenv(char c)
 {
 	return (ft_isalnum(c) || c == '_');
+}
+
+char	*get_env(char *s, t_m *m)
+{
+	t_list *cur;
+
+	cur = m->envs;
+	while (cur)
+	{
+		if (!ft_strdcmp(cur->content, s))
+			return (&cur->content[chr_pos(cur->content, '=') + 1]);
+		cur = cur->next;
+	}
+	return (getenv(s));
 }
 
 char	*str_env(char *s, int len, t_m *m)
@@ -62,7 +76,7 @@ char	*str_env(char *s, int len, t_m *m)
 			while (s[i] && i < len && isenv(s[i]))
 				i++;
 			s0 = ft_strndup(&s[i0], i - i0);
-			s1 = getenv(s0);
+			s1 = get_env(s0, m);
 			o = strjoinm(o, s1, ft_strlen(o), ft_strlen(s1));
 			free(s0);
 			i0 = i;

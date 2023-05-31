@@ -6,12 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/17 08:08:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/30 22:15:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+// Free array of strings
 void	free_ss(char **ss)
 {
 	char	**ss0;
@@ -24,6 +25,10 @@ void	free_ss(char **ss)
 	free(ss0);
 }
 
+/*
+Parse the () in command line to choose the command to execute.
+A command is a string between between || ; and &&.
+*/
 void	eval_com(t_list *p, t_m *m)
 {
 	t_list	*i;
@@ -112,11 +117,10 @@ int	main(int argc, char **argv, char **env)
 	m.args = 0;
 	m.infix = 0;
 	m.pipefd = 0;
-	m.right = 0;
-	m.left = 0;
-	m.right2 = 0;
-	m.left2 = 0;
 	m.env = env;
+	m.envs = 0;
+	m.in = -1;
+	m.out = -1;
 	char	*com;
 	while (1) {
 		com = readline("minishell$ ");
@@ -137,7 +141,6 @@ int	main(int argc, char **argv, char **env)
 					com = readline("> ");
 					m.s = strjoinm(m.s, com, ft_strlen(m.s), ft_strlen(com));
 				}
-				//ft_lstiter(infix, print_content);
 				eval_com(m.infix, &m);
 				ft_lstclear(&m.infix, free);
 				//if (!m.syntax_error && !command(s, &m))

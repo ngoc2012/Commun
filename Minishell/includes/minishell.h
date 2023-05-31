@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/28 08:26:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/30 22:15:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,13 @@ typedef struct	s_m
 	int		*pipefd;
 	char	cwd[PATH_MAX];
 	char	syntax_error;
-	char	*right;
-	char	*left;
-	char	*right2;
-	char	*left2;
 	t_list	*infix;
 	t_list	*envs;
+	int	fin;
+	int	fout;
 }	t_m;
 
-int	echo(t_m *m, char **args);
+int	echo(t_m *m, char **args, int fd);
 int	expt(t_m *m, char **args);
 char	*strjoinm(char *des, char *src, int len_des, int buffer);
 void	pwd(t_m *m);
@@ -54,7 +52,6 @@ char	*get_env_name(char *name, char **environ);
 char	*str_env(char *s, int len, t_m *m);
 int	split_ops(char *s, t_m *m);
 void	print_content(void *s);
-char	**split_args(char *s, t_m *m);
 void	free_ss(char **ss);
 void	free_none(void *);
 void	exec(t_m *m, char **args);
@@ -65,5 +62,9 @@ void	free_m(t_m *m);
 int	isenv(char c);
 int	builtins(t_m *m, int i, int n);
 void	process(t_m *m, int i, int n);
+int	ft_strdcmp(const char *s1, const char *s2);
+int	chr_pos(char *s, char c);
+char	**split_args(char *s, t_m *m);
+void	redir(t_list *args, t_m *m);
 
 #endif

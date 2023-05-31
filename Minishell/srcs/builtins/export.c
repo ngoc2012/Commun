@@ -6,11 +6,25 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/20 20:23:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/30 14:41:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	ft_strdcmp(const char *s1, const char *s2)
+{
+	if (!s1 || !s2)
+		return (0);
+	while (*s1 == *s2 && *s1 && *s2 && *s1 != '=' && *s2 != '=')
+	{
+		s1++;
+		s2++;
+	}
+	if ((!*s1 && *s2 == '=') || (!*s2 && *s1 == '='))
+		return (0);
+	return ((unsigned char) *s1 - (unsigned char) *s2);
+}
 
 int	chr_pos(char *s, char c)
 {
@@ -23,36 +37,40 @@ int	chr_pos(char *s, char c)
 	return (-1);
 }
 
+int	is_all_env(char *s, int p)
+{
+	int	i;
+
+	i = -1;
+	while (++i < p)
+		if (!isenv(s[i]))
+			return (0);
+	return (1);
+}
+
 int	expt(t_m *m, char **args)
 {
 	int	i;
 	int	j;
 	int	p;
-	int	is_env;
+	char	*s_env;
 
 	i = 0;
 	while (args[++i])
 	{
-		is_env = 1;
 		p = chr_pos(args[i], '=');
 		if (p > 0)
 		{
-			j = -1;
-			while (++j < p)
-				if (!isenv(args[i][j]))
-					is_env = 0;
-			if (is_env)
+			if (is_all_env(args[i], p))
 			{
-				printf("%s, ", args[i]);
+				ft_lstremove_if(&m->envs, args[i], ft_strdcmp, free);
+				s_env = str_env(args[i], ft_strlen(args[i]), m);
+				ft_lstadd_back(&m->envs, ft_lstnew(s_env));
+				//ft_lstiter(m->envs, print_content);
+				//printf(";");
 			}
 		}
 	}
-	//free_ss(m->args);
-	//free_ss(m->coms);
-	//rl_free(m->s);
-	//if (m->pipefd)
-	//	free(m->pipefd);
-	//ft_lstclear(&m->infix, free);
 	m->exit_code = 0;
 	return (1);
 }
