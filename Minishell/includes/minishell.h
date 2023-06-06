@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/30 22:15:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/03 23:05:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # include <sys/wait.h>
 # include "ft_printf.h"
 # include "libft.h"
+# include <sys/stat.h>
+# include <fcntl.h>
+
 
 // define HOME "/mnt/nfs/homes/"
 # define HOME "/home/"

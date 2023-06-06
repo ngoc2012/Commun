@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/30 18:33:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/04 12:17:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ int	pipes(char *s, t_m *m)
 	if (m->pipefd)
 		free(m->pipefd);
 	free_ss(m->coms);
+	if (m->fout != 1)
+	{
+		printf("close %d\n", m->fout);
+		close(m->fout);
+	}
+	m->fout = 1;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/30 22:21:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/04 12:19:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,27 +134,31 @@ char	**split_args(char *s, t_m *m)
 	ss0 = ss;
 	while (args)
 	{
-		if (args->content[0] == '>')
+		if (((char *)args->content)[0] == '>')
 		{
 			char	*s0;
-			args = args->next;
-			if (args->content)
-				s0 = args->content[1];
+			if (((char *)args->content)[1])
+				s0 = &((char *) args->content)[1];
 			else
 			{
 				if (!args->next)
 					exit(EXIT_FAILURE);
-				else
-					s0 = args->next->content;
+				free(args->content);
+				args = args->next;
+				s0 = (char *) args->content;
 
 			}
-			//if (m->fout != -1)
-			//	close(m->fout);
+			if (m->fout != 1)
+			{
+				printf("close %d\n", m->fout);
+				close(m->fout);
+			}
 			m->fout = open(s0, O_CREAT | O_WRONLY | O_TRUNC);
+			printf("open %d\n", m->fout);
 			if (m->fout == -1)
 				exit(EXIT_FAILURE);
-			dup2(m->fout, STDOUT_FILENO);
-			close(m->fout);
+			free(args->content);
+			args = args->next;
 		}
 		else
 		{

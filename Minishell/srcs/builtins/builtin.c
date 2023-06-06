@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/30 17:43:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/04 01:19:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	builtins(t_m *m, int i, int n)
 		}
 		if (n > 1)
 			close(m->pipefd[2 * (i - 1)]);
-		return (echo(m, m->args, 1));
+		return (echo(m, m->args, m->fout));
 	}
 	else if (!ft_strncmp(m->args[0], "export", 7))
 	{
@@ -71,6 +71,8 @@ int	builtins(t_m *m, int i, int n)
 	{
 		if (n > 1)
 			return (1);
+		if (m->fout != 1)
+			close(m->fout);
 		free_ss(m->args);
 		free_ss(m->coms);
 		if (m->pipefd)
