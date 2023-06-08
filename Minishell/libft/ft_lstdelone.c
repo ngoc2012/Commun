@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 13:52:30 by minh-ngu          #+#    #+#             */
-/*   Updated: 2022/11/18 10:24:45 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/06/08 12:14:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	del(lst->content);
+	if (lst->content)
+		del(lst->content);
 	free(lst);
 }

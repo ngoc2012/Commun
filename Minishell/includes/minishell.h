@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/03 23:05:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/08 10:27:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ typedef struct	s_m
 	t_list	*infix;
 	t_list	*envs;
 	int	fin;
+	int	fin0;
 	int	fout;
+	int	fout0;
 }	t_m;
 
 int	echo(t_m *m, char **args, int fd);

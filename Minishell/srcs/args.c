@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/04 12:19:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/08 12:19:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ char	**split_args(char *s, t_m *m)
 	t_list	*args0;
 	t_list	*args;
 	char	*s_env;
+	char	*s0;
 
 	while (*s && ft_strchr(" \n", *s))
 		s++;
@@ -136,7 +137,6 @@ char	**split_args(char *s, t_m *m)
 	{
 		if (((char *)args->content)[0] == '>')
 		{
-			char	*s0;
 			if (((char *)args->content)[1])
 				s0 = &((char *) args->content)[1];
 			else
@@ -144,20 +144,77 @@ char	**split_args(char *s, t_m *m)
 				if (!args->next)
 					exit(EXIT_FAILURE);
 				free(args->content);
+				args->content = 0;
 				args = args->next;
 				s0 = (char *) args->content;
 
 			}
 			if (m->fout != 1)
 			{
-				printf("close %d\n", m->fout);
-				close(m->fout);
+				m->fout = 1;
+				dup2(m->fout0, STDOUT_FILENO);
+				close(m->fout0);
 			}
-			m->fout = open(s0, O_CREAT | O_WRONLY | O_TRUNC);
-			printf("open %d\n", m->fout);
+			m->fout = open(s0, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 			if (m->fout == -1)
 				exit(EXIT_FAILURE);
+			m->fout0 = dup(STDOUT_FILENO);
+			if (dup2(m->fout, STDOUT_FILENO) == -1)
+			{
+				perror("dup2");
+				free(args->content);
+				free_ss(m->args);
+				free_ss(m->coms);
+				free(m->pipefd);
+				exit(EXIT_FAILURE);
+			}
+			close(m->fout);
 			free(args->content);
+			args->content = 0;
+			args = args->next;
+		}
+		else if (((char *)args->content)[0] == '<')
+		{
+			if (((char *)args->content)[1])
+				s0 = &((char *) args->content)[1];
+			else
+			{
+				if (!args->next)
+					exit(EXIT_FAILURE);
+				free(args->content);
+				args->content = 0;
+				args = args->next;
+				s0 = (char *) args->content;
+
+			}
+			if (m->fin)
+			{
+				m->fin = 0;
+				dup2(m->fin0, STDIN_FILENO);
+				close(m->fin0);
+			}
+			m->fin = open(s0, O_RDONLY);
+			if (m->fin == -1)
+			{
+				perror("open");
+				m->fin = 0;
+				free(ss0);
+				ft_lstclear(&args0, free);
+				return (0);
+			}
+			m->fin0 = dup(STDIN_FILENO);
+			if (dup2(m->fin, STDIN_FILENO) == -1)
+			{
+				perror("dup2");
+				free(args->content);
+				free_ss(m->args);
+				free_ss(m->coms);
+				free(m->pipefd);
+				exit(EXIT_FAILURE);
+			}
+			close(m->fin);
+			free(args->content);
+			args->content = 0;
 			args = args->next;
 		}
 		else
