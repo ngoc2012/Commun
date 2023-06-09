@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/08 12:19:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/08 16:08:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,10 +135,51 @@ char	**split_args(char *s, t_m *m)
 	ss0 = ss;
 	while (args)
 	{
-		if (((char *)args->content)[0] == '>')
+		if (!ft_strncmp(">>", (char *)args->content))
 		{
-			if (((char *)args->content)[1])
-				s0 = &((char *) args->content)[1];
+			if (ft_strchr("<>|", ((char *)args->content)[2]))
+			{
+				perror("syntaxe");
+				free(ss0);
+				ft_lstclear(&args0, free);
+				return (0);
+			}
+			if (((char *)args->content)[2])
+				s0 = &((char *) args->content)[2];
+			else
+			{
+				if (!args->next)
+					exit(EXIT_FAILURE);
+				free(args->content);
+				args->content = 0;
+				args = args->next;
+				s0 = (char *) args->content;
+			}
+			if (m.heredoc)
+			{
+				free(m.heredoc);
+				m.heredoc = 0;
+			}
+			while (1)
+			{
+				com = readline("> ");
+				if (!ft_strncmp(com, s0, ft_strlen(s0) + 1))
+					m.heredoc = strjoinm(m.heredoc, com, ft_strlen(m->heredoc), ft_strlen(com));
+				m.heredoc = strjoinm(m.heredoc, "\n", ft_strlen(m.heredoc), 1);
+			}
+		}
+		else if (((char *)args->content)[0] == '>')
+		{
+			int	append = 0;
+			int	i = 1;
+
+			if (((char *)args->content)[1] == '>')
+			{
+				append = 1;
+				i++;
+			}
+			if (((char *)args->content)[i])
+				s0 = &((char *) args->content)[i];
 			else
 			{
 				if (!args->next)
@@ -155,7 +196,10 @@ char	**split_args(char *s, t_m *m)
 				dup2(m->fout0, STDOUT_FILENO);
 				close(m->fout0);
 			}
-			m->fout = open(s0, O_CREAT | O_WRONLY | O_TRUNC, 0664);
+			if (append)
+				m->fout = open(s0, O_CREAT | O_WRONLY | O_APPEND, 0664);
+			else
+				m->fout = open(s0, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 			if (m->fout == -1)
 				exit(EXIT_FAILURE);
 			m->fout0 = dup(STDOUT_FILENO);
@@ -224,6 +268,8 @@ char	**split_args(char *s, t_m *m)
 			ss++;
 		}
 	}
+	if (m->heredoc)
+		write(0, m->heredoc, ft_strlen(m->heredoc));
 	ft_lstclear(&args0, free_none);
 	*ss = 0;
 	return (ss0);

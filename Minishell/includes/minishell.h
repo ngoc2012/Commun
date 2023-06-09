@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/08 10:27:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/08 15:37:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct	s_m
 	char	syntax_error;
 	t_list	*infix;
 	t_list	*envs;
+	char	*heredoc;
 	int	fin;
 	int	fin0;
 	int	fout;
