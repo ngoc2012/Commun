@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/10 08:35:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/10 16:15:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 
 // define HOME "/mnt/nfs/homes/"
 # define HOME "/home/"
+# define BUFFER_SIZE 100
 
 typedef struct	s_m
 {
