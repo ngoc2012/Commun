@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/08 12:00:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/10 09:20:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	pipes(char *s, t_m *m)
 		dup2(m->fout0, STDOUT_FILENO);
 		close(m->fout0);
 	}
+	if (m->heredocf)
+		free(m->heredocf);
 	if (m->fin)
 	{
 		m->fin = 0;

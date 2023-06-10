@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/08 16:08:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/10 09:18:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,9 +135,10 @@ char	**split_args(char *s, t_m *m)
 	ss0 = ss;
 	while (args)
 	{
-		if (!ft_strncmp(">>", (char *)args->content))
+		if (!ft_strncmp("<<", (char *)args->content, 2))
 		{
-			if (ft_strchr("<>|", ((char *)args->content)[2]))
+			//printf("heredoc |%c|\n", ((char *)args->content)[2]);
+			if (((char *)args->content)[2] && ft_strchr("<>|", ((char *)args->content)[2]))
 			{
 				perror("syntaxe");
 				free(ss0);
@@ -155,18 +156,58 @@ char	**split_args(char *s, t_m *m)
 				args = args->next;
 				s0 = (char *) args->content;
 			}
-			if (m.heredoc)
+			if (m->heredoc)
 			{
-				free(m.heredoc);
-				m.heredoc = 0;
+				free(m->heredoc);
+				m->heredoc = 0;
 			}
 			while (1)
 			{
+				char	*com;
 				com = readline("> ");
 				if (!ft_strncmp(com, s0, ft_strlen(s0) + 1))
-					m.heredoc = strjoinm(m.heredoc, com, ft_strlen(m->heredoc), ft_strlen(com));
-				m.heredoc = strjoinm(m.heredoc, "\n", ft_strlen(m.heredoc), 1);
+					break ;
+				m->heredoc = strjoinm(m->heredoc, com, ft_strlen(m->heredoc), ft_strlen(com));
+				m->heredoc = strjoinm(m->heredoc, "\n", ft_strlen(m->heredoc), 1);
 			}
+			printf("%s", m->heredoc);
+			free(m->heredoc);
+			m->heredoc = 0;
+			free(args->content);
+			args->content = 0;
+			args = args->next;
+			int i = 0;
+			m->heredocf = ft_itoa(i);
+			m->fin = open(m->heredocf, O_CREAT | O_WRONLY | O_TRUNC, 0664);
+			while (m->fin == -1)
+			{
+				free(m->heredocf);
+				m->heredocf = ft_atoi(++i);
+				m->fin = open(m->heredocf, O_CREAT | O_WRONLY | O_TRUNC, 0664);
+			}
+			write(m->fin, m->heredoc, ft_strlen(m->heredoc));
+			close(m->fin);
+			//m->fin = 0;
+			//m->fin = open(m->heredocf, O_RDONLY);
+			//if (m->fin == -1)
+			//{
+			//	perror("open");
+			//	m->fin = 0;
+			//	free(ss0);
+			//	ft_lstclear(&args0, free);
+			//	return (0);
+			//}
+			//m->fin0 = dup(STDIN_FILENO);
+			//if (dup2(m->fin, STDIN_FILENO) == -1)
+			//{
+			//	perror("dup2");
+			//	free(args->content);
+			//	free_ss(m->args);
+			//	free_ss(m->coms);
+			//	free(m->pipefd);
+			//	exit(EXIT_FAILURE);
+			//}
+			//close(m->fin);
 		}
 		else if (((char *)args->content)[0] == '>')
 		{

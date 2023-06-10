@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/08 15:37:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/10 08:36:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int	main(int argc, char **argv, char **env)
 	m.fout = 1;
 	m.fin = 0;
 	m.heredoc = 0;
+	m.heredocf = 0;
 	char	*com;
 	while (1) {
 		com = readline("minishell$ ");
