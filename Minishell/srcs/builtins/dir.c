@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/07 09:08:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/11 09:11:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int	cd(t_m *m, char *path)
 	char	*p;
 
 	if (!path)
-		p = get_home();
+		p = ft_strdup(get_home());
 	else if (*path == '~')
 	{
-		p = get_home();
+		p = ft_strdup(get_home());
 		p = strjoinm(p, &path[1], ft_strlen(p), ft_strlen(&path[1]));
 	}
 	else if (!ft_strncmp(path, "./", 2))

@@ -6,7 +6,6 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/10 19:33:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,28 +127,34 @@ int	main(int argc, char **argv, char **env)
 	//	return (m.exit_code);
 	//}
 	//printf("hehe\n");
-	// Clears the terminal screen
-	//struct termios term;
-	//tcgetattr(STDIN_FILENO, &term);
-	//printf("\033[2J\033[1;1H");
-	//tcsetattr(STDIN_FILENO, TCSANOW, &term);
 
-	m.fin = open(STDOUT_FILENO, O_RDONLY);
-	char	buffer[BUFFER_SIZE + 1];
-	int	ret = read(m.fin, buffer, BUFFER_SIZE);
-	if (ret)
+	//m.fin = open(STDOUT_FILENO, O_RDONLY);
+	if (!isatty(STDIN_FILENO))
 	{
+		char	buffer[BUFFER_SIZE + 1];
+		int	ret = read(STDIN_FILENO, buffer, BUFFER_SIZE);
 		m.s = 0;
 		m.s = strjoinm(m.s, buffer, 0, ret);
 		while (ret)
 		{
-			ret = read(m.fin, buffer, BUFFER_SIZE);
+			ret = read(STDIN_FILENO, buffer, BUFFER_SIZE);
 			if (ret)
-				m.s = strjoinm(m.s, com, ft_strlen(m.s), ft_strlen(com));
+				m.s = strjoinm(m.s, buffer, ft_strlen(m.s), ret);
 		}
+		split_ops(m.s, &m);
+		eval_com(m.infix, &m);
+		ft_lstclear(&m.infix, free);
+		free(m.s);
+		return (m.exit_code);
 	}
+	//close(STDIN_FILENO);
 
-	m.fin = 0;
+	// Clears the terminal screen
+	struct termios term;
+	tcgetattr(STDIN_FILENO, &term);
+	printf("\033[2J\033[1;1H");
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
+
 	char	*com;
 	while (1) {
 		com = readline("minishell$ ");
