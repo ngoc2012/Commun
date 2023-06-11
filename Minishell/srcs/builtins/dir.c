@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/11 09:11:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/11 19:44:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,6 @@ char	*get_home()
 	u = getenv("HOME");
 	if (!u)
 		return ("/");
-	//u = getenv("USER");
-	//if (!u)
-	//	return (0);
-	//p = 0;
-	//p = strjoinm(p, HOME, 0, ft_strlen(HOME));
-	//if (!p)
-	//	return (0);
-	//p = strjoinm(p, u, ft_strlen(p), ft_strlen(u));
-	//return (p);
 }
 
 int	cd(t_m *m, char *path)
@@ -44,6 +35,9 @@ int	cd(t_m *m, char *path)
 	{
 		p = ft_strdup(get_home());
 		p = strjoinm(p, &path[1], ft_strlen(p), ft_strlen(&path[1]));
+	}
+	else if (!ft_strncmp(path, ".", 2))
+	{
 	}
 	else if (!ft_strncmp(path, "./", 2))
 	{
