@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/11 19:44:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/11 20:22:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,26 @@ char	*get_home()
 	u = getenv("HOME");
 	if (!u)
 		return ("/");
+	return (u);
+}
+
+int	get_path(char *s)
+{
+	m->cwd = s;
+	if (chdir(s))
+	{
+		//s = 0;
+		//s = strjoinm(s, "minishell: cd: ", 0, 15);
+		//s = strjoinm(s, p, ft_strlen(s), ft_strlen(p));
+		//perror(s);
+		//free(s);
+		perror("minishell: cd: ");
+		//free(p);
+		m->exit_code = 0;
+		return (0);
+	}
+	m->exit_code = 0;
+	return (1);
 }
 
 int	cd(t_m *m, char *path)
@@ -30,8 +50,8 @@ int	cd(t_m *m, char *path)
 	char	*p;
 
 	if (!path)
-		p = ft_strdup(get_home());
-	else if (*path == '~')
+		return (get_path(ft_strdup(get_home())));
+	if (*path == '~')
 	{
 		p = ft_strdup(get_home());
 		p = strjoinm(p, &path[1], ft_strlen(p), ft_strlen(&path[1]));
@@ -92,18 +112,5 @@ int	cd(t_m *m, char *path)
 	else
 		p = ft_strdup(path);
 	//printf("dir.c:|%s|\n", p);
-	if (chdir(p))
-	{
-		s = 0;
-		s = strjoinm(s, "minishell: cd: ", 0, 15);
-		s = strjoinm(s, p, ft_strlen(s), ft_strlen(p));
-		perror(s);
-		free(s);
-		free(p);
-		m->exit_code = 0;
-		return (0);
-	}
-	free(p);
-	m->exit_code = 0;
-	return (1);
+	return (get_path(p));
 }

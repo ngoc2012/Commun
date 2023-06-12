@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/10 16:15:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/11 20:11:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-
-// define HOME "/mnt/nfs/homes/"
-# define HOME "/home/"
 # define BUFFER_SIZE 100
 
 typedef struct	s_m
@@ -39,7 +36,7 @@ typedef struct	s_m
 	char	**args;
 	int		exit_code;
 	int		*pipefd;
-	char	cwd[PATH_MAX];
+	char	*cwd;
 	char	syntax_error;
 	t_list	*infix;
 	t_list	*envs;
@@ -74,5 +71,6 @@ int	ft_strdcmp(const char *s1, const char *s2);
 int	chr_pos(char *s, char c);
 char	**split_args(char *s, t_m *m);
 void	redir(t_list *args, t_m *m);
+char	*get_home();
 
 #endif

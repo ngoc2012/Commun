@@ -113,6 +113,8 @@ int	main(int argc, char **argv, char **env)
 	m.fin = 0;
 	m.heredoc = 0;
 	m.heredocf = 0;
+	m.cwd = 0;
+
 	//if (argc > 1)
 	//{
 	//	printf("haha\n");
@@ -187,5 +189,6 @@ int	main(int argc, char **argv, char **env)
 			}
 		}
 	}
+	free(m.cwd);
 	return (m.exit_code);
 }
