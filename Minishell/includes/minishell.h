@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/11 20:11:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/14 11:14:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include "libft.h"
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <dirent.h>
 
 # define BUFFER_SIZE 100
 
@@ -35,8 +36,8 @@ typedef struct	s_m
 	char	**coms;
 	char	**args;
 	int		exit_code;
-	int		*pipefd;
-	char	*cwd;
+	int		pipefd[2];
+	char	cwd[PATH_MAX];
 	char	syntax_error;
 	t_list	*infix;
 	t_list	*envs;

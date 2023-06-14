@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/10 10:48:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/14 16:07:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,11 @@ int	pipes(char *s, t_m *m)
 	int		n;
 	pid_t	pid;
 
+	//printf("s = %s\n", s);
 	m->coms = ft_split(s, '|');
 	n = -1;
 	while (m->coms[++n])
 		;
-	//printf("n = %d\n", n);
-	m->pipefd = 0;
-	if (n > 1)
-	{
-		m->pipefd = malloc((n - 1) * 2 * sizeof(int));
-		i = -1;
-		while (++i < n - 1)
-			if (pipe(&m->pipefd[2 * i]) == -1)
-			{
-				perror("pipe");
-				exit(EXIT_FAILURE);
-			}
-	}
 	i = -1;
 	while (m->coms[++i])
 	{
@@ -50,14 +38,14 @@ int	pipes(char *s, t_m *m)
 			free_ss(m->args);
 			break ;
 		}
+		pipe(m->pipefd);
 		if (!builtins(m, i, n))
 			process(m, i, n);
 		free_ss(m->args);
 	}
-	if (m->pipefd)
-		free(m->pipefd);
 	free_ss(m->coms);
-	if (m->fout != 1)
+	//printf("fout = %d\n", m->fout);
+	if (m->fout != 1 && m->fout)
 	{
 		m->fout = 1;
 		dup2(m->fout0, STDOUT_FILENO);

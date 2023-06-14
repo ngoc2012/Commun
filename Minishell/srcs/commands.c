@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/17 08:07:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/14 14:40:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,10 @@ int	split_ops(char *s, t_m *m)
 	//while (ft_strchr(" \n\t", s[i - 1]))
 	//	i--;
 	if (i > i0)
+	{
+		//printf("&s[i0] = |%s|\n", &s[i0]);
 		ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[i0], i - i0)));
+	}
 	if (n_o != n_c)
 		return (0);
 	return (1);

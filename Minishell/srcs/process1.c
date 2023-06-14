@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process.c                                          :+:      :+:    :+:   */
+/*   process1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/14 15:58:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/05/29 21:23:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int	command(t_m *m)
 	free_ss(m->args);
 	free_ss(m->coms);
 	rl_free(m->s);
-	//if (m->pipefd)
-	//	free(m->pipefd);
+	if (m->pipefd)
+		free(m->pipefd);
 	ft_lstclear(&m->infix, free);
 	exit(127);
 }
@@ -73,49 +73,51 @@ void	process(t_m *m, int i, int n)
 		perror("fork error");
 		free_ss(m->args);
 		free_ss(m->coms);
-		//free(m->pipefd);
-		return ;
+		free(m->pipefd);
+		return (0);
 	}
 	else if (!pid)
 	{
 		if (n > 1)
 		{
+			j = -1;
+			while (++j < 2 * (n - 1))
+				if (!(i < n - 1 && j == 2 * i + 1) && !(i > 0 && j == 2 * (i - 1)))
+					close(m->pipefd[j]);
 			if (i < n - 1)
 			{
-				if (!i)
-					close(m->pipefd[0]);
-				if (dup2(m->pipefd[1], STDOUT_FILENO) == -1)
+				if (dup2(m->pipefd[2 * i + 1], STDOUT_FILENO) == -1)
 				{
 					perror("dup2");
 					free_ss(m->args);
 					free_ss(m->coms);
+					free(m->pipefd);
 					exit(EXIT_FAILURE);
 				}
+				close(m->pipefd[2 * i + 1]);
 			}
 			if (i > 0)
 			{
-				if (i == n - 1)
-					close(m->pipefd[1]);
-				if (dup2(m->pipefd[0], STDIN_FILENO) == -1)
+				if (dup2(m->pipefd[2 * (i - 1)], STDIN_FILENO) == -1)
 				{
 					perror("dup2");
 					free_ss(m->args);
 					free_ss(m->coms);
+					free(m->pipefd);
 					exit(EXIT_FAILURE);
 				}
+				close(m->pipefd[2 * (i - 1)]);
 			}
 		}
 		command(m);
 	}
 	else
 	{
-		//if (i > 0)
-		//{
-		//	close(m->pipefd[2 * (i - 1)]);
-		//	close(m->pipefd[2 * (i - 1) + 1]);
-		//}
-		close(m->pipefd[0]);
-		close(m->pipefd[1]);
+		if (i > 0)
+		{
+			close(m->pipefd[2 * (i - 1)]);
+			close(m->pipefd[2 * (i - 1) + 1]);
+		}
 		waitpid(pid, &m->exit_code, 0);
 	}
 }

@@ -41,6 +41,7 @@ void	eval_com(t_list *p, t_m *m)
 	last_level = 0;
 	while (p)
 	{
+		//printf("p |%s|\n", (char *)p->content);
 		if (p->content && ((char *)p->content)[0] == '(')
 			level++;
 		else if (p->content && ((char *)p->content)[0] == ')')
@@ -63,6 +64,7 @@ void	eval_com(t_list *p, t_m *m)
 		else if (p->content && !ft_strchr(";&|", ((char *)p->content)[0])
 			&& blocked == -1)
 		{
+			//printf("pipes |%s|\n", (char *)p->content);
 			pipes((char *)p->content, m);
 			last_level = level;
 		}
@@ -106,15 +108,13 @@ int	main(int argc, char **argv, char **env)
 	m.coms = 0;
 	m.args = 0;
 	m.infix = 0;
-	m.pipefd = 0;
 	m.env = env;
 	m.envs = 0;
 	m.fout = 1;
 	m.fin = 0;
 	m.heredoc = 0;
 	m.heredocf = 0;
-	m.cwd = 0;
-
+	ft_strlcpy(m.cwd, get_home(), ft_strlen(get_home()) + 1);
 	//if (argc > 1)
 	//{
 	//	printf("haha\n");
@@ -166,17 +166,19 @@ int	main(int argc, char **argv, char **env)
 				com++;
 			if (*com)
 			{
+				//printf("com |%s|\n", com);
 				m.s = 0;
 				m.s = strjoinm(m.s, com, 0, ft_strlen(com));
-				while (!split_ops(m.s, &m))
-				{
-					ft_lstclear(&m.infix, free);
-					if (m.syntax_error)
-						break ;
-					m.s = strjoinm(m.s, "\n", ft_strlen(m.s), 1);
-					com = readline("> ");
-					m.s = strjoinm(m.s, com, ft_strlen(m.s), ft_strlen(com));
-				}
+				split_ops(m.s, &m);
+				//while (!split_ops(m.s, &m))
+				//{
+				//	ft_lstclear(&m.infix, free);
+				//	if (m.syntax_error)
+				//		break ;
+				//	m.s = strjoinm(m.s, "\n", ft_strlen(m.s), 1);
+				//	com = readline("> ");
+				//	m.s = strjoinm(m.s, com, ft_strlen(m.s), ft_strlen(com));
+				//}
 				eval_com(m.infix, &m);
 				ft_lstclear(&m.infix, free);
 				//if (!m.syntax_error && !command(s, &m))

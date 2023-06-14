@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/11 20:22:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/14 03:38:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,23 @@ char	*get_home()
 	return (u);
 }
 
-int	get_path(char *s)
+int	get_path(t_m *m)
 {
-	m->cwd = s;
-	if (chdir(s))
+	if (chdir(m->cwd))
 	{
-		//s = 0;
-		//s = strjoinm(s, "minishell: cd: ", 0, 15);
-		//s = strjoinm(s, p, ft_strlen(s), ft_strlen(p));
-		//perror(s);
-		//free(s);
-		perror("minishell: cd: ");
-		//free(p);
-		m->exit_code = 0;
+		m->exit_code = 1;
+		return (0);
+	}
+	m->exit_code = 0;
+	return (1);
+}
+
+int	get_path1(t_m *m)
+{
+	if (chdir(m->cwd))
+	{
+		getcwd(m->cwd, sizeof(m->cwd));
+		m->exit_code = 1;
 		return (0);
 	}
 	m->exit_code = 0;
@@ -50,32 +54,45 @@ int	cd(t_m *m, char *path)
 	char	*p;
 
 	if (!path)
-		return (get_path(ft_strdup(get_home())));
-	if (*path == '~')
+		ft_strlcpy(m->cwd, get_home(), ft_strlen(get_home()) + 1);
+	else if (*path == '~')
 	{
-		p = ft_strdup(get_home());
-		p = strjoinm(p, &path[1], ft_strlen(p), ft_strlen(&path[1]));
+		ft_strlcpy(m->cwd, get_home(), ft_strlen(get_home()) + 1);
+		ft_strlcat(m->cwd, &path[1], ft_strlen(m->cwd) + ft_strlen(&path[1]) + 1);
 	}
 	else if (!ft_strncmp(path, ".", 2))
 	{
+		DIR *d = opendir(m->cwd);
+		if (d)
+			closedir(d);
+		else
+			ft_strlcat(m->cwd, "/.", ft_strlen(m->cwd) + 3);
+		return (get_path(m));
+	}
+	else if (!ft_strncmp(path, "./", 3))
+	{
+		if (m->cwd[ft_strlen(m->cwd) - 1] == '/')
+			ft_strlcat(m->cwd, "./", ft_strlen(m->cwd) + 3);
+		else
+			ft_strlcat(m->cwd, "/./", ft_strlen(m->cwd) + 4);
+		return (get_path(m));
 	}
 	else if (!ft_strncmp(path, "./", 2))
-	{
-		getcwd(m->cwd, sizeof(m->cwd));
-		p = 0;
-		p = strjoinm(p, m->cwd, 0, ft_strlen(m->cwd));
-		p = strjoinm(p, &path[1], ft_strlen(p), ft_strlen(&path[1]));
-		//printf("|%s|\n", p);
-	}
+		ft_strlcat(m->cwd, &path[1], ft_strlen(m->cwd) + ft_strlen(&path[1]) + 1);
 	else if (!ft_strncmp(path, "..", 3))
 	{
 		getcwd(m->cwd, sizeof(m->cwd));
 		i = ft_strlen(m->cwd);
 		if (i > 0)
+		{
+			if (i > 1 && m->cwd[i - 1] == '/')
+				i--;
+			while (i > 2 && !ft_strncmp(&m->cwd[i - 2], "/.", 2))
+				i -= 2;
 			while (m->cwd[--i] != '/' && m->cwd[i])
 				;
-		p = 0;
-		p = strjoinm(p, m->cwd, 0, i);
+		}
+		m->cwd[i] = 0;
 	}
 	else if (!ft_strncmp(path, "../", 3))
 	{
@@ -84,33 +101,26 @@ int	cd(t_m *m, char *path)
 		int	j = 1;
 		while (m->cwd[--i] != '/' && m->cwd[i])
 			;
-		//while (path[j * 3] == '.' && path[j * 3 + 1] == '.' && path[j * 3 + 2] == '/')
 		while (!ft_strncmp(&path[j * 3], "../", 3))
 		{
 			j++;
-			//printf("|j = %d|\n", j);
 			if (i > 0)
 				while (m->cwd[--i] != '/' && m->cwd[i])
 					;
 		}
-		//printf("|%d|\n", i);
-		p = 0;
-		p = strjoinm(p, m->cwd, 0, i);
-		p = strjoinm(p, "/", ft_strlen(p), 1);
-		p = strjoinm(p, &path[j * 3], ft_strlen(p), ft_strlen(&path[j * 3]));
-		//printf("|%s|\n", p);
+		m->cwd[i] = 0;
+		ft_strlcat(m->cwd, "/", ft_strlen(m->cwd) + 2);
+		ft_strlcat(m->cwd, &path[j * 3], ft_strlen(m->cwd) + ft_strlen(&path[j * 3]) + 1);
 	}
 	else if (*path != '/')
 	{
 		getcwd(m->cwd, sizeof(m->cwd));
-		p = 0;
-		p = strjoinm(p, m->cwd, 0, ft_strlen(m->cwd));
-		p = strjoinm(p, "/", ft_strlen(p), 1);
-		p = strjoinm(p, &path[0], ft_strlen(p), ft_strlen(&path[0]));
-		//printf("|%s|\n", p);
+		ft_strlcat(m->cwd, "/", ft_strlen(m->cwd) + 2);
+		ft_strlcat(m->cwd, &path[0], ft_strlen(m->cwd) + ft_strlen(&path[0]) + 1);
 	}
 	else
-		p = ft_strdup(path);
-	//printf("dir.c:|%s|\n", p);
-	return (get_path(p));
+	{
+		ft_strlcat(m->cwd, path, ft_strlen(m->cwd) + ft_strlen(path) + 1);
+	}
+	return (get_path1(m));
 }

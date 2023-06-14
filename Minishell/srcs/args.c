@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/10 10:47:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/14 15:32:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ char	**split_args(char *s, t_m *m)
 	s_env = str_env(s, ft_strlen(s), m);
 	args = args_list(s_env, m);
 	free(s_env);
-	redir(args, m);
 	ss = malloc(sizeof(char *) * (ft_lstsize(args) + 1));
 	if (!ss)
 		return (0);
@@ -135,6 +134,7 @@ char	**split_args(char *s, t_m *m)
 	ss0 = ss;
 	while (args)
 	{
+		//printf("arg = |%s|\n", (char *)args->content);
 		if (!ft_strncmp("<<", (char *)args->content, 2))
 		{
 			//printf("heredoc |%c|\n", ((char *)args->content)[2]);
@@ -201,7 +201,6 @@ char	**split_args(char *s, t_m *m)
 				free(args->content);
 				free_ss(m->args);
 				free_ss(m->coms);
-				free(m->pipefd);
 				exit(EXIT_FAILURE);
 			}
 			close(m->fin);
@@ -251,7 +250,6 @@ char	**split_args(char *s, t_m *m)
 				free(args->content);
 				free_ss(m->args);
 				free_ss(m->coms);
-				free(m->pipefd);
 				exit(EXIT_FAILURE);
 			}
 			close(m->fout);
@@ -295,7 +293,6 @@ char	**split_args(char *s, t_m *m)
 				free(args->content);
 				free_ss(m->args);
 				free_ss(m->coms);
-				free(m->pipefd);
 				exit(EXIT_FAILURE);
 			}
 			close(m->fin);

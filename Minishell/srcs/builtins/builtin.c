@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/08 10:41:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/14 16:11:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,29 @@ int	builtins(t_m *m, int i, int n)
 {
 	if (!ft_strncmp(m->args[0], "echo", 5))
 	{
-		if (n > 1 && i < n - 1)
-		{
-			if (i > 0)
-				close(m->pipefd[2 * (i - 1)]);
-			return (echo(m, m->args, m->pipefd[2 * i + 1]));
-		}
+		//if (n > 1 && i < n - 1)
+		//{
+		//	if (i > 0)
+		//		close(m->pipefd[0]);
+		//}
 		if (n > 1)
-			close(m->pipefd[2 * (i - 1)]);
+		{
+			close(m->pipefd[0]);
+			if (dup2(m->pipefd[1], STDOUT_FILENO) == -1)
+			{
+				perror("dup2");
+				free_ss(m->args);
+				free_ss(m->coms);
+				exit(EXIT_FAILURE);
+			}
+		}
+		//close(m->pipefd[1]);
 		return (echo(m, m->args, 1));
 	}
 	else if (!ft_strncmp(m->args[0], "export", 7))
 	{
+		close(m->pipefd[0]);
+		close(m->pipefd[1]);
 		if (n > 1)
 			return (1);
 		else
@@ -38,30 +49,43 @@ int	builtins(t_m *m, int i, int n)
 	}
 	else if (!ft_strncmp(m->args[0], "pwd", 4))
 	{
-		if (getcwd(m->cwd, sizeof(m->cwd)))
+		//if (getcwd(m->cwd, sizeof(m->cwd)))
+		//{
+			//if (n > 1 && i < n - 1)
+			//{
+			//	if (i > 0)
+			//		close(m->pipefd[2 * (i - 1)]);
+			//	ft_putstr_fd(m->cwd, m->pipefd[2 * i + 1]);
+			//	write(m->pipefd[2 * i + 1], "\n", 1);
+			//	close(m->pipefd[2 * i + 1]);
+			//	return (1);
+			//}
+			//if (n > 1)
+			//	close(m->pipefd[2 * (i - 1)]);
+		if (n > 1)
 		{
-			if (n > 1 && i < n - 1)
+			close(m->pipefd[0]);
+			if (dup2(m->pipefd[1], STDOUT_FILENO) == -1)
 			{
-				if (i > 0)
-					close(m->pipefd[2 * (i - 1)]);
-				ft_putstr_fd(m->cwd, m->pipefd[2 * i + 1]);
-				write(m->pipefd[2 * i + 1], "\n", 1);
-				close(m->pipefd[2 * i + 1]);
-				return (1);
+				perror("dup2");
+				free_ss(m->args);
+				free_ss(m->coms);
+				exit(EXIT_FAILURE);
 			}
-			if (n > 1)
-				close(m->pipefd[2 * (i - 1)]);
+		}
 			ft_putstr_fd(m->cwd, 1);
 			write(1, "\n", 1);
 			m->exit_code = 0;
 			return (1);
-		}
-		perror("getcwd() error");
-		m->exit_code = 1;
-		return (1);
+		//}
+		//perror("getcwd() error");
+		//m->exit_code = 1;
+		//return (1);
 	}
 	else if (!ft_strncmp(m->args[0], "cd", 3))
 	{
+		close(m->pipefd[0]);
+		close(m->pipefd[1]);
 		if (n > 1)
 			return (1);
 		else
@@ -73,12 +97,14 @@ int	builtins(t_m *m, int i, int n)
 			return (1);
 		free_ss(m->args);
 		free_ss(m->coms);
-		if (m->pipefd)
-			free(m->pipefd);
-		ft_lstclear(&m->infix, free);
-		ft_lstclear(&m->envs, free);
+		if (m->infix)
+			ft_lstclear(&m->infix, free);
+		if (m->envs)
+			ft_lstclear(&m->envs, free);
 		add_history(m->s);
 		rl_free(m->s);
+		close(m->pipefd[0]);
+		close(m->pipefd[1]);
 		exit(m->exit_code);
 	}
 	return (0);
