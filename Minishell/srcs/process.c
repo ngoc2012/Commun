@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/14 17:23:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/15 20:06:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,14 @@ void	process(t_m *m, int i, int n)
 	}
 	else if (!pid)
 	{
+		//printf("Process %d pipefd[0] = %d, pipefd[1] = %d\n", getpid(), m->pipefd[0], m->pipefd[1]);
 		if (n > 1)
 		{
 			if (i < n - 1)
 			{
 				if (!i)
 					close(m->pipefd[0]);
+				//printf("Process %d pipefd[0] = %d, pipefd[1] = %d STDOUT\n", getpid(), m->pipefd[0], m->pipefd[1]);
 				if (dup2(m->pipefd[1], STDOUT_FILENO) == -1)
 				{
 					perror("dup2");
@@ -97,6 +99,7 @@ void	process(t_m *m, int i, int n)
 			{
 				if (i == n - 1)
 					close(m->pipefd[1]);
+				//printf("Process %d pipefd[0] = %d, pipefd[1] = %d STDIN\n", getpid(), m->pipefd[0], m->pipefd[1]);
 				if (dup2(m->pipefd[0], STDIN_FILENO) == -1)
 				{
 					perror("dup2");
@@ -108,17 +111,12 @@ void	process(t_m *m, int i, int n)
 			}
 		}
 		command(m);
+		//printf("Process %d %s finish\n", getpid(), m->args[0]);
 	}
 	else
 	{
-		//if (i > 0)
-		//{
-		//	close(m->pipefd[2 * (i - 1)]);
-		//	close(m->pipefd[2 * (i - 1) + 1]);
-		//}
-		close(m->pipefd[0]);
-		close(m->pipefd[1]);
 		waitpid(pid, &m->exit_code, 0);
+		printf("Process %d %s finish\n", pid, m->args[0]);
 	}
 }
 
