@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/14 16:11:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/14 16:31:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,25 @@ int	builtins(t_m *m, int i, int n)
 		//	if (i > 0)
 		//		close(m->pipefd[0]);
 		//}
-		if (n > 1)
-		{
-			close(m->pipefd[0]);
-			if (dup2(m->pipefd[1], STDOUT_FILENO) == -1)
-			{
-				perror("dup2");
-				free_ss(m->args);
-				free_ss(m->coms);
-				exit(EXIT_FAILURE);
-			}
-		}
+		//if (n > 1)
+		//{
+		//	close(m->pipefd[0]);
+		//	if (dup2(m->pipefd[1], STDOUT_FILENO) == -1)
+		//	{
+		//		perror("dup2");
+		//		free_ss(m->args);
+		//		free_ss(m->coms);
+		//		exit(EXIT_FAILURE);
+		//	}
+		//	close(m->pipefd[1]);
+		//}
 		//close(m->pipefd[1]);
+		if (n > 1)
+			return (echo(m, m->args, m->pipefd[1]));
 		return (echo(m, m->args, 1));
 	}
 	else if (!ft_strncmp(m->args[0], "export", 7))
 	{
-		close(m->pipefd[0]);
-		close(m->pipefd[1]);
 		if (n > 1)
 			return (1);
 		else
@@ -62,19 +63,20 @@ int	builtins(t_m *m, int i, int n)
 			//}
 			//if (n > 1)
 			//	close(m->pipefd[2 * (i - 1)]);
-		if (n > 1)
-		{
-			close(m->pipefd[0]);
-			if (dup2(m->pipefd[1], STDOUT_FILENO) == -1)
-			{
-				perror("dup2");
-				free_ss(m->args);
-				free_ss(m->coms);
-				exit(EXIT_FAILURE);
-			}
-		}
-			ft_putstr_fd(m->cwd, 1);
-			write(1, "\n", 1);
+		//if (n > 1)
+		//{
+		//	close(m->pipefd[0]);
+		//	if (dup2(m->pipefd[1], STDOUT_FILENO) == -1)
+		//	{
+		//		perror("dup2");
+		//		free_ss(m->args);
+		//		free_ss(m->coms);
+		//		exit(EXIT_FAILURE);
+		//	}
+		//	close(m->pipefd[1]);
+		//}
+			ft_putstr_fd(m->cwd, m->pipefd[1]);
+			write(1, "\n", m->pipefd[1]);
 			m->exit_code = 0;
 			return (1);
 		//}
@@ -84,8 +86,6 @@ int	builtins(t_m *m, int i, int n)
 	}
 	else if (!ft_strncmp(m->args[0], "cd", 3))
 	{
-		close(m->pipefd[0]);
-		close(m->pipefd[1]);
 		if (n > 1)
 			return (1);
 		else

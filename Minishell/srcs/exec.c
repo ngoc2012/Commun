@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/14 16:07:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/14 16:30:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	pipes(char *s, t_m *m)
 			process(m, i, n);
 		free_ss(m->args);
 	}
+	close(m->pipefd[0]);
+	close(m->pipefd[1]);
 	free_ss(m->coms);
 	//printf("fout = %d\n", m->fout);
 	if (m->fout != 1 && m->fout)

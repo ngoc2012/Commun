@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/14 15:58:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/14 17:23:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	process(t_m *m, int i, int n)
 					free_ss(m->coms);
 					exit(EXIT_FAILURE);
 				}
+				close(m->pipefd[1]);
 			}
 			if (i > 0)
 			{
@@ -103,6 +104,7 @@ void	process(t_m *m, int i, int n)
 					free_ss(m->coms);
 					exit(EXIT_FAILURE);
 				}
+				close(m->pipefd[0]);
 			}
 		}
 		command(m);
