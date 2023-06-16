@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/15 20:06:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/16 14:41:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,12 @@ int	command(t_m *m)
 void	process(t_m *m, int i, int n)
 {
 	int		j;
-	pid_t	pid;
+	//pid_t	pid;
+	int	pipefd[2];
 
 	//printf("fork\n");
-	pid = fork();
-	if (pid == -1)
+	m->pid[i] = fork();
+	if (m->pid[i] == -1)
 	{
 		perror("fork error");
 		free_ss(m->args);
@@ -76,15 +77,21 @@ void	process(t_m *m, int i, int n)
 		//free(m->pipefd);
 		return ;
 	}
-	else if (!pid)
+	else if (!m->pid[i])
 	{
-		//printf("Process %d pipefd[0] = %d, pipefd[1] = %d\n", getpid(), m->pipefd[0], m->pipefd[1]);
 		if (n > 1)
 		{
+			printf("Process %d pipefd[0] = %d, pipefd[1] = %d\n", getpid(), m->pipefd[0], m->pipefd[1]);
 			if (i < n - 1)
 			{
+				pipefd[0] = m->pipefd[0];
+				pipefd[1] = m->pipefd[1];
+				pipe(m->pipefd);
 				if (!i)
+				{
+					//printf("Process %d close  pipefd[0] = %d\n", getpid(), m->pipefd[0]);
 					close(m->pipefd[0]);
+				}
 				//printf("Process %d pipefd[0] = %d, pipefd[1] = %d STDOUT\n", getpid(), m->pipefd[0], m->pipefd[1]);
 				if (dup2(m->pipefd[1], STDOUT_FILENO) == -1)
 				{
@@ -93,6 +100,7 @@ void	process(t_m *m, int i, int n)
 					free_ss(m->coms);
 					exit(EXIT_FAILURE);
 				}
+				//printf("Process %d close  pipefd[1]\n", getpid());
 				close(m->pipefd[1]);
 			}
 			if (i > 0)
@@ -108,15 +116,21 @@ void	process(t_m *m, int i, int n)
 					exit(EXIT_FAILURE);
 				}
 				close(m->pipefd[0]);
+				//printf("Process %d close  pipefd[0] = %d\n", getpid(), m->pipefd[0]);
 			}
 		}
 		command(m);
-		//printf("Process %d %s finish\n", getpid(), m->args[0]);
 	}
 	else
 	{
-		waitpid(pid, &m->exit_code, 0);
-		printf("Process %d %s finish\n", pid, m->args[0]);
+		
+		if (n > 1 && i > 0)
+		{
+			close(m->pipefd[1]);
+			close(m->pipefd[0]);
+		}
+		waitpid(m->pid[i], &m->exit_code, 0);
+		printf("Process %d %s finish\n", m->pid[i], m->args[0]);
 	}
 }
 

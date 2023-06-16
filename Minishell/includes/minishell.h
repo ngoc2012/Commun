@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/14 11:14:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/16 09:29:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct	s_m
 	char	**args;
 	int		exit_code;
 	int		pipefd[2];
+	pid_t	pid[10000];
 	char	cwd[PATH_MAX];
 	char	syntax_error;
 	t_list	*infix;
@@ -73,5 +74,6 @@ int	chr_pos(char *s, char c);
 char	**split_args(char *s, t_m *m);
 void	redir(t_list *args, t_m *m);
 char	*get_home();
+char	*parse(char *s, int len, t_m *m);
 
 #endif

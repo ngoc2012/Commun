@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/15 20:07:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/16 14:39:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ int	pipes(char *s, t_m *m)
 	n = -1;
 	while (m->coms[++n])
 		;
+	if (n > 1)
+		pipe(m->pipefd);
 	i = -1;
-	while (m->coms[++i])
+	while (++i < n - 1)
 	{
 		//printf("i = %d\n", i);
 		m->args = split_args(m->coms[i], m);
@@ -38,16 +40,19 @@ int	pipes(char *s, t_m *m)
 			free_ss(m->args);
 			break ;
 		}
-		if (n > 1)
-			pipe(m->pipefd);
 		if (!builtins(m, i, n))
 			process(m, i, n);
 		free_ss(m->args);
 	}
-	if (n > 1)
+	//printf("i=%d\n", i);
+	m->args = split_args(m->coms[i], m);
+	if (!m->args || !(*m->args))
+		free_ss(m->args);
+	else
 	{
-		close(m->pipefd[0]);
-		close(m->pipefd[1]);
+		if (!builtins(m, i, n))
+			process(m, i, n);
+		free_ss(m->args);
 	}
 	free_ss(m->coms);
 	//printf("fout = %d\n", m->fout);

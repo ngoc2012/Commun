@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/15 19:20:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/16 09:27:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,11 @@ int	builtins(t_m *m, int i, int n)
 			ft_lstclear(&m->envs, free);
 		add_history(m->s);
 		rl_free(m->s);
-		close(m->pipefd[0]);
-		close(m->pipefd[1]);
+		if (n > 1)
+		{
+			close(m->pipefd[0]);
+			close(m->pipefd[1]);
+		}
 		exit(m->exit_code);
 	}
 	return (0);
