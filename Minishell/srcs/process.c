@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/16 14:41:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/17 13:47:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ int	command(t_m *m)
 void	process(t_m *m, int i, int n)
 {
 	int		j;
-	//pid_t	pid;
-	int	pipefd[2];
 
 	//printf("fork\n");
 	m->pid[i] = fork();
@@ -81,56 +79,152 @@ void	process(t_m *m, int i, int n)
 	{
 		if (n > 1)
 		{
-			printf("Process %d pipefd[0] = %d, pipefd[1] = %d\n", getpid(), m->pipefd[0], m->pipefd[1]);
-			if (i < n - 1)
+			//printf("Process %d (%d/%d) start\n", getpid(), i, n);
+			//printf("Process %d pipefd[0] = %d, pipefd[1] = %d\n", getpid(), m->pipefd0[0], m->pipefd0[1]);
+			// First process
+			if (!i)
 			{
-				pipefd[0] = m->pipefd[0];
-				pipefd[1] = m->pipefd[1];
-				pipe(m->pipefd);
-				if (!i)
+				if (n > 2)
 				{
-					//printf("Process %d close  pipefd[0] = %d\n", getpid(), m->pipefd[0]);
-					close(m->pipefd[0]);
+					//printf("Process %d (%d/%d) closed pipe1\n", getpid(), i, n);
+					close(m->pipefd1[0]);
+					close(m->pipefd1[1]);
 				}
-				//printf("Process %d pipefd[0] = %d, pipefd[1] = %d STDOUT\n", getpid(), m->pipefd[0], m->pipefd[1]);
-				if (dup2(m->pipefd[1], STDOUT_FILENO) == -1)
+				close(m->pipefd0[0]);
+				if (dup2(m->pipefd0[1], STDOUT_FILENO) == -1)
 				{
 					perror("dup2");
 					free_ss(m->args);
 					free_ss(m->coms);
 					exit(EXIT_FAILURE);
 				}
-				//printf("Process %d close  pipefd[1]\n", getpid());
-				close(m->pipefd[1]);
+				close(m->pipefd0[1]);
 			}
-			if (i > 0)
+			// Last process
+			else if (n == 2)
 			{
-				if (i == n - 1)
-					close(m->pipefd[1]);
-				//printf("Process %d pipefd[0] = %d, pipefd[1] = %d STDIN\n", getpid(), m->pipefd[0], m->pipefd[1]);
-				if (dup2(m->pipefd[0], STDIN_FILENO) == -1)
+				close(m->pipefd0[1]);
+				if (dup2(m->pipefd0[0], STDIN_FILENO) == -1)
 				{
 					perror("dup2");
 					free_ss(m->args);
 					free_ss(m->coms);
 					exit(EXIT_FAILURE);
 				}
-				close(m->pipefd[0]);
-				//printf("Process %d close  pipefd[0] = %d\n", getpid(), m->pipefd[0]);
+				close(m->pipefd0[0]);
+			}
+			else if (i == n - 1)
+			{
+				if (i % 2)
+				{
+					close(m->pipefd1[0]);
+					close(m->pipefd1[1]);
+					close(m->pipefd0[1]);
+					if (dup2(m->pipefd0[0], STDIN_FILENO) == -1)
+					{
+						perror("dup2");
+						free_ss(m->args);
+						free_ss(m->coms);
+						exit(EXIT_FAILURE);
+					}
+					close(m->pipefd0[0]);
+				}
+				else
+				{
+					close(m->pipefd0[0]);
+					close(m->pipefd0[1]);
+					close(m->pipefd1[1]);
+					if (dup2(m->pipefd1[0], STDIN_FILENO) == -1)
+					{
+						perror("dup2");
+						free_ss(m->args);
+						free_ss(m->coms);
+						exit(EXIT_FAILURE);
+					}
+					close(m->pipefd1[0]);
+				}
+			}
+			// Intermediate process
+			else if (i % 2)
+			{
+				//printf("Process %d (%d/%d) dup2 pipe0 STDIN\n", getpid(), i, n);
+				close(m->pipefd0[1]);
+				if (dup2(m->pipefd0[0], STDIN_FILENO) == -1)
+				{
+					perror("dup2");
+					free_ss(m->args);
+					free_ss(m->coms);
+					exit(EXIT_FAILURE);
+				}
+				close(m->pipefd0[0]);
+				//printf("Process %d (%d/%d) dup2 pipe1 STDOUT\n", getpid(), i, n);
+				close(m->pipefd1[0]);
+				if (dup2(m->pipefd1[1], STDOUT_FILENO) == -1)
+				{
+					perror("dup2");
+					free_ss(m->args);
+					free_ss(m->coms);
+					exit(EXIT_FAILURE);
+				}
+				close(m->pipefd1[1]);
+			}
+			else
+			{
+				//printf("Process %d (%d/%d) dup2 pipe1 STDIN\n", getpid(), i, n);
+				close(m->pipefd1[1]);
+				if (dup2(m->pipefd1[0], STDIN_FILENO) == -1)
+				{
+					perror("dup2");
+					free_ss(m->args);
+					free_ss(m->coms);
+					exit(EXIT_FAILURE);
+				}
+				close(m->pipefd1[0]);
+				//printf("Process %d (%d/%d) dup2 pipe0 STDOUT\n", getpid(), i, n);
+				close(m->pipefd0[0]);
+				if (dup2(m->pipefd0[1], STDOUT_FILENO) == -1)
+				{
+					perror("dup2");
+					free_ss(m->args);
+					free_ss(m->coms);
+					exit(EXIT_FAILURE);
+				}
+				close(m->pipefd0[1]);
 			}
 		}
 		command(m);
 	}
 	else
 	{
-		
-		if (n > 1 && i > 0)
+		if (i)
 		{
-			close(m->pipefd[1]);
-			close(m->pipefd[0]);
+			if (i % 2)
+			{
+				printf("main pipe0 closed\n");
+				close(m->pipefd0[0]);
+				close(m->pipefd0[1]);
+			}
+			else if (n > 2)
+			{
+				printf("main pipe1 closed\n");
+				close(m->pipefd1[0]);
+				close(m->pipefd1[1]);
+			}
 		}
 		waitpid(m->pid[i], &m->exit_code, 0);
-		printf("Process %d %s finish\n", m->pid[i], m->args[0]);
+		if (n > 3 && i && i < n - 2)
+		{
+			if (i % 2)
+			{
+				//printf("main pipe0 initiated\n");
+				pipe(m->pipefd0);
+			}
+			else if (n > 2)
+			{
+				//printf("main pipe1 initiated\n");
+				pipe(m->pipefd1);
+			}
+		}
+		//printf("Process %d %s finish\n", m->pid[i], m->args[0]);
 	}
 }
-

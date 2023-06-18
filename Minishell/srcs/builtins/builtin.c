@@ -6,43 +6,50 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/16 09:27:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/17 15:29:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+int	get_fd(t_m *m, int i, int n)
+{
+	if (n == 2 && !i)
+	{
+		printf("fd = pipefd0\n");
+		return (m->pipefd0[1]);
+	}
+	else if (n > 2)
+	{
+		if (i % 2)
+		{
+			printf("fd = pipefd1\n");
+			return (m->pipefd1[1]);
+		}
+		else 
+		{
+			printf("fd = pipefd0\n");
+			return (m->pipefd0[1]);
+		}
+	}
+	else
+		return (1);
+}
 
 /*
 Execute a built-in command elementary
 */
 int	builtins(t_m *m, int i, int n)
 {
+	int	fd;
+
 	if (!ft_strncmp(m->args[0], "echo", 5))
 	{
-		//if (n > 1 && i < n - 1)
-		//{
-		//	if (i > 0)
-		//		close(m->pipefd[0]);
-		//}
-		//if (n > 1)
-		//{
-		//	close(m->pipefd[0]);
-		//	if (dup2(m->pipefd[1], STDOUT_FILENO) == -1)
-		//	{
-		//		perror("dup2");
-		//		free_ss(m->args);
-		//		free_ss(m->coms);
-		//		exit(EXIT_FAILURE);
-		//	}
-		//	close(m->pipefd[1]);
-		//}
-		//close(m->pipefd[1]);
-		if (n > 1)
-			return (echo(m, m->args, m->pipefd[1]));
-		return (echo(m, m->args, 1));
+		fd = get_fd(m, i, n);
+		return (echo(m, m->args, fd));
 	}
 	else if (!ft_strncmp(m->args[0], "export", 7))
 	{
+		fd = get_fd(m, i, n);
 		if (n > 1)
 			return (1);
 		else
@@ -50,42 +57,15 @@ int	builtins(t_m *m, int i, int n)
 	}
 	else if (!ft_strncmp(m->args[0], "pwd", 4))
 	{
-		//if (getcwd(m->cwd, sizeof(m->cwd)))
-		//{
-			//if (n > 1 && i < n - 1)
-			//{
-			//	if (i > 0)
-			//		close(m->pipefd[2 * (i - 1)]);
-			//	ft_putstr_fd(m->cwd, m->pipefd[2 * i + 1]);
-			//	write(m->pipefd[2 * i + 1], "\n", 1);
-			//	close(m->pipefd[2 * i + 1]);
-			//	return (1);
-			//}
-			//if (n > 1)
-			//	close(m->pipefd[2 * (i - 1)]);
-		//if (n > 1)
-		//{
-		//	close(m->pipefd[0]);
-		//	if (dup2(m->pipefd[1], STDOUT_FILENO) == -1)
-		//	{
-		//		perror("dup2");
-		//		free_ss(m->args);
-		//		free_ss(m->coms);
-		//		exit(EXIT_FAILURE);
-		//	}
-		//	close(m->pipefd[1]);
-		//}
-			ft_putstr_fd(m->cwd, m->pipefd[1]);
-			write(1, "\n", m->pipefd[1]);
-			m->exit_code = 0;
-			return (1);
-		//}
-		//perror("getcwd() error");
-		//m->exit_code = 1;
-		//return (1);
+		fd = get_fd(m, i, n);
+		ft_putstr_fd(m->cwd, fd);
+		write(1, "\n", 1);
+		m->exit_code = 0;
+		return (1);
 	}
 	else if (!ft_strncmp(m->args[0], "cd", 3))
 	{
+		fd = get_fd(m, i, n);
 		if (n > 1)
 			return (1);
 		else
@@ -105,8 +85,13 @@ int	builtins(t_m *m, int i, int n)
 		rl_free(m->s);
 		if (n > 1)
 		{
-			close(m->pipefd[0]);
-			close(m->pipefd[1]);
+			close(m->pipefd0[0]);
+			close(m->pipefd0[1]);
+		}
+		if (n > 2)
+		{
+			close(m->pipefd1[0]);
+			close(m->pipefd1[1]);
 		}
 		exit(m->exit_code);
 	}
