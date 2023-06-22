@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/22 12:23:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/22 12:28:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int	get_fd(t_m *m, int i, int n)
 	{
 		if (i % 2)
 		{
-			printf("bui main pipe0 closed\n");
+			//printf("bui main pipe0 closed\n");
 			close(m->pipefd0[0]);
 			close(m->pipefd0[1]);
 		}
 		else
 		{
-			printf("bui main pipe1 closed\n");
+			//printf("bui main pipe1 closed\n");
 			close(m->pipefd1[0]);
 			close(m->pipefd1[1]);
 		}
@@ -37,12 +37,12 @@ int	get_fd(t_m *m, int i, int n)
 	{
 		if (i % 2)
 		{
-			printf("fd = pipefd1\n");
+			//printf("fd = pipefd1\n");
 			fd = m->pipefd1[1];
 		}
 		else 
 		{
-			printf("fd = pipefd0\n");
+			//printf("fd = pipefd0\n");
 			fd = m->pipefd0[1];
 		}
 	}
@@ -50,12 +50,12 @@ int	get_fd(t_m *m, int i, int n)
 	{
 		if (i % 2)
 		{
-			printf("bui main pipe0 initiated\n");
+			//printf("bui main pipe0 initiated\n");
 			pipe(m->pipefd0);
 		}
 		else if (n > 2)
 		{
-			printf("bui main pipe1 initiated\n");
+			//printf("bui main pipe1 initiated\n");
 			pipe(m->pipefd1);
 		}
 	}
@@ -86,7 +86,7 @@ int	builtins(t_m *m, int i, int n)
 	{
 		fd = get_fd(m, i, n);
 		ft_putstr_fd(m->cwd, fd);
-		write(1, "\n", 1);
+		write(1, "\n", fd);
 		m->exit_code = 0;
 		return (1);
 	}

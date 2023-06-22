@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/19 16:08:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/22 12:29:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	pipes(char *s, t_m *m)
 		;
 	if (n > 1)
 	{
-		printf("First pipefd0\n");
+		//printf("First pipefd0\n");
 		pipe(m->pipefd0);
 	}
 	if (n > 2)
 	{
-		printf("First pipefd1\n");
+		//printf("First pipefd1\n");
 		pipe(m->pipefd1);
 	}
 	i = -1;
