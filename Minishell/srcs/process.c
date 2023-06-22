@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/19 17:15:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/22 11:53:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	process(t_m *m, int i, int n)
 				close(m->pipefd0[0]);
 				if (dup2(m->pipefd0[1], STDOUT_FILENO) == -1)
 				{
-					perror("dup2");
+					perror("dup2 i=0");
 					free_ss(m->args);
 					free_ss(m->coms);
 					exit(EXIT_FAILURE);
@@ -106,7 +106,7 @@ void	process(t_m *m, int i, int n)
 				close(m->pipefd0[1]);
 				if (dup2(m->pipefd0[0], STDIN_FILENO) == -1)
 				{
-					perror("dup2");
+					perror("dup2 last 1");
 					free_ss(m->args);
 					free_ss(m->coms);
 					exit(EXIT_FAILURE);
@@ -123,7 +123,7 @@ void	process(t_m *m, int i, int n)
 					close(m->pipefd0[1]);
 					if (dup2(m->pipefd0[0], STDIN_FILENO) == -1)
 					{
-						perror("dup2");
+						perror("dup2 last 2");
 						free_ss(m->args);
 						free_ss(m->coms);
 						exit(EXIT_FAILURE);
@@ -138,7 +138,7 @@ void	process(t_m *m, int i, int n)
 					close(m->pipefd1[1]);
 					if (dup2(m->pipefd1[0], STDIN_FILENO) == -1)
 					{
-						perror("dup2");
+						perror("dup2 last 3");
 						free_ss(m->args);
 						free_ss(m->coms);
 						exit(EXIT_FAILURE);
@@ -153,7 +153,7 @@ void	process(t_m *m, int i, int n)
 				close(m->pipefd0[1]);
 				if (dup2(m->pipefd0[0], STDIN_FILENO) == -1)
 				{
-					perror("dup2");
+					perror("dup2 inter 1");
 					free_ss(m->args);
 					free_ss(m->coms);
 					exit(EXIT_FAILURE);
@@ -163,7 +163,7 @@ void	process(t_m *m, int i, int n)
 				close(m->pipefd1[0]);
 				if (dup2(m->pipefd1[1], STDOUT_FILENO) == -1)
 				{
-					perror("dup2");
+					perror("dup2 inter 2");
 					free_ss(m->args);
 					free_ss(m->coms);
 					exit(EXIT_FAILURE);
@@ -176,7 +176,7 @@ void	process(t_m *m, int i, int n)
 				close(m->pipefd1[1]);
 				if (dup2(m->pipefd1[0], STDIN_FILENO) == -1)
 				{
-					perror("dup2");
+					perror("dup2 inter 3");
 					free_ss(m->args);
 					free_ss(m->coms);
 					exit(EXIT_FAILURE);
@@ -186,7 +186,7 @@ void	process(t_m *m, int i, int n)
 				close(m->pipefd0[0]);
 				if (dup2(m->pipefd0[1], STDOUT_FILENO) == -1)
 				{
-					perror("dup2");
+					perror("dup2 inter 4");
 					free_ss(m->args);
 					free_ss(m->coms);
 					exit(EXIT_FAILURE);

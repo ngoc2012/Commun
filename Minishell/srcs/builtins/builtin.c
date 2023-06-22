@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/19 17:17:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/22 12:23:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,40 +16,34 @@ int	get_fd(t_m *m, int i, int n)
 	int	fd;
 
 	fd = 1;
-	if (n == 2)
-	{
-		if (!i)
-		{
-			printf("fd = pipefd0\n");
-			fd = m->pipefd0[1];
-		}
-		else
-		{
-			printf("bui main pipe0 closed\n");
-			close(m->pipefd0[0]);
-			close(m->pipefd0[1]);
-		}
-	}
-	else if (n > 2)
+	if (n < 2)
+		return (fd);
+	if (i)
 	{
 		if (i % 2)
 		{
 			printf("bui main pipe0 closed\n");
 			close(m->pipefd0[0]);
 			close(m->pipefd0[1]);
+		}
+		else
+		{
+			printf("bui main pipe1 closed\n");
+			close(m->pipefd1[0]);
+			close(m->pipefd1[1]);
+		}
+	}
+	if (i < n - 1)
+	{
+		if (i % 2)
+		{
 			printf("fd = pipefd1\n");
 			fd = m->pipefd1[1];
 		}
 		else 
 		{
-			if (i > 0)
-			{
-				printf("bui main pipe1 closed\n");
-				close(m->pipefd1[0]);
-				close(m->pipefd1[1]);
-			}
 			printf("fd = pipefd0\n");
-			fd = m->pipefd1[1];
+			fd = m->pipefd0[1];
 		}
 	}
 	if (n > 3 && i && i < n - 2)
