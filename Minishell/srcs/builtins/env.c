@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/16 09:25:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/23 19:54:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,20 @@ char	*str_env(char *s, int len, t_m *m)
 	while (s[i] && i < len)
 	{
 		if (ft_strchr("'", s[i]))
+		{
+			o = strjoinm(o, &s[i0], ft_strlen(o), i - i0);
+			i0 = i;
+			d = s[i++];
+			while (s[i] && i < len && s[i] != d)
+				i++;
+			if (s[i] == d)
+				o = strjoinm(o, &s[i0], ft_strlen(o), i - i0 + 1);
+			else
+				return (0);
+			i++;
+			i0 = i;
+		}
+		else if (ft_strchr("/", s[i]))
 		{
 			o = strjoinm(o, &s[i0], ft_strlen(o), i - i0);
 			i0 = i;
