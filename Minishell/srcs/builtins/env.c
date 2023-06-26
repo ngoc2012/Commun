@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/24 11:31:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/06/26 07:20:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,17 @@ char	*str_env(char *s, int len, t_m *m)
 			i++;
 			i0 = i;
 		}
-		else if (ft_strchr("\\", s[i]))
-		{
-			o = strjoinm(o, &s[i0], ft_strlen(o), i - i0);
-			i++;
-			if (s[i])
-				o = strjoinm(o, &s[i], ft_strlen(o), 1);
-			else
-				o = strjoinm(o, " ", ft_strlen(o), 1);
-			i++;
-			i0 = i;
-		}
+		//else if (ft_strchr("\\", s[i]))
+		//{
+		//	o = strjoinm(o, &s[i0], ft_strlen(o), i - i0);
+		//	i++;
+		//	if (s[i])
+		//		o = strjoinm(o, &s[i], ft_strlen(o), 1);
+		//	else
+		//		o = strjoinm(o, "' '", ft_strlen(o), 3);
+		//	i++;
+		//	i0 = i;
+		//}
 		else if (s[i] == '$' && s[i + 1] == '?')
 		{
 			o = strjoinm(o, &s[i0], ft_strlen(o), i - i0);

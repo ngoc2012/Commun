@@ -387,4 +387,76 @@ ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ cat < c << a
 > hehe
 > a
 hehe
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ "echo abc \ abc"
+echo abc \ abc: command not found
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo \ 
+ 
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo \
+>  
+
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo \ a
+ a
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo '\ a'
+\ a
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "\ a"
+\ a
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ bash
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "\ a"
+\ a
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "\\ a"
+\ a
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "\$? a"
+$? a
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "\a"
+\a
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo '\$? a'
+\$? a
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "\1"
+\1
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "\-"
+\-
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo \\ a
+\ a
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "\" "a"
+> a
+> ^C
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo a \ a
+a  a
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "\ " "a"
+\  a
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ eho \" "
+>  
+> sadf
+> ^C
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo \" "
+> sadsa
+>  
+> ^C
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo \n
+n
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "\n"
+\n
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo '\n'
+\n
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo \'
+'
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "\'"
+\'
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo '\''
+> '
+\
+
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "'"
+'
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo a\na
+ana
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo a \n a
+a n a
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo -e "\n"
+
+
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "\""
+"
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo \\
+\
 
