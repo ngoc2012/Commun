@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/30 14:41:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/02 18:44:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	chr_pos(char *s, char c)
 	return (-1);
 }
 
+// All character is alpha num or _
 int	is_all_env(char *s, int p)
 {
 	int	i;

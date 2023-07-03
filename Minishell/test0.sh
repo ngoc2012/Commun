@@ -389,6 +389,12 @@ ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ cat < c << a
 hehe
 ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ "echo abc \ abc"
 echo abc \ abc: command not found
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo \" ''
+"
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo \" 'a'
+" a
+ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo "\'"
+\'
 ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo \ 
  
 ngoc@ngoc-ThinkPad-W530:~/Commun/Minishell$ echo \

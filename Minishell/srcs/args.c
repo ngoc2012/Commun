@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/14 15:32:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/02 17:50:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,44 +21,65 @@ char	*parse(char *s, int len, t_m *m)
 	int		i;
 	int		i0;
 	char	d;
-	char	*s0;
 	char	*o;
 
 	o = 0;
 	d = ' ';
 	i = 0;
+	i0 = i;
 	while (s[i] && i < len)
 	{
 		if (ft_strchr("\"'", s[i]))
 		{
+			if (i > i0)
+				o = strjoinm(o, &s[i0], ft_strlen(o), i - i0);
 			d = s[i++];
 			i0 = i;
 			while (s[i] && i < len && s[i] != d)
-				i++;
+				if (s[i] == '\\' && d == '"')
+				{
+					if (i > i0)
+						o = strjoinm(o, &s[i0], ft_strlen(o), i - i0);
+					i++;
+					o = strjoinm(o, &s[i], ft_strlen(o), 1);
+					i++;
+					i0 = i;
+				}
+				else
+					i++;
 			if (s[i] == d)
 			{
-				s0 = ft_strndup(&s[i0], i - i0);
-				o = strjoinm(o, s0, ft_strlen(o), ft_strlen(s0));
-				free(s0);
+				if (i > i0)
+					o = strjoinm(o, &s[i0], ft_strlen(o), i - i0);
 			}
 			else
 				return (0);
 			i++;
+			i0 = i;
 		}
 		else
 		{
-			d = ' ';
-			i0 = i;
 			while (s[i] && i < len && !ft_strchr("\"'", s[i]))
-				i++;
-			s0 = ft_strndup(&s[i0], i - i0);
-			o = strjoinm(o, s0, ft_strlen(o), ft_strlen(s0));
-			free(s0);
+				if (s[i] == '\\')
+				{
+					if (i > i0)
+						o = strjoinm(o, &s[i0], ft_strlen(o), i - i0);
+					i++;
+					o = strjoinm(o, &s[i], ft_strlen(o), 1);
+					i++;
+					i0 = i;
+				}
+				else
+					i++;
+			if (i > i0)
+				o = strjoinm(o, &s[i0], ft_strlen(o), i - i0);
+			i0 = i;
 		}
 	}
 	return (o);
 }
 
+// Ignore space in "" and ''
 t_list	*args_list(char *s, t_m *m)
 {
 	int		i;
@@ -125,6 +146,7 @@ char	**split_args(char *s, t_m *m)
 	while (*s && ft_strchr(" \n", *s))
 		s++;
 	s_env = str_env(s, ft_strlen(s), m);
+	//printf("%s", s_env);
 	args = args_list(s_env, m);
 	free(s_env);
 	ss = malloc(sizeof(char *) * (ft_lstsize(args) + 1));
@@ -134,8 +156,14 @@ char	**split_args(char *s, t_m *m)
 	ss0 = ss;
 	while (args)
 	{
+		if (!args->content)
+		{
+			*ss = ft_strdup("");
+			args = args->next;
+			ss++;
+		}
 		//printf("arg = |%s|\n", (char *)args->content);
-		if (!ft_strncmp("<<", (char *)args->content, 2))
+		else if (!ft_strncmp("<<", (char *)args->content, 2))
 		{
 			//printf("heredoc |%c|\n", ((char *)args->content)[2]);
 			if (((char *)args->content)[2] && ft_strchr("<>|", ((char *)args->content)[2]))
@@ -303,6 +331,7 @@ char	**split_args(char *s, t_m *m)
 		else
 		{
 			*ss = (char *)args->content;
+			//printf("%s,", *ss);
 			args = args->next;
 			ss++;
 		}
