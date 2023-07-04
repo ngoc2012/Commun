@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/02 18:44:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/03 20:18:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,10 @@ int	expt(t_m *m, char **args)
 	int	i;
 	int	j;
 	int	p;
-	char	*s_env;
+	char	*s_en;
+	int	invalid;
 
+	invalid = 0;
 	i = 0;
 	while (args[++i])
 	{
@@ -64,13 +66,27 @@ int	expt(t_m *m, char **args)
 		{
 			if (is_all_env(args[i], p))
 			{
-				ft_lstremove_if(&m->envs, args[i], ft_strdcmp, free);
-				s_env = str_env(args[i], ft_strlen(args[i]), m);
-				ft_lstadd_back(&m->envs, ft_lstnew(s_env));
-				//ft_lstiter(m->envs, print_content);
-				//printf(";");
+				if (ft_isnum(args[i][0]))
+					invalid = p;
+				else
+				{
+					ft_lstremove_if(&m->envs, args[i], ft_strdcmp, free);
+					s_env = str_env(args[i], ft_strlen(args[i]), m);
+					ft_lstadd_back(&m->envs, ft_lstnew(s_env));
+					//ft_lstiter(m->envs, print_content);
+					//printf(";");
+				}
 			}
+			else
+				m->exit_code = 1;
 		}
+		else
+			m->exit_code = 1;
+	}
+	if (invalid)
+	{
+		m->exit_code = 1;
+		return (1);
 	}
 	m->exit_code = 0;
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/22 12:28:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/03 20:17:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,7 @@ int	builtins(t_m *m, int i, int n)
 		return (echo(m, m->args, fd));
 	}
 	else if (!ft_strncmp(m->args[0], "export", 7))
-	{
-		fd = get_fd(m, i, n);
-		if (n > 1)
-			return (1);
-		else
-			return (expt(m, m->args));
-	}
+		return (expt(m, m->args));
 	else if (!ft_strncmp(m->args[0], "pwd", 4))
 	{
 		fd = get_fd(m, i, n);
