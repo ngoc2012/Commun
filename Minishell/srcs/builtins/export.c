@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/04 13:13:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/04 18:12:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,23 @@ int	expt(t_m *m, char **args)
 {
 	int	i;
 	int	p;
+	int	cat;
 	char	*s_env;
 
+	cat = 0;
 	i = 0;
 	while (args[++i])
 	{
 		p = chr_pos(args[i], '=');
 		if (p > 0)
 		{
+			if (args[i][p - 1] == '+')
+			{
+				p -= 1;
+				cat = 1;
+			}
+			if (p)
+				invalid_iden(m, args[i]);
 			if (ft_isdigit(args[i][0]) || !is_all_env(args[i], p))
 				invalid_iden(m, args[i]);
 			else
