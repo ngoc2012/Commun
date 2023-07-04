@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/03 20:18:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/04 13:13:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,45 +49,37 @@ int	is_all_env(char *s, int p)
 	return (1);
 }
 
+void	invalid_iden(t_m *m, char *s)
+{
+	m->exit_code = 1;
+	ft_putstr_fd("bash: export: `", 1);
+	ft_putstr_fd(s, 1);
+	ft_putstr_fd("': not a valid identifier\n", 1);
+}
+
 int	expt(t_m *m, char **args)
 {
 	int	i;
-	int	j;
 	int	p;
-	char	*s_en;
-	int	invalid;
+	char	*s_env;
 
-	invalid = 0;
 	i = 0;
 	while (args[++i])
 	{
 		p = chr_pos(args[i], '=');
 		if (p > 0)
 		{
-			if (is_all_env(args[i], p))
-			{
-				if (ft_isnum(args[i][0]))
-					invalid = p;
-				else
-				{
-					ft_lstremove_if(&m->envs, args[i], ft_strdcmp, free);
-					s_env = str_env(args[i], ft_strlen(args[i]), m);
-					ft_lstadd_back(&m->envs, ft_lstnew(s_env));
-					//ft_lstiter(m->envs, print_content);
-					//printf(";");
-				}
-			}
+			if (ft_isdigit(args[i][0]) || !is_all_env(args[i], p))
+				invalid_iden(m, args[i]);
 			else
-				m->exit_code = 1;
+			{
+				ft_lstremove_if(&m->envs, args[i], ft_strdcmp, free);
+				s_env = str_env(args[i], ft_strlen(args[i]), m);
+				ft_lstadd_back(&m->envs, ft_lstnew(s_env));
+			}
 		}
 		else
-			m->exit_code = 1;
+			invalid_iden(m, args[i]);
 	}
-	if (invalid)
-	{
-		m->exit_code = 1;
-		return (1);
-	}
-	m->exit_code = 0;
 	return (1);
 }
