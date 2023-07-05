@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/04 18:12:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/05 11:44:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,18 @@ int	expt(t_m *m, char **args)
 				p -= 1;
 				cat = 1;
 			}
-			if (p)
+			if (!p)
 				invalid_iden(m, args[i]);
 			if (ft_isdigit(args[i][0]) || !is_all_env(args[i], p))
 				invalid_iden(m, args[i]);
 			else
 			{
+				//if (cat)
+				//{
 				ft_lstremove_if(&m->envs, args[i], ft_strdcmp, free);
 				s_env = str_env(args[i], ft_strlen(args[i]), m);
 				ft_lstadd_back(&m->envs, ft_lstnew(s_env));
+				//}
 			}
 		}
 		else
