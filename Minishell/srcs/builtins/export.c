@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/05 11:44:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/06 16:02:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	ft_strdcmp(const char *s1, const char *s2)
 {
 	if (!s1 || !s2)
 		return (0);
-	while (*s1 == *s2 && *s1 && *s2 && *s1 != '=' && *s2 != '=')
+	while (*s1 == *s2 && *s1 && *s2 && !ft_strchr("=+", *s1) && !ft_strchr("=+", *s2))
 	{
 		s1++;
 		s2++;
 	}
-	if ((!*s1 && *s2 == '=') || (!*s2 && *s1 == '='))
+	if ((!*s1  && ft_strchr("=+", *s2)) || (!*s2 && ft_strchr("=+", *s1)))
 		return (0);
 	return ((unsigned char) *s1 - (unsigned char) *s2);
 }
@@ -57,6 +57,10 @@ void	invalid_iden(t_m *m, char *s)
 	ft_putstr_fd("': not a valid identifier\n", 1);
 }
 
+char	*lst_match(t_list *lst, char *s)
+{
+}
+
 int	expt(t_m *m, char **args)
 {
 	int	i;
@@ -82,12 +86,17 @@ int	expt(t_m *m, char **args)
 				invalid_iden(m, args[i]);
 			else
 			{
-				//if (cat)
-				//{
+				if (cat)
+				{
+					s_env = 0;
+					s_env = strjoinm(s_env, buffer, ft_strlen(s_env), ret);
+				}
+				else
+				{
+					s_env = str_env(args[i], ft_strlen(args[i]), m);
+				}
 				ft_lstremove_if(&m->envs, args[i], ft_strdcmp, free);
-				s_env = str_env(args[i], ft_strlen(args[i]), m);
 				ft_lstadd_back(&m->envs, ft_lstnew(s_env));
-				//}
 			}
 		}
 		else
