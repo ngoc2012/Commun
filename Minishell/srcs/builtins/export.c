@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/06 16:02:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/07 06:41:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ int	ft_strdcmp(const char *s1, const char *s2)
 		s1++;
 		s2++;
 	}
-	if ((!*s1  && ft_strchr("=+", *s2)) || (!*s2 && ft_strchr("=+", *s1)))
+	if ((!*s1  && ft_strchr("=+", *s2)) || (!*s2 && ft_strchr("=+", *s1))
+		|| (ft_strchr("=+", *s1) && ft_strchr("=+", *s2)))
 		return (0);
+	//printf("%c - %c\n", *s1, *s2);
 	return ((unsigned char) *s1 - (unsigned char) *s2);
 }
 
@@ -59,6 +61,14 @@ void	invalid_iden(t_m *m, char *s)
 
 char	*lst_match(t_list *lst, char *s)
 {
+	while (lst)
+	{
+
+		if (!ft_strdcmp((char *) lst->content, s))
+			return ((char *) lst->content);
+		lst = lst->next;
+	}
+	return (0);
 }
 
 int	expt(t_m *m, char **args)
@@ -66,7 +76,8 @@ int	expt(t_m *m, char **args)
 	int	i;
 	int	p;
 	int	cat;
-	char	*s_env;
+	char	*s_e;
+	char	*s_e0;
 
 	cat = 0;
 	i = 0;
@@ -86,17 +97,29 @@ int	expt(t_m *m, char **args)
 				invalid_iden(m, args[i]);
 			else
 			{
+				s_e = 0;
 				if (cat)
 				{
-					s_env = 0;
-					s_env = strjoinm(s_env, buffer, ft_strlen(s_env), ret);
+					s_e0 = lst_match(m->envs, args[i]);
+					if (s_e0)
+					{
+						//printf("%s\n", s_e0);
+						s_e = strjoinm(s_e, s_e0, ft_strlen(s_e), ft_strlen(s_e0));
+					}
+					else
+					{
+						s_e = strjoinm(s_e, args[i], ft_strlen(s_e), p + 1);
+						s_e = strjoinm(s_e, "=", ft_strlen(s_e), 1);
+					}
+					//printf("%d-%s-%s\n", p, s_e, &args[i][p + 2]);
+					s_e = strjoinm(s_e, &args[i][p + 2], ft_strlen(s_e), ft_strlen(&args[i][p + 2]));
 				}
 				else
 				{
-					s_env = str_env(args[i], ft_strlen(args[i]), m);
+					s_e = str_env(args[i], ft_strlen(args[i]), m);
 				}
 				ft_lstremove_if(&m->envs, args[i], ft_strdcmp, free);
-				ft_lstadd_back(&m->envs, ft_lstnew(s_env));
+				ft_lstadd_back(&m->envs, ft_lstnew(s_e));
 			}
 		}
 		else
