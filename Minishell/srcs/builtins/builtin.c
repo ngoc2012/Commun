@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/19 12:01:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/20 15:59:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,15 @@ int	builtins(t_m *m, int i, int n)
 	}
 	else if (!ft_strncmp(m->args[0], "export", 7))
 		return (expt(m, m->args));
+	else if (!ft_strncmp(m->args[0], "unset", 6))
+	{
+		int	i;
+		i = 0;
+		while (m->args[++i])
+			ft_lstremove_if(&m->envs, m->args[i], ft_strdcmp, free);
+		m->exit_code = 0;
+		return (1);
+	}
 	else if (!ft_strncmp(m->args[0], "pwd", 4))
 	{
 		fd = get_fd(m, i, n);
