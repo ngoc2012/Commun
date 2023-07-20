@@ -117,22 +117,23 @@ int	main(int argc, char **argv, char **env)
 	ft_strlcpy(m.cwd, get_home(), ft_strlen(get_home()) + 1);
 	//if (argc > 1)
 	//{
-	//	printf("haha\n");
-	//	int	i = 0;
-	//	if (ft_strncmp("-c", argv[++i], 3))
-	//		while (i < argc)
-	//		{
-	//			split_ops(argv[i], &m);
-	//			eval_com(m.infix, &m);
-	//			ft_lstclear(&m.infix, free);
-	//		}
-	//	return (m.exit_code);
+		//printf("haha\n");
+		//int	i = 0;
+		//if (ft_strncmp("-c", argv[++i], 3))
+		//	while (i < argc)
+		//	{
+		//		split_ops(argv[i], &m);
+		//		eval_com(m.infix, &m);
+		//		ft_lstclear(&m.infix, free);
+		//	}
+		//return (m.exit_code);
 	//}
 	//printf("hehe\n");
 
 	//m.fin = open(STDOUT_FILENO, O_RDONLY);
 	if (!isatty(STDIN_FILENO))
 	{
+		//printf("hehe\n");
 		char	buffer[BUFFER_SIZE + 1];
 		int	ret = read(STDIN_FILENO, buffer, BUFFER_SIZE);
 		m.s = 0;

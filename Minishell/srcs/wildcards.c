@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/16 21:39:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/20 10:40:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	wildcards(char *s, t_list **args, t_m *m)
 	i = -1;
 	while (ss[++i])
 	{
-		s0 = parse(ss[i], ft_strlen(ss[i]), m);
+		s0 = remove_quotes(ss[i], ft_strlen(ss[i]), m);
 		free(ss[i]);
 		ss[i] = s0;
 	}

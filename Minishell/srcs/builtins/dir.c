@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/14 03:38:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/18 10:49:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	get_path1(t_m *m)
 	if (chdir(m->cwd))
 	{
 		getcwd(m->cwd, sizeof(m->cwd));
+		perror("cd");
 		m->exit_code = 1;
 		return (0);
 	}

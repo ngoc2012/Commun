@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/08 18:11:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/18 10:48:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static int	get_n_strs(const char *str, char charset)
 	n_strs = 0;
 	while (str[i])
 	{
-		while (str[i] && str[i] == charset)
+		while (str[i] && ft_strchr(" 	", str[i]))
 			i++;
 		if (str[i])
 			n_strs++;
-		while (str[i] && !(str[i] == charset))
+		while (str[i] && charset != str[i])
 		{
 			if (ft_strchr("\"\'", str[i]))
 			{
@@ -40,6 +40,8 @@ static int	get_n_strs(const char *str, char charset)
 			}
 			i++;
 		}
+		if (str[i] == charset)
+			i++;
 	}
 	return (n_strs);
 }
@@ -54,31 +56,41 @@ static int	get_strs(const char *str, char charset, char **out)
 
 	i = 0;
 	j = 0;
+	start = i;
 	while (str[i])
 	{
-		while (str[i] && str[i] == charset)
-			i++;
+		while (str[i] && ft_strchr(" 	", str[i]))
+			start = i++;
+		//printf("1 - %d %d\n", start, i);
 		start = i;
-		while (str[i] && !(str[i] == charset))
+		while (str[i] && charset != str[i])
 		{
 			if (ft_strchr("\"\'", str[i]))
 			{
 				d = str[i];
-				//printf("%c\n", d);
 				i++;
 				while (str[i] != d)
 					i++;
 			}
-			i++;
+			if (str[i] == charset)
+				while (ft_strchr(" 	", str[i]))
+					start = i++;
+			else
+				i++;
 		}
-		if (i > start)
+		//printf("%d %d\n", start, i);
+		if (start == i)
 		{
-			out[j] = malloc(sizeof(char) * (i - start + 1));
-			if (!out[j])
-				return (0);
-			ft_strlcpy(out[j], &(str[start]), i - start + 1);
-			j++;
+			out[j] = 0;
+			return (0);
 		}
+		out[j] = malloc(sizeof(char) * (i - start + 1));
+		if (!out[j])
+			return (0);
+		ft_strlcpy(out[j], &(str[start]), i - start + 1);
+		j++;
+		if (str[i] == charset)
+			i++;
 	}
 	return (1);
 }
@@ -90,7 +102,6 @@ char	**ft_split2(const char *str, char charset)
 	char	**out0;
 
 	n_strs = get_n_strs(str, charset);
-	//printf("%d\n", n_strs);
 	out = malloc(sizeof(char *) * (n_strs + 1));
 	if (!out)
 		return (0);
@@ -123,7 +134,11 @@ int	pipes(char *s, t_m *m)
 	//printf("s = %s\n", s);
 	m->coms = ft_split2(s, '|');
 	if (!m->coms)
+	{
+		printf("minishell: syntax error\n");
+		m->exit_code = 2;
 		return (0);
+	}
 	n = -1;
 	while (m->coms[++n])
 		;
@@ -134,7 +149,7 @@ int	pipes(char *s, t_m *m)
 	i = -1;
 	while (++i < n)
 	{
-		//printf("i = %d\n", i);
+		//printf("i = %d|%s|\n", i, m->coms[i]);
 		m->args = split_args(m->coms[i], m);
 		if (!m->args || !(*m->args))
 		{
@@ -145,6 +160,7 @@ int	pipes(char *s, t_m *m)
 			process(m, i, n);
 		free_ss(m->args);
 	}
+	//printf("exit_code = %d\n", m->exit_code);
 	free_ss(m->coms);
 	if (m->fout != 1 && m->fout)
 	{

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/22 12:28:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/17 11:23:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,19 +214,18 @@ void	process(t_m *m, int i, int n)
 			}
 		}
 		waitpid(m->pid[i], &m->exit_code, 0);
+		if (WIFEXITED(m->exit_code))
+			m->exit_code = WEXITSTATUS(m->exit_code);
+		else if (WIFSIGNALED(m->exit_code)) {
+			int signal_number = WTERMSIG(m->exit_code);
+			m->exit_code = 128 + signal_number;
+		}
 		if (n > 3 && i && i < n - 2)
 		{
 			if (i % 2)
-			{
-				//printf("pipe main pipe0 initiated\n");
 				pipe(m->pipefd0);
-			}
 			else if (n > 2)
-			{
-				//printf("pipe main pipe1 initiated\n");
 				pipe(m->pipefd1);
-			}
 		}
-		//printf("Process %d %s finish\n", m->pid[i], m->args[0]);
 	}
 }

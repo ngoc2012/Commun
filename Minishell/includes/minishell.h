@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/16 19:38:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/20 10:39:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ int	chr_pos(char *s, char c);
 char	**split_args(char *s, t_m *m);
 void	redir(t_list *args, t_m *m);
 char	*get_home();
-char	*parse(char *s, int len, t_m *m);
+char	*remove_quotes(char *s, int len, t_m *m);
 
 #endif
