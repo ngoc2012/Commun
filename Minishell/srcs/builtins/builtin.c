@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/20 15:59:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/29 08:15:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,16 +144,24 @@ int	builtins(t_m *m, int i, int n)
 	if (!ft_strncmp(m->args[0], "echo", 5))
 	{
 		fd = get_fd(m, i, n);
-		return (echo(m, m->args, fd));
+		return (echo0(m, m->args, fd));
 	}
 	else if (!ft_strncmp(m->args[0], "export", 7))
 		return (expt(m, m->args));
 	else if (!ft_strncmp(m->args[0], "unset", 6))
 	{
 		int	i;
+		char	*s_e;
+
 		i = 0;
 		while (m->args[++i])
+		{
 			ft_lstremove_if(&m->envs, m->args[i], ft_strdcmp, free);
+			s_e = 0;
+			s_e = strjoinm(s_e, m->args[i], 0, ft_strlen(m->args[i]));
+			s_e = strjoinm(s_e, "=", ft_strlen(s_e), 1);
+			ft_lstadd_back(&m->envs, ft_lstnew(s_e));
+		}
 		m->exit_code = 0;
 		return (1);
 	}
@@ -168,8 +176,16 @@ int	builtins(t_m *m, int i, int n)
 	else if (!ft_strncmp(m->args[0], "cd", 3))
 	{
 		fd = get_fd(m, i, n);
-		if (n > 1)
+		int	n_args;
+		n_args = 0;
+		while (m->args[n_args])
+			n_args++;
+		if (n_args > 2)
+		{
+			ft_putstr_fd("minishell: cd: too many arguments\n", 2);
+			m->exit_code = 1;
 			return (1);
+		}
 		else
 		{
 			cd(m, m->args[1]);
@@ -188,14 +204,12 @@ int	builtins(t_m *m, int i, int n)
 		if (n_args == 2)
 		{
 			m->exit_code = number_2_exit_code(m->args[1]);
-			if (m->exit_code == -1)
+			if (m->exit_code == -1 || is_max_long_long(m->args[1]))
 			{
-				printf("bash: exit: %s: numeric argument required\n", m->args[1]);
-				m->exit_code = 2;
-			}
-			if (is_max_long_long(m->args[1]))
-			{
-				printf("bash: exit: %s: numeric argument required\n", m->args[1]);
+				ft_putstr_fd("minishell: exit: ", 2);
+				ft_putstr_fd(m->args[1], 2);
+				ft_putstr_fd(": numeric argument required\n", 2); 
+				//printf("minishell: exit: %s: numeric argument required\n", m->args[1]);
 				m->exit_code = 2;
 			}
 			//printf("exit code : %d\n", m->exit_code);

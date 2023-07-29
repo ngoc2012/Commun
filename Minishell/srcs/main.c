@@ -80,11 +80,29 @@ void	signal_handler(int sig, siginfo_t *info, void *ucontext)
 	(void)info;
 	if (sig == SIGINT)
 	{
-		write(1, "\n", 1);
-		exit(g_m->exit_code);
+		ft_putchar_fd('\n', STDIN_FILENO);
+		rl_replace_line("", STDIN_FILENO);
+		rl_on_new_line();
+		rl_redisplay();
 	}
 	else if (sig == SIGQUIT)
 		rl_forced_update_display();
+}
+
+void	init(t_m *m)
+{
+	m->exit_code = 0;
+	m->syntax_error = 0;
+	m->s = 0;
+	m->coms = 0;
+	m->args = 0;
+	m->infix = 0;
+	m->envs = 0;
+	m->fout = 1;
+	m->fin = 0;
+	m->heredoc = 0;
+	m->heredocf = 0;
+	getcwd(m->cwd, sizeof(m->cwd));
 }
 
 // Syntaxe error -> code 2
@@ -102,19 +120,9 @@ int	main(int argc, char **argv, char **env)
 	sigaction(SIGINT, &act, NULL);
 	sigaction(SIGQUIT, &act, NULL);
 
-	m.exit_code = 0;
-	m.syntax_error = 0;
-	m.s = 0;
-	m.coms = 0;
-	m.args = 0;
-	m.infix = 0;
 	m.env = env;
-	m.envs = 0;
-	m.fout = 1;
-	m.fin = 0;
-	m.heredoc = 0;
-	m.heredocf = 0;
-	ft_strlcpy(m.cwd, get_home(), ft_strlen(get_home()) + 1);
+	init(&m);
+	//ft_strlcpy(m.cwd, get_home(), ft_strlen(get_home()) + 1);
 	//if (argc > 1)
 	//{
 		//printf("haha\n");

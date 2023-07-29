@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/20 10:40:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/29 10:16:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	files(char *path, char *s, char **ss, t_list **args)
 	DIR *dir;
 	struct dirent *entry;
 	int	i;
+	char	*o;
 
 	dir = opendir(path);
 	if (!dir) {
@@ -73,7 +74,11 @@ int	files(char *path, char *s, char **ss, t_list **args)
 		if (ft_strncmp(entry->d_name, ".", 2) && ft_strncmp(entry->d_name, "..", 3))
 			if (!ss[0] || check(entry->d_name, s, ss))
 			{
-				ft_lstadd_back(args, ft_lstnew(ft_strdup(entry->d_name)));
+				o = 0;
+				o = strjoinm(o, "\'", ft_strlen(o), 1);
+				o = strjoinm(o, entry->d_name, ft_strlen(o), ft_strlen(entry->d_name));
+				o = strjoinm(o, "\'", ft_strlen(o), 1);
+				ft_lstadd_back(args, ft_lstnew(o));
 				i++;
 			}
 	}

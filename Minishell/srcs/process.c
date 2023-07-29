@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/17 11:23:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/29 07:58:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,22 @@ static char	*check_file(char *file)
 	return (0);
 }
 
-int	command(t_m *m)
+int	command(t_m *m, int n)
 {
 	char	*file;
 
 	file = check_file(m->args[0]);
-	if (!file)
-		file = ft_strdup(m->args[0]);
-	execve(file, m->args, m->env);
-	perror(file);
-	free(file);
+	if (file)
+		execve(file, m->args, m->env);
+	else
+		execve(m->args[0], m->args, m->env);
+	perror("minishell: command");
+	if (m->heredocf)
+		free(m->heredocf);
+	if (m->fin0)
+		close(m->fin0);
+	if (file)
+		free(file);
 	free_ss(m->args);
 	free_ss(m->coms);
 	rl_free(m->s);
@@ -77,6 +83,7 @@ void	process(t_m *m, int i, int n)
 	}
 	else if (!m->pid[i])
 	{
+		//printf("Process %d (%d/%d) start\n", getpid(), i, n);
 		if (n > 1)
 		{
 			//printf("Process %d (%d/%d) start\n", getpid(), i, n);
@@ -194,7 +201,7 @@ void	process(t_m *m, int i, int n)
 				close(m->pipefd0[1]);
 			}
 		}
-		command(m);
+		command(m, n);
 	}
 	else
 	{
@@ -213,7 +220,9 @@ void	process(t_m *m, int i, int n)
 				close(m->pipefd1[1]);
 			}
 		}
+		//printf("Wait for %d\n", m->pid[i]);
 		waitpid(m->pid[i], &m->exit_code, 0);
+		//printf("Process %d finished\n", m->pid[i]);
 		if (WIFEXITED(m->exit_code))
 			m->exit_code = WEXITSTATUS(m->exit_code);
 		else if (WIFSIGNALED(m->exit_code)) {

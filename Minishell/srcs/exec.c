@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/18 10:48:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/29 15:22:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int	pipes(char *s, t_m *m)
 	m->coms = ft_split2(s, '|');
 	if (!m->coms)
 	{
-		printf("minishell: syntax error\n");
+		ft_putstr_fd("minishell: syntax error\n", 2);
 		m->exit_code = 2;
 		return (0);
 	}
@@ -149,20 +149,20 @@ int	pipes(char *s, t_m *m)
 	i = -1;
 	while (++i < n)
 	{
-		//printf("i = %d|%s|\n", i, m->coms[i]);
+		//printf("pipes  i = %d|%s|\n", i, m->coms[i]);
 		m->args = split_args(m->coms[i], m);
 		if (!m->args || !(*m->args))
-		{
 			free_ss(m->args);
-			break ;
+		else
+		{
+			if (!builtins(m, i, n))
+				process(m, i, n);
+			free_ss(m->args);
 		}
-		if (!builtins(m, i, n))
-			process(m, i, n);
-		free_ss(m->args);
 	}
 	//printf("exit_code = %d\n", m->exit_code);
 	free_ss(m->coms);
-	if (m->fout != 1 && m->fout)
+	if (m->fout > 1)
 	{
 		m->fout = 1;
 		dup2(m->fout0, STDOUT_FILENO);

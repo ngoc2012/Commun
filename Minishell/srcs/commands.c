@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/14 14:40:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/29 15:16:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	split_ops(char *s, t_m *m)
 	int		n_c;
 	char	d;
 
+	//printf("split_ops |%s|\n",(char *) s);
 	while (*s && ft_strchr(" \n", *s))
 		s++;
 	if (ft_strchr(";&|", *s))
@@ -76,7 +77,7 @@ int	split_ops(char *s, t_m *m)
 				;
 			if ((d == '(' && s[i] == ')') || (d == ')' && s[i] && !ft_strchr(");&|", s[i])))
 			{
-				printf("Syntax error 1 |%c| %d |%c|\n", d, i, s[i]);
+				ft_putstr_fd("minishell: syntax error\n", 2);
 				ft_lstclear(&m->infix, free);
 				m->exit_code = 2;
 				m->syntax_error = 1;
@@ -98,7 +99,7 @@ int	split_ops(char *s, t_m *m)
 				;
 			if (!s[i] || ft_strchr("&|", s[i]))
 			{
-				printf("Syntax error 2\n");
+				ft_putstr_fd("minishell: syntax error\n", 2);
 				ft_lstclear(&m->infix, free);
 				m->exit_code = 2;
 				m->syntax_error = 1;
@@ -114,7 +115,7 @@ int	split_ops(char *s, t_m *m)
 			i1++;
 			if (i1 <= i0)
 			{
-				printf("Syntax error 2\n");
+				ft_putstr_fd("minishell: syntax error\n", 2);
 				ft_lstclear(&m->infix, free);
 				m->exit_code = 2;
 				m->syntax_error = 1;
@@ -126,7 +127,7 @@ int	split_ops(char *s, t_m *m)
 				;
 			if (s[i] && ft_strchr(";&|", s[i]))
 			{
-				//printf("Syntax error 4, |%c|\n", s[i]);
+				ft_putstr_fd("minishell: syntax error\n", 2);
 				ft_lstclear(&m->infix, free);
 				m->exit_code = 2;
 				m->syntax_error = 1;

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/20 10:52:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/29 15:27:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*remove_quotes(char *s, int len, t_m *m)
 	d = ' ';
 	i = 0;
 	i0 = i;
-	//printf("|%s|\n", s);
+	//printf("before remove quotes|%s|\n", s);
 	while (s[i] && i < len)
 	{
 		if (ft_strchr("\"'", s[i]))
@@ -82,6 +82,29 @@ t_list	*args_list(char *s, t_m *m)
 			wild = 1;
 			i++;
 		}
+		else if (ft_strchr("<>", s[i]))
+		{
+			d = s[i];
+			if (i > i0)
+				ft_lstadd_back(&args, ft_lstnew(strjoinm(0, &s[i0], 0, i - i0)));
+			i++;
+			if (s[i] == d)
+			{
+				if (d == '>')
+					ft_lstadd_back(&args, ft_lstnew(ft_strdup(">>")));
+				else
+					ft_lstadd_back(&args, ft_lstnew(ft_strdup("<<")));
+				i++;
+			}
+			else
+			{
+				if (d == '>')
+					ft_lstadd_back(&args, ft_lstnew(ft_strdup(">")));
+				else
+					ft_lstadd_back(&args, ft_lstnew(ft_strdup("<")));
+			}
+			i0 = i;
+		}
 		else if (ft_strchr("\"'", s[i]))
 		{
 			d = s[i];
@@ -89,15 +112,18 @@ t_list	*args_list(char *s, t_m *m)
 				;
 			i++;
 		}
-		else if (s[i] == ' ')
+		else if (ft_strchr(" 	", s[i]))
+		//else if (s[i] == ' ')
 		{
-			if (wild)
-				wildcards(ft_strndup(&s[i0], i - i0), &args, m);
-			else
-				ft_lstadd_back(&args, ft_lstnew(strjoinm(0, &s[i0], 0, i - i0)));
-				//ft_lstadd_back(&args, ft_lstnew(remove_quotes(&s[i0], i - i0, m)));
+			if (i > i0)
+			{
+				if (wild)
+					wildcards(ft_strndup(&s[i0], i - i0), &args, m);
+				else if (i > i0)
+					ft_lstadd_back(&args, ft_lstnew(strjoinm(0, &s[i0], 0, i - i0)));
+			}
 			wild = 0;
-			while (s[++i] == ' ')
+			while (ft_strchr(" 	", s[++i]))
 				;
 			i0 = i;
 		}
@@ -128,6 +154,7 @@ char	**split_args(char *s, t_m *m)
 
 	while (*s && ft_strchr(" \n", *s))
 		s++;
+	//printf("before str_env = |%s|\n", s);
 	s_env = str_env(s, ft_strlen(s), m);
 	//printf("s_env = |%s|\n", s_env);
 	args = args_list(s_env, m);
@@ -135,6 +162,7 @@ char	**split_args(char *s, t_m *m)
 	ss = malloc(sizeof(char *) * (ft_lstsize(args) + 1));
 	if (!ss)
 		return (0);
+	*ss = 0;
 	args0 = args;
 	ss0 = ss;
 	while (args)
@@ -143,30 +171,22 @@ char	**split_args(char *s, t_m *m)
 		if (!args->content)
 		{
 			*ss = ft_strdup("");
-			args = args->next;
 			ss++;
 		}
-		else if (!ft_strncmp("<<", (char *)args->content, 2))
+		else if (!ft_strncmp("<<", (char *)args->content, 3))
 		{
+			args = args->next;
 			//printf("heredoc |%c|\n", ((char *)args->content)[2]);
-			if (((char *)args->content)[2] && ft_strchr("<>|", ((char *)args->content)[2]))
+			if (!args || ft_strchr("<>|", ((char *)args->content)[0]))
 			{
-				perror("syntaxe");
-				free(ss0);
+				ft_putstr_fd("minishell: syntaxe\n", 2);
+				m->exit_code = 2;
+				free_ss(ss0);
 				ft_lstclear(&args0, free);
 				return (0);
 			}
-			if (((char *)args->content)[2])
-				s0 = &((char *) args->content)[2];
-			else
-			{
-				if (!args->next)
-					exit(EXIT_FAILURE);
-				free(args->content);
-				args->content = 0;
-				args = args->next;
-				s0 = (char *) args->content;
-			}
+			s0 = remove_quotes((char *)args->content, ft_strlen((char *)args->content), m);
+			//s0 = (char *) args->content;
 			if (m->heredoc)
 			{
 				free(m->heredoc);
@@ -181,6 +201,8 @@ char	**split_args(char *s, t_m *m)
 				m->heredoc = strjoinm(m->heredoc, com, ft_strlen(m->heredoc), ft_strlen(com));
 				m->heredoc = strjoinm(m->heredoc, "\n", ft_strlen(m->heredoc), 1);
 			}
+			if (s0)
+				free(s0);
 			//printf("%s", m->heredoc);
 			int i = 0;
 			m->heredocf = ft_itoa(i);
@@ -199,8 +221,9 @@ char	**split_args(char *s, t_m *m)
 			if (m->fin == -1)
 			{
 				perror("open");
+				m->exit_code = 1;
 				m->fin = 0;
-				free(ss0);
+				free_ss(ss0);
 				ft_lstclear(&args0, free);
 				return (0);
 			}
@@ -208,42 +231,32 @@ char	**split_args(char *s, t_m *m)
 			if (dup2(m->fin, STDIN_FILENO) == -1)
 			{
 				perror("dup2");
+				m->exit_code = 1;
 				close(m->fin);
-				free(ss0);
+				free_ss(ss0);
 				ft_lstclear(&args0, free);
 				return (0);
 			}
 			close(m->fin);
 			free(args->content);
 			args->content = 0;
-			args = args->next;
 		}
-		else if (((char *)args->content)[0] == '>')
+		//else if (((char *)args->content)[0] == '>')
+		else if (!ft_strncmp(">", (char *)args->content, 2) || !ft_strncmp(">>", (char *)args->content, 3))
 		{
 			int	append = 0;
-			int	i = 1;
-			if (((char *)args->content)[1] == '>')
-			{
+			if (!ft_strncmp(">>", (char *)args->content, 3))
 				append = 1;
-				i++;
-			}
-			if (((char *)args->content)[i])
-				s0 = &((char *) args->content)[i];
-			else
+			args = args->next;
+			if (!args || ft_strchr("<>", ((char *)args->content)[0]))
 			{
-				if (!args->next || ft_strchr("<>", ((char *)args->next->content)[0]))
-				{
-					printf("minishell: syntax error\n");
-					m->exit_code = 2;
-					free(ss0);
-					ft_lstclear(&args0, free);
-					return (0);
-				}
-				free(args->content);
-				args->content = 0;
-				args = args->next;
-				s0 = (char *) args->content;
+				ft_putstr_fd("minishell: syntax error\n", 2);
+				m->exit_code = 2;
+				free_ss(ss0);
+				ft_lstclear(&args0, free);
+				return (0);
 			}
+			//s0 = (char *) args->content;
 			if (m->fout != 1)
 			{
 				m->fout = 1;
@@ -256,9 +269,9 @@ char	**split_args(char *s, t_m *m)
 				m->fout = open(s0, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 			if (m->fout == -1)
 			{
-				perror("open");
-				m->exit_code = 2;
-				free(ss0);
+				perror("minishell: open");
+				m->exit_code = 1;
+				free_ss(ss0);
 				ft_lstclear(&args0, free);
 				return (0);
 			}
@@ -266,37 +279,31 @@ char	**split_args(char *s, t_m *m)
 			if (dup2(m->fout, STDOUT_FILENO) == -1)
 			{
 				perror("dup2");
-				m->exit_code = 2;
+				m->exit_code = 1;
 				close(m->fin);
-				free(ss0);
+				free_ss(ss0);
 				ft_lstclear(&args0, free);
 				return (0);
 			}
 			close(m->fout);
 			free(args->content);
 			args->content = 0;
-			args = args->next;
 		}
-		else if (((char *)args->content)[0] == '<')
+		//else if (((char *)args->content)[0] == '<')
+		else if (!ft_strncmp("<", (char *)args->content, 2))
 		{
-			if (((char *)args->content)[1])
-				s0 = &((char *) args->content)[1];
-			else
+			args = args->next;
+			if (!args || ft_strchr("<>", ((char *)args->content)[0]))
 			{
-				if (!args->next || ft_strchr("<>", ((char *)args->next->content)[0]))
-				{
-					printf("minishell: syntax error\n");
-					m->exit_code = 2;
-					free(ss0);
-					ft_lstclear(&args0, free);
-					return (0);
-				}
-				free(args->content);
-				args->content = 0;
-				args = args->next;
-				s0 = (char *) args->content;
-
+				ft_putstr_fd("minishell: syntax error\n", 2);
+				m->exit_code = 2;
+				free_ss(ss0);
+				ft_lstclear(&args0, free);
+				return (0);
 			}
+			//s0 = (char *) args->content;
+			s0 = remove_quotes((char *)args->content, ft_strlen((char *)args->content), m);
+			//printf("|%s|\n", s0);
 			if (m->fin)
 			{
 				m->fin = 0;
@@ -304,12 +311,14 @@ char	**split_args(char *s, t_m *m)
 				close(m->fin0);
 			}
 			m->fin = open(s0, O_RDONLY);
+			if (s0)
+				free(s0);
 			if (m->fin == -1)
 			{
 				perror("open");
-				m->exit_code = 2;
+				m->exit_code = 1;
 				m->fin = 0;
-				free(ss0);
+				free_ss(ss0);
 				ft_lstclear(&args0, free);
 				return (0);
 			}
@@ -317,29 +326,29 @@ char	**split_args(char *s, t_m *m)
 			if (dup2(m->fin, STDIN_FILENO) == -1)
 			{
 				perror("dup2");
-				m->exit_code = 2;
+				m->exit_code = 1;
 				close(m->fin);
-				free(ss0);
+				free_ss(ss0);
 				ft_lstclear(&args0, free);
 			}
 			close(m->fin);
 			free(args->content);
 			args->content = 0;
-			args = args->next;
 		}
 		else
 		{
-			//*ss = (char *)args->content;
 			*ss = remove_quotes((char *)args->content, ft_strlen((char *)args->content), m);
-			free(args->content);
+			//free(args->content);
 			//printf("%s,", *ss);
-			args = args->next;
 			ss++;
+			*ss = 0;
 		}
+		args = args->next;
 	}
 	if (m->heredoc)
 		write(0, m->heredoc, ft_strlen(m->heredoc));
-	ft_lstclear(&args0, free_none);
+	//ft_lstclear(&args0, free_none);
+	ft_lstclear(&args0, free);
 	*ss = 0;
 	return (ss0);
 }

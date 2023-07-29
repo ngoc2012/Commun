@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/05/30 18:39:29 by ngoc             ###   ########.fr        #
+#    Updated: 2023/07/21 14:15:11 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ $(LIBPR):
 .c.o:
 	$(CC) $(FLAGS) -g -c $< -o ${<:.c=.o} $(addprefix -I./, $(LIBS) includes)
 $(MANDA):	$(MOBJ) $(LIBFT) $(LIBPR)
-	$(CC) $(FLAGS) $(MOBJ) -lreadline -L./libft -lft -L./ft_printf -lftprintf -o $(MANDA)
+	$(CC) $(FLAGS) $(MOBJ) -lncurses -lreadline -L./libft -lft -L./ft_printf -lftprintf -o $(MANDA)
 bonus:	$(MANDA)
 norm:
 	norminette $(LIBS) srcs includes

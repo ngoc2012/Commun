@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/20 10:39:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/21 14:08:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <dirent.h>
+# include <curses.h>
+# include <term.h>
 
 # define BUFFER_SIZE 100
 
@@ -51,7 +53,7 @@ typedef struct	s_m
 	int	fout0;
 }	t_m;
 
-int	echo(t_m *m, char **args, int fd);
+int	echo0(t_m *m, char **args, int fd);
 int	expt(t_m *m, char **args);
 char	*strjoinm(char *des, char *src, int len_des, int buffer);
 void	pwd(t_m *m);

@@ -1,3 +1,36 @@
+
+minishell$ 
+^Cminishell$ 
+minishell$ 
+minishell$ exit
+minishell$ exit
+minishell$ exit
+
+
+
+ngoc@ngoc-HP-EliteBook-850-G5:~$ bash
+ngoc@ngoc-HP-EliteBook-850-G5:~$ export A=b
+ngoc@ngoc-HP-EliteBook-850-G5:~$ echo $A
+b
+ngoc@ngoc-HP-EliteBook-850-G5:~$ bash
+ngoc@ngoc-HP-EliteBook-850-G5:~$ echo $A
+b
+ngoc@ngoc-HP-EliteBook-850-G5:~$ unset A
+ngoc@ngoc-HP-EliteBook-850-G5:~$ echo $A
+
+ngoc@ngoc-HP-EliteBook-850-G5:~$ exit
+exit
+ngoc@ngoc-HP-EliteBook-850-G5:~$ echo $A
+b
+ngoc@ngoc-HP-EliteBook-850-G5:~$ exit
+exit
+ngoc@ngoc-HP-EliteBook-850-G5:~$ echo $A
+
+ngoc@ngoc-HP-EliteBook-850-G5:~$ 
+
+
+
+
 echo "\$TEST"
 echo testing multi ; echo "test 1 ; | and 2" ; cat tests/lorem.txt | grep Lorem
 echo "ngoc""ngoc"
@@ -16,6 +49,7 @@ echo "ab"'a$USER b' a
 echo "ab""'a$USER b'" a
 echo "$USERRRRa"
 echo a"
+echo $\$A
 $USER
 "
 echo  a     a   a

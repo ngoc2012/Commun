@@ -6,14 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/06/11 10:47:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/28 12:34:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <dirent.h>
 
-int	echo(t_m *m, char **args, int fd)
+int	echo0(t_m *m, char **args, int fd)
 {
 	int	i;
 	int	i0;
@@ -38,7 +38,8 @@ int	echo(t_m *m, char **args, int fd)
 		{
 			if (n > 0)
 				write(fd, " ", 1);
-			ft_putstr_fd(args[i], fd);
+			if (ft_strncmp(args[i], "\\", 2))
+				ft_putstr_fd(args[i], fd);
 			n++;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/07/18 10:49:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/07/28 16:01:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ int	get_path(t_m *m)
 
 int	get_path1(t_m *m)
 {
+	//printf("getpath1 |%s|\n", m->cwd);
 	if (chdir(m->cwd))
 	{
 		getcwd(m->cwd, sizeof(m->cwd));
-		perror("cd");
+		perror("minishell: cd");
+		//ft_putstr_fd("No such file or directory\n", 2);
 		m->exit_code = 1;
 		return (0);
 	}
@@ -54,6 +56,7 @@ int	cd(t_m *m, char *path)
 	char	*s;
 	char	*p;
 
+	//printf("path |%s|\n", path);
 	if (!path)
 		ft_strlcpy(m->cwd, get_home(), ft_strlen(get_home()) + 1);
 	else if (*path == '~')
@@ -68,7 +71,6 @@ int	cd(t_m *m, char *path)
 			closedir(d);
 		else
 			ft_strlcat(m->cwd, "/.", ft_strlen(m->cwd) + 3);
-		return (get_path(m));
 	}
 	else if (!ft_strncmp(path, "./", 3))
 	{
@@ -76,7 +78,6 @@ int	cd(t_m *m, char *path)
 			ft_strlcat(m->cwd, "./", ft_strlen(m->cwd) + 3);
 		else
 			ft_strlcat(m->cwd, "/./", ft_strlen(m->cwd) + 4);
-		return (get_path(m));
 	}
 	else if (!ft_strncmp(path, "./", 2))
 		ft_strlcat(m->cwd, &path[1], ft_strlen(m->cwd) + ft_strlen(&path[1]) + 1);
@@ -118,10 +119,6 @@ int	cd(t_m *m, char *path)
 		getcwd(m->cwd, sizeof(m->cwd));
 		ft_strlcat(m->cwd, "/", ft_strlen(m->cwd) + 2);
 		ft_strlcat(m->cwd, &path[0], ft_strlen(m->cwd) + ft_strlen(&path[0]) + 1);
-	}
-	else
-	{
-		ft_strlcat(m->cwd, path, ft_strlen(m->cwd) + ft_strlen(path) + 1);
 	}
 	return (get_path1(m));
 }
