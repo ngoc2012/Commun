@@ -6,22 +6,19 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:40:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/14 17:09:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/19 12:46:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#define BUFFER_STRJOIN 5
 
 #include <stdlib.h>
 #include "ft_printf.h"
 #include "libft.h"
+#include <stdio.h>
 
-char	*strjoinm(char *des, char *src, int len_des, int len_src)
+#define BUFFER_STRJOIN 5
+
+static char	*check(char *des, char *src, int len_des, int len_src)
 {
-	int		n;
-	int		n0;
-	char	*new_str;
-
 	if (!len_des && !des)
 	{
 		des = malloc(BUFFER_STRJOIN);
@@ -29,6 +26,18 @@ char	*strjoinm(char *des, char *src, int len_des, int len_src)
 			return (0);
 		des[0] = 0;
 	}
+	return (des);
+}
+
+char	*strjoinm(char *des, char *src, int len_des, int len_src)
+{
+	int		n;
+	int		n0;
+	char	*new_str;
+
+	des = check(des, src, len_des, len_src);
+	if (!len_des && !des)
+		return (0);
 	if (!len_src || !src)
 		return (des);
 	n0 = len_des % BUFFER_STRJOIN;

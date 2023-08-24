@@ -1,0 +1,197 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/24 14:32:52 by ngoc              #+#    #+#             */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
+
+// Free array of strings
+void	free_ss(char **ss)
+{
+	char	**ss0;
+
+	if (!ss)
+		return ;
+	ss0 = ss;
+	while (*ss)
+		free(*(ss++));
+	free(ss0);
+}
+
+/*
+Parse the () in command line to choose the command to execute.
+A command is a string between between || ; and &&.
+*/
+int	eval_com(t_list *p, t_m *m)
+{
+	t_list	*i;
+	t_list	*op;
+	int	level;
+	int	last_level;
+	int	blocked;
+
+	blocked = -1;
+	level = 0;
+	last_level = 0;
+	while (p)
+	{
+		//printf("p |%s|\n", (char *)p->content);
+		if (p->content && ((char *)p->content)[0] == '(')
+			level++;
+		else if (p->content && ((char *)p->content)[0] == ')')
+			level--;
+		else if (p->content && ft_strchr(";&|", ((char *)p->content)[0]))
+		{
+			if (!(blocked != -1 && level < blocked))
+			{
+				if (((char *)p->content)[0] == ';'
+					|| (!m->exit_code && ((char *)p->content)[0] == '&')
+					|| (m->exit_code && ((char *)p->content)[0] == '|'))
+				{
+					if (level <= blocked)
+						blocked = -1;
+				}
+				else
+					blocked = last_level;
+			}
+		}
+		else if (p->content && !ft_strchr(";&|", ((char *)p->content)[0])
+			&& blocked == -1)
+		{
+			//printf("pipes |%s|\n", (char *)p->content);
+			if (!pipes((char *)p->content, m))
+				return (0);
+			last_level = level;
+		}
+		p = p->next;
+	}
+	return (1);
+}
+
+int	g_process_level;
+
+void	signal_handler(int sig, siginfo_t *info, void *ucontext)
+{
+	(void)ucontext;
+	(void)info;
+	if (sig == SIGINT)
+	{
+		ft_putchar_fd('\n', STDIN_FILENO);
+		rl_replace_line("", STDIN_FILENO);
+		rl_on_new_line();
+		rl_redisplay();
+	}
+	else if (sig == SIGQUIT)
+		rl_forced_update_display();
+}
+
+void	init(t_m *m)
+{
+	g_process_level = 0;
+	m->exit_code = 0;
+	m->syntax_error = 0;
+	m->s = 0;
+	m->coms = 0;
+	m->args = 0;
+	m->argc = 0;
+	m->infix = 0;
+	m->fout = 1;
+	m->fin = 0;
+	m->fin0 = 0;
+	m->heredoc = 0;
+	m->heredocf = 0;
+	getcwd(m->cwd, sizeof(m->cwd));
+	m->full_file_name = 0;
+	//m->full_file_name = strjoinm(m->full_file_name, ".", 0, 1);
+	m->full_file_name = strjoinm(m->full_file_name, m->cwd, 0, ft_strlen(m->cwd));
+	m->full_file_name = strjoinm(m->full_file_name, "/minishell", ft_strlen(m->full_file_name), 10);
+	//printf("%s\n", m->full_file_name);
+	printf("pid %d - level %d\n", getpid(), g_process_level);
+}
+
+void	minishell(char **env, t_list *envs)
+{
+	struct sigaction	act;
+	t_m	m;
+
+	act.sa_flags = SA_RESTART | SA_SIGINFO;
+	act.sa_sigaction = &signal_handler;
+	sigemptyset(&act.sa_mask);
+	sigaction(SIGINT, &act, NULL);
+	sigaction(SIGQUIT, &act, NULL);
+
+	m.env = env;
+	m.envs = envs;
+	init(&m);
+	if (!isatty(STDIN_FILENO))
+	{
+		char	buffer[BUFFER_SIZE + 1];
+		int	ret = read(STDIN_FILENO, buffer, BUFFER_SIZE);
+		m.s = 0;
+		m.s = strjoinm(m.s, buffer, 0, ret);
+		while (ret)
+		{
+			ret = read(STDIN_FILENO, buffer, BUFFER_SIZE);
+			if (ret)
+				m.s = strjoinm(m.s, buffer, ft_strlen(m.s), ret);
+		}
+		split_ops(m.s, &m);
+		eval_com(m.infix, &m);
+		ft_lstclear(&m.infix, free);
+		free(m.s);
+		exit(m.exit_code);
+	}
+
+	// Clears the terminal screen
+	struct termios term;
+	tcgetattr(STDIN_FILENO, &term);
+	printf("\033[2J\033[1;1H");
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
+
+	char	*com;
+	while (1) {
+		com = readline("minishell$ ");
+		if (com)
+		{
+			while (*com && ft_strchr(" \n", *com))
+				com++;
+			if (*com)
+			{
+				m.s = 0;
+				m.s = strjoinm(m.s, com, 0, ft_strlen(com));
+				if (split_ops(m.s, &m) && eval_com(m.infix, &m))
+					add_history(m.s);
+				ft_lstclear(&m.infix, free);
+				rl_free(m.s);
+				rl_on_new_line();
+			}
+		}
+	}
+	free(m.cwd);
+	free(m.full_file_name);
+	exit(m.exit_code);
+}
+
+t_list	*lst_envs(char	*s)
+{
+	t_list	*envs;
+
+	envs = 0;
+	return (envs);
+}
+
+// \n\n\n egals ;
+int	main(int argc, char **argv, char **env)
+{
+	if (argc > 1 && !ft_strncmp(argv[1], LEVEL_KEY, ft_strlen(LEVEL_KEY)))
+		minishell(env, lst_envs(&argv[1][ft_strlen(LEVEL_KEY)]));
+	else
+		minishell(env, 0);
+	return (0);
+}
