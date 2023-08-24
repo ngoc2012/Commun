@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/24 02:04:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/24 10:30:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 extern int	g_process_level;
 
-void	free_args(t_m *m)
-{
-	if (!m->args)
-		return ;
-	while (--m->argc > -1)
-		if (m->args[m->argc])
-			free(m->args[m->argc]);
-	free(m->args);
-}
+//void	free_args(t_m *m)
+//{
+//	if (!m->args)
+//		return ;
+//	while (--m->argc > -1)
+//		if (m->args[m->argc])
+//			free(m->args[m->argc]);
+//	free(m->args);
+//}
 
 void	close_pipe(int *fd)
 {
@@ -81,7 +81,7 @@ int	arg_pipe(t_m *m, char *path, int i, int n)
 		free(path);
 		process(m, i, n);
 	}
-	free_args(m);
+	free_m_arg(m);
 	m->n_wildcards = 0;
 	return (1);
 }

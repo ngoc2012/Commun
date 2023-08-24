@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/24 02:01:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/24 09:54:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,6 @@ static t_list	*get_args_list(char *s, t_m *m)
 		return (0);
 	}
 	args = args_list(s_env, m);
-	//t_list	*args0 = args;
-	//while(args0)
-	//{
-	//	printf("args |%s|\n", (char *)args0->content);
-	//	args0 = args0->next;
-	//}
 	free(s_env);
 	if (!args)
 		m->exit_code = 2;
@@ -59,7 +53,7 @@ static int	check(t_m *m, t_list *args)
 	}
 	else
 	{
-		m->ss = astr_addback(m->ss, remove_quotes((char *)args->content,
+		m->args = astr_addback(m->args, remove_quotes((char *)args->content,
 					ft_strlen((char *)args->content), m));
 		m->argc++;
 	}
@@ -73,12 +67,9 @@ int	split_args(char *s, t_m *m)
 	args = get_args_list(s, m);
 	if (!args)
 		return (0);
-	m->ss = malloc(sizeof(char *) * (ft_lstsize(args) + 1));
-	if (!m->ss)
-		return (0);
-	*m->ss = 0;
+	m->args = 0;
 	m->argc = 0;
-	m->args0 = args;
+	m->argsL = args;
 	while (args)
 	{
 		if (args->content)
@@ -86,6 +77,7 @@ int	split_args(char *s, t_m *m)
 				return (0);
 		args = args->next;
 	}
+	m->ss = m->args;
 	if (m->heredoc)
 		write(0, m->heredoc, ft_strlen(m->heredoc));
 	return (1);

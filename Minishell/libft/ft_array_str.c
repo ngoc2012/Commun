@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:07:27 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/17 16:14:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/24 09:53:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ char	**astr_addback(char **ss, char *s)
 	char	**new;
 	int		i;
 
-	//if (!ss)
-	//	return (0);
 	new = malloc(sizeof(char *) * (astr_len(ss) + 2));
 	if (!new)
 		return (0);

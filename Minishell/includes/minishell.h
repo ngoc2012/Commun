@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/24 02:01:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/24 10:25:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_m
 	char	**coms;
 	char	**args;
 	char	**ss;
-	t_list	*args0;
+	t_list	*argsL;
 	int		exit_code;
 	int		pipefd0[2];
 	int		pipefd1[2];
@@ -112,6 +112,7 @@ void	exec(t_m *m, char **args);
 char	*ft_strndup(char *s, int len);
 void	wildcards(char *s, t_list **args, t_m *m);
 void	free_m(t_m *m);
+void	free_m_arg(t_m *m);
 void	process(t_m *m, int i, int n);
 void	redir(t_list *args, t_m *m);
 char	*get_home(void);
