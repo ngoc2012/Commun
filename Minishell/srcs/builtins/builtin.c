@@ -6,12 +6,20 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/24 09:51:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/26 10:24:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+/*
+  
+  Pipe[0]  Pipe[1]  Pipe[0]  Pipe[1]  Pipe[0]  Pipe[ ]
+  Out  In  Out  In  Out  In  Out  In  Out  In  Out  In
+  /     \ /      \ /      \ /      \ /      \ /      \
+Pr[0]  Pr[1]    Pr[2]      ....	  Pr[i]     ....    Pr[n-1]
+
+*/
 void	set_pipe(t_m *m, int i, int n)
 {
 	if (i)

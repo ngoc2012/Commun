@@ -4,8 +4,8 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <readline/readline.h>
-#include <readline/history.h>
+//#include <readline/readline.h>
+//#include <readline/history.h>
 
 void f()
 {
@@ -27,12 +27,14 @@ int main()
 
     f();
 
-    char	*com = readline("minishell$ ");
+    //char	*com = readline("minishell$ ");
     fout = dup(STDOUT_FILENO);
     //dup2(STDOUT_FILENO, fout);
-    if (dup2(fd, STDOUT_FILENO) == -1)
-	    exit(1);
-    printf("%s\n", com);
+    dup2(fd, -1);
+    perror("hi");
+//    if (dup2(fd, -1) == -1)
+//	    exit(1);
+    //printf("%s\n", com);
     printf("%d %d\n", fout, STDOUT_FILENO);
     close(fd);
 

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/23 23:32:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/24 18:44:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ static int	loop(char *s, t_m *m, t_c *c)
 		else
 			c->i++;
 	}
+	return (1);
 }
 
 // Check syntax error: ( command (
@@ -122,7 +123,8 @@ int	priorities_operators(char *s, t_m *m)
 	c.n_c = 0;
 	c.i0 = 0;
 	c.i = 0;
-	loop(s, m, &c);
+	if (!loop(s, m, &c))
+		return (0);
 	if (c.i > c.i0)
 		ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[c.i0], c.i - c.i0)));
 	if (c.n_o != c.n_c)

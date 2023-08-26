@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/24 01:41:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/26 18:55:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	write2heredocf(t_m *m, t_list **args)
 	write(heredocf, m->heredoc, ft_strlen(m->heredoc));
 	//free(m->heredoc);
 	//m->heredoc = 0;
-	//close(heredocf);
+	close(heredocf);
 	free_m(m);
 	exit(EXIT_SUCCESS);
 }

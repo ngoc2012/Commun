@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/24 01:42:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/25 22:35:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ static int	start(t_m *m, t_list **args, char **s0)
 	*s0 = remove_quotes(*s0, ft_strlen(*s0), m);
 	if (m->fout != 1)
 	{
+		close(m->fout);
 		m->fout = 1;
 		if (dup2(m->fout0, STDOUT_FILENO) == -1)
-			exit_error(m, "dup2", 1);
+			return (redir_error(m, "redir_out/dup2", 1));
 		close(m->fout0);
 	}
 	return (append);
@@ -45,7 +46,7 @@ int	redir_out(t_m *m, t_list **args)
 	s0 = 0;
 	append = start(m, args, &s0);
 	if (append == -1)
-		return (return_error(m, "syntaxe error", 2, 0));
+		return (redir_error(m, "syntax_error", 2));
 	if (append)
 		m->fout = open(s0, O_CREAT | O_WRONLY | O_APPEND, 0664);
 	else
@@ -53,11 +54,12 @@ int	redir_out(t_m *m, t_list **args)
 	if (s0)
 		free(s0);
 	if (m->fout == -1)
-		return (return_error(m, "open", 1, 1));
+		return (redir_error(m, "open", 1));
 	m->fout0 = dup(STDOUT_FILENO);
+	if (m->fout0 == -1)
+		return (redir_error(m, "dup", 1));
 	if (dup2(m->fout, STDOUT_FILENO) == -1)
-		return (return_error(m, "dup2", 1, 1));
-	close(m->fout);
+		return (redir_error(m, "redir_out/dup2", 1));
 	free((*args)->content);
 	(*args)->content = 0;
 	return (1);

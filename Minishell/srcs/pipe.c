@@ -6,23 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/24 10:30:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/26 11:24:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern int	g_process_level;
-
-//void	free_args(t_m *m)
-//{
-//	if (!m->args)
-//		return ;
-//	while (--m->argc > -1)
-//		if (m->args[m->argc])
-//			free(m->args[m->argc]);
-//	free(m->args);
-//}
 
 void	close_pipe(int *fd)
 {
@@ -33,25 +23,12 @@ void	close_pipe(int *fd)
 int	end_pipe(t_m *m)
 {
 	free_array_str(&m->coms, 1);
-	if (m->fout > 1)
-	{
-		m->fout = 1;
-		if (dup2(m->fout0, STDOUT_FILENO) == -1)
-			exit_error(m, "dup2", 1);
-		close(m->fout0);
-	}
+	free_files(m);
 	if (m->heredocf)
 	{
 		unlink(m->heredocf);
 		free(m->heredocf);
 		m->heredocf = 0;
-	}
-	if (m->fin)
-	{
-		m->fin = 0;
-		if (dup2(m->fin0, STDIN_FILENO))
-			exit_error(m, "dup2", 1);
-		close(m->fin0);
 	}
 	if (!m->args && m->exit_code == 2)
 		return (0);
@@ -112,7 +89,7 @@ int	pipes(char *s, t_m *m)
 		pipe(m->pipefd1);
 	i = -1;
 	while (++i < n)
-		if (!arg_pipe(m, path, i, n))
+		if (!arg_pipe(m, path, i, n) && m->exit_code == 2)
 			break ;
 	return (end_pipe(m));
 }

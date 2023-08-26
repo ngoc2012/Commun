@@ -1,3 +1,5 @@
+cat <"./test_files/infile" | echo hi
+
 export | sort | grep -v SHLVL | grep -v "declare -x _" | grep -v "PS.="
 
 

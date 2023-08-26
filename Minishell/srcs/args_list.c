@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/19 20:10:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/26 11:30:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static void	wild_space(char *s, t_m *m, t_c *c, int *wild)
 	}
 }
 
-t_list	*args_list(char *s, t_m *m)
+t_list	*get_args_list(char *s, t_m *m)
 {
 	t_c		c;
 	char	*a;

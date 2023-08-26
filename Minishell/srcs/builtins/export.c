@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/08 09:09:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/24 11:42:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	invalid_iden(t_m *m, char *s)
 {
 	m->exit_code = 1;
-	ft_putstr_fd("bash: export: `", 2);
+	ft_putstr_fd("export: `", 2);
 	ft_putstr_fd(s, 2);
 	ft_putstr_fd("': not a valid identifier\n", 2);
 	return (1);

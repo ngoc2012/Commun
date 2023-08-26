@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/23 23:01:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/26 11:21:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	first_process(t_m *m, int i, int n)
 			close_pipe(m->pipefd1);
 		close(m->pipefd0[0]);
 		if (dup2(m->pipefd0[1], STDOUT_FILENO) == -1)
-			exit_error(m, "dup2", 1);
+			exit_error(m, "process1/dup2", 1);
 		close(m->pipefd0[1]);
 		return (1);
 	}
@@ -31,7 +31,7 @@ int	first_process(t_m *m, int i, int n)
 	{
 		close(m->pipefd0[1]);
 		if (dup2(m->pipefd0[0], STDIN_FILENO) == -1)
-			exit_error(m, "dup2", 1);
+			exit_error(m, "process2/dup2", 1);
 		close(m->pipefd0[0]);
 		return (1);
 	}
@@ -46,7 +46,7 @@ int	last_process(t_m *m, int i, int n)
 		close_pipe(m->pipefd1);
 		close(m->pipefd0[1]);
 		if (dup2(m->pipefd0[0], STDIN_FILENO) == -1)
-			exit_error(m, "dup2", 1);
+			exit_error(m, "process3/dup2", 1);
 		close(m->pipefd0[0]);
 	}
 	else
@@ -54,7 +54,7 @@ int	last_process(t_m *m, int i, int n)
 		close_pipe(m->pipefd0);
 		close(m->pipefd1[1]);
 		if (dup2(m->pipefd1[0], STDIN_FILENO) == -1)
-			exit_error(m, "dup2", 1);
+			exit_error(m, "process4/dup2", 1);
 		close(m->pipefd1[0]);
 	}
 }
@@ -66,22 +66,22 @@ int	inter_process(t_m *m, int i, int n)
 	{
 		close(m->pipefd0[1]);
 		if (dup2(m->pipefd0[0], STDIN_FILENO) == -1)
-			exit_error(m, "dup2", 1);
+			exit_error(m, "process5/dup2", 1);
 		close(m->pipefd0[0]);
 		close(m->pipefd1[0]);
 		if (dup2(m->pipefd1[1], STDOUT_FILENO) == -1)
-			exit_error(m, "dup2", 1);
+			exit_error(m, "process6/dup2", 1);
 		close(m->pipefd1[1]);
 	}
 	else
 	{
 		close(m->pipefd1[1]);
 		if (dup2(m->pipefd1[0], STDIN_FILENO) == -1)
-			exit_error(m, "dup2", 1);
+			exit_error(m, "process7/dup2", 1);
 		close(m->pipefd1[0]);
 		close(m->pipefd0[0]);
 		if (dup2(m->pipefd0[1], STDOUT_FILENO) == -1)
-			exit_error(m, "dup2", 1);
+			exit_error(m, "process8/dup2", 1);
 		close(m->pipefd0[1]);
 	}
 }

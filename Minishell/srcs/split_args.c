@@ -6,16 +6,16 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/24 09:54:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/26 11:32:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static t_list	*get_args_list(char *s, t_m *m)
+static t_list	*get_args_list0(char *s, t_m *m)
 {
 	char	*s_env;
-	t_list	*args;
+	t_list	*args_list;
 
 	while (*s && ft_strchr(" \n", *s))
 		s++;
@@ -26,35 +26,37 @@ static t_list	*get_args_list(char *s, t_m *m)
 		free(s_env);
 		return (0);
 	}
-	args = args_list(s_env, m);
+	args_list = get_args_list(s_env, m);
 	free(s_env);
-	if (!args)
+	if (!args_list)
 		m->exit_code = 2;
-	return (args);
+	return (args_list);
 }
 
-static int	check(t_m *m, t_list *args)
+static int	check(t_m *m, t_list *args_list)
 {
-	if (!ft_strncmp("<<", (char *)args->content, 3))
+	if (!ft_strncmp("<<", (char *)args_list->content, 3))
 	{
-		if (!heredoc(m, &args))
+		if (!heredoc(m, &args_list))
 			return (0);
 	}
-	else if (!ft_strncmp(">", (char *)args->content, 2)
-		|| !ft_strncmp(">>", (char *)args->content, 3))
+	else if (!ft_strncmp(">", (char *)args_list->content, 2)
+		|| !ft_strncmp(">>", (char *)args_list->content, 3))
 	{
-		if (!redir_out(m, &args))
+		if (!redir_out(m, &args_list))
 			return (0);
 	}
-	else if (!ft_strncmp("<", (char *)args->content, 2))
+	else if (!ft_strncmp("<", (char *)args_list->content, 2))
 	{
-		if (!redir_in(m, &args))
+		if (!redir_in(m, &args_list))
 			return (0);
 	}
 	else
 	{
-		m->args = astr_addback(m->args, remove_quotes((char *)args->content,
-					ft_strlen((char *)args->content), m));
+		m->args = astr_addback(m->args,
+				remove_quotes((char *)args_list->content,
+					ft_strlen((char *)args_list->content), m));
+		m->ss = m->args;
 		m->argc++;
 	}
 	return (1);
@@ -62,22 +64,21 @@ static int	check(t_m *m, t_list *args)
 
 int	split_args(char *s, t_m *m)
 {
-	t_list	*args;
+	t_list	*args_list;
 
-	args = get_args_list(s, m);
-	if (!args)
+	args_list = get_args_list0(s, m);
+	if (!args_list)
 		return (0);
 	m->args = 0;
 	m->argc = 0;
-	m->argsL = args;
-	while (args)
+	m->args_list = args_list;
+	while (args_list)
 	{
-		if (args->content)
-			if (!check(m, args))
+		if (args_list->content)
+			if (!check(m, args_list))
 				return (0);
-		args = args->next;
+		args_list = args_list->next;
 	}
-	m->ss = m->args;
 	if (m->heredoc)
 		write(0, m->heredoc, ft_strlen(m->heredoc));
 	return (1);

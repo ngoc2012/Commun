@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/24 10:25:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/26 11:29:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_m
 	char	**coms;
 	char	**args;
 	char	**ss;
-	t_list	*argsL;
+	t_list	*args_list;
 	int		exit_code;
 	int		pipefd0[2];
 	int		pipefd1[2];
@@ -100,6 +100,7 @@ int		ft_strcmp_val(char *s1, char *s2);
 int		wild_files_list(t_m *m, char *s, char **ss, t_list **args);
 int		command(t_m *m, int n);
 int		return_error(t_m *m, char *mess, int exit_code, int is_perror);
+int		redir_error(t_m *m, char *mess, int exit_code);
 int		split_args(char *s, t_m *m);
 char	*strjoinm(char *des, char *src, int len_des, int buffer);
 void	pwd(t_m *m);
@@ -123,7 +124,8 @@ char	*abs_path(t_m *m, char *path);
 char	*get_env(char *s, char **ss);
 void	close_pipe(int *fd);
 char	*remove_quotes(char *s, int len, t_m *m);
-t_list	*args_list(char *s, t_m *m);
+t_list	*get_args_list(char *s, t_m *m);
 void	exit_error(t_m *m, char *mess, int exit_code);
+void	free_files(t_m *m);
 
 #endif
