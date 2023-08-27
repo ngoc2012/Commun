@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/26 11:29:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/27 11:44:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_c
 
 typedef struct s_m
 {
+	int		process_level;
 	char	*s;
 	char	**env;
 	char	**coms;

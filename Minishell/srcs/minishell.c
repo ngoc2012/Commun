@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:14:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/26 11:28:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/27 12:12:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	zeros(t_m *m)
 void	init(t_m *m)
 {
 	zeros(m);
+	m->process_level = 0;
 	m->has_child = 0;
 	m->syntax_error = 0;
 	m->n_wildcards = 0;

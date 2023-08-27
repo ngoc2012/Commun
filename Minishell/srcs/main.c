@@ -6,30 +6,27 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/17 12:53:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/27 12:14:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	g_process_level;
+t_m	*g_m;
 
-void	signal_handler(int sig, siginfo_t *info, void *ucontext)
+static void	signal_handler(int sig, siginfo_t *info, void *ucontext)
 {
 	(void)ucontext;
 	(void)info;
-	if (sig == SIGINT && g_process_level)
+	if (sig == SIGINT && g_m->process_level)
 	{
 		ft_putchar_fd('\n', STDIN_FILENO);
 		rl_replace_line("", STDIN_FILENO);
 		rl_on_new_line();
 		rl_redisplay();
 	}
-	else if (sig == SIGQUIT && g_process_level)
-	{
-		printf("sdfsdf\n");
+	else if (sig == SIGQUIT && g_m->process_level)
 		exit(0);
-	}
 }
 
 void	read_command(t_m *m)
@@ -92,7 +89,7 @@ int	main(int argc, char **argv, char **env)
 	struct sigaction	act;
 	t_m					m;
 
-	g_process_level = 0;
+	g_m = &m;
 	act.sa_flags = SA_RESTART | SA_SIGINFO;
 	act.sa_sigaction = &signal_handler;
 	sigemptyset(&act.sa_mask);

@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/26 11:21:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/27 12:23:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern int	g_process_level;
+extern t_m	*g_m;
 
 // First process or last process of 2
 int	first_process(t_m *m, int i, int n)
@@ -95,7 +95,7 @@ int	end_process(t_m *m, int i, int n)
 	waitpid(m->pid[i], &m->exit_code, 0);
 	if (m->has_child)
 	{
-		g_process_level = 0;
+		m->process_level = 0;
 		m->has_child = 0;
 	}
 	if (WIFEXITED(m->exit_code))

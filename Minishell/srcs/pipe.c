@@ -6,13 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/26 11:24:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/27 21:07:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-extern int	g_process_level;
 
 void	close_pipe(int *fd)
 {
@@ -20,7 +18,7 @@ void	close_pipe(int *fd)
 	close(fd[1]);
 }
 
-int	end_pipe(t_m *m)
+static int	end_pipe(t_m *m)
 {
 	free_array_str(&m->coms, 1);
 	free_files(m);
@@ -35,24 +33,30 @@ int	end_pipe(t_m *m)
 	return (1);
 }
 
-//printf("pipes  i = %d|%s|\n", i, m->coms[i]);
-int	arg_pipe(t_m *m, char *path, int i, int n)
+static int	error_split_args(t_m *m, int n)
 {
-	if (!split_args(m->coms[i], m) && m->exit_code == 2)
+	if (m->exit_code == 2)
 	{
 		if (n > 1)
 			close_pipe(m->pipefd0);
 		if (n > 2)
 			close_pipe(m->pipefd1);
-		return (0);
 	}
+	free_m_arg(m);
+	return (0);
+}
+
+int	arg_pipe(t_m *m, char *path, int i, int n)
+{
+	if (!split_args(m->coms[i], m))
+		return (error_split_args(m, n));
 	if (m->args && *m->args && !builtins(m, i, n))
 	{
 		path = abs_path(m, m->args[0]);
 		if (!ft_strncmp(m->args[0], "./minishell", 12)
 			|| !ft_strncmp(path, m->ffn, ft_strlen(m->ffn) + 1))
 		{
-			g_process_level++;
+			m->process_level++;
 			m->has_child = 1;
 		}
 		free(path);
