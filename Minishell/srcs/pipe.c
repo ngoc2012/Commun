@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/27 21:07:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/31 09:16:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static int	end_pipe(t_m *m)
 		free(m->heredocf);
 		m->heredocf = 0;
 	}
+	free_m_arg(m);
 	if (!m->args && m->exit_code == 2)
 		return (0);
 	return (1);

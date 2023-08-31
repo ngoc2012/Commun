@@ -6,24 +6,24 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/25 22:35:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/31 09:46:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	start(t_m *m, t_list **args, char **s0)
+static int	start(t_m *m, t_list **cur, char **s0)
 {
 	int		append;
 
 	append = 0;
-	if (!ft_strncmp(">>", (char *)(*args)->content, 3))
+	if (!ft_strncmp(">>", (char *)(*cur)->content, 3))
 		append = 1;
-	(*args) = (*args)->next;
-	if (!(*args))
+	(*cur) = (*cur)->next;
+	if (!(*cur))
 		return (-1);
-	*s0 = (char *)(*args)->content;
-	if (!(*args) || ft_strchr("<>", (*s0)[0])
+	*s0 = (char *)(*cur)->content;
+	if (!(*cur) || ft_strchr("<>", (*s0)[0])
 		|| !ft_strncmp("&", *s0, 2) || m->n_wildcards > 1)
 		return (-1);
 	*s0 = remove_quotes(*s0, ft_strlen(*s0), m);
@@ -38,13 +38,13 @@ static int	start(t_m *m, t_list **args, char **s0)
 	return (append);
 }
 
-int	redir_out(t_m *m, t_list **args)
+int	redir_out(t_m *m, t_list **cur)
 {
 	char	*s0;
 	int		append;
 
 	s0 = 0;
-	append = start(m, args, &s0);
+	append = start(m, cur, &s0);
 	if (append == -1)
 		return (redir_error(m, "syntax_error", 2));
 	if (append)
@@ -60,7 +60,6 @@ int	redir_out(t_m *m, t_list **args)
 		return (redir_error(m, "dup", 1));
 	if (dup2(m->fout, STDOUT_FILENO) == -1)
 		return (redir_error(m, "redir_out/dup2", 1));
-	free((*args)->content);
-	(*args)->content = 0;
+	(*cur) = (*cur)->next;
 	return (1);
 }

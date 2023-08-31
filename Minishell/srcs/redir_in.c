@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/25 23:25:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/31 09:46:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,14 @@ int	redir_error(t_m *m, char *mess, int exit_code)
 	return (0);
 }
 
-int	write_file(t_m *m, t_list *args)
+int	write_file(t_m *m, t_list *cur)
 {
 	char	*s0;
 
-	s0 = remove_quotes((char *)args->content,
-			ft_strlen((char *)args->content), m);
+	s0 = remove_quotes((char *)cur->content,
+			ft_strlen((char *)cur->content), m);
 	if (m->fin)
 	{
-		printf("write_file\n");
 		close(m->fin);
 		m->fin = 0;
 		if (dup2(m->fin0, STDIN_FILENO) == -1)
@@ -44,19 +43,18 @@ int	write_file(t_m *m, t_list *args)
 	return (1);
 }
 
-int	redir_in(t_m *m, t_list **args)
+int	redir_in(t_m *m, t_list **cur)
 {
-	(*args) = (*args)->next;
-	if (!(*args) || ft_strchr("<>", ((char *)(*args)->content)[0]))
+	(*cur) = (*cur)->next;
+	if (!(*cur) || ft_strchr("<>", ((char *)(*cur)->content)[0]))
 		return (redir_error(m, "syntax_error", 2));
-	if (!write_file(m, *args))
+	if (!write_file(m, *cur))
 		return (0);
 	m->fin0 = dup(STDIN_FILENO);
 	if (m->fin0 == -1)
 		return (redir_error(m, "dup", 1));
 	if (dup2(m->fin, STDIN_FILENO) == -1)
 		return (redir_error(m, "redir_in/dup2", 1));
-	free((*args)->content);
-	(*args)->content = 0;
+	(*cur) = (*cur)->next;
 	return (1);
 }

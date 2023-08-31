@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/27 21:09:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/31 10:02:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	signal_heredoc(void)
 }
 
 // Child process
-static void	write2heredocf(t_m *m, t_list **args)
+static void	write2heredocf(t_m *m, t_list **cur)
 {
 	char	*com;
 	int		heredocf;
@@ -50,8 +50,8 @@ static void	write2heredocf(t_m *m, t_list **args)
 	signal_heredoc();
 	if (m->s)
 		rl_free(m->s);
-	m->s = remove_quotes((char *)(*args)->content,
-			ft_strlen((char *)(*args)->content), m);
+	m->s = remove_quotes((char *)(*cur)->content,
+			ft_strlen((char *)(*cur)->content), m);
 	while (1)
 	{
 		com = readline("> ");
@@ -70,7 +70,7 @@ static void	write2heredocf(t_m *m, t_list **args)
 	exit(EXIT_SUCCESS);
 }
 
-static int	parent_process(t_m *m, t_list **args, int pid)
+static int	parent_process(t_m *m, int pid, t_list **cur)
 {
 	m->process_level++;
 	m->has_child = 1;
@@ -84,21 +84,27 @@ static int	parent_process(t_m *m, t_list **args, int pid)
 	if (dup2(m->fin, STDIN_FILENO) == -1)
 		return_error(m, "dup2", 1, 1);
 	close(m->fin);
-	free((*args)->content);
-	(*args)->content = 0;
+	(*cur) = (*cur)->next;
+	free(m->heredoc);
+	m->heredoc = 0;
+	free(m->heredocf);
+	m->heredocf = 0;
+	return (1);
 }
 
-int	heredoc(t_m *m, t_list **args)
+int	heredoc(t_m *m, t_list **cur)
 {
 	int	i;
 	int	pid;
 
-	(*args) = (*args)->next;
-	if (!(*args) || ft_strchr("<>|", ((char *)(*args)->content)[0]))
+	(*cur) = (*cur)->next;
+	if (!(*cur) || ft_strchr("<>|", ((char *)(*cur)->content)[0]))
 		return (return_error(m, "syntaxe error", 2, 0));
-	if (m->heredoc)
-		free(m->heredoc);
-	m->heredoc = 0;
+	if (m->fin0)
+	{
+		dup2(m->fin0, STDIN_FILENO);
+		close(m->fin0);
+	}
 	i = 0;
 	m->heredocf = ft_itoa(i);
 	while (access(m->heredocf, F_OK) != -1 && i < 100)
@@ -110,8 +116,7 @@ int	heredoc(t_m *m, t_list **args)
 	if (pid == -1)
 		return_error(m, "fork", 1, 1);
 	else if (!pid)
-		write2heredocf(m, args);
+		write2heredocf(m, cur);
 	else
-		return (parent_process(m, args, pid));
-	return (1);
+		return (parent_process(m, pid, cur));
 }

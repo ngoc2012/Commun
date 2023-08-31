@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/27 21:09:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/31 09:54:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,53 +33,39 @@ static t_list	*get_args_list0(char *s, t_m *m)
 	return (args_list);
 }
 
-static int	check(t_m *m, t_list *args_list)
+static int	check(t_m *m, t_list **cur)
 {
-	if (!ft_strncmp("<<", (char *)args_list->content, 3))
-	{
-		if (!heredoc(m, &args_list))
-			return (0);
-	}
-	else if (!ft_strncmp(">", (char *)args_list->content, 2)
-		|| !ft_strncmp(">>", (char *)args_list->content, 3))
-	{
-		if (!redir_out(m, &args_list))
-			return (0);
-	}
-	else if (!ft_strncmp("<", (char *)args_list->content, 2))
-	{
-		if (!redir_in(m, &args_list))
-			return (0);
-	}
+	if (!ft_strncmp("<<", (char *)(*cur)->content, 3))
+		return (heredoc(m, cur));
+	else if (!ft_strncmp(">", (char *)(*cur)->content, 2)
+		|| !ft_strncmp(">>", (char *)(*cur)->content, 3))
+		return (redir_out(m, cur));
+	else if (!ft_strncmp("<", (char *)(*cur)->content, 2))
+		return (redir_in(m, cur));
 	else
 	{
 		m->args = astr_addback(m->args,
-				remove_quotes((char *)args_list->content,
-					ft_strlen((char *)args_list->content), m));
+				remove_quotes((char *)(*cur)->content,
+					ft_strlen((char *)(*cur)->content), m));
 		m->ss = m->args;
 		m->argc++;
+		*cur = (*cur)->next;
 	}
 	return (1);
 }
 
 int	split_args(char *s, t_m *m)
 {
-	t_list	*args_list;
+	t_list	*cur;
 
-	args_list = get_args_list0(s, m);
-	if (!args_list)
+	cur = get_args_list0(s, m);
+	if (!cur)
 		return (0);
 	m->args = 0;
 	m->argc = 0;
-	m->args_list = args_list;
-	while (args_list)
-	{
-		if (args_list->content)
-			if (!check(m, args_list))
-				return (0);
-		args_list = args_list->next;
-	}
-	if (m->heredoc)
-		write(0, m->heredoc, ft_strlen(m->heredoc));
+	m->args_list = cur;
+	while (cur)
+		if (!check(m, &cur))
+			return (0);
 	return (1);
 }

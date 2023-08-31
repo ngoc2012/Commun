@@ -1,0 +1,2 @@
+ls *.en.srt | while IFS= read -r filename; do newname=$(echo "$filename" | awk '{old=$0; gsub(".en", "", old); print old}'); mv "$filename" "$newname"; done
+
