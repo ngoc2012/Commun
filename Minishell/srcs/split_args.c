@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 09:54:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/31 16:10:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,31 +33,53 @@ static t_list	*get_args_list0(char *s, t_m *m)
 	return (args_list);
 }
 
-static int	check(t_m *m, t_list **cur)
+static void	next2elements(t_list **cur)
+{
+	*cur = (*cur)->next;
+	if (*cur)
+		*cur = (*cur)->next;
+}
+
+static void	add_arg(t_m *m, t_list **cur)
+{
+	m->args = astr_addback(m->args,
+			remove_quotes((char *)(*cur)->content,
+				ft_strlen((char *)(*cur)->content), m));
+	m->ss = m->args;
+	m->argc++;
+	*cur = (*cur)->next;
+}
+
+static int	check(t_m *m, t_list **cur, int err)
 {
 	if (!ft_strncmp("<<", (char *)(*cur)->content, 3))
 		return (heredoc(m, cur));
 	else if (!ft_strncmp(">", (char *)(*cur)->content, 2)
 		|| !ft_strncmp(">>", (char *)(*cur)->content, 3))
-		return (redir_out(m, cur));
-	else if (!ft_strncmp("<", (char *)(*cur)->content, 2))
-		return (redir_in(m, cur));
-	else
 	{
-		m->args = astr_addback(m->args,
-				remove_quotes((char *)(*cur)->content,
-					ft_strlen((char *)(*cur)->content), m));
-		m->ss = m->args;
-		m->argc++;
-		*cur = (*cur)->next;
+		if (err)
+			return (redir_out(m, cur));
+		else
+			next2elements(cur);
 	}
+	else if (!ft_strncmp("<", (char *)(*cur)->content, 2))
+	{
+		if (err)
+			return (redir_in(m, cur));
+		else
+			next2elements(cur);
+	}
+	else
+		add_arg(m, cur);
 	return (1);
 }
 
 int	split_args(char *s, t_m *m)
 {
 	t_list	*cur;
+	int		err;
 
+	err = 1;
 	cur = get_args_list0(s, m);
 	if (!cur)
 		return (0);
@@ -65,7 +87,13 @@ int	split_args(char *s, t_m *m)
 	m->argc = 0;
 	m->args_list = cur;
 	while (cur)
-		if (!check(m, &cur))
-			return (0);
-	return (1);
+	{
+		if (!check(m, &cur, err))
+		{
+			err = 0;
+			if (m->exit_code == 2)
+				return (err);
+		}
+	}
+	return (err);
 }

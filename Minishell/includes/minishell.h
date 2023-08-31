@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 09:06:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/31 16:26:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_m
 	int		fout;
 	int		fout0;
 	int		n_wildcards;
+	int		n_pipes;
 }	t_m;
 
 int		echo0(t_m *m, int fd);
@@ -88,19 +89,19 @@ int		cd(t_m *m, char *path);
 int		split_ops(char *s, t_m *m);
 int		pipes(char *s, t_m *m);
 int		isenv(char c);
-int		builtins(t_m *m, int i, int n);
+int		builtins(t_m *m, int i);
 int		ft_strdcmp(const char *s1, const char *s2);
 int		chr_pos(char *s, char c);
 int		priorities_operators(char *s, t_m *m);
 int		infix_priorities_operators(t_list *p, t_m *m);
 int		is_all_env(char *s, int p);
-int		builtin_exit(t_m *m, int i, int n);
+int		builtin_exit(t_m *m, int i);
 int		redir_out(t_m *m, t_list **args);
 int		redir_in(t_m *m, t_list **args);
 int		heredoc(t_m *m, t_list **args);
 int		ft_strcmp_val(char *s1, char *s2);
 int		wild_files_list(t_m *m, char *s, char **ss, t_list **args);
-int		command(t_m *m, int n);
+int		command(t_m *m);
 int		return_error(t_m *m, char *mess, int exit_code, int is_perror);
 int		redir_error(t_m *m, char *mess, int exit_code);
 int		split_args(char *s, t_m *m);
@@ -116,7 +117,7 @@ char	*ft_strndup(char *s, int len);
 void	wildcards(char *s, t_list **args, t_m *m);
 void	free_m(t_m *m);
 void	free_m_arg(t_m *m);
-void	process(t_m *m, int i, int n);
+void	process(t_m *m, int i);
 void	redir(t_list *args, t_m *m);
 char	*get_home(void);
 char	*remove_quotes(char *s, int len, t_m *m);
@@ -129,5 +130,6 @@ char	*remove_quotes(char *s, int len, t_m *m);
 t_list	*get_args_list(char *s, t_m *m);
 void	exit_error(t_m *m, char *mess, int exit_code);
 void	free_files(t_m *m);
+void	signal_heredoc(void);
 
 #endif

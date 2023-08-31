@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/27 12:23:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/31 15:08:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 extern t_m	*g_m;
 
 // First process or last process of 2
-int	first_process(t_m *m, int i, int n)
+int	first_process(t_m *m, int i)
 {
 	if (!i)
 	{
-		if (n > 2)
+		if (m->n_pipes > 2)
 			close_pipe(m->pipefd1);
 		close(m->pipefd0[0]);
 		if (dup2(m->pipefd0[1], STDOUT_FILENO) == -1)
@@ -27,7 +27,7 @@ int	first_process(t_m *m, int i, int n)
 		close(m->pipefd0[1]);
 		return (1);
 	}
-	else if (n == 2)
+	else if (m->n_pipes == 2)
 	{
 		close(m->pipefd0[1]);
 		if (dup2(m->pipefd0[0], STDIN_FILENO) == -1)
@@ -39,7 +39,7 @@ int	first_process(t_m *m, int i, int n)
 }
 
 // Last process
-int	last_process(t_m *m, int i, int n)
+int	last_process(t_m *m, int i)
 {
 	if (i % 2)
 	{
@@ -60,7 +60,7 @@ int	last_process(t_m *m, int i, int n)
 }
 
 // Intermediate process
-int	inter_process(t_m *m, int i, int n)
+int	inter_process(t_m *m, int i)
 {
 	if (i % 2)
 	{
@@ -86,11 +86,11 @@ int	inter_process(t_m *m, int i, int n)
 	}
 }
 
-int	end_process(t_m *m, int i, int n)
+int	end_process(t_m *m, int i)
 {
 	if (i && i % 2)
 		close_pipe(m->pipefd0);
-	else if (i && n > 2)
+	else if (i && m->n_pipes > 2)
 		close_pipe(m->pipefd1);
 	waitpid(m->pid[i], &m->exit_code, 0);
 	if (m->has_child)
@@ -102,16 +102,16 @@ int	end_process(t_m *m, int i, int n)
 		m->exit_code = WEXITSTATUS(m->exit_code);
 	else if (WIFSIGNALED(m->exit_code))
 		m->exit_code = WTERMSIG(m->exit_code) + 128;
-	if (n > 3 && i && i < n - 2)
+	if (m->n_pipes > 3 && i && i < m->n_pipes - 2)
 	{
 		if (i % 2)
 			pipe(m->pipefd0);
-		else if (n > 2)
+		else if (m->n_pipes > 2)
 			pipe(m->pipefd1);
 	}
 }
 
-void	process(t_m *m, int i, int n)
+void	process(t_m *m, int i)
 {
 	int		j;
 
@@ -120,17 +120,17 @@ void	process(t_m *m, int i, int n)
 		return_error(m, "fork", 1, 1);
 	else if (!m->pid[i])
 	{
-		if (n > 1)
+		if (m->n_pipes > 1)
 		{
-			if (first_process(m, i, n))
+			if (first_process(m, i))
 				;
-			else if (i == n - 1)
-				last_process(m, i, n);
+			else if (i == m->n_pipes - 1)
+				last_process(m, i);
 			else
-				inter_process(m, i, n);
+				inter_process(m, i);
 		}
-		command(m, n);
+		command(m);
 	}
 	else
-		end_process(m, i, n);
+		end_process(m, i);
 }

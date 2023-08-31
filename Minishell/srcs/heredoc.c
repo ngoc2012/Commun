@@ -6,45 +6,32 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 10:02:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/31 16:29:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern t_m	*g_m;
-
-static void	signal_handler(int sig, siginfo_t *info, void *ucontext)
+static void	read_lines(t_m *m)
 {
-	(void)ucontext;
-	(void)info;
-	if (sig == SIGINT)
-	{
-		free_m(g_m);
-		exit(130);
-	}
-	else if (sig == SIGQUIT)
-	{
-		free_m(g_m);
-		exit(130);
-	}
-}
+	char	*com;
+	char	*s;
 
-static void	signal_heredoc(void)
-{
-	struct sigaction	act;
-
-	act.sa_flags = SA_RESTART | SA_SIGINFO;
-	act.sa_sigaction = &signal_handler;
-	sigemptyset(&act.sa_mask);
-	sigaction(SIGINT, &act, NULL);
-	sigaction(SIGQUIT, &act, NULL);
+	while (1)
+	{
+		com = readline("> ");
+		if (!ft_strncmp(com, m->s, ft_strlen(m->s) + 1))
+			break ;
+		s = str_env(com, ft_strlen(com), m);
+		m->heredoc = strjoinm(m->heredoc, s, -1, -1);
+		free(s);
+		m->heredoc = strjoinm(m->heredoc, "\n", ft_strlen(m->heredoc), 1);
+	}
 }
 
 // Child process
 static void	write2heredocf(t_m *m, t_list **cur)
 {
-	char	*com;
 	int		heredocf;
 
 	signal_heredoc();
@@ -52,15 +39,11 @@ static void	write2heredocf(t_m *m, t_list **cur)
 		rl_free(m->s);
 	m->s = remove_quotes((char *)(*cur)->content,
 			ft_strlen((char *)(*cur)->content), m);
-	while (1)
-	{
-		com = readline("> ");
-		if (!ft_strncmp(com, m->s, ft_strlen(m->s) + 1))
-			break ;
-		m->heredoc = strjoinm(m->heredoc, com,
-				ft_strlen(m->heredoc), ft_strlen(com));
-		m->heredoc = strjoinm(m->heredoc, "\n", ft_strlen(m->heredoc), 1);
-	}
+	read_lines(m);
+	if (m->n_pipes > 1)
+		close_pipe(m->pipefd0);
+	if (m->n_pipes > 2)
+		close_pipe(m->pipefd1);
 	heredocf = open(m->heredocf, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (heredocf == -1)
 		exit_error(m, "open", 1);
@@ -75,6 +58,7 @@ static int	parent_process(t_m *m, int pid, t_list **cur)
 	m->process_level++;
 	m->has_child = 1;
 	waitpid(pid, &m->exit_code, 0);
+	(*cur) = (*cur)->next;
 	m->process_level = 0;
 	m->has_child = 0;
 	m->fin = open(m->heredocf, O_RDONLY);
@@ -84,7 +68,6 @@ static int	parent_process(t_m *m, int pid, t_list **cur)
 	if (dup2(m->fin, STDIN_FILENO) == -1)
 		return_error(m, "dup2", 1, 1);
 	close(m->fin);
-	(*cur) = (*cur)->next;
 	free(m->heredoc);
 	m->heredoc = 0;
 	free(m->heredocf);

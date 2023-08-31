@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:40:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/19 12:46:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/31 16:14:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@
 
 #define BUFFER_STRJOIN 5
 
-static char	*check(char *des, char *src, int len_des, int len_src)
+static char	*check(char *des, char *src, int *len_des, int *len_src)
 {
-	if (!len_des && !des)
+	if (*len_des < 0)
+		*len_des = ft_strlen(des);
+	if (*len_src < 0)
+		*len_src = ft_strlen(src);
+	if (!*len_des && !des)
 	{
 		des = malloc(BUFFER_STRJOIN);
 		if (!des)
@@ -35,7 +39,7 @@ char	*strjoinm(char *des, char *src, int len_des, int len_src)
 	int		n0;
 	char	*new_str;
 
-	des = check(des, src, len_des, len_src);
+	des = check(des, src, &len_des, &len_src);
 	if (!len_des && !des)
 		return (0);
 	if (!len_src || !src)

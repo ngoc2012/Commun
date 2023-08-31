@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 09:16:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/31 14:55:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,24 @@ static int	end_pipe(t_m *m)
 	return (1);
 }
 
-static int	error_split_args(t_m *m, int n)
+static int	error_split_args(t_m *m)
 {
 	if (m->exit_code == 2)
 	{
-		if (n > 1)
+		if (m->n_pipes > 1)
 			close_pipe(m->pipefd0);
-		if (n > 2)
+		if (m->n_pipes > 2)
 			close_pipe(m->pipefd1);
 	}
 	free_m_arg(m);
 	return (0);
 }
 
-int	arg_pipe(t_m *m, char *path, int i, int n)
+int	arg_pipe(t_m *m, char *path, int i)
 {
 	if (!split_args(m->coms[i], m))
-		return (error_split_args(m, n));
-	if (m->args && *m->args && !builtins(m, i, n))
+		return (error_split_args(m));
+	if (m->args && *m->args && !builtins(m, i))
 	{
 		path = abs_path(m, m->args[0]);
 		if (!ft_strncmp(m->args[0], "./minishell", 12)
@@ -61,7 +61,7 @@ int	arg_pipe(t_m *m, char *path, int i, int n)
 			m->has_child = 1;
 		}
 		free(path);
-		process(m, i, n);
+		process(m, i);
 	}
 	free_m_arg(m);
 	m->n_wildcards = 0;
@@ -76,7 +76,6 @@ int	pipes(char *s, t_m *m)
 {
 	int		i;
 	int		j;
-	int		n;
 	pid_t	pid;
 	char	*path;
 
@@ -84,17 +83,17 @@ int	pipes(char *s, t_m *m)
 	m->coms = ft_split_quote(s, '|');
 	if (!m->coms)
 		return (return_error(m, "syntaxe error", 2, 0));
-	n = -1;
-	while (m->coms[++n])
-		if (n && !ft_strlen(m->coms[n]))
+	m->n_pipes = -1;
+	while (m->coms[++m->n_pipes])
+		if (m->n_pipes && !ft_strlen(m->coms[m->n_pipes]))
 			return (return_error(m, "syntaxe error", 2, 0));
-	if (n > 1)
+	if (m->n_pipes > 1)
 		pipe(m->pipefd0);
-	if (n > 2)
+	if (m->n_pipes > 2)
 		pipe(m->pipefd1);
 	i = -1;
-	while (++i < n)
-		if (!arg_pipe(m, path, i, n) && m->exit_code == 2)
+	while (++i < m->n_pipes)
+		if (!arg_pipe(m, path, i) && m->exit_code == 2)
 			break ;
 	return (end_pipe(m));
 }

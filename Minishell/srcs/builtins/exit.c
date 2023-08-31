@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/24 09:56:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/31 15:00:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,11 @@ int	is_max_long_long(char *str)
 	return (0);
 }
 
-int	builtin_exit(t_m *m, int i, int n)
+int	builtin_exit(t_m *m, int i)
 {
 	int	fd;
 
-	if (n > 1)
+	if (m->n_pipes > 1)
 		return (1);
 	if (m->argc == 2)
 	{
@@ -113,9 +113,9 @@ int	builtin_exit(t_m *m, int i, int n)
 	else if (m->argc > 2)
 		m->exit_code = 1;
 	add_history(m->s);
-	if (n > 1)
+	if (m->n_pipes > 1)
 		close_pipe(m->pipefd0);
-	if (n > 2)
+	if (m->n_pipes > 2)
 		close_pipe(m->pipefd1);
 	free_m(m);
 	exit(m->exit_code);

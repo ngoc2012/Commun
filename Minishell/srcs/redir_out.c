@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 09:46:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/08/31 14:42:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static int	start(t_m *m, t_list **cur, char **s0)
 	if (!(*cur) || ft_strchr("<>", (*s0)[0])
 		|| !ft_strncmp("&", *s0, 2) || m->n_wildcards > 1)
 		return (-1);
+	(*cur) = (*cur)->next;
 	*s0 = remove_quotes(*s0, ft_strlen(*s0), m);
 	if (m->fout != 1)
 	{
@@ -60,6 +61,5 @@ int	redir_out(t_m *m, t_list **cur)
 		return (redir_error(m, "dup", 1));
 	if (dup2(m->fout, STDOUT_FILENO) == -1)
 		return (redir_error(m, "redir_out/dup2", 1));
-	(*cur) = (*cur)->next;
 	return (1);
 }

@@ -20,6 +20,9 @@ HERE
 cat <minishell.h <<HERE <missing | ls
 HERE
 
+cat <minishell.h < << <<HERE <missing | ls
+HERE
+
 cat <minishell.h <<HERE | cat
 HERE
 
