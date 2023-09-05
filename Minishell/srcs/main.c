@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/05 11:23:57 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/05 13:36:27 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@ static void	signal_handler(int sig, siginfo_t *info, void *ucontext)
 {
 	(void)ucontext;
 	(void)info;
-	if (sig == SIGINT && g_m->process_level)
+	if (sig == SIGINT)
 	{
 		ft_putchar_fd('\n', STDIN_FILENO);
 		rl_replace_line("", STDIN_FILENO);
 		rl_on_new_line();
 		rl_redisplay();
 	}
-	else if (sig == SIGQUIT && g_m->process_level)
-		exit(0);
 }
 
 void	read_command(t_m *m)
@@ -81,6 +79,8 @@ void	interactive_mode(t_m *m)
 				rl_on_new_line();
 			}
 		}
+		if (com == NULL)
+			exit_error(m, 0, 0);
 	}
 }
 
