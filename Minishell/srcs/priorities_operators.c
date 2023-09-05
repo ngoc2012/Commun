@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/24 18:44:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 09:52:35 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static int	parantheses(char *s, t_m *m, t_c *c)
 			&& !ft_strchr(");&|", s[c->i])))
 		return (return_error(m, "syntaxe error", 2, 0));
 	c->i0 = c->i;
+	return (1);
 }
 
 static int	operators(char *s, t_m *m, t_c *c)
@@ -56,6 +57,7 @@ static int	operators(char *s, t_m *m, t_c *c)
 	if (!s[c->i] || ft_strchr("&|", s[c->i]))
 		return (return_error(m, "syntaxe error", 2, 0));
 	c->i0 = c->i;
+	return (1);
 }
 
 static int	end(char *s, t_m *m, t_c *c)
@@ -75,6 +77,7 @@ static int	end(char *s, t_m *m, t_c *c)
 	if (s[c->i] && ft_strchr(";&|", s[c->i]))
 		return (return_error(m, "syntaxe error", 2, 0));
 	c->i0 = c->i;
+	return (1);
 }
 
 static int	loop(char *s, t_m *m, t_c *c)
