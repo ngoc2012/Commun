@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/02 13:24:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:23:57 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ int	main(int argc, char **argv, char **env)
 	struct sigaction	act;
 	t_m					m;
 
+	(void)argc;
+	(void)argv;
 	g_m = &m;
 	act.sa_flags = SA_RESTART | SA_SIGINFO;
 	act.sa_sigaction = &signal_handler;
@@ -99,7 +101,5 @@ int	main(int argc, char **argv, char **env)
 	init(&m);
 	read_from_input(&m);
 	interactive_mode(&m);
-	free_m(&m);
-	exit(m.exit_code);
-	return (0);
+	exit_error(&m, 0, m.exit_code);
 }

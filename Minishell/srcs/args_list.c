@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/26 11:30:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:28:59 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	redir_args(char *s, t_m *m, t_c *c)
+static void	redir_args(char *s, t_c *c)
 {
 	c->d = s[c->i];
 	if (c->i > c->i0)
@@ -37,7 +37,7 @@ static void	redir_args(char *s, t_m *m, t_c *c)
 	c->i0 = c->i;
 }
 
-static int	quotes(char *s, t_m *m, t_c *c)
+static int	quotes(char *s, t_c *c)
 {
 	c->d = s[c->i];
 	while (s[++c->i] && s[c->i] != c->d)
@@ -108,10 +108,10 @@ t_list	*get_args_list(char *s, t_m *m)
 		if (s[c.i] == '*' || ft_strchr(" 	", s[c.i]))
 			wild_space(s, m, &c, &wild);
 		else if (ft_strchr("<>", s[c.i]))
-			redir_args(s, m, &c);
+			redir_args(s, &c);
 		else if (ft_strchr("\"'", s[c.i]))
 		{
-			if (!quotes(s, m, &c))
+			if (!quotes(s, &c))
 				return (0);
 		}
 		else

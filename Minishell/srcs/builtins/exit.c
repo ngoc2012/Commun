@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 15:00:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:41:22 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*get_sign(char *str, int *sign)
+static char	*get_sign(char *str, int *sign)
 {
 	*sign = 1;
 	while (ft_strchr(" 	", *str))
@@ -23,7 +23,7 @@ char	*get_sign(char *str, int *sign)
 	return (str);
 }
 
-int	number_2_exit_code(char *str)
+static int	number_2_exit_code(char *str)
 {
 	int	n;
 	int	sign;
@@ -51,7 +51,7 @@ int	number_2_exit_code(char *str)
 		return (n);
 }
 
-int	get_big_num(char *str, int *n)
+static int	get_big_num(char *str, int *n)
 {
 	int	i;
 
@@ -76,7 +76,7 @@ int	get_big_num(char *str, int *n)
 	return (i);
 }
 
-int	is_max_long_long(char *str)
+static int	is_max_long_long(char *str)
 {
 	int	i;
 	int	n;
@@ -93,7 +93,7 @@ int	is_max_long_long(char *str)
 	return (0);
 }
 
-int	builtin_exit(t_m *m, int i)
+int	builtin_exit(t_m *m)
 {
 	int	fd;
 
@@ -117,6 +117,6 @@ int	builtin_exit(t_m *m, int i)
 		close_pipe(m->pipefd0);
 	if (m->n_pipes > 2)
 		close_pipe(m->pipefd1);
-	free_m(m);
-	exit(m->exit_code);
+	exit_error(m, 0, m->exit_code);
+	return (1);
 }

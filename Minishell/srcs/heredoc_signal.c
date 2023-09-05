@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 16:25:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:43:42 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ static void	signal_handler(int sig, siginfo_t *info, void *ucontext)
 			close_pipe(g_m->pipefd0);
 		if (g_m->n_pipes > 2)
 			close_pipe(g_m->pipefd1);
-		free_m(g_m);
-		exit(130);
+		exit_error(g_m, 0, 130);
 	}
 	else if (sig == SIGQUIT)
 	{
@@ -33,8 +32,7 @@ static void	signal_handler(int sig, siginfo_t *info, void *ucontext)
 			close_pipe(g_m->pipefd0);
 		if (g_m->n_pipes > 2)
 			close_pipe(g_m->pipefd1);
-		free_m(g_m);
-		exit(130);
+		exit_error(g_m, 0, 130);
 	}
 }
 

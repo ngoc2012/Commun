@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 16:29:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:42:40 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	read_lines(t_m *m)
 }
 
 // Child process
-static void	write2heredocf(t_m *m, t_list **cur)
+static int	write2heredocf(t_m *m, t_list **cur)
 {
 	int		heredocf;
 
@@ -38,7 +38,7 @@ static void	write2heredocf(t_m *m, t_list **cur)
 	if (m->s)
 		rl_free(m->s);
 	m->s = remove_quotes((char *)(*cur)->content,
-			ft_strlen((char *)(*cur)->content), m);
+			ft_strlen((char *)(*cur)->content));
 	read_lines(m);
 	if (m->n_pipes > 1)
 		close_pipe(m->pipefd0);
@@ -49,8 +49,8 @@ static void	write2heredocf(t_m *m, t_list **cur)
 		exit_error(m, "open", 1);
 	write(heredocf, m->heredoc, ft_strlen(m->heredoc));
 	close(heredocf);
-	free_m(m);
-	exit(EXIT_SUCCESS);
+	exit_error(m, 0, EXIT_SUCCESS);
+	return (1);
 }
 
 static int	parent_process(t_m *m, int pid, t_list **cur)
@@ -99,7 +99,6 @@ int	heredoc(t_m *m, t_list **cur)
 	if (pid == -1)
 		return_error(m, "fork", 1, 1);
 	else if (!pid)
-		write2heredocf(m, cur);
-	else
-		return (parent_process(m, pid, cur));
+		return (write2heredocf(m, cur));
+	return (parent_process(m, pid, cur));
 }

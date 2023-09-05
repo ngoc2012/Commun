@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:14:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 14:50:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:16:09 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	free_files(t_m *m)
 	m->fout0 = 1;
 }
 
-void	free_m(t_m *m)
+void	free_m(t_m *m, int free_env)
 {
 	free_m_arg(m);
 	if (m->s)
@@ -92,10 +92,13 @@ void	free_m(t_m *m)
 	if (m->coms)
 		free_array_str(&m->coms, 0);
 	m->coms = 0;
-	if (m->ffn)
-		free(m->ffn);
-	m->ffn = 0;
-	if (m->env)
-		free_array_str(&m->env, 0);
 	free_files(m);
+	if (free_env)
+	{
+		if (m->ffn)
+			free(m->ffn);
+		m->ffn = 0;
+		if (m->env)
+			free_array_str(&m->env, 0);
+	}
 }

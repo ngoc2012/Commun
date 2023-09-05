@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 16:10:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:26:19 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	add_arg(t_m *m, t_list **cur)
 {
 	m->args = astr_addback(m->args,
 			remove_quotes((char *)(*cur)->content,
-				ft_strlen((char *)(*cur)->content), m));
+				ft_strlen((char *)(*cur)->content)));
 	m->ss = m->args;
 	m->argc++;
 	*cur = (*cur)->next;

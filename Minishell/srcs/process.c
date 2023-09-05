@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 15:08:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:31:38 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	first_process(t_m *m, int i)
 }
 
 // Last process
-int	last_process(t_m *m, int i)
+void	last_process(t_m *m, int i)
 {
 	if (i % 2)
 	{
@@ -60,7 +60,7 @@ int	last_process(t_m *m, int i)
 }
 
 // Intermediate process
-int	inter_process(t_m *m, int i)
+void	inter_process(t_m *m, int i)
 {
 	if (i % 2)
 	{
@@ -86,7 +86,7 @@ int	inter_process(t_m *m, int i)
 	}
 }
 
-int	end_process(t_m *m, int i)
+void	end_process(t_m *m, int i)
 {
 	if (i && i % 2)
 		close_pipe(m->pipefd0);

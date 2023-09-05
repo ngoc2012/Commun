@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 14:42:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:27:45 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	start(t_m *m, t_list **cur, char **s0)
 		|| !ft_strncmp("&", *s0, 2) || m->n_wildcards > 1)
 		return (-1);
 	(*cur) = (*cur)->next;
-	*s0 = remove_quotes(*s0, ft_strlen(*s0), m);
+	*s0 = remove_quotes(*s0, ft_strlen(*s0));
 	if (m->fout != 1)
 	{
 		close(m->fout);

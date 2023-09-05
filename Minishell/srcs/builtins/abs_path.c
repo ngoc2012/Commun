@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/08 22:04:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:39:02 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*relative_path1(t_m *m, char *path)
+static char	*relative_path1(t_m *m, char *path)
 {
 	char	*p;
 
@@ -40,7 +40,7 @@ char	*relative_path1(t_m *m, char *path)
 	return (0);
 }
 
-char	*relative_path2(t_m *m, char *path, int i)
+static char	*relative_path2(t_m *m, char *path, int i)
 {
 	char	*p;
 
@@ -69,7 +69,7 @@ char	*relative_path2(t_m *m, char *path, int i)
 	return (0);
 }
 
-char	*relative_path3(t_m *m, char *path, int i)
+static char	*relative_path3(t_m *m, char *path, int i)
 {
 	char	*p;
 	int		j;
@@ -97,7 +97,7 @@ char	*relative_path3(t_m *m, char *path, int i)
 	return (0);
 }
 
-char	*relative_path4(t_m *m, char *path, int i)
+static char	*relative_path4(t_m *m, char *path)
 {
 	char	*p;
 
@@ -133,7 +133,7 @@ char	*abs_path(t_m *m, char *path)
 	p = relative_path3(m, path, i);
 	if (p)
 		return (p);
-	p = relative_path4(m, path, i);
+	p = relative_path4(m, path);
 	if (p)
 		return (p);
 	return (strjoinm(0, path, 0, ft_strlen(path)));

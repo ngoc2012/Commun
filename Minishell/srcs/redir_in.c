@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 15:13:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:27:28 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	write_file(t_m *m, t_list **cur)
 	char	*s0;
 
 	s0 = remove_quotes((char *)(*cur)->content,
-			ft_strlen((char *)(*cur)->content), m);
+			ft_strlen((char *)(*cur)->content));
 	(*cur) = (*cur)->next;
 	if (m->fin)
 	{

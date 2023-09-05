@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/17 17:13:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:33:59 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	remove_quote(char *s, t_m *m, t_c *c)
+static int	remove_quote(char *s, t_c *c)
 {
 	char	d;
 
@@ -104,7 +104,7 @@ char	*str_env(char *s, int len, t_m *m)
 	c.len = len;
 	while (s[c.i] && c.i < len)
 	{
-		if (remove_quote(s, m, &c))
+		if (remove_quote(s, &c))
 			;
 		else if (get_str_env(s, m, &c))
 			;

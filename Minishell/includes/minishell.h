@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 16:26:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:36:18 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,16 +95,16 @@ int		chr_pos(char *s, char c);
 int		priorities_operators(char *s, t_m *m);
 int		infix_priorities_operators(t_list *p, t_m *m);
 int		is_all_env(char *s, int p);
-int		builtin_exit(t_m *m, int i);
+int		builtin_exit(t_m *m);
 int		redir_out(t_m *m, t_list **args);
 int		redir_in(t_m *m, t_list **args);
 int		heredoc(t_m *m, t_list **args);
 int		ft_strcmp_val(char *s1, char *s2);
 int		wild_files_list(t_m *m, char *s, char **ss, t_list **args);
-int		command(t_m *m);
 int		return_error(t_m *m, char *mess, int exit_code, int is_perror);
 int		redir_error(t_m *m, char *mess, int exit_code);
 int		split_args(char *s, t_m *m);
+void	command(t_m *m);
 char	*strjoinm(char *des, char *src, int len_des, int buffer);
 void	pwd(t_m *m);
 char	*get_env_name(char *name, char **environ);
@@ -115,18 +115,17 @@ void	free_none(void *s);
 void	exec(t_m *m, char **args);
 char	*ft_strndup(char *s, int len);
 void	wildcards(char *s, t_list **args, t_m *m);
-void	free_m(t_m *m);
+void	free_m(t_m *m, int free_env);
 void	free_m_arg(t_m *m);
 void	process(t_m *m, int i);
 void	redir(t_list *args, t_m *m);
 char	*get_home(void);
-char	*remove_quotes(char *s, int len, t_m *m);
+char	*remove_quotes(char *s, int len);
 void	init(t_m *m);
 char	**ft_split_quote(char *str, char charset);
 char	*abs_path(t_m *m, char *path);
 char	*get_env(char *s, char **ss);
 void	close_pipe(int *fd);
-char	*remove_quotes(char *s, int len, t_m *m);
 t_list	*get_args_list(char *s, t_m *m);
 void	exit_error(t_m *m, char *mess, int exit_code);
 void	free_files(t_m *m);

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/23 23:12:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:16:26 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	exit_error(t_m *m, char *mess, int exit_code)
 	if (mess)
 		perror(mess);
 	m->exit_code = exit_code;
-	free_m(m);
+	free_m(m, 1);
 	exit(exit_code);
 }
 
@@ -31,6 +31,6 @@ int	return_error(t_m *m, char *mess, int exit_code, int is_perror)
 		ft_putstr_fd("\n", 2);
 	}
 	m->exit_code = exit_code;
-	free_m(m);
+	free_m(m, 0);
 	return (0);
 }

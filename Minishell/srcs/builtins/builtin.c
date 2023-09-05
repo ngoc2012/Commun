@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 15:10:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/05 11:36:44 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	get_fd(t_m *m, int i)
 	return (fd);
 }
 
-int	export_env(t_m *m, int i, int fd)
+int	export_env(t_m *m, int i)
 {
 	char	**ss;
 
@@ -125,7 +125,7 @@ int	builtins(t_m *m, int i)
 		set_pipe(m, i);
 		return (echo0(m, fd));
 	}
-	if (export_env(m, i, fd))
+	if (export_env(m, i))
 		return (1);
 	if (pwd_cd(m, i, fd))
 		return (1);
@@ -139,6 +139,6 @@ int	builtins(t_m *m, int i)
 		return (1);
 	}
 	if (!ft_strncmp(m->args[0], "exit", 5))
-		return (builtin_exit(m, i));
+		return (builtin_exit(m));
 	return (0);
 }
