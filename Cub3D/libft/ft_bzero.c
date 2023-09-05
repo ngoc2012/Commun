@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 20:21:47 by ngoc              #+#    #+#             */
-/*   Updated: 2023/05/19 20:24:52 by ngoc             ###   ########.fr       */
+/*   Created: 2022/11/08 07:47:36 by minh-ngu          #+#    #+#             */
+/*   Updated: 2022/11/16 11:13:10 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(char *src)
+void	ft_bzero(void *s, size_t n)
 {
-	char	*o;
-	int	n;
-	
-	n = 0;
-	while (src[n])
-		n++;
-	o = malloc(sizeof(char) * (n + 1));
-
-
+	s = ft_memset(s, 0, n);
 }

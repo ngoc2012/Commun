@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 15:07:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/02 08:36:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ static char	*check_file(char *file)
 	return (0);
 }
 
+/*
+Check args:
+	char	**ss;
+	ss = m->args;
+	while (*ss)
+		printf("|%s|\n", *(ss++));
+*/
 int	command(t_m *m)
 {
 	char	*file;

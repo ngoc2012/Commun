@@ -1,3 +1,38 @@
+ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ echo ~
+/home/ngoc
+ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ echo ~/Downloads/
+/home/ngoc/Downloads/
+ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ echo "~"
+~
+ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ echo "~/Downloads/"
+~/Downloads/
+ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ cd "~/Downloads/"
+bash: cd: ~/Downloads/: No such file or directory
+ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ echo haha~
+haha~
+ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ echo ~/haha
+/home/ngoc/haha
+ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ echo ~/haha ~/hehe
+/home/ngoc/haha /home/ngoc/hehe
+
+
+minishell$ cp ~/Downloads/wolftex.zip ../Cub3D/
+|cp|
+|~/Downloads/wolftex.zip|
+|../Cub3D/|
+cp: cannot stat '~/Downloads/wolftex.zip': No such file or directory
+minishell$ mv ~/Downloads/wolftex.zip ../Cub3D/
+|mv|
+|~/Downloads/wolftex.zip|
+|../Cub3D/|
+mv: cannot stat '~/Downloads/wolftex.zip': No such file or directory
+minishell$ mv ../Cub3D/wolftex.zip ../Cub3D/lodev/
+|mv|
+|../Cub3D/wolftex.zip|
+|../Cub3D/lodev/|
+minishell$ 
+
+
 cat <"./test_files/infile" | echo hi
 
 export | sort | grep -v SHLVL | grep -v "declare -x _" | grep -v "PS.="

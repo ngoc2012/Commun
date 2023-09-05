@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/27 12:14:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/02 13:24:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static void	signal_handler(int sig, siginfo_t *info, void *ucontext)
 
 void	read_command(t_m *m)
 {
-	if (priorities_operators(m->s, m)
-		&& infix_priorities_operators(m->infix, m))
-		add_history(m->s);
+	add_history(m->s);
+	if (priorities_operators(m->s, m))
+		infix_priorities_operators(m->infix, m);
 	ft_lstclear(&m->infix, free);
 	rl_free(m->s);
 }
