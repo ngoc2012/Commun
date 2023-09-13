@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 08:25:15 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/13 11:33:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/07 21:45:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	check_blocked(t_list *ops, t_m *m, t_p *p)
 /*
 Parse the () in command line to choose the command to execute.
 A command is a string between between || ; and &&.
-//printf("p |%s|\n", (char *)p->content);
-//printf("pipes |%s|\n", (char *)p->content);
 */
 int	infix_priorities_operators(t_list *ops, t_m *m)
 {

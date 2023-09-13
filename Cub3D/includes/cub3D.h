@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/05 07:10:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/13 09:59:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,64 @@
 # include "libft.h"
 # include "get_next_line.h"
 
-# ifndef WIDTH
-#  define WIDTH 1400
-# endif
-# ifndef HEIGHT
-#  define HEIGHT 1000
-# endif
+# define WIDTH 1400
+# define HEIGHT 1000
+# define FOV 60
 
-typedef struct s_prog {
+/*
+Map:
+- v: value 0,1
+- h: height of map
+- l: length of map
+*/
+typedef struct s_map {
+	int		**v;
+	int		h;
+	int		l;
+	int		bpp;
+	int		ll;
+	int		endian;
+	int		dpp;
+	char	*addr;
+}	t_map;
+
+/*
+Player position
+- x: position x
+- y: position y
+- dx: direction x
+- dy: direction y
+*/
+typedef struct s_pos {
+	int		x;
+	int		y;
+	int		dx;
+	int		dy;
+}	t_pos;
+
+/*
+mlx:
+- bpp: bits par pixel
+- ll: ...
+- endian: ...
+*/
+typedef struct s_map {
+	int		**v;
+	int		h;
+	int		l;
+	int		bpp;
+	int		ll;
+	int		endian;
+	int		dpp;
+	char	*addr;
+}	t_map;
+
+/*
+main:
+- dpp : distance to Projection Plan
+*/
+
+typedef struct s_main {
 	void	*mlx;
 	void	*win;
 	void	*img;
@@ -46,7 +96,8 @@ typedef struct s_prog {
 	int		bpp;
 	int		ll;
 	int		endian;
+	int		dpp;
 	char	*addr;
-}	t_prog;
+}	t_main;
 
 #endif
