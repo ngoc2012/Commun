@@ -6,17 +6,17 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 15:43:08 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/15 15:49:43 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*get_home(void)
+char	*get_home(t_m *m)
 {
 	char	*u;
 
-	u = getenv("HOME");
+	u = get_env("HOME", m);
 	return (u);
 }
 
