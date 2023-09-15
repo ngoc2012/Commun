@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 21:39:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/15 22:09:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ int	get_path(t_m *m, char *path)
 {
 	if (!path || chdir(path))
 	{
-		perror(path);
+		if (path)
+			perror(path);
 		free(path);
 		m->exit_code = 1;
 		return (0);
