@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/05 07:29:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/13 12:13:04 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,95 +88,95 @@ int	key_hook(int keycode, t_prog *p)
 	return (0);
 }
 
-void	get_map(t_prog *p, char *fn)
+void	get_map(t_game *g, char *fn)
 {
 	int	fd;
 	char	*s;
 	int	i;
 	int	j;
 
-	p->h = 0;
-	p->l = 0;
-	p->x = 0;
-	p->y = 0;
-	p->dx = 0;
-	p->dy = 0;
+	g->map.h = 0;
+	g->map.l = 0;
+	g->map.x = 0;
+	g->map.y = 0;
+	g->map.dx = 0;
+	g->map.dy = 0;
 	fd = open(fn, O_RDONLY);
 	s = get_next_line(fd);
 	while (s)
 	{
-		p->h++;
-		if ((int) ft_strlen(s) > p->l)
-			p->l = (int) ft_strlen(s);
+		m->map.h++;
+		if ((int) ft_strlen(s) > m->map.l)
+			m->map.l = (int) ft_strlen(s);
 		free(s);
 		s = get_next_line(fd);
 	}
 	close(fd);
-	p->map = malloc(sizeof(int *) * p->h);
+	g->map.v = malloc(sizeof(int *) * g->map.h);
 	fd = open(fn, O_RDONLY);
 	j = -1;
 	s = get_next_line(fd);
 	while (s)
 	{
-		p->map[++j] = malloc(sizeof(int) * p->l);
+		m->map[++j] = malloc(sizeof(int) * m->map.l);
 		i = 0;
-		while (i < p->l)
-			p->map[j][i++] = 0;
+		while (i < m->l)
+			m->map.v[j][i++] = 0;
 		i = -1;
 		while (s[++i])
 		{
 			if (s[i] == '1')
-				p->map[j][i] = 1;
+				m->map[j][i] = 1;
 			else if (s[i] == '2')
-				p->map[j][i] = 2;
+				m->map[j][i] = 2;
 			else if (s[i] == '3')
-				p->map[j][i] = 3;
+				m->map[j][i] = 3;
 			else if (s[i] == '4')
-				p->map[j][i] = 4;
+				m->map[j][i] = 4;
 			else if (s[i] == '5')
-				p->map[j][i] = 5;
+				m->map[j][i] = 5;
 			else if (s[i] == '6')
-				p->map[j][i] = 6;
+				m->map[j][i] = 6;
 			else if (s[i] == '7')
-				p->map[j][i] = 7;
+				m->map[j][i] = 7;
 			else if (ft_strchr("NSWE", s[i]))
 			{
-				p->x = i;
-				p->y = j;
+				m->x = i;
+				m->y = j;
 				if (s[i] == 'N')
-					p->dy = 1;
+					m->dy = 1;
 				else if (s[i] == 'S')
-					p->dy = -1;
+					m->dy = -1;
 				else if (s[i] == 'W')
-					p->dx = 1;
+					m->dx = 1;
 				else if (s[i] == 'E')
-					p->dx = -1;
+					m->dx = -1;
 			}
 		}
 		free(s);
 		s = get_next_line(fd);
 	}
 	close(fd);
-	if ((!p->dx && !p->dy) || p->h < 5 || p->l < 5)
+	if ((!m->dx && !m->dy) || m->map.h < 5 || m->map.l < 5)
 		end_prog(p, 1, "Invalid map");
 }
 
 int	main()
 {
-	t_prog	p;
+	t_game	g;
 
-	p.mlx = mlx_init();
-	p.win = mlx_new_window(p.mlx, WIDTH, HEIGHT, "Cub3D");
-	if (!p.mlx || !p.win)
+	g.mlx.mlx = mlx_init();
+	g.mlx.win = mlx_new_window(g.mlx.mlx, WIDTH, HEIGHT, "Cub3D");
+	if (!g.mlx.mlx || !g.mlx.win)
 		exit(EXIT_FAILURE);
-	mlx_key_hook(p.win, key_hook, &p);
-	//mlx_mouse_hook(p.win, mouse_hook, p);
-	//mlx_loop_hook(p.mlx, loop_hook, p);
-	//mlx_hook(p.win, ClientMessage, LeaveWindowMask, &end_prog, p);
-	p.img = mlx_new_image(p.mlx, WIDTH, HEIGHT);
-	p.addr = mlx_get_data_addr(p.img, &p.bpp, &p.ll, &p.endian);
-	get_map(&p, "maps/3.cub");
-	//printf("p.h = %d, p.l = %d, p.x = %d, p.y = %d, p.dx = %d, p.dy = %d\n", p.h , p.l , p.x , p.y , p.dx , p.dy);
+	mlx_key_hook(g.mlx.win, key_hook, &p);
+	//mlx_mouse_hook(g.win, mouse_hook, p);
+	//mlx_loop_hook(g.mlx, loop_hook, p);
+	//mlx_hook(g.win, ClientMessage, LeaveWindowMask, &end_prog, p);
+	g.mlx.img = mlx_new_image(g.mlx.mlx, WIDTH, HEIGHT);
+	g.mlx.addr = mlx_get_data_addr(g.mlx.img, &g.mlx.bpp, &g.mlx.ll, &g.mlx.ed);
+	get_map(&g, "maps/3.cub");
+	//printf("g.h = %d, g.l = %d, g.x = %d, g.y = %d, g.dx = %d, g.dy = %d\n", g.h , g.l , g.x , g.y , g.dx , g.dy);
 
 /*
 	double posX = 22, posY = 12;  //x and y start position
@@ -304,6 +304,6 @@ int	main()
 	//{
 	//}
 	*/
-	mlx_put_image_to_window(p.mlx, p.win, p.img, 0, 0);
-	mlx_loop(p.mlx);
+	mlx_put_image_to_window(g.mlx.mlx, g.mlx.win, g.mlx.img, 0, 0);
+	mlx_loop(g.mlx.mlx);
 }

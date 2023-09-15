@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/13 09:59:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/13 11:45:57 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,6 @@ typedef struct s_map {
 	int		**v;
 	int		h;
 	int		l;
-	int		bpp;
-	int		ll;
-	int		endian;
-	int		dpp;
-	char	*addr;
 }	t_map;
 
 /*
@@ -64,40 +59,27 @@ typedef struct s_pos {
 mlx:
 - bpp: bits par pixel
 - ll: ...
-- endian: ...
+- ed: endian
 */
-typedef struct s_map {
-	int		**v;
-	int		h;
-	int		l;
+typedef struct s_mlx {
+	void	*mlx;
+	void	*win;
+	void	*img;
 	int		bpp;
 	int		ll;
-	int		endian;
-	int		dpp;
+	int		ed;
 	char	*addr;
-}	t_map;
+}	t_mlx;
 
 /*
 main:
 - dpp : distance to Projection Plan
 */
-
-typedef struct s_main {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	int		**map;
-	int		h;
-	int		l;
-	int		x;
-	int		y;
-	int		dx;
-	int		dy;
-	int		bpp;
-	int		ll;
-	int		endian;
+typedef struct s_game {
+	t_map		map;
+	t_pos		pos;
+	t_mlx		mlx;
 	int		dpp;
-	char	*addr;
-}	t_main;
+}	t_game;
 
 #endif
