@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 15:53:37 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/15 21:39:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*relative_path1(t_m *m, char *path)
 
 	if (*path == '~')
 	{
-		p = strjoinm(0, get_home(), 0, ft_strlen(get_home()));
+		p = strjoinm(0, get_home(m), 0, ft_strlen(get_home(m)));
 		p = strjoinm(p, &path[1], ft_strlen(p), ft_strlen(&path[1]));
 		return (p);
 	}

@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 15:56:40 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/15 21:39:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,19 @@
 
 char	*relative_path0(t_m *m, char *path)
 {
-	char	*p;
-
 	if (!path)
 	{
 		if (!get_home(m))
 			return (0);
-		return (strjoinm(0, get_home(m), 0, ft_strlen(get_home())));
+		return (strjoinm(0, get_home(m), 0, ft_strlen(get_home(m))));
 	}
+	return (0);
 }
 char	*get_home(t_m *m)
 {
 	char	*u;
 
-	u = get_env("HOME", m);
+	u = get_env("HOME", m->env);
 	return (u);
 }
 
