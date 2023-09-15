@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 16:14:31 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/15 21:34:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	free_m(t_m *m, int free_env);
 void	free_m_arg(t_m *m);
 void	redir(t_list *args, t_m *m);
 char	*get_home(t_m *m);
-char	*remove_quotes(char *s, int len);
+char	*remove_quotes(char *s, int len, t_m *m);
 void	init(t_m *m);
 char	**ft_split_quote(char *str, char charset);
 char	*abs_path(t_m *m, char *path);

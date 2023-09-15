@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 16:15:54 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/15 21:34:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	quotes_omit(char *s, int len, t_c *c)
 	c->i0 = c->i;
 }
 
-char	*remove_quotes(char *s, int len)
+char	*remove_quotes(char *s, int len, t_m *m)
 {
 	t_c	c;
 
