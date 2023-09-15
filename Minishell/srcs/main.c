@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 21:43:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/15 21:45:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,8 @@ void	set_signal(void)
 // Clears the terminal screen
 static void	interactive_mode(t_m *m, char *com)
 {
-	struct termios		term;
+	char	*com;
 
-	tcgetattr(STDIN_FILENO, &term);
-	printf("\033[2J\033[1;1H");
-	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	while (1)
 	{
 		set_signal();
@@ -88,13 +85,16 @@ static void	interactive_mode(t_m *m, char *com)
 int	main(int argc, char **argv, char **env)
 {
 	t_m						m;
-	char					*com;
+	struct termios		term;
 
 	(void)argc;
 	(void)argv;
 	m.env = astr_copy(env);
 	init(&m);
 	com = 0;
-	interactive_mode(&m, com);
+	tcgetattr(STDIN_FILENO, &term);
+	printf("\033[2J\033[1;1H");
+	tcsetattr(STDIN_FILENO, TCSANOW, &term);
+	interactive_mode(&m);
 	exit_error(&m, 0, m.exit_code);
 }
