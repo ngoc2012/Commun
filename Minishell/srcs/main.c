@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 21:45:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/15 21:47:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,19 @@ void	set_signal(void)
 // Clears the terminal screen
 static void	interactive_mode(t_m *m, char *com)
 {
-	char	*com;
+	int	i;
 
 	while (1)
 	{
 		set_signal();
-		com = readline("minishell$ ");
-		if (com)
+		m->com = readline("minishell$ ");
+		if (m->com)
 		{
-			while (*com && ft_strchr(" \n", *com))
-				com++;
-			if (*com)
-				read_command(m, com);
+			i = -1;
+			while (m->com[++i] && ft_strchr(" 	\n", m->com[i]))
+				;
+			if (m->com[i])
+				read_command(m, m->com[i]);
 		}
 		else
 		{
