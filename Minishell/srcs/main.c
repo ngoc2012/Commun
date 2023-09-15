@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 21:53:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/15 22:00:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void	read_command(t_m *m, char *com)
 	if (priorities_operators(m->s, m))
 		infix_priorities_operators(m->infix, m);
 	ft_lstclear(&m->infix, free);
-	rl_free(m->com);
+	if (m->s)
+		rl_free(m->s);
 	m->s = 0;
 	rl_on_new_line();
 }
