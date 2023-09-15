@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/12 20:45:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/15 16:15:54 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*remove_quotes(char *s, int len)
 	c.o = 0;
 	c.i = 0;
 	if (s[0] == '~')
-		c.o = strjoinm(c.o, get_home(), c.i++, -1);
+		c.o = strjoinm(c.o, get_home(m), c.i++, -1);
 	c.i0 = c.i;
 	while (s[c.i] && c.i < len)
 	{
