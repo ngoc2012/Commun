@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/13 14:58:40 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/15 15:41:44 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	update_pwd(t_m *m, char *var, char *path)
 
 int	get_path(t_m *m, char *path)
 {
-	if (chdir(path))
+	if (!path || chdir(path))
 	{
 		perror(path);
 		free(path);
