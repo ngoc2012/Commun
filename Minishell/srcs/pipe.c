@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 14:55:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/14 11:51:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_forks;
 
 void	close_pipe(int *fd)
 {
@@ -18,53 +20,69 @@ void	close_pipe(int *fd)
 	close(fd[1]);
 }
 
-static int	end_pipe(t_m *m)
+static void	get_exit_code(t_m *m, int exit_code, int is_last)
 {
+	if (exit_code == 13)
+		exit_code = 0;
+	if (exit_code == 131 && is_last)
+		ft_putstr_fd("Quit (core dumped)\n", 2);
+	if (is_last)
+	{
+		m->exit_code = exit_code;
+		convert_exit_code(m);
+	}
+}
+
+static int	end_pipe(t_m *m, int last_pid)
+{
+	int	exit_code;
+	int	pid;
+
+	while (g_forks)
+	{
+		pid = wait(&exit_code);
+		get_exit_code(m, exit_code, pid == last_pid);
+		g_forks--;
+	}
+	if (m->n_pipes > 1)
+		close_pipe(m->pipefd0);
+	if (m->n_pipes > 2)
+		close_pipe(m->pipefd1);
 	free_array_str(&m->coms, 1);
 	free_files(m);
-	if (m->heredocf)
-	{
-		unlink(m->heredocf);
-		free(m->heredocf);
-		m->heredocf = 0;
-	}
 	free_m_arg(m);
+	free_heredoc(m);
 	if (!m->args && m->exit_code == 2)
 		return (0);
 	return (1);
 }
 
-static int	error_split_args(t_m *m)
-{
-	if (m->exit_code == 2)
-	{
-		if (m->n_pipes > 1)
-			close_pipe(m->pipefd0);
-		if (m->n_pipes > 2)
-			close_pipe(m->pipefd1);
-	}
-	free_m_arg(m);
-	return (0);
-}
-
-int	arg_pipe(t_m *m, char *path, int i)
+static int	arg_pipe(t_m *m, int i, int *pid)
 {
 	if (!split_args(m->coms[i], m))
-		return (error_split_args(m));
-	if (m->args && *m->args && !builtins(m, i))
 	{
-		path = abs_path(m, m->args[0]);
-		if (!ft_strncmp(m->args[0], "./minishell", 12)
-			|| !ft_strncmp(path, m->ffn, ft_strlen(m->ffn) + 1))
+		if (m->exit_code == 2 || m->exit_code == 130)
 		{
-			m->process_level++;
-			m->has_child = 1;
+			if (m->n_pipes > 1)
+				close_pipe(m->pipefd0);
+			if (m->n_pipes > 2)
+				close_pipe(m->pipefd1);
 		}
-		free(path);
-		process(m, i);
+		free_files(m);
+		free_m_arg(m);
+		free_heredoc(m);
+		return (0);
 	}
+	if (m->args && *m->args)
+	{
+		if (builtins(m, i))
+			*pid = -1;
+		else
+			*pid = process(m, i);
+	}
+	free_files(m);
 	free_m_arg(m);
-	m->n_wildcards = 0;
+	free_heredoc(m);
 	return (1);
 }
 
@@ -74,12 +92,9 @@ A command is a string between between || ; and &&.
 */
 int	pipes(char *s, t_m *m)
 {
-	int		i;
-	int		j;
-	pid_t	pid;
-	char	*path;
+	int	i;
+	int	pid;
 
-	path = 0;
 	m->coms = ft_split_quote(s, '|');
 	if (!m->coms)
 		return (return_error(m, "syntaxe error", 2, 0));
@@ -91,9 +106,14 @@ int	pipes(char *s, t_m *m)
 		pipe(m->pipefd0);
 	if (m->n_pipes > 2)
 		pipe(m->pipefd1);
+	pid = 0;
 	i = -1;
 	while (++i < m->n_pipes)
-		if (!arg_pipe(m, path, i) && m->exit_code == 2)
+	{
+		m->args = 0;
+		m->argc = 0;
+		if (!arg_pipe(m, i, &pid) && (m->exit_code == 2 || m->exit_code == 130))
 			break ;
-	return (end_pipe(m));
+	}
+	return (end_pipe(m, pid));
 }

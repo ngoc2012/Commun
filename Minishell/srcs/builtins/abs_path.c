@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/05 11:39:02 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/07 21:26:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ static char	*relative_path2(t_m *m, char *path, int i)
 	if (!ft_strncmp(path, "..", 3))
 	{
 		getcwd(m->cwd, sizeof(m->cwd));
+		if (!ft_strncmp(m->cwd, "/", 2) || !ft_strncmp(m->cwd, "//", 3))
+			return (ft_strdup("/"));
 		p = strjoinm(0, m->cwd, 0, ft_strlen(m->cwd));
 		i = ft_strlen(p);
 		if (i > 0)
@@ -60,11 +62,6 @@ static char	*relative_path2(t_m *m, char *path, int i)
 		}
 		p[i] = 0;
 		return (p);
-	}
-	if (!ft_strncmp(path, ".", 2))
-	{
-		getcwd(m->cwd, sizeof(m->cwd));
-		return (strjoinm(0, m->cwd, 0, ft_strlen(m->cwd)));
 	}
 	return (0);
 }
@@ -101,6 +98,8 @@ static char	*relative_path4(t_m *m, char *path)
 {
 	char	*p;
 
+	if (!ft_strncmp(path, "//", 3))
+		return (ft_strdup("//"));
 	if (!ft_strncmp(path, "./", 2))
 	{
 		p = strjoinm(0, m->cwd, 0, ft_strlen(m->cwd));
@@ -124,6 +123,11 @@ char	*abs_path(t_m *m, char *path)
 	i = 0;
 	if (!path)
 		return (strjoinm(0, get_home(), 0, ft_strlen(get_home())));
+	if (!ft_strncmp(path, ".", 2))
+	{
+		getcwd(m->cwd, sizeof(m->cwd));
+		return (strjoinm(0, m->cwd, 0, ft_strlen(m->cwd)));
+	}
 	p = relative_path1(m, path);
 	if (p)
 		return (p);

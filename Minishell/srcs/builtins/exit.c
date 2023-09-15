@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/05 11:41:22 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:42:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,20 +86,19 @@ static int	is_max_long_long(char *str)
 	if (!str)
 		return (0);
 	i = get_big_num(str, &n);
-	if (sign == -1 && i == 92 && n > 0)
+	if (sign == -1 && i >= 92 && n > 0)
 		return (1);
-	if (sign == 1 && i == 92 && n > -1)
+	if (sign == 1 && i >= 92 && n > -1)
 		return (1);
 	return (0);
 }
 
 int	builtin_exit(t_m *m)
 {
-	int	fd;
-
 	if (m->n_pipes > 1)
 		return (1);
-	if (m->argc == 2)
+	ft_putstr_fd("exit\n", 1);
+	if (m->argc > 1)
 	{
 		m->exit_code = number_2_exit_code(m->args[1]);
 		if (m->exit_code == -1 || is_max_long_long(m->args[1]))
@@ -108,15 +107,15 @@ int	builtin_exit(t_m *m)
 			ft_putstr_fd(m->args[1], 2);
 			ft_putstr_fd(": numeric argument required\n", 2);
 			m->exit_code = 2;
+			exit_error(m, 0, m->exit_code);
 		}
 	}
-	else if (m->argc > 2)
+	if (m->argc > 2)
+	{
+		ft_putstr_fd("minishell: exit: too many arguments\n", 2);
 		m->exit_code = 1;
-	add_history(m->s);
-	if (m->n_pipes > 1)
-		close_pipe(m->pipefd0);
-	if (m->n_pipes > 2)
-		close_pipe(m->pipefd1);
+		return (1);
+	}
 	exit_error(m, 0, m->exit_code);
 	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dir.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/08 16:41:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/13 14:58:40 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 char	*get_home(void)
 {
-	char	*p;
 	char	*u;
 
 	u = getenv("HOME");
@@ -23,27 +22,56 @@ char	*get_home(void)
 	return (u);
 }
 
+static void	update_pwd(t_m *m, char *var, char *path)
+{
+	char	*s_e;
+	int		i;
+	int		j;
+
+	i = -1;
+	j = -1;
+	while (m->env[++i])
+		if (!ft_strdcmp(m->env[i], var))
+			j = i;
+	if (j != -1)
+	{
+		s_e = m->env[j];
+		m->env[j] = strjoinm(0, var, 0, -1);
+		m->env[j] = strjoinm(m->env[j], "=", -1, 1);
+		m->env[j] = strjoinm(m->env[j], path, -1, -1);
+		free(s_e);
+	}
+	else
+	{
+		s_e = strjoinm(0, var, 0, -1);
+		s_e = strjoinm(s_e, "=", -1, 1);
+		s_e = strjoinm(s_e, path, -1, -1);
+		m->env = astr_addback(m->env, s_e);
+	}
+}
+
 int	get_path(t_m *m, char *path)
 {
 	if (chdir(path))
 	{
+		perror(path);
 		free(path);
-		perror("minishell: cd");
 		m->exit_code = 1;
 		return (0);
 	}
-	free(path);
-	getcwd(m->cwd, sizeof(m->cwd));
+	update_pwd(m, "OLDPWD", m->cwd);
+	if (!ft_strncmp(path, "//", 3))
+		ft_memcpy(m->cwd, "//", 3);
+	else
+		getcwd(m->cwd, sizeof(m->cwd));
+	update_pwd(m, "PWD", m->cwd);
 	m->exit_code = 0;
+	free(path);
 	return (1);
 }
 
 int	cd(t_m *m, char *path)
 {
-	int		i;
-	int		m_free;
-	char	*s;
-	char	*p;
 	DIR		*d;
 
 	if (!ft_strncmp(path, ".", 2))

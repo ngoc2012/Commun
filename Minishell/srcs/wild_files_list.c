@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/23 23:18:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/14 11:58:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static void	add_splash(char *s, char **o)
 	}
 }
 
+//	if (ft_strncmp(e->d_name, ".", 2) && ft_strncmp(e->d_name, "..", 3)
 static int	files_files(DIR *dir, t_list **new, char *s, char **ss)
 {
 	struct dirent	*e;
@@ -74,8 +75,7 @@ static int	files_files(DIR *dir, t_list **new, char *s, char **ss)
 	e = readdir(dir);
 	while (e)
 	{
-		if (ft_strncmp(e->d_name, ".", 2) && ft_strncmp(e->d_name, "..", 3)
-			&& (!ss[0] || check(e->d_name, s, ss)))
+		if ((e->d_name[0] != '.') && (!ss[0] || check(e->d_name, s, ss)))
 		{
 			o = strjoinm(0, "\'", 0, 1);
 			add_splash(e->d_name, &o);
@@ -93,14 +93,15 @@ int	wild_files_list(t_m *m, char *s, char **ss, t_list **args)
 	DIR		*dir;
 	t_list	*new;
 	char	*path;
+	int		n_wildcards;
 
 	path = m->cwd;
 	dir = opendir(path);
 	if (!dir)
 		return (return_error(m, "Unable to open directory", 1, 1));
 	new = 0;
-	m->n_wildcards = files_files(dir, &new, s, ss);
+	n_wildcards = files_files(dir, &new, s, ss);
 	ft_lstadd_back(args, new);
 	closedir(dir);
-	return (m->n_wildcards);
+	return (n_wildcards);
 }

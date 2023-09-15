@@ -6,61 +6,124 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/05 11:42:40 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/14 21:08:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	read_lines(t_m *m)
+extern int	g_forks;
+
+static int	read_lines(char *fn, char *end)
 {
+	int		heredocf;
 	char	*com;
 	char	*s;
 
 	while (1)
 	{
 		com = readline("> ");
-		if (!ft_strncmp(com, m->s, ft_strlen(m->s) + 1))
+		if (!com)
+			return (2);
+		if (!ft_strncmp(com, end, ft_strlen(end) + 1))
 			break ;
-		s = str_env(com, ft_strlen(com), m);
-		m->heredoc = strjoinm(m->heredoc, s, -1, -1);
+		heredocf = open(fn, O_CREAT | O_WRONLY | O_APPEND, 0664);
+		s = strjoinm(0, com, 0, -1);
+		s = strjoinm(s, "\n", ft_strlen(s), 1);
+		write(heredocf, s, ft_strlen(s));
 		free(s);
-		m->heredoc = strjoinm(m->heredoc, "\n", ft_strlen(m->heredoc), 1);
+		close(heredocf);
 	}
+	return (0);
 }
 
 // Child process
-static int	write2heredocf(t_m *m, t_list **cur)
+static int	write2heredocf(t_m *m, t_list *cur)
 {
+	char	end[4096];
+	char	*s0;
+	char	*s;
 	int		heredocf;
 
 	signal_heredoc();
-	if (m->s)
-		rl_free(m->s);
-	m->s = remove_quotes((char *)(*cur)->content,
-			ft_strlen((char *)(*cur)->content));
-	read_lines(m);
+	s0 = remove_dollar((char *)cur->content);
+	s = remove_quotes(s0, ft_strlen(s0));
+	free(s0);
+	ft_strlcpy(end, s, ft_strlen(s) + 1);
+	free(s);
 	if (m->n_pipes > 1)
 		close_pipe(m->pipefd0);
 	if (m->n_pipes > 2)
 		close_pipe(m->pipefd1);
-	heredocf = open(m->heredocf, O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	free_m(m, 1);
+	heredocf = open(m->heredocf, O_CREAT | O_WRONLY | O_APPEND, 0664);
 	if (heredocf == -1)
-		exit_error(m, "open", 1);
-	write(heredocf, m->heredoc, ft_strlen(m->heredoc));
+	{
+		perror("open");
+		exit(1);
+	}
+	write(heredocf, "", 0);
 	close(heredocf);
-	exit_error(m, 0, EXIT_SUCCESS);
+	exit(read_lines(m->heredocf, end));
+}
+
+static int	parent_process(t_m *m, t_list *cur)
+{
+	int		pid;
+
+	pid = fork();
+	if (pid == -1)
+		return_error(m, "fork", 1, 1);
+	else if (!pid)
+		write2heredocf(m, cur);
+	else
+	{
+		g_forks -= 1000;
+		waitpid(pid, &m->exit_code, 0);
+		g_forks += 1000;
+		convert_exit_code(m);
+		if (m->exit_code)
+		{
+			if (m->exit_code == 2)
+				m->exit_code = 0;
+			return (free_heredoc(m));
+		}
+	}
 	return (1);
 }
 
-static int	parent_process(t_m *m, int pid, t_list **cur)
+int	check_heredoc(t_m *m, t_list *cur, t_list **here)
 {
-	m->process_level++;
-	m->has_child = 1;
-	waitpid(pid, &m->exit_code, 0);
-	(*cur) = (*cur)->next;
-	m->process_level = 0;
-	m->has_child = 0;
+	*here = 0;
+	while (cur)
+	{
+		if (!ft_strncmp("<<", (char *)cur->content, 3))
+		{
+			cur = cur->next;
+			*here = cur;
+			free_heredoc(m);
+			fn_heredoc(m);
+			if (!parent_process(m, cur))
+				return (0);
+			else if (!convert_heredoc(m))
+				return (0);
+		}
+		if (cur)
+			cur = cur->next;
+	}
+	return (1);
+}
+
+int	heredoc(t_m *m)
+{
+	if (m->fin)
+	{
+		close(m->fin);
+		m->fin = 0;
+		if (dup2(m->fin0, STDIN_FILENO) == -1)
+			return (redir_error(m, "dup2", 1, 1));
+		close(m->fin0);
+	}
 	m->fin = open(m->heredocf, O_RDONLY);
 	if (m->fin == -1)
 		return (0);
@@ -68,37 +131,5 @@ static int	parent_process(t_m *m, int pid, t_list **cur)
 	if (dup2(m->fin, STDIN_FILENO) == -1)
 		return_error(m, "dup2", 1, 1);
 	close(m->fin);
-	free(m->heredoc);
-	m->heredoc = 0;
-	free(m->heredocf);
-	m->heredocf = 0;
 	return (1);
-}
-
-int	heredoc(t_m *m, t_list **cur)
-{
-	int	i;
-	int	pid;
-
-	(*cur) = (*cur)->next;
-	if (!(*cur) || ft_strchr("<>|", ((char *)(*cur)->content)[0]))
-		return (return_error(m, "syntaxe error", 2, 0));
-	if (m->fin0)
-	{
-		dup2(m->fin0, STDIN_FILENO);
-		close(m->fin0);
-	}
-	i = 0;
-	m->heredocf = ft_itoa(i);
-	while (access(m->heredocf, F_OK) != -1 && i < 100)
-	{
-		free(m->heredocf);
-		m->heredocf = ft_itoa(++i);
-	}
-	pid = fork();
-	if (pid == -1)
-		return_error(m, "fork", 1, 1);
-	else if (!pid)
-		return (write2heredocf(m, cur));
-	return (parent_process(m, pid, cur));
 }

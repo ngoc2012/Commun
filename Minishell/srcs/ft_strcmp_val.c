@@ -6,16 +6,18 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/22 22:02:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/12 22:29:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	abs_val(int i)
+static float	abs_val(int i)
 {
 	if (i < 0)
-		return (i + 256);
+		return ((float)(i + 256));
+	if (i >= 65 && i <= 90)
+		return ((float)(i + 32) - 0.5);
 	return (i);
 }
 

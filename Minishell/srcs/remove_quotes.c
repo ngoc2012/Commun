@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/05 11:46:14 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/12 20:45:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,7 @@ static void	quotes_omit(char *s, int len, t_c *c)
 	d = s[c->i++];
 	c->i0 = c->i;
 	while (s[c->i] && c->i < len && s[c->i] != d)
-	{
-		if (s[c->i] == '\\' && s[c->i + 1])
-		{
-			c->o = strjoinm(c->o, &s[c->i0], ft_strlen(c->o), c->i - c->i0);
-			c->i++;
-			c->i0 = c->i;
-		}
 		c->i++;
-	}
 	if (s[c->i] != d)
 		return ;
 	if (c->i > c->i0)
@@ -38,8 +30,6 @@ static void	quotes_omit(char *s, int len, t_c *c)
 	c->i0 = c->i;
 }
 
-//printf("before remove quotes|%s|\n", s);
-//printf(" after remove quotes| %s |\n", c.o);
 char	*remove_quotes(char *s, int len)
 {
 	t_c	c;

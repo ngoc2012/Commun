@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   priorities_operators.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/05 09:52:35 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:42:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	parantheses(char *s, t_m *m, t_c *c)
+static int	parentheses(char *s, t_m *m, t_c *c)
 {
 	char	d;
-	int		i;
 	int		j;
 
 	d = s[c->i];
@@ -33,8 +32,8 @@ static int	parantheses(char *s, t_m *m, t_c *c)
 	ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[c->i], 1)));
 	while (s[++(c->i)] && ft_strchr(" 	\n", s[c->i]))
 		;
-	if ((d == '(' && s[c->i] == ')') || (d == ')' && s[c->i]
-			&& !ft_strchr(");&|", s[c->i])))
+	if ((d == '(' && s[c->i] && ft_strchr(")&|", s[c->i]))
+		|| (d == ')' && s[c->i] && !ft_strchr(")&|", s[c->i])))
 		return (return_error(m, "syntaxe error", 2, 0));
 	c->i0 = c->i;
 	return (1);
@@ -49,8 +48,9 @@ static int	operators(char *s, t_m *m, t_c *c)
 		;
 	i1++;
 	if (i1 > c->i0)
-		ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[c->i0], i1 - c->i0)));
-	ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[c->i], 1)));
+		ft_lstadd_back(&m->infix,
+			ft_lstnew(ft_strndup(&s[c->i0], i1 - c->i0)));
+	ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[c->i], 2)));
 	c->i++;
 	while (s[++c->i] && ft_strchr(" 	\n", s[c->i]))
 		;
@@ -60,51 +60,31 @@ static int	operators(char *s, t_m *m, t_c *c)
 	return (1);
 }
 
-static int	end(char *s, t_m *m, t_c *c)
-{
-	int		i1;
-
-	i1 = c->i;
-	while (--i1 >= 0 && ft_strchr(" 	\n", s[i1]))
-		;
-	i1++;
-	if (i1 <= c->i0)
-		return (return_error(m, "syntaxe error", 2, 0));
-	ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[c->i0], i1 - c->i0)));
-	ft_lstadd_back(&m->infix, ft_lstnew(ft_strdup(";")));
-	while (s[++c->i] && ft_strchr(" \n", s[c->i]))
-		;
-	if (s[c->i] && ft_strchr(";&|", s[c->i]))
-		return (return_error(m, "syntaxe error", 2, 0));
-	c->i0 = c->i;
-	return (1);
-}
-
 static int	loop(char *s, t_m *m, t_c *c)
 {
 	char	d;
 
-	while (s[c->i])
+	if (ft_strchr("()", s[c->i]))
 	{
-		if (ft_strchr("()", s[c->i]))
-			parantheses(s, m, c);
-		else if (!ft_strncmp("&&", &s[c->i], 2)
-			|| !ft_strncmp("||", &s[c->i], 2))
-			operators(s, m, c);
-		else if (ft_strchr("\n;", s[c->i]))
-			end(s, m, c);
-		else if (ft_strchr("\"'", s[c->i]))
-		{
-			d = s[c->i];
-			while (s[++c->i] && s[c->i] != d)
-				;
-			if (!s[c->i])
-				return (return_error(m, "syntaxe error", 2, 0));
-			c->i++;
-		}
-		else
-			c->i++;
+		if (!parentheses(s, m, c))
+			return (0);
 	}
+	else if (!ft_strncmp("&&", &s[c->i], 2) || !ft_strncmp("||", &s[c->i], 2))
+	{
+		if (!operators(s, m, c))
+			return (0);
+	}
+	else if (ft_strchr("\"'", s[c->i]))
+	{
+		d = s[c->i];
+		while (s[++c->i] && s[c->i] != d)
+			;
+		if (!s[c->i])
+			return (return_error(m, "syntaxe error", 2, 0));
+		c->i++;
+	}
+	else
+		c->i++;
 	return (1);
 }
 
@@ -112,22 +92,21 @@ static int	loop(char *s, t_m *m, t_c *c)
 // Check syntax error: ) command )
 int	priorities_operators(char *s, t_m *m)
 {
-	int	i1;
 	t_c	c;
 
 	while (*s && ft_strchr(" 	\n", *s))
 		s++;
 	if (ft_strchr(";&|", *s))
-	{
-		m->exit_code = 2;
-		return (0);
-	}
+		return (return_error(m, "syntaxe error", 2, 0));
 	c.n_o = 0;
 	c.n_c = 0;
 	c.i0 = 0;
 	c.i = 0;
-	if (!loop(s, m, &c))
-		return (0);
+	while (s[c.i])
+	{
+		if (!loop(s, m, &c))
+			return (0);
+	}
 	if (c.i > c.i0)
 		ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[c.i0], c.i - c.i0)));
 	if (c.n_o != c.n_c)

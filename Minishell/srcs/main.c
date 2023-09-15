@@ -3,103 +3,97 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/05 13:36:27 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:56:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_m	*g_m;
+int	g_forks;
 
-static void	signal_handler(int sig, siginfo_t *info, void *ucontext)
+static void	signal_handler(int sig)
 {
-	(void)ucontext;
-	(void)info;
-	if (sig == SIGINT)
+	if (sig == SIGINT && !g_forks)
 	{
 		ft_putchar_fd('\n', STDIN_FILENO);
 		rl_replace_line("", STDIN_FILENO);
 		rl_on_new_line();
 		rl_redisplay();
 	}
+	else if (sig == SIGINT && g_forks > 0)
+	{
+		ft_putchar_fd('\n', STDIN_FILENO);
+		rl_replace_line("", STDIN_FILENO);
+		rl_redisplay();
+	}
+	else if (sig == SIGQUIT)
+	{
+	}
 }
 
-void	read_command(t_m *m)
+void	read_command(t_m *m, char *com)
 {
+	m->s = strjoinm(0, com, 0, ft_strlen(com));
 	add_history(m->s);
 	if (priorities_operators(m->s, m))
 		infix_priorities_operators(m->infix, m);
 	ft_lstclear(&m->infix, free);
 	rl_free(m->s);
+	m->s = 0;
+	rl_on_new_line();
 }
 
-void	read_from_input(t_m *m)
+void	set_signal(void)
 {
-	char	buffer[BUFFER_SIZE + 1];
-	int		ret;
+	struct sigaction	act;
 
-	if (!isatty(STDIN_FILENO))
-	{
-		ret = read(STDIN_FILENO, buffer, BUFFER_SIZE);
-		m->s = strjoinm(0, buffer, 0, ret);
-		while (ret)
-		{
-			ret = read(STDIN_FILENO, buffer, BUFFER_SIZE);
-			if (ret)
-				m->s = strjoinm(m->s, buffer, ft_strlen(m->s), ret);
-		}
-		read_command(m);
-		exit(m->exit_code);
-	}
+	act.sa_flags = SA_RESTART;
+	act.sa_handler = signal_handler;
+	sigemptyset(&act.sa_mask);
+	sigaction(SIGINT, &act, NULL);
+	signal(SIGQUIT, SIG_IGN);
 }
 
 // Clears the terminal screen
-void	interactive_mode(t_m *m)
+static void	interactive_mode(t_m *m, char *com)
 {
-	struct termios	term;
-	char			*com;
+	struct termios		term;
 
 	tcgetattr(STDIN_FILENO, &term);
 	printf("\033[2J\033[1;1H");
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	while (1)
 	{
+		set_signal();
 		com = readline("minishell$ ");
 		if (com)
 		{
 			while (*com && ft_strchr(" \n", *com))
 				com++;
 			if (*com)
-			{
-				m->s = strjoinm(0, com, 0, ft_strlen(com));
-				read_command(m);
-				rl_on_new_line();
-			}
+				read_command(m, com);
 		}
-		if (com == NULL)
+		if (!com)
+		{
+			write (1, "exit\n", 5);
 			exit_error(m, 0, 0);
+		}
 	}
 }
 
 int	main(int argc, char **argv, char **env)
 {
-	struct sigaction	act;
-	t_m					m;
+	t_m						m;
+	char					*com;
 
 	(void)argc;
 	(void)argv;
-	g_m = &m;
-	act.sa_flags = SA_RESTART | SA_SIGINFO;
-	act.sa_sigaction = &signal_handler;
-	sigemptyset(&act.sa_mask);
-	sigaction(SIGINT, &act, NULL);
-	sigaction(SIGQUIT, &act, NULL);
 	m.env = astr_copy(env);
 	init(&m);
-	read_from_input(&m);
-	interactive_mode(&m);
+	com = 0;
+	interactive_mode(&m, com);
 	exit_error(&m, 0, m.exit_code);
 }

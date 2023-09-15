@@ -6,53 +6,48 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/05 11:27:28 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:20:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	redir_error(t_m *m, char *mess, int exit_code)
+int	redir_error(t_m *m, char *mess, int exit_code, int is_perror)
 {
-	perror(mess);
+	if (is_perror)
+		perror(mess);
+	else
+	{
+		ft_putstr_fd(mess, 2);
+		ft_putstr_fd("\n", 2);
+	}
 	m->exit_code = exit_code;
 	return (0);
 }
 
-int	write_file(t_m *m, t_list **cur)
+int	redir_in(t_m *m, char *s)
 {
-	char	*s0;
-
-	s0 = remove_quotes((char *)(*cur)->content,
-			ft_strlen((char *)(*cur)->content));
-	(*cur) = (*cur)->next;
+	if (!s)
+		return (0);
 	if (m->fin)
 	{
 		close(m->fin);
 		m->fin = 0;
 		if (dup2(m->fin0, STDIN_FILENO) == -1)
-			return (redir_error(m, "redir_in/dup2", 1));
+			return (redir_error(m, "dup2", 1, 1));
 		close(m->fin0);
 	}
-	m->fin = open(s0, O_RDONLY);
-	if (s0)
-		free(s0);
+	m->fin = open(s, O_RDONLY);
 	if (m->fin == -1)
-		return (redir_error(m, "redir_in/open", 1));
-	return (1);
-}
-
-int	redir_in(t_m *m, t_list **cur)
-{
-	(*cur) = (*cur)->next;
-	if (!(*cur) || ft_strchr("<>", ((char *)(*cur)->content)[0]))
-		return (redir_error(m, "syntax_error", 2));
-	if (!write_file(m, cur))
-		return (0);
+		ft_putstr_fd(s, 2);
+	if (s)
+		free(s);
+	if (m->fin == -1)
+		return (redir_error(m, " ", 1, 1));
 	m->fin0 = dup(STDIN_FILENO);
 	if (m->fin0 == -1)
-		return (redir_error(m, "dup", 1));
+		return (redir_error(m, "dup", 1, 1));
 	if (dup2(m->fin, STDIN_FILENO) == -1)
-		return (redir_error(m, "redir_in/dup2", 1));
+		return (redir_error(m, "dup2", 1, 0));
 	return (1);
 }

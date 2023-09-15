@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/07 17:45:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/09 15:54:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ char	*get_env(char *s, char **ss)
 {
 	while (*ss)
 	{
-		if (!ft_strdcmp(*ss, s))
+		if (ft_strchr(*ss, '=') && !ft_strdcmp(*ss, s))
 			return (&(*ss)[chr_pos(*ss, '=') + 1]);
 		ss++;
 	}

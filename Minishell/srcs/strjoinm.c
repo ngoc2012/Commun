@@ -6,12 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 09:40:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/31 16:14:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/11 12:57:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "ft_printf.h"
 #include "libft.h"
 #include <stdio.h>
 

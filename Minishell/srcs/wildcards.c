@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/05 11:26:40 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/08 14:04:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ void	wildcards(char *s, t_list **args, t_m *m)
 {
 	char	**ss;
 	char	*s0;
-	int		found;
 	int		i;
 
 	if (!s)
 		return ;
-	found = 0;
 	if (!getcwd(m->cwd, sizeof(m->cwd)))
 		return ;
 	ss = ft_split(s, '*');

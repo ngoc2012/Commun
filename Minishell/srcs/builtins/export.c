@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/24 11:42:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/09 15:51:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	invalid_iden(t_m *m, char *s)
+static int	invalid_iden(t_m *m, char *s)
 {
 	m->exit_code = 1;
 	ft_putstr_fd("export: `", 2);
@@ -21,7 +21,7 @@ int	invalid_iden(t_m *m, char *s)
 	return (1);
 }
 
-int	match(char **ss, char *s)
+static int	match(char **ss, char *s)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ int	match(char **ss, char *s)
 	return (-1);
 }
 
-void	create_var(t_m *m, int i, int p, int cat)
+static void	create_var(t_m *m, int i, int p, int cat)
 {
 	int		j;
 	char	*s_e;
@@ -61,16 +61,23 @@ void	create_var(t_m *m, int i, int p, int cat)
 	}
 }
 
-int	check_invalid(t_m *m, int i, int p)
+static int	check_invalid(t_m *m, int i, int p)
 {
-	if (!p || p == (int)(ft_strlen(m->args[i]) - 1))
+	if (m->args[i][0] == '-')
+	{
+		m->exit_code = 1;
+		ft_putstr_fd("export: `", 2);
+		ft_putstr_fd(m->args[i], 2);
+		ft_putstr_fd("': invalid option\n", 2);
+		return (1);
+	}	
+	if (!p)
 		return (invalid_iden(m, m->args[i]));
 	else if (p == -1)
 	{
 		if (ft_isdigit(m->args[i][0])
 				|| !is_all_env(m->args[i], ft_strlen(m->args[i])))
-			invalid_iden(m, m->args[i]);
-		return (1);
+			return (invalid_iden(m, m->args[i]));
 	}
 	return (0);
 }
@@ -85,10 +92,10 @@ int	expt(t_m *m)
 	while (m->args[++i])
 	{
 		p = chr_pos(m->args[i], '=');
-		if (!check_invalid(m, i, p) && p > 0)
+		if (!check_invalid(m, i, p))
 		{
 			cat = 0;
-			if (m->args[i][p - 1] == '+')
+			if (p != -1 && m->args[i][p - 1] == '+')
 			{
 				p -= 1;
 				cat = 1;

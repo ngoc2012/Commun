@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/05 11:36:18 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:16:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <limits.h>
 # include <sys/types.h>
 # include <sys/wait.h>
-# include "ft_printf.h"
 # include "libft.h"
 # include <sys/stat.h>
 # include <fcntl.h>
@@ -31,13 +30,6 @@
 
 # define BUFFER_SIZE 100
 
-typedef struct s_p
-{
-	int	level;
-	int	last_level;
-	int	blocked;
-}	t_p;
-
 typedef struct s_c
 {
 	int		i;
@@ -45,6 +37,7 @@ typedef struct s_c
 	int		len;
 	int		n_c;
 	int		n_o;
+	int		err;
 	char	*s;
 	char	*o;
 	char	d;
@@ -54,31 +47,23 @@ typedef struct s_c
 
 typedef struct s_m
 {
-	int		process_level;
 	char	*s;
 	char	**env;
 	char	**coms;
 	char	**args;
 	char	**ss;
+	t_list	*infix;
 	t_list	*args_list;
 	int		exit_code;
 	int		pipefd0[2];
 	int		pipefd1[2];
-	pid_t	pid[10000];
 	char	cwd[PATH_MAX];
-	char	syntax_error;
-	char	has_child;
-	t_list	*infix;
-	char	*heredoc;
-	char	*heredocf;
-	char	**hd_keys;
-	char	*ffn;
+	char	heredocf[PATH_MAX];
 	int		argc;
 	int		fin;
 	int		fin0;
 	int		fout;
 	int		fout0;
-	int		n_wildcards;
 	int		n_pipes;
 }	t_m;
 
@@ -96,19 +81,27 @@ int		priorities_operators(char *s, t_m *m);
 int		infix_priorities_operators(t_list *p, t_m *m);
 int		is_all_env(char *s, int p);
 int		builtin_exit(t_m *m);
-int		redir_out(t_m *m, t_list **args);
-int		redir_in(t_m *m, t_list **args);
-int		heredoc(t_m *m, t_list **args);
+int		redir_out(t_m *m, char *s, int append);
+int		redir_in(t_m *m, char *s);
+int		heredoc(t_m *m);
 int		ft_strcmp_val(char *s1, char *s2);
 int		wild_files_list(t_m *m, char *s, char **ss, t_list **args);
 int		return_error(t_m *m, char *mess, int exit_code, int is_perror);
-int		redir_error(t_m *m, char *mess, int exit_code);
+int		redir_error(t_m *m, char *mess, int exit_code, int is_perror);
 int		split_args(char *s, t_m *m);
+int		get_str_env(char *s, t_m *m, t_c *c);
+int		get_fd(t_m *m, int i);
+int		free_heredoc(t_m *m);
+int		check_heredoc(t_m *m, t_list *cur, t_list **here);
+int		convert_heredoc(t_m *m);
+int		process(t_m *m, int i);
+int		get_str_env3(char *s, t_m *m, t_c *c);
 void	command(t_m *m);
 char	*strjoinm(char *des, char *src, int len_des, int buffer);
 void	pwd(t_m *m);
 char	*get_env_name(char *name, char **environ);
 char	*str_env(char *s, int len, t_m *m);
+char	*str_env2(char *s, int len, t_m *m);
 void	print_content(void *s);
 void	free_ss(char **ss);
 void	free_none(void *s);
@@ -117,7 +110,6 @@ char	*ft_strndup(char *s, int len);
 void	wildcards(char *s, t_list **args, t_m *m);
 void	free_m(t_m *m, int free_env);
 void	free_m_arg(t_m *m);
-void	process(t_m *m, int i);
 void	redir(t_list *args, t_m *m);
 char	*get_home(void);
 char	*remove_quotes(char *s, int len);
@@ -126,9 +118,14 @@ char	**ft_split_quote(char *str, char charset);
 char	*abs_path(t_m *m, char *path);
 char	*get_env(char *s, char **ss);
 void	close_pipe(int *fd);
-t_list	*get_args_list(char *s, t_m *m);
+t_list	*get_args_list(char *s);
 void	exit_error(t_m *m, char *mess, int exit_code);
 void	free_files(t_m *m);
 void	signal_heredoc(void);
+void	set_pipe(t_m *m, int i);
+void	convert_exit_code(t_m *m);
+void	fn_heredoc(t_m *m);
+t_list	*get_args_list_wild(char *s, t_m *m);
+char	*remove_dollar(char *s);
 
 #endif

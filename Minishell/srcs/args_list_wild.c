@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args_list.c                                        :+:      :+:    :+:   */
+/*   args_list_wild.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/14 09:06:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/13 21:31:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,37 +37,51 @@ static int	redir_args(char *s, t_c *c)
 	return (1);
 }
 
-static void	end(char *s, t_c *c)
+static void	end(char *s, t_m *m, t_c *c, int *wild)
 {
 	while (c->i && s[c->i - 1] == ' ')
 		c->i--;
 	if (c->i > c->i0)
 	{
-		ft_lstadd_back(&c->args,
-			ft_lstnew(strjoinm(0, &s[c->i0], 0, c->i - c->i0)));
+		if (*wild)
+			wildcards(ft_strndup(&s[c->i0], c->i - c->i0), &c->args, m);
+		else
+			ft_lstadd_back(&c->args,
+				ft_lstnew(strjoinm(0, &s[c->i0], 0, c->i - c->i0)));
 	}
 }
 
-static void	wild_space(char *s, t_c *c)
+static void	wild_space(char *s, t_m *m, t_c *c, int *wild)
 {
-	if (ft_strchr(" 	", s[c->i]))
+	if (s[c->i] == '*')
+	{
+		*wild = 1;
+		if (ft_lstlast(c->args) && !ft_strncmp("<<",
+				(char *)(ft_lstlast(c->args))->content, 3))
+			*wild = 0;
+		c->i++;
+	}
+	else if (ft_strchr(" 	", s[c->i]))
 	{
 		if (c->i > c->i0)
 		{
-			if (c->i > c->i0)
+			if (*wild)
+				wildcards(ft_strndup(&s[c->i0], c->i - c->i0), &c->args, m);
+			else if (c->i > c->i0)
 				ft_lstadd_back(&c->args,
 					ft_lstnew(strjoinm(0, &s[c->i0], 0, c->i - c->i0)));
 		}
+		*wild = 0;
 		while (ft_strchr(" 	", s[++c->i]))
 			;
 		c->i0 = c->i;
 	}
 }
 
-static void	loop(char *s, t_c *c)
+static void	loop(char *s, t_m *m, t_c *c, int *wild)
 {
-	if (ft_strchr("       ", s[c->i]))
-		wild_space(s, c);
+	if (s[c->i] == '*' || ft_strchr(" 	", s[c->i]))
+		wild_space(s, m, c, wild);
 	else if (ft_strchr("<>", s[c->i]))
 	{
 		c->d = s[c->i];
@@ -90,10 +104,12 @@ static void	loop(char *s, t_c *c)
 		c->i++;
 }
 
-t_list	*get_args_list(char *s)
+t_list	*get_args_list_wild(char *s, t_m *m)
 {
 	t_c	c;
+	int	wild;
 
+	wild = 0;
 	c.args = 0;
 	c.d = ' ';
 	c.i0 = 0;
@@ -101,13 +117,13 @@ t_list	*get_args_list(char *s)
 	c.err = 0;
 	while (s[c.i])
 	{
-		loop(s, &c);
+		loop(s, m, &c, &wild);
 		if (c.err)
 		{
 			ft_lstclear(&c.args, free);
 			return (0);
 		}
 	}
-	end(s, &c);
+	end(s, m, &c, &wild);
 	return (c.args);
 }

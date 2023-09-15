@@ -6,20 +6,20 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/05 11:29:37 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/14 11:58:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char	*check_file(char *file)
+static char	*check_file(char *file, t_m *m)
 {
 	char	*path;
 	char	**ss;
 	char	**ss0;
 	char	*s;
 
-	path = getenv("PATH");
+	path = get_env("PATH", m->env);
 	if (!path)
 		return (0);
 	ss = ft_split(path, ':');
@@ -41,23 +41,53 @@ static char	*check_file(char *file)
 	return (0);
 }
 
-/*
-Check args:
-	char	**ss;
-	ss = m->args;
-	while (*ss)
-		printf("|%s|\n", *(ss++));
-*/
+void	convert_exit_code(t_m *m)
+{
+	if (WIFEXITED(m->exit_code))
+		m->exit_code = WEXITSTATUS(m->exit_code);
+	else if (WIFSIGNALED(m->exit_code))
+		m->exit_code = WTERMSIG(m->exit_code) + 128;
+}
+
+static int	check_dir(char *s)
+{
+	DIR	*d;
+
+	if (!s || !*s)
+		return (0);
+	d = opendir(s);
+	if (d)
+	{
+		closedir(d);
+		return (1);
+	}
+	return (0);
+}
+
 void	command(t_m *m)
 {
-	char	*file;
+	char				*file;
 
-	file = check_file(m->args[0]);
+	signal(SIGQUIT, SIG_DFL);
+	file = check_file(m->args[0], m);
 	if (file)
 		execve(file, m->args, m->env);
-	else
+	else if (ft_strncmp(m->args[0], "minishell", 10))
 		execve(m->args[0], m->args, m->env);
 	if (file)
 		free(file);
-	exit_error(m, m->args[0], 127);
+	ft_putstr_fd(m->args[0], 2);
+	if (check_dir(m->args[0]))
+	{
+		m->exit_code = 126;
+		ft_putstr_fd(": Is a directory\n", 2);
+	}
+	else
+	{
+		ft_putstr_fd(": command not found\n", 2);
+		m->exit_code = 127;
+	}
+	free_heredoc(m);
+	free_m(m, 1);
+	exit(m->exit_code);
 }

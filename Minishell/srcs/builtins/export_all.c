@@ -3,33 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   export_all.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/08/07 17:51:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/10 22:02:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+static void	print_var(char **env, char *var, int fd)
+{
+	char	*s;
+
+	s = strjoinm(0, var, 0, chr_pos(var, '='));
+	ft_putstr_fd(s, fd);
+	ft_putstr_fd("=\"", fd);
+	ft_putstr_fd(get_env(s, env), fd);
+	ft_putstr_fd("\"\n", fd);
+	free(s);
+}
+
 int	expt_all(t_m *m, int fd)
 {
 	char	**env;
-	char	*s;
-	char	*s0;
 
-	env = m->env;
-	while (*env)
+	if (m->argc == 1)
 	{
-		s = strjoinm(0, *env, 0, chr_pos(*env, '='));
-		ft_putstr_fd("declare -x ", fd);
-		ft_putstr_fd(s, fd);
-		ft_putstr_fd("=\"", fd);
-		ft_putstr_fd(getenv(s), fd);
-		ft_putstr_fd("\"\n", fd);
-		free(s);
-		env++;
+		env = m->env;
+		while (*env)
+		{
+			ft_putstr_fd("declare -x ", fd);
+			if (ft_strchr(*env, '='))
+				print_var(env, *env, fd);
+			else
+			{
+				ft_putstr_fd(*env, fd);
+				ft_putchar_fd('\n', fd);
+			}
+			env++;
+		}
+		return (1);
 	}
-	m->exit_code = 0;
+	else if (m->n_pipes == 1)
+		return (expt(m));
 	return (1);
 }
