@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 12:33:55 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/15 12:36:54 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,9 @@ void	get_map(t_game *g, char *fn)
 	s = get_next_line(fd);
 	while (s)
 	{
-		m->map.h++;
-		if ((int) ft_strlen(s) > m->map.l)
-			m->map.l = (int) ft_strlen(s);
+		g->map.h++;
+		if ((int) ft_strlen(s) > g->map.l)
+			g->map.l = (int) ft_strlen(s);
 		free(s);
 		s = get_next_line(fd);
 	}
@@ -118,47 +118,47 @@ void	get_map(t_game *g, char *fn)
 	s = get_next_line(fd);
 	while (s)
 	{
-		m->map[++j] = malloc(sizeof(int) * m->map.l);
+		g->map.v[++j] = malloc(sizeof(int) * g->map.l);
 		i = 0;
-		while (i < m->l)
-			m->map.v[j][i++] = 0;
+		while (i < g->map.l)
+			g->map.v[j][i++] = 0;
 		i = -1;
 		while (s[++i])
 		{
 			if (s[i] == '1')
-				m->map[j][i] = 1;
+				g->map.v[j][i] = 1;
 			else if (s[i] == '2')
-				m->map[j][i] = 2;
+				g->map.v[j][i] = 2;
 			else if (s[i] == '3')
-				m->map[j][i] = 3;
+				g->map.v[j][i] = 3;
 			else if (s[i] == '4')
-				m->map[j][i] = 4;
+				g->map.v[j][i] = 4;
 			else if (s[i] == '5')
-				m->map[j][i] = 5;
+				g->map.v[j][i] = 5;
 			else if (s[i] == '6')
-				m->map[j][i] = 6;
+				g->map.v[j][i] = 6;
 			else if (s[i] == '7')
-				m->map[j][i] = 7;
+				g->map.v[j][i] = 7;
 			else if (ft_strchr("NSWE", s[i]))
 			{
-				m->x = i;
-				m->y = j;
+				g->pos.x = i;
+				g->pos.y = j;
 				if (s[i] == 'N')
-					m->dy = 1;
+					g->pos.dy = 1;
 				else if (s[i] == 'S')
-					m->dy = -1;
+					g->pos.dy = -1;
 				else if (s[i] == 'W')
-					m->dx = 1;
+					g->pos.dx = 1;
 				else if (s[i] == 'E')
-					m->dx = -1;
+					g->pos.dx = -1;
 			}
 		}
 		free(s);
 		s = get_next_line(fd);
 	}
 	close(fd);
-	if ((!m->dx && !m->dy) || m->map.h < 5 || m->map.l < 5)
-		end_prog(p, 1, "Invalid map");
+	if ((!g->pos.dx && !g->pos.dy) || g->map.h < 5 || g->map.l < 5)
+		end_prog(g, 1, "Invalid map");
 }
 
 int	main()
