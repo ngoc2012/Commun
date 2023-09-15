@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 22:00:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/15 22:02:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,19 @@ void	read_command(t_m *m, char *com)
 	rl_on_new_line();
 }
 
-void	set_signal(void)
-{
-	struct sigaction	act;
-
-	act.sa_flags = SA_RESTART;
-	act.sa_handler = signal_handler;
-	sigemptyset(&act.sa_mask);
-	sigaction(SIGINT, &act, NULL);
-	signal(SIGQUIT, SIG_IGN);
-}
-
 // Clears the terminal screen
 static void	interactive_mode(t_m *m)
 {
+	struct sigaction	act;
 	char		*com;
 
 	while (1)
 	{
-		set_signal();
+		act.sa_flags = SA_RESTART;
+		act.sa_handler = signal_handler;
+		sigemptyset(&act.sa_mask);
+		sigaction(SIGINT, &act, NULL);
+		signal(SIGQUIT, SIG_IGN);
 		com = readline("minishell$ ");
 		if (com)
 			read_command(m, com);
