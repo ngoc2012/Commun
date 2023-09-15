@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/14 21:08:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/15 21:37:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	write2heredocf(t_m *m, t_list *cur)
 
 	signal_heredoc();
 	s0 = remove_dollar((char *)cur->content);
-	s = remove_quotes(s0, ft_strlen(s0));
+	s = remove_quotes(s0, ft_strlen(s0), m);
 	free(s0);
 	ft_strlcpy(end, s, ft_strlen(s) + 1);
 	free(s);

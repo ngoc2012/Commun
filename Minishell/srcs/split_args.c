@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/14 17:39:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/15 21:36:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*get_first_arg(t_m *m, char *s)
 		return (0);
 	}
 	s0 = (char *) args_list->content;
-	s0 = remove_quotes(s0, ft_strlen(s0));
+	s0 = remove_quotes(s0, ft_strlen(s0), m);
 	ft_lstclear(&args_list, free);
 	return (s0);
 }
@@ -66,7 +66,7 @@ static void	add_arg(t_m *m, t_list **cur)
 	{
 		m->args = astr_addback(m->args,
 				remove_quotes((char *)al->content,
-					ft_strlen((char *)al->content)));
+					ft_strlen((char *)al->content), m));
 		m->argc++;
 		al = al->next;
 	}
