@@ -6,21 +6,21 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 11:44:40 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/15 12:33:55 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "cub3D.h"
 
-void	free_map(t_prog *p)
+void	free_map(t_map *m)
 {
 	int	i;
 
 	i = -1;
-	while (++i < p->h)
-		free(p->map[i]);
-	free(p->map);
+	while (++i < m->h)
+		free(m->v[i]);
+	free(m->v);
 }
 
 void	end_prog(t_prog *p, int exit_code, char *s)
