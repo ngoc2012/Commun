@@ -6,12 +6,29 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 15:49:43 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/15 15:51:50 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+char	*relative_path0(t_m *m, char *path, int i)
+{
+	char	*p;
+	int		j;
+
+	if (!path)
+	{
+		if (!get_home(m))
+			return (0);
+		return (strjoinm(0, get_home(m), 0, ft_strlen(get_home())));
+	}
+	if (!ft_strncmp(path, ".", 2))
+	{
+		getcwd(m->cwd, sizeof(m->cwd));
+		return (strjoinm(0, m->cwd, 0, ft_strlen(m->cwd)));
+	}
+}
 char	*get_home(t_m *m)
 {
 	char	*u;
