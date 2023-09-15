@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 21:51:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/15 21:53:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	read_command(t_m *m, char *com)
 		free(com);
 		return ;
 	}
-	m->s = strjoinm(0, com, 0, ft_strlen(com));
+	m->s = strjoinm(0, &com[i], 0, ft_strlen(&com[i]));
+	free(com);
 	add_history(m->s);
 	if (priorities_operators(m->s, m))
 		infix_priorities_operators(m->infix, m);
@@ -68,7 +69,7 @@ void	set_signal(void)
 }
 
 // Clears the terminal screen
-static void	interactive_mode(t_m *m, char *com)
+static void	interactive_mode(t_m *m)
 {
 	char		*com;
 
@@ -77,7 +78,7 @@ static void	interactive_mode(t_m *m, char *com)
 		set_signal();
 		com = readline("minishell$ ");
 		if (com)
-			read_command(m, com[i]);
+			read_command(m, com);
 		else
 		{
 			write (1, "exit\n", 5);
@@ -95,7 +96,6 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 	m.env = astr_copy(env);
 	init(&m);
-	com = 0;
 	tcgetattr(STDIN_FILENO, &term);
 	printf("\033[2J\033[1;1H");
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
