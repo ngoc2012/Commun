@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 22:05:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/15 22:18:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,15 @@ void	command(t_m *m)
 	signal(SIGQUIT, SIG_DFL);
 	file = check_file(m->args[0], m);
 	if (file)
+	{
+		printf("file\n");
 		execve(file, m->args, m->env);
+	}
 	else if (ft_strncmp(m->args[0], "minishell", 10))
+	{
+		printf("command\n");
 		execve(m->args[0], m->args, m->env);
+	}
 	if (file)
 		free(file);
 	ft_putstr_fd(m->args[0], 2);
