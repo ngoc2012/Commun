@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 12:41:37 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/15 12:43:22 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	free_map(t_map *m)
 	free(m->v);
 }
 
-void	end_prog(t_game *g, int exit_code, char *s)
+void	end_game(t_game *g, int exit_code, char *s)
 {
 	mlx_destroy_image(g->mlx.mlx, g->mlx.img);
 	mlx_destroy_window(g->mlx.mlx, g->mlx.win);
@@ -41,7 +41,7 @@ int	create_trgb(unsigned char t, unsigned char r,
 	return (t << 24 | r << 16 | g << 8 | b);
 }
  
-int	key_hook(int keycode, t_prog *p)
+int	key_hook(int keycode, t_game *g)
  {
  	if (keycode == XK_Up || keycode == XK_Down)
 		printf("Key Up Down\n");
@@ -49,7 +49,7 @@ int	key_hook(int keycode, t_prog *p)
 	{
 	}
 	if (keycode == XK_q || keycode == XK_Escape)
-		end_prog(p, 0, 0);
+		end_game(g, 0, 0);
 	/*
 	if (keycode == XK_Up)
     //{
@@ -158,7 +158,7 @@ void	get_map(t_game *g, char *fn)
 	}
 	close(fd);
 	if ((!g->pos.dx && !g->pos.dy) || g->map.h < 5 || g->map.l < 5)
-		end_prog(g, 1, "Invalid map");
+		end_game(g, 1, "Invalid map");
 }
 
 int	main()
@@ -169,7 +169,7 @@ int	main()
 	g.mlx.win = mlx_new_window(g.mlx.mlx, WIDTH, HEIGHT, "Cub3D");
 	if (!g.mlx.mlx || !g.mlx.win)
 		exit(EXIT_FAILURE);
-	mlx_key_hook(g.mlx.win, key_hook, &p);
+	mlx_key_hook(g.mlx.win, key_hook, &g);
 	//mlx_mouse_hook(g.win, mouse_hook, p);
 	//mlx_loop_hook(g.mlx, loop_hook, p);
 	//mlx_hook(g.win, ClientMessage, LeaveWindowMask, &end_prog, p);
