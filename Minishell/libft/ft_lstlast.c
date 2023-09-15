@@ -6,12 +6,11 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 06:41:32 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/08/29 16:31:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/15 13:21:37 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 t_list	*ft_lstlast(t_list *lst)
 {
