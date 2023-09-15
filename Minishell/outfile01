@@ -1,4 +1,0 @@
-redir_out end
-here
-process
-fork ls
