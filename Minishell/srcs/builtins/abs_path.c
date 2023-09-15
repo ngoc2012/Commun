@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 15:45:53 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/15 15:47:54 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ char	*abs_path(t_m *m, char *path)
 	i = 0;
 	if (!path)
 	{
+		printf("not path\n");
 		if (!get_home())
 			return (0);
 		return (strjoinm(0, get_home(), 0, ft_strlen(get_home())));
