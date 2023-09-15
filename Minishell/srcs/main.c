@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/14 11:56:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/15 21:43:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void	signal_handler(int sig)
 void	read_command(t_m *m, char *com)
 {
 	m->s = strjoinm(0, com, 0, ft_strlen(com));
+	free(com);
 	add_history(m->s);
 	if (priorities_operators(m->s, m))
 		infix_priorities_operators(m->infix, m);
@@ -76,7 +77,7 @@ static void	interactive_mode(t_m *m, char *com)
 			if (*com)
 				read_command(m, com);
 		}
-		if (!com)
+		else
 		{
 			write (1, "exit\n", 5);
 			exit_error(m, 0, 0);
