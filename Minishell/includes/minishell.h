@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 15:03:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:20:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int		check_heredoc(t_m *m, t_list *cur, t_list **here);
 int		convert_heredoc(t_m *m);
 int		process(t_m *m, int i);
 int		get_str_env3(char *s, t_m *m, t_c *c);
+int		match_env(char **ss, char *s);
 void	command(t_m *m);
 char	*strjoinm(char *des, char *src, int len_des, int buffer);
 void	pwd(t_m *m);
