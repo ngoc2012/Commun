@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/09 15:51:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 02:33:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,12 @@ static int	check_invalid(t_m *m, int i, int p)
 	{
 		if (ft_isdigit(m->args[i][0])
 				|| !is_all_env(m->args[i], ft_strlen(m->args[i])))
+			return (invalid_iden(m, m->args[i]));
+	}
+	else
+	{
+		printf("|%s|\n", &m->args[i][p]);
+		if (!ft_strncmp(&m->args[i][p], "export", 7))
 			return (invalid_iden(m, m->args[i]));
 	}
 	return (0);
