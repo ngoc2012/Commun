@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:22:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:27:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*check_file(char *file, t_m *m)
 	return (0);
 }
 
-void	convert_exit_code(t_m *m)
+void	convert_exit_code(void)
 {
 	if (WIFEXITED(g_exit_code))
 		g_exit_code = WEXITSTATUS(g_exit_code);

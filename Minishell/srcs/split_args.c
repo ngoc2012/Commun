@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:21:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:26:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern int	g_exit_code;
 
-static t_list	*get_args_list0(char *s, t_m *m)
+static t_list	*get_args_list0(char *s)
 {
 	t_list	*args_list;
 
@@ -111,7 +111,7 @@ int	split_args(char *s, t_m *m)
 	t_list	*cur;
 	t_list	*here;
 
-	cur = get_args_list0(s, m);
+	cur = get_args_list0(s);
 	if (!cur)
 		return (0);
 	m->args_list = cur;

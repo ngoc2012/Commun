@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 03:54:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:27:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	exit_error(t_m *m, char *mess, int exit_code);
 void	free_files(t_m *m);
 void	signal_heredoc(void);
 void	set_pipe(t_m *m, int i);
-void	convert_exit_code(t_m *m);
+void	convert_exit_code(void);
 void	fn_heredoc(t_m *m);
 t_list	*get_args_list_wild(char *s, t_m *m);
 char	*remove_dollar(char *s);
