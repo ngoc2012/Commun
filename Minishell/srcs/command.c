@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:27:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:13:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	command(t_m *m)
 		//printf("file\n");
 		execve(file, m->args, m->env);
 	}
-	else if (ft_strncmp(m->args[0], "minishell", 10))
+	else
 	{
 		//printf("command\n");
 		// export OLDSHLVL=1
