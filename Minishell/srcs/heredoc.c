@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 16:37:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 16:39:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ static int	parent_process(t_m *m, t_list *cur)
 		write2heredocf(m, cur);
 	else
 	{
+		printf("increase forks\n");
 		m->forks++;
 		waitpid(pid, &g_exit_code, 0);
 		m->forks--;
