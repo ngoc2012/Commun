@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:20:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:35:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	*relative_path0(t_m *m, char *path)
 	}
 	return (0);
 }
+
 char	*get_home(t_m *m)
 {
 	char	*u;
