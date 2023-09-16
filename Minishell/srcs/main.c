@@ -6,23 +6,24 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 03:28:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 03:38:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 int	g_forks;
+int	g_exit_code;
 
-void	child_signal_handler(int sig)
-{
-	if (sig == SIGINT)
-	{
-		ft_putchar_fd('\n', STDIN_FILENO);
-		rl_replace_line("", STDIN_FILENO);
-		rl_redisplay();
-	}
-}
+//void	child_signal_handler(int sig)
+//{
+//	if (sig == SIGINT)
+//	{
+//		ft_putchar_fd('\n', STDIN_FILENO);
+//		rl_replace_line("", STDIN_FILENO);
+//		rl_redisplay();
+//	}
+//}
 
 void	main_signal_handler(int sig)
 {
