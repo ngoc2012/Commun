@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:31:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:32:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	create_var(t_m *m, int i, int p, int cat)
 	char	*s_e;
 
 	if (ft_isdigit(m->args[i][0]) || !is_all_env(m->args[i], p))
-		invalid_iden(m, m->args[i]);
+		invalid_iden(m->args[i]);
 	else
 	{
 		j = match(m->env, m->args[i]);
@@ -74,12 +74,12 @@ static int	check_invalid(t_m *m, int i, int p)
 		return (1);
 	}	
 	if (!p)
-		return (invalid_iden(m, m->args[i]));
+		return (invalid_iden(m->args[i]));
 	else if (p == -1)
 	{
 		if (ft_isdigit(m->args[i][0])
 				|| !is_all_env(m->args[i], ft_strlen(m->args[i])))
-			return (invalid_iden(m, m->args[i]));
+			return (invalid_iden(m->args[i]));
 	}
 	return (0);
 }

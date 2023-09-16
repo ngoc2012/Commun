@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:19:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:33:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	get_str_env0(char *s, t_m *m, t_c *c)
 	return (0);
 }
 
-static int	get_str_env1(char *s, t_m *m, t_c *c)
+static int	get_str_env1(char *s, t_c *c)
 {
 	char	*s0;
 
@@ -83,7 +83,7 @@ int	get_str_env(char *s, t_m *m, t_c *c)
 {
 	if (get_str_env0(s, m, c))
 		return (1);
-	if (get_str_env1(s, m, c))
+	if (get_str_env1(s, c))
 		return (1);
 	return (0);
 }
