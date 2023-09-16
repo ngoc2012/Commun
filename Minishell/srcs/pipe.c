@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:35:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:41:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void	get_exit_code(int exit_code, int is_last, int *quit)
 	if (is_last)
 	{
 		g_exit_code = exit_code;
-		printf("g_exit_code = %d\n", g_exit_code);
 		convert_exit_code();
 	}
 }
