@@ -6,23 +6,13 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:41:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:43:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 int	g_exit_code;
-
-//void	child_signal_handler(int sig)
-//{
-//	if (sig == SIGINT)
-//	{
-//		ft_putchar_fd('\n', STDIN_FILENO);
-//		rl_replace_line("", STDIN_FILENO);
-//		rl_redisplay();
-//	}
-//}
 
 void	main_signal_handler(int sig)
 {
@@ -34,30 +24,7 @@ void	main_signal_handler(int sig)
 		rl_redisplay();
 		g_exit_code = 130;
 	}
-	//else if (sig == SIGQUIT)
-	//{
-	//}
 }
-
-//static void	signal_handler(int sig)
-//{
-//	if (sig == SIGINT && !m->forks)
-//	{
-//		ft_putchar_fd('\n', STDIN_FILENO);
-//		rl_replace_line("", STDIN_FILENO);
-//		rl_on_new_line();
-//		rl_redisplay();
-//	}
-//	else if (sig == SIGINT && m->forks > 0)
-//	{
-//		ft_putchar_fd('\n', STDIN_FILENO);
-//		rl_replace_line("", STDIN_FILENO);
-//		rl_redisplay();
-//	}
-//	else if (sig == SIGQUIT)
-//	{
-//	}
-//}
 
 void	read_command(t_m *m, char *com)
 {
