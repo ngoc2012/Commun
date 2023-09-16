@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:32:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:19:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	invalid_iden(char *s)
 	return (1);
 }
 
-static int	match(char **ss, char *s)
+int	match_env(char **ss, char *s)
 {
 	int	i;
 
@@ -43,7 +43,7 @@ static void	create_var(t_m *m, int i, int p, int cat)
 		invalid_iden(m->args[i]);
 	else
 	{
-		j = match(m->env, m->args[i]);
+		j = match_env(m->env, m->args[i]);
 		if (j != -1 && cat)
 			m->env[j] = strjoinm(m->env[j], &m->args[i][p + 2],
 					ft_strlen(m->env[j]), ft_strlen(&m->args[i][p + 2]));
