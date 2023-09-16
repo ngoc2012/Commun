@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 03:42:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 03:57:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ static char	*check_file(char *file, t_m *m)
 
 void	convert_exit_code(t_m *m)
 {
-	if (WIFEXITED(m->exit_code))
-		m->exit_code = WEXITSTATUS(m->exit_code);
-	else if (WIFSIGNALED(m->exit_code))
-		m->exit_code = WTERMSIG(m->exit_code) + 128;
+	if (WIFEXITED(g_exit_code))
+		g_exit_code = WEXITSTATUS(g_exit_code);
+	else if (WIFSIGNALED(g_exit_code))
+		g_exit_code = WTERMSIG(g_exit_code) + 128;
 }
 
 static int	check_dir(char *s)
@@ -89,15 +89,15 @@ void	command(t_m *m)
 	ft_putstr_fd(m->args[0], 2);
 	if (check_dir(m->args[0]))
 	{
-		m->exit_code = 126;
+		g_exit_code = 126;
 		ft_putstr_fd(": Is a directory\n", 2);
 	}
 	else
 	{
 		ft_putstr_fd(": command not found\n", 2);
-		m->exit_code = 127;
+		g_exit_code = 127;
 	}
 	free_heredoc(m);
 	free_m(m, 1);
-	exit(m->exit_code);
+	exit(g_exit_code);
 }
