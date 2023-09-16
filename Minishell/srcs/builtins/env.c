@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 14:25:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 14:33:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int	remove_quote(char *s, t_c *c)
 {
 	char	d;
 
+	if (ft_strchr(" 	", s[c->i]))
+			c.first_arg = 0;
 	if (s[c->i] == '\"')
 	{
 		if (c->in_double_quotes)
@@ -47,7 +49,7 @@ char	*str_env(char *s, int len, t_m *m)
 	c.i = 0;
 	c.i0 = 0;
 	c.in_double_quotes = 0;
-	c.in_single_quotes = 0;
+	//c.in_single_quotes = 0;
 	c.first_arg = 1;
 	c.len = len;
 	while (s[c.i] && c.i < len)
