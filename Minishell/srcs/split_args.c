@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 15:00:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:05:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	*get_first_arg(t_m *m, char *s)
 	char	*s0;
 
 	s0 = 0;
-	s_env = str_env(s, ft_strlen(s), m);
+	s_env = str_env(s, ft_strlen(s), m, 0);
 	args_list = get_args_list_wild(s_env, m);
 	free(s_env);
 	if (!args_list || ft_lstsize(args_list) > 1)
@@ -60,7 +60,7 @@ static void	add_arg(t_m *m, t_list **cur)
 	t_list	*al;
 
 	s_env = str_env((char *)(*cur)->content,
-			ft_strlen((char *)(*cur)->content), m, !ft_lstsize(args_list));
+			ft_strlen((char *)(*cur)->content), m, !m->argc);
 	args_list = get_args_list_wild(s_env, m);
 	free(s_env);
 	al = args_list;
