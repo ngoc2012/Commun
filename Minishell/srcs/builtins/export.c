@@ -6,15 +6,17 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 02:44:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:19:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+extern int	g_exit_code;
+
 static int	invalid_iden(t_m *m, char *s)
 {
-	m->exit_code = 1;
+	g_exit_code = 1;
 	ft_putstr_fd("export: `", 2);
 	ft_putstr_fd(s, 2);
 	ft_putstr_fd("': not a valid identifier\n", 2);
@@ -57,7 +59,7 @@ static void	create_var(t_m *m, int i, int p, int cat)
 				m->env = astr_addback(m->env,
 						strjoinm(0, m->args[i], 0, ft_strlen(m->args[i])));
 		}
-		m->exit_code = 0;
+		g_exit_code = 0;
 	}
 }
 
@@ -65,7 +67,7 @@ static int	check_invalid(t_m *m, int i, int p)
 {
 	if (m->args[i][0] == '-')
 	{
-		m->exit_code = 1;
+		g_exit_code = 1;
 		ft_putstr_fd("export: `", 2);
 		ft_putstr_fd(m->args[i], 2);
 		ft_putstr_fd("': invalid option\n", 2);

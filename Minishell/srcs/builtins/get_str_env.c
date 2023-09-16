@@ -6,11 +6,13 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/14 12:18:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:19:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_code;
 
 int	get_str_env3(char *s, t_m *m, t_c *c)
 {
@@ -67,7 +69,7 @@ static int	get_str_env1(char *s, t_m *m, t_c *c)
 	if (s[c->i] == '$' && s[c->i + 1] == '?')
 	{
 		c->o = strjoinm(c->o, &s[c->i0], ft_strlen(c->o), c->i - c->i0);
-		s0 = ft_itoa(m->exit_code);
+		s0 = ft_itoa(g_exit_code);
 		c->o = strjoinm(c->o, s0, ft_strlen(c->o), ft_strlen(s0));
 		free(s0);
 		c->i += 2;

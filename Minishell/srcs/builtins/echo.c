@@ -6,12 +6,14 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/14 09:15:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:18:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include <dirent.h>
+
+extern int	g_exit_code;
 
 static void	put_str(t_m *m, int i, int fd)
 {
@@ -62,6 +64,6 @@ int	echo0(t_m *m, int fd)
 		write(fd, "\n", 1);
 	if (fd != 1)
 		close(fd);
-	m->exit_code = 0;
+	g_exit_code = 0;
 	return (1);
 }

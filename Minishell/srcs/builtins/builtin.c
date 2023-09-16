@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:17:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:18:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	export_env(t_m *m, int i)
 			}
 			ss++;
 		}
-		m->exit_code = 0;
+		g_exit_code = 0;
 		return (1);
 	}
 	return (0);
@@ -50,7 +50,7 @@ static int	pwd_cd(t_m *m, int i, int fd)
 		if (m->argc > 2)
 		{
 			ft_putstr_fd("minishell: cd: too many arguments\n", 2);
-			m->exit_code = 1;
+			g_exit_code = 1;
 			return (1);
 		}
 		else
@@ -64,7 +64,7 @@ static int	pwd_cd(t_m *m, int i, int fd)
 		set_pipe(m, i);
 		ft_putstr_fd(m->cwd, fd);
 		write(fd, "\n", 1);
-		m->exit_code = 0;
+		g_exit_code = 0;
 		return (1);
 	}
 	return (0);
@@ -81,7 +81,7 @@ static int	unset_exit(t_m *m, int i, int fd)
 		j = 0;
 		while (m->args[++j])
 			astr_remove(m->env, m->args[j], ft_strdcmp, free);
-		m->exit_code = 0;
+		g_exit_code = 0;
 		return (1);
 	}
 	if (!ft_strncmp(m->args[0], "exit", 5))
