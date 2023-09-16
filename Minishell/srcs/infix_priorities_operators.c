@@ -6,11 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 08:25:15 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/08 14:42:42 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/16 07:22:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_code;
 
 /*
 Parse the () in command line to choose the command to execute.
@@ -42,7 +44,7 @@ static int	operators(t_list **ops, t_m *m, int *blocked)
 {
 	if (!ft_strncmp("&&", (char *)(*ops)->content, 3))
 	{
-		if (m->exit_code)
+		if (g_exit_code)
 			*blocked = 1;
 		else
 			*blocked = 0;
@@ -51,7 +53,7 @@ static int	operators(t_list **ops, t_m *m, int *blocked)
 	}
 	else if (!ft_strncmp("||", (char *)(*ops)->content, 3))
 	{
-		if (m->exit_code)
+		if (g_exit_code)
 			*blocked = 0;
 		else
 			*blocked = 1;

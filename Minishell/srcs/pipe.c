@@ -6,13 +6,13 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:13:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:23:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern int	m->forks;
+extern int	g_exit_code;
 
 void	close_pipe(int *fd)
 {
@@ -33,7 +33,7 @@ static void	get_exit_code(t_m *m, int exit_code, int is_last, int *quit)
 		ft_putstr_fd("Quit (core dumped)\n", 2);
 	if (is_last)
 	{
-		m->exit_code = exit_code;
+		g_exit_code = exit_code;
 		convert_exit_code(m);
 	}
 }
@@ -62,7 +62,7 @@ static int	end_pipe(t_m *m, int last_pid)
 	free_files(m);
 	free_m_arg(m);
 	free_heredoc(m);
-	if (!m->args && m->exit_code == 2)
+	if (!m->args && g_exit_code == 2)
 		return (0);
 	return (1);
 }
@@ -71,7 +71,7 @@ static int	arg_pipe(t_m *m, int i, int *pid)
 {
 	if (!split_args(m->coms[i], m))
 	{
-		if (m->exit_code == 2 || m->exit_code == 130)
+		if (g_exit_code == 2 || g_exit_code == 130)
 		{
 			if (m->n_pipes > 1)
 				close_pipe(m->pipefd0);
@@ -122,7 +122,7 @@ int	pipes(char *s, t_m *m)
 	{
 		m->args = 0;
 		m->argc = 0;
-		if (!arg_pipe(m, i, &pid) && (m->exit_code == 2 || m->exit_code == 130))
+		if (!arg_pipe(m, i, &pid) && (g_exit_code == 2 || g_exit_code == 130))
 			break ;
 	}
 	return (end_pipe(m, pid));
