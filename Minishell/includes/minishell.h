@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 14:48:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:03:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	command(t_m *m);
 char	*strjoinm(char *des, char *src, int len_des, int buffer);
 void	pwd(t_m *m);
 char	*get_env_name(char *name, char **environ);
-char	*str_env(char *s, int len, t_m *m);
+char	*str_env(char *s, int len, t_m *m, int first_arg);
 char	*str_env2(char *s, int len, t_m *m);
 void	print_content(void *s);
 void	free_ss(char **ss);

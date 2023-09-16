@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 14:57:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:04:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	remove_quote(char *s, t_c *c)
 	return (0);
 }
 
-char	*str_env(char *s, int len, t_m *m)
+char	*str_env(char *s, int len, t_m *m, int first_arg)
 {
 	t_c	c;
 
@@ -47,15 +47,16 @@ char	*str_env(char *s, int len, t_m *m)
 	c.i = 0;
 	c.i0 = 0;
 	c.in_double_quotes = 0;
-	c.first_arg = 1;
+	c.first_arg = first_arg;
+	c. = 1;
 	c.len = len;
 	while (s[c.i] && c.i < len)
 	{
-		printf("xx%dxx%c\n", c.i, s[c.i]);
+		//printf("xx%dxx%c\n", c.i, s[c.i]);
 		if (!c.in_double_quotes && ft_strchr(" 	", s[c.i]))
 		{
 			c.first_arg = 0;
-			printf("%d\n", c.i);
+			//printf("%d\n", c.i);
 		}
 		if (remove_quote(s, &c))
 			;
@@ -67,7 +68,7 @@ char	*str_env(char *s, int len, t_m *m)
 	if (!c.i)
 		return (ft_strdup(""));
 	c.o = strjoinm(c.o, &s[c.i0], ft_strlen(c.o), c.i - c.i0);
-	printf("c.o = %s\n", c.o);
+	//printf("c.o = %s\n", c.o);
 	return (c.o);
 }
 
