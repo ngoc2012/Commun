@@ -6,11 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/14 17:20:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:17:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_code;
 
 int	redir_error(t_m *m, char *mess, int exit_code, int is_perror)
 {
@@ -21,7 +23,7 @@ int	redir_error(t_m *m, char *mess, int exit_code, int is_perror)
 		ft_putstr_fd(mess, 2);
 		ft_putstr_fd("\n", 2);
 	}
-	m->exit_code = exit_code;
+	g_exit_code = exit_code;
 	return (0);
 }
 
