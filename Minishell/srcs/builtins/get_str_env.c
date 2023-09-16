@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 14:33:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 14:35:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_str_env3(char *s, t_m *m, t_c *c)
 		c->i++;
 	s0 = ft_strndup(&s[c->i0], c->i - c->i0);
 	s1 = get_env(s0, m->env);
-	if (!c->in_double_quotes && c->first_arg)
+	if (!c->in_double_quotes && !c->first_arg)
 		c->o = strjoinm(c->o, "\"", -1, 1);
 	while (s1 && *s1)
 	{
@@ -38,7 +38,7 @@ int	get_str_env3(char *s, t_m *m, t_c *c)
 			c->o = strjoinm(c->o, s1, -1, 1);
 		s1++;
 	}
-	if (!c->in_double_quotes && c->first_arg)
+	if (!c->in_double_quotes && !c->first_arg)
 		c->o = strjoinm(c->o, "\"", -1, 1);
 	printf("|%s|\n", c->o);
 	free(s0);
