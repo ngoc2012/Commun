@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 15:25:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:29:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,21 @@ static int	check_dir(char *s)
 void	update_shlvl(t_m *m)
 {
 	int		i;
-	char	*s_e;
+	int		n;
+	int		p;
+	char	*s0;
+	char	*s;
 
 	i = match_env(m->env, "SHLVL");
+	p = chr_pos(m->env[i], '=');
+	n = ft_atoi(&m->env[i][p + 1]);
+	n++;
+	s0 = ft_itoa(n);
+	s = strjoinm(0, "SHLVL=", 0, -1);
+	s = strjoinm(s, s0, -1, -1);
+	free(s0);
+	s0 = m->env[i];
+	m->env[i] = s;
 }
 
 void	command(t_m *m)
