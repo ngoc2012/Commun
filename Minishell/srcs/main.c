@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:21:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:24:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,5 @@ int	main(int argc, char **argv, char **env)
 	printf("\033[2J\033[1;1H");
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	interactive_mode(&m);
-	exit_error(&m, 0, m.exit_code);
+	exit_error(&m, 0, g_exit_code);
 }

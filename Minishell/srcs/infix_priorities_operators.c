@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 08:25:15 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:22:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:25:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	parentheses(t_list **ops, int *blocked)
 	}
 }
 
-static int	operators(t_list **ops, t_m *m, int *blocked)
+static int	operators(t_list **ops, int *blocked)
 {
 	if (!ft_strncmp("&&", (char *)(*ops)->content, 3))
 	{
@@ -70,7 +70,7 @@ int	infix_priorities_operators(t_list *ops, t_m *m)
 	blocked = 0;
 	while (ops)
 	{
-		if (operators(&ops, m, &blocked))
+		if (operators(&ops, &blocked))
 			;
 		else if (!ft_strncmp("(", (char *)ops->content, 2))
 			parentheses(&ops, &blocked);
