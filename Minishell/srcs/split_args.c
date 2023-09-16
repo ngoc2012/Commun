@@ -6,11 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 21:36:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:21:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_code;
 
 static t_list	*get_args_list0(char *s, t_m *m)
 {
@@ -22,7 +24,7 @@ static t_list	*get_args_list0(char *s, t_m *m)
 	if (!args_list)
 	{
 		ft_putstr_fd("syntaxe error\n", 2);
-		m->exit_code = 2;
+		g_exit_code = 2;
 	}
 	return (args_list);
 }
@@ -42,7 +44,7 @@ static char	*get_first_arg(t_m *m, char *s)
 		ft_lstclear(&args_list, free);
 		ft_putstr_fd(s, 2);
 		ft_putstr_fd(": ambiguous redirect\n", 2);
-		m->exit_code = 1;
+		g_exit_code = 1;
 		return (0);
 	}
 	s0 = (char *) args_list->content;

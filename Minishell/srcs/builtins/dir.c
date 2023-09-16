@@ -6,11 +6,13 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 09:01:37 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 22:11:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:20:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+extern int	g_exit_code;
 
 char	*relative_path0(t_m *m, char *path)
 {
@@ -67,7 +69,7 @@ int	get_path(t_m *m, char *path)
 		else
 			ft_putstr_fd("cd: HOME not set\n", 2);
 		free(path);
-		m->exit_code = 1;
+		g_exit_code = 1;
 		return (0);
 	}
 	update_pwd(m, "OLDPWD", m->cwd);
@@ -76,7 +78,7 @@ int	get_path(t_m *m, char *path)
 	else
 		getcwd(m->cwd, sizeof(m->cwd));
 	update_pwd(m, "PWD", m->cwd);
-	m->exit_code = 0;
+	g_exit_code = 0;
 	free(path);
 	return (1);
 }
@@ -94,7 +96,7 @@ int	cd(t_m *m, char *path)
 		{
 			ft_putstr_fd("cd: error retrieving current directory\n", 2);
 			ft_strlcat(m->cwd, "/.", ft_strlen(m->cwd) + 3);
-			m->exit_code = 0;
+			g_exit_code = 0;
 			return (0);
 		}
 	}

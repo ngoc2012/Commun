@@ -6,13 +6,12 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:13:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:21:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	m->forks;
 int	g_exit_code;
 
 //void	child_signal_handler(int sig)
