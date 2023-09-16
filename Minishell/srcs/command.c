@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 15:13:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:22:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,12 @@ static int	check_dir(char *s)
 		return (1);
 	}
 	return (0);
+}
+
+void	update_shlvl(t_m *m)
+{
+	char	*s_e;
+	match_env(m->env, char *s);
 }
 
 void	command(t_m *m)
