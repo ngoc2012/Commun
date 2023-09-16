@@ -3,6 +3,11 @@ ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ export a=grep
 ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ "$a" $b
 
 
+ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ export a="grep -nR"
+ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ export b=exit_code
+ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ $a $b
+
+
 ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ echo ~
 /home/ngoc
 ngoc@ngoc-HP-EliteBook-850-G5:~/Commun/Minishell$ echo ~/Downloads/
