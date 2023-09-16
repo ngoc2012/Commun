@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 03:35:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 03:36:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static int	end_pipe(t_m *m, int last_pid)
 		get_exit_code(m, exit_code, pid == last_pid);
 		g_forks--;
 	}
-	printf("exit code\n");
 	if (exit_code == 130)
 		ft_putchar_fd('\n', 1);
 	signal(SIGINT, main_signal_handler);
