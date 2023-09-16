@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:31:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 14:23:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_c
 	char	*o;
 	char	d;
 	char	in_double_quotes;
+	char	first_arg;
 	t_list	*args;
 }	t_c;
 
