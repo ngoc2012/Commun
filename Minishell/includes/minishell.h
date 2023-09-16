@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:27:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:31:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int		heredoc(t_m *m);
 int		ft_strcmp_val(char *s1, char *s2);
 int		wild_files_list(t_m *m, char *s, char **ss, t_list **args);
 int		return_error(t_m *m, char *mess, int exit_code, int is_perror);
-int		redir_error(t_m *m, char *mess, int exit_code, int is_perror);
+int		redir_error(char *mess, int exit_code, int is_perror);
 int		split_args(char *s, t_m *m);
 int		get_str_env(char *s, t_m *m, t_c *c);
 int		get_fd(t_m *m, int i);

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:19:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:31:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern int	g_exit_code;
 
-static int	invalid_iden(t_m *m, char *s)
+static int	invalid_iden(char *s)
 {
 	g_exit_code = 1;
 	ft_putstr_fd("export: `", 2);

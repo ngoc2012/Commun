@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:29:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:30:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	redir_in(t_m *m, char *s)
 		close(m->fin);
 		m->fin = 0;
 		if (dup2(m->fin0, STDIN_FILENO) == -1)
-			return (redir_error(m, "dup2", 1, 1));
+			return (redir_error("dup2", 1, 1));
 		close(m->fin0);
 	}
 	m->fin = open(s, O_RDONLY);
@@ -45,11 +45,11 @@ int	redir_in(t_m *m, char *s)
 	if (s)
 		free(s);
 	if (m->fin == -1)
-		return (redir_error(m, " ", 1, 1));
+		return (redir_error(" ", 1, 1));
 	m->fin0 = dup(STDIN_FILENO);
 	if (m->fin0 == -1)
-		return (redir_error(m, "dup", 1, 1));
+		return (redir_error("dup", 1, 1));
 	if (dup2(m->fin, STDIN_FILENO) == -1)
-		return (redir_error(m, "dup2", 1, 0));
+		return (redir_error("dup2", 1, 0));
 	return (1);
 }

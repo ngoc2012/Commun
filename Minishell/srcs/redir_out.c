@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/14 17:18:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:30:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	redir_out(t_m *m, char *s, int append)
 		close(m->fout);
 		m->fout = 1;
 		if (dup2(m->fout0, STDOUT_FILENO) == -1)
-			return (redir_error(m, "dup2", 1, 1));
+			return (redir_error("dup2", 1, 1));
 		close(m->fout0);
 	}
 	if (append)
@@ -32,11 +32,11 @@ int	redir_out(t_m *m, char *s, int append)
 		ft_putstr_fd(s, 2);
 	free(s);
 	if (m->fout == -1)
-		return (redir_error(m, " ", 1, 1));
+		return (redir_error(" ", 1, 1));
 	m->fout0 = dup(STDOUT_FILENO);
 	if (m->fout0 == -1)
-		return (redir_error(m, "dup", 1, 1));
+		return (redir_error("dup", 1, 1));
 	if (dup2(m->fout, STDOUT_FILENO) == -1)
-		return (redir_error(m, "dup2", 1, 1));
+		return (redir_error("dup2", 1, 1));
 	return (1);
 }

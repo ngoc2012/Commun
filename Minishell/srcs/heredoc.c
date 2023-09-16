@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:29:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:31:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int	heredoc(t_m *m)
 		close(m->fin);
 		m->fin = 0;
 		if (dup2(m->fin0, STDIN_FILENO) == -1)
-			return (redir_error(m, "dup2", 1, 1));
+			return (redir_error("dup2", 1, 1));
 		close(m->fin0);
 	}
 	m->fin = open(m->heredocf, O_RDONLY);
