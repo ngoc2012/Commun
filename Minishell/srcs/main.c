@@ -6,13 +6,26 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 22:02:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 03:16:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 int	g_forks;
+
+void	child_signal_handler(int sig)
+{
+	if (sig == SIGINT)
+	{
+		ft_putchar_fd('\n', STDIN_FILENO);
+		rl_replace_line("", STDIN_FILENO);
+		rl_redisplay();
+	}
+	else if (sig == SIGQUIT)
+	{
+	}
+}
 
 static void	signal_handler(int sig)
 {
@@ -33,6 +46,26 @@ static void	signal_handler(int sig)
 	{
 	}
 }
+
+//static void	signal_handler(int sig)
+//{
+//	if (sig == SIGINT && !g_forks)
+//	{
+//		ft_putchar_fd('\n', STDIN_FILENO);
+//		rl_replace_line("", STDIN_FILENO);
+//		rl_on_new_line();
+//		rl_redisplay();
+//	}
+//	else if (sig == SIGINT && g_forks > 0)
+//	{
+//		ft_putchar_fd('\n', STDIN_FILENO);
+//		rl_replace_line("", STDIN_FILENO);
+//		rl_redisplay();
+//	}
+//	else if (sig == SIGQUIT)
+//	{
+//	}
+//}
 
 void	read_command(t_m *m, char *com)
 {
