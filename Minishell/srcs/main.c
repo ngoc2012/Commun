@@ -6,13 +6,13 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 03:41:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:13:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	g_forks;
+int	m->forks;
 int	g_exit_code;
 
 //void	child_signal_handler(int sig)
@@ -41,14 +41,14 @@ void	main_signal_handler(int sig)
 
 //static void	signal_handler(int sig)
 //{
-//	if (sig == SIGINT && !g_forks)
+//	if (sig == SIGINT && !m->forks)
 //	{
 //		ft_putchar_fd('\n', STDIN_FILENO);
 //		rl_replace_line("", STDIN_FILENO);
 //		rl_on_new_line();
 //		rl_redisplay();
 //	}
-//	else if (sig == SIGINT && g_forks > 0)
+//	else if (sig == SIGINT && m->forks > 0)
 //	{
 //		ft_putchar_fd('\n', STDIN_FILENO);
 //		rl_replace_line("", STDIN_FILENO);

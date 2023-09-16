@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:14:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:08:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:13:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern int	g_forks;
+extern int	m->forks;
 
 int	free_heredoc(t_m *m)
 {
@@ -26,7 +26,7 @@ int	free_heredoc(t_m *m)
 
 void	init(t_m *m)
 {
-	g_forks = 0;
+	m->forks = 0;
 	m->args = 0;
 	m->args_list = 0;
 	m->ss = 0;

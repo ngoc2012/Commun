@@ -6,13 +6,13 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 03:50:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:13:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern int	g_forks;
+extern int	m->forks;
 
 void	close_pipe(int *fd)
 {
@@ -47,11 +47,11 @@ static int	end_pipe(t_m *m, int last_pid)
 	exit_code = 0;
 	quit = 0;
 	signal(SIGINT, SIG_IGN);
-	while (g_forks)
+	while (m->forks)
 	{
 		pid = wait(&exit_code);
 		get_exit_code(m, exit_code, pid == last_pid, &quit);
-		g_forks--;
+		m->forks--;
 	}
 	signal(SIGINT, main_signal_handler);
 	if (m->n_pipes > 1)

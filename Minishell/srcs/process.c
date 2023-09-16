@@ -6,13 +6,13 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/14 09:39:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:13:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern int	g_forks;
+extern int	m->forks;
 
 // First process or last process of 2
 int	first_process(t_m *m, int i)
@@ -123,7 +123,7 @@ int	process(t_m *m, int i)
 	}
 	else
 	{
-		g_forks++;
+		m->forks++;
 		end_process(m, i);
 	}
 	return (pid);
