@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:43:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:43:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	read_command(t_m *m, char *com)
 static void	interactive_mode(t_m *m)
 {
 	struct sigaction	act;
-	char		*com;
+	char				*com;
 
 	while (1)
 	{

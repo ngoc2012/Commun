@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 15:40:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:43:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,16 @@ char	*str_env(char *s, int len, t_m *m, int first_arg)
 	return (c.o);
 }
 
+static void	convert_env(char *s, t_c *c, t_m *m)
+{
+	c->o = strjoinm(c->o, &s[c->i0], ft_strlen(c->o), c->i - c->i0);
+	if (ft_isdigit(s[c->i + 1]))
+		c->i += 2;
+	else
+		get_str_env3(s, m, c);
+	c->i0 = c->i;
+}
+
 char	*str_env2(char *s, int len, t_m *m)
 {
 	t_c	c;
@@ -81,14 +91,7 @@ char	*str_env2(char *s, int len, t_m *m)
 	while (s[c.i] && c.i < len)
 	{
 		if (s[c.i] == '$' && isenv(s[c.i + 1]))
-		{
-			c.o = strjoinm(c.o, &s[c.i0], ft_strlen(c.o), c.i - c.i0);
-			if (ft_isdigit(s[c.i + 1]))
-				c.i += 2;
-			else
-				get_str_env3(s, m, &c);
-			c.i0 = c.i;
-		}
+			convert_env(s, c, m);
 		else
 			c.i++;
 	}
