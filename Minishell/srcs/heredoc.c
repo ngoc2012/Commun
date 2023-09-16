@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 21:37:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:08:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern int	g_forks;
+extern int	g_exit_code;
 
 static int	read_lines(char *fn, char *end)
 {
@@ -78,9 +78,9 @@ static int	parent_process(t_m *m, t_list *cur)
 		write2heredocf(m, cur);
 	else
 	{
-		g_forks -= 1000;
+		m->forks -= 1000;
 		waitpid(pid, &m->exit_code, 0);
-		g_forks += 1000;
+		m->forks += 1000;
 		convert_exit_code(m);
 		if (m->exit_code)
 		{
