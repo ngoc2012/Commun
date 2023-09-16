@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 03:38:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 03:41:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	main_signal_handler(int sig)
 		rl_on_new_line();
 		rl_redisplay();
 	}
-	else if (sig == SIGQUIT)
-	{
-	}
+	//else if (sig == SIGQUIT)
+	//{
+	//}
 }
 
 //static void	signal_handler(int sig)

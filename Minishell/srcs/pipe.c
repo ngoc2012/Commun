@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 03:36:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 03:40:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	get_exit_code(t_m *m, int exit_code, int is_last)
 {
 	if (exit_code == 13)
 		exit_code = 0;
+	if (exit_code == 130)
+		ft_putchar_fd('\n', 1);
 	if (exit_code == 131 && is_last)
 		ft_putstr_fd("Quit (core dumped)\n", 2);
 	if (is_last)
@@ -46,8 +48,6 @@ static int	end_pipe(t_m *m, int last_pid)
 		get_exit_code(m, exit_code, pid == last_pid);
 		g_forks--;
 	}
-	if (exit_code == 130)
-		ft_putchar_fd('\n', 1);
 	signal(SIGINT, main_signal_handler);
 	if (m->n_pipes > 1)
 		close_pipe(m->pipefd0);
