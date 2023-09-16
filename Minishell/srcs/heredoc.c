@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:08:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:15:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,13 @@ static int	parent_process(t_m *m, t_list *cur)
 	else
 	{
 		m->forks -= 1000;
-		waitpid(pid, &m->exit_code, 0);
+		waitpid(pid, &g_exit_code, 0);
 		m->forks += 1000;
 		convert_exit_code(m);
-		if (m->exit_code)
+		if (g_exit_code)
 		{
-			if (m->exit_code == 2)
-				m->exit_code = 0;
+			if (g_exit_code == 2)
+				g_exit_code = 0;
 			return (free_heredoc(m));
 		}
 	}

@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/04 23:14:52 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:13:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:14:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern int	m->forks;
+extern int	g_exit_code;
 
 int	free_heredoc(t_m *m)
 {
