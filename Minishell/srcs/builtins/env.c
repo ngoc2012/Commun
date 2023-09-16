@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 15:43:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:45:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char	*str_env2(char *s, int len, t_m *m)
 	while (s[c.i] && c.i < len)
 	{
 		if (s[c.i] == '$' && isenv(s[c.i + 1]))
-			convert_env(s, c, m);
+			convert_env(s, &c, m);
 		else
 			c.i++;
 	}

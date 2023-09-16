@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 15:43:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:44:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	interactive_mode(t_m *m)
 
 int	main(int argc, char **argv, char **env)
 {
-	t_m						m;
+	t_m					m;
 	struct termios		term;
 
 	(void)argc;
