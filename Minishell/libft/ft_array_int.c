@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 19:24:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 19:26:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 19:31:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 int	aint_addback(int *a)
 {
 	int	*new;
+	int	len;
 
-	new = malloc(sizeof(int) * (sizeof(a) / sizeof(int) + 1));
+	len = sizeof(a) / sizeof(int);
+	new = malloc(sizeof(int) * (len + 1));
+
 }
