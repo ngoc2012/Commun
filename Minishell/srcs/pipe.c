@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 03:46:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 03:49:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ void	close_pipe(int *fd)
 	close(fd[1]);
 }
 
-static void	get_exit_code(t_m *m, int exit_code, int is_last)
+static void	get_exit_code(t_m *m, int exit_code, int is_last, int *quit)
 {
 	if (exit_code == 13)
 		exit_code = 0;
-	if (exit_code == 2)
+	if (exit_code == 2 && !*quit)
 	{
+		*quit = 1;
 		ft_putchar_fd('\n', 1);
 	}
 	if (exit_code == 131 && is_last)
@@ -41,8 +42,10 @@ static int	end_pipe(t_m *m, int last_pid)
 {
 	int	exit_code;
 	int	pid;
+	int	quit;
 
 	exit_code = 0;
+	quit = 0;
 	signal(SIGINT, SIG_IGN);
 	while (g_forks)
 	{
