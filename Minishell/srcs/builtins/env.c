@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 14:52:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 14:57:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ char	*str_env(char *s, int len, t_m *m)
 	if (!c.i)
 		return (ft_strdup(""));
 	c.o = strjoinm(c.o, &s[c.i0], ft_strlen(c.o), c.i - c.i0);
+	printf("c.o = %s\n", c.o);
 	return (c.o);
 }
 
