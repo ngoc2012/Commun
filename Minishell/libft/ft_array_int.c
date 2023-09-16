@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 19:24:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 21:18:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 21:21:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,22 @@ int	*aint_addback(int *a, int n)
 	int	i;
 	int	len;
 
-	len = sizeof(a) / sizeof(int);
+	if (!a)
+		len = 0;
+	else
+		len = sizeof(a) / sizeof(int);
 	new = malloc(sizeof(int) * (len + 1));
 	if (!new)
 		return (a);
 	i = -1;
 	while (++i < len) 
 		new[i] = a[i];
-	new[++i] = n;
-	free(a);
+	if (!a)
+		new[0] = n;
+	else
+	{
+		free(a);
+		new[++i] = n;
+	}
 	return (new);
 }
