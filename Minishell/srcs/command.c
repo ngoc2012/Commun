@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 15:29:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:30:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,21 +91,12 @@ void	command(t_m *m)
 	char				*file;
 
 	signal(SIGQUIT, SIG_DFL);
+	update_shlvl(m);
 	file = check_file(m->args[0], m);
 	if (file)
-	{
-		//printf("file\n");
 		execve(file, m->args, m->env);
-	}
 	else
-	{
-		//printf("command\n");
-		// export OLDSHLVL=1
-		// Copy env;
 		execve(m->args[0], m->args, m->env);
-		//  OLDSHLVL=1
-		// delete env;
-	}
 	if (file)
 		free(file);
 	ft_putstr_fd(m->args[0], 2);
