@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/14 11:51:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 03:29:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static int	end_pipe(t_m *m, int last_pid)
 	int	exit_code;
 	int	pid;
 
+	signal(SIGINT, SIG_IGN);
 	while (g_forks)
 	{
 		pid = wait(&exit_code);

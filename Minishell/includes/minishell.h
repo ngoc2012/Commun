@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 21:43:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 03:29:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ void	fn_heredoc(t_m *m);
 t_list	*get_args_list_wild(char *s, t_m *m);
 char	*remove_dollar(char *s);
 char	*relative_path0(t_m *m, char *path);
+void	main_signal_handler(int sig);
 
 #endif

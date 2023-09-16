@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 03:21:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 03:28:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	child_signal_handler(int sig)
 	}
 }
 
-static void	signal_handler(int sig)
+void	main_signal_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
@@ -91,7 +91,7 @@ static void	interactive_mode(t_m *m)
 	while (1)
 	{
 		act.sa_flags = SA_RESTART;
-		act.sa_handler = signal_handler;
+		act.sa_handler = main_signal_handler;
 		sigemptyset(&act.sa_mask);
 		sigaction(SIGINT, &act, NULL);
 		signal(SIGQUIT, SIG_IGN);
