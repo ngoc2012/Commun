@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 15:23:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:25:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	invalid_iden(char *s)
 	return (1);
 }
 
-static int	match_env(char **ss, char *s)
+int	match_env(char **ss, char *s)
 {
 	int	i;
 
