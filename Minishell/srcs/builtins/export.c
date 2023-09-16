@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 02:34:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 02:43:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	check_invalid(t_m *m, int i, int p)
 	else
 	{
 		//printf("|%s|\n", &m->args[i][p]);
-		if (!ft_strncmp(&m->args[i][p + 1], "export", 7))
+		if (!ft_strncmp(&m->args[i][p + 1], "export", 6))
 			return (invalid_iden(m, m->args[i]));
 	}
 	return (0);
