@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/14 11:42:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 01:59:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,6 @@ static int	is_max_long_long(char *str)
 
 int	builtin_exit(t_m *m)
 {
-	if (m->n_pipes > 1)
-		return (1);
 	ft_putstr_fd("exit\n", 1);
 	if (m->argc > 1)
 	{
@@ -116,6 +114,7 @@ int	builtin_exit(t_m *m)
 		m->exit_code = 1;
 		return (1);
 	}
-	exit_error(m, 0, m->exit_code);
+	if (m->n_pipes == 1)
+		exit_error(m, 0, m->exit_code);
 	return (1);
 }
