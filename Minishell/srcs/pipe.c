@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 03:45:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 03:46:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ void	close_pipe(int *fd)
 
 static void	get_exit_code(t_m *m, int exit_code, int is_last)
 {
-	printf("exit code %d\n", exit_code);
 	if (exit_code == 13)
 		exit_code = 0;
-	if (exit_code == 130 || exit_code == 2)
+	if (exit_code == 2)
 	{
 		ft_putchar_fd('\n', 1);
 	}
