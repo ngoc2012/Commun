@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:17:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:29:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 extern int	g_exit_code;
 
-int	redir_error(t_m *m, char *mess, int exit_code, int is_perror)
+int	redir_error(char *mess, int exit_code, int is_perror)
 {
 	if (is_perror)
 		perror(mess);

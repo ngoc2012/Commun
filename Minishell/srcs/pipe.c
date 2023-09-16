@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:27:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:28:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	close_pipe(int *fd)
 	close(fd[1]);
 }
 
-static void	get_exit_code(t_m *m, int exit_code, int is_last, int *quit)
+static void	get_exit_code(int exit_code, int is_last, int *quit)
 {
 	if (exit_code == 13)
 		exit_code = 0;
@@ -50,7 +50,7 @@ static int	end_pipe(t_m *m, int last_pid)
 	while (m->forks)
 	{
 		pid = wait(&exit_code);
-		get_exit_code(m, exit_code, pid == last_pid, &quit);
+		get_exit_code(exit_code, pid == last_pid, &quit);
 		m->forks--;
 	}
 	signal(SIGINT, main_signal_handler);

@@ -6,13 +6,13 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:13:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:28:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern int	m->forks;
+extern int	g_exit_code;
 
 // First process or last process of 2
 int	first_process(t_m *m, int i)

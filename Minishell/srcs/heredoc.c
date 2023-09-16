@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:15:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 07:29:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static int	parent_process(t_m *m, t_list *cur)
 		m->forks -= 1000;
 		waitpid(pid, &g_exit_code, 0);
 		m->forks += 1000;
-		convert_exit_code(m);
+		convert_exit_code();
 		if (g_exit_code)
 		{
 			if (g_exit_code == 2)
