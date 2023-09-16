@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 14:51:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 14:52:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*str_env(char *s, int len, t_m *m)
 	c.len = len;
 	while (s[c.i] && c.i < len)
 	{
-		printf("xx%dxx\n", c.i);
+		printf("xx%dxx%c\n", c.i, s[c.i]);
 		if (!c.in_double_quotes && ft_strchr(" 	", s[c.i]))
 		{
 			c.first_arg = 0;
