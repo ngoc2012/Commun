@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 18:45:00 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 15:37:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/16 15:39:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*str_env2(char *s, int len, t_m *m)
 	c.i = 0;
 	c.i0 = 0;
 	c.in_double_quotes = 0;
-	c.first_arg = 1;
+	c.first_arg = 0;
 	c.len = len;
 	while (s[c.i] && c.i < len)
 	{
