@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 09:23:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 09:30:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,7 @@ static int	check_in(t_m *m, t_list **cur)
 		if (!m->syntaxe_error)
 			return (redir_in(m, get_first_arg(m, cur1)));
 	}
-	else
-		add_arg(m, cur);
+	add_arg(m, cur);
 	return (1);
 }
 
