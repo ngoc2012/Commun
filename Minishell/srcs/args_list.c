@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 08:55:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 08:57:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	redir_args(char *s, t_c *c)
 		else
 			ft_lstadd_back(&c->args, ft_lstnew(ft_strdup("<")));
 	}
-	while (ft_strchr(" 	", s[c->i]))
+	while (ft_strchr(SPACES, s[c->i]))
 		c->i++;
 	if (!s[c->i] || ft_strchr("|<>", s[c->i]))
 	{
@@ -59,14 +59,14 @@ static void	wild_space(char *s, t_c *c)
 			ft_lstadd_back(&c->args,
 					ft_lstnew(strjoinm(0, &s[c->i0], 0, c->i - c->i0)));
 	}
-	while (ft_strchr(" 	", s[++c->i]))
+	while (ft_strchr(SPACES, s[++c->i]))
 		;
 	c->i0 = c->i;
 }
 
 static int	loop(char *s, t_c *c)
 {
-	if (ft_strchr("       \n", s[c->i]))
+	if (ft_strchr(SPACES, s[c->i]))
 		wild_space(s, c);
 	else if (ft_strchr("<>", s[c->i]))
 	{
@@ -100,7 +100,7 @@ t_list	*get_args_list(char *s)
 	c.i0 = 0;
 	c.i = 0;
 	c.err = 0;
-	while (s[c.i] && ft_strchr(" 	\n", s[c.i]))
+	while (s[c.i] && ft_strchr(SPACES, s[c.i]))
 		c.i++;
 	while (s[c.i])
 	{
