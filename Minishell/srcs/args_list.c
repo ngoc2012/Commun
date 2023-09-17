@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 08:45:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 08:46:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static int	redir_args(char *s, t_c *c)
 	if (!s[c->i] || ft_strchr("|<>", s[c->i]))
 	{
 		ft_putstr_fd("syntax error near unexpected token \n", 2);
+		ft_putchar_fd(s[c->i], 2);
 		c->err = 1;
 	}
 	c->i0 = c->i;

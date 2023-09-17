@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 08:42:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 08:47:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,7 @@ static int	check_syntaxe(char *s)
 
 	cur = get_args_list(s);
 	if (!cur)
-	{
-		ft_putstr_fd("syntax error near unexpected token \n", 2);
 		return (1);
-	}
 	ft_lstclear(&cur, free);
 	return (0);
 }
