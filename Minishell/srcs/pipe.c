@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 08:41:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 08:42:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,14 @@ static int	arg_pipe(t_m *m, int i, int *pid)
 	return (1);
 }
 
-static int	check_syntaxe(char *s, t_m *m)
+static int	check_syntaxe(char *s)
 {
 	t_list	*cur;
 
 	cur = get_args_list(s);
 	if (!cur)
 	{
-		ft_putstr_fd("syntax error near unexpected token ", 2);
+		ft_putstr_fd("syntax error near unexpected token \n", 2);
 		return (1);
 	}
 	ft_lstclear(&cur, free);
@@ -126,7 +126,7 @@ int	pipes(char *s, t_m *m)
 	while (m->coms[++m->n_pipes])
 		if (m->n_pipes && !ft_strlen(m->coms[m->n_pipes]))
 			return (return_error(m, "syntaxe error", 2, 0));
-	m->syntaxe_error = check_syntaxe(s, m);
+	m->syntaxe_error = check_syntaxe(s);
 	if (m->n_pipes > 1)
 		pipe(m->pipefd0);
 	if (m->n_pipes > 2)
