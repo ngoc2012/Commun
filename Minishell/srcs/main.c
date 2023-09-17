@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 22:03:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 22:07:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void	interactive_mode(t_m *m)
 {
 	struct sigaction	act;
 	char				*com;
+	char				prompt[PATH_MAX];
 
 	while (1)
 	{
