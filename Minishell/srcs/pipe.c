@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 08:07:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 08:11:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,11 @@ static int	check_syntaxe(char *s, t_m *m)
 		return (0);
 	while (cur)
 	{
-		if (!ft_strncmp(">", (char *)cur->content, 2)
+		if ((!ft_strncmp(">", (char *)cur->content, 2)
 				|| !ft_strncmp("<", (char *)cur->content, 2)
 				|| !ft_strncmp(">>", (char *)cur->content, 3)
-				|| !ft_strncmp("<<", (char *)cur->content, 3))
+				|| !ft_strncmp("<<", (char *)cur->content, 3)) &&
+				cur->next &&
 		{
 			if (cur->next)
 			{
