@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 21:36:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 21:39:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ static void	interactive_mode(t_m *m)
 		sigemptyset(&act.sa_mask);
 		sigaction(SIGINT, &act, NULL);
 		signal(SIGQUIT, SIG_IGN);
+		get_prompt(m, prompt);
 		com = readline(prompt);
 		if (com)
 			read_command(m, com);
