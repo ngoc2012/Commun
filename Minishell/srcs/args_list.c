@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 08:48:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 08:51:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static int	redir_args(char *s, t_c *c)
 		ft_putchar_fd(s[c->i], 2);
 		ft_putchar_fd('\n', 2);
 		c->err = 1;
+		return (0);
 	}
 	c->i0 = c->i;
 	return (1);
@@ -69,7 +70,7 @@ static void	wild_space(char *s, t_c *c)
 	}
 }
 
-static void	loop(char *s, t_c *c)
+static int	loop(char *s, t_c *c)
 {
 	if (ft_strchr("       ", s[c->i]))
 		wild_space(s, c);
@@ -80,7 +81,7 @@ static void	loop(char *s, t_c *c)
 			ft_lstadd_back(&c->args,
 				ft_lstnew(strjoinm(0, &s[c->i0], 0, c->i - c->i0)));
 		c->i++;
-		redir_args(s, c);
+		return (redir_args(s, c));
 	}
 	else if (ft_strchr("\"'", s[c->i]))
 	{
@@ -93,6 +94,7 @@ static void	loop(char *s, t_c *c)
 	}
 	else
 		c->i++;
+	return (1);
 }
 
 t_list	*get_args_list(char *s)
@@ -108,8 +110,7 @@ t_list	*get_args_list(char *s)
 		c.i++;
 	while (s[c.i])
 	{
-		loop(s, &c);
-		if (c.err)
+		if (!loop(s, &c) && c.err)
 		{
 			ft_lstclear(&c.args, free);
 			return (0);
