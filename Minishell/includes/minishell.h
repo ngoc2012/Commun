@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 21:44:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 21:47:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@
 
 # define BUFFER_SIZE 100
 # define SPACES " 	\n"
-
+# define COLOR_BOLD_SLOW_BLINKING      "\e[1;5m"
+# define COLOR_BOLD_SLOW_BLINKING_RED  "\e[1;5;31m"
+# define COLOR_BOLD_BLUE               "\e[1;34m"
+# define COLOR_BOLD  "\e[1m"
+# define COLOR_OFF   "\e[m"
 /*
 # ANSI Color Code Examples to help make sense of the regex expressions below
 # Git config color code descriptions; see here:
