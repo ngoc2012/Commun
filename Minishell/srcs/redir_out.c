@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 09:26:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 14:05:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	redir_out(t_m *m, char *s, int append)
 {
 	if (!s)
 		return (0);
-	//printf("fout %d\n", m->fout);
 	if (m->fout != 1)
 	{
 		close(m->fout);
