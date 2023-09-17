@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 21:49:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 21:54:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@
 
 # define BUFFER_SIZE 100
 # define SPACES " 	\n"
-# define COLOR_BOLD_SLOW_BLINKING      "\e[1;5m"
-# define COLOR_BOLD_SLOW_BLINKING_RED  "\e[1;5;31m"
-# define COLOR_BOLD_BLUE               "\e[1;34m"
-# define COLOR_BOLD  "\e[1m"
-# define COLOR_OFF   "\e[m"
+# define COLOR_BOLD_SLOW_BLINKING      "\033[1;5m"
+# define COLOR_BOLD_SLOW_BLINKING_RED  "\033[1;5;31m"
+# define COLOR_BOLD_BLUE               "\033[1;34m"
+# define COLOR_BOLD  "\033[1m"
+# define COLOR_OFF   "\033[m"
 
 /*
 # ANSI Color Code Examples to help make sense of the regex expressions below
