@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:34:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 22:04:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 22:05:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	get_prompt(t_m *m)
 {
 	char	*s;
 
+	ft_putstr_fd(COLOR_BOLD_GREEN, 1);
 	ft_putstr_fd("minishell:", 1);
 	ft_putstr_fd(COLOR_BOLD_BLUE, 1);
 	s = short_link(m->cwd, m);

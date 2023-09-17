@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 21:54:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 22:05:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define SPACES " 	\n"
 # define COLOR_BOLD_SLOW_BLINKING      "\033[1;5m"
 # define COLOR_BOLD_SLOW_BLINKING_RED  "\033[1;5;31m"
+# define COLOR_BOLD_GREEN              "\033[1;32m"
 # define COLOR_BOLD_BLUE               "\033[1;34m"
 # define COLOR_BOLD  "\033[1m"
 # define COLOR_OFF   "\033[m"
@@ -159,6 +160,6 @@ t_list	*get_args_list_wild(char *s, t_m *m);
 char	*remove_dollar(char *s);
 char	*relative_path0(t_m *m, char *path);
 void	main_signal_handler(int sig);
-void	get_prompt(t_m *m, char *prompt);
+void	get_prompt(t_m *m);
 
 #endif
