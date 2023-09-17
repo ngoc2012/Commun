@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 21:27:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 21:30:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,10 @@ static void	interactive_mode(t_m *m)
 		sigaction(SIGINT, &act, NULL);
 		signal(SIGQUIT, SIG_IGN);
 		ft_strlcpy(prompt, "minishell:", PATH_MAX);
-		ft_strlcat(prompt, m->cwd, PATH_MAX);
+		if (short_link(m->cwd, m))
+			ft_strlcat(prompt, short_link(m->cwd, m), PATH_MAX);
+		else
+			ft_strlcat(prompt, m->cwd, PATH_MAX);
 		ft_strlcat(prompt, "$ ", PATH_MAX);
 		com = readline(prompt);
 		if (com)
