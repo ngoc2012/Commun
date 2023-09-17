@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 08:57:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 09:06:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	wild_space(char *s, t_c *c)
 	{
 		if (c->i > c->i0)
 			ft_lstadd_back(&c->args,
-					ft_lstnew(strjoinm(0, &s[c->i0], 0, c->i - c->i0)));
+				ft_lstnew(strjoinm(0, &s[c->i0], 0, c->i - c->i0)));
 	}
 	while (ft_strchr(SPACES, s[++c->i]))
 		;
