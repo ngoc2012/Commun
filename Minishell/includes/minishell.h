@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 15:25:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 07:59:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_m
 	int		fout;
 	int		fout0;
 	int		n_pipes;
+	int		syntaxe_error;
 }	t_m;
 
 int		echo0(t_m *m, int fd);
