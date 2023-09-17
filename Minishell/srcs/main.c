@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 21:57:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 22:03:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ static void	interactive_mode(t_m *m)
 {
 	struct sigaction	act;
 	char				*com;
-	char				prompt[PATH_MAX];
 
 	while (1)
 	{
@@ -64,7 +63,7 @@ static void	interactive_mode(t_m *m)
 		sigemptyset(&act.sa_mask);
 		sigaction(SIGINT, &act, NULL);
 		signal(SIGQUIT, SIG_IGN);
-		get_prompt(m, prompt);
+		get_prompt(m);
 		com = readline("$ ");
 		if (com)
 			read_command(m, com);
