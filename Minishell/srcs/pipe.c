@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 07:19:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 07:40:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,13 @@ static int	arg_pipe(t_m *m, int i, int *pid)
 	return (1);
 }
 
-static int	check_heredoc()
+static int	check_syntaxe()
 {
 	t_list	*cur;
 
 	cur = get_args_list0(s);
 	if (!cur)
 		return (0);
-
 	i = -1;
 	while (++i < m->n_pipes)
 	{
