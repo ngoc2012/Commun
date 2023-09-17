@@ -6,19 +6,13 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 08:53:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 09:04:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern int	g_exit_code;
-
-void	close_pipe(int *fd)
-{
-	close(fd[0]);
-	close(fd[1]);
-}
 
 static void	get_exit_code(int exit_code, int is_last, int *quit)
 {
