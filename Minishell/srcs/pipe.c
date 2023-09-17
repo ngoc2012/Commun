@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 08:15:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 08:23:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,31 +96,19 @@ static int	arg_pipe(t_m *m, int i, int *pid)
 	return (1);
 }
 
-//static int	check_syntaxe(char *s, t_m *m)
-//{
-//	t_list	*cur;
-//
-//	cur = get_args_list0(s);
-//	if (!cur)
-//		return (0);
-//	while (cur)
-//	{
-//		if ((!ft_strncmp(">", (char *)cur->content, 2)
-//				|| !ft_strncmp("<", (char *)cur->content, 2)
-//				|| !ft_strncmp(">>", (char *)cur->content, 3)
-//				|| !ft_strncmp("<<", (char *)cur->content, 3)) &&
-//				cur->next &&
-//		{
-//			if (cur->next)
-//			{
-//				ft_putstr_fd("syntax error near unexpected token ", 2);
-//				ft_putstr_fd(, 2);
-//			}
-//		}
-//		cur = cur->next;
-//	}
-//	return (0);
-//}
+static int	check_syntaxe(char *s, t_m *m)
+{
+	t_list	*cur;
+
+	cur = get_args_list(s);
+	if (!cur)
+	{
+		ft_putstr_fd("syntax error near unexpected token ", 2);
+		return (1);
+	}
+	ft_lstclear(&cur, free);
+	return (0);
+}
 
 /*
 Execute a command with or without pipe.
