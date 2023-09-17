@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 19:39:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 21:22:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ char	*short_link(char *cwd, t_m *m)
 	char	*home;
 
 	home = get_env("HOME", m);
+	if (!home)
+		return (cwd);
+	if (ft
 }
 
 // Clears the terminal screen
@@ -95,7 +98,7 @@ int	main(int argc, char **argv, char **env)
 	m.env = astr_copy(env);
 	init(&m);
 	tcgetattr(STDIN_FILENO, &term);
-	printf("\033[2J\033[1;1H");
+	ft_putstr_fd("\033[2J\033[1;1H", 1);
 	tcsetattr(STDIN_FILENO, TCSANOW, &term);
 	interactive_mode(&m);
 	exit_error(&m, 0, g_exit_code);
