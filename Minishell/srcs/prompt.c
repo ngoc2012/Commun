@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:34:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 22:11:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 22:12:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ void	get_prompt(t_m *m, char *prompt)
 	else
 		ft_strlcat(prompt, m->cwd, PATH_MAX);
 	ft_strlcat(prompt, COLOR_OFF, PATH_MAX);
+	ft_strlcat(prompt, "$ ", PATH_MAX);
 }
