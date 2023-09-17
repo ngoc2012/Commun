@@ -10,3 +10,5 @@ make re && valgrind --suppressions=rl.supp --leak-check=full --track-fds=yes --s
 #TEST2=$(echo "echo test tout; exit" | bash 2>&-)
 #echo "$TEST2"
 
+sdfsdf
+sdfsdf
