@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 15:05:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 08:15:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 extern int	g_exit_code;
 
-static t_list	*get_args_list0(char *s)
-{
-	t_list	*args_list;
-
-	while (*s && ft_strchr(" \n", *s))
-		s++;
-	args_list = get_args_list(s);
-	if (!args_list)
-	{
-		ft_putstr_fd("syntaxe error\n", 2);
-		g_exit_code = 2;
-	}
-	return (args_list);
-}
+//static t_list	*get_args_list0(char *s)
+//{
+//	t_list	*args_list;
+//
+//	while (*s && ft_strchr(" \n", *s))
+//		s++;
+//	args_list = get_args_list(s);
+//	if (!args_list)
+//	{
+//		ft_putstr_fd("syntaxe error\n", 2);
+//		g_exit_code = 2;
+//	}
+//	return (args_list);
+//}
 
 static char	*get_first_arg(t_m *m, char *s)
 {
@@ -111,7 +111,7 @@ int	split_args(char *s, t_m *m)
 	t_list	*cur;
 	t_list	*here;
 
-	cur = get_args_list0(s);
+	cur = get_args_list(s);
 	if (!cur)
 		return (0);
 	m->args_list = cur;

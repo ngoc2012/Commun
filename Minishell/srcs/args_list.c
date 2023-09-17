@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 08:12:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 08:14:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ t_list	*get_args_list(char *s)
 	c.i0 = 0;
 	c.i = 0;
 	c.err = 0;
+	while (s[c.i] && ft_strchr(" 	\n", s[c.i]))
+		c.i++;
 	while (s[c.i])
 	{
 		loop(s, &c);
