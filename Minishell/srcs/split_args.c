@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 09:07:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 09:09:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,38 +79,14 @@ static int	check_out(t_m *m, t_list **cur)
 			return (redir_out(m, get_first_arg(m, cur1),
 					!ft_strncmp(">>", cur0, 3)));
 	}
-	else if (!ft_strncmp("<", (char *)(*cur)->content, 2))
-	{
-		*cur = (*cur)->next;
-		cur1 = (char *)(*cur)->content;
-		if (*cur)
-			*cur = (*cur)->next;
-		if (!m->syntaxe_error)
-			return (redir_in(m, get_first_arg(m, cur1)));
-	}
-	else
-		add_arg(m, cur);
 	return (1);
 }
 
 static int	check_in(t_m *m, t_list **cur)
 {
-	char	*cur0;
 	char	*cur1;
 
-	if (!ft_strncmp(">", (char *)(*cur)->content, 2)
-		|| !ft_strncmp(">>", (char *)(*cur)->content, 3))
-	{
-		cur0 = (char *)(*cur)->content;
-		*cur = (*cur)->next;
-		cur1 = (char *)(*cur)->content;
-		if (*cur)
-			*cur = (*cur)->next;
-		if (!m->syntaxe_error)
-			return (redir_out(m, get_first_arg(m, cur1),
-					!ft_strncmp(">>", cur0, 3)));
-	}
-	else if (!ft_strncmp("<", (char *)(*cur)->content, 2))
+	if (!ft_strncmp("<", (char *)(*cur)->content, 2))
 	{
 		*cur = (*cur)->next;
 		cur1 = (char *)(*cur)->content;
@@ -145,7 +121,9 @@ int	split_args(char *s, t_m *m)
 					return (0);
 			cur = cur->next;
 		}
-		else if (!check(m, &cur))
+		else if (!check_out(m, &cur))
+			return (0);
+		else if (!check_in(m, &cur))
 			return (0);
 	}
 	return (1);
