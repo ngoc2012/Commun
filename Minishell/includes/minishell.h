@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 21:47:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 21:49:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define COLOR_BOLD_BLUE               "\e[1;34m"
 # define COLOR_BOLD  "\e[1m"
 # define COLOR_OFF   "\e[m"
+
 /*
 # ANSI Color Code Examples to help make sense of the regex expressions below
 # Git config color code descriptions; see here:
