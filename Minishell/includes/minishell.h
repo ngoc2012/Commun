@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 22:14:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 22:15:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,6 @@
 # define COLOR_BOLD_BLUE               "\033[1;34m"
 # define COLOR_BOLD  "\033[1m"
 # define COLOR_OFF   "\033[m"
-
-/*
-# ANSI Color Code Examples to help make sense of the regex expressions below
-# Git config color code descriptions; see here:
-# https://stackoverflow.com/questions/26941144/how-do-you-customize-the-color-of-the-diff-header-in-git-diff/61993060#61993060
-# ---------------    ----------------------------------------------------------------
-#                    Git config color code desription
-# ANSI Color Code    Order: text_color(x1) background_color(x1) attributes(0 or more)
-# ----------------   ----------------------------------------------------------------
-# \033[m             # code to turn off or "end" the previous color code
-# \033[1m            # "white"
-# \033[31m           # "red"
-# \033[32m           # "green"
-# \033[33m           # "yellow"
-# \033[34m           # "blue"
-# \033[36m           # "cyan"
-# \033[1;33m         # "yellow bold"
-# \033[1;36m         # "cyan bold"
-# \033[3;30;42m      # "black green italic" = black text with green background, italic text
-# \033[9;30;41m      # "black red strike" = black text with red background, strikethrough line through the text
-*/
 
 typedef struct s_c
 {
