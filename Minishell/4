@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:34:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 21:37:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 21:37:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char	*short_link(char *cwd, t_m *m)
 	return (0);
 }
 
-void	get_prompt(t_m *m, char *prompt)
+char	get_prompt(t_m *m, char *prompt)
 {
 	ft_strlcpy(prompt, "minishell:", PATH_MAX);
 	if (short_link(m->cwd, m))

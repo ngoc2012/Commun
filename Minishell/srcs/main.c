@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 21:33:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 21:36:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,6 @@ void	read_command(t_m *m, char *com)
 	rl_on_new_line();
 }
 
-char	*short_link(char *cwd, t_m *m)
-{
-	char	*home;
-
-	home = get_env("HOME", m->env);
-	if (!home)
-		return (0);
-	if (!ft_strncmp(cwd, home, ft_strlen(home)))
-		return (&cwd[ft_strlen(home)]);
-	return (0);
-}
-
 // Clears the terminal screen
 static void	interactive_mode(t_m *m)
 {
@@ -76,15 +64,6 @@ static void	interactive_mode(t_m *m)
 		sigemptyset(&act.sa_mask);
 		sigaction(SIGINT, &act, NULL);
 		signal(SIGQUIT, SIG_IGN);
-		ft_strlcpy(prompt, "minishell:", PATH_MAX);
-		if (short_link(m->cwd, m))
-		{
-			ft_strlcat(prompt, "~", PATH_MAX);
-			ft_strlcat(prompt, short_link(m->cwd, m), PATH_MAX);
-		}
-		else
-			ft_strlcat(prompt, m->cwd, PATH_MAX);
-		ft_strlcat(prompt, "$ ", PATH_MAX);
 		com = readline(prompt);
 		if (com)
 			read_command(m, com);
