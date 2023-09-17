@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 17:52:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 17:54:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	interactive_mode(t_m *m)
 {
 	struct sigaction	act;
 	char				*com;
-	char				prompt[PATH_MAX + 10];
+	char				prompt[PATH_MAX + 20];
 
 	while (1)
 	{
@@ -64,6 +64,7 @@ static void	interactive_mode(t_m *m)
 		sigemptyset(&act.sa_mask);
 		sigaction(SIGINT, &act, NULL);
 		signal(SIGQUIT, SIG_IGN);
+		ft_memcpy(prompt, "minishell:", 11);
 		com = readline("minishell$ ");
 		if (com)
 			read_command(m, com);
