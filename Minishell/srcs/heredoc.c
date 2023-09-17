@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 07:40:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 07:51:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,28 +91,6 @@ static int	parent_process(t_m *m, t_list *cur)
 	}
 	return (1);
 }
-
-//int	get_all_heredoc(t_m *m, t_list *cur, t_list **here)
-//{
-//	*here = 0;
-//	while (cur)
-//	{
-//		if (!ft_strncmp("<<", (char *)cur->content, 3))
-//		{
-//			cur = cur->next;
-//			*here = cur;
-//			free_heredoc(m);
-//			fn_heredoc(m);
-//			if (!parent_process(m, cur))
-//				return (0);
-//			else if (!convert_heredoc(m))
-//				return (0);
-//		}
-//		if (cur)
-//			cur = cur->next;
-//	}
-//	return (1);
-//}
 
 int	check_heredoc(t_m *m, t_list *cur, t_list **here)
 {
