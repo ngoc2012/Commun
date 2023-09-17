@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:08:19 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/09/16 21:21:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 07:54:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,5 @@ char	**astr_copy(char **ss);
 char	**astr_addback(char **ss, char *s);
 void	astr_remove(char **ss, void *dr, int (*cmp)(), void (*del)(void *));
 char	*ft_strndup(char *s, int len);
-int		*aint_addback(int *a, int n);
 
 #endif
