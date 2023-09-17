@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 08:53:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 08:55:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,20 @@ static void	end(char *s, t_c *c)
 
 static void	wild_space(char *s, t_c *c)
 {
-	if (ft_strchr(" 	", s[c->i]))
+	if (c->i > c->i0)
 	{
 		if (c->i > c->i0)
-		{
-			if (c->i > c->i0)
-				ft_lstadd_back(&c->args,
+			ft_lstadd_back(&c->args,
 					ft_lstnew(strjoinm(0, &s[c->i0], 0, c->i - c->i0)));
-		}
-		while (ft_strchr(" 	", s[++c->i]))
-			;
-		c->i0 = c->i;
 	}
+	while (ft_strchr(" 	", s[++c->i]))
+		;
+	c->i0 = c->i;
 }
 
 static int	loop(char *s, t_c *c)
 {
-	if (ft_strchr("       ", s[c->i]))
+	if (ft_strchr("       \n", s[c->i]))
 		wild_space(s, c);
 	else if (ft_strchr("<>", s[c->i]))
 	{
