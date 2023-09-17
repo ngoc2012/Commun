@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 13:46:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 13:49:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ static int	check_in(t_m *m, t_list **cur)
 		if (!m->syntaxe_error)
 			return (redir_in(m, get_first_arg(m, cur1)));
 	}
-	add_arg(m, cur);
+	else
+		add_arg(m, cur);
 	return (1);
 }
 
@@ -120,7 +121,7 @@ int	split_args(char *s, t_m *m)
 					return (0);
 			cur = cur->next;
 		}
-		if (cur && !check_in(m, &cur))
+		else if (!check_in(m, &cur))
 			return (0);
 	}
 	return (1);
