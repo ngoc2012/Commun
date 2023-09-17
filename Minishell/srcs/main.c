@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 21:22:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 21:27:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ char	*short_link(char *cwd, t_m *m)
 
 	home = get_env("HOME", m);
 	if (!home)
-		return (cwd);
-	if (ft
+		return (0);
+	if (!ft_strncmp(cwd, home, ft_strlen(home)))
+		return (cwd[ft_strlen(home)]);
+	return (0);
 }
 
 // Clears the terminal screen
