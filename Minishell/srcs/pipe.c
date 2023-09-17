@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 07:51:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 07:57:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,19 +96,19 @@ static int	arg_pipe(t_m *m, int i, int *pid)
 	return (1);
 }
 
-//static int	check_syntaxe()
-//{
-//	t_list	*cur;
-//
-//	cur = get_args_list0(s);
-//	if (!cur)
-//		return (0);
-//	i = -1;
-//	while (++i < m->n_pipes)
-//	{
-//		if (!split_args(m->coms[i], m))
-//	}
-//}
+static int	check_syntaxe(t_m *m)
+{
+	t_list	*cur;
+
+	cur = get_args_list0(s);
+	if (!cur)
+		return (0);
+	i = -1;
+	while (++i < m->n_pipes)
+	{
+		if (!split_args(m->coms[i], m))
+	}
+}
 
 /*
 Execute a command with or without pipe.
@@ -126,6 +126,7 @@ int	pipes(char *s, t_m *m)
 	while (m->coms[++m->n_pipes])
 		if (m->n_pipes && !ft_strlen(m->coms[m->n_pipes]))
 			return (return_error(m, "syntaxe error", 2, 0));
+	m->syntaxe_error = check_syntaxe();
 	if (m->n_pipes > 1)
 		pipe(m->pipefd0);
 	if (m->n_pipes > 2)
