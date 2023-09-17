@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 07:58:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 08:01:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,23 @@ static int	check_syntaxe(char *s, t_m *m)
 	cur = get_args_list0(s);
 	if (!cur)
 		return (0);
+	while (cur)
+	{
+		if (!ft_strncmp(">", (char *)(*cur)->content, 2)
+				|| !ft_strncmp("<", (char *)(*cur)->content, 2)
+				|| !ft_strncmp(">>", (char *)(*cur)->content, 3)
+				|| !ft_strncmp("<<", (char *)(*cur)->content, 3))
+		{
+			cur0 = (char *)(*cur)->content;
+			*cur = (*cur)->next;
+			cur1 = (char *)(*cur)->content;
+			if (*cur)
+				*cur = (*cur)->next;
+			return (redir_out(m, get_first_arg(m, cur1),
+						!ft_strncmp(">>", cur0, 3)));
+		}
+		cur = cur->next;
+	}
 }
 
 /*
