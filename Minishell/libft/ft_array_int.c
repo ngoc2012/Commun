@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 19:24:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 21:23:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 06:58:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,18 @@ int	*aint_addback(int *a, int n)
 		new[++i] = n;
 	}
 	return (new);
+}
+
+int	pos_array(int *a)
+{
+	int	i;
+	int	len;
+	int	pos;
+
+	pos = -1;
+	if (!a)
+		pos = -1;
+	len = sizeof(a) / sizeof(int);
+	i = -1;
+
 }
