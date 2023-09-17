@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 08:04:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 08:05:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static int	arg_pipe(t_m *m, int i, int *pid)
 static int	check_syntaxe(char *s, t_m *m)
 {
 	t_list	*cur;
-	char	*s;
+	t_list	*next;
 
 	cur = get_args_list0(s);
 	if (!cur)
@@ -121,8 +121,7 @@ static int	check_syntaxe(char *s, t_m *m)
 			ft_putstr_fd("syntax error near unexpected token ", 2);
 			ft_putstr_fd(, 2);
 		}
-		else
-			cur = cur->next;
+		cur = cur->next;
 	}
 	return (0);
 }
