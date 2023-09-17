@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 17:58:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/17 19:39:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,13 @@ void	read_command(t_m *m, char *com)
 		rl_free(m->s);
 	m->s = 0;
 	rl_on_new_line();
+}
+
+char	*short_link(char *cwd, t_m *m)
+{
+	char	*home;
+
+	home = get_env("HOME", m);
 }
 
 // Clears the terminal screen
