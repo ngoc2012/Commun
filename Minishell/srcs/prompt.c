@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:34:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 11:24:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 11:43:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	get_hc(t_m *m)
 	s = get_next_line(fd);
 	while (s)
 	{
+		printf("%s\n", s);
 		add_history(s);
 		free(s);
 		s = get_next_line(fd);
