@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 14:30:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 14:35:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,17 @@ static void	print_var(char **env, char *var, int fd)
 
 int	expt_all(t_m *m, int fd)
 {
-	char	**env;
+	int	i;
+	int	n;
 
-	//int	i = -1;
-	//while (++i < m->argc)
-	//	printf("%d |%s|\n", i, m->args[i]);
+	i = 0;
+	while (++i < m->argc)
+		printf("%d |%s|\n", i, m->args[i]);
 	if (m->argc == 1)
 	{
-		env = m->env;
-		while (*env)
-		{
-			print_var(env, *env, fd);
-			env++;
-		}
+		i = -1;
+		while (m->env[++i])
+			print_var(m->env, m->env[i], fd);
 		return (1);
 	}
 	else if (m->n_pipes == 1)
