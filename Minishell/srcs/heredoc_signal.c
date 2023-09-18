@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 16:44:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 11:19:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ static void	signal_handler(int sig, siginfo_t *info, void *ucontext)
 	(void)ucontext;
 	(void)info;
 	if (sig == SIGINT)
+	{
+		ft_putchar_fd('\n', 1);
 		exit(130);
+	}
 }
 
 void	signal_heredoc(void)
