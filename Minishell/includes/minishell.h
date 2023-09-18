@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 22:15:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 08:54:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include "libft.h"
+# include "get_next_line.h"
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <dirent.h>
