@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:34:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 13:51:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 13:52:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	get_prompt(t_m *m, char *prompt)
 {
 	char	*s;
 
-	ft_strlcpy(prompt, COLOR_BOLD_GREEN, PATH_MAX);
-	ft_strlcat(prompt, "minishell:", PATH_MAX);
-	ft_strlcat(prompt, COLOR_OFF, PATH_MAX);
-	ft_strlcat(prompt, COLOR_BOLD_CYAN, PATH_MAX);
+	//ft_strlcpy(prompt, COLOR_BOLD_GREEN, PATH_MAX);
+	ft_strlcpy(prompt, "minishell:", PATH_MAX);
+	//ft_strlcat(prompt, COLOR_OFF, PATH_MAX);
+	//ft_strlcat(prompt, COLOR_BOLD_CYAN, PATH_MAX);
 	s = short_link(m->cwd, m);
 	if (s)
 	{
@@ -40,7 +40,7 @@ void	get_prompt(t_m *m, char *prompt)
 	}
 	else
 		ft_strlcat(prompt, m->cwd, PATH_MAX);
-	ft_strlcat(prompt, COLOR_OFF, PATH_MAX);
+	//ft_strlcat(prompt, COLOR_OFF, PATH_MAX);
 	ft_strlcat(prompt, "$ ", PATH_MAX);
 }
 
