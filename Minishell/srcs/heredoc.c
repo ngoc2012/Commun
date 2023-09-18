@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 11:42:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 11:48:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ int	check_heredoc(t_m *m, t_list *cur, t_list **here)
 			{
 				if (g_exit_code)
 					return (0);
+				else
+					ft_putstr_fd("warning: here-document delimited by end-of-file\n", 2);
 			}
 			else if (!convert_heredoc(m))
 				return (0);
