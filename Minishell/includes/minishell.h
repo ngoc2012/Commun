@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 10:30:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 10:33:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 
 # define BUFFER_SIZE 100
 # define SPACES " 	\n"
+# define HISTORY "~/.minishellhc"
 # define COLOR_BOLD_SLOW_BLINKING      "\033[1;5m"
 # define COLOR_BOLD_SLOW_BLINKING_RED  "\033[1;5;31m"
 # define COLOR_BOLD_GREEN              "\033[1;32m"
@@ -68,7 +69,6 @@ typedef struct s_m
 	int		pipefd0[2];
 	int		pipefd1[2];
 	char	cwd[PATH_MAX];
-	char	history[PATH_MAX];
 	char	heredocf[PATH_MAX];
 	int		argc;
 	int		fin;

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:34:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 10:29:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 10:33:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	get_prompt(t_m *m, char *prompt)
 
 void	get_hc(t_m *m)
 {
-	path = abs_path(m, "~/.minishellhc");
+	path = abs_path(m, HISTORY);
 	fd = open(path, O_CREAT | O_WRONLY | O_APPEND, 0664);
 	free(path);
 	if (fd == -1)
