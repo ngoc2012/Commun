@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 08:54:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 09:00:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,6 @@ char	*remove_dollar(char *s);
 char	*relative_path0(t_m *m, char *path);
 void	main_signal_handler(int sig);
 void	get_prompt(t_m *m, char *prompt);
+void	read_command(t_m *m, char *com);
 
 #endif
