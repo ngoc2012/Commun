@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 14:21:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 14:23:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void	create_var(t_m *m, int i, int p, int cat)
 				m->env = astr_addback(m->env,
 						strjoinm(0, m->args[i], 0, ft_strlen(m->args[i])));
 		}
-		g_exit_code = 0;
 	}
 }
 
@@ -90,6 +89,7 @@ int	expt(t_m *m)
 	int	p;
 	int	cat;
 
+	g_exit_code = 0;
 	i = 0;
 	while (m->args[++i])
 	{
@@ -104,7 +104,6 @@ int	expt(t_m *m)
 			}
 			create_var(m, i, p, cat);
 		}
-		printf("|%s| exit code = %d\n", m->args[i], g_exit_code);
 	}
 	return (1);
 }
