@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:34:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 11:00:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 11:03:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,30 @@ void	get_prompt(t_m *m, char *prompt)
 
 void	append_hc(t_m *m)
 {
+	int		fd;
+	char	*path;
+
 	path = abs_path(m, HISTORY);
 	fd = open(path, O_CREAT | O_WRONLY | O_APPEND, 0664);
 	free(path);
 	if (fd == -1)
 		return ;
-	write(fd, m->s, ft_strlen(s));
+	write(fd, m->s, ft_strlen(m->s));
 	write(fd, "\n", 1);
 	close(fd);
 }
 
 void	get_hc(t_m *m)
 {
+	int		fd;
+	char	*path;
+
 	path = abs_path(m, HISTORY);
 	free(path);
 	if (fd == -1)
 	{
 		fd = open(path, O_CREAT | O_WRONLY | O_TRUNC, 0664);
-		close(fd)
+		close(fd);
 		return ;
 	}
 	s = get_next_line(fd);
