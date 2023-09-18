@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 10:26:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 10:58:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	read_command(t_m *m, char *com)
 	m->s = strjoinm(0, &com[i], 0, ft_strlen(&com[i]));
 	free(com);
 	add_history(m->s);
+	append_hc(m);
 	if (priorities_operators(m->s, m))
 		infix_priorities_operators(m->infix, m);
 	ft_lstclear(&m->infix, free);
