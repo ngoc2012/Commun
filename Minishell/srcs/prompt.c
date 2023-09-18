@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:34:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 22:14:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 10:27:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,24 @@ void	get_prompt(t_m *m, char *prompt)
 		ft_strlcat(prompt, m->cwd, PATH_MAX);
 	ft_strlcat(prompt, COLOR_OFF, PATH_MAX);
 	ft_strlcat(prompt, "$ ", PATH_MAX);
+}
+
+void	get_hc(t_m *m)
+{
+	path = abs_path(m, "~/.minishellhc");
+	fd = open(path, O_RDONLY);
+	free(path);
+	if (fd == -1)
+	{
+		fd = open(path, O_WRONLY);
+		return ;
+	}
+	s = get_next_line(fd);
+	while (s)
+	{
+		add_history(s);
+		free(s);
+		s = get_next_line(fd);
+	}
+	close(fd);
 }
