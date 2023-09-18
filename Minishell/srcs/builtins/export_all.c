@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/10 22:02:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 14:26:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ int	expt_all(t_m *m, int fd)
 {
 	char	**env;
 
+	int	i = -1;
+	while (++i < m->argc)
+		printf("%d |%s|\n", i, m->args[i]);
 	if (m->argc == 1)
 	{
 		env = m->env;
