@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 09:37:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 09:40:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ void	get_map(t_game *g, char *fn);
 void	draw(t_game *g);
 
 int	key_hook(int keycode, t_game *g);
+void	end_game(t_game *g, int exit_code, char *s);
 
 #endif
