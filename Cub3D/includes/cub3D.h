@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 14:19:43 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/18 09:37:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,7 @@ typedef struct s_game {
 void	free_map(t_map *m);
 void	get_map(t_game *g, char *fn);
 void	draw(t_game *g);
+
+int	key_hook(int keycode, t_game *g);
 
 #endif
