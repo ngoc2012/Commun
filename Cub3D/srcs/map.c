@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 13:52:48 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/18 09:39:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	free_map(t_map *m)
 	free(m->v);
 }
 
-static void	get_postion(t_map *m, int i, int j, char c)
+static void	get_postion(t_game *g, int i, int j, char c)
 {
 	if (c == '1')
 		g->map.v[j][i] = 1;
@@ -92,7 +92,7 @@ void	get_map(t_game *g, char *fn)
 			g->map.v[j][i++] = 0;
 		i = -1;
 		while (s[++i])
-			get_postion(&g->map, i, j, s[i]);
+			get_postion(g, i, j, s[i]);
 		free(s);
 		s = get_next_line(fd);
 	}
