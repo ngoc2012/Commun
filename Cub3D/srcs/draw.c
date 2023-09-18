@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 17:33:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 17:40:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	draw_map(t_game *g)
 	{
 		j = -1;
 		while (++j < g->map.l)
-			printf("%d", g->map.v[i][j]);
+			if (i == g->pos.x && j == g->pos.y)
+				printf("x");
+			else
+				printf("%d", g->map.v[i][j]);
 		printf("\n");
 	}
 }
