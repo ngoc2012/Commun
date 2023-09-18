@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 17:26:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 17:33:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <math.h>
+# include <stdio.h>
 # include "mlx.h"
 # include "libft.h"
 # include "get_next_line.h"
