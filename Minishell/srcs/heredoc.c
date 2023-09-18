@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 11:35:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 11:38:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,10 @@ int	check_heredoc(t_m *m, t_list *cur, t_list **here)
 			free_heredoc(m);
 			fn_heredoc(m);
 			if (!parent_process(m, cur) && g_exit_code)
+			{
+				printf("out %d\n", g_exit_code);
 				return (0);
+			}
 			else if (!convert_heredoc(m))
 				return (0);
 		}
