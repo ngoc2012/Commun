@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 09:04:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 11:16:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ static int	check_syntaxe(char *s)
 	if (!cur)
 	{
 		ft_putstr_fd("syntax error\n", 2);
+		g_exit_code = 2;
 		return (1);
 	}
 	ft_lstclear(&cur, free);
