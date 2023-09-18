@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 09:51:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 17:25:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,16 @@ void	draw_map(t_game *g)
 	}
 }
 
+void	draw_mini_map(t_game *g)
+{
+	printf("draw mini map\n");
+}
+
 void	draw(t_game *g)
 {
 	draw_wall(g);
 	draw_map(g);
+	draw_mini_map(g);
 	//printf("g.h = %d, g.l = %d, g.x = %d, g.y = %d, g.dx = %d, g.dy = %d\n", g.h , g.l , g.x , g.y , g.dx , g.dy);
 
 /*
