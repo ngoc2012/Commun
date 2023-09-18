@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 09:07:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 09:09:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,14 @@ void	get_rc(t_m *m)
 
 	fd = open("~/.minishellrc", O_RDONLY);
 	if (fd == -1)
+	{
+		printf("no file\n");
 		return ;
+	}
 	s = get_next_line(fd);
 	while (s)
 	{
+		printf("%s\n", s);
 		read_command(m, s);
 		s = get_next_line(fd);
 	}
