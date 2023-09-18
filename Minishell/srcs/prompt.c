@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:34:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 11:03:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 11:04:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,13 @@ void	get_hc(t_m *m)
 {
 	int		fd;
 	char	*path;
+	char	*s;
 
 	path = abs_path(m, HISTORY);
+	fd = open(path, O_RDONLY);
 	free(path);
 	if (fd == -1)
-	{
-		fd = open(path, O_CREAT | O_WRONLY | O_TRUNC, 0664);
-		close(fd);
 		return ;
-	}
 	s = get_next_line(fd);
 	while (s)
 	{
