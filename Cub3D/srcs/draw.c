@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 17:40:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 17:45:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ static int	create_trgb(unsigned char t, unsigned char r,
 void	draw_wall(t_game *g)
 {
 	printf("draw wall\n");
+	int	ix;
+
+	ix = -1;
+	while (ix < WIDTH)
+	{
+	}
 }
 
 void	draw_map(t_game *g)
