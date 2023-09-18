@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 17:25:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 17:27:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,6 @@ void	draw_map(t_game *g)
 			printf("%d", g->map.v[i][j]);
 		printf("\n");
 	}
-}
-
-void	draw_mini_map(t_game *g)
-{
-	printf("draw mini map\n");
 }
 
 void	draw(t_game *g)
