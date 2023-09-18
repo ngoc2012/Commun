@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 11:33:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 11:34:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static int	arg_pipe(t_m *m, int i, int *pid)
 {
 	if (!split_args(m->coms[i], m))
 	{
-		printf("exit code %d\n", g_exit_code);
 		if (g_exit_code == 2 || g_exit_code == 130)
 		{
 			if (m->n_pipes > 1)
