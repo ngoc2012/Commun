@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 14:35:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 14:39:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ int	expt_all(t_m *m, int fd)
 	int	n;
 
 	i = 0;
+	n = 0;
 	while (++i < m->argc)
-		printf("%d |%s|\n", i, m->args[i]);
-	if (m->argc == 1)
+		if (m->args[i][0] != 0)
+			n++;
+	if (m->argc == 1 || !n)
 	{
 		i = -1;
 		while (m->env[++i])
