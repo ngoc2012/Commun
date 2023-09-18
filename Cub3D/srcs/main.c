@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 09:43:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 09:45:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main()
 	g.mlx.img = mlx_new_image(g.mlx.mlx, WIDTH, HEIGHT);
 	g.mlx.addr = mlx_get_data_addr(g.mlx.img, &g.mlx.bpp, &g.mlx.ll, &g.mlx.ed);
 	get_map(&g, "maps/3.cub");
-	printf("g.h = %d, g.l = %d, g.x = %d, g.y = %d, g.dx = %d, g.dy = %d\n", g.h , g.l , g.x , g.y , g.dx , g.dy);
+	printf("g.h = %d, g.l = %d, g.x = %d, g.y = %d, g.dx = %d, g.dy = %d\n", g.map.h , g.map.l , g.pos.x , g.pos.y , g.pos.dx , g.pos.dy);
 	draw(&g);
 	mlx_put_image_to_window(g.mlx.mlx, g.mlx.win, g.mlx.img, 0, 0);
 	mlx_loop(g.mlx.mlx);
