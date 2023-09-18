@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 09:02:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/18 09:05:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,16 @@ void	read_command(t_m *m, char *com)
 
 void	get_rc(t_m *m)
 {
-	int	fd;
+	int		fd;
+	char	*s;
 
 	fd = open("~/.minishellrc", O_RDONLY);
+	if (fd == -1)
+		return ;
+	s = get_line(fd);
+	while (s)
+	{
+	}
 }
 
 // Clears the terminal screen
