@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 11:03:59 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:05:38 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,12 @@ void	draw_wall(t_game *g)
 		ai0 = atan(Xp / g->dpp); 
 		ai = ai0 + g->pos.alpha;
 		ai = angle_convert(ai);
+		// CHECKING HORIZONTAL INTERSECTIONS
 		if (ai > 0.0 && ai < 180.0)
 		{
+			//Find A
+			Ay = g->pox.py / 
+
 		}
 
 		//alpha = 
