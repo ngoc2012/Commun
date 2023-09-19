@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 21:27:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/19 21:29:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	draw_wall(t_game *g)
 	double	dA;
 	double	dB;
 
-	g->pos.alpha = 0;
+	g->pos.alpha = 180;
 	ix = WIDTH / 2 - 1;
 	while (++ix < WIDTH / 2 + 1)
 	{
@@ -81,14 +81,14 @@ void	draw_wall(t_game *g)
 				Bpx += dpx;
 				Bx = Bpx / BOX_SIZE;
 			}
-			dB = Bpx - g->pos.px;
+			dB = -Bpx + g->pos.px;
 			printf("v = %d, px = %d, Bpx = %d, x = %d, Bx = %d, dB = %f\n", g->map.v[g->pos.y][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
 		}
 		else if (ai == 90.0)
 		{
-			Apx = g->pos.px;
+			//Apx = g->pos.px;
 			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
-			dpx = 0;
+			//dpx = 0;
 			dpy = -BOX_SIZE;
 		}
 		else if (ai == -90.0)
