@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 14:43:51 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:45:00 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@ void	draw_wall(t_game *g)
 		if (ai == 90)
 		{
 			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
+			dy = BOX_SIZE;
+			dx = 0;
+		}
+		else if (ai == -90)
+		{
+			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
 			dy = BOX_SIZE;
 			dx = 0;
 		}
