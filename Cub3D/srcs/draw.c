@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 12:30:43 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 12:39:57 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,24 @@ void	draw_wall(t_game *g)
 		{
 			//Find A
 			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
-			Ay = Apy / BOX_SIZE;
-			printf("py = %d, Apy = %d, y = %d, Ay = %d\n", g->pos.py, Apy, g->pos.y, Ay);
 			Apx = g->pos.px + (g->pos.py - Apy) / tan(ai * PI / 180.0);
 			Ax = Apx / BOX_SIZE;
+			Ay = Apy / BOX_SIZE;
 			printf("px = %d, Apx = %d, x = %d, Ax = %d\n", g->pos.px, Apx, g->pos.x, Ax);
+			printf("py = %d, Apy = %d, y = %d, Ay = %d\n", g->pos.py, Apy, g->pos.y, Ay);
 			dx = BOX_SIZE / tan(ai * PI / 180.0);
+			if (dx < 0)
+				dx *= -1;
 			dy = BOX_SIZE;
 			while (!g->map[Ax][Ay])
 			{
 				Apy += dy;
-				if (ai > -90.0 && ai < 90.0)
+				if (ai >= -90.0 && ai <= 90.0)
 					Apx += dx;
+				else
+					Apx -= dx;
+				Ax = Apx / BOX_SIZE;
+				Ay = Apy / BOX_SIZE;
 			}
 		}
 		else
