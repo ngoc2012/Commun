@@ -7,4 +7,5 @@ double	angle_convert(double a)
 		if (a <= -180.0)
 			a += 360.0;
 	}
+	return (a);
 }

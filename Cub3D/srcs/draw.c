@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 11:08:48 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:10:42 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ void	draw_wall(t_game *g)
 	int	Ay;
 
 	ix = -1;
-	while (++ix < WIDTH)
+	while (++ix < 2)
 	{
 		Xp = WIDTH / 2 - ix;
 		ai0 = atan(Xp / g->dpp); 
 		ai = ai0 + g->pos.alpha;
+		printf("1 - ai = %f\n", ai );
 		ai = angle_convert(ai);
+		printf("2 - ai = %f\n", ai );
 		// CHECKING HORIZONTAL INTERSECTIONS
 		if (ai > 0.0 && ai < 180.0)
 		{
