@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 14:27:18 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:30:46 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	draw_wall(t_game *g)
 	double	dx;
 	double	dy;
 
-	g->pos.alpha = 60;
+	g->pos.alpha = 150;
 	ix = -1;
 	while (++ix < 1)
 	{
@@ -91,7 +91,7 @@ void	draw_map(t_game *g)
 	{
 		j = -1;
 		while (++j < g->map.l)
-			if (i == g->pos.x && j == g->pos.y)
+			if (i == g->pos.y && j == g->pos.x)
 				printf("x");
 			else
 				printf("%d", g->map.v[i][j]);
