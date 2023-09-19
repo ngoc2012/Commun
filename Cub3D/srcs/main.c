@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 10:24:49 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:28:52 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	init(t_game *g)
 	g->pos.y = 0;
 	g->pos.alpha = 90;
 	g->pos.alpha = 90;
-	g->dpp = W / 2 * cotan(FOV / 2);
+	g->dpp = WIDTH / 2 * cos(FOV / 2) / sin(FOV / 2);
 }
 
 int	main()
