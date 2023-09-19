@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 14:30:46 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:33:01 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	draw_wall(t_game *g)
 	double	dx;
 	double	dy;
 
-	g->pos.alpha = 150;
+	g->pos.alpha = 149;
 	ix = -1;
 	while (++ix < 1)
 	{
