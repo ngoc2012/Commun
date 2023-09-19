@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 10:20:13 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:19:10 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static void	get_postion(t_game *g, int i, int j, char c)
 	{
 		g->pos.x = i;
 		g->pos.y = j;
-		g->pos.px = i * BOX_SIZE;
-		g->pos.py = j * BOX_SIZE;
+		g->pos.px = i * BOX_SIZE + BOX_SIZE / 2;
+		g->pos.py = j * BOX_SIZE + BOX_SIZE / 2;
 		if (c == 'N')
 			g->pos.alpha = 90;
 		else if (c == 'S')
