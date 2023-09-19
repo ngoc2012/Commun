@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 10:49:38 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:49:52 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,5 @@ int	main()
 	g.mlx.addr = mlx_get_data_addr(g.mlx.img, &g.mlx.bpp, &g.mlx.ll, &g.mlx.ed);
 	//printf("g.h = %d, g.l = %d, g.x = %d, g.y = %d, g.dx = %f, g.dy = %f\n", g.map.h , g.map.l , g.pos.x , g.pos.y , g.pos.dx , g.pos.dy);
 	draw(&g);
-	mlx_put_image_to_window(g.mlx.mlx, g.mlx.win, g.mlx.img, 0, 0);
 	mlx_loop(g.mlx.mlx);
 }
