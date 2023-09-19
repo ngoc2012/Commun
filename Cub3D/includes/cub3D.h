@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 17:33:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/19 10:07:51 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct s_map {
 Player position
 - x: position x
 - y: position y
+- px: pixel position x
+- py: pixel position y
 - dx: direction x
 - dy: direction y
 */
@@ -56,8 +58,7 @@ typedef struct s_pos {
 	int		y;
 	int		px;
 	int		py;
-	double		dx;
-	double		dy;
+	double		alpha;
 }	t_pos;
 
 /*
