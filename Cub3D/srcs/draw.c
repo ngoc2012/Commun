@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 17:06:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/19 17:10:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ void	draw_wall(t_game *g)
 				dA = g->pos.y - Apy;
 				printf("value = %d, dA = %f\n", g->map.v[Ay][Ax], dA);
 			}
+			else
+				dA = INFINI;
 		}
 		//Find C
 		//alpha = 
