@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 14:20:21 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:27:18 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void	draw_wall(t_game *g)
 	double	dx;
 	double	dy;
 
-	ix = WIDTH/2 - 1;
-	while (++ix < WIDTH/2 + 2)
+	g->pos.alpha = 60;
+	ix = -1;
+	while (++ix < 1)
 	{
 		Xp = WIDTH / 2 - ix;
 		printf("Xp = %d\n", Xp);
