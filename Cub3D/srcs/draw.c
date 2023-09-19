@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 14:47:37 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:49:52 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,12 @@ void	draw_wall(t_game *g)
 	int	Apy;
 	int	Ax;
 	int	Ay;
-	double	dx;
-	double	dy;
+	int	Cpx;
+	int	Cpy;
+	int	Cx;
+	int	Cy;
+	double	dpx;
+	double	dpy;
 
 	g->pos.alpha = 149;
 	ix = -1;
@@ -46,58 +50,61 @@ void	draw_wall(t_game *g)
 		printf("2 - ai = %f\n", ai );
 		// CHECKING HORIZONTAL INTERSECTIONS
 		//Find A
-		if (ai == 90)
+		if (ai == 0.0)
 		{
-			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
-			dy = BOX_SIZE;
-			dx = 0;
+			Apx = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
+			dpy = BOX_SIZE;
+			dpx = 0;
 		}
-		else if (ai == -90)
-		{
-			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
-			dy = BOX_SIZE;
-			dx = 0;
-		}
-		if (ai == 90)
-		{
-			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
-			dy = BOX_SIZE;
-			dx = 0;
-		}
-		else if (ai == -90)
+		else if (ai == 180.0)
 		{
 			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
-			dy = BOX_SIZE;
-			dx = 0;
+			dpy = BOX_SIZE;
+			dpx = 0;
 		}
-		if (ai > 0.0 && ai < 180.0)
+		else if (ai == 90.0)
+		{
 			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
+			dpy = -BOX_SIZE;
+			dpx = 0;
+		}
+		else if (ai == -90.0)
+		{
+			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
+			dpy = BOX_SIZE;
+			dpx = 0;
+		}
 		else
-			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
-		Apx = g->pos.px + (g->pos.py - Apy) / tan(ai * PI / 180.0);
-		Ax = Apx / BOX_SIZE;
-		Ay = Apy / BOX_SIZE;
-		if (Ax >= 0 && Ax <= g->map.l - 1)
 		{
-			printf("px = %d, Apx = %d, x = %d, Ax = %d\n", g->pos.px, Apx, g->pos.x, Ax);
-			printf("py = %d, Apy = %d, y = %d, Ay = %d\n", g->pos.py, Apy, g->pos.y, Ay);
-			dx = BOX_SIZE / tan(ai * PI / 180.0);
-			if (dx < 0)
-				dx *= -1;
-			dy = BOX_SIZE;
-			while (!g->map.v[Ay][Ax])
+			if (ai > 0.0 && ai < 180.0)
+				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
+			else
+				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
+			Apx = g->pos.px + (g->pos.py - Apy) / tan(ai * PI / 180.0);
+			Ax = Apx / BOX_SIZE;
+			Ay = Apy / BOX_SIZE;
+			if (Ax >= 0 && Ax <= g->map.l - 1)
 			{
-				Apy -= dy;
-				if (ai >= -90.0 && ai <= 90.0)
-					Apx += dx;
-				else
-					Apx -= dx;
-				Ax = Apx / BOX_SIZE;
-				Ay = Apy / BOX_SIZE;
 				printf("px = %d, Apx = %d, x = %d, Ax = %d\n", g->pos.px, Apx, g->pos.x, Ax);
 				printf("py = %d, Apy = %d, y = %d, Ay = %d\n", g->pos.py, Apy, g->pos.y, Ay);
+				dx = BOX_SIZE / tan(ai * PI / 180.0);
+				if (dx < 0)
+					dx *= -1;
+				dy = BOX_SIZE;
+				while (!g->map.v[Ay][Ax])
+				{
+					Apy -= dy;
+					if (ai >= -90.0 && ai <= 90.0)
+						Apx += dx;
+					else
+						Apx -= dx;
+					Ax = Apx / BOX_SIZE;
+					Ay = Apy / BOX_SIZE;
+					printf("px = %d, Apx = %d, x = %d, Ax = %d\n", g->pos.px, Apx, g->pos.x, Ax);
+					printf("py = %d, Apy = %d, y = %d, Ay = %d\n", g->pos.py, Apy, g->pos.y, Ay);
+				}
+				printf("value = %d\n", g->map.v[Ay][Ax]);
 			}
-			printf("value = %d\n", g->map.v[Ay][Ax]);
 		}
 		//Find C
 		//alpha = 
