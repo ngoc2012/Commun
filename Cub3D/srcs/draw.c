@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 21:02:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/19 21:13:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	draw_wall(t_game *g)
 	ix = WIDTH / 2 - 1;
 	while (++ix < WIDTH / 2 + 1)
 	{
+		dA = 0.0;
+		dB = 0.0;
 		Xp = WIDTH / 2 - ix;
 		printf("Xp = %d\n", Xp);
 		ai0 = atan((double) Xp / g->dpp) * 180 / PI; 
@@ -57,6 +59,7 @@ void	draw_wall(t_game *g)
 			Bpy = g->pos.py;
 			dpx = BOX_SIZE;
 			dpy = 0;
+			dA = INFINI;
 		}
 		else if (ai == 180.0)
 		{
@@ -64,6 +67,7 @@ void	draw_wall(t_game *g)
 			Bpy = g->pos.py;
 			dpx = -BOX_SIZE;
 			dpy = 0;
+			dA = INFINI;
 		}
 		else if (ai == 90.0)
 		{
