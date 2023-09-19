@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 10:43:36 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:47:03 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct s_game {
 	t_map		map;
 	t_pos		pos;
 	t_mlx		mlx;
-	double		dpp;
+	int		dpp;
 }	t_game;
 
 void	free_map(t_map *m);
