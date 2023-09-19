@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 11:55:38 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 12:01:05 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static void	get_position(t_game *g, int i, int j, char c)
 		g->map.v[j][i] = 6;
 	else if (c == '7')
 		g->map.v[j][i] = 7;
+	else if (c == ' ')
+		g->map.v[j][i] = 1;
 	else if (ft_strchr("NSWE", c))
 	{
 		g->pos.x = j;
