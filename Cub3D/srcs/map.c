@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 10:11:41 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:12:30 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,6 @@ void	get_map(t_game *g, char *fn)
 		s = get_next_line(fd);
 	}
 	close(fd);
-	if ((!g->pos.dx && !g->pos.dy) || g->map.h < 5 || g->map.l < 5)
+	if (g->map.h < 5 || g->map.l < 5)
 		end_game(g, 1, "Invalid map");
 }

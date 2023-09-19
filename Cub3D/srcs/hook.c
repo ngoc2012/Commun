@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/15 13:55:15 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:13:33 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	key_hook(int keycode, t_game *g)
 	{
 	}
 	if (keycode == XK_q || keycode == XK_Escape)
+	{
+		printf("end game\n");
 		end_game(g, 0, 0);
+	}
 	/*
 	if (keycode == XK_Up)
     //{

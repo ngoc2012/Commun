@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 09:46:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/19 10:13:53 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ void	end_game(t_game *g, int exit_code, char *s)
 	exit(exit_code);
 }
 
-int	create_trgb(unsigned char t, unsigned char r,
-		unsigned char g, unsigned char b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
- 
 int	main()
 {
 	t_game	g;
