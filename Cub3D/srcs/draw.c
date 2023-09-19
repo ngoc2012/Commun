@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 14:37:58 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:43:51 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ void	draw_wall(t_game *g)
 		printf("2 - ai = %f\n", ai );
 		// CHECKING HORIZONTAL INTERSECTIONS
 		//Find A
+		if (ai == 90)
+		{
+			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
+			dy = BOX_SIZE;
+			dx = 0;
+		}
 		if (ai > 0.0 && ai < 180.0)
 			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
 		else
