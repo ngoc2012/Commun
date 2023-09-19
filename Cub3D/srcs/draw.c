@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 14:33:01 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:37:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,16 @@ void	draw_wall(t_game *g)
 		ai = angle_convert(ai);
 		printf("2 - ai = %f\n", ai );
 		// CHECKING HORIZONTAL INTERSECTIONS
+		//Find A
 		if (ai > 0.0 && ai < 180.0)
-		{
-			//Find A
 			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
-			Apx = g->pos.px + (g->pos.py - Apy) / tan(ai * PI / 180.0);
-			Ax = Apx / BOX_SIZE;
-			Ay = Apy / BOX_SIZE;
+		else
+			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
+		Apx = g->pos.px + (g->pos.py - Apy) / tan(ai * PI / 180.0);
+		Ax = Apx / BOX_SIZE;
+		Ay = Apy / BOX_SIZE;
+		if (Ax >= 0 && Ax <= g->map.l - 1)
+		{
 			printf("px = %d, Apx = %d, x = %d, Ax = %d\n", g->pos.px, Apx, g->pos.x, Ax);
 			printf("py = %d, Apy = %d, y = %d, Ay = %d\n", g->pos.py, Apy, g->pos.y, Ay);
 			dx = BOX_SIZE / tan(ai * PI / 180.0);
@@ -72,11 +75,7 @@ void	draw_wall(t_game *g)
 			}
 			printf("value = %d\n", g->map.v[Ay][Ax]);
 		}
-		else
-		{
-			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
-		}
-
+		//Find C
 		//alpha = 
 	}
 }
