@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 12:10:47 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 12:21:29 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ static void	get_position(t_game *g, int i, int j, char c)
 		g->pos.px = j * BOX_SIZE + BOX_SIZE / 2;
 		g->pos.py = i * BOX_SIZE + BOX_SIZE / 2;
 		if (c == 'N')
-			g->pos.alpha = -90;
-		else if (c == 'S')
 			g->pos.alpha = 90;
+		else if (c == 'S')
+			g->pos.alpha = -90;
 		else if (c == 'W')
-			g->pos.alpha = 0;
-		else if (c == 'E')
 			g->pos.alpha = 180;
+		else if (c == 'E')
+			g->pos.alpha = 0;
 	}
 }
 
