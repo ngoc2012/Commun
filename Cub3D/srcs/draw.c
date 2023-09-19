@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 11:28:52 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:35:52 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	draw_wall(t_game *g)
 	int	Xp;
 	double	ai;
 	double	ai0;
+	int	Apx;
+	int	Apy;
 	int	Ax;
 	int	Ay;
 
@@ -43,12 +45,13 @@ void	draw_wall(t_game *g)
 		if (ai > 0.0 && ai < 180.0)
 		{
 			//Find A
-			Ay = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
-			printf("py = %d, Ay = %d\n", g->pos.py, Ay);
+			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
+			Ay = Apy / BOX_SIZE;
+			printf("py = %d, Apy = %d, Ay = %d\n", g->pos.py, Apy, Ay);
 		}
 		else
 		{
-			Ay = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
+			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
 		}
 
 		//alpha = 
