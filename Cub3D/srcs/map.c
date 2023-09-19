@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 09:39:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/19 10:11:41 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ static void	get_postion(t_game *g, int i, int j, char c)
 	{
 		g->pos.x = i;
 		g->pos.y = j;
-		g->pos.px = i;
-		g->pos.py = j;
+		g->pos.px = i * BOX_SIZE;
+		g->pos.py = j * BOX_SIZE;
 		if (c == 'N')
-			g->pos.dy = 1;
+			g->pos.alpha = 90;
 		else if (c == 'S')
-			g->pos.dy = -1;
+			g->pos.alpha = -90;
 		else if (c == 'W')
-			g->pos.dx = 1;
+			g->pos.alpha = 180;
 		else if (c == 'E')
-			g->pos.dx = -1;
+			g->pos.alpha = 0;
 	}
 }
 
@@ -67,8 +67,7 @@ void	get_map(t_game *g, char *fn)
 	g->map.l = 0;
 	g->pos.x = 0;
 	g->pos.y = 0;
-	g->pos.dx = 0;
-	g->pos.dy = 0;
+	g->pos.alpha = 90;
 	fd = open(fn, O_RDONLY);
 	s = get_next_line(fd);
 	while (s)
