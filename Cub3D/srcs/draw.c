@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 21:19:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/19 21:21:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ void	draw_wall(t_game *g)
 	double	dA;
 	double	dB;
 
-	g->pos.alpha = 149;
-	g->pos.alpha = 90;
+	g->pos.alpha = 0;
 	ix = WIDTH / 2 - 1;
 	while (++ix < WIDTH / 2 + 1)
 	{
@@ -66,7 +65,8 @@ void	draw_wall(t_game *g)
 				Bpx += dpx;
 				Bx = Bpx / BOX_SIZE;
 			}
-			printf("px = %d, Bpx = %d, x = %d, Bx = %d\n", g->pos.px, Bpx, g->pos.x, Bx);
+			dB = Bpx - g->pos.px;
+			printf("px = %d, Bpx = %d, x = %d, Bx = %d, dB = %f\n", g->pos.px, Bpx, g->pos.x, Bx, dB);
 		}
 		else if (ai == 180.0)
 		{
