@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 13:44:38 by minh-ngu         ###   ########.fr       */
+/*   Created: 2023/08/05 09:58:50 by ngoc              #+#    #+#             */
+/*   Updated: 2023/08/15 23:08:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "cub3D.h"
+#include <stdlib.h>
+#include "libft.h"
 
-int	key_hook(int keycode, t_game *g)
- {
- 	if (keycode == XK_Up || keycode == XK_Down)
-		printf("Key Up Down\n");
-	if (keycode == XK_Right || keycode == XK_Left)
-	{
-	}
-	if (keycode == XK_q || keycode == XK_Escape)
-	{
-		printf("end game\n");
-		end_game(g, 0, 0);
-	}
-	return (0);
+char	*ft_strndup(char *s, int len)
+{
+	char	*o;
+
+	o = malloc(len + 1);
+	if (!o)
+		return (0);
+	ft_memcpy(o, s, len);
+	o[len] = 0;
+	return (o);
 }
