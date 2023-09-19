@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 12:41:53 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 12:43:00 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	draw_wall(t_game *g)
 	double	dx;
 	double	dy;
 
-	ix = -1;
-	while (++ix < 2)
+	ix = WIDTH - 1;
+	while (++ix < WIDTH + 2)
 	{
 		Xp = WIDTH / 2 - ix;
 		printf("Xp = %d\n", Xp);
@@ -69,7 +69,7 @@ void	draw_wall(t_game *g)
 				printf("px = %d, Apx = %d, x = %d, Ax = %d\n", g->pos.px, Apx, g->pos.x, Ax);
 				printf("py = %d, Apy = %d, y = %d, Ay = %d\n", g->pos.py, Apy, g->pos.y, Ay);
 			}
-			printf("value = %d\n", g->map.v[Ax][Ay])
+			printf("value = %d\n", g->map.v[Ax][Ay]);
 		}
 		else
 		{
