@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 13:51:24 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:52:10 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	draw(t_game *g)
 	int	yp;
 	int	*addr;
 
-	addr = (int *)g->mlx.img;
+	addr = (int *)g->mlx.addr;
 	yp = -1;
 	while (++yp < HEIGHT)
 	{
