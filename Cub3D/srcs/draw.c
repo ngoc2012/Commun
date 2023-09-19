@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 15:08:28 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:11:19 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,15 @@ void	draw_wall(t_game *g)
 		}
 		else if (ai == 90.0)
 		{
-			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
 			Apx = g->pos.px;
+			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
 			dpx = 0;
 			dpy = -BOX_SIZE;
 		}
 		else if (ai == -90.0)
 		{
-			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
 			Apx = g->pos.px;
+			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
 			dpx = 0;
 			dpy = BOX_SIZE;
 		}
@@ -115,7 +115,7 @@ void	draw_wall(t_game *g)
 					printf("px = %d, Apx = %d, x = %d, Ax = %d\n", g->pos.px, Apx, g->pos.x, Ax);
 					printf("py = %d, Apy = %d, y = %d, Ay = %d\n", g->pos.py, Apy, g->pos.y, Ay);
 				}
-				dA = (Apy - g->pos.y) / sin(ai * PI / 180.0);
+				dA = (g->pos.y - Apy) / sin(ai * PI / 180.0);
 				printf("value = %d, dA = %f\n", g->map.v[Ay][Ax], dA);
 			}
 		}
