@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 15:02:00 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:02:56 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,15 @@ void	draw_wall(t_game *g)
 			// CHECKING HORIZONTAL INTERSECTIONS
 			//Find A
 			if (ai > 0.0 && ai < 180.0)
+			{
 				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
+				dy = -BOX_SIZE;
+			}
 			else
+			{
 				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
+				dy = BOX_SIZE;
+			}
 			Apx = g->pos.px + (g->pos.py - Apy) / tan(ai * PI / 180.0);
 			Ax = Apx / BOX_SIZE;
 			Ay = Apy / BOX_SIZE;
@@ -96,7 +102,6 @@ void	draw_wall(t_game *g)
 				dx = BOX_SIZE / tan(ai * PI / 180.0);
 				if (dx < 0)
 					dx *= -1;
-				dy = BOX_SIZE;
 				while (!g->map.v[Ay][Ax])
 				{
 					Apy -= dy;
