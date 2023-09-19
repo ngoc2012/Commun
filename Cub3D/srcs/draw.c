@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 21:15:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/19 21:17:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ void	draw_wall(t_game *g)
 			dpy = 0;
 			dA = INFINI;
 			Bx = Bpx / BOX_SIZE;
-			By = Bpy / BOX_SIZE;
 			while (!g->map.v[By][Bx])
+			{
+			}
 		}
 		else if (ai == 180.0)
 		{
