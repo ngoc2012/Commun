@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 10:20:53 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:23:22 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	end_game(t_game *g, int exit_code, char *s)
 	free_map(&g->map);
 	if (s)
 		ft_putstr_fd(s, 2);
-	exit(exit_code);
+	exit(_code);
 }
 
 void	init(t_game *g)
@@ -32,6 +32,8 @@ void	init(t_game *g)
 	g->pos.x = 0;
 	g->pos.y = 0;
 	g->pos.alpha = 90;
+	g->pos.alpha = 90;
+	g->dpp = W / 2 * cotan(FOV / 2);
 }
 
 int	main()
