@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 14:16:23 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:18:32 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	draw_wall(t_game *g)
 			dy = BOX_SIZE;
 			while (!g->map.v[Ax][Ay])
 			{
-				Apy += dy;
+				Apy -= dy;
 				if (ai >= -90.0 && ai <= 90.0)
 					Apx += dx;
 				else
