@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 11:13:13 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 11:15:26 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	draw_wall(t_game *g)
 	{
 		Xp = WIDTH / 2 - ix;
 		printf("Xp = %d\n", Xp);
-		ai0 = atan(Xp / g->dpp); 
+		ai0 = atan((double) Xp / g->dpp); 
+		printf("ai0 = %f\n", ai0);
 		ai = ai0 + g->pos.alpha;
 		printf("1 - ai = %f\n", ai );
 		ai = angle_convert(ai);
