@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 21:25:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/19 21:27:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,23 @@ void	draw_wall(t_game *g)
 				Bx = Bpx / BOX_SIZE;
 			}
 			dB = Bpx - g->pos.px;
-			//printf("px = %d, Bpx = %d, x = %d, Bx = %d, dB = %f\n", g->pos.px, Bpx, g->pos.x, Bx, dB);
+			printf("v = %d, px = %d, Bpx = %d, x = %d, Bx = %d, dB = %f\n", g->map.v[g->pos.y][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
 		}
 		else if (ai == 180.0)
 		{
 			Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE - 1;
-			Bpy = g->pos.py;
+			//Bpy = g->pos.py;
 			dpx = -BOX_SIZE;
-			dpy = 0;
+			//dpy = 0;
 			dA = INFINI;
+			Bx = Bpx / BOX_SIZE;
+			while (!g->map.v[g->pos.y][Bx])
+			{
+				Bpx += dpx;
+				Bx = Bpx / BOX_SIZE;
+			}
+			dB = Bpx - g->pos.px;
+			printf("v = %d, px = %d, Bpx = %d, x = %d, Bx = %d, dB = %f\n", g->map.v[g->pos.y][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
 		}
 		else if (ai == 90.0)
 		{
