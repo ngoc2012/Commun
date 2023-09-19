@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 14:49:52 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:51:27 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ void	draw_wall(t_game *g)
 	int	Apy;
 	int	Ax;
 	int	Ay;
-	int	Cpx;
-	int	Cpy;
-	int	Cx;
-	int	Cy;
+	int	Bpx;
+	int	Bpy;
+	int	Bx;
+	int	By;
 	double	dpx;
 	double	dpy;
+	double	dA;
+	double	dB;
 
 	g->pos.alpha = 149;
 	ix = -1;
@@ -48,8 +50,6 @@ void	draw_wall(t_game *g)
 		printf("1 - ai = %f\n", ai );
 		ai = angle_convert(ai);
 		printf("2 - ai = %f\n", ai );
-		// CHECKING HORIZONTAL INTERSECTIONS
-		//Find A
 		if (ai == 0.0)
 		{
 			Apx = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
@@ -76,6 +76,8 @@ void	draw_wall(t_game *g)
 		}
 		else
 		{
+			// CHECKING HORIZONTAL INTERSECTIONS
+			//Find A
 			if (ai > 0.0 && ai < 180.0)
 				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
 			else
