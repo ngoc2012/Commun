@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 17:11:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/19 19:17:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define TRANS_SPEED 4
 # define ROT_SPEED 4
 # define PI 3.14159265
-# define INFINI MAX_INT
+# define INFINI INT_MAX
 
 /*
 Map:
