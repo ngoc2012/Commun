@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 10:19:11 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:20:53 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,19 @@ void	end_game(t_game *g, int exit_code, char *s)
 
 void	init(t_game *g)
 {
+	g->map.h = 0;
+	g->map.l = 0;
+	g->pos.x = 0;
+	g->pos.y = 0;
+	g->pos.alpha = 90;
 }
 
 int	main()
 {
 	t_game	g;
 
+	init(&g);
+	get_map(&g, "maps/3.cub");
 	g.mlx.mlx = mlx_init();
 	g.mlx.win = mlx_new_window(g.mlx.mlx, WIDTH, HEIGHT, "Cub3D");
 	if (!g.mlx.mlx || !g.mlx.win)
@@ -43,7 +50,6 @@ int	main()
 	//mlx_hook(g.win, ClientMessage, LeaveWindowMask, &end_prog, p);
 	g.mlx.img = mlx_new_image(g.mlx.mlx, WIDTH, HEIGHT);
 	g.mlx.addr = mlx_get_data_addr(g.mlx.img, &g.mlx.bpp, &g.mlx.ll, &g.mlx.ed);
-	get_map(&g, "maps/3.cub");
 	//printf("g.h = %d, g.l = %d, g.x = %d, g.y = %d, g.dx = %f, g.dy = %f\n", g.map.h , g.map.l , g.pos.x , g.pos.y , g.pos.dx , g.pos.dy);
 	draw(&g);
 	mlx_put_image_to_window(g.mlx.mlx, g.mlx.win, g.mlx.img, 0, 0);

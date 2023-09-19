@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 10:12:30 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/19 10:20:13 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,6 @@ void	get_map(t_game *g, char *fn)
 	int	i;
 	int	j;
 
-	g->map.h = 0;
-	g->map.l = 0;
-	g->pos.x = 0;
-	g->pos.y = 0;
-	g->pos.alpha = 90;
 	fd = open(fn, O_RDONLY);
 	s = get_next_line(fd);
 	while (s)
