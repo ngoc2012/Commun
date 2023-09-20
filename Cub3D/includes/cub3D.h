@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 10:20:36 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:08:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@ Map:
 - l: length of map
 */
 typedef struct s_map {
-	int		**v;
-	int		h;
-	int		l;
+	int	**v;
+	int	h;
+	int	l;
+	int	ph;
+	int	pl;
 }	t_map;
 
 /*
