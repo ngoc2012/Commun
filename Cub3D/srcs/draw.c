@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 14:31:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 14:33:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	draw_wall(t_game *g)
 	tol_h= 1.0 / (double) g->map.h / BOX_SIZE;
 	tol_l = 1.0 / (double) g->map.l / BOX_SIZE;
 	printf("tol_h = %f, tol_l = %f\n", tol_h, tol_l);
-	g->pos.alpha = 145;
+	g->pos.alpha = 140;
 	int	deli = 0;
 	ix = WIDTH / 2 - 1 + deli;
 	while (++ix < WIDTH / 2 + 1 + deli)
@@ -186,9 +186,11 @@ void	draw_map(t_game *g)
 			if (i == g->pos.y && j == g->pos.x)
 				printf(COLOR_BOLD_SLOW_BLINKING_RED "x" COLOR_OFF);
 			else if (i == g->pos.Ay && j == g->pos.Ax)
-				printf(COLOR_BOLD_SLOW_BLINKING_BLUE "A" COLOR_OFF);
+				printf(COLOR_BOLD_SLOW_BLINKING_BLUE "%d" COLOR_OFF, g->map.v[i][j]);
+				//printf(COLOR_BOLD_SLOW_BLINKING_BLUE "A" COLOR_OFF);
 			else if (i == g->pos.By && j == g->pos.Bx)
-				printf(COLOR_BOLD_SLOW_BLINKING_GREEN "B" COLOR_OFF);
+				printf(COLOR_BOLD_SLOW_BLINKING_GREEN "%d" COLOR_OFF, g->map.v[i][j]);
+				//printf(COLOR_BOLD_SLOW_BLINKING_GREEN "B" COLOR_OFF);
 			else
 				printf("%d", g->map.v[i][j]);
 			printf(" ");
