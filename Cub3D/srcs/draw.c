@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 14:25:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 14:26:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,8 @@ void	draw_map(t_game *g)
 				printf("x");
 			else if (i == g->pos.Ay && j == g->pos.Ax)
 				printf("A");
+			else if (i == g->pos.By && j == g->pos.Bx)
+				printf("B");
 			else
 				printf("%d", g->map.v[i][j]);
 			printf(" ");
