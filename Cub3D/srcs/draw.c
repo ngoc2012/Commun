@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 15:44:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 15:49:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,41 +171,41 @@ void	draw_wall(t_game *g)
 				printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
 			}
 			//Find B
-			if (ai > 0.0 && ai < 180.0)
+			if (ai > -90.0 && ai < 90.0)
 			{
-				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
-				dpy = -BOX_SIZE;
+				Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
+				dpx = BOX_SIZE;
 			}
 			else
 			{
-				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
-				dpy = BOX_SIZE;
+				Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE - 1;
+				dpx = -BOX_SIZE;
 			}
-			Apx = g->pos.px + (g->pos.py - Apy) / tan(ai * PI / 180.0);
+			Bpx = g->pos.px + (g->pos.px - Bpx) / tan(ai * PI / 180.0);
 			dpx = BOX_SIZE / tan(ai * PI / 180.0);
 			if (ai < 0)
 				dpx = -dpx;
-			printf("First Apx = %f, dpx = %.20e\n", Apx, dpx);
-			Ax = Apx / BOX_SIZE;
-			Ay = Apy / BOX_SIZE;
-			if (!(Apx >= 0 && Apx < g->map.pl))
-				dA = INFINI;
-			while (Apx >= 0 && Apx < g->map.pl && !g->map.v[Ay][Ax])
+			printf("First Bpx = %f, dpx = %.20e\n", Bpx, dpx);
+			Bx = Bpx / BOX_SIZE;
+			By = Bpx / BOX_SIZE;
+			if (!(Bpx >= 0 && Bpx < g->map.pl))
+				dB = INFINI;
+			while (Bpx >= 0 && Bpx < g->map.pl && !g->map.v[By][Bx])
 			{
-				Apx += dpx;
-				Apy += dpy;
-				Ax = Apx / BOX_SIZE;
-				Ay = Apy / BOX_SIZE;
+				Bpx += dpx;
+				Bpx += dpx;
+				Bx = Bpx / BOX_SIZE;
+				By = Bpx / BOX_SIZE;
 			}
-			if (Apx < 0 || Apx >= g->map.pl)
-				dA = INFINI;
+			if (Bpx < 0 || Bpx >= g->map.pl)
+				dB = INFINI;
 			else
 			{
-				dA = (g->pos.py - Apy) / sin(ai * PI / 180);
-				g->pos.Ax = Ax;
-				g->pos.Ay = Ay;
-				printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
-				printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
+				dB = (g->pos.px - Bpx) / sin(ai * PI / 180);
+				g->pos.Bx = Bx;
+				g->pos.By = By;
+				printf("v = %d, px = %f, Bpx = %f, x = %d, Bx = %d, dB = %f\n", g->map.v[By][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
+				printf("v = %d, py = %f, Bpy = %f, y = %d, By = %d, dB = %f\n", g->map.v[By][Bx], g->pos.py, Bpy, g->pos.y, By, dB);
 			}
 		}
 		//Find C
