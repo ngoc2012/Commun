@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 06:45:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 06:47:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	draw_wall(t_game *g)
 	double	dB;
 	double	tol;
 
-	if (g->map.h < g->map.l)
+	if (g->map.h > g->map.l)
 		tol = 1.0 / (double) g->map.h;
 	else
 		tol = 1.0 / (double) g->map.l;
@@ -74,7 +74,8 @@ void	draw_wall(t_game *g)
 			dB = Bpx - g->pos.px;
 			printf("v = %d, px = %d, Bpx = %d, x = %d, Bx = %d, dB = %f\n", g->map.v[g->pos.y][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
 		}
-		else if (ai == 180.0)
+		//else if (ai == 180.0)
+		else if (180.0 - tol < ai && ai < 180.0 + tol)
 		{
 			Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE - 1;
 			//Bpy = g->pos.py;
@@ -90,7 +91,8 @@ void	draw_wall(t_game *g)
 			dB = -Bpx + g->pos.px;
 			printf("v = %d, px = %d, Bpx = %d, x = %d, Bx = %d, dB = %f\n", g->map.v[g->pos.y][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
 		}
-		else if (ai == 90.0)
+		//else if (ai == 90.0)
+		else if (90.0 - tol < ai && ai < 90.0 + tol)
 		{
 			//Apx = g->pos.px;
 			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
