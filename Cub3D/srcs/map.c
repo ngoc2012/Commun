@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 14:23:46 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 11:43:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,12 @@ void	get_map(t_game *g, char *fn)
 	while (s)
 	{
 		g->map.h++;
-		if ((int) ft_strlen(s) > g->map.l)
-			g->map.l = (int) ft_strlen(s);
+		if ((int) ft_strlen(s) - 1> g->map.l)
+			g->map.l = (int) ft_strlen(s) - 1;
 		free(s);
 		s = get_next_line(fd);
 	}
+	//printf("h = %d, l = %d\n", g->map.h, g->map.l);
 	close(fd);
 	g->map.v = malloc(sizeof(int *) * g->map.h);
 	fd = open(fn, O_RDONLY);
