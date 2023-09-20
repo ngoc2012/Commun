@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 22:04:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 22:07:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,21 @@ void	draw_wall(t_game *g)
 	printf("tol_h = %f, tol_l = %f\n", tol_h, tol_l);
 	g->pos.alpha = 135;
 	int	deli = 0;
-	ix = WIDTH / 2 - 1 + deli;
-	while (++ix < WIDTH / 2 + 1 + deli)
+	//ix = WIDTH / 2 - 1 + deli;
+	//while (++ix < WIDTH / 2 + 1 + deli)
+	ix = -1;
+	while (++ix < WIDTH)
 	{
 		dA = 0.0;
 		dB = 0.0;
 		Xp = WIDTH / 2 - ix;
-		printf("Xp = %d\n", Xp);
+		//printf("Xp = %d\n", Xp);
 		ai0 = atan((double) Xp / g->dpp) * 180 / PI; 
-		printf("ai0 = %f\n", ai0);
+		//printf("ai0 = %f\n", ai0);
 		ai = g->pos.alpha + ai0;
-		printf("1 - ai = %f\n", ai);
+		//printf("1 - ai = %f\n", ai);
 		ai = angle_convert(ai);
-		printf("2 - ai = %f\n", ai);
-		//if (ai == 0.0 || 180.0)
+		//printf("2 - ai = %f\n", ai);
 		if ((-tol_l < ai && ai < tol_l) || (180.0 - tol_l < ai) || ai < -(180.0 - tol_l))
 		{
 			if (ai < tol_l && ai > -tol_l)
@@ -81,7 +82,7 @@ void	draw_wall(t_game *g)
 			dpy = BOX_SIZE * tan(ai * PI / 180.0);
 			if (ai * dpy > 0)
 				dpy = -dpy;
-			printf("First Bpy = %f, dpy = %.20e\n", Bpy, dpy);
+			//printf("First Bpy = %f, dpy = %.20e\n", Bpy, dpy);
 			Bx = Bpx / BOX_SIZE;
 			By = g->pos.y;
 			while (!g->map.v[By][Bx])
@@ -94,8 +95,8 @@ void	draw_wall(t_game *g)
 			dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
 			g->pos.Bx = Bx;
 			g->pos.By = By;
-			printf("v = %d, px = %f, Bpx = %f, x = %d, Bx = %d, dB = %f\n", g->map.v[By][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
-			printf("v = %d, py = %f, Bpy = %f, y = %d, By = %d, dB = %f\n", g->map.v[By][Bx], g->pos.py, Bpy, g->pos.y, By, dB);
+			//printf("v = %d, px = %f, Bpx = %f, x = %d, Bx = %d, dB = %f\n", g->map.v[By][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
+			//printf("v = %d, py = %f, Bpy = %f, y = %d, By = %d, dB = %f\n", g->map.v[By][Bx], g->pos.py, Bpy, g->pos.y, By, dB);
 		}
 		//else if (ai == 90.0)
 		else if ((90.0 - tol_h < ai && ai < 90.0 + tol_h) || (-90.0 - tol_h < ai && ai < -90.0 + tol_h))
@@ -114,7 +115,7 @@ void	draw_wall(t_game *g)
 			dpx = BOX_SIZE * cos(ai * PI / 180.0) / sin(ai * PI / 180.0);
 			if (ai < 0)
 				dpx = -dpx;
-			printf("First Apx = %f, dpx = %.20e\n", Apx, dpx);
+			//printf("First Apx = %f, dpx = %.20e\n", Apx, dpx);
 			Ay = Apy / BOX_SIZE;
 			Ax = g->pos.x;
 			while (!g->map.v[Ay][Ax])
@@ -127,8 +128,8 @@ void	draw_wall(t_game *g)
 			dB = INFINI;
 			g->pos.Ax = Ax;
 			g->pos.Ay = Ay;
-			printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
-			printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
+			//printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
+			//printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
 		}
 		else
 		{
@@ -148,7 +149,7 @@ void	draw_wall(t_game *g)
 			dpx = BOX_SIZE / tan(ai * PI / 180.0);
 			if (ai < 0)
 				dpx = -dpx;
-			printf("First Apx = %f, dpx = %.20e\n", Apx, dpx);
+			//printf("First Apx = %f, dpx = %.20e\n", Apx, dpx);
 			if (Apx < 0 && Apx >= g->map.pl)
 				dA = INFINI;
 			else
@@ -169,8 +170,8 @@ void	draw_wall(t_game *g)
 					dA = (g->pos.py - Apy) / sin(ai * PI / 180);
 					g->pos.Ax = Ax;
 					g->pos.Ay = Ay;
-					printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
-					printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
+					//printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
+					//printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
 				}
 			}
 			//Find B
@@ -188,7 +189,7 @@ void	draw_wall(t_game *g)
 			dpy = BOX_SIZE * tan(ai * PI / 180.0);
 			if (ai * dpy > 0)
 				dpy = -dpy;
-			printf("First Bpy = %f, dpy = %.20e, ph = %d\n", Bpy, dpy, g->map.ph);
+			//printf("First Bpy = %f, dpy = %.20e, ph = %d\n", Bpy, dpy, g->map.ph);
 			if (Bpy < 0 || Bpy >= g->map.ph)
 				dB = INFINI;
 			else
@@ -211,8 +212,8 @@ void	draw_wall(t_game *g)
 					dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
 					g->pos.Bx = Bx;
 					g->pos.By = By;
-					printf("v = %d, px = %f, Bpx = %f, x = %d, Bx = %d, dB = %f\n", g->map.v[By][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
-					printf("v = %d, py = %f, Bpy = %f, y = %d, By = %d, dB = %f\n", g->map.v[By][Bx], g->pos.py, Bpy, g->pos.y, By, dB);
+					//printf("v = %d, px = %f, Bpx = %f, x = %d, Bx = %d, dB = %f\n", g->map.v[By][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
+					//printf("v = %d, py = %f, Bpy = %f, y = %d, By = %d, dB = %f\n", g->map.v[By][Bx], g->pos.py, Bpy, g->pos.y, By, dB);
 				}
 			}
 		}
