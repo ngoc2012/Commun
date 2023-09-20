@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 22:07:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 22:09:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	draw_wall(t_game *g)
 	double	dpy;
 	double	dA;
 	double	dB;
-	double	d;
 	double	tol_h;
 	double	tol_l;
 
@@ -216,6 +215,9 @@ void	draw_wall(t_game *g)
 					//printf("v = %d, py = %f, Bpy = %f, y = %d, By = %d, dB = %f\n", g->map.v[By][Bx], g->pos.py, Bpy, g->pos.y, By, dB);
 				}
 			}
+		}
+		if (dA > dB)
+		{
 		}
 	}
 }
