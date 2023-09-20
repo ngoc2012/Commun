@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:34:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 11:47:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 11:48:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,14 @@ void	append_hc(t_m *m)
 	s = m->s;
 	while (ft_strchr(" 	\n", *s))
 		s++;
-	if (ft_strlen(m->s) > 2)
+	if (ft_strlen(s) > 2)
 	{
 		path = abs_path(m, HISTORY);
 		fd = open(path, O_CREAT | O_WRONLY | O_APPEND, 0664);
 		free(path);
 		if (fd == -1)
 			return ;
-		write(fd, m->s, ft_strlen(m->s));
+		write(fd, s, ft_strlen(s));
 		write(fd, "\n", 1);
 		close(fd);
 	}
