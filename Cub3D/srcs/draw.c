@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 14:07:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 14:13:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,16 +143,16 @@ void	draw_wall(t_game *g)
 			printf("First Apx = %f, dpx = %.20e\n", Apx, dpx);
 			Ax = Apx / BOX_SIZE;
 			Ay = Apy / BOX_SIZE;
-			if (!(Apx >= 0 && Apx < g->map.l * BOX_SIZE))
+			if (!(Apx >= 0 && Apx < g->map.pl))
 				dA = INFINI;
-			while (Apx >= 0 && Apx < g->map.l * BOX_SIZE && !g->map.v[Ay][Ax])
+			while (Apx >= 0 && Apx < g->map.pl && !g->map.v[Ay][Ax])
 			{
 				Apx += dpx;
 				Apy += dpy;
 				Ax = Apx / BOX_SIZE;
 				Ay = Apy / BOX_SIZE;
 			}
-			if (Apx < 0 || Apx >= g->map.l * BOX_SIZE)
+			if (Apx < 0 || Apx >= g->map.pl)
 				dA = INFINI;
 			else
 			{
