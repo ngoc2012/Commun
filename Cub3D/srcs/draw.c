@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 08:46:25 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 08:49:04 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	draw_wall(t_game *g)
 		if (-tol < ai && ai < tol)
 		{
 			Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
-			Bpy = g->pos.py + (g->pos.px - Bpx) / tan(ai * PI / 180.0);
+			Bpy = g->pos.py + (Bpx - g->pos.px) * tan(ai * PI / 180.0);
 			dpx = BOX_SIZE;
 			dpy = BOX_SIZE * tan(ai * PI / 180.0);
 			Bx = Bpx / BOX_SIZE;
