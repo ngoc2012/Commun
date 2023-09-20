@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 21:34:57 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 14:08:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 11:44:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,10 @@ void	get_hc(t_m *m)
 	while (s)
 	{
 		if (ft_strlen(s) > 1)
+		{
 			s[ft_strlen(s) - 2] = 0;
-		add_history(s);
+			add_history(s);
+		}
 		free(s);
 		s = get_next_line(fd);
 	}
