@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 06:40:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 06:43:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,12 @@ void	draw_wall(t_game *g)
 	double	dpy;
 	double	dA;
 	double	dB;
-	int	map_size;
+	int	tolerence;
 
+	if (g->map.h < g->map.l)
+		map_size = g->map.h
+	else
+		map_size = g->map.l
 	g->pos.alpha = 180;
 	ix = WIDTH / 2 - 1;
 	while (++ix < WIDTH / 2 + 1)
