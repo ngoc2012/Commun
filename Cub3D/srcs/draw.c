@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 08:49:04 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 08:53:19 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	draw_wall(t_game *g)
 		tol = 1.0 / (double) g->map.h;
 	else
 		tol = 1.0 / (double) g->map.l;
-	g->pos.alpha = 0;
+	g->pos.alpha = 1;
 	ix = WIDTH / 2 - 1;
 	while (++ix < WIDTH / 2 + 1)
 	{
