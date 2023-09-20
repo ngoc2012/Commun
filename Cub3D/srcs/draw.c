@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 09:25:51 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:29:45 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,13 @@ void	draw_wall(t_game *g)
 	double	dA;
 	double	dB;
 	double	d;
-	double	tol;
+	double	tol_h;
+	double	tol_l;
 
 	// Angle tolerance 100 pixel / size
-	if (g->map.h > g->map.l)
-		tol = 1.0 / (double) g->map.h / BOX_SIZE;
-	else
-		tol = 1.0 / (double) g->map.l / BOX_SIZE;
-	printf("tol = %f\n", tol);
+	tol_h= 1.0 / (double) g->map.h / BOX_SIZE;
+	tol_l = 1.0 / (double) g->map.l / BOX_SIZE;
+	printf("tol_h = %f, tol_l = %f\n", tol_h, tol_l);
 	g->pos.alpha = 0;
 	int	deli = -1;
 	ix = WIDTH / 2 - 1 + deli;
@@ -62,7 +61,7 @@ void	draw_wall(t_game *g)
 		ai = angle_convert(ai);
 		printf("2 - ai = %f\n", ai);
 		//if (ai == 0.0 || 180.0)
-		if ((-tol < ai && ai < tol) || (180.0 - tol < ai && ai < 180.0 + tol))
+		if ((-tol_l < ai && ai < tol_l) || (180.0 - tol_l < ai && ai < 180.0 + tol_l))
 		{
 			if (ai < tol)
 				Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
