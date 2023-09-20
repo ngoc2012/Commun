@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 06:43:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 06:45:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	draw_wall(t_game *g)
 	double	dpy;
 	double	dA;
 	double	dB;
-	int	tolerence;
+	double	tol;
 
 	if (g->map.h < g->map.l)
-		map_size = g->map.h
+		tol = 1.0 / (double) g->map.h;
 	else
-		map_size = g->map.l
+		tol = 1.0 / (double) g->map.l;
 	g->pos.alpha = 180;
 	ix = WIDTH / 2 - 1;
 	while (++ix < WIDTH / 2 + 1)
@@ -58,7 +58,7 @@ void	draw_wall(t_game *g)
 		ai = angle_convert(ai);
 		printf("2 - ai = %f\n", ai );
 		//if (ai == 0.0)
-		if (-< ai == 0.0)
+		if (-tol < ai && ai < tol)
 		{
 			Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
 			//Bpy = g->pos.py;
