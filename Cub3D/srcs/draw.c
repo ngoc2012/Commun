@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 14:05:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 14:07:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	draw_wall(t_game *g)
 	double	tol_h;
 	double	tol_l;
 
-	// Angle tolerance 10 pixel / size
-	tol_h= 10.0 / (double) g->map.h / BOX_SIZE;
-	tol_l = 10.0 / (double) g->map.l / BOX_SIZE;
+	// Angle tolerance 1 pixel / size
+	tol_h= 1.0 / (double) g->map.h / BOX_SIZE;
+	tol_l = 1.0 / (double) g->map.l / BOX_SIZE;
 	printf("tol_h = %f, tol_l = %f\n", tol_h, tol_l);
 	g->pos.alpha = 155;
 	int	deli = 0;
@@ -143,16 +143,16 @@ void	draw_wall(t_game *g)
 			printf("First Apx = %f, dpx = %.20e\n", Apx, dpx);
 			Ax = Apx / BOX_SIZE;
 			Ay = Apy / BOX_SIZE;
-			if (!(Apx >= 0 && Apx <= g->map.l * BOX_SIZE - 1))
+			if (!(Apx >= 0 && Apx < g->map.l * BOX_SIZE))
 				dA = INFINI;
-			while (Apx >= 0 && Apx <= g->map.l * BOX_SIZE - 1 && !g->map.v[Ay][Ax])
+			while (Apx >= 0 && Apx < g->map.l * BOX_SIZE && !g->map.v[Ay][Ax])
 			{
 				Apx += dpx;
 				Apy += dpy;
 				Ax = Apx / BOX_SIZE;
 				Ay = Apy / BOX_SIZE;
 			}
-			if (Apx < 0 || Apx > g->map.l * BOX_SIZE - 1)
+			if (Apx < 0 || Apx >= g->map.l * BOX_SIZE)
 				dA = INFINI;
 			else
 			{
