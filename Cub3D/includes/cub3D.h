@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 14:08:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 14:21:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,15 @@ typedef struct s_pos {
 	double		px;
 	double		py;
 	int		alpha;
+	int		Ax;
+	int		Ay;
+	int		Bx;
+	int		By;
 }	t_pos;
 
 /*
 mlx:
-- bpp: bits par pixel
+ bpp: bits par pixel
 - ll: ...
 - ed: endian
 */
