@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 09:47:01 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:48:51 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,16 @@ void	draw_wall(t_game *g)
 		if ((-tol_l < ai && ai < tol_l) || (180.0 - tol_l < ai && ai < 180.0 + tol_l))
 		{
 			if (ai < tol)
+			{
 				Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
+				dpx = BOX_SIZE;
+			}
 			else
+			{
 				Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE - 1;
+				dpx = -BOX_SIZE;
+			}
 			Bpy = g->pos.py + (Bpx - g->pos.px) * tan(ai * PI / 180.0);
-			dpx = BOX_SIZE;
 			dpy = BOX_SIZE * tan(ai * PI / 180.0);
 			Bx = Bpx / BOX_SIZE;
 			By = g->pos.y;
@@ -87,12 +92,17 @@ void	draw_wall(t_game *g)
 		else if ((90.0 - tol < ai && ai < 90.0 + tol) || (-90.0 - tol < ai && ai < -90.0 + tol))
 		{
 			if (ai > 90.0 - tol_h)
+			{
 				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
+				dpy = -BOX_SIZE;
+			}
 			else
+			{
 				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
+				dpy = BOX_SIZE;
+			}
 			Apx = g->pos.px + (Apy - g->pos.py) * cos(ai * PI / 180.0) / sin(ai * PI / 180.0);
 			//dpx = 0;
-			dpy = -BOX_SIZE;
 			dB = INFINI;
 		}
 		else
