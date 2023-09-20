@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 14:33:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 14:35:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	draw_wall(t_game *g)
 	tol_h= 1.0 / (double) g->map.h / BOX_SIZE;
 	tol_l = 1.0 / (double) g->map.l / BOX_SIZE;
 	printf("tol_h = %f, tol_l = %f\n", tol_h, tol_l);
-	g->pos.alpha = 140;
+	g->pos.alpha = 130;
 	int	deli = 0;
 	ix = WIDTH / 2 - 1 + deli;
 	while (++ix < WIDTH / 2 + 1 + deli)
@@ -162,7 +162,7 @@ void	draw_wall(t_game *g)
 			{
 				dA = (g->pos.py - Apy) / sin(ai * PI / 180);
 				g->pos.Ax = Ax;
-				g->pos.Ay = Ax;
+				g->pos.Ay = Ay;
 				printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
 				printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
 			}
