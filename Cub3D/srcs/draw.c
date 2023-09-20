@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 09:31:22 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:36:47 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,11 @@ void	draw_wall(t_game *g)
 		//else if (ai == 90.0)
 		else if ((90.0 - tol < ai && ai < 90.0 + tol) || (-90.0 - tol < ai && ai < -90.0 + tol))
 		{
-			//Apx = g->pos.px;
-			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
+			Apx = g->pos.px;
+			if (ai > 90.0 - tol_h)
+				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
+			else
+				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
 			//dpx = 0;
 			dpy = -BOX_SIZE;
 			dB = INFINI;
@@ -96,7 +99,6 @@ void	draw_wall(t_game *g)
 		else if ()
 		{
 			Apx = g->pos.px;
-			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
 			dpx = 0;
 			dpy = BOX_SIZE;
 		}
