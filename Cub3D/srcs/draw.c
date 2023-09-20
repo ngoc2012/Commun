@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 21:47:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 21:48:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,7 @@ void	draw_wall(t_game *g)
 					Bx = Bpx / BOX_SIZE;
 					By = Bpy / BOX_SIZE;
 				}
+				printf("Second Bpy = %f, dpy = %.20e, ph = %d\n", Bpy, dpy, g->map.ph);
 				if (Bpy < 0 || Bpy >= g->map.ph)
 					dB = INFINI;
 				else
