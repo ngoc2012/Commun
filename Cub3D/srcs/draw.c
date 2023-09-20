@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 08:43:51 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 08:45:44 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ void	draw_wall(t_game *g)
 		//Find C
 		//alpha = 
 	}
+	end_game(g, 0, 0);
 }
 
 void	draw_map(t_game *g)
@@ -181,15 +182,15 @@ void	draw(t_game *g)
 	int	yp;
 	int	*addr;
 
-	addr = (int *)g->mlx.addr;
-	yp = -1;
-	while (++yp < HEIGHT)
-	{
-		xp = -1;
-		while (++xp < WIDTH)
-			*(addr++) = create_trgb(1, 255, 0, 0);
-	}
-	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
+	//addr = (int *)g->mlx.addr;
+	//yp = -1;
+	//while (++yp < HEIGHT)
+	//{
+	//	xp = -1;
+	//	while (++xp < WIDTH)
+	//		*(addr++) = create_trgb(1, 255, 0, 0);
+	//}
+	//mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 
 	draw_wall(g);
 	draw_map(g);
