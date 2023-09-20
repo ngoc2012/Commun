@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 08:41:22 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 08:43:51 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	draw_wall(t_game *g)
 		tol = 1.0 / (double) g->map.h;
 	else
 		tol = 1.0 / (double) g->map.l;
-	g->pos.alpha = 180;
+	g->pos.alpha = 0;
 	ix = WIDTH / 2 - 1;
 	while (++ix < WIDTH / 2 + 1)
 	{
@@ -75,8 +75,8 @@ void	draw_wall(t_game *g)
 			}
 			dA = INFINI;
 			dB = Bpx - g->pos.px;
-			d = dB;
-			printf("v = %d, px = %d, Bpx = %d, x = %d, Bx = %d, dB = %f\n", g->map.v[g->pos.y][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
+			printf("v = %d, px = %d, Bpx = %d, x = %d, Bx = %d, dB = %f\n", g->map.v[By][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
+			printf("v = %d, py = %d, Bpy = %d, y = %d, By = %d, dB = %f\n", g->map.v[By][Bx], g->pos.py, Bpy, g->pos.y, By, dB);
 		}
 		//else if (ai == 180.0)
 		else if (180.0 - tol < ai && ai < 180.0 + tol)
