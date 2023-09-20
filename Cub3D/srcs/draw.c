@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 09:15:16 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:17:00 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	draw_wall(t_game *g)
 		ai = angle_convert(ai);
 		printf("2 - ai = %f\n", ai);
 		//if (ai == 0.0)
-		if (-tol < ai && ai < tol)
+		if ((-tol < ai && ai < tol) || (180.0 - tol < ai && ai < 180.0 + tol))
 		{
 			Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
 			Bpy = g->pos.py + (Bpx - g->pos.px) * tan(ai * PI / 180.0);
@@ -82,7 +82,7 @@ void	draw_wall(t_game *g)
 			printf("v = %d, py = %f, Bpy = %f, y = %d, By = %d, dB = %f\n", g->map.v[By][Bx], g->pos.py, Bpy, g->pos.y, By, dB);
 		}
 		//else if (ai == 180.0)
-		else if (180.0 - tol < ai && ai < 180.0 + tol)
+		else if ()
 		{
 			Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE - 1;
 			//Bpy = g->pos.py;
