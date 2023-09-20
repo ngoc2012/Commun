@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 21:18:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 21:19:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,11 +197,11 @@ void	draw_wall(t_game *g)
 				Bx = Bpx / BOX_SIZE;
 				By = Bpy / BOX_SIZE;
 			}
-			if (Bpx < 0 || Bpx >= g->map.pl)
+			if (Bpy < 0 || Bpy >= g->map.ph)
 				dB = INFINI;
 			else
 			{
-				dB = (g->pos.px - Bpx) / sin(ai * PI / 180);
+				dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
 				g->pos.Bx = Bx;
 				g->pos.By = By;
 				printf("v = %d, px = %f, Bpx = %f, x = %d, Bx = %d, dB = %f\n", g->map.v[By][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
