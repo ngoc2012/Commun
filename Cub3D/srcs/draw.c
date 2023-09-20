@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 14:23:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 14:25:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,8 @@ void	draw_wall(t_game *g)
 			else
 			{
 				dA = (g->pos.py - Apy) / sin(ai * PI / 180);
+				g->pos.Ax = Ax;
+				g->pos.Ay = Ax;
 				printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
 				printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
 			}
@@ -183,6 +185,8 @@ void	draw_map(t_game *g)
 		{
 			if (i == g->pos.y && j == g->pos.x)
 				printf("x");
+			else if (i == g->pos.Ay && j == g->pos.Ax)
+				printf("A");
 			else
 				printf("%d", g->map.v[i][j]);
 			printf(" ");
