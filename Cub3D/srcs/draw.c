@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 21:29:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 06:39:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	draw_wall(t_game *g)
 		printf("1 - ai = %f\n", ai );
 		ai = angle_convert(ai);
 		printf("2 - ai = %f\n", ai );
+		//if (ai == 0.0)
 		if (ai == 0.0)
 		{
 			Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
