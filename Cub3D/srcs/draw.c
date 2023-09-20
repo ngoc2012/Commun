@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 10:23:48 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 10:25:21 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	draw_wall(t_game *g)
 	tol_l = 10.0 / (double) g->map.l / BOX_SIZE;
 	printf("tol_h = %f, tol_l = %f\n", tol_h, tol_l);
 	g->pos.alpha = 180;
-	int	deli = -2;
+	int	deli = -1;
 	ix = WIDTH / 2 - 1 + deli;
 	while (++ix < WIDTH / 2 + 1 + deli)
 	{
@@ -61,7 +61,7 @@ void	draw_wall(t_game *g)
 		ai = angle_convert(ai);
 		printf("2 - ai = %f\n", ai);
 		//if (ai == 0.0 || 180.0)
-		if ((-tol_l < ai && ai < tol_l) || (180.0 - tol_l < ai && ai < 180.0 + tol_l))
+		if ((-tol_l < ai && ai < tol_l) || (180.0 - tol_l < ai) || ai < -(180.0 - tol_l))
 		{
 			if (ai < tol_l)
 			{
