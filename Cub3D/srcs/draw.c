@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 13:04:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 13:07:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,22 +143,19 @@ void	draw_wall(t_game *g)
 			printf("First Apx = %f, dpx = %.20e\n", Apx, dpx);
 			Ax = Apx / BOX_SIZE;
 			Ay = Apy / BOX_SIZE;
-			if (Ax >= 0 && Ax <= g->map.l - 1)
-			{
-				while (!g->map.v[Ay][Ax])
-				{
-					Apx += dpx;
-					Apy += dpy;
-					Ax = Apx / BOX_SIZE;
-					Ay = Apy / BOX_SIZE;
-				}
-				//dA = (g->pos.y - Apy) / sin(ai * PI / 180.0);
-				dA = (g->pos.py - Apy) / sin(ai * PI / 180);
-				printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
-				printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
-			}
-			else
+			if (!(Ax >= 0 && Ax <= g->map.l - 1))
 				dA = INFINI;
+			while (!g->map.v[Ay][Ax] && Ax >= 0 && Ax <= g->map.l - 1)
+			{
+				Apx += dpx;
+				Apy += dpy;
+				Ax = Apx / BOX_SIZE;
+				Ay = Apy / BOX_SIZE;
+			}
+			//dA = (g->pos.y - Apy) / sin(ai * PI / 180.0);
+			dA = (g->pos.py - Apy) / sin(ai * PI / 180);
+			printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
+			printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
 		}
 		//Find C
 		//alpha = 
