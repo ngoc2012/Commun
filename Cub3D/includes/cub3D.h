@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 14:31:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 15:43:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define COLOR_BOLD_SLOW_BLINKING_RED  "\033[1;5;31m"
 # define COLOR_BOLD_SLOW_BLINKING_BLUE  "\033[1;5;34m"
 # define COLOR_BOLD_SLOW_BLINKING_GREEN  "\033[1;5;32m"
+# define COLOR_BOLD_SLOW_BLINKING_CYAN  "\033[1;5;36m"
 # define COLOR_BOLD_GREEN              "\033[1;32m"
 # define COLOR_BOLD_CYAN               "\033[1;36m"
 # define COLOR_BOLD_BLUE               "\033[1;34m"
