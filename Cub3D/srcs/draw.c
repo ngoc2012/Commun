@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 09:00:38 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:15:16 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,14 @@ void	draw_wall(t_game *g)
 	double	d;
 	double	tol;
 
+	// Angle tolerance 100 pixel / size
 	if (g->map.h > g->map.l)
-		tol = 1.0 / (double) g->map.h;
+		tol = 100.0 / (double) g->map.h / BOX_SIZE;
 	else
-		tol = 1.0 / (double) g->map.l;
+		tol = 100.0 / (double) g->map.l / BOX_SIZE;
 	printf("tol = %f\n", tol);
 	g->pos.alpha = 0;
-	int	deli = 1;
+	int	deli = -1;
 	ix = WIDTH / 2 - 1 + deli;
 	while (++ix < WIDTH / 2 + 1 + deli)
 	{
