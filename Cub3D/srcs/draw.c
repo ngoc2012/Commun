@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 08:55:39 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 08:57:44 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	draw_wall(t_game *g)
 	int	Xp;
 	double	ai;
 	double	ai0;
-	int	Apx;
-	int	Apy;
+	double	Apx;
+	double	Apy;
 	int	Ax;
 	int	Ay;
-	int	Bpx;
-	int	Bpy;
+	double	Bpx;
+	double	Bpy;
 	int	Bx;
 	int	By;
 	double	dpx;
@@ -44,6 +44,7 @@ void	draw_wall(t_game *g)
 		tol = 1.0 / (double) g->map.h;
 	else
 		tol = 1.0 / (double) g->map.l;
+	printf("tol = %f\n", tol);
 	g->pos.alpha = 0;
 	int	deli = 1;
 	ix = WIDTH / 2 - 1 + deli;
@@ -56,9 +57,9 @@ void	draw_wall(t_game *g)
 		ai0 = atan((double) Xp / g->dpp) * 180 / PI; 
 		printf("ai0 = %f\n", ai0);
 		ai = g->pos.alpha + ai0;
-		printf("1 - ai = %f\n", ai );
+		printf("1 - ai = %f\n", ai);
 		ai = angle_convert(ai);
-		printf("2 - ai = %f\n", ai );
+		printf("2 - ai = %f\n", ai);
 		//if (ai == 0.0)
 		if (-tol < ai && ai < tol)
 		{
