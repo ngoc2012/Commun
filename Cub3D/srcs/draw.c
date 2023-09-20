@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 10:58:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 11:01:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,16 +148,15 @@ void	draw_wall(t_game *g)
 				printf("py = %f, Apy = %f, y = %d, Ay = %d\n", g->pos.py, Apy, g->pos.y, Ay);
 				while (!g->map.v[Ay][Ax])
 				{
-					Apy += dpy;
 					Apx += dpx;
+					Apy += dpy;
 					Ax = Apx / BOX_SIZE;
 					Ay = Apy / BOX_SIZE;
-					printf("px = %f, Apx = %f, x = %d, Ax = %d\n", g->pos.px, Apx, g->pos.x, Ax);
-					printf("py = %f, Apy = %f, y = %d, Ay = %d\n", g->pos.py, Apy, g->pos.y, Ay);
 				}
 				//dA = (g->pos.y - Apy) / sin(ai * PI / 180.0);
 				dA = g->pos.y - Apy;
-				printf("value = %d, dA = %f\n", g->map.v[Ay][Ax], dA);
+				printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
+				printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
 			}
 			else
 				dA = INFINI;
