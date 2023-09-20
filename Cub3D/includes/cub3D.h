@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 14:21:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 14:28:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@
 # define ROT_SPEED 4
 # define PI 3.141592654
 # define INFINI INT_MAX
+# define COLOR_BOLD_SLOW_BLINKING      "\033[1;5m"
+# define COLOR_BOLD_SLOW_BLINKING_RED  "\033[1;5;31m"
+# define COLOR_BOLD_GREEN              "\033[1;32m"
+# define COLOR_BOLD_CYAN               "\033[1;36m"
+# define COLOR_BOLD_BLUE               "\033[1;34m"
+# define COLOR_BOLD  "\033[1m"
+# define COLOR_OFF   "\033[m"
 
 /*
 Map:
