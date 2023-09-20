@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 09:55:28 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:57:53 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	draw_wall(t_game *g)
 				Bx = Bpx / BOX_SIZE;
 			}
 			dA = INFINI;
-			dB = Bpx - g->pos.px;
+			dB = abs(Bpx - g->pos.px);
 			printf("v = %d, px = %f, Bpx = %f, x = %d, Bx = %d, dB = %f\n", g->map.v[By][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
 			printf("v = %d, py = %f, Bpy = %f, y = %d, By = %d, dB = %f\n", g->map.v[By][Bx], g->pos.py, Bpy, g->pos.y, By, dB);
 		}
@@ -111,8 +111,8 @@ void	draw_wall(t_game *g)
 				Apy += dpy;
 				Ay = Apy / BOX_SIZE;
 			}
-			//dpx = 0;
-			dB = INFINI;
+			dA = INFINI;
+			dB = (Apy - g->pos.py) / sin(ai * PI / 180);
 		}
 		else
 		{
