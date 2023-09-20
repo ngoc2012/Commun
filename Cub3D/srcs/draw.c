@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 14:20:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 14:23:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ void	draw_wall(t_game *g)
 	double	tol_h;
 	double	tol_l;
 
+	g->pos.Ax = -1;
+	g->pos.Ay = -1;
+	g->pos.Bx = -1;
+	g->pos.By = -1;
 	// Angle tolerance 1 pixel / size
 	tol_h= 1.0 / (double) g->map.h / BOX_SIZE;
 	tol_l = 1.0 / (double) g->map.l / BOX_SIZE;
@@ -181,7 +185,8 @@ void	draw_map(t_game *g)
 				printf("x");
 			else
 				printf("%d", g->map.v[i][j]);
-			ft_putchar_fd(' ', 1);
+			printf(" ");
+			//ft_putchar_fd(' ', 1);
 		}
 		printf("\n");
 	}
