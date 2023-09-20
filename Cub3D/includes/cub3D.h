@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 09:00:06 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 10:20:36 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define BOX_SIZE 1
 # define TRANS_SPEED 4
 # define ROT_SPEED 4
-# define PI 3.14159265
+# define PI 3.141592654
 # define INFINI INT_MAX
 
 /*
