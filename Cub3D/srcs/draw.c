@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 14:37:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 14:39:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,43 @@ void	draw_wall(t_game *g)
 		{
 			// CHECKING HORIZONTAL INTERSECTIONS
 			//Find A
+			if (ai > 0.0)
+			{
+				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
+				dpy = -BOX_SIZE;
+			}
+			else
+			{
+				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
+				dpy = BOX_SIZE;
+			}
+			Apx = g->pos.px + (g->pos.py - Apy) / tan(ai * PI / 180.0);
+			dpx = BOX_SIZE / tan(ai * PI / 180.0);
+			if (ai < 0)
+				dpx = -dpx;
+			printf("First Apx = %f, dpx = %.20e\n", Apx, dpx);
+			Ax = Apx / BOX_SIZE;
+			Ay = Apy / BOX_SIZE;
+			if (!(Apx >= 0 && Apx < g->map.pl))
+				dA = INFINI;
+			while (Apx >= 0 && Apx < g->map.pl && !g->map.v[Ay][Ax])
+			{
+				Apx += dpx;
+				Apy += dpy;
+				Ax = Apx / BOX_SIZE;
+				Ay = Apy / BOX_SIZE;
+			}
+			if (Apx < 0 || Apx >= g->map.pl)
+				dA = INFINI;
+			else
+			{
+				dA = (g->pos.py - Apy) / sin(ai * PI / 180);
+				g->pos.Ax = Ax;
+				g->pos.Ay = Ay;
+				printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
+				printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
+			}
+			//Find B
 			if (ai > 0.0 && ai < 180.0)
 			{
 				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
