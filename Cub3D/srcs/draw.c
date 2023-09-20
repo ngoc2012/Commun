@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 11:02:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 11:25:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void	draw_wall(t_game *g)
 				dpy = BOX_SIZE;
 			}
 			Apx = g->pos.px + (g->pos.py - Apy) / tan(ai * PI / 180.0);
-			dpx = BOX_SIZE * cos(ai * PI / 180.0) / sin(ai * PI / 180.0);
+			dpx = BOX_SIZE / tan(ai * PI / 180.0);
 			if (ai < 0)
 				dpx = -dpx;
 			printf("First Apx = %f, dpx = %.20e\n", Apx, dpx);
@@ -153,7 +153,7 @@ void	draw_wall(t_game *g)
 					Ay = Apy / BOX_SIZE;
 				}
 				//dA = (g->pos.y - Apy) / sin(ai * PI / 180.0);
-				dA = g->pos.y - Apy;
+				dA = (g->pos.py - Apy) / sin(ai * PI / 180);
 				printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
 				printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
 			}
