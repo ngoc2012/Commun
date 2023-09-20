@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 09:17:00 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:18:04 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	draw_wall(t_game *g)
 		printf("1 - ai = %f\n", ai);
 		ai = angle_convert(ai);
 		printf("2 - ai = %f\n", ai);
-		//if (ai == 0.0)
+		//if (ai == 0.0 || 180.0)
 		if ((-tol < ai && ai < tol) || (180.0 - tol < ai && ai < 180.0 + tol))
 		{
 			Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
@@ -80,24 +80,6 @@ void	draw_wall(t_game *g)
 			dB = Bpx - g->pos.px;
 			printf("v = %d, px = %f, Bpx = %f, x = %d, Bx = %d, dB = %f\n", g->map.v[By][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
 			printf("v = %d, py = %f, Bpy = %f, y = %d, By = %d, dB = %f\n", g->map.v[By][Bx], g->pos.py, Bpy, g->pos.y, By, dB);
-		}
-		//else if (ai == 180.0)
-		else if ()
-		{
-			Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE - 1;
-			//Bpy = g->pos.py;
-			dpx = -BOX_SIZE;
-			//dpy = 0;
-			dA = INFINI;
-			Bx = Bpx / BOX_SIZE;
-			while (!g->map.v[g->pos.y][Bx])
-			{
-				Bpx += dpx;
-				Bx = Bpx / BOX_SIZE;
-			}
-			dB = -Bpx + g->pos.px;
-			d = dB;
-			printf("v = %d, px = %d, Bpx = %d, x = %d, Bx = %d, dB = %f\n", g->map.v[g->pos.y][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
 		}
 		//else if (ai == 90.0)
 		else if (90.0 - tol < ai && ai < 90.0 + tol)
