@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 09:45:18 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:47:01 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	draw_wall(t_game *g)
 				Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
 			else
 				Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE - 1;
-			Bpy = g->pos.py + abs(Bpx - g->pos.px) * tan(ai * PI / 180.0);
+			Bpy = g->pos.py + (Bpx - g->pos.px) * tan(ai * PI / 180.0);
 			dpx = BOX_SIZE;
 			dpy = BOX_SIZE * tan(ai * PI / 180.0);
 			Bx = Bpx / BOX_SIZE;
@@ -90,7 +90,7 @@ void	draw_wall(t_game *g)
 				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
 			else
 				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
-			Apx = g->pos.px + abs(Apy - g->pos.py) * cos(ai * PI / 180.0) / sin(ai * PI / 180.0);
+			Apx = g->pos.px + (Apy - g->pos.py) * cos(ai * PI / 180.0) / sin(ai * PI / 180.0);
 			//dpx = 0;
 			dpy = -BOX_SIZE;
 			dB = INFINI;
