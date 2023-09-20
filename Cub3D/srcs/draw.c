@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 13:14:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 13:17:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ void	draw_wall(t_game *g)
 			Ay = Apy / BOX_SIZE;
 			if (!(Ax >= 0 && Ax <= g->map.l - 1))
 				dA = INFINI;
-			while (!g->map.v[Ay][Ax] && Ax >= 0 && Ax <= g->map.l - 1)
+			while (Ax >= 0 && Ax <= g->map.l - 1 && !g->map.v[Ay][Ax])
 			{
 				Apx += dpx;
 				Apy += dpy;
