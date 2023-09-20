@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 08:39:59 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 08:41:22 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,14 @@ void	draw_wall(t_game *g)
 			dpx = BOX_SIZE;
 			dpy = BOX_SIZE * tan(ai * PI / 180.0);
 			Bx = Bpx / BOX_SIZE;
-			while (!g->map.v[g->pos.y][Bx])
+			By = g->pos.y;
+			while (!g->map.v[By][Bx])
 			{
 				Bpx += dpx;
+				Bpy += dpy;
 				Bx = Bpx / BOX_SIZE;
 			}
+			dA = INFINI;
 			dB = Bpx - g->pos.px;
 			d = dB;
 			printf("v = %d, px = %d, Bpx = %d, x = %d, Bx = %d, dB = %f\n", g->map.v[g->pos.y][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
