@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 08:45:44 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 08:46:25 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,6 @@ void	draw_wall(t_game *g)
 		//Find C
 		//alpha = 
 	}
-	end_game(g, 0, 0);
 }
 
 void	draw_map(t_game *g)
@@ -195,5 +194,6 @@ void	draw(t_game *g)
 	draw_wall(g);
 	draw_map(g);
 	draw_mini_map(g);
+	end_game(g, 0, 0);
 	//printf("g.h = %d, g.l = %d, g.x = %d, g.y = %d, g.dx = %d, g.dy = %d\n", g.h , g.l , g.x , g.y , g.dx , g.dy);
 }
