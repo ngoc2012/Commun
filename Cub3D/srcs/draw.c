@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 07:15:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 07:17:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	draw_wall(t_game *g)
 				Bx = Bpx / BOX_SIZE;
 			}
 			dB = Bpx - g->pos.px;
+			d = dB;
 			printf("v = %d, px = %d, Bpx = %d, x = %d, Bx = %d, dB = %f\n", g->map.v[g->pos.y][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
 		}
 		//else if (ai == 180.0)
@@ -90,6 +91,7 @@ void	draw_wall(t_game *g)
 				Bx = Bpx / BOX_SIZE;
 			}
 			dB = -Bpx + g->pos.px;
+			d = dB;
 			printf("v = %d, px = %d, Bpx = %d, x = %d, Bx = %d, dB = %f\n", g->map.v[g->pos.y][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
 		}
 		//else if (ai == 90.0)
@@ -99,6 +101,7 @@ void	draw_wall(t_game *g)
 			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
 			//dpx = 0;
 			dpy = -BOX_SIZE;
+			dB = INFINI;
 		}
 		//else if (ai == -90.0)
 		else if (-90.0 - tol < ai && ai < -90.0 + tol)
