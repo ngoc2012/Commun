@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 21:48:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 21:51:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	draw_wall(t_game *g)
 	tol_h= 1.0 / (double) g->map.h / BOX_SIZE;
 	tol_l = 1.0 / (double) g->map.l / BOX_SIZE;
 	printf("tol_h = %f, tol_l = %f\n", tol_h, tol_l);
-	g->pos.alpha = 70;
+	g->pos.alpha = 95;
 	int	deli = 0;
 	ix = WIDTH / 2 - 1 + deli;
 	while (++ix < WIDTH / 2 + 1 + deli)
@@ -197,12 +197,13 @@ void	draw_wall(t_game *g)
 				By = Bpy / BOX_SIZE;
 				while (Bpy >= 0 && Bpy < g->map.ph && !g->map.v[By][Bx])
 				{
+					//printf("Bpy = %f, By = %d, Bx = %d, v = %d\n", Bpy, By, Bx, g->map.v[By][Bx]);
 					Bpx += dpx;
 					Bpy += dpy;
 					Bx = Bpx / BOX_SIZE;
 					By = Bpy / BOX_SIZE;
 				}
-				printf("Second Bpy = %f, dpy = %.20e, ph = %d\n", Bpy, dpy, g->map.ph);
+				//printf("Second Bpy = %f, dpy = %.20e, ph = %d\n", Bpy, dpy, g->map.ph);
 				if (Bpy < 0 || Bpy >= g->map.ph)
 					dB = INFINI;
 				else
