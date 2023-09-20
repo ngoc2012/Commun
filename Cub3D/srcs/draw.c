@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 13:59:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 14:01:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	draw_wall(t_game *g)
 	tol_h= 10.0 / (double) g->map.h / BOX_SIZE;
 	tol_l = 10.0 / (double) g->map.l / BOX_SIZE;
 	printf("tol_h = %f, tol_l = %f\n", tol_h, tol_l);
-	g->pos.alpha = 160;
+	g->pos.alpha = 150;
 	int	deli = 0;
 	ix = WIDTH / 2 - 1 + deli;
 	while (++ix < WIDTH / 2 + 1 + deli)
@@ -153,15 +153,13 @@ void	draw_wall(t_game *g)
 				Ay = Apy / BOX_SIZE;
 			}
 			if (Ax < 0 || Ax > g->map.l - 1)
+				dA = INFINI;
+			else
 			{
-				Apx -= dpx;
-				Apy -= dpy;
-				Ax = Apx / BOX_SIZE;
-				Ay = Apy / BOX_SIZE;
+				dA = (g->pos.py - Apy) / sin(ai * PI / 180);
+				printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
+				printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
 			}
-			dA = (g->pos.py - Apy) / sin(ai * PI / 180);
-			printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
-			printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
 		}
 		//Find C
 		//alpha = 
