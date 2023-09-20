@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 09:29:45 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:31:22 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	draw_wall(t_game *g)
 	double	tol_h;
 	double	tol_l;
 
-	// Angle tolerance 100 pixel / size
+	// Angle tolerance 1 pixel / size
 	tol_h= 1.0 / (double) g->map.h / BOX_SIZE;
 	tol_l = 1.0 / (double) g->map.l / BOX_SIZE;
 	printf("tol_h = %f, tol_l = %f\n", tol_h, tol_l);
@@ -84,7 +84,7 @@ void	draw_wall(t_game *g)
 			printf("v = %d, py = %f, Bpy = %f, y = %d, By = %d, dB = %f\n", g->map.v[By][Bx], g->pos.py, Bpy, g->pos.y, By, dB);
 		}
 		//else if (ai == 90.0)
-		else if (90.0 - tol < ai && ai < 90.0 + tol)
+		else if ((90.0 - tol < ai && ai < 90.0 + tol) || (-90.0 - tol < ai && ai < -90.0 + tol))
 		{
 			//Apx = g->pos.px;
 			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
@@ -93,7 +93,7 @@ void	draw_wall(t_game *g)
 			dB = INFINI;
 		}
 		//else if (ai == -90.0)
-		else if (-90.0 - tol < ai && ai < -90.0 + tol)
+		else if ()
 		{
 			Apx = g->pos.px;
 			Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
