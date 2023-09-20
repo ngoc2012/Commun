@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 08:57:00 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/20 09:00:06 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ Player position
 typedef struct s_pos {
 	int		x;
 	int		y;
-	int		px;
-	int		py;
+	double		px;
+	double		py;
 	int		alpha;
 }	t_pos;
 
