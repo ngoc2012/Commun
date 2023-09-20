@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 14:29:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/20 14:31:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,11 +184,11 @@ void	draw_map(t_game *g)
 		while (++j < g->map.l)
 		{
 			if (i == g->pos.y && j == g->pos.x)
-				printf(COLOR_BOLD_SLOW_BLINKING_RED"x"COLOR_OFF);
+				printf(COLOR_BOLD_SLOW_BLINKING_RED "x" COLOR_OFF);
 			else if (i == g->pos.Ay && j == g->pos.Ax)
-				printf("A");
+				printf(COLOR_BOLD_SLOW_BLINKING_BLUE "A" COLOR_OFF);
 			else if (i == g->pos.By && j == g->pos.Bx)
-				printf("B");
+				printf(COLOR_BOLD_SLOW_BLINKING_GREEN "B" COLOR_OFF);
 			else
 				printf("%d", g->map.v[i][j]);
 			printf(" ");
