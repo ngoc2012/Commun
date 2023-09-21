@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 10:05:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 10:08:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,15 +243,15 @@ void	draw_wall(t_game *g)
 		int	start = HEIGHT / 2 - (int) h_slide / 2;
 		int	end = HEIGHT / 2 + (int) h_slide / 2;
 		printf("%d dA = %f, dB = %f, d = %f, h_slide = %d, start = %d, end = %d\n", ix, dA, dB, d, h_slide, start, end);
-		//addr += start * WIDTH;
-		//yp = -1;
-		//while (++yp < end - start - 10)
-		//{
+		addr += start * WIDTH;
+		yp = -1;
+		while (++yp < end - start)
+		{
 		//	printf("yp = %d\n", yp);
 			*addr = create_trgb(1, 255, 0, 0);
 			addr += WIDTH;
-		//}
-		//mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
+		}
+		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 	}
 }
 
