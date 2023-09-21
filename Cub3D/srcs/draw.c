@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 09:56:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 09:59:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -292,12 +292,15 @@ void	draw(t_game *g)
 	int	*addr;
 
 	addr = (int *)g->mlx.addr;
+	//addr += 50 * WIDTH;
 	yp = -1;
-	while (++yp < 10)
+	while (++yp < 100)
 	{
-		xp = -1;
-		while (++xp < WIDTH)
-			*(addr++) = create_trgb(1, 255, 0, 0);
+		*addr = create_trgb(1, 255, 0, 0);
+		addr += WIDTH;
+		//xp = -1;
+		//while (++xp < WIDTH)
+		//	*(addr++) = create_trgb(1, 255, 0, 0);
 	}
 	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 
