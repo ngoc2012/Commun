@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 09:53:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 09:55:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,13 +244,14 @@ void	draw_wall(t_game *g)
 		int	end = HEIGHT + (int) h_slide / 2;
 		printf("%d dA = %f, dB = %f, d = %f, h_slide = %d, start = %d, end = %d\n", ix, dA, dB, d, h_slide, start, end);
 		addr += start * WIDTH;
-		yp = -1;
-		while (++yp < end - start - 10)
-		{
+		//yp = -1;
+		//while (++yp < end - start - 10)
+		//{
+		//	printf("yp = %d\n", yp);
 			*addr = create_trgb(1, 255, 0, 0);
 			addr += WIDTH;
-		}
-		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
+		//}
+		//mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 	}
 }
 
@@ -290,15 +291,15 @@ void	draw(t_game *g)
 	int	yp;
 	int	*addr;
 
-	//addr = (int *)g->mlx.addr;
-	//yp = -1;
-	//while (++yp < HEIGHT)
-	//{
-	//	xp = -1;
-	//	while (++xp < WIDTH)
-	//		*(addr++) = create_trgb(1, 255, 0, 0);
-	//}
-	//mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
+	addr = (int *)g->mlx.addr;
+	yp = -1;
+	while (++yp < HEIGHT)
+	{
+		xp = -1;
+		while (++xp < WIDTH)
+			*(addr++) = create_trgb(1, 255, 0, 0);
+	}
+	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 
 	draw_wall(g);
 	draw_map(g);
