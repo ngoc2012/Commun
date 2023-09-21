@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 15:58:58 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:03:31 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,20 @@ static void	create_var(t_m *m, int i, int p, int cat)
 			m->env[j] = strjoinm(m->env[j], "=", -1, 1);
 		m->env[j] = strjoinm(m->env[j], &m->args[i][p + 2], -1, -1);
 	}
-	else
+	else if (j != -1)
 	{
-		if (j != -1)
-		{
-			s_e = m->env[j];
-			m->env[j] = ft_strdup(m->args[i]);
-			free(s_e);
-		}
-		else
-		{
-			if (cat)
-			{
-				s_e = strjoinm(0, m->args[i], 0, p);
-				s_e = strjoinm(s_e, &m->args[i][p + 1], -1, -1);
-			}
-			else
-				s_e = strjoinm(0, m->args[i], 0, -1);
-			m->env = astr_addback(m->env, s_e);
-		}
+		s_e = m->env[j];
+		m->env[j] = ft_strdup(m->args[i]);
+		free(s_e);
 	}
+	else if (j == -1 && cat)
+	{
+		s_e = strjoinm(0, m->args[i], 0, p);
+		s_e = strjoinm(s_e, &m->args[i][p + 1], -1, -1);
+		m->env = astr_addback(m->env, s_e);
+	}
+	else if (j == -1)
+		m->env = astr_addback(m->env, strjoinm(0, m->args[i], 0, -1));
 }
 
 static int	check_invalid(t_m *m, int i, int p)
