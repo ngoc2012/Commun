@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 15:28:07 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:51:52 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,16 @@ static void	create_var(t_m *m, int i, int p, int cat)
 				free(s_e);
 			}
 			else
-				m->env = astr_addback(m->env,
-						strjoinm(0, m->args[i], 0, ft_strlen(m->args[i])));
+			{
+				if (cat)
+				{
+					s_e = strjoinm(0, m->args[i], 0, p + 1);
+					s_e = strjoinm(s_e, &m->args[i][p + 1], -1, -1);
+				}
+				else
+					s_e = strjoinm(0, m->args[i], 0, -1);
+				m->env = astr_addback(m->env, s_e);
+			}
 		}
 	}
 }
