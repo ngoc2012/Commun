@@ -6,12 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:07:27 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 16:10:58 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:15:48 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "libft.h"
+#include "minishell.h"
 
 int	astr_len(char **ss)
 {

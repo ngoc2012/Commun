@@ -6,7 +6,7 @@
 /*   By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:08:19 by minh-ngu          #+#    #+#             */
-/*   Updated: 2023/09/17 07:54:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 16:14:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,5 @@ char	*ft_strdup(const char *src);
 t_list	*ft_lstlast(t_list *lst);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 void	ft_lstremove_if(t_list **bg, void *dr, int (*c)(), void (*d)(void *));
-int		free_array_str(char ***ss, int i);
-char	**astr_copy(char **ss);
-char	**astr_addback(char **ss, char *s);
-void	astr_remove(char **ss, void *dr, int (*cmp)(), void (*del)(void *));
-char	*ft_strndup(char *s, int len);
 
 #endif

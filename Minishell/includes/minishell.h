@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 11:22:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 16:14:57 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,5 +146,10 @@ void	get_prompt(t_m *m, char *prompt);
 void	read_command(t_m *m, char *com);
 void	append_hc(t_m *m);
 void	get_hc(t_m *m);
+char	**astr_copy(char **ss);
+char	**astr_addback(char **ss, char *s);
+void	astr_remove(char **ss, void *dr, int (*cmp)(), void (*del)(void *));
+char	*ft_strndup(char *s, int len);
+int		free_array_str(char ***ss, int i);
 
 #endif
