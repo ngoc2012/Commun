@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 15:52:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 15:06:03 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	command(t_m *m)
 	char				*file;
 
 	signal(SIGQUIT, SIG_DFL);
+	//if (
 	update_shlvl(m);
 	file = check_file(m->args[0], m);
 	if (file)
