@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 16:36:04 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:39:27 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static int	parentheses(char *s, t_m *m, t_c *c)
 	while (s[++(c->i)] && ft_strchr(" 	\n", s[c->i]))
 		;
 	if ((d == '(' && s[c->i] && ft_strchr(")&|", s[c->i]))
-		|| (d == ')' && s[c->i] && ft_strchr("(", s[c->i])))
-		//|| (d == ')' && s[c->i] && !ft_strchr(")&|", s[c->i])))
+		//|| (d == ')' && s[c->i] && ft_strchr("(", s[c->i])))
+		|| (d == ')' && s[c->i] && !ft_strchr(")&|", s[c->i])))
 		return (return_error(m, "syntaxe error 2", 2, 0));
 	c->i0 = c->i;
 	return (1);
