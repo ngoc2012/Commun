@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 15:42:40 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:45:25 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,10 @@ int	main(int argc, char **argv, char **env)
 		m.env = astr_addback(m.env, ft_strdup("SHLVL=1"));
 	}
 	else
+	{
+		printf("new env 1\n");
 		m.env = astr_copy(env);
+	}
 	init(&m);
 	tcgetattr(STDIN_FILENO, &term);
 	ft_putstr_fd("\033[2J\033[1;1H", 1);
