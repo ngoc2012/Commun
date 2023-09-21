@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 09:51:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 15:31:47 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:32:04 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	if (!env || !*env)
-		m->env = astr_addback(m->env, ft_strdup("SHLVL=1"));
+		m.env = astr_addback(m.env, ft_strdup("SHLVL=1"));
 	else
 		m.env = astr_copy(env);
 	init(&m);
