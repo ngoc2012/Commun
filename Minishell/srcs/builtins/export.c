@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 15:51:52 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:53:51 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	create_var(t_m *m, int i, int p, int cat)
 			{
 				if (cat)
 				{
-					s_e = strjoinm(0, m->args[i], 0, p + 1);
+					s_e = strjoinm(0, m->args[i], 0, p);
 					s_e = strjoinm(s_e, &m->args[i][p + 1], -1, -1);
 				}
 				else
