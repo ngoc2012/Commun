@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 15:06:03 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:08:53 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ void	update_shlvl(t_m *m)
 	char	*s0;
 	char	*s;
 
+	if (!m->env || !*m->env)
+		return ;
 	i = match_env(m->env, "SHLVL");
+	if (i == -1)
+		return ;
 	p = chr_pos(m->env[i], '=');
 	n = ft_atoi(&m->env[i][p + 1]);
 	n++;
@@ -92,7 +96,6 @@ void	command(t_m *m)
 	char				*file;
 
 	signal(SIGQUIT, SIG_DFL);
-	//if (
 	update_shlvl(m);
 	file = check_file(m->args[0], m);
 	if (file)
