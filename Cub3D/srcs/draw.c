@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 22:09:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 08:33:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	draw_wall(t_game *g)
 	double	ai0;
 	double	Apx;
 	double	Apy;
+	int	x;
+	int	y;
 	int	Ax;
 	int	Ay;
 	double	Bpx;
@@ -208,7 +210,7 @@ void	draw_wall(t_game *g)
 					dB = INFINI;
 				else
 				{
-					dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
+					dB = (Bpx - g->pos.px) / cos(ai * PI / 180.0);
 					g->pos.Bx = Bx;
 					g->pos.By = By;
 					//printf("v = %d, px = %f, Bpx = %f, x = %d, Bx = %d, dB = %f\n", g->map.v[By][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
@@ -218,6 +220,7 @@ void	draw_wall(t_game *g)
 		}
 		if (dA > dB)
 		{
+			d = dB * cos(ai * PI / 180.0);
 		}
 	}
 }
