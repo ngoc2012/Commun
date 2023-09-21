@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 10:02:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 10:05:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,10 +240,10 @@ void	draw_wall(t_game *g)
 		int	*addr;
 		addr = (int *)g->mlx.addr;
 		addr += ix;
-		int	start = HEIGHT - (int) h_slide / 2;
-		int	end = HEIGHT + (int) h_slide / 2;
+		int	start = HEIGHT / 2 - (int) h_slide / 2;
+		int	end = HEIGHT / 2 + (int) h_slide / 2;
 		printf("%d dA = %f, dB = %f, d = %f, h_slide = %d, start = %d, end = %d\n", ix, dA, dB, d, h_slide, start, end);
-		addr += start * WIDTH;
+		//addr += start * WIDTH;
 		//yp = -1;
 		//while (++yp < end - start - 10)
 		//{
