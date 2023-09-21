@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/19 13:44:38 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/21 10:11:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 int	key_hook(int keycode, t_game *g)
  {
  	if (keycode == XK_Up || keycode == XK_Down)
+	{
 		printf("Key Up Down\n");
+		draw
+	}
 	if (keycode == XK_Right || keycode == XK_Left)
 	{
 	}
