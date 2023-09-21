@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 08:41:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 09:01:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,6 +236,9 @@ void	draw_wall(t_game *g)
 		int	yp;
 		int	*addr;
 		addr = (int *)g->mlx.addr;
+		addr += ix;
+		int	start = HEIGHT - (int) h_slide / 2;
+		int	end = HEIGHT + (int) h_slide / 2;
 		yp = -1;
 		while (++yp < HEIGHT)
 		{
