@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 10:20:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 10:42:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	key_hook(int keycode, t_game *g)
 		else
 			g->pos.alpha += ROT_SPEED;
 		g->pos.alpha = angle_convert(g->pos.alpha);
+		redraw(g);
 		draw(g);
 	}
 	if (keycode == XK_q || keycode == XK_Escape)
