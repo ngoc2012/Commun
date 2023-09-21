@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 10:55:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 12:10:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,15 +239,13 @@ void	draw_wall(t_game *g)
 		double	d;
 		if (dA > dB)
 		{
-			//d = dB * cos(ai * PI / 180.0);
-			d = dB;
+			d = dB * cos(ai0 * PI / 180.0);
 			x = Bx;
 			y = By;
 		}
 		else
 		{
-			//d = dA * cos(ai * PI / 180.0);
-			d = dA;
+			d = dA * cos(ai0 * PI / 180.0);
 			x = Ax;
 			y = Ay;
 		}
