@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 10:39:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 10:41:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,23 @@ static int	create_trgb(unsigned char t, unsigned char r,
 		unsigned char g, unsigned char b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+void	redraw(t_game *g)
+{
+	int	xp;
+	int	yp;
+	int	*addr;
+
+	addr = (int *)g->mlx.addr;
+	yp = -1;
+	while (++yp < HEIGHT)
+	{
+		xp = -1;
+		while (++xp < WIDTH)
+			*(addr++) = 0;
+	}
+	//mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 }
  
 void	draw_wall(t_game *g)
