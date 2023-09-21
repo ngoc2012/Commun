@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 16:40:41 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:42:21 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ int	priorities_operators(char *s, t_m *m)
 {
 	t_c	c;
 
-	printf("here\n");
 	while (*s && ft_strchr(" 	\n", *s))
 		s++;
 	if (ft_strchr(";&|", *s))
