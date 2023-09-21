@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 08:38:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 08:41:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	draw_wall(t_game *g)
 	double	ai0;
 	double	Apx;
 	double	Apy;
-	int	x;
-	int	y;
 	int	Ax;
 	int	Ay;
 	double	Bpx;
@@ -218,6 +216,8 @@ void	draw_wall(t_game *g)
 				}
 			}
 		}
+		int	x;
+		int	y;
 		double d, h_slide;
 		if (dA > dB)
 		{
@@ -232,6 +232,18 @@ void	draw_wall(t_game *g)
 			y = Ay;
 		}
 		h_slide = BOX_SIZE / d * g->dpp;
+		int	xp;
+		int	yp;
+		int	*addr;
+		addr = (int *)g->mlx.addr;
+		yp = -1;
+		while (++yp < HEIGHT)
+		{
+			xp = -1;
+			while (++xp < WIDTH)
+				*(addr++) = create_trgb(1, 255, 0, 0);
+		}
+		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 	}
 }
 
@@ -284,6 +296,6 @@ void	draw(t_game *g)
 	draw_wall(g);
 	draw_map(g);
 	draw_mini_map(g);
-	end_game(g, 0, 0);
+	//end_game(g, 0, 0);
 	//printf("g.h = %d, g.l = %d, g.x = %d, g.y = %d, g.dx = %d, g.dy = %d\n", g.h , g.l , g.x , g.y , g.dx , g.dy);
 }
