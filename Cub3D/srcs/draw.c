@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 12:18:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 22:14:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ void	draw_wall(t_game *g)
 		{
 			if (ai < tol_l && ai > -tol_l)
 			{
-				Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
+				Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 				dpx = BOX_SIZE;
 			}
 			else
 			{
-				Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE - 1;
+				Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE - 1;
 				dpx = -BOX_SIZE;
 			}
 			Bpy = g->pos.py + (g->pos.px - Bpx) * tan(ai * PI / 180.0);
@@ -119,12 +119,12 @@ void	draw_wall(t_game *g)
 		{
 			if (ai > 90.0 - tol_h)
 			{
-				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
+				Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE - 1;
 				dpy = -BOX_SIZE;
 			}
 			else
 			{
-				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
+				Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 				dpy = BOX_SIZE;
 			}
 			Apx = g->pos.px + (g->pos.py - Apy) * cos(ai * PI / 180.0) / sin(ai * PI / 180.0);
@@ -153,12 +153,12 @@ void	draw_wall(t_game *g)
 			//Find A
 			if (ai > 0.0)
 			{
-				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE - 1;
+				Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE - 1;
 				dpy = -BOX_SIZE;
 			}
 			else
 			{
-				Apy = (g->pos.py / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
+				Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 				dpy = BOX_SIZE;
 			}
 			Apx = g->pos.px + (g->pos.py - Apy) / tan(ai * PI / 180.0);
@@ -193,12 +193,12 @@ void	draw_wall(t_game *g)
 			//Find B
 			if (ai > -90.0 && ai < 90.0)
 			{
-				Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE + BOX_SIZE;
+				Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 				dpx = BOX_SIZE;
 			}
 			else
 			{
-				Bpx = (g->pos.px / BOX_SIZE) * BOX_SIZE - 1;
+				Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE - 1;
 				dpx = -BOX_SIZE;
 			}
 			Bpy = g->pos.py + (g->pos.px - Bpx) * tan(ai * PI / 180.0);
