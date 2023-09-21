@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 10:01:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 10:02:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,6 +287,7 @@ void	draw_map(t_game *g)
 
 void	draw(t_game *g)
 {
+	/*
 	int	xp;
 	int	yp;
 	int	*addr;
@@ -304,6 +305,7 @@ void	draw(t_game *g)
 		//	*(addr++) = create_trgb(1, 255, 0, 0);
 	}
 	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
+	*/
 
 	draw_wall(g);
 	draw_map(g);
