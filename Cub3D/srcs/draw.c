@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 10:53:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 10:55:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,13 +239,15 @@ void	draw_wall(t_game *g)
 		double	d;
 		if (dA > dB)
 		{
-			d = dB * cos(ai * PI / 180.0);
+			//d = dB * cos(ai * PI / 180.0);
+			d = dB;
 			x = Bx;
 			y = By;
 		}
 		else
 		{
-			d = dA * cos(ai * PI / 180.0);
+			//d = dA * cos(ai * PI / 180.0);
+			d = dA;
 			x = Ax;
 			y = Ay;
 		}
@@ -261,7 +263,7 @@ void	draw_wall(t_game *g)
 		addr += ix;
 		int	start = HEIGHT / 2 - (int) h_slide / 2;
 		int	end = HEIGHT / 2 + (int) h_slide / 2;
-		printf("%d dA = %f, dB = %f, d = %f, h_slide = %d, start = %d, end = %d\n", ix, dA, dB, d, h_slide, start, end);
+		//printf("%d dA = %f, dB = %f, d = %f, h_slide = %d, start = %d, end = %d\n", ix, dA, dB, d, h_slide, start, end);
 		addr += start * WIDTH;
 		yp = -1;
 		while (++yp < end - start)
