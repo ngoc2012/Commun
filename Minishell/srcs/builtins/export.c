@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 16:09:17 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:11:44 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,9 @@ static void	create_var(t_m *m, int i, int p, int cat)
 	j = match_env(m->env, m->args[i]);
 	if (j != -1 && cat)
 	{
-		s_e = m->env[j];
-		m->env[j] = strjoinm(0, m->env[j], 0, -1);
 		if (chr_pos(m->env[j], '=') == -1)
 			m->env[j] = strjoinm(m->env[j], "=", -1, 1);
 		m->env[j] = strjoinm(m->env[j], &m->args[i][p + 2], -1, -1);
-		free(s_e);
 	}
 	else if (j != -1)
 	{

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 14:07:27 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 15:42:23 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:10:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	**astr_copy(char **ss)
 	i = -1;
 	while (ss[++i])
 	{
-		new[i] = ft_strdup(ss[i]);
+		new[i] = strjoinm(0, ss[i], 0, -1);
 		if (!new[i])
 		{
 			free_array_str(&new, 0);
