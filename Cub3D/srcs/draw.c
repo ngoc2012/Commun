@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 12:10:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 12:14:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,8 +266,20 @@ void	draw_wall(t_game *g)
 		yp = -1;
 		while (++yp < end - start)
 		{
-		//	printf("yp = %d\n", yp);
-			*addr = create_trgb(1, 255, 0, 0);
+			if (g->map.v[y][x] == 1)
+				*addr = create_trgb(1, 255, 0, 0);
+			if (g->map.v[y][x] == 2)
+				*addr = create_trgb(1, 0, 255, 0);
+			if (g->map.v[y][x] == 3)
+				*addr = create_trgb(1, 0, 0, 255);
+			if (g->map.v[y][x] == 4)
+				*addr = create_trgb(1, 255, 255, 0);
+			if (g->map.v[y][x] == 5)
+				*addr = create_trgb(1, 0, 255, 255);
+			if (g->map.v[y][x] == 6)
+				*addr = create_trgb(1, 255, 0, 255);
+			if (g->map.v[y][x] == 7)
+				*addr = create_trgb(1, 255, 255, 255);
 			addr += WIDTH;
 		}
 		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
@@ -327,7 +339,7 @@ void	draw(t_game *g)
 	*/
 
 	draw_wall(g);
-	draw_map(g);
+	//draw_map(g);
 	draw_mini_map(g);
 	//end_game(g, 0, 0);
 	//printf("g.h = %d, g.l = %d, g.x = %d, g.y = %d, g.dx = %d, g.dy = %d\n", g.h , g.l , g.x , g.y , g.dx , g.dy);
