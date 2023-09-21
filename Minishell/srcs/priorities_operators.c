@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 08:41:16 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/14 11:42:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 16:35:36 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static int	parentheses(char *s, t_m *m, t_c *c)
 		;
 	if ((d == '(' && s[c->i] && ft_strchr(")&|", s[c->i]))
 		|| (d == ')' && s[c->i] && !ft_strchr(")&|", s[c->i])))
-		return (return_error(m, "syntaxe error", 2, 0));
+		//|| (d == ')' && s[c->i] && !ft_strchr(")&|", s[c->i])))
+		return (return_error(m, "syntaxe error 2", 2, 0));
 	c->i0 = c->i;
 	return (1);
 }
@@ -55,7 +56,7 @@ static int	operators(char *s, t_m *m, t_c *c)
 	while (s[++c->i] && ft_strchr(" 	\n", s[c->i]))
 		;
 	if (!s[c->i] || ft_strchr("&|", s[c->i]))
-		return (return_error(m, "syntaxe error", 2, 0));
+		return (return_error(m, "syntaxe error 1", 2, 0));
 	c->i0 = c->i;
 	return (1);
 }
@@ -80,7 +81,7 @@ static int	loop(char *s, t_m *m, t_c *c)
 		while (s[++c->i] && s[c->i] != d)
 			;
 		if (!s[c->i])
-			return (return_error(m, "syntaxe error", 2, 0));
+			return (return_error(m, "syntaxe error 5", 2, 0));
 		c->i++;
 	}
 	else
@@ -94,10 +95,11 @@ int	priorities_operators(char *s, t_m *m)
 {
 	t_c	c;
 
+	printf("here\n");
 	while (*s && ft_strchr(" 	\n", *s))
 		s++;
 	if (ft_strchr(";&|", *s))
-		return (return_error(m, "syntaxe error", 2, 0));
+		return (return_error(m, "syntaxe error 4", 2, 0));
 	c.n_o = 0;
 	c.n_c = 0;
 	c.i0 = 0;
@@ -110,6 +112,6 @@ int	priorities_operators(char *s, t_m *m)
 	if (c.i > c.i0)
 		ft_lstadd_back(&m->infix, ft_lstnew(ft_strndup(&s[c.i0], c.i - c.i0)));
 	if (c.n_o != c.n_c)
-		return (return_error(m, "syntaxe error", 2, 0));
+		return (return_error(m, "syntaxe error 3", 2, 0));
 	return (1);
 }
