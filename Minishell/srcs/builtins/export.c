@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 15:54:55 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:58:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,36 +41,31 @@ static void	create_var(t_m *m, int i, int p, int cat)
 	int		j;
 	char	*s_e;
 
-	if (ft_isdigit(m->args[i][0]) || !is_all_env(m->args[i], p))
-		invalid_iden(m->args[i]);
+	j = match_env(m->env, m->args[i]);
+	if (j != -1 && cat)
+	{
+		if (chr_pos(m->env[j], '=') == -1)
+			m->env[j] = strjoinm(m->env[j], "=", -1, 1);
+		m->env[j] = strjoinm(m->env[j], &m->args[i][p + 2], -1, -1);
+	}
 	else
 	{
-		j = match_env(m->env, m->args[i]);
-		if (j != -1 && cat)
+		if (j != -1)
 		{
-			if (chr_pos(m->env[j], '=') == -1)
-			m->env[j] = strjoinm(m->env[j], "=", -1, 1);
-			m->env[j] = strjoinm(m->env[j], &m->args[i][p + 2], -1, -1);
+			s_e = m->env[j];
+			m->env[j] = ft_strdup(m->args[i]);
+			free(s_e);
 		}
 		else
 		{
-			if (j != -1)
+			if (cat)
 			{
-				s_e = m->env[j];
-				m->env[j] = ft_strdup(m->args[i]);
-				free(s_e);
+				s_e = strjoinm(0, m->args[i], 0, p);
+				s_e = strjoinm(s_e, &m->args[i][p + 1], -1, -1);
 			}
 			else
-			{
-				if (cat)
-				{
-					s_e = strjoinm(0, m->args[i], 0, p);
-					s_e = strjoinm(s_e, &m->args[i][p + 1], -1, -1);
-				}
-				else
-					s_e = strjoinm(0, m->args[i], 0, -1);
-				m->env = astr_addback(m->env, s_e);
-			}
+				s_e = strjoinm(0, m->args[i], 0, -1);
+			m->env = astr_addback(m->env, s_e);
 		}
 	}
 }
@@ -115,7 +110,10 @@ int	expt(t_m *m)
 				p -= 1;
 				cat = 1;
 			}
-			create_var(m, i, p, cat);
+			if (ft_isdigit(m->args[i][0]) || !is_all_env(m->args[i], p))
+				invalid_iden(m->args[i]);
+			else
+				create_var(m, i, p, cat);
 		}
 	}
 	return (1);
