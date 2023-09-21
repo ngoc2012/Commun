@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 09:50:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 09:53:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,7 +245,7 @@ void	draw_wall(t_game *g)
 		printf("%d dA = %f, dB = %f, d = %f, h_slide = %d, start = %d, end = %d\n", ix, dA, dB, d, h_slide, start, end);
 		addr += start * WIDTH;
 		yp = -1;
-		while (++yp < 10)
+		while (++yp < end - start - 10)
 		{
 			*addr = create_trgb(1, 255, 0, 0);
 			addr += WIDTH;
