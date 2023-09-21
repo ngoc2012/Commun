@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 20:14:50 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 14:23:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/21 15:25:04 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	match_env(char **ss, char *s)
 {
 	int	i;
 
+	if (!ss || !s)
+		return (-1);
 	i = -1;
 	while (ss[++i])
 		if (!ft_strdcmp(ss[i], s))
@@ -45,8 +47,10 @@ static void	create_var(t_m *m, int i, int p, int cat)
 	{
 		j = match_env(m->env, m->args[i]);
 		if (j != -1 && cat)
+		{
 			m->env[j] = strjoinm(m->env[j], &m->args[i][p + 2],
 					ft_strlen(m->env[j]), ft_strlen(&m->args[i][p + 2]));
+		}
 		else
 		{
 			if (j != -1)
