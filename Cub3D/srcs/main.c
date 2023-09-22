@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 22:06:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 22:09:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	init(t_game *g)
 int	precalcul(t_game *g)
 {
 	int		i;
+	int		j;
 	double	Xp;
 
 	g->ai0 = malloc(sizeof(double) * WIDTH);
@@ -93,8 +94,14 @@ int	precalcul(t_game *g)
 	i = -1;
 	while (++i < WIDTH)
 	{
+		g->ai = malloc(sizeof(double *) * WIDTH);
+	}
+	i = -1;
+	while (++i < WIDTH)
+	{
 		Xp = WIDTH / 2 - i + 0.5;
 		g->ai0[i] = atan(Xp / g->dpp) * 180 / PI; 
+		g->ai[i] = malloc(sizeof(double) * 360 / ROT_SPEED);
 	}
 	//ai = g->pos.alpha + ai0;
 	//ai = angle_convert(ai);
