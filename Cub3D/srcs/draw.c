@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 22:02:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 22:11:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	draw_wall(t_game *g)
 		dA = 0.0;
 		dB = 0.0;
 		ai0 = g->ai0[ix];
-		ai = g->pos.rot * ROT_SPEED + ai0;
-		ai = angle_convert(ai);
+		//ai = g->pos.rot * ROT_SPEED + ai0;
+		//ai = angle_convert(ai);
 		if ((-tol_l < ai && ai < tol_l) || (180.0 - tol_l < ai) || ai < -(180.0 - tol_l))
 		{
 			if (ai < tol_l && ai > -tol_l)
