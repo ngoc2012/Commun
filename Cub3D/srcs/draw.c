@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 07:22:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 07:34:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,15 +272,14 @@ void	draw_wall(t_game *g)
 	int	i = -1;
 	int	j = -1;
 
-	printf("%g\n", g->tex_n);
 	addr = (int *)g->mlx.addr;
 	while (++i < BOX_SIZE)
 	{
 		j = -1;
 		while (++j < BOX_SIZE)
 		{
-			*(addr + i + WIDTH*j) = create_trgb(1, 255, 255, 255);
-			//*addr = *((int *) (g->tex_n + i + BOX_SIZE * j));
+			//*(addr + i + WIDTH*j) = create_trgb(1, 255, 255, 255);
+			*addr = *((int *) (g->tex_n + i + BOX_SIZE * j));
 		}
 	}
 	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
