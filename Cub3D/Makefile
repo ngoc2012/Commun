@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/09/22 06:10:41 by ngoc             ###   ########.fr        #
+#    Updated: 2023/09/22 11:58:19 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,11 +37,15 @@ $(MANDA):	$(MOBJ) $(LIBFT) $(LIBGNL) $(LIBML)
 bonus:	$(MANDA)
 norm:
 	norminette $(LIBS) srcs includes
-gits:
+fgsfggfgits:
 	git add Makefile
 	git add $(addsuffix /Makefile, $(LIBS))
 	git add $(addsuffix /*.c, $(LIBS) srcs)
 	git add $(addsuffix /*.h, $(LIBS) includes)
+	git commit -m "all"
+	git push
+gits:
+	git add -A
 	git commit -m "all"
 	git push
 clean:
