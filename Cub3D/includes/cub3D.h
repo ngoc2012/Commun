@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 11:42:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 11:46:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define FOV 90
 # define BOX_SIZE 64
 # define TRANS_SPEED 20
-# define ROT_SPEED 6
+# define ROT_SPEED 12
 # define PI 3.141592654
 # define INFINI INT_MAX
 # define COLOR_BOLD_SLOW_BLINKING      "\033[1;5m"
