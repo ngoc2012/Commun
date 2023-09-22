@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 09:59:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 10:01:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,12 +276,13 @@ void	draw_wall(t_game *g)
 	printf("h = %d, l = %d\n", g->tex_n.h, g->tex_n.l);
 	addr = (int *)g->mlx.addr;
 	addr_t = (int *)g->tex_n.addr;
-	while (++i < BOX_SIZE)
+	while (++i < g->tex_n.h)
 	{
 		j = -1;
-		while (++j < BOX_SIZE)
+		while (++j < g->tex_n.l)
 		{
-			*(addr + i + WIDTH*j) = *(addr_t + i * g->tex_n.bpp / 8 + g->tex_n.ll*j);
+			//*(addr + i + WIDTH * j) = *(addr_t + i * g->tex_n.bpp / 8 + g->tex_n.ll*j);
+			*(addr + i + WIDTH * j) = *(addr_t + i + j * g->tex_n.l);
 			//*addr = *((int *) (g->tex_n + i + BOX_SIZE * j));
 		}
 	}
