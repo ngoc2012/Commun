@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 07:03:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 07:05:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	draw_wall(t_game *g)
 	double	dB;
 	double	tol_h;
 	double	tol_l;
+	int	*addr;
 
 	g->pos.Ax = -1;
 	g->pos.Ay = -1;
@@ -240,7 +241,6 @@ void	draw_wall(t_game *g)
 		if (h_slide > HEIGHT)
 			h_slide = HEIGHT;
 		int	yp;
-		int	*addr;
 		addr = (int *)g->mlx.addr;
 		addr += ix;
 		int	start = HEIGHT / 2 - h_slide / 2;
@@ -268,7 +268,6 @@ void	draw_wall(t_game *g)
 				*addr = create_trgb(1, 255, 255, 255);
 			addr += WIDTH;
 		}
-		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 	}
 	int	i = -1;
 	int	j = -1;
@@ -279,9 +278,10 @@ void	draw_wall(t_game *g)
 		j = -1;
 		while (++j < BOX_SIZE)
 		{
-			*addr = g->tex_n + i + BOX_SIZE * j;
+			*addr = *((int *) (g->tex_n + i + BOX_SIZE * j));
 		}
 	}
+	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 }
 
 void	draw_map(t_game *g)
