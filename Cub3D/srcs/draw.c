@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 23:02:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 23:15:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	draw_wall(t_game *g)
 {
 	int	ix;
 	double	ai;
-	double	ai0;
 	double	Apx;
 	double	Apy;
 	int	Ax;
