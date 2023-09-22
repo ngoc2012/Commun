@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 18:06:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 18:10:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -284,7 +284,15 @@ void	draw_wall(t_game *g)
 		yp = -1;
 		while (++yp < start)
 		{
-			*addr = create_trgb(1, 0, 255, 255);
+			dh = g->dpp * BOX_SIZE / 2 / (yp - HEIGHT / 2) / cos(ai0 * PI / 180.0);
+			xph = g->pos.px - dh * cos(ai * PI / 180.0);
+			yph = g->pos.py + dh * sin(ai * PI / 180.0);
+			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
+			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
+			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
+				*addr = *(addr_f + xh + yh * g->tex_f.l);
+			else
+				*addr = create_trgb(1, 0, 255, 255);
 			addr += WIDTH;
 		}
 	}
