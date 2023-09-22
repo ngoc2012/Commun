@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 19:07:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 19:08:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct s_mlx {
 	double	*ai0;
 	double	*tan_ai;
 	double	*cos_ai;
-	double	*sin_ai0;
+	double	*sin_ai;
 }	t_mlx;
 
 /*
