@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 22:57:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 23:13:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int	main(int argc, char **argv)
 	mlx_key_hook(g.mlx.win, key_hook, &g);
 	//mlx_mouse_hook(g.win, mouse_hook, p);
 	//mlx_loop_hook(g.mlx, loop_hook, p);
-	//mlx_hook(g.win, ClientMessage, LeaveWindowMask, &end_prog, p);
+	mlx_hook(g.mlx.win, ClientMessage, LeaveWindowMask, &end_game, &g);
 	g.mlx.img = mlx_new_image(g.mlx.mlx, WIDTH, HEIGHT);
 	g.mlx.addr = mlx_get_data_addr(g.mlx.img, &g.mlx.bpp, &g.mlx.ll, &g.mlx.ed);
 	if (!get_textures(&g))
