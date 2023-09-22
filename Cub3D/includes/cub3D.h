@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 19:08:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 19:25:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,6 @@ typedef struct s_mlx {
 	int		ll;
 	int		ed;
 	char	*addr;
-	double	*ai;
-	double	*ai0;
-	double	*tan_ai;
-	double	*cos_ai;
-	double	*sin_ai;
 }	t_mlx;
 
 /*
@@ -131,6 +126,11 @@ typedef struct s_game {
 	t_tex	tex_e;
 	t_tex	tex_f;
 	t_tex	tex_c;
+	double	*ai;
+	double	*ai0;
+	double	*tan_ai;
+	double	*cos_ai;
+	double	*sin_ai;
 }	t_game;
 
 void	free_map(t_map *m);
