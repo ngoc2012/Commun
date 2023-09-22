@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 22:53:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 22:55:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ void	draw_wall(t_game *g)
 				Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE - 1;
 				dpx = -BOX_SIZE;
 			}
-			//Bpy = g->pos.py + (g->pos.px - Bpx) * tan(ai * PI / 180.0);
-			//dpy = BOX_SIZE * tan(ai * PI / 180.0);
 			Bpy = g->pos.py + (g->pos.px - Bpx) * g->tan_ai[ix][g->pos.rot];
 			dpy = BOX_SIZE * g->tan_ai[ix][g->pos.rot];
 			if (ai * dpy > 0)
@@ -118,8 +116,6 @@ void	draw_wall(t_game *g)
 				Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 				dpy = BOX_SIZE;
 			}
-			//Apx = g->pos.px + (g->pos.py - Apy) * cos(ai * PI / 180.0) / sin(ai * PI / 180.0);
-			//dpx = BOX_SIZE * cos(ai * PI / 180.0) / sin(ai * PI / 180.0);
 			Apx = g->pos.px + (g->pos.py - Apy) * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
 			dpx = BOX_SIZE * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
 			if (ai < 0)
@@ -151,8 +147,6 @@ void	draw_wall(t_game *g)
 				Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 				dpy = BOX_SIZE;
 			}
-			//Apx = g->pos.px + (g->pos.py - Apy) / tan(ai * PI / 180.0);
-			//dpx = BOX_SIZE / tan(ai * PI / 180.0);
 			Apx = g->pos.px + (g->pos.py - Apy) / g->tan_ai[ix][g->pos.rot];
 			dpx = BOX_SIZE / g->tan_ai[ix][g->pos.rot];
 			if (ai < 0)
@@ -191,8 +185,6 @@ void	draw_wall(t_game *g)
 				Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE - 1;
 				dpx = -BOX_SIZE;
 			}
-			//Bpy = g->pos.py + (g->pos.px - Bpx) * tan(ai * PI / 180.0);
-			//dpy = BOX_SIZE * tan(ai * PI / 180.0);
 			Bpy = g->pos.py + (g->pos.px - Bpx) * g->tan_ai[ix][g->pos.rot];
 			dpy = BOX_SIZE * g->tan_ai[ix][g->pos.rot];
 			if (ai * dpy > 0)
@@ -214,7 +206,6 @@ void	draw_wall(t_game *g)
 					dB = INFINI;
 				else
 				{
-					//dB = (Bpx - g->pos.px) / cos(ai * PI / 180.0);
 					dB = (Bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
 					g->pos.Bx = Bx;
 					g->pos.By = By;
@@ -272,8 +263,6 @@ void	draw_wall(t_game *g)
 			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
 			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
 				*addr = *(addr_c + xh + yh * g->tex_c.l);
-			else
-				*addr = create_trgb(1, 255, 0, 255);
 			addr += WIDTH;
 		}
 		yp = -1;
@@ -294,8 +283,6 @@ void	draw_wall(t_game *g)
 			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
 			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
 				*addr = *(addr_f + xh + yh * g->tex_f.l);
-			else
-				*addr = create_trgb(1, 0, 255, 255);
 			addr += WIDTH;
 		}
 	}
