@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/20 14:10:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 16:56:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	get_position(t_game *g, int i, int j, char c)
 	}
 }
 
-void	get_map(t_game *g, char *fn)
+int	get_map(t_game *g, char *fn)
 {
 	int	fd;
 	char	*s;
@@ -66,6 +66,8 @@ void	get_map(t_game *g, char *fn)
 	int	j;
 
 	fd = open(fn, O_RDONLY);
+	if (fd == -1)
+		return (0);
 	s = get_next_line(fd);
 	while (s)
 	{
@@ -98,4 +100,5 @@ void	get_map(t_game *g, char *fn)
 	close(fd);
 	if (g->map.h < 5 || g->map.l < 5)
 		end_game(g, 1, "Invalid map");
+	return (1);
 }
