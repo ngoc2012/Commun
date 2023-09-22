@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 11:21:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 11:22:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,7 +239,7 @@ void	draw_wall(t_game *g)
 		addr = (int *)g->mlx.addr;
 		t_tex	*tex;
 		tex = &g->tex_n;
-		addr_t = (int *)tex.addr;
+		addr_t = (int *)tex->addr;
 		addr += ix;
 		int	start = HEIGHT / 2 - h_slide / 2;
 		addr += start * WIDTH;
@@ -253,7 +253,7 @@ void	draw_wall(t_game *g)
 				printf("tx = %d\n", tx);
 			//*addr = g->tex_n + tx + BOX_SIZE * ty;
 			if (tx < BOX_SIZE && tx >= 0 && ty < BOX_SIZE && ty >= 0)
-				*addr = *(addr_t + tx + ty * g->tex_n.l);
+				*addr = *(addr_t + tx + ty * tex->l);
 			addr += WIDTH;
 		}
 	}
