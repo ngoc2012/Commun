@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 13:19:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 16:55:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,14 @@ void	init(t_game *g)
 	//printf("dpp %d\n", g->dpp);
 }
 
-int	main()
+int	main(int argc, char **argv)
 {
 	t_game	g;
 
+	(void) argc;
 	init(&g);
-	get_map(&g, "maps/3.cub");
+	if (!get_map(&g, argv[1]))
+		exit(EXIT_FAILURE);
 	g.mlx.mlx = mlx_init();
 	g.mlx.win = mlx_new_window(g.mlx.mlx, WIDTH, HEIGHT, "Cub3D");
 	if (!g.mlx.mlx || !g.mlx.win)
