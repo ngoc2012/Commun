@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 09:51:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 10:53:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 void	end_game(t_game *g, int exit_code, char *s)
 {
-	mlx_destroy_image(g->mlx.mlx, g->tex_n.img);
+	if (g->tex_n.img)
+		mlx_destroy_image(g->mlx.mlx, g->tex_n.img);
+	if (g->tex_s.img)
+		mlx_destroy_image(g->mlx.mlx, g->tex_s.img);
+	if (g->tex_w.img)
+		mlx_destroy_image(g->mlx.mlx, g->tex_w.img);
+	if (g->tex_e.img)
+		mlx_destroy_image(g->mlx.mlx, g->tex_e.img);
 	mlx_destroy_image(g->mlx.mlx, g->mlx.img);
 	mlx_destroy_window(g->mlx.mlx, g->mlx.win);
 	mlx_destroy_display(g->mlx.mlx);
@@ -36,6 +43,10 @@ void	init(t_game *g)
 	g->pos.alpha = 90;
 	g->pos.alpha = 90;
 	g->dpp = (int) WIDTH / 2 / tan(PI /180 * FOV / 2);
+	g->tex_n.img = 0;
+	g->tex_s.img = 0;
+	g->tex_w.img = 0;
+	g->tex_e.img = 0;
 	//printf("dpp %d\n", g->dpp);
 }
 
