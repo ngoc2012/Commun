@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 10:05:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 10:09:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,10 +251,13 @@ void	draw_wall(t_game *g)
 		while (++yp < h_slide)
 		{
 			ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp) / p);
-			if (ty > BOX_SIZE - 1)
+			if (ty > BOX_SIZE - 1 || ty < 0)
 				printf("ty = %d\n", ty);
+			if (tx > BOX_SIZE - 1 || tx < 0)
+				printf("tx = %d\n", tx);
 			//*addr = g->tex_n + tx + BOX_SIZE * ty;
-			*addr = *(addr_t + tx + ty * g->tex_n.l);
+			if (tx < BOX_SIZE && tx >= 0 && ty < BOX_SIZE && ty >= 0)
+				*addr = *(addr_t + tx + ty * g->tex_n.l);
 			//if (g->map.v[y][x] == 1)
 			//	*addr = create_trgb(1, 255, 0, 0);
 			//if (g->map.v[y][x] == 2)
