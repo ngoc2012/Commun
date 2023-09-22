@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 22:31:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 22:33:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,7 +214,8 @@ void	draw_wall(t_game *g)
 					dB = INFINI;
 				else
 				{
-					dB = (Bpx - g->pos.px) / cos(ai * PI / 180.0);
+					//dB = (Bpx - g->pos.px) / cos(ai * PI / 180.0);
+					dB = (Bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
 					g->pos.Bx = Bx;
 					g->pos.By = By;
 				}
