@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 11:41:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 11:49:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ void	draw_wall(t_game *g)
 			g->pos.Bx = Bx;
 			g->pos.By = By;
 		}
-		//else if (ai == 90.0)
 		else if ((90.0 - tol_h < ai && ai < 90.0 + tol_h) || (-90.0 - tol_h < ai && ai < -90.0 + tol_h))
 		{
 			if (ai > 90.0 - tol_h)
@@ -120,7 +119,6 @@ void	draw_wall(t_game *g)
 			dpx = BOX_SIZE * cos(ai * PI / 180.0) / sin(ai * PI / 180.0);
 			if (ai < 0)
 				dpx = -dpx;
-			//printf("First Apx = %f, dpx = %.20e\n", Apx, dpx);
 			Ay = Apy / BOX_SIZE;
 			Ax = g->pos.x;
 			while (!g->map.v[Ay][Ax])
@@ -152,7 +150,6 @@ void	draw_wall(t_game *g)
 			dpx = BOX_SIZE / tan(ai * PI / 180.0);
 			if (ai < 0)
 				dpx = -dpx;
-			//printf("First Apx = %f, dpx = %.20e\n", Apx, dpx);
 			if (Apx < 0 && Apx >= g->map.pl)
 				dA = INFINI;
 			else
@@ -258,7 +255,6 @@ void	draw_wall(t_game *g)
 				printf("ty = %d\n", ty);
 			if (tx > BOX_SIZE - 1 || tx < 0)
 				printf("tx = %d\n", tx);
-			//*addr = g->tex_n + tx + BOX_SIZE * ty;
 			if (tx < BOX_SIZE && tx >= 0 && ty < BOX_SIZE && ty >= 0)
 				*addr = *(addr_t + tx + ty * tex->l);
 			addr += WIDTH;
