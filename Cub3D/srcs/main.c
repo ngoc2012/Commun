@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 22:37:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 22:39:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	end_game(t_game *g, int exit_code, char *s)
 		//ft_putstr_fd(s, 2);
 	if (g->ai0)
 		free(g->ai0);
+	if (g->cos_ai0)
+		free(g->cos_ai0);
 	if (g->ai)
 		free_array(g->ai, WIDTH);
 	if (g->tan_ai)
@@ -77,6 +79,7 @@ void	init(t_game *g)
 	g->mlx.img = 0;
 	g->ai = 0;
 	g->ai0 = 0;
+	g->cos_ai0 = 0;
 	g->tan_ai = 0;
 	g->cos_ai = 0;
 	g->sin_ai = 0;
@@ -90,6 +93,7 @@ int	precalcul(t_game *g)
 	double	Xp;
 
 	g->ai0 = malloc(sizeof(double) * WIDTH);
+	g->cos_ai0 = malloc(sizeof(double) * WIDTH);
 	g->ai = malloc(sizeof(double *) * WIDTH);
 	g->tan_ai = malloc(sizeof(double *) * WIDTH);
 	g->cos_ai = malloc(sizeof(double *) * WIDTH);
