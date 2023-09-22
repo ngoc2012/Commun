@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 14:26:13 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/22 10:15:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,20 @@ int	key_hook(int keycode, t_game *g)
  {
  	if (keycode == XK_Up || keycode == XK_Down)
 	{
+		double	dx;
+		double	dy;
+
+		dx = -(int) (TRANS_SPEED * cos(g->pos.alpha * PI / 180.0));
+		dy = (int) (TRANS_SPEED * sin(g->pos.alpha * PI / 180.0));
+
 		//printf("Key Up Down\n");
 		if (keycode == XK_Up)
 		{
-			g->pos.px += (int) (TRANS_SPEED * cos(g->pos.alpha * PI / 180.0));
-			g->pos.py -= (int) (TRANS_SPEED * sin(g->pos.alpha * PI / 180.0));
+			dx = -dx;
+			dy = -dy;
 		}
-		else
-		{
-			g->pos.px -= (int) (TRANS_SPEED * cos(g->pos.alpha * PI / 180.0));
-			g->pos.py += (int) (TRANS_SPEED * sin(g->pos.alpha * PI / 180.0));
-		}
+		g->pos.px += dx;
+		g->pos.py += dy;
 		redraw(g);
 		draw(g);
 	}
