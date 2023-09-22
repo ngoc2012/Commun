@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 06:51:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 06:55:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,8 @@ void	draw_wall(t_game *g)
 		}
 		int	x;
 		int	y;
+		int	tx;
+		int	ty;
 		int	h_slide;
 		double	h;
 		double	p;
@@ -221,12 +223,14 @@ void	draw_wall(t_game *g)
 			d = dB * cos(ai0 * PI / 180.0);
 			x = Bx;
 			y = By;
+			tx = (int) (Bpy - BOX_SIZE * (double) By);
 		}
 		else
 		{
 			d = dA * cos(ai0 * PI / 180.0);
 			x = Ax;
 			y = Ay;
+			tx = (int) (Apx - BOX_SIZE * (double) Ax);
 		}
 		if (d < 0)
 			d = -d;
