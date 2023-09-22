@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 18:10:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 18:13:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,8 +281,8 @@ void	draw_wall(t_game *g)
 				*addr = *(addr_t + tx + ty * tex->l);
 			addr += WIDTH;
 		}
-		yp = -1;
-		while (++yp < start)
+		yp = start + h_slide - 1;
+		while (++yp < HEIGHT)
 		{
 			dh = g->dpp * BOX_SIZE / 2 / (yp - HEIGHT / 2) / cos(ai0 * PI / 180.0);
 			xph = g->pos.px - dh * cos(ai * PI / 180.0);
