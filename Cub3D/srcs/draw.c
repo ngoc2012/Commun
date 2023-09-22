@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 22:26:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 22:31:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,10 @@ void	draw_wall(t_game *g)
 				Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 				dpy = BOX_SIZE;
 			}
-			Apx = g->pos.px + (g->pos.py - Apy) * cos(ai * PI / 180.0) / sin(ai * PI / 180.0);
-			dpx = BOX_SIZE * cos(ai * PI / 180.0) / sin(ai * PI / 180.0);
+			//Apx = g->pos.px + (g->pos.py - Apy) * cos(ai * PI / 180.0) / sin(ai * PI / 180.0);
+			//dpx = BOX_SIZE * cos(ai * PI / 180.0) / sin(ai * PI / 180.0);
+			Apx = g->pos.px + (g->pos.py - Apy) * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
+			dpx = BOX_SIZE * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
 			if (ai < 0)
 				dpx = -dpx;
 			Ay = Apy / BOX_SIZE;
@@ -172,7 +174,8 @@ void	draw_wall(t_game *g)
 					dA = INFINI;
 				else
 				{
-					dA = (g->pos.py - Apy) / sin(ai * PI / 180);
+					//dA = (g->pos.py - Apy) / sin(ai * PI / 180);
+					dA = (g->pos.py - Apy) / g->sin_ai[ix][g->pos.rot];
 					g->pos.Ax = Ax;
 					g->pos.Ay = Ay;
 				}
