@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 22:48:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 22:53:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,10 +280,6 @@ void	draw_wall(t_game *g)
 		while (++yp < h_slide)
 		{
 			ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp) / p);
-			if (ty > BOX_SIZE - 1 || ty < 0)
-				printf("ty = %d\n", ty);
-			if (tx > BOX_SIZE - 1 || tx < 0)
-				printf("tx = %d\n", tx);
 			if (tx < BOX_SIZE && tx >= 0 && ty < BOX_SIZE && ty >= 0)
 				*addr = *(addr_t + tx + ty * tex->l);
 			addr += WIDTH;
