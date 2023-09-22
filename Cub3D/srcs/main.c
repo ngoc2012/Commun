@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 19:09:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 19:11:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ void	end_game(t_game *g, int exit_code, char *s)
 	if (s)
 		ft_putstr_fd(s, 2);
 	free(g->ai);
+	free(g->ai0);
+	free(g->tan_ai);
+	free(g->cos_ai);
+	free(g->sin_ai);
 	exit(exit_code);
 }
 
