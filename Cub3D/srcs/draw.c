@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/21 22:14:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 04:57:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	draw_wall(t_game *g)
 	tol_l = 1.0 / (double) g->map.l / BOX_SIZE;
 	//printf("tol_h = %f, tol_l = %f\n", tol_h, tol_l);
 	//g->pos.alpha = 135;
-	int	deli = 0;
 	//ix = WIDTH / 2 - 1 + deli;
 	//while (++ix < WIDTH / 2 + 1 + deli)
 	ix = -1;
@@ -98,7 +97,6 @@ void	draw_wall(t_game *g)
 			dpy = BOX_SIZE * tan(ai * PI / 180.0);
 			if (ai * dpy > 0)
 				dpy = -dpy;
-			//printf("First Bpy = %f, dpy = %.20e\n", Bpy, dpy);
 			Bx = Bpx / BOX_SIZE;
 			By = g->pos.y;
 			while (!g->map.v[By][Bx])
@@ -111,8 +109,6 @@ void	draw_wall(t_game *g)
 			dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
 			g->pos.Bx = Bx;
 			g->pos.By = By;
-			//printf("v = %d, px = %f, Bpx = %f, x = %d, Bx = %d, dB = %f\n", g->map.v[By][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
-			//printf("v = %d, py = %f, Bpy = %f, y = %d, By = %d, dB = %f\n", g->map.v[By][Bx], g->pos.py, Bpy, g->pos.y, By, dB);
 		}
 		//else if (ai == 90.0)
 		else if ((90.0 - tol_h < ai && ai < 90.0 + tol_h) || (-90.0 - tol_h < ai && ai < -90.0 + tol_h))
@@ -254,7 +250,6 @@ void	draw_wall(t_game *g)
 		h_slide = (int) (BOX_SIZE / d * g->dpp);
 		if (h_slide > HEIGHT)
 			h_slide = HEIGHT;
-		int	xp;
 		int	yp;
 		int	*addr;
 		addr = (int *)g->mlx.addr;
