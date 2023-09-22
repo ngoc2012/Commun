@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 18:04:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 18:06:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,7 +258,7 @@ void	draw_wall(t_game *g)
 		yp = -1;
 		while (++yp < start)
 		{
-			dh = g->dpp * HEIGHT / 2 / (HEIGHT / 2 - yp) / cos(ai0 * PI / 180.0);
+			dh = g->dpp * BOX_SIZE / 2 / (HEIGHT / 2 - yp) / cos(ai0 * PI / 180.0);
 			xph = g->pos.px - dh * cos(ai * PI / 180.0);
 			yph = g->pos.py + dh * sin(ai * PI / 180.0);
 			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
