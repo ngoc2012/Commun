@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 10:23:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 10:24:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,20 +258,6 @@ void	draw_wall(t_game *g)
 			//*addr = g->tex_n + tx + BOX_SIZE * ty;
 			if (tx < BOX_SIZE && tx >= 0 && ty < BOX_SIZE && ty >= 0)
 				*addr = *(addr_t + tx + ty * g->tex_n.l);
-			//if (g->map.v[y][x] == 1)
-			//	*addr = create_trgb(1, 255, 0, 0);
-			//if (g->map.v[y][x] == 2)
-			//	*addr = create_trgb(1, 0, 255, 0);
-			//if (g->map.v[y][x] == 3)
-			//	*addr = create_trgb(1, 0, 0, 255);
-			//if (g->map.v[y][x] == 4)
-			//	*addr = create_trgb(1, 255, 255, 0);
-			//if (g->map.v[y][x] == 5)
-			//	*addr = create_trgb(1, 0, 255, 255);
-			//if (g->map.v[y][x] == 6)
-			//	*addr = create_trgb(1, 255, 0, 255);
-			//if (g->map.v[y][x] == 7)
-			//	*addr = create_trgb(1, 255, 255, 255);
 			addr += WIDTH;
 		}
 	}
@@ -307,29 +293,8 @@ void	draw_map(t_game *g)
 
 void	draw(t_game *g)
 {
-	/*
-	int	xp;
-	int	yp;
-	int	*addr;
-
-	addr = (int *)g->mlx.addr;
-	addr += 200;
-	addr += 50 * WIDTH;
-	yp = -1;
-	while (++yp < 100)
-	{
-		*addr = create_trgb(1, 255, 0, 0);
-		addr += WIDTH;
-		//xp = -1;
-		//while (++xp < WIDTH)
-		//	*(addr++) = create_trgb(1, 255, 0, 0);
-	}
-	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
-	*/
-
 	draw_wall(g);
 	//draw_map(g);
 	draw_mini_map(g);
 	//end_game(g, 0, 0);
-	//printf("g.h = %d, g.l = %d, g.x = %d, g.y = %d, g.dx = %d, g.dy = %d\n", g.h , g.l , g.x , g.y , g.dx , g.dy);
 }
