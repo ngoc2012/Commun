@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 10:53:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 10:54:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ int	main()
 	g.mlx.img = mlx_new_image(g.mlx.mlx, WIDTH, HEIGHT);
 	g.mlx.addr = mlx_get_data_addr(g.mlx.img, &g.mlx.bpp, &g.mlx.ll, &g.mlx.ed);
 	//printf("g.h = %d, g.l = %d, g.x = %d, g.y = %d, g.dx = %f, g.dy = %f\n", g.map.h , g.map.l , g.pos.x , g.pos.y , g.pos.dx , g.pos.dy);
-	get_textures(&g);
+	if (!get_textures(&g))
+	{
+		end_game(&g);
+	}
 	draw(&g);
 	mlx_loop(g.mlx.mlx);
 }
