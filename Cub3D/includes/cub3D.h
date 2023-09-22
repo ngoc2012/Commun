@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 09:36:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 09:48:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ typedef struct s_pos {
 
 /*
 mlx:
- bpp: bits par pixel
-- ll: ...
+- bpp: bits par pixel
+- ll: line size
 - ed: endian
 */
 typedef struct s_mlx {
@@ -96,9 +96,9 @@ typedef struct s_mlx {
 }	t_mlx;
 
 /*
-mlx:
- bpp: bits par pixel
-- ll: ...
+texture, images ...:
+- bpp: bits par pixel
+- ll: line size
 - ed: endian
 */
 typedef struct s_tex {
