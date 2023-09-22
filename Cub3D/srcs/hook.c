@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 10:21:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 21:04:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,10 @@ int	key_hook(int keycode, t_game *g)
 	if (keycode == XK_Right || keycode == XK_Left)
 	{
 		if (keycode == XK_Right)
-			g->pos.alpha -= ROT_SPEED;
+			g->pos.rot--;
 		else
-			g->pos.alpha += ROT_SPEED;
+			g->pos.rot++;
+		g->pos.alpha += g->pos.rot * ROT_SPEED;
 		g->pos.alpha = angle_convert(g->pos.alpha);
 		redraw(g);
 		draw(g);
