@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 19:18:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 19:21:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,19 @@ void	init(t_game *g)
 	//printf("dpp %d\n", g->dpp);
 }
 
+int	precalcul(t_game *g)
+{
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	g;
 
 	(void) argc;
 	init(&g);
-	if (!get_map(&g, argv[1]))
-		exit(EXIT_FAILURE);
+	if (!get_map(&g, argv[1]) || !precalcul(&g))
+		end_game(&g, EXIT_FAILURE, "Error map or memories\n");
 	g.mlx.mlx = mlx_init();
 	g.mlx.win = mlx_new_window(g.mlx.mlx, WIDTH, HEIGHT, "Cub3D");
 	if (!g.mlx.mlx || !g.mlx.win)
