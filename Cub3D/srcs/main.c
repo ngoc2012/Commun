@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 10:59:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 13:15:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ void	end_game(t_game *g, int exit_code, char *s)
 		mlx_destroy_image(g->mlx.mlx, g->tex_w.img);
 	if (g->tex_e.img)
 		mlx_destroy_image(g->mlx.mlx, g->tex_e.img);
+	if (g->tex_f.img)
+		mlx_destroy_image(g->mlx.mlx, g->tex_f.img);
+	if (g->tex_c.img)
+		mlx_destroy_image(g->mlx.mlx, g->tex_c.img);
 	if (g->mlx.img)
 		mlx_destroy_image(g->mlx.mlx, g->mlx.img);
 	mlx_destroy_window(g->mlx.mlx, g->mlx.win);
