@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 19:11:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 19:18:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,16 @@ void	end_game(t_game *g, int exit_code, char *s)
 	free_map(&g->map);
 	if (s)
 		ft_putstr_fd(s, 2);
-	free(g->ai);
-	free(g->ai0);
-	free(g->tan_ai);
-	free(g->cos_ai);
-	free(g->sin_ai);
+	if (g->ai)
+		free(g->ai);
+	if (g->ai0)
+		free(g->ai0);
+	if (g->tan_ai)
+		free(g->tan_ai);
+	if (g->cos_ai)
+		free(g->cos_ai);
+	if (g->sin_ai)
+		free(g->sin_ai);
 	exit(exit_code);
 }
 
@@ -60,6 +65,11 @@ void	init(t_game *g)
 	g->tex_f.img = 0;
 	g->tex_c.img = 0;
 	g->mlx.img = 0;
+	g->ai = 0;
+	g->ai0 = 0;
+	g->tan_ai = 0;
+	g->cos_ai = 0;
+	g->sin_ai = 0;
 	//printf("dpp %d\n", g->dpp);
 }
 
