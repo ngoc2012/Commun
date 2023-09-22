@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 22:55:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 22:57:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,6 @@ void	draw_wall(t_game *g)
 					dA = INFINI;
 				else
 				{
-					//dA = (g->pos.py - Apy) / sin(ai * PI / 180);
 					dA = (g->pos.py - Apy) / g->sin_ai[ix][g->pos.rot];
 					g->pos.Ax = Ax;
 					g->pos.Ay = Ay;
@@ -256,7 +255,7 @@ void	draw_wall(t_game *g)
 		yp = -1;
 		while (++yp < start)
 		{
-			dh = g->dpp * BOX_SIZE / 2 / (HEIGHT / 2 - yp) / g->cos_ai0[ix];
+			dh = g->dpp * BOX_SIZE / 2 / (HEIGHT / 2 - yp) * g->cos_ai0[ix];
 			xph = g->pos.px - dh * g->cos_ai[ix][g->pos.rot];
 			yph = g->pos.py + dh * g->sin_ai[ix][g->pos.rot];
 			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
@@ -276,7 +275,7 @@ void	draw_wall(t_game *g)
 		yp = start + h_slide - 1;
 		while (++yp < HEIGHT)
 		{
-			dh = g->dpp * BOX_SIZE / 2 / (yp - HEIGHT / 2) / g->cos_ai0[ix];
+			dh = g->dpp * BOX_SIZE / 2 / (yp - HEIGHT / 2) * g->cos_ai0[ix];
 			xph = g->pos.px - dh * g->cos_ai[ix][g->pos.rot];
 			yph = g->pos.py + dh * g->sin_ai[ix][g->pos.rot];
 			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
