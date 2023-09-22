@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 21:04:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 21:41:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	key_hook(int keycode, t_game *g)
 			g->pos.rot--;
 		else
 			g->pos.rot++;
-		g->pos.alpha = angle_convert(g->pos.rot * ROT_SPEED);
+		if (g->pos.rot < 0)
+			g->pos.rot += 360 / ROT_SPEED;
 		redraw(g);
 		draw(g);
 	}

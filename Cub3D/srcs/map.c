@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 21:35:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 21:40:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	get_position(t_game *g, int i, int j, char c)
 		if (c == 'N')
 			g->pos.rot = 90 / ROT_SPEED;
 		else if (c == 'S')
-			g->pos.rot = -90 / ROT_SPEED;
+			g->pos.rot = 270 / ROT_SPEED;
 		else if (c == 'W')
 			g->pos.rot = 180 / ROT_SPEED;
 		else if (c == 'E')
