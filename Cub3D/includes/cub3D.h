@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 09:21:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 09:28:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,20 @@ typedef struct s_mlx {
 }	t_mlx;
 
 /*
+mlx:
+ bpp: bits par pixel
+- ll: ...
+- ed: endian
+*/
+typedef struct s_tex {
+	int		bpp;
+	int		ll;
+	int		ed;
+	void	*img;
+	char	*addr;
+}	t_tex;
+
+/*
 main:
 - dpp : distance to Projection Plan
 */
@@ -104,14 +118,10 @@ typedef struct s_game {
 	t_pos		pos;
 	t_mlx		mlx;
 	int		dpp;
-	char	*tex_n;
-	char	*tex_s;
-	char	*tex_w;
-	char	*tex_e;
-	void	*tex_n_p;
-	void	*tex_s_p;
-	void	*tex_w_p;
-	void	*tex_e_p;
+	t_tex	*tex_n;
+	t_tex	*tex_s;
+	t_tex	*tex_w;
+	t_tex	*tex_e;
 	int		texWidth;
 	int		texHeight;
 }	t_game;
