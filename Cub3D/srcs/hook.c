@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 10:16:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 10:18:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	key_hook(int keycode, t_game *g)
 	{
 		double	dx;
 		double	dy;
-		double	x;
-		double	y;
+		int	x;
+		int	y;
 
 		dx = (int) (TRANS_SPEED * cos(g->pos.alpha * PI / 180.0));
 		dy = (int) (TRANS_SPEED * sin(g->pos.alpha * PI / 180.0));
@@ -31,12 +31,13 @@ int	key_hook(int keycode, t_game *g)
 			dx = -dx;
 			dy = -dy;
 		}
-		x = g->pos.px - dx;
-		y = g->pos.py + dy;
+		x = (int) (g->pos.px - dx);
+		y = (int) (g->pos.py + dy);
 		if (
-		;
+		{
 		redraw(g);
 		draw(g);
+		}
 	}
 	if (keycode == XK_Right || keycode == XK_Left)
 	{
