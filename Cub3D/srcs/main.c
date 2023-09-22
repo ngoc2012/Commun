@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 22:39:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 22:43:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,12 @@ int	precalcul(t_game *g)
 	while (++i < WIDTH)
 	{
 		Xp = WIDTH / 2 - i + 0.5;
-		g->ai0[i] = atan(Xp / g->dpp) * 180 / PI; 
-		g->ai[i] = malloc(sizeof(double) * 360 / ROT_SPEED);
-		g->tan_ai[i] = malloc(sizeof(double) * 360 / ROT_SPEED);
-		g->cos_ai[i] = malloc(sizeof(double) * 360 / ROT_SPEED);
-		g->sin_ai[i] = malloc(sizeof(double) * 360 / ROT_SPEED);
+		g->ai0[i] = atan(Xp / g->dpp) * 180.0 / PI; 
+		g->cos_ai0[i] = cos(g->ai0[i] * PI /180.0); 
+		g->ai[i] = malloc(sizeof(double) * 360.0 / ROT_SPEED);
+		g->tan_ai[i] = malloc(sizeof(double) * 360.0 / ROT_SPEED);
+		g->cos_ai[i] = malloc(sizeof(double) * 360.0 / ROT_SPEED);
+		g->sin_ai[i] = malloc(sizeof(double) * 360.0 / ROT_SPEED);
 		j = -1;
 		while (++j < 360 / ROT_SPEED)
 		{
