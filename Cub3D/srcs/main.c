@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 22:18:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 22:21:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,9 @@ int	precalcul(t_game *g)
 		while (++j < 360 / ROT_SPEED)
 		{
 			g->ai[i][j] = angle_convert(j * ROT_SPEED + g->ai0[i]);
+			g->tan_ai[i][j] = tan(g->ai[i][j] * PI / 180.0);
+			g->cos_ai[i][j] = cos(g->ai[i][j] * PI / 180.0);
+			g->sin_ai[i][j] = sin(g->ai[i][j] * PI / 180.0);
 		}
 	}
 	//ai = g->pos.alpha + ai0;
