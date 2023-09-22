@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 07:31:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 07:33:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	get_textures(t_game *g)
 {
-	//g->tex_n = mlx_xpm_file_to_image(g->mlx.mlx, "maps/redbrick.png", &g->texWidth, &g->texHeight);
-	g->tex_n = mlx_new_image(g->mlx.mlx, "maps/colorstone.xpm", BOX_SIZE, BOX_SIZE);
+	g->tex_n = mlx_xpm_file_to_image(g->mlx.mlx, "colorstone.xpm", &g->texWidth, &g->texHeight);
 	if (!g->tex_n)
 		printf("Fails\n");
 }
