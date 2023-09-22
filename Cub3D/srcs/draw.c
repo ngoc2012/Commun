@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 05:27:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 05:29:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,23 +64,15 @@ void	draw_wall(t_game *g)
 	// Angle tolerance 1 pixel / size
 	tol_h= 1.0 / (double) g->map.h / BOX_SIZE;
 	tol_l = 1.0 / (double) g->map.l / BOX_SIZE;
-	//printf("tol_h = %f, tol_l = %f\n", tol_h, tol_l);
-	//g->pos.alpha = 135;
-	//ix = WIDTH / 2 - 1 + deli;
-	//while (++ix < WIDTH / 2 + 1 + deli)
 	ix = -1;
 	while (++ix < WIDTH)
 	{
 		dA = 0.0;
 		dB = 0.0;
 		Xp = WIDTH / 2 - ix;
-		//printf("Xp = %d\n", Xp);
 		ai0 = atan((double) Xp / g->dpp) * 180 / PI; 
-		//printf("ai0 = %f\n", ai0);
 		ai = g->pos.alpha + ai0;
-		//printf("1 - ai = %f\n", ai);
 		ai = angle_convert(ai);
-		//printf("2 - ai = %f\n", ai);
 		if ((-tol_l < ai && ai < tol_l) || (180.0 - tol_l < ai) || ai < -(180.0 - tol_l))
 		{
 			if (ai < tol_l && ai > -tol_l)
@@ -247,7 +239,6 @@ void	draw_wall(t_game *g)
 		addr += ix;
 		int	start = HEIGHT / 2 - (int) h_slide / 2;
 		int	end = HEIGHT / 2 + (int) h_slide / 2;
-		//printf("%d dA = %f, dB = %f, d = %f, h_slide = %d, start = %d, end = %d\n", ix, dA, dB, d, h_slide, start, end);
 		addr += start * WIDTH;
 		yp = -1;
 		while (++yp < end - start)
