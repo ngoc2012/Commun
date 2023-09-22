@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 23:15:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 23:17:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	draw_wall(t_game *g)
 	{
 		dA = 0.0;
 		dB = 0.0;
-		ai0 = g->ai0[ix];
 		ai = g->ai[ix][g->pos.rot];
 		if ((-tol_l < ai && ai < tol_l) || (180.0 - tol_l < ai) || ai < -(180.0 - tol_l))
 		{
@@ -261,6 +260,8 @@ void	draw_wall(t_game *g)
 			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
 			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
 				*addr = *(addr_c + xh + yh * g->tex_c.l);
+			else
+				*addr = create_trgb(1, 255, 255, 0);
 			addr += WIDTH;
 		}
 		yp = -1;
@@ -281,6 +282,8 @@ void	draw_wall(t_game *g)
 			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
 			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
 				*addr = *(addr_f + xh + yh * g->tex_f.l);
+			else
+				*addr = create_trgb(1, 0, 255, 255);
 			addr += WIDTH;
 		}
 	}
