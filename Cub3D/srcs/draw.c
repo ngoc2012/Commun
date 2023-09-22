@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 06:45:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 06:51:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,7 +213,8 @@ void	draw_wall(t_game *g)
 		int	x;
 		int	y;
 		int	h_slide;
-		int	h_slide_d;
+		double	h;
+		double	p;
 		double	d;
 		if (dA > dB)
 		{
@@ -229,7 +230,8 @@ void	draw_wall(t_game *g)
 		}
 		if (d < 0)
 			d = -d;
-		h_slide_d = BOX_SIZE / d * g->dpp;
+		h = BOX_SIZE / d * g->dpp;
+		p = 1.0 / d * g->dpp;
 		h_slide = (int) (BOX_SIZE / d * g->dpp);
 		if (h_slide > HEIGHT)
 			h_slide = HEIGHT;
