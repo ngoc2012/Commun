@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 11:46:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 13:13:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ typedef struct s_game {
 	t_tex	tex_s;
 	t_tex	tex_w;
 	t_tex	tex_e;
+	t_tex	tex_f;
+	t_tex	tex_c;
 	int		texWidth;
 	int		texHeight;
 }	t_game;
