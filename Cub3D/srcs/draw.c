@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 10:01:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 10:03:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,7 +273,7 @@ void	draw_wall(t_game *g)
 	int	j = -1;
 
 	int	*addr_t;
-	printf("h = %d, l = %d\n", g->tex_n.h, g->tex_n.l);
+	//printf("h = %d, l = %d\n", g->tex_n.h, g->tex_n.l);
 	addr = (int *)g->mlx.addr;
 	addr_t = (int *)g->tex_n.addr;
 	while (++i < g->tex_n.h)
