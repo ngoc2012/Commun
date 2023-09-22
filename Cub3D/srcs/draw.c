@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 06:36:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 06:45:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,10 +238,9 @@ void	draw_wall(t_game *g)
 		addr = (int *)g->mlx.addr;
 		addr += ix;
 		int	start = HEIGHT / 2 - h_slide / 2;
-		int	end = HEIGHT / 2 + h_slide / 2;
 		addr += start * WIDTH;
 		yp = -1;
-		while (++yp < end - start)
+		while (++yp < h_slide)
 		{
 			if (g->map.v[y][x] == 1)
 				*addr = create_trgb(1, 255, 0, 0);
