@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 18:16:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 22:02:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ int	get_textures(t_game *g)
 	if (!g->tex_c.img)
 		return (0);
 	g->tex_c.addr = mlx_get_data_addr(g->tex_c.img, &g->tex_c.bpp, &g->tex_c.ll, &g->tex_c.ed);
+	return (1);
 }
