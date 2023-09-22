@@ -6,11 +6,10 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 06:11:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 06:12:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "cub3D.h"
 
 void	end_game(t_game *g, int exit_code, char *s)
