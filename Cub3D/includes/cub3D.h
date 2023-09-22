@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 05:38:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 05:59:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ typedef struct s_game {
 	void	*tex_s;
 	void	*tex_w;
 	void	*tex_e;
+	int		texWidth;
+	int		texHeight;
 }	t_game;
 
 void	free_map(t_map *m);
