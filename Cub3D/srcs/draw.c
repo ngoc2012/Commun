@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 05:29:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 05:30:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,10 @@ void	redraw(t_game *g)
 		while (++xp < WIDTH)
 			*(addr++) = 0;
 	}
-	//mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 }
  
 void	draw_wall(t_game *g)
 {
-	//printf("draw wall\n");
 	int	ix;
 	int	Xp;
 	double	ai;
@@ -280,14 +278,11 @@ void	draw_map(t_game *g)
 				printf(COLOR_BOLD_SLOW_BLINKING_CYAN "%d" COLOR_OFF, g->map.v[i][j]);
 			else if (i == g->pos.Ay && j == g->pos.Ax)
 				printf(COLOR_BOLD_SLOW_BLINKING_BLUE "%d" COLOR_OFF, g->map.v[i][j]);
-				//printf(COLOR_BOLD_SLOW_BLINKING_BLUE "A" COLOR_OFF);
 			else if (i == g->pos.By && j == g->pos.Bx)
 				printf(COLOR_BOLD_SLOW_BLINKING_GREEN "%d" COLOR_OFF, g->map.v[i][j]);
-				//printf(COLOR_BOLD_SLOW_BLINKING_GREEN "B" COLOR_OFF);
 			else
 				printf("%d", g->map.v[i][j]);
 			printf(" ");
-			//ft_putchar_fd(' ', 1);
 		}
 		printf("\n");
 	}
