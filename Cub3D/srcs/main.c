@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 19:21:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 19:23:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	end_game(t_game *g, int exit_code, char *s)
 	free(g->mlx.mlx);
 	free_map(&g->map);
 	if (s)
-		ft_putstr_fd(s, 2);
+		perror(s);
+		//ft_putstr_fd(s, 2);
 	if (g->ai)
 		free(g->ai);
 	if (g->ai0)
@@ -89,7 +90,7 @@ int	main(int argc, char **argv)
 	g.mlx.mlx = mlx_init();
 	g.mlx.win = mlx_new_window(g.mlx.mlx, WIDTH, HEIGHT, "Cub3D");
 	if (!g.mlx.mlx || !g.mlx.win)
-		exit(EXIT_FAILURE);
+		end_game(&g, EXIT_FAILURE, "Error mlx\n");
 	mlx_key_hook(g.mlx.win, key_hook, &g);
 	//mlx_mouse_hook(g.win, mouse_hook, p);
 	//mlx_loop_hook(g.mlx, loop_hook, p);
