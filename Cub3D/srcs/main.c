@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 22:11:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 22:12:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	end_game(t_game *g, int exit_code, char *s)
 	if (g->ai0)
 		free(g->ai0);
 	if (g->ai)
-		free_array(g->ai);
+		free_array(g->ai, WIDTH);
 	if (g->tan_ai)
 		free_array(g->tan_ai, WIDTH);
 	if (g->cos_ai)
