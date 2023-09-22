@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 05:59:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 06:10:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,6 @@ void	end_game(t_game *g, int exit_code, char *s);
 void	draw_mini_map(t_game *g);
 double	angle_convert(double a);
 void	redraw(t_game *g);
+void	get_textures(t_game *g);
 
 #endif
