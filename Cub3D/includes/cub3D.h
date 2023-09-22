@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 16:01:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 16:53:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 # define WIDTH 1800
 # define HEIGHT 1200
-# define FOV 60
+# define FOV 90
 # define BOX_SIZE 64
 # define TRANS_SPEED 20
 # define ROT_SPEED 12
