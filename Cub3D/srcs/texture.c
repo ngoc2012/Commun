@@ -6,11 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 05:58:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 06:00:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	get_textures(t_game *g)
 {
-	g->tex_n = mlx_xpm_file_to_image(m->mlx.mlx, "maps/redbrick.png", &m->tex.texwidth, &m->tex.texheight)
+	g->tex_n = mlx_xpm_file_to_image(g->mlx.mlx, "maps/redbrick.png", &g->texWidth, &g->texHeight);
 }
