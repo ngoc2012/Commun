@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 13:15:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 13:19:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	init(t_game *g)
 	g->tex_s.img = 0;
 	g->tex_w.img = 0;
 	g->tex_e.img = 0;
+	g->tex_f.img = 0;
+	g->tex_c.img = 0;
 	g->mlx.img = 0;
 	//printf("dpp %d\n", g->dpp);
 }
