@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 11:34:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 11:37:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	draw_wall(t_game *g)
 	double	tol_l;
 	int	*addr;
 	int	*addr_t;
+	t_tex	*tex;
 
 	g->pos.Ax = -1;
 	g->pos.Ay = -1;
@@ -222,11 +223,16 @@ void	draw_wall(t_game *g)
 		{
 			d = dB * cos(ai0 * PI / 180.0);
 			tx = (int) (Bpy - BOX_SIZE * (double) By);
+			tex = &g->tex_w;
 		}
 		else
 		{
 			d = dA * cos(ai0 * PI / 180.0);
 			tx = (int) (Apx - BOX_SIZE * (double) Ax);
+			if (ai > 0)
+				tex = &g->tex_n;
+			else
+				tex = &g->tex_s;
 		}
 		if (d < 0)
 			d = -d;
@@ -237,8 +243,6 @@ void	draw_wall(t_game *g)
 			h_slide = HEIGHT;
 		int	yp;
 		addr = (int *)g->mlx.addr;
-		t_tex	*tex;
-		tex = &g->tex_n;
 		addr_t = (int *)tex->addr;
 		addr += ix;
 		int	start = HEIGHT / 2 - h_slide / 2;
