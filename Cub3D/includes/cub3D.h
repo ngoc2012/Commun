@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 22:01:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 22:07:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,8 @@ typedef struct s_game {
 	t_tex	tex_e;
 	t_tex	tex_f;
 	t_tex	tex_c;
-	double	*ai;
 	double	*ai0;
+	double	**ai;
 	double	**tan_ai;
 	double	**cos_ai;
 	double	**sin_ai;
