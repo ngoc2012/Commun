@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 19:37:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 19:44:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	init(t_game *g)
 	g->pos.x = 0;
 	g->pos.y = 0;
 	g->pos.alpha = 90;
-	g->pos.alpha = 90;
+	g->pos.rot = 0;
 	g->dpp = (int) WIDTH / 2 / tan(PI /180 * FOV / 2);
 	g->tex_n.img = 0;
 	g->tex_s.img = 0;
