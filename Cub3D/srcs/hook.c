@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 21:43:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 23:21:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	key_hook(int keycode, t_game *g)
 			g->pos.py += dy;
 			g->pos.x = x;
 			g->pos.y = y;
+			printf("x = %f, y = %f\n", g->pos.px, g->pos.py);
 			redraw(g);
 			draw(g);
 		}
