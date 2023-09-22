@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 10:03:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 10:05:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	draw_wall(t_game *g)
 	double	tol_h;
 	double	tol_l;
 	int	*addr;
+	int	*addr_t;
 
 	g->pos.Ax = -1;
 	g->pos.Ay = -1;
@@ -242,6 +243,7 @@ void	draw_wall(t_game *g)
 			h_slide = HEIGHT;
 		int	yp;
 		addr = (int *)g->mlx.addr;
+		addr_t = (int *)g->tex_n.addr;
 		addr += ix;
 		int	start = HEIGHT / 2 - h_slide / 2;
 		addr += start * WIDTH;
@@ -252,40 +254,41 @@ void	draw_wall(t_game *g)
 			if (ty > BOX_SIZE - 1)
 				printf("ty = %d\n", ty);
 			//*addr = g->tex_n + tx + BOX_SIZE * ty;
-			if (g->map.v[y][x] == 1)
-				*addr = create_trgb(1, 255, 0, 0);
-			if (g->map.v[y][x] == 2)
-				*addr = create_trgb(1, 0, 255, 0);
-			if (g->map.v[y][x] == 3)
-				*addr = create_trgb(1, 0, 0, 255);
-			if (g->map.v[y][x] == 4)
-				*addr = create_trgb(1, 255, 255, 0);
-			if (g->map.v[y][x] == 5)
-				*addr = create_trgb(1, 0, 255, 255);
-			if (g->map.v[y][x] == 6)
-				*addr = create_trgb(1, 255, 0, 255);
-			if (g->map.v[y][x] == 7)
-				*addr = create_trgb(1, 255, 255, 255);
+			*addr = *(addr_t + tx + ty * g->tex_n.l);
+			//if (g->map.v[y][x] == 1)
+			//	*addr = create_trgb(1, 255, 0, 0);
+			//if (g->map.v[y][x] == 2)
+			//	*addr = create_trgb(1, 0, 255, 0);
+			//if (g->map.v[y][x] == 3)
+			//	*addr = create_trgb(1, 0, 0, 255);
+			//if (g->map.v[y][x] == 4)
+			//	*addr = create_trgb(1, 255, 255, 0);
+			//if (g->map.v[y][x] == 5)
+			//	*addr = create_trgb(1, 0, 255, 255);
+			//if (g->map.v[y][x] == 6)
+			//	*addr = create_trgb(1, 255, 0, 255);
+			//if (g->map.v[y][x] == 7)
+			//	*addr = create_trgb(1, 255, 255, 255);
 			addr += WIDTH;
 		}
 	}
-	int	i = -1;
-	int	j = -1;
+	//int	i = -1;
+	//int	j = -1;
 
-	int	*addr_t;
-	//printf("h = %d, l = %d\n", g->tex_n.h, g->tex_n.l);
-	addr = (int *)g->mlx.addr;
-	addr_t = (int *)g->tex_n.addr;
-	while (++i < g->tex_n.h)
-	{
-		j = -1;
-		while (++j < g->tex_n.l)
-		{
-			//*(addr + i + WIDTH * j) = *(addr_t + i * g->tex_n.bpp / 8 + g->tex_n.ll*j);
-			*(addr + i + WIDTH * j) = *(addr_t + i + j * g->tex_n.l);
-			//*addr = *((int *) (g->tex_n + i + BOX_SIZE * j));
-		}
-	}
+	//int	*addr_t;
+	////printf("h = %d, l = %d\n", g->tex_n.h, g->tex_n.l);
+	//addr = (int *)g->mlx.addr;
+	//addr_t = (int *)g->tex_n.addr;
+	//while (++i < g->tex_n.h)
+	//{
+	//	j = -1;
+	//	while (++j < g->tex_n.l)
+	//	{
+	//		//*(addr + i + WIDTH * j) = *(addr_t + i * g->tex_n.bpp / 8 + g->tex_n.ll*j);
+	//		*(addr + i + WIDTH * j) = *(addr_t + i + j * g->tex_n.l);
+	//		//*addr = *((int *) (g->tex_n + i + BOX_SIZE * j));
+	//	}
+	//}
 	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 }
 
