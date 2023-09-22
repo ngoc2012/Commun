@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 19:35:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 19:37:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	precalcul(t_game *g)
 	i = -1;
 	while (++i < WIDTH)
 	{
-		Xp = WIDTH / 2 - ix;
+		Xp = WIDTH / 2 - i + 0.5;
 		g->ai0[i] = atan(Xp / g->dpp) * 180 / PI; 
 	}
 	//ai = g->pos.alpha + ai0;
