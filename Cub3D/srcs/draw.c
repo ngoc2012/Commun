@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 04:57:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 05:27:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,6 @@ void	draw_wall(t_game *g)
 			dB = INFINI;
 			g->pos.Ax = Ax;
 			g->pos.Ay = Ay;
-			//printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
-			//printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
 		}
 		else
 		{
@@ -182,8 +180,6 @@ void	draw_wall(t_game *g)
 					dA = (g->pos.py - Apy) / sin(ai * PI / 180);
 					g->pos.Ax = Ax;
 					g->pos.Ay = Ay;
-					//printf("v = %d, px = %f, Apx = %f, x = %d, Ax = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.px, Apx, g->pos.x, Ax, dA);
-					//printf("v = %d, py = %f, Apy = %f, y = %d, Ay = %d, dA = %f\n", g->map.v[Ay][Ax], g->pos.py, Apy, g->pos.y, Ay, dA);
 				}
 			}
 			//Find B
@@ -201,7 +197,6 @@ void	draw_wall(t_game *g)
 			dpy = BOX_SIZE * tan(ai * PI / 180.0);
 			if (ai * dpy > 0)
 				dpy = -dpy;
-			//printf("First Bpy = %f, dpy = %.20e, ph = %d\n", Bpy, dpy, g->map.ph);
 			if (Bpy < 0 || Bpy >= g->map.ph)
 				dB = INFINI;
 			else
@@ -210,13 +205,11 @@ void	draw_wall(t_game *g)
 				By = Bpy / BOX_SIZE;
 				while (Bpy >= 0 && Bpy < g->map.ph && !g->map.v[By][Bx])
 				{
-					//printf("Bpy = %f, By = %d, Bx = %d, v = %d\n", Bpy, By, Bx, g->map.v[By][Bx]);
 					Bpx += dpx;
 					Bpy += dpy;
 					Bx = Bpx / BOX_SIZE;
 					By = Bpy / BOX_SIZE;
 				}
-				//printf("Second Bpy = %f, dpy = %.20e, ph = %d\n", Bpy, dpy, g->map.ph);
 				if (Bpy < 0 || Bpy >= g->map.ph)
 					dB = INFINI;
 				else
@@ -224,8 +217,6 @@ void	draw_wall(t_game *g)
 					dB = (Bpx - g->pos.px) / cos(ai * PI / 180.0);
 					g->pos.Bx = Bx;
 					g->pos.By = By;
-					//printf("v = %d, px = %f, Bpx = %f, x = %d, Bx = %d, dB = %f\n", g->map.v[By][Bx], g->pos.px, Bpx, g->pos.x, Bx, dB);
-					//printf("v = %d, py = %f, Bpy = %f, y = %d, By = %d, dB = %f\n", g->map.v[By][Bx], g->pos.py, Bpy, g->pos.y, By, dB);
 				}
 			}
 		}
