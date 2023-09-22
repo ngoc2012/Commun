@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 09:28:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 09:32:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,10 +118,10 @@ typedef struct s_game {
 	t_pos		pos;
 	t_mlx		mlx;
 	int		dpp;
-	t_tex	*tex_n;
-	t_tex	*tex_s;
-	t_tex	*tex_w;
-	t_tex	*tex_e;
+	t_tex	tex_n;
+	t_tex	tex_s;
+	t_tex	tex_w;
+	t_tex	tex_e;
 	int		texWidth;
 	int		texHeight;
 }	t_game;
