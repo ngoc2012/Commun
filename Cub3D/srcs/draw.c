@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 19:36:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/22 19:40:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ void	draw_wall(t_game *g)
 	{
 		dA = 0.0;
 		dB = 0.0;
-		//Xp = WIDTH / 2 - ix;
-		//ai0 = atan((double) Xp / g->dpp) * 180 / PI; 
 		ai0 = g->ai0[ix];
 		ai = g->pos.alpha + ai0;
 		ai = angle_convert(ai);
