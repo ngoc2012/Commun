@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 18:50:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 18:53:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	get_texture(t_game *g, e_tex it, char *path)
+int	get_texture(t_game *g, enum e_tex it, char *path)
 {
 	g->tex[it].img = mlx_xpm_file_to_image(g->mlx.mlx, path, &g->tex[it].l, &g->tex[it].h);
 	if (!g->tex[it].img)
