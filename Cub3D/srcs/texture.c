@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 18:29:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 18:31:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	get_texture(t_game *g, e_tex it, char *path)
 int	get_textures(t_game *g, char *fn)
 {
 	get_texture(g, NO, "./walls/beamskin3.xpm");
-	get_texture(g, SO, "./walls/floorskin1695480473.xpm");
-	get_texture(g, WE, "./walls/floorskin1695480473.xpm");
-	get_texture(g, EA, "./walls/floorskin1695480473.xpm");
-	get_texture(g, DO, "./walls/floorskin1695480473.xpm");
+	get_texture(g, SO, "./walls/tile32.xpm");
+	get_texture(g, WE, "./walls/tile105.xpm");
+	get_texture(g, EA, "./walls/steelwall6.xpm");
+	get_texture(g, DO, "./walls/bigdoor.xpm");
 	get_texture(g, FL, "./walls/floorsteel.xpm");
-	get_texture(g, CL, "./walls/floorskin1695480473.xpm");
+	get_texture(g, CL, "./walls/floorskin.xpm");
 	get_texture(g, SO, "./walls/floorskin1695480473.xpm");
 	get_texture(g, SO, "./walls/floorskin1695480473.xpm");
 	get_texture(g, SO, "./walls/floorskin1695480473.xpm");
