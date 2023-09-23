@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 12:03:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 17:55:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	end_game(t_game *g, int exit_code, char *s)
 
 void	init(t_game *g)
 {
+	int	i;
+
 	g->map.h = 0;
 	g->map.l = 0;
 	g->map.ph = 0;
@@ -73,12 +75,12 @@ void	init(t_game *g)
 	g->pos.y = 0;
 	g->pos.rot = 0;
 	g->dpp = (int) WIDTH / 2 / tan(PI /180 * FOV / 2);
-	g->tex_n.img = 0;
-	g->tex_s.img = 0;
-	g->tex_w.img = 0;
-	g->tex_e.img = 0;
-	g->tex_f.img = 0;
-	g->tex_c.img = 0;
+	i = -1;
+	while (++i < N_TEX)
+	{
+		g->tex[i].img = 0;
+		g->tex[i].path = 0;
+	}
 	g->mlx.img = 0;
 	g->mlx.img_scale = 0;
 	g->ai = 0;
@@ -87,7 +89,6 @@ void	init(t_game *g)
 	g->tan_ai = 0;
 	g->cos_ai = 0;
 	g->sin_ai = 0;
-	//printf("dpp %d\n", g->dpp);
 }
 
 int	precalcul(t_game *g)
