@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 19:15:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 19:18:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 # define COLOR_BOLD  "\033[1m"
 # define COLOR_OFF   "\033[m"
 # define N_TEX 11
-# define MAP_CHAR " \n0123456789NSWE"
+# define MAP_CHAR " \n0123456NSWE"
 
 /*
 NO: North walls
