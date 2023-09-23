@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 17:26:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 18:44:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,12 @@ EA: East walls
 DO: Door
 FL: Floor
 CL: Ceiling
-SP: Sprite (2)
 D3: Decor 3 (3)
 D4: Decor 4 (4)
 D5: Decor 5 (5)
 D6: Decor 6 (6)
 */
-enum e_tex {NO, SO, WE, EA, DO, FL, CL, SP, D3, D4, D5, D6};
+enum e_tex {NO, SO, WE, EA, DO, FL, CL, D3, D4, D5, D6};
 
 /*
 Map:
