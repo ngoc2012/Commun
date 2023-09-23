@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 12:12:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 12:33:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,8 +160,8 @@ void	draw_wall(t_game *g)
 				{
 					Apx += dpx;
 					Apy += dpy;
-					Ax = Apx / BOX_SIZE;
-					//Ax = (Apx + 1) / BOX_SIZE;
+					//Ax = Apx / BOX_SIZE;
+					Ax = (Apx + 1) / BOX_SIZE;
 					Ay = Apy / BOX_SIZE;
 				}
 				if (Apx < 0 || Apx >= g->map.pl)
@@ -262,8 +262,6 @@ void	draw_wall(t_game *g)
 			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
 			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
 				*addr = *(addr_c + xh + yh * g->tex_c.l);
-				//printf("cos = %f, dh = %f, px = %f, py = %f, rot = %d, xph = %f, yph = %f, xh = %d, yh = %d\n",
-				//g->cos_ai0[ix], dh, g->pos.px, g->pos.py, g->pos.rot, xph, yph, xh, yh);
 			addr += WIDTH;
 		}
 		yp = -1;
