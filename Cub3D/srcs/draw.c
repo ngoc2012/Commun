@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 11:20:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 11:29:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,6 +250,7 @@ void	draw_wall(t_game *g)
 		double	dh;
 		int	xh;
 		int	yh;
+		int	v;
 		double	xph;
 		double	yph;
 		yp = -1;
@@ -265,7 +266,14 @@ void	draw_wall(t_game *g)
 			//	int	i = -1;
 			//while (++i < SCALE)
 			//{
-				*addr = *(addr_c + xh + yh * g->tex_c.l);
+				v = *(addr_c + xh + yh * g->tex_c.l);
+				int	i = -1;
+				while (++i < SCALE)
+				{
+					int	j = -1;
+					while (++j < SCALE)
+						addr[i + j * WIDTH * SCALE] = v;
+				}
 				//printf("cos = %f, dh = %f, px = %f, py = %f, rot = %d, xph = %f, yph = %f, xh = %d, yh = %d\n",
 				//g->cos_ai0[ix], dh, g->pos.px, g->pos.py, g->pos.rot, xph, yph, xh, yh);
 			}
