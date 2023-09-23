@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 14:05:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 14:07:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	get_textures(t_game *g)
 {
-	g->tex_n.img = mlx_xpm_file_to_image(g->mlx.mlx, "./colorstone.xpm", &g->tex_n.l, &g->tex_n.h);
+	g->tex_n.img = mlx_xpm_file_to_image(g->mlx.mlx, "./pics/colorstone.xpm", &g->tex_n.l, &g->tex_n.h);
 	if (!g->tex_n.img)
 		return (0);
 	g->tex_n.addr = mlx_get_data_addr(g->tex_n.img, &g->tex_n.bpp, &g->tex_n.ll, &g->tex_n.ed);
