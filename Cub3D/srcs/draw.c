@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 08:49:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 09:02:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,8 +254,8 @@ void	draw_wall(t_game *g)
 		while (++yp < start)
 		{
 			dh = g->dpp * BOX_SIZE / 2 / (HEIGHT / 2 - yp) * g->cos_ai0[ix];
-			xph = g->pos.px - dh * g->cos_ai[ix][g->pos.rot];
-			yph = g->pos.py + dh * g->sin_ai[ix][g->pos.rot];
+			xph = g->pos.px + dh * g->cos_ai[ix][g->pos.rot];
+			yph = g->pos.py - dh * g->sin_ai[ix][g->pos.rot];
 			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
 			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
 			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
@@ -280,8 +280,8 @@ void	draw_wall(t_game *g)
 		while (++yp < HEIGHT)
 		{
 			dh = g->dpp * BOX_SIZE / 2 / (yp - HEIGHT / 2) * g->cos_ai0[ix];
-			xph = g->pos.px - dh * g->cos_ai[ix][g->pos.rot];
-			yph = g->pos.py + dh * g->sin_ai[ix][g->pos.rot];
+			xph = g->pos.px + dh * g->cos_ai[ix][g->pos.rot];
+			yph = g->pos.py - dh * g->sin_ai[ix][g->pos.rot];
 			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
 			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
 			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
