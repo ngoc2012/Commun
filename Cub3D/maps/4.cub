@@ -4,7 +4,9 @@ WE ./path_to_the_west_texture
 EA ./path_to_the_east_texture
 F 220,100,0
 C 225,30,0
-DOOR ./path
+D ./path
+FT ./path
+CT ./path
 
 11111111111111111111111111111111111111111
 10000000000000001000000000000010000000001
