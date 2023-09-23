@@ -1,8 +1,8 @@
 NO ./walls/eagle.xpm
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
-DO ./path
+SO ./walls/bluestone.xpm
+WE ./walls/redbrick.xpm
+EA ./walls/mossy.xpm
+DO ./walls/door101.xpm
 FL ./path
 CL ./path
 F 220,100,0
