@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 19:36:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 19:38:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	get_texture(t_game *g, enum e_tex it, char *path)
 {
-	printf("%s\n", path);
 	if (g->tex[it].img)
 		mlx_destroy_image(g->mlx.mlx, g->tex[it].img);
 	g->tex[it].img = mlx_xpm_file_to_image(g->mlx.mlx, path, &g->tex[it].l, &g->tex[it].h);
@@ -26,7 +25,6 @@ int	get_texture(t_game *g, enum e_tex it, char *path)
 
 int	return_error(char *s, char **ss)
 {
-	printf("return_error\n");
 	free_array_str(&ss, 0);
 	free(s);
 	return (0);
@@ -84,6 +82,7 @@ int	get_textures(t_game *g, char *fn)
 				if (!ft_strncmp("D6", ss[0], 3) && !get_texture(g, D6, ss[1]))
 					return (return_error(s, ss));
 			}
+			free_array_str(&ss, 0);
 		}
 		free(s);
 		s = get_next_line(fd);
