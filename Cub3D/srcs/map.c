@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 17:52:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 19:14:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ static void	get_position(t_game *g, int i, int j, char c)
 		else if (c == 'E')
 			g->pos.rot = 0;
 	}
+}
+
+int	check_map(char *s)
+{
 }
 
 int	get_map(t_game *g, char *fn)
