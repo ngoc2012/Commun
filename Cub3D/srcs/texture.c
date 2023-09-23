@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 19:32:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 19:34:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ int	get_texture(t_game *g, enum e_tex it, char *path)
 
 int	return_error(char *s, char **ss)
 {
-	free(s);
+	printf("return_error\n");
 	free_array_str(&ss, 0);
+	free(s);
 	return (0);
 }
 
