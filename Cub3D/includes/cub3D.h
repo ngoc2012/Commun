@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 23:15:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 10:23:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # include "libft.h"
 # include "get_next_line.h"
 
-# define WIDTH 1600
-# define HEIGHT 600
+# define WIDTH 1200
+# define HEIGHT 400
 # define FOV 90
 # define BOX_SIZE 64
 # define TRANS_SPEED 20
