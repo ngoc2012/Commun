@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 11:13:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 11:17:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,7 +245,7 @@ void	draw_wall(t_game *g)
 		int	yp;
 		addr = (int *)g->mlx.addr;
 		addr_t = (int *)tex->addr;
-		addr += ix;
+		addr += ix * SCALE;
 		int	start = HEIGHT / 2 - h_slide / 2;
 		double	dh;
 		int	xh;
@@ -261,9 +261,14 @@ void	draw_wall(t_game *g)
 			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
 			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
 			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
+			{
+			//	int	i = -1;
+			//while (++i < SCALE)
+			//{
 				*addr = *(addr_c + xh + yh * g->tex_c.l);
 				//printf("cos = %f, dh = %f, px = %f, py = %f, rot = %d, xph = %f, yph = %f, xh = %d, yh = %d\n",
 				//g->cos_ai0[ix], dh, g->pos.px, g->pos.py, g->pos.rot, xph, yph, xh, yh);
+			}
 			addr += WIDTH * SCALE;
 		}
 		yp = -1;
