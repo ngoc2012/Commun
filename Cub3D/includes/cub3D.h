@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 17:04:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 17:07:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # define COLOR_OFF   "\033[m"
 # define N_TEX 7
 
-enum e_tex {NO, SO, WE, EA, DO, FL, CL};
+enum e_tex {NO, SO, WE, EA, DO, FL, CL, SP};
 
 /*
 Map:
