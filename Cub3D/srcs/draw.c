@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 12:07:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 12:09:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,21 +288,21 @@ void	draw_wall(t_game *g)
 		}
 	}
 	// Scale
-	//if (SCALE > 1)
-	//{
-	//	int	x;
-	//	int	y;
-	//	y = HEIGHT * SCALE;
-	//	while (--y >= 0)
-	//	{
+	if (SCALE > 1)
+	{
+		int	x;
+		int	y;
+		y = HEIGHT;
+		while (--y >= 0)
+		{
 
-	//		x = WIDTH * SCALE;
-	//		while (--x >= 0)
-	//			*((int*) g->mlx.addr_scale + x + y * WIDTH * SCALE) = *((int*) g->mlx.addr + x / SCALE + y * WIDTH);
-	//	}
-	//	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img_scale, 0, 0);
-	//}
-	//else
+			x = WIDTH * SCALE;
+			while (--x >= 0)
+				*((int*) g->mlx.addr_scale + x + y * WIDTH * SCALE) = *((int*) g->mlx.addr + x / SCALE + y * WIDTH);
+		}
+		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img_scale, 0, 0);
+	}
+	else
 		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 }
 
