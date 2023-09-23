@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 17:14:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 17:17:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define COLOR_BOLD_BLUE               "\033[1;34m"
 # define COLOR_BOLD  "\033[1m"
 # define COLOR_OFF   "\033[m"
-# define N_TEX 7
+# define N_TEX 12
 
 /*
 NO: North walls
@@ -55,11 +55,11 @@ EA: East walls
 DO: Door
 FL: Floor
 CL: Ceiling
-SP: Sprite (P)
-DC1: Decor 2 (2)
-DC2: Decor 3 (3)
-DC3: Decor 4 (4)
-DC4: Decor 5 (5)
+SP: Sprite (2)
+D3: Decor 3 (3)
+D4: Decor 4 (4)
+D5: Decor 5 (5)
+D6: Decor 6 (6)
 */
 enum e_tex {NO, SO, WE, EA, DO, FL, CL, SP, DC1, DC2, DC3, DC4};
 
