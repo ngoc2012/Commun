@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 09:59:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 10:01:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,8 @@ void	draw_wall(t_game *g)
 				{
 					Apx += dpx;
 					Apy += dpy;
-					Ax = Apx / BOX_SIZE;
+					//Ax = Apx / BOX_SIZE;
+					Ax = (Apx + 1) / BOX_SIZE;
 					Ay = Apy / BOX_SIZE;
 				}
 				if (Apx < 0 || Apx >= g->map.pl)
