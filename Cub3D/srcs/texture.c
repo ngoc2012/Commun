@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 19:05:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 19:07:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int	get_textures(t_game *g, char *fn)
 	get_texture(g, D4, "./sprites/d_table.xpm");
 	get_texture(g, D5, "./sprites/d_tree.xpm");
 	get_texture(g, D6, "./sprites/i_health.xpm");
+	fd = open(fn, O_RDONLY);
+	if (fd == -1)
+		return (0);
 	s = get_next_line(fd);
 	while (s)
 	{
@@ -43,12 +46,11 @@ int	get_textures(t_game *g, char *fn)
 		{
 			s[ft_strlen(s) - 2] = 0;
 			ss = ft_split(s, ' ');
+			if (ft_strncmp("NO", ss[0], 3))
+				get_texture(g, NO, "./walls/beamskin3.xpm");
 		}
 		free(s);
 		s = get_next_line(fd);
 	}
 	close(fd);
-	//fd = open(fn, O_RDONLY);
-	//if (fd == -1)
-	//	return (0);
 }
