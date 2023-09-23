@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 16:59:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 17:03:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@
 # define COLOR_BOLD  "\033[1m"
 # define COLOR_OFF   "\033[m"
 
-enum e_tex {}
+enum e_tex {NO, SO, WE, EA, DO, FL, CL};
+
 /*
 Map:
 - v: value 0,1
@@ -125,12 +126,7 @@ typedef struct s_game {
 	t_pos		pos;
 	t_mlx		mlx;
 	int		dpp;
-	t_tex	tex_n;
-	t_tex	tex_s;
-	t_tex	tex_w;
-	t_tex	tex_e;
-	t_tex	tex_f;
-	t_tex	tex_c;
+	t_tex	tex[7];
 	double	*ai0;
 	double	*cos_ai0;
 	double	**ai;
