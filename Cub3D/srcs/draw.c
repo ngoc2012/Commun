@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 10:31:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 10:34:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,7 +287,7 @@ void	draw_wall(t_game *g)
 			addr += WIDTH;
 		}
 	}
-	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0, WIDTH * SCALE, HEIGHT * SCALE);
+	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 }
 
 void	draw_map(t_game *g)
