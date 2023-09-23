@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 18:53:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 19:05:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	get_texture(t_game *g, enum e_tex it, char *path)
 {
+	if (g->tex[it].img)
+		mlx_destroy_image(g->mlx.mlx, g->tex[it].img);
 	g->tex[it].img = mlx_xpm_file_to_image(g->mlx.mlx, path, &g->tex[it].l, &g->tex[it].h);
 	if (!g->tex[it].img)
 		return (0);
@@ -21,7 +23,7 @@ int	get_texture(t_game *g, enum e_tex it, char *path)
 	return (1);
 }
 
-int	get_textures(t_game *g)
+int	get_textures(t_game *g, char *fn)
 {
 	get_texture(g, NO, "./walls/beamskin3.xpm");
 	get_texture(g, SO, "./walls/tile32.xpm");
@@ -34,6 +36,18 @@ int	get_textures(t_game *g)
 	get_texture(g, D4, "./sprites/d_table.xpm");
 	get_texture(g, D5, "./sprites/d_tree.xpm");
 	get_texture(g, D6, "./sprites/i_health.xpm");
+	s = get_next_line(fd);
+	while (s)
+	{
+		if (ft_strlen(s) > 1)
+		{
+			s[ft_strlen(s) - 2] = 0;
+			ss = ft_split(s, ' ');
+		}
+		free(s);
+		s = get_next_line(fd);
+	}
+	close(fd);
 	//fd = open(fn, O_RDONLY);
 	//if (fd == -1)
 	//	return (0);
