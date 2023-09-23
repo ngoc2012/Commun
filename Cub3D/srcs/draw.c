@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 18:49:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 18:50:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	draw_wall(t_game *g)
 	int	*addr_c;
 	t_tex	*tex;
 
-	addr_f = (int *)g->tex_f.addr;
-	addr_c = (int *)g->tex_c.addr;
+	addr_f = (int *)g->tex[FL].addr;
+	addr_c = (int *)g->tex[CL].addr;
 	g->pos.Ax = -1;
 	g->pos.Ay = -1;
 	g->pos.Bx = -1;

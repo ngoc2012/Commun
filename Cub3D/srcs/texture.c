@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 18:46:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 18:50:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	get_texture(t_game *g, e_tex it, char *path)
 	return (1);
 }
 
-int	get_textures(t_game *g, char *fn)
+int	get_textures(t_game *g)
 {
 	get_texture(g, NO, "./walls/beamskin3.xpm");
 	get_texture(g, SO, "./walls/tile32.xpm");
