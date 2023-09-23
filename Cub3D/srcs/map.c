@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 21:40:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 17:52:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int	get_map(t_game *g, char *fn)
 		free(s);
 		s = get_next_line(fd);
 	}
-	//printf("h = %d, l = %d\n", g->map.h, g->map.l);
 	close(fd);
 	g->map.ph = g->map.h * BOX_SIZE;
 	g->map.pl = g->map.l * BOX_SIZE;
