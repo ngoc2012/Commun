@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 19:07:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 19:10:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ int	get_texture(t_game *g, enum e_tex it, char *path)
 		return (0);
 	g->tex[it].addr = mlx_get_data_addr(g->tex[it].img, &g->tex[it].bpp, &g->tex[it].ll, &g->tex[it].ed);
 	return (1);
+}
+
+int	return_error(char *s, char **ss)
+{
+	free(s);
+	free_array_str(&ss);
+	return (0);
 }
 
 int	get_textures(t_game *g, char *fn)
@@ -46,8 +53,8 @@ int	get_textures(t_game *g, char *fn)
 		{
 			s[ft_strlen(s) - 2] = 0;
 			ss = ft_split(s, ' ');
-			if (ft_strncmp("NO", ss[0], 3))
-				get_texture(g, NO, "./walls/beamskin3.xpm");
+			if (!ft_strncmp("NO", ss[0], 3) && !get_texture(g, NO, ss[1]))
+				return (return_error(s, ss));
 		}
 		free(s);
 		s = get_next_line(fd);
