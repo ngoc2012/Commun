@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 23:34:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 23:38:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,6 @@ void	draw_wall(t_game *g)
 				Bx = Bpx / BOX_SIZE;
 			}
 			dA = INFINI;
-			if (ai > 90.0 || ai < -90.0)
-				Bpx += 2;
 			dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
 			g->pos.Bx = Bx;
 			g->pos.By = By;
@@ -128,8 +126,6 @@ void	draw_wall(t_game *g)
 				Apy += dpy;
 				Ay = Apy / BOX_SIZE;
 			}
-			if (ai > 0)
-				Apy++;
 			dA = (g->pos.py - Apy) / sin(ai * PI / 180);
 			dB = INFINI;
 			g->pos.Ax = Ax;
@@ -172,8 +168,6 @@ void	draw_wall(t_game *g)
 					dA = INFINI;
 				else
 				{
-					if (ai > 0)
-						Apy++;
 					dA = (g->pos.py - Apy) / g->sin_ai[ix][g->pos.rot];
 					g->pos.Ax = Ax;
 					g->pos.Ay = Ay;
@@ -211,8 +205,6 @@ void	draw_wall(t_game *g)
 					dB = INFINI;
 				else
 				{
-					if (ai > 90.0 || ai < -90.0)
-						Bpx += 2;
 					dB = (Bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
 					g->pos.Bx = Bx;
 					g->pos.By = By;
