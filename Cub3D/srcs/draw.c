@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 23:17:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 08:15:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,7 +261,11 @@ void	draw_wall(t_game *g)
 			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
 				*addr = *(addr_c + xh + yh * g->tex_c.l);
 			else
+			{
+				printf("cos = %f, dh = %f, xph = %f, yph = %f, xh = %d, yh = %d\n",
+				g->cos_ai0[ix], dh, xph, yph, xh, yh);
 				*addr = create_trgb(1, 255, 255, 0);
+			}
 			addr += WIDTH;
 		}
 		yp = -1;
