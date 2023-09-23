@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 18:45:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 18:46:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	get_textures(t_game *g, char *fn)
 	get_texture(g, FL, "./walls/floorsteel.xpm");
 	get_texture(g, CL, "./walls/floorskin.xpm");
 	get_texture(g, D3, "./sprites/crate.xpm");
-	get_texture(g, D4, "./sprites/floorskin1695480473.xpm");
-	get_texture(g, D5, "./sprites/floorskin1695480473.xpm");
-	get_texture(g, D6, "./sprites/floorskin1695480473.xpm");
+	get_texture(g, D4, "./sprites/d_table.xpm");
+	get_texture(g, D5, "./sprites/d_tree.xpm");
+	get_texture(g, D6, "./sprites/i_health.xpm");
 	//fd = open(fn, O_RDONLY);
 	//if (fd == -1)
 	//	return (0);

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 12:33:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 18:47:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,9 +222,9 @@ void	draw_wall(t_game *g)
 			d = dB / g->cos_ai0[ix];
 			tx = (int) (Bpy - BOX_SIZE * (double) By);
 			if (ai > -90 && ai < 90)
-				tex = &g->tex_w;
+				tex = &g->tex[WE];
 			else
-				tex = &g->tex_e;
+				tex = &g->tex[SE];
 		}
 		else
 		{

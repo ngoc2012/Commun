@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 18:44:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 18:46:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define COLOR_BOLD_BLUE               "\033[1;34m"
 # define COLOR_BOLD  "\033[1m"
 # define COLOR_OFF   "\033[m"
-# define N_TEX 12
+# define N_TEX 11
 
 /*
 NO: North walls
