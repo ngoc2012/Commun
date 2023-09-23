@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 18:47:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 18:49:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,16 +224,16 @@ void	draw_wall(t_game *g)
 			if (ai > -90 && ai < 90)
 				tex = &g->tex[WE];
 			else
-				tex = &g->tex[SE];
+				tex = &g->tex[EA];
 		}
 		else
 		{
 			d = dA / g->cos_ai0[ix];
 			tx = (int) (Apx - BOX_SIZE * (double) Ax);
 			if (ai > 0)
-				tex = &g->tex_n;
+				tex = &g->tex[NO];
 			else
-				tex = &g->tex_s;
+				tex = &g->tex[SO];
 		}
 		if (d < 0)
 			d = -d;
@@ -261,7 +261,7 @@ void	draw_wall(t_game *g)
 			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
 			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
 			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
-				*addr = *(addr_c + xh + yh * g->tex_c.l);
+				*addr = *(addr_c + xh + yh * g->tex[CL].l);
 			addr += WIDTH;
 		}
 		yp = -1;
@@ -281,7 +281,7 @@ void	draw_wall(t_game *g)
 			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
 			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
 			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
-				*addr = *(addr_f + xh + yh * g->tex_f.l);
+				*addr = *(addr_f + xh + yh * g->tex[FL].l);
 			addr += WIDTH;
 		}
 	}
