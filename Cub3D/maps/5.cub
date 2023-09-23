@@ -3,8 +3,8 @@ SO ./walls/bluestone.xpm
 WE ./walls/redbrick.xpm
 EA ./walls/mossy.xpm
 DO ./walls/door101.xpm
-FL ./path
-CL ./path
+FL ./walls/colorstone.xpm
+CL ./walls/Elements.xpm
 F 220,100,0
 C 225,30,0
 
