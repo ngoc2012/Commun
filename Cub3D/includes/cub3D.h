@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 17:17:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 17:26:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ D4: Decor 4 (4)
 D5: Decor 5 (5)
 D6: Decor 6 (6)
 */
-enum e_tex {NO, SO, WE, EA, DO, FL, CL, SP, DC1, DC2, DC3, DC4};
+enum e_tex {NO, SO, WE, EA, DO, FL, CL, SP, D3, D4, D5, D6};
 
 /*
 Map:
@@ -141,7 +141,7 @@ typedef struct s_game {
 	t_pos		pos;
 	t_mlx		mlx;
 	int		dpp;
-	t_tex	tex[7];
+	t_tex	tex[N_TEX];
 	double	*ai0;
 	double	*cos_ai0;
 	double	**ai;
