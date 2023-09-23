@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 17:10:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 17:13:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ DO: Door
 FL: Floor
 CL: Ceiling
 SP: Sprite (P)
-DC1: Decor 1
-DC2: Decor 2
-DC3: Decor 3
-DC4: Decor 4
+DC1: Decor 2 (2)
+DC2: Decor 3 (3)
+DC3: Decor 4 (4)
+DC4: Decor 5 (5)
 */
 enum e_tex {NO, SO, WE, EA, DO, FL, CL, SP};
 
