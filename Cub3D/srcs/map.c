@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 19:14:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 19:17:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ static void	get_position(t_game *g, int i, int j, char c)
 
 int	check_map(char *s)
 {
+	while (*s)
+		if (!ft_strchr(MAP_CHAR, *(s++)))
+			return (0);
+	return (1);
 }
 
 int	get_map(t_game *g, char *fn)
@@ -75,9 +79,12 @@ int	get_map(t_game *g, char *fn)
 	s = get_next_line(fd);
 	while (s)
 	{
-		g->map.h++;
-		if ((int) ft_strlen(s) - 1> g->map.l)
-			g->map.l = (int) ft_strlen(s) - 1;
+		if (check_map(s))
+		{
+			g->map.h++;
+			if ((int) ft_strlen(s) - 1> g->map.l)
+				g->map.l = (int) ft_strlen(s) - 1;
+		}
 		free(s);
 		s = get_next_line(fd);
 	}
@@ -93,7 +100,7 @@ int	get_map(t_game *g, char *fn)
 		g->map.v[++j] = malloc(sizeof(int) * g->map.l);
 		i = 0;
 		while (i < g->map.l)
-			g->map.v[j][i++] = 0;
+			g->map.v[j][i++] = -1;
 		i = -1;
 		while (s[++i])
 			get_position(g, i, j, s[i]);
