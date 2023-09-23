@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 10:55:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 10:59:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,14 +290,14 @@ void	draw_wall(t_game *g)
 	// Scale
 	if (SCALE > 1)
 	{
-		int	y = -1;
-		while (++y < HEIGHT * SCALE)
+		int	y = HEIGHT * SCALE;
+		while (--y >= 0)
 		{
 
-			int	x = -1;
-			while (++x < HEIGHT * SCALE)
+			int	x = WIDTH * SCALE;
+			while (--x >= 0)
 			{
-
+				*(g->mlx.addr + x + y * WIDTH * SCALE) = *(g->mlx.addr + x + y * WIDTH);
 			}
 		}
 	}
