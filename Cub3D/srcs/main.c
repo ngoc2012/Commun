@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/22 23:15:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 10:29:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int	main(int argc, char **argv)
 	if (!get_map(&g, argv[1]) || !precalcul(&g))
 		end_game(&g, EXIT_FAILURE, "Error map or memories\n");
 	g.mlx.mlx = mlx_init();
-	g.mlx.win = mlx_new_window(g.mlx.mlx, WIDTH, HEIGHT, "Cub3D");
+	g.mlx.win = mlx_new_window(g.mlx.mlx, WIDTH * SCALE, HEIGHT * SCALE, "Cub3D");
 	if (!g.mlx.mlx || !g.mlx.win)
 		end_game(&g, EXIT_FAILURE, "Error mlx\n");
 	mlx_key_hook(g.mlx.win, key_hook, &g);
