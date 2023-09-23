@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 17:03:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 17:04:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define COLOR_BOLD_BLUE               "\033[1;34m"
 # define COLOR_BOLD  "\033[1m"
 # define COLOR_OFF   "\033[m"
+# define N_TEX 7
 
 enum e_tex {NO, SO, WE, EA, DO, FL, CL};
 
