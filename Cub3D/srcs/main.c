@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 17:55:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 17:56:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,16 @@ void	free_array(double **a, int size)
 
 int	end_game(t_game *g, int exit_code, char *s)
 {
-	if (g->tex_n.img)
-		mlx_destroy_image(g->mlx.mlx, g->tex_n.img);
-	if (g->tex_s.img)
-		mlx_destroy_image(g->mlx.mlx, g->tex_s.img);
-	if (g->tex_w.img)
-		mlx_destroy_image(g->mlx.mlx, g->tex_w.img);
-	if (g->tex_e.img)
-		mlx_destroy_image(g->mlx.mlx, g->tex_e.img);
-	if (g->tex_f.img)
-		mlx_destroy_image(g->mlx.mlx, g->tex_f.img);
-	if (g->tex_c.img)
-		mlx_destroy_image(g->mlx.mlx, g->tex_c.img);
+	int	i;
+
+	i = -1;
+	while (++i < N_TEX)
+	{
+		if (g->tex[i].img)
+			mlx_destroy_image(g->mlx.mlx, g->tex[i].img);
+		if (g->tex[i].path)
+			mlx_destroy_image(g->mlx.mlx, g->tex[i].path);
+	}
 	if (g->mlx.img)
 		mlx_destroy_image(g->mlx.mlx, g->mlx.img);
 	if (g->mlx.img_scale)
