@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 11:54:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 12:01:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,7 +264,7 @@ void	draw_wall(t_game *g)
 				*addr = *(addr_c + xh + yh * g->tex_c.l);
 				//printf("cos = %f, dh = %f, px = %f, py = %f, rot = %d, xph = %f, yph = %f, xh = %d, yh = %d\n",
 				//g->cos_ai0[ix], dh, g->pos.px, g->pos.py, g->pos.rot, xph, yph, xh, yh);
-			addr += WIDTH * SCALE;
+			addr += WIDTH;
 		}
 		yp = -1;
 		while (++yp < h_slide)
@@ -272,7 +272,7 @@ void	draw_wall(t_game *g)
 			ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp) / p);
 			if (tx < BOX_SIZE && tx >= 0 && ty < BOX_SIZE && ty >= 0)
 				*addr = *(addr_t + tx + ty * tex->l);
-			addr += WIDTH * SCALE;
+			addr += WIDTH;
 		}
 		yp = start + h_slide - 1;
 		while (++yp < HEIGHT)
@@ -284,7 +284,7 @@ void	draw_wall(t_game *g)
 			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
 			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
 				*addr = *(addr_f + xh + yh * g->tex_f.l);
-			addr += WIDTH * SCALE;
+			addr += WIDTH;
 		}
 	}
 	// Scale
@@ -308,7 +308,8 @@ void	draw_wall(t_game *g)
 			//	*((int*) g->mlx.addr + x + y * WIDTH * SCALE) = *((int*) g->mlx.addr + x + y * WIDTH);
 		}
 	}
-	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
+	else
+		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 }
 
 void	draw_map(t_game *g)
