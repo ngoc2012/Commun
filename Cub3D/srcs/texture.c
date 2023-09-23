@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 19:31:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 19:32:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	get_textures(t_game *g, char *fn)
 	{
 		if (ft_strlen(s) > 1)
 		{
-			s[ft_strlen(s) - 2] = 0;
+			s[ft_strlen(s) - 1] = 0;
 			ss = ft_split(s, ' ');
 			if (astr_len(ss) > 1)
 			{
