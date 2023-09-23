@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 11:32:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 11:43:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,20 +288,17 @@ void	draw_wall(t_game *g)
 		}
 	}
 	// Scale
-	//if (SCALE > 1)
-	//{
-	//	int	y = HEIGHT * SCALE;
-	//	while (--y >= 0)
-	//	{
+	if (SCALE > 1)
+	{
+		int	y = HEIGHT * SCALE;
+		while (--y >= 0)
+		{
 
-	//		int	x = WIDTH * SCALE;
-	//		while (--x >= 0)
-	//			//*((int*) g->mlx.addr + x + y * WIDTH * SCALE) = create_trgb(1, 255, 255, 0);
-	//		{
-	//			*((int*) g->mlx.addr + x + y * WIDTH * SCALE) = *((int*) g->mlx.addr + x / SCALE + y * WIDTH);
-	//		}
-	//	}
-	//}
+			int	x = WIDTH * SCALE;
+			while (--x >= 0)
+				*((int*) g->mlx.addr + x + y * WIDTH * SCALE) = *((int*) g->mlx.addr + x / SCALE + y * WIDTH);
+		}
+	}
 	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
 }
 
