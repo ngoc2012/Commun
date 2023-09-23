@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 17:13:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/23 17:14:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ DC2: Decor 3 (3)
 DC3: Decor 4 (4)
 DC4: Decor 5 (5)
 */
-enum e_tex {NO, SO, WE, EA, DO, FL, CL, SP};
+enum e_tex {NO, SO, WE, EA, DO, FL, CL, SP, DC1, DC2, DC3, DC4};
 
 /*
 Map:
