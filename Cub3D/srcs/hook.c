@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 15:49:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 15:53:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	key_press(int keycode, t_game *g)
 	{
 		printf("Key up press\n");
 	}
-	return (0);
+	return (1);
 }
 
 int	key_release(int keycode, t_game *g)
@@ -28,7 +28,7 @@ int	key_release(int keycode, t_game *g)
 	{
 		printf("Key up release\n");
 	}
-	return (0);
+	return (1);
 }
 
 int	key_hook(int keycode, t_game *g)
