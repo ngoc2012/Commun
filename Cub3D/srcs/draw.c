@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 13:28:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 13:31:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,20 @@ void	render_backgroud(t_game *g)
 			dpy = BOX_SIZE * g->tan_ai[ix][g->pos.rot];
 			if (ai * dpy > 0)
 				dpy = -dpy;
-			Bx = Bpx / BOX_SIZE;
+			if (ai < tol_l && ai > -tol_l)
+				Bx = Bpx / BOX_SIZE;
+			else
+				Bx = Bpx / BOX_SIZE - 1;
 			By = g->pos.y;
 			while (!g->map.v[By][Bx])
 			{
 				Bpx += dpx;
 				Bpy += dpy;
-				Bx = Bpx / BOX_SIZE;
+				//Bx = Bpx / BOX_SIZE;
+				if (ai < tol_l && ai > -tol_l)
+					Bx = Bpx / BOX_SIZE;
+				else
+					Bx = Bpx / BOX_SIZE - 1;
 			}
 			dA = INFINI;
 			dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
@@ -171,7 +178,10 @@ void	render_backgroud(t_game *g)
 			else
 			{
 				Ax = Apx / BOX_SIZE;
-				Ay = Apy / BOX_SIZE;
+				if (ai > 0.0)
+					Ay = Apy / BOX_SIZE - 1;
+				else
+					Ay = Apy / BOX_SIZE;
 				//while (Apx >= 0 && Apx < g->map.pl && !g->map.v[Ay][Ax])
 				while (Apx > 0 && Apx < g->map.pl - 1 && !g->map.v[Ay][Ax])
 				{
@@ -179,7 +189,10 @@ void	render_backgroud(t_game *g)
 					Apy += dpy;
 					//Ax = Apx / BOX_SIZE;
 					Ax = (Apx + 1) / BOX_SIZE;
-					Ay = Apy / BOX_SIZE;
+					if (ai > 0.0)
+						Ay = Apy / BOX_SIZE - 1;
+					else
+						Ay = Apy / BOX_SIZE;
 				}
 				if (Apx < 0 || Apx >= g->map.pl)
 					dA = INFINI;
