@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 14:37:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 14:38:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ void	render_backgroud(t_game *g)
 					Ay = Apy / BOX_SIZE - 1;
 				else
 					Ay = Apy / BOX_SIZE;
-				while (Apx > 0 && Apx < g->map.pl && !g->map.v[Ay][Ax])
+				while (Apx >= 0 && Apx < g->map.pl && !g->map.v[Ay][Ax])
 				{
 					Apx += dpx;
 					Apy += dpy;
