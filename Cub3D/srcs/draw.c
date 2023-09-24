@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 21:56:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 21:59:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -383,10 +383,16 @@ int	draw(t_game *g)
 	while (++i < N_FRAMES)
 		if (g->frames[i])
 			g->frames[i]++;
-	if (g->frames < MAX_FRAMES)
-		g->frames++;
-	else
-		g->frames = 0;
+	if (g->frames[FR_UP] > TRANS_SPEED)
+		g->frames[FR_UP] = 0;
+	if (g->frames[FR_DOWN] > TRANS_SPEED)
+		g->frames[FR_DOWN] = 0;
+	if (g->frames[FR_RIGHT] > ROT_SPEED)
+		g->frames[FR_RIGHT] = 0;
+	if (g->frames[FR_LEFT] > ROT_SPEED)
+		g->frames[FR_LEFT] = 0;
+	if (g->frames[FR_GUN] > GUN_SPEED)
+		g->frames[FR_GUN] = 0;
 	render_backgroud(g);
 	render_object(g->gun_tex, (int *) g->mlx.addr, WIDTH / 2, HEIGHT);
 	//mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->gun[0].img, WIDTH / 2 - g->gun[0].l / 2, HEIGHT - g->gun[0].h);
