@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 11:03:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 11:04:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -313,7 +313,7 @@ void	draw_wall(t_game *g)
 		return 1;
 	}
 	// Render the transparent image over the background
-	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, transparent_image_ptr, x_position, y_position);
+mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, transparent_image_ptr, WIDTH * SCALE / 2, HEIGHT * SCALE / 2);
 
 }
 
