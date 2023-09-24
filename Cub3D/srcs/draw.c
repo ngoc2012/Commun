@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 22:16:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 22:16:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -331,7 +331,6 @@ void	render_backgroud(t_game *g)
 
 void	scale_window(t_game *g)
 {
-	// Scale
 	if (SCALE > 1)
 	{
 		int	x;
