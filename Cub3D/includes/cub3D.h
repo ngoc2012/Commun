@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 16:03:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 16:15:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define ROT_STEP 15
 # define PI 3.141592654
 # define INFINI INT_MAX
+# define MAX_FRAMES 1000000
 # define COLOR_BOLD_SLOW_BLINKING      "\033[1;5m"
 # define COLOR_BOLD_SLOW_BLINKING_RED  "\033[1;5;31m"
 # define COLOR_BOLD_SLOW_BLINKING_BLUE  "\033[1;5;34m"
@@ -141,6 +142,7 @@ typedef struct s_game {
 	t_pos		pos;
 	t_mlx		mlx;
 	int		dpp;
+	int		frames;
 	t_tex	tex[N_TEX];
 	t_tex	gun[3];
 	double	*ai0;
