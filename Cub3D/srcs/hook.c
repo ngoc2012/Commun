@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 08:48:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 11:27:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ int	key_hook(int keycode, t_game *g)
 			g->pos.rot = 0;
 		redraw(g);
 		draw(g);
+	}
+	if (keycode == XK_Ch)
+	{
+		printf("Ctrl\n");
 	}
 	if (keycode == XK_q || keycode == XK_Escape)
 	{
