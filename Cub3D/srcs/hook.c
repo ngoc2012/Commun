@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 17:23:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 17:25:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,18 @@ int	key_press(int keycode, t_game *g)
 	}
 	if (keycode == XK_Right || keycode == XK_Left)
 	{
-		if (keycode == XK_Right)
-			g->pos.rot--;
-		else
-			g->pos.rot++;
-		if (g->pos.rot < 0)
-			g->pos.rot += 360 / ROT_STEP;
-		else if (g->pos.rot >= 360 / ROT_STEP)
-			g->pos.rot = 0;
+		if ((keycode == XK_Right && g->frames - g->fr_right > ROT_SPEED) ||
+			(keycode == XK_Left && g->frames - g->fr_left > ROT_SPEED))
+		{
+			if (keycode == XK_Right)
+				g->pos.rot--;
+			else
+				g->pos.rot++;
+			if (g->pos.rot < 0)
+				g->pos.rot += 360 / ROT_STEP;
+			else if (g->pos.rot >= 360 / ROT_STEP)
+				g->pos.rot = 0;
+		}
 	}
 	return (1);
 }
