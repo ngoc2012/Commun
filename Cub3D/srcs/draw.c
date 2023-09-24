@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 14:38:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 14:40:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,8 +192,7 @@ void	render_backgroud(t_game *g)
 				{
 					Apx += dpx;
 					Apy += dpy;
-					//Ax = Apx / BOX_SIZE;
-					Ax = (Apx + 1) / BOX_SIZE;
+					Ax = Apx / BOX_SIZE;
 					if (ai > 0.0)
 						Ay = Apy / BOX_SIZE - 1;
 					else
@@ -240,7 +239,6 @@ void	render_backgroud(t_game *g)
 						Bx = Bpx / BOX_SIZE;
 					else
 						Bx = Bpx / BOX_SIZE - 1;
-					//Bx = Bpx / BOX_SIZE;
 					By = Bpy / BOX_SIZE;
 				}
 				if (Bpy < 0 || Bpy >= g->map.ph)
