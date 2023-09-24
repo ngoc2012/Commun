@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 14:45:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 15:33:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,17 +137,17 @@ int	main(int argc, char **argv)
 	g.mlx.win = mlx_new_window(g.mlx.mlx, WIDTH * SCALE, HEIGHT * SCALE, "Cub3D");
 	if (!g.mlx.mlx || !g.mlx.win)
 		end_game(&g, EXIT_FAILURE, "Error mlx\n");
-	mlx_key_hook(g.mlx.win, key_hook, &g);
-	//mlx_mouse_hook(g.win, mouse_hook, p);
-	//mlx_loop_hook(g.mlx, loop_hook, p);
-	printf("sdfsdf\n");
-	mlx_hook(g.mlx.win, ClientMessage, LeaveWindowMask, &end_game, &g);
 	g.mlx.img = mlx_new_image(g.mlx.mlx, WIDTH, HEIGHT);
 	g.mlx.img_scale = mlx_new_image(g.mlx.mlx, WIDTH * SCALE, HEIGHT * SCALE);
 	g.mlx.addr = mlx_get_data_addr(g.mlx.img, &g.mlx.bpp, &g.mlx.ll, &g.mlx.ed);
 	g.mlx.addr_scale = mlx_get_data_addr(g.mlx.img_scale, &g.mlx.bpp, &g.mlx.ll, &g.mlx.ed);
 	if (!get_textures(&g, argv[1]))
 		end_game(&g, EXIT_FAILURE, "Error textures load\n");
+	mlx_key_hook(g.mlx.win, key_hook, &g);
+	//mlx_mouse_hook(g.win, mouse_hook, p);
+	mlx_loop_hook(g.mlx.mlx, draw, &g);
+	printf("sdfsdf\n");
+	mlx_hook(g.mlx.win, ClientMessage, LeaveWindowMask, &end_game, &g);
 	draw(&g);
 	mlx_loop(g.mlx.mlx);
 }
