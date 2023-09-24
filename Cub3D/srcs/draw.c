@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 21:34:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 21:41:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	render_object(t_tex *t, int *bg, int x0, int y0)
 	int	x;
 	int	y;
 
+	x0 -= t->l / 2;
+	y0 -= t->h;
 	y = -1;
 	while (++y < t->h)
 	{
@@ -382,7 +384,7 @@ int	draw(t_game *g)
 	else
 		g->frames = 0;
 	render_backgroud(g);
-	render_object(g->gun_img, (int *) g->mlx.addr, WIDTH / 2 - g->gun[0].l / 2, HEIGHT - g->gun[0].h);
+	render_object(g->gun_tex, (int *) g->mlx.addr, WIDTH / 2, HEIGHT);
 	//mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->gun[0].img, WIDTH / 2 - g->gun[0].l / 2, HEIGHT - g->gun[0].h);
 	scale_window(g);
 	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->gun[0].img, 0, 0);
