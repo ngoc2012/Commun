@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 16:06:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 16:21:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ int	key_press(int keycode, t_game *g)
 			g->pos.py += dy;
 			g->pos.x = x;
 			g->pos.y = y;
+			if (keycode == XK_Up)
+				g->fr_up = g->frames;
+			else
+				g->fr_down = g->frames;
 		}
 	}
 	if (keycode == XK_Right || keycode == XK_Left)

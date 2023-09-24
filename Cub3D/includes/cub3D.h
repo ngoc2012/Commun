@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 16:18:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 16:20:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,10 @@ typedef struct s_game {
 	t_mlx		mlx;
 	int		dpp;
 	int		frames;
+	int		fr_up;
+	int		fr_down;
+	int		fr_left;
+	int		fr_right;
 	t_tex	tex[N_TEX];
 	t_tex	gun[3];
 	double	*ai0;
