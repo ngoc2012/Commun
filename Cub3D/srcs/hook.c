@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 11:48:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 15:31:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ int	key_hook(int keycode, t_game *g)
 			g->pos.py += dy;
 			g->pos.x = x;
 			g->pos.y = y;
-			//printf("x = %f, y = %f\n", g->pos.px, g->pos.py);
-			draw(g);
 		}
 	}
 	if (keycode == XK_Right || keycode == XK_Left)
@@ -53,7 +51,6 @@ int	key_hook(int keycode, t_game *g)
 			g->pos.rot += 360 / ROT_SPEED;
 		else if (g->pos.rot >= 360 / ROT_SPEED)
 			g->pos.rot = 0;
-		draw(g);
 	}
 	if (keycode == XK_space)
 	{
