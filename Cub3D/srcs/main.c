@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 10:50:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 10:53:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	init(t_game *g)
 	while (++i < N_TEX)
 		g->tex[i].img = 0;
 	i = -1;
-	while (++i < N_TEX)
+	while (++i < 3)
 		g->gun[i].img = 0;
 	g->mlx.img = 0;
 	g->mlx.img_scale = 0;
