@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 13:31:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 13:32:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,13 +142,19 @@ void	render_backgroud(t_game *g)
 			dpx = BOX_SIZE * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
 			if (ai < 0)
 				dpx = -dpx;
-			Ay = Apy / BOX_SIZE;
+			if (ai > 0.0)
+				Ay = Apy / BOX_SIZE - 1;
+			else
+				Ay = Apy / BOX_SIZE;
 			Ax = g->pos.x;
 			while (!g->map.v[Ay][Ax])
 			{
 				Apx += dpx;
 				Apy += dpy;
-				Ay = Apy / BOX_SIZE;
+				if (ai > 0.0)
+					Ay = Apy / BOX_SIZE - 1;
+				else
+					Ay = Apy / BOX_SIZE;
 			}
 			dA = (g->pos.py - Apy) / sin(ai * PI / 180);
 			dB = INFINI;
