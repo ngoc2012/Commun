@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 21:42:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 21:56:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -379,6 +379,10 @@ void	draw_map(t_game *g)
 
 int	draw(t_game *g)
 {
+	i = -1;
+	while (++i < N_FRAMES)
+		if (g->frames[i])
+			g->frames[i]++;
 	if (g->frames < MAX_FRAMES)
 		g->frames++;
 	else
