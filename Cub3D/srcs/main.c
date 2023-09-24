@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 15:41:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 15:43:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ int	main(int argc, char **argv)
 		end_game(&g, EXIT_FAILURE, "Error textures load\n");
 	mlx_key_hook(g.mlx.win, key_hook, &g);
 	//mlx_mouse_hook(g.win, mouse_hook, p);
+	mlx_hook(g.mlx.win, ClientMessage, LeaveWindowMask, &key_press, &g);
 	mlx_hook(g.mlx.win, ClientMessage, LeaveWindowMask, &end_game, &g);
 	mlx_loop_hook(g.mlx.mlx, &draw, &g);
 	draw(&g);
