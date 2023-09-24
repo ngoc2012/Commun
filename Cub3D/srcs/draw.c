@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 11:13:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 11:17:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,23 @@ void	redraw(t_game *g)
 	}
 }
  
+void	render_object(t_tex *t, int *bg, int x0, int y0)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (++y < t->h)
+	{
+		x = -1;
+		while (++x < t->l)
+		{
+			if (*((int*) t->addr + x + y * t->l) > 0)
+				*((int*) bg + x + x0 + (y + y0) * WIDTH) = *((int*) t->addr + x + y * t->l);
+		}
+	}
+}
+
 void	draw_wall(t_game *g)
 {
 	int	ix;
@@ -285,23 +302,12 @@ void	draw_wall(t_game *g)
 			addr += WIDTH;
 		}
 	}
-	int	x;
-	int	y;
-	y = -1;
-	while (++y < g->gun[0].h)
-	{
-
-		x = -1;
-		while (++x < g->gun[0].l)
-		{
-			printf("%d ", *((int*) g->gun[0].addr + x + y * g->gun[0].l));
-			if (*((int*) g->gun[0].addr + x + y * g->gun[0].l) > 0)
-				*((int*) g->mlx.addr + x + y * WIDTH) = *((int*) g->gun[0].addr + x + y * g->gun[0].l);
-		}
-	}
+	render_object(&g->gun[0], (int *) g->mlx.addr, 0, 0);
 	// Scale
 	if (SCALE > 1)
 	{
+		int	x;
+		int	y;
 		y = HEIGHT * SCALE;
 		while (--y >= 0)
 		{
