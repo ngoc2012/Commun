@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/23 19:43:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 10:47:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	get_texture(t_game *g, enum e_tex it, char *path)
+int	get_texture(t_tex *t, char *path)
 {
 	if (g->tex[it].img)
 		mlx_destroy_image(g->mlx.mlx, g->tex[it].img);
@@ -37,17 +37,17 @@ int	get_textures(t_game *g, char *fn)
 	char	*s0;
 	char	**ss;
 
-	get_texture(g, NO, "./walls/beamskin3.xpm");
-	get_texture(g, SO, "./walls/tile32.xpm");
-	get_texture(g, WE, "./walls/tile105.xpm");
-	get_texture(g, EA, "./walls/steelwall6.xpm");
-	get_texture(g, DO, "./walls/bigdoor.xpm");
-	get_texture(g, FL, "./walls/floorsteel.xpm");
-	get_texture(g, CL, "./walls/floorskin.xpm");
-	get_texture(g, D3, "./sprites/crate.xpm");
-	get_texture(g, D4, "./sprites/d_table.xpm");
-	get_texture(g, D5, "./sprites/d_tree.xpm");
-	get_texture(g, D6, "./sprites/i_health.xpm");
+	get_texture(g->tex[NO], "./walls/beamskin3.xpm");
+	get_texture(g->tex[SO], "./walls/tile32.xpm");
+	get_texture(g->tex[WE], "./walls/tile105.xpm");
+	get_texture(g->tex[EA], "./walls/steelwall6.xpm");
+	get_texture(g->tex[DO], "./walls/bigdoor.xpm");
+	get_texture(g->tex[FL], "./walls/floorsteel.xpm");
+	get_texture(g->tex[CL], "./walls/floorskin.xpm");
+	get_texture(g->tex[D3], "./sprites/crate.xpm");
+	get_texture(g->tex[D4], "./sprites/d_table.xpm");
+	get_texture(g->tex[D5], "./sprites/d_tree.xpm");
+	get_texture(g->tex[D6], "./sprites/i_health.xpm");
 	fd = open(fn, O_RDONLY);
 	if (fd == -1)
 		return (0);
