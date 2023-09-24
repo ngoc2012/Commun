@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 22:09:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 22:11:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -381,10 +381,6 @@ int	draw(t_game *g)
 {
 	int	i;
 
-	i = -1;
-	while (++i < N_FRAMES)
-		if (g->frames[i])
-			g->frames[i]++;
 	if (g->frames[FR_UP] > TRANS_SPEED)
 		g->frames[FR_UP] = 0;
 	if (g->frames[FR_DOWN] > TRANS_SPEED)
@@ -395,12 +391,16 @@ int	draw(t_game *g)
 		g->frames[FR_LEFT] = 0;
 	if (g->frames[FR_GUN] > GUN_SPEED)
 		g->frames[FR_GUN] = 0;
-	if (g->frames[FR_GUN] == 2)
+	if (g->frames[FR_GUN] == 1)
 		g->gun_tex = &g->gun[1];
-	//else if (g->frames[FR_GUN] == 3)
-	//	g->gun_tex = &g->gun[2];
+	else if (g->frames[FR_GUN] == GUN_SPEED / 2)
+		g->gun_tex = &g->gun[2];
 	else
 		g->gun_tex = &g->gun[0];
+	i = -1;
+	while (++i < N_FRAMES)
+		if (g->frames[i])
+			g->frames[i]++;
 	render_backgroud(g);
 	render_object(g->gun_tex, (int *) g->mlx.addr, WIDTH / 2, HEIGHT);
 	//mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->gun[0].img, WIDTH / 2 - g->gun[0].l / 2, HEIGHT - g->gun[0].h);
