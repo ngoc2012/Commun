@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 11:17:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 11:19:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -302,7 +302,7 @@ void	draw_wall(t_game *g)
 			addr += WIDTH;
 		}
 	}
-	render_object(&g->gun[0], (int *) g->mlx.addr, 0, 0);
+	render_object(&g->gun[0], (int *) g->mlx.addr, WIDTH / 2 - g->gun[0].l / 2, HEIGHT - g->gun[0].h / 2);
 	// Scale
 	if (SCALE > 1)
 	{
