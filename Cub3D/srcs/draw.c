@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 11:10:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 11:13:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,8 +293,11 @@ void	draw_wall(t_game *g)
 
 		x = -1;
 		while (++x < g->gun[0].l)
-			if (*((int*) g->gun[0].addr + x + y * g->gun[0].l))
+		{
+			printf("%d ", *((int*) g->gun[0].addr + x + y * g->gun[0].l));
+			if (*((int*) g->gun[0].addr + x + y * g->gun[0].l) > 0)
 				*((int*) g->mlx.addr + x + y * WIDTH) = *((int*) g->gun[0].addr + x + y * g->gun[0].l);
+		}
 	}
 	// Scale
 	if (SCALE > 1)
