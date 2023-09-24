@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 10:47:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 10:49:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	get_texture(t_tex *t, char *path)
 {
-	if (g->tex[it].img)
-		mlx_destroy_image(g->mlx.mlx, g->tex[it].img);
-	g->tex[it].img = mlx_xpm_file_to_image(g->mlx.mlx, path, &g->tex[it].l, &g->tex[it].h);
-	if (!g->tex[it].img)
+	if (t->img)
+		mlx_destroy_image(g->mlx.mlx, t->img);
+	t->img = mlx_xpm_file_to_image(g->mlx.mlx, path, &t->l, &t->h);
+	if (!t->img)
 		return (0);
-	g->tex[it].addr = mlx_get_data_addr(g->tex[it].img, &g->tex[it].bpp, &g->tex[it].ll, &g->tex[it].ed);
+	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->ll, &t->ed);
 	return (1);
 }
 
@@ -37,6 +37,9 @@ int	get_textures(t_game *g, char *fn)
 	char	*s0;
 	char	**ss;
 
+	get_texture(g->gun[0], "./guns/gun1a.xpm");
+	get_texture(g->gun[1], "./guns/gun1b.xpm");
+	get_texture(g->gun[2], "./guns/gun1c.xpm");
 	get_texture(g->tex[NO], "./walls/beamskin3.xpm");
 	get_texture(g->tex[SO], "./walls/tile32.xpm");
 	get_texture(g->tex[WE], "./walls/tile105.xpm");

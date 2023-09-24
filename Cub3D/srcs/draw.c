@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 10:42:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 10:49:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -302,17 +302,6 @@ void	draw_wall(t_game *g)
 	}
 	else
 		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
-	void *original_image_ptr;
-	int width;
-	int height;
-	// Load the original image (you should have image dimensions)
-	original_image_ptr = mlx_xpm_file_to_image(g->mlx.mlx, "./guns/gun1a.xpm", &width, &height);
-	if (!original_image_ptr) {
-		// Handle image loading error
-		mlx_destroy_window(g->mlx.mlx, g->mlx.win);
-		return 1;
-	}	
-	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, original_image_ptr, 0, 0);
 }
 
 void	draw_map(t_game *g)
