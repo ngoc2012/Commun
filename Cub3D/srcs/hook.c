@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 15:53:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 15:55:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,6 @@
 
 int	key_press(int keycode, t_game *g)
 {
- 	if (keycode == XK_Up || keycode == XK_Down)
-	{
-		printf("Key up press\n");
-	}
-	return (1);
-}
-
-int	key_release(int keycode, t_game *g)
-{
- 	if (keycode == XK_Up || keycode == XK_Down)
-	{
-		printf("Key up release\n");
-	}
-	return (1);
-}
-
-int	key_hook(int keycode, t_game *g)
- {
  	if (keycode == XK_Up || keycode == XK_Down)
 	{
 		double	dx;
@@ -70,6 +52,11 @@ int	key_hook(int keycode, t_game *g)
 		else if (g->pos.rot >= 360 / ROT_SPEED)
 			g->pos.rot = 0;
 	}
+	return (1);
+}
+
+int	key_release(int keycode, t_game *g)
+{
 	if (keycode == XK_space)
 	{
 		printf("Space\n");
@@ -96,5 +83,5 @@ int	key_hook(int keycode, t_game *g)
 		printf("end game\n");
 		end_game(g, 0, 0);
 	}
-	return (0);
+	return (1);
 }
