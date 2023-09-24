@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 21:48:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 21:50:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@
 # define ROT_SPEED 1
 # define PI 3.141592654
 # define INFINI INT_MAX
-# define MAX_FRAMES 1000000
 # define COLOR_BOLD_SLOW_BLINKING      "\033[1;5m"
 # define COLOR_BOLD_SLOW_BLINKING_RED  "\033[1;5;31m"
 # define COLOR_BOLD_SLOW_BLINKING_BLUE  "\033[1;5;34m"
