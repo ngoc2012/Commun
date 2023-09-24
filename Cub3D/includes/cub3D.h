@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 15:43:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 15:49:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,5 +163,6 @@ void	render_object(t_tex *t, int *bg, int x0, int y0);
 void	render_backgroud(t_game *g);
 void	scale_window(t_game *g);
 int	key_press(int keycode, t_game *g);
+int	key_release(int keycode, t_game *g);
 
 #endif
