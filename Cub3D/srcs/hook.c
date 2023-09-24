@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 21:55:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 22:00:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	key_press(int keycode, t_game *g)
 	if (keycode == XK_Right || keycode == XK_Left)
 	{
 		if ((keycode == XK_Right && !g->frames[FR_RIGHT]) ||
-			(keycode == XK_Left && g->frames[FR_LEFT]))
+			(keycode == XK_Left && !g->frames[FR_LEFT]))
 		{
 			if (keycode == XK_Right)
 				g->pos.rot--;
