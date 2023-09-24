@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 21:43:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 21:48:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 # define COLOR_BOLD  "\033[1m"
 # define COLOR_OFF   "\033[m"
 # define N_TEX 11
+# define N_FRAMES 5
 # define MAP_CHAR " \n0123456NSWE"
 
 /*
@@ -66,6 +67,7 @@ D5: Decor 5 (5)
 D6: Decor 6 (6)
 */
 enum e_tex {NO, SO, WE, EA, DO, FL, CL, D3, D4, D5, D6};
+enum e_frame {FR_UP, FR_DOWN, FR_LEFT, FR_RIGHT, FR_GUN};
 
 /*
 Map:
@@ -144,12 +146,7 @@ typedef struct s_game {
 	t_pos		pos;
 	t_mlx		mlx;
 	int		dpp;
-	int		frames;
-	int		fr_up;
-	int		fr_down;
-	int		fr_left;
-	int		fr_right;
-	int		fr_gun;
+	int		frames[N_FRAMES];
 	t_tex	tex[N_TEX];
 	t_tex	gun[3];
 	t_tex	*gun_tex;

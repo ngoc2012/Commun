@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 21:43:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 21:49:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,9 @@ void	init(t_game *g)
 	while (++i < N_TEX)
 		g->tex[i].img = 0;
 	i = -1;
+	while (++i < N_FRAMES)
+		g->frames[i] = 0;
+	i = -1;
 	while (++i < 3)
 		g->gun[i].img = 0;
 	g->mlx.img = 0;
@@ -87,12 +90,6 @@ void	init(t_game *g)
 	g->tan_ai = 0;
 	g->cos_ai = 0;
 	g->sin_ai = 0;
-	g->frames = 0;
-	g->fr_up = -100;
-	g->fr_down = -100;
-	g->fr_left = -100;
-	g->fr_right = -100;
-	g->fr_gun = -100;
 	g->gun_tex = &g->gun[0];
 }
 
