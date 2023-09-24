@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 10:49:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 10:51:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	get_texture(t_tex *t, char *path)
+static int	get_texture(t_game *g, t_tex *t, char *path)
 {
 	if (t->img)
 		mlx_destroy_image(g->mlx.mlx, t->img);
@@ -37,20 +37,20 @@ int	get_textures(t_game *g, char *fn)
 	char	*s0;
 	char	**ss;
 
-	get_texture(g->gun[0], "./guns/gun1a.xpm");
-	get_texture(g->gun[1], "./guns/gun1b.xpm");
-	get_texture(g->gun[2], "./guns/gun1c.xpm");
-	get_texture(g->tex[NO], "./walls/beamskin3.xpm");
-	get_texture(g->tex[SO], "./walls/tile32.xpm");
-	get_texture(g->tex[WE], "./walls/tile105.xpm");
-	get_texture(g->tex[EA], "./walls/steelwall6.xpm");
-	get_texture(g->tex[DO], "./walls/bigdoor.xpm");
-	get_texture(g->tex[FL], "./walls/floorsteel.xpm");
-	get_texture(g->tex[CL], "./walls/floorskin.xpm");
-	get_texture(g->tex[D3], "./sprites/crate.xpm");
-	get_texture(g->tex[D4], "./sprites/d_table.xpm");
-	get_texture(g->tex[D5], "./sprites/d_tree.xpm");
-	get_texture(g->tex[D6], "./sprites/i_health.xpm");
+	get_texture(g, g->gun[0], "./guns/gun1a.xpm");
+	get_texture(g, g->gun[1], "./guns/gun1b.xpm");
+	get_texture(g, g->gun[2], "./guns/gun1c.xpm");
+	get_texture(g, g->tex[NO], "./walls/beamskin3.xpm");
+	get_texture(g, g->tex[SO], "./walls/tile32.xpm");
+	get_texture(g, g->tex[WE], "./walls/tile105.xpm");
+	get_texture(g, g->tex[EA], "./walls/steelwall6.xpm");
+	get_texture(g, g->tex[DO], "./walls/bigdoor.xpm");
+	get_texture(g, g->tex[FL], "./walls/floorsteel.xpm");
+	get_texture(g, g->tex[CL], "./walls/floorskin.xpm");
+	get_texture(g, g->tex[D3], "./sprites/crate.xpm");
+	get_texture(g, g->tex[D4], "./sprites/d_table.xpm");
+	get_texture(g, g->tex[D5], "./sprites/d_tree.xpm");
+	get_texture(g, g->tex[D6], "./sprites/i_health.xpm");
 	fd = open(fn, O_RDONLY);
 	if (fd == -1)
 		return (0);
