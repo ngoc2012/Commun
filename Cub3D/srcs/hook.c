@@ -6,12 +6,28 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 15:31:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 15:45:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "cub3D.h"
+
+int	key_press(int keycode, t_game *g)
+{
+ 	if (keycode == XK_Up || keycode == XK_Down)
+	{
+		printf("Key up press\n");
+	}
+}
+
+int	key_release(int keycode, t_game *g)
+{
+ 	if (keycode == XK_Up || keycode == XK_Down)
+	{
+		printf("Key up press\n");
+	}
+}
 
 int	key_hook(int keycode, t_game *g)
  {
