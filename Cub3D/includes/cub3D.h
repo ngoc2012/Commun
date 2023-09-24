@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 11:23:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 11:40:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,5 +161,6 @@ void	redraw(t_game *g);
 int	get_textures(t_game *g, char *fn);
 void	render_object(t_tex *t, int *bg, int x0, int y0);
 void	render_backgroud(t_game *g);
+void	scale_window(t_game *g);
 
 #endif
