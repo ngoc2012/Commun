@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 11:29:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 11:31:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	key_hook(int keycode, t_game *g)
 			g->pos.x = x;
 			g->pos.y = y;
 			//printf("x = %f, y = %f\n", g->pos.px, g->pos.py);
-			redraw(g);
 			draw(g);
 		}
 	}
@@ -54,7 +53,6 @@ int	key_hook(int keycode, t_game *g)
 			g->pos.rot += 360 / ROT_SPEED;
 		else if (g->pos.rot >= 360 / ROT_SPEED)
 			g->pos.rot = 0;
-		redraw(g);
 		draw(g);
 	}
 	if (keycode == XK_space)
@@ -63,6 +61,13 @@ int	key_hook(int keycode, t_game *g)
 	}
 	if (keycode == XK_Control_L)
 	{
+		render_backgroud(g);
+		render_object(&g->gun[1], (int *) g->mlx.addr, WIDTH / 2 - g->gun[1].l / 2, HEIGHT - g->gun[1].h);
+		scale_window(g);
+		render_backgroud(g);
+		render_object(&g->gun[2], (int *) g->mlx.addr, WIDTH / 2 - g->gun[2].l / 2, HEIGHT - g->gun[2].h);
+		scale_window(g);
+		draw(g);
 		printf("Ctrl\n");
 	}
 	if (keycode == XK_q || keycode == XK_Escape)
