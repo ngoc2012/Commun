@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 10:49:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 11:03:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -302,6 +302,19 @@ void	draw_wall(t_game *g)
 	}
 	else
 		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
+	void *transparent_image_ptr;
+	int	width;
+	int	height;
+	// Load the transparent image (e.g., in PNG format with an alpha channel)
+	transparent_image_ptr = mlx_png_file_to_image(g->mlx.mlx, "./gun/gun1a.png", &width, &height);
+	if (!transparent_image_ptr) {
+		// Handle transparent image loading error
+		mlx_destroy_window(g->mlx.mlx, g->mlx.win);
+		return 1;
+	}
+	// Render the transparent image over the background
+	mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, transparent_image_ptr, x_position, y_position);
+
 }
 
 void	draw_map(t_game *g)
