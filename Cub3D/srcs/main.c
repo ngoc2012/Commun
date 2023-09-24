@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 15:52:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 16:04:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,14 @@ int	precalcul(t_game *g)
 		Xp = WIDTH / 2 - i + 0.5;
 		g->ai0[i] = atan(Xp / g->dpp) * 180.0 / PI; 
 		g->cos_ai0[i] = 1 / cos(g->ai0[i] * PI /180.0); 
-		g->ai[i] = malloc(sizeof(double) * 360.0 / ROT_SPEED);
-		g->tan_ai[i] = malloc(sizeof(double) * 360.0 / ROT_SPEED);
-		g->cos_ai[i] = malloc(sizeof(double) * 360.0 / ROT_SPEED);
-		g->sin_ai[i] = malloc(sizeof(double) * 360.0 / ROT_SPEED);
+		g->ai[i] = malloc(sizeof(double) * 360.0 / ROT_STEP);
+		g->tan_ai[i] = malloc(sizeof(double) * 360.0 / ROT_STEP);
+		g->cos_ai[i] = malloc(sizeof(double) * 360.0 / ROT_STEP);
+		g->sin_ai[i] = malloc(sizeof(double) * 360.0 / ROT_STEP);
 		j = -1;
-		while (++j < 360 / ROT_SPEED)
+		while (++j < 360 / ROT_STEP)
 		{
-			g->ai[i][j] = angle_convert(j * ROT_SPEED + g->ai0[i]);
+			g->ai[i][j] = angle_convert(j * ROT_STEP + g->ai0[i]);
 			g->tan_ai[i][j] = tan(g->ai[i][j] * PI / 180.0);
 			g->cos_ai[i][j] = cos(g->ai[i][j] * PI / 180.0);
 			g->sin_ai[i][j] = sin(g->ai[i][j] * PI / 180.0);

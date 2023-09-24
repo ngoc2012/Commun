@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 16:03:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 16:04:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	key_press(int keycode, t_game *g)
 		int	x;
 		int	y;
 
-		dx = (int) (TRANS_SPEED * cos(g->pos.rot * ROT_SPEED * PI / 180.0));
-		dy = (int) (TRANS_SPEED * sin(g->pos.rot * ROT_SPEED * PI / 180.0));
+		dx = (int) (TRANS_STEP * cos(g->pos.rot * ROT_STEP * PI / 180.0));
+		dy = (int) (TRANS_STEP * sin(g->pos.rot * ROT_STEP * PI / 180.0));
 
 		//printf("Key Up Down\n");
 		if (keycode == XK_Up)
@@ -49,8 +49,8 @@ int	key_press(int keycode, t_game *g)
 		else
 			g->pos.rot++;
 		if (g->pos.rot < 0)
-			g->pos.rot += 360 / ROT_SPEED;
-		else if (g->pos.rot >= 360 / ROT_SPEED)
+			g->pos.rot += 360 / ROT_STEP;
+		else if (g->pos.rot >= 360 / ROT_STEP)
 			g->pos.rot = 0;
 	}
 	return (1);
