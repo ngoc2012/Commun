@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 19:10:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 21:45:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	key_press(int keycode, t_game *g)
 		}
 		x = (int) ((g->pos.px - dx) / BOX_SIZE);
 		y = (int) ((g->pos.py + dy) / BOX_SIZE);
-		if (((keycode == XK_Up && g->frames - g->fr_up > TRANS_SPEED) ||
+		if (((keycode == XK_Up && g->fr_up > TRANS_SPEED) ||
 			(keycode == XK_Down && g->frames - g->fr_down > TRANS_SPEED)) &&
 				(x > 0 && y > 0 && x < g->map.l && y < g->map.h && !g->map.v[y][x]))
 		{
@@ -81,20 +81,7 @@ int	key_release(int keycode, t_game *g)
 	}
 	if (keycode == XK_Control_L)
 	{
-		mlx_clear_window(g->mlx.mlx, g->mlx.win);
-		render_backgroud(g);
-		render_object(&g->gun[1], (int *) g->mlx.addr, WIDTH / 2 - g->gun[1].l / 2, HEIGHT - g->gun[1].h);
-		scale_window(g);
-		//mlx_flush(g->mlx.mlx);
-		usleep(100000);
-		mlx_clear_window(g->mlx.mlx, g->mlx.win);
-		render_backgroud(g);
-		render_object(&g->gun[2], (int *) g->mlx.addr, WIDTH / 2 - g->gun[2].l / 2, HEIGHT - g->gun[2].h);
-		scale_window(g);
-		//mlx_flush(g->mlx.mlx);
-		usleep(100000);
-		printf("Ctrl\n");
-		draw(g);
+		g->fr_gun = g->frames;
 	}
 	if (keycode == XK_q || keycode == XK_Escape)
 	{
