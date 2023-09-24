@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 10:19:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 10:39:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -302,6 +302,14 @@ void	draw_wall(t_game *g)
 	}
 	else
 		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
+	void *original_image_ptr;
+	// Load the original image (you should have image dimensions)
+	original_image_ptr = mlx_xpm_file_to_image(mlx_ptr, "image.xpm", &width, &height);
+	if (!original_image_ptr) {
+		// Handle image loading error
+		mlx_destroy_window(mlx_ptr, win_ptr);
+		return 1;
+	}	
 }
 
 void	draw_map(t_game *g)
