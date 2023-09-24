@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 21:51:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 21:52:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	key_press(int keycode, t_game *g)
 		x = (int) ((g->pos.px - dx) / BOX_SIZE);
 		y = (int) ((g->pos.py + dy) / BOX_SIZE);
 		if (((keycode == XK_Up && !g->frames[FR_UP]) ||
-			(keycode == XK_Down && g->frames - g->fr_down > TRANS_SPEED)) &&
+			(keycode == XK_Down && !g->frames[FR_DOWN])) &&
 				(x > 0 && y > 0 && x < g->map.l && y < g->map.h && !g->map.v[y][x]))
 		{
 			g->pos.px -= dx;
@@ -46,7 +46,7 @@ int	key_press(int keycode, t_game *g)
 			g->pos.x = x;
 			g->pos.y = y;
 			if (keycode == XK_Up)
-				g->fr_up = g->frames;
+				g->frames[FR_UP] = 1;
 			else
 				g->fr_down = g->frames;
 		}
