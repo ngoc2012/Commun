@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 22:00:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 22:07:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int	key_release(int keycode, t_game *g)
 	}
 	if (keycode == XK_Control_L)
 	{
-		g->frames[FR_GUN] = 1;
+		if (!g->frames[FR_GUN])
+			g->frames[FR_GUN] = 1;
 	}
 	if (keycode == XK_q || keycode == XK_Escape)
 	{

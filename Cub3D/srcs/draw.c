@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 22:05:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 22:06:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -397,8 +397,8 @@ int	draw(t_game *g)
 		g->frames[FR_GUN] = 0;
 	if (g->frames[FR_GUN] == 1)
 		g->gun_tex = &g->gun[1];
-	else if (g->frames[FR_GUN] == 3)
-		g->gun_tex = &g->gun[2];
+	//else if (g->frames[FR_GUN] == 3)
+	//	g->gun_tex = &g->gun[2];
 	else
 		g->gun_tex = &g->gun[0];
 	render_backgroud(g);
