@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 11:04:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 11:10:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,11 +285,20 @@ void	draw_wall(t_game *g)
 			addr += WIDTH;
 		}
 	}
+	int	x;
+	int	y;
+	y = -1;
+	while (++y < g->gun[0].h)
+	{
+
+		x = -1;
+		while (++x < g->gun[0].l)
+			if (*((int*) g->gun[0].addr + x + y * g->gun[0].l))
+				*((int*) g->mlx.addr + x + y * WIDTH) = *((int*) g->gun[0].addr + x + y * g->gun[0].l);
+	}
 	// Scale
 	if (SCALE > 1)
 	{
-		int	x;
-		int	y;
 		y = HEIGHT * SCALE;
 		while (--y >= 0)
 		{
@@ -302,19 +311,7 @@ void	draw_wall(t_game *g)
 	}
 	else
 		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
-	void *transparent_image_ptr;
-	int	width;
-	int	height;
-	// Load the transparent image (e.g., in PNG format with an alpha channel)
-	transparent_image_ptr = mlx_png_file_to_image(g->mlx.mlx, "./gun/gun1a.png", &width, &height);
-	if (!transparent_image_ptr) {
-		// Handle transparent image loading error
-		mlx_destroy_window(g->mlx.mlx, g->mlx.win);
-		return 1;
-	}
-	// Render the transparent image over the background
-mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, transparent_image_ptr, WIDTH * SCALE / 2, HEIGHT * SCALE / 2);
-
+	
 }
 
 void	draw_map(t_game *g)
