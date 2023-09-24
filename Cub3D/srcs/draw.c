@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 11:20:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 11:22:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	render_object(t_tex *t, int *bg, int x0, int y0)
 	}
 }
 
-void	draw_wall(t_game *g)
+void	render_backgroud(t_game *g)
 {
 	int	ix;
 	double	ai;
@@ -352,7 +352,7 @@ void	draw_map(t_game *g)
 
 void	draw(t_game *g)
 {
-	draw_wall(g);
+	render_backgroud(g);
 	//draw_map(g);
 	draw_mini_map(g);
 	//end_game(g, 0, 0);
