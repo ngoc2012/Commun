@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 15:45:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 15:47:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	key_release(int keycode, t_game *g)
 {
  	if (keycode == XK_Up || keycode == XK_Down)
 	{
-		printf("Key up press\n");
+		printf("Key up release\n");
 	}
 }
 
