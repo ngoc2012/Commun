@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 22:11:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 22:13:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -393,7 +393,7 @@ int	draw(t_game *g)
 		g->frames[FR_GUN] = 0;
 	if (g->frames[FR_GUN] == 1)
 		g->gun_tex = &g->gun[1];
-	else if (g->frames[FR_GUN] == GUN_SPEED / 2)
+	else if (g->frames[FR_GUN] == 2)
 		g->gun_tex = &g->gun[2];
 	else
 		g->gun_tex = &g->gun[0];
