@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 11:37:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 11:39:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ int	key_hook(int keycode, t_game *g)
 		//render_backgroud(g);
 		render_object(&g->gun[1], (int *) g->mlx.addr, WIDTH / 2 - g->gun[1].l / 2, HEIGHT - g->gun[1].h);
 		scale_window(g);
-		//usleep(1000000);
+		usleep(10000);
 		//render_backgroud(g);
-		//render_object(&g->gun[2], (int *) g->mlx.addr, WIDTH / 2 - g->gun[2].l / 2, HEIGHT - g->gun[2].h);
-		//scale_window(g);
-		//usleep(100000);
+		render_object(&g->gun[2], (int *) g->mlx.addr, WIDTH / 2 - g->gun[2].l / 2, HEIGHT - g->gun[2].h);
+		scale_window(g);
+		//usleep(10000);
 		printf("Ctrl\n");
 		//draw(g);
 	}
