@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 11:58:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 13:13:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	render_backgroud(t_game *g)
 			}
 			else
 			{
-				Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE - 1;
+				Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE;
 				dpx = -BOX_SIZE;
 			}
 			Bpy = g->pos.py + (g->pos.px - Bpx) * g->tan_ai[ix][g->pos.rot];
@@ -123,7 +123,7 @@ void	render_backgroud(t_game *g)
 		{
 			if (ai > 90.0 - tol_h)
 			{
-				Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE - 1;
+				Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE;
 				dpy = -BOX_SIZE;
 			}
 			else
@@ -154,7 +154,7 @@ void	render_backgroud(t_game *g)
 			//Find A
 			if (ai > 0.0)
 			{
-				Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE - 1;
+				Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE;
 				dpy = -BOX_SIZE;
 			}
 			else
@@ -198,7 +198,7 @@ void	render_backgroud(t_game *g)
 			}
 			else
 			{
-				Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE - 1;
+				Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE;
 				dpx = -BOX_SIZE;
 			}
 			Bpy = g->pos.py + (g->pos.px - Bpx) * g->tan_ai[ix][g->pos.rot];
