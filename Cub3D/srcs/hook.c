@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 21:52:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 21:55:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ int	key_press(int keycode, t_game *g)
 			if (keycode == XK_Up)
 				g->frames[FR_UP] = 1;
 			else
-				g->fr_down = g->frames;
+				g->frames[FR_DOWN] = 1;
 		}
 	}
 	if (keycode == XK_Right || keycode == XK_Left)
 	{
-		if ((keycode == XK_Right && g->frames - g->fr_right > ROT_SPEED) ||
-			(keycode == XK_Left && g->frames - g->fr_left > ROT_SPEED))
+		if ((keycode == XK_Right && !g->frames[FR_RIGHT]) ||
+			(keycode == XK_Left && g->frames[FR_LEFT]))
 		{
 			if (keycode == XK_Right)
 				g->pos.rot--;
@@ -65,9 +65,9 @@ int	key_press(int keycode, t_game *g)
 			else if (g->pos.rot >= 360 / ROT_STEP)
 				g->pos.rot = 0;
 			if (keycode == XK_Right)
-				g->fr_right = g->frames;
+				g->frames[FR_RIGHT] = 1;
 			else
-				g->fr_left = g->frames;
+				g->frames[FR_LEFT] = 1;
 		}
 	}
 	return (1);
@@ -81,7 +81,7 @@ int	key_release(int keycode, t_game *g)
 	}
 	if (keycode == XK_Control_L)
 	{
-		g->fr_gun = g->frames;
+		g->frames[FR_GUN] = 1;
 	}
 	if (keycode == XK_q || keycode == XK_Escape)
 	{
