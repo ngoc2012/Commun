@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 22:13:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 22:16:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -352,7 +352,6 @@ void	scale_window(t_game *g)
 
 void	draw_map(t_game *g)
 {
-	printf("draw map\n");
 	int	i = -1;
 	int	j = -1;
 
@@ -403,9 +402,6 @@ int	draw(t_game *g)
 			g->frames[i]++;
 	render_backgroud(g);
 	render_object(g->gun_tex, (int *) g->mlx.addr, WIDTH / 2, HEIGHT);
-	//mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->gun[0].img, WIDTH / 2 - g->gun[0].l / 2, HEIGHT - g->gun[0].h);
 	scale_window(g);
-	//draw_map(g);
 	draw_mini_map(g);
-	//end_game(g, 0, 0);
 }
