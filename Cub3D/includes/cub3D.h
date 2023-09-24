@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 16:15:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/24 16:18:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define WALL_COLISION 32
 # define TRANS_STEP 32
 # define ROT_STEP 15
+# define TRANS_SPEED 10
+# define ROT_SPEED 10
 # define PI 3.141592654
 # define INFINI INT_MAX
 # define MAX_FRAMES 1000000
