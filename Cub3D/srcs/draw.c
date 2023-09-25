@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 11:06:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 11:08:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -322,7 +322,7 @@ void	render_backgroud(t_game *g)
 		{
 			if (!(HEIGHT / 2 - yp))
 			{
-				printf("%d\n", HEIGHT / 2 - yp);
+				printf("%d, start = %d, h_slide = %d\n", HEIGHT / 2 - yp, start, h_slide);
 			}
 			if (HEIGHT / 2 - yp)
 			{
