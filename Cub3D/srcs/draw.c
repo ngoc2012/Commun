@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 10:57:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 11:03:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,10 @@ void	render_backgroud(t_game *g)
 					Bx = Bpx / BOX_SIZE - 1;
 			}
 			dA = INFINI;
-			if (g->map.v[By][Bx] == B_DOOR)
+			if (g->map.v[By][Bx] == B_DOOR && ai < tol_l && ai > -tol_l)
 				dB = (Bpx - g->pos.px + BOX_SIZE / 2) / cos(ai * PI / 180);
+			else if (g->map.v[By][Bx] == B_DOOR)
+				dB = (Bpx - g->pos.px - BOX_SIZE / 2) / cos(ai * PI / 180);
 			else
 				dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
 			g->pos.Bx = Bx;
@@ -160,7 +162,9 @@ void	render_backgroud(t_game *g)
 				else
 					Ay = Apy / BOX_SIZE;
 			}
-			if (g->map.v[Ay][Ax] == B_DOOR)
+			if (g->map.v[Ay][Ax] == B_DOOR && ai > 0.0)
+				dA = (g->pos.py - Apy - BOX_SIZE / 2) / sin(ai * PI / 180);
+			else if (g->map.v[Ay][Ax] == B_DOOR)
 				dA = (g->pos.py - Apy + BOX_SIZE / 2) / sin(ai * PI / 180);
 			else
 				dA = (g->pos.py - Apy) / sin(ai * PI / 180);
@@ -209,7 +213,9 @@ void	render_backgroud(t_game *g)
 					dA = INFINI;
 				else
 				{
-					if (g->map.v[Ay][Ax] == B_DOOR)
+					if (g->map.v[Ay][Ax] == B_DOOR && ai > 0.0)
+						dA = (g->pos.py - Apy - BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
+					else if (g->map.v[Ay][Ax] == B_DOOR)
 						dA = (g->pos.py - Apy + BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
 					else
 						dA = (g->pos.py - Apy) / g->sin_ai[ix][g->pos.rot];
@@ -255,8 +261,10 @@ void	render_backgroud(t_game *g)
 					dB = INFINI;
 				else
 				{
-					if (g->map.v[By][Bx] == B_DOOR)
+					if (g->map.v[By][Bx] == B_DOOR && ai > -90.0 && ai < 90.0)
 						dB = (Bpx - g->pos.px + BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
+					else if (g->map.v[By][Bx] == B_DOOR)
+						dB = (Bpx - g->pos.px - BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
 					else
 						dB = (Bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
 					g->pos.Bx = Bx;
