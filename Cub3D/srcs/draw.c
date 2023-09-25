@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 11:21:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 11:23:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ void	render_backgroud(t_game *g)
 			else if (g->map.v[By][Bx] == B_DOOR)
 			{
 				dB = (Bpx - g->pos.px - BOX_SIZE / 2) / cos(ai * PI / 180);
+				Bpy -= dpy / 2;
 			}
 			else
 				dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
@@ -267,9 +268,15 @@ void	render_backgroud(t_game *g)
 				else
 				{
 					if (g->map.v[By][Bx] == B_DOOR && ai > -90.0 && ai < 90.0)
-						dB = (Bpx - g->pos.px + BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
+					{
+						dB = (Bpx - g->pos.px + BOX_SIZE / 2) / cos(ai * PI / 180);
+						Bpy += dpy / 2;
+					}
 					else if (g->map.v[By][Bx] == B_DOOR)
-						dB = (Bpx - g->pos.px - BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
+					{
+						dB = (Bpx - g->pos.px - BOX_SIZE / 2) / cos(ai * PI / 180);
+						Bpy -= dpy / 2;
+					}
 					else
 						dB = (Bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
 					g->pos.Bx = Bx;
