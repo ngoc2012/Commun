@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 11:05:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 11:06:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,13 +324,16 @@ void	render_backgroud(t_game *g)
 			{
 				printf("%d\n", HEIGHT / 2 - yp);
 			}
-			dh = g->dpp * BOX_SIZE / 2 / (HEIGHT / 2 - yp) * g->cos_ai0[ix];
-			xph = g->pos.px + dh * g->cos_ai[ix][g->pos.rot];
-			yph = g->pos.py - dh * g->sin_ai[ix][g->pos.rot];
-			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
-			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
-			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
-				*addr = *(addr_c + xh + yh * g->tex[CL].l);
+			if (HEIGHT / 2 - yp)
+			{
+				dh = g->dpp * BOX_SIZE / 2 / (HEIGHT / 2 - yp) * g->cos_ai0[ix];
+				xph = g->pos.px + dh * g->cos_ai[ix][g->pos.rot];
+				yph = g->pos.py - dh * g->sin_ai[ix][g->pos.rot];
+				xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
+				yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
+				if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
+					*addr = *(addr_c + xh + yh * g->tex[CL].l);
+			}
 			addr += WIDTH;
 		}
 		yp = -1;
