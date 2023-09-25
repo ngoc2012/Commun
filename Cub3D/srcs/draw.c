@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 21:27:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 21:28:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,10 +324,12 @@ void	render_backgroud(t_game *g)
 		else
 		{
 			d = dA / g->cos_ai0[ix];
-			if (g->map.v[Ay][Ax] == B_DOOR)
 			tx = (int) (Apx - BOX_SIZE * (double) Ax);
 			if (g->map.v[Ay][Ax] == B_DOOR)
+			{
+				tx -= g->hidden_door;
 				tex = &g->tex[DO];
+			}
 			else if (ai > 0)
 				tex = &g->tex[NO];
 			else
