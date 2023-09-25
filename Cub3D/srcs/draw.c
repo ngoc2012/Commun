@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 11:34:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 20:59:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	render_backgroud(t_game *g)
 	int	*addr_t;
 	int	*addr_f;
 	int	*addr_c;
+	int	door_coor;
 	t_tex	*tex;
 
 	addr_f = (int *)g->tex[FL].addr;
@@ -159,7 +160,10 @@ void	render_backgroud(t_game *g)
 			else
 				Ay = Apy / BOX_SIZE;
 			Ax = g->pos.x;
-			while (g->map.v[Ay][Ax] != B_WALL || g->map.v[Ay][Ax] != B_DOOR)
+			int	door_coor;
+			door_coor = (Apx + dpx / 2)
+			while (g->map.v[Ay][Ax] != B_WALL || g->map.v[Ay][Ax] != B_DOOR
+				|| (g->map.v[Ay][Ax] == B_DOOR && ))
 			{
 				Apx += dpx;
 				Apy += dpy;
