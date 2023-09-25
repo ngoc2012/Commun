@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 10:14:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 10:18:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define COLOR_OFF   "\033[m"
 # define N_TEX 11
 # define N_FRAMES 5
-# define MAP_CHAR " \n0123456NSWE"
+# define MAP_CHAR " \n0123456NSWEX"
 
 /*
 NO: North walls
@@ -66,7 +66,7 @@ D4: Decor 4 (4)
 D5: Decor 5 (5)
 D6: Decor 6 (6)
 */
-enum e_map {B_WALL, B_GROUND, B_DOOR, B_SPRITE};
+enum e_map {B_WALL, B_GROUND, B_EMPTY, B_DOOR, B_SPRITE};
 enum e_tex {NO, SO, WE, EA, DO, FL, CL, D3, D4, D5, D6};
 enum e_frame {FR_UP, FR_DOWN, FR_LEFT, FR_RIGHT, FR_GUN};
 

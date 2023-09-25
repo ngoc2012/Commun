@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 10:17:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 10:18:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	get_position(t_game *g, int i, int j, char c)
 {
 	if (c == '1')
 		g->map.v[j][i] = B_WALL;
-	else if (c == 'X')
+	else if (c == '2')
 		g->map.v[j][i] = 2;
 	else if (c == '3')
 		g->map.v[j][i] = 3;
@@ -37,6 +37,8 @@ static void	get_position(t_game *g, int i, int j, char c)
 		g->map.v[j][i] = 5;
 	else if (c == '6')
 		g->map.v[j][i] = 6;
+	else if (c == '2')
+		g->map.v[j][i] = 2;
 	else if (c == ' ')
 		g->map.v[j][i] = -1;
 	else if (ft_strchr("NSWE", c))
