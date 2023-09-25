@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 10:45:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 10:49:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void	render_backgroud(t_game *g)
 			else
 				Ay = Apy / BOX_SIZE;
 			Ax = g->pos.x;
-			while (g->map.v[Ay][Ax] != B_WALL)
+			while (g->map.v[Ay][Ax] != B_WALL || g->map.v[Ay][Ax] != B_DOOR)
 			{
 				Apx += dpx;
 				Apy += dpy;
@@ -189,7 +189,7 @@ void	render_backgroud(t_game *g)
 					Ay = Apy / BOX_SIZE - 1;
 				else
 					Ay = Apy / BOX_SIZE;
-				while (Apx >= 0 && Apx < g->map.pl && g->map.v[Ay][Ax] != B_WALL)
+				while (Apx >= 0 && Apx < g->map.pl && g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
 				{
 					Apx += dpx;
 					Apy += dpy;
@@ -232,7 +232,7 @@ void	render_backgroud(t_game *g)
 				else
 					Bx = Bpx / BOX_SIZE - 1;
 				By = Bpy / BOX_SIZE;
-				while (Bpy >= 0 && Bpy < g->map.ph && g->map.v[By][Bx] != B_WALL)
+				while (Bpy >= 0 && Bpy < g->map.ph && g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
 				{
 					Bpx += dpx;
 					Bpy += dpy;
@@ -262,7 +262,9 @@ void	render_backgroud(t_game *g)
 		{
 			d = dB / g->cos_ai0[ix];
 			tx = (int) (Bpy - BOX_SIZE * (double) By);
-			if (ai > -90 && ai < 90)
+			if (g->map.v[By][Bx] != B_DOOR)
+				tex = &g->tex[DO];
+			else if (ai > -90 && ai < 90)
 				tex = &g->tex[WE];
 			else
 				tex = &g->tex[EA];
@@ -271,7 +273,9 @@ void	render_backgroud(t_game *g)
 		{
 			d = dA / g->cos_ai0[ix];
 			tx = (int) (Apx - BOX_SIZE * (double) Ax);
-			if (ai > 0)
+			if (g->map.v[By][Bx] != B_DOOR)
+				tex = &g->tex[DO];
+			else if (ai > 0)
 				tex = &g->tex[NO];
 			else
 				tex = &g->tex[SO];
