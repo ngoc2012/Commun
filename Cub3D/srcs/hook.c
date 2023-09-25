@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 09:03:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 09:05:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	key_release(int keycode, t_game *g)
 	{
 		printf("Space\n");
 	}
-	if (keycode == XK_Control_L)
+	if (keycode == XK_Control_L || keycode == XK_Control_R)
 	{
 		if (!g->frames[FR_GUN])
 			g->frames[FR_GUN] = 1;
