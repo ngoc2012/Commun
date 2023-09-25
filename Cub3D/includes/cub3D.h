@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 22:13:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 08:36:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define SCALE 3
 # define FOV 90
 # define BOX_SIZE 64
-# define WALL_COLISION 32
+# define WALL_COLISION 8
 # define TRANS_STEP 32
 # define ROT_STEP 15
 # define TRANS_SPEED 1
