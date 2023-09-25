@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 16:05:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 10:12:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	get_position(t_game *g, int i, int j, char c)
 {
 	if (c == '1')
 		g->map.v[j][i] = 1;
-	else if (c == '2')
+	else if (c == 'X')
 		g->map.v[j][i] = 2;
 	else if (c == '3')
 		g->map.v[j][i] = 3;
