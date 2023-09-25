@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 09:08:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 10:14:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ D4: Decor 4 (4)
 D5: Decor 5 (5)
 D6: Decor 6 (6)
 */
+enum e_map {B_WALL, B_GROUND, B_DOOR, B_SPRITE};
 enum e_tex {NO, SO, WE, EA, DO, FL, CL, D3, D4, D5, D6};
 enum e_frame {FR_UP, FR_DOWN, FR_LEFT, FR_RIGHT, FR_GUN};
 
