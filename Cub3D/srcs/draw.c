@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 11:33:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 11:34:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ void	render_backgroud(t_game *g)
 			if (g->map.v[By][Bx] == B_DOOR && ai < tol_l && ai > -tol_l)
 			{
 				dB = (Bpx - g->pos.px + BOX_SIZE / 2) / cos(ai * PI / 180);
-				Bpy -= dpy / 2;
+				Bpy += dpy / 2;
 			}
 			else if (g->map.v[By][Bx] == B_DOOR)
 			{
@@ -176,7 +176,7 @@ void	render_backgroud(t_game *g)
 			else if (g->map.v[Ay][Ax] == B_DOOR)
 			{
 				dA = (g->pos.py - Apy - BOX_SIZE / 2) / sin(ai * PI / 180);
-				Apx -= dpx / 2;
+				Apx += dpx / 2;
 			}
 			else
 				dA = (g->pos.py - Apy) / sin(ai * PI / 180);
@@ -233,7 +233,7 @@ void	render_backgroud(t_game *g)
 					else if (g->map.v[Ay][Ax] == B_DOOR)
 					{
 						dA = (g->pos.py - Apy - BOX_SIZE / 2) / sin(ai * PI / 180);
-						Apx -= dpx / 2;
+						Apx += dpx / 2;
 					}
 					else
 						dA = (g->pos.py - Apy) / g->sin_ai[ix][g->pos.rot];
