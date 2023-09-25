@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 09:00:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 09:08:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define TRANS_STEP 32
 # define ROT_STEP 5
 # define TRANS_SPEED 1
-# define ROT_SPEED 1
+# define ROT_SPEED 0
 # define GUN_SPEED 2
 # define PI 3.141592654
 # define INFINI INT_MAX
