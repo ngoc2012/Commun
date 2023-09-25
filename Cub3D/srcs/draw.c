@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 21:18:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 21:25:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,6 +324,7 @@ void	render_backgroud(t_game *g)
 		else
 		{
 			d = dA / g->cos_ai0[ix];
+			if (g->map.v[Ay][Ax] == B_DOOR)
 			tx = (int) (Apx - BOX_SIZE * (double) Ax);
 			if (g->map.v[Ay][Ax] == B_DOOR)
 				tex = &g->tex[DO];
@@ -369,12 +370,7 @@ void	render_backgroud(t_game *g)
 		{
 			ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp) / p);
 			if (tx < BOX_SIZE && tx >= 0 && ty < BOX_SIZE && ty >= 0)
-			{
-				if (g->map.v[Ay][Ax] == B_DOOR)
-					*addr = *(addr_t + tx + ty * tex->l);
-				else
-					*addr = *(addr_t + tx + ty * tex->l);
-			}
+				*addr = *(addr_t + tx + ty * tex->l);
 			addr += WIDTH;
 		}
 		yp = start + h_slide - 1;
