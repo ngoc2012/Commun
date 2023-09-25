@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 08:58:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 09:01:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,9 @@ int	mouse_hook(int button, int x, int y, t_game *g)
 {
 	if (button == 1)
 	{
-		printf("%d %d %d %d\n", button, x, y, g->pos.rot);
 		double	alpha;
 		alpha = atan(((double) x / SCALE - WIDTH / 2) / g->dpp) * 180.0 / PI; 
-		printf("%d %d %d %f\n", button, x, y, alpha);
 		g->pos.rot -= (int)  alpha / ROT_STEP;
-		printf("%d %d %d %d\n", button, x, y, g->pos.rot);
 		if (g->pos.rot < 0)
 			g->pos.rot += 360 / ROT_STEP;
 		else if (g->pos.rot >= 360 / ROT_STEP)
