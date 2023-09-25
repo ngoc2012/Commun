@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 08:35:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 08:44:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,8 @@ int	key_release(int keycode, t_game *g)
 		end_game(g, 0, 0);
 	}
 	return (1);
+}
+
+int	key_release(int keycode, t_game *g)
+{
 }
