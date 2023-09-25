@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 08:47:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 08:53:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,5 @@ int	key_release(int keycode, t_game *g)
 int	mouse_hook(int button, int x, int y, t_game *g)
 {
 	printf("%d %d %d\n", button, x, y);
+	g->pos.rot += (int)  atan((x / SCALE - WIDTH) / g->dpp) * 180.0 / PI / ROT_STEP;
 }
