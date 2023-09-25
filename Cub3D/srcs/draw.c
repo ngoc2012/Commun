@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/24 22:16:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 10:28:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	render_backgroud(t_game *g)
 			else
 				Bx = Bpx / BOX_SIZE - 1;
 			By = g->pos.y;
-			while (!g->map.v[By][Bx])
+			while (g->map.v[By][Bx] != B_WALL)
 			{
 				Bpx += dpx;
 				Bpy += dpy;
@@ -149,7 +149,7 @@ void	render_backgroud(t_game *g)
 			else
 				Ay = Apy / BOX_SIZE;
 			Ax = g->pos.x;
-			while (!g->map.v[Ay][Ax])
+			while (g->map.v[Ay][Ax] != B_WALL)
 			{
 				Apx += dpx;
 				Apy += dpy;
@@ -190,7 +190,7 @@ void	render_backgroud(t_game *g)
 					Ay = Apy / BOX_SIZE - 1;
 				else
 					Ay = Apy / BOX_SIZE;
-				while (Apx >= 0 && Apx < g->map.pl && !g->map.v[Ay][Ax])
+				while (Apx >= 0 && Apx < g->map.pl && g->map.v[Ay][Ax] != B_WALL)
 				{
 					Apx += dpx;
 					Apy += dpy;
@@ -233,7 +233,7 @@ void	render_backgroud(t_game *g)
 				else
 					Bx = Bpx / BOX_SIZE - 1;
 				By = Bpy / BOX_SIZE;
-				while (Bpy >= 0 && Bpy < g->map.ph && !g->map.v[By][Bx])
+				while (Bpy >= 0 && Bpy < g->map.ph && g->map.v[By][Bx] != B_WALL)
 				{
 					Bpx += dpx;
 					Bpy += dpy;
