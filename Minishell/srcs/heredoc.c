@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 14:31:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 14:59:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ int	heredoc(t_m *m)
 			return (redir_error("dup2", 1, 1));
 		close(m->fin0);
 	}
-	printf("m->fin open %s\n", m->heredocf);
 	m->fin = open(m->heredocf, O_RDONLY);
 	if (m->fin == -1)
 		return (0);
