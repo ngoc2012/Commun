@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 15:31:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 15:33:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,10 @@ int	check_heredoc(t_m *m, t_list *cur, t_list **here)
 
 int	heredoc(t_m *m)
 {
+	printf("heredoc %d\n", m->fin);
 	if (m->fin)
 	{
+		printf("close m->fin\n");
 		close(m->fin);
 		m->fin = 0;
 		if (dup2(m->fin0, STDIN_FILENO) == -1)
