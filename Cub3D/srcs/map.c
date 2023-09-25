@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 10:18:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 10:21:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	free_map(t_map *m)
 
 static void	get_position(t_game *g, int i, int j, char c)
 {
-	if (c == '1')
+	if (c == '0')
+		g->map.v[j][i] = B_GROUND;
+	else if (c == '1')
 		g->map.v[j][i] = B_WALL;
 	else if (c == '2')
-		g->map.v[j][i] = 2;
+		g->map.v[j][i] = B_SPRITE;
 	else if (c == '3')
 		g->map.v[j][i] = 3;
 	else if (c == '4')
@@ -102,12 +104,12 @@ int	get_map(t_game *g, char *fn)
 			g->map.v[++j] = malloc(sizeof(int) * g->map.l);
 			i = 0;
 			while (i < g->map.l)
-				g->map.v[j][i++] = 0;
+				g->map.v[j][i++] = B_EMPTY;
 			i = -1;
 			while (s[++i])
 				get_position(g, i, j, s[i]);
 			while (i++ < g->map.l)
-				g->map.v[j][i++] = 0;
+				g->map.v[j][i++] = B_EMPTY;
 		}
 		free(s);
 		s = get_next_line(fd);
