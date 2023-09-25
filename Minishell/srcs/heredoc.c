@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 15:33:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 15:40:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static int	read_lines(char *fn, char *end)
 		heredocf = open(fn, O_CREAT | O_WRONLY | O_APPEND, 0664);
 		s = strjoinm(0, com, 0, -1);
 		s = strjoinm(s, "\n", ft_strlen(s), 1);
+		printf("heredoc write file |%s|\n", fn);
 		write(heredocf, s, ft_strlen(s));
 		free(s);
 		close(heredocf);
