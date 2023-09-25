@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 21:03:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 21:05:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,10 +160,9 @@ void	render_backgroud(t_game *g)
 			else
 				Ay = Apy / BOX_SIZE;
 			Ax = g->pos.x;
-			int	door_coor;
-			door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax)
+			door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
 			while (g->map.v[Ay][Ax] != B_WALL || g->map.v[Ay][Ax] != B_DOOR
-				|| (g->map.v[Ay][Ax] == B_DOOR && ))
+				|| (g->map.v[Ay][Ax] == B_DOOR && door_coor > g->hidden_door))
 			{
 				Apx += dpx;
 				Apy += dpy;
@@ -171,6 +170,7 @@ void	render_backgroud(t_game *g)
 					Ay = Apy / BOX_SIZE - 1;
 				else
 					Ay = Apy / BOX_SIZE;
+				door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
 			}
 			if (g->map.v[Ay][Ax] == B_DOOR && ai > 0.0)
 			{
@@ -215,7 +215,9 @@ void	render_backgroud(t_game *g)
 					Ay = Apy / BOX_SIZE - 1;
 				else
 					Ay = Apy / BOX_SIZE;
-				while (Apx >= 0 && Apx < g->map.pl && g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
+				door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
+				while (Apx >= 0 && Apx < g->map.pl && g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR
+				|| (g->map.v[Ay][Ax] == B_DOOR && door_coor > g->hidden_door))
 				{
 					Apx += dpx;
 					Apy += dpy;
@@ -224,6 +226,7 @@ void	render_backgroud(t_game *g)
 						Ay = Apy / BOX_SIZE - 1;
 					else
 						Ay = Apy / BOX_SIZE;
+					door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
 				}
 				if (Apx < 0 || Apx >= g->map.pl)
 					dA = INFINI;
