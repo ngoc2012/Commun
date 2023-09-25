@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 11:30:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 11:33:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,7 +282,7 @@ void	render_backgroud(t_game *g)
 					if (g->map.v[By][Bx] == B_DOOR && ai > -90.0 && ai < 90.0)
 					{
 						dB = (Bpx - g->pos.px + BOX_SIZE / 2) / cos(ai * PI / 180);
-						Bpy -= dpy / 2;
+						Bpy += dpy / 2;
 					}
 					else if (g->map.v[By][Bx] == B_DOOR)
 					{
