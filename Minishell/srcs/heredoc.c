@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 15:43:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 16:03:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int	read_lines(char *fn, char *end)
 		heredocf = open(fn, O_CREAT | O_WRONLY | O_APPEND, 0664);
 		s = strjoinm(0, com, 0, -1);
 		s = strjoinm(s, "\n", ft_strlen(s), 1);
-		printf("heredoc write file |%s|\n", fn);
 		write(heredocf, s, ft_strlen(s));
 		free(s);
 		close(heredocf);
@@ -95,7 +94,6 @@ static int	parent_process(t_m *m, t_list *cur)
 
 int	check_heredoc(t_m *m, t_list *cur, t_list **here)
 {
-	printf("check_heredoc\n");
 	*here = 0;
 	while (cur)
 	{
@@ -123,7 +121,6 @@ int	check_heredoc(t_m *m, t_list *cur, t_list **here)
 
 int	heredoc(t_m *m)
 {
-	printf("heredoc %d\n", m->fin);
 	if (m->fin && m->fin != -1)
 	{
 		printf("close m->fin\n");
@@ -133,7 +130,6 @@ int	heredoc(t_m *m)
 			return (redir_error("dup2", 1, 1));
 		close(m->fin0);
 	}
-	printf("m->fin open %s\n", m->heredocf);
 	m->fin = open(m->heredocf, O_RDONLY);
 	if (m->fin == -1)
 		return (0);
