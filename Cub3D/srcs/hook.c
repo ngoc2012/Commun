@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 17:38:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 20:53:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ int	key_release(int keycode, t_game *g)
 	if (keycode == XK_space)
 	{
 		printf("Space\n");
-		if (g->map.v[pos.y - 1][pos.x] == B_DOOR)
-		else if (g->map.v[pos.y - 1][pos.x] == B_DOOR)
+		//if (g->map.v[pos.y - 1][pos.x] == B_DOOR)
+		//else if (g->map.v[pos.y - 1][pos.x] == B_DOOR)
 	}
 	if (keycode == XK_Control_L || keycode == XK_Control_R)
 	{
