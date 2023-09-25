@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 10:30:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 10:43:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ void	render_backgroud(t_game *g)
 			{
 				Bpx += dpx;
 				Bpy += dpy;
-				//Bx = Bpx / BOX_SIZE;
 				if (ai < tol_l && ai > -tol_l)
 					Bx = Bpx / BOX_SIZE;
 				else
