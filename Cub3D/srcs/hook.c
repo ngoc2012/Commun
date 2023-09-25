@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 09:01:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 09:03:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ int	mouse_hook(int button, int x, int y, t_game *g)
 		if (g->pos.rot < 0)
 			g->pos.rot += 360 / ROT_STEP;
 		else if (g->pos.rot >= 360 / ROT_STEP)
-			g->pos.rot = 0;
+			g->pos.rot -= 360 / ROT_STEP;
 	}
 }
