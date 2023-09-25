@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 08:55:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 08:57:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,17 @@ int	key_release(int keycode, t_game *g)
 
 int	mouse_hook(int button, int x, int y, t_game *g)
 {
-	printf("%d %d %d %d\n", button, x, y, g->pos.rot);
-	double	alpha;
-	alpha = atan((x / SCALE - WIDTH) / g->dpp) * 180.0 / PI; 
-	printf("%d %d %d %f\n", button, x, y, alpha);
-	g->pos.rot += (int)  alpha / ROT_STEP;
-	printf("%d %d %d %d\n", button, x, y, g->pos.rot);
-	if (g->pos.rot < 0)
-		g->pos.rot += 360 / ROT_STEP;
-	else if (g->pos.rot >= 360 / ROT_STEP)
-		g->pos.rot = 0;
+	if (button == 1)
+	{
+		printf("%d %d %d %d\n", button, x, y, g->pos.rot);
+		double	alpha;
+		alpha = atan(((double) x / SCALE - WIDTH / 2) / g->dpp) * 180.0 / PI; 
+		printf("%d %d %d %f\n", button, x, y, alpha);
+		g->pos.rot += (int)  alpha / ROT_STEP;
+		printf("%d %d %d %d\n", button, x, y, g->pos.rot);
+		if (g->pos.rot < 0)
+			g->pos.rot += 360 / ROT_STEP;
+		else if (g->pos.rot >= 360 / ROT_STEP)
+			g->pos.rot = 0;
+	}
 }
