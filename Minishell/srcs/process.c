@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/16 07:28:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 15:57:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	first_process(t_m *m, int i)
 	else if (m->n_pipes == 2)
 	{
 		close(m->pipefd0[1]);
-		if (dup2(m->pipefd0[0], STDIN_FILENO) == -1)
+		printf("first_process stdin\n");
+		if (!m->heredocf && dup2(m->pipefd0[0], STDIN_FILENO) == -1)
 			exit_error(m, "dup2", 1);
 		close(m->pipefd0[0]);
 		return (1);
@@ -45,6 +46,7 @@ void	last_process(t_m *m, int i)
 	{
 		close_pipe(m->pipefd1);
 		close(m->pipefd0[1]);
+		printf("last_process stdin\n");
 		if (dup2(m->pipefd0[0], STDIN_FILENO) == -1)
 			exit_error(m, "dup2", 1);
 		close(m->pipefd0[0]);
@@ -53,6 +55,7 @@ void	last_process(t_m *m, int i)
 	{
 		close_pipe(m->pipefd0);
 		close(m->pipefd1[1]);
+		printf("last_process stdin\n");
 		if (dup2(m->pipefd1[0], STDIN_FILENO) == -1)
 			exit_error(m, "dup2", 1);
 		close(m->pipefd1[0]);
@@ -65,6 +68,7 @@ void	inter_process(t_m *m, int i)
 	if (i % 2)
 	{
 		close(m->pipefd0[1]);
+		printf("inter_process stdin\n");
 		if (dup2(m->pipefd0[0], STDIN_FILENO) == -1)
 			exit_error(m, "dup2", 1);
 		close(m->pipefd0[0]);
@@ -76,6 +80,7 @@ void	inter_process(t_m *m, int i)
 	else
 	{
 		close(m->pipefd1[1]);
+		printf("inter_process stdin\n");
 		if (dup2(m->pipefd1[0], STDIN_FILENO) == -1)
 			exit_error(m, "dup2", 1);
 		close(m->pipefd1[0]);
