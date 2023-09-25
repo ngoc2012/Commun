@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 10:50:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 10:55:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,10 @@ void	render_backgroud(t_game *g)
 					Bx = Bpx / BOX_SIZE - 1;
 			}
 			dA = INFINI;
-			dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
+			if (g->map.v[By][Bx] == B_DOOR)
+				dB = (Bpx - g->pos.px - BOX_SIZE / 2) / cos(ai * PI / 180);
+			else
+				dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
 			g->pos.Bx = Bx;
 			g->pos.By = By;
 		}
@@ -157,7 +160,10 @@ void	render_backgroud(t_game *g)
 				else
 					Ay = Apy / BOX_SIZE;
 			}
-			dA = (g->pos.py - Apy) / sin(ai * PI / 180);
+			if (g->map.v[Ay][Ax] == B_DOOR)
+				dA = (g->pos.py - Apy - BOX_SIZE / 2) / sin(ai * PI / 180);
+			else
+				dA = (g->pos.py - Apy) / sin(ai * PI / 180);
 			dB = INFINI;
 			g->pos.Ax = Ax;
 			g->pos.Ay = Ay;
@@ -203,7 +209,10 @@ void	render_backgroud(t_game *g)
 					dA = INFINI;
 				else
 				{
-					dA = (g->pos.py - Apy) / g->sin_ai[ix][g->pos.rot];
+					if (g->map.v[Ay][Ax] == B_DOOR)
+						dA = (g->pos.py - Apy - BOX_SIZE) / g->sin_ai[ix][g->pos.rot];
+					else
+						dA = (g->pos.py - Apy) / g->sin_ai[ix][g->pos.rot];
 					g->pos.Ax = Ax;
 					g->pos.Ay = Ay;
 				}
