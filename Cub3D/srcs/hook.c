@@ -6,16 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 09:05:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/25 10:31:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "cub3D.h"
-
-int	convert_frames(int fr, int sp)
-{
-}
 
 int	key_press(int keycode, t_game *g)
 {
@@ -39,11 +35,11 @@ int	key_press(int keycode, t_game *g)
 		y = (int) ((g->pos.py + dy) / BOX_SIZE);
 		if (((keycode == XK_Up && !g->frames[FR_UP]) ||
 			(keycode == XK_Down && !g->frames[FR_DOWN])) &&
-				(x > 0 && y > 0 && x < g->map.l && y < g->map.h && !g->map.v[y][x] &&
-				!g->map.v[y][(int) ((g->pos.px - dx + WALL_COLISION) / BOX_SIZE)] &&
-				!g->map.v[y][(int) ((g->pos.px - dx - WALL_COLISION) / BOX_SIZE)] &&
-				!g->map.v[(int) ((g->pos.py + dy + WALL_COLISION) / BOX_SIZE)][x] &&
-				!g->map.v[(int) ((g->pos.py + dy - WALL_COLISION) / BOX_SIZE)][x]))
+				(x > 0 && y > 0 && x < g->map.l && y < g->map.h && g->map.v[y][x] != B_GROUND &&
+				g->map.v[y][(int) ((g->pos.px - dx + WALL_COLISION) / BOX_SIZE)] != B_GROUND &&
+				g->map.v[y][(int) ((g->pos.px - dx - WALL_COLISION) / BOX_SIZE)] != B_GROUND &&
+				g->map.v[(int) ((g->pos.py + dy + WALL_COLISION) / BOX_SIZE)][x] != B_GROUND &&
+				g->map.v[(int) ((g->pos.py + dy - WALL_COLISION) / BOX_SIZE)][x] != B_GROUND))
 		{
 			g->pos.px -= dx;
 			g->pos.py += dy;
