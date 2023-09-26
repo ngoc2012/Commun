@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 08:36:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 08:39:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	render_backgroud(t_game *g)
 				Bx = Bpx / BOX_SIZE - 1;
 			By = g->pos.y;
 			door_coor = (int) (Bpx + dpy / 2 - BOX_SIZE * (double) By);
-			while (g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR
+			while ((g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
 				|| (g->map.v[By][Bx] == B_DOOR && door_coor < g->hidden_door))
 			{
 				Bpx += dpx;
@@ -164,7 +164,7 @@ void	render_backgroud(t_game *g)
 				Ay = Apy / BOX_SIZE;
 			Ax = g->pos.x;
 			door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
-			while (g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR
+			while ((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
 				|| (g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door))
 			{
 				Apx += dpx;
@@ -220,7 +220,7 @@ void	render_backgroud(t_game *g)
 					Ay = Apy / BOX_SIZE;
 				door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
 				while ((Apx >= 0 && Apx < g->map.pl) &&
-					(g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR ||
+					((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR) ||
 					(g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door)))
 				{
 					Apx += dpx;
@@ -322,7 +322,10 @@ void	render_backgroud(t_game *g)
 			d = dB / g->cos_ai0[ix];
 			tx = (int) (Bpy - BOX_SIZE * (double) By);
 			if (g->map.v[By][Bx] == B_DOOR)
+			{
+				tx -= g->hidden_door;
 				tex = &g->tex[DO];
+			}
 			else if (ai > -90 && ai < 90)
 				tex = &g->tex[WE];
 			else
