@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 16:14:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 16:17:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,7 @@ void	render_backgroud(t_game *g)
 			else
 				Bx = Bpx / BOX_SIZE - 1;
 			By = g->pos.y;
-			if (g->map.v[By][Bx] == B_DOOR)
-				door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (double) By);
+			door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (double) By);
 			while ((g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
 				|| (By == g->opened_door_y && Bx == g->opened_door_x && g->map.v[By][Bx] == B_DOOR && door_coor < g->hidden_door))
 			{
@@ -222,8 +221,8 @@ void	render_backgroud(t_game *g)
 					Ay = Apy / BOX_SIZE;
 				door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
 				while ((Apx >= 0 && Apx < g->map.pl) &&
-					((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR) ||
-					(g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door)))
+					((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
+					|| (By == g->opened_door_y && Bx == g->opened_door_x && g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door)))
 				{
 					Apx += dpx;
 					Apy += dpy;
@@ -278,8 +277,7 @@ void	render_backgroud(t_game *g)
 				else
 					Bx = Bpx / BOX_SIZE - 1;
 				By = Bpy / BOX_SIZE;
-				if (g->map.v[By][Bx] == B_DOOR)
-					door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (double) By);
+				door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (double) By);
 				while ((Bpy >= 0 && Bpy < g->map.ph) &&
 					((g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
 				|| (By == g->opened_door_y && Bx == g->opened_door_x && g->map.v[By][Bx] == B_DOOR && door_coor < g->hidden_door)))
@@ -291,8 +289,7 @@ void	render_backgroud(t_game *g)
 					else
 						Bx = Bpx / BOX_SIZE - 1;
 					By = Bpy / BOX_SIZE;
-					if (g->map.v[By][Bx] == B_DOOR)
-						door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (double) By);
+					door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (double) By);
 				}
 				if (Bpy < 0 || Bpy >= g->map.ph)
 					dB = INFINI;
