@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 13:05:36 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:06:16 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	last_process(t_m *m, int i)
 	{
 		close_pipe(m->pipefd1);
 		close(m->pipefd0[1]);
+		printf("%d, m->fin = %d\n", i, m->fin);
 		if (!m->fin && dup2(m->pipefd0[0], STDIN_FILENO) == -1)
 			exit_error(m, "dup2", 1);
 		close(m->pipefd0[0]);
@@ -55,6 +56,7 @@ void	last_process(t_m *m, int i)
 	{
 		close_pipe(m->pipefd0);
 		close(m->pipefd1[1]);
+		printf("%d, m->fin = %d\n", i, m->fin);
 		if (!m->fin && dup2(m->pipefd1[0], STDIN_FILENO) == -1)
 			exit_error(m, "dup2", 1);
 		close(m->pipefd1[0]);
