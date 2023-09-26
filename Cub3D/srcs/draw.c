@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 16:51:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 17:03:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -458,6 +458,8 @@ int	draw(t_game *g)
 {
 	int	i;
 
+	if (g->frames[FR_DOOR])
+		g->frames[FR_DOOR] = 0;
 	if (g->frames[FR_UP] > TRANS_SPEED)
 		g->frames[FR_UP] = 0;
 	if (g->frames[FR_DOWN] > TRANS_SPEED)
