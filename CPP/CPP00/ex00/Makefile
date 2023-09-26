@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/09/26 18:43:35 by ngoc             ###   ########.fr        #
+#    Updated: 2023/09/26 18:44:02 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ all:	$(MANDA)
 .cpp.o:
 	$(CC) $(FLAGS) -g -c $< -o ${<:.cpp=.o} -I.
 $(MANDA):
-	$(CC) $(FLAGS) $(SRCS) -o $(MANDA)
+	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 gits:
 	git add Makefile
 	git add *.cpp
