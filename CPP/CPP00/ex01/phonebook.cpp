@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 21:57:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 21:59:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Contact::Contact(){}
 
 Contact::~Contact(){}
 
-Contact::show()
+void Contact::show(void) const
 {
 	std::cout << "|" << std::setw(10) << index << std::flush;
 	std::cout << "|" << std::setw(10) << this->_printLen(this->_firstName) << std::flush;
@@ -29,7 +29,7 @@ PhoneBook::PhoneBook(){}
 
 PhoneBook::~PhoneBook(){}
 
-PhoneBook::add()
+void PhoneBook::add(void)
 {
 	static int	i;
 	Contact	*new = this->contacts[i % 8];
@@ -40,14 +40,14 @@ PhoneBook::add()
 	i++
 }
 
-PhoneBook::search()
+void PhoneBook::search(void) const
 {
 	std::cout << "search\n";
 	//std::cout << "> " << std::flush;
 	//std::cin >> input;
 }
 
-PhoneBook::show()
+void PhoneBook::show(void) const
 {
 	std::cout << "show\n";
 	//std::cout << "> " << std::flush;
