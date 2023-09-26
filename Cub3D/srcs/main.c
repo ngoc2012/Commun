@@ -156,6 +156,5 @@ int	main(int argc, char **argv)
 	mlx_hook(g.mlx.win, 3, KeyReleaseMask, &key_release, &g);
 	mlx_hook(g.mlx.win, ClientMessage, LeaveWindowMask, &end_game, &g);
 	mlx_loop_hook(g.mlx.mlx, &draw, &g);
-	draw(&g);
 	mlx_loop(g.mlx.mlx);
 }
