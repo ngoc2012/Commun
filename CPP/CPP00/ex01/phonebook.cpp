@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 21:59:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 22:01:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Contact::Contact(){}
 
 Contact::~Contact(){}
 
-void Contact::show(void) const
+void Contact::show(int index) const
 {
 	std::cout << "|" << std::setw(10) << index << std::flush;
 	std::cout << "|" << std::setw(10) << this->_printLen(this->_firstName) << std::flush;

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 21:57:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 22:01:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PHONEBOOK_H
 
 #include <iostream>
+#include <iomanip>      // std::setw
 
 class Contact
 {
@@ -27,7 +28,7 @@ class Contact
 		Contact(void);
 		~Contact(void);
 
-		void	show(void) const;
+		void	show(int index) const;
 };
 
 class PhoneBook
