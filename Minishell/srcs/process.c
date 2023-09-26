@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 12:59:43 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:01:29 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	first_process(t_m *m, int i)
 		if (m->n_pipes > 2)
 			close_pipe(m->pipefd1);
 		close(m->pipefd0[0]);
+		printf("m->fout = %d\n", m->fout);
 		if (m->fout <= 1 && dup2(m->pipefd0[1], STDOUT_FILENO) == -1)
 			exit_error(m, "dup2", 1);
 		close(m->pipefd0[1]);
