@@ -1,5 +1,6 @@
+split_args m->fin = 0
+split_args m->fout = 5
 arg_pipe 0 0, m->fin = 0
-arg_pipe 0 0, m->fout = 3
+arg_pipe 0 0, m->fout = 5
 arg_pipe 0, m->fin = 0
-arg_pipe 0, m->fout = 3
-a
+arg_pipe 0, m->fout = 5

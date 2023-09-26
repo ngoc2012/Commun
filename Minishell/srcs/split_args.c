@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 20:52:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/17 14:05:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 13:15:08 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,7 @@ int	split_args(char *s, t_m *m)
 		else if (!check_in(m, &cur))
 			return (0);
 	}
+	printf("split_args m->fin = %d\n", m->fin);
+	printf("split_args m->fout = %d\n", m->fout);
 	return (1);
 }
