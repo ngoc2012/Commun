@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 12:53:34 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/26 12:54:10 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	first_process(t_m *m, int i)
 	else if (m->n_pipes == 2)
 	{
 		close(m->pipefd0[1]);
-		if (!m->heredocf[0] && dup2(m->pipefd0[0], STDIN_FILENO) == -1)
+		if (m->out <= 1 && dup2(m->pipefd0[0], STDIN_FILENO) == -1)
 			exit_error(m, "dup2", 1);
 		close(m->pipefd0[0]);
 		return (1);
