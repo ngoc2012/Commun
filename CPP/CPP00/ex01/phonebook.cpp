@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 21:43:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 21:47:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,26 @@ Contact::Contact(){}
 Contact::~Contact(){}
 
 PhoneBook::PhoneBook(){}
+
 PhoneBook::~PhoneBook(){}
+
+PhoneBook::add()
+{
+	Contact	*oldest = this.contacts[0];
+
+	std::cout << "add\n";
+	//std::cout << "> " << std::flush;
+	//std::cin >> input;
+}
+
+PhoneBook::search()
+{
+	Contact	*oldest = this.contacts[0];
+
+	std::cout << "search\n";
+	//std::cout << "> " << std::flush;
+	//std::cin >> input;
+}
 
 int	main(void)
 {
@@ -28,7 +47,6 @@ int	main(void)
 		if (input.compare("ADD") == 0)
 			b.add();
 		else if (input.compare("SEARCH") == 0) {
-			b.printContacts();
 			b.search();
 		}
 		std::cout << "> " << std::flush;
