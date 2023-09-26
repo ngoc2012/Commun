@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 10:13:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 15:19:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,13 @@ static void	get_position(t_game *g, int i, int j, char c)
 
 int	check_map(char *s)
 {
+	char	*s0;
+
+	s0 = s;
+	while (ft_strchr(" 	\n", *s0))
+		s0++;
+	if (!*s)
+		return (0);
 	while (*s)
 		if (!ft_strchr(MAP_CHAR, *(s++)))
 			return (0);
