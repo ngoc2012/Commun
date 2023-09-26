@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 22:05:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 22:07:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ Contact::~Contact(){}
 
 void Contact::show(int index) const
 {
-	std::cout << "|" << std::setw(10) << index << std::flush;
-	std::cout << "|" << std::setw(10) << printLen(this->_firstName) << std::flush;
-	std::cout << "|" << std::setw(10) << printLen(this->_lastName) << std::flush;
-	std::cout << "|" << std::setw(10) << printLen(this->_nickname) << std::flush;
+	std::cout << "|" << std::setw(WIDTH) << index << std::flush;
+	std::cout << "|" << std::setw(WIDTH) << printLen(this->_firstName, WIDTH) << std::flush;
+	std::cout << "|" << std::setw(WIDTH) << printLen( this->_lastName, WIDTH) << std::flush;
+	std::cout << "|" << std::setw(WIDTH) << printLen( this->_nickname, WIDTH) << std::flush;
 	std::cout << "|" << std::endl;
 }
 
@@ -56,7 +56,9 @@ void PhoneBook::search(void) const
 void PhoneBook::show(void) const
 {
 	std::cout << "show\n";
-	for (
+	for (int i = 0; i < N_CONTACTS; i++)
+	{
+	}
 	//std::cout << "> " << std::flush;
 	//std::cin >> input;
 }
