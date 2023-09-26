@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 08:34:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 08:36:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,8 +277,9 @@ void	render_backgroud(t_game *g)
 					Bx = Bpx / BOX_SIZE - 1;
 				By = Bpy / BOX_SIZE;
 				door_coor = (int) (Bpx + dpy / 2 - BOX_SIZE * (double) By);
-				while (Bpy >= 0 && Bpy < g->map.ph && g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR
-				|| (g->map.v[By][Bx] == B_DOOR && door_coor < g->hidden_door))
+				while ((Bpy >= 0 && Bpy < g->map.ph) &&
+					((g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
+				|| (g->map.v[By][Bx] == B_DOOR && door_coor < g->hidden_door)))
 				{
 					Bpx += dpx;
 					Bpy += dpy;
