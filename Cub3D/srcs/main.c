@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 21:31:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 16:49:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ void	init(t_game *g)
 	g->tan_ai = 0;
 	g->cos_ai = 0;
 	g->sin_ai = 0;
-	g->opened_door_x = 5;
-	g->opened_door_y = 4;
+	g->opened_door_x = 0;
+	g->opened_door_y = 0;
 	g->hidden_door = 20;
 	g->gun_tex = &g->gun[0];
 }
