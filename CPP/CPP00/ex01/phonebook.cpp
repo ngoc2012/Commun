@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 21:53:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 21:55:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ PhoneBook::~PhoneBook(){}
 
 PhoneBook::add()
 {
-	Contact	new;
+	static int	i;
+	Contact	*new = this->contacts[i % 8];
 
 	std::cout << "add\n";
 	//std::cout << "> " << std::flush;
 	//std::cin >> input;
+	i++
 }
 
 PhoneBook::search()
