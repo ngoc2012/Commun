@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 18:11:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 18:13:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -460,7 +460,6 @@ int	draw(t_game *g)
 
 	if (g->frames[FR_DOOR])
 	{
-		printf("frames door = %d %d %d %d %d\n", g->frames[FR_DOOR], g->pos.x, g->pos.y, g->opened_door_x, g->opened_door_y);
 		if (g->pos.x != g->opened_door_x ||  g->pos.y != g->opened_door_y)
 		{
 			if (g->opened && g->hidden_door < BOX_SIZE)
