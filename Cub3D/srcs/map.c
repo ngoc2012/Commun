@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 10:10:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 10:13:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int	get_map(t_game *g, char *fn)
 		if (check_map(s))
 		{
 			g->map.v[++j] = malloc(sizeof(enum e_map) * g->map.l);
+			printf("%d %s\n", j, s);
 			i = 0;
 			while (i < g->map.l)
 				g->map.v[j][i++] = B_EMPTY;
