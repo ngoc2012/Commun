@@ -6,29 +6,17 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/09/26 18:30:06 by ngoc             ###   ########.fr        #
+#    Updated: 2023/09/26 18:35:15 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c map.c draw.c mini_map.c hook.c math.c texture.c
+SRCS = megaphone.cpp
 MSRC = $(addprefix srcs/, $(SRCS))
 MOBJ = ${MSRC:.c=.o}
-MANDA = cub3D
-CC = cc
+MANDA = megaphone
+CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-LIBFT = libft/libft.a
-LIBGNL = GNL/libgnl.a
-LIBML = minilibx-linux/libft_Linux.a
-INCL_MINILIBX = -I./minilibx-linux
-OBJ_MINILIBX = -L./minilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
-LIBS = libft GNL
 all:	$(MANDA)
-$(LIBFT):
-	make -C libft
-$(LIBGNL):
-	make -C GNL
-$(LIBML):
-	make -C minilibx-linux
 .c.o:
 	$(CC) $(FLAGS) $(INCL_MINILIBX) -g -c $< -o ${<:.c=.o} $(addprefix -I./, $(LIBS) includes)
 $(MANDA):	$(MOBJ) $(LIBFT) $(LIBGNL) $(LIBML) 
