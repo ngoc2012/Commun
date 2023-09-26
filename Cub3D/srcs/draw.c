@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 17:27:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 17:28:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -466,6 +466,8 @@ int	draw(t_game *g)
 			g->frames[FR_DOOR]++;
 		else if (g->hidden_door == BOX_SIZE && g->frames[FR_DOOR] == DOOR_IDLE)
 		{
+			g->opened = 0;
+			g->hidden_door--;
 		}
 		if (g->frames[FR_DOOR] == DOOR_IDLE)
 			g->hidden_door--;
