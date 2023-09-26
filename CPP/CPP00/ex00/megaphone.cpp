@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 18:56:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 21:11:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {
 	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std:endl;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 	else
 	{
 		for (int i = 1; i < argc; i++)
@@ -24,6 +24,6 @@ int	main(int argc, char **argv)
 				argv[i][j] = toupper(argv[i][j]);
 			std::cout << argv[i];
 		}
-		std::cout << std:endl;
+		std::cout << std::endl;
 	}
 }
