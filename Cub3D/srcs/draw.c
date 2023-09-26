@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 17:28:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 17:31:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -460,31 +460,14 @@ int	draw(t_game *g)
 
 	if (g->frames[FR_DOOR])
 	{
-		if (g->opened && g->hidden_door < BOX_SIZE)
+		if (g->hidden_door < BOX_SIZE)
 			g->hidden_door++;
 		else if (g->hidden_door == BOX_SIZE && g->frames[FR_DOOR] < DOOR_IDLE)
 			g->frames[FR_DOOR]++;
 		else if (g->hidden_door == BOX_SIZE && g->frames[FR_DOOR] == DOOR_IDLE)
-		{
-			g->opened = 0;
 			g->hidden_door--;
-		}
-		if (g->frames[FR_DOOR] == DOOR_IDLE)
+		else if (g->hidden_door < BOX_SIZE && g->frames[FR_DOOR] == DOOR_IDLE)
 			g->hidden_door--;
-		if (g->frames[FR_DOOR] == DOOR_IDLE)
-		{
-			g->hidden_door--;
-			g->frames[FR_DOOR]++;
-		}
-		else if (g->hidden_door == BOX_SIZE && g->frames[FR_DOOR] < DOOR_IDLE)
-		{
-			g->frames[FR_DOOR]++;
-		}
-		if (g->hidden_door == BOX_SIZE && g->frames[FR_DOOR] == DOOR_IDLE)
-		{
-		}
-		else
-			g->hidden_door++;
 	}
 	if (g->frames[FR_UP] > TRANS_SPEED)
 		g->frames[FR_UP] = 0;
