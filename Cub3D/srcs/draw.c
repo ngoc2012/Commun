@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/25 21:28:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 08:32:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,9 @@ void	render_backgroud(t_game *g)
 			else
 				Bx = Bpx / BOX_SIZE - 1;
 			By = g->pos.y;
-			while (g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
+			door_coor = (int) (Bpx + dpy / 2 - BOX_SIZE * (double) By);
+			while (g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR
+				|| (g->map.v[By][Bx] == B_DOOR && door_coor < g->hidden_door))
 			{
 				Bpx += dpx;
 				Bpy += dpy;
@@ -122,6 +124,7 @@ void	render_backgroud(t_game *g)
 					Bx = Bpx / BOX_SIZE;
 				else
 					Bx = Bpx / BOX_SIZE - 1;
+				door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (double) By);
 			}
 			dA = INFINI;
 			if (g->map.v[By][Bx] == B_DOOR && ai < tol_l && ai > -tol_l)
@@ -273,7 +276,19 @@ void	render_backgroud(t_game *g)
 				else
 					Bx = Bpx / BOX_SIZE - 1;
 				By = Bpy / BOX_SIZE;
-				while (Bpy >= 0 && Bpy < g->map.ph && g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
+				door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
+			while (g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR
+				|| (g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door))
+			{
+				Apx += dpx;
+				Apy += dpy;
+				if (ai > 0.0)
+					Ay = Apy / BOX_SIZE - 1;
+				else
+					Ay = Apy / BOX_SIZE;
+				door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
+				while (Bpy >= 0 && Bpy < g->map.ph && g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR
+				|| (g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door))
 				{
 					Bpx += dpx;
 					Bpy += dpy;
