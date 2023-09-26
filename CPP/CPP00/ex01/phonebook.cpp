@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 21:48:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 21:53:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	main(void)
 		if (input.compare("ADD") == 0)
 			b.add();
 		else if (input.compare("SEARCH") == 0) {
+			b.show();
 			b.search();
 		}
 		std::cout << "> " << std::flush;
