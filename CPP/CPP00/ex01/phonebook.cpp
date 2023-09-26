@@ -6,14 +6,17 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 21:47:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 21:48:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.h"
 
 Contact::Contact(){}
+
 Contact::~Contact(){}
+
+Contact::Contact(){}
 
 PhoneBook::PhoneBook(){}
 
@@ -21,7 +24,7 @@ PhoneBook::~PhoneBook(){}
 
 PhoneBook::add()
 {
-	Contact	*oldest = this.contacts[0];
+	Contact	new;
 
 	std::cout << "add\n";
 	//std::cout << "> " << std::flush;
@@ -30,8 +33,13 @@ PhoneBook::add()
 
 PhoneBook::search()
 {
-	Contact	*oldest = this.contacts[0];
+	std::cout << "search\n";
+	//std::cout << "> " << std::flush;
+	//std::cin >> input;
+}
 
+PhoneBook::show()
+{
 	std::cout << "search\n";
 	//std::cout << "> " << std::flush;
 	//std::cin >> input;
