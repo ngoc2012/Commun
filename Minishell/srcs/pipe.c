@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:56:51 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/18 11:34:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 13:09:23 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ static int	arg_pipe(t_m *m, int i, int *pid)
 	}
 	if (m->args && *m->args && !m->syntaxe_error)
 	{
+		printf("arg_pipe %d, m->fin = %d\n", i, m->fin);
+		printf("arg_pipe %d, m->fout = %d\n", i, m->fout);
 		if (builtins(m, i))
 			*pid = -1;
 		else
