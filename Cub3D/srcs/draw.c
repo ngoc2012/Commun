@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 16:17:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 16:18:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ void	render_backgroud(t_game *g)
 			Ax = g->pos.x;
 			door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
 			while ((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
-				|| (g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door))
+				|| (Ay == g->opened_door_y && Ax == g->opened_door_x && g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door))
 			{
 				Apx += dpx;
 				Apy += dpy;
@@ -222,7 +222,7 @@ void	render_backgroud(t_game *g)
 				door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
 				while ((Apx >= 0 && Apx < g->map.pl) &&
 					((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
-					|| (By == g->opened_door_y && Bx == g->opened_door_x && g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door)))
+					|| (Ay == g->opened_door_y && Ax == g->opened_door_x && g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door)))
 				{
 					Apx += dpx;
 					Apy += dpy;
