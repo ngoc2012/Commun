@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 21:42:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 21:57:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class PhoneBook
 		~PhoneBook(void);
 
 		void	add(void);
+		void	show(void) const;
 		void	search(void) const;
 };
 
