@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 10:08:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 10:49:00 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -477,7 +477,7 @@ int	draw(t_game *g)
 			g->frames[i]++;
 	render_backgroud(g);
 	render_object(g->gun_tex, (int *) g->mlx.addr, WIDTH / 2, HEIGHT);
-	scale_window(g);
 	draw_mini_map(g);
+	scale_window(g);
 	return (1);
 }
