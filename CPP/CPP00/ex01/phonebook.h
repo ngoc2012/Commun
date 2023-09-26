@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 21:31:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 21:34:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,8 @@ class PhoneBook
 	private:
 		Contact contacts[8];
 	public:
+		PhoneBook(void);
+		~PhoneBook(void);
 }
+
 #endif

@@ -6,13 +6,13 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/09/26 18:44:02 by ngoc             ###   ########.fr        #
+#    Updated: 2023/09/26 21:35:23 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = megaphone.cpp
+SRCS = phonebook.cpp
 OBJS = ${SRCS:.c=.o}
-MANDA = megaphone
+MANDA = phonebook
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
