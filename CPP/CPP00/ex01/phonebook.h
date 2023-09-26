@@ -6,12 +6,15 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 22:01:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 22:05:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
+
+# define N_CONTACTS 8
+# define WIDTH 10
 
 #include <iostream>
 #include <iomanip>      // std::setw

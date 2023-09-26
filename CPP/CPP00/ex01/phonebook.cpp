@@ -6,11 +6,17 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 22:01:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/26 22:05:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.h"
+
+std::string printLen(std::string str, int len) {
+	if (str.length() > len)
+		return str.substr(0, len - 1) + ".";
+	return str;
+}
 
 Contact::Contact(){}
 
@@ -19,9 +25,9 @@ Contact::~Contact(){}
 void Contact::show(int index) const
 {
 	std::cout << "|" << std::setw(10) << index << std::flush;
-	std::cout << "|" << std::setw(10) << this->_printLen(this->_firstName) << std::flush;
-	std::cout << "|" << std::setw(10) << this->_printLen(this->_lastName) << std::flush;
-	std::cout << "|" << std::setw(10) << this->_printLen(this->_nickname) << std::flush;
+	std::cout << "|" << std::setw(10) << printLen(this->_firstName) << std::flush;
+	std::cout << "|" << std::setw(10) << printLen(this->_lastName) << std::flush;
+	std::cout << "|" << std::setw(10) << printLen(this->_nickname) << std::flush;
 	std::cout << "|" << std::endl;
 }
 
@@ -32,7 +38,7 @@ PhoneBook::~PhoneBook(){}
 void PhoneBook::add(void)
 {
 	static int	i;
-	Contact	*new = this->contacts[i % 8];
+	Contact	*new = this->contacts[i % N_CONTACTS];
 
 	std::cout << "add\n";
 	//std::cout << "> " << std::flush;
@@ -50,6 +56,7 @@ void PhoneBook::search(void) const
 void PhoneBook::show(void) const
 {
 	std::cout << "show\n";
+	for (
 	//std::cout << "> " << std::flush;
 	//std::cin >> input;
 }
