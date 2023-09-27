@@ -6,12 +6,15 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 06:18:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/27 06:27:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_H
 # define CONTACT_H
+
+#include <iostream>
+#include <iomanip>      // std::setw
 
 class Contact
 {
