@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 09:47:24 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 09:49:42 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	emptyEntry(const std::string& str) {
 	int	i = -1;
 
 	while (str[++i]) {
-		if (str[i] != ' ' && str[i] != '\t') {
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n') {
 			return false;
 		}
 	}
@@ -35,10 +35,8 @@ std::string	get_field(std::string str)
 {
 	std::string	input;
 
-	while (emptyEntry(input)) {
-		std::cout << str;
-		std::cout << "> " << std::flush;
-		std::cin >> input;
+	while (std::cin >> input && emptyEntry(input)) {
+		std::cout << str << "> " << std::flush;
 	}
 	return (input);
 }
