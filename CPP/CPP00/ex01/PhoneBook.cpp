@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 13:43:40 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:45:50 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ std::string	get_field(std::string str)
 {
 	std::string	input;
 
-	do
+	while (input.empty() || emptyEntry(input))
 	{
 		std::cout << str;
 		std::getline(std::cin, input);
 		if (std::cin.eof())
 			exit(1);
-	} while (input.empty() || emptyEntry(input));
+		std::cout << "here\n";
+	}
 	return (input);
 }
 
@@ -76,6 +77,7 @@ void	PhoneBook::add(void)
 			std::cout<< isdigits(phoneNumber) << "Not a number\n";
 	} while (!isdigits(phoneNumber));
 	new_contact->set_phoneNumber(phoneNumber); 
+
 	new_contact->set_darkestSecret(get_field("Darkest secret: ")); 
 	if (this->get_n() < 8)
 		this->set_n(this->get_n() + 1);
