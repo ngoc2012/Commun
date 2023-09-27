@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 06:27:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/27 08:55:15 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,8 @@ int	main(void)
 	while (input.compare("EXIT")) {
 		if (input.compare("ADD") == 0)
 			b.add();
-		else if (input.compare("SEARCH") == 0) {
-			b.show();
+		else if (input.compare("SEARCH") == 0)
 			b.search();
-		}
 		std::cout << "> " << std::flush;
 		std::cin >> input;
 	}
