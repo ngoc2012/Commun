@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 09:23:34 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 09:34:32 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ void	PhoneBook::add(void)
 	static int	i;
 	Contact		*new_contact = &this->contacts[i % N_CONTACTS];
 
-	new_contact->_firstName = get_field("First name: "); 
-	new_contact->_lastName = get_field("Last name: "); 
-	new_contact->_nickName = get_field("Nick name: "); 
-	new_contact->_phoneNumber = get_field("Phone number: "); 
-	new_contact->_darkestSecret = get_field("Darkest secret: "); 
+	new_contact->set_firstName(get_field("First name: ")); 
+	new_contact->set_lastName(get_field("Last name: ")); 
+	new_contact->set_nickName(get_field("Nick name: ")); 
+	new_contact->set_phoneNumber(get_field("Phone number: ")); 
+	new_contact->set_darkestSecret(get_field("Darkest secret: ")); 
 	i++;
 }
 
