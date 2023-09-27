@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 09:57:10 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 09:58:46 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ std::string	get_field0(std::string str)
 		std::cout << str << "> " << std::flush;
 	}
 	if (std::cin.eof() || emptyEntry(input))
-		return std::string("");
+		return 0;
 	return (input);
 }
 
 std::string	get_field(std::string str)
 {
-	std::string	input = "";
+	std::string	input = 0;
 
-	while (!input.compare(""))
+	while (!input)
 		input = get_field0(str);
 	return (input);
 }
