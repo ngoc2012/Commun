@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 12:34:20 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:37:55 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,23 @@ std::string	get_field0(std::string str)
 std::string	get_field(std::string str)
 {
 	std::string	input = "";
+	bool    valid = false;
 
+	do
+	{
+		std::cout << "Please enter the contact index: " << std::flush;
+		std::cin >> input;
+		if (std::cin.good() && (input >= 0 && input <= 8)) {
+			//everything went well, we'll get out of the loop and return the value
+			valid = true;
+		} else {
+			//something went wrong, we reset the buffer's state to good
+			std::cin.clear();
+			//and empty it
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+			std::cout << "Invalid index; please re-enter." << std::endl;
+		}
+	} while (!valid);
 	//while (input.empty())
 	//{
 		input = get_field0(str);
