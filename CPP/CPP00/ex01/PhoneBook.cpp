@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 12:21:40 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:27:12 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,13 @@ std::string	get_field0(std::string str)
 		if (!input.empty())
 			return (input);
 	}
-	if (std::cin.eof() || emptyEntry(input))
+	if (std::cin.eof())
+	{
+		std::cin.clear();  // Clear the EOF state
+		//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		return "";
+	}
+	if (emptyEntry(input))
 		return "";
 	return (input);
 }
