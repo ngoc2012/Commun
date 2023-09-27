@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 07:30:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/27 08:41:04 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void PhoneBook::search(void) const
 	int	num = std::stoi(input);
 	if (num < 1 || num > 8)
 	{
-		std::err << 
-		}
+		std::cerr << "Contact id does not exist\n";
+	}
 }
 
 void PhoneBook::show(void) const
