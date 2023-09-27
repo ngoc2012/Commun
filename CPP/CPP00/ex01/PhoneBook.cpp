@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 12:30:12 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:33:17 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstdlib> // for atoi
 #include <cstring> // for c_str()
-#include <iomanip> // numeric_limits
+#include <limits> // numeric_limits
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(){}
@@ -34,6 +34,7 @@ bool	emptyEntry(const std::string& str) {
 std::string	get_field0(std::string str)
 {
 	std::string	input;
+	std::string	out = "";
 
 	std::cout << str << std::flush;
 	while (std::cin >> input)
@@ -45,10 +46,10 @@ std::string	get_field0(std::string str)
 	{
 		std::cin.clear();  // Clear the EOF state
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		return "";
+		return (out);
 	}
 	if (emptyEntry(input))
-		return "";
+		return (out);
 	return (input);
 }
 
