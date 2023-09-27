@@ -6,14 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 09:55:59 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 09:57:10 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
-//#include <cstdlib> // for atoi
 #include <cstdlib> // for atoi
 #include <cstring> // for c_str()
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(){}
 
@@ -35,10 +34,10 @@ std::string	get_field0(std::string str)
 {
 	std::string	input;
 
-	while (std::cin >> input && emptyEntry(input)) {
+	while (std::cin >> input) {
 		std::cout << str << "> " << std::flush;
 	}
-	if (std::cin.eof())
+	if (std::cin.eof() || emptyEntry(input))
 		return std::string("");
 	return (input);
 }
