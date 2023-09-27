@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 09:03:15 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 09:33:09 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,31 @@ void Contact::show(void) const
 	std::cout << "Nick name: " << this->_nickName << std::endl;
 	std::cout << "Phone number: " << this->_phoneNumber << std::endl;
 	std::cout << "Darkest secret: " << this->_darkestSecret << std::endl;
+}
+
+void	set_firstName(std::string str)
+{
+	this->_firstName = str;
+}
+
+void 	set_lastName(std::string str)
+{
+	this->_lastName = str;
+}
+
+void 	set_nickName(std::string str)
+{
+	this->_nickName = str;
+}
+
+void 	set_phoneNumber(std::string str)
+{
+	this->_phoneNumber = str;
+}
+
+void 	set_darkestSecret(std::string str)
+{
+	this->_darkestSecret = str;
 }
 
 #endif
