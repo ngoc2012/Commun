@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 06:38:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/27 06:40:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 PhoneBook::PhoneBook(){}
 
 PhoneBook::~PhoneBook(){}
+
+bool	containsOnlySpaceAndTab(const std::string& str) {
+	for (char c : str) {
+		if (c != ' ' && c != '\t') {
+			return false; // Found a character that is not a space or tab
+		}
+	}
+	return true; // All characters in the string are spaces or tabs
+}
 
 std::string	get_field(void)
 {
