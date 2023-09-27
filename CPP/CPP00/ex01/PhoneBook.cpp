@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 09:01:52 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 09:03:45 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,5 @@ void	PhoneBook::search(void) const
 		std::cerr << "Contact id invalid\n";
 		return ;
 	}
-	this->contacts[i - 1].show(i);
+	this->contacts[i - 1].show();
 }
