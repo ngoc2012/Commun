@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 12:57:54 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:58:34 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class PhoneBook
 		~PhoneBook(void);
 
 		void	add(void);
-		void	set_n(void);
+		void	set_n(int n);
 		void	show(void) const;
 		void	search(void) const;
 		int	get_n(void) const;

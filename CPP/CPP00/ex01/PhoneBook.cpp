@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 12:53:21 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:59:13 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,14 @@ void	PhoneBook::search(void) const
 		return ;
 	}
 	this->contacts[i - 1].show();
+}
+
+void	PhoneBook::set_n(int n)
+{
+	this->n = n;
+}
+
+int	get_n(void) const
+{
+	return (this->n);
 }
