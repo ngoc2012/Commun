@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.h                                        :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 22:05:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/27 06:17:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,12 @@
 # define N_CONTACTS 8
 # define WIDTH 10
 
-#include <iostream>
-#include <iomanip>      // std::setw
-
-class Contact
-{
-	private:
-		std::string _firstName;
-		std::string _lastName;
-		std::string _nickname;
-		std::string _phoneNumber;
-		std::string _darkestSecret;
-	public:
-		Contact(void);
-		~Contact(void);
-
-		void	show(int index) const;
-};
+#include "Contact.hpp"
 
 class PhoneBook
 {
 	private:
-		Contact contacts[8];
+		Contact contacts[N_CONTACTS];
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
