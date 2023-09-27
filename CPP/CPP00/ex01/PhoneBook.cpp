@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 07:15:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/27 07:17:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,10 @@ void PhoneBook::search(void) const
 
 void PhoneBook::show(void) const
 {
-	std::cout << "show\n";
+	std::cout << "|         8|          |          |          |\n";
+	std::cout << "---------------------------------------------\n";
 	for (int i = 0; i < N_CONTACTS; i++)
 		this->contacts[i].show(i + 1);
-	//std::cout << "> " << std::flush;
+	std::cout << "---------------------------------------------\n";
 	//std::cin >> input;
 }
