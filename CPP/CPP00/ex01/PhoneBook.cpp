@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 13:40:05 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:43:40 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ bool	emptyEntry(const std::string& str) {
 
 std::string	get_field(std::string str)
 {
-	std::string	input = "";
+	std::string	input;
 
 	do
 	{
-		std::cout << str << std::flush;
+		std::cout << str;
 		std::getline(std::cin, input);
 		if (std::cin.eof())
 			exit(1);
