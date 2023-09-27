@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 08:46:10 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 08:48:59 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ std::string	get_field(void)
 	return (input);
 }
 
-void PhoneBook::add(void)
+void	PhoneBook::add(void)
 {
 	//static int	i;
 	//Contact	*new_contact = &this->contacts[i % N_CONTACTS];
@@ -53,18 +53,26 @@ void PhoneBook::add(void)
 	//i++;
 }
 
-void PhoneBook::search(void) const
+void	PhoneBook::search(void) const
 {
 	std::string	input;
 	std::cout << "Contact id ?\n";
 	std::cout << "> " << std::flush;
 	std::cin >> input;
-	int	num = std::stoi(input);
-	if (num < 1 || num > 8)
+	int	i = std::stoi(input);
+	if (i < 1 || i > 8)
+	{
 		std::cerr << "Contact id invalid\n";
+		return ;
+	}
+	std::cout << "---------------------------------------------\n";
+	std::cout << "|     Index|First Name| Last Name| Nick Name|\n";
+	std::cout << "---------------------------------------------\n";
+	this->contacts[i - 1].show(i);
+	std::cout << "---------------------------------------------\n";
 }
 
-void PhoneBook::show(void) const
+void	PhoneBook::show(void) const
 {
 	std::cout << "---------------------------------------------\n";
 	std::cout << "|     Index|First Name| Last Name| Nick Name|\n";
