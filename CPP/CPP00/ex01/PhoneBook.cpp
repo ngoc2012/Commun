@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 12:39:55 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:40:37 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ bool	emptyEntry(const std::string& str) {
 	return true;
 }
 
+/*
 std::string	get_field0(std::string str)
 {
 	std::string	input;
@@ -52,6 +53,7 @@ std::string	get_field0(std::string str)
 		return (out);
 	return (input);
 }
+*/
 
 std::string	get_field(std::string str)
 {
@@ -62,12 +64,12 @@ std::string	get_field(std::string str)
 	{
 		std::cout << str << std::flush;
 		std::cin >> input;
-		if (std::cin.good() && (input >= 0 && input <= 8)) {
+		if (std::cin.good()) {
 			valid = true;
 		} else {
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-			std::cout << "Invalid index; please re-enter." << std::endl;
+			std::cout << "Invalid entry." << std::endl;
 		}
 	} while (!valid);
 	return (input);
