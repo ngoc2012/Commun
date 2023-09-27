@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 08:58:08 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 09:01:10 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,11 @@ void Contact::show_table(int index) const
 
 void Contact::show(int index) const
 {
-		std::string _firstName;
-		std::string _lastName;
-		std::string _nickname;
-		std::string _phoneNumber;
-		std::string _darkestSecret;
-	std::cout << "|" << std::setw(WIDTH) << index << std::flush;
-	std::cout << "|" << std::setw(WIDTH) << printLen(this->_firstName, WIDTH) << std::flush;
-	std::cout << "|" << std::setw(WIDTH) << printLen( this->_lastName, WIDTH) << std::flush;
-	std::cout << "|" << std::setw(WIDTH) << printLen( this->_nickname, WIDTH) << std::flush;
-	std::cout << "|" << std::endl;
+	std::cout << "First name: " << this->_firstName << std::endl;
+	std::cout << "Last name: " << this->_lastName << std::endl;
+	std::cout << "Nick name: " << this->_nickName << std::endl;
+	std::cout << "Phone number: " << this->_phoneNumber << std::endl;
+	std::cout << "Darkest secret: " << this->_darkestSecret << std::endl;
 }
 
 #endif

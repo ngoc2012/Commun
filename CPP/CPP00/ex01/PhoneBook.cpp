@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 08:56:08 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 09:01:52 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	PhoneBook::show(void) const
 	std::cout << "|     Index|First Name| Last Name| Nick Name|\n";
 	std::cout << "---------------------------------------------\n";
 	for (int i = 0; i < N_CONTACTS; i++)
-		this->contacts[i].show(i + 1);
+		this->contacts[i].show_table(i + 1);
 	std::cout << "---------------------------------------------\n";
 }
 
@@ -79,9 +79,5 @@ void	PhoneBook::search(void) const
 		std::cerr << "Contact id invalid\n";
 		return ;
 	}
-	std::cout << "---------------------------------------------\n";
-	std::cout << "|     Index|First Name| Last Name| Nick Name|\n";
-	std::cout << "---------------------------------------------\n";
 	this->contacts[i - 1].show(i);
-	std::cout << "---------------------------------------------\n";
 }
