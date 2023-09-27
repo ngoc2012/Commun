@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 13:49:53 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:55:49 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ std::string	get_field(std::string str)
 {
 	std::string	input = "";
 
-	while (input.empty() || emptyEntry(input))
+	do
 	{
 		std::cout << str;
 		std::getline(std::cin, input);
 		if (std::cin.eof())
 			exit(1);
 	}
+	while (input.empty() || emptyEntry(input));
 	return (input);
 }
 
@@ -73,7 +74,7 @@ void	PhoneBook::add(void)
 	{
 		phoneNumber = get_field("Phone number: ");
 		if (!isdigits(phoneNumber))
-			std::cout<< isdigits(phoneNumber) << "Not a number\n";
+			std::cout << "Error: Not a number\n";
 	} while (!isdigits(phoneNumber));
 	new_contact->set_phoneNumber(phoneNumber); 
 
