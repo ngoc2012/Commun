@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/09/27 05:28:34 by ngoc             ###   ########.fr        #
+#    Updated: 2023/09/27 06:25:04 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = phonebook.cpp
+SRCS = main.cpp PhoneBook.cpp Contact.cpp
 OBJS = ${SRCS:.c=.o}
 MANDA = phonebook
 CC = c++
