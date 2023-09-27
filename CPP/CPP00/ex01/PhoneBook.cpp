@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 08:52:50 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 08:56:08 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,21 @@ void	PhoneBook::add(void)
 	//i++;
 }
 
+void	PhoneBook::show(void) const
+{
+	std::cout << "---------------------------------------------\n";
+	std::cout << "|     Index|First Name| Last Name| Nick Name|\n";
+	std::cout << "---------------------------------------------\n";
+	for (int i = 0; i < N_CONTACTS; i++)
+		this->contacts[i].show(i + 1);
+	std::cout << "---------------------------------------------\n";
+}
+
 void	PhoneBook::search(void) const
 {
 	std::string	input;
+
+	this->show();
 	std::cout << "Contact id ?\n";
 	std::cout << "> " << std::flush;
 	std::cin >> input;
@@ -71,15 +83,5 @@ void	PhoneBook::search(void) const
 	std::cout << "|     Index|First Name| Last Name| Nick Name|\n";
 	std::cout << "---------------------------------------------\n";
 	this->contacts[i - 1].show(i);
-	std::cout << "---------------------------------------------\n";
-}
-
-void	PhoneBook::show(void) const
-{
-	std::cout << "---------------------------------------------\n";
-	std::cout << "|     Index|First Name| Last Name| Nick Name|\n";
-	std::cout << "---------------------------------------------\n";
-	for (int i = 0; i < N_CONTACTS; i++)
-		this->contacts[i].show(i + 1);
 	std::cout << "---------------------------------------------\n";
 }
