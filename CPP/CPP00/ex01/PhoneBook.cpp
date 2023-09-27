@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 12:45:43 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:53:21 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,47 +31,17 @@ bool	emptyEntry(const std::string& str) {
 	return true;
 }
 
-/*
-std::string	get_field0(std::string str)
-{
-	std::string	input;
-	std::string	out = "";
-
-	std::cout << str << std::flush;
-	while (std::cin >> input)
-	{
-		if (!input.empty())
-			return (input);
-	}
-	if (std::cin.eof())
-	{
-		std::cin.clear();  // Clear the EOF state
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		return (out);
-	}
-	if (emptyEntry(input))
-		return (out);
-	return (input);
-}
-*/
-
 std::string	get_field(std::string str)
 {
 	std::string	input = "";
-	bool		valid = false;
 
 	do
 	{
 		std::cout << str << std::flush;
-		std::getline(std::cin, input);
-		if (std::cin.good() && !input.empty()) {
-			valid = true;
-		} else {
-			std::cin.clear();
-			//std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-			std::cout << "Invalid entry..." << std::endl;
-		}
-	} while (!valid);
+		std::cin >> input;
+		if (std::cin.eof())
+			exit(1);
+	} while (input.empty() || emptyEntry(input));
 	return (input);
 }
 
