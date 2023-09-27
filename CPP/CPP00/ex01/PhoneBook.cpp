@@ -6,12 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 12:27:12 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:29:46 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstdlib> // for atoi
 #include <cstring> // for c_str()
+#include <iomanip> // for atoi
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(){}
@@ -43,7 +44,7 @@ std::string	get_field0(std::string str)
 	if (std::cin.eof())
 	{
 		std::cin.clear();  // Clear the EOF state
-		//std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		return "";
 	}
 	if (emptyEntry(input))
