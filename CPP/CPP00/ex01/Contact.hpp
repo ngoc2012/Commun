@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 06:27:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/27 08:58:25 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ class Contact
 		Contact(void);
 		~Contact(void);
 
-		void	show(int index) const;
+		void	show_table(int index) const;
+		void	show(void) const;
 };
 
 #endif
