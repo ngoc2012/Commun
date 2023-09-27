@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 12:40:37 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:43:56 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ std::string	get_field(std::string str)
 	{
 		std::cout << str << std::flush;
 		std::cin >> input;
-		if (std::cin.good()) {
+		if (std::cin.good() && !input.empty()) {
 			valid = true;
 		} else {
 			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+			//std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 			std::cout << "Invalid entry." << std::endl;
 		}
 	} while (!valid);
