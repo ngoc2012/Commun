@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 13:37:48 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:40:05 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ bool	isdigits(const std::string& str) {
 
 	i = -1;
 	while (str[++i]) {
-		if (!std::isdigit(str[i]) || str[i] != ' ') {
+		if (!std::isdigit(str[i]) && str[i] != ' ') {
 			return false;
 		}
 	}
