@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 10:30:50 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:21:40 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ std::string	get_field0(std::string str)
 {
 	std::string	input;
 
-	std::cout << str << "> " << std::flush;
+	std::cout << str << std::flush;
 	while (std::cin >> input)
 	{
 		if (!input.empty())
@@ -82,7 +82,7 @@ void	PhoneBook::search(void) const
 	std::string	input;
 
 	this->show();
-	input = get_field("Contact id"); 
+	input = get_field("Contact id: "); 
 
 	int	i = atoi(input.c_str());
 	if (i < 1 || i > N_CONTACTS)
