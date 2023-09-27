@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 08:48:59 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 08:51:22 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@ bool	emptyEntry(const std::string& str) {
 	return true;
 }
 
-std::string	get_field(void)
+std::string	get_field(std::string str)
 {
 	std::string	input = "";
 
 	while (emptyEntry(input)) {
+		std::cout << str;
 		std::cout << "> " << std::flush;
 		std::cin >> input;
 	}
@@ -59,7 +60,8 @@ void	PhoneBook::search(void) const
 	std::cout << "Contact id ?\n";
 	std::cout << "> " << std::flush;
 	std::cin >> input;
-	int	i = std::stoi(input);
+
+	int	i = atoi(input.c_str());
 	if (i < 1 || i > 8)
 	{
 		std::cerr << "Contact id invalid\n";
