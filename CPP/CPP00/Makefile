@@ -6,10 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/09/27 05:30:00 by ngoc             ###   ########.fr        #
+#    Updated: 2023/09/27 05:30:43 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+FOLDERS = ex00 ex01
 gits:
 	git add Makefile
 	git add ex00/*.cpp
