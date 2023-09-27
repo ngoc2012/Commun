@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 13:55:49 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 14:02:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	PhoneBook::add(void)
 	{
 		phoneNumber = get_field("Phone number: ");
 		if (!isdigits(phoneNumber))
-			std::cout << "Error: Not a number\n";
+			std::cerr << "Error: Not a number\n";
 	} while (!isdigits(phoneNumber));
 	new_contact->set_phoneNumber(phoneNumber); 
 
@@ -104,7 +104,7 @@ void	PhoneBook::search(void) const
 	int	i = atoi(input.c_str());
 	if (i < 1 || i > this->get_n())
 	{
-		std::cerr << "Contact id invalid\n";
+		std::cerr << "Error: Contact id invalid\n";
 		return ;
 	}
 	this->contacts[i - 1].show();
