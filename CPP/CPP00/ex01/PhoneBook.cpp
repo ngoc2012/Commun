@@ -6,12 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 08:43:01 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 08:45:22 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+//#include <cstdlib> // for atoi
 #include <cstdlib> // for atoi
+#include <cstring> // for c_str()
 
 PhoneBook::PhoneBook(){}
 
@@ -60,7 +62,7 @@ void PhoneBook::search(void) const
 	int	num = std::stoi(input);
 	if (num < 1 || num > 8)
 	{
-		std::cout << "Contact id does not exist\n";
+		std::cerr << "Contact id does not exist\n";
 	}
 }
 
