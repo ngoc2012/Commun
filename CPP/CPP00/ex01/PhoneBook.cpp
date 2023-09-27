@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 13:17:32 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:19:24 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 #include <limits> // numeric_limits
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(){}
+PhoneBook::PhoneBook()
+{
+	this->n = 0;
+}
 
 PhoneBook::~PhoneBook(){}
 
@@ -78,7 +81,7 @@ void	PhoneBook::search(void) const
 	input = get_field("Contact id: "); 
 
 	int	i = atoi(input.c_str());
-	if (i < 1 || i > N_CONTACTS)
+	if (i < 1 || i > this->get_n())
 	{
 		std::cerr << "Contact id invalid\n";
 		return ;
@@ -91,7 +94,7 @@ void	PhoneBook::set_n(int n)
 	this->n = n;
 }
 
-int	get_n(void) const
+int	PhoneBook::get_n(void) const
 {
 	return (this->n);
 }
