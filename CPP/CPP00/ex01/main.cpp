@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 08:55:15 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 09:39:20 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ int	main(void)
 			b.search();
 		std::cout << "> " << std::flush;
 		std::cin >> input;
+	}
+	if (std::cin.eof()) {
+		std::cout << "End of input reached (Ctrl+D was pressed)." << std::endl;
+	} else {
+		std::cout << "Input error occurred." << std::endl;
 	}
 	return (0);
 }
