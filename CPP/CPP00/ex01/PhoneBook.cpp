@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 09:34:32 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 09:37:17 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	PhoneBook::search(void) const
 	std::cin >> input;
 
 	int	i = atoi(input.c_str());
-	if (i < 1 || i > 8)
+	if (i < 1 || i > N_CONTACTS)
 	{
 		std::cerr << "Contact id invalid\n";
 		return ;
