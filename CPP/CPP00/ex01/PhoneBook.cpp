@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 12:33:17 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 12:34:20 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ std::string	get_field(std::string str)
 {
 	std::string	input = "";
 
-	while (input.empty())
+	//while (input.empty())
+	//{
 		input = get_field0(str);
+	//}
 	return (input);
 }
 
