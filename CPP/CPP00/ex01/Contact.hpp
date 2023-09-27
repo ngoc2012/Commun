@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 09:03:07 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 09:25:20 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ class Contact
 
 		void	show_table(int index) const;
 		void	show(void) const;
+		void	set_firstName(std::string str);
+		void 	set_lastName(std::string str);
+		void 	set_nickName(std::string str);
+		void 	set_phoneNumber(std::string str);
+		void 	set_darkestSecret(std::string str);
 };
 
 #endif
