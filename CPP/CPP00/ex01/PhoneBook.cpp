@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 13:19:24 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:35:33 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,38 @@ std::string	get_field(std::string str)
 	do
 	{
 		std::cout << str << std::flush;
-		std::cin >> input;
+		std::getline(std::cin, input);
 		if (std::cin.eof())
 			exit(1);
 	} while (input.empty() || emptyEntry(input));
 	return (input);
 }
 
+bool	isdigits(const std::string& str) {
+	for (char c : str) {
+		if (!std::isdigit(c) || c != ' ') {
+			return false;
+		}
+	}
+	return true;
+}
+
 void	PhoneBook::add(void)
 {
 	static int	i;
 	Contact		*new_contact = &this->contacts[i % N_CONTACTS];
+	std::string	phoneNumber;
 
 	new_contact->set_firstName(get_field("First name: ")); 
 	new_contact->set_lastName(get_field("Last name: ")); 
 	new_contact->set_nickName(get_field("Nick name: ")); 
-	new_contact->set_phoneNumber(get_field("Phone number: ")); 
+	do
+	{
+		phoneNumber = get_field("Phone number: ");
+		if (!isdigits(phoneNumber))
+			std::cout << "Not a number\n";
+	} while (!isdigits(phoneNumber))
+	new_contact->set_phoneNumber(phoneNumber); 
 	new_contact->set_darkestSecret(get_field("Darkest secret: ")); 
 	if (this->get_n() < 8)
 		this->set_n(this->get_n() + 1);
