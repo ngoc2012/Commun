@@ -6,16 +6,12 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/09/28 13:46:06 by ngoc             ###   ########.fr        #
+#    Updated: 2023/09/28 18:26:22 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-EXOS1 = ex01 ex02
-EXOS = ex00 ex01 ex02
 gits:
-	git add $(addsuffix /Makefile, $(EXOS))
-	git add $(addsuffix /*.cpp, $(EXOS))
-	git add $(addsuffix /*.hpp, $(EXOS1))
+	git add *.json
 	git commit -m "all"
 	git push
 .PHONY: all clean fclean re
