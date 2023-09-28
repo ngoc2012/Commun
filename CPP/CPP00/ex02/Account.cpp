@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 20:50:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 15:45:54 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	Account::getNbWithdrawals(void) {return _totalNbWithdrawals; }
 bool	Account::makeWithdrawal(int withdrawal)
 {
 	_displayTimestamp();
-	std::cout << "index:" << _accountIndex << ";amount:" << _amount;
+	std::cout << "index:" << _accountIndex << ";p_amount:" << _amount;
 	if (_amount < withdrawal)
 	{
 		std::cout << ";withdrawal:refused\n";
@@ -50,7 +50,7 @@ void	Account::makeDeposit(int deposit)
 	_totalNbDeposits++;
 
 	_displayTimestamp();
-	std::cout << "index:" << _accountIndex << ";amount:" << _amount;
+	std::cout << "index:" << _accountIndex << ";p_amount:" << _amount;
 	_amount += deposit;
 	std::cout << ";deposits:" << deposit << ";amount:" << _amount
 		<< ";nb_deposits:" << _nbDeposits << std::endl;
