@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:36:20 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 11:55:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 12:43:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	Harl::error( void )
 	std::cout << "This is unacceptable! I want to speak to the manager now.\n";
 }
 
-void	Harl::complain( std::string level )
+bool	Harl::complain( std::string level )
 {
 	t_func  funcs[] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
 	std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR"};
@@ -43,7 +43,9 @@ void	Harl::complain( std::string level )
 	while (++i < 4)
 		if (!levels[i].compare(level))
 		{
-			(this->*funcs[i])();
-			return ;
+			for (int j = i; j < 4; j++)
+				(this->*funcs[j])();
+			return true;
 		}
+	return false;
 }
