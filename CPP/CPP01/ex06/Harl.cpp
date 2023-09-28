@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:36:20 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 14:15:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 14:16:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	Harl::warning( void )
 
 void	Harl::error( void )
 {
+	std::cout << "[ERROR]\n";
 	std::cout << "This is unacceptable! I want to speak to the manager now.\n";
 }
 
