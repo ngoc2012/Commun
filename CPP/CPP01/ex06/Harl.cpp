@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:36:20 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 12:47:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 12:49:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ bool	Harl::complain( std::string level )
 			{
 				std::cout << "[" << levels[j] << "]\n";
 				(this->*funcs[j])();
+				std::cout << std::endl;
 			}
 			return true;
 		}
