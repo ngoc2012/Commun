@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:36:20 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 13:31:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 14:14:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,23 @@ int	get_level(std::string level)
 
 void	Harl::complain( std::string level )
 {
-	t_func  funcs[] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
 	switch (get_level(argv))
 	{
 		case 0:
-			debug;
+			debug();
+			info();
+			warning();
+			error();
+			break;
 		case 1:
-			debug;
+			info();
+			warning();
+			error();
+			break;
 		case 2:
-			k.complain("WARNING");
+			warning();
+			error();
+			break;
 		case 3:
 			error();
 			break ;
