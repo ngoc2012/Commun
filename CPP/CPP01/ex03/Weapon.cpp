@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 12:09:32 by ngoc             ###   ########.fr       */
+/*   Created: 2023/09/28 07:33:36 by ngoc              #+#    #+#             */
+/*   Updated: 2023/09/28 08:48:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Weapon.hpp"
 
-# define N_CONTACTS 8
+Weapon::~Weapon(void) {}
+Weapon::Weapon(std::string s) : type(s) {}
 
-#include "Contact.hpp"
-
-class PhoneBook
+const std::string&	Weapon::getType(void) const
 {
-	private:
-		int	n;
-		Contact contacts[N_CONTACTS];
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
+	return (type);
+}
 
-		void	add(void);
-		void	set_n(int n);
-		void	show(void) const;
-		void	search(void) const;
-		int	get_n(void) const;
-};
-
-#endif
+void	Weapon::setType(std::string s)
+{
+	type = s;
+}

@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 12:09:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 08:47:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef WEAPON_H
+# define WEAPON_H
 
 #include <iostream>
-#include <iomanip>      // std::setw
 
-class Contact
+class Weapon
 {
 	private:
-		std::string _firstName;
-		std::string _lastName;
-		std::string _nickName;
-		std::string _phoneNumber;
-		std::string _darkestSecret;
+		std::string type;
 	public:
-		Contact(void);
-		~Contact(void);
+		Weapon(std::string);
+		~Weapon(void);
 
-		void	show_table(int index) const;
-		void	show(void) const;
-		void	set_firstName(std::string str);
-		void 	set_lastName(std::string str);
-		void 	set_nickName(std::string str);
-		void 	set_phoneNumber(std::string str);
-		void 	set_darkestSecret(std::string str);
+		const std::string&	getType(void) const;
+		void	setType(std::string);
 };
 
 #endif

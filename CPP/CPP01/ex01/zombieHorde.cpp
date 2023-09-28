@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 12:09:32 by ngoc             ###   ########.fr       */
+/*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
+/*   Updated: 2023/09/28 06:26:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include <cstdio>
+#include "Zombie.hpp"
 
-# define N_CONTACTS 8
+Zombie*	zombieHorde( int N, std::string name )
+{	
+	char buffer[20];
 
-#include "Contact.hpp"
+	Zombie	*list = new Zombie[N];
+	for (int i = 0; i < N; i++)
+	{
+		sprintf(buffer, "%d", i + 1);
+		std::string result(buffer);
+		list[i].set_name(name + std::string(" ") + result);
+	}
+	return (list);
+}
 
-class PhoneBook
-{
-	private:
-		int	n;
-		Contact contacts[N_CONTACTS];
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
-
-		void	add(void);
-		void	set_n(int n);
-		void	show(void) const;
-		void	search(void) const;
-		int	get_n(void) const;
-};
-
-#endif

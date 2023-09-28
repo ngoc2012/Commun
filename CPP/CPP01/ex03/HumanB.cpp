@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 12:09:32 by ngoc             ###   ########.fr       */
+/*   Created: 2023/09/28 07:28:24 by ngoc              #+#    #+#             */
+/*   Updated: 2023/09/28 09:37:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "HumanB.hpp"
 
-# define N_CONTACTS 8
+HumanB::HumanB(std::string s) : name(s) {}
+HumanB::~HumanB(void) {}
 
-#include "Contact.hpp"
-
-class PhoneBook
+void	HumanB::attack(void) const
 {
-	private:
-		int	n;
-		Contact contacts[N_CONTACTS];
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
+	std::cout << name << " attacks with their " <<  weapon->getType() << std::endl;
+}
 
-		void	add(void);
-		void	set_n(int n);
-		void	show(void) const;
-		void	search(void) const;
-		int	get_n(void) const;
-};
-
-#endif
+void	HumanB::setWeapon(Weapon& w)
+{
+	weapon = &w;
+}

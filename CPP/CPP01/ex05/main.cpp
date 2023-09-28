@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 12:09:32 by ngoc             ###   ########.fr       */
+/*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
+/*   Updated: 2023/09/28 11:56:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include <iostream>
+#include "Harl.hpp"
 
-# define N_CONTACTS 8
-
-#include "Contact.hpp"
-
-class PhoneBook
+int	main(void)
 {
-	private:
-		int	n;
-		Contact contacts[N_CONTACTS];
-	public:
-		PhoneBook(void);
-		~PhoneBook(void);
+	Harl	h;
 
-		void	add(void);
-		void	set_n(int n);
-		void	show(void) const;
-		void	search(void) const;
-		int	get_n(void) const;
-};
-
-#endif
+	std::string	input = "";
+	std::cout << "Harl program\n";
+	std::cout << "Command: DEBUG INFO WARNING ERROR EXIT\n";
+	while (input.compare("EXIT")) {
+		std::cout << "> " << std::flush;
+		std::cin >> input;
+		h.complain(input);
+	}
+	return (0);
+}

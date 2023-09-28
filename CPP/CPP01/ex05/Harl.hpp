@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 12:09:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 11:53:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#ifndef HARL_HPP
+# define HARL_HPP
 
 #include <iostream>
-#include <iomanip>      // std::setw
 
-class Contact
+class Harl
 {
 	private:
-		std::string _firstName;
-		std::string _lastName;
-		std::string _nickName;
-		std::string _phoneNumber;
-		std::string _darkestSecret;
+		void	debug( void );
+		void	info( void );
+		void	warning( void );
+		void	error( void );
 	public:
-		Contact(void);
-		~Contact(void);
+		Harl(void);
+		~Harl(void);
 
-		void	show_table(int index) const;
-		void	show(void) const;
-		void	set_firstName(std::string str);
-		void 	set_lastName(std::string str);
-		void 	set_nickName(std::string str);
-		void 	set_phoneNumber(std::string str);
-		void 	set_darkestSecret(std::string str);
+		void	complain( std::string level );
+		typedef void (Harl::*t_func) ( void );
 };
 
 #endif
