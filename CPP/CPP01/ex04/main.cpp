@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 10:28:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 17:46:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 		while ( pos != std::string::npos ) {
 			line.erase(pos, toFind.length());
 			line.insert(pos, argv[3]);
-			pos = line.find(toFind);
+			pos = line.find(toFind[pos + toReplace.length()]);
 		}
 		out << line << "\n";
 	}
