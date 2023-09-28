@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 15:03:21 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/28 15:05:47 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class Fixed
 		void	error( void );
 	public:
 		Fixed(void);
+		Fixed( const Fixed &rhs );
+		Fixed& operator=( const Fixed &rhs );
 		~Fixed(void);
 
 		void	complain( std::string level );
