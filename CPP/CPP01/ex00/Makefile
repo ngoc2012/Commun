@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/09/27 21:16:22 by ngoc             ###   ########.fr        #
+#    Updated: 2023/09/28 17:40:41 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ all:	$(MANDA)
 	$(CC) $(FLAGS) -g -c $< -o ${<:.cpp=.o} -I.
 $(MANDA):
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
+file:
+	make re && valgrind ./test
 gits:
 	git add Makefile
 	git add *.cpp
