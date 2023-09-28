@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 13:55:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 14:15:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (1);
-	h.complain(argv[1])
-		std::cout << "[ Probably complaining about insignificant problems ]\n";
+	h.complain(std::string(argv[1]));
 	return (0);
 }

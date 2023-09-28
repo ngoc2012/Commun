@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 12:43:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 14:14:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ class Harl
 		Harl(void);
 		~Harl(void);
 
-		bool	complain( std::string level );
-		typedef void (Harl::*t_func) ( void );
+		void	complain( std::string level );
 };
 
 #endif

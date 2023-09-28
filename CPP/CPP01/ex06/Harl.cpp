@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:36:20 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 14:14:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 14:15:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int	get_level(std::string level)
 	while (++i < 4)
 		if (!levels[i].compare(level))
 			return (i);
-	return (-1)
+	return (-1);
 }
 
 void	Harl::complain( std::string level )
 {
-	switch (get_level(argv))
+	switch (get_level(level))
 	{
 		case 0:
 			debug();
