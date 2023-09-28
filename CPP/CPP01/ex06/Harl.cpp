@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:36:20 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 12:43:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 12:44:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ bool	Harl::complain( std::string level )
 		if (!levels[i].compare(level))
 		{
 			for (int j = i; j < 4; j++)
+			{
+				std::cout << "[" << levels[j] << "]\n";
 				(this->*funcs[j])();
+			}
 			return true;
 		}
 	return false;
