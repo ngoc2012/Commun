@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:36:20 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 14:16:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 14:18:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,26 @@ Harl::~Harl(void) {}
 
 void	Harl::debug( void )
 {
-	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger.\nI really do!\n";
+	std::cout << "[ DEBUG ]\n";
+	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger.\nI really do!\n\n";
 }
 
 void	Harl::info( void )
 {
-	std::cout << "I cannot believe adding extra bacon costs more money.\nYou didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!\n";
+	std::cout << "[ INFO ]\n";
+	std::cout << "I cannot believe adding extra bacon costs more money.\nYou didn’t put enough bacon in my burger! If you did, I wouldn’t be asking for more!\n\n";
 }
 
 void	Harl::warning( void )
 {
-	std::cout << "I think I deserve to have some extra bacon for free.\nI’ve been coming for years whereas you started working here since last month.\n";
+	std::cout << "[ WARNING ]\n";
+	std::cout << "I think I deserve to have some extra bacon for free.\nI’ve been coming for years whereas you started working here since last month.\n\n";
 }
 
 void	Harl::error( void )
 {
-	std::cout << "[ERROR]\n";
-	std::cout << "This is unacceptable! I want to speak to the manager now.\n";
+	std::cout << "[ ERROR ]\n";
+	std::cout << "This is unacceptable! I want to speak to the manager now.\n\n";
 }
 
 int	get_level(std::string level)
