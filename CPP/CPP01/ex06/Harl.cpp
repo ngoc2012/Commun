@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:36:20 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 12:49:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 13:26:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,24 @@ void	Harl::warning( void )
 void	Harl::error( void )
 {
 	std::cout << "This is unacceptable! I want to speak to the manager now.\n";
+}
+
+int	get_level(std::string level)
+{
+	switch (karen_translate(argv))
+	{
+		case 0:
+			k.complain("DEBUG");
+		case 1:
+			k.complain("INFO");
+		case 2:
+			k.complain("WARNING");
+		case 3:
+			k.complain("ERROR");
+			break ;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+	}
 }
 
 bool	Harl::complain( std::string level )
