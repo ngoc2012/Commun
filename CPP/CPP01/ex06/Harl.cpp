@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:36:20 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 13:26:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 13:31:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,37 +37,29 @@ void	Harl::error( void )
 
 int	get_level(std::string level)
 {
-	switch (karen_translate(argv))
-	{
-		case 0:
-			k.complain("DEBUG");
-		case 1:
-			k.complain("INFO");
-		case 2:
-			k.complain("WARNING");
-		case 3:
-			k.complain("ERROR");
-			break ;
-		default:
-			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-	}
-}
-
-bool	Harl::complain( std::string level )
-{
-	t_func  funcs[] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
 	std::string levels[] = { "DEBUG", "INFO", "WARNING", "ERROR"};
 	int i = -1;
 	while (++i < 4)
 		if (!levels[i].compare(level))
-		{
-			for (int j = i; j < 4; j++)
-			{
-				std::cout << "[" << levels[j] << "]\n";
-				(this->*funcs[j])();
-				std::cout << std::endl;
-			}
-			return true;
-		}
-	return false;
+			return (i);
+	return (-1)
+}
+
+void	Harl::complain( std::string level )
+{
+	t_func  funcs[] = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
+	switch (get_level(argv))
+	{
+		case 0:
+			debug;
+		case 1:
+			debug;
+		case 2:
+			k.complain("WARNING");
+		case 3:
+			error();
+			break ;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+	}
 }
