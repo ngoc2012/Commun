@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 11:56:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/28 12:15:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	main(void)
 	std::string	input = "";
 	std::cout << "Harl program\n";
 	std::cout << "Command: DEBUG INFO WARNING ERROR EXIT\n";
-	while (input.compare("EXIT")) {
+	while (std::getline(std::cin, input))
+	{
 		std::cout << "> " << std::flush;
 		std::cin >> input;
 		h.complain(input);
