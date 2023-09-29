@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 09:07:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 09:08:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ static void	assignment(Fixed &des, Fixed &src)
 
 Fixed&	Fixed::operator=( Fixed &src )
 {
-	std::cout << "Copy assignment operator called" << std::endl;
-	if (this != &src)
-		fp = src.getRawBits();
+	assignment(*this, src);
 	return (*this);
 }
 
