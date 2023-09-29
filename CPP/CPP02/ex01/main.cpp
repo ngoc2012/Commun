@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 21:03:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 21:05:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ int main(void) {
 	a2 = Fixed( -2147483647 );
 	//a3 = Fixed(std::numeric_limits<float>::max());
 	//a4 = Fixed(std::numeric_limits<float>::min());
-	a3 = Fixed(3.402823466e+38);
-	a4 = Fixed(1.175494351e-38);
+	//a3 = Fixed(3.402823466e+38);
+	//a4 = Fixed(1.175494351e-38);
+	a3 = Fixed(3.402823466e+38f);
+	a4 = Fixed(1.175494351e-38f);
 	//a = Fixed( 42.42f );
 	//a = Fixed( 12345678.87654321f );
 	std::cout << "a is " << a << std::endl;
