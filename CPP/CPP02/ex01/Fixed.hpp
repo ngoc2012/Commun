@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 09:49:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 14:13:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class Fixed
 		static const int	fb = 8;
 	public:
 		Fixed( void );
-		Fixed( Fixed& );
-		Fixed&	operator=( Fixed& );
+		Fixed( const Fixed& );
+		Fixed&	operator=( const Fixed& );
 		~Fixed( void );
 		Fixed( const int n );
 		Fixed( const float n );

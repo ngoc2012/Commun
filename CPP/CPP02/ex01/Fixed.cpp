@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 14:10:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 14:13:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ static void	assignment(Fixed &des, Fixed &src)
 	des.setRawBits(src.getRawBits());
 }
 
-Fixed&	Fixed::operator=( Fixed &src )
+Fixed&	Fixed::operator=( const Fixed &src )
 {
 	assignment(*this, src);
 	return (*this);
 }
 
-Fixed::Fixed( Fixed &src )
+Fixed::Fixed( const Fixed &src )
 {
 	std::cout << "Copy constructor called" << std::endl;
 	assignment(*this, src);
