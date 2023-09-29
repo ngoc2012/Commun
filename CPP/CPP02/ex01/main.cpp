@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 21:06:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 21:11:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int main(void) {
 	Fixed const d( b );
 	Fixed       a1;
 	Fixed       a2;
-	Fixed       a3;
-	Fixed       a4;
+	//Fixed       a3;
+	//Fixed       a4;
 
 	a = Fixed( 1234.4321f );
 	a1 = Fixed( 2147483647 );
@@ -31,17 +31,17 @@ int main(void) {
 	//a4 = Fixed(std::numeric_limits<float>::min());
 	//a3 = Fixed(3.402823466e+38);
 	//a4 = Fixed(1.175494351e-38);
-	a3 = Fixed(3.402823466e+38f);
-	a4 = Fixed(1.175494351e-38f);
+	//a3 = Fixed(3.402823465e+38f);
+	//a4 = Fixed(1.175494352e-38f);
 	//a = Fixed( 42.42f );
 	//a = Fixed( 12345678.87654321f );
 	std::cout << "a is " << a << std::endl;
 	std::cout << "a1 is " << a1 << std::endl;
 	std::cout << "a2 is " << a2 << std::endl;
-	std::cout << "a3 is " << a3 << std::endl;
-	std::cout << 3.402823466e+38f << std::endl;
-	std::cout << 1.175494351e-38f << std::endl;
-	std::cout << "a4 is " << a4 << std::endl;
+	//std::cout << 3.402823466e+38f << std::endl;
+	//std::cout << 1.175494351e-38f << std::endl;
+	//std::cout << "a3 is " << a3 << std::endl;
+	//std::cout << "a4 is " << a4 << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
 	std::cout << "d is " << d << std::endl;
