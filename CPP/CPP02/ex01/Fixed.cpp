@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 09:54:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 11:10:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ Fixed::Fixed( Fixed &src )
 	assignment(*this, src);
 }
 
+// fb = 8
+// 1 : 00000000 00000000 00000000 00000001
+// ->  00000000 00000000 00000001 00000000
 Fixed::Fixed( const int n ) : fp( n << fb ) {
     std::cout << "Int constructor called" << std::endl;
 }
@@ -51,7 +54,6 @@ Fixed::Fixed( const float n ) : fp( std::roundf( n * ( 1 << fb ) ) ) {
 
 int	Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (fp);
 }
 
