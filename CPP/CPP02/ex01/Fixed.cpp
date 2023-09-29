@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 11:10:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 11:12:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,17 @@ Fixed::Fixed( Fixed &src )
 	assignment(*this, src);
 }
 
-// fb = 8
-// 1 : 00000000 00000000 00000000 00000001
-// ->  00000000 00000000 00000001 00000000
+/*
+    seeeeeee emmmmmmm mmmmmmmm mmmmmmmm    meaning
+   31                              0    bit #
+   s = sign bit, e = exponent, m = mantissa
+
+Example:
+fb = 8
+1 : 00000000 00000000 00000000 00000001
+->  00000000 00000000 00000001 00000000
+
+*/
 Fixed::Fixed( const int n ) : fp( n << fb ) {
     std::cout << "Int constructor called" << std::endl;
 }
