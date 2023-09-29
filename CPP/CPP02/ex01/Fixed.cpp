@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 14:13:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 14:23:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Fixed::~Fixed()
     std::cout << "Destructor called" << std::endl;
 }
 
-static void	assignment(Fixed &des, Fixed &src)
+static void	assignment(const Fixed &des, const Fixed &src)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	des.setRawBits(src.getRawBits());
