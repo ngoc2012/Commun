@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 09:46:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 09:49:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Fixed
 	public:
 		Fixed( void );
 		Fixed( Fixed& );
-		Fixed& operator=( Fixed& );
+		Fixed&	operator=( Fixed& );
 		~Fixed( void );
 		Fixed( const int n );
 		Fixed( const float n );
@@ -34,5 +34,7 @@ class Fixed
 		float   toFloat( void ) const;
 		int     toInt( void ) const;
 };
+
+std::ostream&	operator<<( std::ostream& o, Fixed& n );
 
 #endif
