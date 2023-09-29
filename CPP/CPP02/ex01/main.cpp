@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 21:05:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 21:06:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int main(void) {
 	std::cout << "a1 is " << a1 << std::endl;
 	std::cout << "a2 is " << a2 << std::endl;
 	std::cout << "a3 is " << a3 << std::endl;
+	std::cout << 3.402823466e+38f << std::endl;
+	std::cout << 1.175494351e-38f << std::endl;
 	std::cout << "a4 is " << a4 << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
