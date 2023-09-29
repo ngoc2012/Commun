@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 20:55:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 20:56:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int main(void) {
 	std::cout << "d is " << d << std::endl;
 
 	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
+	std::cout << "a1 is " << a1.toInt() << " as integer" << std::endl;
+	std::cout << "a2 is " << a2.toInt() << " as integer" << std::endl;
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;

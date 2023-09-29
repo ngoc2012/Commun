@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 20:55:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 20:56:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,6 @@ Fixed::Fixed( const int n ) : fp( n << fb ) {
     std::cout << "Int constructor called" << std::endl;
 }
 
-//#include <cmath>
 //Fixed::Fixed( const float n ) : fp( roundf( n * ( 1 << fb ) ) ) {
 /*
 1234.4321	10011010 010.01101 11010011110001
@@ -175,6 +174,7 @@ Fixed::Fixed( const int n ) : fp( n << fb ) {
 10859.49	101010 01 101011.0111110101110000101
 
 */
+#include <cmath>
 Fixed::Fixed( const float n )
 {
 	//std::cout << n * ( 1 << fb ) << std::endl;
@@ -185,11 +185,11 @@ Fixed::Fixed( const float n )
 	//std::cout << static_cast<float>( (float) ((int) ( n * ( 1 << fb ) ) ) ) / ( 1 << fb ) << std::endl;
 	//fp = static_cast<float>((int) ( n * ( 1 << fb ) ) );
 
-	if (static_cast<int>(n * (1 << (fb + 1))) & 1)
-		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) + 1 ) );
-	else
-		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) ) );
-	//fp = roundf( n * ( 1 << fb ) );
+	//if (static_cast<int>(n * (1 << (fb + 1))) & 1)
+	//	fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) + 1 ) );
+	//else
+	//	fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) ) );
+	fp = roundf( n * ( 1 << fb ) );
 	std::cout << "Float constructor called" << std::endl;
 }
 
