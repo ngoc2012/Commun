@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 18:10:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 18:14:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,10 @@ Fixed::Fixed( const int n ) : fp( n << fb ) {
 #include <cmath>
 //Fixed::Fixed( const float n ) : fp( roundf( n * ( 1 << fb ) ) ) {
 //Fixed::Fixed( const float n ) : fp( (float) ((int) ( n * ( 1 << fb ) ) ) ) {
+/*
+1234.4321	10011010 010.01101 11010011110001
+316015		10011010 010 01101 111
+*/
 Fixed::Fixed( const float n )
 {
 	std::cout << n * ( 1 << fb ) << std::endl;
