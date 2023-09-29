@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 09:12:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 09:51:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,14 @@ Fixed::Fixed( Fixed &src )
 {
 	std::cout << "Copy constructor called" << std::endl;
 	assignment(*this, src);
+}
+
+Fixed::Fixed( const int n ) : fp( n << fb ) {
+    std::cout << "Int constructor called" << std::endl;
+}
+
+Fixed::Fixed( const float n ) : fp( std::roundf( n * ( 1 << fb ) ) ) {
+    std::cout << "Float constructor called" << std::endl;
 }
 
 int	Fixed::getRawBits( void ) const
