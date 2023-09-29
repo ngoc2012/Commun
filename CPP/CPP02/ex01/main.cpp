@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 20:52:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 20:52:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int main(void) {
 	//a = Fixed( 42.42f );
 	//a = Fixed( 12345678.87654321f );
 	std::cout << "a is " << a << std::endl;
+	std::cout << "a1 is " << a1 << std::endl;
+	std::cout << "a2 is " << a2 << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
 	std::cout << "d is " << d << std::endl;
