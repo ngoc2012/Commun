@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 13:55:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 13:58:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ Fixed::Fixed( Fixed &src )
 }
 
 /*
+https://www.youtube.com/watch?v=gc1Nl3mmCuY
+
     seeeeeee emmmmmmm mmmmmmmm mmmmmmmm    meaning
    31                              0    bit #
    s = sign bit, e = exponent, m = mantissa
