@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 11:52:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 13:53:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,11 @@ Mantissa (23 bits):
     Continue this process until you have obtained 23 bits of the mantissa.
 
 The resulting binary representation of the mantissa is 00110010011101111011001.
+Final:
+
+   01000001 00011001 00111011 11011001
+
+   01000100 11111101 00100110 01111011
 
 So, in a 32-bit IEEE 754 binary floating-point representation:
 
@@ -114,8 +119,8 @@ So, in a 32-bit IEEE 754 binary floating-point representation:
   s = sign bit, e = exponent, m = mantissa
 
    01000100 11111101 00100110 01111011
-   01000001 00011001 00111011 11011001
 */
+#include <cmath>
 Fixed::Fixed( const float n ) : fp( std::roundf( n * ( 1 << fb ) ) ) {
     std::cout << "Float constructor called" << std::endl;
 }
