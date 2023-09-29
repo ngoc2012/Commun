@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 14:06:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 14:10:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,37 @@ So, in a 32-bit IEEE 754 binary floating-point representation:
   s = sign bit, e = exponent, m = mantissa
 
    01000100 11111101 00100110 01111011
+
+
+
+To avoid the decimal separator, multiply the decimal number with the base raised to the power of decimals in result:
+42.42×28 = 10860
+
+Divide by the base 2 to get the digits from the remainders:
+ 		Quotient	Remainder 	Bit #
+(10860)/2	5430		0		0
+(5430)/2	2715		0		1
+(2715)/2	1357		1		2
+(1357)/2	678		1		3
+(678)/2		339		0		4
+(339)/2		169		1		5
+(169)/2		84		1		6
+(84)/2		42		0		7
+(42)/2		21		0		8
+(21)/2		10		1		9
+(10)/2		5		0		10
+(5)/2		2		1		11
+(2)/2		1		0		12
+(1)/2		0		1		13
+
+= (10101001101011) / 2^8
+
+= (101010.01101011)
+
+
+42.42:   101010.0110101110000101001
 */
-#include <cmath>
+
 Fixed::Fixed( const float n ) : fp( roundf( n * ( 1 << fb ) ) ) {
     std::cout << "Float constructor called" << std::endl;
 }
