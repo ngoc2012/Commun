@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 09:51:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 09:54:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,19 @@ int	Fixed::getRawBits( void ) const
 
 void	Fixed::setRawBits( int const raw ) {
 	fp = raw;
+}
+
+float	Fixed::toFloat( void ) const {
+    return static_cast<float>( getRawBits() ) / ( 1 << fb );
+}
+
+int	Fixed::toInt( void ) const
+{
+    return fp >> fb;
+}
+
+std::ostream&	operator<<( std::ostream & o, Fixed const & i )
+{
+    o << i.toFloat();
+    return o;
 }
