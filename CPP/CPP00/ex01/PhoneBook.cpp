@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 10:04:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 10:06:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 #include <limits> // numeric_limits
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook() : n(0) {}
+//PhoneBook::PhoneBook() : n(0) {}
+PhoneBook::PhoneBook()
+{
+	n = 0;
+}
 
 PhoneBook::~PhoneBook(){}
 
