@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 11:18:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 11:21:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Fixed::Fixed( Fixed &src )
 
 s: 0 is used to represent a positive number, and 1 is used to represent a negative number
 e: in the number 3.14 x 10^5, the exponent is 5.
-m: 
+m: represents the fractional part of a number in binary form
 
 The mantissa is typically normalized, which means it is adjusted to start with a 1 (binary point)
 
