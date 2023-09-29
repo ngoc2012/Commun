@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 20:40:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 20:47:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,14 +178,17 @@ Fixed::Fixed( const int n ) : fp( n << fb ) {
 */
 Fixed::Fixed( const float n )
 {
-	std::cout << n * ( 1 << fb ) << std::endl;
-	std::cout << (int) ( n * ( 1 << fb ) ) << std::endl;
-	std::cout << roundf( n * ( 1 << fb ) )  << std::endl;
-	std::cout << (float) ((int) ( n * ( 1 << fb ) ) ) << std::endl;
-	std::cout << static_cast<float>( roundf( n * ( 1 << fb ) ) ) / ( 1 << fb ) << std::endl;
-	std::cout << static_cast<float>( (float) ((int) ( n * ( 1 << fb ) ) ) ) / ( 1 << fb ) << std::endl;
-	//fp = (float) ((int) ( n * ( 1 << fb ) ) );
-	fp = (float) ((int) ( n * ( 1 << fb ) ) );
+	//std::cout << n * ( 1 << fb ) << std::endl;
+	//std::cout << (int) ( n * ( 1 << fb ) ) << std::endl;
+	//std::cout << roundf( n * ( 1 << fb ) )  << std::endl;
+	//std::cout << (float) ((int) ( n * ( 1 << fb ) ) ) << std::endl;
+	//std::cout << static_cast<float>( roundf( n * ( 1 << fb ) ) ) / ( 1 << fb ) << std::endl;
+	//std::cout << static_cast<float>( (float) ((int) ( n * ( 1 << fb ) ) ) ) / ( 1 << fb ) << std::endl;
+	//fp = static_cast<float>((int) ( n * ( 1 << fb ) ) );
+	if ((n * (1 << (fb + 1))) & 1)
+		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) + 1 ) );
+	else
+		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) ) );
 	std::cout << "Float constructor called" << std::endl;
 }
 
@@ -199,16 +202,16 @@ void	Fixed::setRawBits( int const raw ) {
 }
 
 float	Fixed::toFloat( void ) const {
-    return static_cast<float>( getRawBits() ) / ( 1 << fb );
+	return static_cast<float>( getRawBits() ) / ( 1 << fb );
 }
 
 int	Fixed::toInt( void ) const
 {
-    return fp >> fb;
+	return fp >> fb;
 }
 
 std::ostream	&operator<<( std::ostream &o, const Fixed &n )
 {
-    o << n.toFloat();
-    return o;
+	o << n.toFloat();
+	return o;
 }
