@@ -6,40 +6,9 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 14:25:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 14:33:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "Fixed.hpp"
-
-Fixed::Fixed()
-{
-    std::cout << "Default constructor called" << std::endl;
-    fp = 0;
-}
-
-Fixed::~Fixed()
-{
-    std::cout << "Destructor called" << std::endl;
-}
-
-static void	assignment(Fixed &des, Fixed &src)
-{
-	std::cout << "Copy assignment operator called" << std::endl;
-	des.setRawBits(src.getRawBits());
-}
-
-Fixed&	Fixed::operator=( Fixed &src )
-{
-	assignment(*this, src);
-	return (*this);
-}
-
-Fixed::Fixed( const Fixed &src )
-{
-	std::cout << "Copy constructor called" << std::endl;
-	assignment(*this, src);
-}
 
 /*
 https://www.youtube.com/watch?v=gc1Nl3mmCuY
@@ -70,9 +39,7 @@ fb = 8
 42 -> 42 * 2^8
 
 */
-Fixed::Fixed( const int n ) : fp( n << fb ) {
-    std::cout << "Int constructor called" << std::endl;
-}
+
 
 /*
 Exponent (8 bits):
@@ -155,6 +122,42 @@ Divide by the base 2 to get the digits from the remainders:
 
 42.42:   101010.0110101110000101001
 */
+
+#include "Fixed.hpp"
+
+Fixed::Fixed()
+{
+    std::cout << "Default constructor called" << std::endl;
+    fp = 0;
+}
+
+Fixed::~Fixed()
+{
+    std::cout << "Destructor called" << std::endl;
+}
+
+static void	assignment(Fixed &des, const Fixed &src)
+{
+	std::cout << "Copy assignment operator called" << std::endl;
+	des.setRawBits(src.getRawBits());
+}
+
+Fixed&	Fixed::operator=( const Fixed &src )
+{
+	assignment(*this, src);
+	return (*this);
+}
+
+Fixed::Fixed( const Fixed &src )
+{
+	std::cout << "Copy constructor called" << std::endl;
+	assignment(*this, src);
+}
+
+Fixed::Fixed( const int n ) : fp( n << fb ) {
+    std::cout << "Int constructor called" << std::endl;
+}
+
 #include <cmath>
 Fixed::Fixed( const float n ) : fp( roundf( n * ( 1 << fb ) ) ) {
     std::cout << "Float constructor called" << std::endl;
