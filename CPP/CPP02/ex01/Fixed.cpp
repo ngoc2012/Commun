@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 11:43:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 11:52:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ Fixed::Fixed( Fixed &src )
     seeeeeee emmmmmmm mmmmmmmm mmmmmmmm    meaning
    31                              0    bit #
    s = sign bit, e = exponent, m = mantissa
+   
+   number = (sign ? -1:1) * 2^(exponent) * 1.(mantissa bits)
 
 s: 0 is used to represent a positive number, and 1 is used to represent a negative number
 
