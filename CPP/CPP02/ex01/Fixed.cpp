@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 11:12:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 11:16:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ Fixed::Fixed( Fixed &src )
     seeeeeee emmmmmmm mmmmmmmm mmmmmmmm    meaning
    31                              0    bit #
    s = sign bit, e = exponent, m = mantissa
+
+s: 0 is used to represent a positive number, and 1 is used to represent a negative number
+e: in the number 3.14 x 10^5, the exponent is 5.
 
 Example:
 fb = 8
