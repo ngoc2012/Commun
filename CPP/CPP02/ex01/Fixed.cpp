@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 20:37:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 20:39:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,8 @@ Fixed::Fixed( const float n )
 	std::cout << (float) ((int) ( n * ( 1 << fb ) ) ) << std::endl;
 	std::cout << static_cast<float>( roundf( n * ( 1 << fb ) ) ) / ( 1 << fb ) << std::endl;
 	std::cout << static_cast<float>( (float) ((int) ( n * ( 1 << fb ) ) ) ) / ( 1 << fb ) << std::endl;
-	fp = (float) ((int) ( n * ( 1 << fb ) ) );
+	//fp = (float) ((int) ( n * ( 1 << fb ) ) );
+	fp = (float) ((int) ( n >> fb ) );
 	std::cout << "Float constructor called" << std::endl;
 }
 
