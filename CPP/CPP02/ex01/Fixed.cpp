@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 14:23:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 14:25:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ Fixed::~Fixed()
     std::cout << "Destructor called" << std::endl;
 }
 
-static void	assignment(const Fixed &des, const Fixed &src)
+static void	assignment(Fixed &des, Fixed &src)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	des.setRawBits(src.getRawBits());
 }
 
-Fixed&	Fixed::operator=( const Fixed &src )
+Fixed&	Fixed::operator=( Fixed &src )
 {
 	assignment(*this, src);
 	return (*this);
@@ -155,7 +155,7 @@ Divide by the base 2 to get the digits from the remainders:
 
 42.42:   101010.0110101110000101001
 */
-
+#include <cmath>
 Fixed::Fixed( const float n ) : fp( roundf( n * ( 1 << fb ) ) ) {
     std::cout << "Float constructor called" << std::endl;
 }
