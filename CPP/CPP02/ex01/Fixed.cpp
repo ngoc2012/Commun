@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 14:33:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 14:35:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ int	Fixed::toInt( void ) const
     return fp >> fb;
 }
 
-std::ostream&	operator<<( std::ostream & o, Fixed const & i )
+std::ostream	&operator<<( std::ostream &o, Fixed const &i )
 {
     o << i.toFloat();
     return o;

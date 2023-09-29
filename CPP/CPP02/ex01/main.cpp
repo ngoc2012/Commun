@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 14:25:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 14:34:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Fixed.hpp"
@@ -19,7 +19,7 @@ int main(void) {
 	Fixed const d( b );
 
 	a = Fixed( 1234.4321f );
-	//std::cout << "a is " << a << std::endl;
+	std::cout << "a is " << a << std::endl;
 	//std::cout << "b is " << b << std::endl;
 	//std::cout << "c is " << c << std::endl;
 	//std::cout << "d is " << d << std::endl;
