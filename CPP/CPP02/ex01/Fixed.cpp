@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 13:53:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 13:55:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ So, in a 32-bit IEEE 754 binary floating-point representation:
    01000100 11111101 00100110 01111011
 */
 #include <cmath>
-Fixed::Fixed( const float n ) : fp( std::roundf( n * ( 1 << fb ) ) ) {
+Fixed::Fixed( const float n ) : fp( roundf( n * ( 1 << fb ) ) ) {
     std::cout << "Float constructor called" << std::endl;
 }
 
