@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 14:45:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 18:07:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,8 +160,11 @@ Fixed::Fixed( const int n ) : fp( n << fb ) {
 
 //#include <cmath>
 //Fixed::Fixed( const float n ) : fp( roundf( n * ( 1 << fb ) ) ) {
-Fixed::Fixed( const float n ) : fp( (float) ((int) ( n * ( 1 << fb ) ) ) ) {
-    std::cout << "Float constructor called" << std::endl;
+//Fixed::Fixed( const float n ) : fp( (float) ((int) ( n * ( 1 << fb ) ) ) ) {
+Fixed::Fixed( const float n )
+{
+	fp = (float) ((int) ( n * ( 1 << fb ) ) );
+	std::cout << "Float constructor called" << std::endl;
 }
 
 int	Fixed::getRawBits( void ) const
