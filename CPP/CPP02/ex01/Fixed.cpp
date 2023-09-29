@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 18:07:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 18:09:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,10 @@ Fixed::Fixed( const int n ) : fp( n << fb ) {
 //Fixed::Fixed( const float n ) : fp( (float) ((int) ( n * ( 1 << fb ) ) ) ) {
 Fixed::Fixed( const float n )
 {
+	std::cout << n * ( 1 << fb ) << std::endl;
+	std::cout << (int) ( n * ( 1 << fb ) ) << std::endl;
+	std::cout << roundf( n * ( 1 << fb ) )  << std::endl;
+	std::cout << (float) ((int) ( n * ( 1 << fb ) ) ) << std::endl;
 	fp = (float) ((int) ( n * ( 1 << fb ) ) );
 	std::cout << "Float constructor called" << std::endl;
 }
