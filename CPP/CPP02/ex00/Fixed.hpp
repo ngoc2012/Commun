@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/28 15:09:10 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/29 08:42:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@
 class Fixed
 {
 	private:
-		void	debug( void );
-		void	info( void );
-		void	warning( void );
-		void	error( void );
+		int	fp;
+		static const int	fb = 8;
 	public:
 		Fixed( void );
 		Fixed( const Fixed& );
 		Fixed& operator=( const Fixed& );
 		~Fixed( void );
 
-		void	complain( std::string level );
+		int     getRawBits( void ) const;
+		void    setRawBits( int const raw );
 };
 
 #endif
