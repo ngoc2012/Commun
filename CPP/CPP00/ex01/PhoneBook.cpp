@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/27 14:02:58 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/09/29 10:04:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 #include <limits> // numeric_limits
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook()
-{
-	this->n = 0;
-}
+PhoneBook::PhoneBook() : n(0) {}
 
 PhoneBook::~PhoneBook(){}
 
@@ -64,7 +61,7 @@ bool	isdigits(const std::string& str) {
 void	PhoneBook::add(void)
 {
 	static int	i;
-	Contact		*new_contact = &this->contacts[i % N_CONTACTS];
+	Contact		*new_contact = &contacts[i % N_CONTACTS];
 	std::string	phoneNumber;
 
 	new_contact->set_firstName(get_field("First name: ")); 
@@ -79,8 +76,8 @@ void	PhoneBook::add(void)
 	new_contact->set_phoneNumber(phoneNumber); 
 
 	new_contact->set_darkestSecret(get_field("Darkest secret: ")); 
-	if (this->get_n() < 8)
-		this->set_n(this->get_n() + 1);
+	if (get_n() < 8)
+		set_n(get_n() + 1);
 	i++;
 }
 
@@ -90,7 +87,7 @@ void	PhoneBook::show(void) const
 	std::cout << "|     Index|First Name| Last Name| Nick Name|\n";
 	std::cout << "---------------------------------------------\n";
 	for (int i = 0; i < N_CONTACTS; i++)
-		this->contacts[i].show_table(i + 1);
+		contacts[i].show_table(i + 1);
 	std::cout << "---------------------------------------------\n";
 }
 
@@ -98,24 +95,24 @@ void	PhoneBook::search(void) const
 {
 	std::string	input;
 
-	this->show();
+	show();
 	input = get_field("Contact id: "); 
 
 	int	i = atoi(input.c_str());
-	if (i < 1 || i > this->get_n())
+	if (i < 1 || i > get_n())
 	{
 		std::cerr << "Error: Contact id invalid\n";
 		return ;
 	}
-	this->contacts[i - 1].show();
+	contacts[i - 1].show();
 }
 
 void	PhoneBook::set_n(int n)
 {
-	this->n = n;
+	n = n;
 }
 
 int	PhoneBook::get_n(void) const
 {
-	return (this->n);
+	return (n);
 }
