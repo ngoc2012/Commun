@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 11:21:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 11:36:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,13 @@ Fixed::Fixed( const int n ) : fp( n << fb ) {
     std::cout << "Int constructor called" << std::endl;
 }
 
+/*
+   seeeeeee emmmmmmm mmmmmmmm mmmmmmmm    meaning
+  31                              0    bit #
+  s = sign bit, e = exponent, m = mantissa
+
+   01000100 11111101 00100110 01111011
+*/
 Fixed::Fixed( const float n ) : fp( std::roundf( n * ( 1 << fb ) ) ) {
     std::cout << "Float constructor called" << std::endl;
 }
