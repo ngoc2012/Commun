@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 08:56:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 09:01:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Fixed&	Fixed::operator=( const Fixed &rhs ) {
 
 Fixed::Fixed( const Fixed &rhs ) {
 	std::cout << "Copy constructor called" << std::endl;
-	this = rhs;
+	this = &rhs;
 }
 
 int	Fixed::getRawBits( void ) const {
