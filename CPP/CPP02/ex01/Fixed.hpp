@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 14:31:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 14:42:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ class Fixed
 		int     toInt( void ) const;
 };
 
-std::ostream&	operator<<( std::ostream& o, Fixed& n );
+std::ostream&	operator<<( std::ostream& o, const Fixed& n );
 
 #endif
