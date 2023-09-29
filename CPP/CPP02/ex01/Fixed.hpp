@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 09:06:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/29 09:46:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,14 @@ class Fixed
 		Fixed( Fixed& );
 		Fixed& operator=( Fixed& );
 		~Fixed( void );
+		Fixed( const int n );
+		Fixed( const float n );
 
 		int     getRawBits( void ) const;
 		void    setRawBits( int const raw );
+
+		float   toFloat( void ) const;
+		int     toInt( void ) const;
 };
 
 #endif
