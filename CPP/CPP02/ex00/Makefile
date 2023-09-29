@@ -6,13 +6,13 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/09/29 08:51:52 by ngoc             ###   ########.fr        #
+#    Updated: 2023/09/29 08:53:24 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = Fixed.c
+SRCS = main.cpp Fixed.cpp
 OBJS = ${SRCS:.c=.o}
-MANDA = test
+MANDA = main
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
@@ -20,6 +20,8 @@ all:	$(MANDA)
 	$(CC) $(FLAGS) -g -c $< -o ${<:.cpp=.o} -I.
 $(MANDA):
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
+test:
+	make re && valgrind ./main
 gits:
 	git add Makefile
 	git add *.cpp
