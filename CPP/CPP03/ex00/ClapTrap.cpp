@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 21:45:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 21:51:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,7 @@ ClapTrap::ClapTrap(const ClapTrap& src)
 	name(src.name),
 	hit_points(src.hit_points),
 	energy_points(src.energy_points),
-	max_hit_points(src._max_hit_points),
-	max_energy_points(src._max_energy_points),
-	level(src._level),
-	melee_attack_damage(src._melee_attack_damage),
-	ranged_attack_damage(src._ranged_attack_damage),
-	armor_damage_reduction(src._armor_damage_reduction)
+	attack_damage(src.attack_damage)
 { welcome(&this); }
 
 /*
@@ -47,23 +42,22 @@ ClapTrap::ClapTrap(const ClapTrap& src)
 */
 ClapTrap::~ClapTrap()
 {
-	_print_suffix(this->_name, this->_hit_points);
-	std::cout << "Je suis mort, je suis mort. Oh mon dieu, je suis mort." << std::endl;
+	std::cout << name << " quit game." << std::endl;
 }
 
-ClapTrap & ClapTrap::operator=(const ClapTrap& op)
+ClapTrap & ClapTrap::srcerator=(const ClapTrap& src)
 {
-	if (this == &op)
+	if (this == &src)
 		return (*this);
-	this->_hit_points = op._hit_points;
-	this->_max_hit_points = op._max_hit_points;
-	this->_energy_points = op._energy_points;
-	this->_max_energy_points = op._max_energy_points;
-	this->_level = op._level;
-	this->_name = op._name;
-	this->_melee_attack_damage = op._melee_attack_damage;
-	this->_ranged_attack_damage = op._ranged_attack_damage;
-	this->_armor_damage_reduction = op._armor_damage_reduction;
+	this->_hit_points = src._hit_points;
+	this->_max_hit_points = src._max_hit_points;
+	this->_energy_points = src._energy_points;
+	this->_max_energy_points = src._max_energy_points;
+	this->_level = src._level;
+	this->_name = src._name;
+	this->_melee_attack_damage = src._melee_attack_damage;
+	this->_ranged_attack_damage = src._ranged_attack_damage;
+	this->_armor_damage_reduction = src._armor_damage_reduction;
 	return (*this);
 }
 
