@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 15:50:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 16:21:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ class Fixed
 		Fixed   operator*( const Fixed &rhs ) const ;
 		Fixed   operator/( const Fixed &rhs ) const ;
 
-		Fixed&  operator++( void ); // prefix
-		Fixed   operator++( int ); // postfix
-		Fixed&  operator--( void ); // prefix
-		Fixed   operator--( int ); // postfix
+		Fixed&  operator++( void );	// prefix
+		Fixed   operator++( int );	// postfix
+		Fixed&  operator--( void );	// prefix
+		Fixed   operator--( int );	// postfix
 
 		static Fixed& min( Fixed &a, Fixed &b );
 		static const Fixed& min( const Fixed &a, const Fixed &b );
