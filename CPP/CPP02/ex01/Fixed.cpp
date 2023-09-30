@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 08:15:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 08:29:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,16 @@ void	printBinaryFloat(float f) {
 
 Fixed::Fixed( const int n )
 {
+	printBinaryInt(n);
 	fp = n << fb;
+	printBinaryInt(fp);
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
+	printBinaryInt(bit_1);
 	if (n > 0)
 		fp = fp & ~bit_1;
 	else
 		fp = fp | bit_1;
+	printBinaryInt(fp);
 	std::cout << "Int constructor called" << std::endl;
 }
 
