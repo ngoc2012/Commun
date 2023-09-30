@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 09:43:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 14:59:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,11 +153,19 @@ void	Fixed::setRawBits( int const raw ) {
 	fp = raw;
 }
 
-float	Fixed::toFloat( void ) const {
+float	Fixed::toFloat( void ) const
+{
+	if (n.getOverFlow())
+		return (0);
 	return static_cast<float>( getRawBits() ) / ( 1 << fb );
 }
 
-int	Fixed::toInt( void ) const { return fp >> fb; }
+int	Fixed::toInt( void ) const
+{
+	if (n.getOverFlow())
+		return (0);
+	return fp >> fb;
+}
 bool	Fixed::getOverFlow( void ) const { return (overflow); }
 void	Fixed::setOverFlow( bool o ) { overflow = o; }
 
