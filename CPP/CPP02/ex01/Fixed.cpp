@@ -6,32 +6,37 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 15:27:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 15:31:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
+void	Fixed::init( void )
+{
+	fp = 0;
+	overflow = false;
+	int	len = sizeof(int) * 8 - fb - 2;
+	int	max = 1;
+	int	min = 1;
+	for (int i = 0; i < len; i++)
+		max = (max << 1) | 1;
+	for (int i = 0; i < fb + 1; i++)
+		min = (min << 1) | 1;
+	min = min << (sizeof(int) * 8 - fb - 1);
+	setMaxOverFlow(max);
+	setMinOverFlow(min);
+}
+
 Fixed::Fixed()
 {
-    std::cout << "Default constructor called" << std::endl;
-    fp = 0;
-    overflow = false;
-    int	len = sizeof(int) * 8 - fb - 2;
-    int	max = 1;
-    int	min = 1;
-    for (int i = 0; i < len; i++)
-	    max = (max << 1) | 1;
-    for (int i = 0; i < fb + 1; i++)
-	    min = (min << 1) | 1;
-    min = min << (sizeof(int) * 8 - fb - 1);
-    setMaxOverFlow(max);
-    setMinOverFlow(min);
+	std::cout << "Default constructor called" << std::endl;
+	init();
 }
 
 Fixed::~Fixed()
 {
-    std::cout << "Destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
 static void	assignment(Fixed &des, const Fixed &src)
@@ -100,6 +105,7 @@ void	printBinaryFloat(float f) {
 Fixed::Fixed( const int n )
 {
 	std::cout << "Int constructor called" << std::endl;
+	init();
 	if (n > getMaxOverFlow() || n < getMinOverFlow())
 	{
 		setOverFlow(true);
@@ -116,6 +122,7 @@ Fixed::Fixed( const int n )
 Fixed::Fixed( const float n )
 {
 	std::cout << "Float constructor called" << std::endl;
+	init();
 	int	n_int;
 	n_int = static_cast<int>(n);
 	if (n_int > getMaxOverFlow() || n_int < getMinOverFlow())

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 15:20:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 15:31:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ class Fixed
 
 		int	getMinOverFlow( void ) const;
 		void	setMinOverFlow( int );
+
+		void	init( void );
 };
 
 std::ostream&	operator<<( std::ostream& o, const Fixed& n );
