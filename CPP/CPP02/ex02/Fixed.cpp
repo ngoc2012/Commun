@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 16:22:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 16:42:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,8 +176,8 @@ Fixed	Fixed::operator+ ( const Fixed &val ) const { return (Fixed( toFloat() + v
 Fixed	Fixed::operator- ( const Fixed &val ) const { return (Fixed( toFloat() - val.toFloat() )); }
 Fixed	Fixed::operator* ( const Fixed &val ) const { return (Fixed( toFloat() * val.toFloat() )); }
 Fixed	Fixed::operator/ ( const Fixed &val ) const { return (Fixed( toFloat() / val.toFloat() )); }
-Fixed&	Fixed::operator++( void ) { fp++; return *this; }
-Fixed&	Fixed::operator--( void ) { fp--; return *this; }
+Fixed&	Fixed::operator++( void ) { fp += (1 << fb); return *this; }
+Fixed&	Fixed::operator--( void ) { fp -= (1 << fb); return *this; }
 
 Fixed	Fixed::operator++( int ) {
 	Fixed tmp( *this );
