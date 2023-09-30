@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 08:34:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 09:03:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,36 +86,47 @@ void	printBinaryFloat(float f) {
 	std::cout << std::endl;
 }
 
+bool	checkOverflowInt(const int n, int fb)
+{
+	int	len = sizeof(int) * 8;
+	for (int i = len - 2; i > fb; i++)
+		if (n >> i & 1)
+			return (true);
+	return (false);
+}
+
 Fixed::Fixed( const int n )
 {
-	printBinaryInt(n);
+	overflow = checkOverflowInt(n, fb);
+	//printBinaryInt(n);
 	fp = n << fb;
-	printBinaryInt(fp);
+	//printBinaryInt(fp);
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
-	printBinaryInt(bit_1);
+	//printBinaryInt(bit_1);
 	if (n > 0)
 		fp = fp & ~bit_1;
 	else
 		fp = fp | bit_1;
-	printBinaryInt(fp);
+	//printBinaryInt(fp);
 	std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed( const float n )
 {
-	printBinaryFloat(n);
+	overflow = checkOverflowInt(static_cast<int>(n), fb);
+	//printBinaryFloat(n);
 	if (static_cast<int>(n * (1 << (fb + 1))) & 1)
 		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) + 1 ) );
 	else
 		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) ) );
-	printBinaryInt(fp);
+	//printBinaryInt(fp);
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
-	printBinaryInt(bit_1);
+	//printBinaryInt(bit_1);
 	if (n > 0)
 		fp = fp & ~bit_1;
 	else
 		fp = fp | bit_1;
-	printBinaryInt(fp);
+	//printBinaryInt(fp);
 	std::cout << "Float constructor called" << std::endl;
 }
 
@@ -139,7 +150,10 @@ int	Fixed::toInt( void ) const
 
 std::ostream	&operator<<( std::ostream &o, const Fixed &n )
 {
-	o << n.toFloat();
+	if (n.overflow)
+		o << "NaN";
+	else
+		o << n.toFloat();
 	return o;
 }
 /*
