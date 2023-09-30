@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 22:03:31 by ael-khni          #+#    #+#             */
-/*   Updated: 2023/09/30 17:42:03 by ngoc             ###   ########.fr       */
+/*   Created: 2023/09/30 18:13:09 by ngoc              #+#    #+#             */
+/*   Updated: 2023/09/30 18:13:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class	Point
 		const Fixed y;
 	public:
 		Point();
-		Point( const float x, const float y );
+		Point( const Fixed x, const Fixed y );
 		Point( const Point& );
 		~Point();
 
