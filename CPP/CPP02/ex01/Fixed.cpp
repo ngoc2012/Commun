@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 09:03:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 09:05:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,9 +148,14 @@ int	Fixed::toInt( void ) const
 	return fp >> fb;
 }
 
+bool	Fixed::getOverFlow( void ) const
+{
+	return (overflow);
+}
+
 std::ostream	&operator<<( std::ostream &o, const Fixed &n )
 {
-	if (n.overflow)
+	if (n.getOverFlow())
 		o << "NaN";
 	else
 		o << n.toFloat();
