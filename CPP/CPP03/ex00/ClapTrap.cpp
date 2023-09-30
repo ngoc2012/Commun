@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 20:08:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 21:39:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 void	welcome(ClapTrap &c)
 {
-	std::cout << name
+	std::cout << name << " join the game\n";
 }
 
 ClapTrap::ClapTrap()
 {
+	name = std::string("RANDOM");
 }
 
 ClapTrap::ClapTrap(std::string name)
@@ -27,11 +28,7 @@ ClapTrap::ClapTrap(std::string name)
 	hit_points(10),
 	energy_points(10),
 	attack_damage(0)
-{
-	srand(time(NULL));
-	_print_suffix(this->_name, this->_hit_points);
-	std::cout << "Prêt pour assassiner des représentants du syndicat des techniciens de surfaces !" << std::endl;
-}
+{}
 
 /*
 ** @brief Copy:
