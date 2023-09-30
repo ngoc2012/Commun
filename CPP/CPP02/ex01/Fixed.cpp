@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 08:13:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 08:15:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,9 @@ Fixed::Fixed( const int n )
 	fp = n << fb;
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
 	if (n > 0)
-		fp = fp | bit_1;
-	else
 		fp = fp & ~bit_1;
+	else
+		fp = fp | bit_1;
 	std::cout << "Int constructor called" << std::endl;
 }
 
@@ -107,9 +107,9 @@ Fixed::Fixed( const float n )
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
 	printBinaryInt(bit_1);
 	if (n > 0)
-		fp = fp | bit_1;
-	else
 		fp = fp & ~bit_1;
+	else
+		fp = fp | bit_1;
 	printBinaryInt(fp);
 	std::cout << "Float constructor called" << std::endl;
 }
