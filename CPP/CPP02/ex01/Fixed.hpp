@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 15:18:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 15:20:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ class Fixed
 		bool	getOverFlow( void ) const;
 		void	setOverFlow( bool );
 
-		bool	getMaxOverFlow( void ) const;
-		void	setMaxOverFlow( bool );
+		int	getMaxOverFlow( void ) const;
+		void	setMaxOverFlow( int );
 
-		bool	getMinOverFlow( void ) const;
-		void	setMinOverFlow( bool );
+		int	getMinOverFlow( void ) const;
+		void	setMinOverFlow( int );
 };
 
 std::ostream&	operator<<( std::ostream& o, const Fixed& n );
