@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 21:40:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 21:45:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	welcome(ClapTrap &c) { std::cout << name << " join the game\n"; }
 ClapTrap::ClapTrap()
 {
 	name = std::string("RANDOM");
+	welcome(&this); 
 }
 
 ClapTrap::ClapTrap(std::string name)
@@ -25,25 +26,20 @@ ClapTrap::ClapTrap(std::string name)
 	hit_points(10),
 	energy_points(10),
 	attack_damage(0)
-	welcome(&this);
-{}
+{ welcome(&this); }
 
-ClapTrap::ClapTrap(const ClapTrap& op)
+ClapTrap::ClapTrap(const ClapTrap& src)
 :
-	_hit_points(op._hit_points),
-	_max_hit_points(op._max_hit_points),
-	_energy_points(op._energy_points),
-	_max_energy_points(op._max_energy_points),
-	_level(op._level),
-	_name(op._name),
-	_melee_attack_damage(op._melee_attack_damage),
-	_ranged_attack_damage(op._ranged_attack_damage),
-	_armor_damage_reduction(op._armor_damage_reduction)
-{
-	srand(time(NULL));
-	_print_suffix(this->_name, this->_hit_points);
-	std::cout << "" << std::endl;
-}
+	name(src.name),
+	hit_points(src.hit_points),
+	energy_points(src.energy_points),
+	max_hit_points(src._max_hit_points),
+	max_energy_points(src._max_energy_points),
+	level(src._level),
+	melee_attack_damage(src._melee_attack_damage),
+	ranged_attack_damage(src._ranged_attack_damage),
+	armor_damage_reduction(src._armor_damage_reduction)
+{ welcome(&this); }
 
 /*
 ** @brief Destructor:
