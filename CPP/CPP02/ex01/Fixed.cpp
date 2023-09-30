@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 15:31:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 15:39:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,26 +62,21 @@ Fixed::Fixed( const Fixed &src )
 1234.4321	10011010 010.01101 11010011110001
 316015		10011010 010 01101 111
 316014		10011010 010 01101 110
-
-42.42		101010.01 101011 10000101001
+42.42		101010.01 101011 10 00010100 1
 10859.5		101010 01 101011.1
-10859.52	101010 01 101011.100001010001111011
+10859.52	101010 01 101011.10 00010100 01111011
 10859		101010 01 101011
 10860		101010 01 101100
-
-10859.4		101010 01 101011.0110011001100110011
-10859.49	101010 01 101011.0111110101110000101
+10859.4		101010 01 101011.01 10011001 100110011
+10859.49	101010 01 101011.01 11110101 110000101
 
 Binary signed 2's complement (32 digits):
 2147483647	01111111 11111111 11111111 11111111
 -2147483648	10000000 00000000 00000000 00000000
-
 8388607		00000000 01111111 11111111 11111111
 -8388608	11111111 10000000 00000000 00000000
-
 */
 
-// Function to print the binary representation of an integer
 void	printBinaryInt(int n) {
 	int	numBits = sizeof(int) * 8;
 	for (int i = numBits - 1; i >= 0; i--) {
@@ -91,8 +86,6 @@ void	printBinaryInt(int n) {
 	std::cout << std::endl;
 }
 
-//#include <cstdint>
-// Function to print the binary representation of a float
 void	printBinaryFloat(float f) {
 	unsigned int*	floatAsInt = reinterpret_cast<unsigned int*>(&f);
 	for (int i = 31; i >= 0; i--) {
@@ -141,15 +134,6 @@ Fixed::Fixed( const float n )
 		fp = fp | bit_1;
 }
 
-int	Fixed::getRawBits( void ) const
-{
-	return (fp);
-}
-
-void	Fixed::setRawBits( int const raw ) {
-	fp = raw;
-}
-
 float	Fixed::toFloat( void ) const
 {
 	if (getOverFlow())
@@ -164,6 +148,8 @@ int	Fixed::toInt( void ) const
 	return fp >> fb;
 }
 
+int	Fixed::getRawBits( void ) const { return (fp); }
+void	Fixed::setRawBits( int const raw ) { fp = raw; }
 bool	Fixed::getOverFlow( void ) const { return (overflow); }
 void	Fixed::setOverFlow( bool o ) { overflow = o; }
 int	Fixed::getMaxOverFlow( void ) const { return (max_overflow); }
