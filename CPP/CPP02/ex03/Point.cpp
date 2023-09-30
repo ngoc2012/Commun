@@ -6,20 +6,14 @@
 /*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 22:05:11 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/07/23 12:23:58 by ael-khni         ###   ########.fr       */
+/*   Updated: 2023/09/30 17:29:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
-Point::Point( void ) : _x(0), _y(0) {
-    // std::cout << "Point created" << std::endl;
-}
-
-Point::Point( const float x, const float y ) : _x(x), _y(y) {
-    // std::cout << "Point created" << std::endl;
-}
-
+Point::Point( void ) : x(Fixed(0)), y(Fixed(0)) { }
+Point::Point( const Fixed x, const Fixed y ) : x(x0), y(y0) {}
 Point::Point( const Point &src ) : _x(src._x), _y(src._y) {
     // std::cout << "Point created" << std::endl;
 }
