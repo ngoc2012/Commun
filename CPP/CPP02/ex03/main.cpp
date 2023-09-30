@@ -6,14 +6,13 @@
 /*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:54:28 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/07/22 17:24:02ael-khni         ###   ########.fr       */
+/*   Updated: 2023/09/30 17:43:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
 /*
-
 Input: A = (0, 0), B = (10, 30), C = (20, 0), P(10, 15)
 Output: Inside
 Explanation:
@@ -49,6 +48,11 @@ If P lies inside the triangle, then A1 + A2 + A3 must be equal to A.
 */
 
 int main ( void ) {
+    if ( bsp( Point(0, 0), Point(10, 30), Point(20, 0), Point(10, 15) ) == true ) {
+        std::cout << "Point is in the triangle" << std::endl;
+    } else {
+        std::cout << "Point is not in the triangle" << std::endl;
+    }
     if ( bsp( Point(0, 0), Point(10, 30), Point(20, 0), Point(30, 15) ) == true ) {
         std::cout << "Point is in the triangle" << std::endl;
     } else {

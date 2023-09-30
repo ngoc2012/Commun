@@ -6,7 +6,7 @@
 /*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 22:03:31 by ael-khni          #+#    #+#             */
-/*   Updated: 2023/09/30 17:40:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 17:42:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "Fixed.hpp"
 
-class Point
+class	Point
 {
 	private:
 		const Fixed x;
@@ -32,7 +32,7 @@ class Point
 
 };
 
-bool bsp( Point const a, Point const b, Point const c, Point const point );
+bool	bsp( Point const a, Point const b, Point const c, Point const point );
 
 
 #endif // POINT_HPP
