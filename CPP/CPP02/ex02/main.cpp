@@ -6,7 +6,7 @@
 /*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:54:28 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/07/22 17:24:02ael-khni         ###   ########.fr       */
+/*   Updated: 2023/09/30 16:23:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int main ( void ) {
     Fixed        a;
     Fixed const  b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-    std::cout << a << std::endl;
-    std::cout << ++a << std::endl;
-    std::cout << a << std::endl;
-    std::cout << a++ << std::endl;
-    std::cout << a << std::endl;
-    std::cout << b << std::endl;
+    std::cout << "a = " << a << std::endl;
+    std::cout << "++a = " << ++a << std::endl;
+    std::cout << "a = " << a << std::endl;
+    std::cout << "a++ = " << a++ << std::endl;
+    std::cout << "a = " << a << std::endl;
+    std::cout << "b = " << b << std::endl;
 
     std::cout << Fixed::max( a, b ) << std::endl;
 
