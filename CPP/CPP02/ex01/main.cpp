@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 09:33:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 09:38:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ int main(void) {
 	//a = Fixed( 1000000000 );
 	//a = Fixed( -42.42f );
 	//a = Fixed( -1234.4321f );
-	//std::cout << a.getOverFlow() << "a is " << a << std::endl;
-
+	a = Fixed( -2147483647 );
+	std::cout << a.getOverFlow() << "a is " << a << std::endl;
+/*
 	a = Fixed( -1234.4321f );
 	a1 = Fixed( 2147483647 );
 	a2 = Fixed( -2147483647 );
@@ -62,6 +63,6 @@ int main(void) {
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-	
+*/	
 	return 0;
 }
