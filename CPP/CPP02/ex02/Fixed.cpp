@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 16:45:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 16:49:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ void	Fixed::init( void )
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
+	//std::cout << "Default constructor called" << std::endl;
 	init();
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	//std::cout << "Destructor called" << std::endl;
 }
 
 static void	assignment(Fixed &des, const Fixed &src)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	//std::cout << "Copy assignment operator called" << std::endl;
 	des.setRawBits(src.getRawBits());
 	des.setOverFlow(src.getOverFlow());
 }
@@ -54,7 +54,7 @@ Fixed&	Fixed::operator=( const Fixed &src )
 
 Fixed::Fixed( const Fixed &src )
 {
-	std::cout << "Copy constructor called" << std::endl;
+	//std::cout << "Copy constructor called" << std::endl;
 	assignment(*this, src);
 }
 
@@ -97,7 +97,7 @@ void	printBinaryFloat(float f) {
 
 Fixed::Fixed( const int n )
 {
-	std::cout << "Int constructor called" << std::endl;
+	//std::cout << "Int constructor called" << std::endl;
 	init();
 	if (n > getMaxOverFlow() || n < getMinOverFlow())
 	{
@@ -114,7 +114,7 @@ Fixed::Fixed( const int n )
 
 Fixed::Fixed( const float n )
 {
-	std::cout << "Float constructor called" << std::endl;
+	//std::cout << "Float constructor called" << std::endl;
 	init();
 	int	n_int;
 	n_int = static_cast<int>(n);
@@ -176,13 +176,12 @@ Fixed	Fixed::operator+ ( const Fixed &val ) const { return (Fixed( toFloat() + v
 Fixed	Fixed::operator- ( const Fixed &val ) const { return (Fixed( toFloat() - val.toFloat() )); }
 Fixed	Fixed::operator* ( const Fixed &val ) const { return (Fixed( toFloat() * val.toFloat() )); }
 Fixed	Fixed::operator/ ( const Fixed &val ) const { return (Fixed( toFloat() / val.toFloat() )); }
-// Prefix
-Fixed&	Fixed::operator++( void ) { fp += (1 << fb); return *this; }
-Fixed&	Fixed::operator--( void ) { fp -= (1 << fb); return *this; }
-// Postfix
+Fixed&	Fixed::operator++( void ) { fp++; return *this; }
+Fixed&	Fixed::operator--( void ) { fp--; return *this; }
+
 Fixed	Fixed::operator++( int ) {
 	Fixed tmp( *this );
-	tmp.fp = fb + (1 << fb);
+	tmp.fp = fp++;
 	return tmp;
 }
 
