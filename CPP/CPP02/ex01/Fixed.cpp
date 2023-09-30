@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 15:21:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 15:24:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,47 +97,41 @@ void	printBinaryFloat(float f) {
 	std::cout << std::endl;
 }
 
-bool	checkOverflowInt(const int n, int fb)
-{
-	if (n > max || n < min)
-		return (true);
-	return (false);
-}
-
 Fixed::Fixed( const int n )
 {
-	//printBinaryInt(n);
-	overflow = checkOverflowInt(n, fb);
+	std::cout << "Int constructor called" << std::endl;
+	if (n > getMaxOverFlow() || n < getMinOverFlow())
+	{
+		setOverFlow(true);
+		return ;
+	}
 	fp = n << fb;
-	//printBinaryInt(fp);
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
-	//printBinaryInt(bit_1);
 	if (n > 0)
 		fp = fp & ~bit_1;
 	else
 		fp = fp | bit_1;
-	//printBinaryInt(fp);
-	std::cout << "Int constructor called" << std::endl;
 }
 
 Fixed::Fixed( const float n )
 {
-	//std::cout << static_cast<int>(n) << std::endl;
-	overflow = checkOverflowInt(static_cast<int>(n), fb);
-	//printBinaryFloat(n);
+	std::cout << "Float constructor called" << std::endl;
+	int	n_int;
+	n_int = static_cast<int>(n);
+	if (n_int > getMaxOverFlow() || n_int < getMinOverFlow())
+	{
+		setOverFlow(true);
+		return ;
+	}
 	if (static_cast<int>(n * (1 << (fb + 1))) & 1)
 		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) + 1 ) );
 	else
 		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) ) );
-	//printBinaryInt(fp);
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
-	//printBinaryInt(bit_1);
 	if (n > 0)
 		fp = fp & ~bit_1;
 	else
 		fp = fp | bit_1;
-	//printBinaryInt(fp);
-	std::cout << "Float constructor called" << std::endl;
 }
 
 int	Fixed::getRawBits( void ) const
