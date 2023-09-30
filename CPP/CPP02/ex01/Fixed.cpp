@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 15:07:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 15:08:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,12 @@ void	printBinaryFloat(float f) {
 
 bool	checkOverflowInt(const int n, int fb)
 {
-	int	len = sizeof(int) * 8 - fb - 1;
+	int	len = sizeof(int) * 8 - fb - 2;
 	int	max = 1;
 	for (int i = 0; i < len; i++)
 		max = (max << 1) | 1;
-	printBinaryInt(max);
-	std::cout << max << std::endl;
+	//printBinaryInt(max);
+	//std::cout << max << std::endl;
 	if (n > max || n < -max)
 		return (true);
 	return (false);
@@ -115,10 +115,7 @@ bool	checkOverflowInt(const int n, int fb)
 Fixed::Fixed( const int n )
 {
 	//printBinaryInt(n);
-	if (n < 0)
-		overflow = checkOverflowInt(-n, fb);
-	else
-		overflow = checkOverflowInt(n, fb);
+	overflow = checkOverflowInt(n, fb);
 	fp = n << fb;
 	//printBinaryInt(fp);
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
@@ -133,11 +130,8 @@ Fixed::Fixed( const int n )
 
 Fixed::Fixed( const float n )
 {
-	std::cout << static_cast<int>(n) << std::endl;
-	if (n < 0)
-		overflow = checkOverflowInt(static_cast<int>(-n), fb);
-	else
-		overflow = checkOverflowInt(static_cast<int>(n), fb);
+	//std::cout << static_cast<int>(n) << std::endl;
+	overflow = checkOverflowInt(static_cast<int>(n), fb);
 	//printBinaryFloat(n);
 	if (static_cast<int>(n * (1 << (fb + 1))) & 1)
 		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) + 1 ) );
