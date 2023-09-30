@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 17:07:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 18:42:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ Fixed::Fixed( const int n )
 		setOverFlow(true);
 	fp = n << fb;
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
-	if (n > 0)
+	if (n >= 0)
 		fp = fp & ~bit_1;
 	else
 		fp = fp | bit_1;
@@ -108,7 +108,7 @@ Fixed::Fixed( const float n )
 	else
 		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) ) );
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
-	if (n > 0)
+	if (n >= 0)
 		fp = fp & ~bit_1;
 	else
 		fp = fp | bit_1;
