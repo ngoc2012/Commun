@@ -1,57 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 19:16:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 20:03:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "ClapTrap.hpp"
 
-/*
-** Typedef for array of pointers on functions.
-*/
-typedef void(FragTrap::* attacks) (std::string const & target);
+ClapTrap::ClapTrap() {}
 
-/*
-** @brief Print the name and the hit point of the
-** Fr4G-TP.
-*/
-static void _print_suffix(std::string& name, unsigned int hp)
-{
-	std::cout << "FR4G-TP \033[1;31m" << name << "\033[0m(\033[1;32m" << hp << "\033[0m) : ";
-}
-
-/*
-** @brief Default contructor:
-** The "FragTrap".
-*/
-FragTrap::FragTrap()
-{ 
-	srand(time(NULL));
-	_print_suffix(this->_name, this->_hit_points);
-	std::cout << "Prêt pour assassiner des représentants du syndicat des techniciens de surfaces !" << std::endl;
-}
-
-/*
-** @brief Init contrcutor:
-** The "FragTrap".
-*/
-FragTrap::FragTrap(std::string name)
+ClapTrap::ClapTrap(std::string name)
 :
-	_hit_points(100),
-	_max_hit_points(100),
-	_energy_points(100),
-	_max_energy_points(100),
-	_level(1),
-	_name(name),
-	_melee_attack_damage(30),
-	_ranged_attack_damage(20),
-	_armor_damage_reduction(5)
+	hit_points(100),
+	max_hit_points(100),
+	energy_points(100),
+	max_energy_points(100),
+	level(1),
+	name(name),
+	melee_attack_damage(30),
+	ranged_attack_damage(20),
+	armor_damage_reduction(5)
 {
 	srand(time(NULL));
 	_print_suffix(this->_name, this->_hit_points);
@@ -60,11 +33,11 @@ FragTrap::FragTrap(std::string name)
 
 /*
 ** @brief Copy:
-** Copy the "FragTrap".
+** Copy the "ClapTrap".
 ** 
-** @param copy the "FragTrap" to copy.
+** @param copy the "ClapTrap" to copy.
 */
-FragTrap::FragTrap(const FragTrap& op)
+ClapTrap::ClapTrap(const ClapTrap& op)
 :
 	_hit_points(op._hit_points),
 	_max_hit_points(op._max_hit_points),
@@ -83,15 +56,15 @@ FragTrap::FragTrap(const FragTrap& op)
 
 /*
 ** @brief Destructor:
-** Called when the object "FragTrap" is delete
+** Called when the object "ClapTrap" is delete
 */
-FragTrap::~FragTrap()
+ClapTrap::~ClapTrap()
 {
 	_print_suffix(this->_name, this->_hit_points);
 	std::cout << "Je suis mort, je suis mort. Oh mon dieu, je suis mort." << std::endl;
 }
 
-FragTrap & FragTrap::operator=(const FragTrap& op)
+ClapTrap & ClapTrap::operator=(const ClapTrap& op)
 {
 	if (this == &op)
 		return (*this);
@@ -108,27 +81,27 @@ FragTrap & FragTrap::operator=(const FragTrap& op)
 }
 
 /*
-** @brief Ranged attack of the FragTrap.
+** @brief Ranged attack of the ClapTrap.
 */
-void		FragTrap::rangedAttack(std::string const & target)
+void		ClapTrap::rangedAttack(std::string const & target)
 {
 	_print_suffix(this->_name, this->_hit_points);
 	std::cout << "J'urine des arcs-en-ciel sur toi \033[1;34m" << target << "\033[0m, \033[1;33m" << this->_ranged_attack_damage << "\033[0m de ta décadante vie en moins dans ta face !" << std::endl;
 }
 
 /*
-** @brief Melee attack of the FragTrap.
+** @brief Melee attack of the ClapTrap.
 */
-void		FragTrap::meleeAttack(std::string const & target)
+void		ClapTrap::meleeAttack(std::string const & target)
 {
 	_print_suffix(this->_name, this->_hit_points);
 	std::cout << "Ah Ya ! \033[1;34m" << target <<"\033[0m prend donc \033[1;33m" << this->_melee_attack_damage << "\033[0m dégats de mon... épée cubique en bois!" << std::endl;
 }
 
 /*
-** @brief Used to remove hit points to the FragTrap
+** @brief Used to remove hit points to the ClapTrap
 */
-void		FragTrap::takeDamage(unsigned int amount)
+void		ClapTrap::takeDamage(unsigned int amount)
 {
 	amount -= this->_armor_damage_reduction;
 	_print_suffix(this->_name, ((int)this->_hit_points - (int)amount >= 0) ? this->_hit_points - amount : 0);
@@ -139,9 +112,9 @@ void		FragTrap::takeDamage(unsigned int amount)
 }
 
 /*
-** @brief Used to repare the FragTrap
+** @brief Used to repare the ClapTrap
 */
-void		FragTrap::beRepaired(unsigned int amount)
+void		ClapTrap::beRepaired(unsigned int amount)
 {
 	if (amount + this->_hit_points > this->_max_hit_points)
 		amount = this->_max_hit_points - this->_hit_points;
@@ -154,14 +127,14 @@ void		FragTrap::beRepaired(unsigned int amount)
 ** @brief Select randomly and attack.
 ** Remove 25 energy points.
 */
-void		FragTrap::vaulthunter_dot_exe(std::string const & target)
+void		ClapTrap::vaulthunter_dot_exe(std::string const & target)
 {
 	attacks cmd[] = {
-		&FragTrap::mathAttack,
-		&FragTrap::questionAttack,
-		&FragTrap::danseAttack,
-		&FragTrap::lostAttack,
-		&FragTrap::monologueAttack
+		&ClapTrap::mathAttack,
+		&ClapTrap::questionAttack,
+		&ClapTrap::danseAttack,
+		&ClapTrap::lostAttack,
+		&ClapTrap::monologueAttack
 	};
 	
 	if (this->_energy_points < 25)
@@ -178,7 +151,7 @@ void		FragTrap::vaulthunter_dot_exe(std::string const & target)
 ** @brief Math Attack of the FlagTrap for
 ** vaulthunter_dot_exe.
 */
-void		FragTrap::mathAttack(std::string const & target)
+void		ClapTrap::mathAttack(std::string const & target)
 {
 	_print_suffix(this->_name, this->_hit_points);
 	std::cout << "Comment ça marche les maths ? Est-ce que j'ai l'air gros comme ça ? Si un car et une girafe se reproduisaient, ça ferait quoi ? Une carafe ? Ah ! Ca doit encore plus dur pour \033[1;34m" << target;
@@ -189,7 +162,7 @@ void		FragTrap::mathAttack(std::string const & target)
 ** @brief Question Attack of the FlagTrap for
 ** vaulthunter_dot_exe.
 */
-void		FragTrap::questionAttack(std::string const & target)
+void		ClapTrap::questionAttack(std::string const & target)
 {
 	_print_suffix(this->_name, this->_hit_points);
 	std::cout << "Dans ces moments là il m'arrive de me poser des questions sur le sens de ma vie et quelque chose me distrait… et et c'est quoi ça… \033[1;34m" << target;
@@ -200,7 +173,7 @@ void		FragTrap::questionAttack(std::string const & target)
 ** @brief Dance Attack of the FlagTrap for
 ** vaulthunter_dot_exe.
 */
-void		FragTrap::danseAttack(std::string const & target)
+void		ClapTrap::danseAttack(std::string const & target)
 {
 	_print_suffix(this->_name, this->_hit_points);
 	std::cout << "Est-ce que ça veut dire que je peux danser ? Steuplaiiiiiit ! Yes, merci ! ... Merde, ma danse été si bonne que ça a brulé les capteurs de \033[1;34m" << target; 
@@ -211,7 +184,7 @@ void		FragTrap::danseAttack(std::string const & target)
 ** @brief Lost Attack of the FlagTrap for
 ** vaulthunter_dot_exe.
 */
-void		FragTrap::lostAttack(std::string const & target)
+void		ClapTrap::lostAttack(std::string const & target)
 {
 	_print_suffix(this->_name, this->_hit_points);
 	std::cout << "Je peux tirer sur quelque chose, monter des escaliers, shooter \033[1;34m" << target << "\033[0m ? Inutile de répondre ... je viens déja de lui mettre \033[1;33m42\033[0m de dégats... Cheh !" << std::endl;
@@ -221,7 +194,7 @@ void		FragTrap::lostAttack(std::string const & target)
 ** @brief Monologue Attack of the FlagTrap for
 ** vaulthunter_dot_exe.
 */
-void		FragTrap::monologueAttack(std::string const & target)
+void		ClapTrap::monologueAttack(std::string const & target)
 {
 	_print_suffix(this->_name, this->_hit_points);
 	std::cout << "Avant j'avais pas le droit de jouer avec des flingues et puis ce bon vieux Jacky est arrivé et il était très en colère, « Il me faut un robot, qu'il a dit, un robot qui fera tout ce que je veux » ";
