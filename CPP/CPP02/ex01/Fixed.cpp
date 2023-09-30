@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 09:41:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 09:43:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,10 @@ bool	checkOverflowInt(const int n, int fb)
 Fixed::Fixed( const int n )
 {
 	//printBinaryInt(n);
-	overflow = checkOverflowInt(n, fb);
+	if (n < 0)
+		overflow = checkOverflowInt(-n, fb);
+	else
+		overflow = checkOverflowInt(n, fb);
 	fp = n << fb;
 	//printBinaryInt(fp);
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
