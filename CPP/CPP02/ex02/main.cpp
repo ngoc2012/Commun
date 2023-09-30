@@ -6,7 +6,7 @@
 /*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 12:54:28 by ael-khni          #+#    #+#             */
-/*   Updated: 2023/09/30 16:23:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 16:50:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main ( void ) {
     std::cout << "a = " << a << std::endl;
     std::cout << "b = " << b << std::endl;
 
-    std::cout << Fixed::max( a, b ) << std::endl;
+    std::cout << "max(a, b) = "  << Fixed::max( a, b ) << std::endl;
 
     return 0;
 }
