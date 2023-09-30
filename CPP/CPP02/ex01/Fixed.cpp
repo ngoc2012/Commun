@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 08:11:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 08:13:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ void	printBinaryInt(int n) {
 	std::cout << std::endl;
 }
 
-#include <cstdint>
+//#include <cstdint>
 // Function to print the binary representation of a float
 void	printBinaryFloat(float f) {
-	uint32_t*	floatAsInt = reinterpret_cast<uint32_t*>(&f);
+	unsigned int*	floatAsInt = reinterpret_cast<unsigned int*>(&f);
 	for (int i = 31; i >= 0; i--) {
-		uint32_t	bit = (*floatAsInt >> i) & 1;
+		unsigned int	bit = (*floatAsInt >> i) & 1;
 		std::cout << bit;
 	}
 	std::cout << std::endl;
