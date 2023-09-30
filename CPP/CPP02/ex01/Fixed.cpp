@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 08:09:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 08:11:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,21 @@ Fixed::Fixed( const Fixed &src )
 */
 
 // Function to print the binary representation of an integer
-void	printBinary(int n) {
-	int numBits = sizeof(int) * 8;
+void	printBinaryInt(int n) {
+	int	numBits = sizeof(int) * 8;
 	for (int i = numBits - 1; i >= 0; i--) {
-		int bit = (n >> i) & 1;
+		int	bit = (n >> i) & 1;
 		std::cout << bit;
 	}
 	std::cout << std::endl;
 }
 
+#include <cstdint>
 // Function to print the binary representation of a float
-void printBinaryFloat(float f) {
-	uint32_t* floatAsInt = reinterpret_cast<uint32_t*>(&f);
+void	printBinaryFloat(float f) {
+	uint32_t*	floatAsInt = reinterpret_cast<uint32_t*>(&f);
 	for (int i = 31; i >= 0; i--) {
-		uint32_t bit = (*floatAsInt >> i) & 1;
+		uint32_t	bit = (*floatAsInt >> i) & 1;
 		std::cout << bit;
 	}
 	std::cout << std::endl;
@@ -97,15 +98,19 @@ Fixed::Fixed( const int n )
 
 Fixed::Fixed( const float n )
 {
+	printBinaryFloat(n);
 	if (static_cast<int>(n * (1 << (fb + 1))) & 1)
 		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) + 1 ) );
 	else
 		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) ) );
+	printBinaryInt(fp);
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
+	printBinaryInt(bit_1);
 	if (n > 0)
 		fp = fp | bit_1;
 	else
 		fp = fp & ~bit_1;
+	printBinaryInt(fp);
 	std::cout << "Float constructor called" << std::endl;
 }
 
