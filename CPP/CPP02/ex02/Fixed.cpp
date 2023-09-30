@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 16:52:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 16:55:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,7 @@ Fixed::Fixed( const int n )
 	//std::cout << "Int constructor called" << std::endl;
 	init();
 	if (n > getMaxOverFlow() || n < getMinOverFlow())
-	{
 		setOverFlow(true);
-		return ;
-	}
 	fp = n << fb;
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
 	if (n > 0)
@@ -119,10 +116,7 @@ Fixed::Fixed( const float n )
 	int	n_int;
 	n_int = static_cast<int>(n);
 	if (n_int > getMaxOverFlow() || n_int < getMinOverFlow())
-	{
 		setOverFlow(true);
-		return ;
-	}
 	if (static_cast<int>(n * (1 << (fb + 1))) & 1)
 		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) + 1 ) );
 	else
