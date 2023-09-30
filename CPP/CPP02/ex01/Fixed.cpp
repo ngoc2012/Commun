@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 15:15:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 15:16:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,23 +97,9 @@ bool	checkOverflowInt(const int n, int fb)
 	for (int i = 0; i < fb + 1; i++)
 		min = (min << 1) | 1;
 	min = min << (sizeof(int) * 8 - fb - 1);
-	printBinaryInt(min);
-	std::cout << min << std::endl;
 	if (n > max || n < min)
 		return (true);
 	return (false);
-	/*
-	std::cout << "here " << n << std::endl;
-	printBinaryInt(n);
-	for (int i = len - 2; i > len - fb - 1; i--)
-	{
-		std::cout << i << " - ";
-		printBinaryInt(n >> i);
-		if ((n >> i) & 1)
-			return (true);
-	}
-	return (false);
-	*/
 }
 
 Fixed::Fixed( const int n )
