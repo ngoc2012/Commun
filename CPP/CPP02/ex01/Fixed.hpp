@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 21:20:40 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 14:42:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 08:34:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ class Fixed
 	private:
 		int	fp;
 		static const int	fb = 8;
+		bool	overflow;
 	public:
 		Fixed( void );
 		Fixed( const Fixed& );

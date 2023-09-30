@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 08:29:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 08:34:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ Fixed::Fixed()
 {
     std::cout << "Default constructor called" << std::endl;
     fp = 0;
+    overflow = false;
 }
 
 Fixed::~Fixed()
