@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 15:35:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 18:37:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int main(void) {
 	Fixed       a2;
 	Fixed       a3;
 	Fixed       a4;
+	Fixed       a5(0);
 
 	/*
 	//a = Fixed(10000000000000.0f);
@@ -51,6 +52,7 @@ int main(void) {
 	//std::cout << 1.175494351e-38f << std::endl;
 	std::cout << "a3 is " << a3 << std::endl;
 	std::cout << "a4 is " << a4 << std::endl;
+	std::cout << "a5 is " << a5 << std::endl;
 	std::cout << "b is " << b << std::endl;
 	std::cout << "c is " << c << std::endl;
 	std::cout << "d is " << d << std::endl;
@@ -62,6 +64,7 @@ int main(void) {
 	std::cout << "a2 is " << a2.toInt() << " as integer" << std::endl;
 	std::cout << "a3 is " << a3.toInt() << " as integer" << std::endl;
 	std::cout << "a4 is " << a4.toInt() << " as integer" << std::endl;
+	std::cout << "a5 is " << a5.toInt() << " as integer" << std::endl;
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
