@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 09:26:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 09:28:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,10 @@ Fixed::Fixed( const int n )
 Fixed::Fixed( const float n )
 {
 	std::cout << static_cast<int>(n) << std::endl;
-	overflow = checkOverflowInt(static_cast<int>(n), fb);
+	if (n < 0)
+		overflow = checkOverflowInt(static_cast<int>(-n), fb);
+	else
+		overflow = checkOverflowInt(static_cast<int>(n), fb);
 	//printBinaryFloat(n);
 	if (static_cast<int>(n * (1 << (fb + 1))) & 1)
 		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) + 1 ) );
