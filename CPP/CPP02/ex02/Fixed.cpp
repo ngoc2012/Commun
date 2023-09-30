@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 17:03:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 17:05:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,25 +169,32 @@ bool	Fixed::operator!=( const Fixed &val ) const { return (getRawBits() != val.g
 Fixed	Fixed::operator+ ( const Fixed &val ) const
 {
 	if (getOverFlow() || val.getOverFlow())
-		return (0);
+	{
+		Fixed tmp( 0 );
+		tmp.setOverFlow(true);
+		return (tmp);
+	}
 	return (Fixed( toFloat() + val.toFloat() ));
 }
 
 Fixed	Fixed::operator- ( const Fixed &val ) const
 {
 	if (getOverFlow() || val.getOverFlow())
-		return (0);
+	{
+		Fixed tmp( 0 );
+		tmp.setOverFlow(true);
+		return (tmp);
+	}
 	return (Fixed( toFloat() - val.toFloat() ));
 }
 
 Fixed	Fixed::operator* ( const Fixed &val ) const
 {
-	std::cout << "Multi " << getOverFlow() << val.getOverFlow() << std::endl;
 	if (getOverFlow() || val.getOverFlow())
 	{
 		Fixed tmp( 0 );
-		std::cout << "here\n";
-		return (0);
+		tmp.setOverFlow(true);
+		return (tmp);
 	}
 	return (Fixed( toFloat() * val.toFloat() ));
 }
@@ -195,7 +202,11 @@ Fixed	Fixed::operator* ( const Fixed &val ) const
 Fixed	Fixed::operator/ ( const Fixed &val ) const
 {
 	if (getOverFlow() || val.getOverFlow())
-		return (0);
+	{
+		Fixed tmp( 0 );
+		tmp.setOverFlow(true);
+		return (tmp);
+	}
 	return (Fixed( toFloat() / val.toFloat() ));
 }
 
