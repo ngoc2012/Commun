@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 09:13:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 09:15:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,15 +144,9 @@ float	Fixed::toFloat( void ) const {
 	return static_cast<float>( getRawBits() ) / ( 1 << fb );
 }
 
-int	Fixed::toInt( void ) const
-{
-	return fp >> fb;
-}
-
-bool	Fixed::getOverFlow( void ) const
-{
-	return (overflow);
-}
+int	Fixed::toInt( void ) const { return fp >> fb; }
+bool	Fixed::getOverFlow( void ) const { return (overflow); }
+void	Fixed::setOverFlow( bool o ) { overflow = o; }
 
 std::ostream	&operator<<( std::ostream &o, const Fixed &n )
 {
