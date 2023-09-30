@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 14:59:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 15:03:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,13 @@ void	printBinaryFloat(float f) {
 
 bool	checkOverflowInt(const int n, int fb)
 {
-	int	len = sizeof(int) * 8;
+	int	max = 1;
+	for (int i = 0; i < fb - 2; i++)
+		max = (max << 1) & 1;
+	if (n > max || n < -max)
+		return (true);
+	return (false);
+	/*
 	std::cout << "here " << n << std::endl;
 	printBinaryInt(n);
 	for (int i = len - 2; i > len - fb - 1; i--)
@@ -100,6 +106,7 @@ bool	checkOverflowInt(const int n, int fb)
 			return (true);
 	}
 	return (false);
+	*/
 }
 
 Fixed::Fixed( const int n )
@@ -155,17 +162,18 @@ void	Fixed::setRawBits( int const raw ) {
 
 float	Fixed::toFloat( void ) const
 {
-	if (n.getOverFlow())
+	if (getOverFlow())
 		return (0);
 	return static_cast<float>( getRawBits() ) / ( 1 << fb );
 }
 
 int	Fixed::toInt( void ) const
 {
-	if (n.getOverFlow())
+	if (getOverFlow())
 		return (0);
 	return fp >> fb;
 }
+
 bool	Fixed::getOverFlow( void ) const { return (overflow); }
 void	Fixed::setOverFlow( bool o ) { overflow = o; }
 
