@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 19:57:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 20:00:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ class ClapTrap
 		ClapTrap();
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap&);
-		virtual ~ClapTrap();
 		ClapTrap &operator=(const ClapTrap& op);
-		//void		rangedAttack(std::string const & target);
-		//void		meleeAttack(std::string const & target);
-		//void		vaulthunter_dot_exe(const std::string& target);
 		void		attack(const std::string& target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
+		//virtual ~ClapTrap();
+		//void		rangedAttack(std::string const & target);
+		//void		meleeAttack(std::string const & target);
+		//void		vaulthunter_dot_exe(const std::string& target);
 };
 
 #endif
