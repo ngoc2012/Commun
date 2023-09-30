@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 07:59:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 08:00:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,14 @@ Fixed::Fixed( const Fixed &src )
 	assignment(*this, src);
 }
 
-Fixed::Fixed( const int n ) : fp( n << fb ) {
-    std::cout << "Int constructor called" << std::endl;
+Fixed::Fixed( const int n )
+{
+	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
+	if (n & bit_1)
+		fp = fp | bit_1;
+	else
+		fp = fp & ~bit_1;
+	std::cout << "Int constructor called" << std::endl;
 }
 
 /*
@@ -74,7 +80,7 @@ Fixed::Fixed( const float n )
 		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) + 1 ) );
 	else
 		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) ) );
-	int	bit_1 = 1 << (sizeof(float) * 8 - 1);
+	const float	bit_1 = 1 << (sizeof(float) * 8 - 1);
 	if (n & bit_1)
 		fp = fp | bit_1;
 	else
