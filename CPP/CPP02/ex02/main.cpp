@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 18:47:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 18:47:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 19:07:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int main ( void ) {
     Fixed const  d( Fixed(1000000000.05f ) + Fixed( 1000000000 ) );
     Fixed const  e( Fixed(1000000000.05f ) - Fixed( 1000000000 ) );
     Fixed const  f( Fixed(1000000000.05f ) / Fixed( 1000000000 ) );
+    Fixed const  g( Fixed( 5.05f ) - Fixed( 20 ) );
 
     std::cout << "a = " << a << std::endl;
     std::cout << "++a = " << ++a << std::endl;
@@ -30,6 +31,7 @@ int main ( void ) {
     std::cout << "d = " << d << std::endl;
     std::cout << "e = " << e << std::endl;
     std::cout << "f = " << f << std::endl;
+    std::cout << "g = " << g << std::endl;
 
     std::cout << "max(a, b) = "  << Fixed::max( a, b ) << std::endl;
 

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 18:48:21 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 19:04:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 19:06:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static Fixed	area2( Point const p1, Point const p2, Point const p3 ) {
 	r = r - p2.getX() * p1.getY() - p3.getX() * p2.getY() - p1.getX() * p3.getY();
 	if (r < 0)
 		r = Fixed() - r;
-	std::cout << r << std::endl;
 	return (r);
 }
 
