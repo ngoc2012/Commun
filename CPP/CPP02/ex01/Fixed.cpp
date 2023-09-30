@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 09:39:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 09:41:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	printBinaryFloat(float f) {
 bool	checkOverflowInt(const int n, int fb)
 {
 	int	len = sizeof(int) * 8;
+	std::cout << "here " << n << std::endl;
 	printBinaryInt(n);
 	for (int i = len - 2; i > len - fb - 1; i--)
 	{

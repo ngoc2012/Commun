@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 09:38:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 09:41:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 int main(void) {
 
 	Fixed       a;
-	Fixed const b( 10 );
-	Fixed const c( 42.42f );
-	Fixed const d( b );
-	Fixed       a1;
-	Fixed       a2;
-	Fixed       a3;
-	Fixed       a4;
+	//Fixed const b( 10 );
+	//Fixed const c( 42.42f );
+	//Fixed const d( b );
+	//Fixed       a1;
+	//Fixed       a2;
+	//Fixed       a3;
+	//Fixed       a4;
 
 	//a = Fixed(10000000000000.0f);
 	//a = Fixed( 1000000000 );
