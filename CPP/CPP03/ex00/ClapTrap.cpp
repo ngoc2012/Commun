@@ -6,13 +6,20 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 20:07:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 20:08:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() {}
+void	welcome(ClapTrap &c)
+{
+	std::cout << name
+}
+
+ClapTrap::ClapTrap()
+{
+}
 
 ClapTrap::ClapTrap(std::string name)
 :
