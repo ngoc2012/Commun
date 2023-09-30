@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 21:53:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 21:56:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,9 @@ ClapTrap & ClapTrap::srcerator=(const ClapTrap& src)
 
 void		ClapTrap::attack(std::string const & target)
 {
-	_print_suffix(this->_name, this->_hit_points);
-	std::cout << "J'urine des arcs-en-ciel sur toi \033[1;34m" << target << "\033[0m, \033[1;33m" << this->_ranged_attack_damage << "\033[0m de ta décadante vie en moins dans ta face !" << std::endl;
+	std::cout << name << " attack.\n";
 }
 
-/*
-** @brief Melee attack of the ClapTrap.
-*/
-void		ClapTrap::meleeAttack(std::string const & target)
-{
-	_print_suffix(this->_name, this->_hit_points);
-	std::cout << "Ah Ya ! \033[1;34m" << target <<"\033[0m prend donc \033[1;33m" << this->_melee_attack_damage << "\033[0m dégats de mon... épée cubique en bois!" << std::endl;
-}
-
-/*
-** @brief Used to remove hit points to the ClapTrap
-*/
 void		ClapTrap::takeDamage(unsigned int amount)
 {
 	amount -= this->_armor_damage_reduction;
