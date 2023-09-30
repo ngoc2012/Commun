@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 18:48:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 18:59:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 19:05:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ Explanation:
 */
 
 int	main ( void ) {
-	if ( bsp( Point(0, 0), Point(1, 0), Point(0, 0), Point(0, 1) ) == true ) {
+	if ( bsp( Point(0, 0), Point(1, 0), Point(1, 1), Point(0.5, 0.5) ) == true ) {
 		std::cout << "Point is in the triangle" << std::endl;
 	} else {
 		std::cout << "Point is not in the triangle" << std::endl;
 	}
-	if ( bsp( Point(0, 0), Point(0, 0), Point(0, 0), Point(0, 1) ) == true ) {
+	if ( bsp( Point(0, 0), Point(0, 1), Point(0, 0.5), Point(0, 1) ) == true ) {
 		std::cout << "Point is in the triangle" << std::endl;
 	} else {
 		std::cout << "Point is not in the triangle" << std::endl;

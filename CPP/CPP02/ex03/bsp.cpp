@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 18:48:21 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 19:03:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 19:04:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool	bsp( Point const a, Point const b, Point const c, Point const p) {
 	if (r1 == Fixed())
 	{
 		std::cerr << "Error: triangle not valid\n";
-		return (false)
+		return (false);
 	}
 	return  (r1  ==  r2 + r3 + r4);
 }
