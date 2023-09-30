@@ -6,10 +6,100 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/29 21:33:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 07:53:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Fixed.hpp"
+
+Fixed::Fixed()
+{
+    std::cout << "Default constructor called" << std::endl;
+    fp = 0;
+}
+
+Fixed::~Fixed()
+{
+    std::cout << "Destructor called" << std::endl;
+}
+
+static void	assignment(Fixed &des, const Fixed &src)
+{
+	std::cout << "Copy assignment operator called" << std::endl;
+	des.setRawBits(src.getRawBits());
+}
+
+Fixed&	Fixed::operator=( const Fixed &src )
+{
+	assignment(*this, src);
+	return (*this);
+}
+
+Fixed::Fixed( const Fixed &src )
+{
+	std::cout << "Copy constructor called" << std::endl;
+	assignment(*this, src);
+}
+
+Fixed::Fixed( const int n ) : fp( n << fb ) {
+    std::cout << "Int constructor called" << std::endl;
+}
+
+/*
+1234.4321	10011010 010.01101 11010011110001
+316015		10011010 010 01101 111
+316014		10011010 010 01101 110
+
+42.42		101010.01 101011 10000101001
+10859.5		101010 01 101011.1
+10859.52	101010 01 101011.100001010001111011
+10859		101010 01 101011
+10860		101010 01 101100
+
+10859.4		101010 01 101011.0110011001100110011
+10859.49	101010 01 101011.0111110101110000101
+
+2147483647	01111111111111111111111111111111
+4294967040	11111111111111111111111100000000
+2147483392	01111111111111111111111100000000
+
+8388607		01111111 11111111 11111111
+-8388607	11111111 11111111 11111111
+
+*/
+
+Fixed::Fixed( const float n )
+{
+	if (static_cast<int>(n * (1 << (fb + 1))) & 1)
+		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) + 1 ) );
+	else
+		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) ) );
+	std::cout << "Float constructor called" << std::endl;
+}
+
+int	Fixed::getRawBits( void ) const
+{
+	return (fp);
+}
+
+void	Fixed::setRawBits( int const raw ) {
+	fp = raw;
+}
+
+float	Fixed::toFloat( void ) const {
+	return static_cast<float>( getRawBits() ) / ( 1 << fb );
+}
+
+int	Fixed::toInt( void ) const
+{
+	return fp >> fb;
+}
+
+std::ostream	&operator<<( std::ostream &o, const Fixed &n )
+{
+	o << n.toFloat();
+	return o;
+}
 /*
 https://www.youtube.com/watch?v=gc1Nl3mmCuY
 
@@ -123,103 +213,3 @@ Divide by the base 2 to get the digits from the remainders:
 42.42:   101010.0110101110000101001
 */
 
-#include "Fixed.hpp"
-
-Fixed::Fixed()
-{
-    std::cout << "Default constructor called" << std::endl;
-    fp = 0;
-}
-
-Fixed::~Fixed()
-{
-    std::cout << "Destructor called" << std::endl;
-}
-
-static void	assignment(Fixed &des, const Fixed &src)
-{
-	std::cout << "Copy assignment operator called" << std::endl;
-	des.setRawBits(src.getRawBits());
-}
-
-Fixed&	Fixed::operator=( const Fixed &src )
-{
-	assignment(*this, src);
-	return (*this);
-}
-
-Fixed::Fixed( const Fixed &src )
-{
-	std::cout << "Copy constructor called" << std::endl;
-	assignment(*this, src);
-}
-
-Fixed::Fixed( const int n ) : fp( n << fb ) {
-    std::cout << "Int constructor called" << std::endl;
-}
-
-//Fixed::Fixed( const float n ) : fp( roundf( n * ( 1 << fb ) ) ) {
-/*
-1234.4321	10011010 010.01101 11010011110001
-316015		10011010 010 01101 111
-316014		10011010 010 01101 110
-
-42.42		101010.01 101011 10000101001
-10859.5		101010 01 101011.1
-10859.52	101010 01 101011.100001010001111011
-10859		101010 01 101011
-10860		101010 01 101100
-
-10859.4		101010 01 101011.0110011001100110011
-10859.49	101010 01 101011.0111110101110000101
-
-2147483647	01111111111111111111111111111111
-4294967040	11111111111111111111111100000000
-2147483392	01111111111111111111111100000000
-
-8388607		01111111 11111111 11111111
--8388607	11111111 11111111 11111111
-
-*/
-#include <cmath>
-Fixed::Fixed( const float n )
-{
-	//std::cout << n * ( 1 << fb ) << std::endl;
-	//std::cout << (int) ( n * ( 1 << fb ) ) << std::endl;
-	//std::cout << roundf( n * ( 1 << fb ) )  << std::endl;
-	//std::cout << (float) ((int) ( n * ( 1 << fb ) ) ) << std::endl;
-	//std::cout << static_cast<float>( roundf( n * ( 1 << fb ) ) ) / ( 1 << fb ) << std::endl;
-	//std::cout << static_cast<float>( (float) ((int) ( n * ( 1 << fb ) ) ) ) / ( 1 << fb ) << std::endl;
-	//fp = static_cast<float>((int) ( n * ( 1 << fb ) ) );
-
-	if (static_cast<int>(n * (1 << (fb + 1))) & 1)
-		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) + 1 ) );
-	else
-		fp = static_cast<float>(static_cast<int>( n * ( 1 << fb ) ) );
-	//fp = roundf( n * ( 1 << fb ) );
-	std::cout << "Float constructor called" << std::endl;
-}
-
-int	Fixed::getRawBits( void ) const
-{
-	return (fp);
-}
-
-void	Fixed::setRawBits( int const raw ) {
-	fp = raw;
-}
-
-float	Fixed::toFloat( void ) const {
-	return static_cast<float>( getRawBits() ) / ( 1 << fb );
-}
-
-int	Fixed::toInt( void ) const
-{
-	return fp >> fb;
-}
-
-std::ostream	&operator<<( std::ostream &o, const Fixed &n )
-{
-	o << n.toFloat();
-	return o;
-}
