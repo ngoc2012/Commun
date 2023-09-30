@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 17:05:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 17:07:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,12 @@ void	Fixed::init( void )
 	setMinOverFlow(min);
 }
 
-Fixed::Fixed()
-{
-	//std::cout << "Default constructor called" << std::endl;
-	init();
-}
+Fixed::Fixed() { init(); }
 
-Fixed::~Fixed()
-{
-	//std::cout << "Destructor called" << std::endl;
-}
+Fixed::~Fixed() {}
 
 static void	assignment(Fixed &des, const Fixed &src)
 {
-	//std::cout << "Copy assignment operator called" << std::endl;
 	des.setRawBits(src.getRawBits());
 	des.setOverFlow(src.getOverFlow());
 }
@@ -52,11 +44,7 @@ Fixed&	Fixed::operator=( const Fixed &src )
 	return (*this);
 }
 
-Fixed::Fixed( const Fixed &src )
-{
-	//std::cout << "Copy constructor called" << std::endl;
-	assignment(*this, src);
-}
+Fixed::Fixed( const Fixed &src ) { assignment(*this, src); }
 
 /*
 1234.4321	10011010 010.01101 11010011110001
@@ -97,7 +85,6 @@ void	printBinaryFloat(float f) {
 
 Fixed::Fixed( const int n )
 {
-	//std::cout << "Int constructor called" << std::endl;
 	init();
 	if (n > getMaxOverFlow() || n < getMinOverFlow())
 		setOverFlow(true);
@@ -111,7 +98,6 @@ Fixed::Fixed( const int n )
 
 Fixed::Fixed( const float n )
 {
-	//std::cout << "Float constructor called" << std::endl;
 	init();
 	int	n_int;
 	n_int = static_cast<int>(n);
