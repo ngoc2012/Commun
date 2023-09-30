@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 08:06:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 08:09:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,16 @@ void	printBinary(int n) {
 	int numBits = sizeof(int) * 8;
 	for (int i = numBits - 1; i >= 0; i--) {
 		int bit = (n >> i) & 1;
+		std::cout << bit;
+	}
+	std::cout << std::endl;
+}
+
+// Function to print the binary representation of a float
+void printBinaryFloat(float f) {
+	uint32_t* floatAsInt = reinterpret_cast<uint32_t*>(&f);
+	for (int i = 31; i >= 0; i--) {
+		uint32_t bit = (*floatAsInt >> i) & 1;
 		std::cout << bit;
 	}
 	std::cout << std::endl;
