@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 09:10:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 09:11:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ Fixed::Fixed( const int n )
 {
 	printBinaryInt(n);
 	overflow = checkOverflowInt(n, fb);
-	std::cout << overflow << std::endl;
+	std::cout << overflow << getOverFlow() << std::endl;
 	fp = n << fb;
 	//printBinaryInt(fp);
 	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
@@ -156,6 +156,7 @@ bool	Fixed::getOverFlow( void ) const
 
 std::ostream	&operator<<( std::ostream &o, const Fixed &n )
 {
+	o << "NaN";
 	if (n.getOverFlow())
 	{
 		std::cout << "smt" << std::endl;
