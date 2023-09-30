@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 20:03:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 20:07:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,10 @@ ClapTrap::ClapTrap() {}
 
 ClapTrap::ClapTrap(std::string name)
 :
-	hit_points(100),
-	max_hit_points(100),
-	energy_points(100),
-	max_energy_points(100),
-	level(1),
 	name(name),
-	melee_attack_damage(30),
-	ranged_attack_damage(20),
-	armor_damage_reduction(5)
+	hit_points(10),
+	energy_points(10),
+	attack_damage(0)
 {
 	srand(time(NULL));
 	_print_suffix(this->_name, this->_hit_points);
