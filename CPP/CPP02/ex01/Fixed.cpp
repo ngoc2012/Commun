@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 08:03:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 08:06:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,6 @@ Fixed::Fixed( const Fixed &src )
 	assignment(*this, src);
 }
 
-Fixed::Fixed( const int n )
-{
-	fp = n << fb;
-	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
-	if (n > 0)
-		fp = fp | bit_1;
-	else
-		fp = fp & ~bit_1;
-	std::cout << "Int constructor called" << std::endl;
-}
-
 /*
 1234.4321	10011010 010.01101 11010011110001
 316015		10011010 010 01101 111
@@ -74,6 +63,27 @@ Fixed::Fixed( const int n )
 -8388607	11111111 11111111 11111111
 
 */
+
+// Function to print the binary representation of an integer
+void	printBinary(int n) {
+	int numBits = sizeof(int) * 8;
+	for (int i = numBits - 1; i >= 0; i--) {
+		int bit = (n >> i) & 1;
+		std::cout << bit;
+	}
+	std::cout << std::endl;
+}
+
+Fixed::Fixed( const int n )
+{
+	fp = n << fb;
+	int	bit_1 = 1 << (sizeof(int) * 8 - 1);
+	if (n > 0)
+		fp = fp | bit_1;
+	else
+		fp = fp & ~bit_1;
+	std::cout << "Int constructor called" << std::endl;
+}
 
 Fixed::Fixed( const float n )
 {
