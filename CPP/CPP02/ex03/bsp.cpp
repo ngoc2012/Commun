@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 18:48:21 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 19:00:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 19:03:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,14 @@ static Fixed	area2( Point const p1, Point const p2, Point const p3 ) {
 }
 
 bool	bsp( Point const a, Point const b, Point const c, Point const p) {
-	return  ( area2( a, b, c ) == area2( p, a, b ) + area2( p, b, c ) + area2( p, c, a ) );
+	Fixed r1 = area2( a, b, c );
+	Fixed r2 = area2( p, a, b );
+	Fixed r3 = area2( p, a, c );
+	Fixed r4 = area2( p, c, b );
+	if (r1 == Fixed())
+	{
+		std::cerr << "Error: triangle not valid\n";
+		return (false)
+	}
+	return  (r1  ==  r2 + r3 + r4);
 }
