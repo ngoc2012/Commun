@@ -6,7 +6,7 @@
 /*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 22:05:11 by ael-khni          #+#    #+#             */
-/*   Updated: 2023/09/30 18:14:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 18:17:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ Point::Point( const Point &src ) : x(src.x), y(src.y) {}
 Point::~Point() {}
 
 Point&	Point::operator=( const Point &src ) {
-	x = src.getX();
-	y = srs.getY();
+	(void) src;
 	return (*this);
 }
 
