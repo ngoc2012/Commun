@@ -6,7 +6,7 @@
 /*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 22:03:31 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/07/23 12:25:27 by ael-khni         ###   ########.fr       */
+/*   Updated: 2023/09/30 17:20:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,21 @@
 
 class Point
 {
-private:
-    const Fixed _x;
-    const Fixed _y;
+	private:
+		const Fixed x;
+		const Fixed y;
 
-public:
-    Point();
-    Point( const float x, const float y );
-    Point( const Point &src );
-    ~Point();
+	public:
+		Point();
+		Point( const float x, const float y );
+		Point( const Point &src );
+		~Point();
 
-    Point&  operator=( const Point &rhs );
+		Point&  operator=( const Point &rhs );
 
-    Fixed getX( void ) const ;
-    Fixed getY( void ) const ;
-    
+		Fixed getX( void ) const ;
+		Fixed getY( void ) const ;
+
 };
 
 bool bsp( Point const a, Point const b, Point const c, Point const point );
