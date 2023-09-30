@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 18:13:09 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 18:13:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 18:28:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class	Point
 		const Fixed y;
 	public:
 		Point();
-		Point( const Fixed x, const Fixed y );
+		Point( const float x, const float y );
 		Point( const Point& );
 		~Point();
 
