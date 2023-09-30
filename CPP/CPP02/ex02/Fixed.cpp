@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 16:55:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 16:57:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,12 @@ bool	Fixed::operator>=( const Fixed &val ) const { return (getRawBits() >= val.g
 bool	Fixed::operator<=( const Fixed &val ) const { return (getRawBits() <= val.getRawBits()); }
 bool	Fixed::operator==( const Fixed &val ) const { return (getRawBits() == val.getRawBits()); }
 bool	Fixed::operator!=( const Fixed &val ) const { return (getRawBits() != val.getRawBits()); }
-Fixed	Fixed::operator+ ( const Fixed &val ) const { return (Fixed( toFloat() + val.toFloat() )); }
+Fixed	Fixed::operator+ ( const Fixed &val ) const
+{
+	if (getOverFlow() || val.getOverFlow)
+		return (0);
+	return (Fixed( toFloat() + val.toFloat() ));
+}
 Fixed	Fixed::operator- ( const Fixed &val ) const { return (Fixed( toFloat() - val.toFloat() )); }
 Fixed	Fixed::operator* ( const Fixed &val ) const { return (Fixed( toFloat() * val.toFloat() )); }
 Fixed	Fixed::operator/ ( const Fixed &val ) const { return (Fixed( toFloat() / val.toFloat() )); }
