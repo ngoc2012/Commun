@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 21:51:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 21:53:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,7 @@ ClapTrap::ClapTrap(const ClapTrap& src)
 	attack_damage(src.attack_damage)
 { welcome(&this); }
 
-/*
-** @brief Destructor:
-** Called when the object "ClapTrap" is delete
-*/
-ClapTrap::~ClapTrap()
-{
-	std::cout << name << " quit game." << std::endl;
-}
+ClapTrap::~ClapTrap() { std::cout << name << " quit game." << std::endl; }
 
 ClapTrap & ClapTrap::srcerator=(const ClapTrap& src)
 {
@@ -61,10 +54,7 @@ ClapTrap & ClapTrap::srcerator=(const ClapTrap& src)
 	return (*this);
 }
 
-/*
-** @brief Ranged attack of the ClapTrap.
-*/
-void		ClapTrap::rangedAttack(std::string const & target)
+void		ClapTrap::attack(std::string const & target)
 {
 	_print_suffix(this->_name, this->_hit_points);
 	std::cout << "J'urine des arcs-en-ciel sur toi \033[1;34m" << target << "\033[0m, \033[1;33m" << this->_ranged_attack_damage << "\033[0m de ta décadante vie en moins dans ta face !" << std::endl;
