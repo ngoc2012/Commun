@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 09:17:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 09:19:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ bool	checkOverflowInt(const int n, int fb)
 {
 	int	len = sizeof(int) * 8;
 	for (int i = len - 2; i > fb; i++)
-		if (n >> i & 1)
+		if ((n >> i) & 1)
 			return (true);
 	return (false);
 }
