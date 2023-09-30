@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 08:44:11 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 09:15:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 09:17:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	assignment(Fixed &des, const Fixed &src)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	des.setRawBits(src.getRawBits());
+	des.setOverFlow(src.getOverFlow());
 }
 
 Fixed&	Fixed::operator=( const Fixed &src )
@@ -150,14 +151,10 @@ void	Fixed::setOverFlow( bool o ) { overflow = o; }
 
 std::ostream	&operator<<( std::ostream &o, const Fixed &n )
 {
-	o << "NaN";
 	if (n.getOverFlow())
-	{
-		std::cout << "smt" << std::endl;
 		o << "NaN";
-	}
-	//else
-	//	o << n.toFloat();
+	else
+		o << n.toFloat();
 	return o;
 }
 /*
