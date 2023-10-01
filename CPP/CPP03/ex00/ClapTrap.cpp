@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 20:35:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 20:36:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ void		ClapTrap::setAttackDamage(unsigned int n)
 void		ClapTrap::status(void)
 {
 	std::cout << "ClapTrap " << name << " now has "
-	<< energy_points << " energy points, and "
-	<< target.getName() << " now has "
-	<< target.getHitPoints() << " hit points." << std::endl;
+	<< hit_points << " hit points, "
+	<< energy_points << " energy point." << std::endl;
 }
