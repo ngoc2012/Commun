@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 20:09:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 20:11:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,8 @@ void		ClapTrap::setName(std::string s)
 }
 void		ClapTrap::setHitPoints(unsigned int n) { hit_points = n; }
 void		ClapTrap::setEnergyPoints(unsigned int n) { energy_points = n; }
-void		ClapTrap::setAttackDamage(unsigned int n) { attack_damage = n; }
+void		ClapTrap::setAttackDamage(unsigned int n)
+{
+	std::cout << "ClapTrap " << name << " now has " << n << " attack damage." << std::endl;
+	attack_damage = n;
+}
