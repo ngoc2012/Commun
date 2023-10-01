@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 20:47:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 20:49:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,10 @@ int main()
 		clap2.status();
 	}
 	clap2.beRepaired(5);
+	clap1.beRepaired(2);
+	clap3.beRepaired(1);
+	clap1.status();
+	clap2.status();
+	clap3.status();
 	return (0);
 }
