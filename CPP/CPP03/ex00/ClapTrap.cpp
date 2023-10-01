@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 19:11:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 19:13:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	welcome(ClapTrap &c) {
 	std::cout << "ClapTrap " << c.getName()
 	<< "(hit points: " << c.getHitPoints()
 	<< ", energy points: " << c.getEnergyPoints()
-	<< ", attack_damage: " << c.attack_damage
-	<< ") join the game." << std:endl;
+	<< ", attack_damage: " << c.getAttackDamage()
+	<< ") join the game." << std::endl;
 }
 
 ClapTrap::ClapTrap()
 {
 	name = std::string("RANDOM");
-	welcome(&this); 
+	welcome(*this); 
 }
 
 ClapTrap::ClapTrap(std::string name)
@@ -32,7 +32,7 @@ ClapTrap::ClapTrap(std::string name)
 	hit_points(10),
 	energy_points(10),
 	attack_damage(0)
-{ std::cout << "Another "; welcome(&this); }
+{ std::cout << "Another "; welcome(*this); }
 
 ClapTrap::ClapTrap(const ClapTrap& src)
 :
@@ -40,7 +40,7 @@ ClapTrap::ClapTrap(const ClapTrap& src)
 	hit_points(src.hit_points),
 	energy_points(src.energy_points),
 	attack_damage(src.attack_damage)
-{ welcome(&this); }
+{ welcome(*this); }
 
 ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << name << " quit game." << std::endl; }
 
