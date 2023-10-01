@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 20:37:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 20:39:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,18 @@ int main()
 	clap3.setAttackDamage(3);
 	clap1.attack(clap2.getName());
 	clap2.takeDamage(clap1.getAttackDamage());
+	clap1.status();
+	clap2.status();
 	clap3.attack(clap1.getName());
 	clap1.takeDamage(clap3.getAttackDamage());
+	clap1.status();
+	clap3.status();
+	for (int i = 0; i < 10; i++)
+	{
+		clap1.attack(clap2.getName());
+		clap2.takeDamage(clap1.getAttackDamage());
+		clap1.status();
+		clap2.status();
+	}
 	return (0);
 }
