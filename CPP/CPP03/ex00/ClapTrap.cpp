@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 16:37:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 16:41:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ ClapTrap::~ClapTrap() { std::cout << name << " quit game." << std::endl; }
 
 void		ClapTrap::attack(std::string const & target)
 {
-	std::cout << name << " attack.\n";
+	std::cout << name << " attack " << target.name << std::endl;
+	target.hit_points--;
 }
 
 void		ClapTrap::takeDamage(unsigned int amount)
