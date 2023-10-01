@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 21:09:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 21:10:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define CLAPTRAP_HPP
 
 #include <iostream>
-#include <string>
-#include <stdlib.h>
-#include <time.h>
 
 class ClapTrap
 {
@@ -32,7 +29,7 @@ class ClapTrap
 		ClapTrap(const ClapTrap&);
 		ClapTrap &operator=(const ClapTrap& op);
 		~ClapTrap();
-		//virtual ~ClapTrap();
+
 		void		attack(const std::string& target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
