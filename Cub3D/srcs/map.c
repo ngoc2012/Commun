@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 09:49:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 09:51:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ t_sprite	*add_sprite(double px, double py, t_sprite *lst)
 	}
 	new->px = px;
 	new->py = py;
-	*(++new) = 0;
+	++new;
+	new = 0;
 	free(lst0);
 	return (new0);
 }
@@ -60,7 +61,7 @@ static void	get_position(t_game *g, int i, int j, char c)
 	else if (c == '2')
 	{
 		g->sprites = add_sprite(i * BOX_SIZE + BOX_SIZE / 2,
-			j * BOX_SIZE + BOX_SIZE / 2, g->sprites)
+			j * BOX_SIZE + BOX_SIZE / 2, g->sprites);
 		g->map.v[j][i] = B_GROUND;
 	}
 	else if (c == '3')
