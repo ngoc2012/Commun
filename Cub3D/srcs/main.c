@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 10:37:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 10:40:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	end_game(t_game *g, int exit_code, char *s)
 		free_array(g->cos_ai, WIDTH);
 	if (g->sin_ai)
 		free_array(g->sin_ai, WIDTH);
+	if (g->n_sprites)
+		free(g->sprites);
 	exit(exit_code);
 	return (1);
 }
