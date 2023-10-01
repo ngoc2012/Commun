@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 18:44:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 18:47:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,18 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << "ClapTrap " << name << " has no more energy." << std::endl;
 }
 
-std::string	getName(void) const;
-unsigned int	getHitPoints(void) const;
-unsigned int	getEnergyPoints(void) const;
+std::string	getName(void) const { return (name); }
+unsigned int	getHitPoints(void) const { return (hit_points); }
+unsigned int	getEnergyPoints(void) const { return (energy_points); }
 
-void		setName(std::string);
-void		setHitPoints(unsigned int);
-void		setEnergyPoints(unsigned int);
+void		setName(std::string)
+{
+}
 
+void		setHitPoints(unsigned int)
+{
+}
+
+void		setEnergyPoints(unsigned int)
+{
+}
