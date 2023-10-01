@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 20:36:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 20:41:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ClapTrap::attack(std::string const & target)
 		energy_points--;
 	}
 	else
-		std::cout << "ClapTrap " << name << " has no more energy." << std::endl;
+		std::cout << "Alert!!! ClapTrap " << name << " tried to be repaired but has no more energy." << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -74,7 +74,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		energy_points--;
 	}
 	else
-		std::cout << "ClapTrap " << name << " has no more energy." << std::endl;
+		std::cout << "Alert!!! ClapTrap " << name << " tried to be repaired but has no more energy." << std::endl;
 }
 
 std::string	ClapTrap::getName(void) const { return (name); }
