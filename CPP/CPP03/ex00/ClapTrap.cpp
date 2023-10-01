@@ -6,16 +6,16 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 19:09:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 19:11:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 void	welcome(ClapTrap &c) {
-	std::cout << "ClapTrap " << c.name
-	<< "(hit points: " << c.hit_points
-	<< ", energy points: " << c.energy_points
+	std::cout << "ClapTrap " << c.getName()
+	<< "(hit points: " << c.getHitPoints()
+	<< ", energy points: " << c.getEnergyPoints()
 	<< ", attack_damage: " << c.attack_damage
 	<< ") join the game." << std:endl;
 }
@@ -77,7 +77,9 @@ void	ClapTrap::beRepaired(unsigned int amount)
 std::string	getName(void) const { return (name); }
 unsigned int	getHitPoints(void) const { return (hit_points); }
 unsigned int	getEnergyPoints(void) const { return (energy_points); }
+unsigned int	getAttackDamage(void) const { return (attack_damage); }
 
 void		setName(std::string s) { name = s; }
 void		setHitPoints(unsigned int n) { hit_points = n; }
 void		setEnergyPoints(unsigned int n) { energy_points = n; }
+void		setAttackDamage(unsigned int n) { attack_damage = n; }
