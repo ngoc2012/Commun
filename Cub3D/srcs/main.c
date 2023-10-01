@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 10:05:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 10:09:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	init(t_game *g)
 	g->opened = 0;
 	g->gun_tex = &g->gun[0];
 	g->sprites = 0;
+	g->n_sprites = 0;
 }
 
 int	precalcul(t_game *g)
