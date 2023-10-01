@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 16:43:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 16:46:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		ClapTrap::attack(std::string const & target)
 
 void		ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << name << " takes attack.\n";
+	std::cout << name << " takes " << amount <<" damages" << std::endl;
 	hit_points -= amount;
 }
 
