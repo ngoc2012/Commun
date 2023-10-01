@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 10:26:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 10:28:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int	get_map(t_game *g, char *fn)
 	char	*s;
 	int	i;
 	int	j;
+	int	in_map;
 
 	fd = open(fn, O_RDONLY);
 	if (fd == -1)
@@ -127,12 +128,13 @@ int	get_map(t_game *g, char *fn)
 	g->map.v = malloc(sizeof(enum e_map *) * g->map.h);
 	fd = open(fn, O_RDONLY);
 	j = -1;
-	s0 = 0;
+	in_map = 0;
 	s = get_next_line(fd);
 	while (s)
 	{
 		if (check_map(s))
 		{
+			in_map = 1;
 			g->map.v[++j] = malloc(sizeof(enum e_map) * g->map.l);
 			i = 0;
 			while (i < g->map.l)
@@ -143,8 +145,13 @@ int	get_map(t_game *g, char *fn)
 			while (i++ < g->map.l)
 				g->map.v[j][i++] = B_EMPTY;
 		}
+		else if (in_map)
+		{
+			free(s);
+			close(fd);
+			end_game(g, 1, "Invalid map");
+		}
 		free(s);
-		s0 = s;
 		s = get_next_line(fd);
 	}
 	close(fd);
