@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 10:15:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 10:16:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	add_sprite(double px, double py, t_game *g)
 	t_sprite	*new;
 
 	g->n_sprites++;
+	printf("%d\n", g->n_sprites);
 	new = malloc(sizeof(t_sprite) * g->n_sprites);
 	i = -1;
 	while (++i < g->n_sprites - 1)
