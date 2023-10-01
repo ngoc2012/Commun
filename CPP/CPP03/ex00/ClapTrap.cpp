@@ -6,13 +6,19 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 17:06:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 17:09:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-void	welcome(ClapTrap &c) { std::cout << "ClapTrap " << name << " join the game\n"; }
+void	welcome(ClapTrap &c) {
+	std::cout << "ClapTrap " << name
+	<< "(hit points: " << hit_points
+	<< ", energy points: " << energy_points
+	<< ", attack_damage: " << attack_damage
+	<< ") join the game\n";
+}
 
 ClapTrap::ClapTrap()
 {
