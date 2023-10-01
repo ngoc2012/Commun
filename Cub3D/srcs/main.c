@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 10:09:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 10:19:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,9 +143,8 @@ int	main(int argc, char **argv)
 	init(&g);
 	if (!get_map(&g, argv[1]) || !precalcul(&g))
 		end_game(&g, EXIT_FAILURE, "Error map or memories\n");
-	t_sprite	*sp;
-	sp = g.sprites;
-	while (sp)
+	int	i = - 1;
+	while (++i < g->n_sprites)
 	{
 		printf("%f %f\n", sp->px, sp->py);
 		sp++;
