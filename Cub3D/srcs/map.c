@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 10:37:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 10:39:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	free_map(t_map *m)
 {
 	int	i;
 
-	if (!m->v)
-		return ;
 	i = -1;
 	while (++i < m->h)
 		if (m->v[i])
@@ -129,6 +127,9 @@ int	get_map(t_game *g, char *fn)
 	g->map.ph = g->map.h * BOX_SIZE;
 	g->map.pl = g->map.l * BOX_SIZE;
 	g->map.v = malloc(sizeof(enum e_map *) * g->map.h);
+	i = -1;
+	while (++i < g->map.h)
+		g->map.v[i] = 0;
 	fd = open(fn, O_RDONLY);
 	j = -1;
 	in_map = 0;
