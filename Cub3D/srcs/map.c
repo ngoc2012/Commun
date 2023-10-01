@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 16:20:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 09:33:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ void	free_map(t_map *m)
 	while (++i < m->h)
 		free(m->v[i]);
 	free(m->v);
+}
+
+t_sprite	*add_sprite(double px, double py, t_sprite *lst)
+{
+	t_sprite	*new;
+
+	if (!lst)
+		new
 }
 
 static void	get_position(t_game *g, int i, int j, char c)
