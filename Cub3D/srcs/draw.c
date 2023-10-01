@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 18:13:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 13:03:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -350,6 +350,11 @@ void	render_backgroud(t_game *g)
 		}
 		if (d < 0)
 			d = -d;
+		// sprite
+		i = -1;
+		while (++i < g->n_sprites)
+		{
+		}
 		h = BOX_SIZE / d * g->dpp;
 		p = 1.0 / d * g->dpp;
 		h_slide = (int) (BOX_SIZE / d * g->dpp);
