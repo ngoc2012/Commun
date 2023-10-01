@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 12:49:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 12:51:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define GUN_SPEED 2
 # define DOOR_SPEED 2
 # define DOOR_IDLE 40
+# define SPRITE_IDLE 5
 # define PI 3.141592654
 # define INFINI INT_MAX
 # define COLOR_BOLD_SLOW_BLINKING      "\033[1;5m"
@@ -163,6 +164,7 @@ typedef struct s_game {
 	int		frames[N_FRAMES];
 	t_tex	tex[N_TEX];
 	t_tex	gun[3];
+	t_tex	sp_tex[3];
 	t_tex	*gun_tex;
 	t_sprite	*sprites;
 	unsigned int	n_sprites;
