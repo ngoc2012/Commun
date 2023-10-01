@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 13:03:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 13:07:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,6 +354,11 @@ void	render_backgroud(t_game *g)
 		i = -1;
 		while (++i < g->n_sprites)
 		{
+			double	dpx = g->sprites[i].px - g->pos.px;
+			double	dpy = g->sprites[i].py - g->pos.py;
+			if (d * d > dpx * dpx + dpy * dpy) 
+			{
+			}
 		}
 		h = BOX_SIZE / d * g->dpp;
 		p = 1.0 / d * g->dpp;
