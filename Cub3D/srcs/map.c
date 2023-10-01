@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 10:06:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 10:10:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ void	free_map(t_map *m)
 	free(m->v);
 }
 
-t_sprite	*add_sprite(double px, double py, t_sprite *lst)
+t_sprite	*add_sprite(double px, double py, t_game *g)
 {
 	int		len;
 	t_sprite	*lst0;
 	t_sprite	*new;
 	t_sprite	*new0;
 
+	g->n_sprites++;
 	lst0 = lst;
 	len = 0;
 	while (lst++)
