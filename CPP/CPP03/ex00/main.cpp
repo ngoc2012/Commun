@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 18:23:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 20:05:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,5 @@ int main()
 	ClapTrap clap2;
 	ClapTrap clap3(clap1);
 
-	//std::cout << std::endl;
-	//clap.rangedAttack("Michel");
-	//trap.takeDamage(20);
-	//clap.meleeAttack("Michel");
-	//trap.takeDamage(30);
-	//trap.beRepaired(35);
-	//trap.beRepaired(80);
-	//trap.takeDamage(120);
-	//trap.beRepaired(33);
-
-	//std::cout << std::endl;
 	return (0);
 }
