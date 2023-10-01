@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 20:41:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 20:42:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,32 +49,33 @@ ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << name << " quit game." << std
 
 void	ClapTrap::attack(std::string const & target)
 {
-	if (energy_points)
+	if (energy_points && hit_points)
 	{
 		std::cout << "ClapTrap " << name << " attack " << target << ", causing " << attack_damage << " points of damage!" << std::endl;
 		energy_points--;
 	}
 	else
-		std::cout << "Alert!!! ClapTrap " << name << " tried to be repaired but has no more energy." << std::endl;
+		std::cout << "Alert!!! ClapTrap " << name << " tried to attack but has no more energy or hit." << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	std::cout << "ClapTrap " << name << " takes " << amount <<" damages." << std::endl;
-	hit_points -= amount;
+	if (hit_points)
+		hit_points -= amount;
 	std::cout << "ClapTrap " << name << " now has " << hit_points <<" hits _points." << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (energy_points)
+	if (energy_points && hit_points)
 	{
 		hit_points += amount;
 		std::cout << "ClapTrap " << name << " is repaired " << amount << " points (" << hit_points << "  hit points)." << std::endl;
 		energy_points--;
 	}
 	else
-		std::cout << "Alert!!! ClapTrap " << name << " tried to be repaired but has no more energy." << std::endl;
+		std::cout << "Alert!!! ClapTrap " << name << " tried to be repaired but has no more energy or hit." << std::endl;
 }
 
 std::string	ClapTrap::getName(void) const { return (name); }
