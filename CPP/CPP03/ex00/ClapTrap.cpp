@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 19:15:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 19:19:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void	ClapTrap::attack(std::string const & target)
 {
 	if (energy_points)
 	{
-		std::cout << "ClapTrap " << name << " attack " << target.getName() << ", causing " << attack_damage << " points of damage!" << std::endl;
-		target.setHitPoints(target.getHitPoints() - attack_damage);
+		std::cout << "ClapTrap " << name << " attack " << target << ", causing " << attack_damage << " points of damage!" << std::endl;
+		//std::cout << "ClapTrap " << name << " attack " << target.getName() << ", causing " << attack_damage << " points of damage!" << std::endl;
+		//target.setHitPoints(target.getHitPoints() - attack_damage);
 		energy_points--;
 	}
 	else
@@ -67,7 +68,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	if (energy_points)
 	{
 		hit_points += amount;
-		std::cout << "ClapTrap " << name << " is repaired " << amout << " points (" << hit_points << "  hit points)." << std::endl;
+		std::cout << "ClapTrap " << name << " is repaired " << amount << " points (" << hit_points << "  hit points)." << std::endl;
 		energy_points--;
 	}
 	else
