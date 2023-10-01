@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 20:11:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 20:22:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,9 @@ void		ClapTrap::setAttackDamage(unsigned int n)
 {
 	std::cout << "ClapTrap " << name << " now has " << n << " attack damage." << std::endl;
 	attack_damage = n;
+}
+
+void		ClapTrap::realAttack(ClapTrap& target)
+{
+	attack(target.getName());
 }
