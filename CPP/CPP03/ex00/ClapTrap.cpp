@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 17:09:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 17:19:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	welcome(ClapTrap &c) {
 	<< "(hit points: " << hit_points
 	<< ", energy points: " << energy_points
 	<< ", attack_damage: " << attack_damage
-	<< ") join the game\n";
+	<< ") join the game." << std:endl;
 }
 
 ClapTrap::ClapTrap()
