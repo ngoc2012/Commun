@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 18:15:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 09:29:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,15 @@ typedef struct s_mlx {
 	char	*addr;
 	char	*addr_scale;
 }	t_mlx;
+
+/*
+Sprites
+*/
+typedef struct s_sprite {
+	double		px;
+	double		py;
+	unsigned char	health;
+}	t_sprite;
 
 /*
 texture, images ...:
