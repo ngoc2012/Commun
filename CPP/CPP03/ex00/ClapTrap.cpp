@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 19:13:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 19:15:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	ClapTrap::attack(std::string const & target)
 {
 	if (energy_points)
 	{
-		std::cout << "ClapTrap " << name << " attack " << target.name << ", causing " << attack_damage << " points of damage!" << std::endl;
-		target.hit_points -= attack_damage;
+		std::cout << "ClapTrap " << name << " attack " << target.getName() << ", causing " << attack_damage << " points of damage!" << std::endl;
+		target.setHitPoints(target.getHitPoints() - attack_damage);
 		energy_points--;
 	}
 	else

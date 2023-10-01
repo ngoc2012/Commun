@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 19:10:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 19:14:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ class ClapTrap
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap&);
 		ClapTrap &operator=(const ClapTrap& op);
+		~ClapTrap();
+		//virtual ~ClapTrap();
 		void		attack(const std::string& target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
@@ -46,7 +48,6 @@ class ClapTrap
 		void		setHitPoints(unsigned int);
 		void		setEnergyPoints(unsigned int);
 		void		setAttackDamage(unsigned int);
-		//virtual ~ClapTrap();
 };
 
 #endif
