@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 19:21:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 19:22:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ void	welcome(ClapTrap &c) {
 
 ClapTrap::ClapTrap()
 {
-	name = std::string("RANDOM");
+	name = std::string("RandomClap");
+	hit_points = 10;
+	energy_points = 10;
+	attack_damage = 0;
 	welcome(*this); 
 }
 
