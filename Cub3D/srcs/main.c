@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 10:32:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 10:35:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	free_array(double **a, int size)
 
 	i = -1;
 	while (++i < size)
-		free(a[i]);
+		if (a[i])
+			free(a[i]);
 	free(a);
 }
 
@@ -44,11 +45,11 @@ int	end_game(t_game *g, int exit_code, char *s)
 		mlx_destroy_display(g->mlx.mlx);
 		free(g->mlx.mlx);
 	}
-	if (g->map)
+	if (g->map.h && g->map.l)
 		free_map(&g->map);
 	if (s)
-		perror(s);
-		//ft_putstr_fd(s, 2);
+		ft_putstr_fd(s, 2);
+		//perror(s);
 	if (g->ai0)
 		free(g->ai0);
 	if (g->cos_ai0)
