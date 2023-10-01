@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 10:40:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 13:11:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,18 @@ int	end_game(t_game *g, int exit_code, char *s)
 	while (++i < N_TEX)
 		if (g->tex[i].img)
 			mlx_destroy_image(g->mlx.mlx, g->tex[i].img);
+	i = -1;
+	while (++i < 3)
+		if (g->sp_tex[i].img)
+			mlx_destroy_image(g->mlx.mlx, g->sp_tex[i].img);
+	i = -1;
+	while (++i < 3)
+		if (g->sp_att[i].img)
+			mlx_destroy_image(g->mlx.mlx, g->sp_att[i].img);
+	i = -1;
+	while (++i < 5)
+		if (g->sp_hit[i].img)
+			mlx_destroy_image(g->mlx.mlx, g->sp_hit[i].img);
 	i = -1;
 	while (++i < 3)
 		if (g->gun[i].img)
