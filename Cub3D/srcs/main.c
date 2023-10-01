@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 17:19:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 09:44:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	init(t_game *g)
 	g->hidden_door = 0;
 	g->opened = 0;
 	g->gun_tex = &g->gun[0];
+	g->sprites = 0;
 }
 
 int	precalcul(t_game *g)
