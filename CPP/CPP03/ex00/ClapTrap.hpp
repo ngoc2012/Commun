@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 19:14:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 20:15:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include <string>
 #include <stdlib.h>
 #include <time.h>
-
-class ClapTrap;
 
 class ClapTrap
 {
@@ -36,6 +34,7 @@ class ClapTrap
 		~ClapTrap();
 		//virtual ~ClapTrap();
 		void		attack(const std::string& target);
+		void		realAttack(ClapTrap& target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
 
