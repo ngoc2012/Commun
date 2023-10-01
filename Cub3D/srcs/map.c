@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 09:37:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 09:41:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_sprite	*add_sprite(double px, double py, t_sprite *lst)
 	int		len;
 	t_sprite	*lst0;
 	t_sprite	*new;
+	t_sprite	*new0;
 
 	lst0 = lst;
 	len = 0;
@@ -35,10 +36,20 @@ t_sprite	*add_sprite(double px, double py, t_sprite *lst)
 		while (*lst0++)
 			len++;
 	new = malloc(sizeof(t_sprite) * (len + 2));
+	new0 = new;
 	lst0 = lst;
-	while (*lst0)
+	while (lst && *lst0)
+	{
+		new0->px = lst0->px;
+		new0->py = lst0->py;
+		new0++;
 		lst0++;
-
+	}
+	new0->x = x;
+	new0->y = y;
+	*(++new0) = 0;
+	free(lst);
+	return (new);
 }
 
 static void	get_position(t_game *g, int i, int j, char c)
