@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 12:51:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 12:57:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,8 @@ typedef struct s_game {
 	t_tex	tex[N_TEX];
 	t_tex	gun[3];
 	t_tex	sp_tex[3];
+	t_tex	sp_fire[3];
+	t_tex	sp_die[5];
 	t_tex	*gun_tex;
 	t_sprite	*sprites;
 	unsigned int	n_sprites;
