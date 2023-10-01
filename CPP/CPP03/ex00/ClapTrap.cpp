@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/30 21:56:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/09/30 22:19:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,7 @@ void		ClapTrap::attack(std::string const & target)
 
 void		ClapTrap::takeDamage(unsigned int amount)
 {
-	amount -= this->_armor_damage_reduction;
-	_print_suffix(this->_name, ((int)this->_hit_points - (int)amount >= 0) ? this->_hit_points - amount : 0);
-	std::cout << "Ah sa maman l'.. Hyménoptère ! J'ai pris \033[1;33m" << amount + this->_armor_damage_reduction << "\033[0m dans les roulantes ! Non ... \033[1;33m" << amount << "\033[0m j'avais oublié ma coque ... héhé." << std::endl;
-	if (amount > this->_hit_points)
-		amount = this->_hit_points;
+	std::cout << name << " takes attack.\n";
 	this->_hit_points -= amount;
 }
 
