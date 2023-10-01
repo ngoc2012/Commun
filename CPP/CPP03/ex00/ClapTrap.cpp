@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 20:47:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 21:08:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	if (energy_points && hit_points)
 	{
 		hit_points += amount;
+		if (hit_points > max_hit)
+			hit_points = max_hit;
 		std::cout << "ClapTrap " << name << " is repaired " << amount << " points (" << hit_points << "  hit points)." << std::endl;
 		energy_points--;
 	}
