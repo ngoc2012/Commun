@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 16:46:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 16:51:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		ClapTrap::attack(std::string const & target)
 {
 	std::cout << name << " attack " << target.name << ", causing " << attack_damage << " points of damage!" << std::endl;
 	target.hit_points -= attack_damage;
+	energy_points--;
 }
 
 void		ClapTrap::takeDamage(unsigned int amount)
@@ -53,5 +54,7 @@ void		ClapTrap::takeDamage(unsigned int amount)
 void		ClapTrap::beRepaired(unsigned int amount)
 {
 	hit_points += amount;
+	std::cout << name << " is repaired " << amout << " points (" << hit_points << "  hit points)" << std::endl;
+	energy_points--;
 }
 
