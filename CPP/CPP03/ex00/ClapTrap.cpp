@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 17:01:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 17:06:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-void	welcome(ClapTrap &c) { std::cout << name << " join the game\n"; }
+void	welcome(ClapTrap &c) { std::cout << "ClapTrap " << name << " join the game\n"; }
 
 ClapTrap::ClapTrap()
 {
@@ -36,21 +36,23 @@ ClapTrap::ClapTrap(const ClapTrap& src)
 	attack_damage(src.attack_damage)
 { welcome(&this); }
 
-ClapTrap::~ClapTrap() { std::cout << name << " quit game." << std::endl; }
+ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << name << " quit game." << std::endl; }
 
 void	ClapTrap::attack(std::string const & target)
 {
 	if (energy_points)
 	{
-		std::cout << name << " attack " << target.name << ", causing " << attack_damage << " points of damage!" << std::endl;
+		std::cout << "ClapTrap " << name << " attack " << target.name << ", causing " << attack_damage << " points of damage!" << std::endl;
 		target.hit_points -= attack_damage;
 		energy_points--;
 	}
+	else
+		std::cout << "ClapTrap " << name << " has no more energy." << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << name << " takes " << amount <<" damages" << std::endl;
+	std::cout << "ClapTrap " << name << " takes " << amount <<" damages." << std::endl;
 	hit_points -= amount;
 }
 
@@ -59,7 +61,9 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	if (energy_points)
 	{
 		hit_points += amount;
-		std::cout << name << " is repaired " << amout << " points (" << hit_points << "  hit points)" << std::endl;
+		std::cout << "ClapTrap " << name << " is repaired " << amout << " points (" << hit_points << "  hit points)." << std::endl;
 		energy_points--;
 	}
+	else
+		std::cout << "ClapTrap " << name << " has no more energy." << std::endl;
 }
