@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 18:41:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 18:43:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,6 @@ class ClapTrap
 		unsigned int	hit_points;
 		unsigned int	energy_points;
 		unsigned int	attack_damage;
-		//unsigned int	max_hit_points;
-		//unsigned int	max_energy_points;
-		//unsigned int	level;
-		//unsigned int	melee_attack_damage;
-		//unsigned int	ranged_attack_damage;
-		//unsigned int	armor_damage_reduction;
-		//void		mathAttack(std::string const & target);
-		//void		questionAttack(std::string const & target);
-		//void		danseAttack(std::string const & target);
-		//void		lostAttack(std::string const & target);
-		//void		monologueAttack(std::string const & target);
 
 	public:
 		ClapTrap();
@@ -47,13 +36,15 @@ class ClapTrap
 		void		attack(const std::string& target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
+
 		std::string	getName(void) const;
 		unsigned int	getHitPoints(void) const;
 		unsigned int	getEnergyPoints(void) const;
+
+		void		setName(std::string) const;
+		void		setHitPoints(unsigned int) const;
+		void		setEnergyPoints(unsigned int) const;
 		//virtual ~ClapTrap();
-		//void		rangedAttack(std::string const & target);
-		//void		meleeAttack(std::string const & target);
-		//void		vaulthunter_dot_exe(const std::string& target);
 };
 
 #endif
