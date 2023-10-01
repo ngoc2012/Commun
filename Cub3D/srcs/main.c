@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 10:21:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 10:32:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,14 @@ int	end_game(t_game *g, int exit_code, char *s)
 		mlx_destroy_image(g->mlx.mlx, g->mlx.img);
 	if (g->mlx.img_scale)
 		mlx_destroy_image(g->mlx.mlx, g->mlx.img_scale);
-	mlx_destroy_window(g->mlx.mlx, g->mlx.win);
-	mlx_destroy_display(g->mlx.mlx);
-	free(g->mlx.mlx);
-	free_map(&g->map);
+	if (g->mlx.mlx)
+	{
+		mlx_destroy_window(g->mlx.mlx, g->mlx.win);
+		mlx_destroy_display(g->mlx.mlx);
+		free(g->mlx.mlx);
+	}
+	if (g->map)
+		free_map(&g->map);
 	if (s)
 		perror(s);
 		//ft_putstr_fd(s, 2);
@@ -82,6 +86,7 @@ void	init(t_game *g)
 	i = -1;
 	while (++i < 3)
 		g->gun[i].img = 0;
+	g->mlx.mlx = 0;
 	g->mlx.img = 0;
 	g->mlx.img_scale = 0;
 	g->ai = 0;
