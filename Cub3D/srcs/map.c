@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 09:47:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 09:49:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,20 @@ t_sprite	*add_sprite(double px, double py, t_sprite *lst)
 
 	lst0 = lst;
 	len = 0;
-	while (lst && *(lst++))
+	while (lst && lst++)
 		len++;
 	new = malloc(sizeof(t_sprite) * (len + 2));
 	new0 = new;
 	lst = lst0;
-	while (lst && *lst)
+	while (lst && lst++)
 	{
 		new->px = lst->px;
 		new->py = lst->py;
 		new++;
 		lst++;
 	}
-	new->x = x;
-	new->y = y;
+	new->px = px;
+	new->py = py;
 	*(++new) = 0;
 	free(lst0);
 	return (new0);
