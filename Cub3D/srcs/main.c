@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 10:19:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/01 10:21:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,12 +143,9 @@ int	main(int argc, char **argv)
 	init(&g);
 	if (!get_map(&g, argv[1]) || !precalcul(&g))
 		end_game(&g, EXIT_FAILURE, "Error map or memories\n");
-	int	i = - 1;
-	while (++i < g->n_sprites)
-	{
-		printf("%f %f\n", sp->px, sp->py);
-		sp++;
-	}
+	//int	i = - 1;
+	//while (++i < g.n_sprites)
+	//	printf("%f %f\n", g.sprites[i].px, g.sprites[i].py);
 	g.mlx.mlx = mlx_init();
 	g.mlx.win = mlx_new_window(g.mlx.mlx, WIDTH * SCALE, HEIGHT * SCALE, "Cub3D");
 	if (!g.mlx.mlx || !g.mlx.win)
