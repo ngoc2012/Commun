@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 17:55:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 17:57:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -407,9 +407,9 @@ void	render_backgroud(t_game *g)
 		}
 
 		// sprite
-		int	i = -1;
 		double	dsp;
 		double	dsp_max = d;
+		int	i = -1;
 		while (++i < g->n_sprites)
 		{
 			g->eq.a2 = g->sprites[i].px - g->pos.px;
@@ -430,6 +430,7 @@ void	render_backgroud(t_game *g)
 						dsp = g->eq.x / g->cos_ai[ix][g->pos.rot];
 					if (dsp < 0)
 						dsp = -dsp;
+					printf("%f ", dsp);
 					if (dsp < d)
 					{
 						h_slide = (int) (BOX_SIZE / dsp * g->dpp);
@@ -452,6 +453,7 @@ void	render_backgroud(t_game *g)
 				}
 			}
 		}
+		printf("\n");
 	}
 }
 
