@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 12:17:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 12:19:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,17 +354,18 @@ void	render_backgroud(t_game *g)
 		int	i = -1;
 		while (++i < g->n_sprites)
 		{
-			q->eq.a2 = g->sprites[i].px - g->pos.px;
-			q->eq.b2 = g->sprites[i].py - g->pos.py;
-			if (d * d > q->eq.a2 * q->eq.a2 + q->eq.b2 * q->eq.b2) 
+			g->eq.a2 = g->sprites[i].px - g->pos.px;
+			g->eq.b2 = g->sprites[i].py - g->pos.py;
+			if (d * d > g->eq.a2 * g->eq.a2 + g->eq.b2 * g->eq.b2) 
 			{
-				q->eq.a1 = -g->sin_ai[ix][g->pos.rot];
-				q->eq.b1 = -g->cos_ai[ix][g->pos.rot];
-				q->eq.getDet(&q->eq);
-				if (det > 0.01 || det < -0.01)
+				g->eq.a1 = -g->sin_ai[ix][g->pos.rot];
+				g->eq.b1 = -g->cos_ai[ix][g->pos.rot];
+				g->eq.getDet(&q->eq);
+				if (g->eq.det > 0.01 || g->eq.det < -0.01)
 				{
-					q->eq.c1 = q->eq.a1 * g->pos.px + q->eq.b1 * g->pos.py;
-					q->eq.c2 = g->sprites[i].px * q->eq.a2 + g->sprites[i].py * q->eq.b2;
+					g->eq.c1 = g->eq.a1 * g->pos.px + g->eq.b1 * g->pos.py;
+					g->eq.c2 = g->sprites[i].px * g->eq.a2 + g->sprites[i].py * g->eq.b2;
+					g->eq.getXY(&q->eq);
 				}
 			}
 		}
