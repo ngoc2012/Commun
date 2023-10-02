@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 16:21:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 17:00:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -424,7 +424,11 @@ void	render_backgroud(t_game *g)
 					g->eq.c2 = g->sprites[i].px * g->eq.a2 + g->sprites[i].py * g->eq.b2;
 					g->eq.getXY(&g->eq);
 					if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45))
-						dsp = y / g->sin_ai[ix][g->pos.rot];
+						dsp = g->eq.y / g->sin_ai[ix][g->pos.rot];
+					else
+						dsp = g->eq.x / g->cos_ai[ix][g->pos.rot];
+					if (dsp < 0)
+						dsp = -dsp;
 				}
 			}
 		}
