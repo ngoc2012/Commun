@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 11:48:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 11:53:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ typedef struct s_game {
 	double	**tan_ai;
 	double	**cos_ai;
 	double	**sin_ai;
+	t_equa2	eq;
 }	t_game;
 
 void	free_map(t_map *m);
