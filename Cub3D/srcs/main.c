@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 11:59:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 12:20:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,10 @@ void	getDet(t_equa2 *e)
 void	getXY(t_equa2 *e)
 {
 	e->getDet(e);
-	printf("det = %f\n", e->det);
+	//printf("det = %f\n", e->det);
 	e->x = (e->b2 * e->c1 - e->b1 * e->c2) / e->det;
 	e->y = (e->c2 * e->a1 - e->c1 * e->a2) / e->det;
-	printf("x = %f, y = %f\n", e->x, e->y);
+	//printf("x = %f, y = %f\n", e->x, e->y);
 }
 
 void	init(t_game *g)
