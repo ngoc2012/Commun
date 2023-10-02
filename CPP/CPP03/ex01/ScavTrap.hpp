@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 14:04:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 14:08:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ class ScavTrap : ClapTrap
 		ScavTrap &operator=(const ScavTrap& op);
 		~ScavTrap();
 
-		void		attack(const std::string& target);
+		void	attack(const std::string& target);
+		void	guardGate();
 };
 
 #endif
