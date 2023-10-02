@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 11:52:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 11:54:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,20 @@ int	end_game(t_game *g, int exit_code, char *s)
 	return (1);
 }
 
+void	getDet(t_equa2 *e)
+{
+	e->det = e->a1 * e->b2 - e->b1 * e->a2;
+}
+
+void	getXY(t_equa2 *e)
+{
+	e->getDet(e);
+	printf("det = %f\n", e->det);
+	e->x = (e->b2 * e->c1 - e->b1 * e->c2) / e->det;
+	e->y = (e->c2 * e->a1 - e->c1 * e->a2) / e->det;
+	printf("x = %f, y = %f\n", x, y);
+}
+
 void	init(t_game *g)
 {
 	int	i;
@@ -125,6 +139,8 @@ void	init(t_game *g)
 	g->gun_tex = &g->gun[0];
 	g->sprites = 0;
 	g->n_sprites = 0;
+	g->eq.getDet = getDet;
+	g->eq.getXY = getXY;
 }
 
 int	precalcul(t_game *g)
@@ -163,20 +179,6 @@ int	precalcul(t_game *g)
 	return (1);
 }
 
-void	getDet(t_equa2 *e)
-{
-	e->det = e->a1 * e->b2 - e->b1 * e->a2;
-}
-
-void	getXY(t_equa2 *e)
-{
-	e->getDet(e);
-	printf("det = %f\n", e->det);
-	e->x = (e->b2 * e->c1 - e->b1 * e->c2) / e->det;
-	e->y = (e->c2 * e->a1 - e->c1 * e->a2) / e->det;
-	printf("x = %f, y = %f\n", x, y);
-}
-
 void	equations2var(double a1, double b1, double c1, double a2, double b2, double c2)
 {
 	double ;
@@ -191,8 +193,6 @@ int	main(int argc, char **argv)
 	(void) argc;
 
 	t_equa2	e;
-	e.getDet = getDet;
-	e.getDet = getDet;
 	//equations2var(1, -2, -7, 3, 7, 5);
 	//equations2var(17, 4, 1110, 8, 2, 540);
 	init(&g);
