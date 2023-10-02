@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 18:09:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 18:10:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -431,7 +431,7 @@ void	render_backgroud(t_game *g)
 					if (dsp < 0)
 						dsp = -dsp;
 					dsp /= g->cos_ai0[ix];
-					printf("%f-%f-%f-%f-%f-%f\n", g->sprites[i].px, g->sprites[i].py, g->eq.x, g->eq.y, dsp, d);
+					//printf("%f-%f-%f-%f-%f-%f\n", g->sprites[i].px, g->sprites[i].py, g->eq.x, g->eq.y, dsp, d);
 					if (dsp < d)
 					{
 						h_slide = (int) (BOX_SIZE / dsp * g->dpp);
