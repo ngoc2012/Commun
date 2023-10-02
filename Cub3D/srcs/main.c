@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 13:12:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 09:33:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,11 +163,22 @@ int	precalcul(t_game *g)
 	return (1);
 }
 
+void	equations2var(double a1, double b1, double c1, double a2, double b2, double c2)
+{
+	double detA = a1*b2 - b1*a2;
+	printf("detA = %f\n", detA);
+	double x = (b2 * c1 - b1 * c2) / detA;
+	double y = (c2 * a1 - c1 * a2) / detA;
+	printf("x = %f, y = %f\n", x, y);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	g;
 
 	(void) argc;
+	equations2var(1, -2, -7, 3, 7, 5);
+	equations2var(17, 4, 1110, 8, 2, 540);
 	init(&g);
 	if (!get_map(&g, argv[1]) || !precalcul(&g))
 		end_game(&g, EXIT_FAILURE, "Error map or memories\n");
