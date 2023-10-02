@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 11:57:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 11:59:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,16 +185,16 @@ int	main(int argc, char **argv)
 
 	(void) argc;
 
-	g.eq.a1 =  1;
-	g.eq.b1 = -2;
-	g.eq.c1 = -7;
-	g.eq.a2 =  3;
-	g.eq.b2 =  7;
-	g.eq.c2 =  5;
-	g.eq.getXY(&g.eq);
+	init(&g);
+	//g.eq.a1 =  1;
+	//g.eq.b1 = -2;
+	//g.eq.c1 = -7;
+	//g.eq.a2 =  3;
+	//g.eq.b2 =  7;
+	//g.eq.c2 =  5;
 	//equations2var(1, -2, -7, 3, 7, 5);
 	//equations2var(17, 4, 1110, 8, 2, 540);
-	init(&g);
+	g.eq.getXY(&g.eq);
 	if (!get_map(&g, argv[1]) || !precalcul(&g))
 		end_game(&g, EXIT_FAILURE, "Error map or memories\n");
 	//int	i = - 1;
