@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 09:33:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 09:38:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,8 +177,8 @@ int	main(int argc, char **argv)
 	t_game	g;
 
 	(void) argc;
-	equations2var(1, -2, -7, 3, 7, 5);
-	equations2var(17, 4, 1110, 8, 2, 540);
+	//equations2var(1, -2, -7, 3, 7, 5);
+	//equations2var(17, 4, 1110, 8, 2, 540);
 	init(&g);
 	if (!get_map(&g, argv[1]) || !precalcul(&g))
 		end_game(&g, EXIT_FAILURE, "Error map or memories\n");
