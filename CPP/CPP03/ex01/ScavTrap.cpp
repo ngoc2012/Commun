@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 14:05:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 14:07:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	welcome(ScavTrap &c) {
 	<< ") join the game." << std::endl;
 }
 
-ScavTrap::ScavTrap()
+ScavTrap::ScavTrap() : ClapTrap()
 {
 	name = std::string("RandomClap");
-	hit_points = 10;
-	energy_points = 10;
-	attack_damage = 0;
+	hit_points = 100;
+	energy_points = 50;
+	attack_damage = 20;
 	welcome(*this); 
 }
 
