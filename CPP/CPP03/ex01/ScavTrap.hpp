@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 14:03:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 14:04:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 class ScavTrap : ClapTrap
 {
 	private:
+		//std::string	name;
+		//unsigned int	hit_points;
+		//unsigned int	energy_points;
+		//unsigned int	attack_damage;
 		static const unsigned int	max_hit = 100;
 	public:
 		ScavTrap();
