@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 12:13:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 12:15:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -361,6 +361,7 @@ void	render_backgroud(t_game *g)
 				q->eq.c2 = g->sprites[i].px * q->eq.a2 + g->sprites[i].py * q->eq.b2;
 				q->eq.a1 = -g->sin_ai[ix][g->pos.rot];
 				q->eq.b1 = -g->cos_ai[ix][g->pos.rot];
+				q->eq.c1 = q->eq.a1 * g->pos.px + q->eq.b1 * g->pos.py;
 			}
 		}
 		h = BOX_SIZE / d * g->dpp;
