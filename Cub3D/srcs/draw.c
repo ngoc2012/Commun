@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 12:20:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 16:15:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -350,25 +350,6 @@ void	render_backgroud(t_game *g)
 		}
 		if (d < 0)
 			d = -d;
-		// sprite
-		int	i = -1;
-		while (++i < g->n_sprites)
-		{
-			g->eq.a2 = g->sprites[i].px - g->pos.px;
-			g->eq.b2 = g->sprites[i].py - g->pos.py;
-			if (d * d > g->eq.a2 * g->eq.a2 + g->eq.b2 * g->eq.b2) 
-			{
-				g->eq.a1 = -g->sin_ai[ix][g->pos.rot];
-				g->eq.b1 = -g->cos_ai[ix][g->pos.rot];
-				g->eq.getDet(&g->eq);
-				if (g->eq.det > 0.01 || g->eq.det < -0.01)
-				{
-					g->eq.c1 = g->eq.a1 * g->pos.px + g->eq.b1 * g->pos.py;
-					g->eq.c2 = g->sprites[i].px * g->eq.a2 + g->sprites[i].py * g->eq.b2;
-					g->eq.getXY(&g->eq);
-				}
-			}
-		}
 		h = BOX_SIZE / d * g->dpp;
 		p = 1.0 / d * g->dpp;
 		h_slide = (int) (BOX_SIZE / d * g->dpp);
@@ -423,6 +404,26 @@ void	render_backgroud(t_game *g)
 			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
 				*addr = *(addr_f + xh + yh * g->tex[FL].l);
 			addr += WIDTH;
+		}
+
+		// sprite
+		int	i = -1;
+		while (++i < g->n_sprites)
+		{
+			g->eq.a2 = g->sprites[i].px - g->pos.px;
+			g->eq.b2 = g->sprites[i].py - g->pos.py;
+			if (d * d > g->eq.a2 * g->eq.a2 + g->eq.b2 * g->eq.b2) 
+			{
+				g->eq.a1 = -g->sin_ai[ix][g->pos.rot];
+				g->eq.b1 = -g->cos_ai[ix][g->pos.rot];
+				g->eq.getDet(&g->eq);
+				if (g->eq.det > 0.01 || g->eq.det < -0.01)
+				{
+					g->eq.c1 = g->eq.a1 * g->pos.px + g->eq.b1 * g->pos.py;
+					g->eq.c2 = g->sprites[i].px * g->eq.a2 + g->sprites[i].py * g->eq.b2;
+					g->eq.getXY(&g->eq);
+				}
+			}
 		}
 	}
 }
