@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 13:08:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 12:09:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,10 +354,11 @@ void	render_backgroud(t_game *g)
 		int	i = -1;
 		while (++i < g->n_sprites)
 		{
-			double	dpx = g->sprites[i].px - g->pos.px;
-			double	dpy = g->sprites[i].py - g->pos.py;
+			q->eq.a2 = g->sprites[i].px - g->pos.px;
+			q->eq.b2 = g->sprites[i].py - g->pos.py;
 			if (d * d > dpx * dpx + dpy * dpy) 
 			{
+				q->eq.c2 = g->sprites[i].px * q->eq.a2 + g->sprites[i].py * q->eq.b2;
 			}
 		}
 		h = BOX_SIZE / d * g->dpp;
