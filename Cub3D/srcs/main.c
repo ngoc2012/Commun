@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 11:54:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 11:57:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	getXY(t_equa2 *e)
 	printf("det = %f\n", e->det);
 	e->x = (e->b2 * e->c1 - e->b1 * e->c2) / e->det;
 	e->y = (e->c2 * e->a1 - e->c1 * e->a2) / e->det;
-	printf("x = %f, y = %f\n", x, y);
+	printf("x = %f, y = %f\n", e->x, e->y);
 }
 
 void	init(t_game *g)
@@ -179,20 +179,19 @@ int	precalcul(t_game *g)
 	return (1);
 }
 
-void	equations2var(double a1, double b1, double c1, double a2, double b2, double c2)
-{
-	double ;
-	double x = (b2 * c1 - b1 * c2) / detA;
-	double y = (c2 * a1 - c1 * a2) / detA;
-}
-
 int	main(int argc, char **argv)
 {
 	t_game	g;
 
 	(void) argc;
 
-	t_equa2	e;
+	g.eq.a1 =  1;
+	g.eq.b1 = -2;
+	g.eq.c1 = -7;
+	g.eq.a2 =  3;
+	g.eq.b2 =  7;
+	g.eq.c2 =  5;
+	g.eq.getXY(&g.eq);
 	//equations2var(1, -2, -7, 3, 7, 5);
 	//equations2var(17, 4, 1110, 8, 2, 540);
 	init(&g);
