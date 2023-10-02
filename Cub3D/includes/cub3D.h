@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 11:46:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 11:48:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,9 @@ Equations:
 a1 * x + b1 * y = c1
 a2 * x + b2 * y = c2
 */
-typedef struct s_equa2 {
+typedef struct s_equa2	t_equa2;
+
+struct s_equa2 {
 	double	det;
 	double	a1;
 	double	b1;
@@ -169,7 +171,7 @@ typedef struct s_equa2 {
 	double	y;
 	void	(*getDet)(t_equa2 *);
 	void	(*getXY)(t_equa2 *);
-}	t_equa2;
+};
 
 /*
 main:
