@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 17:46:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 17:49:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -436,6 +436,15 @@ void	render_backgroud(t_game *g)
 						if (h_slide > HEIGHT)
 							h_slide = HEIGHT;
 						dsp_max = dsp;
+						yp = -1;
+						while (++yp < h_slide)
+						{
+							addr = (int *)g->mlx.addr;
+							ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp) / p);
+							if (ty < BOX_SIZE && ty >= 0)
+								*addr = *(addr_t + tx + ty * tex->l);
+							addr += WIDTH;
+						}
 					}
 				}
 			}
