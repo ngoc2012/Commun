@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 13:07:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/02 11:44:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,23 @@ typedef struct s_sprite {
 	unsigned char	freeze;
 	t_tex	*tex;
 }	t_sprite;
+
+/*
+Equations:
+a1 * x + b1 * y = c1
+a2 * x + b2 * y = c2
+*/
+typedef struct s_equa2 {
+	double		det;
+	double		a1;
+	double		b1;
+	double		c1;
+	double		a2;
+	double		b2;
+	double		c2;
+	double		x;
+	double		y;
+}	t_equa2;
 
 /*
 main:
