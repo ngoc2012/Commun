@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 10:13:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 10:14:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,7 @@ int	precalcul(t_game *g)
 void	sort_sprites(t_game *g)
 {
 	int	i;
+	int	j;
 	double	dx, dy;
 	t_sprite	*sp;
 
@@ -199,6 +200,14 @@ void	sort_sprites(t_game *g)
 		dx = g->sprites[i].px - g->pos.px;
 		dy = g->sprites[i].py - g->pos.py;
 		g->sprites[i].d = dx * dx + dy *dy;
+	}
+	i = -1;
+	while (++i < g->n_sprites)
+	{
+		j = i + 1;
+		while (++j < g->n_sprites)
+		{
+		}
 	}
 }
 
