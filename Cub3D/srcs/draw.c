@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 11:31:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 11:33:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -412,44 +412,38 @@ void	render_backgroud(t_game *g)
 		int	i = -1;
 		while (++i < g->n_sprites)
 		{
-			g->eq.a2 = g->sprites[i].px - g->pos.px;
-			g->eq.b2 = g->sprites[i].py - g->pos.py;
 			if (d * d > g->sprites[i].dd) 
 			{
 				g->eq.a1 = -g->sin_ai[ix][g->pos.rot];
 				g->eq.b1 = -g->cos_ai[ix][g->pos.rot];
-				g->eq.getDet(&g->eq);
-				if (g->eq.det > 0.01 || g->eq.det < -0.01)
+				g->eq.c1 = g->eq.a1 * g->pos.px + g->eq.b1 * g->pos.py;
+				g->eq.c2 = g->sprites[i].px * g->eq.a2 + g->sprites[i].py * g->eq.b2;
+				g->eq.getXY(&g->eq);
+				if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45))
+					dsp = (g->eq.y - g->pos.py) / g->sin_ai[ix][g->pos.rot];
+				else
+					dsp = (g->eq.x - g->pos.px) / g->cos_ai[ix][g->pos.rot];
+				if (dsp < 0)
+					dsp = -dsp;
+				dsp /= g->cos_ai0[ix];
+				//printf("%f-%f-%f-%f-%f-%f\n", g->sprites[i].px, g->sprites[i].py, g->eq.x, g->eq.y, dsp, d);
+				if (dsp < d)
 				{
-					g->eq.c1 = g->eq.a1 * g->pos.px + g->eq.b1 * g->pos.py;
-					g->eq.c2 = g->sprites[i].px * g->eq.a2 + g->sprites[i].py * g->eq.b2;
-					g->eq.getXY(&g->eq);
-					if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45))
-						dsp = (g->eq.y - g->pos.py) / g->sin_ai[ix][g->pos.rot];
-					else
-						dsp = (g->eq.x - g->pos.px) / g->cos_ai[ix][g->pos.rot];
-					if (dsp < 0)
-						dsp = -dsp;
-					dsp /= g->cos_ai0[ix];
-					//printf("%f-%f-%f-%f-%f-%f\n", g->sprites[i].px, g->sprites[i].py, g->eq.x, g->eq.y, dsp, d);
-					if (dsp < d)
+					h_slide = (int) (BOX_SIZE / dsp * g->dpp);
+					if (h_slide > HEIGHT)
+						h_slide = HEIGHT;
+					dsp_max = dsp;
+					int	start = HEIGHT / 2 - h_slide / 2;
+					addr = (int *)g->mlx.addr;
+					addr += start * WIDTH;
+					yp = -1;
+					while (++yp < h_slide)
 					{
-						h_slide = (int) (BOX_SIZE / dsp * g->dpp);
-						if (h_slide > HEIGHT)
-							h_slide = HEIGHT;
-						dsp_max = dsp;
-						int	start = HEIGHT / 2 - h_slide / 2;
-						addr = (int *)g->mlx.addr;
-						addr += start * WIDTH;
-						yp = -1;
-						while (++yp < h_slide)
-						{
-							//ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp) / p);
-							//if (ty < BOX_SIZE && ty >= 0)
-							//	*addr = *(addr_t + tx + ty * tex->l);
-							*addr = create_trgb(1, 0, 0, 0);
-							addr += WIDTH;
-						}
+						//ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp) / p);
+						//if (ty < BOX_SIZE && ty >= 0)
+						//	*addr = *(addr_t + tx + ty * tex->l);
+						*addr = create_trgb(1, 0, 0, 0);
+						addr += WIDTH;
 					}
 				}
 			}
