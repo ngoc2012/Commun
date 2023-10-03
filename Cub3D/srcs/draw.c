@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 21:44:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 21:47:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -417,7 +417,6 @@ void	render_backgroud(t_game *g)
 		double vy = -g->sin_a1[g->pos.rot];
 		while (++i < g->n_sprites)
 		{
-			//if (dd > g->sprites[i].dd && (vx * (g->sprites[i].px - g->pos.px) + vy * (g->sprites[i].py - g->pos.py) >= 0))
 			if (vx * (g->sprites[i].px - g->pos.px) + vy * (g->sprites[i].py - g->pos.py) >= 0)
 			{
 				g->eq.a1 =  g->cos_a1[g->pos.rot];
@@ -432,8 +431,6 @@ void	render_backgroud(t_game *g)
 				double	start_y = g->sprites[i].py - tex->l / 2 * g->cos_a1[g->pos.rot];
 				double	end_x = start_x + tex->l * g->sin_a1[g->pos.rot];
 				double	end_y = start_y + tex->l * g->cos_a1[g->pos.rot];
-				//printf("vx = %.2f vy = %.2f sp_x = %.2f sp_y = %.2f pos_x = %.2f pos_y = %.2f\n", vx, vy, g->sprites[i].px, g->sprites[i].py, g->pos.px, g->pos.py);
-				//printf("%d %.2f %.2f %.2f %.2f %.2f\n", tex->l, g->a1[g->pos.rot], start_x, start_y, end_x, end_y);
 				if ((start_x - g->eq.x) * (end_x - g->eq.x) + (start_y - g->eq.y) * (end_y - g->eq.y) <= 0)
 				{
 					if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45.0))
@@ -443,7 +440,6 @@ void	render_backgroud(t_game *g)
 					if (dsp < 0)
 						dsp = -dsp;
 					dsp /= g->cos_ai0[ix];
-					//printf("%.2f %.2f %.2f %.2f %.2f %.2f", g->sprites[i].px, g->sprites[i].py, g->eq.x, g->eq.y, dsp, d);
 					if (dsp < d)
 					{
 						if ((45.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < 135.0) ||
@@ -458,25 +454,18 @@ void	render_backgroud(t_game *g)
 						if (h_slide > HEIGHT)
 							h_slide = HEIGHT;
 						int	start = HEIGHT / 2 + h_slide0 / 2 - h_slide;
-						//printf(" %d %d\n", tx, h_slide);
 						addr = (int *)g->mlx.addr;
 						addr += ix + start * WIDTH;
 						yp = -1;
 						while (++yp < h_slide)
 						{
 							ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp + 0.5) / p - 1);
-							//printf("%d ", ty);
-							//if (ty < BOX_SIZE && ty >= 0)
-							//{
 							int	color;
 							color = *(addr_t + tx + ty * tex->l);
 							if (color > 0)
 								*addr = color;
-							//*addr = create_trgb(1, 0, 0, 0);
-							//}
 							addr += WIDTH;
 						}
-						//printf("\n");
 					}
 				}
 			}
