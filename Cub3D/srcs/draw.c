@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 20:47:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 20:48:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -464,12 +464,14 @@ void	render_backgroud(t_game *g)
 						{
 							ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp + 0.5) / p - 1);
 							printf("%d ", ty);
-							//if (ty < BOX_SIZE && ty >= 0)
+							if (ty < BOX_SIZE && ty >= 0)
+							{
 							int	color;
 							color = *(addr_t + tx + ty * tex->l);
 							if (color > 0)
 								*addr = color;
 							//*addr = create_trgb(1, 0, 0, 0);
+							}
 							addr += WIDTH;
 						}
 						//printf("\n");
