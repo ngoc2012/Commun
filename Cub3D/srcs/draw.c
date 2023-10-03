@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 15:10:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 15:23:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -426,6 +426,7 @@ void	render_backgroud(t_game *g)
 				double	start_y = g->sprites[i].py + g->sp_tex[0].l / 2 * g->cos_a1[g->pos.rot];
 				double	end_x = start_x - g->sp_tex[0].l * g->sin_a1[g->pos.rot];
 				double	end_y = start_y + g->sp_tex[0].l * g->cos_a1[g->pos.rot];
+				printf("%f %f %f %f\n", start_x, start_y, end_x, end_y);
 				if ((start_x - g->eq.x) * (end_x - g->eq.x) + (start_y - g->eq.y) * (end_y - g->eq.y) <= 0)
 				{
 					if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45.0))
