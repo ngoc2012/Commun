@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 19:05:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 19:09:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -432,7 +432,7 @@ void	render_backgroud(t_game *g)
 				double	end_x = start_x - tex->l * g->sin_a1[g->pos.rot];
 				double	end_y = start_y + tex->l * g->cos_a1[g->pos.rot];
 				printf("vx = %.2f vy = %.2f sp_x = %.2f sp_y = %.2f pos_x = %.2f pos_y = %.2f\n", vx, vy, g->sprites[i].px, g->sprites[i].py, g->pos.px, g->pos.py);
-				printf("%d %f %f %f %f %f\n", tex->l, g->a1[g->pos.rot], start_x, start_y, end_x, end_y);
+				printf("%d %.2f %.2f %.2f %.2f %.2f\n", tex->l, g->a1[g->pos.rot], start_x, start_y, end_x, end_y);
 				if ((start_x - g->eq.x) * (end_x - g->eq.x) + (start_y - g->eq.y) * (end_y - g->eq.y) <= 0)
 				{
 					if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45.0))
@@ -442,7 +442,7 @@ void	render_backgroud(t_game *g)
 					if (dsp < 0)
 						dsp = -dsp;
 					dsp /= g->cos_ai0[ix];
-					printf("%f %f %f %f %f %f", g->sprites[i].px, g->sprites[i].py, g->eq.x, g->eq.y, dsp, d);
+					printf("%.2f %.2f %.2f %.2f %.2f %.2f", g->sprites[i].px, g->sprites[i].py, g->eq.x, g->eq.y, dsp, d);
 					if (dsp < d)
 					{
 						if ((45.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < 135.0) ||
@@ -463,7 +463,7 @@ void	render_backgroud(t_game *g)
 						while (++yp < h_slide)
 						{
 							ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp + 0.5) / p - 1);
-							//printf("%d ", ty);
+							printf("%d ", ty);
 							//if (ty < BOX_SIZE && ty >= 0)
 							int	color;
 							color = *(addr_t + tx + ty * tex->l);
