@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 15:33:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 15:35:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -426,7 +426,7 @@ void	render_backgroud(t_game *g)
 				double	start_y = g->sprites[i].py + g->sp_tex[0].l / 2 * g->cos_a1[g->pos.rot];
 				double	end_x = start_x - g->sp_tex[0].l * g->sin_a1[g->pos.rot];
 				double	end_y = start_y + g->sp_tex[0].l * g->cos_a1[g->pos.rot];
-				//printf("%d %f %f %f %f %f\n", g->sp_tex[0].l, g->a1[g->pos.rot], start_x, start_y, end_x, end_y);
+				printf("%d %f %f %f %f %f\n", g->sp_tex[0].l, g->a1[g->pos.rot], start_x, start_y, end_x, end_y);
 				if ((start_x - g->eq.x) * (end_x - g->eq.x) + (start_y - g->eq.y) * (end_y - g->eq.y) <= 0)
 				{
 					if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45.0))
@@ -450,7 +450,7 @@ void	render_backgroud(t_game *g)
 						int	start = HEIGHT / 2 - h_slide / 2;
 						printf(" %d %d\n", tx, h_slide);
 						addr = (int *)g->mlx.addr;
-						addr += start * WIDTH;
+						addr += ix + start * WIDTH;
 						yp = -1;
 						while (++yp < h_slide)
 						{
