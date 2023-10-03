@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 13:59:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 14:00:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -407,8 +407,8 @@ void	render_backgroud(t_game *g)
 		}
 
 		// sprite
-		double	dsp;
-		double	dsp_max = d;
+		//double	dsp;
+		//double	dsp_max = d;
 		int	i = -1;
 		double	dd = d * d;
 		while (++i < g->n_sprites)
@@ -418,13 +418,14 @@ void	render_backgroud(t_game *g)
 				g->eq.a1 =  g->cos_a1[g->pos.rot];
 				g->eq.b1 = -g->sin_a1[g->pos.rot];
 				g->eq.c1 = g->eq.a1 * g->sprites[i].px + g->eq.b1 * g->sprites[i].py;
-				g->eq.a2 = -g->sin_a1[g->pos.rot];
-				g->eq.b2 = -g->cos_a1[g->pos.rot];
+				g->eq.a2 = -g->sin_ai[ix][g->pos.rot];
+				g->eq.b2 = -g->cos_ai[ix][g->pos.rot];
 				g->eq.c2 = g->eq.a2 * g->pos.px + g->eq.b2 * g->pos.py;
 				g->eq.det = 1.0;
 				g->eq.getXY(&g->eq);
 				double	start_x = g->sprites[i].px - g->sprite.l / 2 * g->sin_a1[g->pos.rot];
 				double	start_y = g->sprites[i].py + g->sprite.l / 2 * g->cos_a1[g->pos.rot];
+				/*
 				if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45))
 					dsp = (g->eq.y - g->pos.py) / g->sin_ai[ix][g->pos.rot];
 				else
@@ -452,6 +453,7 @@ void	render_backgroud(t_game *g)
 						addr += WIDTH;
 					}
 				}
+				*/
 			}
 		}
 	}
