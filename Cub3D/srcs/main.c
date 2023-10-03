@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 11:14:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 11:16:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,9 @@ void	sort_sprites(t_game *g)
 		while (++j < g->n_sprites)
 			if (g->sprites[i].d < g->sprites[j].d)
 			{
+				sp = g->sprites[i].d;
+				g->sprites[i].d = g->sprites[j].d;
+				g->sprites[j].d = sp;
 			}
 	}
 	i = -1;
