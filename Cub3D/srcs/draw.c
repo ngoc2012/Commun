@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 14:47:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 14:49:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -407,8 +407,7 @@ void	render_backgroud(t_game *g)
 		}
 
 		// sprite
-		//double	dsp;
-		//double	dsp_max = d;
+		double	dsp;
 		int	i = -1;
 		double	dd = d * d;
 		while (++i < g->n_sprites)
@@ -425,8 +424,8 @@ void	render_backgroud(t_game *g)
 				g->eq.getXY(&g->eq);
 				double	start_x = g->sprites[i].px - g->sp_tex[0].l / 2 * g->sin_a1[g->pos.rot];
 				double	start_y = g->sprites[i].py + g->sp_tex[0].l / 2 * g->cos_a1[g->pos.rot];
-				double	end_x = start.px - g->sp_tex[0].l * g->sin_a1[g->pos.rot];
-				double	end_y = start.py + g->sp_tex[0].l * g->cos_a1[g->pos.rot];
+				double	end_x = start_x - g->sp_tex[0].l * g->sin_a1[g->pos.rot];
+				double	end_y = start_y + g->sp_tex[0].l * g->cos_a1[g->pos.rot];
 				if ((start_x - g->eq.x) * (end_x - g->eq.x) + (start_y - g->eq.y) * (end_y - g->eq.y) <= 0)
 				{
 					if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45.0))
@@ -436,7 +435,7 @@ void	render_backgroud(t_game *g)
 					if (dsp < 0)
 						dsp = -dsp;
 					dsp /= g->cos_ai0[ix];
-					//printf("%f-%f-%f-%f-%f-%f\n", g->sprites[i].px, g->sprites[i].py, g->eq.x, g->eq.y, dsp, d);
+					printf("%f-%f-%f-%f-%f-%f\n", g->sprites[i].px, g->sprites[i].py, g->eq.x, g->eq.y, dsp, d);
 					if (dsp < d)
 					{
 						if ((45.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < 135.0) ||
@@ -447,7 +446,6 @@ void	render_backgroud(t_game *g)
 						h_slide = (int) (BOX_SIZE / dsp * g->dpp);
 						if (h_slide > HEIGHT)
 							h_slide = HEIGHT;
-						dsp_max = dsp;
 						int	start = HEIGHT / 2 - h_slide / 2;
 						addr = (int *)g->mlx.addr;
 						addr += start * WIDTH;
