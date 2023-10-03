@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 11:33:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 13:47:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -410,12 +410,13 @@ void	render_backgroud(t_game *g)
 		double	dsp;
 		double	dsp_max = d;
 		int	i = -1;
+		double	dd = d * d;
 		while (++i < g->n_sprites)
 		{
-			if (d * d > g->sprites[i].dd) 
+			if (dd > g->sprites[i].dd) 
 			{
-				g->eq.a1 = -g->sin_ai[ix][g->pos.rot];
-				g->eq.b1 = -g->cos_ai[ix][g->pos.rot];
+				g->eq.a1 = g->cos_ai[g->pos.rot];
+				g->eq.b1 = -g->sin_ai[g->pos.rot];
 				g->eq.c1 = g->eq.a1 * g->pos.px + g->eq.b1 * g->pos.py;
 				g->eq.c2 = g->sprites[i].px * g->eq.a2 + g->sprites[i].py * g->eq.b2;
 				g->eq.getXY(&g->eq);
