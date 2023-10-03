@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 10:11:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 10:13:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,9 +189,11 @@ int	precalcul(t_game *g)
 
 void	sort_sprites(t_game *g)
 {
-	int	i = -1;
+	int	i;
 	double	dx, dy;
+	t_sprite	*sp;
 
+	i = -1;
 	while (++i < g->n_sprites)
 	{
 		dx = g->sprites[i].px - g->pos.px;
@@ -221,6 +223,7 @@ int	main(int argc, char **argv)
 	//int	i = - 1;
 	//while (++i < g.n_sprites)
 	//	printf("%f %f\n", g.sprites[i].px, g.sprites[i].py);
+	sort_sprites(&g);
 	g.mlx.mlx = mlx_init();
 	g.mlx.win = mlx_new_window(g.mlx.mlx, WIDTH * SCALE, HEIGHT * SCALE, "Cub3D");
 	if (!g.mlx.mlx || !g.mlx.win)
