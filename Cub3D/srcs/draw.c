@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 18:50:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 18:53:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -417,7 +417,7 @@ void	render_backgroud(t_game *g)
 		double vy = -g->sin_a1[g->pos.rot];
 		while (++i < g->n_sprites)
 		{
-			if (dd > g->sprites[i].dd && ) 
+			if (dd > g->sprites[i].dd && (vx * (g->sprites[i].px - g->pos.px) + vx * (g->sprites[i].px - g->pos.px) >= 0))
 			{
 				g->eq.a1 =  g->cos_a1[g->pos.rot];
 				g->eq.b1 = -g->sin_a1[g->pos.rot];
