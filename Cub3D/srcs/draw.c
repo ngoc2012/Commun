@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 14:37:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 14:42:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -429,8 +429,9 @@ void	render_backgroud(t_game *g)
 				double	end_y = start.py + g->sp_tex[0].l * g->cos_a1[g->pos.rot];
 				if ((start_x - g->eq.x) * (end_x - g->eq.x) + (start_y - g->eq.y) * (end_y - g->eq.y) <= 0)
 				{
-				if (g->
-				if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45))
+				if ((45.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < 135.0) ||
+					(-135.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < -45.0))
+				if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45.0))
 					dsp = (g->eq.y - g->pos.py) / g->sin_ai[ix][g->pos.rot];
 				else
 					dsp = (g->eq.x - g->pos.px) / g->cos_ai[ix][g->pos.rot];
