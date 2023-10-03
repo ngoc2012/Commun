@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 16:11:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 16:13:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -428,7 +428,7 @@ void	render_backgroud(t_game *g)
 				double	start_y = g->sprites[i].py + tex->l / 2 * g->cos_a1[g->pos.rot];
 				double	end_x = start_x - tex->l * g->sin_a1[g->pos.rot];
 				double	end_y = start_y + tex->l * g->cos_a1[g->pos.rot];
-				printf("%d %f %f %f %f %f\n", tex->l, g->a1[g->pos.rot], start_x, start_y, end_x, end_y);
+				//printf("%d %f %f %f %f %f\n", tex->l, g->a1[g->pos.rot], start_x, start_y, end_x, end_y);
 				if ((start_x - g->eq.x) * (end_x - g->eq.x) + (start_y - g->eq.y) * (end_y - g->eq.y) <= 0)
 				{
 					if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45.0))
@@ -438,7 +438,7 @@ void	render_backgroud(t_game *g)
 					if (dsp < 0)
 						dsp = -dsp;
 					dsp /= g->cos_ai0[ix];
-					printf("%f %f %f %f %f %f", g->sprites[i].px, g->sprites[i].py, g->eq.x, g->eq.y, dsp, d);
+					//printf("%f %f %f %f %f %f", g->sprites[i].px, g->sprites[i].py, g->eq.x, g->eq.y, dsp, d);
 					if (dsp < d)
 					{
 						if ((45.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < 135.0) ||
@@ -452,7 +452,7 @@ void	render_backgroud(t_game *g)
 						if (h_slide > HEIGHT)
 							h_slide = HEIGHT;
 						int	start = HEIGHT / 2 - h_slide / 2;
-						printf(" %d %d\n", tx, h_slide);
+						//printf(" %d %d\n", tx, h_slide);
 						addr = (int *)g->mlx.addr;
 						addr += ix + start * WIDTH;
 						yp = -1;
