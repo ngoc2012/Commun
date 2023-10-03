@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 13:51:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 13:54:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -415,14 +415,15 @@ void	render_backgroud(t_game *g)
 		{
 			if (dd > g->sprites[i].dd) 
 			{
-				g->eq.a1 = g->cos_ai[g->pos.rot];
-				g->eq.b1 = -g->sin_ai[g->pos.rot];
+				g->eq.a1 =  g->cos_a1[g->pos.rot];
+				g->eq.b1 = -g->sin_a1[g->pos.rot];
 				g->eq.c1 = g->eq.a1 * g->sprites[i].px + g->eq.b1 * g->sprites[i].py;
-				g->eq.a2 = -g->sin_ai[g->pos.rot];
-				g->eq.b2 = -g->cos_ai[g->pos.rot];
+				g->eq.a2 = -g->sin_a1[g->pos.rot];
+				g->eq.b2 = -g->cos_a1[g->pos.rot];
 				g->eq.c2 = g->eq.a2 * g->pos.px + g->eq.b2 * g->pos.py;
 				//g->eq.getXY(&g->eq);
 				g->eq.det = 1.0;
+				double	start_x = g->sprites[i].px - g->sprite.l / 2 * 
 				if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45))
 					dsp = (g->eq.y - g->pos.py) / g->sin_ai[ix][g->pos.rot];
 				else
