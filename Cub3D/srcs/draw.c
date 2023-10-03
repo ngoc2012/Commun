@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 13:55:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 13:57:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -421,14 +421,14 @@ void	render_backgroud(t_game *g)
 				g->eq.a2 = -g->sin_a1[g->pos.rot];
 				g->eq.b2 = -g->cos_a1[g->pos.rot];
 				g->eq.c2 = g->eq.a2 * g->pos.px + g->eq.b2 * g->pos.py;
-				//g->eq.getXY(&g->eq);
 				g->eq.det = 1.0;
+				g->eq.getXY(&g->eq);
 				double	start_x = g->sprites[i].px - g->sprite.l / 2 * g->sin_a1[g->pos.rot];
 				double	start_y = g->sprites[i].py + g->sprite.l / 2 * g->cos_a1[g->pos.rot];
 				if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45))
-					dsp = (g->eq.y - g->pos.py) / g->sin_ai[ix][g->pos.rot];
+					dsp = (g->eq.y - g->pos.py) / g->sin_a1[g->pos.rot];
 				else
-					dsp = (g->eq.x - g->pos.px) / g->cos_ai[ix][g->pos.rot];
+					dsp = (g->eq.x - g->pos.px) / g->cos_a1[g->pos.rot];
 				if (dsp < 0)
 					dsp = -dsp;
 				dsp /= g->cos_ai0[ix];
