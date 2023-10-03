@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 09:57:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 09:59:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,8 +155,6 @@ int	precalcul(t_game *g)
 	g->tan_ai = malloc(sizeof(double *) * WIDTH);
 	g->cos_ai = malloc(sizeof(double *) * WIDTH);
 	g->sin_ai = malloc(sizeof(double *) * WIDTH);
-	g->cos_a1[i] = malloc(sizeof(double) * 360.0 / ROT_STEP);
-	g->sin_a1[i] = malloc(sizeof(double) * 360.0 / ROT_STEP);
 	i = -1;
 	while (++i < WIDTH)
 	{
@@ -176,10 +174,13 @@ int	precalcul(t_game *g)
 			g->sin_ai[i][j] = sin(g->ai[i][j] * PI / 180.0);
 		}
 	}
+	g->cos_a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
+	g->sin_a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
 	j = -1;
 	while (++j < 360 / ROT_STEP)
 	{
 		g->cos_a1[j] = cos(j * PI / 180.0);
+		g->sin_a1[j] = sin(j * PI / 180.0);
 	}
 	//ai = g->pos.alpha + ai0;
 	//ai = angle_convert(ai);
