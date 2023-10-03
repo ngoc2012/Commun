@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 14:07:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 14:08:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -425,8 +425,8 @@ void	render_backgroud(t_game *g)
 				g->eq.getXY(&g->eq);
 				double	start_x = g->sprites[i].px - g->sp_tex[0].l / 2 * g->sin_a1[g->pos.rot];
 				double	start_y = g->sprites[i].py + g->sp_tex[0].l / 2 * g->cos_a1[g->pos.rot];
-				double	end_x = g->sprites[i].px - g->sp_tex[0].l / 2 * g->sin_a1[g->pos.rot];
-				double	end_y = g->sprites[i].py + g->sp_tex[0].l / 2 * g->cos_a1[g->pos.rot];
+				double	end_x = start.px - g->sp_tex[0].l * g->sin_a1[g->pos.rot];
+				double	end_y = start.py + g->sp_tex[0].l * g->cos_a1[g->pos.rot];
 				/*
 				if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45))
 					dsp = (g->eq.y - g->pos.py) / g->sin_ai[ix][g->pos.rot];
