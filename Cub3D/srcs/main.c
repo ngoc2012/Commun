@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 11:22:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 11:24:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,20 +200,20 @@ void	sort_sprites(t_game *g)
 	double	dx, dy;
 	t_sprite	sp;
 
-	printf("Before ");
+	//printf("Before ");
 	i = -1;
 	while (++i < g->n_sprites)
 	{
 		dx = g->sprites[i].px - g->pos.px;
 		dy = g->sprites[i].py - g->pos.py;
 		g->sprites[i].dd = dx * dx + dy *dy;
-		printf("%f ", g->sprites[i].dd);
+		//printf("%f ", g->sprites[i].dd);
 	}
-	printf("\nAfter ");
+	//printf("\nAfter ");
 	i = -1;
 	while (++i < g->n_sprites - 1)
 	{
-		j = i + 1;
+		j = i;
 		while (++j < g->n_sprites)
 			if (g->sprites[i].dd < g->sprites[j].dd)
 			{
@@ -222,12 +222,12 @@ void	sort_sprites(t_game *g)
 				g->sprites[j] = sp;
 			}
 	}
-	i = -1;
-	while (++i < g->n_sprites)
-	{
-		printf("%f ", g->sprites[i].dd);
-	}
-	printf("\n");
+	//i = -1;
+	//while (++i < g->n_sprites)
+	//{
+	//	printf("%f ", g->sprites[i].dd);
+	//}
+	//printf("\n");
 }
 
 int	main(int argc, char **argv)
