@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/09/26 17:20:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 11:28:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	key_press(int keycode, t_game *g)
 			g->pos.py += dy;
 			g->pos.x = x;
 			g->pos.y = y;
+			sort_sprites(g);
 			if (keycode == XK_Up)
 				g->frames[FR_UP] = 1;
 			else
