@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 11:24:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 14:39:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int	end_game(t_game *g, int exit_code, char *s)
 		free(g->cos_a1);
 	if (g->sin_a1)
 		free(g->sin_a1);
+	if (g->a1)
+		free(g->a1);
 	if (g->n_sprites)
 		free(g->sprites);
 	exit(exit_code);
@@ -138,6 +140,7 @@ void	init(t_game *g)
 	g->sin_ai = 0;
 	g->cos_a1 = 0;
 	g->sin_a1 = 0;
+	g->a1 = 0;
 	g->opened_door_x = 0;
 	g->opened_door_y = 0;
 	g->hidden_door = 0;
@@ -180,13 +183,15 @@ int	precalcul(t_game *g)
 			g->sin_ai[i][j] = sin(g->ai[i][j] * PI / 180.0);
 		}
 	}
-	g->cos_a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
+	g->a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
 	g->sin_a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
+	g->cos_a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
 	j = -1;
 	while (++j < 360 / ROT_STEP)
 	{
-		g->cos_a1[j] = cos(j * PI / 180.0);
+		g->a1[j] = j * ROT_STEP;
 		g->sin_a1[j] = sin(j * PI / 180.0);
+		g->cos_a1[j] = cos(j * PI / 180.0);
 	}
 	//ai = g->pos.alpha + ai0;
 	//ai = angle_convert(ai);
