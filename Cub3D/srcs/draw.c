@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 21:03:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 21:19:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -450,9 +450,9 @@ void	render_backgroud(t_game *g)
 							tx = (int) ((g->eq.x - start_x + 0.5) / (end_x - start_x) * (double) g->sp_tex[0].l) - 1;
 						else
 							tx = (int) ((g->eq.y - start_y + 0.5) / (end_y - start_y) * (double) g->sp_tex[0].l) - 1;
-						h = BOX_SIZE / dsp * g->dpp;
+						h = tex->h / dsp * g->dpp;
 						p = 1.0 / dsp * g->dpp;
-						h_slide = (int) (BOX_SIZE / dsp * g->dpp);
+						h_slide = (int) (tex->h / dsp * g->dpp);
 						if (h_slide > HEIGHT)
 							h_slide = HEIGHT;
 						int	start = HEIGHT / 2 - h_slide / 2;
