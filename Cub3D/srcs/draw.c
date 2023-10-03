@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 19:09:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 20:47:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -428,8 +428,8 @@ void	render_backgroud(t_game *g)
 				g->eq.det = 1.0;
 				g->eq.getXY(&g->eq);
 				double	start_x = g->sprites[i].px - tex->l / 2 * g->sin_a1[g->pos.rot];
-				double	start_y = g->sprites[i].py + tex->l / 2 * g->cos_a1[g->pos.rot];
-				double	end_x = start_x - tex->l * g->sin_a1[g->pos.rot];
+				double	start_y = g->sprites[i].py - tex->l / 2 * g->cos_a1[g->pos.rot];
+				double	end_x = start_x + tex->l * g->sin_a1[g->pos.rot];
 				double	end_y = start_y + tex->l * g->cos_a1[g->pos.rot];
 				printf("vx = %.2f vy = %.2f sp_x = %.2f sp_y = %.2f pos_x = %.2f pos_y = %.2f\n", vx, vy, g->sprites[i].px, g->sprites[i].py, g->pos.px, g->pos.py);
 				printf("%d %.2f %.2f %.2f %.2f %.2f\n", tex->l, g->a1[g->pos.rot], start_x, start_y, end_x, end_y);
