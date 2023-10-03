@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 11:21:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 11:22:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,10 @@ int	end_game(t_game *g, int exit_code, char *s)
 		free_array(g->cos_ai, WIDTH);
 	if (g->sin_ai)
 		free_array(g->sin_ai, WIDTH);
+	if (g->cos_a1)
+		free(g->cos_a1);
+	if (g->sin_a1)
+		free(g->sin_a1);
 	if (g->n_sprites)
 		free(g->sprites);
 	exit(exit_code);
@@ -132,6 +136,8 @@ void	init(t_game *g)
 	g->tan_ai = 0;
 	g->cos_ai = 0;
 	g->sin_ai = 0;
+	g->cos_a1 = 0;
+	g->sin_a1 = 0;
 	g->opened_door_x = 0;
 	g->opened_door_y = 0;
 	g->hidden_door = 0;
