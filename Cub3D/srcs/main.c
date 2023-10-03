@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 14:48:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 18:05:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ int	precalcul(t_game *g)
 	int		j;
 	double	Xp;
 
-	g->ai0 = malloc(sizeof(double) * WIDTH);
+	g->ai0 = ft_calloc(sizeof(double), WIDTH);
 	g->cos_ai0 = malloc(sizeof(double) * WIDTH);
 	g->ai = malloc(sizeof(double *) * WIDTH);
 	g->tan_ai = malloc(sizeof(double *) * WIDTH);
