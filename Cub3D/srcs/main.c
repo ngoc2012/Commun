@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 09:59:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 10:08:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,10 @@ int	precalcul(t_game *g)
 	//ai = g->pos.alpha + ai0;
 	//ai = angle_convert(ai);
 	return (1);
+}
+
+void	get_sprites_dis(t_game *g)
+{
 }
 
 int	main(int argc, char **argv)
