@@ -19,3 +19,6 @@ Use :set cindent (:set cin for short) or :set smartindent (:set si for short). I
 
 Delete last characters of lines
 :%s/.$//
+
+:args *.c
+:argdo! %s/\s\+$//e | update
