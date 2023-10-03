@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 20:46:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 21:00:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ int	precalcul(t_game *g)
 	j = -1;
 	while (++j < 360 / ROT_STEP)
 	{
-		g->a1[j] = j * ROT_STEP;
+		g->a1[j] = angle_convert(j * ROT_STEP);
 		g->sin_a1[j] = sin(g->a1[j] * PI / 180.0);
 		g->cos_a1[j] = cos(g->a1[j] * PI / 180.0);
 	}
