@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 18:11:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 18:14:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	free_array(double **a, int size)
 
 	i = -1;
 	while (++i < size)
-		free(a[i]);
+		if (a[i])
+			free(a[i]);
 	free(a);
 }
 
@@ -164,6 +165,9 @@ int	precalcul(t_game *g)
 	g->tan_ai = ft_calloc(sizeof(double *), WIDTH);
 	g->cos_ai = ft_calloc(sizeof(double *), WIDTH);
 	g->sin_ai = ft_calloc(sizeof(double *), WIDTH);
+	g->a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
+	g->sin_a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
+	g->cos_a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
 	i = -1;
 	while (++i < WIDTH)
 	{
@@ -183,9 +187,6 @@ int	precalcul(t_game *g)
 			g->sin_ai[i][j] = sin(g->ai[i][j] * PI / 180.0);
 		}
 	}
-	g->a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
-	g->sin_a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
-	g->cos_a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
 	j = -1;
 	while (++j < 360 / ROT_STEP)
 	{
