@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 14:49:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 15:09:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -435,7 +435,7 @@ void	render_backgroud(t_game *g)
 					if (dsp < 0)
 						dsp = -dsp;
 					dsp /= g->cos_ai0[ix];
-					printf("%f-%f-%f-%f-%f-%f\n", g->sprites[i].px, g->sprites[i].py, g->eq.x, g->eq.y, dsp, d);
+					printf("%f-%f-%f-%f-%f-%f", g->sprites[i].px, g->sprites[i].py, g->eq.x, g->eq.y, dsp, d);
 					if (dsp < d)
 					{
 						if ((45.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < 135.0) ||
@@ -447,6 +447,7 @@ void	render_backgroud(t_game *g)
 						if (h_slide > HEIGHT)
 							h_slide = HEIGHT;
 						int	start = HEIGHT / 2 - h_slide / 2;
+						printf("-%d-%d\n", tx, h_slide);
 						addr = (int *)g->mlx.addr;
 						addr += start * WIDTH;
 						yp = -1;
