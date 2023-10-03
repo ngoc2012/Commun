@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 10:08:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 10:11:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,8 +187,17 @@ int	precalcul(t_game *g)
 	return (1);
 }
 
-void	get_sprites_dis(t_game *g)
+void	sort_sprites(t_game *g)
 {
+	int	i = -1;
+	double	dx, dy;
+
+	while (++i < g->n_sprites)
+	{
+		dx = g->sprites[i].px - g->pos.px;
+		dy = g->sprites[i].py - g->pos.py;
+		g->sprites[i].d = dx * dx + dy *dy;
+	}
 }
 
 int	main(int argc, char **argv)
