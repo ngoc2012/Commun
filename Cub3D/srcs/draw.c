@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 21:22:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 21:25:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -456,7 +456,7 @@ void	render_backgroud(t_game *g)
 						h_slide = (int) (tex->h / dsp * g->dpp);
 						if (h_slide > HEIGHT)
 							h_slide = HEIGHT;
-						int	start = HEIGHT / 2 - h_slide0 / 2;
+						int	start = HEIGHT / 2 + h_slide0 / 2 - h_slide;
 						//printf(" %d %d\n", tx, h_slide);
 						addr = (int *)g->mlx.addr;
 						addr += ix + start * WIDTH;
