@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 20:48:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 20:58:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -447,7 +447,10 @@ void	render_backgroud(t_game *g)
 					{
 						if ((45.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < 135.0) ||
 							(-135.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < -45.0))
-							tx = (g->eq.x - start_x + 0.5) / (end_x - start_x) * g->sp_tex[0].l - 1;
+						{
+							tx = (int) ((g->eq.x - start_x + 0.5) / (end_x - start_x) * (double) g->sp_tex[0].l) - 1;
+							printf("x\n");
+						}
 						else
 							tx = (g->eq.y - start_y + 0.5) / (end_y - start_y) * g->sp_tex[0].l - 1;
 						h = BOX_SIZE / dsp * g->dpp;
