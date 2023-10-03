@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 15:37:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 15:43:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -407,6 +407,8 @@ void	render_backgroud(t_game *g)
 		}
 
 		// sprite
+		tex = &g->sp_tex[0];
+		addr_t = (int *)tex->addr;
 		double	dsp;
 		int	i = -1;
 		double	dd = d * d;
@@ -454,11 +456,9 @@ void	render_backgroud(t_game *g)
 						yp = -1;
 						while (++yp < h_slide)
 						{
-							//tex = &g->tex[SO];
-							//ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp) / p);
-							//if (ty < BOX_SIZE && ty >= 0)
-							//	*addr = *(addr_t + tx + ty * tex->l);
-							*addr = create_trgb(1, 0, 0, 0);
+							ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp) / p);
+							if (ty < BOX_SIZE && ty >= 0)
+								*addr = *(addr_t + tx + ty * tex->l);
 							addr += WIDTH;
 						}
 					}
