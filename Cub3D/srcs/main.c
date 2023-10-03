@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 11:16:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 11:19:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,8 +200,8 @@ void	sort_sprites(t_game *g)
 	{
 		dx = g->sprites[i].px - g->pos.px;
 		dy = g->sprites[i].py - g->pos.py;
-		g->sprites[i].d = dx * dx + dy *dy;
-		printf("%d ", g->sprites[i].d);
+		g->sprites[i].dd = dx * dx + dy *dy;
+		printf("%f ", g->sprites[i].dd);
 	}
 	printf("\nAfter ");
 	i = -1;
@@ -209,17 +209,17 @@ void	sort_sprites(t_game *g)
 	{
 		j = i + 1;
 		while (++j < g->n_sprites)
-			if (g->sprites[i].d < g->sprites[j].d)
+			if (g->sprites[i].dd < g->sprites[j].dd)
 			{
-				sp = g->sprites[i].d;
-				g->sprites[i].d = g->sprites[j].d;
-				g->sprites[j].d = sp;
+				sp = g->sprites[i];
+				g->sprites[i] = g->sprites[j];
+				g->sprites[j] = sp;
 			}
 	}
 	i = -1;
 	while (++i < g->n_sprites)
 	{
-		printf("%d ", g->sprites[i].d);
+		printf("%f ", g->sprites[i].dd);
 	}
 	printf("\n");
 }
