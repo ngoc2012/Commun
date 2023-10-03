@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 10:14:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 11:13:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,13 +194,16 @@ void	sort_sprites(t_game *g)
 	double	dx, dy;
 	t_sprite	*sp;
 
+	printf("Before ");
 	i = -1;
 	while (++i < g->n_sprites)
 	{
 		dx = g->sprites[i].px - g->pos.px;
 		dy = g->sprites[i].py - g->pos.py;
 		g->sprites[i].d = dx * dx + dy *dy;
+		printf("%d ", g->sprites[i].d);
 	}
+	printf("\nAfter ");
 	i = -1;
 	while (++i < g->n_sprites)
 	{
@@ -209,6 +212,12 @@ void	sort_sprites(t_game *g)
 		{
 		}
 	}
+	i = -1;
+	while (++i < g->n_sprites)
+	{
+		printf("%d ", g->sprites[i].d);
+	}
+	printf("\n");
 }
 
 int	main(int argc, char **argv)
