@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 15:46:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 15:49:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -443,9 +443,9 @@ void	render_backgroud(t_game *g)
 					{
 						if ((45.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < 135.0) ||
 							(-135.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < -45.0))
-							tx = (g->eq.x - start_x) / (end_x - start_x) * g->sp_tex[0].l;
+							tx = (g->eq.x - start_x + 0.5) / (end_x - start_x) * g->sp_tex[0].l - 1;
 						else
-							tx = (g->eq.y - start_y) / (end_y - start_y) * g->sp_tex[0].l;
+							tx = (g->eq.y - start_y + 0.5) / (end_y - start_y) * g->sp_tex[0].l - 1;
 						h_slide = (int) (BOX_SIZE / dsp * g->dpp);
 						if (h_slide > HEIGHT)
 							h_slide = HEIGHT;
@@ -457,9 +457,9 @@ void	render_backgroud(t_game *g)
 						while (++yp < h_slide)
 						{
 							ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp) / p);
-							//if (ty < BOX_SIZE && ty >= 0)
-							//	*addr = *(addr_t + tx + ty * tex->l);
-							*addr = create_trgb(1, 0, 0, 0);
+							if (ty < BOX_SIZE && ty >= 0)
+								*addr = *(addr_t + tx + ty * tex->l);
+							//*addr = create_trgb(1, 0, 0, 0);
 							addr += WIDTH;
 						}
 					}
