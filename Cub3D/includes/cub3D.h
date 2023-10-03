@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 09:52:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/03 10:06:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,10 +143,12 @@ typedef struct s_tex {
 
 /*
 Sprites
+- dd: distance to character
 */
 typedef struct s_sprite {
 	double		px;
 	double		py;
+	double		dd;
 	unsigned char	health;
 	unsigned char	freeze;
 	t_tex	*tex;
