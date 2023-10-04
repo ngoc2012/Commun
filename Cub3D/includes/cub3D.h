@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 09:24:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 09:28:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ Sprites
 - dd: distance to character
 */
 typedef struct s_sprite {
+	enum e_map	type;
 	double		px;
 	double		py;
 	double		dd;
