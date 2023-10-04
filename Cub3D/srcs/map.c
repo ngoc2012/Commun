@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 10:30:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 11:09:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,25 @@ static void	get_position(t_game *g, int i, int j, char c)
 		g->map.v[j][i] = B_GROUND;
 	}
 	else if (c == '3')
-		g->map.v[j][i] = B_D3;
+	{
+		add_sprite(i * BOX_SIZE + BOX_SIZE / 2, j * BOX_SIZE + BOX_SIZE / 2, B_D3, g);
+		g->map.v[j][i] = B_GROUND;
+	}
 	else if (c == '4')
-		g->map.v[j][i] = B_D4;
+	{
+		add_sprite(i * BOX_SIZE + BOX_SIZE / 2, j * BOX_SIZE + BOX_SIZE / 2, B_D4, g);
+		g->map.v[j][i] = B_GROUND;
+	}
 	else if (c == '5')
-		g->map.v[j][i] = B_D5;
+	{
+		add_sprite(i * BOX_SIZE + BOX_SIZE / 2, j * BOX_SIZE + BOX_SIZE / 2, B_D5, g);
+		g->map.v[j][i] = B_GROUND;
+	}
 	else if (c == '6')
-		g->map.v[j][i] = B_D6;
+	{
+		add_sprite(i * BOX_SIZE + BOX_SIZE / 2, j * BOX_SIZE + BOX_SIZE / 2, B_D6, g);
+		g->map.v[j][i] = B_GROUND;
+	}
 	else if (c == 'X')
 		g->map.v[j][i] = B_DOOR;
 	else if (c == ' ')
