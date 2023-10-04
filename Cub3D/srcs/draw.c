@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 17:20:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 17:23:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -418,7 +418,7 @@ void	render_backgroud(t_game *g)
 			tex = g->sprites[i].tex;
 			//tex = &g->sp_tex[0];
 			addr_t = (int *)tex->addr;
-			if (g->cos_a1[g->pos.rot] * (g->sprites[i].px - g->pos.px) - g->sin_a1[g->pos.rot] * (g->sprites[i].py - g->pos.py) >= 0)
+			if (g->sprites[i].state != DIE && g->cos_a1[g->pos.rot] * (g->sprites[i].px - g->pos.px) - g->sin_a1[g->pos.rot] * (g->sprites[i].py - g->pos.py) >= 0)
 			{
 				g->eq.a1 =  g->cos_a1[g->pos.rot];
 				g->eq.b1 = -g->sin_a1[g->pos.rot];
