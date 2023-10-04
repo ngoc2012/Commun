@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 07:12:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 09:32:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -408,7 +408,7 @@ void	render_backgroud(t_game *g)
 		}
 
 		// sprite
-		tex = &g->sp_tex[0];
+		tex = g->sprites[i].tex;
 		addr_t = (int *)tex->addr;
 		double	dsp;
 		int	i = -1;
@@ -441,9 +441,9 @@ void	render_backgroud(t_game *g)
 					{
 						if ((45.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < 135.0) ||
 							(-135.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < -45.0))
-							tx = (int) ((g->eq.x - start_x + 0.5) / (end_x - start_x) * (double) g->sp_tex[0].l) - 1;
+							tx = (int) ((g->eq.x - start_x + 0.5) / (end_x - start_x) * (double) tex->l) - 1;
 						else
-							tx = (int) ((g->eq.y - start_y + 0.5) / (end_y - start_y) * (double) g->sp_tex[0].l) - 1;
+							tx = (int) ((g->eq.y - start_y + 0.5) / (end_y - start_y) * (double) tex->l) - 1;
 						h = tex->h / dsp * g->dpp;
 						p = 1.0 / dsp * g->dpp;
 						int	h_slide0 = (int) (BOX_SIZE / dsp * g->dpp);
