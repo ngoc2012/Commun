@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 07:33:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 07:34:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	key_press(int keycode, t_game *g)
 		{
 			dx = (int) (TRANS_STEP * cos(g->pos.rot * ROT_STEP * PI / 180.0));
 			dy = (int) (TRANS_STEP * sin(g->pos.rot * ROT_STEP * PI / 180.0));
-
-			//printf("Key Up Down\n");
 			if (keycode == XK_w)
 			{
 				dx = -dx;
@@ -38,9 +36,7 @@ int	key_press(int keycode, t_game *g)
 		{
 			dx = (int) (TRANS_STEP *  sin(g->pos.rot * ROT_STEP * PI / 180.0));
 			dy = (int) (TRANS_STEP * -cos(g->pos.rot * ROT_STEP * PI / 180.0));
-
-			//printf("Key Up Down\n");
-			if (keycode == XK_w)
+			if (keycode == XK_d)
 			{
 				dx = -dx;
 				dy = -dy;
