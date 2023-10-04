@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 17:18:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 17:19:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -608,15 +608,11 @@ int	draw(t_game *g)
 				if (g->sprites[i].i_tex == (SPRITE_STATE * 3))
 					g->sprites[i].i_tex = 0;
 			}
-			else if (g->sprites[i].state == DIE)
+			else if (g->sprites[i].state == DIE && g->sprites[i].i_tex < (SPRITE_STATE * 5))
 			{
-				g->sprites[i].tex = &g->sp_tex[g->sprites[i].i_tex / SPRITE_STATE];
+				g->sprites[i].tex = &g->sp_die[g->sprites[i].i_tex / SPRITE_STATE];
 				g->sprites[i].i_tex++;
-				if (g->sprites[i].i_tex == (SPRITE_STATE * 5))
-					g->sprites[i].i_tex = 0;
 			}
-			else
-				g->sprites[i].tex = &g->sp_tex[0];
 		}
 
 	}
