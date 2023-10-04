@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 10:20:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 10:25:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -575,6 +575,7 @@ int	draw(t_game *g)
 		{
 			g->sprites[i].tex = &g->sp_tex[g->sprites[i].i_tex];
 			g->sprites[i].i_tex = (g->sprites[i].i_tex + 1) % 3;
+			printf("%d", g->sprites[i].i_tex);
 		}
 		else
 		{
