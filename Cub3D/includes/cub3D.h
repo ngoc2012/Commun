@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 09:28:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 09:55:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ typedef struct s_sprite {
 	unsigned char	health;
 	unsigned char	freeze;
 	unsigned char	state;
+	unsigned char	fire;
 	t_tex	*tex;
 }	t_sprite;
 
