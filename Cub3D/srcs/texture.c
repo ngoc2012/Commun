@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 11:05:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 11:11:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ int	get_textures(t_game *g, char *fn)
 	get_texture(g, &g->sp_hit[2], "./sprites/cobrahit2.xpm");
 	get_texture(g, &g->sp_hit[3], "./sprites/cobrahit3.xpm");
 	get_texture(g, &g->sp_hit[4], "./sprites/cobrahit4.xpm");
-	get_texture(g, &g->sp_decor[0], "./sprites/i_health.xpm");
-	get_texture(g, &g->sp_decor[1], "./sprites/i_grenade.xpm");
-	get_texture(g, &g->sp_decor[2], "./sprites/d_table.xpm");
-	get_texture(g, &g->sp_decor[3], "./sprites/d_tree.xpm");
 	get_texture(g, &g->gun[0], "./guns/gun1a.xpm");
 	get_texture(g, &g->gun[1], "./guns/gun1b.xpm");
 	get_texture(g, &g->gun[2], "./guns/gun1c.xpm");
