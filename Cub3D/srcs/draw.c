@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 10:25:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 10:26:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -574,7 +574,9 @@ int	draw(t_game *g)
 		if (g->sprites[i].state == NORMAL)
 		{
 			g->sprites[i].tex = &g->sp_tex[g->sprites[i].i_tex];
-			g->sprites[i].i_tex = (g->sprites[i].i_tex + 1) % 3;
+			g->sprites[i].i_tex++;
+			if (g->sprites[i].i_tex == 3)
+				g->sprites[i].i_tex = 0;
 			printf("%d", g->sprites[i].i_tex);
 		}
 		else
