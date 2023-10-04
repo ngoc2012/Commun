@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 17:47:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 17:48:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -492,7 +492,7 @@ void	render_backgroud(t_game *g)
 			}
 		}
 	}
-	if (g->shoot && sp && sp->state != DIE && sp->type == B_SPRITE)
+	if (g->shoot && sp)
 	{
 		printf("fire\n");
 		sp->health--;
