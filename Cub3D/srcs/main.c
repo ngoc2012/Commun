@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 21:07:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 07:04:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,16 +206,13 @@ void	sort_sprites(t_game *g)
 	double	dx, dy;
 	t_sprite	sp;
 
-	//printf("Before ");
 	i = -1;
 	while (++i < g->n_sprites)
 	{
 		dx = g->sprites[i].px - g->pos.px;
 		dy = g->sprites[i].py - g->pos.py;
 		g->sprites[i].dd = dx * dx + dy *dy;
-		//printf("%f ", g->sprites[i].dd);
 	}
-	//printf("\nAfter ");
 	i = -1;
 	while (++i < g->n_sprites - 1)
 	{
@@ -228,12 +225,6 @@ void	sort_sprites(t_game *g)
 				g->sprites[j] = sp;
 			}
 	}
-	//i = -1;
-	//while (++i < g->n_sprites)
-	//{
-	//	printf("%f ", g->sprites[i].dd);
-	//}
-	//printf("\n");
 }
 
 int	main(int argc, char **argv)
@@ -243,20 +234,8 @@ int	main(int argc, char **argv)
 	(void) argc;
 
 	init(&g);
-	//g.eq.a1 =  1;
-	//g.eq.b1 = -2;
-	//g.eq.c1 = -7;
-	//g.eq.a2 =  3;
-	//g.eq.b2 =  7;
-	//g.eq.c2 =  5;
-	//equations2var(1, -2, -7, 3, 7, 5);
-	//equations2var(17, 4, 1110, 8, 2, 540);
-	g.eq.getXY(&g.eq);
 	if (!get_map(&g, argv[1]) || !precalcul(&g))
 		end_game(&g, EXIT_FAILURE, "Error map or memories\n");
-	//int	i = - 1;
-	//while (++i < g.n_sprites)
-	//	printf("%f %f\n", g.sprites[i].px, g.sprites[i].py);
 	sort_sprites(&g);
 	g.mlx.mlx = mlx_init();
 	g.mlx.win = mlx_new_window(g.mlx.mlx, WIDTH * SCALE, HEIGHT * SCALE, "Cub3D");
