@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 17:23:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 17:25:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -483,7 +483,7 @@ void	render_backgroud(t_game *g)
 								*addr = color;
 							addr += WIDTH;
 						}
-						if (g->shoot)
+						if (g->shoot && g->sprites[i].state != DIE && g->sprites[i].type == B_SPRITE)
 						{
 							g->sprites[i].health--;
 							if (!g->sprites[i].health)
