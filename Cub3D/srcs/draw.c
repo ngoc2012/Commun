@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 12:21:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 12:22:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -442,9 +442,12 @@ void	render_backgroud(t_game *g)
 					{
 						if ((45.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < 135.0) ||
 							(-135.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < -45.0))
-							tx = (int) ((g->eq.x - start_x + 0.5) / (end_x - start_x) * (double) tex->l) - 1;
+							tx = (int) ((g->eq.x - start_x) / (end_x - start_x) * (double) tex->l);
 						else
-							tx = (int) ((g->eq.y - start_y + 0.5) / (end_y - start_y) * (double) tex->l) - 1;
+							tx = (int) ((g->eq.y - start_y) / (end_y - start_y) * (double) tex->l);
+						//	tx = (int) ((g->eq.x - start_x + 0.5) / (end_x - start_x) * (double) tex->l) - 1;
+						//else
+						//	tx = (int) ((g->eq.y - start_y + 0.5) / (end_y - start_y) * (double) tex->l) - 1;
 						if (tx < 0)
 							tx = 0;
 						if (tx > tex->l - 1)
