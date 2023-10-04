@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 09:41:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 09:42:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -570,6 +570,7 @@ int	draw(t_game *g)
 	i = -1;
 	while (++i < g->n_sprites)
 	{
+		if (g->sprites[i].tex)
 		tex = g->sprites[i].tex;
 	}
 	render_backgroud(g);
