@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 11:19:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 11:21:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,12 +248,12 @@ int	main(int argc, char **argv)
 	{
 		if (g.sprites[i].type == B_D3)
 			g.sprites[i].tex = &g.tex[D3];
-		else if (g.sprites[i].type == B_D3)
-			g.sprites[i].tex = &g.tex[D3];
 		else if (g.sprites[i].type == B_D4)
 			g.sprites[i].tex = &g.tex[D4];
 		else if (g.sprites[i].type == B_D5)
 			g.sprites[i].tex = &g.tex[D5];
+		else if (g.sprites[i].type == B_D6)
+			g.sprites[i].tex = &g.tex[D6];
 	}
 	//mlx_key_hook(g.mlx.win, key_hook, &g);
 	mlx_mouse_hook(g.mlx.win, mouse_hook, &g);
