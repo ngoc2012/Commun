@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 15:03:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 15:04:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,8 +173,6 @@ int	get_map(t_game *g, char *fn)
 					count_perso++;
 				get_position(g, i, j, s[i]);
 			}
-			while (i++ < g->map.l)
-				g->map.v[j][i++] = B_EMPTY;
 		}
 		else if (in_map)
 		{
