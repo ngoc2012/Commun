@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 10:10:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 10:13:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	add_sprite(double px, double py, enum e_map type, t_game *g)
 
 	g->n_sprites++;
 	new = malloc(sizeof(t_sprite) * g->n_sprites);
-	srand(time(NULL));
+	//srand(time(NULL));
 	i = 0;
 	while (i < g->n_sprites - 1)
 	{
@@ -43,13 +43,14 @@ void	add_sprite(double px, double py, enum e_map type, t_game *g)
 		new[i].state = g->sprites[i].state;
 		i++;
 	}
-	//if (type == B_SPRITE)
+	if (type == B_SPRITE)
 		new[i].tex = &g->sp_tex[0];
 	new[i].type = type;
 	new[i].px = px;
 	new[i].py = py;
 	new[i].health = HEALTH_SPRITE;
-	new[i].i_tex = rand() / 3;
+	//new[i].i_tex = rand() / 3;
+	new[i].i_tex = 0;
 	new[i].state = NORMAL;
 	free(g->sprites);
 	g->sprites = new;
