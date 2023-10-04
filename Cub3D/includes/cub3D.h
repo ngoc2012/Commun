@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 09:57:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 10:04:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ typedef struct s_tex {
 	char	*addr;
 }	t_tex;
 
-enum e_sprite {NORMAL, FIRE, FREEZE, DIE}
+enum e_sprite {NORMAL, FIRE, FREEZE, DIE};
 /*
 Sprites
 - dd: distance to character

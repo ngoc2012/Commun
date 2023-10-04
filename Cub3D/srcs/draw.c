@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 09:59:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 10:05:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -408,12 +408,12 @@ void	render_backgroud(t_game *g)
 		}
 
 		// sprite
-		tex = g->sprites[i].tex;
-		addr_t = (int *)tex->addr;
 		double	dsp;
 		int	i = -1;
 		while (++i < g->n_sprites)
 		{
+			tex = g->sprites[i].tex;
+			addr_t = (int *)tex->addr;
 			if (g->cos_a1[g->pos.rot] * (g->sprites[i].px - g->pos.px) - g->sin_a1[g->pos.rot] * (g->sprites[i].py - g->pos.py) >= 0)
 			{
 				g->eq.a1 =  g->cos_a1[g->pos.rot];

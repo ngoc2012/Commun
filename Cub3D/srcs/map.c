@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 10:01:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 10:05:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	add_sprite(double px, double py, enum e_map type, t_game *g)
 	new[i].py = py;
 	new[i].health = HEALTH_SPRITE;
 	new[i].i_tex = rand() / 3;
-	new[i].state = rand() / 3;
+	new[i].state = NORMAL;
 	free(g->sprites);
 	g->sprites = new;
 }
@@ -61,7 +61,7 @@ static void	get_position(t_game *g, int i, int j, char c)
 		g->map.v[j][i] = B_WALL;
 	else if (c == '2')
 	{
-		add_sprite(i * BOX_SIZE + BOX_SIZE / 2, j * BOX_SIZE + BOX_SIZE / 2, g);
+		add_sprite(i * BOX_SIZE + BOX_SIZE / 2, j * BOX_SIZE + BOX_SIZE / 2, B_SPRITE, g);
 		g->map.v[j][i] = B_GROUND;
 	}
 	else if (c == '3')
