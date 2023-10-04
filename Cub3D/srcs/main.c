@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 07:08:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 10:17:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,8 +232,8 @@ int	main(int argc, char **argv)
 	(void) argc;
 
 	init(&g);
-	if (!get_map(&g, argv[1]) || !precalcul(&g))
-		end_game(&g, EXIT_FAILURE, "Error map or memories\n");
+	if (!precalcul(&g))
+		end_game(&g, EXIT_FAILURE, "Error memories\n");
 	sort_sprites(&g);
 	g.mlx.mlx = mlx_init();
 	g.mlx.win = mlx_new_window(g.mlx.mlx, WIDTH * SCALE, HEIGHT * SCALE, "Cub3D");
@@ -245,6 +245,8 @@ int	main(int argc, char **argv)
 	g.mlx.addr_scale = mlx_get_data_addr(g.mlx.img_scale, &g.mlx.bpp, &g.mlx.ll, &g.mlx.ed);
 	if (!get_textures(&g, argv[1]))
 		end_game(&g, EXIT_FAILURE, "Error textures load\n");
+	if (!get_map(&g, argv[1]))
+		end_game(&g, EXIT_FAILURE, "Error map\n");
 	//mlx_key_hook(g.mlx.win, key_hook, &g);
 	mlx_mouse_hook(g.mlx.win, mouse_hook, &g);
 	mlx_hook(g.mlx.win, 2, KeyPressMask, &key_press, &g);
