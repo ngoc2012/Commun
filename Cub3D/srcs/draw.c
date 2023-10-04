@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 15:14:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 15:25:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,7 +221,6 @@ void	render_backgroud(t_game *g)
 				else
 					Ay = Apy / BOX_SIZE;
 				door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (float) Ax);
-				printf("Ax = %d, Ay = %d\n", Ax, Ay);
 				while ((Apx >= 0 && Apx < g->map.pl) &&
 					((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
 					|| (Ay == g->opened_door_y && Ax == g->opened_door_x && g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door)))
@@ -234,6 +233,7 @@ void	render_backgroud(t_game *g)
 					else
 						Ay = Apy / BOX_SIZE;
 					door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (float) Ax);
+					printf("Ax = %d, Ay = %d\n", Ax, Ay);
 				}
 				if (Apx < 0 || Apx >= g->map.pl)
 					dA = INFINI;
