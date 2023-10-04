@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 12:27:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 13:27:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,21 +57,21 @@ void	render_object(t_tex *t, int *bg, int x0, int y0)
 void	render_backgroud(t_game *g)
 {
 	int	ix;
-	double	ai;
-	double	Apx;
-	double	Apy;
+	float	ai;
+	float	Apx;
+	float	Apy;
 	int	Ax;
 	int	Ay;
-	double	Bpx;
-	double	Bpy;
+	float	Bpx;
+	float	Bpy;
 	int	Bx;
 	int	By;
-	double	dpx;
-	double	dpy;
-	double	dA;
-	double	dB;
-	double	tol_h;
-	double	tol_l;
+	float	dpx;
+	float	dpy;
+	float	dA;
+	float	dB;
+	float	tol_h;
+	float	tol_l;
 	int	*addr;
 	int	*addr_t;
 	int	*addr_f;
@@ -86,8 +86,8 @@ void	render_backgroud(t_game *g)
 	g->pos.Bx = -1;
 	g->pos.By = -1;
 	// Angle tolerance 1 pixel / size
-	tol_h= 1.0 / (double) g->map.h / BOX_SIZE;
-	tol_l = 1.0 / (double) g->map.l / BOX_SIZE;
+	tol_h= 1.0 / (float) g->map.h / BOX_SIZE;
+	tol_l = 1.0 / (float) g->map.l / BOX_SIZE;
 	ix = -1;
 	while (++ix < WIDTH)
 	{
@@ -115,7 +115,7 @@ void	render_backgroud(t_game *g)
 			else
 				Bx = Bpx / BOX_SIZE - 1;
 			By = g->pos.y;
-			door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (double) By);
+			door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
 			while ((g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
 				|| (By == g->opened_door_y && Bx == g->opened_door_x && g->map.v[By][Bx] == B_DOOR && door_coor < g->hidden_door))
 			{
@@ -126,7 +126,7 @@ void	render_backgroud(t_game *g)
 				else
 					Bx = Bpx / BOX_SIZE - 1;
 				if (g->map.v[By][Bx] == B_DOOR)
-					door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (double) By);
+					door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
 			}
 			dA = INFINI;
 			if (g->map.v[By][Bx] == B_DOOR && ai < tol_l && ai > -tol_l)
@@ -165,7 +165,7 @@ void	render_backgroud(t_game *g)
 			else
 				Ay = Apy / BOX_SIZE;
 			Ax = g->pos.x;
-			door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
+			door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (float) Ax);
 			while ((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
 				|| (Ay == g->opened_door_y && Ax == g->opened_door_x && g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door))
 			{
@@ -175,7 +175,7 @@ void	render_backgroud(t_game *g)
 					Ay = Apy / BOX_SIZE - 1;
 				else
 					Ay = Apy / BOX_SIZE;
-				door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
+				door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (float) Ax);
 			}
 			if (g->map.v[Ay][Ax] == B_DOOR && ai > 0.0)
 			{
@@ -220,7 +220,7 @@ void	render_backgroud(t_game *g)
 					Ay = Apy / BOX_SIZE - 1;
 				else
 					Ay = Apy / BOX_SIZE;
-				door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
+				door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (float) Ax);
 				while ((Apx >= 0 && Apx < g->map.pl) &&
 					((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
 					|| (Ay == g->opened_door_y && Ax == g->opened_door_x && g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door)))
@@ -232,7 +232,7 @@ void	render_backgroud(t_game *g)
 						Ay = Apy / BOX_SIZE - 1;
 					else
 						Ay = Apy / BOX_SIZE;
-					door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (double) Ax);
+					door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (float) Ax);
 				}
 				if (Apx < 0 || Apx >= g->map.pl)
 					dA = INFINI;
@@ -278,7 +278,7 @@ void	render_backgroud(t_game *g)
 				else
 					Bx = Bpx / BOX_SIZE - 1;
 				By = Bpy / BOX_SIZE;
-				door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (double) By);
+				door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
 				while ((Bpy >= 0 && Bpy < g->map.ph) &&
 					((g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
 				|| (By == g->opened_door_y && Bx == g->opened_door_x && g->map.v[By][Bx] == B_DOOR && door_coor < g->hidden_door)))
@@ -290,7 +290,7 @@ void	render_backgroud(t_game *g)
 					else
 						Bx = Bpx / BOX_SIZE - 1;
 					By = Bpy / BOX_SIZE;
-					door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (double) By);
+					door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
 				}
 				if (Bpy < 0 || Bpy >= g->map.ph)
 					dB = INFINI;
@@ -316,13 +316,13 @@ void	render_backgroud(t_game *g)
 		int	tx;
 		int	ty;
 		int	h_slide;
-		double	h;
-		double	p;
-		double	d;
+		float	h;
+		float	p;
+		float	d;
 		if (dA > dB)
 		{
 			d = dB / g->cos_ai0[ix];
-			tx = (int) (Bpy - BOX_SIZE * (double) By);
+			tx = (int) (Bpy - BOX_SIZE * (float) By);
 			if (g->map.v[By][Bx] == B_DOOR)
 			{
 				if (By == g->opened_door_y && Bx == g->opened_door_x)
@@ -337,7 +337,7 @@ void	render_backgroud(t_game *g)
 		else
 		{
 			d = dA / g->cos_ai0[ix];
-			tx = (int) (Apx - BOX_SIZE * (double) Ax);
+			tx = (int) (Apx - BOX_SIZE * (float) Ax);
 			if (g->map.v[Ay][Ax] == B_DOOR)
 			{
 				if (Ay == g->opened_door_y && Ax == g->opened_door_x)
@@ -361,11 +361,11 @@ void	render_backgroud(t_game *g)
 		addr_t = (int *)tex->addr;
 		addr += ix;
 		int	start = HEIGHT / 2 - h_slide / 2;
-		double	dh;
+		float	dh;
 		int	xh;
 		int	yh;
-		double	xph;
-		double	yph;
+		float	xph;
+		float	yph;
 		yp = -1;
 		while (++yp < start)
 		{
@@ -386,7 +386,7 @@ void	render_backgroud(t_game *g)
 			yp = -1;
 			while (++yp < h_slide)
 			{
-				ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp) / p);
+				ty = (int) (((h - (float) h_slide) / 2.0 + (double) yp) / p);
 				if (ty < BOX_SIZE && ty >= 0)
 					*addr = *(addr_t + tx + ty * tex->l);
 				addr += WIDTH;
@@ -408,7 +408,7 @@ void	render_backgroud(t_game *g)
 		}
 
 		// sprite
-		double	dsp;
+		float	dsp;
 		int	i = -1;
 		while (++i < g->n_sprites)
 		{
@@ -425,10 +425,10 @@ void	render_backgroud(t_game *g)
 				g->eq.c2 = g->eq.a2 * g->pos.px + g->eq.b2 * g->pos.py;
 				g->eq.det = 1.0;
 				g->eq.getXY(&g->eq);
-				double	start_x = g->sprites[i].px - tex->l / 2 * g->sin_a1[g->pos.rot];
-				double	start_y = g->sprites[i].py - tex->l / 2 * g->cos_a1[g->pos.rot];
-				double	end_x = start_x + tex->l * g->sin_a1[g->pos.rot];
-				double	end_y = start_y + tex->l * g->cos_a1[g->pos.rot];
+				float	start_x = g->sprites[i].px - tex->l / 2 * g->sin_a1[g->pos.rot];
+				float	start_y = g->sprites[i].py - tex->l / 2 * g->cos_a1[g->pos.rot];
+				float	end_x = start_x + tex->l * g->sin_a1[g->pos.rot];
+				float	end_y = start_y + tex->l * g->cos_a1[g->pos.rot];
 				if ((start_x - g->eq.x) * (end_x - g->eq.x) + (start_y - g->eq.y) * (end_y - g->eq.y) <= 0)
 				{
 					if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45.0))
@@ -442,12 +442,12 @@ void	render_backgroud(t_game *g)
 					{
 						if ((45.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < 135.0) ||
 							(-135.0 < g->a1[g->pos.rot] && g->a1[g->pos.rot] < -45.0))
-							tx = (int) ((g->eq.x - start_x + 0.5) / (end_x - start_x) * (double) tex->l) - 1;
+							tx = (int) ((g->eq.x - start_x + 0.5) / (end_x - start_x) * (float) tex->l) - 1;
 						else
-							tx = (int) ((g->eq.y - start_y + 0.5) / (end_y - start_y) * (double) tex->l) - 1;
-						//	tx = (int) ((g->eq.x - start_x) / (end_x - start_x) * (double) tex->l);
+							tx = (int) ((g->eq.y - start_y + 0.5) / (end_y - start_y) * (float) tex->l) - 1;
+						//	tx = (int) ((g->eq.x - start_x) / (end_x - start_x) * (float) tex->l);
 						//else
-						//	tx = (int) ((g->eq.y - start_y) / (end_y - start_y) * (double) tex->l);
+						//	tx = (int) ((g->eq.y - start_y) / (end_y - start_y) * (float) tex->l);
 						if (tx < 0)
 							tx = 0;
 						//if (tx > tex->l - 1)
@@ -468,8 +468,8 @@ void	render_backgroud(t_game *g)
 						yp = -1;
 						while (++yp < h_slide)
 						{
-							ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp + 0.5) / p - 1);
-							//ty = (int) (((h - (double) h_slide) / 2.0 + (double) yp) / p);
+							ty = (int) (((h - (float) h_slide) / 2.0 + (double) yp + 0.5) / p - 1);
+							//ty = (int) (((h - (float) h_slide) / 2.0 + (double) yp) / p);
 							if (ty < 0)
 								ty = 0;
 							//if (ty > tex->h - 1)

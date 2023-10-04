@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 11:11:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 13:27:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ Player position
 typedef struct s_pos {
 	int		x;
 	int		y;
-	double		px;
-	double		py;
+	float		px;
+	float		py;
 	int		rot;
 	int		Ax;
 	int		Ay;
@@ -150,9 +150,9 @@ Sprites
 */
 typedef struct s_sprite {
 	enum e_map	type;
-	double		px;
-	double		py;
-	double		dd;
+	float		px;
+	float		py;
+	float		dd;
 	unsigned char	health;
 	unsigned char	i_tex;
 	enum e_sprite	state;
@@ -167,15 +167,15 @@ a2 * x + b2 * y = c2
 typedef struct s_equa2	t_equa2;
 
 struct s_equa2 {
-	double	det;
-	double	a1;
-	double	b1;
-	double	c1;
-	double	a2;
-	double	b2;
-	double	c2;
-	double	x;
-	double	y;
+	float	det;
+	float	a1;
+	float	b1;
+	float	c1;
+	float	a2;
+	float	b2;
+	float	c2;
+	float	x;
+	float	y;
 	void	(*getDet)(t_equa2 *);
 	void	(*getXY)(t_equa2 *);
 };
@@ -202,15 +202,15 @@ typedef struct s_game {
 	int	opened_door_y;
 	int	hidden_door;
 	char	opened;
-	double	*ai0;
-	double	*cos_ai0;
-	double	**ai;
-	double	**tan_ai;
-	double	**cos_ai;
-	double	**sin_ai;
-	double	*cos_a1;
-	double	*sin_a1;
-	double	*a1;
+	float	*ai0;
+	float	*cos_ai0;
+	float	**ai;
+	float	**tan_ai;
+	float	**cos_ai;
+	float	**sin_ai;
+	float	*cos_a1;
+	float	*sin_a1;
+	float	*a1;
 	t_equa2	eq;
 }	t_game;
 
@@ -220,7 +220,7 @@ int	draw(t_game *g);
 int	key_hook(int keycode, t_game *g);
 int	end_game(t_game *g, int exit_code, char *s);
 void	draw_mini_map(t_game *g);
-double	angle_convert(double a);
+float	angle_convert(double a);
 void	redraw(t_game *g);
 int	get_textures(t_game *g, char *fn);
 void	render_object(t_tex *t, int *bg, int x0, int y0);

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 07:34:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 13:27:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	key_press(int keycode, t_game *g)
 {
  	if (keycode == XK_w || keycode == XK_s || keycode == XK_a || keycode == XK_d)
 	{
-		double	dx;
-		double	dy;
+		float	dx;
+		float	dy;
 		int	x;
 		int	y;
 
@@ -141,8 +141,8 @@ int	mouse_hook(int button, int x, int y, t_game *g)
 {
 	if (button == 1)
 	{
-		double	alpha;
-		alpha = atan(((double) x / SCALE - WIDTH / 2) / g->dpp) * 180.0 / PI; 
+		float	alpha;
+		alpha = atan(((float) x / SCALE - WIDTH / 2) / g->dpp) * 180.0 / PI; 
 		g->pos.rot -= (int)  alpha / ROT_STEP;
 		if (g->pos.rot < 0)
 			g->pos.rot += 360 / ROT_STEP;

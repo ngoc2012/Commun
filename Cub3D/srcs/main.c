@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 11:21:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 13:27:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	free_array(double **a, int size)
+void	free_array(float **a, int size)
 {
 	int	i;
 
@@ -155,27 +155,27 @@ int	precalcul(t_game *g)
 {
 	int		i;
 	int		j;
-	double	Xp;
+	float	Xp;
 
-	g->ai0 = malloc(sizeof(double) * WIDTH);
-	g->cos_ai0 = malloc(sizeof(double) * WIDTH);
-	g->ai = ft_calloc(sizeof(double *), WIDTH);
-	g->tan_ai = ft_calloc(sizeof(double *), WIDTH);
-	g->cos_ai = ft_calloc(sizeof(double *), WIDTH);
-	g->sin_ai = ft_calloc(sizeof(double *), WIDTH);
-	g->a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
-	g->sin_a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
-	g->cos_a1 = malloc(sizeof(double) * 360.0 / ROT_STEP);
+	g->ai0 = malloc(sizeof(float) * WIDTH);
+	g->cos_ai0 = malloc(sizeof(float) * WIDTH);
+	g->ai = ft_calloc(sizeof(float *), WIDTH);
+	g->tan_ai = ft_calloc(sizeof(float *), WIDTH);
+	g->cos_ai = ft_calloc(sizeof(float *), WIDTH);
+	g->sin_ai = ft_calloc(sizeof(float *), WIDTH);
+	g->a1 = malloc(sizeof(float) * 360.0 / ROT_STEP);
+	g->sin_a1 = malloc(sizeof(float) * 360.0 / ROT_STEP);
+	g->cos_a1 = malloc(sizeof(float) * 360.0 / ROT_STEP);
 	i = -1;
 	while (++i < WIDTH)
 	{
 		Xp = WIDTH / 2 - i + 0.5;
 		g->ai0[i] = atan(Xp / g->dpp) * 180.0 / PI; 
 		g->cos_ai0[i] = 1 / cos(g->ai0[i] * PI /180.0); 
-		g->ai[i] = malloc(sizeof(double) * 360.0 / ROT_STEP);
-		g->tan_ai[i] = malloc(sizeof(double) * 360.0 / ROT_STEP);
-		g->cos_ai[i] = malloc(sizeof(double) * 360.0 / ROT_STEP);
-		g->sin_ai[i] = malloc(sizeof(double) * 360.0 / ROT_STEP);
+		g->ai[i] = malloc(sizeof(float) * 360.0 / ROT_STEP);
+		g->tan_ai[i] = malloc(sizeof(float) * 360.0 / ROT_STEP);
+		g->cos_ai[i] = malloc(sizeof(float) * 360.0 / ROT_STEP);
+		g->sin_ai[i] = malloc(sizeof(float) * 360.0 / ROT_STEP);
 		j = -1;
 		while (++j < 360 / ROT_STEP)
 		{
@@ -199,7 +199,7 @@ void	sort_sprites(t_game *g)
 {
 	int	i;
 	int	j;
-	double	dx, dy;
+	float	dx, dy;
 	t_sprite	sp;
 
 	i = -1;

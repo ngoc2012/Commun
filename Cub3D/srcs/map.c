@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 11:09:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 13:27:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_map(t_map *m)
 	free(m->v);
 }
 
-void	add_sprite(double px, double py, enum e_map type, t_game *g)
+void	add_sprite(float px, double py, enum e_map type, t_game *g)
 {
 	int		i;
 	t_sprite	*new;
