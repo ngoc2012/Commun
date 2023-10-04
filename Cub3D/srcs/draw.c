@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 09:32:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 09:41:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -567,6 +567,11 @@ int	draw(t_game *g)
 	while (++i < N_FRAMES)
 		if (i != FR_DOOR && g->frames[i])
 			g->frames[i]++;
+	i = -1;
+	while (++i < g->n_sprites)
+	{
+		tex = g->sprites[i].tex;
+	}
 	render_backgroud(g);
 	render_object(g->gun_tex, (int *) g->mlx.addr, WIDTH / 2, HEIGHT);
 	draw_mini_map(g);
