@@ -4,7 +4,7 @@ WE ./walls/redbrick.xpm
 EA ./walls/shinybrick.xpm
 DO ./walls/door101.xpm
 FL ./walls/Fires.xpm
-CL ./walls/redlight.xpm
+CL ./walls/Fires.xpm
 F 220,100,0
 C 225,30,0
 
