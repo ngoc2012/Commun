@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 16:40:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 16:42:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 
 void	ScavTrap::guardGate()
 {
+	std::cout << "ScavTrap " << name << " guard gate." << std::endl;
 }
 //ScavTrap::ScavTrap(const ScavTrap& src)
 //:
