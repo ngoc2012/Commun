@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 07:07:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 07:12:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -547,10 +547,14 @@ int	draw(t_game *g)
 		g->frames[FR_UP] = 0;
 	if (g->frames[FR_DOWN] > TRANS_SPEED)
 		g->frames[FR_DOWN] = 0;
-	if (g->frames[FR_RIGHT] > ROT_SPEED)
-		g->frames[FR_RIGHT] = 0;
-	if (g->frames[FR_LEFT] > ROT_SPEED)
+	if (g->frames[FR_LEFT] > TRANS_SPEED)
 		g->frames[FR_LEFT] = 0;
+	if (g->frames[FR_RIGHT] > TRANS_SPEED)
+		g->frames[FR_RIGHT] = 0;
+	if (g->frames[FR_ROT_R] > ROT_SPEED)
+		g->frames[FR_ROT_R] = 0;
+	if (g->frames[FR_ROT_L] > ROT_SPEED)
+		g->frames[FR_ROT_L] = 0;
 	if (g->frames[FR_GUN] > GUN_SPEED)
 		g->frames[FR_GUN] = 0;
 	if (g->frames[FR_GUN] == 1)
