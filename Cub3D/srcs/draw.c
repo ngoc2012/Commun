@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 17:33:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 17:34:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	render_backgroud(t_game *g)
 	// Angle tolerance 1 pixel / size
 	tol_h= 1.0 / (float) g->map.h / BOX_SIZE;
 	tol_l = 1.0 / (float) g->map.l / BOX_SIZE;
+	t_sprite	*sp = 0;
 	ix = -1;
 	while (++ix < WIDTH)
 	{
@@ -411,7 +412,6 @@ void	render_backgroud(t_game *g)
 		}
 
 		// sprite
-		t_sprite	*sp = 0;
 		float	dsp;
 		int	i = -1;
 		while (++i < g->n_sprites)
