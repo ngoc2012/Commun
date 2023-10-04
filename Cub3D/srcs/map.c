@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 10:13:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 10:14:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ void	add_sprite(double px, double py, enum e_map type, t_game *g)
 		i++;
 	}
 	if (type == B_SPRITE)
+	{
+		printf("here\n");
 		new[i].tex = &g->sp_tex[0];
+	}
 	new[i].type = type;
 	new[i].px = px;
 	new[i].py = py;
