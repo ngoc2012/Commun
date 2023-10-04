@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 11:12:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 11:15:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,6 +245,19 @@ int	main(int argc, char **argv)
 	g.mlx.addr_scale = mlx_get_data_addr(g.mlx.img_scale, &g.mlx.bpp, &g.mlx.ll, &g.mlx.ed);
 	if (!get_textures(&g, argv[1]))
 		end_game(&g, EXIT_FAILURE, "Error textures load\n");
+	int	i = -1;
+	while (++i < g.n_sprites)
+	{
+		
+		if (g.sprites[i].type == B_D3)
+			g.sprites[i].tex = &g.tex[D3];
+		else if (g.sprites[i].type == B_D3)
+			g.sprites[i].tex = &g.tex[D3];
+		else if (g.sprites[i].type == B_D4)
+			g.sprites[i].tex = &g.tex[D4];
+		else if (g.sprites[i].type == B_D5)
+			g.sprites[i].tex = &g.tex[D5];
+	}
 	//mlx_key_hook(g.mlx.win, key_hook, &g);
 	mlx_mouse_hook(g.mlx.win, mouse_hook, &g);
 	mlx_hook(g.mlx.win, 2, KeyPressMask, &key_press, &g);
