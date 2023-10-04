@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 15:56:06 by nbechon          ###   ########.fr       */
+/*   Updated: 2023/10/04 09:23:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ void	add_sprite(double px, double py, t_game *g)
 	{
 		new[i].px = g->sprites[i].px;
 		new[i].py = g->sprites[i].py;
+		new[i].health = HEALTH_SPRITE;
 		i++;
 	}
 	new[i].px = px;
 	new[i].py = py;
+	new[i].health = HEALTH_SPRITE;
 	free(g->sprites);
 	g->sprites = new;
 }
