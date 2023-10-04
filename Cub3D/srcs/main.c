@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 11:17:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 11:19:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,7 +246,6 @@ int	main(int argc, char **argv)
 	int	i = -1;
 	while (++i < g.n_sprites)
 	{
-		
 		if (g.sprites[i].type == B_D3)
 			g.sprites[i].tex = &g.tex[D3];
 		else if (g.sprites[i].type == B_D3)

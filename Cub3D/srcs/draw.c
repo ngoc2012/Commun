@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 10:59:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 11:18:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -571,15 +571,18 @@ int	draw(t_game *g)
 	i = -1;
 	while (++i < g->n_sprites)
 	{
-		if (g->sprites[i].type == B_SPRITE && g->sprites[i].state == NORMAL)
+		if (g->sprites[i].type == B_SPRITE)
 		{
-			g->sprites[i].tex = &g->sp_tex[g->sprites[i].i_tex / SPRITE_STATE];
-			g->sprites[i].i_tex++;
-			if (g->sprites[i].i_tex == (SPRITE_STATE * 3))
-				g->sprites[i].i_tex = 0;
+			if (g->sprites[i].state == NORMAL)
+			{
+				g->sprites[i].tex = &g->sp_tex[g->sprites[i].i_tex / SPRITE_STATE];
+				g->sprites[i].i_tex++;
+				if (g->sprites[i].i_tex == (SPRITE_STATE * 3))
+					g->sprites[i].i_tex = 0;
+			}
+			else
+				g->sprites[i].tex = &g->sp_tex[0];
 		}
-		else
-			g->sprites[i].tex = &g->sp_tex[0];
 
 	}
 	render_backgroud(g);
