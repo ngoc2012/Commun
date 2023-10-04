@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 09:55:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 09:57:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ typedef struct s_tex {
 	char	*addr;
 }	t_tex;
 
+enum e_sprite {NORMAL, FIRE, FREEZE, DIE}
 /*
 Sprites
 - dd: distance to character
@@ -152,9 +153,8 @@ typedef struct s_sprite {
 	double		py;
 	double		dd;
 	unsigned char	health;
-	unsigned char	freeze;
-	unsigned char	state;
-	unsigned char	fire;
+	unsigned char	i_tex;
+	enum e_sprite	state;
 	t_tex	*tex;
 }	t_sprite;
 
