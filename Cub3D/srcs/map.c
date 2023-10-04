@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 13:27:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 15:03:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ int	get_map(t_game *g, char *fn)
 		s = get_next_line(fd);
 	}
 	close(fd);
+	printf("h = %d, l = %d\n", g->map.h, g->map.l);
 	g->map.ph = g->map.h * BOX_SIZE;
 	g->map.pl = g->map.l * BOX_SIZE;
 	g->map.v = malloc(sizeof(enum e_map *) * g->map.h);
