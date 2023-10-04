@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 17:48:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 17:53:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -485,7 +485,7 @@ void	render_backgroud(t_game *g)
 							addr += WIDTH;
 						}
 						if (g->shoot && g->sprites[i].type == B_SPRITE && g->sprites[i].state != DIE &&
-							ix > WIDTH / 2 - WIDTH / 8 && ix < WIDTH / + WIDTH / 8)
+							ix > WIDTH / 2 - WIDTH / 16 && ix < WIDTH / 2 + WIDTH / 16)
 							sp = &g->sprites[i];
 					}
 				}
@@ -494,7 +494,6 @@ void	render_backgroud(t_game *g)
 	}
 	if (g->shoot && sp)
 	{
-		printf("fire\n");
 		sp->health--;
 		if (!sp->health)
 		{
