@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 09:42:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 09:59:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -570,8 +570,11 @@ int	draw(t_game *g)
 	i = -1;
 	while (++i < g->n_sprites)
 	{
-		if (g->sprites[i].tex)
-		tex = g->sprites[i].tex;
+		if (g->sprites[i].state == NORMAL)
+		{
+			tex = g->sp_tex[i_tex];
+			i_tex = (i_tex + 1) % 3;
+		}
 	}
 	render_backgroud(g);
 	render_object(g->gun_tex, (int *) g->mlx.addr, WIDTH / 2, HEIGHT);
