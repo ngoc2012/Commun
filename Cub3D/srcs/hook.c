@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 07:29:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 07:31:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	key_press(int keycode, t_game *g)
 {
- 	if (keycode == XK_w || keycode == XK_s)
+ 	if (keycode == XK_w || keycode == XK_s || keycode == XK_a || keycode == XK_d)
 	{
 		double	dx;
 		double	dy;
@@ -48,8 +48,12 @@ int	key_press(int keycode, t_game *g)
 			sort_sprites(g);
 			if (keycode == XK_w)
 				g->frames[FR_UP] = 1;
-			else
+			else if (keycode == XK_s)
 				g->frames[FR_DOWN] = 1;
+			else if (keycode == XK_a)
+				g->frames[FR_LEFT] = 1;
+			else if (keycode == XK_d)
+				g->frames[FR_RIGHT] = 1;
 		}
 	}
 	if (keycode == XK_Right || keycode == XK_Left)
