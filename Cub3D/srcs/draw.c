@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 15:28:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 15:31:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,7 +235,7 @@ void	render_backgroud(t_game *g)
 					door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (float) Ax);
 					//printf("Apx = %f, Ax = %d, Ay = %d\n", Apx, Ax, Ay);
 				}
-				if (Apx < 0 || Apx >= g->map.pl)
+				if (Ax < 0 || Ax >= g->map.l || Ay < 0 || Ay >= g->map.h)
 					dA = INFINI;
 				else
 				{
