@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 17:30:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 17:33:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -411,6 +411,7 @@ void	render_backgroud(t_game *g)
 		}
 
 		// sprite
+		t_sprite	*sp = 0;
 		float	dsp;
 		int	i = -1;
 		while (++i < g->n_sprites)
@@ -483,19 +484,20 @@ void	render_backgroud(t_game *g)
 								*addr = color;
 							addr += WIDTH;
 						}
-						if (g->shoot && g->sprites[i].state != DIE && g->sprites[i].type == B_SPRITE)
-						{
-							g->sprites[i].health--;
-							printf(" %d", g->sprites[i].health);
-							if (!g->sprites[i].health)
-							{
-								g->sprites[i].state = DIE;
-								g->sprites[i].i_tex = 0;
-							}
-						}
+						sp = &g->sprites[i];
 					}
 				}
 			}
+		}
+	}
+	if (g->shoot && sp && sp->state != DIE && sp->type == B_SPRITE)
+	{
+		sp->health--;
+		printf(" %d", sp->health);
+		if (!sp->health)
+		{
+			sp->state = DIE;
+			sp->i_tex = 0;
 		}
 	}
 	g->shoot = 0;
