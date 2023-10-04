@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 17:12:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 17:14:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -483,6 +483,8 @@ void	render_backgroud(t_game *g)
 								*addr = color;
 							addr += WIDTH;
 						}
+						if (g->shoot)
+							tex = g->sprites[i].health--;
 					}
 				}
 			}
