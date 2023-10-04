@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 10:19:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 10:21:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,7 +250,7 @@ int	main(int argc, char **argv)
 	mlx_hook(g.mlx.win, 2, KeyPressMask, &key_press, &g);
 	mlx_hook(g.mlx.win, 3, KeyReleaseMask, &key_release, &g);
 	mlx_hook(g.mlx.win, ClientMessage, LeaveWindowMask, &end_game, &g);
-	//mlx_loop_hook(g.mlx.mlx, &draw, &g);
-	draw(&g);
+	mlx_loop_hook(g.mlx.mlx, &draw, &g);
+	//draw(&g);
 	mlx_loop(g.mlx.mlx);
 }
