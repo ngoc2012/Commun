@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 09:27:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 09:30:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_map(t_map *m)
 	free(m->v);
 }
 
-void	add_sprite(double px, double py, t_game *g)
+void	add_sprite(double px, double py, enum e_map type, t_game *g)
 {
 	int		i;
 	t_sprite	*new;
@@ -35,12 +35,14 @@ void	add_sprite(double px, double py, t_game *g)
 	i = 0;
 	while (i < g->n_sprites - 1)
 	{
+		new[i].type = g->sprites[i].type;
 		new[i].px = g->sprites[i].px;
 		new[i].py = g->sprites[i].py;
-		new[i].health = HEALTH_SPRITE;
-		new[i].state = rand() / 3;
+		new[i].health = g->sprites[i].health;
+		new[i].state = g->sprites[i].state;
 		i++;
 	}
+	new[i].type = type;
 	new[i].px = px;
 	new[i].py = py;
 	new[i].health = HEALTH_SPRITE;
