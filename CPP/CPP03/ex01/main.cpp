@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/02 14:12:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 16:41:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,12 @@ int main()
 	ClapTrap clap1("Clap1");
 	ClapTrap clap2;
 	ClapTrap clap3(clap1);
+	ScavTrap clap4;
 
 	clap2.setName("Clap2");
 	clap3.setName("Clap3");
+	clap4.setName("Clap4");
+	clap4.guardGate();
 	clap1.setAttackDamage(1);
 	clap2.setAttackDamage(2);
 	clap3.setAttackDamage(3);
