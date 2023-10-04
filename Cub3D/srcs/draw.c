@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 10:26:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 10:29:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -412,8 +412,8 @@ void	render_backgroud(t_game *g)
 		int	i = -1;
 		while (++i < g->n_sprites)
 		{
-			//tex = g->sprites[i].tex;
-			tex = &g->sp_tex[0];
+			tex = g->sprites[i].tex;
+			//tex = &g->sp_tex[0];
 			addr_t = (int *)tex->addr;
 			if (g->cos_a1[g->pos.rot] * (g->sprites[i].px - g->pos.px) - g->sin_a1[g->pos.rot] * (g->sprites[i].py - g->pos.py) >= 0)
 			{
@@ -573,17 +573,14 @@ int	draw(t_game *g)
 	{
 		if (g->sprites[i].state == NORMAL)
 		{
-			g->sprites[i].tex = &g->sp_tex[g->sprites[i].i_tex];
+			g->sprites[i].tex = &g->sp_tex[g->sprites[i].i_tex / 2];
 			g->sprites[i].i_tex++;
 			if (g->sprites[i].i_tex == 3)
 				g->sprites[i].i_tex = 0;
-			printf("%d", g->sprites[i].i_tex);
+			//printf("%d", g->sprites[i].i_tex);
 		}
 		else
-		{
-			printf("here\n");
 			g->sprites[i].tex = &g->sp_tex[0];
-		}
 
 	}
 	render_backgroud(g);
