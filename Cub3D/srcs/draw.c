@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 17:26:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 17:29:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -486,6 +486,7 @@ void	render_backgroud(t_game *g)
 						if (g->shoot && g->sprites[i].state != DIE && g->sprites[i].type == B_SPRITE)
 						{
 							g->sprites[i].health--;
+							printf(" %d", g->sprites[i].health);
 							if (!g->sprites[i].health)
 							{
 								g->sprites[i].state = DIE;
