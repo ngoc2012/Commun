@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/03 14:38:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 07:10:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 # define COLOR_BOLD  "\033[1m"
 # define COLOR_OFF   "\033[m"
 # define N_TEX 11
-# define N_FRAMES 6
+# define N_FRAMES 8
 # define MAP_CHAR " \n0123456NSWEX"
 
 /*
@@ -71,7 +71,7 @@ D6: Decor 6 (6)
 */
 enum e_map {B_WALL, B_GROUND, B_EMPTY, B_DOOR, B_SPRITE, B_D3, B_D4, B_D5, B_D6};
 enum e_tex {NO, SO, WE, EA, DO, FL, CL, D3, D4, D5, D6};
-enum e_frame {FR_UP, FR_DOWN, FR_LEFT, FR_RIGHT, FR_GUN, FR_DOOR};
+enum e_frame {FR_UP, FR_DOWN, FR_LEFT, FR_RIGHT, FR_ROT_L, FR_ROT_R, FR_GUN, FR_DOOR};
 
 /*
 Map:
