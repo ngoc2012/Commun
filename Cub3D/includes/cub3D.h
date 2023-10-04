@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 10:30:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/04 11:01:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 # define DOOR_SPEED 2
 # define DOOR_IDLE 40
 # define SPRITE_IDLE 5
-# define SPRITE_STATE 2
+# define SPRITE_STATE 3
 # define HEALTH_SPRITE 2
 # define PI 3.141592654
 # define INFINI INT_MAX
