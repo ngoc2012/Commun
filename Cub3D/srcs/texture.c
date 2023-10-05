@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 17:09:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 17:10:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ int	return_error(char *s, char **ss)
 
 int	get_color(char *s)
 {
-	ss = ft_split(s, ' ');
+	ss = ft_split(s, ',');
+	if (astr_len(ss) != 3)
+		return (0);
+	
 }
 
 int	get_textures(t_game *g, char *fn)
