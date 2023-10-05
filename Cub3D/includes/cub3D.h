@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 14:26:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 17:03:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,8 @@ typedef struct s_game {
 	int	opened_door_x;
 	int	opened_door_y;
 	int	hidden_door;
+	int	fl_color;
+	int	cl_color;
 	char	opened;
 	float	*ai0;
 	float	*cos_ai0;
