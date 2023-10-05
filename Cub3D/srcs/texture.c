@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 17:33:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 21:04:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,17 @@ int	get_color(char *s)
 	if (len != 3 && len != 4)
 		return (0);
 	printf("%s\n", ss[0]);
+	i = -1;	
+	while (++i < len)
+	{
+		printf("%s(%d) ", ss[i], i);
+		//c[i] = ft_atoi(ss[i]);
+		//printf("%d ", c[i]);
+		//if (c[i] > 255 || c[i] < 0)
+		//	return (free_array_str(&ss, 0));
+	}
+	free_array_str(&ss, 0);
 	return (0);
-	//i = -1;	
-	//while (++i < len)
-	//{
-	//	printf("%s(%d) ", ss[i], i);
-	//	c[i] = ft_atoi(ss[i]);
-	//	printf("%d ", c[i]);
-	//	if (c[i] > 255 || c[i] < 0)
-	//		return (free_array_str(&ss, 0));
-	//}
-	//free_array_str(&ss, 0);
 	//if (len == 4)
 	//	return (create_trgb((unsigned int) c[0], (unsigned int) c[1],
 	//		(unsigned int) c[2], (unsigned int) c[3]));
