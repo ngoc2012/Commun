@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 16:47:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 17:04:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,8 @@ void	init(t_game *g)
 	g->opened_door_x = 0;
 	g->opened_door_y = 0;
 	g->hidden_door = 0;
+	g->fl_color = 0;
+	g->cl_color = 0;
 	g->opened = 0;
 	g->gun_tex = &g->gun[0];
 	g->sprites = 0;
