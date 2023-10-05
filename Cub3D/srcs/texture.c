@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 17:13:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 17:21:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,28 @@ int	return_error(char *s, char **ss)
 
 int	get_color(char *s)
 {
+	int	i;
+	int	len;
+	int	c[4];
+
 	ss = ft_split(s, ',');
-	if (astr_len(ss) != 3 && astr_len(ss) != 4)
+	len = astr_len(ss);
+	if (len != 3 && len != 4)
 		return (0);
-	
+	i = -1;	
+	while (++i < len)
+	{
+		c[i] = ft_atoi(ss[i]);
+		if (c[i] > 255 || c[i] < 0)
+		{
+			free_array_str(ss);
+			return (0);
+		}
+	}
+	if (len == 4)
+		return (create_trgb(unsigned int c[0], unsigned int c[1],
+			unsigned int c[2],i unsigned int c[3]));
+	free_array_str(ss);
 }
 
 int	get_textures(t_game *g, char *fn)
