@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 09:58:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 10:09:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ScavTrap::guardGate()
 //	attack_damage(src.attack_damage)
 //{ welcome(*this); }
 //
-//ScavTrap::~ScavTrap() { std::cout << "ScavTrap " << name << " quit game." << std::endl; }
+ScavTrap::~ScavTrap() : ~ClapTrap() { std::cout << "ScavTrap " << name << " quit game." << std::endl; }
 
 //void	ScavTrap::attack(std::string const & target)
 //{

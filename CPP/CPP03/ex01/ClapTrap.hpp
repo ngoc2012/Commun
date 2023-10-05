@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 10:05:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 10:09:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class ClapTrap
 		unsigned int	hit_points;
 		unsigned int	energy_points;
 		unsigned int	attack_damage;
-		virtual static const unsigned int	max_hit = 10;
+		unsigned int	max_hit;
 	public:
 		ClapTrap();
 		ClapTrap(std::string name);
