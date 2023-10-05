@@ -6,18 +6,18 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 09:49:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 09:55:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-void	welcome(ScavTrap &c) {
-	std::cout << "ScavTrap " << c.getName()
-	<< " (hit points: " << c.getHitPoints()
-	<< ", energy points: " << c.getEnergyPoints()
-	<< ", attack_damage: " << c.getAttackDamage()
-	<< ", max hit: " << c.getMaxHit()
+void	ScavTrap::welcome(void) {
+	std::cout << "ScavTrap " << getName()
+	<< " (hit points: " << getHitPoints()
+	<< ", energy points: " << getEnergyPoints()
+	<< ", attack_damage: " << getAttackDamage()
+	<< ", max hit: " << getMaxHit()
 	<< ") join the game." << std::endl;
 }
 
@@ -27,7 +27,7 @@ ScavTrap::ScavTrap() : ClapTrap()
 	hit_points = 100;
 	energy_points = 50;
 	attack_damage = 20;
-	welcome(*this); 
+	welcome(); 
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
@@ -35,6 +35,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	hit_points = 100;
 	energy_points = 50;
 	attack_damage = 20;
+	welcome(); 
 }
 
 

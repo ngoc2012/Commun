@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 09:53:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 09:54:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ ClapTrap::ClapTrap(std::string name)
 	hit_points(10),
 	energy_points(10),
 	attack_damage(0)
-{ std::cout << "Another "; welcome(*this); }
+{ std::cout << "Another "; welcome(); }
 
 ClapTrap::ClapTrap(const ClapTrap& src)
 :
@@ -44,7 +44,7 @@ ClapTrap::ClapTrap(const ClapTrap& src)
 	hit_points(src.hit_points),
 	energy_points(src.energy_points),
 	attack_damage(src.attack_damage)
-{ welcome(*this); }
+{ welcome(); }
 
 ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << name << " quit game." << std::endl; }
 
