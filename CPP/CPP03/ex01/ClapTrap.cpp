@@ -6,18 +6,18 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 09:54:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 09:56:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 void	ClapTrap::welcome(void) {
-	std::cout << "ClapTrap " << c.getName()
-	<< " (hit points: " << c.getHitPoints()
-	<< ", energy points: " << c.getEnergyPoints()
-	<< ", attack damage: " << c.getAttackDamage()
-	<< ", max hit: " << c.getMaxHit()
+	std::cout << "ClapTrap " << getName()
+	<< " (hit points: " << getHitPoints()
+	<< ", energy points: " << getEnergyPoints()
+	<< ", attack damage: " << getAttackDamage()
+	<< ", max hit: " << getMaxHit()
 	<< ") join the game." << std::endl;
 }
 
