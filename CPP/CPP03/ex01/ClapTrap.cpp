@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 21:08:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 09:44:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	welcome(ClapTrap &c) {
 	std::cout << "ClapTrap " << c.getName()
 	<< " (hit points: " << c.getHitPoints()
 	<< ", energy points: " << c.getEnergyPoints()
-	<< ", attack_damage: " << c.getAttackDamage()
+	<< ", attack damage: " << c.getAttackDamage()
+	<< ", max hit: " << c.max_hit()
 	<< ") join the game." << std::endl;
 }
 
