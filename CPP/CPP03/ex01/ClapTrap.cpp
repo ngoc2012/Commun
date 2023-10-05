@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 09:47:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 09:53:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-void	welcome(ClapTrap &c) {
+void	ClapTrap::welcome(void) {
 	std::cout << "ClapTrap " << c.getName()
 	<< " (hit points: " << c.getHitPoints()
 	<< ", energy points: " << c.getEnergyPoints()
@@ -27,7 +27,7 @@ ClapTrap::ClapTrap()
 	hit_points = 10;
 	energy_points = 10;
 	attack_damage = 0;
-	welcome(*this); 
+	welcome(); 
 }
 
 ClapTrap::ClapTrap(std::string name)
