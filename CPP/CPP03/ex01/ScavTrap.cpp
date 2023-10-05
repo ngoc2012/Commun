@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 10:23:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 10:25:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ ScavTrap::~ScavTrap() { std::cout << "ScavTrap " << name << " quit game." << std
 
 void	ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap " << name << " guard gate." << std::endl;
+	std::cout << "ScavTrap " << name << " is now in gate keeper mode." << std::endl;
 }
 
 void	ScavTrap::welcome(void) {
