@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 09:57:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 09:58:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-void	ScavTrap::welcome(void) override {
+void	ScavTrap::welcome(void) {
 	std::cout << "ScavTrap " << getName()
 	<< " (hit points: " << getHitPoints()
 	<< ", energy points: " << getEnergyPoints()
