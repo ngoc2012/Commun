@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 21:27:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 21:29:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 # define TRANS_SPEED 1
 # define ROT_SPEED 0
 # define GUN_SPEED 2
-# define DOOR_SPEED 4
-# define DOOR_IDLE 40
+# define DOOR_SPEED 1
+# define DOOR_IDLE 80
 # define SPRITE_IDLE 5
 # define SPRITE_STATE 6
 # define HEALTH_SPRITE 2
