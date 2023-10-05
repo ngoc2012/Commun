@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 17:29:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 17:31:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ int	get_color(char *s)
 	int	c[4];
 	char	**ss;
 
+	printf("%s\n", s);
 	ss = ft_split(s, ',');
 	len = astr_len(ss);
 	if (len != 3 && len != 4)
 		return (0);
+	printf("%s\n", ss[0]);
 	i = -1;	
 	while (++i < len)
 	{
