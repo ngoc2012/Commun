@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 17:27:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 17:29:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ int	get_color(char *s)
 	i = -1;	
 	while (++i < len)
 	{
-		c[i] = ft_atoi(&ss[i]);
+		printf("%s(%d) ", ss[i], i);
+		c[i] = ft_atoi(ss[i]);
+		printf("%d ", c[i]);
 		if (c[i] > 255 || c[i] < 0)
 			return (free_array_str(&ss, 0));
 	}
