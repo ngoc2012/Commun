@@ -6,17 +6,11 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:35:06 by nbechon           #+#    #+#             */
-/*   Updated: 2023/10/03 15:03:07 by nbechon          ###   ########.fr       */
+/*   Updated: 2023/10/05 17:23:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-static int	create_trgb(unsigned char t, unsigned char r,
-		unsigned char g, unsigned char b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
 
 void	draw_hero(int yp, int xp, int *addr)
 {

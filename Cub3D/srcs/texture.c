@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 17:21:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 17:22:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ int	get_color(char *s)
 			return (0);
 		}
 	}
+	free_array_str(ss);
 	if (len == 4)
 		return (create_trgb(unsigned int c[0], unsigned int c[1],
 			unsigned int c[2],i unsigned int c[3]));
-	free_array_str(ss);
+	return (create_trgb(0, unsigned int c[0], unsigned int c[1], unsigned int c[2]));
 }
 
 int	get_textures(t_game *g, char *fn)
