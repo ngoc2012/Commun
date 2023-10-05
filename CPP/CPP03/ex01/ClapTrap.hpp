@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 09:42:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 09:46:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class ClapTrap
 		unsigned int	getHitPoints(void) const;
 		unsigned int	getEnergyPoints(void) const;
 		unsigned int	getAttackDamage(void) const;
+		unsigned int	getMaxHit(void) const;
 
 		void		setName(std::string);
 		void		setHitPoints(unsigned int);
