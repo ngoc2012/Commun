@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 21:07:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 21:09:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,20 @@ int	get_color(char *s)
 {
 	int	i;
 	int	len;
-	int	c[4];
+	int	c[3];
 	char	**ss;
 
 	ss = ft_split(s, ',');
-	len = astr_len(ss);
-	printf("%s %d\n", s, len);
-	if (len != 3 && len != 4)
-		return (0);
-	printf("%s\n", ss[0]);
+	//printf("%s\n", ss[0]);
 	i = -1;	
-	while (ss[++i])
+	while (ss[++i] && i < 4)
 	{
-		printf("%s(%d) ", ss[i], i);
-		//c[i] = ft_atoi(ss[i]);
-		//printf("%d ", c[i]);
-		//if (c[i] > 255 || c[i] < 0)
-		//	return (free_array_str(&ss, 0));
+		c[i] = ft_atoi(ss[i]);
+		if (c[i] > 255 || c[i] < 0)
+			return (free_array_str(&ss, 0));
 	}
 	free_array_str(&ss, 0);
-	return (0);
-	//if (len == 4)
-	//	return (create_trgb((unsigned int) c[0], (unsigned int) c[1],
-	//		(unsigned int) c[2], (unsigned int) c[3]));
-	//return (create_trgb(0, (unsigned int) c[0], (unsigned int) c[1], (unsigned int) c[2]));
+	return (create_trgb(1, (unsigned int) c[0], (unsigned int) c[1], (unsigned int) c[2]));
 }
 
 int	get_textures(t_game *g, char *fn)
