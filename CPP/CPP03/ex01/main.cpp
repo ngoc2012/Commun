@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 10:29:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 10:32:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ int main()
 	clap5.guardGate();
 	std::cout << "====================================" << std::endl;
 	ClapTrap clap1("Clap1");
+	ScavTrap clap6 = clap5;
+	clap6.setName("Clap6");
+	clap6.guardGate();
+	std::cout << "====================================" << std::endl;
 	ClapTrap clap2;
 	ClapTrap clap3(clap1);
 
