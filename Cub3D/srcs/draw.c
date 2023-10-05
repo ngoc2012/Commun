@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 17:59:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 14:29:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -419,7 +419,7 @@ void	render_backgroud(t_game *g)
 			tex = g->sprites[i].tex;
 			//tex = &g->sp_tex[0];
 			addr_t = (int *)tex->addr;
-			if (g->cos_a1[g->pos.rot] * (g->sprites[i].px - g->pos.px) - g->sin_a1[g->pos.rot] * (g->sprites[i].py - g->pos.py) >= 0)
+			if (g->sprites[i].dd > 10 && g->cos_a1[g->pos.rot] * (g->sprites[i].px - g->pos.px) - g->sin_a1[g->pos.rot] * (g->sprites[i].py - g->pos.py) >= 0)
 			{
 				g->eq.a1 =  g->cos_a1[g->pos.rot];
 				g->eq.b1 = -g->sin_a1[g->pos.rot];
@@ -433,6 +433,7 @@ void	render_backgroud(t_game *g)
 				float	start_y = g->sprites[i].py - tex->l / 2 * g->cos_a1[g->pos.rot];
 				float	end_x = start_x + tex->l * g->sin_a1[g->pos.rot];
 				float	end_y = start_y + tex->l * g->cos_a1[g->pos.rot];
+				/*
 				if ((start_x - g->eq.x) * (end_x - g->eq.x) + (start_y - g->eq.y) * (end_y - g->eq.y) <= 0)
 				{
 					if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45.0))
@@ -487,7 +488,7 @@ void	render_backgroud(t_game *g)
 						if (g->shoot && g->sprites[i].type == B_SPRITE && g->sprites[i].state != DIE && (ix == WIDTH / 2 || ix == WIDTH / 2 - 1))
 							sp = &g->sprites[i];
 					}
-				}
+				}*/
 			}
 		}
 	}
