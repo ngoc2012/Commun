@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 11:11:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 17:07:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int	return_error(char *s, char **ss)
 	free_array_str(&ss, 0);
 	free(s);
 	return (0);
+}
+
+int	get_color(char *s)
+{
 }
 
 int	get_textures(t_game *g, char *fn)
@@ -99,6 +103,10 @@ int	get_textures(t_game *g, char *fn)
 					return (return_error(s, ss));
 				if (!ft_strncmp("D6", ss[0], 3) && !get_texture(g, &g->tex[D6], ss[1]))
 					return (return_error(s, ss));
+				if (!ft_strncmp("F", ss[0], 2))
+					g->fl_color = get_color(ss[1]);
+				if (!ft_strncmp("C", ss[0], 2))
+					g->cl_color = get_color(ss[1]);
 			}
 			free_array_str(&ss, 0);
 		}
