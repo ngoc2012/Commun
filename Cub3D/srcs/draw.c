@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 21:18:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 21:21:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -373,21 +373,18 @@ void	render_backgroud(t_game *g)
 		yp = -1;
 		while (++yp < start)
 		{
-			//if (HEIGHT / 2 - yp)
-			//{
-				if (g->cl_color)
-					*addr = g->cl_color;
-				else
-				{
-					dh = g->dpp * BOX_SIZE / 2 / (HEIGHT / 2 - yp) * g->cos_ai0[ix];
-					xph = g->pos.px + dh * g->cos_ai[ix][g->pos.rot];
-					yph = g->pos.py - dh * g->sin_ai[ix][g->pos.rot];
-					xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
-					yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
-					if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
-						*addr = *(addr_c + xh + yh * g->tex[CL].l);
-				}
-			//}
+			if (g->cl_color)
+				*addr = g->cl_color;
+			else
+			{
+				dh = g->dpp * BOX_SIZE / 2 / (HEIGHT / 2 - yp) * g->cos_ai0[ix];
+				xph = g->pos.px + dh * g->cos_ai[ix][g->pos.rot];
+				yph = g->pos.py - dh * g->sin_ai[ix][g->pos.rot];
+				xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
+				yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
+				if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
+					*addr = *(addr_c + xh + yh * g->tex[CL].l);
+			}
 			addr += WIDTH;
 		}
 		if (tx < BOX_SIZE && tx >= 0)
