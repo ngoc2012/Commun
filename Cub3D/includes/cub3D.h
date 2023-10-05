@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 17:03:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 17:12:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,5 +233,7 @@ int	key_press(int keycode, t_game *g);
 int	key_release(int keycode, t_game *g);
 int	mouse_hook(int button, int x, int y, t_game *g);
 void	sort_sprites(t_game *g);
+int	create_trgb(unsigned char t, unsigned char r,
+		unsigned char g, unsigned char b);
 
 #endif

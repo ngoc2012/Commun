@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 14:36:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 17:12:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	create_trgb(unsigned char t, unsigned char r,
+int	create_trgb(unsigned char t, unsigned char r,
 		unsigned char g, unsigned char b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
