@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/10/05 14:15:21 by ngoc             ###   ########.fr        #
+#    Updated: 2023/10/05 14:16:07 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,7 @@ $(LIBGNL):
 $(LIBML):
 	make -C minilibx-linux
 .c.o:
-	$(CC) $(FLAGS) $(INCL_MINILIBX) -g $< -o ${<:.c=.o} $(addprefix -I./, $(LIBS) includes)
-#$(CC) $(FLAGS) $(INCL_MINILIBX) -g -c $< -o ${<:.c=.o} $(addprefix -I./, $(LIBS) includes)
+	$(CC) $(FLAGS) $(INCL_MINILIBX) -g -c $< -o ${<:.c=.o} $(addprefix -I./, $(LIBS) includes)
 $(MANDA):	$(MOBJ) $(LIBFT) $(LIBGNL) $(LIBML) 
 	$(CC) $(FLAGS) $(MOBJ) $(OBJ_MINILIBX) -L./libft -lft -L./GNL -lgnl -o $(MANDA)
 bonus:	$(MANDA)
