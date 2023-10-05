@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 21:10:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 09:42:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class ClapTrap
 {
-	private:
+	protected:
 		std::string	name;
 		unsigned int	hit_points;
 		unsigned int	energy_points;
