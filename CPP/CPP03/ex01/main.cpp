@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 10:01:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 10:14:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 int main()
 {
+	std::cout << "Test constructor and destructor\n" << std::end;
+	ScavTrap clap4;
 	//std::cout << std::endl;
 	//ClapTrap clap1("Clap1");
 	//ClapTrap clap2;
 	//ClapTrap clap3(clap1);
-	ScavTrap clap4;
 
 	//clap2.setName("Clap2");
 	//clap3.setName("Clap3");
