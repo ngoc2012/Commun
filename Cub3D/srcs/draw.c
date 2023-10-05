@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 14:29:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/05 14:31:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -419,7 +419,8 @@ void	render_backgroud(t_game *g)
 			tex = g->sprites[i].tex;
 			//tex = &g->sp_tex[0];
 			addr_t = (int *)tex->addr;
-			if (g->sprites[i].dd > 10 && g->cos_a1[g->pos.rot] * (g->sprites[i].px - g->pos.px) - g->sin_a1[g->pos.rot] * (g->sprites[i].py - g->pos.py) >= 0)
+			//if (g->sprites[i].dd > 10 && g->cos_a1[g->pos.rot] * (g->sprites[i].px - g->pos.px) - g->sin_a1[g->pos.rot] * (g->sprites[i].py - g->pos.py) >= 0)
+			if (g->cos_a1[g->pos.rot] * (g->sprites[i].px - g->pos.px) - g->sin_a1[g->pos.rot] * (g->sprites[i].py - g->pos.py) >= 0)
 			{
 				g->eq.a1 =  g->cos_a1[g->pos.rot];
 				g->eq.b1 = -g->sin_a1[g->pos.rot];
@@ -433,7 +434,7 @@ void	render_backgroud(t_game *g)
 				float	start_y = g->sprites[i].py - tex->l / 2 * g->cos_a1[g->pos.rot];
 				float	end_x = start_x + tex->l * g->sin_a1[g->pos.rot];
 				float	end_y = start_y + tex->l * g->cos_a1[g->pos.rot];
-				/*
+				
 				if ((start_x - g->eq.x) * (end_x - g->eq.x) + (start_y - g->eq.y) * (end_y - g->eq.y) <= 0)
 				{
 					if ((45.0 < ai && ai < 135.0) || (-135.0 < ai && ai < -45.0))
@@ -455,8 +456,8 @@ void	render_backgroud(t_game *g)
 						//	tx = (int) ((g->eq.y - start_y) / (end_y - start_y) * (float) tex->l);
 						if (tx < 0)
 							tx = 0;
-						//if (tx > tex->l - 1)
-						//	tx = tex->l - 1;
+						if (tx > tex->l - 1)
+							tx = tex->l - 1;
 						h = tex->h / dsp * g->dpp;
 						p = 1.0 / dsp * g->dpp;
 						int	h_slide0 = (int) (BOX_SIZE / dsp * g->dpp);
@@ -470,6 +471,7 @@ void	render_backgroud(t_game *g)
 							start = HEIGHT - 1;
 						addr = (int *)g->mlx.addr;
 						addr += ix + start * WIDTH;
+						
 						yp = -1;
 						while (++yp < h_slide)
 						{
@@ -477,18 +479,19 @@ void	render_backgroud(t_game *g)
 							//ty = (int) (((h - (float) h_slide) / 2.0 + (double) yp) / p);
 							if (ty < 0)
 								ty = 0;
-							//if (ty > tex->h - 1)
-							//	ty = tex->h - 1;
+							if (ty > tex->h - 1)
+								ty = tex->h - 1;
 							int	color;
 							color = *(addr_t + tx + ty * tex->l);
 							if (color > 0)
 								*addr = color;
 							addr += WIDTH;
 						}
+						
 						if (g->shoot && g->sprites[i].type == B_SPRITE && g->sprites[i].state != DIE && (ix == WIDTH / 2 || ix == WIDTH / 2 - 1))
 							sp = &g->sprites[i];
 					}
-				}*/
+				}
 			}
 		}
 	}
