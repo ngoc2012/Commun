@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 10:58:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 11:02:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ ClapTrap&	ClapTrap::operator=( ClapTrap const & rhs )
 
 std::ostream    &operator<<( std::ostream &o, const ClapTrap &c )
 {
-	o << n.toFloat();
+	o << "ClapTrap " << name << " now has "
+	<< hit_points << " hit points, "
+	<< energy_points << " energy point." << std::endl;
 	return o;
 }
 
@@ -107,11 +109,4 @@ void		ClapTrap::setAttackDamage(unsigned int n)
 {
 	std::cout << "ClapTrap " << name << " now has " << n << " attack damage." << std::endl;
 	attack_damage = n;
-}
-
-void		ClapTrap::status(void)
-{
-	std::cout << "ClapTrap " << name << " now has "
-	<< hit_points << " hit points, "
-	<< energy_points << " energy point." << std::endl;
 }
