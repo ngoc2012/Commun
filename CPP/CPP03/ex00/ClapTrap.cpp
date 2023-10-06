@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 13:28:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 13:43:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ ClapTrap::ClapTrap(std::string name)
 	attack_damage(0)
 { welcome(*this); }
 
+/*
+When you define a copy constructor or a copy assignment operator for a class, those functions are considered as part of the class itself, and they have special access rights to access the private members of the class. This is known as "special member function access" or "access control within the class."
+*/
+
 ClapTrap::ClapTrap(const ClapTrap& src)
 :
 	name(src.name),
@@ -45,16 +49,17 @@ ClapTrap::ClapTrap(const ClapTrap& src)
 	attack_damage(src.attack_damage)
 { std::cout << "Another "; welcome(*this); }
 
-ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << name << " quit game." << std::endl; }
-
 ClapTrap&	ClapTrap::operator=( ClapTrap const & src )
 {
 	name = src.name;
-	hit_points = src.getHitPoints();
-	energy_points = src.getEnergyPoints();
-	attack_damage = src.getAttackDamage();
+	hit_points = src.hit_points;
+	energy_points = src.energy_points;
+	attack_damage = src.attack_damage;
+	std::cout << "Another ";
 	return (*this);
 }
+
+ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << name << " quit game." << std::endl; }
 
 std::ostream    &operator<<( std::ostream &o, const ClapTrap &c )
 {
