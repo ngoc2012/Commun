@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 17:25:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 17:26:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 int main()
 {
 	std::cout << "Test constructor and destructor" << std::endl;
-	std::cout << "Constructor clap 7" << std::endl
+	std::cout << "Constructor clap 7" << std::endl;
 	FragTrap clap7;
-	std::cout << "Constructor clap 8" << std::endl
+	std::cout << "Constructor clap 8" << std::endl;
 	FragTrap clap8(clap7);
-	std::cout << "Constructor clap 9" << std::endl
+	std::cout << "Constructor clap 9" << std::endl;
 	FragTrap clap9 = clap8;
 	std::cout << "====================================" << std::endl;
 	std::cout << "Test methods" << std::endl;

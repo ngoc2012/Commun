@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 17:21:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 17:27:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 FragTrap::FragTrap() : ClapTrap()
 {
-	name = std::string("RandomScav");
+	name = std::string("RandomFrag");
 	hit_points = 100;
 	energy_points = 50;
 	attack_damage = 20;
