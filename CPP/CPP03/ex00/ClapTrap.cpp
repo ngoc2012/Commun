@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 10:57:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 10:58:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ ClapTrap&	ClapTrap::operator=( ClapTrap const & rhs )
 	return *this;
 }
 
+std::ostream    &operator<<( std::ostream &o, const ClapTrap &c )
+{
+	o << n.toFloat();
+	return o;
+}
 
 void	ClapTrap::attack(std::string const & target)
 {
