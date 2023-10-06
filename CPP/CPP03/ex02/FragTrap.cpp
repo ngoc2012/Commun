@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 17:17:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 17:21:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ FragTrap&	FragTrap::operator=( FragTrap const & src )
 
 FragTrap::~FragTrap() { std::cout << "FragTrap " << name << " quit game." << std::endl; }
 
-void	FragTrap::highFivesGuys(void)
+void	FragTrap::highFivesGuys(void) const
 {
 	std::cout << "FragTrap " << name << " request high fives." << std::endl;
 }
 
-void	FragTrap::welcome(void) {
+void	FragTrap::welcome(void) const
+{
 	std::cout << "FragTrap " << getName()
 	<< " (hit points: " << getHitPoints()
 	<< ", energy points: " << getEnergyPoints()

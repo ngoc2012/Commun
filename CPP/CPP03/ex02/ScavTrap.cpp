@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 17:11:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 17:21:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ ScavTrap&	ScavTrap::operator=( ScavTrap const & src )
 
 ScavTrap::~ScavTrap() { std::cout << "ScavTrap " << name << " quit game." << std::endl; }
 
-void	ScavTrap::guardGate()
+void	ScavTrap::guardGate() const
 {
 	std::cout << "ScavTrap " << name << " is now in gate keeper mode." << std::endl;
 }
 
-void	ScavTrap::welcome(void) {
+void	ScavTrap::welcome(void) const
+{
 	std::cout << "ScavTrap " << getName()
 	<< " (hit points: " << getHitPoints()
 	<< ", energy points: " << getEnergyPoints()
