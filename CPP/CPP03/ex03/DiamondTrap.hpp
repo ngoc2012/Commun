@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 21:55:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 21:57:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@
 class DiamondTrap: public FragTrap, public ScavTrap
 {
 	public:
-		FragTrap();
-		FragTrap(std::string name);
-		FragTrap(const FragTrap& src);
-		FragTrap	&operator=( const FragTrap &src );
-		~FragTrap();
+		DiamondTrap();
+		DiamondTrap(std::string name);
+		DiamondTrap(const DiamondTrap& src);
+		DiamondTrap	&operator=( const DiamondTrap &src );
+		~DiamondTrap();
 
 		void	welcome(void) const;
 		void	attack(const std::string& target);
 		void	highFivesGuys(void) const;
+	private:
+		std::string 	name;
 };
 
 #endif
