@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 11:04:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 13:22:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main()
 	ClapTrap clap1("Clap1");
 	ClapTrap clap2;
 	ClapTrap clap3(clap1);
+	ClapTrap clap4 = clap1;
 
 	clap2.setName("Clap2");
 	clap3.setName("Clap3");
