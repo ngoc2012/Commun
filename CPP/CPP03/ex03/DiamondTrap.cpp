@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.cpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 17:27:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 23:03:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
-FragTrap::FragTrap() : ClapTrap()
+DiamondTrap::DiamondTrap() : ClapTrap()
 {
 	name = std::string("RandomFrag");
 	hit_points = 100;
@@ -22,7 +22,7 @@ FragTrap::FragTrap() : ClapTrap()
 	welcome(); 
 }
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name)
 {
 	hit_points = 100;
 	energy_points = 50;
@@ -31,7 +31,7 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	welcome(); 
 }
 
-FragTrap::FragTrap(const FragTrap& src)
+DiamondTrap::DiamondTrap(const DiamondTrap& src)
 :
 	ClapTrap(src)
 {
@@ -39,7 +39,7 @@ FragTrap::FragTrap(const FragTrap& src)
 	welcome();
 }
 
-FragTrap&	FragTrap::operator=( FragTrap const & src )
+DiamondTrap&	DiamondTrap::operator=( DiamondTrap const & src )
 {
 	name = src.name;
 	hit_points = src.hit_points;
@@ -50,16 +50,16 @@ FragTrap&	FragTrap::operator=( FragTrap const & src )
 	return (*this);
 }
 
-FragTrap::~FragTrap() { std::cout << "FragTrap " << name << " quit game." << std::endl; }
+DiamondTrap::~DiamondTrap() { std::cout << "DiamondTrap " << name << " quit game." << std::endl; }
 
-void	FragTrap::highFivesGuys(void) const
+void	DiamondTrap::highFivesGuys(void) const
 {
-	std::cout << "FragTrap " << name << " request high fives." << std::endl;
+	std::cout << "DiamondTrap " << name << " request high fives." << std::endl;
 }
 
-void	FragTrap::welcome(void) const
+void	DiamondTrap::welcome(void) const
 {
-	std::cout << "FragTrap " << getName()
+	std::cout << "DiamondTrap " << getName()
 	<< " (hit points: " << getHitPoints()
 	<< ", energy points: " << getEnergyPoints()
 	<< ", attack_damage: " << getAttackDamage()
@@ -67,13 +67,13 @@ void	FragTrap::welcome(void) const
 	<< ") join the game." << std::endl;
 }
 
-void	FragTrap::attack(std::string const & target)
+void	DiamondTrap::attack(std::string const & target)
 {
 	if (energy_points && hit_points)
 	{
-		std::cout << "FragTrap " << name << " attack " << target << ", causing " << attack_damage << " points of damage!" << std::endl;
+		std::cout << "DiamondTrap " << name << " attack " << target << ", causing " << attack_damage << " points of damage!" << std::endl;
 		energy_points--;
 	}
 	else
-		std::cout << "Alert!!! FragTrap " << name << " tried to attack but has no more energy or hit." << std::endl;
+		std::cout << "Alert!!! DiamondTrap " << name << " tried to attack but has no more energy or hit." << std::endl;
 }
