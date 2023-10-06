@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 13:46:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 13:52:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,23 @@ int main()
 	clap2.takeDamage(clap1.getAttackDamage());
 	std::cout << clap1;
 	std::cout << clap2;
-	clap2.status();
 	clap3.attack(clap1.getName());
 	clap1.takeDamage(clap3.getAttackDamage());
-	clap1.status();
-	clap3.status();
+	std::cout << clap1;
+	std::cout << clap3;
 	for (int i = 0; i < 10; i++)
 	{
 		clap1.attack(clap2.getName());
 		clap2.takeDamage(clap1.getAttackDamage());
+		std::cout << clap1;
+		std::cout << clap2;
 		clap1.status();
 		clap2.status();
 	}
 	clap3.attack(clap4.getName());
 	clap4.takeDamage(clap3.getAttackDamage());
+	std::cout << clap1;
+	std::cout << clap2;
 	clap3.status();
 	clap4.status();
 	clap4.beRepaired(1);
@@ -68,8 +71,9 @@ int main()
 	clap2.beRepaired(5);
 	clap1.beRepaired(2);
 	clap3.beRepaired(1);
-	clap1.status();
-	clap2.status();
-	clap3.status();
+	std::cout << clap1;
+	std::cout << clap2;
+	std::cout << clap3;
+	std::cout << clap6;
 	return (0);
 }
