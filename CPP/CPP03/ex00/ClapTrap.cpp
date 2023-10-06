@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 13:15:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 13:16:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,17 +101,14 @@ std::string	ClapTrap::getName(void) const { return (name); }
 unsigned int	ClapTrap::getHitPoints(void) const { return (hit_points); }
 unsigned int	ClapTrap::getEnergyPoints(void) const { return (energy_points); }
 unsigned int	ClapTrap::getAttackDamage(void) const { return (attack_damage); }
-unsigned int	ClapTrap::getMaxHit(void) const { return (max_hit); }
 
-//void		ClapTrap::setName(std::string s)
-//{
-//	std::cout << "ClapTrap " << name << " now named " << s << "." << std::endl;
-//	name = s;
-//}
-//void		ClapTrap::setHitPoints(unsigned int n) { hit_points = n; }
-//void		ClapTrap::setEnergyPoints(unsigned int n) { energy_points = n; }
-//void		ClapTrap::setAttackDamage(unsigned int n)
-//{
-//	std::cout << "ClapTrap " << name << " now has " << n << " attack damage." << std::endl;
-//	attack_damage = n;
-//}
+void		ClapTrap::setName(std::string s)
+{
+	std::cout << "ClapTrap " << name << " now named " << s << "." << std::endl;
+	name = s;
+}
+void		ClapTrap::setAttackDamage(unsigned int n)
+{
+	std::cout << "ClapTrap " << name << " now has " << n << " attack damage." << std::endl;
+	attack_damage = n;
+}
