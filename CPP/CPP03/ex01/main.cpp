@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 10:32:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 13:46:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int main()
 	clap3.setAttackDamage(3);
 	clap1.attack(clap2.getName());
 	clap2.takeDamage(clap1.getAttackDamage());
-	clap1.status();
+	std::cout << clap1;
+	std::cout << clap2;
 	clap2.status();
 	clap3.attack(clap1.getName());
 	clap1.takeDamage(clap3.getAttackDamage());
