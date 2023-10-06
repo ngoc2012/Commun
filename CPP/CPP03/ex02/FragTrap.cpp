@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 17:11:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 17:17:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap()
+FragTrap::FragTrap() : ClapTrap()
 {
 	name = std::string("RandomScav");
 	hit_points = 100;
@@ -22,7 +22,7 @@ ScavTrap::ScavTrap() : ClapTrap()
 	welcome(); 
 }
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
+FragTrap::FragTrap(std::string name) : ClapTrap(name)
 {
 	hit_points = 100;
 	energy_points = 50;
@@ -31,7 +31,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	welcome(); 
 }
 
-ScavTrap::ScavTrap(const ScavTrap& src)
+FragTrap::FragTrap(const FragTrap& src)
 :
 	ClapTrap(src)
 {
@@ -39,7 +39,7 @@ ScavTrap::ScavTrap(const ScavTrap& src)
 	welcome();
 }
 
-ScavTrap&	ScavTrap::operator=( ScavTrap const & src )
+FragTrap&	FragTrap::operator=( FragTrap const & src )
 {
 	name = src.name;
 	hit_points = src.hit_points;
@@ -50,15 +50,15 @@ ScavTrap&	ScavTrap::operator=( ScavTrap const & src )
 	return (*this);
 }
 
-ScavTrap::~ScavTrap() { std::cout << "ScavTrap " << name << " quit game." << std::endl; }
+FragTrap::~FragTrap() { std::cout << "FragTrap " << name << " quit game." << std::endl; }
 
-void	ScavTrap::guardGate()
+void	FragTrap::highFivesGuys(void)
 {
-	std::cout << "ScavTrap " << name << " is now in gate keeper mode." << std::endl;
+	std::cout << "FragTrap " << name << " request high fives." << std::endl;
 }
 
-void	ScavTrap::welcome(void) {
-	std::cout << "ScavTrap " << getName()
+void	FragTrap::welcome(void) {
+	std::cout << "FragTrap " << getName()
 	<< " (hit points: " << getHitPoints()
 	<< ", energy points: " << getEnergyPoints()
 	<< ", attack_damage: " << getAttackDamage()
@@ -66,13 +66,13 @@ void	ScavTrap::welcome(void) {
 	<< ") join the game." << std::endl;
 }
 
-void	ScavTrap::attack(std::string const & target)
+void	FragTrap::attack(std::string const & target)
 {
 	if (energy_points && hit_points)
 	{
-		std::cout << "ScavTrap " << name << " attack " << target << ", causing " << attack_damage << " points of damage!" << std::endl;
+		std::cout << "FragTrap " << name << " attack " << target << ", causing " << attack_damage << " points of damage!" << std::endl;
 		energy_points--;
 	}
 	else
-		std::cout << "Alert!!! ScavTrap " << name << " tried to attack but has no more energy or hit." << std::endl;
+		std::cout << "Alert!!! FragTrap " << name << " tried to attack but has no more energy or hit." << std::endl;
 }
