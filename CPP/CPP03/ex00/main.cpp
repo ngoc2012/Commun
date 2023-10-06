@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 13:22:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 13:24:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int main()
 
 	clap2.setName("Clap2");
 	clap3.setName("Clap3");
+	clap4.setName("Clap4");
 	clap1.setAttackDamage(1);
 	clap2.setAttackDamage(2);
 	clap3.setAttackDamage(3);
