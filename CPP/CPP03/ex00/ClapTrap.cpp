@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 11:08:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 13:11:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ std::string	ClapTrap::getName(void) const { return (name); }
 unsigned int	ClapTrap::getHitPoints(void) const { return (hit_points); }
 unsigned int	ClapTrap::getEnergyPoints(void) const { return (energy_points); }
 unsigned int	ClapTrap::getAttackDamage(void) const { return (attack_damage); }
+unsigned int	ClapTrap::getMaxHit(void) const { return (max_hit); }
 
 void		ClapTrap::setName(std::string s)
 {

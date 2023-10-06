@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 13:09:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 13:11:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ class ClapTrap
 		void		setHitPoints(unsigned int);
 		void		setEnergyPoints(unsigned int);
 		void		setAttackDamage(unsigned int);
-		void		setMaxHit(unsigned int);
+		//void		setMaxHit(unsigned int);
 };
 
 std::ostream&	operator<<( std::ostream& o, const ClapTrap& n );
