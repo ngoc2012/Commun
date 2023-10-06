@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 21:10:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 11:01:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ class ClapTrap
 
 		void		status(void);
 };
+
+std::ostream&	operator<<( std::ostream& o, const ClapTrap& n );
 
 #endif
