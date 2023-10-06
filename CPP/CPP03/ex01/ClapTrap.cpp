@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 13:20:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 13:45:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ ClapTrap::ClapTrap(std::string name)
 	energy_points(10),
 	attack_damage(0),
 	max_hit(10)
-{ std::cout << "Another "; welcome(); }
+{ welcome(); }
 
 ClapTrap::ClapTrap(const ClapTrap& src)
 :
@@ -48,21 +48,22 @@ ClapTrap::ClapTrap(const ClapTrap& src)
 	attack_damage(src.attack_damage),
 	max_hit(src.max_hit)
 {
-	std::cout << "A copy of ";
+	std::cout << "Another ";
 	welcome();
 }
 
-ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << name << " quit game." << std::endl; }
-
 ClapTrap&	ClapTrap::operator=( ClapTrap const & src )
 {
-	name = src.getName();
-	hit_points = src.getHitPoints();
-	energy_points = src.getEnergyPoints();
-	attack_damage = src.getAttackDamage();
-	attack_damage = src.getMaxHit();
+	name = src.name;
+	hit_points = src.hit_points;
+	energy_points = src.energy_points;
+	attack_damage = src.attack_damage;
+	max_hit = src.max_hit;
+	std::cout << "Another ";
 	return (*this);
 }
+
+ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << name << " quit game." << std::endl; }
 
 std::ostream    &operator<<( std::ostream &o, const ClapTrap &c )
 {
