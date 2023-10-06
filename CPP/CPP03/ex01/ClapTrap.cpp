@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 13:07:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 13:08:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ ClapTrap&	ClapTrap::operator=( ClapTrap const & src )
 	setHitPoints(src.hit_points);
 	setEnergyPoints(src.energy_points);
 	setAttackDamage(src.attack_damage);
+	setNa(src.max_hit);
 	return (*this);
 }
 
