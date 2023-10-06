@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/01 21:08:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 10:57:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ ClapTrap::ClapTrap(const ClapTrap& src)
 { welcome(*this); }
 
 ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << name << " quit game." << std::endl; }
+
+ClapTrap&	ClapTrap::operator=( ClapTrap const & rhs )
+{
+	return *this;
+}
+
 
 void	ClapTrap::attack(std::string const & target)
 {
