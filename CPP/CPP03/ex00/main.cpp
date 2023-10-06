@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 13:24:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 13:26:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 int main()
 {
 	std::cout << std::endl;
+	std::cout << "clap1 constructor" << std::endl;
 	ClapTrap clap1("Clap1");
+	std::cout << "clap2 constructor" << std::endl;
 	ClapTrap clap2;
+	std::cout << "clap3 constructor" << std::endl;
 	ClapTrap clap3(clap1);
+	std::cout << "clap4 constructor" << std::endl;
 	ClapTrap clap4 = clap1;
 
 	clap2.setName("Clap2");
