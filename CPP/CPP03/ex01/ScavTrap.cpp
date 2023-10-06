@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 10:42:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 17:09:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,19 @@ ScavTrap::ScavTrap(const ScavTrap& src)
 :
 	ClapTrap(src)
 {
-	std::cout << "A copy of ";
+	std::cout << "Another ";
 	welcome();
+}
+
+ScavTrap&	ScavTrap::operator=( ScavTrap const & src )
+{
+	name = src.name;
+	hit_points = src.hit_points;
+	energy_points = src.energy_points;
+	attack_damage = src.attack_damage;
+	max_hit = src.max_hit;
+	std::cout << "Another ";
+	return (*this);
 }
 
 ScavTrap::~ScavTrap() { std::cout << "ScavTrap " << name << " quit game." << std::endl; }
