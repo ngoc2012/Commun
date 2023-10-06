@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 13:11:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/06 13:15:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << name << " quit game." << std
 
 ClapTrap&	ClapTrap::operator=( ClapTrap const & src )
 {
-	setName(src.name);
-	setHitPoints(src.hit_points);
-	setEnergyPoints(src.energy_points);
-	setAttackDamage(src.attack_damage);
+	name = src.getName();
+	hit_points = src.getHitPoints();
+	energy_points = src.getEnergyPoints();
+	attack_damage = src.getAttackDamage();
 	return (*this);
 }
 
@@ -103,15 +103,15 @@ unsigned int	ClapTrap::getEnergyPoints(void) const { return (energy_points); }
 unsigned int	ClapTrap::getAttackDamage(void) const { return (attack_damage); }
 unsigned int	ClapTrap::getMaxHit(void) const { return (max_hit); }
 
-void		ClapTrap::setName(std::string s)
-{
-	std::cout << "ClapTrap " << name << " now named " << s << "." << std::endl;
-	name = s;
-}
-void		ClapTrap::setHitPoints(unsigned int n) { hit_points = n; }
-void		ClapTrap::setEnergyPoints(unsigned int n) { energy_points = n; }
-void		ClapTrap::setAttackDamage(unsigned int n)
-{
-	std::cout << "ClapTrap " << name << " now has " << n << " attack damage." << std::endl;
-	attack_damage = n;
-}
+//void		ClapTrap::setName(std::string s)
+//{
+//	std::cout << "ClapTrap " << name << " now named " << s << "." << std::endl;
+//	name = s;
+//}
+//void		ClapTrap::setHitPoints(unsigned int n) { hit_points = n; }
+//void		ClapTrap::setEnergyPoints(unsigned int n) { energy_points = n; }
+//void		ClapTrap::setAttackDamage(unsigned int n)
+//{
+//	std::cout << "ClapTrap " << name << " now has " << n << " attack damage." << std::endl;
+//	attack_damage = n;
+//}
