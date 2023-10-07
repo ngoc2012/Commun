@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/10/07 08:28:29 by ngoc             ###   ########.fr        #
+#    Updated: 2023/10/07 12:21:12 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c map.c draw.c mini_map.c hook.c math.c texture.c sprites.c	
+SRCS = main.c map.c draw.c mini_map.c hook.c math.c texture.c sprites.c	walls.c
 MSRC = $(addprefix srcs/, $(SRCS))
 MOBJ = ${MSRC:.c=.o}
 MANDA = cub3D
