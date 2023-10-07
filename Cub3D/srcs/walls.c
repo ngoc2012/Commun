@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 15:55:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 15:56:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -401,7 +401,7 @@ float	render_walls(t_game *g, int ix)
 			}
 		}
 		//Find B
-		get_B2(g, ix, ai);
+		get_B1(g, ix, ai);
 	}
 	return (render(g, ix));
 }
