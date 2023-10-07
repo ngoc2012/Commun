@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 09:17:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 09:22:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	render_backgroud(t_game *g)
+int	render_walls(t_game *g)
 {
 	int	ix;
 	float	ai;
@@ -46,10 +46,7 @@ void	render_backgroud(t_game *g)
 	// Angle tolerance 1 pixel / size
 	tol_h= 1.0 / (float) g->map.h / BOX_SIZE;
 	tol_l = 1.0 / (float) g->map.l / BOX_SIZE;
-	t_sprite	*sp = 0;
-	ix = -1;
-	while (++ix < WIDTH)
-	{
+
 		dA = 0.0;
 		dB = 0.0;
 		ai = g->ai[ix][g->pos.rot];
@@ -376,19 +373,7 @@ void	render_backgroud(t_game *g)
 			addr += WIDTH;
 		}
 
-		// sprite
-		render_sprites(g, ix, d, &sp);
-	}
-	if (g->shoot && sp)
-	{
-		sp->health--;
-		if (!sp->health)
-		{
-			sp->state = DIE;
-			sp->i_tex = 0;
-		}
-	}
-	g->shoot = 0;
+	return (d);
 }
 
 void	scale_window(t_game *g)
