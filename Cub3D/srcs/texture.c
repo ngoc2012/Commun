@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 21:11:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 09:09:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	return_error(char *s, char **ss)
 int	get_color(char *s)
 {
 	int	i;
-	int	len;
 	int	c[3];
 	char	**ss;
 
