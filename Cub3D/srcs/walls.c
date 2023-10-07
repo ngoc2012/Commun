@@ -6,55 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 10:17:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 10:22:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	create_trgb(unsigned char t, unsigned char r,
-		unsigned char g, unsigned char b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-void	redraw(t_game *g)
-{
-	int	xp;
-	int	yp;
-	int	*addr;
-
-	addr = (int *)g->mlx.addr;
-	yp = -1;
-	while (++yp < HEIGHT)
-	{
-		xp = -1;
-		while (++xp < WIDTH)
-			*(addr++) = 0;
-	}
-}
- 
-void	render_object(t_tex *t, int *bg, int x0, int y0)
-{
-	int	x;
-	int	y;
-
-	x0 -= t->l / 2;
-	y0 -= t->h;
-	y = -1;
-	while (++y < t->h)
-	{
-		x = -1;
-		while (++x < t->l)
-		{
-			int	color = *((int*) t->addr + x + y * t->l);
-			if (color > 0)
-				*((int*) bg + x + x0 + (y + y0) * WIDTH) = color;
-		}
-	}
-}
-
-void	render_backgroud(t_game *g)
+float	render_walls(t_game *g)
 {
 	int	ix;
 	float	ai;
