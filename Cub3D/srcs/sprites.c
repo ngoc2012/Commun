@@ -6,20 +6,27 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 08:31:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 08:33:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	render_sprites(t_game *g, int ix)
+void	render_sprites(t_game *g, int ix, double d)
 {
 	// sprite
+	int	tx;
+	int	ty;
+	int	h_slide;
+	float	h;
+	float	p;
+	float	d;
+	int	*addr;
 	int	*addr_t;
 	t_tex	*tex;
 	float	dsp;
 	int	i = -1;
-	ai = g->ai[ix][g->pos.rot];
+	float	ai = g->ai[ix][g->pos.rot];
 
 	while (++i < g->n_sprites)
 	{
