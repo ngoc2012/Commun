@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 09:15:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 10:17:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ void	render_backgroud(t_game *g)
 	float	dpy;
 	float	dA;
 	float	dB;
-	float	tol_h;
-	float	tol_l;
 	int	*addr;
 	int	*addr_t;
 	int	*addr_f;
@@ -86,8 +84,6 @@ void	render_backgroud(t_game *g)
 	g->pos.Bx = -1;
 	g->pos.By = -1;
 	// Angle tolerance 1 pixel / size
-	tol_h= 1.0 / (float) g->map.h / BOX_SIZE;
-	tol_l = 1.0 / (float) g->map.l / BOX_SIZE;
 	t_sprite	*sp = 0;
 	ix = -1;
 	while (++ix < WIDTH)
@@ -95,9 +91,9 @@ void	render_backgroud(t_game *g)
 		dA = 0.0;
 		dB = 0.0;
 		ai = g->ai[ix][g->pos.rot];
-		if ((-tol_l < ai && ai < tol_l) || (180.0 - tol_l < ai) || ai < -(180.0 - tol_l))
+		if ((-g->tol_l < ai && ai < g->tol_l) || (180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
 		{
-			if (ai < tol_l && ai > -tol_l)
+			if (ai < g->tol_l && ai > -g->tol_l)
 			{
 				Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 				dpx = BOX_SIZE;
@@ -111,7 +107,7 @@ void	render_backgroud(t_game *g)
 			dpy = BOX_SIZE * g->tan_ai[ix][g->pos.rot];
 			if (ai * dpy > 0)
 				dpy = -dpy;
-			if (ai < tol_l && ai > -tol_l)
+			if (ai < g->tol_l && ai > -g->tol_l)
 				Bx = Bpx / BOX_SIZE;
 			else
 				Bx = Bpx / BOX_SIZE - 1;
@@ -122,7 +118,7 @@ void	render_backgroud(t_game *g)
 			{
 				Bpx += dpx;
 				Bpy += dpy;
-				if (ai < tol_l && ai > -tol_l)
+				if (ai < g->tol_l && ai > -g->tol_l)
 					Bx = Bpx / BOX_SIZE;
 				else
 					Bx = Bpx / BOX_SIZE - 1;
@@ -130,7 +126,7 @@ void	render_backgroud(t_game *g)
 					door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
 			}
 			dA = INFINI;
-			if (g->map.v[By][Bx] == B_DOOR && ai < tol_l && ai > -tol_l)
+			if (g->map.v[By][Bx] == B_DOOR && ai < g->tol_l && ai > -g->tol_l)
 			{
 				dB = (Bpx - g->pos.px + BOX_SIZE / 2) / cos(ai * PI / 180);
 				Bpy += dpy / 2;
@@ -145,9 +141,9 @@ void	render_backgroud(t_game *g)
 			g->pos.Bx = Bx;
 			g->pos.By = By;
 		}
-		else if ((90.0 - tol_h < ai && ai < 90.0 + tol_h) || (-90.0 - tol_h < ai && ai < -90.0 + tol_h))
+		else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) || (-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
 		{
-			if (ai > 90.0 - tol_h)
+			if (ai > 90.0 - g->tol_h)
 			{
 				Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE;
 				dpy = -BOX_SIZE;
