@@ -6,14 +6,15 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 13:27:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 13:29:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	render(t_game *g, int ix)
+static int	render(t_game *g, int ix)
 {
+	float	d;
 	int	tx;
 	int	ty;
 	int	h_slide;
@@ -22,7 +23,7 @@ static void	render(t_game *g, int ix)
 	if (g->pos.dA > g->pos.dB)
 	{
 		d = g->pos.dB / g->cos_ai0[ix];
-		tx = (int) (Bpy - BOX_SIZE * (float) g->pos.By);
+		tx = (int) (g->pos.Bpy - BOX_SIZE * (float) g->pos.By);
 		if (g->map.v[g->pos.By][g->pos.Bx] == B_DOOR)
 		{
 			if (g->pos.By == g->opened_door_y && g->pos.Bx == g->opened_door_x)
@@ -37,7 +38,7 @@ static void	render(t_game *g, int ix)
 	else
 	{
 		d = g->pos.dA / g->cos_ai0[ix];
-		tx = (int) (Apx - BOX_SIZE * (float) g->pos.Ax);
+		tx = (int) (g->pos.Apx - BOX_SIZE * (float) g->pos.Ax);
 		if (g->map.v[g->pos.Ay][g->pos.Ax] == B_DOOR)
 		{
 			if (g->pos.Ay == g->opened_door_y && g->pos.Ax == g->opened_door_x)
@@ -113,6 +114,7 @@ static void	render(t_game *g, int ix)
 		}
 		addr += WIDTH;
 	}
+	return (d);
 }
 
 float	render_walls(t_game *g, int ix)
@@ -133,14 +135,12 @@ float	render_walls(t_game *g, int ix)
 	int	*addr_f;
 	int	*addr_c;
 	int	door_coor;
-	float	d;
 	t_tex	*tex;
 
 	addr_f = (int *)g->tex[FL].addr;
 	addr_c = (int *)g->tex[CL].addr;
 	g->pos.dA = 0.0;
 	g->pos.dB = 0.0;
-	d = INFINI;
 	ai = g->ai[ix][g->pos.rot];
 	if ((-g->tol_l < ai && ai < g->tol_l) || (180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
 	{
@@ -368,6 +368,5 @@ float	render_walls(t_game *g, int ix)
 			}
 		}
 	}
-	render(g, ix);
-	return (d);
+	return (render(g, ix));
 }
