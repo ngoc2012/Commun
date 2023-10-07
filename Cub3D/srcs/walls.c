@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 13:31:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 13:33:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	render(t_game *g, int ix)
 	t_tex	*tex;
 	int	*addr_f;
 	int	*addr_c;
+	int	*addr;
+	int	*addr_t;
 
 	ai = g->ai[ix][g->pos.rot];
 	addr_f = (int *)g->tex[FL].addr;
@@ -138,8 +140,6 @@ float	render_walls(t_game *g, int ix)
 	int	By;
 	float	dpx;
 	float	dpy;
-	int	*addr;
-	int	*addr_t;
 	int	door_coor;
 
 	g->pos.dA = 0.0;
