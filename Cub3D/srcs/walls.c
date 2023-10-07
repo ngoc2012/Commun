@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 13:44:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 13:45:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ static int	render(t_game *g, int ix)
 	return (d);
 }
 
-void	get_B1(t_game *g, float ai)
+void	get_B1(t_game *g, int ix, float ai)
 {
 	int	Bx;
 	int	By;
@@ -135,6 +135,7 @@ void	get_B1(t_game *g, float ai)
 	float	Bpy;
 	float	dpx;
 	float	dpy;
+	int	door_coor;
 
 	if (ai < g->tol_l && ai > -g->tol_l)
 	{
@@ -205,7 +206,7 @@ float	render_walls(t_game *g, int ix)
 	g->pos.dB = 0.0;
 	ai = g->ai[ix][g->pos.rot];
 	if ((-g->tol_l < ai && ai < g->tol_l) || (180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
-		get_B1(g, ai);
+		get_B1(g, ix, ai);
 	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) || (-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
 	{
 		if (ai > 90.0 - g->tol_h)
