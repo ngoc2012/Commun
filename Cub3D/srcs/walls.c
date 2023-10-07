@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 15:39:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 15:41:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,13 @@ void	get_B1(t_game *g, int ix, float ai)
 	}
 	//difference
 	g->pos.dA = INFINI;
-	if (g->map.v[By][Bx] == B_DOOR && ai < g->tol_l && ai > -g->tol_l)
+	if (Bx < 0 || Bx >= g->map.l || By < 0 || By >= g->map.h)
+	{
+		g->pos.dB = INFINI;
+		return ;
+	}
+	//if (g->map.v[By][Bx] == B_DOOR && ai < g->tol_l && ai > -g->tol_l)
+	if (g->map.v[By][Bx] == B_DOOR && ai > -90.0 && ai < 90.0)
 	{
 		g->pos.dB = (Bpx - g->pos.px + BOX_SIZE / 2) / cos(ai * PI / 180);
 		Bpy += dpy / 2;
