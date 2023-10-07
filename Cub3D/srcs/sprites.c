@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 08:33:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 08:35:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	render_sprites(t_game *g, int ix, double d)
+void	render_sprites(t_game *g, int ix, float d)
 {
 	// sprite
 	int	tx;
@@ -20,13 +20,19 @@ void	render_sprites(t_game *g, int ix, double d)
 	int	h_slide;
 	float	h;
 	float	p;
-	float	d;
 	int	*addr;
 	int	*addr_t;
 	t_tex	*tex;
 	float	dsp;
 	int	i = -1;
 	float	ai = g->ai[ix][g->pos.rot];
+	int	yp;
+	int	start;
+	float	dh;
+	int	xh;
+	int	yh;
+	float	xph;
+	float	yph;
 
 	while (++i < g->n_sprites)
 	{
