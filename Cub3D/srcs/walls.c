@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 12:33:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 12:39:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,6 +260,7 @@ float	render_walls(t_game *g, int ix)
 					dB = (Bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
 				g->pos.Bx = Bx;
 				g->pos.By = By;
+				g->pos.Bpy = Bpy;
 			}
 		}
 	}
