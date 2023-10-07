@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 13:33:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 13:44:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,65 @@ static int	render(t_game *g, int ix)
 	return (d);
 }
 
+void	get_B1(t_game *g, float ai)
+{
+	int	Bx;
+	int	By;
+	float	Bpx;
+	float	Bpy;
+	float	dpx;
+	float	dpy;
+
+	if (ai < g->tol_l && ai > -g->tol_l)
+	{
+		Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
+		dpx = BOX_SIZE;
+	}
+	else
+	{
+		Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE;
+		dpx = -BOX_SIZE;
+	}
+	Bpy = g->pos.py + (g->pos.px - Bpx) * g->tan_ai[ix][g->pos.rot];
+	dpy = BOX_SIZE * g->tan_ai[ix][g->pos.rot];
+	if (ai * dpy > 0)
+		dpy = -dpy;
+	if (ai < g->tol_l && ai > -g->tol_l)
+		Bx = Bpx / BOX_SIZE;
+	else
+		Bx = Bpx / BOX_SIZE - 1;
+	By = g->pos.y;
+	door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
+	while ((g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
+			|| (By == g->opened_door_y && Bx == g->opened_door_x && g->map.v[By][Bx] == B_DOOR && door_coor < g->hidden_door))
+	{
+		Bpx += dpx;
+		Bpy += dpy;
+		if (ai < g->tol_l && ai > -g->tol_l)
+			Bx = Bpx / BOX_SIZE;
+		else
+			Bx = Bpx / BOX_SIZE - 1;
+		if (g->map.v[By][Bx] == B_DOOR)
+			door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
+	}
+	g->pos.dA = INFINI;
+	if (g->map.v[By][Bx] == B_DOOR && ai < g->tol_l && ai > -g->tol_l)
+	{
+		g->pos.dB = (Bpx - g->pos.px + BOX_SIZE / 2) / cos(ai * PI / 180);
+		Bpy += dpy / 2;
+	}
+	else if (g->map.v[By][Bx] == B_DOOR)
+	{
+		g->pos.dB = (Bpx - g->pos.px - BOX_SIZE / 2) / cos(ai * PI / 180);
+		Bpy += dpy / 2;
+	}
+	else
+		g->pos.dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
+	g->pos.Bx = Bx;
+	g->pos.By = By;
+	g->pos.Bpy = Bpy;
+}
+
 float	render_walls(t_game *g, int ix)
 {
 	float	ai;
@@ -146,56 +205,7 @@ float	render_walls(t_game *g, int ix)
 	g->pos.dB = 0.0;
 	ai = g->ai[ix][g->pos.rot];
 	if ((-g->tol_l < ai && ai < g->tol_l) || (180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
-	{
-		if (ai < g->tol_l && ai > -g->tol_l)
-		{
-			Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
-			dpx = BOX_SIZE;
-		}
-		else
-		{
-			Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE;
-			dpx = -BOX_SIZE;
-		}
-		Bpy = g->pos.py + (g->pos.px - Bpx) * g->tan_ai[ix][g->pos.rot];
-		dpy = BOX_SIZE * g->tan_ai[ix][g->pos.rot];
-		if (ai * dpy > 0)
-			dpy = -dpy;
-		if (ai < g->tol_l && ai > -g->tol_l)
-			Bx = Bpx / BOX_SIZE;
-		else
-			Bx = Bpx / BOX_SIZE - 1;
-		By = g->pos.y;
-		door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
-		while ((g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
-				|| (By == g->opened_door_y && Bx == g->opened_door_x && g->map.v[By][Bx] == B_DOOR && door_coor < g->hidden_door))
-		{
-			Bpx += dpx;
-			Bpy += dpy;
-			if (ai < g->tol_l && ai > -g->tol_l)
-				Bx = Bpx / BOX_SIZE;
-			else
-				Bx = Bpx / BOX_SIZE - 1;
-			if (g->map.v[By][Bx] == B_DOOR)
-				door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
-		}
-		g->pos.dA = INFINI;
-		if (g->map.v[By][Bx] == B_DOOR && ai < g->tol_l && ai > -g->tol_l)
-		{
-			g->pos.dB = (Bpx - g->pos.px + BOX_SIZE / 2) / cos(ai * PI / 180);
-			Bpy += dpy / 2;
-		}
-		else if (g->map.v[By][Bx] == B_DOOR)
-		{
-			g->pos.dB = (Bpx - g->pos.px - BOX_SIZE / 2) / cos(ai * PI / 180);
-			Bpy += dpy / 2;
-		}
-		else
-			g->pos.dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
-		g->pos.Bx = Bx;
-		g->pos.By = By;
-		g->pos.Bpy = Bpy;
-	}
+		get_B1(g, ai);
 	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) || (-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
 	{
 		if (ai > 90.0 - g->tol_h)
