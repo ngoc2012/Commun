@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 12:22:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 12:24:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 float	render_walls(t_game *g, int ix)
 {
-	int	ix;
 	float	ai;
 	float	Apx;
 	float	Apy;
@@ -363,5 +362,6 @@ float	render_walls(t_game *g, int ix)
 		}
 		addr += WIDTH;
 	}
+	return (d);
 
 }

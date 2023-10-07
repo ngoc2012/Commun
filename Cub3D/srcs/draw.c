@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 12:23:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 12:25:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,34 +57,12 @@ void	render_object(t_tex *t, int *bg, int x0, int y0)
 void	render_backgroud(t_game *g)
 {
 	int	ix;
-	//float	ai;
-	//float	Apx;
-	//float	Apy;
-	//int	Ax;
-	//int	Ay;
-	//float	Bpx;
-	//float	Bpy;
-	//int	Bx;
-	//int	By;
-	//float	dpx;
-	//float	dpy;
-	//float	dA;
-	//float	dB;
-	//int	*addr;
-	//int	*addr_t;
-	//int	door_coor;
-	//t_tex	*tex;
-	int	*addr_f;
-	int	*addr_c;
 	float	d;
 
-	addr_f = (int *)g->tex[FL].addr;
-	addr_c = (int *)g->tex[CL].addr;
 	g->pos.Ax = -1;
 	g->pos.Ay = -1;
 	g->pos.Bx = -1;
 	g->pos.By = -1;
-	// Angle tolerance 1 pixel / size
 	t_sprite	*sp = 0;
 	ix = -1;
 	while (++ix < WIDTH)
