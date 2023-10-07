@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 15:49:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 15:51:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,6 @@ void	get_B1(t_game *g, int ix, float ai)
 	dpy = BOX_SIZE * g->tan_ai[ix][g->pos.rot];
 	if (ai * dpy > 0)
 		dpy = -dpy;
-	//if (ai < g->tol_l && ai > -g->tol_l)
 	if (Bpy < 0 || Bpy >= g->map.ph)
 	{
 		g->pos.dB = INFINI;
@@ -177,7 +176,7 @@ void	get_B1(t_game *g, int ix, float ai)
 		door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
 	}
 	//difference
-	g->pos.dA = INFINI;
+	//if ((-g->tol_l < ai && ai < g->tol_l) || (180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
 	if (Bx < 0 || Bx >= g->map.l || By < 0 || By >= g->map.h)
 	{
 		g->pos.dB = INFINI;
@@ -286,7 +285,10 @@ float	render_walls(t_game *g, int ix)
 	g->pos.dB = 0.0;
 	ai = g->ai[ix][g->pos.rot];
 	if ((-g->tol_l < ai && ai < g->tol_l) || (180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
+	{
+		g->pos.dA = INFINI;
 		get_B1(g, ix, ai);
+	}
 	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) || (-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
 	{
 		if (ai > 90.0 - g->tol_h)
