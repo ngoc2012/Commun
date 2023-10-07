@@ -4,7 +4,7 @@ WE ./walls/redbrick.xpm
 EA ./walls/shinybrick.xpm
 DO ./walls/door101.xpm
 FL ./walls/Fires.xpm
-CL ./walls/Fires.xpm
+CL ./walls/eagle.xpm
 
             1111111111111111111111111111111
             1460200312002002100000000000001
