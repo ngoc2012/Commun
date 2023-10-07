@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 15:31:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 15:32:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,10 +272,6 @@ float	render_walls(t_game *g, int ix)
 	float	Apy;
 	int	Ax;
 	int	Ay;
-	float	Bpx;
-	float	Bpy;
-	int	Bx;
-	int	By;
 	float	dpx;
 	float	dpy;
 	int	door_coor;
