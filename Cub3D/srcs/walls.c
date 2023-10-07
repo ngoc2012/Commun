@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 12:39:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 12:40:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ float	render_walls(t_game *g, int ix)
 			dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
 		g->pos.Bx = Bx;
 		g->pos.By = By;
+		g->pos.Bpy = Bpy;
 	}
 	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) || (-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
 	{
@@ -139,6 +140,7 @@ float	render_walls(t_game *g, int ix)
 		dB = INFINI;
 		g->pos.Ax = Ax;
 		g->pos.Ay = Ay;
+		g->pos.Apx = Apx;
 	}
 	else
 	{
@@ -200,6 +202,7 @@ float	render_walls(t_game *g, int ix)
 					dA = (g->pos.py - Apy) / g->sin_ai[ix][g->pos.rot];
 				g->pos.Ax = Ax;
 				g->pos.Ay = Ay;
+				g->pos.Apx = Apx;
 			}
 		}
 		//Find B
