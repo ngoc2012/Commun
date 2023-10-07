@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 09:07:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 09:12:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	render_sprites(t_game *g, int ix, float d, t_sprite **sp)
 	float	ai = g->ai[ix][g->pos.rot];
 	int	yp;
 	int	start;
-	float	dh;
-	int	xh;
-	int	yh;
-	float	xph;
-	float	yph;
+	//float	dh;
+	//int	xh;
+	//int	yh;
+	//float	xph;
+	//float	yph;
 
 	while (++i < g->n_sprites)
 	{
