@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 12:24:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 12:33:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,10 +271,10 @@ float	render_walls(t_game *g, int ix)
 	if (dA > dB)
 	{
 		d = dB / g->cos_ai0[ix];
-		tx = (int) (Bpy - BOX_SIZE * (float) By);
-		if (g->map.v[By][Bx] == B_DOOR)
+		tx = (int) (Bpy - BOX_SIZE * (float) g->pos.By);
+		if (g->map.v[g->pos.By][g->pos.Bx] == B_DOOR)
 		{
-			if (By == g->opened_door_y && Bx == g->opened_door_x)
+			if (g->pos.By == g->opened_door_y && g->pos.Bx == g->opened_door_x)
 				tx -= g->hidden_door;
 			tex = &g->tex[DO];
 		}
@@ -286,10 +286,10 @@ float	render_walls(t_game *g, int ix)
 	else
 	{
 		d = dA / g->cos_ai0[ix];
-		tx = (int) (Apx - BOX_SIZE * (float) Ax);
-		if (g->map.v[Ay][Ax] == B_DOOR)
+		tx = (int) (Apx - BOX_SIZE * (float) g->pos.Ax);
+		if (g->map.v[g->pos.Ay][g->pos.Ax] == B_DOOR)
 		{
-			if (Ay == g->opened_door_y && Ax == g->opened_door_x)
+			if (g->pos.Ay == g->opened_door_y && g->pos.Ax == g->opened_door_x)
 				tx -= g->hidden_door;
 			tex = &g->tex[DO];
 		}
