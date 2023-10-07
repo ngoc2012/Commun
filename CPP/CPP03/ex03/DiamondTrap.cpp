@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 16:21:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 16:22:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ DiamondTrap&	DiamondTrap::operator=( DiamondTrap const & src )
 
 DiamondTrap::~DiamondTrap() { std::cout << "DiamondTrap " << name << " quit game." << std::endl; }
 
-void	DiamondTrap::highFivesGuys(void) const
+void	DiamondTrap::whoAmI(void) const
 {
-	std::cout << "DiamondTrap " << name << " request high fives." << std::endl;
+	std::cout << "DiamondTrap " << name << " has ClapTrap name " << ClapTrap::name << "." << std::endl;
 }
 
 void	DiamondTrap::welcome(void) const
