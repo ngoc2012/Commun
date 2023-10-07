@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 08:35:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 08:37:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	render_sprites(t_game *g, int ix, float d)
+void	render_sprites(t_game *g, int ix, float d, t_sprite *sp)
 {
 	// sprite
 	int	tx;
@@ -110,7 +110,7 @@ void	render_sprites(t_game *g, int ix, float d)
 					}
 
 					if (g->shoot && g->sprites[i].type == B_SPRITE && g->sprites[i].state != DIE && (ix == WIDTH / 2 || ix == WIDTH / 2 - 1))
-						sp = &g->sprites[i];
+						*sp = g->sprites[i];
 				}
 			}
 		}
