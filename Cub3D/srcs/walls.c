@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 13:29:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 13:31:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 
 static int	render(t_game *g, int ix)
 {
+	float	ai;
 	float	d;
 	int	tx;
 	int	ty;
 	int	h_slide;
 	float	h;
 	float	p;
+	t_tex	*tex;
+	int	*addr_f;
+	int	*addr_c;
+
+	ai = g->ai[ix][g->pos.rot];
+	addr_f = (int *)g->tex[FL].addr;
+	addr_c = (int *)g->tex[CL].addr;
 	if (g->pos.dA > g->pos.dB)
 	{
 		d = g->pos.dB / g->cos_ai0[ix];
@@ -132,13 +140,8 @@ float	render_walls(t_game *g, int ix)
 	float	dpy;
 	int	*addr;
 	int	*addr_t;
-	int	*addr_f;
-	int	*addr_c;
 	int	door_coor;
-	t_tex	*tex;
 
-	addr_f = (int *)g->tex[FL].addr;
-	addr_c = (int *)g->tex[CL].addr;
 	g->pos.dA = 0.0;
 	g->pos.dB = 0.0;
 	ai = g->ai[ix][g->pos.rot];
