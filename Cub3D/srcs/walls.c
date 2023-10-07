@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 15:32:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 15:35:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,12 +163,14 @@ void	get_B1(t_game *g, int ix, float ai)
 		Bx = Bpx / BOX_SIZE - 1;
 	By = g->pos.y;
 	door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
-	while ((g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
-			|| (By == g->opened_door_y && Bx == g->opened_door_x && g->map.v[By][Bx] == B_DOOR && door_coor < g->hidden_door))
+	while ((Bx >= 0 && Bx < g->map.l) && (By >= 0 && By < g->map.h) &&
+			((g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
+			 || (By == g->opened_door_y && Bx == g->opened_door_x && g->map.v[By][Bx] == B_DOOR && door_coor < g->hidden_door)))
 	{
 		Bpx += dpx;
 		Bpy += dpy;
-		if (ai < g->tol_l && ai > -g->tol_l)
+		//if (ai < g->tol_l && ai > -g->tol_l)
+		if (ai > -90.0 && ai < 90.0)
 			Bx = Bpx / BOX_SIZE;
 		else
 			Bx = Bpx / BOX_SIZE - 1;
