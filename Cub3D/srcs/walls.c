@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 15:35:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 15:39:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,9 +174,11 @@ void	get_B1(t_game *g, int ix, float ai)
 			Bx = Bpx / BOX_SIZE;
 		else
 			Bx = Bpx / BOX_SIZE - 1;
+		//difference
 		if (g->map.v[By][Bx] == B_DOOR)
 			door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
 	}
+	//difference
 	g->pos.dA = INFINI;
 	if (g->map.v[By][Bx] == B_DOOR && ai < g->tol_l && ai > -g->tol_l)
 	{
@@ -245,26 +247,27 @@ void	get_B2(t_game *g, int ix, float ai)
 		door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
 	}
 	//if (Bpy < 0 || Bpy >= g->map.ph)
+	//difference
 	if (Bx < 0 || Bx >= g->map.l || By < 0 || By >= g->map.h)
-		g->pos.dB = INFINI;
-	else
 	{
-		if (g->map.v[By][Bx] == B_DOOR && ai > -90.0 && ai < 90.0)
-		{
-			g->pos.dB = (Bpx - g->pos.px + BOX_SIZE / 2) / cos(ai * PI / 180);
-			Bpy += dpy / 2;
-		}
-		else if (g->map.v[By][Bx] == B_DOOR)
-		{
-			g->pos.dB = (Bpx - g->pos.px - BOX_SIZE / 2) / cos(ai * PI / 180);
-			Bpy += dpy / 2;
-		}
-		else
-			g->pos.dB = (Bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
-		g->pos.Bx = Bx;
-		g->pos.By = By;
-		g->pos.Bpy = Bpy;
+		g->pos.dB = INFINI;
+		return ;
 	}
+	if (g->map.v[By][Bx] == B_DOOR && ai > -90.0 && ai < 90.0)
+	{
+		g->pos.dB = (Bpx - g->pos.px + BOX_SIZE / 2) / cos(ai * PI / 180);
+		Bpy += dpy / 2;
+	}
+	else if (g->map.v[By][Bx] == B_DOOR)
+	{
+		g->pos.dB = (Bpx - g->pos.px - BOX_SIZE / 2) / cos(ai * PI / 180);
+		Bpy += dpy / 2;
+	}
+	else
+		g->pos.dB = (Bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
+	g->pos.Bx = Bx;
+	g->pos.By = By;
+	g->pos.Bpy = Bpy;
 }
 
 float	render_walls(t_game *g, int ix)
