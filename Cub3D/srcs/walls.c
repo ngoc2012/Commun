@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 13:49:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 15:28:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,8 @@ void	get_B1(t_game *g, int ix, float ai)
 	float	dpy;
 	int	door_coor;
 
-	if (ai < g->tol_l && ai > -g->tol_l)
+	//if (ai < g->tol_l && ai > -g->tol_l)
+	if (ai > -90.0 && ai < 90.0)
 	{
 		Bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 		dpx = BOX_SIZE;
