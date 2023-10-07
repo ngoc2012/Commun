@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 17:04:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 10:15:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,8 @@ int	precalcul(t_game *g)
 		g->sin_a1[j] = sin(g->a1[j] * PI / 180.0);
 		g->cos_a1[j] = cos(g->a1[j] * PI / 180.0);
 	}
+	g->tol_h= 1.0 / (float) g->map.h / BOX_SIZE;
+	g->tol_l = 1.0 / (float) g->map.l / BOX_SIZE;
 	return (1);
 }
 
