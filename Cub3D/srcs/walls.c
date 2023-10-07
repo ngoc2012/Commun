@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 15:41:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/07 15:43:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,8 @@ void	get_B1(t_game *g, int ix, float ai)
 		Bpy += dpy / 2;
 	}
 	else
-		g->pos.dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
+		g->pos.dB = (Bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
+		//g->pos.dB = (Bpx - g->pos.px) / cos(ai * PI / 180);
 	g->pos.Bx = Bx;
 	g->pos.By = By;
 	g->pos.Bpy = Bpy;
