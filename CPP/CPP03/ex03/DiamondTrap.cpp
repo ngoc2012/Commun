@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 06:55:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 06:58:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ DiamondTrap::DiamondTrap() : ClapTrap()
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name)
 {
+	ClapTrap::name = name + "_clap_name";
 	hit_points = FragTrap::hit_points;
 	energy_points = ScavTrap::energy_points;
 	attack_damage = FragTrap::attack_damage;
