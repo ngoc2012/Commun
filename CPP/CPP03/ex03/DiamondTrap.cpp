@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 06:50:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 06:55:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name)
 	welcome(); 
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap& src)
+DiamondTrap::DiamondTrap(const DiamondTrap& src) : ClapTrap(src), ScavTrap(src), FragTrap(src)
 {
 	std::cout << "Another ";
 	welcome();
