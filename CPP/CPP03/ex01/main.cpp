@@ -25,7 +25,8 @@ int main()
 	clap5.guardGate();
 	std::cout << "====================================" << std::endl;
 	ClapTrap clap1("Clap1");
-	ScavTrap clap6 = clap5;
+	ScavTrap clap6;
+	clap6 = clap5;
 	clap6.setName("Clap6");
 	clap6.guardGate();
 	std::cout << "====================================" << std::endl;
