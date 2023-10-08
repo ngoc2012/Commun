@@ -14,11 +14,11 @@
 
 void	ClapTrap::welcome(void) const
 {
-	std::cout << "ClapTrap " << getName()
-	<< " (hit points: " << getHitPoints()
-	<< ", energy points: " << getEnergyPoints()
-	<< ", attack damage: " << getAttackDamage()
-	<< ", max hit: " << getMaxHit()
+	std::cout << "ClapTrap " << name
+	<< " (hit points: " << hit_points
+	<< ", energy points: " << energy_points
+	<< ", attack damage: " << attack_damage
+	<< ", max hit: " << max_hit
 	<< ") join the game." << std::endl;
 }
 
