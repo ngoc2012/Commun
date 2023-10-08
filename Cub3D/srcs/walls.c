@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 18:30:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 18:33:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,14 +223,22 @@ void	get_A1(t_game *g, int ix, float ai)
 	dpx = BOX_SIZE * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
 	if (ai < 0)
 		dpx = -dpx;
+	if (Apx < 0 && Apx >= g->map.pl)
+	{
+		g->pos.dA = INFINI;
+		return ;
+	}
 	Ax = Apx / BOX_SIZE;
 	if (ai > 0.0)
 		Ay = Apy / BOX_SIZE - 1;
 	else
 		Ay = Apy / BOX_SIZE;
 	door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (float) Ax);
-	while ((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
-			|| (Ay == g->opened_door_y && Ax == g->opened_door_x && g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door))
+	//while ((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
+	//		|| (Ay == g->opened_door_y && Ax == g->opened_door_x && g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door))
+	while ((Ax >= 0 && Ax < g->map.l) && (Ay >= 0 && Ay < g->map.h) &&
+			((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
+			 || (Ay == g->opened_door_y && Ax == g->opened_door_x && g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door)))
 	{
 		Apx += dpx;
 		Apy += dpy;
@@ -277,8 +285,6 @@ void	get_A2(t_game *g, int ix, float ai)
 			Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 			dpy = BOX_SIZE;
 		}
-		//Apx = g->pos.px + (g->pos.py - Apy) / g->tan_ai[ix][g->pos.rot];
-		//dpx = BOX_SIZE / g->tan_ai[ix][g->pos.rot];
 		Apx = g->pos.px + (g->pos.py - Apy) * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
 		dpx = BOX_SIZE * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
 		if (ai < 0)
