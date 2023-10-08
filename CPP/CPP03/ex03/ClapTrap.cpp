@@ -69,7 +69,8 @@ std::ostream    &operator<<( std::ostream &o, const ClapTrap &c )
 {
 	o << c.getName() << " now has "
 	<< c.getHitPoints() << " hit points, "
-	<< c.getEnergyPoints() << " energy point." << std::endl;
+	<< c.getEnergyPoints() << " energy point, "
+	<< c.getAttackDamage() << " attack damage." << std::endl;
 	return o;
 }
 
