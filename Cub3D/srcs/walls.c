@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 21:21:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 21:23:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,12 +274,14 @@ float	render_walls(t_game *g, int ix)
 	g->pos.dA = 0.0;
 	g->pos.dB = 0.0;
 	ai = g->ai[ix][g->pos.rot];
-	if ((-g->tol_l < ai && ai < g->tol_l) || (180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
+	if ((-g->tol_l < ai && ai < g->tol_l) ||
+		(180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
 	{
 		g->pos.dA = INFINI;
 		get_B(g, ix, ai);
 	}
-	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) || (-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
+	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) ||
+		(-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
 	{
 		g->pos.dB = INFINI;
 		get_A1(g, ix, ai);
