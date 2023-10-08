@@ -30,7 +30,6 @@ int main()
 	//clap11.setName("Diamond11");
 	clap11.whoAmI();
 	std::cout << clap11;
-	
 	std::cout << clap12;
 	/*
 	std::cout << "Constructor clap 7" << std::endl;
