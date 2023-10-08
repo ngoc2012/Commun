@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/10/08 14:38:00 by minh-ngu         ###   ########.fr        #
+#    Updated: 2023/10/08 17:28:51 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp Animal.cpp
+SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp
 OBJS = ${SRCS:.c=.o}
 MANDA = main
 CC = c++
