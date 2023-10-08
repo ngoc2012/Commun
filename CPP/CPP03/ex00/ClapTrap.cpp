@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 07:27:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 07:28:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ ClapTrap::ClapTrap()
 	hit_points = 10;
 	energy_points = 10;
 	attack_damage = 0;
-	welcome(*this); 
+	welcome(); 
 }
 
 ClapTrap::ClapTrap(std::string name)
@@ -36,7 +36,7 @@ ClapTrap::ClapTrap(std::string name)
 	hit_points(10),
 	energy_points(10),
 	attack_damage(0)
-{ welcome(*this); }
+{ welcome(); }
 
 /*
 When you define a copy constructor or a copy assignment operator for a class, those functions are considered as part of the class itself, and they have special access rights to access the private members of the class. This is known as "special member function access" or "access control within the class."
@@ -48,7 +48,7 @@ ClapTrap::ClapTrap(const ClapTrap& src)
 	hit_points(src.hit_points),
 	energy_points(src.energy_points),
 	attack_damage(src.attack_damage)
-{ std::cout << "Another "; welcome(*this); }
+{ std::cout << "Another "; welcome(); }
 
 ClapTrap&	ClapTrap::operator=( ClapTrap const & src )
 {
