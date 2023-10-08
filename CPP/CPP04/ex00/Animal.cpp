@@ -6,27 +6,15 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 14:51:38 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/08 14:52:51 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-ClapTrap::ClapTrap() {}
+Animal::Animal() {std::cout << "Animal constructor" << std::endl;}
 
-ClapTrap::ClapTrap(std::string s)
-:
-	name(s),
-	hit_points(10),
-	energy_points(10),
-	attack_damage(0)
-{ welcome(); }
-
-/*
-When you define a copy constructor or a copy assignment operator for a class, those functions are considered as part of the class itself, and they have special access rights to access the private members of the class. This is known as "special member function access" or "access control within the class."
-*/
-
-ClapTrap::ClapTrap(const ClapTrap& src)
+Animal::Animal(const Animal& src)
 :
 	name(src.name),
 	hit_points(src.hit_points),
@@ -34,7 +22,7 @@ ClapTrap::ClapTrap(const ClapTrap& src)
 	attack_damage(src.attack_damage)
 { std::cout << "Another "; welcome(); }
 
-ClapTrap&	ClapTrap::operator=( ClapTrap const & src )
+Animal&	Animal::operator=( Animal const & src )
 {
 	name = src.name;
 	hit_points = src.hit_points;
@@ -44,61 +32,61 @@ ClapTrap&	ClapTrap::operator=( ClapTrap const & src )
 	return (*this);
 }
 
-ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << name << " quit game." << std::endl; }
+Animal::~Animal() { std::cout << "Animal " << name << " quit game." << std::endl; }
 
-std::ostream    &operator<<( std::ostream &o, const ClapTrap &c )
+std::ostream    &operator<<( std::ostream &o, const Animal &c )
 {
-	o << "ClapTrap " << c.getName() << " now has "
+	o << "Animal " << c.getName() << " now has "
 	<< c.getHitPoints() << " hit points, "
 	<< c.getEnergyPoints() << " energy point." << std::endl;
 	return o;
 }
 
-void	ClapTrap::attack(std::string const & target)
+void	Animal::attack(std::string const & target)
 {
 	if (energy_points && hit_points)
 	{
-		std::cout << "ClapTrap " << name << " attack " << target << ", causing " << attack_damage << " points of damage!" << std::endl;
+		std::cout << "Animal " << name << " attack " << target << ", causing " << attack_damage << " points of damage!" << std::endl;
 		energy_points--;
 	}
 	else
-		std::cout << "Alert!!! ClapTrap " << name << " tried to attack but has no more energy or hit." << std::endl;
+		std::cout << "Alert!!! Animal " << name << " tried to attack but has no more energy or hit." << std::endl;
 }
 
-void	ClapTrap::takeDamage(unsigned int amount)
+void	Animal::takeDamage(unsigned int amount)
 {
-	std::cout << "ClapTrap " << name << " takes " << amount <<" damages." << std::endl;
+	std::cout << "Animal " << name << " takes " << amount <<" damages." << std::endl;
 	if (amount > hit_points)
 		amount = hit_points;
 	hit_points -= amount;
 }
 
-void	ClapTrap::beRepaired(unsigned int amount)
+void	Animal::beRepaired(unsigned int amount)
 {
 	if (energy_points && hit_points)
 	{
 		hit_points += amount;
 		if (hit_points > max_hit)
 			hit_points = max_hit;
-		std::cout << "ClapTrap " << name << " is repaired " << amount << " points (" << hit_points << "  hit points)." << std::endl;
+		std::cout << "Animal " << name << " is repaired " << amount << " points (" << hit_points << "  hit points)." << std::endl;
 		energy_points--;
 	}
 	else
-		std::cout << "Alert!!! ClapTrap " << name << " tried to be repaired but has no more energy or hit." << std::endl;
+		std::cout << "Alert!!! Animal " << name << " tried to be repaired but has no more energy or hit." << std::endl;
 }
 
-std::string	ClapTrap::getName(void) const { return (name); }
-unsigned int	ClapTrap::getHitPoints(void) const { return (hit_points); }
-unsigned int	ClapTrap::getEnergyPoints(void) const { return (energy_points); }
-unsigned int	ClapTrap::getAttackDamage(void) const { return (attack_damage); }
+std::string	Animal::getName(void) const { return (name); }
+unsigned int	Animal::getHitPoints(void) const { return (hit_points); }
+unsigned int	Animal::getEnergyPoints(void) const { return (energy_points); }
+unsigned int	Animal::getAttackDamage(void) const { return (attack_damage); }
 
-void		ClapTrap::setName(std::string s)
+void		Animal::setName(std::string s)
 {
-	std::cout << "ClapTrap " << name << " now named " << s << "." << std::endl;
+	std::cout << "Animal " << name << " now named " << s << "." << std::endl;
 	name = s;
 }
-void		ClapTrap::setAttackDamage(unsigned int n)
+void		Animal::setAttackDamage(unsigned int n)
 {
-	std::cout << "ClapTrap " << name << " now has " << n << " attack damage." << std::endl;
+	std::cout << "Animal " << name << " now has " << n << " attack damage." << std::endl;
 	attack_damage = n;
 }
