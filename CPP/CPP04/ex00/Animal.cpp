@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 14:59:59 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:30:55 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Animal::Animal() {std::cout << "Animal " << type << " default constructor." << std::endl;}
 Animal::Animal(const Animal& src) {
 	*this = src;
-	std::cout << "Animal " << type << " copy constructor." << std::endl
+	std::cout << "Animal " << type << " copy constructor." << std::endl;
 }
 Animal&	Animal::operator=( Animal const & src )
 {
@@ -23,8 +23,8 @@ Animal&	Animal::operator=( Animal const & src )
 	return (*this);
 }
 Animal::~Animal() { std::cout << "Animal " << type << " destructor." << std::endl; }
-void    makeSound( void ) const
+void    Animal::makeSound( void ) const
 {
 	std::cout << "Animal make sound." << std::endl;
 }
-std::string     getType( void ) const {return (type);}
+std::string     Animal::getType( void ) const {return (type);}
