@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 18:29:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 18:30:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,8 +277,10 @@ void	get_A2(t_game *g, int ix, float ai)
 			Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 			dpy = BOX_SIZE;
 		}
-		Apx = g->pos.px + (g->pos.py - Apy) / g->tan_ai[ix][g->pos.rot];
-		dpx = BOX_SIZE / g->tan_ai[ix][g->pos.rot];
+		//Apx = g->pos.px + (g->pos.py - Apy) / g->tan_ai[ix][g->pos.rot];
+		//dpx = BOX_SIZE / g->tan_ai[ix][g->pos.rot];
+		Apx = g->pos.px + (g->pos.py - Apy) * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
+		dpx = BOX_SIZE * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
 		if (ai < 0)
 			dpx = -dpx;
 		if (Apx < 0 && Apx >= g->map.pl)
@@ -331,13 +333,6 @@ void	get_A2(t_game *g, int ix, float ai)
 float	render_walls(t_game *g, int ix)
 {
 	float	ai;
-	float	Apx;
-	float	Apy;
-	int	Ax;
-	int	Ay;
-	float	dpx;
-	float	dpy;
-	int	door_coor;
 
 	g->pos.dA = 0.0;
 	g->pos.dB = 0.0;
