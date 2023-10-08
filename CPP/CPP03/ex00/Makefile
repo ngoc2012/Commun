@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/10/01 18:39:54 by ngoc             ###   ########.fr        #
+#    Updated: 2023/10/08 07:06:11 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
 .cpp.o:
 	$(CC) $(FLAGS) -g -c $< -o ${<:.cpp=.o} -I.
-$(MANDA):
+$(MANDA): $(SRCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
 	make re && valgrind ./main
