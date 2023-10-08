@@ -22,7 +22,8 @@ int main()
 	std::cout << "Constructor clap 8" << std::endl;
 	FragTrap clap8(clap7);
 	std::cout << "Constructor clap 9" << std::endl;
-	FragTrap clap9 = clap8;
+	FragTrap clap9;
+	clap9 = clap8;
 	std::cout << "====================================" << std::endl;
 	std::cout << "Test methods" << std::endl;
 	clap7.setName("Clap7");
