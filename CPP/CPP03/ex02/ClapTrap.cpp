@@ -67,7 +67,7 @@ ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << name << " quit game." << std
 
 std::ostream    &operator<<( std::ostream &o, const ClapTrap &c )
 {
-	o << "ClapTrap " << c.getName() << " now has "
+	o << c.getName() << " now has "
 	<< c.getHitPoints() << " hit points, "
 	<< c.getEnergyPoints() << " energy point." << std::endl;
 	return o;
@@ -86,7 +86,7 @@ void	ClapTrap::attack(std::string const & target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << "ClapTrap " << name << " takes " << amount <<" damages." << std::endl;
+	std::cout << name << " takes " << amount <<" damages." << std::endl;
 	if (amount > hit_points)
 		amount = hit_points;
 	hit_points -= amount;
@@ -99,7 +99,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		hit_points += amount;
 		if (hit_points > max_hit)
 			hit_points = max_hit;
-		std::cout << "ClapTrap " << name << " is repaired " << amount << " points (" << hit_points << "  hit points)." << std::endl;
+		std::cout << name << " is repaired " << amount << " points (" << hit_points << "  hit points)." << std::endl;
 		energy_points--;
 	}
 	else
@@ -114,11 +114,11 @@ unsigned int	ClapTrap::getMaxHit(void) const { return (max_hit); }
 
 void		ClapTrap::setName(std::string s)
 {
-	std::cout << "ClapTrap " << name << " now named " << s << "." << std::endl;
+	std::cout << name << " now named " << s << "." << std::endl;
 	name = s;
 }
 void		ClapTrap::setAttackDamage(unsigned int n)
 {
-	std::cout << "ClapTrap " << name << " now has " << n << " attack damage." << std::endl;
+	std::cout << name << " now has " << n << " attack damage." << std::endl;
 	attack_damage = n;
 }

@@ -41,11 +41,7 @@ FragTrap::FragTrap(const FragTrap& src)
 
 FragTrap&	FragTrap::operator=( FragTrap const & src )
 {
-	name = src.name;
-	hit_points = src.hit_points;
-	energy_points = src.energy_points;
-	attack_damage = src.attack_damage;
-	max_hit = src.max_hit;
+	*this = src;
 	std::cout << "Another ";
 	return (*this);
 }
