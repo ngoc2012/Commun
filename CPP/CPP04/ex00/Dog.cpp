@@ -6,27 +6,27 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 15:43:47 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:24:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Dog.hpp"
 
-Cat::Cat() {
-	type = "Cat";
+Dog::Dog() {
+	type = "Dog";
 	std::cout << type << " default constructor." << std::endl;
 }
-Cat::Cat(const Cat& src) {
+Dog::Dog(const Dog& src) {
 	*this = src;
 	std::cout << type << " copy constructor." << std::endl
 }
-Cat&	Cat::operator=( Cat const & src )
+Dog&	Dog::operator=( Dog const & src )
 {
 	type = src.type;
 	return (*this);
 }
-Cat::~Cat() { std::cout << type << " destructor." << std::endl; }
+Dog::~Dog() { std::cout << type << " destructor." << std::endl; }
 void    makeSound( void ) const
 {
-	std::cout << "Meo..." << std::endl;
+	std::cout << "Gaugau..." << std::endl;
 }
