@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 18:42:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 18:44:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,6 +239,7 @@ void	get_A1(t_game *g, int ix, float ai)
 	{
 		Apx += dpx;
 		Apy += dpy;
+		Ax = Apx / BOX_SIZE;
 		if (ai > 0.0)
 			Ay = Apy / BOX_SIZE - 1;
 		else
