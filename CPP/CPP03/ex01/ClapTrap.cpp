@@ -32,9 +32,9 @@ ClapTrap::ClapTrap()
 	welcome(); 
 }
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(std::string s)
 :
-	name(name),
+	name(s),
 	hit_points(10),
 	energy_points(10),
 	attack_damage(0),
