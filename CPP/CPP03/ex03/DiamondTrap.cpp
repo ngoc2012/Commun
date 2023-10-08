@@ -42,10 +42,12 @@ DiamondTrap::DiamondTrap(const DiamondTrap& src) : ClapTrap(src), ScavTrap(src),
 
 DiamondTrap&	DiamondTrap::operator=( DiamondTrap const & src )
 {
+	ScavTrap::operator=(src);
+	FragTrap::operator=(src);
 	std::cout << "============" << src.name << std::endl;
 	//name = src.name;
 	//*this = src;
-	//ClapTrap::name = src.name + "_clap_name";
+	ClapTrap::name = src.name + "_clap_name";
 	//hit_points = src.hit_points;
 	//energy_points = src.energy_points;
 	//attack_damage = src.attack_damage;
