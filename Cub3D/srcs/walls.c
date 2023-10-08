@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 18:19:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 18:21:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,36 +266,6 @@ void	get_A2(t_game *g, int ix, float ai)
 	float	dpy;
 	int	door_coor;
 
-}
-
-float	render_walls(t_game *g, int ix)
-{
-	float	ai;
-	float	Apx;
-	float	Apy;
-	int	Ax;
-	int	Ay;
-	float	dpx;
-	float	dpy;
-	int	door_coor;
-
-	g->pos.dA = 0.0;
-	g->pos.dB = 0.0;
-	ai = g->ai[ix][g->pos.rot];
-	if ((-g->tol_l < ai && ai < g->tol_l) || (180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
-	{
-		g->pos.dA = INFINI;
-		get_B(g, ix, ai);
-	}
-	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) || (-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
-	{
-		g->pos.dB = INFINI;
-		get_A1(g, ix, ai);
-	}
-	else
-	{
-		// CHECKING HORIZONTAL INTERSECTIONS
-		//Find A
 		if (ai > 0.0)
 		{
 			Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE;
@@ -355,6 +325,36 @@ float	render_walls(t_game *g, int ix)
 				g->pos.Apx = Apx;
 			}
 		}
+}
+
+float	render_walls(t_game *g, int ix)
+{
+	float	ai;
+	float	Apx;
+	float	Apy;
+	int	Ax;
+	int	Ay;
+	float	dpx;
+	float	dpy;
+	int	door_coor;
+
+	g->pos.dA = 0.0;
+	g->pos.dB = 0.0;
+	ai = g->ai[ix][g->pos.rot];
+	if ((-g->tol_l < ai && ai < g->tol_l) || (180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
+	{
+		g->pos.dA = INFINI;
+		get_B(g, ix, ai);
+	}
+	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) || (-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
+	{
+		g->pos.dB = INFINI;
+		get_A1(g, ix, ai);
+	}
+	else
+	{
+		//Find A
+		get_A2(g, ix, ai);
 		//Find B
 		get_B(g, ix, ai);
 	}
