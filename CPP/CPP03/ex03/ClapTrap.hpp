@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 13:19:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 17:52:17 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class ClapTrap
 		virtual void		attack(const std::string& target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
-		virtual void		welcome(void);
+		virtual void		welcome(void) const;
 
 		std::string	getName(void) const;
 		unsigned int	getHitPoints(void) const;
