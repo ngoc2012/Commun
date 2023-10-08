@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 16:22:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 06:48:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,5 @@ void	DiamondTrap::welcome(void) const
 
 void	DiamondTrap::attack(std::string const & target)
 {
-	if (energy_points && hit_points)
-	{
-		std::cout << "DiamondTrap " << name << " attack " << target << ", causing " << attack_damage << " points of damage!" << std::endl;
-		energy_points--;
-	}
-	else
-		std::cout << "Alert!!! DiamondTrap " << name << " tried to attack but has no more energy or hit." << std::endl;
+	ScavTrap::attack(target);
 }
