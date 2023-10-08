@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 18:27:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 18:29:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,11 +223,11 @@ void	get_A1(t_game *g, int ix, float ai)
 	dpx = BOX_SIZE * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
 	if (ai < 0)
 		dpx = -dpx;
+	Ax = Apx / BOX_SIZE;
 	if (ai > 0.0)
 		Ay = Apy / BOX_SIZE - 1;
 	else
 		Ay = Apy / BOX_SIZE;
-	Ax = g->pos.x;
 	door_coor = (int) (Apx + dpx / 2 - BOX_SIZE * (float) Ax);
 	while ((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
 			|| (Ay == g->opened_door_y && Ax == g->opened_door_x && g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door))
