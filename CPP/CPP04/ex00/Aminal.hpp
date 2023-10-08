@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 14:40:26 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/08 14:47:48 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ class Animal
 {
 	protected:
 		std::string	type;
+	public:
+		ClapTrap();
+		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap&);
+		ClapTrap &operator=(const ClapTrap& op);
+		virtual ~ClapTrap();
 };
 
 #endif
