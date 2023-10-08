@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 21:19:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 21:21:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,12 +182,12 @@ void	get_B(t_game *g, int ix, float ai)
 	}
 	if (g->map.v[By][Bx] == B_DOOR && ai > -90.0 && ai < 90.0)
 	{
-		g->pos.dB = (Bpx - g->pos.px + BOX_SIZE / 2) / cos(ai * PI / 180);
+		g->pos.dB = (Bpx - g->pos.px + BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
 		Bpy += dpy / 2;
 	}
 	else if (g->map.v[By][Bx] == B_DOOR)
 	{
-		g->pos.dB = (Bpx - g->pos.px - BOX_SIZE / 2) / cos(ai * PI / 180);
+		g->pos.dB = (Bpx - g->pos.px - BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
 		Bpy += dpy / 2;
 	}
 	else
