@@ -39,7 +39,7 @@ DiamondTrap::DiamondTrap(const DiamondTrap& src) : ClapTrap(src), ScavTrap(src),
 	std::cout << "Another ";
 	welcome();
 }
-/*
+
 DiamondTrap&	DiamondTrap::operator=( DiamondTrap const & src )
 {
 	ScavTrap::operator=(src);
@@ -54,7 +54,7 @@ DiamondTrap&	DiamondTrap::operator=( DiamondTrap const & src )
 	std::cout << "Another ";
 	return (*this);
 }
-*/
+
 DiamondTrap::~DiamondTrap() { std::cout << "DiamondTrap " << name << " quit game." << std::endl; }
 
 void	DiamondTrap::whoAmI(void) const

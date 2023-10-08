@@ -19,7 +19,8 @@ int main()
 	//clap10.setName("Diamond10");
 	std::cout << clap10;
 	clap10.whoAmI();
-	DiamondTrap clap11 = clap10;
+	DiamondTrap clap11;
+	clap11 = clap10;
 	//clap11.setName("Diamond11");
 	clap11.whoAmI();
 	std::cout << clap11;
