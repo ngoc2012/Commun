@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 18:17:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 18:19:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,6 +254,18 @@ void	get_A1(t_game *g, int ix, float ai)
 	g->pos.Ax = Ax;
 	g->pos.Ay = Ay;
 	g->pos.Apx = Apx;
+}
+
+void	get_A2(t_game *g, int ix, float ai)
+{
+	float	Apx;
+	float	Apy;
+	int	Ax;
+	int	Ay;
+	float	dpx;
+	float	dpy;
+	int	door_coor;
+
 }
 
 float	render_walls(t_game *g, int ix)
