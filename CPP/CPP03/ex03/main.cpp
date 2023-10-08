@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 07:13:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 07:15:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ int main()
 {
 	std::cout << "Test constructor and destructor" << std::endl;
 	DiamondTrap clap10;
+	clap10.setName("Diamond10");
 	std::cout << clap10;
+	DiamondTrap clap11 = clap10;
+	std::cout << clap11;
 	clap10.attack("sdfd");
 	/*
 	std::cout << "Constructor clap 7" << std::endl;

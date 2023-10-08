@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 13:45:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 07:14:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ ClapTrap::~ClapTrap() { std::cout << "ClapTrap " << name << " quit game." << std
 
 std::ostream    &operator<<( std::ostream &o, const ClapTrap &c )
 {
-	o << "ClapTrap " << c.getName() << " now has "
+	o << c.getName() << " now has "
 	<< c.getHitPoints() << " hit points, "
 	<< c.getEnergyPoints() << " energy point." << std::endl;
 	return o;
