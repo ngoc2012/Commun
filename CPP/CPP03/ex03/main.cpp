@@ -19,14 +19,18 @@ int main()
 	//clap10.setName("Diamond10");
 	std::cout << clap10;
 	clap10.whoAmI();
+	DiamondTrap clap12("Diamond12");
+	clap12.whoAmI();
+	clap10.attack(clap12.getName());
+	clap12.takeDamage(clap10.getAttackDamage());
+	clap12.attack(clap10.getName());
+	clap10.takeDamage(clap12.getAttackDamage());
 	DiamondTrap clap11;
 	clap11 = clap10;
 	//clap11.setName("Diamond11");
 	clap11.whoAmI();
 	std::cout << clap11;
-	DiamondTrap clap12("Diamond12");
-	clap12.whoAmI();
-	clap10.attack(clap12.getName());
+	
 	std::cout << clap12;
 	/*
 	std::cout << "Constructor clap 7" << std::endl;

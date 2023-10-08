@@ -45,6 +45,7 @@ DiamondTrap&	DiamondTrap::operator=( DiamondTrap const & src )
 	ScavTrap::operator=(src);
 	FragTrap::operator=(src);
 	ClapTrap::name = src.name + "_clap_name";
+	welcome();
 	return (*this);
 }
 
