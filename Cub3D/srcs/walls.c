@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 21:17:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 21:19:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,12 +156,11 @@ void	get_B(t_game *g, int ix, float ai)
 		g->pos.dB = INFINI;
 		return ;
 	}
+	By = Bpy / BOX_SIZE;
 	if (ai > -90.0 && ai < 90.0)
 		Bx = Bpx / BOX_SIZE;
 	else
 		Bx = Bpx / BOX_SIZE - 1;
-	//By = g->pos.y;
-	By = Bpy / BOX_SIZE;
 	door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
 	while ((Bx >= 0 && Bx < g->map.l) && (By >= 0 && By < g->map.h) &&
 			((g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
@@ -169,11 +168,11 @@ void	get_B(t_game *g, int ix, float ai)
 	{
 		Bpx += dpx;
 		Bpy += dpy;
+		By = Bpy / BOX_SIZE;
 		if (ai > -90.0 && ai < 90.0)
 			Bx = Bpx / BOX_SIZE;
 		else
 			Bx = Bpx / BOX_SIZE - 1;
-		By = Bpy / BOX_SIZE;
 		door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
 	}
 	if (Bx < 0 || Bx >= g->map.l || By < 0 || By >= g->map.h)
