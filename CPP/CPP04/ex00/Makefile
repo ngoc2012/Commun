@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/10/08 07:06:11 by ngoc             ###   ########.fr        #
+#    Updated: 2023/10/08 14:38:00 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp ClapTrap.cpp
+SRCS = main.cpp Animal.cpp
 OBJS = ${SRCS:.c=.o}
 MANDA = main
 CC = c++
