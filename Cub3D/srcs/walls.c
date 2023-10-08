@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 15:58:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 18:14:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ static int	render(t_game *g, int ix)
 	return (d);
 }
 
-void	get_B1(t_game *g, int ix, float ai)
+void	get_B(t_game *g, int ix, float ai)
 {
 	int	Bx;
 	int	By;
@@ -215,7 +215,7 @@ float	render_walls(t_game *g, int ix)
 	if ((-g->tol_l < ai && ai < g->tol_l) || (180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
 	{
 		g->pos.dA = INFINI;
-		get_B1(g, ix, ai);
+		get_B(g, ix, ai);
 	}
 	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) || (-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
 	{
@@ -331,7 +331,7 @@ float	render_walls(t_game *g, int ix)
 			}
 		}
 		//Find B
-		get_B1(g, ix, ai);
+		get_B(g, ix, ai);
 	}
 	return (render(g, ix));
 }
