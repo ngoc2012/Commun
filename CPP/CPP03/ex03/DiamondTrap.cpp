@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 07:43:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 07:45:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ DiamondTrap::DiamondTrap(const DiamondTrap& src) : ClapTrap(src), ScavTrap(src),
 
 DiamondTrap&	DiamondTrap::operator=( DiamondTrap const & src )
 {
+	std::cout << "============" << src.name << std::endl;
+	name = src.name;
 	*this = src;
 	//ClapTrap::name = src.name + "_clap_name";
 	//hit_points = src.hit_points;
