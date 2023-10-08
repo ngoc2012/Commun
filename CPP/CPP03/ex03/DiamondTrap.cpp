@@ -68,3 +68,10 @@ void	DiamondTrap::attack(std::string const & target)
 {
 	ScavTrap::attack(target);
 }
+
+void	DiamondTrap::setName(std::string s)
+{
+	std::cout << name << " now named " << s  << "." << std::endl;
+	name = s;
+	ClapTrap::name = name + "_clap_name";
+}

@@ -41,7 +41,7 @@ class ClapTrap
 		unsigned int	getAttackDamage(void) const;
 		unsigned int	getMaxHit(void) const;
 
-		void		setName(std::string);
+		virtual void		setName(std::string);
 		void		setAttackDamage(unsigned int);
 };
 
