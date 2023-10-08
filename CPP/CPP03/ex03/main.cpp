@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 07:38:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 07:43:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,12 @@ int main()
 	clap10.whoAmI();
 	DiamondTrap clap11 = clap10;
 	//clap11.setName("Diamond11");
-	std::cout << clap11;
 	clap11.whoAmI();
-	clap10.attack("sdfd");
+	std::cout << clap11;
 	DiamondTrap clap12("Diamond12");
 	clap12.whoAmI();
+	clap10.attack(clap12.getName());
+	std::cout << clap12;
 	/*
 	std::cout << "Constructor clap 7" << std::endl;
 	FragTrap clap7;
