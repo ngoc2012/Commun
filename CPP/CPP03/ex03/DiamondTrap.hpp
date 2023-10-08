@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 21:59:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 06:56:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-class DiamondTrap: public FragTrap, public ScavTrap
+class DiamondTrap: public ScavTrap, public FragTrap
 {
 	public:
 		DiamondTrap();
