@@ -41,7 +41,7 @@ FragTrap::FragTrap(const FragTrap& src)
 
 FragTrap&	FragTrap::operator=( FragTrap const & src )
 {
-	*this = src;
+	ClapTrap::operator=(src);
 	std::cout << "Another ";
 	return (*this);
 }
