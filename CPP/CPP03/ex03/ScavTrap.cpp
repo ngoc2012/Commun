@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 17:21:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 07:08:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ ScavTrap::ScavTrap() : ClapTrap()
 	name = std::string("RandomScav");
 	hit_points = 100;
 	energy_points = 50;
+	_energy_points = 50;
 	attack_damage = 20;
 	max_hit = 100;
 	welcome(); 
@@ -26,6 +27,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	hit_points = 100;
 	energy_points = 50;
+	_energy_points = 50;
 	attack_damage = 20;
 	max_hit = 100;
 	welcome(); 
