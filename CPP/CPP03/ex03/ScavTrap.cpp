@@ -44,7 +44,6 @@ ScavTrap::ScavTrap(const ScavTrap& src)
 ScavTrap&	ScavTrap::operator=( ScavTrap const & src )
 {
 	ClapTrap::operator=(src);
-	std::cout << "Another ";
 	return (*this);
 }
 
