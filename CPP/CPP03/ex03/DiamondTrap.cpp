@@ -71,7 +71,8 @@ void	DiamondTrap::attack(std::string const & target)
 
 void	DiamondTrap::setName(std::string s)
 {
-	std::cout << name << " now named " << s  << "." << std::endl;
+	std::cout << name << " now named ";
 	name = s;
 	ClapTrap::name = name + "_clap_name";
+	std::cout << name  << " and has ClapTrap name" << ClapTrap::name << "." << std::endl;
 }

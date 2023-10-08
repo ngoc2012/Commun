@@ -27,7 +27,7 @@ int main()
 	clap10.takeDamage(clap12.getAttackDamage());
 	DiamondTrap clap11;
 	clap11 = clap10;
-	//clap11.setName("Diamond11");
+	clap11.setName("Diamond11");
 	clap11.whoAmI();
 	std::cout << clap11;
 	std::cout << clap12;
