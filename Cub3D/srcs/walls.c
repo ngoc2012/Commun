@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 18:39:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 18:41:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,17 +253,16 @@ void	get_A1(t_game *g, int ix, float ai)
 	}
 	if (g->map.v[Ay][Ax] == B_DOOR && ai > 0.0)
 	{
-		g->pos.dA = (g->pos.py - Apy + BOX_SIZE / 2) / sin(ai * PI / 180);
+		g->pos.dA = (g->pos.py - Apy + BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
 		Apx += dpx / 2;
 	}
 	else if (g->map.v[Ay][Ax] == B_DOOR)
 	{
-		g->pos.dA = (g->pos.py - Apy - BOX_SIZE / 2) / sin(ai * PI / 180);
+		g->pos.dA = (g->pos.py - Apy - BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
 		Apx += dpx / 2;
 	}
 	else
 		g->pos.dA = (g->pos.py - Apy) / g->sin_ai[ix][g->pos.rot];
-		//g->pos.dA = (g->pos.py - Apy) / sin(ai * PI / 180);
 	g->pos.Ax = Ax;
 	g->pos.Ay = Ay;
 	g->pos.Apx = Apx;
@@ -324,7 +323,6 @@ void	get_A2(t_game *g, int ix, float ai)
 	}
 	if (g->map.v[Ay][Ax] == B_DOOR && ai > 0.0)
 	{
-		//g->pos.dA = (g->pos.py - Apy + BOX_SIZE / 2) / sin(ai * PI / 180);
 		g->pos.dA = (g->pos.py - Apy + BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
 		Apx += dpx / 2;
 	}
