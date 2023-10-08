@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 13:16:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 07:27:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class ClapTrap
 		ClapTrap &operator=(const ClapTrap& op);
 		~ClapTrap();
 
+		void		welcome(void);
 		void		attack(const std::string& target);
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
