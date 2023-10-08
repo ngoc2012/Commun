@@ -6,17 +6,18 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/06 17:26:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 06:51:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
 int main()
 {
 	std::cout << "Test constructor and destructor" << std::endl;
+	DiamondTrap clap10;
+	/*
 	std::cout << "Constructor clap 7" << std::endl;
 	FragTrap clap7;
 	std::cout << "Constructor clap 8" << std::endl;
@@ -85,4 +86,5 @@ int main()
 	std::cout << clap3;
 	std::cout << clap6;
 	return (0);
+	*/
 }
