@@ -13,10 +13,11 @@
 #include "ClapTrap.hpp"
 
 void	welcome(ClapTrap &c) {
-	std::cout << "ClapTrap " << c.getName()
-	<< " (hit points: " << c.getHitPoints()
-	<< ", energy points: " << c.getEnergyPoints()
-	<< ", attack_damage: " << c.getAttackDamage()
+	std::cout << "ClapTrap " << name
+	<< " (hit points: " << hit_points
+	<< ", energy points: " << energy_points
+	<< ", attack damage: " << attack_damage
+	<< ", max hit: " << max_hit
 	<< ") join the game." << std::endl;
 }
 
