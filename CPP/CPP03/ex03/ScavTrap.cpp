@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 07:08:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 07:17:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,7 @@ ScavTrap::ScavTrap(const ScavTrap& src)
 
 ScavTrap&	ScavTrap::operator=( ScavTrap const & src )
 {
-	name = src.name;
-	hit_points = src.hit_points;
-	energy_points = src.energy_points;
-	attack_damage = src.attack_damage;
-	max_hit = src.max_hit;
+	*this = src;
 	std::cout << "Another ";
 	return (*this);
 }

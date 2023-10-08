@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 16:30:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 07:16:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,7 @@ FragTrap::FragTrap(const FragTrap& src)
 
 FragTrap&	FragTrap::operator=( FragTrap const & src )
 {
-	name = src.name;
-	hit_points = src.hit_points;
-	energy_points = src.energy_points;
-	attack_damage = src.attack_damage;
-	max_hit = src.max_hit;
+	*this = src;
 	std::cout << "Another ";
 	return (*this);
 }
