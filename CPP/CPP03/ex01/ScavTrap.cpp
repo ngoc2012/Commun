@@ -41,12 +41,7 @@ ScavTrap::ScavTrap(const ScavTrap& src)
 
 ScavTrap&	ScavTrap::operator=( ScavTrap const & src )
 {
-	name = src.name;
-	hit_points = src.hit_points;
-	energy_points = src.energy_points;
-	attack_damage = src.attack_damage;
-	max_hit = src.max_hit;
-	std::cout << "Another ";
+	ClapTrap::operator=(src);
 	return (*this);
 }
 

@@ -60,7 +60,7 @@ ClapTrap&	ClapTrap::operator=( ClapTrap const & src )
 	energy_points = src.energy_points;
 	attack_damage = src.attack_damage;
 	max_hit = src.max_hit;
-	std::cout << "Another ";
+	std::cout << *this;
 	return (*this);
 }
 
