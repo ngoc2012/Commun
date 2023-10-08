@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 07:28:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 14:51:38 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "Animal.hpp"
 
-void	ClapTrap::welcome(void) {
-	std::cout << "ClapTrap " << name
-	<< " (hit points: " << hit_points
-	<< ", energy points: " << energy_points
-	<< ", attack damage: " << attack_damage
-	<< ", max hit: " << max_hit
-	<< ") join the game." << std::endl;
-}
-
-ClapTrap::ClapTrap()
-{
-	name = std::string("RandomClap");
-	hit_points = 10;
-	energy_points = 10;
-	attack_damage = 0;
-	welcome(); 
-}
+ClapTrap::ClapTrap() {}
 
 ClapTrap::ClapTrap(std::string s)
 :
