@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 18:21:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 18:23:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,8 @@ void	get_A1(t_game *g, int ix, float ai)
 	float	dpy;
 	int	door_coor;
 
-	if (ai > 90.0 - g->tol_h)
+	//if (ai > 90.0 - g->tol_h)
+	if (ai > 0.0)
 	{
 		Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE;
 		dpy = -BOX_SIZE;
