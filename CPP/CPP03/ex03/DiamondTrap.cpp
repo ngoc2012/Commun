@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 07:09:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/08 07:11:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ DiamondTrap::DiamondTrap(const DiamondTrap& src) : ClapTrap(src), ScavTrap(src),
 
 DiamondTrap&	DiamondTrap::operator=( DiamondTrap const & src )
 {
+	this = src;
 	//name = src.name;
 	//hit_points = src.hit_points;
 	//energy_points = src.energy_points;
