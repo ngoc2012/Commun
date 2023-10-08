@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 17:23:38 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:23:16 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
 #include <iostream>
 
-class Cat : public Animal
+class Dog : public Animal
 {
 	protected:
 		std::string	type;
 	public:
-		Cat();
-		Cat(const Cat&);
-		Cat &operator=(const Cat& op);
-		virtual ~Cat();
+		Dog();
+		Dog(const Dog&);
+		Dog &operator=(const Dog& op);
+		virtual ~Dog();
 
 		void    makeSound( void ) const;
 };
