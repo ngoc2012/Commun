@@ -25,6 +25,7 @@ DiamondTrap::DiamondTrap() : ClapTrap()
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name)
 {
 	ClapTrap::name = name + "_clap_name";
+	name = name;
 	hit_points = FragTrap::hit_points;
 	energy_points = ScavTrap::_energy_points;
 	attack_damage = FragTrap::attack_damage;
