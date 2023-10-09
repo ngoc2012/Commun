@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:35:06 by nbechon           #+#    #+#             */
-/*   Updated: 2023/10/05 17:23:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:37:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	draw_hero_and_wall(t_game *g, int l, int h, int *addr)
 		while (j <= g->pos.x + 4)
 		{
 			if (i >= 0 && i < g->map.h && j >= 0 && j < g->map.l
-				&& g->map.v[i][j] == B_WALL)
+				&& g->map.v[i][j] == b_wall)
 				wall(addr, p, k, 0);
 			if (i >= 0 && i < g->map.h && j >= 0 && j < g->map.l
 				&& g->map.v[i][j] == B_DOOR)

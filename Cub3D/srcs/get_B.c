@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:30:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 10:07:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:37:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	get_b(t_game *g, int ix, float ai)
 		Bx = Bpx / BOX_SIZE - 1;
 	door_coor = (int) (Bpy + dpy / 2 - BOX_SIZE * (float) By);
 	while ((Bx >= 0 && Bx < g->map.l) && (By >= 0 && By < g->map.h) &&
-			((g->map.v[By][Bx] != B_WALL && g->map.v[By][Bx] != B_DOOR)
+			((g->map.v[By][Bx] != b_wall && g->map.v[By][Bx] != B_DOOR)
 			 || (By == g->opened_door_y && Bx == g->opened_door_x && g->map.v[By][Bx] == B_DOOR && door_coor < g->hidden_door)))
 	{
 		Bpx += dpx;

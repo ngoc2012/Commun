@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   map_.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 16:46:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:37:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	get_position(t_game *g, int i, int j, char c)
 	if (c == '0')
 		g->map.v[j][i] = B_GROUND;
 	else if (c == '1')
-		g->map.v[j][i] = B_WALL;
+		g->map.v[j][i] = b_wall;
 	else if (c == '2')
 	{
 		add_sprite(i * BOX_SIZE + BOX_SIZE / 2, j * BOX_SIZE + BOX_SIZE / 2, B_SPRITE, g);
