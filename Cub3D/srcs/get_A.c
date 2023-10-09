@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:27:15 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 10:08:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 10:11:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,32 @@
 static void	get_a1(t_game *g, int ix, float ai)
 {
 	int	door_coor;
+	int	Ax;
+	int	Ay;
 
-	g->pos.Ax = g->pos.Apx / BOX_SIZE;
+	Ax = g->pos.Ax;
+	Ay = g->pos.Ay;
+	Ax = g->pos.Apx / BOX_SIZE;
 	if (ai > 0.0)
-		g->pos.Ay = g->pos.Apy / BOX_SIZE - 1;
+		Ay = g->pos.Apy / BOX_SIZE - 1;
 	else
-		g->pos.Ay = g->pos.Apy / BOX_SIZE;
-	door_coor = (int)(g->pos.Apx + g->pos.dpx / 2 - BOX_SIZE * (float) g->pos.Ax);
-	while ((g->pos.Ax >= 0 && g->pos.Ax < g->map.l) && (g->pos.Ay >= 0 && g->pos.Ay < g->map.h) &&
-			((g->map.v[g->pos.Ay][g->pos.Ax] != B_WALL && g->map.v[g->pos.Ay][g->pos.Ax] != B_DOOR)
-			 || (g->pos.Ay == g->opened_door_y && g->pos.Ax == g->opened_door_x && g->map.v[g->pos.Ay][g->pos.Ax] == B_DOOR && door_coor < g->hidden_door)))
+		Ay = g->pos.Apy / BOX_SIZE;
+	door_coor = (int)(g->pos.Apx + g->pos.dpx / 2 - BOX_SIZE * (float) Ax);
+	while ((Ax >= 0 && Ax < g->map.l) && (Ay >= 0 && Ay < g->map.h) &&
+			((g->map.v[Ay][Ax] != B_WALL && g->map.v[Ay][Ax] != B_DOOR)
+			 || (Ay == g->opened_door_y && Ax == g->opened_door_x && g->map.v[Ay][Ax] == B_DOOR && door_coor < g->hidden_door)))
 	{
 		g->pos.Apx += g->pos.dpx;
 		g->pos.Apy += g->pos.dpy;
-		g->pos.Ax = g->pos.Apx / BOX_SIZE;
+		Ax = g->pos.Apx / BOX_SIZE;
 		if (ai > 0.0)
-			g->pos.Ay = g->pos.Apy / BOX_SIZE - 1;
+			Ay = g->pos.Apy / BOX_SIZE - 1;
 		else
-			g->pos.Ay = g->pos.Apy / BOX_SIZE;
-		door_coor = (int)(g->pos.Apx + g->pos.dpx / 2 - BOX_SIZE * (float) g->pos.Ax);
+			Ay = g->pos.Apy / BOX_SIZE;
+		door_coor = (int)(g->pos.Apx + g->pos.dpx / 2 - BOX_SIZE * (float) Ax);
 	}
+	g->pos.Ax = Ax;
+	g->pos.Ay = Ay;
 }
 
 static void	get_a2(t_game *g, int ix, float ai)
