@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:27:15 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 20:52:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:55:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static void	get_a1(t_game *g, int ix, float ai)
 	int	ax;
 	int	ay;
 
-	ax = g->pos.Ax;
-	ay = g->pos.Ay;
+	ax = g->pos.ax;
+	ay = g->pos.ay;
 	ax = g->pos.apx / BOX_SIZE;
 	if (ai > 0.0)
 		ay = g->pos.apy / BOX_SIZE - 1;
@@ -40,23 +40,23 @@ static void	get_a1(t_game *g, int ix, float ai)
 			ay = g->pos.apy / BOX_SIZE;
 		door_coor = (int)(g->pos.apx + g->pos.dpx / 2 - BOX_SIZE * (float) ax);
 	}
-	g->pos.Ax = ax;
-	g->pos.Ay = ay;
+	g->pos.ax = ax;
+	g->pos.ay = ay;
 }
 
 static void	get_a2(t_game *g, int ix, float ai)
 {
-	if (g->pos.Ax < 0 || g->pos.Ax >= g->map.l || g->pos.Ay < 0 || g->pos.Ay >= g->map.h)
+	if (g->pos.ax < 0 || g->pos.ax >= g->map.l || g->pos.ay < 0 || g->pos.ay >= g->map.h)
 	{
 		g->pos.dA = INFINI;
 		return ;
 	}
-	if (g->map.v[g->pos.Ay][g->pos.Ax] == b_door && ai > 0.0)
+	if (g->map.v[g->pos.ay][g->pos.ax] == b_door && ai > 0.0)
 	{
 		g->pos.dA = (g->pos.py - g->pos.apy + BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
 		g->pos.apx += g->pos.dpx / 2;
 	}
-	else if (g->map.v[g->pos.Ay][g->pos.Ax] == b_door)
+	else if (g->map.v[g->pos.ay][g->pos.ax] == b_door)
 	{
 		g->pos.dA = (g->pos.py - g->pos.apy - BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
 		g->pos.apx += g->pos.dpx / 2;

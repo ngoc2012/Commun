@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:30:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 20:53:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:55:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	get_b(t_game *g, int ix, float ai)
 {
-	int	Bx;
+	int	bx;
 	int	By;
 	float	bpx;
 	float	bpy;
@@ -43,41 +43,41 @@ void	get_b(t_game *g, int ix, float ai)
 	}
 	By = bpy / BOX_SIZE;
 	if (ai > -90.0 && ai < 90.0)
-		Bx = bpx / BOX_SIZE;
+		bx = bpx / BOX_SIZE;
 	else
-		Bx = bpx / BOX_SIZE - 1;
+		bx = bpx / BOX_SIZE - 1;
 	door_coor = (int) (bpy + dpy / 2 - BOX_SIZE * (float) By);
-	while ((Bx >= 0 && Bx < g->map.l) && (By >= 0 && By < g->map.h) &&
-			((g->map.v[By][Bx] != b_wall && g->map.v[By][Bx] != b_door)
-			 || (By == g->opened_door_y && Bx == g->opened_door_x && g->map.v[By][Bx] == b_door && door_coor < g->hidden_door)))
+	while ((bx >= 0 && bx < g->map.l) && (By >= 0 && By < g->map.h) &&
+			((g->map.v[By][bx] != b_wall && g->map.v[By][bx] != b_door)
+			 || (By == g->opened_door_y && bx == g->opened_door_x && g->map.v[By][bx] == b_door && door_coor < g->hidden_door)))
 	{
 		bpx += dpx;
 		bpy += dpy;
 		By = bpy / BOX_SIZE;
 		if (ai > -90.0 && ai < 90.0)
-			Bx = bpx / BOX_SIZE;
+			bx = bpx / BOX_SIZE;
 		else
-			Bx = bpx / BOX_SIZE - 1;
+			bx = bpx / BOX_SIZE - 1;
 		door_coor = (int) (bpy + dpy / 2 - BOX_SIZE * (float) By);
 	}
-	if (Bx < 0 || Bx >= g->map.l || By < 0 || By >= g->map.h)
+	if (bx < 0 || bx >= g->map.l || By < 0 || By >= g->map.h)
 	{
 		g->pos.dB = INFINI;
 		return ;
 	}
-	if (g->map.v[By][Bx] == b_door && ai > -90.0 && ai < 90.0)
+	if (g->map.v[By][bx] == b_door && ai > -90.0 && ai < 90.0)
 	{
 		g->pos.dB = (bpx - g->pos.px + BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
 		bpy += dpy / 2;
 	}
-	else if (g->map.v[By][Bx] == b_door)
+	else if (g->map.v[By][bx] == b_door)
 	{
 		g->pos.dB = (bpx - g->pos.px - BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
 		bpy += dpy / 2;
 	}
 	else
 		g->pos.dB = (bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
-	g->pos.Bx = Bx;
+	g->pos.bx = bx;
 	g->pos.By = By;
 	g->pos.bpy = bpy;
 }

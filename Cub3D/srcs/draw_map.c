@@ -10,11 +10,11 @@ void	draw_map(t_game *g)
 		{
 			if (i == g->pos.y && j == g->pos.x)
 				printf(COLOR_BOLD_SLOW_BLINKING_RED "x" COLOR_OFF);
-			//else if (i == g->pos.Ay && j == g->pos.Ax && i == g->pos.By && j == g->pos.Bx)
+			//else if (i == g->pos.ay && j == g->pos.ax && i == g->pos.By && j == g->pos.bx)
 			//	printf(COLOR_BOLD_SLOW_BLINKING_CYAN "%d" COLOR_OFF, g->map.v[i][j]);
-			//else if (i == g->pos.Ay && j == g->pos.Ax)
+			//else if (i == g->pos.ay && j == g->pos.ax)
 			//	printf(COLOR_BOLD_SLOW_BLINKING_BLUE "%d" COLOR_OFF, g->map.v[i][j]);
-			//else if (i == g->pos.By && j == g->pos.Bx)
+			//else if (i == g->pos.By && j == g->pos.bx)
 			//	printf(COLOR_BOLD_SLOW_BLINKING_GREEN "%d" COLOR_OFF, g->map.v[i][j]);
 			else
 				printf("%d", g->map.v[i][j]);
