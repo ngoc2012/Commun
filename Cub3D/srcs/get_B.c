@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:38:22 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:41:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:42:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,16 @@ void	get_b(t_game *g, int ix, float ai)
 {
 	if (ai > -90.0 && ai < 90.0)
 	{
-		g->pos.bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
+		g->pos.bpx = ((int)(g->pos.px / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 		g->pos.dpx = BOX_SIZE;
 	}
 	else
 	{
-		g->pos.bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE;
+		g->pos.bpx = ((int)(g->pos.px / BOX_SIZE)) * BOX_SIZE;
 		g->pos.dpx = -BOX_SIZE;
 	}
-	g->pos.bpy = g->pos.py + (g->pos.px - g->pos.bpx) * g->tan_ai[ix][g->pos.rot];
+	g->pos.bpy = g->pos.py + (g->pos.px - g->pos.bpx)
+		* g->tan_ai[ix][g->pos.rot];
 	g->pos.dpy = BOX_SIZE * g->tan_ai[ix][g->pos.rot];
 	if (ai * g->pos.dpy > 0)
 		g->pos.dpy = -g->pos.dpy;
