@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:15:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:17:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:19:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,22 @@ static void	get_a1(t_game *g, int ix, float ai)
 
 static void	get_a2(t_game *g, int ix, float ai)
 {
-	if (g->pos.ax < 0 || g->pos.ax >= g->map.l || g->pos.ay < 0 || g->pos.ay >= g->map.h)
+	if (g->pos.ax < 0 || g->pos.ax >= g->map.l
+		|| g->pos.ay < 0 || g->pos.ay >= g->map.h)
 	{
 		g->pos.da = INFINI;
 		return ;
 	}
 	if (g->map.v[g->pos.ay][g->pos.ax] == b_door && ai > 0.0)
 	{
-		g->pos.da = (g->pos.py - g->pos.apy + BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
+		g->pos.da = (g->pos.py - g->pos.apy + BOX_SIZE / 2)
+			/ g->sin_ai[ix][g->pos.rot];
 		g->pos.apx += g->pos.dpx / 2;
 	}
 	else if (g->map.v[g->pos.ay][g->pos.ax] == b_door)
 	{
-		g->pos.da = (g->pos.py - g->pos.apy - BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
+		g->pos.da = (g->pos.py - g->pos.apy - BOX_SIZE / 2)
+			/ g->sin_ai[ix][g->pos.rot];
 		g->pos.apx += g->pos.dpx / 2;
 	}
 	else
@@ -73,7 +76,8 @@ static void	get_a(t_game *g, int ix, float ai)
 		g->pos.apy = ((int)(g->pos.py / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 		g->pos.dpy = BOX_SIZE;
 	}
-	g->pos.apx = g->pos.px + (g->pos.py - g->pos.apy) * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
+	g->pos.apx = g->pos.px + (g->pos.py - g->pos.apy) * g->cos_ai[ix][g->pos.rot]
+		/ g->sin_ai[ix][g->pos.rot];
 	g->pos.dpx = BOX_SIZE * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
 	if (ai < 0)
 		g->pos.dpx = -g->pos.dpx;
