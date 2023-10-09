@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:01:13 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:11:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:13:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,29 +215,29 @@ typedef struct s_game {
 	int				fl_color;
 	int				cl_color;
 	char			opened;
-	float	*ai0;
-	float	*cos_ai0;
-	float	**ai;
-	float	**tan_ai;
-	float	**cos_ai;
-	float	**sin_ai;
-	float	*cos_a1;
-	float	*sin_a1;
-	float	*a1;
-	t_equa2	eq;
-	float	tol_h;
-	float	tol_l;
+	float			*ai0;
+	float			*cos_ai0;
+	float			**ai;
+	float			**tan_ai;
+	float			**cos_ai;
+	float			**sin_ai;
+	float			*cos_a1;
+	float			*sin_a1;
+	float			*a1;
+	t_equa2			eq;
+	float			tol_h;
+	float			tol_l;
 }	t_game;
 
 typedef struct s_render {
-	float	dh;
-	int	xh;
-	int	yh;
+	int		xh;
+	int		yh;
+	int		tx;
+	int		ty;
 	float	xph;
 	float	yph;
+	float	dh;
 	float	d;
-	int	tx;
-	int	ty;
 	t_tex	*tex;
 }	t_render;
 
