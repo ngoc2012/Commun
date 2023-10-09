@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 07:42:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 07:44:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	frames(t_game *g)
 		g->gun_tex = &g->gun[2];
 	else
 		g->gun_tex = &g->gun[0];
+	int	i;
+
 	i = -1;
 	while (++i < N_FRAMES)
 		if (i != FR_DOOR && g->frames[i])
@@ -81,4 +83,4 @@ void	frames(t_game *g)
 		}
 
 	}
-	}
+}

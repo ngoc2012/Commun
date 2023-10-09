@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 07:41:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 07:45:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	render_object(t_tex *t, int *bg, int x0, int y0)
 
 void	render_backgroud(t_game *g)
 {
-	int	ix;
+	int		ix;
 	float	d;
 
 	g->pos.Ax = -1;
@@ -88,8 +88,6 @@ void	scale_window(t_game *g)
 
 int	draw(t_game *g)
 {
-	int	i;
-
 	frames(g);
 	render_backgroud(g);
 	render_object(g->gun_tex, (int *) g->mlx.addr, WIDTH / 2, HEIGHT);
