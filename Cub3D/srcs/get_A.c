@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:27:15 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 05:27:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 08:11:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,30 @@ void	get_A(t_game *g, int ix, float ai)
 	}
 	else
 		g->pos.dA = (g->pos.py - g->pos.Apy) / g->sin_ai[ix][g->pos.rot];
+}
+
+void	get_AB(t_game *g, int ix)
+{
+	float	ai;
+
+	g->pos.dA = 0.0;
+	g->pos.dB = 0.0;
+	ai = g->ai[ix][g->pos.rot];
+	if ((-g->tol_l < ai && ai < g->tol_l) ||
+		(180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
+	{
+		g->pos.dA = INFINI;
+		get_B(g, ix, ai);
+	}
+	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) ||
+		(-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
+	{
+		g->pos.dB = INFINI;
+		get_A(g, ix, ai);
+	}
+	else
+	{
+		get_A(g, ix, ai);
+		get_B(g, ix, ai);
+	}
 }
