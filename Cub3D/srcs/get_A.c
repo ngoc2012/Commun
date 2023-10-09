@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:15:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:16:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:17:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ static void	get_a1(t_game *g, int ix, float ai)
 	ax = g->pos.ax;
 	ay = g->pos.ay;
 	ax = g->pos.apx / BOX_SIZE;
-	if (ai > 0.0)
-		ay = g->pos.apy / BOX_SIZE - 1;
-	else
-		ay = g->pos.apy / BOX_SIZE;
 	door_coor = (int)(g->pos.apx + g->pos.dpx / 2 - BOX_SIZE * (float) ax);
 	while ((ax >= 0 && ax < g->map.l) && (ay >= 0 && ay < g->map.h)
 		&& ((g->map.v[ay][ax] != b_wall && g->map.v[ay][ax] != b_door)
@@ -86,6 +82,10 @@ static void	get_a(t_game *g, int ix, float ai)
 		g->pos.da = INFINI;
 		return ;
 	}
+	if (ai > 0.0)
+		g->pos.ay = g->pos.apy / BOX_SIZE - 1;
+	else
+		g->pos.ay = g->pos.apy / BOX_SIZE;
 	get_a1(g, ix, ai);
 	get_a2(g, ix, ai);
 }
