@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:01:13 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:05:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:07:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,14 +159,14 @@ Sprites
 - dd: distance to character
 */
 typedef struct s_sprite {
-	float		px;
-	float		py;
-	float		dd;
-	enum e_map	type;
+	float			px;
+	float			py;
+	float			dd;
+	enum e_map		type;
 	unsigned char	health;
 	unsigned char	i_tex;
 	enum e_sprite	state;
-	t_tex	*tex;
+	t_tex			*tex;
 }	t_sprite;
 
 /*
@@ -177,15 +177,15 @@ a2 * x + b2 * y = c2
 typedef struct s_equa2	t_equa2;
 
 struct s_equa2 {
-	float	det;
-	float	a1;
-	float	b1;
-	float	c1;
-	float	a2;
-	float	b2;
-	float	c2;
-	float	x;
-	float	y;
+	float			det;
+	float			a1;
+	float			b1;
+	float			c1;
+	float			a2;
+	float			b2;
+	float			c2;
+	float			x;
+	float			y;
 	void	(*getDet)(t_equa2 *);
 	void	(*getXY)(t_equa2 *);
 };
