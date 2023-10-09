@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 08:45:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 08:47:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,29 @@
 
 static void	door(t_game *g)
 {
-	if (g->frames[FR_DOOR])
+	if (g->frames[FR_DOOR]
+		&& (g->pos.x != g->opened_door_x || g->pos.y != g->opened_door_y))
 	{
-		if (g->pos.x != g->opened_door_x || g->pos.y != g->opened_door_y)
+		if (g->opened && g->hidden_door < BOX_SIZE)
+			g->hidden_door += DOOR_SPEED;
+		else if (g->hidden_door == BOX_SIZE
+			&& g->frames[FR_DOOR] < DOOR_IDLE)
 		{
-			if (g->opened && g->hidden_door < BOX_SIZE)
-				g->hidden_door += DOOR_SPEED;
-			else if (g->hidden_door == BOX_SIZE
-				&& g->frames[FR_DOOR] < DOOR_IDLE)
-			{
-				g->map.v[g->opened_door_y][g->opened_door_x] = B_GROUND;
-				g->frames[FR_DOOR]++;
-			}
-			else if (g->hidden_door == BOX_SIZE
-				&& g->frames[FR_DOOR] == DOOR_IDLE)
-			{
-				g->map.v[g->opened_door_y][g->opened_door_x] = B_DOOR;
-				g->hidden_door -= DOOR_SPEED;
-				g->opened = 0;
-			}
-			else if (g->hidden_door && g->hidden_door < BOX_SIZE
-				&& g->frames[FR_DOOR] == DOOR_IDLE)
-				g->hidden_door -= DOOR_SPEED;
-			else
-				g->frames[FR_DOOR] = 0;
+			g->map.v[g->opened_door_y][g->opened_door_x] = B_GROUND;
+			g->frames[FR_DOOR]++;
 		}
+		else if (g->hidden_door == BOX_SIZE
+			&& g->frames[FR_DOOR] == DOOR_IDLE)
+		{
+			g->map.v[g->opened_door_y][g->opened_door_x] = B_DOOR;
+			g->hidden_door -= DOOR_SPEED;
+			g->opened = 0;
+		}
+		else if (g->hidden_door && g->hidden_door < BOX_SIZE
+			&& g->frames[FR_DOOR] == DOOR_IDLE)
+			g->hidden_door -= DOOR_SPEED;
+		else
+			g->frames[FR_DOOR] = 0;
 	}
 }
 
