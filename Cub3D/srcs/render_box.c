@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 18:06:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 18:08:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	render_floor(t_game *g, int ix, int yp, int *addr)
 	int			*addr_f;
 	t_render	r;
 
-	addr_f = (int *)g->tex[FL].addr;
+	addr_f = (int *)g->tex[t_fl].addr;
 	while (++yp < HEIGHT)
 	{
 		if (g->fl_color)
@@ -59,7 +59,7 @@ static void	render_floor(t_game *g, int ix, int yp, int *addr)
 			r.xh = (int)(r.xph - ((int)(r.xph / BOX_SIZE)) * BOX_SIZE);
 			r.yh = (int)(r.yph - ((int)(r.yph / BOX_SIZE)) * BOX_SIZE);
 			if (r.xh < BOX_SIZE && r.xh >= 0 && r.yh < BOX_SIZE && r.yh >= 0)
-				*addr = *(addr_f + r.xh + r.yh * g->tex[FL].l);
+				*addr = *(addr_f + r.xh + r.yh * g->tex[t_fl].l);
 		}
 		addr += WIDTH;
 	}
