@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 08:17:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 08:19:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	*render_ceiling(t_game *g, int ix, int start)
 
 static void	render_floor(t_game *g, int ix, int yp, int *addr)
 {
-	int		*addr_f;
+	int			*addr_f;
 	t_render	r;
 
 	addr_f = (int *)g->tex[FL].addr;
@@ -56,8 +56,8 @@ static void	render_floor(t_game *g, int ix, int yp, int *addr)
 			r.dh = g->dpp * BOX_SIZE / 2 / (yp - HEIGHT / 2) * g->cos_ai0[ix];
 			r.xph = g->pos.px + r.dh * g->cos_ai[ix][g->pos.rot];
 			r.yph = g->pos.py - r.dh * g->sin_ai[ix][g->pos.rot];
-			r.xh = (int) (r.xph - ((int) (r.xph / BOX_SIZE)) * BOX_SIZE);
-			r.yh = (int) (r.yph - ((int) (r.yph / BOX_SIZE)) * BOX_SIZE);
+			r.xh = (int)(r.xph - ((int)(r.xph / BOX_SIZE)) * BOX_SIZE);
+			r.yh = (int)(r.yph - ((int)(r.yph / BOX_SIZE)) * BOX_SIZE);
 			if (r.xh < BOX_SIZE && r.xh >= 0 && r.yh < BOX_SIZE && r.yh >= 0)
 				*addr = *(addr_f + r.xh + r.yh * g->tex[FL].l);
 		}
@@ -67,11 +67,11 @@ static void	render_floor(t_game *g, int ix, int yp, int *addr)
 
 static void	render_all(t_game *g, int ix, t_render *r, int h_slide)
 {
-	int	*addr;
+	int		*addr;
+	int		yp;
+	int		start;
 	float	h;
 	float	p;
-	int	yp;
-	int	start;
 
 	h = BOX_SIZE / r->d * g->dpp;
 	p = 1.0 / r->d * g->dpp;
@@ -82,7 +82,7 @@ static void	render_all(t_game *g, int ix, t_render *r, int h_slide)
 		yp = -1;
 		while (++yp < h_slide)
 		{
-			r->ty = (int) (((h - (float) h_slide) / 2.0 + (double) yp) / p);
+			r->ty = (int)(((h - (float) h_slide) / 2.0 + (double) yp) / p);
 			if (r->ty < BOX_SIZE && r->ty >= 0)
 				*addr = *((int *)r->tex->addr + r->tx + r->ty * r->tex->l);
 			addr += WIDTH;
@@ -124,23 +124,23 @@ static void	get_tex(t_game *g, int ix, t_render *r)
 float	render_box(t_game *g, int ix)
 {
 	t_render	r;
-	int	h_slide;
+	int			h_slide;
 
 	get_AB(g, ix);
 	if (g->pos.dA > g->pos.dB)
 	{
 		r.d = g->pos.dB / g->cos_ai0[ix];
-		r.tx = (int) (g->pos.Bpy - BOX_SIZE * (float) g->pos.By);
+		r.tx = (int)(g->pos.Bpy - BOX_SIZE * (float) g->pos.By);
 	}
 	else
 	{
 		r.d = g->pos.dA / g->cos_ai0[ix];
-		r.tx = (int) (g->pos.Apx - BOX_SIZE * (float) g->pos.Ax);
+		r.tx = (int)(g->pos.Apx - BOX_SIZE * (float) g->pos.Ax);
 	}
 	if (r.d < 0)
 		r.d = -r.d;
 	get_tex(g, ix, &r);
-	h_slide = (int) (BOX_SIZE / r.d * g->dpp);
+	h_slide = (int)(BOX_SIZE / r.d * g->dpp);
 	if (h_slide > HEIGHT)
 		h_slide = HEIGHT;
 	render_all(g, ix, &r, h_slide);
