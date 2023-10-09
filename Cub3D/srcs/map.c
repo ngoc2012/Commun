@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 17:59:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 18:01:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ void	for_check_map(t_game *g, char *fn, int count_perso)
 	{
 		if (check_map(s))
 		{
+			printf("here\n");
 			in_map = 1;
 			g->map.v[++j] = malloc(sizeof(enum e_map) * g->map.l);
 			i = 0;

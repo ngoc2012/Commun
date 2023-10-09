@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:33:50 by nbechon           #+#    #+#             */
-/*   Updated: 2023/10/09 17:42:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 18:00:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ void	check(int x, int w, t_game *g)
 {
 	if (g->map.v[0][x] == b_ground || g->map.v[g->map.h - 1][x]
 		== b_ground)
-		end_game(g, 1, "Invalid map\n");
+		end_game(g, 1, "Invalid map 11\n");
 	if (x != 0)
 		if (g->map.v[w][x] == b_ground && g->map.v[w][x - 1] == b_empty)
-			end_game(g, 1, "Invalid map\n");
+			end_game(g, 1, "Invalid map 12\n");
 	if (w != 0)
 		if (g->map.v[w][x] == b_ground && g->map.v[w - 1][x] == b_empty)
-			end_game(g, 1, "Invalid map\n");
+			end_game(g, 1, "Invalid map 13\n");
 	if (g->map.v[w][x] == b_ground && g->map.v[w][x + 1] == b_empty
 		|| g->map.v[w][x] == b_ground && g->map.v[w + 1][x] == b_empty)
-		end_game(g, 1, "Invalid map\n");
+		end_game(g, 1, "Invalid map 14\n");
 }
 
 void	verif_wall(t_game *g)
