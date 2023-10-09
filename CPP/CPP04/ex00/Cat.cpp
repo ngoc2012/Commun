@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 12:57:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 12:59:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Cat::Cat() {
 	type = "Cat";
 	std::cout << type << " default constructor." << std::endl;
 }
-Cat::Cat(const Cat& src) {
+Cat::Cat(const Cat& src) : Animal(src) {
 	*this = src;
 	std::cout << type << " copy constructor." << std::endl;
 }

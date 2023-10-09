@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 17:24:58 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/09 12:59:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ Dog::Dog() {
 	type = "Dog";
 	std::cout << type << " default constructor." << std::endl;
 }
-Dog::Dog(const Dog& src) {
+Dog::Dog(const Dog& src) : Animal(src) {
 	*this = src;
-	std::cout << type << " copy constructor." << std::endl
+	std::cout << type << " copy constructor." << std::endl;
 }
 Dog&	Dog::operator=( Dog const & src )
 {
