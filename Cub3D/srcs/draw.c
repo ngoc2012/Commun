@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 12:25:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:27:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	render_backgroud(t_game *g)
 	ix = -1;
 	while (++ix < WIDTH)
 	{
-		d = render_walls(g, ix);
+		d = render_box(g, ix);
 		render_sprites(g, ix, d, &sp);
 	}
 	if (g->shoot && sp)
