@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:43:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:47:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ static int	render(t_game *g, int ix)
 	float	d;
 	int	tx;
 	int	ty;
-	int	h_slide;
 	t_tex	*tex;
 
 	ai = g->ai[ix][g->pos.rot];
