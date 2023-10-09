@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 07:44:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 08:21:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	frames(t_game *g)
+static void	door(t_game *g)
 {
 	if (g->frames[FR_DOOR])
 	{
@@ -37,6 +37,11 @@ void	frames(t_game *g)
 				g->frames[FR_DOOR] = 0;
 		}
 	}
+}
+
+void	frames(t_game *g)
+{
+	door(g);
 	if (g->frames[FR_UP] > TRANS_SPEED)
 		g->frames[FR_UP] = 0;
 	if (g->frames[FR_DOWN] > TRANS_SPEED)
