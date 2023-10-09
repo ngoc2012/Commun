@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 18:06:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:48:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	sprite(t_game *g)
 	{
 		if (g->sprites[i].type == b_sprite)
 		{
-			if (g->sprites[i].state == t_noRMAL)
+			if (g->sprites[i].state == s_normal)
 			{
 				g->sprites[i].tex = \
 				&g->sp_tex[g->sprites[i].i_tex / SPRITE_STATE];

@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 18:06:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:48:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	add_sprite(float px, double py, enum e_map type, t_game *g)
 	new[i].py = py;
 	new[i].health = Ht_eaLTH_SPRITE;
 	new[i].i_tex = rand() % (SPRITE_STATE * 3);
-	new[i].state = t_noRMAL;
+	new[i].state = s_normal;
 	free(g->sprites);
 	g->sprites = new;
 }
