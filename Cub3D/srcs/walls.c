@@ -6,21 +6,24 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:17:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:19:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	*render_ceiling(t_game *g, int ix, int yp, int *addr)
+static int	*render_ceiling(t_game *g, int ix, int start)
 {
+	int	yp;
 	float	dh;
 	int	xh;
 	int	yh;
 	float	xph;
 	float	yph;
+	int	*addr;
 	int	*addr_c;
 
+	addr = (int *)g->mlx.addr;
 	addr_c = (int *)g->tex[CL].addr;
 	yp = -1;
 	while (++yp < start)
@@ -130,7 +133,7 @@ static int	render(t_game *g, int ix)
 	addr_t = (int *)tex->addr;
 	addr += ix;
 	int	start = HEIGHT / 2 - h_slide / 2;
-	addr = render_ceiling(g, ix, addr);
+	addr = render_ceiling(g, ix, start);
 	if (tx < BOX_SIZE && tx >= 0)
 	{
 		yp = -1;
