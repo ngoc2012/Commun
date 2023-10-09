@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 13:08:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 13:11:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int main()
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 	Animal k;
+	std::cout << "k:" << k.getType() << ", sound: ";
+	k.makeSound();
 	k = *i;
+	std::cout << "k:" << k.getType() << ", sound: ";
 	k.makeSound();
 	std::cout << j->getType() << " " << std::endl;
 	std::cout << i->getType() << " " << std::endl;
