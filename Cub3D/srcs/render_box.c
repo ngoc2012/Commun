@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 07:19:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 08:12:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,11 +125,12 @@ static void	get_tex(t_game *g, int ix, t_render *r)
 	}
 }
 
-static int	render(t_game *g, int ix)
+float	render_box(t_game *g, int ix)
 {
 	t_render	r;
 	int	h_slide;
 
+	get_AB(g, ix);
 	if (g->pos.dA > g->pos.dB)
 	{
 		r.d = g->pos.dB / g->cos_ai0[ix];
@@ -148,31 +149,4 @@ static int	render(t_game *g, int ix)
 		h_slide = HEIGHT;
 	render_all(g, ix, &r, h_slide);
 	return (r.d);
-}
-
-float	render_box(t_game *g, int ix)
-{
-	float	ai;
-
-	g->pos.dA = 0.0;
-	g->pos.dB = 0.0;
-	ai = g->ai[ix][g->pos.rot];
-	if ((-g->tol_l < ai && ai < g->tol_l) ||
-		(180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
-	{
-		g->pos.dA = INFINI;
-		get_B(g, ix, ai);
-	}
-	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) ||
-		(-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
-	{
-		g->pos.dB = INFINI;
-		get_A(g, ix, ai);
-	}
-	else
-	{
-		get_A(g, ix, ai);
-		get_B(g, ix, ai);
-	}
-	return (render(g, ix));
 }
