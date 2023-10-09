@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 20:51:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:52:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ float	render_box(t_game *g, int ix)
 	if (g->pos.dA > g->pos.dB)
 	{
 		r.d = g->pos.dB / g->cos_ai0[ix];
-		r.tx = (int)(g->pos.Bpy - BOX_SIZE * (float) g->pos.By);
+		r.tx = (int)(g->pos.bpy - BOX_SIZE * (float) g->pos.By);
 	}
 	else
 	{
