@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 07:15:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 07:17:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,11 +129,9 @@ static void	get_tex(t_game *g, int ix, t_render *r)
 
 static int	render(t_game *g, int ix)
 {
-	float	ai;
 	t_render	r;
 	int	h_slide;
 
-	ai = g->ai[ix][g->pos.rot];
 	if (g->pos.dA > g->pos.dB)
 	{
 		r.d = g->pos.dB / g->cos_ai0[ix];
@@ -147,7 +145,7 @@ static int	render(t_game *g, int ix)
 	if (r.d < 0)
 		r.d = -r.d;
 	get_tex(g, ix, &r);
-	h_slide = (int) (BOX_SIZE / r->d * g->dpp);
+	h_slide = (int) (BOX_SIZE / r.d * g->dpp);
 	if (h_slide > HEIGHT)
 		h_slide = HEIGHT;
 	render_all(g, ix, &r, h_slide);
