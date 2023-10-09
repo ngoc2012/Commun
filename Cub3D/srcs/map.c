@@ -6,11 +6,10 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/05 16:46:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 13:50:28 by nbechon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "cub3D.h"
 
 void	free_map(t_map *m)
@@ -26,7 +25,7 @@ void	free_map(t_map *m)
 
 void	add_sprite(float px, double py, enum e_map type, t_game *g)
 {
-	int		i;
+	int			i;
 	t_sprite	*new;
 
 	g->n_sprites++;
@@ -60,27 +59,32 @@ static void	get_position(t_game *g, int i, int j, char c)
 		g->map.v[j][i] = B_WALL;
 	else if (c == '2')
 	{
-		add_sprite(i * BOX_SIZE + BOX_SIZE / 2, j * BOX_SIZE + BOX_SIZE / 2, B_SPRITE, g);
+		add_sprite(i * BOX_SIZE + BOX_SIZE / 2,
+			j * BOX_SIZE + BOX_SIZE / 2, B_SPRITE, g);
 		g->map.v[j][i] = B_GROUND;
 	}
 	else if (c == '3')
 	{
-		add_sprite(i * BOX_SIZE + BOX_SIZE / 2, j * BOX_SIZE + BOX_SIZE / 2, B_D3, g);
+		add_sprite(i * BOX_SIZE + BOX_SIZE / 2,
+			j * BOX_SIZE + BOX_SIZE / 2, B_D3, g);
 		g->map.v[j][i] = B_GROUND;
 	}
 	else if (c == '4')
 	{
-		add_sprite(i * BOX_SIZE + BOX_SIZE / 2, j * BOX_SIZE + BOX_SIZE / 2, B_D4, g);
+		add_sprite(i * BOX_SIZE + BOX_SIZE / 2,
+			j * BOX_SIZE + BOX_SIZE / 2, B_D4, g);
 		g->map.v[j][i] = B_GROUND;
 	}
 	else if (c == '5')
 	{
-		add_sprite(i * BOX_SIZE + BOX_SIZE / 2, j * BOX_SIZE + BOX_SIZE / 2, B_D5, g);
+		add_sprite(i * BOX_SIZE + BOX_SIZE / 2,
+			j * BOX_SIZE + BOX_SIZE / 2, B_D5, g);
 		g->map.v[j][i] = B_GROUND;
 	}
 	else if (c == '6')
 	{
-		add_sprite(i * BOX_SIZE + BOX_SIZE / 2, j * BOX_SIZE + BOX_SIZE / 2, B_D6, g);
+		add_sprite(i * BOX_SIZE + BOX_SIZE / 2,
+			j * BOX_SIZE + BOX_SIZE / 2, B_D6, g);
 		g->map.v[j][i] = B_GROUND;
 	}
 	else if (c == 'X')
@@ -105,53 +109,26 @@ static void	get_position(t_game *g, int i, int j, char c)
 	}
 }
 
-int	check_map(char *s)
+void	init_boxsize(t_game *g)
 {
-	char	*s0;
-
-	s0 = s;
-	while (ft_strchr(" 	\n", *s0))
-		s0++;
-	if (!*s0)
-		return (0);
-	while (*s)
-		if (!ft_strchr(MAP_CHAR, *(s++)))
-			return (0);
-	return (1);
-}
-
-int	get_map(t_game *g, char *fn)
-{
-	int	count_perso;
-	int	fd;
-	char	*s;
 	int	i;
-	int	j;
-	int	in_map;
 
-	fd = open(fn, O_RDONLY);
-	if (fd == -1)
-		return (0);
-	s = get_next_line(fd);
-	while (s)
-	{
-		if (check_map(s))
-		{
-			g->map.h++;
-			if ((int) ft_strlen(s) - 1 > g->map.l)
-				g->map.l = (int) ft_strlen(s) - 1;
-		}
-		free(s);
-		s = get_next_line(fd);
-	}
-	close(fd);
-	//printf("h = %d, l = %d\n", g->map.h, g->map.l);
 	g->map.ph = g->map.h * BOX_SIZE;
 	g->map.pl = g->map.l * BOX_SIZE;
 	g->map.v = malloc(sizeof(enum e_map *) * g->map.h);
 	i = -1;
 	while (++i < g->map.h)
 		g->map.v[i] = 0;
+}
+
+void	for_check_map(t_game *g, char *fn, int count_perso)
+{
+	int		i;
+	int		fd;
+	char	*s;
+	int		j;
+	int		in_map;
+
 	fd = open(fn, O_RDONLY);
 	j = -1;
 	in_map = 0;
@@ -178,15 +155,40 @@ int	get_map(t_game *g, char *fn)
 		{
 			free(s);
 			close(fd);
-			end_game(g, 1, "Invalid map 1\n");
+			end_game(g, 1, "Invalid map\n");
 		}
 		free(s);
 		s = get_next_line(fd);
 	}
-	if (count_perso == 0 || count_perso > 1)
-		end_game(g, 1, "Invalid map 2\n");
 	close(fd);
-	if (g->map.h < 3 || g->map.l < 3)
-		end_game(g, 1, "Invalid map 3\n");
+	if (count_perso == 0 || count_perso > 1)
+		end_game(g, 1, "Invalid map\n");
+}
+
+int	get_map(t_game *g, char *fn)
+{
+	int		fd;
+	char	*s;
+	int		i;
+
+	fd = open(fn, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	s = get_next_line(fd);
+	while (s)
+	{
+		if (check_map(s))
+		{
+			g->map.h++;
+			if ((int) ft_strlen(s) - 1 > g->map.l)
+				g->map.l = (int) ft_strlen(s) - 1;
+		}
+		free(s);
+		s = get_next_line(fd);
+	}
+	close(fd);
+	init_boxsize(g);
+	for_check_map(g, fn, 0);
+	verif_wall(g);
 	return (1);
 }
