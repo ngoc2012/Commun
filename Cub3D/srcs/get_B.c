@@ -6,7 +6,7 @@
 /*   by: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:30:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:33:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:35:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,26 @@ void	get_b2(t_game *g, int ix, float ai)
 		g->pos.db = (g->pos.bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
 }
 
+void	get_b2(t_game *g, int ix, float ai)
+{
+	if (ai > -90.0 && ai < 90.0)
+		g->pos.bx = g->pos.bpx / BOX_SIZE;
+	else
+		g->pos.bx = g->pos.bpx / BOX_SIZE - 1;
+	door_coor = (int) (g->pos.bpy + g->pos.dpy / 2 - BOX_SIZE * (float) g->pos.by);
+	while ((g->pos.bx >= 0 && g->pos.bx < g->map.l) && (g->pos.by >= 0 && g->pos.by < g->map.h) &&
+			((g->map.v[g->pos.by][g->pos.bx] != b_wall && g->map.v[g->pos.by][g->pos.bx] != b_door)
+			 || (g->pos.by == g->opened_door_y && g->pos.bx == g->opened_door_x && g->map.v[g->pos.by][g->pos.bx] == b_door && door_coor < g->hidden_door)))
+	{
+		g->pos.bpx += g->pos.dpx;
+		g->pos.bpy += g->pos.dpy;
+		g->pos.by = g->pos.bpy / BOX_SIZE;
+		if (ai > -90.0 && ai < 90.0)
+			g->pos.bx = g->pos.bpx / BOX_SIZE;
+		else
+			g->pos.bx = g->pos.bpx / BOX_SIZE - 1;
+		door_coor = (int) (g->pos.bpy + g->pos.dpy / 2 - BOX_SIZE * (float) g->pos.by);
+	}
 void	get_b(t_game *g, int ix, float ai)
 {
 	int	door_coor;
@@ -58,23 +78,5 @@ void	get_b(t_game *g, int ix, float ai)
 		return ;
 	}
 	g->pos.by = g->pos.bpy / BOX_SIZE;
-	if (ai > -90.0 && ai < 90.0)
-		g->pos.bx = g->pos.bpx / BOX_SIZE;
-	else
-		g->pos.bx = g->pos.bpx / BOX_SIZE - 1;
-	door_coor = (int) (g->pos.bpy + dpy / 2 - BOX_SIZE * (float) g->pos.by);
-	while ((g->pos.bx >= 0 && g->pos.bx < g->map.l) && (g->pos.by >= 0 && g->pos.by < g->map.h) &&
-			((g->map.v[g->pos.by][g->pos.bx] != b_wall && g->map.v[g->pos.by][g->pos.bx] != b_door)
-			 || (g->pos.by == g->opened_door_y && g->pos.bx == g->opened_door_x && g->map.v[g->pos.by][g->pos.bx] == b_door && door_coor < g->hidden_door)))
-	{
-		g->pos.bpx += dpx;
-		g->pos.bpy += dpy;
-		g->pos.by = g->pos.bpy / BOX_SIZE;
-		if (ai > -90.0 && ai < 90.0)
-			g->pos.bx = g->pos.bpx / BOX_SIZE;
-		else
-			g->pos.bx = g->pos.bpx / BOX_SIZE - 1;
-		door_coor = (int) (g->pos.bpy + dpy / 2 - BOX_SIZE * (float) g->pos.by);
-	}
 	get_b2(g, ix, ai);
 }
