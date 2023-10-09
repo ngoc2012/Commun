@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:01:13 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:13:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:14:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,23 +242,23 @@ typedef struct s_render {
 }	t_render;
 
 void	free_map(t_map *m);
-int	get_map(t_game *g, char *fn);
-int	draw(t_game *g);
-int	key_hook(int keycode, t_game *g);
-int	end_game(t_game *g, int exit_code, char *s);
+int		get_map(t_game *g, char *fn);
+int		draw(t_game *g);
+int		key_hook(int keycode, t_game *g);
+int		end_game(t_game *g, int exit_code, char *s);
 void	draw_mini_map(t_game *g);
 float	angle_convert(double a);
 void	redraw(t_game *g);
-int	get_textures(t_game *g, char *fn);
+int		get_textures(t_game *g, char *fn);
 void	render_object(t_tex *t, int *bg, int x0, int y0);
 void	render_backgroud(t_game *g);
 void	scale_window(t_game *g);
-int	key_press(int keycode, t_game *g);
-int	key_release(int keycode, t_game *g);
-int	mouse_hook(int button, int x, int y, t_game *g);
+int		key_press(int keycode, t_game *g);
+int		key_release(int keycode, t_game *g);
+int		mouse_hook(int button, int x, int y, t_game *g);
 void	sort_sprites(t_game *g);
-int	create_trgb(unsigned char t, unsigned char r,
-		unsigned char g, unsigned char b);
+int		create_trgb(unsigned char t, unsigned char r,
+			unsigned char g, unsigned char b);
 void	render_sprites(t_game *g, int ix, float d, t_sprite **sp);
 float	render_box(t_game *g, int ix);
 void	get_b(t_game *g, int ix, float ai);
