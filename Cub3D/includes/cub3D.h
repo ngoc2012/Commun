@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:48:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 07:43:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,5 +261,6 @@ void	render_sprites(t_game *g, int ix, float d, t_sprite **sp);
 float	render_box(t_game *g, int ix);
 void	get_A(t_game *g, int ix, float ai);
 void	get_B(t_game *g, int ix, float ai);
+void	frames(t_game *g);
 
 #endif
