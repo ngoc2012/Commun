@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:50:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:53:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,33 +69,32 @@ static void	render_floor(t_game *g, int ix, int yp, int *addr)
 	}
 }
 
-static void	render_all(t_game *g, int ix, float d, t_tex *tex, int tx)
+static void	render_all(t_game *g, int ix, t_render *r)
 {
 	int	*addr;
 	int	*addr_t;
 	float	h;
 	float	p;
 	int	yp;
-	int	ty;
 	int	h_slide;
 	int	start;
 
-	h = BOX_SIZE / d * g->dpp;
-	p = 1.0 / d * g->dpp;
-	h_slide = (int) (BOX_SIZE / d * g->dpp);
+	h = BOX_SIZE / r->d * g->dpp;
+	p = 1.0 / r->d * g->dpp;
+	h_slide = (int) (BOX_SIZE / r->d * g->dpp);
 	if (h_slide > HEIGHT)
 		h_slide = HEIGHT;
-	addr_t = (int *)tex->addr;
+	addr_t = (int *)r->tex->addr;
 	start = HEIGHT / 2 - h_slide / 2;
 	addr = render_ceiling(g, ix, start);
-	if (tx < BOX_SIZE && tx >= 0)
+	if (r->tx < BOX_SIZE && r->tx >= 0)
 	{
 		yp = -1;
 		while (++yp < h_slide)
 		{
-			ty = (int) (((h - (float) h_slide) / 2.0 + (double) yp) / p);
-			if (ty < BOX_SIZE && ty >= 0)
-				*addr = *(addr_t + tx + ty * tex->l);
+			r->ty = (int) (((h - (float) h_slide) / 2.0 + (double) yp) / p);
+			if (r->ty < BOX_SIZE && r->ty >= 0)
+				*addr = *(addr_t + r->tx + r->ty * r->tex->l);
 			addr += WIDTH;
 		}
 	}
@@ -108,10 +107,6 @@ static int	render(t_game *g, int ix)
 {
 	float	ai;
 	t_render	r;
-	//float	d;
-	//int	tx;
-	//int	ty;
-	//t_tex	*tex;
 
 	ai = g->ai[ix][g->pos.rot];
 	if (g->pos.dA > g->pos.dB)
@@ -147,7 +142,7 @@ static int	render(t_game *g, int ix)
 	if (r.d < 0)
 		r.d = -r.d;
 	render_all(g, ix, &r);
-	return (d);
+	return (r.d);
 }
 
 float	render_box(t_game *g, int ix)
