@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 07:17:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 07:19:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ static void	render_floor(t_game *g, int ix, int yp, int *addr)
 static void	render_all(t_game *g, int ix, t_render *r, int h_slide)
 {
 	int	*addr;
-	int	*addr_t;
 	float	h;
 	float	p;
 	int	yp;
@@ -80,7 +79,6 @@ static void	render_all(t_game *g, int ix, t_render *r, int h_slide)
 
 	h = BOX_SIZE / r->d * g->dpp;
 	p = 1.0 / r->d * g->dpp;
-	addr_t = (int *)r->tex->addr;
 	start = HEIGHT / 2 - h_slide / 2;
 	addr = render_ceiling(g, ix, start);
 	if (r->tx < BOX_SIZE && r->tx >= 0)
@@ -90,7 +88,7 @@ static void	render_all(t_game *g, int ix, t_render *r, int h_slide)
 		{
 			r->ty = (int) (((h - (float) h_slide) / 2.0 + (double) yp) / p);
 			if (r->ty < BOX_SIZE && r->ty >= 0)
-				*addr = *(addr_t + r->tx + r->ty * r->tex->l);
+				*addr = *((int *)r->tex->addr + r->tx + r->ty * r->tex->l);
 			addr += WIDTH;
 		}
 	}
