@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 10:07:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:40:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static void	get_tex(t_game *g, int ix, t_render *r)
 	if (g->pos.dA > g->pos.dB)
 	{
 		r->tex = &g->tex[EA];
-		if (g->map.v[g->pos.By][g->pos.Bx] == B_DOOR)
+		if (g->map.v[g->pos.By][g->pos.Bx] == b_door)
 		{
 			if (g->pos.By == g->opened_door_y && g->pos.Bx == g->opened_door_x)
 				r->tx -= g->hidden_door;
@@ -110,7 +110,7 @@ static void	get_tex(t_game *g, int ix, t_render *r)
 	else
 	{
 		r->tex = &g->tex[SO];
-		if (g->map.v[g->pos.Ay][g->pos.Ax] == B_DOOR)
+		if (g->map.v[g->pos.Ay][g->pos.Ax] == b_door)
 		{
 			if (g->pos.Ay == g->opened_door_y && g->pos.Ax == g->opened_door_x)
 				r->tx -= g->hidden_door;

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 17:39:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:40:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	door(t_game *g)
 		else if (g->hidden_door == BOX_SIZE
 			&& g->frames[FR_DOOR] == DOOR_IDLE)
 		{
-			g->map.v[g->opened_door_y][g->opened_door_x] = B_DOOR;
+			g->map.v[g->opened_door_y][g->opened_door_x] = b_door;
 			g->hidden_door -= DOOR_SPEED;
 			g->opened = 0;
 		}
@@ -47,7 +47,7 @@ static void	sprite(t_game *g)
 	i = -1;
 	while (++i < g->n_sprites)
 	{
-		if (g->sprites[i].type == B_SPRITE)
+		if (g->sprites[i].type == b_sprite)
 		{
 			if (g->sprites[i].state == NORMAL)
 			{

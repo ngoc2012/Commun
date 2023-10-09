@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/07 10:15:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:41:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,13 +253,13 @@ int	main(int argc, char **argv)
 	int	i = -1;
 	while (++i < g.n_sprites)
 	{
-		if (g.sprites[i].type == B_D3)
+		if (g.sprites[i].type == b_d3)
 			g.sprites[i].tex = &g.tex[D3];
-		else if (g.sprites[i].type == B_D4)
+		else if (g.sprites[i].type == b_d4)
 			g.sprites[i].tex = &g.tex[D4];
-		else if (g.sprites[i].type == B_D5)
+		else if (g.sprites[i].type == b_d5)
 			g.sprites[i].tex = &g.tex[D5];
-		else if (g.sprites[i].type == B_D6)
+		else if (g.sprites[i].type == b_d6)
 			g.sprites[i].tex = &g.tex[D6];
 	}
 	//mlx_key_hook(g.mlx.win, key_hook, &g);

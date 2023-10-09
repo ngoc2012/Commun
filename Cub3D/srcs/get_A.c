@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:27:15 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 17:37:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:40:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static void	get_a1(t_game *g, int ix, float ai)
 		ay = g->pos.Apy / BOX_SIZE;
 	door_coor = (int)(g->pos.Apx + g->pos.dpx / 2 - BOX_SIZE * (float) ax);
 	while ((ax >= 0 && ax < g->map.l) && (ay >= 0 && ay < g->map.h)
-		&& ((g->map.v[ay][ax] != b_wall && g->map.v[ay][ax] != B_DOOR)
+		&& ((g->map.v[ay][ax] != b_wall && g->map.v[ay][ax] != b_door)
 		|| (ay == g->opened_door_y && ax == g->opened_door_x
-		&& g->map.v[ay][ax] == B_DOOR && door_coor < g->hidden_door)))
+		&& g->map.v[ay][ax] == b_door && door_coor < g->hidden_door)))
 	{
 		g->pos.Apx += g->pos.dpx;
 		g->pos.Apy += g->pos.dpy;
@@ -51,12 +51,12 @@ static void	get_a2(t_game *g, int ix, float ai)
 		g->pos.dA = INFINI;
 		return ;
 	}
-	if (g->map.v[g->pos.Ay][g->pos.Ax] == B_DOOR && ai > 0.0)
+	if (g->map.v[g->pos.Ay][g->pos.Ax] == b_door && ai > 0.0)
 	{
 		g->pos.dA = (g->pos.py - g->pos.Apy + BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
 		g->pos.Apx += g->pos.dpx / 2;
 	}
-	else if (g->map.v[g->pos.Ay][g->pos.Ax] == B_DOOR)
+	else if (g->map.v[g->pos.Ay][g->pos.Ax] == b_door)
 	{
 		g->pos.dA = (g->pos.py - g->pos.Apy - BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
 		g->pos.Apx += g->pos.dpx / 2;

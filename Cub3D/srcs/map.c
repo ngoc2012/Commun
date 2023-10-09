@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 17:39:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:41:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,35 +60,35 @@ static void	get_position(t_game *g, int i, int j, char c)
 	else if (c == '2')
 	{
 		add_sprite(i * BOX_SIZE + BOX_SIZE / 2,
-			j * BOX_SIZE + BOX_SIZE / 2, B_SPRITE, g);
+			j * BOX_SIZE + BOX_SIZE / 2, b_sprite, g);
 		g->map.v[j][i] = b_ground;
 	}
 	else if (c == '3')
 	{
 		add_sprite(i * BOX_SIZE + BOX_SIZE / 2,
-			j * BOX_SIZE + BOX_SIZE / 2, B_D3, g);
+			j * BOX_SIZE + BOX_SIZE / 2, b_d3, g);
 		g->map.v[j][i] = b_ground;
 	}
 	else if (c == '4')
 	{
 		add_sprite(i * BOX_SIZE + BOX_SIZE / 2,
-			j * BOX_SIZE + BOX_SIZE / 2, B_D4, g);
+			j * BOX_SIZE + BOX_SIZE / 2, b_d4, g);
 		g->map.v[j][i] = b_ground;
 	}
 	else if (c == '5')
 	{
 		add_sprite(i * BOX_SIZE + BOX_SIZE / 2,
-			j * BOX_SIZE + BOX_SIZE / 2, B_D5, g);
+			j * BOX_SIZE + BOX_SIZE / 2, b_d5, g);
 		g->map.v[j][i] = b_ground;
 	}
 	else if (c == '6')
 	{
 		add_sprite(i * BOX_SIZE + BOX_SIZE / 2,
-			j * BOX_SIZE + BOX_SIZE / 2, B_D6, g);
+			j * BOX_SIZE + BOX_SIZE / 2, b_d6, g);
 		g->map.v[j][i] = b_ground;
 	}
 	else if (c == 'X')
-		g->map.v[j][i] = B_DOOR;
+		g->map.v[j][i] = b_door;
 	else if (c == ' ')
 		g->map.v[j][i] = b_empty;
 	else if (ft_strchr("NSWE", c))
