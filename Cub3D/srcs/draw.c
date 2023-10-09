@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:27:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 07:39:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,6 @@ int	create_trgb(unsigned char t, unsigned char r,
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void	redraw(t_game *g)
-{
-	int	xp;
-	int	yp;
-	int	*addr;
-
-	addr = (int *)g->mlx.addr;
-	yp = -1;
-	while (++yp < HEIGHT)
-	{
-		xp = -1;
-		while (++xp < WIDTH)
-			*(addr++) = 0;
-	}
-}
- 
 void	render_object(t_tex *t, int *bg, int x0, int y0)
 {
 	int	x;
@@ -100,32 +84,6 @@ void	scale_window(t_game *g)
 	}
 	else
 		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img, 0, 0);
-}
-
-void	draw_map(t_game *g)
-{
-	int	i = -1;
-	int	j = -1;
-
-	while (++i < g->map.h)
-	{
-		j = -1;
-		while (++j < g->map.l)
-		{
-			if (i == g->pos.y && j == g->pos.x)
-				printf(COLOR_BOLD_SLOW_BLINKING_RED "x" COLOR_OFF);
-			//else if (i == g->pos.Ay && j == g->pos.Ax && i == g->pos.By && j == g->pos.Bx)
-			//	printf(COLOR_BOLD_SLOW_BLINKING_CYAN "%d" COLOR_OFF, g->map.v[i][j]);
-			//else if (i == g->pos.Ay && j == g->pos.Ax)
-			//	printf(COLOR_BOLD_SLOW_BLINKING_BLUE "%d" COLOR_OFF, g->map.v[i][j]);
-			//else if (i == g->pos.By && j == g->pos.Bx)
-			//	printf(COLOR_BOLD_SLOW_BLINKING_GREEN "%d" COLOR_OFF, g->map.v[i][j]);
-			else
-				printf("%d", g->map.v[i][j]);
-			printf(" ");
-		}
-		printf("\n");
-	}
 }
 
 int	draw(t_game *g)
@@ -199,7 +157,6 @@ int	draw(t_game *g)
 		}
 
 	}
-	//draw_map(g);
 	render_backgroud(g);
 	render_object(g->gun_tex, (int *) g->mlx.addr, WIDTH / 2, HEIGHT);
 	draw_mini_map(g);
