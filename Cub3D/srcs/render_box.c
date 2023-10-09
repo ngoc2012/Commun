@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:41:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:43:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ static void	render_all(t_game *g, int ix, float d, t_tex *tex, int tx)
 	int	yp;
 	int	ty;
 	int	h_slide;
+	int	start;
 
 	h = BOX_SIZE / d * g->dpp;
 	p = 1.0 / d * g->dpp;
@@ -85,7 +86,7 @@ static void	render_all(t_game *g, int ix, float d, t_tex *tex, int tx)
 	if (h_slide > HEIGHT)
 		h_slide = HEIGHT;
 	addr_t = (int *)tex->addr;
-	int	start = HEIGHT / 2 - h_slide / 2;
+	start = HEIGHT / 2 - h_slide / 2;
 	addr = render_ceiling(g, ix, start);
 	if (tx < BOX_SIZE && tx >= 0)
 	{
