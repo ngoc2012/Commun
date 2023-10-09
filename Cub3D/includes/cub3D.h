@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:01:13 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:01:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:03:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@
 # define TRANS_SPEED 5
 # define ROT_SPEED 0
 # define GUN_SPEED 2
-# define t_doOR_SPEED 1
-# define t_doOR_IDLE 80
+# define DOOR_SPEED 1
+# define DOOR_IDLE 80
 # define SPRITE_IDLE 5
 # define SPRITE_STATE 6
-# define Ht_eaLTH_SPRITE 2
+# define HEALTH_SPRITE 2
 # define PI 3.141592654
 # define INFINI INT_MAX
 # define COLOR_BOLD_SLOW_BLINKING      "\033[1;5m"
@@ -71,9 +71,11 @@ t_d4: Decor 4 (4)
 t_d5: Decor 5 (5)
 t_d6: Decor 6 (6)
 */
-enum e_map {b_wall, b_ground, b_empty, b_door, b_sprite, b_d3, b_d4, b_d5, b_d6};
+enum e_map {b_wall, b_ground, b_empty, b_door, \
+b_sprite, b_d3, b_d4, b_d5, b_d6};
 enum e_tex {t_no, t_so, t_we, t_ea, t_do, t_fl, t_cl, t_d3, t_d4, t_d5, t_d6};
-enum e_frame {fr_up, fr_down, fr_left, fr_right, fr_rotl, fr_rotr, fr_gun, fr_door};
+enum e_frame {fr_up, fr_down, fr_left, fr_right, \
+fr_rotl, fr_rotr, fr_gun, fr_door};
 
 /*
 Map:
