@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 05:28:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 05:31:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,5 +248,6 @@ int	create_trgb(unsigned char t, unsigned char r,
 void	render_sprites(t_game *g, int ix, float d, t_sprite **sp);
 float	render_walls(t_game *g, int ix);
 void	get_A(t_game *g, int ix, float ai);
+void	get_B(t_game *g, int ix, float ai);
 
 #endif
