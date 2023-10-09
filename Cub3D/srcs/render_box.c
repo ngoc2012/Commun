@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:39:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:41:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,16 @@ static void	render_floor(t_game *g, int ix, int yp, int *addr)
 	}
 }
 
-static void	render_all(t_game *g, int ix, float d, t_tex *tex)
+static void	render_all(t_game *g, int ix, float d, t_tex *tex, int tx)
 {
 	int	*addr;
 	int	*addr_t;
 	float	h;
 	float	p;
 	int	yp;
+	int	ty;
+	int	h_slide;
+
 	h = BOX_SIZE / d * g->dpp;
 	p = 1.0 / d * g->dpp;
 	h_slide = (int) (BOX_SIZE / d * g->dpp);
@@ -142,7 +145,7 @@ static int	render(t_game *g, int ix)
 	}
 	if (d < 0)
 		d = -d;
-	render_all(g, ix, d);
+	render_all(g, ix, d, tex, tx);
 	return (d);
 }
 
