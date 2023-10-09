@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 07:45:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 07:47:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	render_object(t_tex *t, int *bg, int x0, int y0)
 {
 	int	x;
 	int	y;
+	int	color;
 
 	x0 -= t->l / 2;
 	y0 -= t->h;
@@ -31,23 +32,24 @@ void	render_object(t_tex *t, int *bg, int x0, int y0)
 		x = -1;
 		while (++x < t->l)
 		{
-			int	color = *((int*) t->addr + x + y * t->l);
+			color = *((int *) t->addr + x + y * t->l);
 			if (color > 0)
-				*((int*) bg + x + x0 + (y + y0) * WIDTH) = color;
+				*((int *) bg + x + x0 + (y + y0) * WIDTH) = color;
 		}
 	}
 }
 
 void	render_backgroud(t_game *g)
 {
-	int		ix;
-	float	d;
+	int			ix;
+	float		d;
+	t_sprite	*sp;
 
 	g->pos.Ax = -1;
 	g->pos.Ay = -1;
 	g->pos.Bx = -1;
 	g->pos.By = -1;
-	t_sprite	*sp = 0;
+	sp = 0;
 	ix = -1;
 	while (++ix < WIDTH)
 	{
