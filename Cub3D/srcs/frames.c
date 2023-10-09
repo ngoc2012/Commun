@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 08:21:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 08:23:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,32 @@ static void	door(t_game *g)
 	}
 }
 
+static void	sprite(t_game *g)
+{
+	int	i;
+
+	i = -1;
+	while (++i < g->n_sprites)
+	{
+		if (g->sprites[i].type == B_SPRITE)
+		{
+			if (g->sprites[i].state == NORMAL)
+			{
+				g->sprites[i].tex = &g->sp_tex[g->sprites[i].i_tex / SPRITE_STATE];
+				g->sprites[i].i_tex++;
+				if (g->sprites[i].i_tex == (SPRITE_STATE * 3))
+					g->sprites[i].i_tex = 0;
+			}
+			else if (g->sprites[i].state == DIE && g->sprites[i].i_tex < (SPRITE_STATE * 5))
+			{
+				g->sprites[i].tex = &g->sp_hit[g->sprites[i].i_tex / SPRITE_STATE];
+				g->sprites[i].i_tex++;
+			}
+		}
+
+	}
+}
+
 void	frames(t_game *g)
 {
 	door(g);
@@ -68,24 +94,5 @@ void	frames(t_game *g)
 	while (++i < N_FRAMES)
 		if (i != FR_DOOR && g->frames[i])
 			g->frames[i]++;
-	i = -1;
-	while (++i < g->n_sprites)
-	{
-		if (g->sprites[i].type == B_SPRITE)
-		{
-			if (g->sprites[i].state == NORMAL)
-			{
-				g->sprites[i].tex = &g->sp_tex[g->sprites[i].i_tex / SPRITE_STATE];
-				g->sprites[i].i_tex++;
-				if (g->sprites[i].i_tex == (SPRITE_STATE * 3))
-					g->sprites[i].i_tex = 0;
-			}
-			else if (g->sprites[i].state == DIE && g->sprites[i].i_tex < (SPRITE_STATE * 5))
-			{
-				g->sprites[i].tex = &g->sp_hit[g->sprites[i].i_tex / SPRITE_STATE];
-				g->sprites[i].i_tex++;
-			}
-		}
-
-	}
+	sprite(g);
 }
