@@ -6,7 +6,7 @@
 /*   by: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:30:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:29:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:30:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ void	get_b2(t_game *g, int ix, float ai)
 	if (g->map.v[g->pos.by][g->pos.bx] == b_door && ai > -90.0 && ai < 90.0)
 	{
 		g->pos.db = (g->pos.bpx - g->pos.px + BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
-		g->pos.bpy += dpy / 2;
+		g->pos.bpy += g->pos.dpy / 2;
 	}
-	else if (g->map.v[by][bx] == b_door)
+	else if (g->map.v[g->pos.by][g->pos.bx] == b_door)
 	{
-		g->pos.db = (bpx - g->pos.px - BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
-		bpy += dpy / 2;
+		g->pos.db = (g->pos.bpx - g->pos.px - BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
+		g->pos.bpy += g->pos.dpy / 2;
 	}
 	else
-		g->pos.db = (bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
+		g->pos.db = (g->pos.bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
 }
 
 void	get_b(t_game *g, int ix, float ai)
@@ -82,6 +82,7 @@ void	get_b(t_game *g, int ix, float ai)
 			bx = bpx / BOX_SIZE - 1;
 		door_coor = (int) (bpy + dpy / 2 - BOX_SIZE * (float) by);
 	}
+	get_b2(g, ix, ai);
 	g->pos.bx = bx;
 	g->pos.by = by;
 	g->pos.bpy = bpy;
