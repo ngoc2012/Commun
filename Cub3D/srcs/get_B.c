@@ -6,11 +6,33 @@
 /*   by: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:30:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 20:59:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:29:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	get_b2(t_game *g, int ix, float ai)
+{
+	if (g->pos.bx < 0 || g->pos.bx >= g->map.l
+		|| g->pos.by < 0 || g->pos.by >= g->map.h)
+	{
+		g->pos.db = INFINI;
+		return ;
+	}
+	if (g->map.v[g->pos.by][g->pos.bx] == b_door && ai > -90.0 && ai < 90.0)
+	{
+		g->pos.db = (g->pos.bpx - g->pos.px + BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
+		g->pos.bpy += dpy / 2;
+	}
+	else if (g->map.v[by][bx] == b_door)
+	{
+		g->pos.db = (bpx - g->pos.px - BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
+		bpy += dpy / 2;
+	}
+	else
+		g->pos.db = (bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
+}
 
 void	get_b(t_game *g, int ix, float ai)
 {
@@ -60,23 +82,6 @@ void	get_b(t_game *g, int ix, float ai)
 			bx = bpx / BOX_SIZE - 1;
 		door_coor = (int) (bpy + dpy / 2 - BOX_SIZE * (float) by);
 	}
-	if (bx < 0 || bx >= g->map.l || by < 0 || by >= g->map.h)
-	{
-		g->pos.db = INFINI;
-		return ;
-	}
-	if (g->map.v[by][bx] == b_door && ai > -90.0 && ai < 90.0)
-	{
-		g->pos.db = (bpx - g->pos.px + BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
-		bpy += dpy / 2;
-	}
-	else if (g->map.v[by][bx] == b_door)
-	{
-		g->pos.db = (bpx - g->pos.px - BOX_SIZE / 2) / g->cos_ai[ix][g->pos.rot];
-		bpy += dpy / 2;
-	}
-	else
-		g->pos.db = (bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
 	g->pos.bx = bx;
 	g->pos.by = by;
 	g->pos.bpy = bpy;
