@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 17:47:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:52:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static void	get_position(t_game *g, int i, int j, char c)
 		g->map.v[j][i] = b_door;
 	else if (c == ' ')
 		g->map.v[j][i] = b_empty;
-	else if (ft_strchr("NSWE", c))
+	else if (ft_strchr("NSt_we", c))
 	{
 		g->map.v[j][i] = b_ground;
 		g->pos.x = i;
