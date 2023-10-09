@@ -6,14 +6,22 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:10:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:13:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	render_floor(t_game *g, int ix, int yp)
+static void	render_floor(t_game *g, int ix, int yp, int *addr)
 {
+	float	dh;
+	int	xh;
+	int	yh;
+	float	xph;
+	float	yph;
+	int	*addr_f;
+
+	addr_f = (int *)g->tex[FL].addr;
 	while (++yp < HEIGHT)
 	{
 		if (g->fl_color)
@@ -127,7 +135,7 @@ static int	render(t_game *g, int ix)
 	}
 	else
 		addr += h_slide * WIDTH;
-	render_floor(g, ix, start + h_slide - 1)
+	render_floor(g, ix, start + h_slide - 1, addr);
 	return (d);
 }
 
