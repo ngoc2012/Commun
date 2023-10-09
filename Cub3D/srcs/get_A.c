@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:15:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:19:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:21:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,10 @@ static void	get_a(t_game *g, int ix, float ai)
 		g->pos.apy = ((int)(g->pos.py / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 		g->pos.dpy = BOX_SIZE;
 	}
-	g->pos.apx = g->pos.px + (g->pos.py - g->pos.apy) * g->cos_ai[ix][g->pos.rot]
+	g->pos.apx = g->pos.px + (g->pos.py - g->pos.apy)
+		* g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
+	g->pos.dpx = BOX_SIZE * g->cos_ai[ix][g->pos.rot]
 		/ g->sin_ai[ix][g->pos.rot];
-	g->pos.dpx = BOX_SIZE * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
 	if (ai < 0)
 		g->pos.dpx = -g->pos.dpx;
 	if (g->pos.apx < 0 || g->pos.apx >= g->map.pl)
@@ -101,14 +102,14 @@ void	get_ab(t_game *g, int ix)
 	g->pos.da = 0.0;
 	g->pos.db = 0.0;
 	ai = g->ai[ix][g->pos.rot];
-	if ((-g->tol_l < ai && ai < g->tol_l) ||
-		(180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
+	if ((-g->tol_l < ai && ai < g->tol_l)
+		|| (180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
 	{
 		g->pos.da = INFINI;
 		get_b(g, ix, ai);
 	}
-	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) ||
-		(-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
+	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h)
+		|| (-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
 	{
 		g->pos.db = INFINI;
 		get_a(g, ix, ai);
