@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:38:22 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:40:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:41:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,9 @@ void	get_b1(t_game *g, int ix, float ai)
 {
 	int	door_coor;
 
-	if (ai > -90.0 && ai < 90.0)
-		g->pos.bx = g->pos.bpx / BOX_SIZE;
-	else
-		g->pos.bx = g->pos.bpx / BOX_SIZE - 1;
+	g->pos.bx = g->pos.bpx / BOX_SIZE;
+	if (ai <= -90.0 || ai >= 90.0)
+		g->pos.bx--;
 	door_coor = (int)(g->pos.bpy + g->pos.dpy / 2
 			- BOX_SIZE * (float) g->pos.by);
 	while ((g->pos.bx >= 0 && g->pos.bx < g->map.l)
@@ -62,7 +61,8 @@ void	get_b1(t_game *g, int ix, float ai)
 			g->pos.bx = g->pos.bpx / BOX_SIZE;
 		else
 			g->pos.bx = g->pos.bpx / BOX_SIZE - 1;
-		door_coor = (int) (g->pos.bpy + g->pos.dpy / 2 - BOX_SIZE * (float) g->pos.by);
+		door_coor = (int)(g->pos.bpy + g->pos.dpy / 2
+				- BOX_SIZE * (float) g->pos.by);
 	}
 }
 
