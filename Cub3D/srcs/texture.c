@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 17:52:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 18:05:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	get_textures(t_game *g, char *fn)
 	get_texture(g, &g->tex[t_no], "./walls/beamskin3.xpm");
 	get_texture(g, &g->tex[t_so], "./walls/tile32.xpm");
 	get_texture(g, &g->tex[t_we], "./walls/tile105.xpm");
-	get_texture(g, &g->tex[EA], "./walls/steelwall6.xpm");
+	get_texture(g, &g->tex[t_ea], "./walls/steelwall6.xpm");
 	get_texture(g, &g->tex[DO], "./walls/bigdoor.xpm");
 	get_texture(g, &g->tex[FL], "./walls/floorsteel.xpm");
 	get_texture(g, &g->tex[CL], "./walls/floorskin.xpm");
@@ -101,7 +101,7 @@ int	get_textures(t_game *g, char *fn)
 					return (return_error(s, ss));
 				if (!ft_strncmp("WE", ss[0], 3) && !get_texture(g, &g->tex[t_we], ss[1]))
 					return (return_error(s, ss));
-				if (!ft_strncmp("EA", ss[0], 3) && !get_texture(g, &g->tex[EA], ss[1]))
+				if (!ft_strncmp("EA", ss[0], 3) && !get_texture(g, &g->tex[t_ea], ss[1]))
 					return (return_error(s, ss));
 				if (!ft_strncmp("DO", ss[0], 3) && !get_texture(g, &g->tex[DO], ss[1]))
 					return (return_error(s, ss));

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 18:03:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 18:04:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define DOOR_IDLE 80
 # define SPRITE_IDLE 5
 # define SPRITE_STATE 6
-# define HEALTH_SPRITE 2
+# define Ht_eaLTH_SPRITE 2
 # define PI 3.141592654
 # define INFINI INT_MAX
 # define COLOR_BOLD_SLOW_BLINKING      "\033[1;5m"
@@ -62,7 +62,7 @@
 t_no: North walls
 t_so: South walls
 t_we: West walls
-EA: East walls
+t_ea: East walls
 DO: Door
 FL: Floor
 CL: Ceiling
@@ -72,7 +72,7 @@ D5: Decor 5 (5)
 D6: Decor 6 (6)
 */
 enum e_map {b_wall, b_ground, b_empty, b_door, b_sprite, b_d3, b_d4, b_d5, b_d6};
-enum e_tex {t_no, t_so, t_we, EA, DO, FL, CL, D3, D4, D5, D6};
+enum e_tex {t_no, t_so, t_we, t_ea, DO, FL, CL, D3, D4, D5, D6};
 enum e_frame {fr_up, fr_down, fr_left, fr_right, fr_rotl, fr_rotr, fr_gun, fr_door};
 
 /*
