@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:27:15 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 10:03:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 10:05:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,27 @@
 
 static void	get_A1(t_game *g, int ix, float ai)
 {
+	int	door_coor;
+
+	g->pos.Ax = g->pos.Apx / BOX_SIZE;
+	if (ai > 0.0)
+		g->pos.Ay = g->pos.Apy / BOX_SIZE - 1;
+	else
+		g->pos.Ay = g->pos.Apy / BOX_SIZE;
+	door_coor = (int)(g->pos.Apx + g->pos.dpx / 2 - BOX_SIZE * (float) g->pos.Ax);
+	while ((g->pos.Ax >= 0 && g->pos.Ax < g->map.l) && (g->pos.Ay >= 0 && g->pos.Ay < g->map.h) &&
+			((g->map.v[g->pos.Ay][g->pos.Ax] != B_WALL && g->map.v[g->pos.Ay][g->pos.Ax] != B_DOOR)
+			 || (g->pos.Ay == g->opened_door_y && g->pos.Ax == g->opened_door_x && g->map.v[g->pos.Ay][g->pos.Ax] == B_DOOR && door_coor < g->hidden_door)))
+	{
+		g->pos.Apx += g->pos.dpx;
+		g->pos.Apy += g->pos.dpy;
+		g->pos.Ax = g->pos.Apx / BOX_SIZE;
+		if (ai > 0.0)
+			g->pos.Ay = g->pos.Apy / BOX_SIZE - 1;
+		else
+			g->pos.Ay = g->pos.Apy / BOX_SIZE;
+		door_coor = (int)(g->pos.Apx + g->pos.dpx / 2 - BOX_SIZE * (float) g->pos.Ax);
+	}
 }
 
 static void	get_A2(t_game *g, int ix, float ai)
@@ -39,16 +60,14 @@ static void	get_A2(t_game *g, int ix, float ai)
 
 static void	get_A(t_game *g, int ix, float ai)
 {
-	int	door_coor;
-
 	if (ai > 0.0)
 	{
-		g->pos.Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE;
+		g->pos.Apy = ((int)(g->pos.py / BOX_SIZE)) * BOX_SIZE;
 		g->pos.dpy = -BOX_SIZE;
 	}
 	else
 	{
-		g->pos.Apy = ((int) (g->pos.py / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
+		g->pos.Apy = ((int)(g->pos.py / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
 		g->pos.dpy = BOX_SIZE;
 	}
 	g->pos.Apx = g->pos.px + (g->pos.py - g->pos.Apy) * g->cos_ai[ix][g->pos.rot] / g->sin_ai[ix][g->pos.rot];
@@ -60,25 +79,7 @@ static void	get_A(t_game *g, int ix, float ai)
 		g->pos.dA = INFINI;
 		return ;
 	}
-	g->pos.Ax = g->pos.Apx / BOX_SIZE;
-	if (ai > 0.0)
-		g->pos.Ay = g->pos.Apy / BOX_SIZE - 1;
-	else
-		g->pos.Ay = g->pos.Apy / BOX_SIZE;
-	door_coor = (int) (g->pos.Apx + g->pos.dpx / 2 - BOX_SIZE * (float) g->pos.Ax);
-	while ((g->pos.Ax >= 0 && g->pos.Ax < g->map.l) && (g->pos.Ay >= 0 && g->pos.Ay < g->map.h) &&
-			((g->map.v[g->pos.Ay][g->pos.Ax] != B_WALL && g->map.v[g->pos.Ay][g->pos.Ax] != B_DOOR)
-			 || (g->pos.Ay == g->opened_door_y && g->pos.Ax == g->opened_door_x && g->map.v[g->pos.Ay][g->pos.Ax] == B_DOOR && door_coor < g->hidden_door)))
-	{
-		g->pos.Apx += g->pos.dpx;
-		g->pos.Apy += g->pos.dpy;
-		g->pos.Ax = g->pos.Apx / BOX_SIZE;
-		if (ai > 0.0)
-			g->pos.Ay = g->pos.Apy / BOX_SIZE - 1;
-		else
-			g->pos.Ay = g->pos.Apy / BOX_SIZE;
-		door_coor = (int) (g->pos.Apx + g->pos.dpx / 2 - BOX_SIZE * (float) g->pos.Ax);
-	}
+	get_A1(g, ix, ai);
 	get_A2(g, ix, ai);
 }
 
