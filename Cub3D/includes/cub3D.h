@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 18:08:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:43:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ t_we: West walls
 t_ea: East walls
 t_do: Door
 t_fl: Floor
-CL: Ceiling
+t_cl: Ceiling
 D3: Decor 3 (3)
 D4: Decor 4 (4)
 D5: Decor 5 (5)
 D6: Decor 6 (6)
 */
 enum e_map {b_wall, b_ground, b_empty, b_door, b_sprite, b_d3, b_d4, b_d5, b_d6};
-enum e_tex {t_no, t_so, t_we, t_ea, t_do, t_fl, CL, D3, D4, D5, D6};
+enum e_tex {t_no, t_so, t_we, t_ea, t_do, t_fl, t_cl, D3, D4, D5, D6};
 enum e_frame {fr_up, fr_down, fr_left, fr_right, fr_rotl, fr_rotr, fr_gun, fr_door};
 
 /*

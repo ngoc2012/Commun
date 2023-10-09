@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 18:08:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:43:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	*render_ceiling(t_game *g, int ix, int start)
 	t_render	r;
 
 	addr = (int *)g->mlx.addr + ix;
-	addr_c = (int *)g->tex[CL].addr;
+	addr_c = (int *)g->tex[t_cl].addr;
 	yp = -1;
 	while (++yp < start)
 	{
@@ -34,7 +34,7 @@ static int	*render_ceiling(t_game *g, int ix, int start)
 			r.xh = (int)(r.xph - ((int)(r.xph / BOX_SIZE)) * BOX_SIZE);
 			r.yh = (int)(r.yph - ((int)(r.yph / BOX_SIZE)) * BOX_SIZE);
 			if (r.xh < BOX_SIZE && r.xh >= 0 && r.yh < BOX_SIZE && r.yh >= 0)
-				*addr = *(addr_c + r.xh + r.yh * g->tex[CL].l);
+				*addr = *(addr_c + r.xh + r.yh * g->tex[t_cl].l);
 		}
 		addr += WIDTH;
 	}
