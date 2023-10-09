@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:25:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:29:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,6 +226,14 @@ typedef struct s_game {
 	float	tol_h;
 	float	tol_l;
 }	t_game;
+
+typedef struct s_render {
+	float	dh;
+	int	xh;
+	int	yh;
+	float	xph;
+	float	yph;
+}	t_render;
 
 void	free_map(t_map *m);
 int	get_map(t_game *g, char *fn);
