@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 08:49:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:39:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	door(t_game *g)
 		else if (g->hidden_door == BOX_SIZE
 			&& g->frames[FR_DOOR] < DOOR_IDLE)
 		{
-			g->map.v[g->opened_door_y][g->opened_door_x] = B_GROUND;
+			g->map.v[g->opened_door_y][g->opened_door_x] = b_ground;
 			g->frames[FR_DOOR]++;
 		}
 		else if (g->hidden_door == BOX_SIZE

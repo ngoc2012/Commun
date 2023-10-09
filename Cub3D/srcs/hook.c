@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/04 17:11:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:39:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ int	key_press(int keycode, t_game *g)
 			(keycode == XK_s && !g->frames[FR_DOWN]) ||
 			(keycode == XK_a && !g->frames[FR_LEFT]) ||
 			(keycode == XK_d && !g->frames[FR_RIGHT])) &&
-				(x > 0 && y > 0 && x < g->map.l && y < g->map.h && g->map.v[y][x] == B_GROUND &&
-				g->map.v[y][(int) ((g->pos.px - dx + WALL_COLISION) / BOX_SIZE)] == B_GROUND &&
-				g->map.v[y][(int) ((g->pos.px - dx - WALL_COLISION) / BOX_SIZE)] == B_GROUND &&
-				g->map.v[(int) ((g->pos.py + dy + WALL_COLISION) / BOX_SIZE)][x] == B_GROUND &&
-				g->map.v[(int) ((g->pos.py + dy - WALL_COLISION) / BOX_SIZE)][x] == B_GROUND))
+				(x > 0 && y > 0 && x < g->map.l && y < g->map.h && g->map.v[y][x] == b_ground &&
+				g->map.v[y][(int) ((g->pos.px - dx + WALL_COLISION) / BOX_SIZE)] == b_ground &&
+				g->map.v[y][(int) ((g->pos.px - dx - WALL_COLISION) / BOX_SIZE)] == b_ground &&
+				g->map.v[(int) ((g->pos.py + dy + WALL_COLISION) / BOX_SIZE)][x] == b_ground &&
+				g->map.v[(int) ((g->pos.py + dy - WALL_COLISION) / BOX_SIZE)][x] == b_ground))
 		{
 			g->pos.px -= dx;
 			g->pos.py += dy;
