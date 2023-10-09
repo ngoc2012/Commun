@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 13:28:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 13:31:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ int main()
 	const WrongAnimal* m = new WrongCat();
 	std::cout << "m:" << m->getType() << ", sound: ";
 	m->makeSound();
+	const WrongAnimal* i = new Cat();
 	delete(meta);
 	delete(i);
 	delete(j);
+	delete(m);
 	return (0);
 }
