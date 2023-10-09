@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:31:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:33:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,10 @@ static int	render(t_game *g, int ix)
 	float	h;
 	float	p;
 	t_tex	*tex;
-	int	*addr_f;
-	int	*addr_c;
 	int	*addr;
 	int	*addr_t;
 
 	ai = g->ai[ix][g->pos.rot];
-	addr_f = (int *)g->tex[FL].addr;
-	addr_c = (int *)g->tex[CL].addr;
 	if (g->pos.dA > g->pos.dB)
 	{
 		d = g->pos.dB / g->cos_ai0[ix];
@@ -125,9 +121,7 @@ static int	render(t_game *g, int ix)
 	if (h_slide > HEIGHT)
 		h_slide = HEIGHT;
 	int	yp;
-	addr = (int *)g->mlx.addr;
 	addr_t = (int *)tex->addr;
-	addr += ix;
 	int	start = HEIGHT / 2 - h_slide / 2;
 	addr = render_ceiling(g, ix, start);
 	if (tx < BOX_SIZE && tx >= 0)
