@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 20:48:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:50:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	sprite(t_game *g)
 				if (g->sprites[i].i_tex == (SPRITE_STATE * 3))
 					g->sprites[i].i_tex = 0;
 			}
-			else if (g->sprites[i].state == DIE
+			else if (g->sprites[i].state == s_die
 				&& g->sprites[i].i_tex < (SPRITE_STATE * 5))
 			{
 				g->sprites[i].tex = \

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 07:48:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:50:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	render_backgroud(t_game *g)
 		sp->health--;
 		if (!sp->health)
 		{
-			sp->state = DIE;
+			sp->state = s_die;
 			sp->i_tex = 0;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 20:49:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:51:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ typedef struct s_pos {
 	int		By;
 	float		dpx;
 	float		dpy;
-	float		Apx;
+	float		apx;
 	float		Apy;
 	float		Bpx;
 	float		Bpy;
@@ -151,7 +151,7 @@ typedef struct s_tex {
 	char	*addr;
 }	t_tex;
 
-enum e_sprite {s_normal, s_fire, s_freeze, DIE};
+enum e_sprite {s_normal, s_fire, s_freeze, s_die};
 /*
 Sprites
 - dd: distance to character
