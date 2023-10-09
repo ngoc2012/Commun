@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_box.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   by: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 20:55:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:56:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,9 @@ static void	get_tex(t_game *g, int ix, t_render *r)
 	if (g->pos.dA > g->pos.dB)
 	{
 		r->tex = &g->tex[t_ea];
-		if (g->map.v[g->pos.By][g->pos.bx] == b_door)
+		if (g->map.v[g->pos.by][g->pos.bx] == b_door)
 		{
-			if (g->pos.By == g->opened_door_y && g->pos.bx == g->opened_door_x)
+			if (g->pos.by == g->opened_door_y && g->pos.bx == g->opened_door_x)
 				r->tx -= g->hidden_door;
 			r->tex = &g->tex[t_do];
 		}
@@ -130,7 +130,7 @@ float	render_box(t_game *g, int ix)
 	if (g->pos.dA > g->pos.dB)
 	{
 		r.d = g->pos.dB / g->cos_ai0[ix];
-		r.tx = (int)(g->pos.bpy - BOX_SIZE * (float) g->pos.By);
+		r.tx = (int)(g->pos.bpy - BOX_SIZE * (float) g->pos.by);
 	}
 	else
 	{
