@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 07:09:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 07:10:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,9 @@ static void	render_all(t_game *g, int ix, t_render *r)
 	render_floor(g, ix, start + h_slide - 1, addr);
 }
 
-static void	get_tex(t_game *g, int ix)
+static void	get_tex(t_game *g, int ix, t_render *r)
 {
 	float	ai;
-	t_render	r;
 
 	ai = g->ai[ix][g->pos.rot];
 	if (g->pos.dA > g->pos.dB)
