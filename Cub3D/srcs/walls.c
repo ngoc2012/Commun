@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:19:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:21:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static int	*render_ceiling(t_game *g, int ix, int start)
 	int	*addr_c;
 
 	addr = (int *)g->mlx.addr;
+	addr += ix;
 	addr_c = (int *)g->tex[CL].addr;
 	yp = -1;
 	while (++yp < start)
