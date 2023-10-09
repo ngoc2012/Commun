@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:15:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:21:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:23:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,13 @@ static void	get_a2(t_game *g, int ix, float ai)
 
 static void	get_a(t_game *g, int ix, float ai)
 {
-	if (ai > 0.0)
 	{
 		g->pos.apy = ((int)(g->pos.py / BOX_SIZE)) * BOX_SIZE;
 		g->pos.dpy = -BOX_SIZE;
 	}
-	else
+	if (ai <= 0.0)
 	{
-		g->pos.apy = ((int)(g->pos.py / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
+		g->pos.apy += BOX_SIZE;
 		g->pos.dpy = BOX_SIZE;
 	}
 	g->pos.apx = g->pos.px + (g->pos.py - g->pos.apy)
@@ -87,10 +86,9 @@ static void	get_a(t_game *g, int ix, float ai)
 		g->pos.da = INFINI;
 		return ;
 	}
+	g->pos.ay = g->pos.apy / BOX_SIZE;
 	if (ai > 0.0)
-		g->pos.ay = g->pos.apy / BOX_SIZE - 1;
-	else
-		g->pos.ay = g->pos.apy / BOX_SIZE;
+		g->pos.ay--;
 	get_a1(g, ix, ai);
 	get_a2(g, ix, ai);
 }
