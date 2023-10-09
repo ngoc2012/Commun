@@ -6,7 +6,7 @@
 /*   by: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:30:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:35:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:36:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ void	get_b2(t_game *g, int ix, float ai)
 		g->pos.db = (g->pos.bpx - g->pos.px) / g->cos_ai[ix][g->pos.rot];
 }
 
-void	get_b2(t_game *g, int ix, float ai)
+void	get_b1(t_game *g, int ix, float ai)
 {
+	int	door_coor;
+
 	if (ai > -90.0 && ai < 90.0)
 		g->pos.bx = g->pos.bpx / BOX_SIZE;
 	else
@@ -54,10 +56,10 @@ void	get_b2(t_game *g, int ix, float ai)
 			g->pos.bx = g->pos.bpx / BOX_SIZE - 1;
 		door_coor = (int) (g->pos.bpy + g->pos.dpy / 2 - BOX_SIZE * (float) g->pos.by);
 	}
+}
+
 void	get_b(t_game *g, int ix, float ai)
 {
-	int	door_coor;
-
 	if (ai > -90.0 && ai < 90.0)
 	{
 		g->pos.bpx = ((int) (g->pos.px / BOX_SIZE)) * BOX_SIZE + BOX_SIZE;
@@ -78,5 +80,6 @@ void	get_b(t_game *g, int ix, float ai)
 		return ;
 	}
 	g->pos.by = g->pos.bpy / BOX_SIZE;
+	get_b1(g, ix, ai);
 	get_b2(g, ix, ai);
 }
