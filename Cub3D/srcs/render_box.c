@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 08:15:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 08:17:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,8 @@ static int	*render_ceiling(t_game *g, int ix, int start)
 
 static void	render_floor(t_game *g, int ix, int yp, int *addr)
 {
-	float	dh;
-	int	xh;
-	int	yh;
-	float	xph;
-	float	yph;
-	int	*addr_f;
+	int		*addr_f;
+	t_render	r;
 
 	addr_f = (int *)g->tex[FL].addr;
 	while (++yp < HEIGHT)
@@ -57,13 +53,13 @@ static void	render_floor(t_game *g, int ix, int yp, int *addr)
 			*addr = g->fl_color;
 		else
 		{
-			dh = g->dpp * BOX_SIZE / 2 / (yp - HEIGHT / 2) * g->cos_ai0[ix];
-			xph = g->pos.px + dh * g->cos_ai[ix][g->pos.rot];
-			yph = g->pos.py - dh * g->sin_ai[ix][g->pos.rot];
-			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
-			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
-			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
-				*addr = *(addr_f + xh + yh * g->tex[FL].l);
+			r.dh = g->dpp * BOX_SIZE / 2 / (yp - HEIGHT / 2) * g->cos_ai0[ix];
+			r.xph = g->pos.px + r.dh * g->cos_ai[ix][g->pos.rot];
+			r.yph = g->pos.py - r.dh * g->sin_ai[ix][g->pos.rot];
+			r.xh = (int) (r.xph - ((int) (r.xph / BOX_SIZE)) * BOX_SIZE);
+			r.yh = (int) (r.yph - ((int) (r.yph / BOX_SIZE)) * BOX_SIZE);
+			if (r.xh < BOX_SIZE && r.xh >= 0 && r.yh < BOX_SIZE && r.yh >= 0)
+				*addr = *(addr_f + r.xh + r.yh * g->tex[FL].l);
 		}
 		addr += WIDTH;
 	}
