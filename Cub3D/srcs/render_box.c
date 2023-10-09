@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:33:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:35:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,10 @@ static void	render_floor(t_game *g, int ix, int yp, int *addr)
 		}
 		addr += WIDTH;
 	}
+}
+
+static void	render_all(t_game *g, int ix, int yp, int *addr)
+{
 }
 
 static int	render(t_game *g, int ix)
