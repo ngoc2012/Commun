@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:27:15 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 08:11:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 08:14:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	get_A(t_game *g, int ix, float ai)
+static void	get_A(t_game *g, int ix, float ai)
 {
 	int	door_coor;
 

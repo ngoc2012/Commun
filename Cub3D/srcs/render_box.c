@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 08:12:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 08:15:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int	*render_ceiling(t_game *g, int ix, int start)
 {
-	int		yp;
-	int		*addr;
-	int		*addr_c;
+	int			yp;
+	int			*addr;
+	int			*addr_c;
 	t_render	r;
 
 	addr = (int *)g->mlx.addr + ix;
@@ -31,8 +31,8 @@ static int	*render_ceiling(t_game *g, int ix, int start)
 			r.dh = g->dpp * BOX_SIZE / 2 / (HEIGHT / 2 - yp) * g->cos_ai0[ix];
 			r.xph = g->pos.px + r.dh * g->cos_ai[ix][g->pos.rot];
 			r.yph = g->pos.py - r.dh * g->sin_ai[ix][g->pos.rot];
-			r.xh = (int) (r.xph - ((int) (r.xph / BOX_SIZE)) * BOX_SIZE);
-			r.yh = (int) (r.yph - ((int) (r.yph / BOX_SIZE)) * BOX_SIZE);
+			r.xh = (int)(r.xph - ((int)(r.xph / BOX_SIZE)) * BOX_SIZE);
+			r.yh = (int)(r.yph - ((int)(r.yph / BOX_SIZE)) * BOX_SIZE);
 			if (r.xh < BOX_SIZE && r.xh >= 0 && r.yh < BOX_SIZE && r.yh >= 0)
 				*addr = *(addr_c + r.xh + r.yh * g->tex[CL].l);
 		}
