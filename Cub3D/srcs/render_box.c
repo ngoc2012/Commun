@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:35:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:37:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,31 @@ static void	render_floor(t_game *g, int ix, int yp, int *addr)
 	}
 }
 
-static void	render_all(t_game *g, int ix, int yp, int *addr)
+static void	render_all(t_game *g, int ix, float d)
 {
+	h = BOX_SIZE / d * g->dpp;
+	p = 1.0 / d * g->dpp;
+	h_slide = (int) (BOX_SIZE / d * g->dpp);
+	if (h_slide > HEIGHT)
+		h_slide = HEIGHT;
+	int	yp;
+	addr_t = (int *)tex->addr;
+	int	start = HEIGHT / 2 - h_slide / 2;
+	addr = render_ceiling(g, ix, start);
+	if (tx < BOX_SIZE && tx >= 0)
+	{
+		yp = -1;
+		while (++yp < h_slide)
+		{
+			ty = (int) (((h - (float) h_slide) / 2.0 + (double) yp) / p);
+			if (ty < BOX_SIZE && ty >= 0)
+				*addr = *(addr_t + tx + ty * tex->l);
+			addr += WIDTH;
+		}
+	}
+	else
+		addr += h_slide * WIDTH;
+	render_floor(g, ix, start + h_slide - 1, addr);
 }
 
 static int	render(t_game *g, int ix)
@@ -119,29 +142,7 @@ static int	render(t_game *g, int ix)
 	}
 	if (d < 0)
 		d = -d;
-	h = BOX_SIZE / d * g->dpp;
-	p = 1.0 / d * g->dpp;
-	h_slide = (int) (BOX_SIZE / d * g->dpp);
-	if (h_slide > HEIGHT)
-		h_slide = HEIGHT;
-	int	yp;
-	addr_t = (int *)tex->addr;
-	int	start = HEIGHT / 2 - h_slide / 2;
-	addr = render_ceiling(g, ix, start);
-	if (tx < BOX_SIZE && tx >= 0)
-	{
-		yp = -1;
-		while (++yp < h_slide)
-		{
-			ty = (int) (((h - (float) h_slide) / 2.0 + (double) yp) / p);
-			if (ty < BOX_SIZE && ty >= 0)
-				*addr = *(addr_t + tx + ty * tex->l);
-			addr += WIDTH;
-		}
-	}
-	else
-		addr += h_slide * WIDTH;
-	render_floor(g, ix, start + h_slide - 1, addr);
+	render_all(g, ix, d);
 	return (d);
 }
 
