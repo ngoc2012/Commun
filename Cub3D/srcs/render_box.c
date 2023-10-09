@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 08:19:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 10:07:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ float	render_box(t_game *g, int ix)
 	t_render	r;
 	int			h_slide;
 
-	get_AB(g, ix);
+	get_ab(g, ix);
 	if (g->pos.dA > g->pos.dB)
 	{
 		r.d = g->pos.dB / g->cos_ai0[ix];

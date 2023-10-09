@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:27:15 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 10:05:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 10:07:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	get_A1(t_game *g, int ix, float ai)
+static void	get_a1(t_game *g, int ix, float ai)
 {
 	int	door_coor;
 
@@ -37,7 +37,7 @@ static void	get_A1(t_game *g, int ix, float ai)
 	}
 }
 
-static void	get_A2(t_game *g, int ix, float ai)
+static void	get_a2(t_game *g, int ix, float ai)
 {
 	if (g->pos.Ax < 0 || g->pos.Ax >= g->map.l || g->pos.Ay < 0 || g->pos.Ay >= g->map.h)
 	{
@@ -58,7 +58,7 @@ static void	get_A2(t_game *g, int ix, float ai)
 		g->pos.dA = (g->pos.py - g->pos.Apy) / g->sin_ai[ix][g->pos.rot];
 }
 
-static void	get_A(t_game *g, int ix, float ai)
+static void	get_a(t_game *g, int ix, float ai)
 {
 	if (ai > 0.0)
 	{
@@ -83,7 +83,7 @@ static void	get_A(t_game *g, int ix, float ai)
 	get_A2(g, ix, ai);
 }
 
-void	get_AB(t_game *g, int ix)
+void	get_ab(t_game *g, int ix)
 {
 	float	ai;
 
@@ -94,17 +94,17 @@ void	get_AB(t_game *g, int ix)
 		(180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
 	{
 		g->pos.dA = INFINI;
-		get_B(g, ix, ai);
+		get_b(g, ix, ai);
 	}
 	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) ||
 		(-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
 	{
 		g->pos.dB = INFINI;
-		get_A(g, ix, ai);
+		get_a(g, ix, ai);
 	}
 	else
 	{
-		get_A(g, ix, ai);
-		get_B(g, ix, ai);
+		get_a(g, ix, ai);
+		get_b(g, ix, ai);
 	}
 }

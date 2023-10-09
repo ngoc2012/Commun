@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:30:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 05:32:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 10:07:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	get_B(t_game *g, int ix, float ai)
+void	get_b(t_game *g, int ix, float ai)
 {
 	int	Bx;
 	int	By;
