@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 17:40:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:45:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,11 @@ static void	sprite(t_game *g)
 
 static void	gun(t_game *g)
 {
-	if (g->frames[FR_GUN] > GUN_SPEED)
-		g->frames[FR_GUN] = 0;
-	if (g->frames[FR_GUN] == 1)
+	if (g->frames[fr_gun] > GUN_SPEED)
+		g->frames[fr_gun] = 0;
+	if (g->frames[fr_gun] == 1)
 		g->gun_tex = &g->gun[1];
-	else if (g->frames[FR_GUN] == 2)
+	else if (g->frames[fr_gun] == 2)
 		g->gun_tex = &g->gun[2];
 	else
 		g->gun_tex = &g->gun[0];
@@ -85,18 +85,18 @@ void	frames(t_game *g)
 	int	i;
 
 	door(g);
-	if (g->frames[FR_UP] > TRANS_SPEED)
-		g->frames[FR_UP] = 0;
-	if (g->frames[FR_DOWN] > TRANS_SPEED)
-		g->frames[FR_DOWN] = 0;
-	if (g->frames[FR_LEFT] > TRANS_SPEED)
-		g->frames[FR_LEFT] = 0;
-	if (g->frames[FR_RIGHT] > TRANS_SPEED)
-		g->frames[FR_RIGHT] = 0;
-	if (g->frames[FR_ROT_R] > ROT_SPEED)
-		g->frames[FR_ROT_R] = 0;
-	if (g->frames[FR_ROT_L] > ROT_SPEED)
-		g->frames[FR_ROT_L] = 0;
+	if (g->frames[fr_up] > TRANS_SPEED)
+		g->frames[fr_up] = 0;
+	if (g->frames[fr_down] > TRANS_SPEED)
+		g->frames[fr_down] = 0;
+	if (g->frames[fr_left] > TRANS_SPEED)
+		g->frames[fr_left] = 0;
+	if (g->frames[fr_right] > TRANS_SPEED)
+		g->frames[fr_right] = 0;
+	if (g->frames[fr_rotr] > ROT_SPEED)
+		g->frames[fr_rotr] = 0;
+	if (g->frames[fr_rotl] > ROT_SPEED)
+		g->frames[fr_rotl] = 0;
 	gun(g);
 	i = -1;
 	while (++i < N_FRAMES)

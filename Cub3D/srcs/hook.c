@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 17:40:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:45:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	key_press(int keycode, t_game *g)
 		}
 		x = (int) ((g->pos.px - dx) / BOX_SIZE);
 		y = (int) ((g->pos.py + dy) / BOX_SIZE);
-		if (((keycode == XK_w && !g->frames[FR_UP]) ||
-			(keycode == XK_s && !g->frames[FR_DOWN]) ||
-			(keycode == XK_a && !g->frames[FR_LEFT]) ||
-			(keycode == XK_d && !g->frames[FR_RIGHT])) &&
+		if (((keycode == XK_w && !g->frames[fr_up]) ||
+			(keycode == XK_s && !g->frames[fr_down]) ||
+			(keycode == XK_a && !g->frames[fr_left]) ||
+			(keycode == XK_d && !g->frames[fr_right])) &&
 				(x > 0 && y > 0 && x < g->map.l && y < g->map.h && g->map.v[y][x] == b_ground &&
 				g->map.v[y][(int) ((g->pos.px - dx + WALL_COLISION) / BOX_SIZE)] == b_ground &&
 				g->map.v[y][(int) ((g->pos.px - dx - WALL_COLISION) / BOX_SIZE)] == b_ground &&
@@ -60,19 +60,19 @@ int	key_press(int keycode, t_game *g)
 			g->pos.y = y;
 			sort_sprites(g);
 			if (keycode == XK_w)
-				g->frames[FR_UP] = 1;
+				g->frames[fr_up] = 1;
 			else if (keycode == XK_s)
-				g->frames[FR_DOWN] = 1;
+				g->frames[fr_down] = 1;
 			else if (keycode == XK_a)
-				g->frames[FR_LEFT] = 1;
+				g->frames[fr_left] = 1;
 			else if (keycode == XK_d)
-				g->frames[FR_RIGHT] = 1;
+				g->frames[fr_right] = 1;
 		}
 	}
 	if (keycode == XK_Right || keycode == XK_Left)
 	{
-		if ((keycode == XK_Right && !g->frames[FR_ROT_R]) ||
-			(keycode == XK_Left && !g->frames[FR_ROT_L]))
+		if ((keycode == XK_Right && !g->frames[fr_rotr]) ||
+			(keycode == XK_Left && !g->frames[fr_rotl]))
 		{
 			if (keycode == XK_Right)
 				g->pos.rot--;
@@ -83,9 +83,9 @@ int	key_press(int keycode, t_game *g)
 			else if (g->pos.rot >= 360 / ROT_STEP)
 				g->pos.rot = 0;
 			if (keycode == XK_Right)
-				g->frames[FR_ROT_R] = 1;
+				g->frames[fr_rotr] = 1;
 			else
-				g->frames[FR_ROT_L] = 1;
+				g->frames[fr_rotl] = 1;
 		}
 	}
 	return (1);
@@ -126,8 +126,8 @@ int	key_release(int keycode, t_game *g)
 	}
 	if (keycode == XK_Control_L || keycode == XK_Control_R)
 	{
-		if (!g->frames[FR_GUN])
-			g->frames[FR_GUN] = 1;
+		if (!g->frames[fr_gun])
+			g->frames[fr_gun] = 1;
 		g->shoot = 1;
 	}
 	if (keycode == XK_q || keycode == XK_Escape)
