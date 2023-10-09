@@ -6,14 +6,39 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:15:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:17:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	*render_floor(t_game *g, int ix, int yp, int *addr)
+static int	*render_ceiling(t_game *g, int ix, int yp, int *addr)
 {
+	float	dh;
+	int	xh;
+	int	yh;
+	float	xph;
+	float	yph;
+	int	*addr_c;
+
+	addr_c = (int *)g->tex[CL].addr;
+	yp = -1;
+	while (++yp < start)
+	{
+		if (g->cl_color)
+			*addr = g->cl_color;
+		else
+		{
+			dh = g->dpp * BOX_SIZE / 2 / (HEIGHT / 2 - yp) * g->cos_ai0[ix];
+			xph = g->pos.px + dh * g->cos_ai[ix][g->pos.rot];
+			yph = g->pos.py - dh * g->sin_ai[ix][g->pos.rot];
+			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
+			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
+			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
+				*addr = *(addr_c + xh + yh * g->tex[CL].l);
+		}
+		addr += WIDTH;
+	}
 	return (addr);
 }
 
@@ -105,28 +130,7 @@ static int	render(t_game *g, int ix)
 	addr_t = (int *)tex->addr;
 	addr += ix;
 	int	start = HEIGHT / 2 - h_slide / 2;
-	float	dh;
-	int	xh;
-	int	yh;
-	float	xph;
-	float	yph;
-	yp = -1;
-	while (++yp < start)
-	{
-		if (g->cl_color)
-			*addr = g->cl_color;
-		else
-		{
-			dh = g->dpp * BOX_SIZE / 2 / (HEIGHT / 2 - yp) * g->cos_ai0[ix];
-			xph = g->pos.px + dh * g->cos_ai[ix][g->pos.rot];
-			yph = g->pos.py - dh * g->sin_ai[ix][g->pos.rot];
-			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
-			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
-			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
-				*addr = *(addr_c + xh + yh * g->tex[CL].l);
-		}
-		addr += WIDTH;
-	}
+	addr = render_ceiling(g, ix, addr);
 	if (tx < BOX_SIZE && tx >= 0)
 	{
 		yp = -1;
