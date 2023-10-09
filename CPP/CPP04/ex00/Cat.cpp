@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 17:25:10 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/09 12:57:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Cat::Cat() {
 }
 Cat::Cat(const Cat& src) {
 	*this = src;
-	std::cout << type << " copy constructor." << std::endl
+	std::cout << type << " copy constructor." << std::endl;
 }
 Cat&	Cat::operator=( Cat const & src )
 {
@@ -26,7 +26,7 @@ Cat&	Cat::operator=( Cat const & src )
 	return (*this);
 }
 Cat::~Cat() { std::cout << type << " destructor." << std::endl; }
-void    makeSound( void ) const
+void    Cat::makeSound( void ) const
 {
 	std::cout << "Meomeo..." << std::endl;
 }
