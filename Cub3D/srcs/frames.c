@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 17:45:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:47:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 static void	door(t_game *g)
 {
-	if (g->frames[FR_DOOR]
+	if (g->frames[fr_door]
 		&& (g->pos.x != g->opened_door_x || g->pos.y != g->opened_door_y))
 	{
 		if (g->opened && g->hidden_door < BOX_SIZE)
 			g->hidden_door += DOOR_SPEED;
 		else if (g->hidden_door == BOX_SIZE
-			&& g->frames[FR_DOOR] < DOOR_IDLE)
+			&& g->frames[fr_door] < DOOR_IDLE)
 		{
 			g->map.v[g->opened_door_y][g->opened_door_x] = b_ground;
-			g->frames[FR_DOOR]++;
+			g->frames[fr_door]++;
 		}
 		else if (g->hidden_door == BOX_SIZE
-			&& g->frames[FR_DOOR] == DOOR_IDLE)
+			&& g->frames[fr_door] == DOOR_IDLE)
 		{
 			g->map.v[g->opened_door_y][g->opened_door_x] = b_door;
 			g->hidden_door -= DOOR_SPEED;
 			g->opened = 0;
 		}
 		else if (g->hidden_door && g->hidden_door < BOX_SIZE
-			&& g->frames[FR_DOOR] == DOOR_IDLE)
+			&& g->frames[fr_door] == DOOR_IDLE)
 			g->hidden_door -= DOOR_SPEED;
 		else
-			g->frames[FR_DOOR] = 0;
+			g->frames[fr_door] = 0;
 	}
 }
 
@@ -49,7 +49,7 @@ static void	sprite(t_game *g)
 	{
 		if (g->sprites[i].type == b_sprite)
 		{
-			if (g->sprites[i].state == NORMAL)
+			if (g->sprites[i].state == t_noRMAL)
 			{
 				g->sprites[i].tex = \
 				&g->sp_tex[g->sprites[i].i_tex / SPRITE_STATE];
@@ -100,7 +100,7 @@ void	frames(t_game *g)
 	gun(g);
 	i = -1;
 	while (++i < N_FRAMES)
-		if (i != FR_DOOR && g->frames[i])
+		if (i != fr_door && g->frames[i])
 			g->frames[i]++;
 	sprite(g);
 }

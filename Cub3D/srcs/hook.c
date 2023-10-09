@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 17:45:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:46:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,34 +93,34 @@ int	key_press(int keycode, t_game *g)
 
 int	key_release(int keycode, t_game *g)
 {
-	if (keycode == XK_space && !g->frames[FR_DOOR])
+	if (keycode == XK_space && !g->frames[fr_door])
 	{
 		if (g->map.v[g->pos.y - 1][g->pos.x] == b_door)
 		{
 			g->opened_door_x = g->pos.x;
 			g->opened_door_y = g->pos.y - 1;
-			g->frames[FR_DOOR] = 1;
+			g->frames[fr_door] = 1;
 			g->opened = 1;
 		}
 		else if (g->map.v[g->pos.y + 1][g->pos.x] == b_door)
 		{
 			g->opened_door_x = g->pos.x;
 			g->opened_door_y = g->pos.y + 1;
-			g->frames[FR_DOOR] = 1;
+			g->frames[fr_door] = 1;
 			g->opened = 1;
 		}
 		else if (g->map.v[g->pos.y][g->pos.x - 1] == b_door)
 		{
 			g->opened_door_x = g->pos.x - 1;
 			g->opened_door_y = g->pos.y;
-			g->frames[FR_DOOR] = 1;
+			g->frames[fr_door] = 1;
 			g->opened = 1;
 		}
 		else if (g->map.v[g->pos.y][g->pos.x + 1] == b_door)
 		{
 			g->opened_door_x = g->pos.x + 1;
 			g->opened_door_y = g->pos.y;
-			g->frames[FR_DOOR] = 1;
+			g->frames[fr_door] = 1;
 			g->opened = 1;
 		}
 	}

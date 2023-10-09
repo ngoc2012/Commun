@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 17:40:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:47:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ static void	get_tex(t_game *g, int ix, t_render *r)
 			r->tex = &g->tex[DO];
 		}
 		else if (g->ai[ix][g->pos.rot] > 0)
-			r->tex = &g->tex[NO];
+			r->tex = &g->tex[t_no];
 	}
 }
 
