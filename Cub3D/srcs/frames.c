@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 07:42:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 17:47:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 18:06:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@ static void	door(t_game *g)
 		&& (g->pos.x != g->opened_door_x || g->pos.y != g->opened_door_y))
 	{
 		if (g->opened && g->hidden_door < BOX_SIZE)
-			g->hidden_door += DOOR_SPEED;
+			g->hidden_door += t_doOR_SPEED;
 		else if (g->hidden_door == BOX_SIZE
-			&& g->frames[fr_door] < DOOR_IDLE)
+			&& g->frames[fr_door] < t_doOR_IDLE)
 		{
 			g->map.v[g->opened_door_y][g->opened_door_x] = b_ground;
 			g->frames[fr_door]++;
 		}
 		else if (g->hidden_door == BOX_SIZE
-			&& g->frames[fr_door] == DOOR_IDLE)
+			&& g->frames[fr_door] == t_doOR_IDLE)
 		{
 			g->map.v[g->opened_door_y][g->opened_door_x] = b_door;
-			g->hidden_door -= DOOR_SPEED;
+			g->hidden_door -= t_doOR_SPEED;
 			g->opened = 0;
 		}
 		else if (g->hidden_door && g->hidden_door < BOX_SIZE
-			&& g->frames[fr_door] == DOOR_IDLE)
-			g->hidden_door -= DOOR_SPEED;
+			&& g->frames[fr_door] == t_doOR_IDLE)
+			g->hidden_door -= t_doOR_SPEED;
 		else
 			g->frames[fr_door] = 0;
 	}

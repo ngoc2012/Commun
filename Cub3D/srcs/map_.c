@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 18:04:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 18:06:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int	get_map(t_game *g, char *fn)
 	int	j;
 	int	in_map;
 
-	fd = open(fn, O_RDONLY);
+	fd = open(fn, O_Rt_doNLY);
 	if (fd == -1)
 		return (0);
 	s = get_next_line(fd);
@@ -152,7 +152,7 @@ int	get_map(t_game *g, char *fn)
 	i = -1;
 	while (++i < g->map.h)
 		g->map.v[i] = 0;
-	fd = open(fn, O_RDONLY);
+	fd = open(fn, O_Rt_doNLY);
 	j = -1;
 	in_map = 0;
 	s = get_next_line(fd);

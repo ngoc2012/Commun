@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 18:04:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 18:06:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ static void	get_tex(t_game *g, int ix, t_render *r)
 		{
 			if (g->pos.By == g->opened_door_y && g->pos.Bx == g->opened_door_x)
 				r->tx -= g->hidden_door;
-			r->tex = &g->tex[DO];
+			r->tex = &g->tex[t_do];
 		}
 		else if (g->ai[ix][g->pos.rot] > -90 && g->ai[ix][g->pos.rot] < 90)
 			r->tex = &g->tex[t_we];
@@ -114,7 +114,7 @@ static void	get_tex(t_game *g, int ix, t_render *r)
 		{
 			if (g->pos.Ay == g->opened_door_y && g->pos.Ax == g->opened_door_x)
 				r->tx -= g->hidden_door;
-			r->tex = &g->tex[DO];
+			r->tex = &g->tex[t_do];
 		}
 		else if (g->ai[ix][g->pos.rot] > 0)
 			r->tex = &g->tex[t_no];
