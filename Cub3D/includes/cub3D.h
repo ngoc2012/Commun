@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:29:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:48:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,6 +233,10 @@ typedef struct s_render {
 	int	yh;
 	float	xph;
 	float	yph;
+	float	d;
+	int	tx;
+	int	ty;
+	t_tex	*tex;
 }	t_render;
 
 void	free_map(t_map *m);
