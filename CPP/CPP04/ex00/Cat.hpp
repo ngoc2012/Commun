@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 17:29:23 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:04:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 class Cat : public Animal
 {
-	protected:
-		std::string	type;
 	public:
 		Cat();
 		Cat(const Cat&);
