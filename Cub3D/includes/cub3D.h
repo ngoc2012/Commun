@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   by: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 20:59:25 by ngoc             ###   ########.fr       */
+/*   Created: 2023/10/09 21:01:13 by ngoc              #+#    #+#             */
+/*   Updated: 2023/10/09 21:01:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ Map:
 */
 typedef struct s_map {
 	enum e_map	**v;
-	int	h;
-	int	l;
-	int	ph;
-	int	pl;
+	int			h;
+	int			l;
+	int			ph;
+	int			pl;
 }	t_map;
 
 /*
@@ -100,21 +100,21 @@ Player position
 typedef struct s_pos {
 	int		x;
 	int		y;
-	float		px;
-	float		py;
+	float	px;
+	float	py;
 	int		rot;
 	int		ax;
 	int		ay;
 	int		bx;
 	int		by;
-	float		dpx;
-	float		dpy;
-	float		apx;
-	float		apy;
-	float		bpx;
-	float		bpy;
-	float		da;
-	float		db;
+	float	dpx;
+	float	dpy;
+	float	apx;
+	float	apy;
+	float	bpx;
+	float	bpy;
+	float	da;
+	float	db;
 }	t_pos;
 
 /*
