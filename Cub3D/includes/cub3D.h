@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:01:13 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:07:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:09:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,17 +177,17 @@ a2 * x + b2 * y = c2
 typedef struct s_equa2	t_equa2;
 
 struct s_equa2 {
-	float			det;
-	float			a1;
-	float			b1;
-	float			c1;
-	float			a2;
-	float			b2;
-	float			c2;
-	float			x;
-	float			y;
-	void	(*getDet)(t_equa2 *);
-	void	(*getXY)(t_equa2 *);
+	float	det;
+	float	a1;
+	float	b1;
+	float	c1;
+	float	a2;
+	float	b2;
+	float	c2;
+	float	x;
+	float	y;
+	void	(*get_det)(t_equa2 *);
+	void	(*get_xy)(t_equa2 *);
 };
 
 /*

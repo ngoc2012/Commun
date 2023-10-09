@@ -6,7 +6,7 @@
 /*   by: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 20:56:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:09:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ int	end_game(t_game *g, int exit_code, char *s)
 	return (1);
 }
 
-void	getDet(t_equa2 *e)
+void	get_det(t_equa2 *e)
 {
 	e->det = e->a1 * e->b2 - e->b1 * e->a2;
 }
 
-void	getXY(t_equa2 *e)
+void	get_xy(t_equa2 *e)
 {
-	e->getDet(e);
+	e->get_det(e);
 	e->x = (e->b2 * e->c1 - e->b1 * e->c2) / e->det;
 	e->y = (e->c2 * e->a1 - e->c1 * e->a2) / e->det;
 }
@@ -150,8 +150,8 @@ void	init(t_game *g)
 	g->gun_tex = &g->gun[0];
 	g->sprites = 0;
 	g->n_sprites = 0;
-	g->eq.getDet = getDet;
-	g->eq.getXY = getXY;
+	g->eq.get_det = get_det;
+	g->eq.get_xy = get_xy;
 }
 
 int	precalcul(t_game *g)
