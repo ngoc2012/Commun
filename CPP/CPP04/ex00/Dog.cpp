@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 12:59:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 13:00:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Dog&	Dog::operator=( Dog const & src )
 	return (*this);
 }
 Dog::~Dog() { std::cout << type << " destructor." << std::endl; }
-void    makeSound( void ) const
+void    Dog::makeSound( void ) const
 {
 	std::cout << "Gaugau..." << std::endl;
 }
