@@ -6,7 +6,7 @@
 /*   by: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:27:15 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 20:56:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:59:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,21 @@ static void	get_a2(t_game *g, int ix, float ai)
 {
 	if (g->pos.ax < 0 || g->pos.ax >= g->map.l || g->pos.ay < 0 || g->pos.ay >= g->map.h)
 	{
-		g->pos.dA = INFINI;
+		g->pos.da = INFINI;
 		return ;
 	}
 	if (g->map.v[g->pos.ay][g->pos.ax] == b_door && ai > 0.0)
 	{
-		g->pos.dA = (g->pos.py - g->pos.apy + BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
+		g->pos.da = (g->pos.py - g->pos.apy + BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
 		g->pos.apx += g->pos.dpx / 2;
 	}
 	else if (g->map.v[g->pos.ay][g->pos.ax] == b_door)
 	{
-		g->pos.dA = (g->pos.py - g->pos.apy - BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
+		g->pos.da = (g->pos.py - g->pos.apy - BOX_SIZE / 2) / g->sin_ai[ix][g->pos.rot];
 		g->pos.apx += g->pos.dpx / 2;
 	}
 	else
-		g->pos.dA = (g->pos.py - g->pos.apy) / g->sin_ai[ix][g->pos.rot];
+		g->pos.da = (g->pos.py - g->pos.apy) / g->sin_ai[ix][g->pos.rot];
 }
 
 static void	get_a(t_game *g, int ix, float ai)
@@ -83,7 +83,7 @@ static void	get_a(t_game *g, int ix, float ai)
 		g->pos.dpx = -g->pos.dpx;
 	if (g->pos.apx < 0 || g->pos.apx >= g->map.pl)
 	{
-		g->pos.dA = INFINI;
+		g->pos.da = INFINI;
 		return ;
 	}
 	get_a1(g, ix, ai);
@@ -94,19 +94,19 @@ void	get_ab(t_game *g, int ix)
 {
 	float	ai;
 
-	g->pos.dA = 0.0;
-	g->pos.dB = 0.0;
+	g->pos.da = 0.0;
+	g->pos.db = 0.0;
 	ai = g->ai[ix][g->pos.rot];
 	if ((-g->tol_l < ai && ai < g->tol_l) ||
 		(180.0 - g->tol_l < ai) || ai < -(180.0 - g->tol_l))
 	{
-		g->pos.dA = INFINI;
+		g->pos.da = INFINI;
 		get_b(g, ix, ai);
 	}
 	else if ((90.0 - g->tol_h < ai && ai < 90.0 + g->tol_h) ||
 		(-90.0 - g->tol_h < ai && ai < -90.0 + g->tol_h))
 	{
-		g->pos.dB = INFINI;
+		g->pos.db = INFINI;
 		get_a(g, ix, ai);
 	}
 	else

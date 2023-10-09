@@ -6,7 +6,7 @@
 /*   by: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 09:21:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 20:56:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:59:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ typedef struct s_pos {
 	float		apy;
 	float		bpx;
 	float		bpy;
-	float		dA;
-	float		dB;
+	float		da;
+	float		db;
 }	t_pos;
 
 /*

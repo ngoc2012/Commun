@@ -6,7 +6,7 @@
 /*   by: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 20:56:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:59:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static void	render_all(t_game *g, int ix, t_render *r, int h_slide)
 
 static void	get_tex(t_game *g, int ix, t_render *r)
 {
-	if (g->pos.dA > g->pos.dB)
+	if (g->pos.da > g->pos.db)
 	{
 		r->tex = &g->tex[t_ea];
 		if (g->map.v[g->pos.by][g->pos.bx] == b_door)
@@ -127,14 +127,14 @@ float	render_box(t_game *g, int ix)
 	int			h_slide;
 
 	get_ab(g, ix);
-	if (g->pos.dA > g->pos.dB)
+	if (g->pos.da > g->pos.db)
 	{
-		r.d = g->pos.dB / g->cos_ai0[ix];
+		r.d = g->pos.db / g->cos_ai0[ix];
 		r.tx = (int)(g->pos.bpy - BOX_SIZE * (float) g->pos.by);
 	}
 	else
 	{
-		r.d = g->pos.dA / g->cos_ai0[ix];
+		r.d = g->pos.da / g->cos_ai0[ix];
 		r.tx = (int)(g->pos.apx - BOX_SIZE * (float) g->pos.ax);
 	}
 	if (r.d < 0)
