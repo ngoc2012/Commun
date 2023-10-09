@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 07:47:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 07:48:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,18 @@ void	render_backgroud(t_game *g)
 
 void	scale_window(t_game *g)
 {
+	int	x;
+	int	y;
+
 	if (SCALE > 1)
 	{
-		int	x;
-		int	y;
 		y = HEIGHT * SCALE;
 		while (--y >= 0)
 		{
-
 			x = WIDTH * SCALE;
 			while (--x >= 0)
-				*((int*) g->mlx.addr_scale + x + y * WIDTH * SCALE) = *((int*) g->mlx.addr + x / SCALE + y / SCALE * WIDTH);
+				*((int *) g->mlx.addr_scale + x + y * WIDTH * SCALE) = \
+				*((int *) g->mlx.addr + x / SCALE + y / SCALE * WIDTH);
 		}
 		mlx_put_image_to_window(g->mlx.mlx, g->mlx.win, g->mlx.img_scale, 0, 0);
 	}
