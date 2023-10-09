@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 05:27:15 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 10:07:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 10:08:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ static void	get_a(t_game *g, int ix, float ai)
 		g->pos.dA = INFINI;
 		return ;
 	}
-	get_A1(g, ix, ai);
-	get_A2(g, ix, ai);
+	get_a1(g, ix, ai);
+	get_a2(g, ix, ai);
 }
 
 void	get_ab(t_game *g, int ix)
