@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 16:33:50 by nbechon           #+#    #+#             */
-/*   Updated: 2023/10/09 17:39:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 17:42:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	verif_wall(t_game *g)
 			check(x, w, g);
 			x++;
 		}
-		if (g->map.v[w][g->map.l - 1] == b_ground || g->map.v[w][0] == B_GROUND)
+		if (g->map.v[w][g->map.l - 1] == b_ground || g->map.v[w][0] == b_ground)
 			end_game(g, 1, "Invalid map\n");
 		w++;
 	}
