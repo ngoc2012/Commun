@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:47:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:50:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,45 +107,46 @@ static void	render_all(t_game *g, int ix, float d, t_tex *tex, int tx)
 static int	render(t_game *g, int ix)
 {
 	float	ai;
-	float	d;
-	int	tx;
-	int	ty;
-	t_tex	*tex;
+	t_render	r;
+	//float	d;
+	//int	tx;
+	//int	ty;
+	//t_tex	*tex;
 
 	ai = g->ai[ix][g->pos.rot];
 	if (g->pos.dA > g->pos.dB)
 	{
-		d = g->pos.dB / g->cos_ai0[ix];
-		tx = (int) (g->pos.Bpy - BOX_SIZE * (float) g->pos.By);
+		r.d = g->pos.dB / g->cos_ai0[ix];
+		r.tx = (int) (g->pos.Bpy - BOX_SIZE * (float) g->pos.By);
 		if (g->map.v[g->pos.By][g->pos.Bx] == B_DOOR)
 		{
 			if (g->pos.By == g->opened_door_y && g->pos.Bx == g->opened_door_x)
-				tx -= g->hidden_door;
-			tex = &g->tex[DO];
+				r.tx -= g->hidden_door;
+			r.tex = &g->tex[DO];
 		}
 		else if (ai > -90 && ai < 90)
-			tex = &g->tex[WE];
+			r.tex = &g->tex[WE];
 		else
-			tex = &g->tex[EA];
+			r.tex = &g->tex[EA];
 	}
 	else
 	{
-		d = g->pos.dA / g->cos_ai0[ix];
-		tx = (int) (g->pos.Apx - BOX_SIZE * (float) g->pos.Ax);
+		r.d = g->pos.dA / g->cos_ai0[ix];
+		r.tx = (int) (g->pos.Apx - BOX_SIZE * (float) g->pos.Ax);
 		if (g->map.v[g->pos.Ay][g->pos.Ax] == B_DOOR)
 		{
 			if (g->pos.Ay == g->opened_door_y && g->pos.Ax == g->opened_door_x)
-				tx -= g->hidden_door;
-			tex = &g->tex[DO];
+				r.tx -= g->hidden_door;
+			r.tex = &g->tex[DO];
 		}
 		else if (ai > 0)
-			tex = &g->tex[NO];
+			r.tex = &g->tex[NO];
 		else
-			tex = &g->tex[SO];
+			r.tex = &g->tex[SO];
 	}
-	if (d < 0)
-		d = -d;
-	render_all(g, ix, d, tex, tx);
+	if (r.d < 0)
+		r.d = -r.d;
+	render_all(g, ix, &r);
 	return (d);
 }
 
