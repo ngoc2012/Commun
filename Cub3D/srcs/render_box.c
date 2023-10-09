@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:53:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 07:09:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,40 @@ static void	render_all(t_game *g, int ix, t_render *r)
 	render_floor(g, ix, start + h_slide - 1, addr);
 }
 
+static void	get_tex(t_game *g, int ix)
+{
+	float	ai;
+	t_render	r;
+
+	ai = g->ai[ix][g->pos.rot];
+	if (g->pos.dA > g->pos.dB)
+	{
+		if (g->map.v[g->pos.By][g->pos.Bx] == B_DOOR)
+		{
+			if (g->pos.By == g->opened_door_y && g->pos.Bx == g->opened_door_x)
+				r->tx -= g->hidden_door;
+			r->tex = &g->tex[DO];
+		}
+		else if (ai > -90 && ai < 90)
+			r->tex = &g->tex[WE];
+		else
+			r->tex = &g->tex[EA];
+	}
+	else
+	{
+		if (g->map.v[g->pos.Ay][g->pos.Ax] == B_DOOR)
+		{
+			if (g->pos.Ay == g->opened_door_y && g->pos.Ax == g->opened_door_x)
+				r->tx -= g->hidden_door;
+			r->tex = &g->tex[DO];
+		}
+		else if (ai > 0)
+			r->tex = &g->tex[NO];
+		else
+			r->tex = &g->tex[SO];
+	}
+}
+
 static int	render(t_game *g, int ix)
 {
 	float	ai;
@@ -113,34 +147,15 @@ static int	render(t_game *g, int ix)
 	{
 		r.d = g->pos.dB / g->cos_ai0[ix];
 		r.tx = (int) (g->pos.Bpy - BOX_SIZE * (float) g->pos.By);
-		if (g->map.v[g->pos.By][g->pos.Bx] == B_DOOR)
-		{
-			if (g->pos.By == g->opened_door_y && g->pos.Bx == g->opened_door_x)
-				r.tx -= g->hidden_door;
-			r.tex = &g->tex[DO];
-		}
-		else if (ai > -90 && ai < 90)
-			r.tex = &g->tex[WE];
-		else
-			r.tex = &g->tex[EA];
 	}
 	else
 	{
 		r.d = g->pos.dA / g->cos_ai0[ix];
 		r.tx = (int) (g->pos.Apx - BOX_SIZE * (float) g->pos.Ax);
-		if (g->map.v[g->pos.Ay][g->pos.Ax] == B_DOOR)
-		{
-			if (g->pos.Ay == g->opened_door_y && g->pos.Ax == g->opened_door_x)
-				r.tx -= g->hidden_door;
-			r.tex = &g->tex[DO];
-		}
-		else if (ai > 0)
-			r.tex = &g->tex[NO];
-		else
-			r.tex = &g->tex[SO];
 	}
 	if (r.d < 0)
 		r.d = -r.d;
+	get_tex(g, ix, &r);
 	render_all(g, ix, &r);
 	return (r.d);
 }
