@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 07:10:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 07:13:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,34 +105,29 @@ static void	render_all(t_game *g, int ix, t_render *r)
 
 static void	get_tex(t_game *g, int ix, t_render *r)
 {
-	float	ai;
-
-	ai = g->ai[ix][g->pos.rot];
 	if (g->pos.dA > g->pos.dB)
 	{
+		r->tex = &g->tex[EA];
 		if (g->map.v[g->pos.By][g->pos.Bx] == B_DOOR)
 		{
 			if (g->pos.By == g->opened_door_y && g->pos.Bx == g->opened_door_x)
 				r->tx -= g->hidden_door;
 			r->tex = &g->tex[DO];
 		}
-		else if (ai > -90 && ai < 90)
+		else if (g->ai[ix][g->pos.rot] > -90 && g->ai[ix][g->pos.rot] < 90)
 			r->tex = &g->tex[WE];
-		else
-			r->tex = &g->tex[EA];
 	}
 	else
 	{
+		r->tex = &g->tex[SO];
 		if (g->map.v[g->pos.Ay][g->pos.Ax] == B_DOOR)
 		{
 			if (g->pos.Ay == g->opened_door_y && g->pos.Ax == g->opened_door_x)
 				r->tx -= g->hidden_door;
 			r->tex = &g->tex[DO];
 		}
-		else if (ai > 0)
+		else if (g->ai[ix][g->pos.rot] > 0)
 			r->tex = &g->tex[NO];
-		else
-			r->tex = &g->tex[SO];
 	}
 }
 
