@@ -6,10 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 13:27:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 13:28:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "WrongCat.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 
@@ -30,8 +31,8 @@ int main()
 	j->makeSound();
 	meta->makeSound();
 	const WrongAnimal* m = new WrongCat();
-	std::cout << "m:" << m.getType() << ", sound: ";
-	m.mameSound();
+	std::cout << "m:" << m->getType() << ", sound: ";
+	m->makeSound();
 	delete(meta);
 	delete(i);
 	delete(j);
