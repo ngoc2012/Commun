@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 20:45:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 20:47:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ int	get_textures(t_game *g, char *fn)
 	get_texture(g, &g->tex[t_fl], "./walls/floorsteel.xpm");
 	get_texture(g, &g->tex[t_cl], "./walls/floorskin.xpm");
 	get_texture(g, &g->tex[t_d3], "./sprites/crate.xpm");
-	get_texture(g, &g->tex[D4], "./sprites/d_table.xpm");
-	get_texture(g, &g->tex[D5], "./sprites/d_tree.xpm");
-	get_texture(g, &g->tex[D6], "./sprites/i_health.xpm");
+	get_texture(g, &g->tex[t_d4], "./sprites/d_table.xpm");
+	get_texture(g, &g->tex[t_d5], "./sprites/d_tree.xpm");
+	get_texture(g, &g->tex[t_d6], "./sprites/i_health.xpm");
 	fd = open(fn, O_RDONLY);
 	if (fd == -1)
 		return (0);
@@ -111,11 +111,11 @@ int	get_textures(t_game *g, char *fn)
 					return (return_error(s, ss));
 				if (!ft_strncmp("D3", ss[0], 3) && !get_texture(g, &g->tex[t_d3], ss[1]))
 					return (return_error(s, ss));
-				if (!ft_strncmp("D4", ss[0], 3) && !get_texture(g, &g->tex[D4], ss[1]))
+				if (!ft_strncmp("D4", ss[0], 3) && !get_texture(g, &g->tex[t_d4], ss[1]))
 					return (return_error(s, ss));
-				if (!ft_strncmp("D5", ss[0], 3) && !get_texture(g, &g->tex[D5], ss[1]))
+				if (!ft_strncmp("t_d5", ss[0], 3) && !get_texture(g, &g->tex[t_d5], ss[1]))
 					return (return_error(s, ss));
-				if (!ft_strncmp("D6", ss[0], 3) && !get_texture(g, &g->tex[D6], ss[1]))
+				if (!ft_strncmp("t_d6", ss[0], 3) && !get_texture(g, &g->tex[t_d6], ss[1]))
 					return (return_error(s, ss));
 				if (!ft_strncmp("F", ss[0], 2))
 				{
