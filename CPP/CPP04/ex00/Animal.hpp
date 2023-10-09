@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 14:50:44 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:14:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Animal
 		Animal();
 		Animal(const Animal&);
 		Animal &operator=(const Animal& op);
-		virtual ~Animal();
+		~Animal();
 
 		virtual void    makeSound( void ) const;
 		std::string     getType( void ) const;
