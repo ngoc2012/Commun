@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:01:13 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:09:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 21:11:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,26 +195,26 @@ main:
 - dpp : distance to Projection Plan
 */
 typedef struct s_game {
-	t_map		map;
-	t_pos		pos;
-	t_mlx		mlx;
-	int		dpp;
-	int		frames[N_FRAMES];
-	t_tex	tex[N_TEX];
-	t_tex	gun[3];
-	t_tex	sp_tex[3];
-	t_tex	sp_att[3];
-	t_tex	sp_hit[5];
-	t_tex	*gun_tex;
-	t_sprite	*sprites;
+	t_map			map;
+	t_pos			pos;
+	t_mlx			mlx;
+	int				dpp;
+	int				frames[N_FRAMES];
+	t_tex			tex[N_TEX];
+	t_tex			gun[3];
+	t_tex			sp_tex[3];
+	t_tex			sp_att[3];
+	t_tex			sp_hit[5];
+	t_tex			*gun_tex;
+	t_sprite		*sprites;
 	unsigned int	n_sprites;
 	unsigned int	shoot;
-	int	opened_door_x;
-	int	opened_door_y;
-	int	hidden_door;
-	int	fl_color;
-	int	cl_color;
-	char	opened;
+	int				opened_door_x;
+	int				opened_door_y;
+	int				hidden_door;
+	int				fl_color;
+	int				cl_color;
+	char			opened;
 	float	*ai0;
 	float	*cos_ai0;
 	float	**ai;
