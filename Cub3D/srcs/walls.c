@@ -6,11 +6,31 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 06:05:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/09 06:10:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static void	render_floor(t_game *g, int ix, int yp)
+{
+	while (++yp < HEIGHT)
+	{
+		if (g->fl_color)
+			*addr = g->fl_color;
+		else
+		{
+			dh = g->dpp * BOX_SIZE / 2 / (yp - HEIGHT / 2) * g->cos_ai0[ix];
+			xph = g->pos.px + dh * g->cos_ai[ix][g->pos.rot];
+			yph = g->pos.py - dh * g->sin_ai[ix][g->pos.rot];
+			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
+			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
+			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
+				*addr = *(addr_f + xh + yh * g->tex[FL].l);
+		}
+		addr += WIDTH;
+	}
+}
 
 static int	render(t_game *g, int ix)
 {
@@ -107,23 +127,7 @@ static int	render(t_game *g, int ix)
 	}
 	else
 		addr += h_slide * WIDTH;
-	yp = start + h_slide - 1;
-	while (++yp < HEIGHT)
-	{
-		if (g->fl_color)
-			*addr = g->fl_color;
-		else
-		{
-			dh = g->dpp * BOX_SIZE / 2 / (yp - HEIGHT / 2) * g->cos_ai0[ix];
-			xph = g->pos.px + dh * g->cos_ai[ix][g->pos.rot];
-			yph = g->pos.py - dh * g->sin_ai[ix][g->pos.rot];
-			xh = (int) (xph - ((int) (xph / BOX_SIZE)) * BOX_SIZE);
-			yh = (int) (yph - ((int) (yph / BOX_SIZE)) * BOX_SIZE);
-			if (xh < BOX_SIZE && xh >= 0 && yh < BOX_SIZE && yh >= 0)
-				*addr = *(addr_f + xh + yh * g->tex[FL].l);
-		}
-		addr += WIDTH;
-	}
+	render_floor(g, ix, start + h_slide - 1)
 	return (d);
 }
 
