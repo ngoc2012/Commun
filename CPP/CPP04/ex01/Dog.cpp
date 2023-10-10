@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 14:29:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 14:36:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,13 @@ Dog::~Dog()
 void    Dog::makeSound( void ) const
 {
 	std::cout << "Gaugau..." << std::endl;
+}
+void	Dog::setBrain(std::string s, int i)
+{
+	if (i < 0 || i >= MAX_BRAIN)
+	{
+		std::cerr << "Error index!!!";
+		return ;
+	}
+	brain[i] = s;
 }
