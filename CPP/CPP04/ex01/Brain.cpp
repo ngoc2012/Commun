@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 14:31:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 14:54:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,4 @@ void	Brain::show(void) const
 		std::cout << i << ": " << ideas[i] << ",";
 	std::cout << std::endl;
 }
+void	Brain::setBrain(std::string s, int i) { ideas[i] = s; }
