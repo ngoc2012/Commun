@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 14:34:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 14:41:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Dog : public Animal
 		virtual ~Dog();
 
 		void    makeSound( void ) const;
+		void    showBrain( void ) const;
 		void	setBrain(std::string, int);
 };
 

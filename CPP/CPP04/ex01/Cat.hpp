@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 12:58:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 14:41:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ class Cat : public Animal
 		virtual ~Cat();
 
 		void    makeSound( void ) const;
+		void    showBrain( void ) const;
+		void	setBrain(std::string, int);
 };
 
 #endif
