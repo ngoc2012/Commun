@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 17:32:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 18:11:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ Dog::Dog() {
 }
 Dog::Dog(const Dog& src) : Animal(src) {
 	brain = new Brain();
+	*brain = *src.brain;
 	*this = src;
 	std::cout << type << " copy constructor." << std::endl;
 }
