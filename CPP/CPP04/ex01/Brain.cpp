@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 12:59:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 13:01:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
+#include "Brain.hpp"
 
-Cat::Cat() {
-	type = "Cat";
-	std::cout << type << " default constructor." << std::endl;
+Brain::Brain() {
+	std::cout << "Brain default constructor." << std::endl;
 }
-Cat::Cat(const Cat& src) : Animal(src) {
-	*this = src;
-	std::cout << type << " copy constructor." << std::endl;
+Brain::Brain(const Brain& src) : Animal(src) {
+	std::cout << "Brain copy constructor." << std::endl;
 }
-Cat&	Cat::operator=( Cat const & src )
+Brain&	Brain::operator=( Brain const & src ) { return (*this); }
+Brain::~Brain() { std::cout << "Brain destructor." << std::endl; }
+void	Brain::show(void) const
 {
-	type = src.type;
-	return (*this);
-}
-Cat::~Cat() { std::cout << type << " destructor." << std::endl; }
-void    Cat::makeSound( void ) const
-{
-	std::cout << "Meomeo..." << std::endl;
+	for (int i
 }

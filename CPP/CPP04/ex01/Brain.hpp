@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 13:45:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 13:00:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class Brain
 		Brain(const Brain&);
 		Brain &operator=(const Brain& op);
 		virtual ~Brain();
+
+		void	show(void) const;
 };
 
 #endif
