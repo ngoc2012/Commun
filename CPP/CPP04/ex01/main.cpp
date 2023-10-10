@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 17:35:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 17:39:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,17 @@ int main()
 	Cat k1;
 	k1 = *m1;
 	k1.showBrain();
-	delete(m);
-	//Animal	zoo[N_ANIMAL];
-	//for (int i = 0; i < N_ANIMAL; i++)
-	//{
-	//	if (i % 2)
-
-	//}
-	//for (int i = 0; i < N_ANIMAL; i++)
-	//{
-	//}
+	delete(m1);
+	Animal	zoo[N_ANIMAL];
+	for (int i = 0; i < N_ANIMAL; i++)
+	{
+		if (i % 2)
+			zoo[i] = new Dog();
+		else
+			zoo[i] = new Cat();
+	}
+	for (int i = 0; i < N_ANIMAL; i++)
+	{
+	}
 	return (0);
 }
