@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 17:41:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 18:13:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int main()
 	Dog k;
 	k = *m;
 	k.showBrain();
+	Dog h(k);
+	h.showBrain();
 	delete(m);
 	Cat* m1 = new Cat();
 	m1->setBrain("hoho", 1);
