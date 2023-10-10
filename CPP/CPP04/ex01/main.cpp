@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 17:39:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 17:41:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main()
 	k1 = *m1;
 	k1.showBrain();
 	delete(m1);
-	Animal	zoo[N_ANIMAL];
+	Animal	*zoo[N_ANIMAL];
 	for (int i = 0; i < N_ANIMAL; i++)
 	{
 		if (i % 2)
@@ -49,7 +49,6 @@ int main()
 			zoo[i] = new Cat();
 	}
 	for (int i = 0; i < N_ANIMAL; i++)
-	{
-	}
+		delete(zoo[i]);
 	return (0);
 }
