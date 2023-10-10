@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 17:33:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 17:36:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Cat::Cat(const Cat& src) : Animal(src) {
 }
 Cat&	Cat::operator=( Cat const & src )
 {
-	brain = src.brain;
+	*brain = *src.brain;
 	type = src.type;
 	return (*this);
 }
