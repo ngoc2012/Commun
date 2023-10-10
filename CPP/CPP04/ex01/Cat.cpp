@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 14:42:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 14:49:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	Cat::setBrain(std::string s, int i)
 		std::cerr << "Error index!!!";
 		return ;
 	}
-	brain[i] = s;
+	brain.ideas[i] = s;
 }

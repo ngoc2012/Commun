@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 14:44:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 14:49:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ int main()
 {
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
-	j->setBrain("haha", 25);
-	j->showBrain();
-	Dog k;
-	k = j;
-	k->showBrain();
 	delete(i);
 	delete(j);
+	Dog* m = new Dog();
+	m->setBrain("haha", 25);
+	m->showBrain();
+	Dog k;
+	k = *m;
+	k->showBrain();
 	return (0);
 }
