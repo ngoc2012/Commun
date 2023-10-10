@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 15:08:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 17:33:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	Cat::setBrain(std::string s, int i)
 {
 	if (i < 0 || i >= MAX_BRAIN)
 	{
-		std::cerr << "Error index!!!";
+		std::cerr << "Error: no " << i << " index!!!\n";
 		return ;
 	}
 	brain->setIdea(s, i);
