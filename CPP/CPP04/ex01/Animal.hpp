@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 13:08:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 14:43:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ class Animal
 
 		virtual void    makeSound( void ) const;
 		std::string     getType( void ) const;
+		virtual void    showBrain( void ) const;
+		virtual void	setBrain(std::string, int);
 };
 
 #endif
