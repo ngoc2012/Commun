@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 14:49:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 14:50:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	Dog::setBrain(std::string s, int i)
 		std::cerr << "Error index!!!";
 		return ;
 	}
-	brain.ideas[i] = s;
+	brain->ideas[i] = s;
 }
