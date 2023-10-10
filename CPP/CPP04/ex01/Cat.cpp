@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 15:03:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 15:08:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ Cat&	Cat::operator=( Cat const & src )
 	return (*this);
 }
 Cat::~Cat() {
-	if (brain)
-		delete(brain);
+	delete(brain);
 	std::cout << type << " destructor." << std::endl;
 }
 void    Cat::makeSound( void ) const
