@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 14:56:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/10 17:22:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ Brain::Brain(const Brain& src) {
 	std::cout << "Brain copy constructor." << std::endl;
 }
 Brain&	Brain::operator=( Brain const & src ) {
+	std::cout << "Brain assignement." << std::endl;
 	for (int i = 0; i < MAX_BRAIN; i++)
 		ideas[i] = src.ideas[i];
 	return (*this);
