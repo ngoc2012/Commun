@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 15:43:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/12 15:47:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static int	g_t(t_game *g, t_tex *t, char *path)
 
 int	suite_g_t2(t_game *g, char **ss, char *s)
 {
+	/*
 	if (!ft_strncmp("NO", ss[0], 3))
 	{
 		if (!g_t(g, &g->tex[t_no], ss[1]))
@@ -50,6 +51,7 @@ int	suite_g_t2(t_game *g, char **ss, char *s)
 		return (1);
 	}
 	return (-1);
+	*/
 }
 
 int	suite_g_t1(t_game *g, char **ss, char *s)
