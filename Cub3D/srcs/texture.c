@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 14:16:54 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:38:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,9 @@ int	get_textures(t_game *g, char *fn)
 		s = get_next_line(fd);
 	}
 	close(fd);
+	if (!g->fl_color && !g->tex[t_fl].img)
+		end_game(g, 1, "Error: No floor texture found\n");
+	if (!g->cl_color && !g->tex[t_cl].img)
+		end_game(g, 1, "Error: No ceiling texture found\n");
 	return (1);
 }
