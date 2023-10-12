@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 15:53:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/12 15:55:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ int	suite_g_t2(t_game *g, char **ss, char *s)
 		return (return_error(s, ss));
 	if (!ft_strncmp("DO", ss[0], 3) && !g_t(g, &g->tex[t_do], ss[1]))
 		return (return_error(s, ss));
-	if (!ft_strncmp("FL", ss[0], 3) && !g_t(g, &g->tex[t_fl], ss[1]))
-		return (return_error(s, ss));
-	if (!ft_strncmp("CL", ss[0], 3) && !g_t(g, &g->tex[t_cl], ss[1]))
-		return (return_error(s, ss));
+	//if (!ft_strncmp("FL", ss[0], 3) && !g_t(g, &g->tex[t_fl], ss[1]))
+	//	return (return_error(s, ss));
+	//if (!ft_strncmp("CL", ss[0], 3) && !g_t(g, &g->tex[t_cl], ss[1]))
+	//	return (return_error(s, ss));
 	if (!ft_strncmp("D3", ss[0], 3) && !g_t(g, &g->tex[t_d3], ss[1]))
 		return (return_error(s, ss));
 	if (!ft_strncmp("D4", ss[0], 3) && !g_t(g, &g->tex[t_d4], ss[1]))
