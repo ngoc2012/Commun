@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 09:55:06 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 09:56:08 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define ICE_HPP
 
 #include <iostream>
-#include "Character.hpp"
-#include "MateriaSource.hpp"
+#include "AMateria.hpp"
 
 class Ice
 {
