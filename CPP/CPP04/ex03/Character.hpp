@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 13:33:57 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:34:15 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class Character: public ICharacter
 		AMateria	*slots[SLOTS];
 		Character();
 		Character(const Character&);
-		std::string	type;
 	public:
 		Character &operator=(const Character& op);
 		Character(std::string const & type);
