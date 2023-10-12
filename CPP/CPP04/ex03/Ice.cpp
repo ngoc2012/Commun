@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 09:42:50 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 09:46:42 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,3 @@ Ice&	Ice::operator=( Ice const & src )
 }
 Ice::Ice(std::string const & _type) { type = _type; }
 Ice::~Ice() { std::cout type << " destructor." << std::endl; }
-std::string     Ice::getType( void ) const {return (type);}

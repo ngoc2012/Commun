@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 09:45:04 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 09:46:13 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class AMateria
 		AMateria(const AMateria&);
 		std::string	type;
 	public:
+		AMateria &operator=(const AMateria& op);
 		AMateria(std::string const & type);
 		virtual ~AMateria();
 

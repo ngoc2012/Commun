@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 09:44:12 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 09:46:31 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Ice
 		Ice(const Ice&);
 		std::string	type;
 	public:
+		Ice &operator=(const Ice& op);
 		Ice(std::string const & type);
 		virtual ~Ice();
 
