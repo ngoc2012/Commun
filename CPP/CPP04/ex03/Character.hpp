@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 10:23:27 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 11:30:09 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include "ICharacter.hpp"
 
-class Character
+class Character: public ICharacter
 {
 	protected:
 		Character();
