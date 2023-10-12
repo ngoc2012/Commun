@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 13:46:31 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:49:40 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Character::Character()
 {
-	for (int i; i < SLOTS; i++) {slots[i] = 0;}
+	for (int i = 0; i < SLOTS; i++) {slots[i] = 0;}
 	std::cout << "Character default constructor." << std::endl;
 }
 Character::Character(const Character& src) {
@@ -23,7 +23,7 @@ Character::Character(const Character& src) {
 }
 Character&	Character::operator=( Character const & src )
 {
-	for (int i; i < SLOTS; i++) {slots[i] = src.slots[i];}
+	for (int i = 0; i < SLOTS; i++) {slots[i] = src.slots[i];}
 	return (*this);
 }
 Character::~Character() { std::cout << "Character destructor." << std::endl; }
@@ -41,13 +41,21 @@ void	Character::equip(AMateria* m)
 }
 void	Character::unequip(int idx)
 {
+	if (idx < 0 || idx >= SLOTS)
+		std::cerr << "Indice slot " << idx << " est invalide." << std::endl;
 	if (slots[idx])
-		for (int i; i < SLOTS; i++) {slots[i] = src.slots[i];}
+	{
+		for (int i = idx + 1; i < SLOTS; i++) {
+			slots[i] = src.slots[i];
+		}
+	}
 	else
 		std::cerr << "No AMateria at slot " << idx << "." << std::endl;
 }
 void	Character::use(int idx, ICharacter& target)
 {
+	if (idx < 0 || idx >= SLOTS)
+		std::cerr << "Indice slot " << idx << " est invalide." << std::endl;
 	if (slots[idx])
 		slots[idx]->use(target);
 	else
