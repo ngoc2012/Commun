@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 09:46:13 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 09:55:27 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define AMATERIA_HPP
 
 #include <iostream>
-
+#include "Character.hpp"
 
 class AMateria
 {
