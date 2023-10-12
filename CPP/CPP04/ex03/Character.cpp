@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 13:45:53 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:46:31 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ void	Character::equip(AMateria* m)
 }
 void	Character::unequip(int idx)
 {
+	if (slots[idx])
+		for (int i; i < SLOTS; i++) {slots[i] = src.slots[i];}
+	else
+		std::cerr << "No AMateria at slot " << idx << "." << std::endl;
 }
 void	Character::use(int idx, ICharacter& target)
 {
