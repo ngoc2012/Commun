@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 13:49:40 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:52:27 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,7 @@ void	Character::unequip(int idx)
 	if (idx < 0 || idx >= SLOTS)
 		std::cerr << "Indice slot " << idx << " est invalide." << std::endl;
 	if (slots[idx])
-	{
-		for (int i = idx + 1; i < SLOTS; i++) {
-			slots[i] = src.slots[i];
-		}
-	}
+		slots[idx] = 0;
 	else
 		std::cerr << "No AMateria at slot " << idx << "." << std::endl;
 }
