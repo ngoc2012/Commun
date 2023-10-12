@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:01:13 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 21:14:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/12 10:35:20 by nbechon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 # define WIDTH 600
 # define HEIGHT 300
-# define SCALE 4
+# define SCALE 2
 # define FOV 90
 # define BOX_SIZE 64
 # define WALL_COLISION 8
@@ -38,12 +38,12 @@
 # define ROT_SPEED 0
 # define GUN_SPEED 2
 # define DOOR_SPEED 1
-# define DOOR_IDLE 80
+# define DOOR_IDLE 100
 # define SPRITE_IDLE 5
 # define SPRITE_STATE 6
 # define HEALTH_SPRITE 2
 # define PI 3.141592654
-# define INFINI INT_MAX
+# define INFINI 4294967295.0
 # define COLOR_BOLD_SLOW_BLINKING      "\033[1;5m"
 # define COLOR_BOLD_SLOW_BLINKING_RED  "\033[1;5;31m"
 # define COLOR_BOLD_SLOW_BLINKING_BLUE  "\033[1;5;34m"
@@ -89,6 +89,8 @@ typedef struct s_map {
 	int			l;
 	int			ph;
 	int			pl;
+	int			perso;
+	int			in_map;
 }	t_map;
 
 /*
@@ -207,7 +209,7 @@ typedef struct s_game {
 	t_tex			sp_hit[5];
 	t_tex			*gun_tex;
 	t_sprite		*sprites;
-	unsigned int	n_sprites;
+	int				n_sprites;
 	unsigned int	shoot;
 	int				opened_door_x;
 	int				opened_door_y;
@@ -234,14 +236,34 @@ typedef struct s_render {
 	int		yh;
 	int		tx;
 	int		ty;
+	int		i;
+	int		ix;
 	float	xph;
 	float	yph;
 	float	dh;
 	float	d;
+	float	h;
+	float	p;
+	float	d0;
+	float	start_x;
+	float	start_y;
+	float	end_x;
+	float	end_y;
 	t_tex	*tex;
 }	t_render;
 
+void	finish(char *s, int fd, t_game *g);
+int		get_color(char *s);
+int		return_error(char *s, char **ss);
+int		check_map(char *s);
+void	verif_wall(t_game *g);
+void	key_press_norm2(t_game *g, int keycode);
+float	norm(int keycode, t_game *g);
+float	norm2(int keycode, t_game *g);
+float	norm3(int keycode, t_game *g);
+float	norm4(int keycode, t_game *g);
 void	free_map(t_map *m);
+void	free_array(float **a, int size);
 int		get_map(t_game *g, char *fn);
 int		draw(t_game *g);
 int		key_hook(int keycode, t_game *g);
@@ -264,5 +286,18 @@ float	render_box(t_game *g, int ix);
 void	get_b(t_game *g, int ix, float ai);
 void	get_ab(t_game *g, int ix);
 void	frames(t_game *g);
+int		end_game(t_game *g, int exit_code, char *s);
+void	init(t_game *g);
+int		precalcul(t_game *g);
+void	get_pos1(int i, int j, char c, t_game *g);
+void	get_pos2(int i, int j, char c, t_game *g);
+void	init_boxsize(t_game *g);
+void	add_sprite(float px, double py, enum e_map type, t_game *g);
+void	free_map(t_map *m);
+void	order(t_game *g);
+int		get_texture2(t_game *g, char **ss, char *s);
+void	key_release2(t_game *g);
+void	key_release3(t_game *g);
+void	for_check_map(t_game *g, char *fn);
 
 #endif

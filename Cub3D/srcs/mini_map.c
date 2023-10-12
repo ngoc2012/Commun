@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   by: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:35:06 by nbechon           #+#    #+#             */
-/*   Updated: 2023/10/09 20:56:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/11 15:38:43 by nbechon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	wall(int *addr, int p, int k, int count)
 	}
 }
 
-void	draw_hero_and_wall(t_game *g, int l, int h, int *addr)
+void	draw_hero_and_wall(t_game *g, int *addr)
 {
 	int		i;
 	int		j;
@@ -87,10 +87,9 @@ void	draw_hero_and_wall(t_game *g, int l, int h, int *addr)
 		i++;
 		p++;
 	}
-	draw_hero(h / 2, l / 2, addr);
 }
 
-draw_life(int *addr, int l)
+void	draw_life(int *addr)
 {
 	int	i;
 	int	j;
@@ -107,7 +106,8 @@ draw_life(int *addr, int l)
 			j = 6;
 			while (j < 20)
 			{
-				addr[(HEIGHT - 30 + i) * WIDTH + (WIDTH - j - n)] = create_trgb(255, 255, 0, 0);
+				addr[(HEIGHT - 30 + i) * WIDTH + (WIDTH - j - n)]
+					= create_trgb(255, 255, 0, 0);
 				j++;
 			}
 			i++;
@@ -122,6 +122,7 @@ void	draw_mini_map(t_game *g)
 	int	*addr;
 
 	addr = (int *)g->mlx.addr;
-	draw_hero_and_wall(g, WIDTH / 4, HEIGHT / 4, addr);
-	draw_life(addr, WIDTH / 3);
+	draw_hero_and_wall(g, addr);
+	draw_hero((HEIGHT / 4 / 2), (WIDTH / 4 / 2), addr);
+	draw_life(addr);
 }
