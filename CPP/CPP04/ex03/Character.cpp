@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 13:41:12 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:42:06 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	Character::equip(AMateria* m)
 		std::cerr << "Character slots are full." << std::endl;
 		return ;
 	}
+	slots[i] = m;
 }
 void	unequip(int idx)
 {
