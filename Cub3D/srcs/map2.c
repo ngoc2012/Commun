@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 15:35:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/12 21:41:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ static void	get_position(t_game *g, int i, int j, char c)
 void	check_line(t_game *g, char *s, int j)
 {
 	int	i;
-	//int	count_perso;
 
-	//count_perso = 0;
 	i = 0;
 	while (i < g->map.l)
 		g->map.v[j][i++] = b_empty;
