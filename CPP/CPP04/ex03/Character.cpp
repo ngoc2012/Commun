@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 13:42:06 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 13:45:53 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,13 @@ void	Character::equip(AMateria* m)
 	}
 	slots[i] = m;
 }
-void	unequip(int idx)
+void	Character::unequip(int idx)
 {
 }
-void	Character::use(ICharacter& target)
+void	Character::use(int idx, ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " << target.type << " *" << std:endl;
+	if (slots[idx])
+		slots[idx]->use(target);
+	else
+		std::cerr << "No AMateria at slot " << idx << "." << std::endl;
 }
