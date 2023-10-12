@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 15:40:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/12 15:43:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,8 @@ int	get_texture2(t_game *g, char **ss, char *s)
 	o1 = suite_g_t1(g, ss, s);
 	o2 = suite_g_t2(g, ss, s);
 	if (!o || !o1 || !o2)
-		return (0);
-	if (o == 1 || o1 == 1 || o2 == 1)
-		;
-	else if (!ft_strncmp("F", ss[0], 2))
+		return (return_error(s, ss));
+	if (!ft_strncmp("F", ss[0], 2))
 	{
 		g->fl_color = get_color(ss[1]);
 		if (!g->fl_color)
@@ -129,8 +127,6 @@ int	get_texture2(t_game *g, char **ss, char *s)
 		if (!g->cl_color)
 			return (return_error(s, ss));
 	}
-	//else
-	//	return (return_error(s, ss));
 	return (1);
 }
 
@@ -140,12 +136,6 @@ int	get_texture2(t_game *g, char **ss, char *s)
    g_t(g, &g->tex[t_we], "./walls/tile105.xpm");
    g_t(g, &g->tex[t_ea], "./walls/steelwall6.xpm");
    g_t(g, &g->tex[t_do], "./walls/bigdoor.xpm");
-   g_t(g, &g->tex[t_fl], "./walls/floorsteel.xpm");
-   g_t(g, &g->tex[t_cl], "./walls/floorskin.xpm");
-   g_t(g, &g->tex[t_d3], "./sprites/crate.xpm");
-   g_t(g, &g->tex[t_d4], "./sprites/d_table.xpm");
-   g_t(g, &g->tex[t_d5], "./sprites/d_tree.xpm");
-   g_t(g, &g->tex[t_d6], "./sprites/i_health.xpm");
 */
 void	order(t_game *g)
 {
@@ -163,4 +153,10 @@ void	order(t_game *g)
 	g_t(g, &g->gun[0], "./guns/gun1a.xpm");
 	g_t(g, &g->gun[1], "./guns/gun1b.xpm");
 	g_t(g, &g->gun[2], "./guns/gun1c.xpm");
+	g_t(g, &g->tex[t_fl], "./walls/floorsteel.xpm");
+	g_t(g, &g->tex[t_cl], "./walls/floorskin.xpm");
+	g_t(g, &g->tex[t_d3], "./sprites/crate.xpm");
+	g_t(g, &g->tex[t_d4], "./sprites/d_table.xpm");
+	g_t(g, &g->tex[t_d5], "./sprites/d_tree.xpm");
+	g_t(g, &g->tex[t_d6], "./sprites/i_health.xpm");
 }
