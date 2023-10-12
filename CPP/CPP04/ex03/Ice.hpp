@@ -1,51 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 09:10:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/12 09:44:12 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
 #include <iostream>
 
-
-class AMateria
+class Ice
 {
 	protected:
-		Animal();
-		Animal(const Animal&);
+		Ice();
+		Ice(const Ice&);
 		std::string	type;
 	public:
-		AMateria(std::string const & type);
-		virtual ~Animal();
+		Ice(std::string const & type);
+		virtual ~Ice();
 
 		std::string const & getType() const; //Returns the materia type
-		virtual AMateria* clone() const = 0;
+		virtual Ice* clone() const = 0;
 		virtual void use(ICharacter& target);
 };
-/*
-class Animal
-{
-	protected:
-		Animal();
-		Animal(const Animal&);
-		std::string	type;
-	public:
-		Animal &operator=(const Animal& op);
-		virtual ~Animal();
-
-		virtual void    makeSound( void ) const;
-		std::string     getType( void ) const;
-		virtual void    showBrain( void ) const;
-		virtual void	setBrain(std::string, int);
-};
-*/
 
 #endif
