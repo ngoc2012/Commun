@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 21:29:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/12 21:30:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	get_texture2(t_game *g, char **ss, char *s)
    g_t(g, &g->tex[t_we], "./walls/tile105.xpm");
    g_t(g, &g->tex[t_ea], "./walls/steelwall6.xpm");
    g_t(g, &g->tex[t_do], "./walls/bigdoor.xpm");
+   g_t(g, &g->tex[t_fl], "./walls/floorsteel.xpm");
+   g_t(g, &g->tex[t_cl], "./walls/floorskin.xpm");
 */
 void	order(t_game *g)
 {
@@ -107,8 +109,6 @@ void	order(t_game *g)
 	g_t(g, &g->gun[0], "./guns/gun1a.xpm");
 	g_t(g, &g->gun[1], "./guns/gun1b.xpm");
 	g_t(g, &g->gun[2], "./guns/gun1c.xpm");
-	g_t(g, &g->tex[t_fl], "./walls/floorsteel.xpm");
-	g_t(g, &g->tex[t_cl], "./walls/floorskin.xpm");
 	g_t(g, &g->tex[t_d3], "./sprites/crate.xpm");
 	g_t(g, &g->tex[t_d4], "./sprites/d_table.xpm");
 	g_t(g, &g->tex[t_d5], "./sprites/d_tree.xpm");
