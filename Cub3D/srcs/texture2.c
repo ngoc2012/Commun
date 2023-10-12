@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 15:50:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/12 15:53:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,7 @@ int	get_texture2(t_game *g, char **ss, char *s)
 	if (!o || !o1 || !o2)
 		return (return_error(s, ss));
 		*/
+	printf("here %s\n", s);
 	if (!suite_g_t2(g, ss, s))
 		return (0);
 	if (!ft_strncmp("F", ss[0], 2))
