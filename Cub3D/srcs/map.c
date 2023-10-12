@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 12:57:31 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 13:01:50 by nbechon          ###   ########.fr       */
+/*   Updated: 2023/10/12 21:36:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,17 @@ void	check_cub(char *fn, t_game *g)
 	}
 }
 
+void	final_check(t_game *g)
+{
+	if (g->map.h < 3 || g->map.l < 3)
+		end_game(g, 1, "Error: map too small\n");
+	if (!g->fl_color && !g->tex[t_fl].img)
+		end_game(g, 1, "Error: No floor texture found\n");
+	if (!g->cl_color && !g->tex[t_cl].img)
+		end_game(g, 1, "Error: No ceiling texture found\n");
+
+}
+
 int	get_map(t_game *g, char *fn)
 {
 	int		fd;
@@ -67,8 +78,7 @@ int	get_map(t_game *g, char *fn)
 		s = get_next_line(fd);
 	}
 	close(fd);
-	if (g->map.h < 3 || g->map.l < 3)
-		end_game(g, 1, "Error: map too small\n");
+	final_check(g);
 	call(g, fn);
 	return (1);
 }
