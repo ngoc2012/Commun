@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 15:11:38 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:31:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	get_texture2(t_game *g, char **ss, char *s)
 	o = suite_g_t0(g, ss, s);
 	o1 = suite_g_t1(g, ss, s);
 	o2 = suite_g_t2(g, ss, s);
-	if (!o ||)
+	if (!o || !o1 || !o2)
 		return (0);
 	if (o == 1)
 		;
