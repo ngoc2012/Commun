@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 15:49:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/12 15:50:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,27 @@ int	suite_g_t2(t_game *g, char **ss, char *s)
 	}
 	return (-1);
 	*/
-	if (!ft_strncmp("NO", ss[0], 3) && !get_texture(g, &g->tex[t_no], ss[1]))
+	if (!ft_strncmp("NO", ss[0], 3) && !g_t(g, &g->tex[t_no], ss[1]))
 		return (return_error(s, ss));
-	if (!ft_strncmp("SO", ss[0], 3) && !get_texture(g, &g->tex[t_so], ss[1]))
+	if (!ft_strncmp("SO", ss[0], 3) && !g_t(g, &g->tex[t_so], ss[1]))
 		return (return_error(s, ss));
-	if (!ft_strncmp("WE", ss[0], 3) && !get_texture(g, &g->tex[t_we], ss[1]))
+	if (!ft_strncmp("WE", ss[0], 3) && !g_t(g, &g->tex[t_we], ss[1]))
 		return (return_error(s, ss));
-	if (!ft_strncmp("EA", ss[0], 3) && !get_texture(g, &g->tex[t_ea], ss[1]))
+	if (!ft_strncmp("EA", ss[0], 3) && !g_t(g, &g->tex[t_ea], ss[1]))
 		return (return_error(s, ss));
-	if (!ft_strncmp("DO", ss[0], 3) && !get_texture(g, &g->tex[t_do], ss[1]))
+	if (!ft_strncmp("DO", ss[0], 3) && !g_t(g, &g->tex[t_do], ss[1]))
 		return (return_error(s, ss));
-	if (!ft_strncmp("FL", ss[0], 3) && !get_texture(g, &g->tex[t_fl], ss[1]))
+	if (!ft_strncmp("FL", ss[0], 3) && !g_t(g, &g->tex[t_fl], ss[1]))
 		return (return_error(s, ss));
-	if (!ft_strncmp("CL", ss[0], 3) && !get_texture(g, &g->tex[t_cl], ss[1]))
+	if (!ft_strncmp("CL", ss[0], 3) && !g_t(g, &g->tex[t_cl], ss[1]))
 		return (return_error(s, ss));
-	if (!ft_strncmp("D3", ss[0], 3) && !get_texture(g, &g->tex[t_d3], ss[1]))
+	if (!ft_strncmp("D3", ss[0], 3) && !g_t(g, &g->tex[t_d3], ss[1]))
 		return (return_error(s, ss));
-	if (!ft_strncmp("D4", ss[0], 3) && !get_texture(g, &g->tex[t_d4], ss[1]))
+	if (!ft_strncmp("D4", ss[0], 3) && !g_t(g, &g->tex[t_d4], ss[1]))
 		return (return_error(s, ss));
-	if (!ft_strncmp("D5", ss[0], 3) && !get_texture(g, &g->tex[t_d5], ss[1]))
+	if (!ft_strncmp("D5", ss[0], 3) && !g_t(g, &g->tex[t_d5], ss[1]))
 		return (return_error(s, ss));
-	if (!ft_strncmp("D6", ss[0], 3) && !get_texture(g, &g->tex[t_d6], ss[1]))
+	if (!ft_strncmp("D6", ss[0], 3) && !g_t(g, &g->tex[t_d6], ss[1]))
 		return (return_error(s, ss));
 	return (1);
 }
