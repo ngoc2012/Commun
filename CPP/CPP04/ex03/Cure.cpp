@@ -35,5 +35,6 @@ void	Cure::use(ICharacter& target)
 
 Cure	*Cure::clone(void) const
 {
-	return (Cure(*this));
+	Cure	*i = new Cure(*this);
+	return (i);
 }
