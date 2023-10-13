@@ -29,7 +29,7 @@ class MateriaSource: public IMateriaSource
 		MateriaSource(std::string const & type);
 		virtual ~MateriaSource();
 
-		void IMateriaSource::learnMateria(AMateria*);
+		void learnMateria(AMateria*);
 		AMateria* createMateria(std::string const & type);
 };
 
