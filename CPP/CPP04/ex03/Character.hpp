@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 18:24:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 18:26:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ class Character: public ICharacter
 		Character(std::string const & type);
 		virtual ~Character();
 
+		std::string const & getName() const = 0;
+		void equip(AMateria* m) = 0;
+		void unequip(int idx) = 0;
+		void use(int idx, ICharacter& target) = 0;
 		void	destroy( void );
 };
 
