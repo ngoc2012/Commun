@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 18:18:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 18:24:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Character: public ICharacter
 		Character(std::string const & type);
 		virtual ~Character();
 
-		destroy( void );
+		void	destroy( void );
 };
 
 #endif

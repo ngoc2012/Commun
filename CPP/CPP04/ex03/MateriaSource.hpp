@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 18:08:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 18:25:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ class MateriaSource: public IMateriaSource
 		MateriaSource &operator=(const MateriaSource& op);
 		MateriaSource(std::string const & type);
 		virtual ~MateriaSource();
+
+		void IMateriaSource::learnMateria(AMateria*);
+		AMateria* createMateria(std::string const & type);
 };
 
 #endif
