@@ -17,7 +17,7 @@ Character::Character()
 	for (int i = 0; i < SLOTS; i++) {slots[i] = 0;}
 	std::cout << "Character default constructor." << std::endl;
 }
-Character::Character(std::string const _name)
+Character::Character(std::string const &_name)
 {
 	name = _name;
 	std::cout << "Character constructor avec string as parameter." << std::endl;
@@ -30,7 +30,7 @@ void	Character::destroy(void)
 {
 	for (int i = 0; i < SLOTS; i++)
 		if (slots[i])
-			delete(slots[i]);
+			delete(&slots[i]);
 }
 Character&	Character::operator=( Character const & src )
 {

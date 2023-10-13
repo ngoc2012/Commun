@@ -25,7 +25,7 @@ void	MateriaSource::destroy(void)
 {
 	for (int i = 0; i < SLOTS_MS; i++)
 		if (materias[i])
-			delete(materias[i]);
+			delete(&materias[i]);
 }
 MateriaSource&	MateriaSource::operator=( MateriaSource const & src )
 {
