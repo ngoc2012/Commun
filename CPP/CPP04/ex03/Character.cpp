@@ -17,7 +17,7 @@ Character::Character()
 	for (int i = 0; i < SLOTS; i++) {slots[i] = 0;}
 	std::cout << "Character default constructor." << std::endl;
 }
-Character::Character(std::string _name)
+Character::Character(std::string const _name)
 {
 	name = _name;
 	std::cout << "Character constructor avec string as parameter." << std::endl;
