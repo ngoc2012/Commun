@@ -24,4 +24,4 @@ AMateria&	AMateria::operator=( AMateria const & src )
 }
 AMateria::AMateria(std::string const & _type) { type = _type; }
 AMateria::~AMateria() { std::cout << "AMateria " << type << " destructor." << std::endl; }
-std::string const	&AMateria::getType( void ) const {return (*type);}
+std::string const	&AMateria::getType( void ) const {return (type);}

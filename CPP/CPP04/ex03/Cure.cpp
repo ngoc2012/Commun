@@ -27,10 +27,10 @@ Cure&	Cure::operator=( Cure const & src )
 	type = src.type;
 	return (*this);
 }
-Cure::~Cure() { std::cout type << " destructor." << std::endl; }
+Cure::~Cure() { std::cout << type << " destructor." << std::endl; }
 void	Cure::use(ICharacter& target)
 {
-	std::cout << "* heals " << target.getName() << "'s wounds *" << std:endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 }
 
 Cure	*Cure::clone(void) const

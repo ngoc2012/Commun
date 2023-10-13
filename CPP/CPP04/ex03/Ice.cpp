@@ -30,10 +30,10 @@ Ice&	Ice::operator=( Ice const & src )
 Ice::~Ice() { std::cout << type << " destructor." << std::endl; }
 void	Ice::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std:endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
 
 Ice	*Ice::clone(void) const
 {
-	return (Ice(*this));
+	return (&(Ice(*this)));
 }
