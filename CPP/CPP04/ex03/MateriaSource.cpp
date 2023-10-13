@@ -1,65 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.cpp                                      :+:      :+:    :+:   */
+/*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 17:15:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 17:39:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Character.hpp"
+#include "MateriaSource.hpp"
 
-Character::Character()
+MateriaSource::MateriaSource()
 {
 	for (int i = 0; i < SLOTS; i++) {slots[i] = 0;}
-	std::cout << "Character default constructor." << std::endl;
+	std::cout << "MateriaSource default constructor." << std::endl;
 }
-Character::Character(std::string _name)
-{
-	name = _name;
-	std::cout << "Character constructor avec string as parameter." << std::endl;
-}
-Character::Character(const Character& src) {
+MateriaSource::MateriaSource(const MateriaSource& src) {
 	*this = src;
-	std::cout << "Character copy constructor." << std::endl;
+	std::cout << "MateriaSource copy constructor." << std::endl;
 }
-void	Character::destroy(void)
+void	MateriaSource::destroy(void)
 {
 	for (int i = 0; i < SLOTS; i++)
 		if (slots[i])
 			delete(slots[i]);
 }
-Character&	Character::operator=( Character const & src )
+MateriaSource&	MateriaSource::operator=( MateriaSource const & src )
 {
 	destroy();
 	for (int i = 0; i < SLOTS; i++)
 		slots[i] = new AMateria(src.slots[i]);
 	return (*this);
 }
-Character::~Character()
+MateriaSource::~MateriaSource()
 {
 	destroy();
- 	std::cout << "Character destructor." << std::endl;
+ 	std::cout << "MateriaSource destructor." << std::endl;
 }
-std::string	Character::getName(void) const {return (name);}
 
-void	Character::equip(AMateria* m)
+void	MateriaSource::learnMateria(AMateria* m)
 {
 	int	i = 0;
 	while (i < SLOTS && slots[i])
 		i++;
 	if (i == SLOTS - 1)
 	{
-		std::cerr << "Character slots are full." << std::endl;
+		std::cerr << "MateriaSource slots are full." << std::endl;
 		return ;
 	}
 	slots[i] = m;
 }
 
-void	Character::unequip(int idx)
+void	MateriaSource::unequip(int idx)
 {
 	if (idx < 0 || idx >= SLOTS)
 		std::cerr << "Indice slot " << idx << " est invalide." << std::endl;
@@ -69,7 +63,7 @@ void	Character::unequip(int idx)
 		std::cerr << "No AMateria at slot " << idx << "." << std::endl;
 }
 
-void	Character::use(int idx, ICharacter& target)
+void	MateriaSource::use(int idx, IMateriaSource& target)
 {
 	if (idx < 0 || idx >= SLOTS)
 		std::cerr << "Indice slot " << idx << " est invalide." << std::endl;
