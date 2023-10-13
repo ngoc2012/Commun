@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 18:06:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 18:08:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define SLOTS_MS 4
 
 #include <iostream>
-#include "ICharacter.hpp"
+#include "Character.hpp"
 #include "IMateriaSource.hpp"
 
 class MateriaSource: public IMateriaSource
