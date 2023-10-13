@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 17:13:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 17:15:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ Character&	Character::operator=( Character const & src )
 {
 	destroy();
 	for (int i = 0; i < SLOTS; i++)
-	{
-		slots[i] = src.slots[i];
-	}
+		slots[i] = new AMateria(src.slots[i]);
 	return (*this);
 }
 Character::~Character()
