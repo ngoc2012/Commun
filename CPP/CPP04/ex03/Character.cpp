@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 17:08:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 17:11:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,23 @@ Character::Character(const Character& src) {
 	*this = src;
 	std::cout << "Character copy constructor." << std::endl;
 }
-Character&	Character::operator=( Character const & src )
+void	Character::destroy(void)
 {
 	for (int i = 0; i < SLOTS; i++)
 		if (slots[i])
 			delete(slots[i]);
+}
+Character&	Character::operator=( Character const & src )
+{
+	destroy();
 	for (int i = 0; i < SLOTS; i++) {slots[i] = src.slots[i];}
 	return (*this);
 }
-Character::~Character() { std::cout << "Character destructor." << std::endl; }
+Character::~Character()
+{
+	destroy();
+ 	std::cout << "Character destructor." << std::endl;
+}
 std::string	Character::getName(void) const {return (name);}
 
 void	Character::equip(AMateria* m)
