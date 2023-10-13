@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.hpp                                      :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 17:10:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 17:34:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHARACTER_HPP
-# define CHARACTER_HPP
-# define SLOTS 4
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
+# define SLOTS_MS 4
 
 #include <iostream>
 #include "ICharacter.hpp"
 
-class Character: public ICharacter
+class MateriaSource: public IMateriaSource
 {
 	private:
 		std::string	name;
-		AMateria	*slots[SLOTS];
-		Character();
-		Character(const Character&);
+		AMateria	*slots[SLOTS_MS];
+		MateriaSource();
+		MateriaSource(const Character&);
 	public:
-		Character &operator=(const Character& op);
-		Character(std::string const & type);
-		virtual ~Character();
+		MateriaSource &operator=(const MateriaSource& op);
+		MateriaSource(std::string const & type);
+		virtual ~MateriaSource();
 
 		destroy( void );
 };
