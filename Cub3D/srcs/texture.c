@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 09:08:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 09:10:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,16 @@ int	get_texture_norm(char *s, t_game *g)
 
 void	end_texture(t_game *g)
 {
+	int	i;
+
 	if (!g->fl_color && !g->tex[t_fl].img)
 		end_game(g, 1, "Error: No floor texture found\n");
 	if (!g->cl_color && !g->tex[t_cl].img)
 		end_game(g, 1, "Error: No ceiling texture found\n");
+	i = -1;
+	while (++i < 4)
+		if (!g->tex[i].img)
+			end_game(g, 1, "Error: No wall texture found\n");
 }
 
 int	get_textures(t_game *g, char *fn)
