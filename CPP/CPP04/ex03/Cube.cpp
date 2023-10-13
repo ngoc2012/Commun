@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 17:56:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 17:56:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Cub&	Cub::operator=( Cub const & src )
 Cub::~Cub() { std::cout type << " destructor." << std::endl; }
 void	Cub::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std:endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *" << std:endl;
 }
 
 Cub	*Cub::clone(void) const
