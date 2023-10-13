@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 16:20:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 17:53:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int main()
 {
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
-	/*
 	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
 	AMateria* tmp;
@@ -32,6 +31,5 @@ int main()
 	delete bob;
 	delete me;
 	delete src;
-	*/
 	return 0;
 }
