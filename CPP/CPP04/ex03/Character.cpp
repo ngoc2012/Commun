@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 13:52:27 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:06:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Character&	Character::operator=( Character const & src )
 	return (*this);
 }
 Character::~Character() { std::cout << "Character destructor." << std::endl; }
+
 void	Character::equip(AMateria* m)
 {
 	int	i = 0;
@@ -39,6 +40,7 @@ void	Character::equip(AMateria* m)
 	}
 	slots[i] = m;
 }
+
 void	Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= SLOTS)
@@ -48,6 +50,7 @@ void	Character::unequip(int idx)
 	else
 		std::cerr << "No AMateria at slot " << idx << "." << std::endl;
 }
+
 void	Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx >= SLOTS)
