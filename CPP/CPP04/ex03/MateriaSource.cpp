@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 17:39:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 17:45:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,22 +53,10 @@ void	MateriaSource::learnMateria(AMateria* m)
 	slots[i] = m;
 }
 
-void	MateriaSource::unequip(int idx)
+void	MateriaSource::createMateria(std::string const &type)
 {
-	if (idx < 0 || idx >= SLOTS)
-		std::cerr << "Indice slot " << idx << " est invalide." << std::endl;
-	if (slots[idx])
-		slots[idx] = 0;
-	else
-		std::cerr << "No AMateria at slot " << idx << "." << std::endl;
-}
-
-void	MateriaSource::use(int idx, IMateriaSource& target)
-{
-	if (idx < 0 || idx >= SLOTS)
-		std::cerr << "Indice slot " << idx << " est invalide." << std::endl;
-	if (slots[idx])
-		slots[idx]->use(target);
-	else
-		std::cerr << "No AMateria at slot " << idx << "." << std::endl;
+	for ( int i = 0; i < 4; i++ )
+		if ( materias[i] && materias[i]->getType() == type )
+			return materias[i]->clone();
+	return 0;
 }
