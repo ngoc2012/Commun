@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 15:08:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 15:11:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ Ice::Ice()
 	std::cout << type << " default constructor." << std::endl;
 }
 Ice::Ice(const Ice& src) {
-	type = src.type;
 	*this = src;
 	std::cout << type << " copy constructor." << std::endl;
 }
@@ -35,4 +34,5 @@ void	Ice::use(ICharacter& target)
 
 Ice	*Ice::clone(void) const
 {
+	return (Ice(*this));
 }
