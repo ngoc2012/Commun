@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 17:47:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 17:48:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 MateriaSource::MateriaSource()
 {
-	for (int i = 0; i < SLOTS; i++) {slots[i] = 0;}
+	for (int i = 0; i < SLOTS_MS; i++) {materias[i] = 0;}
 	std::cout << "MateriaSource default constructor." << std::endl;
 }
 MateriaSource::MateriaSource(const MateriaSource& src) {
@@ -23,15 +23,15 @@ MateriaSource::MateriaSource(const MateriaSource& src) {
 }
 void	MateriaSource::destroy(void)
 {
-	for (int i = 0; i < SLOTS; i++)
-		if (slots[i])
-			delete(slots[i]);
+	for (int i = 0; i < SLOTS_MS; i++)
+		if (materias[i])
+			delete(materias[i]);
 }
 MateriaSource&	MateriaSource::operator=( MateriaSource const & src )
 {
 	destroy();
 	for (int i = 0; i < SLOTS; i++)
-		slots[i] = new AMateria(src.slots[i]);
+		materias[i] = new AMateria(src.materias[i]);
 	return (*this);
 }
 MateriaSource::~MateriaSource()
@@ -43,14 +43,14 @@ MateriaSource::~MateriaSource()
 void	MateriaSource::learnMateria(AMateria* m)
 {
 	int	i = 0;
-	while (i < SLOTS && slots[i])
+	while (i < SLOTS_MS && materias[i])
 		i++;
-	if (i == SLOTS - 1)
+	if (i == SLOTS_MS - 1)
 	{
-		std::cerr << "MateriaSource slots are full." << std::endl;
+		std::cerr << "MateriaSource materias are full." << std::endl;
 		return ;
 	}
-	slots[i] = m;
+	materias[i] = m;
 }
 
 void	MateriaSource::createMateria(std::string const &type)
