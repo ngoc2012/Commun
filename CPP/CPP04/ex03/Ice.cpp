@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 15:12:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 18:20:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ Ice::Ice()
 	type = "ice";
 	std::cout << type << " default constructor." << std::endl;
 }
-Ice::Ice(const Ice& src) {
+Ice::Ice(const Ice& src) : AMateria(src)
+{
 	*this = src;
 	std::cout << type << " copy constructor." << std::endl;
 }
