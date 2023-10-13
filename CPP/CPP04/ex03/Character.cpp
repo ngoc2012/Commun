@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 15:06:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 15:13:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Character&	Character::operator=( Character const & src )
 	return (*this);
 }
 Character::~Character() { std::cout << "Character destructor." << std::endl; }
+std::string	Character::getName(void) const {return (name);}
 
 void	Character::equip(AMateria* m)
 {

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 15:11:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 15:12:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Ice&	Ice::operator=( Ice const & src )
 Ice::~Ice() { std::cout type << " destructor." << std::endl; }
 void	Ice::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at " << target.type << " *" << std:endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std:endl;
 }
 
 Ice	*Ice::clone(void) const
