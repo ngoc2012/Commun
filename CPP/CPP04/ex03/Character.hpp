@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 13:37:29 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:19:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 class Character: public ICharacter
 {
 	private:
+		std::string	name;
 		AMateria	*slots[SLOTS];
 		Character();
 		Character(const Character&);
