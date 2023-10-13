@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 17:51:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 23:03:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ MateriaSource&	MateriaSource::operator=( MateriaSource const & src )
 {
 	destroy();
 	for (int i = 0; i < SLOTS_MS; i++)
-		materias[i] = new AMateria(&src.materias[i]);
+		materias[i] = src.materias[i]->clone();
 	return (*this);
 }
 MateriaSource::~MateriaSource()
