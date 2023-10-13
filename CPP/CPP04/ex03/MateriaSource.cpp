@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 17:45:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 17:47:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	MateriaSource::learnMateria(AMateria* m)
 
 void	MateriaSource::createMateria(std::string const &type)
 {
-	for ( int i = 0; i < 4; i++ )
+	for ( int i = 0; i < SLOTS_MS; i++ )
 		if ( materias[i] && materias[i]->getType() == type )
 			return materias[i]->clone();
 	return 0;
