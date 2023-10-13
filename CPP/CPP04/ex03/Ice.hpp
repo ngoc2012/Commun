@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 09:56:08 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/13 15:09:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@
 #include <iostream>
 #include "AMateria.hpp"
 
-class Ice
+class Ice: public AMateria
 {
-	protected:
+	private:
 		Ice();
 		Ice(const Ice&);
-		std::string	type;
 	public:
 		Ice &operator=(const Ice& op);
 		Ice(std::string const & type);
