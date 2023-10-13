@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 21:38:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 09:08:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,14 @@ int	get_texture_norm(char *s, t_game *g)
 	return (1);
 }
 
+void	end_texture(t_game *g)
+{
+	if (!g->fl_color && !g->tex[t_fl].img)
+		end_game(g, 1, "Error: No floor texture found\n");
+	if (!g->cl_color && !g->tex[t_cl].img)
+		end_game(g, 1, "Error: No ceiling texture found\n");
+}
+
 int	get_textures(t_game *g, char *fn)
 {
 	int		fd;
@@ -77,9 +85,6 @@ int	get_textures(t_game *g, char *fn)
 		s = get_next_line(fd);
 	}
 	close(fd);
-	if (!g->fl_color && !g->tex[t_fl].img)
-		end_game(g, 1, "Error: No floor texture found\n");
-	if (!g->cl_color && !g->tex[t_cl].img)
-		end_game(g, 1, "Error: No ceiling texture found\n");
+	end_texture(g);
 	return (1);
 }
