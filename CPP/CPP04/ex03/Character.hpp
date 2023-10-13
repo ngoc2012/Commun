@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 17:33:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 18:18:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ class Character: public ICharacter
 	private:
 		std::string	name;
 		AMateria	*slots[SLOTS];
+	public:
 		Character();
 		Character(const Character&);
-	public:
 		Character &operator=(const Character& op);
 		Character(std::string const & type);
 		virtual ~Character();
