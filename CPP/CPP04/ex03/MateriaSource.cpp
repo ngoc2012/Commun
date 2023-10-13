@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 17:48:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 17:51:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	MateriaSource::destroy(void)
 MateriaSource&	MateriaSource::operator=( MateriaSource const & src )
 {
 	destroy();
-	for (int i = 0; i < SLOTS; i++)
+	for (int i = 0; i < SLOTS_MS; i++)
 		materias[i] = new AMateria(src.materias[i]);
 	return (*this);
 }
@@ -53,10 +53,11 @@ void	MateriaSource::learnMateria(AMateria* m)
 	materias[i] = m;
 }
 
-void	MateriaSource::createMateria(std::string const &type)
+AMateria	*MateriaSource::createMateria(std::string const &type)
 {
 	for ( int i = 0; i < SLOTS_MS; i++ )
 		if ( materias[i] && materias[i]->getType() == type )
 			return materias[i]->clone();
+	std::cerr << "Type "<< type << " not found." << std::endl;
 	return 0;
 }
