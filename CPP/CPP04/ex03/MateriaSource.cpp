@@ -1,34 +1,80 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.cpp                                            :+:      :+:    :+:   */
+/*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 09:54:00 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:15:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Ice.hpp"
+#include "Character.hpp"
 
-Ice::Ice()
+Character::Character()
 {
-	type = "ice";
-	std::cout << type << " default constructor." << std::endl;
+	for (int i = 0; i < SLOTS; i++) {slots[i] = 0;}
+	std::cout << "Character default constructor." << std::endl;
 }
-Ice::Ice(const Ice& src) {
-	type = src.type;
+Character::Character(std::string _name)
+{
+	name = _name;
+	std::cout << "Character constructor avec string as parameter." << std::endl;
+}
+Character::Character(const Character& src) {
 	*this = src;
-	std::cout << type << " copy constructor." << std::endl;
+	std::cout << "Character copy constructor." << std::endl;
 }
-Ice&	Ice::operator=( Ice const & src )
+void	Character::destroy(void)
 {
-	type = src.type;
+	for (int i = 0; i < SLOTS; i++)
+		if (slots[i])
+			delete(slots[i]);
+}
+Character&	Character::operator=( Character const & src )
+{
+	destroy();
+	for (int i = 0; i < SLOTS; i++)
+		slots[i] = new AMateria(src.slots[i]);
 	return (*this);
 }
-Ice::~Ice() { std::cout type << " destructor." << std::endl; }
-void	Ice::use(ICharacter& target)
+Character::~Character()
 {
-	std::cout << "* shoots an ice bolt at " << target.type << " *" << std:endl;
+	destroy();
+ 	std::cout << "Character destructor." << std::endl;
+}
+std::string	Character::getName(void) const {return (name);}
+
+void	Character::equip(AMateria* m)
+{
+	int	i = 0;
+	while (i < SLOTS && slots[i])
+		i++;
+	if (i == SLOTS - 1)
+	{
+		std::cerr << "Character slots are full." << std::endl;
+		return ;
+	}
+	slots[i] = m;
+}
+
+void	Character::unequip(int idx)
+{
+	if (idx < 0 || idx >= SLOTS)
+		std::cerr << "Indice slot " << idx << " est invalide." << std::endl;
+	if (slots[idx])
+		slots[idx] = 0;
+	else
+		std::cerr << "No AMateria at slot " << idx << "." << std::endl;
+}
+
+void	Character::use(int idx, ICharacter& target)
+{
+	if (idx < 0 || idx >= SLOTS)
+		std::cerr << "Indice slot " << idx << " est invalide." << std::endl;
+	if (slots[idx])
+		slots[idx]->use(target);
+	else
+		std::cerr << "No AMateria at slot " << idx << "." << std::endl;
 }

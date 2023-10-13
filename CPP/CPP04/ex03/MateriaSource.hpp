@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 09:56:08 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/13 17:10:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-# define ICE_HPP
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
+# define SLOTS 4
 
 #include <iostream>
-#include "AMateria.hpp"
+#include "ICharacter.hpp"
 
-class Ice
+class Character: public ICharacter
 {
-	protected:
-		Ice();
-		Ice(const Ice&);
-		std::string	type;
+	private:
+		std::string	name;
+		AMateria	*slots[SLOTS];
+		Character();
+		Character(const Character&);
 	public:
-		Ice &operator=(const Ice& op);
-		Ice(std::string const & type);
-		virtual ~Ice();
+		Character &operator=(const Character& op);
+		Character(std::string const & type);
+		virtual ~Character();
 
-		//std::string const & getType() const; //Returns the materia type
-		//virtual Ice* clone() const = 0;
-		//virtual void use(ICharacter& target);
+		destroy( void );
 };
 
 #endif
