@@ -27,7 +27,7 @@ Ice&	Ice::operator=( Ice const & src )
 	type = src.type;
 	return (*this);
 }
-Ice::~Ice() { std::cout type << " destructor." << std::endl; }
+Ice::~Ice() { std::cout << type << " destructor." << std::endl; }
 void	Ice::use(ICharacter& target)
 {
 	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std:endl;
