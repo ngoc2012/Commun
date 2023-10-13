@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 16:19:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/13 17:08:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ Character::Character(const Character& src) {
 }
 Character&	Character::operator=( Character const & src )
 {
+	for (int i = 0; i < SLOTS; i++)
+		if (slots[i])
+			delete(slots[i]);
 	for (int i = 0; i < SLOTS; i++) {slots[i] = src.slots[i];}
 	return (*this);
 }
