@@ -31,7 +31,7 @@ MateriaSource&	MateriaSource::operator=( MateriaSource const & src )
 {
 	destroy();
 	for (int i = 0; i < SLOTS_MS; i++)
-		materias[i] = new AMateria(src.materias[i]);
+		materias[i] = new AMateria(&src.materias[i]);
 	return (*this);
 }
 MateriaSource::~MateriaSource()

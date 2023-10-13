@@ -36,7 +36,7 @@ Character&	Character::operator=( Character const & src )
 {
 	destroy();
 	for (int i = 0; i < SLOTS; i++)
-		slots[i] = new AMateria(src.slots[i]);
+		slots[i] = new AMateria(&src.slots[i]);
 	return (*this);
 }
 Character::~Character()
@@ -44,7 +44,7 @@ Character::~Character()
 	destroy();
  	std::cout << "Character destructor." << std::endl;
 }
-std::string	Character::getName(void) const {return (name);}
+std::string	&Character::getName(void) const {return (name);}
 
 void	Character::equip(AMateria* m)
 {
