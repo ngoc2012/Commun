@@ -19,6 +19,7 @@ Character::Character()
 }
 Character::Character(std::string const &_name)
 {
+	for (int i = 0; i < SLOTS; i++) {slots[i] = 0;}
 	name = _name;
 	std::cout << "Character constructor avec string as parameter." << std::endl;
 }
