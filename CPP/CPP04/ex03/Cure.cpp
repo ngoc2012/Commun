@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 18:20:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 09:59:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	Cure::use(ICharacter& target)
 
 Cure	*Cure::clone(void) const
 {
+	std::cout << "Clone a new " << type << std::endl;
 	Cure	*i = new Cure(*this);
 	return (i);
 }

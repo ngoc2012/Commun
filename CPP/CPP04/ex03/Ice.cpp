@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 18:20:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 09:58:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	Ice::use(ICharacter& target)
 
 Ice	*Ice::clone(void) const
 {
+	std::cout << "Clone a new " << type << std::endl;
 	Ice	*i = new Ice(*this);
 	return (i);
 }
