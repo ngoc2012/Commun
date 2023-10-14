@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 18:19:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 09:53:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 
 int main()
 {
+	AMateria* tmp;
+
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
+	std::cout << "tmp = src->createMateria(\"cure\");" << std:endl;
+	tmp = src->createMateria("cure");
 	src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
-	AMateria* tmp;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
