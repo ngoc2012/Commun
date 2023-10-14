@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 13:23:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 16:47:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ WrongAnimal&	WrongAnimal::operator=( WrongAnimal const & src )
 WrongAnimal::~WrongAnimal() { std::cout << "WrongAnimal " << type << " destructor." << std::endl; }
 void    WrongAnimal::makeSound( void ) const
 {
-	std::cout << "WrongAnimal make sound." << std::endl;
+	std::cout << "hoohooohohohohoho..." << std::endl;
 }
 std::string     WrongAnimal::getType( void ) const {return (type);}

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 16:45:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 16:47:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ int main()
 	n = *m;
 	std::cout << "n:" << n.getType() << ", sound: ";
 	n.makeSound();
-	WrongAnimal p;
+	WrongCat p;
 	std::cout << "p:" << p.getType() << ", sound: ";
 	p.makeSound();
+	std::cout << "======== Destructor ========" << std::endl;
 	delete(meta);
 	delete(i);
 	delete(j);
