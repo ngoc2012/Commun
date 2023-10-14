@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 15:47:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 15:51:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,13 @@ int main()
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 	me->equip(tmp);
-	me->equip(tmp);
-	//AMateria* tmp2 = src->createMateria("ice");
-	//me->equip(tmp2);
 	me->equip(src->createMateria("ice"));
 	AMateria* tmp1 = src->createMateria("ice");
 	me->equip(tmp1);
-	delete tmp1;
 	me->unequip(3);
+	delete tmp1;
+	//AMateria* tmp2 = src->createMateria("ice");
+	//me->equip(tmp2);
 	//delete tmp2;
 
 	std::cout << "============= Character bob =================\n";
