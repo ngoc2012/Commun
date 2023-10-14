@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 15:46:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 15:49:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,22 +70,22 @@ void	Character::equip(AMateria* m)
 void	Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= SLOTS)
-		std::cerr << "Error: Indice slot " << idx << " est invalide." << std::endl;
+		std::cerr << "Error unequip: Indice slot " << idx << " est invalide." << std::endl;
 	if (slots[idx])
 	{
 		std::cout << "Unequip the slot "<< idx << "." << std::endl;
 		slots[idx] = 0;
 	}
 	else
-		std::cerr << "Error: No AMateria at slot " << idx << "." << std::endl;
+		std::cerr << "Error unequip: No AMateria at slot " << idx << "." << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx >= SLOTS)
-		std::cerr << "Error: Indice slot " << idx << " est invalide." << std::endl;
+		std::cerr << "Error use: Indice slot " << idx << " est invalide." << std::endl;
 	if (slots[idx])
 		slots[idx]->use(target);
 	else
-		std::cerr << "Error: No AMateria at slot " << idx << "." << std::endl;
+		std::cerr << "Error use: No AMateria at slot " << idx << "." << std::endl;
 }
