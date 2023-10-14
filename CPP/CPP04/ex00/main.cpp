@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 13:34:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 16:25:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int main()
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
 	meta->makeSound();
+	std::cout << "======== Wrong ========" << std::endl;
 	const WrongAnimal* m = new WrongCat();
 	std::cout << "m:" << m->getType() << ", sound: ";
 	m->makeSound();
