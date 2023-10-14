@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 11:20:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 11:25:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,13 @@ void	Character::equip(AMateria* m)
 	int	i = -1;
 	while (++i < SLOTS && slots[i])
 		if (slots[i] == m)
+		{
+			std::cerr << "Error: Materia " << m->getType() << " does existed in this character." << std::endl;
 			return ;
+		}
 	if (i == SLOTS - 1)
 	{
-		std::cerr << "Character slots are full." << std::endl;
+		std::cerr << "Error: Character slots are full." << std::endl;
 		return ;
 	}
 	slots[i] = m;
@@ -64,22 +67,22 @@ void	Character::equip(AMateria* m)
 void	Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= SLOTS)
-		std::cerr << "Indice slot " << idx << " est invalide." << std::endl;
+		std::cerr << "Error: Indice slot " << idx << " est invalide." << std::endl;
 	if (slots[idx])
 	{
 		delete slots[idx];
 		slots[idx] = 0;
 	}
 	else
-		std::cerr << "No AMateria at slot " << idx << "." << std::endl;
+		std::cerr << "Error: No AMateria at slot " << idx << "." << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx >= SLOTS)
-		std::cerr << "Indice slot " << idx << " est invalide." << std::endl;
+		std::cerr << "Error: Indice slot " << idx << " est invalide." << std::endl;
 	if (slots[idx])
 		slots[idx]->use(target);
 	else
-		std::cerr << "No AMateria at slot " << idx << "." << std::endl;
+		std::cerr << "Error: No AMateria at slot " << idx << "." << std::endl;
 }

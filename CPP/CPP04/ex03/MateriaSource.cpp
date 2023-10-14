@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 11:21:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 11:25:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ void	MateriaSource::learnMateria(AMateria* m)
 	int	i = -1;
 	while (++i < SLOTS_MS && materias[i])
 		if (materias[i] == m)
+		{
+			std::cerr << "Error: Materia " << m->getType() << " does existed in this MateriaSource." << std::endl;
 			return ;
+		}
 	if (i == SLOTS_MS - 1)
 	{
 		std::cerr << "MateriaSource materias are full." << std::endl;
@@ -59,6 +62,6 @@ AMateria	*MateriaSource::createMateria(std::string const &type)
 	for ( int i = 0; i < SLOTS_MS; i++ )
 		if ( materias[i] && materias[i]->getType() == type )
 			return materias[i]->clone();
-	std::cerr << "Type "<< type << " not found." << std::endl;
+	std::cerr << "Error: Type "<< type << " not found." << std::endl;
 	return 0;
 }
