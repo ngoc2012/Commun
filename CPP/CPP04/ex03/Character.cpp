@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 09:05:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 11:20:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@ std::string const	&Character::getName(void) const {return (name);}
 
 void	Character::equip(AMateria* m)
 {
-	int	i = 0;
-	while (i < SLOTS && slots[i])
-		i++;
+	int	i = -1;
+	while (++i < SLOTS && slots[i])
+		if (slots[i] == m)
+			return ;
 	if (i == SLOTS - 1)
 	{
 		std::cerr << "Character slots are full." << std::endl;

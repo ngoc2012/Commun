@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 09:04:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 11:21:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ MateriaSource::~MateriaSource()
 
 void	MateriaSource::learnMateria(AMateria* m)
 {
-	int	i = 0;
-	while (i < SLOTS_MS && materias[i])
-		i++;
+	int	i = -1;
+	while (++i < SLOTS_MS && materias[i])
+		if (materias[i] == m)
+			return ;
 	if (i == SLOTS_MS - 1)
 	{
 		std::cerr << "MateriaSource materias are full." << std::endl;
