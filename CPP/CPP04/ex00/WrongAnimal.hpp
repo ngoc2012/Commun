@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 13:24:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 16:22:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class WrongAnimal
 		*/
 		virtual ~WrongAnimal();
 
-		virtual void    makeSound( void ) const;
+		void    makeSound( void ) const;
 		std::string     getType( void ) const;
 };
 
