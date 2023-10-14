@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 11:27:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 11:29:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ Character::Character()
 }
 Character::Character(std::string const &_name)
 {
-	for (int i = 0; i < SLOTS; i++) {slots[i] = 0;}
+	for (int i = 0; i < SLOTS; i++) {
+		std::cout << slots[i] << std::endl;
+		slots[i] = 0;
+		}
 	name = _name;
 	std::cout << "Character constructor avec string as parameter." << std::endl;
 }
