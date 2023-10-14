@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 11:25:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 11:27:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,10 @@ void	Character::use(int idx, ICharacter& target)
 	if (idx < 0 || idx >= SLOTS)
 		std::cerr << "Error: Indice slot " << idx << " est invalide." << std::endl;
 	if (slots[idx])
+	{
+		std::cout << slots[idx] << std::endl;
 		slots[idx]->use(target);
+	}
 	else
 		std::cerr << "Error: No AMateria at slot " << idx << "." << std::endl;
 }
