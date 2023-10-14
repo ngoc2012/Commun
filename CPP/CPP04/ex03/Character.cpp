@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 08:59:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 09:05:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,8 @@ Character::Character(const Character& src) {
 void	Character::destroy(void)
 {
 	for (int i = 0; i < SLOTS; i++)
-	{
-		std::cout << slots[i] << std::endl;
 		if (slots[i])
-			delete(&slots[i]);
-	}
+			delete slots[i];
 }
 Character&	Character::operator=( Character const & src )
 {
@@ -68,7 +65,10 @@ void	Character::unequip(int idx)
 	if (idx < 0 || idx >= SLOTS)
 		std::cerr << "Indice slot " << idx << " est invalide." << std::endl;
 	if (slots[idx])
+	{
+		delete slots[idx];
 		slots[idx] = 0;
+	}
 	else
 		std::cerr << "No AMateria at slot " << idx << "." << std::endl;
 }

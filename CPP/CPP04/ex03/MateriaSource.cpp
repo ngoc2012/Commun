@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/13 23:03:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 09:04:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	MateriaSource::destroy(void)
 {
 	for (int i = 0; i < SLOTS_MS; i++)
 		if (materias[i])
-			delete(&materias[i]);
+			delete materias[i];
 }
 MateriaSource&	MateriaSource::operator=( MateriaSource const & src )
 {
