@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 11:25:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 15:57:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	MateriaSource::learnMateria(AMateria* m)
 			std::cerr << "Error: Materia " << m->getType() << " does existed in this MateriaSource." << std::endl;
 			return ;
 		}
-	if (i == SLOTS_MS - 1)
+	if (i == SLOTS_MS)
 	{
 		std::cerr << "MateriaSource materias are full." << std::endl;
 		return ;

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 15:55:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 15:57:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	Character::equip(AMateria* m)
 			std::cerr << "Error: Materia " << m->getType() << " does existed in this character." << std::endl;
 			return ;
 		}
-	if (i == SLOTS - 1 && slots[i])
+	if (i == SLOTS)
 	{
 		std::cerr << "Error: Character slots are full." << std::endl;
 		return ;
