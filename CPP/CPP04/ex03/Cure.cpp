@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 09:59:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 10:02:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Cure::Cure()
 {
-	type = "ice";
+	type = "cure";
 	std::cout << type << " default constructor." << std::endl;
 }
 Cure::Cure(const Cure& src) : AMateria(src)
