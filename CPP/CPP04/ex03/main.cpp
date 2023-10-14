@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 11:31:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/14 11:32:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ int main()
 	me->equip(tmp);
 	me->equip(tmp);
 	me->equip(tmp);
+	me->equip(src->createMateria("ice"));
+	me->equip(src->createMateria("ice"));
+	me->equip(src->createMateria("ice"));
 
 	std::cout << "============= Character bob =================\n";
 	ICharacter* bob = new Character("bob");
