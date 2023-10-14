@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 21:01:13 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 10:35:20 by nbechon          ###   ########.fr       */
+/*   Updated: 2023/10/14 16:30:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 # define WIDTH 600
 # define HEIGHT 300
-# define SCALE 2
+# define SCALE 4
 # define FOV 90
 # define BOX_SIZE 64
 # define WALL_COLISION 8
