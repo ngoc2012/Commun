@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/16 16:03:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/16 16:05:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	g_t(t_game *g, t_tex *t, char *path, enum e_tex et)
 	if (t->img)
 		return (0);
 	t->img = mlx_xpm_file_to_image(g->mlx.mlx, path, &t->l, &t->h);
+	if (et < 5 && (t->l != 64 || t->h != 64))
+		return (0);
 	if (!t->img)
 		return (0);
 	t->addr = mlx_get_data_addr(t->img, &t->bpp, &t->ll, &t->ed);
@@ -27,13 +29,13 @@ int	suite_g_t2(t_game *g, char **ss)
 {
 	if (!ft_strncmp("FL", ss[0], 3))
 	{
-		if (!g_t(g, &g->tex[t_fl], ss[1]))
+		if (!g_t(g, &g->tex[t_fl], ss[1], t_fl))
 			return (0);
 		g->fl_color = 0;
 	}
 	if (!ft_strncmp("CL", ss[0], 3))
 	{
-		if (!g_t(g, &g->tex[t_cl], ss[1]))
+		if (!g_t(g, &g->tex[t_cl], ss[1], t_cl))
 			return (0);
 		g->cl_color = 0;
 	}
