@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/16 16:01:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/16 16:03:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,23 @@ int	suite_g_t2(t_game *g, char **ss)
 
 int	suite_g_t1(t_game *g, char **ss)
 {
-	if (!ft_strncmp("NO", ss[0], 3) && !g_t(g, &g->tex[t_no], ss[1]))
+	if (!ft_strncmp("NO", ss[0], 3) && !g_t(g, &g->tex[t_no], ss[1], t_no))
 		return (0);
-	if (!ft_strncmp("SO", ss[0], 3) && !g_t(g, &g->tex[t_so], ss[1]))
+	if (!ft_strncmp("SO", ss[0], 3) && !g_t(g, &g->tex[t_so], ss[1], t_so))
 		return (0);
-	if (!ft_strncmp("WE", ss[0], 3) && !g_t(g, &g->tex[t_we], ss[1]))
+	if (!ft_strncmp("WE", ss[0], 3) && !g_t(g, &g->tex[t_we], ss[1], t_we))
 		return (0);
-	if (!ft_strncmp("EA", ss[0], 3) && !g_t(g, &g->tex[t_ea], ss[1]))
+	if (!ft_strncmp("EA", ss[0], 3) && !g_t(g, &g->tex[t_ea], ss[1], t_ea))
 		return (0);
-	if (!ft_strncmp("DO", ss[0], 3) && !g_t(g, &g->tex[t_do], ss[1]))
+	if (!ft_strncmp("DO", ss[0], 3) && !g_t(g, &g->tex[t_do], ss[1], t_do))
 		return (0);
-	if (!ft_strncmp("D3", ss[0], 3) && !g_t(g, &g->tex[t_d3], ss[1]))
+	if (!ft_strncmp("D3", ss[0], 3) && !g_t(g, &g->tex[t_d3], ss[1], t_d3))
 		return (0);
-	if (!ft_strncmp("D4", ss[0], 3) && !g_t(g, &g->tex[t_d4], ss[1]))
+	if (!ft_strncmp("D4", ss[0], 3) && !g_t(g, &g->tex[t_d4], ss[1], t_d4))
 		return (0);
-	if (!ft_strncmp("D5", ss[0], 3) && !g_t(g, &g->tex[t_d5], ss[1]))
+	if (!ft_strncmp("D5", ss[0], 3) && !g_t(g, &g->tex[t_d5], ss[1], t_d5))
 		return (0);
-	if (!ft_strncmp("D6", ss[0], 3) && !g_t(g, &g->tex[t_d6], ss[1]))
+	if (!ft_strncmp("D6", ss[0], 3) && !g_t(g, &g->tex[t_d6], ss[1], t_d6))
 		return (0);
 	return (1);
 }
