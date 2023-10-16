@@ -6,7 +6,7 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 14:35:06 by nbechon           #+#    #+#             */
-/*   Updated: 2023/10/12 11:26:17 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/16 18:50:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,11 @@ int	main(int argc, char **argv)
 {
 	t_game	g;
 
-	if (argc < 2 || argc > 2)
-		return (0);
+	if (argc != 2)
+	{
+		write(2, "Usage: ./cub3D <filename>\n", 26);
+		exit(1);
+	}
 	init(&g);
 	if (!get_map(&g, argv[1]) || !precalcul(&g))
 		end_game(&g, EXIT_FAILURE, "Error map or memories\n");
