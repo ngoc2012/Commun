@@ -6,13 +6,13 @@
 /*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/22 05:38:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/16 15:55:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/16 15:57:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	g_t(t_game *g, enum  *t, char *path)
+static int	g_t(t_game *g, t_tex *t, char *path, enum e_tex et)
 {
 	if (t->img)
 		return (0);
