@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/17 17:16:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/17 17:19:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ int	main()
 	std::cout << "ret = " << ret << std::endl;
 	response[ret] = 0;
 	std::cout << response ;
-	c = connect(s_fd, (struct sockaddr*)&addr, sizeof(addr)); 
-	ret = recv(s_fd, response, BUFFER, 0);
-	response[ret] = 0;
-	std::cout << response ;
+	//std::cout << std::endl;
+	//c = connect(s_fd, (struct sockaddr*)&addr, sizeof(addr)); 
+	//ret = recv(s_fd, response, BUFFER, 0);
+	//response[ret] = 0;
+	//std::cout << response ;
 	//while (ret && ret > 0)
 	//{
 	//	ret = recv(s_fd, response, BUFFER, 0);
