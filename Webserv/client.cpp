@@ -6,13 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/17 17:07:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/17 17:08:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>          /* See NOTES */
 #include <sys/socket.h>
 #include <arpa/inet.h>	// htons
+#include <unistd.h>	// close
 #include <iostream>
 
 # define BUFFER	1028
@@ -39,4 +40,5 @@ int	main()
 	}
 	std::cout << std::endl;
 	close(s_fd);
+	std::cout << "End client" << std::endl;
 }
