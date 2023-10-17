@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/17 16:57:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/17 16:59:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 int	main()
 {
 	int	s_fd = socket(AF_INET, SOCK_STREAM, 0);
-	SA	addr;
-	addr.sin_family = AF_INET;
-	addr.sin_port = htons(9000);
-	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
-	int	c = connect(s_fd, const (SA *) &addr, sizeof(addr)); 
+	sockaddr	addr;
+	addr.sa_family = AF_INET;
+	addr.sa_port = htons(9000);
+	addr.sa_addr.s_addr = inet_addr("127.0.0.1");
+	int	c = connect(s_fd, &addr, sizeof(addr)); 
 	if (c < 0)
 		std::cerr << "Client : connect error" << std::endl;
 	char	response[BUFFER + 1];
@@ -34,7 +34,7 @@ int	main()
 	std::cout << response ;
 	while (ret && ret > 0)
 	{
-		ret = recv(s, response, BUFFER, 0);
+		ret = recv(s_fd, response, BUFFER, 0);
 		response[ret] = 0;
 		std::cout << response ;
 	}
