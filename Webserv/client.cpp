@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/17 17:11:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/17 17:13:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main()
 	int	s_fd = socket(AF_INET, SOCK_STREAM, 0);
 	struct sockaddr_in	addr;
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(9000);
+	addr.sin_port = htons(4242);
 	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 	int	c = connect(s_fd, (struct sockaddr*)&addr, sizeof(addr)); 
 	if (c < 0)
