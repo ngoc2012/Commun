@@ -6,12 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/17 16:22:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/17 16:24:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>          /* See NOTES */
 #include <sys/socket.h>
+#include <arpa/inet.h>	// htons
+#include <ostream>
 
 # define SA struct sockaddr_in
 # define BUFFER	1028
