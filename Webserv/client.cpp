@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/17 17:08:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/17 17:11:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main()
 		std::cerr << "Client : connect error" << std::endl;
 	char	response[BUFFER + 1];
 	int	ret = recv(s_fd, response, BUFFER, 0);
+	std::cout << "ret = " << ret << std::endl;
 	response[ret] = 0;
 	std::cout << response ;
 	while (ret && ret > 0)
