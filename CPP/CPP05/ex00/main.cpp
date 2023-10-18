@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:09:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:11:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ int	main()
 	try {
 		Bureaucrat b160("b160", 160);
 		std::cout << b160;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		Bureaucrat b0("b0", 0);
+		std::cout << b0;
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
