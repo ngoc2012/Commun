@@ -6,16 +6,16 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:17:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:18:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() {std::cout << "Bureaucrat " << type << " default constructor." << std::endl;}
+Bureaucrat::Bureaucrat() {std::cout << "Bureaucrat " << name << " default constructor." << std::endl;}
 Bureaucrat::Bureaucrat(const Bureaucrat& src) {
 	*this = src;
-	std::cout << "Bureaucrat " << type << " copy constructor." << std::endl;
+	std::cout << "Bureaucrat " << name << " copy constructor." << std::endl;
 }
 Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & src )
 {
@@ -23,7 +23,7 @@ Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & src )
 	grade = src.grade;
 	return (*this);
 }
-Bureaucrat::~Bureaucrat() { std::cout << "Bureaucrat " << type << " destructor." << std::endl; }
+Bureaucrat::~Bureaucrat() { std::cout << "Bureaucrat " << name << " destructor." << std::endl; }
 void    Bureaucrat::makeSound( void ) const
 {
 	std::cout << "Bureaucrat make sound." << std::endl;
