@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 17:30:55 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/10/18 07:09:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Bureaucrat.hpp"
 
-Animal::Animal() {std::cout << "Animal " << type << " default constructor." << std::endl;}
-Animal::Animal(const Animal& src) {
+Bureaucrat::Bureaucrat() {std::cout << "Bureaucrat " << type << " default constructor." << std::endl;}
+Bureaucrat::Bureaucrat(const Bureaucrat& src) {
 	*this = src;
-	std::cout << "Animal " << type << " copy constructor." << std::endl;
+	std::cout << "Bureaucrat " << type << " copy constructor." << std::endl;
 }
-Animal&	Animal::operator=( Animal const & src )
+Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & src )
 {
 	type = src.type;
 	return (*this);
 }
-Animal::~Animal() { std::cout << "Animal " << type << " destructor." << std::endl; }
-void    Animal::makeSound( void ) const
+Bureaucrat::~Bureaucrat() { std::cout << "Bureaucrat " << type << " destructor." << std::endl; }
+void    Bureaucrat::makeSound( void ) const
 {
-	std::cout << "Animal make sound." << std::endl;
+	std::cout << "Bureaucrat make sound." << std::endl;
 }
-std::string     Animal::getType( void ) const {return (type);}
+std::string     Bureaucrat::getType( void ) const {return (type);}
