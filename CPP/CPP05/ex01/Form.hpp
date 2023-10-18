@@ -6,15 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 18:38:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 18:49:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 # define FORM_HPP
-
-# define MAX_GRADE 1
-# define MIN_GRADE 150
 
 # include <iostream>
 # include "Bureaucrat.hpp"
