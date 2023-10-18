@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:09:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:15:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,10 @@ void    Bureaucrat::makeSound( void ) const
 {
 	std::cout << "Bureaucrat make sound." << std::endl;
 }
-std::string     Bureaucrat::getType( void ) const {return (type);}
+std::string	Bureaucrat::getName( void ) const {return (name);}
+int		Bureaucrat::getGrade( void ) const {return (grade);}
+
+std::ostream&   operator<<(std::ostream& o, const Bureaucrat& b);
+{
+	o << b.getName() << std::endl;
+}
