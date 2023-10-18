@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:47:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 18:44:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Form&	Form::operator=( Form const & src )
 	grade = src.grade;
 	return (*this);
 }
-Form::Form(const std::string _name, int _grade) : name(_name), grade(_grade)
+Bureaucrat::Bureaucrat(const std::string n, int sg, int eg) : name(n), sign_grade(sg), exec_grade(eg)
 {
 	std::cout << "Form " << name << " (grade: " << grade << ") constructor with parameters." << std::endl;
 	if (grade < MAX_GRADE)
