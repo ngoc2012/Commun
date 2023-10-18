@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 18:49:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 19:19:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class Form
 		bool		sign;
 		int		sign_grade;
 		int		exec_grade;
-	public:
 		Form();
+	public:
 		Form(const Form&);
 		Form &operator=(const Form& op);
 		Form(const std::string, int, int);
@@ -38,6 +38,7 @@ class Form
 		int		getExecGrade( void ) const;
 
 		void		beSigned( Bureaucrat& );
+		void		setSign( void );
 
 		class GradeTooHighException : public std::exception
 		{
