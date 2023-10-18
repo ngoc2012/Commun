@@ -6,59 +6,42 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/10 18:15:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:11:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
-#define N_ANIMAL 100
+#include "Bureaucrat.hpp"
 
-int main()
+int	main()
 {
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	delete(i);
-	delete(j);
-	Dog* m = new Dog();
-	m->setBrain("haha", 25);
-	m->setBrain("hehe", 70);
-	m->setBrain("moemoe", -1);
-	m->setBrain("hoaoha", 100);
-	std::cout << "m brain" << std::endl;
-	m->showBrain();
-	Dog k;
-	k = *m;
-	std::cout << "k brain" << std::endl;
-	k.showBrain();
-	Dog h(k);
-	std::cout << "h brain" << std::endl;
-	h.showBrain();
-	delete(m);
-	Cat* m1 = new Cat();
-	m1->setBrain("hoho", 1);
-	m1->setBrain("enen", 99);
-	m1->setBrain("moemoe", -1);
-	m1->setBrain("hoaoha", 100);
-	std::cout << "m1 brain" << std::endl;
-	m1->showBrain();
-	Cat k1;
-	k1 = *m1;
-	std::cout << "k1 brain" << std::endl;
-	k1.showBrain();
-	Cat h1(k1);
-	std::cout << "h1 brain" << std::endl;
-	h1.showBrain();
-	delete(m1);
-	Animal	*zoo[N_ANIMAL];
-	for (int i = 0; i < N_ANIMAL; i++)
-	{
-		if (i % 2)
-			zoo[i] = new Dog();
-		else
-			zoo[i] = new Cat();
+	Bureaucrat b2("b2", 2);
+	std::cout << b2;
+	Bureaucrat b145("b145", 145);
+	std::cout << b145;
+	try {
+		for (int i = 0; i < 3; i++)
+			b2.upGrade();
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
 	}
-	for (int i = 0; i < N_ANIMAL; i++)
-		delete(zoo[i]);
+	try {
+		for (int i = 0; i < 10; i++)
+			b145.downGrade();
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << "========== Test constructor ==========" << std::endl;
+	try {
+		Bureaucrat b160("b160", 160);
+		std::cout << b160;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		Bureaucrat b0("b0", 0);
+		std::cout << b0;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
 	return (0);
 }
