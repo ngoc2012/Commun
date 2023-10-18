@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:23:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:24:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class Form
 		int		getMinGrade( void ) const;
 		int		getMaxGrade( void ) const;
 
-		void		beSigned( void );
+		void		beSigned( Bureaucrat& );
 
 		class GradeTooHighException : public std::exception
 		{
