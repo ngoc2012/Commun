@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:17:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:19:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@
 
 class Bureaucrat
 {
-	protected:
+	private:
 		std::string	name;
-		int		grade;
+		bool		sign;
+		int		min_grade;
+		int		max_grade;
 	public:
 		Bureaucrat();
 		Bureaucrat(const Bureaucrat&);
