@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:49:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:53:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ Bureaucrat::~Bureaucrat() { std::cout << "Bureaucrat " << name << " destructor."
 std::string	Bureaucrat::getName( void ) const {return (name);}
 int		Bureaucrat::getGrade( void ) const {return (grade);}
 
-std::ostream&   operator<<(std::ostream& o, const Bureaucrat& b);
+std::ostream&   operator<<(std::ostream& o, const Bureaucrat& b)
 {
 	o << b.getName() << ", bureaucrat grade " << b.getGrade()<< std::endl;
+	return (o);
 }
 void		Bureaucrat::upGrade( void )
 {
