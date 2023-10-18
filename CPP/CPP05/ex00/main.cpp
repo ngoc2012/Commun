@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:00:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:05:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ int	main()
 	try {
 		for (int i = 0; i < 10; i++)
 			b145.downGrade();
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << "========== Test constructor ==========" << std::endl;
+	try {
+		Bureaucrat b160("b160", 160);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
