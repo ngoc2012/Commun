@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 18:53:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 18:55:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,9 @@ std::ostream&   operator<<(std::ostream& o, const Form& b)
 }
 void		Form::beSigned( Bureaucrat& b)
 {
-	if (grade - 1 < MAX_GRADE)
-		throw Form::GradeTooHighException();
-	grade--;
-	std::cout << "Up grade succesful : " << *this;
-}
-void		Form::downGrade( void )
-{
-	if (grade + 1 > MIN_GRADE)
+	if (b.getGrade() > MAX_GRADE)
 		throw Form::GradeTooLowException();
-	grade++;
-	std::cout << "Down grade succesful : " << *this;
+	std::cout << "Form " << name << " signed.";
 }
 const char* Form::GradeTooHighException::what() const throw() { return ("Error: Grade is too high."); }
 const char* Form::GradeTooLowException::what() const throw() { return ("Error: Grade is too low."); }
