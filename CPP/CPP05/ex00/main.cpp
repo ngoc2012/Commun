@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:12:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:39:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 int	main()
 {
 	try {
-		Bureaucrat bureaucrat("ash", 1);
-
+		Bureaucrat bureaucrat("b2", 2);
 		std::cout << bureaucrat << std::endl;
-
-		bureaucrat.incrementGrade();
-		// bureaucrat.decrementGrade();
+		bureaucrat.upGrade();
+		bureaucrat.upGrade();
+		Bureaucrat bureaucrat("b145", 145);
+		std::cout << bureaucrat << std::endl;
+		for (int i = 0; i < 10; i++)
+			bureaucrat.downGrade();
 	} catch (Bureaucrat::GradeTooHighException &e) {
+		std::cout << e.what() << std::endl;
+	}
+	} catch (Bureaucrat::GradeTooLowException &e) {
 		std::cout << e.what() << std::endl;
 	}
 	return (0);
