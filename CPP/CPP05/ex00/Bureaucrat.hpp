@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:10:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:13:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ class Bureaucrat
 		virtual void    makeSound( void ) const;
 		std::string     getType( void ) const;
 };
+
+std::ostream&   operator<<(std::ostream&, const Bureaucrat&);
 
 #endif
