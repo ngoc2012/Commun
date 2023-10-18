@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:15:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:17:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ Bureaucrat::Bureaucrat(const Bureaucrat& src) {
 }
 Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & src )
 {
-	type = src.type;
+	name = src.name;
+	grade = src.grade;
 	return (*this);
 }
 Bureaucrat::~Bureaucrat() { std::cout << "Bureaucrat " << type << " destructor." << std::endl; }
