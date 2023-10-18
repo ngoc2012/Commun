@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:26:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 18:35:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 # include <iostream>
 # include "Form.hpp"
+
+class Bureaucrat;
 
 class Bureaucrat
 {
