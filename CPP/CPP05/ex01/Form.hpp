@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:19:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:22:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 #include <iostream>
 
-class Bureaucrat
+class Form
 {
 	private:
 		std::string	name;
@@ -26,14 +26,16 @@ class Bureaucrat
 		int		min_grade;
 		int		max_grade;
 	public:
-		Bureaucrat();
-		Bureaucrat(const Bureaucrat&);
-		Bureaucrat &operator=(const Bureaucrat& op);
-		Bureaucrat(const std::string, int);
-		virtual ~Bureaucrat();
+		Form();
+		Form(const Form&);
+		Form &operator=(const Form& op);
+		Form(const std::string, int, int);
+		virtual ~Form();
 
 		std::string	getName( void ) const;
-		int		getGrade( void ) const;
+		bool		getSign( void ) const;
+		int		getMinGrade( void ) const;
+		int		getMaxGrade( void ) const;
 
 		void		upGrade( void );
 		void		downGrade( void );
@@ -48,6 +50,6 @@ class Bureaucrat
 		};
 };
 
-std::ostream&   operator<<(std::ostream&, const Bureaucrat&);
+std::ostream&   operator<<(std::ostream&, const Form&);
 
 #endif
