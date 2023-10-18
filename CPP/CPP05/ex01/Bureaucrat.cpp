@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:38:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:42:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,5 @@ void		Bureaucrat::signForm( Form& f )
 		std::cerr << name << " couldn't sign " << f.getName() << " because ";
 		throw Bureaucrat::GradeTooLowException();
 	}
+	std::cout << name << " signed " << f.getName() << std::endl;
 }
