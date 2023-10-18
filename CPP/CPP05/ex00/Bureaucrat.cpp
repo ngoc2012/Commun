@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:53:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:57:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		Bureaucrat::upGrade( void )
 		throw Bureaucrat::GradeTooHighException();
 	else
 		grade--;
-	std::cout << "smt" << std::endl;
+	std::cout << "Up grade succesful : " << *this << std::endl;
 }
 void		Bureaucrat::downGrade( void )
 {
@@ -47,7 +47,7 @@ void		Bureaucrat::downGrade( void )
 		throw Bureaucrat::GradeTooHighException();
 	else
 		grade++;
-	std::cout << "smtDown" << std::endl;
+	std::cout << "Down grade succesful : " << *this << std::endl;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() { return ("Grade is too high."); }
