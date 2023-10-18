@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:24:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:35:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 class Bureaucrat
 {
 	protected:
-		std::string	type;
+		std::string	name;
+		int		grade;
 	public:
 		Bureaucrat();
 		Bureaucrat(const Bureaucrat&);
@@ -30,7 +31,11 @@ class Bureaucrat
 
 		class GradeTooHighException : public std::exception
 		{
-			virtual const char* what() const throw();
+			public: virtual const char* what() const throw();
+		};
+		class GradeTooLowException : public std::exception
+		{
+			public: virtual const char* what() const throw();
 		};
 };
 
