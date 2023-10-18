@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:22:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:23:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # define MAX_GRADE 1
 # define MIN_GRADE 150
 
-#include <iostream>
+# include <iostream>
+# include "Bureaucrat.hpp"
 
 class Form
 {
@@ -37,8 +38,7 @@ class Form
 		int		getMinGrade( void ) const;
 		int		getMaxGrade( void ) const;
 
-		void		upGrade( void );
-		void		downGrade( void );
+		void		beSigned( void );
 
 		class GradeTooHighException : public std::exception
 		{
