@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:43:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:48:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Bureaucrat
 		Bureaucrat();
 		Bureaucrat(const Bureaucrat&);
 		Bureaucrat &operator=(const Bureaucrat& op);
+		Bureaucrat(const std::string, int);
 		virtual ~Bureaucrat();
 
 		std::string	getName( void ) const;

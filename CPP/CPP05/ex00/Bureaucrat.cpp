@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:47:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:49:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ std::ostream&   operator<<(std::ostream& o, const Bureaucrat& b);
 {
 	o << b.getName() << ", bureaucrat grade " << b.getGrade()<< std::endl;
 }
-void		upGrade( void )
+void		Bureaucrat::upGrade( void )
 {
 	if (grade - 1 < MAX_GRADE)
 		throw Bureaucrat::GradeTooHighException();
@@ -40,7 +40,7 @@ void		upGrade( void )
 		grade--;
 	std::cout << "smt" << std::endl;
 }
-void		downGrade( void )
+void		Bureaucrat::downGrade( void )
 {
 	if (grade + 1 > MIN_GRADE)
 		throw Bureaucrat::GradeTooHighException();
