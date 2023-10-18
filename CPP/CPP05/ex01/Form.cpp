@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 19:15:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 19:17:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Form&	Form::operator=( Form const & src )
 }
 Form::Form(const std::string n, int sg, int eg) : name(n), sign_grade(sg), exec_grade(eg)
 {
+	sign = false;
 	std::cout << "Form " << name << " (sign grade: " << sign_grade << ", execute grade: " << exec_grade << ") constructor with parameters." << std::endl;
 }
 Form::~Form() { std::cout << "Form " << name << " destructor." << std::endl; }
@@ -34,6 +35,7 @@ std::string	Form::getName( void ) const {return (name);}
 bool		Form::getSign( void ) const {return (sign);}
 int		Form::getSignGrade( void ) const {return (sign_grade);}
 int		Form::getExecGrade( void ) const {return (exec_grade);}
+void		Form::setSign( void ) {sign = true;}
 std::ostream&   operator<<(std::ostream& o, const Form& b)
 {
 	o << "Form " << b.getName() << ", sign grade " << b.getSignGrade() << ", execute grade " << b.getExecGrade() << std::endl;
