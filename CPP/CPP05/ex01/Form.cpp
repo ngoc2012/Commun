@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 18:44:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 18:46:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,9 @@ Form&	Form::operator=( Form const & src )
 	grade = src.grade;
 	return (*this);
 }
-Bureaucrat::Bureaucrat(const std::string n, int sg, int eg) : name(n), sign_grade(sg), exec_grade(eg)
+Form::Form(const std::string n, int sg, int eg) : name(n), sign_grade(sg), exec_grade(eg)
 {
-	std::cout << "Form " << name << " (grade: " << grade << ") constructor with parameters." << std::endl;
-	if (grade < MAX_GRADE)
-		throw Form::GradeTooHighException();
-	if (grade > MIN_GRADE)
-		throw Form::GradeTooLowException();
+	std::cout << "Form " << name << " (sign grade: " << sign_grade << ", execute grade: " << exec_grade << ") constructor with parameters." << std::endl;
 }
 Form::~Form() { std::cout << "Form " << name << " destructor." << std::endl; }
 std::string	Form::getName( void ) const {return (name);}
