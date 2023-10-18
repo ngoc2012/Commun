@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:02:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:07:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & src )
 }
 Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name(_name), grade(_grade)
 {
+	std::cout << "Bureaucrat " << name << " constructor with parameters." << std::endl;
 	if (grade < MAX_GRADE)
 		throw Bureaucrat::GradeTooHighException();
 	if (grade > MIN_GRADE)
-		throw Bureaucrat::GradeTooHighException();
+		throw Bureaucrat::GradeTooLowException();
 }
 Bureaucrat::~Bureaucrat() { std::cout << "Bureaucrat " << name << " destructor." << std::endl; }
 std::string	Bureaucrat::getName( void ) const {return (name);}
@@ -48,7 +49,7 @@ void		Bureaucrat::upGrade( void )
 void		Bureaucrat::downGrade( void )
 {
 	if (grade + 1 > MIN_GRADE)
-		throw Bureaucrat::GradeTooHighException();
+		throw Bureaucrat::GradeTooLowException();
 	grade++;
 	std::cout << "Down grade succesful : " << *this;
 }
