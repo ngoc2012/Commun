@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:28:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:37:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ class Form
 
 		std::string	getName( void ) const;
 		bool		getSign( void ) const;
-		int		getMinGrade( void ) const;
-		int		getMaxGrade( void ) const;
+		int		getSignGrade( void ) const;
+		int		getExecGrade( void ) const;
 
 		void		beSigned( Bureaucrat& );
 
