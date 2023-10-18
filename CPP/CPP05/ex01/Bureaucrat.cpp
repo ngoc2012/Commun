@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:12:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:32:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & src )
 	grade = src.grade;
 	return (*this);
 }
-Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name(_name), grade(_grade)
+Bureaucrat::Bureaucrat(const std::string n, int sg, int eg) : name(n), sign_grade(sg), exec_grade(eg)
 {
 	std::cout << "Bureaucrat " << name << " (grade: " << grade << ") constructor with parameters." << std::endl;
 	if (grade < MAX_GRADE)
