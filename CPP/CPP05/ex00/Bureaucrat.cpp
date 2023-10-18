@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:34:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:44:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,28 @@ Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & src )
 	return (*this);
 }
 Bureaucrat::~Bureaucrat() { std::cout << "Bureaucrat " << name << " destructor." << std::endl; }
-void    Bureaucrat::makeSound( void ) const
-{
-	std::cout << "Bureaucrat make sound." << std::endl;
-}
 std::string	Bureaucrat::getName( void ) const {return (name);}
 int		Bureaucrat::getGrade( void ) const {return (grade);}
 
 std::ostream&   operator<<(std::ostream& o, const Bureaucrat& b);
 {
 	o << b.getName() << ", bureaucrat grade " << b.getGrade()<< std::endl;
+}
+void		upGrade( void )
+{
+	if (grade - 1 < MAX_GRADE)
+		throw Bureaucrat::GradeTooHighException();
+	else
+		grade--;
+	std::cout << "smt" << std::endl;
+}
+void		downGrade( void )
+{
+	if (grade + 1 > MIN_GRADE)
+		throw Bureaucrat::GradeTooHighException();
+	else
+		grade++;
+	std::cout << "smtDown" << std::endl;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() { return ("Grade is too high."); }
