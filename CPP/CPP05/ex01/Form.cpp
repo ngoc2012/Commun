@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 18:51:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 18:53:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int		Form::getSignGrade( void ) const {return (sign_grade);}
 int		Form::getExecGrade( void ) const {return (exec_grade);}
 std::ostream&   operator<<(std::ostream& o, const Form& b)
 {
-	o << b.getName() << ", bureaucrat grade " << b.getGrade()<< std::endl;
+	o << "Form " << b.getName() << ", sign grade " << b.getSignGrade() << ", execute grade " << b.getExecGrade() << std::endl;
 	return (o);
 }
-void		Form::beSigned( Bureaucrat& b);
+void		Form::beSigned( Bureaucrat& b)
 {
 	if (grade - 1 < MAX_GRADE)
 		throw Form::GradeTooHighException();
