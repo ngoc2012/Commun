@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:49:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:50:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main()
 	} catch (Bureaucrat::GradeTooHighException &e) {
 		std::cout << e.what() << std::endl;
 	}
-	} catch (Bureaucrat::GradeTooLowException &e) {
-		std::cout << e.what() << std::endl;
-	}
+	//} catch (Bureaucrat::GradeTooLowException &e) {
+	//	std::cout << e.what() << std::endl;
+	//}
 	return (0);
 }
