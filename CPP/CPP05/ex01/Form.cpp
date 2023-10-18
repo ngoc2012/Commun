@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 18:46:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 18:51:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ Form::Form(const Form& src) {
 Form&	Form::operator=( Form const & src )
 {
 	name = src.name;
-	grade = src.grade;
+	sign = src.sign;
+	sign_grade = src.sign_grade;
+	exec_grade = src.exec_grade;
 	return (*this);
 }
 Form::Form(const std::string n, int sg, int eg) : name(n), sign_grade(sg), exec_grade(eg)
