@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:18:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:25:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,5 @@ std::ostream&   operator<<(std::ostream& o, const Bureaucrat& b);
 {
 	o << b.getName() << std::endl;
 }
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() { return ("Grade is to high."); }

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:17:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 07:24:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,13 @@ class Bureaucrat
 		Bureaucrat &operator=(const Bureaucrat& op);
 		virtual ~Bureaucrat();
 
-		virtual void    makeSound( void ) const;
 		std::string	getName( void ) const;
 		int		getGrade( void ) const;
+
+		class GradeTooHighException : public std::exception
+		{
+			virtual const char* what() const throw();
+		};
 };
 
 std::ostream&   operator<<(std::ostream&, const Bureaucrat&);
