@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:11:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:46:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,10 @@
 
 int	main()
 {
-	Bureaucrat b2("b2", 2);
+	Bureaucrat	b2("b2", 2);
 	std::cout << b2;
-	Bureaucrat b145("b145", 145);
+	Bureaucrat	b145("b145", 145);
 	std::cout << b145;
-	try {
-		for (int i = 0; i < 3; i++)
-			b2.upGrade();
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		for (int i = 0; i < 10; i++)
-			b145.downGrade();
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << "========== Test constructor ==========" << std::endl;
-	try {
-		Bureaucrat b160("b160", 160);
-		std::cout << b160;
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		Bureaucrat b0("b0", 0);
-		std::cout << b0;
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
+	Form	f2("f2", 2);
 	return (0);
 }

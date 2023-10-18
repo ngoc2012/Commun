@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 08:43:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:44:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ Form::Form(const std::string _name, int _grade) : name(_name), grade(_grade)
 }
 Form::~Form() { std::cout << "Form " << name << " destructor." << std::endl; }
 std::string	Form::getName( void ) const {return (name);}
+bool		Form::getSign( void ) const {return (sign);}
 int		Form::getSignGrade( void ) const {return (sign_grade);}
 int		Form::getExecGrade( void ) const {return (exec_grade);}
 std::ostream&   operator<<(std::ostream& o, const Form& b)
