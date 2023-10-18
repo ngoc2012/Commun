@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 07:48:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/18 08:26:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # define MAX_GRADE 1
 # define MIN_GRADE 150
 
-#include <iostream>
+# include <iostream>
+# include "Form.hpp"
 
 class Bureaucrat
 {
@@ -35,6 +36,7 @@ class Bureaucrat
 
 		void		upGrade( void );
 		void		downGrade( void );
+		void		signForm( Form& );
 
 		class GradeTooHighException : public std::exception
 		{
