@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/18 19:21:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/22 13:54:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ Form::Form(const std::string n, int sg, int eg) : name(n), sign_grade(sg), exec_
 	std::cout << "Form " << name << " (sign grade: " << sign_grade << ", execute grade: " << exec_grade << ") constructor with parameters." << std::endl;
 }
 Form::~Form() { std::cout << "Form " << name << " destructor." << std::endl; }
+
 std::string	Form::getName( void ) const {return (name);}
 bool		Form::getSign( void ) const {return (sign);}
 int		Form::getSignGrade( void ) const {return (sign_grade);}
 int		Form::getExecGrade( void ) const {return (exec_grade);}
 void		Form::setSign( void ) {sign = true;}
+
 std::ostream&   operator<<(std::ostream& o, const Form& b)
 {
 	o << "Form " << b.getName() << ", sign grade " << b.getSignGrade() << ", execute grade " << b.getExecGrade() << std::endl;
@@ -51,7 +53,7 @@ void		Form::beSigned( Bureaucrat& b)
 		throw Form::GradeTooLowException();
 	}
 	sign = true;
-	std::cout << "Form " << name << " signed." << std::endl;
+	std::cout << "Form " << name << " signed by " << b.getName() <<  "." << std::endl;
 }
 const char* Form::GradeTooHighException::what() const throw() { return ("Error: Grade is too high."); }
 const char* Form::GradeTooLowException::what() const throw() { return ("Error: Grade is too low."); }
