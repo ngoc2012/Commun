@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/22 14:03:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/22 14:06:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void		Bureaucrat::upGrade( void )
 	grade--;
 	std::cout << "Up grade succesful : " << *this;
 }
+
 void		Bureaucrat::downGrade( void )
 {
 	if (grade + 1 > MIN_GRADE)
@@ -64,8 +65,11 @@ void		Bureaucrat::downGrade( void )
 	grade++;
 	std::cout << "Down grade succesful : " << *this;
 }
+
 const char* Bureaucrat::GradeTooHighException::what() const throw() { return ("Error: Grade is too high."); }
+
 const char* Bureaucrat::GradeTooLowException::what() const throw() { return ("Error: Grade is too low."); }
+
 void		Bureaucrat::signForm( Form& f )
 {
 	f.beSigned(*this);
