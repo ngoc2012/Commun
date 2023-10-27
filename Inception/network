@@ -1,0 +1,1 @@
+RUN	apt-get install -y iputils-ping ineutils-traceroute iproute2 curl telnet dnsutils
