@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 15:40:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 15:45:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src) {
 
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=( ShrubberyCreationForm const & src )
 {
-	name = src.name;
-	sign = src.sign;
-	sign_grade = src.sign_grade;
-	exec_grade = src.exec_grade;
+	Form::operator=(op);
 	return (*this);
 }
 
