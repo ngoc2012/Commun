@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 16:23:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 16:26:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class AForm
 		bool		sign;
 		int		sign_grade;
 		int		exec_grade;
-		virtual void		beExecuted() const;
+		virtual void		beExecuted() const = 0;
 		AForm();
 	public:
 		AForm(const AForm&);
