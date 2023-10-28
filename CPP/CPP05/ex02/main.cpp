@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 17:51:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 18:01:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ int	main()
 	Bureaucrat	b145("b145", 145);
 	std::cout << b145;
 	ShrubberyCreationForm s0("home");
+	try {
+		s0.beSigned(b145);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		b145.signForm(s0);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
 	try {
 		s0.execute(b145);
 	} catch (std::exception &e) {
