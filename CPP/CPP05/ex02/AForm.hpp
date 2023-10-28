@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 11:27:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 11:31:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ class Bureaucrat;
 
 class AForm
 {
-	private:
+	protected:
 		std::string	name;
 		bool		sign;
 		int		sign_grade;
 		int		exec_grade;
-		Form();
+		AForm();
 	public:
-		Form(const Form&);
-		Form &operator=(const Form& op);
-		Form(const std::string, int, int);
-		virtual ~Form();
+		AForm(const AForm&);
+		AForm &operator=(const AForm& op);
+		AForm(const std::string, int, int);
+		virtual ~AForm();
 
 		std::string	getName( void ) const;
 		bool		getSign( void ) const;
@@ -50,6 +50,6 @@ class AForm
 		};
 };
 
-std::ostream&   operator<<(std::ostream&, const Form&);
+std::ostream&   operator<<(std::ostream&, const AForm&);
 
 #endif
