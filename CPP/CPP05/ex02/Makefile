@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/10/28 15:36:35 by ngoc             ###   ########.fr        #
+#    Updated: 2023/10/28 17:46:52 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp ShrubberyCreationForm.cpp AForm.cpp
+SRCS = main.cpp ShrubberyCreationForm.cpp AForm.cpp Bureaucrat.cpp
 OBJS = ${SRCS:.c=.o}
 MANDA = main
 CC = c++
