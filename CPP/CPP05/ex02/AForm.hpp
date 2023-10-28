@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 11:31:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 14:11:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class AForm
 
 		void		beSigned( Bureaucrat& );
 		void		setSign( void );
+		void		execute(Bureaucrat const & executor) const;
 
 		class GradeTooHighException : public std::exception
 		{
