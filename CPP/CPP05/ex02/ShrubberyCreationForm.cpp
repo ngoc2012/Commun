@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 14:49:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 15:40:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ShrubberyCreationForm::beExecuted() const
 {
 	std::ofstream file;
 
-	file.open(std::string(this->getTarget() + "_shrubbery").c_str(),
+	file.open(std::string(target + "_shrubbery").c_str(),
 		std::ios::out | std::ios::app);
 	if(file.is_open())
 	{
