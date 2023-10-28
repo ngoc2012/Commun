@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 14:47:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 14:48:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,5 @@ void		execute(Bureaucrat const & executor) const
 		throw std::string("Form not signed.");
 	else if (executor.getGrade() > exec_grade)
 		throw AForm::GradeTooLowException();
-	this->beExecuted();
+	beExecuted();
 }

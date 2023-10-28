@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 14:08:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 14:49:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	ShrubberyCreationForm::beExecuted() const
 		file << "                     }}{				" << std::endl;
 		file << "                     }}{				" << std::endl;
 		file << "                     {{}				" << std::endl;
-		file << "                     `}				" << std::endl;
-		file << "                      {				" << std::endl;
+		file << "                     {}}				" << std::endl;
+		file << "                    {}{{}}				" << std::endl;
 		file.close();
 	}
 }
