@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 13:58:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 14:01:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,28 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=( ShrubberyCreationForm c
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() { std::cout << "ShrubberyCreationForm " << name << " destructor." << std::endl; }
+
+void	ShrubberyCreationForm::beExecuted() const
+{
+	std::ofstream file;
+
+	file.open(std::string(this->getTarget() + "_shrubbery").c_str(),
+		std::ios::out | std::ios::app);
+	if(file.is_open())
+	{
+		file << "                 # #### ####			" << std::endl;
+		file << "               ### \\/#|### |/####		" << std::endl;
+		file << "              ##\\/#/ \\||/##/_/##/_#	" << std::endl;
+		file << "            ###  \\/###|/ \\/ # ###	" << std::endl;
+		file << "          ##_\\_#\\_\\## | #/###_/_####" << std::endl;
+		file << "         ## #### # \\ #| /  #### ##/##	" << std::endl;
+		file << "          __#_--###`  |{,###---###-~	" << std::endl;
+		file << "                    \\ }{				" << std::endl;
+		file << "                     }}{				" << std::endl;
+		file << "                     }}{				" << std::endl;
+		file << "                     {{}				" << std::endl;
+		file << "                     `}				" << std::endl;
+		file << "                      {				" << std::endl;
+		file.close();
+	}
+}
