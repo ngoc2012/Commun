@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 14:11:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 14:15:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,11 @@ void		AForm::beSigned( Bureaucrat& b)
 }
 const char* AForm::GradeTooHighException::what() const throw() { return ("Grade is too high."); }
 const char* AForm::GradeTooLowException::what() const throw() { return ("Grade is too low."); }
-void		execute(Bureaucrat const & executor) const {}
+void		execute(Bureaucrat const & executor) const
+{
+	if (!sign)
+		throw std::string("the form is not signed.");
+	else if (executor.getGrade() > this->_requiered_exec_grade)
+		throw std::string("grade is to low.");
+	this->beExecuted();
+}
