@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 15:47:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 15:49:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ShrubberyCreationForm::beExecuted() const
 
 	file.open(std::string(target + "_shrubbery").c_str(),
 		std::ios::out | std::ios::app);
+	// https://ascii.co.uk/art/tree
 	if(file.is_open())
 	{
 		file << "                 # #### ####			" << std::endl;
