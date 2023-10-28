@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/22 14:06:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 15:37:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ const char* Bureaucrat::GradeTooHighException::what() const throw() { return ("E
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() { return ("Error: Grade is too low."); }
 
-void		Bureaucrat::signForm( Form& f )
+void		Bureaucrat::signForm( AForm& f )
 {
 	f.beSigned(*this);
 }
