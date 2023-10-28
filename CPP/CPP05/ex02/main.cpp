@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 15:36:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 17:49:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ int	main()
 	Bureaucrat	b145("b145", 145);
 	std::cout << b145;
 	ShrubberyCreationForm s0("home");
+	s0.execute(b145);
+	s0.execute(b2);
 	return (0);
 }
