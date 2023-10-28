@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 11:28:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 13:55:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-AForm::AForm() {std::cout << "AForm " << name << " default constructor." << std::endl;}
+ShrubberyCreationForm::ShrubberyCreationForm() {std::cout << "ShrubberyCreationForm " << name << " default constructor." << std::endl;}
 
-AForm::AForm(const AForm& src) {
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src) {
 	*this = src;
-	std::cout << "AForm " << name << " copy constructor." << std::endl;
+	std::cout << "ShrubberyCreationForm " << name << " copy constructor." << std::endl;
 }
 
-AForm&	AForm::operator=( AForm const & src )
+ShrubberyCreationForm&	ShrubberyCreationForm::operator=( ShrubberyCreationForm const & src )
 {
 	name = src.name;
 	sign = src.sign;
@@ -28,40 +28,10 @@ AForm&	AForm::operator=( AForm const & src )
 	return (*this);
 }
 
-AForm::AForm(const std::string n, int sg, int eg) : name(n), sign_grade(sg), exec_grade(eg)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string n, int sg, int eg) : name(n), sign_grade(sg), exec_grade(eg)
 {
 	sign = false;
-	std::cout << "AForm " << name << " (sign grade: " << sign_grade << ", execute grade: " << exec_grade << ") constructor with parameters." << std::endl;
+	std::cout << "ShrubberyCreationForm " << name << " (sign grade: " << sign_grade << ", execute grade: " << exec_grade << ") constructor with parameters." << std::endl;
 }
 
-AForm::~AForm() { std::cout << "AForm " << name << " destructor." << std::endl; }
-
-std::string	AForm::getName( void ) const {return (name);}
-bool		AForm::getSign( void ) const {return (sign);}
-int		AForm::getSignGrade( void ) const {return (sign_grade);}
-int		AForm::getExecGrade( void ) const {return (exec_grade);}
-void		AForm::setSign( void ) {sign = true;}
-
-std::ostream&   operator<<(std::ostream& o, const AForm& b)
-{
-	o << "AForm " << b.getName() << ", sign grade " << b.getSignGrade() << ", execute grade " << b.getExecGrade() << std::endl;
-	return (o);
-}
-
-void		AForm::beSigned( Bureaucrat& b)
-{
-	if (sign)
-	{
-		std::cout << "AForm " << name << " already signed." << std::endl;
-		return ;
-	}
-	if (b.getGrade() > sign_grade)
-	{
-		std::cerr << "AForm " << name << " could not be signed by " << b.getName() << " because: ";
-		throw AForm::GradeTooLowException();
-	}
-	sign = true;
-	std::cout << "AForm " << name << " signed by " << b.getName() <<  "." << std::endl;
-}
-const char* AForm::GradeTooHighException::what() const throw() { return ("Grade is too high."); }
-const char* AForm::GradeTooLowException::what() const throw() { return ("Grade is too low."); }
+ShrubberyCreationForm::~ShrubberyCreationForm() { std::cout << "ShrubberyCreationForm " << name << " destructor." << std::endl; }

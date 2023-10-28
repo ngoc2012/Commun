@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 13:53:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 13:54:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 # include <iostream>
-# include "AForm.hpp"
+# include "ShrubberyCreationForm.hpp"
 
-class ShrubberyCreationForm: public AForm
+class ShrubberyCreationForm: public ShrubberyCreationForm
 {
 	public:
-		AForm(const AForm&);
-		AForm &operator=(const AForm& op);
-		AForm(const std::string, int, int);
-		virtual ~AForm();
+		ShrubberyCreationForm(const ShrubberyCreationForm&);
+		ShrubberyCreationForm &operator=(const ShrubberyCreationForm& op);
+		ShrubberyCreationForm(const std::string, int, int);
+		virtual ~ShrubberyCreationForm();
 };
 
-#std::ostream&   operator<<(std::ostream&, const AForm&);
+//std::ostream&   operator<<(std::ostream&, const ShrubberyCreationForm&);
 
 #endif
