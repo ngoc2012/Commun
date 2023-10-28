@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 16:26:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 17:54:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ class AForm
 			public: virtual const char* what() const throw();
 		};
 		class GradeTooLowException : public std::exception
+		{
+			public: virtual const char* what() const throw();
+		};
+		class FormNotSigned : public std::exception
 		{
 			public: virtual const char* what() const throw();
 		};
