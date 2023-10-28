@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 14:51:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 14:52:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <fstream>
 # include "AForm.hpp"
 
-class ShrubberyCreationForm: public ShrubberyCreationForm
+class ShrubberyCreationForm: public AForm
 {
 	private:
 		void	beExecuted() const;
