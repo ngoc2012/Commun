@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 14:09:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 14:51:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,5 @@ class ShrubberyCreationForm: public ShrubberyCreationForm
 		ShrubberyCreationForm(const std::string);
 		virtual ~ShrubberyCreationForm();
 };
-
-//std::ostream&   operator<<(std::ostream&, const ShrubberyCreationForm&);
 
 #endif
