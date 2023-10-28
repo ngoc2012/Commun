@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 11:35:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 11:36:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,10 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 # include <iostream>
-# include "Bureaucrat.hpp"
+# include "AForm.hpp"
 
-class Bureaucrat;
-
-class AForm
+class ShrubberyCreationForm: public AForm
 {
-	protected:
-		std::string	name;
-		bool		sign;
-		int		sign_grade;
-		int		exec_grade;
-		AForm();
 	public:
 		AForm(const AForm&);
 		AForm &operator=(const AForm& op);
@@ -50,6 +42,6 @@ class AForm
 		};
 };
 
-std::ostream&   operator<<(std::ostream&, const AForm&);
+#std::ostream&   operator<<(std::ostream&, const AForm&);
 
 #endif
