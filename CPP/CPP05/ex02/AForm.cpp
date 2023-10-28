@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 17:55:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 18:02:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,5 @@ void		AForm::execute(Bureaucrat const & executor) const
 		throw AForm:: FormNotSigned();
 	else if (executor.getGrade() > exec_grade)
 		throw AForm::GradeTooLowException();
-//	beExecuted();
+	beExecuted();
 }
