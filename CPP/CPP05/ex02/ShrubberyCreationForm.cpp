@@ -6,13 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 14:01:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 14:08:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm()
+ShrubberyCreationForm::ShrubberyCreationForm(std::string t) : target(t)
 {
 	sign_grade = 145;
 	exec_grade = 137;
