@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 15:56:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 17:56:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 //ShrubberyCreationForm::ShrubberyCreationForm(std::string t) : target(t)
 ShrubberyCreationForm::ShrubberyCreationForm(std::string t)
 {
+	sign = false;
 	target = t;
 	sign_grade = 145;
 	exec_grade = 137;
