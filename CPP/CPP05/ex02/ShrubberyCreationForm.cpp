@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 15:55:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 15:56:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string t)
 	std::cout << "ShrubberyCreationForm " << name << " default constructor." << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src) {
-	*this = src;
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src): AForm(src)
+{
 	std::cout << "ShrubberyCreationForm " << name << " copy constructor." << std::endl;
 }
 
