@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 17:56:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 18:09:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,20 @@ void	ShrubberyCreationForm::beExecuted() const
 	// https://ascii.co.uk/art/tree
 	if(file.is_open())
 	{
+file << "    oxoxoo    ooxoo
+file << "  ooxoxo oo  oxoxooo
+file << " oooo xxoxoo ooo ooox
+file << " oxo o oxoxo  xoxxoxo
+file << "  oxo xooxoooo o ooo
+file << "    ooo\\oo\\  /o/o
+file << "        \\  \\/ /
+file << "         |   /
+file << "         |  |
+file << "         | D|
+file << "         |  |
+file << "         |  |
+file << "  ______/____\\____
+
 		file << "                 # #### ####			" << std::endl;
 		file << "               ### \\/#|### |/####		" << std::endl;
 		file << "              ##\\/#/ \\||/##/_/##/_#	" << std::endl;
