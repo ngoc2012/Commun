@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 14:11:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/28 15:38:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class AForm
 {
 	protected:
 		std::string	name;
+		std::string	target;
 		bool		sign;
 		int		sign_grade;
 		int		exec_grade;
