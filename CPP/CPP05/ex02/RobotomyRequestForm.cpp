@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/30 10:53:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/30 10:55:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,8 @@ RobotomyRequestForm::~RobotomyRequestForm() { std::cout << "RobotomyRequestForm 
 
 void	RobotomyRequestForm::beExecuted() const
 {
+	srand((unsigned) time(NULL));
 	std::cout << "Vrmmmmm...vrmm..vrmm......." << std::endl;
-	int	i = rand();
-	std::cout << i << " " << i % 2 << std::endl;
 	if(rand() % 2)
 		std::cout << target << " was robotomized!" << std::endl;
 	else
