@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 18:15:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/30 08:59:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
+#include "RobotmyRequestForm.hpp"
 
-//ShrubberyCreationForm::ShrubberyCreationForm(std::string t) : target(t)
-ShrubberyCreationForm::ShrubberyCreationForm(std::string t)
+//RobotmyRequestForm::RobotmyRequestForm(std::string t) : target(t)
+RobotmyRequestForm::RobotmyRequestForm(std::string t)
 {
 	sign = false;
 	target = t;
 	sign_grade = 145;
 	exec_grade = 137;
-	std::cout << "ShrubberyCreationForm " << name << " default constructor." << std::endl;
+	std::cout << "RobotmyRequestForm " << name << " default constructor." << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src): AForm(src)
+RobotmyRequestForm::RobotmyRequestForm(const RobotmyRequestForm& src): AForm(src)
 {
-	std::cout << "ShrubberyCreationForm " << name << " copy constructor." << std::endl;
+	std::cout << "RobotmyRequestForm " << name << " copy constructor." << std::endl;
 }
 
-ShrubberyCreationForm&	ShrubberyCreationForm::operator=( ShrubberyCreationForm const & src )
+RobotmyRequestForm&	RobotmyRequestForm::operator=( RobotmyRequestForm const & src )
 {
 	AForm::operator=(src);
 	return (*this);
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm() { std::cout << "ShrubberyCreationForm " << name << " destructor." << std::endl; }
+RobotmyRequestForm::~RobotmyRequestForm() { std::cout << "RobotmyRequestForm " << name << " destructor." << std::endl; }
 
-void	ShrubberyCreationForm::beExecuted() const
+void	RobotmyRequestForm::beExecuted() const
 {
 	std::ofstream file;
 
