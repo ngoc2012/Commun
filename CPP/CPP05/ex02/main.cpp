@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/30 10:44:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/30 10:48:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main()
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		b145.signForm(s0);
+		b2.signForm(s0);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -41,14 +41,15 @@ int	main()
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
+
 	RobotomyRequestForm r0("robot");
 	try {
-		s0.beSigned(b145);
+		r0.beSigned(b145);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		b145.signForm(r0);
+		b2.signForm(r0);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -69,7 +70,7 @@ int	main()
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		b145.signForm(p0);
+		b2.signForm(p0);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
