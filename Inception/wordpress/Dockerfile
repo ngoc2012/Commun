@@ -13,5 +13,7 @@ RUN chown -R www:www /var/lib/nginx
 RUN chown -R www:www /usr/share/webapps/
 RUN chown -R www:www /var/www/localhost/htdocs/wordpress
 
+COPY ./conf/nginx.conf /etc/nginx
+
 #CMD ["rc-service", "nginx", "start"]
 ENTRYPOINT ["/bin/sh"]
