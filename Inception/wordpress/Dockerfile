@@ -15,6 +15,6 @@ RUN chown -R www:www /var/www/localhost/htdocs/wordpress
 COPY ./conf/nginx.conf /etc/nginx
 
 #RUN rc-service nginx restart
-CMD ["rc-service", "nginx", "start"]
-#RUN /bin/sh
+#CMD ["rc-service", "nginx", "start"]
+RUN /bin/sh
 ENTRYPOINT ["/bin/sh"]
