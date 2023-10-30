@@ -6,11 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 18:01:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/30 09:12:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int	main()
 {
@@ -19,6 +21,48 @@ int	main()
 	Bureaucrat	b145("b145", 145);
 	std::cout << b145;
 	ShrubberyCreationForm s0("home");
+	try {
+		s0.beSigned(b145);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		b145.signForm(s0);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		s0.execute(b145);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		s0.execute(b2);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	RobotomyRequestForm s0("robot");
+	try {
+		s0.beSigned(b145);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		b145.signForm(s0);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		s0.execute(b145);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		s0.execute(b2);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	PresidentialPardonForm s0("PPF");
 	try {
 		s0.beSigned(b145);
 	} catch (std::exception &e) {
