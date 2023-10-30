@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/30 09:12:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/30 10:44:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,45 +41,45 @@ int	main()
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-	RobotomyRequestForm s0("robot");
+	RobotomyRequestForm r0("robot");
 	try {
 		s0.beSigned(b145);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		b145.signForm(s0);
+		b145.signForm(r0);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		s0.execute(b145);
+		r0.execute(b145);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		s0.execute(b2);
+		r0.execute(b2);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
-	PresidentialPardonForm s0("PPF");
+	PresidentialPardonForm p0("PPF");
 	try {
-		s0.beSigned(b145);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-	try {
-		b145.signForm(s0);
+		p0.beSigned(b145);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		s0.execute(b145);
+		b145.signForm(p0);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		s0.execute(b2);
+		p0.execute(b145);
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+	try {
+		p0.execute(b2);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
