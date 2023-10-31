@@ -16,5 +16,6 @@ COPY ./conf/nginx.conf /etc/nginx
 
 #RUN rc-service nginx restart
 #CMD ["rc-service", "nginx", "start"]
-RUN /bin/sh
-ENTRYPOINT ["/bin/sh"]
+#RUN /bin/sh
+#ENTRYPOINT ["/bin/sh"]
+RUN nginx -g 'daemon off;'
