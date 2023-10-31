@@ -3,7 +3,7 @@ FROM alpine:3.18
 RUN apk update
 #RUN apk add --no-cache bash
 RUN apk add --no-cache nginx
-RUN apk add openrc --no-cache # rc-service
+#RUN apk add openrc --no-cache # rc-service
 
 RUN mkdir -p /usr/share/webapps/
 RUN mkdir -p /var/www/localhost/htdocs/wordpress
