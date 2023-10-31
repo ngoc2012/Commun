@@ -8,6 +8,7 @@ RUN apk add --no-cache openssl
 
 RUN mkdir -p /usr/share/webapps/
 RUN mkdir -p /var/www/localhost/htdocs/wordpress
+RUN mkdir -p /etc/nginx/ssl/
 RUN adduser -D -g 'www' www
 RUN chown -R www:www /var/lib/nginx
 RUN chown -R www:www /usr/share/webapps/
