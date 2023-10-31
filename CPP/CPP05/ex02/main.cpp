@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/31 08:45:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/31 08:49:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	main()
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		std::cout << "b2.signForm(s0);" << std::endl;
-		b2.signForm(s0);
+		std::cout << "b70.signForm(s0);" << std::endl;
+		b70.signForm(s0);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -46,8 +46,8 @@ int	main()
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		std::cout << "s0.execute(b2);" << std::endl;
-		s0.execute(b2);
+		std::cout << "s0.execute(b70);" << std::endl;
+		s0.execute(b70);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -60,27 +60,28 @@ int	main()
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		std::cout << "b2.signForm(r0);" << std::endl;
-		b2.signForm(r0);
+		std::cout << "b70.signForm(r0);" << std::endl;
+		b70.signForm(r0);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		std::cout << "r0.execute(b145);" << std::endl;
-		r0.execute(b145);
+		std::cout << "r0.execute(b70);" << std::endl;
+		r0.execute(b70);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		std::cout << "r0.execute(b2);" << std::endl;
-		r0.execute(b2);
+		std::cout << "r0.execute(b40);" << std::endl;
+		r0.execute(b40);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
+
 	PresidentialPardonForm p0("PPF");
 	try {
-		std::cout << "p0.beSigned(b145);" << std::endl;
-		p0.beSigned(b145);
+		std::cout << "p0.beSigned(b10);" << std::endl;
+		p0.beSigned(b10);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -91,8 +92,8 @@ int	main()
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		std::cout << "p0.execute(b145);" << std::endl;
-		p0.execute(b145);
+		std::cout << "p0.execute(b10);" << std::endl;
+		p0.execute(b10);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
