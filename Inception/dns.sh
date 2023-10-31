@@ -13,7 +13,7 @@
 #    file "/etc/bind/zones/db.minh-ngu.42.fr";
 #};' | sudo tee /etc/bind/named.conf.local > /dev/null
 
-mkdir -p /etc/bind/zones
+sudo mkdir -p /etc/bind/zones
 # Create the zone file
 echo '$TTL 86400
 @   IN  SOA     ns1.minh-ngu.42.fr. admin.minh-ngu.42.fr. (
