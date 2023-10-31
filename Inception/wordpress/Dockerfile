@@ -13,8 +13,6 @@ RUN chown -R www:www /var/lib/nginx
 RUN chown -R www:www /usr/share/webapps/
 RUN chown -R www:www /var/www/localhost/htdocs/wordpress
 
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout your_domain.key -out your_domain.crt
-
 RUN openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes \
        -out /etc/nginx/ssl/inception.crt \
        -keyout /etc/nginx/ssl/inception.key \
