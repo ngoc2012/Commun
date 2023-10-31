@@ -23,6 +23,7 @@ RUN openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes \
 COPY ./conf/nginx.conf /etc/nginx
 COPY ./tools/index.html /var/www/localhost/htdocs/wordpress
 
+EXPOSE 80
 EXPOSE 443
 
 #RUN rc-service nginx restart
