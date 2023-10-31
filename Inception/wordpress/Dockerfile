@@ -13,9 +13,11 @@ RUN chown -R www:www /usr/share/webapps/
 RUN chown -R www:www /var/www/localhost/htdocs/wordpress
 
 COPY ./conf/nginx.conf /etc/nginx
+EXPOSE 80
 
 #RUN rc-service nginx restart
 #CMD ["rc-service", "nginx", "start"]
 #RUN /bin/sh
 #ENTRYPOINT ["/bin/sh"]
-RUN nginx -g 'daemon off;'
+#RUN nginx -g 'daemon off;'
+CMD ["nginx", "-g", "daemon off;"]
