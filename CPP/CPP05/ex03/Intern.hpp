@@ -6,17 +6,16 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/31 09:03:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/31 09:05:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INTERN_HPP
 # define INTERN_HPP
 
-# include <iostream>
-# include "Bureaucrat.hpp"
-
-class Bureaucrat;
+# include "ShrubberyCreationForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "PresidentialPardonForm.hpp"
 
 class Intern
 {
@@ -26,9 +25,7 @@ class Intern
 		Intern(const std::string, int, int);
 		virtual ~Intern();
 
-		makeForm
+		Aform	*makeForm(std::string, std::string);
 };
-
-std::ostream&   operator<<(std::ostream&, const Intern&);
 
 #endif
