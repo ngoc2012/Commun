@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/31 08:55:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/31 08:56:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ int	main()
 	std::cout << b40;
 	Bureaucrat	b10("b10", 10);
 	std::cout << b10;
+
+	Intern someRandomIntern;
+	Form* rrf;
+	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 
 	ShrubberyCreationForm s0("haha");
 	try {
