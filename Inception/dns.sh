@@ -1,18 +1,19 @@
 #!/bin/bash
 
-# Update the system
-sudo apt update
-sudo apt upgrade -y
+## Update the system
+#sudo apt update
+#sudo apt upgrade -y
+#
+## Install BIND
+#sudo apt install -y bind9
+#
+## Configure BIND
+#echo 'zone "minh-ngu.42.fr" {
+#    type master;
+#    file "/etc/bind/zones/db.minh-ngu.42.fr";
+#};' | sudo tee /etc/bind/named.conf.local > /dev/null
 
-# Install BIND
-sudo apt install -y bind9
-
-# Configure BIND
-echo 'zone "minh-ngu.42.fr" {
-    type master;
-    file "/etc/bind/zones/db.minh-ngu.42.fr";
-};' | sudo tee /etc/bind/named.conf.local > /dev/null
-
+mkdir -p /etc/bind/zones
 # Create the zone file
 echo '$TTL 86400
 @   IN  SOA     ns1.minh-ngu.42.fr. admin.minh-ngu.42.fr. (
