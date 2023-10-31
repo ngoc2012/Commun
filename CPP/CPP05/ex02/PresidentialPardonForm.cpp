@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/30 09:07:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/31 08:50:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ PresidentialPardonForm::PresidentialPardonForm(std::string t)
 {
 	sign = false;
 	target = t;
-	sign_grade = 145;
-	exec_grade = 137;
+	sign_grade = 25;
+	exec_grade = 5;
 	std::cout << "PresidentialPardonForm " << name << " default constructor." << std::endl;
 }
 
