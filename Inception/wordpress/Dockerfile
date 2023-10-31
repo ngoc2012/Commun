@@ -20,7 +20,7 @@ RUN openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes \
        -subj "/C=FR/ST=Paris/L=Paris/O=42/OU=promo2022/CN=minh-ngu/"
 
 COPY ./conf/nginx.conf /etc/nginx
-COPY ./tools/index.html /var/lib/nginx/html
+COPY ./tools/index.html /var/www/localhost/htdocs/wordpress
 
 EXPOSE 443
 
