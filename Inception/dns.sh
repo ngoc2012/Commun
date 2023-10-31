@@ -1,17 +1,17 @@
 #!/bin/bash
 
-## Update the system
-#sudo apt update
-#sudo apt upgrade -y
-#
-## Install BIND
-#sudo apt install -y bind9
-#
-## Configure BIND
-#echo 'zone "minh-ngu.42.fr" {
-#    type master;
-#    file "/etc/bind/zones/db.minh-ngu.42.fr";
-#};' | sudo tee /etc/bind/named.conf.local > /dev/null
+# Update the system
+sudo apt update
+sudo apt upgrade -y
+
+# Install BIND
+sudo apt install -y bind9
+
+# Configure BIND
+echo 'zone "minh-ngu.42.fr" {
+    type master;
+    file "/etc/bind/zones/db.minh-ngu.42.fr";
+};' | sudo tee /etc/bind/named.conf.local > /dev/null
 
 sudo mkdir -p /etc/bind/zones
 # Create the zone file
@@ -24,8 +24,8 @@ echo '$TTL 86400
               86400 )    ; Minimum TTL
 
 @   IN  NS      ns1.minh-ngu.42.fr.
-@   IN  A       192.168.1.1
-ns1 IN  A       192.168.1.1' | sudo tee /etc/bind/zones/db.minh-ngu.42.fr > /dev/null
+@   IN  A       172.17.0.2
+ns1 IN  A       172.17.0.2' | sudo tee /etc/bind/zones/db.minh-ngu.42.fr > /dev/null
 
 # Test BIND configuration
 sudo named-checkconf
