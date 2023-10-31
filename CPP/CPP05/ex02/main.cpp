@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/30 10:58:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/10/31 08:45:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ int	main()
 	std::cout << b2;
 	Bureaucrat	b145("b145", 145);
 	std::cout << b145;
+	Bureaucrat	b70("b70", 70);
+	std::cout << b70;
+	Bureaucrat	b40("b40", 40);
+	std::cout << b40;
+	Bureaucrat	b10("b10", 10);
+	std::cout << b10;
 	ShrubberyCreationForm s0("haha");
 	try {
 		std::cout << "s0.beSigned(b145);" << std::endl;
