@@ -13,7 +13,7 @@ RUN chown -R www:www /usr/share/webapps/
 RUN chown -R www:www /var/www/localhost/htdocs/wordpress
 
 COPY ./conf/nginx.conf /etc/nginx
-EXPOSE 80
+EXPOSE 443
 
 #RUN rc-service nginx restart
 #CMD ["rc-service", "nginx", "start"]
