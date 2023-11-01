@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 05:52:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 05:56:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 
 # define BUFFER	1028
 # define MAX_CLIENTS 128
+# define PORT 128
 
 int	main()
 {
-	int	s_fd = socket(AF_INET, SOCK_STREAM, 0);
+	int	l_fd = socket(AF_INET, SOCK_STREAM, 0);
+	if (l_fd < 0)
 	struct sockaddr_in	addr;
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(4242);
