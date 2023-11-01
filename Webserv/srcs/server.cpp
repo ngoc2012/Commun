@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 07:35:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 07:59:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 
 # define BUFFER	1028
 # define MAX_CLIENTS 128
-# define PORT 128
+# define PORT 4242
+# define IP_ADDRESS "127.0.0.1"
 
 int	main()
 {
@@ -70,8 +71,9 @@ int	main()
 	}
 	struct sockaddr_in	addr;
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(4242);
-	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	addr.sin_port = htons(PORT);
+	addr.sin_addr.s_addr = inet_addr(IP_ADDRESS);
+
 	int	c = connect(s_fd, (struct sockaddr*)&addr, sizeof(addr)); 
 	if (c < 0)
 		std::cerr << "Client : connect error" << std::endl;
