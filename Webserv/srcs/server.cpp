@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 07:25:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 07:27:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	main()
 		exit(-1);
 	}
 	int    on = 1;
-	if (ioctl(listen_sd, FIONBIO, (char *)&on) < 0)
+	//The  second  argument  is  a  device-dependent  request code.  The third argument is an untyped pointer to memory.  It's traditionally char *argp (from the days before void *  was  valid  C), and will be so named for this discussion.
+	if (ioctl(listen_sk, FIONBIO, (char *)&on) < 0)
 	{
 		perror("non-blocking socket: ioctl() failed");
 		close(listen_sk);
