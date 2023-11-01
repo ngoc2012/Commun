@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 14:45:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 19:07:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,25 @@ int	main()
 	{
 		try {
 			std::cout << "s0.beSigned(b145);" << std::endl;
-			s0.beSigned(b145);
+			s0->beSigned(b145);
 		} catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
 		try {
 			std::cout << "b70.signForm(s0);" << std::endl;
-			b70.signForm(s0);
+			b70.signForm(*s0);
 		} catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
 		try {
 			std::cout << "s0.execute(b145);" << std::endl;
-			s0.execute(b145);
+			s0->execute(b145);
 		} catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
 		try {
 			std::cout << "s0.execute(b70);" << std::endl;
-			s0.execute(b70);
+			s0->execute(b70);
 		} catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
@@ -60,28 +60,27 @@ int	main()
 	AForm* r0 = someRandomIntern.makeForm("robotomy request", "Bender");
 	if (r0)
 	{
-		RobotomyRequestForm r0("robot");
 		try {
 			std::cout << "r0.beSigned(b145);" << std::endl;
-			r0.beSigned(b145);
+			r0->beSigned(b145);
 		} catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
 		try {
 			std::cout << "b70.signForm(r0);" << std::endl;
-			b70.signForm(r0);
+			b70.signForm(*r0);
 		} catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
 		try {
 			std::cout << "r0.execute(b70);" << std::endl;
-			r0.execute(b70);
+			r0->execute(b70);
 		} catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
 		try {
 			std::cout << "r0.execute(b40);" << std::endl;
-			r0.execute(b40);
+			r0->execute(b40);
 		} catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
@@ -90,31 +89,33 @@ int	main()
 	AForm* p0 = someRandomIntern.makeForm("presidential pardon", "Macron");
 	if (p0)
 	{
-		PresidentialPardonForm p0("PPF");
 		try {
 			std::cout << "p0.beSigned(b10);" << std::endl;
-			p0.beSigned(b10);
+			p0->beSigned(b10);
 		} catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
 		try {
 			std::cout << "b2.signForm(p0);" << std::endl;
-			b2.signForm(p0);
+			b2.signForm(*p0);
 		} catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
 		try {
 			std::cout << "p0.execute(b10);" << std::endl;
-			p0.execute(b10);
+			p0->execute(b10);
 		} catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
 		try {
 			std::cout << "p0.execute(b2);" << std::endl;
-			p0.execute(b2);
+			p0->execute(b2);
 		} catch (std::exception &e) {
 			std::cout << e.what() << std::endl;
 		}
 	}
+	delete(s0);
+	delete(r0);
+	delete(p0);
 	return (0);
 }
