@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 14:35:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 14:39:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,9 @@ AForm	*Intern::makeForm(std::string f, std::string t)
 	        new PresidentialPardonForm( target ),
 	        new ShrubberyCreationForm( target )
 	};
+	for (int i = 0; i < N_FORMS; i++)
+		if (f == fStr[i])
+			return (fs[i]);
+	std::cerr << "Form: " << f << " not found" << std::endl;
+	return 0;
 }
