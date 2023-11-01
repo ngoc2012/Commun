@@ -6,12 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/31 09:05:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 14:36:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INTERN_HPP
 # define INTERN_HPP
+# define N_FORMS 3
 
 # include "ShrubberyCreationForm.hpp"
 # include "RobotomyRequestForm.hpp"
