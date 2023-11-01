@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 09:47:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 09:48:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,27 +135,23 @@ int	main()
 				sk_ready = -1;
 				if (i == listen_sk)
 				{
+					//Accept all the new connections, create a new socket and add to the master set
 					do
 					{
-					int	new_sk = accept(listen_sk, NULL, NULL);
-					if (new_sk < 0)
-					{
-						if (errno != EWOULDBLOCK)
+						int	new_sk = accept(listen_sk, NULL, NULL);
+						if (new_sk < 0)
 						{
-							perror("  accept() failed");
-							end_server = TRUE;
+							if (errno != EWOULDBLOCK)
+							{
+								perror("  accept() failed");
+								end_server = TRUE;
+							}
+							break;
 						}
-						break;
-					}
-
-					/**********************************************/
-					/* Add the new incoming connection to the     */
-					/* master read set                            */
-					/**********************************************/
-					std::cout << "  New incoming connection - " << new_sk << std::endl;
-					FD_SET(new_sk, &master_set);
-					if (new_sk > max_sk)
-						max_sk = new_sk;
+						std::cout << "  New incoming connection - " << new_sk << std::endl;
+						FD_SET(new_sk, &master_set);
+						if (new_sk > max_sk)
+							max_sk = new_sk;
 					} while (new_sk != -1)
 				}
 			}
