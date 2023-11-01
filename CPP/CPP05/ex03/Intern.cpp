@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 14:33:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 14:35:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,16 @@ Intern&	Intern::operator=( Intern const & src )
 
 Intern::~Intern() { std::cout << "Intern " << name << " destructor." << std::endl; }
 
-void		Intern::beSigned( Bureaucrat& b)
+AForm	*Intern::makeForm(std::string f, std::string t)
 {
-	if (sign)
-	{
-		std::cout << "Intern " << name << " already signed." << std::endl;
-		return ;
-	}
-	if (b.getGrade() > sign_grade)
-	{
-		std::cerr << "Intern " << name << " could not be signed by " << b.getName() << " because: ";
-		throw Intern::GradeTooLowException();
-	}
-	sign = true;
-	std::cout << "Intern " << name << " signed by " << b.getName() <<  "." << std::endl;
+	std::string fStr[] = {
+	        "robotomy request",
+	        "presidential pardon",
+	        "shrubbery creation"
+	};
+	Form*    fs[] = {
+	        new RobotomyRequestForm( target ),
+	        new PresidentialPardonForm( target ),
+	        new ShrubberyCreationForm( target )
+	};
 }
