@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 06:26:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 07:25:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ int	main()
 	}
 	int    on = 1;
 	if (ioctl(listen_sd, FIONBIO, (char *)&on) < 0)
+	{
+		perror("non-blocking socket: ioctl() failed");
+		close(listen_sk);
+		exit(-1);
+	}
 	struct sockaddr_in	addr;
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(4242);
