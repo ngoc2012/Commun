@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 09:42:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 09:47:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,9 +128,37 @@ int	main()
 		//	perror("working set select() time out.");
 		//	break;
 		//}
-		for (int i = 0; i <= max_sk; ++i)
+		for (int i = 0; i <= max_sk && sk_ready > 0; ++i)
 		{
 			if (FD_ISSET(i, &working_set))
+			{
+				sk_ready = -1;
+				if (i == listen_sk)
+				{
+					do
+					{
+					int	new_sk = accept(listen_sk, NULL, NULL);
+					if (new_sk < 0)
+					{
+						if (errno != EWOULDBLOCK)
+						{
+							perror("  accept() failed");
+							end_server = TRUE;
+						}
+						break;
+					}
+
+					/**********************************************/
+					/* Add the new incoming connection to the     */
+					/* master read set                            */
+					/**********************************************/
+					std::cout << "  New incoming connection - " << new_sk << std::endl;
+					FD_SET(new_sk, &master_set);
+					if (new_sk > max_sk)
+						max_sk = new_sk;
+					} while (new_sk != -1)
+				}
+			}
 		}
 	} while (!end_server);
 
