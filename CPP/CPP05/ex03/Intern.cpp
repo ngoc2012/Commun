@@ -6,17 +6,17 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 14:39:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 19:09:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
 
-Intern::Intern() {std::cout << "Intern " << name << " default constructor." << std::endl;}
+Intern::Intern() {std::cout << "Intern  default constructor." << std::endl;}
 
 Intern::Intern(const Intern& src) {
 	*this = src;
-	std::cout << "Intern " << name << " copy constructor." << std::endl;
+	std::cout << "Intern  copy constructor." << std::endl;
 }
 
 Intern&	Intern::operator=( Intern const & src )
@@ -24,7 +24,7 @@ Intern&	Intern::operator=( Intern const & src )
 	return (*this);
 }
 
-Intern::~Intern() { std::cout << "Intern " << name << " destructor." << std::endl; }
+Intern::~Intern() { std::cout << "Intern  destructor." << std::endl; }
 
 AForm	*Intern::makeForm(std::string f, std::string t)
 {
@@ -33,7 +33,7 @@ AForm	*Intern::makeForm(std::string f, std::string t)
 	        "presidential pardon",
 	        "shrubbery creation"
 	};
-	Form*    fs[] = {
+	AForm*    fs[] = {
 	        new RobotomyRequestForm( target ),
 	        new PresidentialPardonForm( target ),
 	        new ShrubberyCreationForm( target )

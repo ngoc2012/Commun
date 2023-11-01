@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 19:07:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 19:08:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	main()
 
 	Intern someRandomIntern;
 	AForm* rrf = someRandomIntern.makeForm("robotomy request1", "Bender");
+	if (rrf)
+		rrf->beSigned(b145);
 
 	AForm* s0 = someRandomIntern.makeForm("shrubbery creation", "Shru");
 	if (s0)
