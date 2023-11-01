@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 08:06:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 09:24:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,27 +100,5 @@ int	main()
 	timeout.tv_sec  = 3 * 60;
 	timeout.tv_usec = 0;
 
-	int	c = connect(s_fd, (struct sockaddr*)&addr, sizeof(addr)); 
-	if (c < 0)
-		std::cerr << "Client : connect error" << std::endl;
-	char	response[BUFFER + 1];
-	int	ret = recv(s_fd, response, BUFFER, 0);
-	std::cout << "ret = " << ret << std::endl;
-	response[ret] = 0;
-	std::cout << response ;
-	//std::cout << std::endl;
-	//c = connect(s_fd, (struct sockaddr*)&addr, sizeof(addr)); 
-	ret = recv(s_fd, response, BUFFER, 0);
-	std::cout << "ret = " << ret << std::endl;
-	response[ret] = 0;
-	std::cout << response ;
-	//while (ret && ret > 0)
-	//{
-	//	ret = recv(s_fd, response, BUFFER, 0);
-	//	response[ret] = 0;
-	//	std::cout << response ;
-	//}
-	std::cout << std::endl;
-	close(s_fd);
-	std::cout << "End client" << std::endl;
+	std::cout << "End server" << std::endl;
 }
