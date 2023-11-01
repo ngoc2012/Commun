@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 09:30:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 09:33:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,15 @@ int	main()
 	do
 	{
 		memcpy(&working_set, &master_set, sizeof(master_set));
-		if (select(max_sk + 1, &working_set, NULL, NULL, &timeout) < 0)
+		int	sk_ready = select(max_sk + 1, &working_set, NULL, NULL, &timeout);
+		if (sk_ready < 0)
 		{
 			perror("working set select() failed");
+			break;
+		}
+		if (!sk_ready)
+		{
+			perror("working set select() time out.");
 			break;
 		}
 	} while (!end_server);
