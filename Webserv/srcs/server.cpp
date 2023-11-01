@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 21:38:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 21:44:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ int	main()
 						std::cout << "  Connection closed" << std::endl;
 						close_conn = TRUE;
 						break;
-					}`
+					}
 					response[ret] = 0;
 					std::cout << response ;
 					//while (ret && ret > 0)

@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/01 21:38:59 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/01 21:44:27 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = server.cpp
+SRCS = srcs/server.cpp
 OBJS = ${SRCS:.c=.o}
 MANDA = server
 CC = c++
