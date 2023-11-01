@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 09:57:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 09:59:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,16 @@ int	main()
 					//	response[ret] = 0;
 					//	std::cout << response ;
 					//}
+
+					//Send back data
+					char	buffer[] = "data";
+					rc = send(i, buffer, strlen(buffer), 0);
+					if (rc < 0)
+					{
+						perror("  send() failed");
+						close_conn = TRUE;
+						break;
+					}
 					std::cout << std::endl;
 
 				} while (1);
