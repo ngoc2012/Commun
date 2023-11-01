@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 14:36:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 14:44:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Intern
 		Intern(const std::string, int, int);
 		virtual ~Intern();
 
-		Aform	*makeForm(std::string, std::string);
+		AForm	*makeForm(std::string, std::string);
 };
 
 #endif

@@ -6,13 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 14:43:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 14:45:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int	main()
 {
@@ -28,9 +26,9 @@ int	main()
 	std::cout << b10;
 
 	Intern someRandomIntern;
-	Form* rrf = someRandomIntern.makeForm("robotomy request1", "Bender");
+	AForm* rrf = someRandomIntern.makeForm("robotomy request1", "Bender");
 
-	Form* s0 = someRandomIntern.makeForm("shrubbery creation", "Shru");
+	AForm* s0 = someRandomIntern.makeForm("shrubbery creation", "Shru");
 	if (s0)
 	{
 		try {
@@ -59,7 +57,7 @@ int	main()
 		}
 	}
 
-	Form* r0 = someRandomIntern.makeForm("robotomy request", "Bender");
+	AForm* r0 = someRandomIntern.makeForm("robotomy request", "Bender");
 	if (r0)
 	{
 		RobotomyRequestForm r0("robot");
@@ -89,7 +87,7 @@ int	main()
 		}
 	}
 
-	Form* p0 = someRandomIntern.makeForm("presidential pardon", "Macron");
+	AForm* p0 = someRandomIntern.makeForm("presidential pardon", "Macron");
 	if (p0)
 	{
 		PresidentialPardonForm p0("PPF");
