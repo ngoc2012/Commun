@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 06:25:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 06:26:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,15 @@ int	main()
 		perror("listen socket() failed");
 		exit(-1);
 	}
-	if (setsockopt(listen_sd, SOL_SOCKET,  SO_REUSEADDR,
+	if (setsockopt(listen_sk, SOL_SOCKET,  SO_REUSEADDR,
                    (char *)&on, sizeof(on)) < 0)
 	{
 		perror("reusable socket: setsockopt() failed");
-		close(listen_sd);
+		close(listen_sk);
 		exit(-1);
 	}
 	int    on = 1;
+	if (ioctl(listen_sd, FIONBIO, (char *)&on) < 0)
 	struct sockaddr_in	addr;
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(4242);
