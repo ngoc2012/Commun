@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 19:14:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 21:21:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ AForm	*Intern::makeForm(std::string f, std::string t)
 	};
 	for (int i = 0; i < N_FORMS; i++)
 		if (f == fStr[i])
+		{
+			int	i0 = i + 1;
+			while (i0 < N_FORMS)
+				delete(fs[i0]);
 			return (fs[i]);
+		}
 		else
 			delete(fs[i]);
 	std::cerr << "Form: " << f << " not found" << std::endl;
