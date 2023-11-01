@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 21:44:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 22:01:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <sys/ioctl.h>
 
 #include <stdlib.h>
+#include <cstdio.h>
 
 # define BUFFER	1028
 # define MAX_CLIENTS 128
