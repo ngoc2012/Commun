@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 22:05:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 22:06:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,7 +178,7 @@ int	main()
 					if (ret == 0)
 					{
 						std::cout << "  Connection closed" << std::endl;
-						close_conn = TRUE;
+						close_conn = 1;
 						break;
 					}
 					response[ret] = 0;
@@ -192,11 +192,10 @@ int	main()
 
 					//Send back data
 					char	buffer[] = "data";
-					rc = send(i, buffer, strlen(buffer), 0);
-					if (rc < 0)
+					if (send(i, buffer, strlen(buffer), 0) < 0)
 					{
 						perror("  send() failed");
-						close_conn = TRUE;
+						close_conn = 1;
 						break;
 					}
 					std::cout << std::endl;
