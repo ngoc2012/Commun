@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/12 08:57:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 16:20:23 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main()
 {
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
-	Animal a = *j;
+	//Animal a = *j;
 	delete(i);
 	delete(j);
 	Dog* m = new Dog();
