@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 09:59:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 10:01:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,15 @@ int	main()
 					std::cout << std::endl;
 
 				} while (1);
+
+				if (close_conn)
+				{
+					close(i);
+					FD_CLR(i, &master_set);
+					if (i == max_sk)
+						while (!FD_ISSET(max_sk, &master_set))
+							max_sk -= 1;
+				}
 			}
 		}
 	} while (!end_server);
