@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 09:38:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 09:42:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ int	main()
 	FD_SET(listen_sk, &master_set);
 
 	// Time out 3 minutes
-	struct timeval      timeout;
-	timeout.tv_sec  = 3 * 60;
-	timeout.tv_usec = 0;
+	//struct timeval      timeout;
+	//timeout.tv_sec  = 3 * 60;
+	//timeout.tv_usec = 0;
 
 	end_server = 0;
 	do
@@ -106,18 +106,28 @@ int	main()
 		memcpy(&working_set, &master_set, sizeof(master_set));
 		/*
 		select()  allows  a  program to monitor multiple file descriptors, waiting until one or more of the file descriptors become "ready" for some class of I/O operation (e.g., input possible).   A file  descriptor is considered ready if it is possible to perform a corresponding I/O operation (e.g., read(2), or a sufficiently small write(2)) without blocking
+		nfds   This  argument should be set to the highest-numbered file descriptor in any of the three sets, plus 1.  The indicated file descriptors in each set are checked, up to this  limit (but see BUGS).
+		timeout
+              The  timeout  argument  is a timeval structure (shown below) that specifies the interval that select() should block waiting for a file descriptor to become ready.  The call will block until either:
+              • a file descriptor becomes ready;
+              • the call is interrupted by a signal handler; or
+              • the timeout expires.
+              Note  that  the timeout interval will be rounded up to the system clock granularity, and kernel scheduling delays mean that the blocking interval may overrun by a small amount.
+              If both fields of the timeval structure are zero,  then  select()  returns  immediately.  (This is useful for polling.)
+              If  timeout  is  specified  as NULL, select() blocks indefinitely waiting for a file de‐ scriptor to become ready.
 		*/
-		int	sk_ready = select(max_sk + 1, &working_set, NULL, NULL, &timeout);
+		//int	sk_ready = select(max_sk + 1, &working_set, NULL, NULL, &timeout);
+		int	sk_ready = select(max_sk + 1, &working_set, NULL, NULL, NULL);
 		if (sk_ready < 0)
 		{
 			perror("working set select() failed");
 			break;
 		}
-		if (!sk_ready)
-		{
-			perror("working set select() time out.");
-			break;
-		}
+		//if (!sk_ready)
+		//{
+		//	perror("working set select() time out.");
+		//	break;
+		//}
 		for (int i = 0; i <= max_sk; ++i)
 		{
 			if (FD_ISSET(i, &working_set))
