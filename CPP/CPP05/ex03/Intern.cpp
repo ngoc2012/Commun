@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 19:09:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 19:11:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ Intern::Intern(const Intern& src) {
 
 Intern&	Intern::operator=( Intern const & src )
 {
+	(void) src;
 	return (*this);
 }
 
@@ -34,9 +35,9 @@ AForm	*Intern::makeForm(std::string f, std::string t)
 	        "shrubbery creation"
 	};
 	AForm*    fs[] = {
-	        new RobotomyRequestForm( target ),
-	        new PresidentialPardonForm( target ),
-	        new ShrubberyCreationForm( target )
+	        new RobotomyRequestForm( t ),
+	        new PresidentialPardonForm( t ),
+	        new ShrubberyCreationForm( t )
 	};
 	for (int i = 0; i < N_FORMS; i++)
 		if (f == fStr[i])
