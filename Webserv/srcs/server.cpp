@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 09:54:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 09:57:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ int	main()
 				{
 					//Receive data from client
 					int	ret = recv(s_fd, response, BUFFER, 0);
-					if (rc < 0)
+					if (ret < 0)
 					{
 						if (errno != EWOULDBLOCK)
 						{
@@ -171,6 +171,12 @@ int	main()
 						}
 						break;
 					}
+					if (ret == 0)
+					{
+						std::cout << "  Connection closed" << std::endl;
+						close_conn = TRUE;
+						break;
+					}`
 					std::cout << "ret = " << ret << std::endl;
 					response[ret] = 0;
 					std::cout << response ;
