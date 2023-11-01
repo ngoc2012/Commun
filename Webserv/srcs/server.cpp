@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 08:02:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 08:04:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,12 @@ int	main()
 		close(listen_sd);
 		exit(-1);
 	}
+
+	fd_set              master_set, working_set;
+	FD_ZERO(&master_set);
+	int	max_sk = listen_sk;
+	FD_SET(listen_sk, &master_set);
+
 	int	c = connect(s_fd, (struct sockaddr*)&addr, sizeof(addr)); 
 	if (c < 0)
 		std::cerr << "Client : connect error" << std::endl;
