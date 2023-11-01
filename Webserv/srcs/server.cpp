@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 08:04:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 08:06:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ int	main()
 	FD_ZERO(&master_set);
 	int	max_sk = listen_sk;
 	FD_SET(listen_sk, &master_set);
+
+	// Time out 3 minutes
+	struct timeval      timeout;
+	timeout.tv_sec  = 3 * 60;
+	timeout.tv_usec = 0;
 
 	int	c = connect(s_fd, (struct sockaddr*)&addr, sizeof(addr)); 
 	if (c < 0)
