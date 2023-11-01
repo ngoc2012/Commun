@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 22:01:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 22:03:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 #include <sys/ioctl.h>
 
 #include <stdlib.h>
-#include <cstdio.h>
+#include <cstdio> // perror
+#include <cstring> // memcpy
 
 # define BUFFER	1028
 # define MAX_CLIENTS 128
@@ -87,7 +88,7 @@ int	main()
 	if (listen(listen_sk, MAX_CLIENTS) < 0)
 	{
 		perror("listen() failed");
-		close(listen_sd);
+		close(listen_sk);
 		exit(-1);
 	}
 
@@ -101,7 +102,7 @@ int	main()
 	//timeout.tv_sec  = 3 * 60;
 	//timeout.tv_usec = 0;
 
-	end_server = 0;
+	int	end_server = 0;
 	do
 	{
 		memcpy(&working_set, &master_set, sizeof(master_set));
@@ -145,7 +146,7 @@ int	main()
 							if (errno != EWOULDBLOCK)
 							{
 								perror("  accept() failed");
-								end_server = TRUE;
+								end_server = 1;
 							}
 							break;
 						}
