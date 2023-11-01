@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 09:24:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 09:26:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,15 @@ int	main()
 	timeout.tv_sec  = 3 * 60;
 	timeout.tv_usec = 0;
 
+	end_server = 0;
+	do
+	{
+	} while (!end_server);
+
+	for (int i = 0; i <= max_sk; ++i)
+	{
+		if (FD_ISSET(i, &master_set))
+			close(i);
+	}
 	std::cout << "End server" << std::endl;
 }
