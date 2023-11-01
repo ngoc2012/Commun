@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 07:33:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 07:35:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,22 @@ int	main()
 	}
 	int    on = 1;
 	//To manipulate options at the sockets API level, level is specified as SOL_SOCKET.
+	/*
+	Socket options can be set at different levels, depending on the scope of their effect. The two most common levels are:
+
+    Socket-Level Options (SOL_SOCKET): These options apply to the socket as a whole and control general socket behavior. They affect how the socket operates at the transport layer of the network stack. Some common socket-level options include:
+        SO_REUSEADDR: Allows multiple sockets to bind to the same local address and port.
+        SO_KEEPALIVE: Enables the sending of keep-alive messages to check if the connection is still alive.
+        SO_RCVBUF and SO_SNDBUF: Control the receive and send buffer sizes for the socket.
+        SO_LINGER: Specifies the behavior of the socket when it is closed (e.g., whether to wait for unsent data to be sent).
+
+    IP-Level Options (SOL_IP or IPPROTO_IP): These options apply specifically to IP (Internet Protocol) sockets and control aspects related to IP networking. They affect how the IP layer handles the data. Some common IP-level options include:
+        IP_TTL: Sets the Time-To-Live (TTL) value for outgoing IP packets.
+        IP_TOS: Specifies the Type of Service (TOS) field for outgoing IP packets.
+        IP_MULTICAST_TTL: Sets the TTL for multicast packets.
+        IP_ADD_MEMBERSHIP and IP_DROP_MEMBERSHIP: Used for joining and leaving multicast groups.
+	*/
+	//The arguments optval and optlen are used to access option values for  setsockopt(). 
 	if (setsockopt(listen_sk, SOL_SOCKET,  SO_REUSEADDR,
                    (char *)&on, sizeof(on)) < 0)
 	{
