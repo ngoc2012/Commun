@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 09:33:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 09:38:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,9 @@ int	main()
 	do
 	{
 		memcpy(&working_set, &master_set, sizeof(master_set));
+		/*
+		select()  allows  a  program to monitor multiple file descriptors, waiting until one or more of the file descriptors become "ready" for some class of I/O operation (e.g., input possible).   A file  descriptor is considered ready if it is possible to perform a corresponding I/O operation (e.g., read(2), or a sufficiently small write(2)) without blocking
+		*/
 		int	sk_ready = select(max_sk + 1, &working_set, NULL, NULL, &timeout);
 		if (sk_ready < 0)
 		{
@@ -114,6 +117,10 @@ int	main()
 		{
 			perror("working set select() time out.");
 			break;
+		}
+		for (int i = 0; i <= max_sk; ++i)
+		{
+			if (FD_ISSET(i, &working_set))
 		}
 	} while (!end_server);
 
