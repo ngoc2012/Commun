@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:45:45 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 17:20:51 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/01 18:30:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,11 @@ int	main(int argc, char **argv)
 	std::string	toReplace(argv[3]);
 	while (std::getline(in, line))
 	{
-		std::cout << line << std::endl;
 		size_t	pos = line.find(toFind);
 		while ( pos != std::string::npos ) {
-			std::cout << pos << std::endl;
 			line.erase(pos, toFind.length());
 			line.insert(pos, toReplace);
 			pos = line.find(toFind, pos + toReplace.length());
-			std::cout << "X:" << pos << std::endl;
 		}
 		out << line << "\n";
 	}
