@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 22:06:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 22:08:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	main()
 	addr.sin_port = htons(PORT);
 	addr.sin_addr.s_addr = inet_addr(IP_ADDRESS);
 
+	std::cout << "Listening at " << IP_ADDRESS << ":" << PORT << std::endl;
 	if (bind(listen_sk, (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
 		perror("bind() failed");
