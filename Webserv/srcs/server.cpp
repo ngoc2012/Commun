@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 05:59:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 06:25:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 #include <arpa/inet.h>	// htons
 #include <unistd.h>	// close
 #include <iostream>
+#include <sys/time.h>
+#include <netinet/in.h>
+#include <errno.h>
+#include <sys/ioctl.h>
+
+#include <stdlib.h>
 
 # define BUFFER	1028
 # define MAX_CLIENTS 128
@@ -22,12 +28,20 @@
 
 int	main()
 {
-	int	listen_fd = socket(AF_INET, SOCK_STREAM, 0);
-	if (listen_fd < 0)
+	int	listen_sk = socket(AF_INET, SOCK_STREAM, 0);
+	if (listen_sk < 0)
 	{
-		perror("socket() failed");
+		perror("listen socket() failed");
 		exit(-1);
 	}
+	if (setsockopt(listen_sd, SOL_SOCKET,  SO_REUSEADDR,
+                   (char *)&on, sizeof(on)) < 0)
+	{
+		perror("reusable socket: setsockopt() failed");
+		close(listen_sd);
+		exit(-1);
+	}
+	int    on = 1;
 	struct sockaddr_in	addr;
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(4242);
