@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 07:29:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 07:31:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main()
 		perror("listen socket() failed");
 		exit(-1);
 	}
+	int    on = 1;
 	if (setsockopt(listen_sk, SOL_SOCKET,  SO_REUSEADDR,
                    (char *)&on, sizeof(on)) < 0)
 	{
@@ -41,9 +42,9 @@ int	main()
 		close(listen_sk);
 		exit(-1);
 	}
-	int    on = 1;
 	//The  second  argument  is  a  device-dependent  request code.  The third argument is an untyped pointer to memory.  It's traditionally char *argp (from the days before void *  was  valid  C), and will be so named for this discussion.
 	//When FIONBIO is set, the socket is marked nonblocking
+	//https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
 	if (ioctl(listen_sk, FIONBIO, (char *)&on) < 0)
 	{
 		perror("non-blocking socket: ioctl() failed");
