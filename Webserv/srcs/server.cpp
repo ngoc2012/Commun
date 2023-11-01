@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 07:31:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 07:33:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main()
 		exit(-1);
 	}
 	int    on = 1;
+	//To manipulate options at the sockets API level, level is specified as SOL_SOCKET.
 	if (setsockopt(listen_sk, SOL_SOCKET,  SO_REUSEADDR,
                    (char *)&on, sizeof(on)) < 0)
 	{
