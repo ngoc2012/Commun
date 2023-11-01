@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 07:27:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 07:29:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main()
 	}
 	int    on = 1;
 	//The  second  argument  is  a  device-dependent  request code.  The third argument is an untyped pointer to memory.  It's traditionally char *argp (from the days before void *  was  valid  C), and will be so named for this discussion.
+	//When FIONBIO is set, the socket is marked nonblocking
 	if (ioctl(listen_sk, FIONBIO, (char *)&on) < 0)
 	{
 		perror("non-blocking socket: ioctl() failed");
