@@ -6,13 +6,13 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/10/17 16:23:29 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/01 21:38:59 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = client.cpp
+SRCS = server.cpp
 OBJS = ${SRCS:.c=.o}
-MANDA = client
+MANDA = server
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
@@ -21,7 +21,7 @@ all:	$(MANDA)
 $(MANDA): $(SRCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
-	make re && valgrind ./main
+	make re && valgrind ./server
 gits:
 	git add Makefile
 	git add *.cpp
