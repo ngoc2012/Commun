@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 22:03:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/01 22:05:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ int	main()
 	//timeout.tv_usec = 0;
 
 	int	end_server = 0;
+	int	new_sk;
 	do
 	{
 		memcpy(&working_set, &master_set, sizeof(master_set));
@@ -140,7 +141,7 @@ int	main()
 					//Accept all the new connections, create a new socket and add to the master set
 					do
 					{
-						int	new_sk = accept(listen_sk, NULL, NULL);
+						new_sk = accept(listen_sk, NULL, NULL);
 						if (new_sk < 0)
 						{
 							if (errno != EWOULDBLOCK)
@@ -154,7 +155,7 @@ int	main()
 						FD_SET(new_sk, &master_set);
 						if (new_sk > max_sk)
 							max_sk = new_sk;
-					} while (new_sk != -1)
+					} while (new_sk != -1);
 				}
 			}
 			else
@@ -162,14 +163,15 @@ int	main()
 				int	close_conn = 0;
 				do
 				{
+					char	response[BUFFER + 1];
 					//Receive data from client
-					int	ret = recv(s_fd, response, BUFFER, 0);
+					int	ret = recv(i, response, BUFFER, 0);
 					if (ret < 0)
 					{
 						if (errno != EWOULDBLOCK)
 						{
 							perror("  recv() failed");
-							close_conn = TRUE;
+							close_conn = 1;
 						}
 						break;
 					}
