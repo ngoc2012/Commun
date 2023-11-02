@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 15:57:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 11:26:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ AMateria	*MateriaSource::createMateria(std::string const &type)
 		if ( materias[i] && materias[i]->getType() == type )
 			return materias[i]->clone();
 	std::cerr << "Error: Type "<< type << " not found." << std::endl;
-	return 0;
+	return nullptr;
 }
