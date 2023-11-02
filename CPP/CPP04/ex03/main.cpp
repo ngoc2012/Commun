@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/02 11:45:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 11:59:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main()
 	Cure	*c = new Cure();
 	src->learnMateria(c);
 	std::cout << ">>>src->learnMateria(new Cure());" << std::endl;
-	src->learnMateria(new Cure());
+	src->learnMateria(c->clone());
 	std::cout << ">>>src->learnMateria(new Ice());" << std::endl;
 	src->learnMateria(i->clone());
 	std::cout << ">>>AMateria *tmp0 = new Ice();" << std::endl;
