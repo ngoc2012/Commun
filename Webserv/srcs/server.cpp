@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/01 22:08:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 04:59:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	main()
 	addr.sin_addr.s_addr = inet_addr(IP_ADDRESS);
 
 	std::cout << "Listening at " << IP_ADDRESS << ":" << PORT << std::endl;
+
 	if (bind(listen_sk, (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
 		perror("bind() failed");
@@ -94,6 +95,7 @@ int	main()
 	}
 
 	fd_set              master_set, working_set;
+
 	FD_ZERO(&master_set);
 	int	max_sk = listen_sk;
 	FD_SET(listen_sk, &master_set);
@@ -121,6 +123,7 @@ int	main()
               If  timeout  is  specified  as NULL, select() blocks indefinitely waiting for a file de‐ scriptor to become ready.
 		*/
 		//int	sk_ready = select(max_sk + 1, &working_set, NULL, NULL, &timeout);
+		std::cout << "Waiting on select() ..." << std::endl;
 		int	sk_ready = select(max_sk + 1, &working_set, NULL, NULL, NULL);
 		if (sk_ready < 0)
 		{
