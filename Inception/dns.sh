@@ -59,6 +59,10 @@ ns1 IN  A       172.17.0.2' | sudo tee /etc/bind/zones/db.minh-ngu.42.fr > /dev/
 sudo named-checkconf
 sudo named-checkzone minh-ngu.42.fr /etc/bind/zones/db.minh-ngu.42.fr
 
+sudo systemctl status systemd-resolved
+sudo systemctl stop systemd-resolved
+sudo systemctl disable systemd-resolved
+
 # Restart BIND
 sudo service bind9 restart
 
