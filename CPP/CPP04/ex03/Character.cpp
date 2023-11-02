@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/02 11:37:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 11:39:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ void	Character::equip(AMateria* m)
 	while (++i < SLOTS && slots[i])
 		if (slots[i] == m)
 		{
-			std::cerr << "Error: Materia " << m->getType() << " does existed in this character." << std::endl;
+			std::cerr << "ERROR: Materia " << m->getType() << " does existed in this character." << std::endl;
 			return ;
 		}
 	if (i == SLOTS)
 	{
-		std::cerr << "Error: Character slots are full." << std::endl;
+		std::cerr << "ERROR: Character slots are full." << std::endl;
 		return ;
 	}
 	std::cout << "Slot " << i << " is equiped with " << m->getType() << std::endl;
@@ -71,23 +71,22 @@ void	Character::equip(AMateria* m)
 void	Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= SLOTS)
-		std::cerr << "Error unequip: Indice slot " << idx << " est invalide." << std::endl;
-	std::cout << "Unequip the slot "<<  << "." << std::endl;
+		std::cerr << "ERROR Unequip: Indice slot " << idx << " est invalide." << std::endl;
 	if (slots[idx])
 	{
-		std::cout << "Unequip " << slots[idx]->getType() << " at slot "<< idx << "." << std::endl;
+		std::cout << "UNEQUIP " << slots[idx]->getType() << " at slot " << idx << "." << std::endl;
 		slots[idx] = 0;
 	}
 	else
-		std::cerr << "Error unequip: No AMateria at slot " << idx << "." << std::endl;
+		std::cerr << "ERROR Unequip: No AMateria at slot " << idx << "." << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx >= SLOTS)
-		std::cerr << "Error use: Indice slot " << idx << " est invalide." << std::endl;
+		std::cerr << "ERROR Use: Indice slot " << idx << " est invalide." << std::endl;
 	if (slots[idx])
 		slots[idx]->use(target);
 	else
-		std::cerr << "Error use: No AMateria at slot " << idx << "." << std::endl;
+		std::cerr << "ERROR Use: No AMateria at slot " << idx << "." << std::endl;
 }
