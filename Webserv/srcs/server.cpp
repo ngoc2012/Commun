@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/02 05:41:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 06:41:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ int	main()
 							break;
 						}
 						response[ret] = 0;
-						std::cout << response ;
+						std::cout << "Client send: " << response ;
 						//while (ret && ret > 0)
 						//{
 						//	ret = recv(s_fd, response, BUFFER, 0);
