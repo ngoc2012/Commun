@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Update the system
-sudo apt update
-sudo apt upgrade -y
+## Update the system
+#sudo apt update
+#sudo apt upgrade -y
 
-# Install BIND
-sudo apt install -y bind9
+## Install BIND
+#sudo apt install -y bind9
 
 # Configure BIND
 echo 'zone "minh-ngu.42.fr" {
@@ -25,9 +25,11 @@ echo 'options {
         // Uncomment the following block, and insert the addresses replacing
         // the all-0s placeholder.
 
-        // forwarders {
-        //      0.0.0.0;
-        // };
+	// Cloudflare and google forwarders
+        forwarders {
+             1.1.1.1;
+             8.8.8.8;
+        };
 
         //========================================================================
         // If BIND logs error messages about the root key being expired,
