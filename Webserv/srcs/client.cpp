@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/02 04:44:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 04:56:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,6 @@
 int	main()
 {
 	int	sk = socket(AF_INET, SOCK_STREAM, 0);
-	//int    on = 1;
-	//if (setsockopt(sk, SOL_SOCKET,  SO_REUSEADDR,
-        //           (char *)&on, sizeof(on)) < 0)
-	//{
-	//	perror("reusable socket: setsockopt() failed");
-	//	close(sk);
-	//	exit(-1);
-	//}
 
 	struct sockaddr_in	addr;
 	addr.sin_family = AF_INET;
