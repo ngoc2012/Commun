@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/02 04:59:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 05:37:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,10 +139,11 @@ int	main()
 		{
 			if (FD_ISSET(i, &working_set))
 			{
-				sk_ready = -1;
+				sk_ready--;
 				if (i == listen_sk)
 				{
 					//Accept all the new connections, create a new socket and add to the master set
+					std::cout << "Listening socket is readable" << std::endl;
 					do
 					{
 						new_sk = accept(listen_sk, NULL, NULL);
