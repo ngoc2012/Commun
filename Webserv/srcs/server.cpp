@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/02 06:41:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 06:43:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,7 @@ int	main()
 						//}
 
 						//Send back data
-						char	buffer[] = "data";
+						char	buffer[] = "server data";
 						if (send(i, buffer, strlen(buffer), 0) < 0)
 						{
 							perror("  send() failed");

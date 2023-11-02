@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/02 06:40:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 06:43:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,27 @@ int	main()
 	if (c < 0)
 		std::cerr << "Client : connect error" << std::endl;
 
-	char	buffer[] = "data";
+	char	buffer[] = "client data";
 	if (send(sk, buffer, strlen(buffer), 0) < 0)
 		perror("  send() failed");
-	/*
+
 	char	response[BUFFER + 1];
 
 	std::cout << "Receive response" << std::endl;
 
 	int	ret = recv(sk, response, BUFFER, 0);
-	std::cout << "ret = " << ret << std::endl;
 	response[ret] = 0;
-	std::cout << response ;
+	std::cout << "Server send: " << response << std::endl;
 	//std::cout << std::endl;
 	//c = connect(sk, (struct sockaddr*)&addr, sizeof(addr)); 
-	ret = recv(sk, response, BUFFER, 0);
-	std::cout << "ret = " << ret << std::endl;
-	response[ret] = 0;
-	std::cout << response ;
+	//ret = recv(sk, response, BUFFER, 0);
 	//while (ret && ret > 0)
 	//{
 	//	ret = recv(sk, response, BUFFER, 0);
 	//	response[ret] = 0;
 	//	std::cout << response ;
 	//}
-	std::cout << std::endl;
-	*/
+
 	close(sk);
 	std::cout << "End client" << std::endl;
 }
