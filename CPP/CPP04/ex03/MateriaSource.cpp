@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/02 11:41:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 11:51:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	MateriaSource::destroy(void)
 {
 	for (int i = 0; i < SLOTS_MS; i++)
 		if (materias[i])
+		{
+			std::cout << "Destroy Materia " << materias[i]->getType() << " at slot " << i << std::endl;
 			delete materias[i];
+		}
 }
 MateriaSource&	MateriaSource::operator=( MateriaSource const & src )
 {

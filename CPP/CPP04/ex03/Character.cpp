@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/02 11:48:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 11:51:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ Character::Character(const Character& src) {
 void	Character::destroy(void)
 {
 	for (int i = 0; i < SLOTS; i++)
-	{
-		std::cout << "Destroy slot " << i << std::endl;
 		if (slots[i])
+		{
+			std::cout << "Destroy character " << slots[i]->getType() << " at slot " << i << std::endl;
 			delete slots[i];
-	}
+		}
 }
 Character&	Character::operator=( Character const & src )
 {
