@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/02 06:31:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 06:37:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ int	main()
 	int	c = connect(sk, (struct sockaddr*)&addr, sizeof(addr)); 
 	if (c < 0)
 		std::cerr << "Client : connect error" << std::endl;
+
+	char	buffer[] = "data";
+	if (send(c, buffer, strlen(buffer), 0) < 0)
+	{
+		perror("  send() failed");
+		close_conn = 1;
+		break;
+	}
 	/*
 	char	response[BUFFER + 1];
 
