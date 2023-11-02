@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/02 05:37:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 05:41:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,58 +162,59 @@ int	main()
 							max_sk = new_sk;
 					} while (new_sk != -1);
 				}
-			}
-			else
-			{
-				int	close_conn = 0;
-				do
+				else
 				{
-					char	response[BUFFER + 1];
-					//Receive data from client
-					int	ret = recv(i, response, BUFFER, 0);
-					if (ret < 0)
+					std::cout << "Socket " << i << " is readable." << std::endl;
+					int	close_conn = 0;
+					do
 					{
-						if (errno != EWOULDBLOCK)
+						char	response[BUFFER + 1];
+						//Receive data from client
+						int	ret = recv(i, response, BUFFER, 0);
+						if (ret < 0)
 						{
-							perror("  recv() failed");
-							close_conn = 1;
+							if (errno != EWOULDBLOCK)
+							{
+								perror("  recv() failed");
+								close_conn = 1;
+							}
+							break;
 						}
-						break;
-					}
-					if (ret == 0)
+						if (ret == 0)
+						{
+							std::cout << "  Connection closed" << std::endl;
+							close_conn = 1;
+							break;
+						}
+						response[ret] = 0;
+						std::cout << response ;
+						//while (ret && ret > 0)
+						//{
+						//	ret = recv(s_fd, response, BUFFER, 0);
+						//	response[ret] = 0;
+						//	std::cout << response ;
+						//}
+
+						//Send back data
+						char	buffer[] = "data";
+						if (send(i, buffer, strlen(buffer), 0) < 0)
+						{
+							perror("  send() failed");
+							close_conn = 1;
+							break;
+						}
+						std::cout << std::endl;
+
+					} while (1);
+
+					if (close_conn)
 					{
-						std::cout << "  Connection closed" << std::endl;
-						close_conn = 1;
-						break;
+						close(i);
+						FD_CLR(i, &master_set);
+						if (i == max_sk)
+							while (!FD_ISSET(max_sk, &master_set))
+								max_sk -= 1;
 					}
-					response[ret] = 0;
-					std::cout << response ;
-					//while (ret && ret > 0)
-					//{
-					//	ret = recv(s_fd, response, BUFFER, 0);
-					//	response[ret] = 0;
-					//	std::cout << response ;
-					//}
-
-					//Send back data
-					char	buffer[] = "data";
-					if (send(i, buffer, strlen(buffer), 0) < 0)
-					{
-						perror("  send() failed");
-						close_conn = 1;
-						break;
-					}
-					std::cout << std::endl;
-
-				} while (1);
-
-				if (close_conn)
-				{
-					close(i);
-					FD_CLR(i, &master_set);
-					if (i == max_sk)
-						while (!FD_ISSET(max_sk, &master_set))
-							max_sk -= 1;
 				}
 			}
 		}
