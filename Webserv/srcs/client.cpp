@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/02 06:37:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 06:39:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <arpa/inet.h>	// htons
 #include <unistd.h>	// close
 #include <iostream>
+#include <cstring>
+#include <cstdio>
 
 # define BUFFER	1028
 
@@ -35,7 +37,6 @@ int	main()
 	if (send(c, buffer, strlen(buffer), 0) < 0)
 	{
 		perror("  send() failed");
-		close_conn = 1;
 		break;
 	}
 	/*
