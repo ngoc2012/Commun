@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/14 15:57:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 11:33:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	Character::equip(AMateria* m)
 		std::cerr << "Error: Character slots are full." << std::endl;
 		return ;
 	}
+	std::cout << "Slot " << i << " is equiped with " << m->getType() << std::endl;
 	slots[i] = m;
 }
 
