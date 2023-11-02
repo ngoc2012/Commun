@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/02 11:33:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 11:37:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ void	Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= SLOTS)
 		std::cerr << "Error unequip: Indice slot " << idx << " est invalide." << std::endl;
-	std::cout << "Unequip the slot "<< slots[idx] << "." << std::endl;
+	std::cout << "Unequip the slot "<<  << "." << std::endl;
 	if (slots[idx])
 	{
-		std::cout << "Unequip the slot "<< idx << "." << std::endl;
+		std::cout << "Unequip " << slots[idx]->getType() << " at slot "<< idx << "." << std::endl;
 		slots[idx] = 0;
 	}
 	else
