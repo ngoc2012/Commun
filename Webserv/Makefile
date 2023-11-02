@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/01 22:19:41 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/02 04:30:40 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,5 @@ gits:
 clean:
 	rm -f $(SERVER) $(CLIENT)
 fclean: clean
-	rm -f $(SERVER) $(CLIENT)
 re: fclean all
 .PHONY: all clean fclean re
