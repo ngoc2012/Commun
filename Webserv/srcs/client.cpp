@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/17 17:20:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/02 04:37:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,41 @@
 
 int	main()
 {
-	int	s_fd = socket(AF_INET, SOCK_STREAM, 0);
+	int	sk = socket(AF_INET, SOCK_STREAM, 0);
+	int    on = 1;
+	if (setsockopt(sk, SOL_SOCKET,  SO_REUSEADDR,
+                   (char *)&on, sizeof(on)) < 0)
+	{
+		perror("reusable socket: setsockopt() failed");
+		close(sk);
+		exit(-1);
+	}
+
 	struct sockaddr_in	addr;
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(4242);
 	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
-	int	c = connect(s_fd, (struct sockaddr*)&addr, sizeof(addr)); 
+	int	c = connect(sk, (struct sockaddr*)&addr, sizeof(addr)); 
 	if (c < 0)
 		std::cerr << "Client : connect error" << std::endl;
 	char	response[BUFFER + 1];
-	int	ret = recv(s_fd, response, BUFFER, 0);
+	int	ret = recv(sk, response, BUFFER, 0);
 	std::cout << "ret = " << ret << std::endl;
 	response[ret] = 0;
 	std::cout << response ;
 	//std::cout << std::endl;
-	//c = connect(s_fd, (struct sockaddr*)&addr, sizeof(addr)); 
-	ret = recv(s_fd, response, BUFFER, 0);
+	//c = connect(sk, (struct sockaddr*)&addr, sizeof(addr)); 
+	ret = recv(sk, response, BUFFER, 0);
 	std::cout << "ret = " << ret << std::endl;
 	response[ret] = 0;
 	std::cout << response ;
 	//while (ret && ret > 0)
 	//{
-	//	ret = recv(s_fd, response, BUFFER, 0);
+	//	ret = recv(sk, response, BUFFER, 0);
 	//	response[ret] = 0;
 	//	std::cout << response ;
 	//}
 	std::cout << std::endl;
-	close(s_fd);
+	close(sk);
 	std::cout << "End client" << std::endl;
 }
