@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 22:01:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 22:17:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,18 @@ bool	isNumber(const std::string& s) {
 void     Convert::getChar( char* n )
 {
 	double	c = atof(n);
-	if (std::string(n) == "inf" || isNumber(std::string(n)) == false)
-		std::cout << "nan";
+	if (isNumber(std::string(n)) == false)
+		std::cout << "impossible";
 	else if (c < 32 || c > 126)
 		std::cout << "Non displayable";
 	else
-		std::cout << static_cast<char>(c);
+		std::cout << "'" << static_cast<char>(c) << "'";
 }
 
 void     Convert::getInt( char* n )
 {
 	double	c = atof(n);
+	if (std::string(n) == "-inf" || std::string(n) == "-inf")
 	if (isNumber(std::string(n)) == false
 		|| c < std::numeric_limits<int>::min()
 		|| c > std::numeric_limits<int>::max())
