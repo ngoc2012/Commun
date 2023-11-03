@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 09:03:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 09:06:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,23 @@ std::string     Convert::getChar( std::string n )
 	return (std::string(c));
 }
 
-std::string     Convert::getChar( std::string n )
+std::string     Convert::getInt( std::string n )
 {
-	char	c;
+	int	c;
 	c = stoi(n);
+	return (std::string(c));
+}
+
+std::string     Convert::getFloat( std::string n )
+{
+	float	c;
+	c = (float) stoi(n);
+	return (std::string(c));
+}
+
+std::string     Convert::getDouble( std::string n )
+{
+	double	c;
+	c = (double) stoi(n);
+	return (std::string(c));
 }
