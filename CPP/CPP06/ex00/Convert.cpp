@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 11:17:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 11:19:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,30 @@ Convert&	Convert::operator=( Convert const & src )
 
 Convert::~Convert() { std::cout << "Convert destructor." << std::endl; }
 
-void     Convert::getChar( std::string n )
+void     Convert::getChar( char* n )
 {
 	char	c;
-	std::cout << "atof: " << atof(n.c_str()) << std::endl;
-	c = static_cast<char>(atof(n.c_str()));
+	c = static_cast<char>(atof(n));
 	std::cout << c;
 }
 
-void     Convert::getInt( std::string n )
+void     Convert::getInt( char* n )
 {
 	int	c;
-	c = static_cast<int>(atof(n.c_str()));
+	c = static_cast<int>(atof(n));
 	std::cout << c;
 }
 
-void     Convert::getFloat( std::string n )
+void     Convert::getFloat( char* n )
 {
 	float	c;
-	c = static_cast<int>(atof(n.c_str()));
+	c = static_cast<int>(atof(n));
 	std::cout << c;
 }
 
-void     Convert::getDouble( std::string n )
+void     Convert::getDouble( char* n )
 {
 	double	c;
-	c = atof(n.c_str());
+	c = atof(n);
 	std::cout << c;
 }
