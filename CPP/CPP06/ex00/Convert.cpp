@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 18:32:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 18:34:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void     Convert::getFloat( char* n )
 	else if (c > std::numeric_limits<float>::max())
 		std::cout << "+inff";
 	else
-		std::cout << static_cast<float>(c);
+		std::cout << static_cast<float>(c) << "f";
 }
 
 void     Convert::getDouble( char* n )
