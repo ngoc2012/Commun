@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 18:07:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 18:28:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,17 @@ Convert&	Convert::operator=( Convert const & src )
 
 Convert::~Convert() { std::cout << "Convert destructor." << std::endl; }
 
+bool	isNumber(const std::string& s) {
+	std::istringstream	iss(s);
+	double			f;
+	iss >> std::noskipws >> f;
+	return iss.eof() && !iss.fail();
+}
+
 void     Convert::getChar( char* n )
 {
 	double	c = atof(n);
-	if (c == std::numeric_limits<double>::quiet_NaN()
-		|| c < 32 || c > 126)
+	if (c < 32 || c > 126)
 		std::cout << "nan";
 	else
 		std::cout << static_cast<char>(c);
