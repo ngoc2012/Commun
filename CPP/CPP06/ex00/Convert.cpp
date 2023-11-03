@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 11:12:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 11:15:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ Convert::~Convert() { std::cout << "Convert destructor." << std::endl; }
 void     Convert::getChar( std::string n )
 {
 	char	c;
-	c = strtod(n.c_str());
+	c = static_cast<char>(atof(n.c_str()));
 	std::cout << c;
 }
 
 void     Convert::getInt( std::string n )
 {
 	int	c;
-	c = std::stoi(n);
+	c = static_cast<int>(atof(n.c_str()));
 	std::cout << c;
 }
 
