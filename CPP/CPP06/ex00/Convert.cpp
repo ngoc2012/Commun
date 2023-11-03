@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 18:34:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 18:38:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void     Convert::getInt( char* n )
 void     Convert::getFloat( char* n )
 {
 	double	c = atof(n);
+	std::cout << std::numeric_limits<float>::max() << "===";
 	if (isNumber(std::string(n)) == false)
 		std::cout << "nanf";
 	else if (c < std::numeric_limits<float>::min())

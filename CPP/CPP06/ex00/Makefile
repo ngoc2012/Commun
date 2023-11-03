@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/03 12:03:48 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/03 18:36:39 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ test:
 	valgrind ./convert 99999999999999999999.9999
 	valgrind ./convert a.9999
 	#valgrind ./convert 0
-	#valgrind ./convert 123.56
+	valgrind ./convert 123.56
 	#valgrind ./convert 1000
 gits:
 	git add Makefile
