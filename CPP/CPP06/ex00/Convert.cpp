@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 18:30:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 18:32:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool	isNumber(const std::string& s) {
 void     Convert::getChar( char* n )
 {
 	double	c = atof(n);
-	if (!isNumber(std::string(n))
+	if (isNumber(std::string(n)) == false
 		|| c < 32 || c > 126)
 		std::cout << "nan";
 	else
@@ -50,7 +50,7 @@ void     Convert::getChar( char* n )
 void     Convert::getInt( char* n )
 {
 	double	c = atof(n);
-	if (!isNumber(std::string(n))
+	if (isNumber(std::string(n)) == false
 		|| c < std::numeric_limits<int>::min()
 		|| c > std::numeric_limits<int>::max())
 		std::cout << "nan";
@@ -61,7 +61,7 @@ void     Convert::getInt( char* n )
 void     Convert::getFloat( char* n )
 {
 	double	c = atof(n);
-	if (!isNumber(std::string(n))
+	if (isNumber(std::string(n)) == false)
 		std::cout << "nanf";
 	else if (c < std::numeric_limits<float>::min())
 		std::cout << "-inff";
@@ -74,7 +74,7 @@ void     Convert::getFloat( char* n )
 void     Convert::getDouble( char* n )
 {
 	double	c = atof(n);
-	if (!isNumber(std::string(n))
+	if (isNumber(std::string(n)) == false)
 		std::cout << "nan";
 	else if (c == std::numeric_limits<double>::min())
 		std::cout << "-inf";
