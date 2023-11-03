@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 09:06:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 09:06:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ std::string     Convert::getInt( std::string n )
 std::string     Convert::getFloat( std::string n )
 {
 	float	c;
-	c = (float) stoi(n);
+	c = stof(n);
 	return (std::string(c));
 }
 
