@@ -6,13 +6,13 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/03 08:47:37 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/03 09:11:28 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = main.cpp Convert.cpp
 OBJS = ${SRCS:.c=.o}
-MANDA = main
+MANDA = convert
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
@@ -21,7 +21,7 @@ all:	$(MANDA)
 $(MANDA): $(SRCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
-	make re && valgrind ./main
+	make re && valgrind ./convert 123.56
 gits:
 	git add Makefile
 	git add *.cpp

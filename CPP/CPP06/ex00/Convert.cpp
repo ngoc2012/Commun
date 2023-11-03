@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 09:08:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 09:10:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,30 @@ Convert&	Convert::operator=( Convert const & src )
 
 Convert::~Convert() { std::cout << "Convert destructor." << std::endl; }
 
-std::string     Convert::getChar( std::string n )
+void     Convert::getChar( std::string n )
 {
 	char	c;
 	c = stoi(n);
-	return (std::string(c));
+	std::cout << c;
 }
 
-std::string     Convert::getInt( std::string n )
+void     Convert::getInt( std::string n )
 {
 	int	c;
 	c = stoi(n);
-	return (std::string(c));
+	std::cout << c;
 }
 
-std::string     Convert::getFloat( std::string n )
+void     Convert::getFloat( std::string n )
 {
 	float	c;
 	c = stof(n);
-	return (std::string(c));
+	std::cout << c;
 }
 
-std::string     Convert::getDouble( std::string n )
+void     Convert::getDouble( std::string n )
 {
 	double	c;
 	c = stod(n);
-	return (std::string(c));
+	std::cout << c;
 }

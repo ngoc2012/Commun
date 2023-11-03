@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 09:08:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 09:10:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ class Convert
 		Convert &operator=(const Convert& op);
 		virtual ~Convert();
 
-		std::string     getChar( std::string );
-		std::string     getInt( std::string );
-		std::string     getFloat( std::string );
-		std::string     getDouble( std::string );
+		void     getChar( std::string );
+		void     getInt( std::string );
+		void     getFloat( std::string );
+		void     getDouble( std::string );
 };
 
 #endif
