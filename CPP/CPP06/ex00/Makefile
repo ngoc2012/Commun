@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/03 09:11:28 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/03 11:22:13 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ all:	$(MANDA)
 $(MANDA): $(SRCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
-	make re && valgrind ./convert 123.56
+	make re
+	valgrind ./convert 123.56
+	valgrind ./convert 1000
 gits:
 	git add Makefile
 	git add *.cpp
