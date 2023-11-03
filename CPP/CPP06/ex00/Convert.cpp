@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 13:15:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 13:21:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,41 +33,35 @@ Convert::~Convert() { std::cout << "Convert destructor." << std::endl; }
 void     Convert::getChar( char* n )
 {
 	double	c = atof(n);
-	if (c == std::numeric_limits<double>::quiet_NaN())
+	if (c == std::numeric_limits<double>::quiet_NaN()
+		|| c < 32 || c > 126)
 		std::cout << "nan";
-	int	i = static_cast<int>(i);
-	if (i >= std::numeric_limits<char>::min()
-		&& i <= std::numeric_limits<char>::max()
-		&& i >= 32 && i <= 126)
-		std::cout << static_cast<char>(i);
 	else
-		std::cout << "nan";
+		std::cout << static_cast<char>(c);
 }
 
 void     Convert::getInt( char* n )
 {
-	if (atof(str) == std::numeric_limits<double>::quiet_NaN())
-		std::cout << "nan";
 	double	c = atof(n);
-	if (c >= std::numeric_limits<int>::min()
-		&& c <= std::numeric_limits<int>::max())
-		std::cout << c;
-	else
+	if (c == std::numeric_limits<double>::quiet_NaN()
+		|| c < std::numeric_limits<int>::min()
+		|| c > std::numeric_limits<int>::max())
 		std::cout << "nan";
+	else
+		std::cout << static_cast<int>(c);
 }
 
 void     Convert::getFloat( char* n )
 {
-	if (atof(str) == std::numeric_limits<double>::quiet_NaN())
+	double	c = atof(n);
+	if (c == std::numeric_limits<double>::quiet_NaN())
 		std::cout << "nanf";
-	double	c = static_cast<double>(atof(n));
-	if (c >= std::numeric_limits<float>::min()
-		&& c <= std::numeric_limits<float>::max())
-		std::cout << c;
-	else if (c < std::numeric_limits<float>::min())
+	else if (c < std::numeric_limits<float>::min()
 		std::cout << "-inff";
-	else
+	else if (c > std::numeric_limits<float>::max())
 		std::cout << "+inff";
+	else
+		std::cout << static_cast<float>(i);
 }
 
 void     Convert::getDouble( char* n )
