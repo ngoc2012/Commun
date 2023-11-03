@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 11:56:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 11:59:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ Convert::~Convert() { std::cout << "Convert destructor." << std::endl; }
 
 void     Convert::getChar( char* n )
 {
-	//char	c;
 	int	ni;
 
 	ni = static_cast<int>(atof(n));
@@ -47,8 +46,12 @@ void     Convert::getChar( char* n )
 void     Convert::getInt( char* n )
 {
 	int	c;
-	c = static_cast<int>(atof(n));
-	std::cout << c;
+	c = static_cast<float>(atof(n));
+	if (c >= std::numeric_limits<int>::min()
+		&& c <= std::numeric_limits<int>::max())
+		std::cout << c;
+	else
+		std::cout << "nan";
 }
 
 void     Convert::getFloat( char* n )
