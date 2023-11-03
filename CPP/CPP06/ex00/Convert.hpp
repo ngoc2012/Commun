@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 10:34:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 10:36:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define CONVERT_HPP
 
 #include <iostream>
-#include <stdlib.h>
+//#include <stdlib.h>
 //#include <string>
+#include <limits>
+#include <fstream>
 
 class Convert
 {
