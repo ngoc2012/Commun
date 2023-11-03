@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 13:31:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 13:32:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,11 @@ void     Convert::getDouble( char* n )
 {
 	double	c = atof(n);
 	if (c == std::numeric_limits<double>::quiet_NaN())
-		std::cout << "nanf";
-	else if (c == std::numeric_limits<float>::min())
-	double	c;
-	c = atof(n);
-	std::cout << c;
+		std::cout << "nan";
+	else if (c == std::numeric_limits<double>::min())
+		std::cout << "-inf";
+	else if (c == std::numeric_limits<double>::max())
+		std::cout << "+inf";
+	else
+		std::cout << c;
 }
