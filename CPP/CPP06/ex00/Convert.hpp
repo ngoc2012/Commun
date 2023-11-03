@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 11:12:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 11:16:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@
 
 class Convert
 {
-	private:
-		int	fp;
-		int	fb;
 	public:
 		Convert();
 		Convert(const Convert&);

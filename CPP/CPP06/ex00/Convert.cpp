@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 11:15:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 11:17:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 Convert::Convert()
 {
-	fb = 0;
-	fp = 0;
 	std::cout << "Convert default constructor." << std::endl;
 }
 
@@ -26,8 +24,7 @@ Convert::Convert(const Convert& src) {
 
 Convert&	Convert::operator=( Convert const & src )
 {
-	fp = src.fp;
-	fb = src.fb;
+	(void) src;
 	return (*this);
 }
 
@@ -36,6 +33,7 @@ Convert::~Convert() { std::cout << "Convert destructor." << std::endl; }
 void     Convert::getChar( std::string n )
 {
 	char	c;
+	std::cout << "atof: " << atof(n.c_str()) << std::endl;
 	c = static_cast<char>(atof(n.c_str()));
 	std::cout << c;
 }
@@ -50,13 +48,13 @@ void     Convert::getInt( std::string n )
 void     Convert::getFloat( std::string n )
 {
 	float	c;
-	c = std::stof(n);
+	c = static_cast<int>(atof(n.c_str()));
 	std::cout << c;
 }
 
 void     Convert::getDouble( std::string n )
 {
 	double	c;
-	c = std::stod(n);
+	c = atof(n.c_str());
 	std::cout << c;
 }
