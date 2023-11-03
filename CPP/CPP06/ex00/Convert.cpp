@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 11:59:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 12:00:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void     Convert::getChar( char* n )
 
 void     Convert::getInt( char* n )
 {
-	int	c;
+	float	c;
 	c = static_cast<float>(atof(n));
 	if (c >= std::numeric_limits<int>::min()
 		&& c <= std::numeric_limits<int>::max())
