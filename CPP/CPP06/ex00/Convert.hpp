@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Convert.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/09 13:18:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 08:57:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef CONVERT_HPP
+# define CONVERT_HPP
 
 #include <iostream>
 
-class Animal
+class Convert
 {
-	protected:
-		std::string	type;
+	private:
+		int	fp;
+		int	fb;
 	public:
-		Animal();
-		Animal(const Animal&);
-		Animal &operator=(const Animal& op);
-		/*
-		Deleting Through Base Class Pointer: The warning occurs when you use the delete operator to destroy an object through a pointer or reference to a base class (e.g., Animal* ptr = new Dog; delete ptr;). If the base class has a non-virtual destructor, it may not correctly call the derived class's destructor, potentially leading to resource leaks or undefined behavior.
-		*/
-		virtual ~Animal();
+		Convert();
+		Convert(const Convert&);
+		Convert &operator=(const Convert& op);
+		virtual ~Convert();
 
-		virtual void    makeSound( void ) const;
-		std::string     getType( void ) const;
+		std::string     getChar( std::string );
+		std::string     getInt( std::string );
+		std::string     getFloat( std::string );
+		std::string     getDouble( std::string );
 };
 
 #endif
