@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 11:19:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 11:21:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void     Convert::getChar( char* n )
 {
 	char	c;
 	c = static_cast<char>(atof(n));
+	if (std::isnan(c))
+		std::cout << "nan";
 	std::cout << c;
 }
 
@@ -47,7 +49,7 @@ void     Convert::getInt( char* n )
 void     Convert::getFloat( char* n )
 {
 	float	c;
-	c = static_cast<int>(atof(n));
+	c = static_cast<float>(atof(n));
 	std::cout << c;
 }
 
