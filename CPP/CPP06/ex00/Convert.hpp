@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 12:06:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 18:27:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <stdlib.h>	// atof
 #include <limits>	// numeric_limits
+#include <sstream>	// istringstream
 
 class Convert
 {
