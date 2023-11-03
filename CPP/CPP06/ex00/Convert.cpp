@@ -6,13 +6,18 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 09:10:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 09:13:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Convert.hpp"
 
-Convert::Convert() {std::cout << "Convert default constructor." << std::endl;}
+Convert::Convert()
+{
+	fb = 0;
+	fp = 0;
+	std::cout << "Convert default constructor." << std::endl;
+}
 
 Convert::Convert(const Convert& src) {
 	*this = src;
@@ -21,7 +26,8 @@ Convert::Convert(const Convert& src) {
 
 Convert&	Convert::operator=( Convert const & src )
 {
-	type = src.type;
+	fp = src.fp;
+	fb = src.fb;
 	return (*this);
 }
 
