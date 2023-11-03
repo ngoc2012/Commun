@@ -6,13 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 08:51:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 08:53:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "WrongCat.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
+#include "Convert.hpp"
 
 int main(int argc, char **argv)
 {
@@ -21,5 +19,9 @@ int main(int argc, char **argv)
 		std::cerr << "Usage: convert [0..1]" << std::endl;
 		return (1);
 	}
+	std::cout << "char  : " << std::endl;
+	std::cout << "int   : " << std::endl;
+	std::cout << "float : " << std::endl;
+	std::cout << "double: " << std::endl;
 	return (0);
 }
