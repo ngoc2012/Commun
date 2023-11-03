@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Convert.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/08 17:30:55 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/03 08:59:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Convert.hpp"
 
-Animal::Animal() {std::cout << "Animal " << type << " default constructor." << std::endl;}
-Animal::Animal(const Animal& src) {
+Convert::Convert() {std::cout << "Convert default constructor." << std::endl;}
+
+Convert::Convert(const Convert& src) {
 	*this = src;
-	std::cout << "Animal " << type << " copy constructor." << std::endl;
+	std::cout << "Convert copy constructor." << std::endl;
 }
-Animal&	Animal::operator=( Animal const & src )
+Convert&	Convert::operator=( Convert const & src )
 {
 	type = src.type;
 	return (*this);
 }
-Animal::~Animal() { std::cout << "Animal " << type << " destructor." << std::endl; }
-void    Animal::makeSound( void ) const
-{
-	std::cout << "Animal make sound." << std::endl;
-}
-std::string     Animal::getType( void ) const {return (type);}
+Convert::~Convert() { std::cout << "Convert destructor." << std::endl; }
+std::string     Convert::getType( void ) const {return (type);}
