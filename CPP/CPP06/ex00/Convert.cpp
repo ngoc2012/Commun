@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 13:11:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 13:13:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void     Convert::getFloat( char* n )
 void     Convert::getDouble( char* n )
 {
 	if (atof(str) == std::numeric_limits<double>::quiet_NaN())
-		std::cout << "nanf";
+		std::cout << "nan";
 	double	c;
 	c = atof(n);
 	std::cout << c;
