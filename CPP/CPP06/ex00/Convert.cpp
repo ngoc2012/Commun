@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 22:19:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/03 22:52:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,14 @@ void     Convert::getChar( char* n )
 void     Convert::getInt( char* n )
 {
 	double	c = atof(n);
-	if (std::string(n) == "-inf" || std::string(n) == "-inf")
-	if (isNumber(std::string(n)) == false
+	switch (std::string(n))
+	{
+	}
+	if ( == "-inf" || std::string(n) == "-inff")
+		std::cout << "-inff";
+	else if (std::string(n) == "-inf" || std::string(n) == "-inff")
+		std::cout << "-inff";
+	else if (isNumber(std::string(n)) == false
 		|| c < std::numeric_limits<int>::min()
 		|| c > std::numeric_limits<int>::max())
 		std::cout << "nan";
