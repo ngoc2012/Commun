@@ -6,11 +6,18 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 12:54:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 15:20:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Convert.hpp"
+
+bool	isNumber(const std::string& s) {
+	std::istringstream	iss(s);
+	double			f;
+	iss >> std::noskipws >> f;
+	return iss.eof() && !iss.fail();
+}
 
 Convert::Convert() {}
 
@@ -23,13 +30,6 @@ Convert&	Convert::operator=( Convert const & src )
 }
 
 Convert::~Convert() {}
-
-bool	isNumber(const std::string& s) {
-	std::istringstream	iss(s);
-	double			f;
-	iss >> std::noskipws >> f;
-	return iss.eof() && !iss.fail();
-}
 
 void     Convert::getChar( char* n )
 {
