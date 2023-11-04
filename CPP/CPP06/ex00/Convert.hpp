@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 15:15:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 15:16:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ class Convert
 {
 	private:
 		e_types	type;
-	public:
 		Convert();
 		Convert(const Convert&);
+	public:
 		Convert &operator=(const Convert& op);
 		virtual ~Convert();
 
