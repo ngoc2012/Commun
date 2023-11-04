@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 12:08:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 12:13:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ void     Convert::getInt( char* n )
 	else if (s == "+inf" || s == "+inff")
 		std::cout << "+inf";
 	else if (isNumber(std::string(n)) == false
-		|| c < std::numeric_limits<int>::min()
-		|| c > std::numeric_limits<int>::max())
+		|| (c > 0 && c < std::numeric_limits<int>::min())
+		|| (c < 0 && c > -std::numeric_limits<int>::min())
+		|| c > std::numeric_limits<int>::max()
+		|| c < std::numeric_limits<int>::lowest())
 		std::cout << "impossible";
 	else
 		std::cout << static_cast<int>(c);
