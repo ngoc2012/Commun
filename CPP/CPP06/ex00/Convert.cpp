@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 10:58:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 11:00:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,28 @@ void     Convert::getInt( char* n )
 
 void     Convert::getFloat( char* n )
 {
+	switch (std::string(n))
+	{
+		case "-inf":
+		case "-inff":
+			std::cout << "-inf";
+			return ;
+		case "+inf":
+		case "+inff":
+			std::cout << "+inf";
+			return ;
+		case "nan":
+		case "nanf":
+			std::cout << "nanf";
+			return ;
+		default:
+	}
 	double	c = atof(n);
 	std::cout << std::numeric_limits<float>::max() << "===";
-	if (isNumber(std::string(n)) == false)
-		std::cout << "nanf";
-	else if (c < std::numeric_limits<float>::min())
-		std::cout << "-inff";
-	else if (c > std::numeric_limits<float>::max())
-		std::cout << "+inff";
+	if (isNumber(std::string(n)) == false
+		|| c < std::numeric_limits<float>::min()
+		|| c > std::numeric_limits<float>::max())
+		std::cout << "impossible";
 	else
 		std::cout << static_cast<float>(c) << "f";
 }
