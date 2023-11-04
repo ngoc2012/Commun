@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 11:04:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 11:41:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,13 @@ void     Convert::getChar( char* n )
 
 void     Convert::getInt( char* n )
 {
-	switch (std::string(n))
-	{
-		case "-inf":
-		case "-inff":
-			std::cout << "-inf";
-			return ;
-		case "+inf":
-		case "+inff":
-			std::cout << "+inf";
-			return ;
-		default:
-	}
 	double	c = atof(n);
-	if (isNumber(std::string(n)) == false
+	std::string s = std::string(n);
+	if (s == "-inf" || s == "-inff")
+		std::cout << "-inf";
+	else if (s == "+inf" || s == "+inff")
+		std::cout << "+inf";
+	else if (isNumber(std::string(n)) == false
 		|| c < std::numeric_limits<int>::min()
 		|| c > std::numeric_limits<int>::max())
 		std::cout << "impossible";
@@ -72,25 +65,15 @@ void     Convert::getInt( char* n )
 
 void     Convert::getFloat( char* n )
 {
-	switch (std::string(n))
-	{
-		case "-inf":
-		case "-inff":
-			std::cout << "-inff";
-			return ;
-		case "+inf":
-		case "+inff":
-			std::cout << "+inff";
-			return ;
-		case "nan":
-		case "nanf":
-			std::cout << "nanf";
-			return ;
-		default:
-	}
 	double	c = atof(n);
-	std::cout << std::numeric_limits<float>::max() << "===";
-	if (isNumber(std::string(n)) == false
+	std::string s = std::string(n);
+	if (s == "-inf" || s == "-inff")
+		std::cout << "-inff";
+	else if (s == "+inf" || s == "+inff")
+		std::cout << "+inff";
+	else if (s == "nan" || s == "nanf")
+		std::cout << "nanf";
+	else if (isNumber(std::string(n)) == false
 		|| c < std::numeric_limits<float>::min()
 		|| c > std::numeric_limits<float>::max())
 		std::cout << "impossible";
@@ -100,25 +83,15 @@ void     Convert::getFloat( char* n )
 
 void     Convert::getDouble( char* n )
 {
-	switch (std::string(n))
-	{
-		case "-inf":
-		case "-inff":
-			std::cout << "-inf";
-			return ;
-		case "+inf":
-		case "+inff":
-			std::cout << "+inf";
-			return ;
-		case "nan":
-		case "nanf":
-			std::cout << "nan";
-			return ;
-		default:
-	}
 	double	c = atof(n);
-	std::cout << std::numeric_limits<double>::max() << "===";
-	if (isNumber(std::string(n)) == false
+	std::string s = std::string(n);
+	if (s == "-inf" || s == "-inff")
+		std::cout << "-inff";
+	else if (s == "+inf" || s == "+inff")
+		std::cout << "+inff";
+	else if (s == "nan" || s == "nanf")
+		std::cout << "nanf";
+	else if (isNumber(std::string(n)) == false
 		|| c < std::numeric_limits<double>::min()
 		|| c > std::numeric_limits<double>::max())
 		std::cout << "impossible";
