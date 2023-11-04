@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 11:00:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 11:04:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ void     Convert::getFloat( char* n )
 	{
 		case "-inf":
 		case "-inff":
-			std::cout << "-inf";
+			std::cout << "-inff";
 			return ;
 		case "+inf":
 		case "+inff":
-			std::cout << "+inf";
+			std::cout << "+inff";
 			return ;
 		case "nan":
 		case "nanf":
@@ -100,14 +100,28 @@ void     Convert::getFloat( char* n )
 
 void     Convert::getDouble( char* n )
 {
+	switch (std::string(n))
+	{
+		case "-inf":
+		case "-inff":
+			std::cout << "-inf";
+			return ;
+		case "+inf":
+		case "+inff":
+			std::cout << "+inf";
+			return ;
+		case "nan":
+		case "nanf":
+			std::cout << "nan";
+			return ;
+		default:
+	}
 	double	c = atof(n);
 	std::cout << std::numeric_limits<double>::max() << "===";
-	if (isNumber(std::string(n)) == false)
-		std::cout << "nan";
-	else if (c == std::numeric_limits<double>::min())
-		std::cout << "-inf";
-	else if (c == std::numeric_limits<double>::max())
-		std::cout << "+inf";
+	if (isNumber(std::string(n)) == false
+		|| c < std::numeric_limits<double>::min()
+		|| c > std::numeric_limits<double>::max())
+		std::cout << "impossible";
 	else
 		std::cout << c;
 }
