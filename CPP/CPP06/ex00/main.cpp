@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 14:09:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 14:12:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int main(int argc, char **argv)
 	}
 
 	Convert		c;
-	double	flt_max = atof("340282346638528859811704183484516925440");
-	int	i = 0;
-	while (flt_max++ <= std::numeric_limits<float>::max())
-		i++;
-	std::cout << i << std::endl;
+	//double	flt_max = atof("340282346638528859811704183484516925440");
+	//int	i = 0;
+	//while (flt_max++ <= std::numeric_limits<float>::max())
+	//	i++;
+	//std::cout << i << std::endl;
 	std::cout << "atof: " << atof(argv[1]) << std::endl;
 	std::cout << "char: "; c.getChar(argv[1]);	std::cout << std::endl;
 	std::cout << "int: "; c.getInt(argv[1]);	std::cout << std::endl;
