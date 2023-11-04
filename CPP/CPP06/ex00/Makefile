@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/04 12:21:24 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/04 12:51:45 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ test:
 	valgrind ./convert 0
 	valgrind ./convert nan
 	valgrind ./convert 42.0f
-	echo "INT_MIN"
+	@echo "============== INT_MIN ==============="
 	valgrind ./convert -2147483648
 	valgrind ./convert -2147483649
 	#valgrind ./convert 99999999999999999999.9999
