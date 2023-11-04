@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 11:58:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 12:08:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void     Convert::getChar( char* n )
 		std::cout << "'" << static_cast<char>(c) << "'";
 }
 
+//https://en.cppreference.com/w/cpp/types/numeric_limits
 void     Convert::getInt( char* n )
 {
 	double	c = atof(n);
