@@ -6,21 +6,15 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 22:52:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 10:57:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Convert.hpp"
 
-Convert::Convert()
-{
-	std::cout << "Convert default constructor." << std::endl;
-}
+Convert::Convert() {}
 
-Convert::Convert(const Convert& src) {
-	*this = src;
-	std::cout << "Convert copy constructor." << std::endl;
-}
+Convert::Convert(const Convert& src) { *this = src; }
 
 Convert&	Convert::operator=( Convert const & src )
 {
@@ -28,7 +22,7 @@ Convert&	Convert::operator=( Convert const & src )
 	return (*this);
 }
 
-Convert::~Convert() { std::cout << "Convert destructor." << std::endl; }
+Convert::~Convert() {}
 
 bool	isNumber(const std::string& s) {
 	std::istringstream	iss(s);
@@ -58,12 +52,21 @@ void     Convert::getInt( char* n )
 	double	c = atof(n);
 	switch (std::string(n))
 	{
+		case "-inf":
+		case "-inff":
+			std::cout << "-inf";
+			return ;
+		case "+inf":
+		case "+inff":
+			std::cout << "+inf";
+			return ;
+		case "+inf":
+		case "+inff":
+			std::cout << "+inf";
+			return ;
+		default:
 	}
-	if ( == "-inf" || std::string(n) == "-inff")
-		std::cout << "-inff";
-	else if (std::string(n) == "-inf" || std::string(n) == "-inff")
-		std::cout << "-inff";
-	else if (isNumber(std::string(n)) == false
+	if (isNumber(std::string(n)) == false
 		|| c < std::numeric_limits<int>::min()
 		|| c > std::numeric_limits<int>::max())
 		std::cout << "nan";
