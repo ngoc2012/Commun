@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 12:39:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 12:40:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,5 @@ void     Convert::getDouble( char* n )
 		std::cout << static_cast<double>(c);
 		std::cout.rdbuf(oldCoutBuffer);
 		std::cout << oss.str();
-		std::cout << "f";
 	}
 }
