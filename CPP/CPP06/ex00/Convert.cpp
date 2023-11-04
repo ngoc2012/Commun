@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 12:23:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 12:39:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,14 @@ void     Convert::getFloat( char* n )
 		|| c < -std::numeric_limits<float>::max())
 		std::cout << "impossible";
 	else
-		std::cout << static_cast<float>(c) << "f";
+	{
+		std::ostringstream oss;
+		std::streambuf* oldCoutBuffer = std::cout.rdbuf(oss.rdbuf());
+		std::cout << static_cast<float>(c);
+		std::cout.rdbuf(oldCoutBuffer);
+		std::cout << oss.str();
+		std::cout << "f";
+	}
 }
 
 void     Convert::getDouble( char* n )
@@ -109,5 +116,12 @@ void     Convert::getDouble( char* n )
 		|| c < -std::numeric_limits<double>::max())
 		std::cout << "impossible";
 	else
-		std::cout << c;
+	{
+		std::ostringstream oss;
+		std::streambuf* oldCoutBuffer = std::cout.rdbuf(oss.rdbuf());
+		std::cout << static_cast<double>(c);
+		std::cout.rdbuf(oldCoutBuffer);
+		std::cout << oss.str();
+		std::cout << "f";
+	}
 }
