@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/04 13:46:09 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/04 14:03:09 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,9 @@ test:
 	valgrind ./convert 2147483647
 	valgrind ./convert 2147483648
 	@echo "============== FLT_MIN ==============="
-	@#valgrind ./convert 99999999999999999999.9999
+	@echo "============== FLT_MAX ==============="
+	valgrind ./convert 340282346638528859811704183484516925440
+	valgrind ./convert 340282346638528859811704183484516925441
 	@#valgrind ./convert 99999999999999999999
 	@#valgrind ./convert a.9999
 	@#valgrind ./convert 0.1
