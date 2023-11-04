@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/04 12:09:05 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/04 12:15:56 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ $(MANDA): $(SRCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
 	make re
+	echo "INT_MIN"
+	valgrind ./convert -2147483648
 	#valgrind ./convert 99999999999999999999.9999
 	#valgrind ./convert 99999999999999999999
 	#valgrind ./convert a.9999
