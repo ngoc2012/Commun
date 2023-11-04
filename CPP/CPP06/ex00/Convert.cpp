@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 10:57:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 10:58:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void     Convert::getChar( char* n )
 
 void     Convert::getInt( char* n )
 {
-	double	c = atof(n);
 	switch (std::string(n))
 	{
 		case "-inf":
@@ -60,16 +59,13 @@ void     Convert::getInt( char* n )
 		case "+inff":
 			std::cout << "+inf";
 			return ;
-		case "+inf":
-		case "+inff":
-			std::cout << "+inf";
-			return ;
 		default:
 	}
+	double	c = atof(n);
 	if (isNumber(std::string(n)) == false
 		|| c < std::numeric_limits<int>::min()
 		|| c > std::numeric_limits<int>::max())
-		std::cout << "nan";
+		std::cout << "impossible";
 	else
 		std::cout << static_cast<int>(c);
 }
