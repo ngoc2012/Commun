@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 12:16:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 12:23:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ bool	isNumber(const std::string& s) {
 
 void     Convert::getChar( char* n )
 {
+	if (n[strlen(n) - 1] == 'f')
+		n[strlen(n) - 1] = 0;
 	double	c = atof(n);
 	if (isNumber(std::string(n)) == false)
 	{
@@ -50,6 +52,8 @@ void     Convert::getChar( char* n )
 //https://en.cppreference.com/w/cpp/types/numeric_limits
 void     Convert::getInt( char* n )
 {
+	if (n[strlen(n) - 1] == 'f')
+		n[strlen(n) - 1] = 0;
 	double	c = atof(n);
 	std::string s = std::string(n);
 	if (s == "-inf" || s == "-inff")
@@ -66,6 +70,8 @@ void     Convert::getInt( char* n )
 
 void     Convert::getFloat( char* n )
 {
+	if (n[strlen(n) - 1] == 'f')
+		n[strlen(n) - 1] = 0;
 	double	c = atof(n);
 	std::string s = std::string(n);
 	if (s == "-inf" || s == "-inff")
@@ -86,6 +92,8 @@ void     Convert::getFloat( char* n )
 
 void     Convert::getDouble( char* n )
 {
+	if (n[strlen(n) - 1] == 'f')
+		n[strlen(n) - 1] = 0;
 	double	c = atof(n);
 	std::string s = std::string(n);
 	if (s == "-inf" || s == "-inff")

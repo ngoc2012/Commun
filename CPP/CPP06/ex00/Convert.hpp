@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/03 18:27:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 12:23:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <stdlib.h>	// atof
 #include <limits>	// numeric_limits
 #include <sstream>	// istringstream
+#include <cstring>	// strlen
 
 class Convert
 {
