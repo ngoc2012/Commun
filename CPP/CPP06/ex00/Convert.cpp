@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 11:43:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 11:46:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ void     Convert::getFloat( char* n )
 void     Convert::getDouble( char* n )
 {
 	double	c = atof(n);
-	std::cout << std::numeric_limits<double>::min();
-	std::cout << std::numeric_limits<double>::max();
 	std::string s = std::string(n);
 	if (s == "-inf" || s == "-inff")
 		std::cout << "-inff";
