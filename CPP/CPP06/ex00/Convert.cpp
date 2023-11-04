@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 12:40:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/04 12:48:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ void     Convert::getFloat( char* n )
 		std::cout << static_cast<float>(c);
 		std::cout.rdbuf(oldCoutBuffer);
 		std::cout << oss.str();
+		if (oss.str().find('e') == std::string::npos
+			&& oss.str().find('.') == std::string::npos)
+			std::cout << ".0";
 		std::cout << "f";
 	}
 }
@@ -108,7 +111,7 @@ void     Convert::getDouble( char* n )
 	else if (s == "+inf" || s == "+inff")
 		std::cout << "+inff";
 	else if (s == "nan" || s == "nanf")
-		std::cout << "nanf";
+		std::cout << "nan";
 	else if (isNumber(std::string(n)) == false
 		|| (c > 0 && c < std::numeric_limits<double>::min())
 		|| (c < 0 && c > -std::numeric_limits<double>::min())
@@ -122,5 +125,8 @@ void     Convert::getDouble( char* n )
 		std::cout << static_cast<double>(c);
 		std::cout.rdbuf(oldCoutBuffer);
 		std::cout << oss.str();
+		if (oss.str().find('e') == std::string::npos
+			&& oss.str().find('.') == std::string::npos)
+			std::cout << ".0";
 	}
 }
