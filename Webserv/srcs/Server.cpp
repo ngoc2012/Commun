@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/05 21:59:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/05 22:02:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Server&	Server::operator=( Server const & src )
 }
 Server::~Server() {}
 
-void	start(void)
+void	Server::start(void)
 {
 	int	listen_sk = socket(AF_INET, SOCK_STREAM, 0);
 	if (listen_sk < 0)
