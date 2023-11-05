@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/05 21:35:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/05 21:53:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,13 @@
 
 class Server
 {
-	protected:
-		std::string	type;
 	public:
 		Server();
 		Server(const Server&);
 		Server &operator=(const Server& op);
 		virtual ~Server();
 
-		virtual void    makeSound( void ) const;
-		std::string     getType( void ) const;
+		void    start( void );
 };
 
 #endif
