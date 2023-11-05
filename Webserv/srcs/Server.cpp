@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.cpp                                         :+:      :+:    :+:   */
+/*   Server.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/05 19:20:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/05 21:55:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,20 @@
 # define PORT 4242
 # define IP_ADDRESS "127.0.0.1"
 
-int	main()
+#include "Animal.hpp"
+
+Animal::Animal() {std::cout << "Animal " << type << " default constructor." << std::endl;}
+Animal::Animal(const Animal& src) {
+	*this = src;
+	std::cout << "Animal " << type << " copy constructor." << std::endl;
+}
+Animal&	Animal::operator=( Animal const & src )
+{
+	type = src.type;
+	return (*this);
+}
+Animal::~Animal() { std::cout << "Animal " << type << " destructor." << std::endl; }
+void	start(void)
 {
 	int	listen_sk = socket(AF_INET, SOCK_STREAM, 0);
 	if (listen_sk < 0)

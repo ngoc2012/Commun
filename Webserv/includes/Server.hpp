@@ -6,11 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/05 21:53:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/05 21:54:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>          /* See NOTES */
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>	// htons
 #include <unistd.h>	// close
@@ -21,8 +21,8 @@
 #include <sys/ioctl.h>
 
 #include <stdlib.h>
-#include <cstdio> // perror
-#include <cstring> // memcpy
+#include <cstdio>	// perror
+#include <cstring>	// memcpy
 
 # define BUFFER	1028
 # define MAX_CLIENTS 128
