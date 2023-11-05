@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/05 18:57:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/05 19:04:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,7 @@ int	main()
 					{
 						char	response[BUFFER + 1];
 						//Receive data from client
+						std::cout << "Receive data from client" << std::endl;
 						int	ret = recv(i, response, BUFFER, 0);
 						if (ret < 0)
 						{
