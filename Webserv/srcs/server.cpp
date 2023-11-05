@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/05 19:19:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/05 19:20:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,9 +165,9 @@ int	main()
 				else
 				{
 					std::cout << "Socket " << i << " is readable." << std::endl;
-					int	close_conn = 0;
-					do
-					{
+					//int	close_conn = 0;
+					//do
+					//{
 						char	response[BUFFER + 1];
 						//Receive data from client
 						std::cout << "Receive data from client" << std::endl;
@@ -177,14 +177,14 @@ int	main()
 							if (errno != EWOULDBLOCK)
 							{
 								perror("  recv() failed");
-								close_conn = 1;
+								//close_conn = 1;
 							}
 							break;
 						}
 						if (ret == 0)
 						{
 							std::cout << "  Connection closed" << std::endl;
-							close_conn = 1;
+							//close_conn = 1;
 							break;
 						}
 						response[ret] = 0;
@@ -211,21 +211,21 @@ int	main()
 						if (send(i, httpResponse, strlen(httpResponse), 0) < 0)
 						{
 							perror("  send() failed");
-							close_conn = 1;
+							//close_conn = 1;
 							break;
 						}
 						std::cout << "Data sent" << std::endl;
 
-					} while (1);
+					//} while (1);
 
-					if (close_conn)
-					{
+					//if (close_conn)
+					//{
 						close(i);
 						FD_CLR(i, &master_set);
 						if (i == max_sk)
 							while (!FD_ISSET(max_sk, &master_set))
 								max_sk -= 1;
-					}
+					//}
 				}
 			}
 		}
