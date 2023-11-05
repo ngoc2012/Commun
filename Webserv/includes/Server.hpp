@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/05 21:54:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/05 22:07:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@
 
 class Server
 {
+	private:
+		int		max_clients;
+		std::string	port;
+		std::string	ip_address;
 	public:
 		Server();
 		Server(const Server&);
