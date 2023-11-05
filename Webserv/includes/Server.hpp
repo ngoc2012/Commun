@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/05 21:32:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/05 21:35:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,20 @@
 # define PORT 4242
 # define IP_ADDRESS "127.0.0.1"
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef SERVER_HPP
+# define SERVER_HPP
 
 #include <iostream>
 
-class Animal
+class Server
 {
 	protected:
 		std::string	type;
 	public:
-		Animal();
-		Animal(const Animal&);
-		Animal &operator=(const Animal& op);
-		/*
-		Deleting Through Base Class Pointer: The warning occurs when you use the delete operator to destroy an object through a pointer or reference to a base class (e.g., Animal* ptr = new Dog; delete ptr;). If the base class has a non-virtual destructor, it may not correctly call the derived class's destructor, potentially leading to resource leaks or undefined behavior.
-		*/
-		virtual ~Animal();
+		Server();
+		Server(const Server&);
+		Server &operator=(const Server& op);
+		virtual ~Server();
 
 		virtual void    makeSound( void ) const;
 		std::string     getType( void ) const;
