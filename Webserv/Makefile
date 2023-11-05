@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/02 04:49:51 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/05 21:57:58 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = srcs/server.cpp
+SRCS = srcs/main.cpp srcs/Server.cpp
 SRCS2 = srcs/client.cpp
 OBJS = ${SRCS:.c=.o}
 OBJS2 = ${SRCS2:.c=.o}
@@ -20,7 +20,7 @@ CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(SERVER) $(CLIENT)
 .cpp.o:
-	$(CC) $(FLAGS) -g -c $< -o ${<:.cpp=.o} -I.
+	$(CC) $(FLAGS) -g -c $< -o ${<:.cpp=.o} -I./includes
 $(SERVER): $(SRCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(SERVER)
 $(CLIENT): $(SRCS2)
