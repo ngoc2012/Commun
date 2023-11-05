@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/05 18:54:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/05 18:57:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,9 @@ int	main()
 							break;
 						}
 						response[ret] = 0;
-						std::cout << "Client send: \n" << response ;
+						std::cout << "Client send: \n"
+						<< "============================================="
+						<< response ;
 						//while (ret && ret > 0)
 						//{
 						//	ret = recv(s_fd, response, BUFFER, 0);
@@ -195,6 +197,9 @@ int	main()
 						//	std::cout << response ;
 						//}
 
+						std::cout 
+						<< "============================================="
+						<< std::endl;
 						//Send back data
 						char	buffer[] = "server data";
 						if (send(i, buffer, strlen(buffer), 0) < 0)
@@ -203,7 +208,7 @@ int	main()
 							close_conn = 1;
 							break;
 						}
-						std::cout << std::endl;
+						std::cout << "Data sent" << std::endl;
 
 					} while (1);
 
