@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/05 19:13:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/05 19:14:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,13 +202,14 @@ int	main()
 						<< "============================================="
 						<< std::endl;
 						//Send back data
-						char	buffer[] = "HTTP/1.1 200 OK
-							Date: Mon, 27 Jul 2009 12:28:53 GMT
-							Server: Apache/2.2.14 (Win32)
-							Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT
-							Content-Length: 88
-							Content-Type: text/html
-							Connection: Closed";
+						char	buffer[] = "HTTP/1.1 200 OK\n\
+							Date: Mon, 27 Jul 2009 12:28:53 GMT\n\
+							Server: Apache/2.2.14 (Win32)\n\
+							Last-Modified: Wed, 22 Jul 2009 19:15:56 GMT\n\
+							Content-Length: 88\n\
+							Content-Type: text/html\n\
+							Connection: Closed\n\
+							Server data\n";
 						if (send(i, buffer, strlen(buffer), 0) < 0)
 						{
 							perror("  send() failed");
