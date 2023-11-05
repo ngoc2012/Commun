@@ -6,28 +6,9 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/05 22:02:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/05 22:04:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <sys/types.h>          /* See NOTES */
-#include <sys/socket.h>
-#include <arpa/inet.h>	// htons
-#include <unistd.h>	// close
-#include <iostream>
-#include <sys/time.h>
-#include <netinet/in.h>
-#include <errno.h>
-#include <sys/ioctl.h>
-
-#include <stdlib.h>
-#include <cstdio> // perror
-#include <cstring> // memcpy
-
-# define BUFFER	1028
-# define MAX_CLIENTS 128
-# define PORT 4242
-# define IP_ADDRESS "127.0.0.1"
 
 #include "Server.hpp"
 
