@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/05 21:55:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/05 21:59:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,17 @@
 # define PORT 4242
 # define IP_ADDRESS "127.0.0.1"
 
-#include "Animal.hpp"
+#include "Server.hpp"
 
-Animal::Animal() {std::cout << "Animal " << type << " default constructor." << std::endl;}
-Animal::Animal(const Animal& src) {
-	*this = src;
-	std::cout << "Animal " << type << " copy constructor." << std::endl;
-}
-Animal&	Animal::operator=( Animal const & src )
+Server::Server() {}
+Server::Server(const Server& src) { *this = src; }
+Server&	Server::operator=( Server const & src )
 {
-	type = src.type;
+	(void) src;
 	return (*this);
 }
-Animal::~Animal() { std::cout << "Animal " << type << " destructor." << std::endl; }
+Server::~Server() {}
+
 void	start(void)
 {
 	int	listen_sk = socket(AF_INET, SOCK_STREAM, 0);
