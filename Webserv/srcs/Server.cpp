@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 12:05:03 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:07:15 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,7 @@ bool	Server::server_response(int i)
 		//break;
 	}
 	std::cout << "Data sent" << std::endl;
+	return (true);
 }
 
 bool	Server::client_request(int i)
@@ -209,6 +210,7 @@ bool	Server::client_request(int i)
 	std::cout 
 		<< "============================================="
 		<< std::endl;
+	return (true);
 }
 
 void	Server::connect_client_sk(int	i)
@@ -247,7 +249,6 @@ void	Server::start(void)
 		if (select_available_sk() == false)
 			break;
 		for (int i = 0; i <= max_sk && sk_ready > 0; ++i)
-		{
 			if (FD_ISSET(i, &working_set))
 			{
 				sk_ready--;
@@ -256,7 +257,6 @@ void	Server::start(void)
 				else
 					connect_client_sk(i);
 			}
-		}
 	} while (end_server == false);
 
 	for (int i = 0; i <= max_sk; ++i)
