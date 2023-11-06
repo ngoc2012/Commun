@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 10:49:24 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:53:35 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,7 @@ void	Server::start(void)
 						}
 						response[ret] = 0;
 						std::cout << "Client send: \n"
-						<< "============================================="
+						<< "=============================================\n"
 						<< response ;
 						//while (ret && ret > 0)
 						//{
@@ -225,6 +225,7 @@ void	Server::start(void)
 							"Content-Type: text/html\r\n"
 							"Connection: close\r\n"  // Close the connection after this response
 							"\r\n"  // End of headers
+							"<link rel=\"icon\" href=\"data:,\">"
 							"<html><body><h1>Hello, client!</h1></body></html>";
 						if (send(i, httpResponse, strlen(httpResponse), 0) < 0)
 						{
