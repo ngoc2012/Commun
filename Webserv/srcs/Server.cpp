@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 10:53:35 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:01:46 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,16 +156,80 @@ bool	Server::select_available_sk(void)
 	return (true);
 }
 
+void	Server::connect_client_sk(void)
+{
+	std::cout << "Socket " << i << " is readable." << std::endl;
+	//int	close_conn = 0;
+	//do
+	//{
+		char	response[BUFFER + 1];
+		//Receive data from client
+		std::cout << "Receive data from client" << std::endl;
+		int	ret = recv(i, response, BUFFER, 0);
+		if (ret < 0)
+		{
+			if (errno != EWOULDBLOCK)
+			{
+				perror("  recv() failed");
+				//close_conn = 1;
+			}
+			//break;
+		}
+		if (ret == 0)
+		{
+			std::cout << "  Connection closed" << std::endl;
+			//close_conn = 1;
+			//break;
+		}
+		response[ret] = 0;
+		std::cout << "Client send: \n"
+		<< "=============================================\n"
+		<< response ;
+		//while (ret && ret > 0)
+		//{
+		//	ret = recv(s_fd, response, BUFFER, 0);
+		//	response[ret] = 0;
+		//	std::cout << response ;
+		//}
+	
+		std::cout 
+		<< "============================================="
+		<< std::endl;
+		//Send back data
+		const char* httpResponse =
+			"HTTP/1.1 200 OK\r\n"
+			"Content-Type: text/html\r\n"
+			"Connection: close\r\n"  // Close the connection after this response
+			"\r\n"  // End of headers
+			"<link rel=\"icon\" href=\"data:,\">"
+			"<html><body><h1>Hello, client!</h1></body></html>";
+		if (send(i, httpResponse, strlen(httpResponse), 0) < 0)
+		{
+			perror("  send() failed");
+			//close_conn = 1;
+			//break;
+		}
+		std::cout << "Data sent" << std::endl;
+	
+	//} while (1);
+	
+	//if (close_conn)
+	//{
+		close(i);
+		FD_CLR(i, &master_set);
+		if (i == max_sk)
+			while (!FD_ISSET(max_sk, &master_set))
+				max_sk -= 1;
+	//}
+}
 void	Server::start(void)
 {
 	get_listen_sk();
 	bind_addr();
 
-
 	FD_ZERO(&master_set);
 	max_sk = listen_sk;
 	FD_SET(listen_sk, &master_set);
-
 
 	end_server = false;
 	do
@@ -181,71 +245,7 @@ void	Server::start(void)
 				if (i == listen_sk)
 					accept_client_sk();
 				else
-				{
-					std::cout << "Socket " << i << " is readable." << std::endl;
-					//int	close_conn = 0;
-					//do
-					//{
-						char	response[BUFFER + 1];
-						//Receive data from client
-						std::cout << "Receive data from client" << std::endl;
-						int	ret = recv(i, response, BUFFER, 0);
-						if (ret < 0)
-						{
-							if (errno != EWOULDBLOCK)
-							{
-								perror("  recv() failed");
-								//close_conn = 1;
-							}
-							//break;
-						}
-						if (ret == 0)
-						{
-							std::cout << "  Connection closed" << std::endl;
-							//close_conn = 1;
-							//break;
-						}
-						response[ret] = 0;
-						std::cout << "Client send: \n"
-						<< "=============================================\n"
-						<< response ;
-						//while (ret && ret > 0)
-						//{
-						//	ret = recv(s_fd, response, BUFFER, 0);
-						//	response[ret] = 0;
-						//	std::cout << response ;
-						//}
-
-						std::cout 
-						<< "============================================="
-						<< std::endl;
-						//Send back data
-						const char* httpResponse =
-							"HTTP/1.1 200 OK\r\n"
-							"Content-Type: text/html\r\n"
-							"Connection: close\r\n"  // Close the connection after this response
-							"\r\n"  // End of headers
-							"<link rel=\"icon\" href=\"data:,\">"
-							"<html><body><h1>Hello, client!</h1></body></html>";
-						if (send(i, httpResponse, strlen(httpResponse), 0) < 0)
-						{
-							perror("  send() failed");
-							//close_conn = 1;
-							//break;
-						}
-						std::cout << "Data sent" << std::endl;
-
-					//} while (1);
-
-					//if (close_conn)
-					//{
-						close(i);
-						FD_CLR(i, &master_set);
-						if (i == max_sk)
-							while (!FD_ISSET(max_sk, &master_set))
-								max_sk -= 1;
-					//}
-				}
+					connect_client_sk(i);
 			}
 		}
 	} while (end_server == false);
