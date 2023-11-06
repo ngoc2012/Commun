@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 09:29:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 09:31:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,14 @@ void	Server::get_listen_sk(void)
 	}
 }
 
-void	Server::start(void)
+void	bind_addr(void)
 {
-	init();
-
 	struct sockaddr_in	addr;
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(port);
 	addr.sin_addr.s_addr = inet_addr(ip_address);
 
-	std::cout << "Listening at " << IP_ADDRESS << ":" << PORT << std::endl;
+	std::cout << "Listening at " << ip_address << ":" << port << std::endl;
 
 	if (bind(listen_sk, (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
@@ -96,6 +94,12 @@ void	Server::start(void)
 		close(listen_sk);
 		exit(-1);
 	}
+
+}
+
+void	Server::start(void)
+{
+	get_listen_sk();
 
 	fd_set              master_set, working_set;
 
