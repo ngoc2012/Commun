@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 11:33:39 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:05:03 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ bool	Server::select_available_sk(void)
 	return (true);
 }
 
-void	Server::server_response(int i)
+bool	Server::server_response(int i)
 {
 	//Send back data
 	const char* httpResponse =
@@ -174,45 +174,50 @@ void	Server::server_response(int i)
 	std::cout << "Data sent" << std::endl;
 }
 
+bool	Server::client_request(int i)
+{
+	char	response[BUFFER + 1];
+	//Receive data from client
+	std::cout << "Receive data from client" << std::endl;
+	int	ret = recv(i, response, BUFFER, 0);
+	if (ret < 0)
+	{
+		if (errno != EWOULDBLOCK)
+		{
+			perror("  recv() failed");
+			//close_conn = 1;
+		}
+		//break;
+	}
+	if (ret == 0)
+	{
+		std::cout << "  Connection closed" << std::endl;
+		//close_conn = 1;
+		//break;
+	}
+	response[ret] = 0;
+	std::cout << "Client send: \n"
+		<< "=============================================\n"
+		<< response ;
+	//while (ret && ret > 0)
+	//{
+	//	ret = recv(s_fd, response, BUFFER, 0);
+	//	response[ret] = 0;
+	//	std::cout << response ;
+	//}
+
+	std::cout 
+		<< "============================================="
+		<< std::endl;
+}
+
 void	Server::connect_client_sk(int	i)
 {
 	std::cout << "Socket " << i << " is readable." << std::endl;
 	//int	close_conn = 0;
 	//do
 	//{
-		char	response[BUFFER + 1];
-		//Receive data from client
-		std::cout << "Receive data from client" << std::endl;
-		int	ret = recv(i, response, BUFFER, 0);
-		if (ret < 0)
-		{
-			if (errno != EWOULDBLOCK)
-			{
-				perror("  recv() failed");
-				//close_conn = 1;
-			}
-			//break;
-		}
-		if (ret == 0)
-		{
-			std::cout << "  Connection closed" << std::endl;
-			//close_conn = 1;
-			//break;
-		}
-		response[ret] = 0;
-		std::cout << "Client send: \n"
-		<< "=============================================\n"
-		<< response ;
-		//while (ret && ret > 0)
-		//{
-		//	ret = recv(s_fd, response, BUFFER, 0);
-		//	response[ret] = 0;
-		//	std::cout << response ;
-		//}
-	
-		std::cout 
-		<< "============================================="
-		<< std::endl;
+		client_request(i);
 		server_response(i);
 	
 	//} while (1);
