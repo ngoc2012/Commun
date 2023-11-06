@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 10:12:32 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:15:54 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Server::Server()
 {
 	char	ip[] = "127.0.0.1";
-	port = 42;
+	port = 4141;
 	ip_address = ip;
 	max_clients = 128;
 }
@@ -110,8 +110,8 @@ void	Server::accept_client_sk(void)
 		{
 			if (errno != EWOULDBLOCK)
 			{
-				perror("  accept() failed");
-				end_server = 1;
+				perror("accept() failed");
+				end_server = true;
 			}
 			break;
 		}
@@ -137,7 +137,7 @@ void	Server::start(void)
 	//timeout.tv_sec  = 3 * 60;
 	//timeout.tv_usec = 0;
 
-	end_server = 0;
+	end_server = false;
 	do
 	{
 		memcpy(&working_set, &master_set, sizeof(master_set));
@@ -240,7 +240,7 @@ void	Server::start(void)
 				}
 			}
 		}
-	} while (!end_server);
+	} while (end_server == false);
 
 	for (int i = 0; i <= max_sk; ++i)
 	{
