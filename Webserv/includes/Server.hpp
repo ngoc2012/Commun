@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 12:05:09 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:29:01 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ class Server
 		int			max_sk;
 		fd_set              	master_set, working_set;
 		bool			end_server;
+		ClientRequest		req;
 
 		void			get_listen_sk(void);
 		void			bind_addr(void);
