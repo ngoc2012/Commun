@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 09:29:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 09:33:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,10 @@
 #include <cstdio>	// perror
 #include <cstring>	// memcpy
 
-# define BUFFER	1028
-# define MAX_CLIENTS 128
-# define PORT 4242
-# define IP_ADDRESS "127.0.0.1"
-
 #ifndef SERVER_HPP
 # define SERVER_HPP
+
+# define BUFFER	1024
 
 #include <iostream>
 
@@ -43,6 +40,7 @@ class Server
 		int			listen_sk;
 
 		void			get_listen_sk(void);
+		void			bind_addr(void);
 	public:
 		Server();
 		Server(const Server&);

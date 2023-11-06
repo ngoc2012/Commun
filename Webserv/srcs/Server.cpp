@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 09:31:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 09:33:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	Server::get_listen_sk(void)
 	}
 }
 
-void	bind_addr(void)
+void	Server::bind_addr(void)
 {
 	struct sockaddr_in	addr;
 	addr.sin_family = AF_INET;
@@ -88,7 +88,7 @@ void	bind_addr(void)
 	}
 
 	//The  backlog  argument defines the maximum length to which the queue of pending connections for sockfd may grow.
-	if (listen(listen_sk, MAX_CLIENTS) < 0)
+	if (listen(listen_sk, max_clients) < 0)
 	{
 		perror("listen() failed");
 		close(listen_sk);
@@ -100,6 +100,7 @@ void	bind_addr(void)
 void	Server::start(void)
 {
 	get_listen_sk();
+	bind_addr();
 
 	fd_set              master_set, working_set;
 
