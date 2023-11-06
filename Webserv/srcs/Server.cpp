@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 17:42:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 17:55:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ bool	Server::client_request(int i)
 {
 	char	response[BUFFER + 1];
 	int	ret = 1;
+	std::string	s = "";
 
 	//Receive data from client
 	std::cout << "Receive data from client" << std::endl;
@@ -205,10 +206,10 @@ bool	Server::client_request(int i)
 		else
 		{
 			response[ret] = 0;
-			req.httpRequest += std::string(response);
+			s += std::string(response);
 		}
 	}
-
+	req.setHttpRequest(s);
 	std::cout << "Client send: \n"
 		<< "=============================================\n"
 		<< req.httpRequest;
