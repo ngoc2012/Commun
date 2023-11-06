@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/05 22:21:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 09:21:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Server::Server()
 {
 	port = "4242";
 	ip_address = "127.0.0.1";
-	max_clients = "128";
+	max_clients = 128;
 }
 Server::Server(const Server& src) { *this = src; }
 Server&	Server::operator=( Server const & src )
@@ -71,8 +71,8 @@ void	Server::start(void)
 
 	struct sockaddr_in	addr;
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(PORT);
-	addr.sin_addr.s_addr = inet_addr(IP_ADDRESS);
+	addr.sin_port = htons(port);
+	addr.sin_addr.s_addr = inet_addr(ip_address);
 
 	std::cout << "Listening at " << IP_ADDRESS << ":" << PORT << std::endl;
 
