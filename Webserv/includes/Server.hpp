@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 10:15:04 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:43:51 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class Server
 		char			*ip_address;
 
 		int			listen_sk;
+		int			sk_ready;
 		int			max_sk;
 		fd_set              	master_set, working_set;
 		bool			end_server;
