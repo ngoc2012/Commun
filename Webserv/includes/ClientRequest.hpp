@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 12:32:16 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:19:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class ClientRequest
 	public:
 		ClientRequest();
 		virtual ~ClientRequest();
+
+		void	clean(void);
 };
 
 #endif
