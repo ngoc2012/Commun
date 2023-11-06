@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 17:32:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 17:41:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,7 @@ bool	Server::client_request(int i)
 		else
 		{
 			response[ret] = 0;
-			req += std::string(response);
+			req = req + std::string(response);
 		}
 	}
 

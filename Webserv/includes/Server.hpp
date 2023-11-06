@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 13:28:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 17:41:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@
 #include <stdlib.h>
 #include <cstdio>	// perror
 #include <cstring>	// memcpy
+#include "ClientRequest.hpp"
 
 #ifndef SERVER_HPP
 # define SERVER_HPP
 
 # define BUFFER	1024
 
-#include <iostream>
 
 //https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
 
