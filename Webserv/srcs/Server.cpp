@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 11:02:16 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:30:22 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	Server::get_listen_sk(void)
 	}
 	//The  second  argument  is  a  device-dependent  request code.  The third argument is an untyped pointer to memory.  It's traditionally char *argp (from the days before void *  was  valid  C), and will be so named for this discussion.
 	//When FIONBIO is set, the socket is marked nonblocking
-	//https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
 	if (ioctl(listen_sk, FIONBIO, (char *)&on) < 0)
 	{
 		perror("non-blocking socket: ioctl() failed");
@@ -156,6 +155,25 @@ bool	Server::select_available_sk(void)
 	return (true);
 }
 
+void	server_response(int i)
+{
+	//Send back data
+	const char* httpResponse =
+		"HTTP/1.1 200 OK\r\n"
+		"Content-Type: text/html\r\n"
+		"Connection: close\r\n"  // Close the connection after this response
+		"\r\n"  // End of headers
+		"<link rel=\"icon\" href=\"data:,\">"
+		"<html><body><h1>Hello, client!</h1></body></html>";
+	if (send(i, httpResponse, strlen(httpResponse), 0) < 0)
+	{
+		perror("  send() failed");
+		//close_conn = 1;
+		//break;
+	}
+	std::cout << "Data sent" << std::endl;
+}
+
 void	Server::connect_client_sk(int	i)
 {
 	std::cout << "Socket " << i << " is readable." << std::endl;
@@ -195,21 +213,7 @@ void	Server::connect_client_sk(int	i)
 		std::cout 
 		<< "============================================="
 		<< std::endl;
-		//Send back data
-		const char* httpResponse =
-			"HTTP/1.1 200 OK\r\n"
-			"Content-Type: text/html\r\n"
-			"Connection: close\r\n"  // Close the connection after this response
-			"\r\n"  // End of headers
-			"<link rel=\"icon\" href=\"data:,\">"
-			"<html><body><h1>Hello, client!</h1></body></html>";
-		if (send(i, httpResponse, strlen(httpResponse), 0) < 0)
-		{
-			perror("  send() failed");
-			//close_conn = 1;
-			//break;
-		}
-		std::cout << "Data sent" << std::endl;
+		server_response(i);
 	
 	//} while (1);
 	
