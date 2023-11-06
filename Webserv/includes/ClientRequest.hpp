@@ -6,16 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 12:31:38 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:32:16 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-#ifndef SERVER_HPP
-# define SERVER_HPP
-
-#include <iostream>
+#ifndef CLIENTREQUEST_HPP
+# define CLIENTREQUEST_HPP
 
 class ClientRequest
 {
