@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 11:30:22 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:33:39 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ bool	Server::select_available_sk(void)
 	return (true);
 }
 
-void	server_response(int i)
+void	Server::server_response(int i)
 {
 	//Send back data
 	const char* httpResponse =
