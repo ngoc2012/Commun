@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Server.hpp                                         :+:      :+:    :+:   */
+/*   ClientRequest.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 12:05:09 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:22:59 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,31 +33,15 @@
 
 //https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
 
-class Server
+class ClientRequest
 {
 	private:
-		int			max_clients;
-		short unsigned int	port;
-		char			*ip_address;
-
-		int			listen_sk;
-		int			sk_ready;
-		int			max_sk;
-		fd_set              	master_set, working_set;
-		bool			end_server;
-
-		void			get_listen_sk(void);
-		void			bind_addr(void);
-		void			accept_client_sk(void);
-		bool			select_available_sk(void);
-		void			connect_client_sk(int);
-		bool			server_response(int);
-		bool			client_request(int);
+		std::string	httpRequest;
 	public:
-		Server();
-		Server(const Server&);
-		Server &operator=(const Server& op);
-		virtual ~Server();
+		ClientRequest();
+		ClientRequest(const ClientRequest&);
+		ClientRequest &operator=(const ClientRequest& op);
+		virtual ~ClientRequest();
 
 		void    start( void );
 };

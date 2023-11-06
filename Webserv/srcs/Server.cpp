@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 12:07:15 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:24:01 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,8 +178,17 @@ bool	Server::server_response(int i)
 bool	Server::client_request(int i)
 {
 	char	response[BUFFER + 1];
+	int	ret = 1;
 	//Receive data from client
 	std::cout << "Receive data from client" << std::endl;
+	std::cout << "Client send: \n"
+		<< "=============================================\n"
+		<< response ;
+	//while (ret && ret > 0)
+	//{
+	//	ret = recv(s_fd, response, BUFFER, 0);
+	//	response[ret] = 0;
+	//	std::cout << response ;
 	int	ret = recv(i, response, BUFFER, 0);
 	if (ret < 0)
 	{
@@ -197,14 +206,6 @@ bool	Server::client_request(int i)
 		//break;
 	}
 	response[ret] = 0;
-	std::cout << "Client send: \n"
-		<< "=============================================\n"
-		<< response ;
-	//while (ret && ret > 0)
-	//{
-	//	ret = recv(s_fd, response, BUFFER, 0);
-	//	response[ret] = 0;
-	//	std::cout << response ;
 	//}
 
 	std::cout 
