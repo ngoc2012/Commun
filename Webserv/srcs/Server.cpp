@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 09:25:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 09:27:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Server::~Server() {}
 
 void	Server::start(void)
 {
-	int	listen_sk = socket(AF_INET, SOCK_STREAM, 0);
+	listen_sk = socket(AF_INET, SOCK_STREAM, 0);
 	if (listen_sk < 0)
 	{
 		perror("listen socket() failed");
