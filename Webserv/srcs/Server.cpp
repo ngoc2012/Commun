@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 09:27:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 09:29:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Server&	Server::operator=( Server const & src )
 }
 Server::~Server() {}
 
-void	Server::start(void)
+void	Server::get_listen_sk(void)
 {
 	listen_sk = socket(AF_INET, SOCK_STREAM, 0);
 	if (listen_sk < 0)
@@ -69,6 +69,11 @@ void	Server::start(void)
 		close(listen_sk);
 		exit(-1);
 	}
+}
+
+void	Server::start(void)
+{
+	init();
 
 	struct sockaddr_in	addr;
 	addr.sin_family = AF_INET;

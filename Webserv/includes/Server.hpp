@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 09:27:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 09:29:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Server
 		char			*ip_address;
 		int			listen_sk;
 
-		void			init(void);
+		void			get_listen_sk(void);
 	public:
 		Server();
 		Server(const Server&);
