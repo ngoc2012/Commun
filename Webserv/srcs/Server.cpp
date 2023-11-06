@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 12:25:44 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:27:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,27 +183,24 @@ bool	Server::client_request(int i)
 	//Receive data from client
 	std::cout << "Receive data from client" << std::endl;
 	while (ret && ret > 0)
-	//{
-	//	ret = recv(s_fd, response, BUFFER, 0);
-	//	response[ret] = 0;
-	//	std::cout << response ;
-	int	ret = recv(i, response, BUFFER, 0);
-	if (ret < 0)
 	{
-		if (errno != EWOULDBLOCK)
+		ret = recv(i, response, BUFFER, 0);
+		if (ret < 0)
 		{
-			perror("  recv() failed");
-			//close_conn = 1;
+			if (errno != EWOULDBLOCK)
+			{
+				perror("  recv() failed");
+				//close_conn = 1;
+			}
+			//break;
 		}
-		//break;
-	}
-	if (ret == 0)
-	{
-		std::cout << "  Connection closed" << std::endl;
-		//close_conn = 1;
-		//break;
-	}
-	response[ret] = 0;
+		if (ret == 0)
+		{
+			std::cout << "  Connection closed" << std::endl;
+			//close_conn = 1;
+			//break;
+		}
+		response[ret] = 0;
 	}
 
 	std::cout << "Client send: \n"

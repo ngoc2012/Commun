@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Server.cpp                                         :+:      :+:    :+:   */
+/*   ClientRequest.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 12:07:15 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:26:04 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Server.hpp"
+#include "ClientRequest.hpp"
 
-Server::Server()
+ClientRequest::ClientRequest()
 {
 	char	ip[] = "127.0.0.1";
 	port = 4141;
 	ip_address = ip;
 	max_clients = 128;
 }
-Server::Server(const Server& src) { *this = src; }
-Server&	Server::operator=( Server const & src )
+ClientRequest::ClientRequest(const ClientRequest& src) { *this = src; }
+ClientRequest&	ClientRequest::operator=( ClientRequest const & src )
 {
 	(void) src;
 	return (*this);
 }
-Server::~Server() {}
+ClientRequest::~ClientRequest() {}
 
-void	Server::get_listen_sk(void)
+void	ClientRequest::get_listen_sk(void)
 {
 	listen_sk = socket(AF_INET, SOCK_STREAM, 0);
 	if (listen_sk < 0)
@@ -70,7 +70,7 @@ void	Server::get_listen_sk(void)
 	}
 }
 
-void	Server::bind_addr(void)
+void	ClientRequest::bind_addr(void)
 {
 	struct sockaddr_in	addr;
 	addr.sin_family = AF_INET;
@@ -96,7 +96,7 @@ void	Server::bind_addr(void)
 
 }
 
-void	Server::accept_client_sk(void)
+void	ClientRequest::accept_client_sk(void)
 {
 	int	new_sk;
 
@@ -121,7 +121,7 @@ void	Server::accept_client_sk(void)
 	} while (new_sk != -1);
 }
 
-bool	Server::select_available_sk(void)
+bool	ClientRequest::select_available_sk(void)
 {
 	// Time out 3 minutes
 	//struct timeval      timeout;
@@ -155,7 +155,7 @@ bool	Server::select_available_sk(void)
 	return (true);
 }
 
-bool	Server::server_response(int i)
+bool	ClientRequest::server_response(int i)
 {
 	//Send back data
 	const char* httpResponse =
@@ -175,7 +175,7 @@ bool	Server::server_response(int i)
 	return (true);
 }
 
-bool	Server::client_request(int i)
+bool	ClientRequest::client_request(int i)
 {
 	char	response[BUFFER + 1];
 	//Receive data from client
@@ -213,7 +213,7 @@ bool	Server::client_request(int i)
 	return (true);
 }
 
-void	Server::connect_client_sk(int	i)
+void	ClientRequest::connect_client_sk(int	i)
 {
 	std::cout << "Socket " << i << " is readable." << std::endl;
 	//int	close_conn = 0;
@@ -233,7 +233,7 @@ void	Server::connect_client_sk(int	i)
 				max_sk -= 1;
 	//}
 }
-void	Server::start(void)
+void	ClientRequest::start(void)
 {
 	get_listen_sk();
 	bind_addr();
