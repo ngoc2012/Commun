@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 17:22:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 17:25:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,16 +193,19 @@ bool	Server::client_request(int i)
 				perror("  recv() failed");
 				//close_conn = 1;
 			}
-			//break;
+			return (false);
 		}
-		if (ret == 0)
+		else if (ret == 0)
 		{
 			std::cout << "Connection closed" << std::endl;
 			//close_conn = 1;
 			//break;
 		}
-		response[ret] = 0;
-		req += std::string(response);
+		else
+		{
+			response[ret] = 0;
+			req += std::string(response);
+		}
 	}
 
 	std::cout << "Client send: \n"
