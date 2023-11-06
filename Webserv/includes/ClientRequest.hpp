@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 17:58:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 18:01:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class ClientRequest
 		void		clean(void);
 		void		setHttpRequest(std::string);
 
-		std::string	ClientRequest::getHttpRequest(void);
+		std::string	getHttpRequest(void);
 };
 
 #endif

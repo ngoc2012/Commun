@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 17:55:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 18:01:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,7 @@ bool	Server::client_request(int i)
 	req.setHttpRequest(s);
 	std::cout << "Client send: \n"
 		<< "=============================================\n"
-		<< req.httpRequest;
+		<< req.getHttpRequest();
 	std::cout 
 		<< "============================================="
 		<< std::endl;
