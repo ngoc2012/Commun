@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 17:56:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 18:03:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ ClientRequest&	ClientRequest::operator=( ClientRequest const & src )
 	return (*this);
 }
 ClientRequest::~ClientRequest() {}
-ClientRequest::clean()
+void	ClientRequest::clean()
 {
 	httpRequest = "";
-	methode = "";
+	method = "";
 	url = "";
 }
 std::string	ClientRequest::getHttpRequest(void) {return (httpRequest);}
