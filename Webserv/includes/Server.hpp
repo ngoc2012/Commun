@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 09:33:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 09:34:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ class Server
 		int			max_clients;
 		short unsigned int	port;
 		char			*ip_address;
+
 		int			listen_sk;
+		fd_set              	master_set, working_set;
 
 		void			get_listen_sk(void);
 		void			bind_addr(void);
