@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 17:41:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 18:13:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 #ifndef SERVER_HPP
 # define SERVER_HPP
 
-# define BUFFER	1024
+# define BUFFER	4
 
 
 //https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
