@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 09:36:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 10:09:26 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,31 @@ void	Server::bind_addr(void)
 
 }
 
+void	Server::accept_client_sk(void)
+{
+	int	new_sk;
+
+	//Accept all the new connections, create a new socket and add to the master set
+	std::cout << "Listening socket is readable" << std::endl;
+	do
+	{
+		new_sk = accept(listen_sk, NULL, NULL);
+		if (new_sk < 0)
+		{
+			if (errno != EWOULDBLOCK)
+			{
+				perror("  accept() failed");
+				end_server = 1;
+			}
+			break;
+		}
+		std::cout << "  New incoming connection - " << new_sk << std::endl;
+		FD_SET(new_sk, &master_set);
+		if (new_sk > max_sk)
+			max_sk = new_sk;
+	} while (new_sk != -1);
+}
+
 void	Server::start(void)
 {
 	get_listen_sk();
@@ -113,7 +138,6 @@ void	Server::start(void)
 	//timeout.tv_usec = 0;
 
 	int	end_server = 0;
-	int	new_sk;
 	do
 	{
 		memcpy(&working_set, &master_set, sizeof(master_set));
@@ -148,27 +172,7 @@ void	Server::start(void)
 			{
 				sk_ready--;
 				if (i == listen_sk)
-				{
-					//Accept all the new connections, create a new socket and add to the master set
-					std::cout << "Listening socket is readable" << std::endl;
-					do
-					{
-						new_sk = accept(listen_sk, NULL, NULL);
-						if (new_sk < 0)
-						{
-							if (errno != EWOULDBLOCK)
-							{
-								perror("  accept() failed");
-								end_server = 1;
-							}
-							break;
-						}
-						std::cout << "  New incoming connection - " << new_sk << std::endl;
-						FD_SET(new_sk, &master_set);
-						if (new_sk > max_sk)
-							max_sk = new_sk;
-					} while (new_sk != -1);
-				}
+					accept_client_sk();
 				else
 				{
 					std::cout << "Socket " << i << " is readable." << std::endl;
