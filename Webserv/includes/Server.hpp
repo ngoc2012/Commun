@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 11:01:59 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:27:43 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define BUFFER	1024
 
 #include <iostream>
+
+//https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
 
 class Server
 {
