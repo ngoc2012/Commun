@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 09:21:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 09:25:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 Server::Server()
 {
-	port = "4242";
-	ip_address = "127.0.0.1";
+	char	ip[] = "127.0.0.1";
+	port = 4242;
+	ip_address = ip;
 	max_clients = 128;
 }
 Server::Server(const Server& src) { *this = src; }
