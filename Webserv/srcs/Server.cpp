@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 09:33:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 09:36:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ void	Server::start(void)
 	get_listen_sk();
 	bind_addr();
 
-	fd_set              master_set, working_set;
 
 	FD_ZERO(&master_set);
 	int	max_sk = listen_sk;
