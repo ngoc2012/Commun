@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 17:30:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 17:32:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ bool	Server::client_request(int i)
 	while (ret && ret > 0)
 	{
 		ret = recv(i, response, BUFFER, 0);
-		std::cout << ret;
+		std::cout << "ret: " << ret << std::endl;
 		if (ret < 0)
 		{
 			if (errno != EWOULDBLOCK)
