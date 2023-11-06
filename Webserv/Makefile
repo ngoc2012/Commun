@@ -6,11 +6,12 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/05 22:01:55 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/06 17:34:58 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = srcs/main.cpp srcs/Server.cpp
+SRCS = main.cpp Server.cpp ClientRequest.cpp
+SRCS = $(addprefix srcs/, $(SRCS))
 SRCS2 = srcs/client.cpp
 OBJS = ${SRCS:.cpp=.o}
 OBJS2 = ${SRCS2:.cpp=.o}
