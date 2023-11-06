@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 12:26:35 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 12:31:38 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,20 @@
 #ifndef SERVER_HPP
 # define SERVER_HPP
 
-# define BUFFER	1024
-
 #include <iostream>
-
-//https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
 
 class ClientRequest
 {
 	private:
 		std::string	httpRequest;
-	public:
-		ClientRequest();
+		std::string	method;
+		std::string	url;
+
 		ClientRequest(const ClientRequest&);
 		ClientRequest &operator=(const ClientRequest& op);
+	public:
+		ClientRequest();
 		virtual ~ClientRequest();
-
-		void    start( void );
 };
 
 #endif
