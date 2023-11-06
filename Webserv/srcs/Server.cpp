@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 10:09:26 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:11:29 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	Server::start(void)
 
 
 	FD_ZERO(&master_set);
-	int	max_sk = listen_sk;
+	max_sk = listen_sk;
 	FD_SET(listen_sk, &master_set);
 
 	// Time out 3 minutes
@@ -137,7 +137,7 @@ void	Server::start(void)
 	//timeout.tv_sec  = 3 * 60;
 	//timeout.tv_usec = 0;
 
-	int	end_server = 0;
+	end_server = 0;
 	do
 	{
 		memcpy(&working_set, &master_set, sizeof(master_set));
