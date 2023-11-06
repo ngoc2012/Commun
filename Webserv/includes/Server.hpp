@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 09:34:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/06 10:07:54 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class Server
 
 		void			get_listen_sk(void);
 		void			bind_addr(void);
+		void			accept_client_sk(void);
 	public:
 		Server();
 		Server(const Server&);
