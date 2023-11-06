@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 10:47:20 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/11/06 10:49:24 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	Server::accept_client_sk(void)
 	} while (new_sk != -1);
 }
 
-void	Server::select_available_sk(void)
+bool	Server::select_available_sk(void)
 {
 	// Time out 3 minutes
 	//struct timeval      timeout;
@@ -197,13 +197,13 @@ void	Server::start(void)
 								perror("  recv() failed");
 								//close_conn = 1;
 							}
-							break;
+							//break;
 						}
 						if (ret == 0)
 						{
 							std::cout << "  Connection closed" << std::endl;
 							//close_conn = 1;
-							break;
+							//break;
 						}
 						response[ret] = 0;
 						std::cout << "Client send: \n"
@@ -230,7 +230,7 @@ void	Server::start(void)
 						{
 							perror("  send() failed");
 							//close_conn = 1;
-							break;
+							//break;
 						}
 						std::cout << "Data sent" << std::endl;
 
