@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 23:01:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/08 23:45:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 Server::Server()
 {
 	char	ip[] = "127.0.0.1";
-	port = 4242;
-	ip_address = ip;
-	max_clients = 128;
+	_port = 4242;
+	_ip_address = ip;
+	_max_clients = 128;
 }
 Server::Server(const Server& src) { *this = src; }
 Server&	Server::operator=( Server const & src )
@@ -29,48 +29,22 @@ Server::~Server() {}
 
 void	Server::get_listen_sk(void)
 {
-	listen_sk = socket(AF_INET, SOCK_STREAM, 0);
-	if (listen_sk < 0)
+	int    on = 1;
+
+	_listen_sk = socket(AF_INET, SOCK_STREAM, 0);
+	if (_listen_sk < 0)
 	{
-		perror("listen socket() failed");
+		perror("listen socket: socket() failed");
 		exit(-1);
 	}
-	int    on = 1;
-	//To manipulate options at the sockets API level, level is specified as SOL_SOCKET.
-	/*
-	Socket options can be set at different levels, depending on the scope of their effect. The two most common levels are:
-
-    Socket-Level Options (SOL_SOCKET): These options apply to the socket as a whole and control general socket behavior. They affect how the socket operates at the transport layer of the network stack. Some common socket-level options include:
-        SO_REUSEADDR: Allows multiple sockets to bind to the same local address and port.
-        SO_KEEPALIVE: Enables the sending of keep-alive messages to check if the connection is still alive.
-        SO_RCVBUF and SO_SNDBUF: Control the receive and send buffer sizes for the socket.
-        SO_LINGER: Specifies the behavior of the socket when it is closed (e.g., whether to wait for unsent data to be sent).
-
-    IP-Level Options (SOL_IP or IPPROTO_IP): These options apply specifically to IP (Internet Protocol) sockets and control aspects related to IP networking. They affect how the IP layer handles the data. Some common IP-level options include:
-        IP_TTL: Sets the Time-To-Live (TTL) value for outgoing IP packets.
-        IP_TOS: Specifies the Type of Service (TOS) field for outgoing IP packets.
-        IP_MULTICAST_TTL: Sets the TTL for multicast packets.
-        IP_ADD_MEMBERSHIP and IP_DROP_MEMBERSHIP: Used for joining and leaving multicast groups.
-	*/
-	//The arguments optval and optlen are used to access option values for  setsockopt(). 
-	if (setsockopt(listen_sk, SOL_SOCKET,  SO_REUSEADDR,
+	if (setsockopt(_listen_sk, SOL_SOCKET,  SO_REUSEADDR,
                    (char *)&on, sizeof(on)) < 0)
 	{
 		perror("reusable socket: setsockopt() failed");
-		close(listen_sk);
+		close(_listen_sk);
 		exit(-1);
 	}
-	//The  second  argument  is  a  device-dependent  request code.  The third argument is an untyped pointer to memory.  It's traditionally char *argp (from the days before void *  was  valid  C), and will be so named for this discussion.
-	//When FIONBIO is set, the socket is marked nonblocking
-	
-	//if (ioctl(listen_sk, FIONBIO, (char *)&on) < 0)
-	//{
-	//	perror("non-blocking socket: ioctl() failed");
-	//	close(listen_sk);
-	//	exit(-1);
-	//}
-	
-	fcntl(listen_sk, F_SETFL, O_NONBLOCK);	// ioctl not allowed
+	fcntl(_listen_sk, F_SETFL, O_NONBLOCK);	// ioctl not allowed
 }
 
 void	Server::bind_addr(void)
