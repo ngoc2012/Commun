@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 23:02:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/08 23:05:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@
 class Server
 {
 	private:
-		int			max_clients;
-		short unsigned int	port;
-		char			*ip_address;
+		int			_max_clients;
+		short unsigned int	_port;
+		char			*_ip_address;
 
-		int			listen_sk;
-		int			sk_ready;
-		int			max_sk;
-		fd_set              	master_set, working_set;
-		bool			end_server;
-		ClientRequest		req;
+		int			_listen_sk;
+		int			_sk_ready;
+		int			_max_sk;
+		fd_set              	_master_set, working_set;
+		bool			_end_server;
+		ClientRequest		_req;
 
 		void			get_listen_sk(void);
 		void			bind_addr(void);
@@ -56,6 +56,7 @@ class Server
 		void			connect_client_sk(int);
 		void			server_response(int);
 		void			client_request(int);
+		void			close_connection(int);
 	public:
 		Server();
 		Server(const Server&);
