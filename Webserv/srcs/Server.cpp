@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 00:07:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 00:09:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ bool	Server::select_available_sk(void)
 {
 	std::cout << "Waiting on select() ..." << std::endl;
 	// No timeout
-	sk_ready = select(_max_sk + 1, &_working_set, NULL, NULL, NULL);
-	if (sk_ready < 0)
+	_sk_ready = select(_max_sk + 1, &_working_set, NULL, NULL, NULL);
+	if (_sk_ready < 0)
 	{
 		perror("working set select() failed");
 		return (false);
@@ -126,7 +126,6 @@ void	Server::server_response(int i)
 		//break;
 	}
 	std::cout << "Data sent" << std::endl;
-	return (true);
 }
 
 void	Server::client_request(int i)
