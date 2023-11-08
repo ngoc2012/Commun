@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 22:21:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/08 23:02:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ class Server
 		void			accept_client_sk(void);
 		bool			select_available_sk(void);
 		void			connect_client_sk(int);
-		bool			server_response(int);
+		void			server_response(int);
 		void			client_request(int);
 	public:
 		Server();
