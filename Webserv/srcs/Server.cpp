@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 15:21:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/08 15:27:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ void	Server::accept_client_sk(void)
 			}
 			break;
 		}
+		fcntl(new_sk, F_SETFL, O_NONBLOCK);
 		std::cout << "  New incoming connection - " << new_sk << std::endl;
 		FD_SET(new_sk, &master_set);
 		if (new_sk > max_sk)
@@ -187,8 +188,8 @@ bool	Server::client_request(int i)
 	//Receive data from client
 	std::cout << "Receive data from client" << std::endl;
 	req.clean();
-	//while (ret && ret > 0)
-	//{
+	while (ret && ret > 0)
+	{
 		ret = recv(i, response, BUFFER, 0);
 		std::cout << "ret: " << ret << std::endl;
 		if (ret < 0)
@@ -212,7 +213,7 @@ bool	Server::client_request(int i)
 			std::cout << "response: " << response << std::endl;
 			s += std::string(response);
 		}
-	//}
+	}
 	req.setHttpRequest(s);
 	std::cout << "Client send: \n"
 		<< "=============================================\n"
