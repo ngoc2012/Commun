@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 22:18:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/08 22:22:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ bool	Server::server_response(int i)
 	return (true);
 }
 
-bool	Server::client_request(int i)
+void	Server::client_request(int i)
 {
 	char	response[BUFFER + 1];
 	int	ret = 1;
@@ -195,16 +195,12 @@ bool	Server::client_request(int i)
 		if (ret < 0)
 		{
 			if (errno != EWOULDBLOCK)
-			{
 				perror("  recv() failed");
-				//close_conn = 1;
-			}
 			return (false);
 		}
 		else if (ret == 0)
 		{
 			std::cout << "Connection closed" << std::endl;
-			//close_conn = 1;
 			break;
 		}
 		else
