@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 22:16:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/08 22:18:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,12 +228,13 @@ void	Server::connect_client_sk(int	i)
 {
 	std::cout << "Socket " << i << " is readable." << std::endl;
 	//int	close_conn = 0;
-	//do
-	//{
-		client_request(i);
+	do
+	{
+		if (client_request(i) == false)
+			break;
 		server_response(i);
 	
-	//} while (1);
+	} while (true);
 	
 	//if (close_conn)
 	//{
