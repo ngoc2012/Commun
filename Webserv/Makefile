@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/08 15:33:29 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/08 15:35:52 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,10 +17,10 @@ OBJS = ${SRCS:.cpp=.o}
 MANDA = server
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-all:	$(SERVER) $(CLIENT)
+all:	$(MANDA)
 .cpp.o:
 	$(CC) $(FLAGS) -g -c $< -o ${<:.cpp=.o} -I./includes
-$(MANDA): $(SRCS) $(OBJS) $(INCS)
+$(MANDA): $(SRCS) $(OBJS)
 	$(CC) $(FLAGS) $(OBJS) -o $(SERVER)
 test:
 	make re && valgrind ./server
@@ -31,8 +31,8 @@ gits:
 	git commit -m "all"
 	git push
 clean:
-	rm -f $(MANDA)
 	rm -f $(OBJS)
 fclean: clean
+	rm -f $(MANDA)
 re: fclean all
 .PHONY: all clean fclean re
