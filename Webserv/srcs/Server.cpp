@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 00:09:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 00:11:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void	Server::client_request(int i)
 
 	//Receive data from client
 	std::cout << "Receive data from client" << std::endl;
-	req.clean();
+	_req.clean();
 	while (ret && ret > 0)
 	{
 		ret = recv(i, response, BUFFER, 0);
@@ -144,27 +144,20 @@ void	Server::client_request(int i)
 		{
 			if (errno != EWOULDBLOCK)
 				perror("  recv() failed");
-			return (false);
+			return ;
 		}
 		else if (ret == 0)
 		{
 			std::cout << "Connection closed" << std::endl;
-			break;
+			return ;
 		}
 		else
 		{
 			response[ret] = 0;
 			s += std::string(response);
+			_req.setHttpRequest(s);
 		}
 	}
-	req.setHttpRequest(s);
-	std::cout << "Client send: \n"
-		<< "=============================================\n"
-		<< req.getHttpRequest();
-	std::cout 
-		<< "============================================="
-		<< std::endl;
-	return (true);
 }
 
 void	Server::close_connection(int i)
@@ -180,6 +173,12 @@ void	Server::connect_client_sk(int i)
 {
 	std::cout << "Socket " << i << " is readable." << std::endl;
 	client_request(i);
+	std::cout << "Client send: \n"
+		<< "=============================================\n"
+		<< _req.getHttpRequest();
+	std::cout 
+		<< "============================================="
+		<< std::endl;
 	server_response(i);
 	close_connection(i);
 }
