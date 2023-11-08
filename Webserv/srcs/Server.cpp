@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 23:58:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 00:05:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,30 +189,30 @@ void	Server::start(void)
 	get_listen_sk();
 	bind_addr();
 
-	FD_ZERO(&master_set);
-	max_sk = listen_sk;
-	FD_SET(listen_sk, &master_set);
+	FD_ZERO(&_master_set);
+	_max_sk = _listen_sk;
+	FD_SET(_listen_sk, &_master_set);
 
 	end_server = false;
 	do
 	{
-		memcpy(&working_set, &master_set, sizeof(master_set));
+		memcpy(&_working_set, &_master_set, sizeof(_master_set));
 		if (select_available_sk() == false)
 			break;
-		for (int i = 0; i <= max_sk && sk_ready > 0; ++i)
-			if (FD_ISSET(i, &working_set))
+		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
+			if (FD_ISSET(i, &_working_set))
 			{
-				sk_ready--;
-				if (i == listen_sk)
+				_sk_ready--;
+				if (i == _listen_sk)
 					accept_client_sk();
 				else
 					connect_client_sk(i);
 			}
 	} while (end_server == false);
 
-	for (int i = 0; i <= max_sk; ++i)
+	for (int i = 0; i <= _max_sk; ++i)
 	{
-		if (FD_ISSET(i, &master_set))
+		if (FD_ISSET(i, &_master_set))
 			close(i);
 	}
 	std::cout << "End server" << std::endl;
