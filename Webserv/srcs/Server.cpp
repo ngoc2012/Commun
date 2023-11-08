@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 00:05:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 00:07:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	Server::bind_addr(void)
 		close(_listen_sk);
 		exit(-1);
 	}
-	if (listen(_listen_sk, max_clients) < 0)
+	if (listen(_listen_sk, _max_clients) < 0)
 	{
 		perror("listen() failed");
 		close(_listen_sk);
@@ -84,7 +84,7 @@ void	Server::accept_client_sk(void)
 			if (errno != EWOULDBLOCK)
 			{
 				perror("accept() failed");
-				end_server = true;
+				//end_server = true;
 			}
 			break;
 		}

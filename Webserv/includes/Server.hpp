@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 23:05:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 00:07:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ class Server
 		int			_listen_sk;
 		int			_sk_ready;
 		int			_max_sk;
-		fd_set              	_master_set, working_set;
+		fd_set              	_master_set;
+		fd_set              	_working_set;
 		bool			_end_server;
 		ClientRequest		_req;
 
