@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 23:52:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/08 23:54:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	Server::accept_client_sk(void)
 	std::cout << "Listening socket is readable" << std::endl;
 	do
 	{
-		new_sk = accept(listen_sk, NULL, NULL);
+		new_sk = accept(_listen_sk, NULL, NULL);
 		if (new_sk < 0)
 		{
 			if (errno != EWOULDBLOCK)
@@ -90,43 +90,22 @@ void	Server::accept_client_sk(void)
 		}
 		fcntl(new_sk, F_SETFL, O_NONBLOCK);
 		std::cout << "  New incoming connection - " << new_sk << std::endl;
-		FD_SET(new_sk, &master_set);
-		if (new_sk > max_sk)
-			max_sk = new_sk;
+		FD_SET(new_sk, &_master_set);
+		if (new_sk > _max_sk)
+			_max_sk = new_sk;
 	} while (new_sk != -1);
 }
 
 bool	Server::select_available_sk(void)
 {
-	// Time out 3 minutes
-	//struct timeval      timeout;
-	//timeout.tv_sec  = 3 * 60;
-	//timeout.tv_usec = 0;
-	/*
-	   select()  allows  a  program to monitor multiple file descriptors, waiting until one or more of the file descriptors become "ready" for some class of I/O operation (e.g., input possible).   A file  descriptor is considered ready if it is possible to perform a corresponding I/O operation (e.g., read(2), or a sufficiently small write(2)) without blocking
-	   nfds   This  argument should be set to the highest-numbered file descriptor in any of the three sets, plus 1.  The indicated file descriptors in each set are checked, up to this  limit (but see BUGS).
-	   timeout
-	   The  timeout  argument  is a timeval structure (shown below) that specifies the interval that select() should block waiting for a file descriptor to become ready.  The call will block until either:
-	   • a file descriptor becomes ready;
-	   • the call is interrupted by a signal handler; or
-	   • the timeout expires.
-	   Note  that  the timeout interval will be rounded up to the system clock granularity, and kernel scheduling delays mean that the blocking interval may overrun by a small amount.
-	   If both fields of the timeval structure are zero,  then  select()  returns  immediately.  (This is useful for polling.)
-	   If  timeout  is  specified  as NULL, select() blocks indefinitely waiting for a file de‐ scriptor to become ready.
-	 */
-	//int	sk_ready = select(max_sk + 1, &working_set, NULL, NULL, &timeout);
 	std::cout << "Waiting on select() ..." << std::endl;
-	sk_ready = select(max_sk + 1, &working_set, NULL, NULL, NULL);
+	// No timeout
+	sk_ready = select(_max_sk + 1, &_working_set, NULL, NULL, NULL);
 	if (sk_ready < 0)
 	{
 		perror("working set select() failed");
 		return (false);
 	}
-	//if (!sk_ready)
-	//{
-	//	perror("working set select() time out.");
-	//	break;
-	//}
 	return (true);
 }
 
