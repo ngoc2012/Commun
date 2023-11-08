@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 15:01:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/08 15:03:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,7 @@ void	Server::get_listen_sk(void)
 		close(listen_sk);
 		exit(-1);
 	}
-	//The  second  argument  is  a  device-dependent  request code.  The third argument is an untyped pointer to memory.  It's traditionally char *argp (from the days before void *  was  valid  C), and will be so named for this discussion.
-	//When FIONBIO is set, the socket is marked nonblocking
-	/*
-	if (ioctl(listen_sk, FIONBIO, (char *)&on) < 0)
-	{
-		perror("non-blocking socket: ioctl() failed");
-		close(listen_sk);
-		exit(-1);
-	}
-	*/
-	fcntl(listen_sk, F_SETFL, O_NONBLOCK);
+	fcntl(listen_sk, F_SETFL, O_NONBLOCK);	// ioctl not allowed
 }
 
 void	Server::bind_addr(void)
