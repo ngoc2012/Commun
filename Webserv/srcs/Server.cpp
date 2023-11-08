@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 23:54:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/08 23:58:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,16 +168,21 @@ void	Server::client_request(int i)
 	return (true);
 }
 
-void	Server::connect_client_sk(int	i)
+void	Server::close_connection(int i)
+{
+	close(i);
+	FD_CLR(i, &_master_set);
+	if (i == _max_sk)
+		while (!FD_ISSET(_max_sk, &_master_set))
+			_max_sk -= 1;
+}
+
+void	Server::connect_client_sk(int i)
 {
 	std::cout << "Socket " << i << " is readable." << std::endl;
 	client_request(i);
 	server_response(i);
-		close(i);
-		FD_CLR(i, &master_set);
-		if (i == max_sk)
-			while (!FD_ISSET(max_sk, &master_set))
-				max_sk -= 1;
+	close_connection(i);
 }
 void	Server::start(void)
 {
