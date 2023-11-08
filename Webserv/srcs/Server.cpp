@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 22:14:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/08 22:16:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,8 +199,7 @@ bool	Server::client_request(int i)
 				perror("  recv() failed");
 				//close_conn = 1;
 			}
-			//return (false);
-			break;
+			return (false);
 		}
 		else if (ret == 0)
 		{
