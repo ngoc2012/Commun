@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 00:14:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 00:17:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,51 @@ Server::Server()
 	_ip_address = ip;
 	_max_clients = 128;
 }
+
 Server::Server(const Server& src) { *this = src; }
+
 Server&	Server::operator=( Server const & src )
 {
 	(void) src;
 	return (*this);
 }
+
 Server::~Server() {}
+
+void	Server::start(void)
+{
+	get_listen_sk();
+	bind_addr();
+
+	FD_ZERO(&_master_set);
+	_max_sk = _listen_sk;
+	FD_SET(_listen_sk, &_master_set);
+
+	//end_server = false;
+	do
+	{
+		memcpy(&_working_set, &_master_set, sizeof(_master_set));
+		if (select_available_sk() == false)
+			break;
+		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
+			if (FD_ISSET(i, &_working_set))
+			{
+				_sk_ready--;
+				if (i == _listen_sk)
+					accept_client_sk();
+				else
+					connect_client_sk(i);
+			}
+	} while (true);
+	//} while (end_server == false);
+
+	for (int i = 0; i <= _max_sk; ++i)
+	{
+		if (FD_ISSET(i, &_master_set))
+			close(i);
+	}
+	std::cout << "End server" << std::endl;
+}
 
 void	Server::get_listen_sk(void)
 {
@@ -181,38 +219,4 @@ void	Server::connect_client_sk(int i)
 		<< std::endl;
 	server_response(i);
 	close_connection(i);
-}
-void	Server::start(void)
-{
-	get_listen_sk();
-	bind_addr();
-
-	FD_ZERO(&_master_set);
-	_max_sk = _listen_sk;
-	FD_SET(_listen_sk, &_master_set);
-
-	//end_server = false;
-	do
-	{
-		memcpy(&_working_set, &_master_set, sizeof(_master_set));
-		if (select_available_sk() == false)
-			break;
-		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
-			if (FD_ISSET(i, &_working_set))
-			{
-				_sk_ready--;
-				if (i == _listen_sk)
-					accept_client_sk();
-				else
-					connect_client_sk(i);
-			}
-	} while (true);
-	//} while (end_server == false);
-
-	for (int i = 0; i <= _max_sk; ++i)
-	{
-		if (FD_ISSET(i, &_master_set))
-			close(i);
-	}
-	std::cout << "End server" << std::endl;
 }
