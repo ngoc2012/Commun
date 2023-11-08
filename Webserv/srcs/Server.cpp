@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 00:11:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 00:12:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ void	Server::start(void)
 	_max_sk = _listen_sk;
 	FD_SET(_listen_sk, &_master_set);
 
-	end_server = false;
+	//end_server = false;
 	do
 	{
 		memcpy(&_working_set, &_master_set, sizeof(_master_set));
