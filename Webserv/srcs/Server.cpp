@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 00:12:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 00:14:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,7 +206,8 @@ void	Server::start(void)
 				else
 					connect_client_sk(i);
 			}
-	} while (end_server == false);
+	} while (true);
+	//} while (end_server == false);
 
 	for (int i = 0; i <= _max_sk; ++i)
 	{
