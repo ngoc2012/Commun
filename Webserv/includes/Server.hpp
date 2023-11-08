@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 15:02:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/08 15:04:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <netinet/in.h>
 #include <errno.h>
 #include <fcntl.h>	// fcntl
+#include <sys/ioctl.h>	// fcntl
 
 #include <stdlib.h>
 #include <cstdio>	// perror
