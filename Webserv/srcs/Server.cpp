@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/08 22:22:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/08 23:01:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ bool	Server::select_available_sk(void)
 	return (true);
 }
 
-bool	Server::server_response(int i)
+void	Server::server_response(int i)
 {
 	//Send back data
 	const char* httpResponse =
@@ -191,7 +191,6 @@ void	Server::client_request(int i)
 	while (ret && ret > 0)
 	{
 		ret = recv(i, response, BUFFER, 0);
-		//std::cout << "ret: " << ret << std::endl;
 		if (ret < 0)
 		{
 			if (errno != EWOULDBLOCK)
@@ -206,7 +205,6 @@ void	Server::client_request(int i)
 		else
 		{
 			response[ret] = 0;
-			//std::cout << "response: " << response << std::endl;
 			s += std::string(response);
 		}
 	}
@@ -223,23 +221,13 @@ void	Server::client_request(int i)
 void	Server::connect_client_sk(int	i)
 {
 	std::cout << "Socket " << i << " is readable." << std::endl;
-	//int	close_conn = 0;
-	do
-	{
-		if (client_request(i) == false)
-			break;
-		server_response(i);
-	
-	} while (true);
-	
-	//if (close_conn)
-	//{
+	client_request(i);
+	server_response(i);
 		close(i);
 		FD_CLR(i, &master_set);
 		if (i == max_sk)
 			while (!FD_ISSET(max_sk, &master_set))
 				max_sk -= 1;
-	//}
 }
 void	Server::start(void)
 {
