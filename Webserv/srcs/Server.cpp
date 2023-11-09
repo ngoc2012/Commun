@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 00:17:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 21:47:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,13 @@ void	Server::start(void)
 
 void	Server::get_listen_sk(void)
 {
-	int    on = 1;
-
 	_listen_sk = socket(AF_INET, SOCK_STREAM, 0);
 	if (_listen_sk < 0)
 	{
 		perror("listen socket: socket() failed");
 		exit(-1);
 	}
+	int    on = 1;
 	if (setsockopt(_listen_sk, SOL_SOCKET,  SO_REUSEADDR,
                    (char *)&on, sizeof(on)) < 0)
 	{
@@ -150,14 +149,14 @@ bool	Server::select_available_sk(void)
 void	Server::server_response(int i)
 {
 	//Send back data
-	const char* httpResponse =
+	const char* http_response =
 		"HTTP/1.1 200 OK\r\n"
 		"Content-Type: text/html\r\n"
 		"Connection: close\r\n"  // Close the connection after this response
 		"\r\n"  // End of headers
 		"<link rel=\"icon\" href=\"data:,\">"
 		"<html><body><h1>Hello, client!</h1></body></html>";
-	if (send(i, httpResponse, strlen(httpResponse), 0) < 0)
+	if (send(i, http_response, strlen(http_response), 0) < 0)
 	{
 		perror("  send() failed");
 		//close_conn = 1;
