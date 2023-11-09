@@ -2,6 +2,8 @@
 
 ## Naming conventions
 
+[Google rules](https://google.github.io/styleguide/cppguide.html)
+
 - Class names, struct:  ThisIsMyClass
 - Function names:       this\_is\_a\_function
 - Constants, macros:    CONSTANTS\_MACRO
