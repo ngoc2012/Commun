@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 22:17:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 22:18:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ class Server
 		void			server_response(int);
 		void			get_client_request(int);
 		void			close_connection(int);
-		void			end_server(int);
+		void			end_server(void);
 	public:
 		Server();
 		Server(const Server&);
