@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 21:51:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 21:55:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,9 @@
 
 #ifndef SERVER_HPP
 # define SERVER_HPP
-
 # define BUFFER	4
 
-
 //https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
-
 class Server
 {
 	private:
@@ -47,8 +44,8 @@ class Server
 		int			_max_sk;
 		fd_set              	_master_set;
 		fd_set              	_working_set;
-		//bool			_end_server;
 		ClientRequest		_request;
+		//bool			_end_server;
 
 		void			get_listen_sk(void);
 		void			bind_addr(void);
