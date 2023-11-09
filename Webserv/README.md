@@ -7,7 +7,7 @@
 - Class names, struct:  ThisIsMyClass
 - Function names:       this\_is\_a\_function
 - Constants, macros:    CONSTANTS\_MACRO
-- Class attributes:     \_attributesOfClass
+- Class attributes:     \_attributes\_of\_class
 
 ## Basics tests
 
