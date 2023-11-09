@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/06 18:01:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 08:41:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class ClientRequest
 {
 	private:
-		std::string	httpRequest;
+		std::string	_httpRequest;
 		std::string	method;
 		std::string	url;
 
