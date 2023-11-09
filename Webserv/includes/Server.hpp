@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 22:29:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 22:31:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Server
 	private:
 		int			_max_clients;
 		short unsigned int	_port;
-		static const char	_ip_address[] = "127.0.0.1";
+		const char		*_ip_address = "127.0.0.1";
 
 		int			_listen_sk;
 		int			_sk_ready;
