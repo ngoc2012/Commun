@@ -6,24 +6,23 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 21:55:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 21:57:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/time.h>
 #include <arpa/inet.h>	// htons
 #include <unistd.h>	// close
-#include <iostream>
-#include <sys/time.h>
-#include <netinet/in.h>
-#include <errno.h>
-#include <fcntl.h>	// fcntl
-#include <sys/ioctl.h>	// ioctl
-
 #include <stdlib.h>
 #include <cstdio>	// perror
 #include <cstring>	// memcpy
+#include <netinet/in.h>
+#include <errno.h>
+#include <fcntl.h>	// fcntl
+
+#include <iostream>
 
 #include "ClientRequest.hpp"
 
