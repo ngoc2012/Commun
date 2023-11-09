@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 22:22:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 22:25:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ void	Server::bind_addr(void)
 		close(_listen_sk);
 		exit(-1);
 	}
-
 }
 
 //Accept all the new connections, create a new socket and add to the master set
