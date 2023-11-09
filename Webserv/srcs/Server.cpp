@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 22:27:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 22:28:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ Server::~Server() {}
 
 void	Server::start(void)
 {
-	std::cout << _ip_address << std::endl;
 	get_listen_sk();
 	bind_addr();
 
