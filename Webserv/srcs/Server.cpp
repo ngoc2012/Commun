@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 22:18:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 22:22:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	Server::start(void)
 	end_server();
 }
 
-inline void	Server::end_server(void)
+void	Server::end_server(void)
 {
 	for (int i = 0; i <= _max_sk; ++i)
 	{
@@ -69,7 +69,7 @@ inline void	Server::end_server(void)
 	std::cout << "End server" << std::endl;
 }
 
-inline void	Server::get_listen_sk(void)
+void	Server::get_listen_sk(void)
 {
 	_listen_sk = socket(AF_INET, SOCK_STREAM, 0);
 	if (_listen_sk < 0)
@@ -88,7 +88,7 @@ inline void	Server::get_listen_sk(void)
 	fcntl(_listen_sk, F_SETFL, O_NONBLOCK);	// ioctl not allowed
 }
 
-inline void	Server::bind_addr(void)
+void	Server::bind_addr(void)
 {
 	struct sockaddr_in	addr;
 
@@ -112,7 +112,7 @@ inline void	Server::bind_addr(void)
 }
 
 //Accept all the new connections, create a new socket and add to the master set
-inline void	Server::accept_client_sk(void)
+void	Server::accept_client_sk(void)
 {
 	std::cout << "Listening socket is readable" << std::endl;
 	int	new_sk;
@@ -136,7 +136,7 @@ inline void	Server::accept_client_sk(void)
 	} while (new_sk != -1);
 }
 
-inline bool	Server::select_available_sk(void)
+bool	Server::select_available_sk(void)
 {
 	std::cout << "Waiting on select() ..." << std::endl;
 	_sk_ready = select(_max_sk + 1, &_working_set, NULL, NULL, NULL);// No timeout
@@ -148,7 +148,7 @@ inline bool	Server::select_available_sk(void)
 	return (true);
 }
 
-inline void	Server::server_response(int i)
+void	Server::server_response(int i)
 {
 	//Send back data
 	const char* http_response =
@@ -167,7 +167,7 @@ inline void	Server::server_response(int i)
 	std::cout << "Data sent" << std::endl;
 }
 
-inline void	Server::get_client_request(int i)
+void	Server::get_client_request(int i)
 {
 	std::cout << "Receive data from client" << std::endl;
 	_request.clean();
@@ -197,7 +197,7 @@ inline void	Server::get_client_request(int i)
 	}
 }
 
-inline void	Server::close_connection(int i)
+void	Server::close_connection(int i)
 {
 	close(i);
 	FD_CLR(i, &_master_set);
@@ -206,7 +206,7 @@ inline void	Server::close_connection(int i)
 			_max_sk -= 1;
 }
 
-inline void	Server::connect_client_sk(int i)
+void	Server::connect_client_sk(int i)
 {
 	std::cout << "Socket " << i << " is readable." << std::endl;
 	get_client_request(i);
