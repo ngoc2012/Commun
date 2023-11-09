@@ -1,5 +1,9 @@
 # webserv
 
+## README.md
+
+[Example](https://github.com/github-linguist/linguist/blob/3c3b037910006fc2f1a9bb34b2c4e9cde062206c/README.md)
+
 ## Naming conventions
 
 [Google rules](https://google.github.io/styleguide/cppguide.html)
@@ -26,10 +30,6 @@ Related header, C system headers, C++ standard library headers, other libraries'
 #include "third_party/absl/flags/flag.h"
 ```
 ## Basics tests
-
-### README.md
-
-[Example](https://github.com/github-linguist/linguist/blob/3c3b037910006fc2f1a9bb34b2c4e9cde062206c/README.md)
 
 ### How the netcat command ```nc``` works:
 
