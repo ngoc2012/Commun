@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 21:48:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 21:51:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ void	Server::server_response(int i)
 	std::cout << "Data sent" << std::endl;
 }
 
-void	Server::client_request(int i)
+void	Server::get_client_request(int i)
 {
 	char	response[BUFFER + 1];
 	std::string	s = "";
@@ -192,7 +192,7 @@ void	Server::client_request(int i)
 		{
 			response[ret] = 0;
 			s += std::string(response);
-			_req.setHttpRequest(s);
+			_request.set_http_request(s);
 		}
 	}
 }
@@ -209,10 +209,10 @@ void	Server::close_connection(int i)
 void	Server::connect_client_sk(int i)
 {
 	std::cout << "Socket " << i << " is readable." << std::endl;
-	client_request(i);
+	get_client_request(i);
 	std::cout << "Client send: \n"
 		<< "=============================================\n"
-		<< _req.getHttpRequest();
+		<< _request.getHttpRequest();
 	std::cout 
 		<< "============================================="
 		<< std::endl;
