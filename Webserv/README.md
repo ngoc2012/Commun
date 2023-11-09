@@ -2,7 +2,7 @@
 
 ## README.md
 
-[Example](https://github.com/github-linguist/linguist/blob/3c3b037910006fc2f1a9bb34b2c4e9cde062206c/README.md)
+[Example](https://github.com/github-linguist/linguist)
 
 ## Naming conventions
 
@@ -16,6 +16,7 @@
 ### Header files
 Related header, C system headers, C++ standard library headers, other libraries' headers, your project's headers
 
+Example header of a `fooserver.c`
 ```
 #include "foo/server/fooserver.h"
 
