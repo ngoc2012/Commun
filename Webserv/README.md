@@ -9,6 +9,8 @@
 - Constants, macros:    CONSTANTS\_MACRO
 - Class attributes:     \_attributes\_of\_class
 
+Related header, C system headers, C++ standard library headers, other libraries' headers, your project's headers
+
 ## Basics tests
 
 ### README.md
