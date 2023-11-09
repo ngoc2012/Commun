@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 22:35:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 22:39:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Server
 	private:
 		int			_max_clients;
 		short unsigned int	_port;
-		char			*_ip_address;
+		const char		*_ip_address;
 
 		int			_listen_sk;
 		int			_sk_ready;
@@ -59,7 +59,7 @@ class Server
 		Server(const Server&);
 		Server &operator=(const Server& op);
 	public:
-		Server(char*, int);
+		Server(const char*, int);
 		virtual ~Server();
 
 		void    start( void );

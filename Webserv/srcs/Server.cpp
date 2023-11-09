@@ -6,21 +6,15 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 22:37:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 22:39:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Server.hpp"
 
-Server::Server()
-{
-	char	ip[] = "127.0.0.1";
-	_port = 4242;
-	_ip_address = ip;
-	_max_clients = 128;
-}
+Server::Server() {}
 
-Server::Server(char* ip, int port)
+Server::Server(const char* ip, int port)
 {
 	_ip_address = ip;
 	_port = port;
