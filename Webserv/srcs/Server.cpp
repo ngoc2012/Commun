@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 22:45:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 22:46:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ void	Server::start(void)
 {
 	get_listen_sk();
 	bind_addr();
-
 	FD_ZERO(&_master_set);
 	_max_sk = _listen_sk;
 	FD_SET(_listen_sk, &_master_set);
-
 	//end_server = false;
 	do
 	{
@@ -63,16 +61,13 @@ void	Server::start(void)
 inline void	Server::end_server(void)
 {
 	for (int i = 0; i <= _max_sk; ++i)
-	{
 		if (FD_ISSET(i, &_master_set))
 			close(i);
-	}
 	std::cout << "End server" << std::endl;
 }
 
 inline void	Server::get_listen_sk(void)
 {
-	return ;
 	_listen_sk = socket(AF_INET, SOCK_STREAM, 0);
 	if (_listen_sk < 0)
 	{
