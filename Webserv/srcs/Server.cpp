@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 21:51:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 21:52:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,7 @@ void	Server::connect_client_sk(int i)
 	get_client_request(i);
 	std::cout << "Client send: \n"
 		<< "=============================================\n"
-		<< _request.getHttpRequest();
+		<< _request.get_http_request();
 	std::cout 
 		<< "============================================="
 		<< std::endl;
