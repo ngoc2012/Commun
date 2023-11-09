@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 22:42:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 22:45:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ inline void	Server::end_server(void)
 
 inline void	Server::get_listen_sk(void)
 {
+	return ;
 	_listen_sk = socket(AF_INET, SOCK_STREAM, 0);
 	if (_listen_sk < 0)
 	{
