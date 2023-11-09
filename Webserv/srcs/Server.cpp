@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 21:47:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 21:48:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,12 +168,12 @@ void	Server::server_response(int i)
 void	Server::client_request(int i)
 {
 	char	response[BUFFER + 1];
-	int	ret = 1;
 	std::string	s = "";
 
 	//Receive data from client
 	std::cout << "Receive data from client" << std::endl;
-	_req.clean();
+	_request.clean();
+	int	ret = 1;
 	while (ret && ret > 0)
 	{
 		ret = recv(i, response, BUFFER, 0);

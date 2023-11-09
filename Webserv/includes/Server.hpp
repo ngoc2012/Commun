@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 00:08:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 21:48:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ class Server
 		fd_set              	_master_set;
 		fd_set              	_working_set;
 		//bool			_end_server;
-		ClientRequest		_req;
+		ClientRequest		_request;
 
 		void			get_listen_sk(void);
 		void			bind_addr(void);
