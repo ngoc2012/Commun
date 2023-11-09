@@ -17,7 +17,7 @@
 
 [How to Use The Netcat (nc) Command](https://nooblinux.com/how-to-use-netcat/)
 
-[Example](https://stackoverflow.com/questions/4238809/example-of-multipart-form-data)
+[Example of using netcqt to send a file](https://stackoverflow.com/questions/4238809/example-of-multipart-form-data)
 
 ### Upload a file to test the webserv:
 
