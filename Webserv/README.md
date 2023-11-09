@@ -9,8 +9,22 @@
 - Constants, macros:    CONSTANTS\_MACRO
 - Class attributes:     \_attributes\_of\_class
 
+### Header files
 Related header, C system headers, C++ standard library headers, other libraries' headers, your project's headers
 
+```
+#include "foo/server/fooserver.h"
+
+#include <sys/types.h>
+#include <unistd.h>
+
+#include <string>
+#include <vector>
+
+#include "base/basictypes.h"
+#include "foo/server/bar.h"
+#include "third_party/absl/flags/flag.h"
+```
 ## Basics tests
 
 ### README.md
