@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 22:18:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 22:26:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include <arpa/inet.h>	// htons
 #include <unistd.h>	// close
 #include <stdlib.h>
-#include <cstdio>	// perror
-#include <cstring>	// memcpy
 #include <netinet/in.h>
 #include <errno.h>
 #include <fcntl.h>	// fcntl
+#include <cstdio>	// perror
+#include <cstring>	// memcpy
 
 #include <iostream>
 
