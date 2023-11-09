@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 21:52:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 22:17:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ void	Server::start(void)
 			}
 	} while (true);
 	//} while (end_server == false);
+}
 
+inline void	Server::end_server(void)
+{
 	for (int i = 0; i <= _max_sk; ++i)
 	{
 		if (FD_ISSET(i, &_master_set))
@@ -65,7 +68,7 @@ void	Server::start(void)
 	std::cout << "End server" << std::endl;
 }
 
-void	Server::get_listen_sk(void)
+inline void	Server::get_listen_sk(void)
 {
 	_listen_sk = socket(AF_INET, SOCK_STREAM, 0);
 	if (_listen_sk < 0)
@@ -84,7 +87,7 @@ void	Server::get_listen_sk(void)
 	fcntl(_listen_sk, F_SETFL, O_NONBLOCK);	// ioctl not allowed
 }
 
-void	Server::bind_addr(void)
+inline void	Server::bind_addr(void)
 {
 	struct sockaddr_in	addr;
 
@@ -107,12 +110,11 @@ void	Server::bind_addr(void)
 
 }
 
-void	Server::accept_client_sk(void)
+//Accept all the new connections, create a new socket and add to the master set
+inline void	Server::accept_client_sk(void)
 {
-	int	new_sk;
-
-	//Accept all the new connections, create a new socket and add to the master set
 	std::cout << "Listening socket is readable" << std::endl;
+	int	new_sk;
 	do
 	{
 		new_sk = accept(_listen_sk, NULL, NULL);
@@ -133,11 +135,10 @@ void	Server::accept_client_sk(void)
 	} while (new_sk != -1);
 }
 
-bool	Server::select_available_sk(void)
+inline bool	Server::select_available_sk(void)
 {
 	std::cout << "Waiting on select() ..." << std::endl;
-	// No timeout
-	_sk_ready = select(_max_sk + 1, &_working_set, NULL, NULL, NULL);
+	_sk_ready = select(_max_sk + 1, &_working_set, NULL, NULL, NULL);// No timeout
 	if (_sk_ready < 0)
 	{
 		perror("working set select() failed");
@@ -146,7 +147,7 @@ bool	Server::select_available_sk(void)
 	return (true);
 }
 
-void	Server::server_response(int i)
+inline void	Server::server_response(int i)
 {
 	//Send back data
 	const char* http_response =
@@ -165,15 +166,13 @@ void	Server::server_response(int i)
 	std::cout << "Data sent" << std::endl;
 }
 
-void	Server::get_client_request(int i)
+inline void	Server::get_client_request(int i)
 {
-	char	response[BUFFER + 1];
-	std::string	s = "";
-
-	//Receive data from client
 	std::cout << "Receive data from client" << std::endl;
 	_request.clean();
-	int	ret = 1;
+	char		response[BUFFER + 1];
+	std::string	s = "";
+	int		ret = 1;
 	while (ret && ret > 0)
 	{
 		ret = recv(i, response, BUFFER, 0);
@@ -197,7 +196,7 @@ void	Server::get_client_request(int i)
 	}
 }
 
-void	Server::close_connection(int i)
+inline void	Server::close_connection(int i)
 {
 	close(i);
 	FD_CLR(i, &_master_set);
@@ -206,7 +205,7 @@ void	Server::close_connection(int i)
 			_max_sk -= 1;
 }
 
-void	Server::connect_client_sk(int i)
+inline void	Server::connect_client_sk(int i)
 {
 	std::cout << "Socket " << i << " is readable." << std::endl;
 	get_client_request(i);
