@@ -26,3 +26,7 @@
 ```console
 curl -X POST -F "file=@yourfile.txt" http://localhost/upload
 ```
+
+## Some C++ notions
+
+[Static keyword](https://stackoverflow.com/questions/15235526/the-static-keyword-and-its-various-uses-in-c)
