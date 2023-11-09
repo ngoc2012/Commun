@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 08:43:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/09 21:44:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 class ClientRequest
 {
 	private:
-		std::string	_httpRequest;
-		std::string	method;
-		std::string	url;
+		std::string	_http_request;
+		std::string	_method;
+		std::string	_url;
 
 		ClientRequest(const ClientRequest&);
 		ClientRequest &operator=(const ClientRequest& op);
