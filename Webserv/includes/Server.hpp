@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 19:10:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 19:50:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ class Server
 
 		void			get_listen_sk(Configuration&);
 		void			bind_addr(Configuration&);
-		void			accept_client_sk(void);
+		void			accept_client_sk(int);
 		bool			select_available_sk(void);
 		void			connect_client_sk(int);
 		void			server_response(int);
