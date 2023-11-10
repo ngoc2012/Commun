@@ -30,6 +30,10 @@ Example header of a `fooserver.c`
 #include "foo/server/bar.h"
 #include "third_party/absl/flags/flag.h"
 ```
+### Vim (personal)
+
+```qg``` getter function
+
 ## Basics tests
 
 ### How the netcat command ```nc``` works:
