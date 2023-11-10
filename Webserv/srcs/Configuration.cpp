@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 10:40:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 10:42:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ Configuration::Configuration(const char* ip, int port)
 	_port = port;
 	_max_clients = 128;
 }
-char			*get_ip_address(void);
-short unsigned int	get_port();
+char			*get_ip_address(void) {return (_ip_address);}
+short unsigned int	get_port() {return (_port);}
