@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:20:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:35:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,13 @@ inline void	Server::get_listen_sk(void)
 	fcntl(_listen_sk, F_SETFL, O_NONBLOCK);	// ioctl not allowed
 }
 
-inline void	Server::bind_addr(void)
+inline void	Server::bind_addr(Configuration &conf)
 {
 	struct sockaddr_in	addr;
 
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(_port);
-	addr.sin_addr.s_addr = inet_addr(_ip_address);
+	addr.sin_port = htons(conf.get_port);
+	addr.sin_addr.s_addr = inet_addr(conf.get_ip_address);
 	std::cout << "Listening at " << _ip_address << ":" << _port << std::endl;
 	if (bind(_listen_sk, (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
