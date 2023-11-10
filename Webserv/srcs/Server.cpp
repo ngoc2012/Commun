@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:53:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:57:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,17 @@ void		close_all_listen_sk(std::vector<Configuration> &confs)
 inline void	Server::get_listen_sk(Configuration &c)
 {
 	c.set_listen_sk(socket(AF_INET, SOCK_STREAM, 0));
-	if (_listen_sk < 0)
+	if (c.get_listen_sk() < 0)
 	{
 		perror("listen socket: socket() failed");
 		exit(-1);
 	}
 	int    on = 1;
-	if (setsockopt(_listen_sk, SOL_SOCKET,  SO_REUSEADDR,
+	if (setsockopt(c.get_listen_sk(), SOL_SOCKET,  SO_REUSEADDR,
                    (char *)&on, sizeof(on)) < 0)
 	{
 		perror("reusable socket: setsockopt() failed");
-		close(_listen_sk);
+		close_all_listen_sk(confs);
 		exit(-1);
 	}
 	fcntl(_listen_sk, F_SETFL, O_NONBLOCK);	// ioctl not allowed
