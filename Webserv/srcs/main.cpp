@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 17:28:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:19:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ int	main()
 	std::vector<Configuration>	confs;
 	confs.push_back(Configuration("127.0.0.1", 4242));
 	confs.push_back(Configuration("127.0.0.1", 4141));
-	Server server(confs);
+	Server server(&confs);
 	return (0);
 }

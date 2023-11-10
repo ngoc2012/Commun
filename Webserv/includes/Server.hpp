@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:13:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:19:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ class Server
 		Server(const Server&);
 		Server &operator=(const Server& op);
 	public:
-		Server(std::vector<Configuration>&);
+		Server(std::vector<Configuration>*);
 		virtual ~Server();
 
-		std::vector<Configuration>	&get_confs(void) const;
+		std::vector<Configuration>	*get_confs(void) const;
 		void    			start(void);
 };
 
