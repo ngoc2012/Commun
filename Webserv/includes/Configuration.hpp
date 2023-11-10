@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 17:33:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 17:34:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 class Configuration
 {
 	private:
-		int			_max_clients;
-		short unsigned int	_port;
 		const char		*_ip_address;
+		short unsigned int	_port;
+		int			_max_clients;
 
 		Configuration();
 		Configuration(const Configuration&);

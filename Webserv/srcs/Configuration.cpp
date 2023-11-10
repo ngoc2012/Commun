@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 17:33:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 17:35:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ Configuration::Configuration()
 Configuration::Configuration(const Configuration& src) { *this = src; }
 Configuration&	Configuration::operator=( Configuration const & src )
 {
-	(void) src;
+	_ip_address = src.get_ip_address();
+	_port = src.get_port();
+	_max_clients = src.get_max_clients();
 	return (*this);
 }
 Configuration::~Configuration() {}
