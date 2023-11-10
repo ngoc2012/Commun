@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 17:28:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 17:31:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 Server::Server() {}
 
 Server::Server(const Server& src) { *this = src; }
+
+Server::Server(std::vector<Configuration>& c) { _confs = c; }
 
 Server&	Server::operator=( Server const & src )
 {
@@ -50,8 +52,6 @@ void	Server::start(void)
 	//} while (end_server == false);
 	end_server();
 }
-
-void	Server::set_confs(std::vector<Configuration>& c) {_confs = c;}
 
 inline void	Server::connect_client_sk(int i)
 {
