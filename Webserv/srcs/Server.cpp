@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:49:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:51:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ inline void	Server::end_server(void)
 void		close_all_listen_sk(std::vector<Configuration> &confs)
 {
 	for (std::vector<Configuration>::iterator it = confs.begin() ; it != confs.end(); ++it)
-	{
-	}
+		if (it._listen_sk > 0)
+			close(it._listen_sk);
 }
 
 inline void	Server::get_listen_sk(void)
