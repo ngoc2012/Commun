@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 09:21:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 17:27:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ class Configuration
 		const char		*_ip_address;
 
 		Configuration();
-		Configuration(const Configuration&);
 		Configuration &operator=(const Configuration& op);
 	public:
+		Configuration(const Configuration&);
 		Configuration(const char*, int);
 		virtual ~Configuration();
 
