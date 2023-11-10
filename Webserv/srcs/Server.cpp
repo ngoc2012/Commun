@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 19:53:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 19:55:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	Server::connect_sk(int i)
 	for (std::vector<Configuration>::iterator it = _confs->begin() ; it != _confs->end(); ++it)
 		if (i == (*it).get_listen_sk())
 		{
-			accept_client_sk();
+			accept_client_sk((*it).get_listen_sk());
 			return ;
 		}
 	connect_client_sk(i);
@@ -91,8 +91,8 @@ inline void	Server::end_server(void)
 void		close_all_listen_sk(std::vector<Configuration> &confs)
 {
 	for (std::vector<Configuration>::iterator it = confs.begin() ; it != confs.end(); ++it)
-		if (it._listen_sk > 0)
-			close(it._listen_sk);
+		if ((*it).get_listen_sk() > 0)
+			close((*it).get_listen_sk());
 }
 
 void	Server::get_listen_sk(Configuration &c)
@@ -125,13 +125,13 @@ void	Server::bind_addr(Configuration &c)
 	if (bind(c.get_listen_sk(), (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
 		perror("bind() failed");
-		close_all_listen_sk(_confs);
+		close_all_listen_sk(*_confs);
 		exit(-1);
 	}
 	if (listen(c.get_listen_sk(), _max_clients) < 0)
 	{
 		perror("listen() failed");
-		close_all_listen_sk(_confs);
+		close_all_listen_sk(*_confs);
 		exit(-1);
 	}
 }
