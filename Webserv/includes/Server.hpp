@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 15:59:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 16:01:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #include <cstring>	// memcpy
 
 #include <iostream>
+#include <vector>
 
 #include "ClientRequest.hpp"
 #include "Configuration.hpp"
