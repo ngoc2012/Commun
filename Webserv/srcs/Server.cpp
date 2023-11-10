@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:58:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 19:01:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ std::vector<Configuration>	*Server::get_confs(void) const {return (_confs);}
 
 void	Server::start(void)
 {
-	get_listen_sk();
-	bind_addr();
+	for (std::vector<Configuration>::iterator it = _confs.begin() ; it != _confs.end(); ++it)
+	{
+		get_listen_sk(it);
+		bind_addr(it);
+	}
 	FD_ZERO(&_master_set);
 	_max_sk = _listen_sk;
 	FD_SET(_listen_sk, &_master_set);
@@ -95,7 +98,7 @@ inline void	Server::get_listen_sk(Configuration &c)
                    (char *)&on, sizeof(on)) < 0)
 	{
 		perror("reusable socket: setsockopt() failed");
-		close_all_listen_sk(confs);
+		close_all_listen_sk(_confs);
 		exit(-1);
 	}
 	fcntl(c.get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
