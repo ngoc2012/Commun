@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 16:02:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 17:24:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ class Server
 		virtual ~Server();
 
 		void    start( void );
-		void	set_confs(vector<Configuration>&);
+		void	set_confs(std::vector<Configuration>&);
 };
 
 #endif
