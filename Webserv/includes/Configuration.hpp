@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:40:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:43:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class Configuration
 		char			*get_ip_address(void);
 		short unsigned int	get_port(void);
 		int			get_max_clients(void);
+		int			get_listen_sk(void);
 };
 
 #endif
