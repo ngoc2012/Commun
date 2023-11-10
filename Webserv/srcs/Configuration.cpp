@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 15:56:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 17:33:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,3 +31,4 @@ Configuration::Configuration(const char* ip, int port)
 }
 char*			Configuration::get_ip_address(void) {return (_ip_address);}
 short unsigned int	Configuration::get_port() {return (_port);}
+int			Configuration::get_max_clients(void) {return (_max_clients);}
