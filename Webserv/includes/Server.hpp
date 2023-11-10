@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:03:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:08:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ class Server
 		Server(std::vector<Configuration>&);
 		virtual ~Server();
 
-		std::vector<Configuration>	&get_confs(void);
+		std::vector<Configuration>	&get_confs(void) const;
 		void    			start(void);
 };
 
