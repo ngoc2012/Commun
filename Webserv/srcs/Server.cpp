@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 22:46:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 09:07:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,20 @@ void	Server::start(void)
 	} while (true);
 	//} while (end_server == false);
 	end_server();
+}
+
+inline void	Server::connect_client_sk(int i)
+{
+	std::cout << "Socket " << i << " is readable." << std::endl;
+	get_client_request(i);
+	std::cout << "Client send: \n"
+		<< "=============================================\n"
+		<< _request.get_http_request();
+	std::cout 
+		<< "============================================="
+		<< std::endl;
+	server_response(i);
+	close_connection(i);
 }
 
 inline void	Server::end_server(void)
@@ -200,18 +214,4 @@ inline void	Server::close_connection(int i)
 	if (i == _max_sk)
 		while (!FD_ISSET(_max_sk, &_master_set))
 			_max_sk -= 1;
-}
-
-inline void	Server::connect_client_sk(int i)
-{
-	std::cout << "Socket " << i << " is readable." << std::endl;
-	get_client_request(i);
-	std::cout << "Client send: \n"
-		<< "=============================================\n"
-		<< _request.get_http_request();
-	std::cout 
-		<< "============================================="
-		<< std::endl;
-	server_response(i);
-	close_connection(i);
 }
