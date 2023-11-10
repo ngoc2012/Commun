@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 19:13:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 19:15:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ void	Server::start(void)
 	{
 		get_listen_sk(it);
 		bind_addr(it);
-		_max_sk = _listen_sk;
-		FD_SET(_listen_sk, &_master_set);
+		if (it.get_listen_sk() > _max_sk)
+			_max_sk = it.get_listen_sk();
+		FD_SET(it.get_listen_sk(), &_master_set);
 	}
 	//end_server = false;
 	do
@@ -53,13 +54,16 @@ void	Server::start(void)
 	end_server();
 }
 
-inline void	Server::connect_sk(int i)
+void	Server::connect_sk(int i)
 {
 	_sk_ready--;
-	if (i == _listen_sk)
-		accept_client_sk();
-	else
-		connect_client_sk(i);
+	for (std::vector<Configuration>::iterator it = _confs.begin() ; it != _confs.end(); ++it)
+		if (i == _listen_sk)
+		{
+			accept_client_sk();
+			return ;
+		}
+	connect_client_sk(i);
 }
 
 inline void	Server::connect_client_sk(int i)
