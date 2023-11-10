@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 17:34:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 17:37:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ class Configuration
 		int			_max_clients;
 
 		Configuration();
-		Configuration(const Configuration&);
 	public:
+		Configuration(const Configuration&);
 		Configuration &operator=(const Configuration& op);
 		Configuration(const char*, int);
 		virtual ~Configuration();
