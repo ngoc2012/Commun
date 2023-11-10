@@ -42,7 +42,7 @@ So to save a macro `'x'`, you can do:
     From normal mode: `q`
     open `.vimrc`
     insert a line `let @x = '...'` (see the following)
-    For the above `...` pattern, you can use `"xp` just at the place where the pattern should be placed. But this is not essential, you can just type in the macro definition.
+    For the above `...` pattern, you can use `"xp` or `Ctrl+r Ctrl+r registerName` just at the place where the pattern should be placed. But this is not essential, you can just type in the macro definition.
 
 ## Basics tests
 
