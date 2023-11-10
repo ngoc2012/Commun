@@ -32,7 +32,8 @@ Example header of a `fooserver.c`
 ```
 ### Vim (personal)
 
-```qg``` getter function
+`qg` getter function
+`qs` setter function
 
 So to save a macro ```'x'```, you can do:
 
