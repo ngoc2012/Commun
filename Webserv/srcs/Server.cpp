@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 19:55:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 19:57:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	Server::get_listen_sk(Configuration &c)
                    (char *)&on, sizeof(on)) < 0)
 	{
 		perror("reusable socket: setsockopt() failed");
-		close_all_listen_sk(_confs);
+		close_all_listen_sk(*_confs);
 		exit(-1);
 	}
 	fcntl(c.get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
@@ -119,16 +119,16 @@ void	Server::bind_addr(Configuration &c)
 	struct sockaddr_in	addr;
 
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(conf.get_port);
-	addr.sin_addr.s_addr = inet_addr(conf.get_ip_address);
-	std::cout << "Listening at " << conf.get_ip_address << ":" << conf.get_port << std::endl;
+	addr.sin_port = htons(c.get_port());
+	addr.sin_addr.s_addr = inet_addr(c.get_ip_address());
+	std::cout << "Listening at " << c.get_ip_address() << ":" << c.get_port() << std::endl;
 	if (bind(c.get_listen_sk(), (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
 		perror("bind() failed");
 		close_all_listen_sk(*_confs);
 		exit(-1);
 	}
-	if (listen(c.get_listen_sk(), _max_clients) < 0)
+	if (listen(c.get_listen_sk(), c.get_max_clients()) < 0)
 	{
 		perror("listen() failed");
 		close_all_listen_sk(*_confs);
