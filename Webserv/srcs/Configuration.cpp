@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:54:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:59:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ Configuration&	Configuration::operator=( Configuration const & src )
 	_ip_address = src.get_ip_address();
 	_port = src.get_port();
 	_max_clients = src.get_max_clients();
+	_listen_sk = src.get_listen_sk();
 	return (*this);
 }
 Configuration::~Configuration() {}
@@ -30,6 +31,7 @@ Configuration::Configuration(const char* ip, int port)
 	_ip_address = ip;
 	_port = port;
 	_max_clients = 128;
+	_listen_sk = -1;
 }
 char*			Configuration::get_ip_address(void) {return (_ip_address);}
 short unsigned int	Configuration::get_port() {return (_port);}

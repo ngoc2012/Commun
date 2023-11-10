@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:57:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:58:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ inline void	Server::get_listen_sk(Configuration &c)
 		close_all_listen_sk(confs);
 		exit(-1);
 	}
-	fcntl(_listen_sk, F_SETFL, O_NONBLOCK);	// ioctl not allowed
+	fcntl(c.get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
 }
 
 inline void	Server::bind_addr(Configuration &conf)
