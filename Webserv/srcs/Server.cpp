@@ -6,13 +6,16 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 17:31:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 17:49:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Server.hpp"
 
-Server::Server() {}
+Server::Server()
+{
+	confs = 0;
+}
 
 Server::Server(const Server& src) { *this = src; }
 
