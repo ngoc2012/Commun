@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 16:01:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 16:02:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ class Server
 {
 	private:
 
-		int			_listen_sk;
-		int			_sk_ready;
-		int			_max_sk;
-		fd_set              	_master_set;
-		fd_set              	_working_set;
-		ClientRequest		_request;
-		vector<Configuration>	&_confs;
-		//bool			_end_server;
+		int				_listen_sk;
+		int				_sk_ready;
+		int				_max_sk;
+		fd_set              		_master_set;
+		fd_set              		_working_set;
+		ClientRequest			_request;
+		std::vector<Configuration>	&_confs;
+		//bool				_end_server;
 
 		void			get_listen_sk(void);
 		void			bind_addr(void);
