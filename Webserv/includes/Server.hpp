@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:35:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:40:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class Server
 {
 	private:
 
-		int				_listen_sk;
+		//int				_listen_sk;
 		int				_sk_ready;
 		int				_max_sk;
 		fd_set              		_master_set;
