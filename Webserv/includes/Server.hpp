@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 17:24:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 17:29:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,14 @@ class Server
 		void			get_client_request(int);
 		void			close_connection(int);
 		void			end_server(void);
+		Server();
 		Server(const Server&);
 		Server &operator=(const Server& op);
 	public:
 		Server();
-		virtual ~Server();
+		virtual ~Server(std::vector<Configuration>&);
 
 		void    start( void );
-		void	set_confs(std::vector<Configuration>&);
 };
 
 #endif
