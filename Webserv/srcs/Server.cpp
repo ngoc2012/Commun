@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:04:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:07:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Server&	Server::operator=( Server const & src )
 
 Server::~Server() {}
 
-std::vector<Configuration>	&get_confs(void) {return (_confs);}
+std::vector<Configuration>	&Server::get_confs(void) {return (_confs);}
 
 void	Server::start(void)
 {
