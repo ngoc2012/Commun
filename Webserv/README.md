@@ -34,6 +34,15 @@ Example header of a `fooserver.c`
 
 ```qg``` getter function
 
+So to save a macro 'x', you can do:
+
+    From normal mode: qx
+    enter whatever commands
+    From normal mode: q
+    open .vimrc
+    insert a line let @x = '...' (see the following)
+    For the above ... pattern, you can use "xp just at the place where the pattern should be placed. But this is not essential, you can just type in the macro definition.
+
 ## Basics tests
 
 ### How the netcat command ```nc``` works:
