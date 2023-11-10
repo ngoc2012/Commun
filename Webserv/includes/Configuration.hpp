@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClientRequest.hpp                                  :+:      :+:    :+:   */
+/*   Configuration.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/09 21:48:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 09:13:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-#ifndef CLIENTREQUEST_HPP
-# define CLIENTREQUEST_HPP
+#ifndef CONFIGURATION_HPP
+# define CONFIGURATION_HPP
 
-class ClientRequest
+class Configuration
 {
 	private:
 		std::string	_http_request;
 		std::string	_method;
 		std::string	_url;
 
-		ClientRequest(const ClientRequest&);
-		ClientRequest &operator=(const ClientRequest& op);
+		Configuration(const Configuration&);
+		Configuration &operator=(const Configuration& op);
 	public:
-		ClientRequest();
-		virtual ~ClientRequest();
+		Configuration();
+		virtual ~Configuration();
 
 		void		clean(void);
 		void		set_http_request(std::string);
