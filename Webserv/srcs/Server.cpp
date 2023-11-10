@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 19:03:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 19:13:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 Server::Server(const Server& src) { *this = src; }
 
-Server::Server(std::vector<Configuration>* c) { _confs = c; }
+Server::Server(std::vector<Configuration>* c) {
+	_max_sk = -1;
+	_confs = c;
+}
 
 Server&	Server::operator=( Server const & src )
 {
@@ -28,14 +31,14 @@ std::vector<Configuration>	*Server::get_confs(void) const {return (_confs);}
 
 void	Server::start(void)
 {
+	FD_ZERO(&_master_set);
 	for (std::vector<Configuration>::iterator it = _confs.begin() ; it != _confs.end(); ++it)
 	{
 		get_listen_sk(it);
 		bind_addr(it);
+		_max_sk = _listen_sk;
+		FD_SET(_listen_sk, &_master_set);
 	}
-	FD_ZERO(&_master_set);
-	_max_sk = _listen_sk;
-	FD_SET(_listen_sk, &_master_set);
 	//end_server = false;
 	do
 	{
@@ -44,16 +47,19 @@ void	Server::start(void)
 			break;
 		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
 			if (FD_ISSET(i, &_working_set))
-			{
-				_sk_ready--;
-				if (i == _listen_sk)
-					accept_client_sk();
-				else
-					connect_client_sk(i);
-			}
+				connect_sk(i);
 	} while (true);
 	//} while (end_server == false);
 	end_server();
+}
+
+inline void	Server::connect_sk(int i)
+{
+	_sk_ready--;
+	if (i == _listen_sk)
+		accept_client_sk();
+	else
+		connect_client_sk(i);
 }
 
 inline void	Server::connect_client_sk(int i)
