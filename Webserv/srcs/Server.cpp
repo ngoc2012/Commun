@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 19:01:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 19:03:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void		close_all_listen_sk(std::vector<Configuration> &confs)
 			close(it._listen_sk);
 }
 
-inline void	Server::get_listen_sk(Configuration &c)
+void	Server::get_listen_sk(Configuration &c)
 {
 	c.set_listen_sk(socket(AF_INET, SOCK_STREAM, 0));
 	if (c.get_listen_sk() < 0)
@@ -104,7 +104,7 @@ inline void	Server::get_listen_sk(Configuration &c)
 	fcntl(c.get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
 }
 
-inline void	Server::bind_addr(Configuration &conf)
+void	Server::bind_addr(Configuration &c)
 {
 	struct sockaddr_in	addr;
 
@@ -112,16 +112,16 @@ inline void	Server::bind_addr(Configuration &conf)
 	addr.sin_port = htons(conf.get_port);
 	addr.sin_addr.s_addr = inet_addr(conf.get_ip_address);
 	std::cout << "Listening at " << conf.get_ip_address << ":" << conf.get_port << std::endl;
-	if (bind(_listen_sk, (struct sockaddr *)&addr, sizeof(addr)) < 0)
+	if (bind(c.get_listen_sk(), (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
 		perror("bind() failed");
-		close(_listen_sk);
+		close_all_listen_sk(_confs);
 		exit(-1);
 	}
-	if (listen(_listen_sk, _max_clients) < 0)
+	if (listen(c.get_listen_sk(), _max_clients) < 0)
 	{
 		perror("listen() failed");
-		close(_listen_sk);
+		close_all_listen_sk(_confs);
 		exit(-1);
 	}
 }
