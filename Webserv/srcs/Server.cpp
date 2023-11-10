@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 19:16:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 19:49:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ std::vector<Configuration>	*Server::get_confs(void) const {return (_confs);}
 void	Server::start(void)
 {
 	FD_ZERO(&_master_set);
-	for (std::vector<Configuration>::iterator it = _confs.begin() ; it != _confs.end(); ++it)
+	for (std::vector<Configuration>::iterator it = _confs->begin() ; it != _confs->end(); ++it)
 	{
 		get_listen_sk(it);
 		bind_addr(it);
@@ -57,8 +57,8 @@ void	Server::start(void)
 void	Server::connect_sk(int i)
 {
 	_sk_ready--;
-	for (std::vector<Configuration>::iterator it = _confs.begin() ; it != _confs.end(); ++it)
-		if (i == _listen_sk)
+	for (std::vector<Configuration>::iterator it = _confs->begin() ; it != _confs->end(); ++it)
+		if (i == it.get_listen_sk)
 		{
 			accept_client_sk();
 			return ;
