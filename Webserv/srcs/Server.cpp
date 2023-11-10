@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 15:53:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 15:55:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	Server::start(void)
 	end_server();
 }
 
-void	set_confs(vector<Configuration>& c);
+void	Server::set_confs(vector<Configuration>& c) {_confs = c;}
 inline void	Server::connect_client_sk(int i)
 {
 	std::cout << "Socket " << i << " is readable." << std::endl;
