@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:43:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:54:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ class Configuration
 		short unsigned int	get_port(void);
 		int			get_max_clients(void);
 		int			get_listen_sk(void);
+
+		void			set_listen_sk(int);
 };
 
 #endif
