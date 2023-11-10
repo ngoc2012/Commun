@@ -6,16 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:59:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 20:23:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Configuration.hpp"
 
-Configuration::Configuration()
-{
-	clean();
-}
+Configuration::Configuration() {}
 Configuration::Configuration(const Configuration& src) { *this = src; }
 Configuration&	Configuration::operator=( Configuration const & src )
 {
