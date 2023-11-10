@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/10 18:35:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/10 18:36:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ inline void	Server::bind_addr(Configuration &conf)
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(conf.get_port);
 	addr.sin_addr.s_addr = inet_addr(conf.get_ip_address);
-	std::cout << "Listening at " << _ip_address << ":" << _port << std::endl;
+	std::cout << "Listening at " << conf.get_ip_address << ":" << conf.get_port << std::endl;
 	if (bind(_listen_sk, (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
 		perror("bind() failed");
