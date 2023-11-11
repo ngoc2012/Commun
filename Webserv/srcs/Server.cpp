@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 09:07:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 09:09:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,21 @@ Server::Server(const Server& src) { *this = src; }
 Server::Server(std::vector<Configuration>* c) {
 	_max_sk = -1;
 	_confs = c;
+	_end_server = false;
 }
 
 Server&	Server::operator=( Server const & src )
 {
-	_confs = src.get_confs();
+	//_confs = src.get_confs();
+	(void) src;
 	return (*this);
 }
 
 Server::~Server() {}
 
 std::vector<Configuration>	*Server::get_confs(void) const {return (_confs);}
+
+void	set_end_server(bool e) {_end_server = e;}
 
 void	Server::start(void)
 {
@@ -149,7 +153,7 @@ inline void	Server::accept_client_sk(int listen_sk)
 			if (errno != EWOULDBLOCK)
 			{
 				perror("accept() failed");
-				end_server = true;
+				_end_server = true;
 			}
 			break;
 		}
@@ -167,7 +171,7 @@ inline bool	Server::select_available_sk(void)
 	_sk_ready = select(_max_sk + 1, &_working_set, NULL, NULL, NULL);// No timeout
 	if (_sk_ready < 0)
 	{
-		if (end_server == false)
+		if (_end_server == false)
 			perror("working set select() failed");
 		return (false);
 	}
