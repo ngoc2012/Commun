@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 08:55:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 08:57:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ void	Server::start(void)
 	//end_server = false;
 	do
 	{
+		*/
 		memcpy(&_working_set, &_master_set, sizeof(_master_set));
+		/*
 		if (select_available_sk() == false)
 			break;
 		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
