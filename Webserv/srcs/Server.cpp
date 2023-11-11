@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 09:04:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 09:04:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	Server::start(void)
 				connect_sk(i);
 	} while (true);
 	//} while (end_server == false);
-	end();
+	//end();
 }
 
 void	Server::connect_sk(int i)
@@ -85,6 +85,7 @@ void	Server::end(void)
 	for (int i = 0; i <= _max_sk; ++i)
 		if (FD_ISSET(i, &_master_set))
 			close(i);
+	std::cout << "End server" << std::endl;
 }
 
 void		close_all_listen_sk(std::vector<Configuration> &confs)
