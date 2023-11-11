@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 08:13:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 09:07:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class Server
 		fd_set              		_working_set;
 		ClientRequest			_request;
 		std::vector<Configuration>	*_confs;
-		//bool				_end_server;
+		bool				_end_server;
 
 		void			get_listen_sk(Configuration&);
 		void			bind_addr(Configuration&);

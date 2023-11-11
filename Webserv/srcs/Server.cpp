@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 09:04:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 09:07:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ inline void	Server::accept_client_sk(int listen_sk)
 			if (errno != EWOULDBLOCK)
 			{
 				perror("accept() failed");
-				//end_server = true;
+				end_server = true;
 			}
 			break;
 		}
@@ -167,7 +167,8 @@ inline bool	Server::select_available_sk(void)
 	_sk_ready = select(_max_sk + 1, &_working_set, NULL, NULL, NULL);// No timeout
 	if (_sk_ready < 0)
 	{
-		perror("working set select() failed");
+		if (end_server == false)
+			perror("working set select() failed");
 		return (false);
 	}
 	return (true);
