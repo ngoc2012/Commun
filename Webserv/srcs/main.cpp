@@ -6,12 +6,24 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 08:06:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 08:08:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Server.hpp"
 #include "Configuration.hpp"
+
+void	main_signal_handler(int sig)
+{
+	if (sig == SIGINT)
+	{
+		ft_putchar_fd('\n', STDIN_FILENO);
+		rl_replace_line("", STDIN_FILENO);
+		rl_on_new_line();
+		rl_redisplay();
+		g_exit_code = 130;
+	}
+}
 
 int	main()
 {
