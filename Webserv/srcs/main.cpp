@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 08:33:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 08:47:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,12 @@ int	main()
 	sigaction(SIGINT, &act, NULL);
 
 	std::vector<Configuration>	confs;
-	confs.push_back(Configuration("127.0.0.1", 4242));
-	confs.push_back(Configuration("127.0.0.1", 4141));
+	Configuration c1("127.0.0.1", 4242);
+	Configuration c2("127.0.0.1", 4141);
+	confs.push_back(c1);
+	//confs.push_back(&c2);
+	//confs.push_back(Configuration("127.0.0.1", 4242));
+	//confs.push_back(Configuration("127.0.0.1", 4141));
 	Server server(&confs);
 	g_server = &server;
 	server.start();
