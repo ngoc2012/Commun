@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 08:55:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 08:59:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "Server.hpp"
 #include "Configuration.hpp"
 
-//Server	*g_server;
+Server	*g_server;
 
 void	main_signal_handler(int sig)
 {
@@ -23,7 +23,7 @@ void	main_signal_handler(int sig)
 	{
 		write(STDOUT_FILENO, "", 0);
 		std::cout << "Signal int" << std::endl;
-		//g_server->end();
+		g_server->end();
 		exit(sig);
 	}
 }
@@ -44,7 +44,7 @@ int	main()
 	//confs.push_back(Configuration("127.0.0.1", 4242));
 	//confs.push_back(Configuration("127.0.0.1", 4141));
 	Server server(&confs);
-	//g_server = &server;
+	g_server = &server;
 	server.start();
 	return (0);
 }
