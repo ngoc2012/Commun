@@ -6,9 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 08:11:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 08:15:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <signal.h>
 
 #include "Server.hpp"
 #include "Configuration.hpp"
@@ -18,10 +20,7 @@ Server	*g_server;
 void	main_signal_handler(int sig)
 {
 	if (sig == SIGINT)
-	{
-		std::cout << "Server ended" << std::endl;
-
-	}
+		g_server->end();
 }
 
 int	main()
