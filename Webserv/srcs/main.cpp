@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 08:59:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 09:03:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ void	main_signal_handler(int sig)
 	{
 		write(STDOUT_FILENO, "", 0);
 		std::cout << "Signal int" << std::endl;
+		std::cout << "End server" << std::endl;
 		g_server->end();
-		exit(sig);
+		//exit(sig);
 	}
 }
 

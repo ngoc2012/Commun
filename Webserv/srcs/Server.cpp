@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 09:00:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 09:04:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,17 @@ void	Server::start(void)
 			_max_sk = (*it).get_listen_sk();
 		FD_SET((*it).get_listen_sk(), &_master_set);
 	}
-	/*
 	//end_server = false;
 	do
 	{
-		*/
 		memcpy(&_working_set, &_master_set, sizeof(_master_set));
-		/*
 		if (select_available_sk() == false)
-			return ;
-			//break;
+			break;
 		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
 			if (FD_ISSET(i, &_working_set))
 				connect_sk(i);
 	} while (true);
 	//} while (end_server == false);
-	*/
 	end();
 }
 
@@ -90,7 +85,6 @@ void	Server::end(void)
 	for (int i = 0; i <= _max_sk; ++i)
 		if (FD_ISSET(i, &_master_set))
 			close(i);
-	std::cout << "End server" << std::endl;
 }
 
 void		close_all_listen_sk(std::vector<Configuration> &confs)
