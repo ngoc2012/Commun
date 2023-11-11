@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 08:47:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 08:52:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	main()
 	//confs.push_back(&c2);
 	//confs.push_back(Configuration("127.0.0.1", 4242));
 	//confs.push_back(Configuration("127.0.0.1", 4141));
-	Server server(&confs);
-	g_server = &server;
-	server.start();
+	//Server server(&confs);
+	//g_server = &server;
+	//server.start();
 	return (0);
 }
