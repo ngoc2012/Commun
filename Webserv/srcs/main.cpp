@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 09:11:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 09:13:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	main_signal_handler(int sig)
 		write(STDOUT_FILENO, "", 0);
 		g_server->set_end_server(true);
 		g_server->end();
-		//exit(sig);
 	}
 }
 
