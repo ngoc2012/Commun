@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 08:13:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 08:55:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	Server::start(void)
 			_max_sk = (*it).get_listen_sk();
 		FD_SET((*it).get_listen_sk(), &_master_set);
 	}
+	/*
 	//end_server = false;
 	do
 	{
@@ -51,6 +52,7 @@ void	Server::start(void)
 				connect_sk(i);
 	} while (true);
 	//} while (end_server == false);
+	*/
 	end();
 }
 
