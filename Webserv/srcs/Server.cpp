@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 14:56:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 14:58:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,7 +238,6 @@ inline void	Server::get_client_request(int i)
 			}
 			else if (_request.get_method() == "multipart/form-data")
 			{
-				/*
 				// Find the start of the file content
 				const std::string boundary = "boundary=";
 				size_t boundaryPos = s.find(boundary);
@@ -247,6 +246,7 @@ inline void	Server::get_client_request(int i)
 					return;
 				}
 
+				/*
 				size_t startPos = s.find("\r\n\r\n", boundaryPos) + 4;
 				size_t endPos = s.find("--" + line.substr(boundaryPos + boundary.length()));
 
