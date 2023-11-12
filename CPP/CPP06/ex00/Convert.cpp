@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 22:12:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 22:16:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,14 @@ Convert::Convert(char *n)
 	get_str(n);
 }
 
-void	Convert::get_str(void)
+void	Convert::get_str(char *n)
 {
 	double	c = atof(n);
 	switch (type)
 	{
 		case CHAR:
+			_char = std::string(n);
+			_int = static_cast<int>(*n);
 	}
 }
 
