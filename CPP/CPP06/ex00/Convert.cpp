@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 21:24:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 21:59:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ Convert::Convert(char *n)
 			type = NONE;
 			return ;
 		}
-		value = atof(
+		value = atof(n);
 		return ;
 	}
 	if (isNumber(std::string(n)) == false)
@@ -64,8 +64,8 @@ Convert::Convert(char *n)
 			type = NONE;
 		return;
 	}
+	else
 
-		c = atof(n);
 
 void     Convert::getChar( char* n )
 {
