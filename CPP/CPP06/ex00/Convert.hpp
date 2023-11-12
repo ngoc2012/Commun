@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 15:21:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 21:13:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <sstream>	// istringstream
 #include <cstring>	// strlen
 
-enum	e_types {CHAR, INT, FLOAT, DOUBLE};
+enum	e_types {NONE, CHAR, INT, FLOAT, DOUBLE};
 
 class Convert
 {
