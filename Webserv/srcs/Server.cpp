@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 12:50:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 12:53:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,8 +223,7 @@ inline void	Server::get_client_request(int i)
 		{
 			response[ret] = 0;
 			s += std::string(response);
-			/*
-			if (_request.get_method() == "")
+			if (_request.get_method() == "multipart/form-data")
 			// Find the start of the file content
 			const std::string boundary = "boundary=";
 			size_t boundaryPos = s.find(boundary);
@@ -242,8 +241,8 @@ inline void	Server::get_client_request(int i)
 
 			// Save the file on the server
 			saveFile("uploaded_file.txt", fileData);
-*/
-			if (_request.get_method() == "")
+
+			else if (_request.get_method() == "")
 			{
 				pos = s.find("Content-Type:");
 				if ( pos != std::string::npos)
