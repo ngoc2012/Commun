@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 13:05:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 14:54:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,38 +225,38 @@ inline void	Server::get_client_request(int i)
 			s += std::string(response);
 			if (_request.get_method() == "")
 			{
+				pos = s.find("Content-Type:");
+				if ( pos != std::string::npos)
+				{
+					pos0 = s.find(";", pos);
+					if ( pos0 != std::string::npos)
+					{
+						_request.set_method(s.substr(pos + 14, pos0 - pos - 14));
+						std::cout << "|" << _request.get_method() << "|" << std::endl;
+					}
+				}
+			}
+			else if (_request.get_method() == "multipart/form-data")
+			{
+				// Find the start of the file content
+				const std::string boundary = "boundary=";
+				size_t boundaryPos = s.find(boundary);
+				if (boundaryPos == std::string::npos) {
+					std::cerr << "Boundary not found in Content-Type header." << std::endl;
+					return;
+				}
+
+				size_t startPos = s.find("\r\n\r\n", boundaryPos) + 4;
+				size_t endPos = s.find("--" + line.substr(boundaryPos + boundary.length()));
+
+				// Extract the file content
+				std::string fileData = fileContent.substr(startPos, endPos - startPos);
+
+				// Save the file on the server
+				saveFile("uploaded_file.txt", fileData);
 			}
 			_request.set_http_request(s);
 		}
-	}
-	pos = s.find("Content-Type:");
-	if ( pos != std::string::npos)
-	{
-		pos0 = s.find(";", pos);
-		if ( pos0 != std::string::npos)
-		{
-			_request.set_method(s.substr(pos + 14, pos0 - pos - 14));
-			std::cout << "|" << _request.get_method() << "|" << std::endl;
-		}
-	}
-	if (_request.get_method() == "multipart/form-data")
-	{
-		// Find the start of the file content
-		const std::string boundary = "boundary=";
-		size_t boundaryPos = s.find(boundary);
-		if (boundaryPos == std::string::npos) {
-			std::cerr << "Boundary not found in Content-Type header." << std::endl;
-			return;
-		}
-
-		size_t startPos = s.find("\r\n\r\n", boundaryPos) + 4;
-		size_t endPos = s.find("--" + line.substr(boundaryPos + boundary.length()));
-
-		// Extract the file content
-		std::string fileData = fileContent.substr(startPos, endPos - startPos);
-
-		// Save the file on the server
-		saveFile("uploaded_file.txt", fileData);
 	}
 }
 
