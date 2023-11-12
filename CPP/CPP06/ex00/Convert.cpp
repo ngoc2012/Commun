@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/04 15:23:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 21:07:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@ Convert::Convert(const Convert& src) { *this = src; }
 
 Convert&	Convert::operator=( Convert const & src )
 {
+	/*
 	_char = src.getChar();
 	_int = src.getInt();
 	_float = src.getFloat();
 	_double = src.getDoule();
+	*/
+	(void) src;
 	return (*this);
 }
 
