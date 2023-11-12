@@ -46,7 +46,7 @@ So to save a macro `'x'`, you can do:
 
 ## Basics tests
 
-### How the netcat command ```nc``` works:
+### How the netcat command `nc` works:
 
 [How to Use The Netcat (nc) Command](https://nooblinux.com/how-to-use-netcat/)
 
@@ -58,7 +58,7 @@ So to save a macro `'x'`, you can do:
 curl -X POST -F "file=@yourfile.txt" http://localhost/upload
 ```
 
-```-X```, ```--request <method>```
+`-X`, `--request <method>`
 
               (HTTP) Specifies a custom request method to use when communicating with the HTTP server.  The specified request method will be used instead of the method  otherwise  used  (which defaults  to  GET). Read the HTTP 1.1 specification for details and explanations. Common additional HTTP requests include PUT and DELETE, but related  technologies  like  WebDAV offers PROPFIND, COPY, MOVE and more.
 
@@ -77,8 +77,10 @@ curl -X POST -F "file=@yourfile.txt" http://localhost/upload
               If this option is used several times, the last one will be used.
 
               Examples:
-               ```curl -X "DELETE" https://example.com```
-               ```curl -X NLST ftp://example.com/```
+               ``` console
+	       curl -X "DELETE" https://example.com
+               curl -X NLST ftp://example.com/
+	       ```
 
 
 ## Some C++ notions
