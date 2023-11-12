@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 22:16:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 22:25:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,24 @@ void	Convert::get_str(char *n)
 		case CHAR:
 			_char = std::string(n);
 			_int = static_cast<int>(*n);
+			_float = static_cast<float>(*n);
 	}
 }
 
+std::string	cout_value(void *c)
+{
+	std::ostringstream oss;
+	std::streambuf* oldCoutBuffer = std::cout.rdbuf(oss.rdbuf());
+	std::cout << *c;
+	std::cout.rdbuf(oldCoutBuffer);
+	return (oss.str());
+	/*
+	   std::cout << oss.str();
+	   if (oss.str().find('e') == std::string::npos
+	   && oss.str().find('.') == std::string::npos)
+	   std::cout << ".0";
+	 */
+}
 /*
 void     Convert::getChar( char* n )
 {
