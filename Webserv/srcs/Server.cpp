@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 12:27:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 12:50:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,26 @@ inline void	Server::get_client_request(int i)
 		{
 			response[ret] = 0;
 			s += std::string(response);
+			/*
+			if (_request.get_method() == "")
+			// Find the start of the file content
+			const std::string boundary = "boundary=";
+			size_t boundaryPos = s.find(boundary);
+			if (boundaryPos == std::string::npos) {
+				std::cerr << "Boundary not found in Content-Type header." << std::endl;
+				return;
+			}
+
+			std::string fileContent(buffer, bytesRead);
+			size_t startPos = fileContent.find("\r\n\r\n") + 4;
+			size_t endPos = fileContent.find("--" + line.substr(boundaryPos + boundary.length()));
+
+			// Extract the file content
+			std::string fileData = fileContent.substr(startPos, endPos - startPos);
+
+			// Save the file on the server
+			saveFile("uploaded_file.txt", fileData);
+*/
 			if (_request.get_method() == "")
 			{
 				pos = s.find("Content-Type:");
@@ -232,7 +252,7 @@ inline void	Server::get_client_request(int i)
 					if ( pos0 != std::string::npos)
 					{
 						_request.set_method(s.substr(pos + 14, pos0 - pos - 14));
-						std::cout << _request.get_method() << std::endl;
+						std::cout << "|" << _request.get_method() << "|" << std::endl;
 					}
 				}
 			}
