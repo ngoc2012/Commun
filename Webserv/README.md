@@ -90,9 +90,9 @@ curl -X POST -F "file=@yourfile.txt" http://localhost/upload
 ## HTTP
 HTTP requests typically include a Content-Type header that indicates the type of data in the request body. Here are some common Content-Type values:
 
-    application/json: Used for JSON data.
-    application/xml: Used for XML data.
-    application/x-www-form-urlencoded: Used for form data submitted in the body of the request.
-    multipart/form-data: Used when submitting forms that include binary data, like file uploads.
-    text/plain: Used for plain text data.
-    application/octet-stream: Used for binary data when the specific type is not known.
+* `application/json`: Used for JSON data.
+* `application/xml`: Used for XML data.
+* `application/x-www-form-urlencoded`: Used for form data submitted in the body of the request.
+* `multipart/form-data`: Used when submitting forms that include binary data, like file uploads.
+* `text/plain`: Used for plain text data.
+* `application/octet-stream`: Used for binary data when the specific type is not known.
