@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 22:11:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 22:12:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,11 @@ Convert::Convert(char *n)
 	_int = std::string("impossible");
 	_float = std::string("impossible");
 	_double = std::string("impossible");
-	char	n0;
-	double	c;
 	if (n[strlen(n) - 1] == 'f')
 	{
 		type = FLOAT;
 		n[strlen(n) - 1] = 0;
-		n0 = n;
+		char	*n0 = n;
 		if (n[0] == '+' || n[0] == '-')
 			n0++;
 		if (isNumber(std::string(n0)) == false)
@@ -74,9 +72,10 @@ Convert::Convert(char *n)
 
 void	Convert::get_str(void)
 {
+	double	c = atof(n);
 	switch (type)
 	{
-		case NONE:
+		case CHAR:
 	}
 }
 

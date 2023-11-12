@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 22:07:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 22:13:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Convert
 		std::string	_int;
 		std::string	_float;
 		std::string	_double;
-		double		value;
+
 		Convert();
 		Convert(const Convert&);
 	public:
@@ -48,10 +48,6 @@ class Convert
 		std::string	getFloat();
 		std::string	getDouble();
 		*/
-
-		class	ConvertException: public std::exception {
-			virtual const char* what() const throw() { return "Unknown type"; }
-		};
 };
 
 #endif
