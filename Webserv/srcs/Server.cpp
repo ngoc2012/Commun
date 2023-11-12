@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 15:00:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 15:03:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,7 +236,7 @@ inline void	Server::get_client_request(int i)
 					}
 				}
 			}
-			else if (_request.get_method() == "multipart/form-data")
+			if (_request.get_method() == "multipart/form-data")
 			{
 				// The combination \r\n is often used to indicate the end of a line of text in text files
 				// Find the start of the file content
@@ -247,8 +247,9 @@ inline void	Server::get_client_request(int i)
 				//	return;
 				//}
 
-				/*
 				size_t startPos = s.find("\r\n\r\n", boundaryPos) + 4;
+				std::cout << s.c_str()[startPos] << std::endl;
+				/*
 				size_t endPos = s.find("--" + line.substr(boundaryPos + boundary.length()));
 
 				// Extract the file content
