@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 22:13:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 22:26:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ class Convert
 {
 	private:
 		e_types		type;
-		std::string	_char;
-		std::string	_int;
-		std::string	_float;
-		std::string	_double;
+		char		_char;
+		int		_int;
+		float		_float;
+		double		_double;
 
 		Convert();
 		Convert(const Convert&);
