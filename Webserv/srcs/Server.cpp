@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 12:22:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 12:25:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,8 @@ inline void	Server::get_client_request(int i)
 			if (_request.get_method() == "")
 			{
 				pos = s.find("Content-Type:");
-				if ( pos != std::string::npos ) {
+				if ( pos != std::string::npos)
+				{
 					pos0 = s.find(";", pos);
 					_request.set_method(s.substr(pos + 14, pos0 - pos - 14));
 					std::cout << _request.get_method() << std::endl;
