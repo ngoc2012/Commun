@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 21:13:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 21:23:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ enum	e_types {NONE, CHAR, INT, FLOAT, DOUBLE};
 class Convert
 {
 	private:
-		e_types	type;
+		e_types		type;
 		std::string	_char;
 		std::string	_int;
 		std::string	_float;
 		std::string	_double;
+		double		value;
 		Convert();
 		Convert(const Convert&);
 	public:

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 21:18:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 21:22:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,20 @@ Convert::Convert(char *n)
 	{
 		type = FLOAT;
 		n[strlen(n) - 1] = 0;
+		if (n[0] == '+' || n[0] == '-')
+			n++;
 		if (isNumber(std::string(n)) == false)
 			type = NONE;
 		return ;
 	}
-	else if (isNumber(std::string(n)) == false)
+	if (isNumber(std::string(n)) == false)
+	{
+		if (std::string(n).length() == 1)
+			type = CHAR;
+		else
+			type = NONE;
+		return;
+	}
 
 		c = atof(n);
 
