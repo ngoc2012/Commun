@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 22:31:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 22:32:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,6 @@ void	Convert::get_str(char *n)
 	{
 		case CHAR:
 			_char = *n;
-			_int = static_cast<int>(*n);
-			_float = static_cast<float>(*n);
-			_double = static_cast<double>(*n);
 		case INT:
 			_char = *n;
 			_int = static_cast<int>(*n);
