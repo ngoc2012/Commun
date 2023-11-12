@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 22:27:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 22:31:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,18 @@ Convert::Convert(char *n)
 void	Convert::get_str(char *n)
 {
 	double	c = atof(n);
+	_char = static_cast<char>(c);
+	_int = static_cast<int>(c);
+	_float = static_cast<float>(c);
+	_double = static_cast<double>(c);
 	switch (type)
 	{
 		case CHAR:
+			_char = *n;
+			_int = static_cast<int>(*n);
+			_float = static_cast<float>(*n);
+			_double = static_cast<double>(*n);
+		case INT:
 			_char = *n;
 			_int = static_cast<int>(*n);
 			_float = static_cast<float>(*n);
