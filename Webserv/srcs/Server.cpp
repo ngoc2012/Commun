@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 08:40:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 08:42:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,7 +223,7 @@ inline void	Server::get_client_request(int i)
 			response[ret] = 0;
 			s += std::string(response);
 			if (std::strstr(s.c_str(), "Content-Type: multipart/form-data;") != nullptr)
-				std::cout << _request.
+				std::cout << _request.set_method(
 			_request.set_http_request(s);
 		}
 	}
