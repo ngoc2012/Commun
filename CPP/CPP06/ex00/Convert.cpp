@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 21:07:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 21:09:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,13 @@ Convert::~Convert() {}
 
 Convert::Convert(char *n)
 {
+	/*
 	_char = "";
 	_char = "";
 	_char = "";
 	_char = "";
+	*/
+	(void) n;
 }
 
 void     Convert::getChar( char* n )
