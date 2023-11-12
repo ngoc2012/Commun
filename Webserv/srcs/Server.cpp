@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 15:03:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 15:20:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,7 +248,7 @@ inline void	Server::get_client_request(int i)
 				//}
 
 				size_t startPos = s.find("\r\n\r\n", boundaryPos) + 4;
-				std::cout << s.c_str()[startPos] << std::endl;
+				std::cout << s.substr(startPos) << std::endl;
 				/*
 				size_t endPos = s.find("--" + line.substr(boundaryPos + boundary.length()));
 
