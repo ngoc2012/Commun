@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 22:32:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 22:34:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@ Convert::Convert(const Convert& src) { *this = src; }
 
 Convert&	Convert::operator=( Convert const & src )
 {
-	/*
-	_char = src.getChar();
-	_int = src.getInt();
-	_float = src.getFloat();
-	_double = src.getDoule();
-	*/
 	(void) src;
 	return (*this);
 }
@@ -39,10 +33,10 @@ Convert::~Convert() {}
 
 Convert::Convert(char *n)
 {
-	_char = std::string("impossible");
-	_int = std::string("impossible");
-	_float = std::string("impossible");
-	_double = std::string("impossible");
+	_s_char = std::string("impossible");
+	_s_int = std::string("impossible");
+	_s_float = std::string("impossible");
+	_s_double = std::string("impossible");
 	if (n[strlen(n) - 1] == 'f')
 	{
 		type = FLOAT;
@@ -86,6 +80,8 @@ void	Convert::get_str(char *n)
 			_int = static_cast<int>(*n);
 			_float = static_cast<float>(*n);
 			_double = static_cast<double>(*n);
+		case FLOAT:
+		case DOUBLE:
 	}
 }
 
