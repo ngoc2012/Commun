@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 21:59:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 22:02:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,15 @@ Convert::Convert(char *n)
 		return;
 	}
 	else
+	{
+		if (strchr(n, '.'))
+			type = DOUBLE;
+		else
+			type = INT;
+	}
+}
 
-
+/*
 void     Convert::getChar( char* n )
 {
 	if (n[strlen(n) - 1] == 'f')
@@ -166,3 +173,4 @@ void     Convert::getDouble( char* n )
 			std::cout << ".0";
 	}
 }
+*/

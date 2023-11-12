@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 21:23:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 22:02:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class Convert
 		Convert &operator=(const Convert& op);
 		virtual ~Convert();
 
+		/*
 		void	setChar();
 		void	setInt();
 		void	setFloat();
@@ -45,6 +46,7 @@ class Convert
 		std::string	getInt();
 		std::string	getFloat();
 		std::string	getDouble();
+		*/
 
 		class	ConvertException: public std::exception {
 			virtual const char* what() const throw() { return "Unknown type"; }
