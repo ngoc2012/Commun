@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 12:25:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 12:27:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,8 +229,11 @@ inline void	Server::get_client_request(int i)
 				if ( pos != std::string::npos)
 				{
 					pos0 = s.find(";", pos);
-					_request.set_method(s.substr(pos + 14, pos0 - pos - 14));
-					std::cout << _request.get_method() << std::endl;
+					if ( pos0 != std::string::npos)
+					{
+						_request.set_method(s.substr(pos + 14, pos0 - pos - 14));
+						std::cout << _request.get_method() << std::endl;
+					}
 				}
 			}
 			_request.set_http_request(s);
