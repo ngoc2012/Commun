@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 14:58:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/12 15:00:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,13 +238,14 @@ inline void	Server::get_client_request(int i)
 			}
 			else if (_request.get_method() == "multipart/form-data")
 			{
+				// The combination \r\n is often used to indicate the end of a line of text in text files
 				// Find the start of the file content
 				const std::string boundary = "boundary=";
 				size_t boundaryPos = s.find(boundary);
-				if (boundaryPos == std::string::npos) {
-					std::cerr << "Boundary not found in Content-Type header." << std::endl;
-					return;
-				}
+				//if (boundaryPos == std::string::npos) {
+				//	std::cerr << "Boundary not found in Content-Type header." << std::endl;
+				//	return;
+				//}
 
 				/*
 				size_t startPos = s.find("\r\n\r\n", boundaryPos) + 4;
