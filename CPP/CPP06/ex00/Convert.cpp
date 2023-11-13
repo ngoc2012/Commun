@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 17:48:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 17:51:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Convert::Convert(char *n)
 {
 	while (*n == '0' && *(n + 1))
 		n++;
-	std::cout << "strlen: " << std::string(n).length() << std::endl;
+	//std::cout << "strlen: " << std::string(n).length() << std::endl;
 	if (std::string(n).length() > 405)
 		type = NONE;
 	else if (n[strlen(n) - 1] == 'f')
