@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:21:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:25:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,12 @@ void     Convert::get_float( char* n )
 				break;
 		}
 	}
+	std::cout << std::endl;
+}
+void     Convert::get_float( char* n )
+{
+	std::string s = std::string(n);
+	std::cout << "float: ";
 	std::cout << std::endl;
 }
 /*
