@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 15:03:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 15:05:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ void     Convert::get_double( char* n )
 	errno = 0;
 
 	double convertedValue = strtod(inputString, &endPtr);
+
 	std::string s = std::string(n);
 	std::cout << "double: ";
 	if (s == "-inf" || s == "-inff")
@@ -192,18 +193,23 @@ void     Convert::get_double( char* n )
 		std::cout << "+inff";
 	else if (s == "nan" || s == "nanf")
 		std::cout << "nan";
+	else if (type == NONE)
+		std::cout << "impossible";
+	else if ((errno == ERANGE && (convertedValue == HUGE_VAL || convertedValue == -HUGE_VAL)) ||
+        (errno != 0 && convertedValue == 0)) {
+		std::cout << "impossible";
 	else if ((_double > 0 && _double < std::numeric_limits<double>::min())
 		|| (_double < 0 && _double > -std::numeric_limits<double>::min())
 		|| _double > std::numeric_limits<double>::max()
 		|| _double < -std::numeric_limits<double>::max())
-		std::cout << "impossible1";
+		std::cout << "impossible";
 	else
 	{
 		switch (type)
 		{
 			case NONE:
 			case CHAR:
-				std::cout << "impossible2";
+				std::cout << "impossible";
 				break;
 			case INT:
 			case FLOAT:
