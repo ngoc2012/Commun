@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 11:43:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 19:17:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ClientRequest::clean()
 
 void	ClientRequest::set_method(std::string m) {_method = m;}
 void	ClientRequest::set_http_request(std::string s) {_http_request = s;}
+void	ClientRequest::cat_http_request(std::string s) {_http_request += s;}
 
 std::string	ClientRequest::get_method(void) const {return (_method);}
 std::string	ClientRequest::get_http_request(void) const {return (_http_request);}
