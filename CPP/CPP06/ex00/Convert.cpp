@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:09:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:12:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ Convert::~Convert() {}
 
 Convert::Convert(char *n)
 {
+	/*
 	_s_char = std::string("impossible");
 	_s_int = std::string("impossible");
 	_s_float = std::string("impossible");
 	_s_double = std::string("impossible");
+	*/
 	if (n[strlen(n) - 1] == 'f')
 	{
 		type = FLOAT;

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:08:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:12:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ class Convert
 		int		_int;
 		float		_float;
 		double		_double;
+		/*
 		std::string	_s_char;
 		std::string	_s_int;
 		std::string	_s_float;
 		std::string	_s_double;
+		*/
 
 		Convert();
 		Convert(const Convert&);
