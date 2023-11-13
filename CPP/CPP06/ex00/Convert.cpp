@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 09:23:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 09:24:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void     Convert::getChar( char* n )
 			if (c < 32 || c > 126)
 				std::cout << "Non displayable";
 			else
-				std::cout << "'" << static_cast<char>(c) << "'";
+				std::cout << "'" << _int << "'";
 			break;
 	}
 	std::cout << std::endl;

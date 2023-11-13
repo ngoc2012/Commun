@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/12 20:45:07 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/13 09:25:16 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,11 @@ $(MANDA): $(SRCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
 	make re
-	@#./convert a
-	@#./convert 0
-	@#./convert nan
-	@#./convert 42.0f
-	@#./convert aj
+	@./convert a
+	@./convert 0
+	@./convert nan
+	@./convert 42.0f
+	@./convert aj
 	#@echo "============== INT_MIN ==============="
 	#./convert -2147483648
 	#./convert -2147483649
