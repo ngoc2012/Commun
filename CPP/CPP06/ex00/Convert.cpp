@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 09:31:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 09:33:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ std::string	cout_value(void *c)
 	return (oss.str());
 }
 */
-void     Convert::getChar( char* n )
+void     Convert::get_char( char* n )
 {
 	std::cout << "char: ";
 	switch (type)
@@ -118,7 +118,7 @@ void     Convert::getChar( char* n )
 			if (_int < 32 || _int > 126)
 				std::cout << "Non displayable";
 			else
-				std::cout << "'" << _int << "'";
+				std::cout << "'" << _char << "'";
 			break;
 	}
 	std::cout << std::endl;
