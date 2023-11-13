@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:12:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:14:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ class Convert
 		void	get_str(char *);
 		void	get_char();
 		void	get_int(char *);
+		void	get_float(char *);
+		void	get_double(char *);
 		/*
 		void	setChar();
 		void	setInt();

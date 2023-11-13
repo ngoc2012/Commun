@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:12:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:15:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,23 @@ void     Convert::get_int( char* n )
 	std::cout << std::endl;
 }
 
+void     Convert::get_float( char* n )
+{
+	std::string s = std::string(n);
+	std::cout << "float: ";
+	if (s == "-inf" || s == "-inff")
+		std::cout << "-inff";
+	else if (s == "+inf" || s == "+inff")
+		std::cout << "+inff";
+	else if (s == "nan" || s == "nanf")
+		std::cout << "nanf";
+	else if ((c > 0 && c < std::numeric_limits<float>::min())
+		|| (c < 0 && c > -std::numeric_limits<float>::min())
+		|| c > std::numeric_limits<float>::max()
+		|| c < -std::numeric_limits<float>::max())
+		std::cout << "impossible";
+	else
+	{
 /*
 //https://en.cppreference.com/w/cpp/types/numeric_limits
 void     Convert::getInt( char* n )
