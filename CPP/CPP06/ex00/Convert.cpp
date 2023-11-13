@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 17:47:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 17:48:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ void	Convert::get_str(char *n)
 	_int = static_cast<int>(c);
 	_float = static_cast<float>(c);
 	_double = static_cast<double>(c);
-	std::string data = std::string(n);
 	/*
+	std::string data = std::string(n);
 	std::stringstream ss(data);
 	long double _ldouble;
 	ss >> _ldouble;

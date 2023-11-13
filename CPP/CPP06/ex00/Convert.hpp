@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 17:41:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 17:48:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Convert
 		int		_int;
 		float		_float;
 		double		_double;
-		long double	_ldouble;
+		//long double	_ldouble;
 
 		Convert();
 		Convert(const Convert&);

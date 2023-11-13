@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/13 17:30:15 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/13 17:48:54 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,7 @@ gits:
 	git commit -m "all"
 	git push
 clean:
-	rm -f $(MANDA)
+	rm -f $(OBJS)
 fclean: clean
 	rm -f $(MANDA)
 re: fclean all
