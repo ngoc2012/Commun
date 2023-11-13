@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 11:52:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 15:03:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,10 @@ void     Convert::get_float( char* n )
 }
 void     Convert::get_double( char* n )
 {
+	char*	endPtr;
+	errno = 0;
+
+	double convertedValue = strtod(inputString, &endPtr);
 	std::string s = std::string(n);
 	std::cout << "double: ";
 	if (s == "-inf" || s == "-inff")
