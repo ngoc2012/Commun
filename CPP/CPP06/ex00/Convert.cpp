@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:05:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:07:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	Convert::get_str(char *n)
 	_int = static_cast<int>(c);
 	_float = static_cast<float>(c);
 	_double = static_cast<double>(c);
-	get_char(n);
-	//get_int(n);
+	//get_char(n);
+	get_int(n);
 	/*
 	switch (type)
 	{
@@ -102,7 +102,7 @@ std::string	cout_value(void *c)
 	return (oss.str());
 }
 */
-void     Convert::get_char()
+void     Convert::get_char( char* n )
 {
 	std::cout << "char: ";
 	switch (type)
@@ -111,6 +111,8 @@ void     Convert::get_char()
 			std::cout << "impossible";
 			break;
 		case CHAR:
+			std::cout << *n;
+			break;
 		case INT:
 		case FLOAT:
 		case DOUBLE:
@@ -123,8 +125,9 @@ void     Convert::get_char()
 	std::cout << std::endl;
 }
 
-void     Convert::get_int()
+void     Convert::get_int( char* n )
 {
+	std::string s = std::string(n);
 	std::cout << "int: ";
 	if (s == "-inf" || s == "-inff")
 		std::cout << "-inf";
