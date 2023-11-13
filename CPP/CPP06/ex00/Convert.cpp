@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 11:49:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 11:52:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,10 +188,10 @@ void     Convert::get_double( char* n )
 		std::cout << "+inff";
 	else if (s == "nan" || s == "nanf")
 		std::cout << "nan";
-	else if ((_ldouble > 0 && _ldouble < std::numeric_limits<double>::min())
-		|| (_ldouble < 0 && _ldouble > -std::numeric_limits<double>::min())
-		|| _ldouble > std::numeric_limits<double>::max()
-		|| _ldouble < -std::numeric_limits<double>::max())
+	else if ((_double > 0 && _double < std::numeric_limits<double>::min())
+		|| (_double < 0 && _double > -std::numeric_limits<double>::min())
+		|| _double > std::numeric_limits<double>::max()
+		|| _double < -std::numeric_limits<double>::max())
 		std::cout << "impossible1";
 	else
 	{
