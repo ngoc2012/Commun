@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:36:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 11:42:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@ class Convert
 		float		_float;
 		double		_double;
 		long double	_ldouble;
-		/*
-		std::string	_s_char;
-		std::string	_s_int;
-		std::string	_s_float;
-		std::string	_s_double;
-		*/
 
 		Convert();
 		Convert(const Convert&);
@@ -49,16 +43,6 @@ class Convert
 		void	get_int(char *);
 		void	get_float(char *);
 		void	get_double(char *);
-		/*
-		void	setChar();
-		void	setInt();
-		void	setFloat();
-		void	setDouble();
-		std::string	getChar();
-		std::string	getInt();
-		std::string	getFloat();
-		std::string	getDouble();
-		*/
 };
 
 #endif

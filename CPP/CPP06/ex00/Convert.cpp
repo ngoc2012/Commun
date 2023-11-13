@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 11:41:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 11:42:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void	Convert::get_str(char *n)
 	std::stringstream ss(data);
 	long double _ldouble;
 	ss >> _ldouble;
-	std::cout << "long double: " << _ldouble << std::endl;
-	//get_char();
-	//get_int(n);
+	//std::cout << "long double: " << _ldouble << std::endl;
+	get_char();
+	get_int(n);
 	get_float(n);
 	get_double(n);
 }
