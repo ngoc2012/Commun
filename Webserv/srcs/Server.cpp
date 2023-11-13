@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 20:43:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 20:51:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,14 @@ void	Server::start(void)
 void	Server::connect_sk(int i)
 {
 	_sk_ready--;
+	// check if the socket is a listen socket
 	for (std::vector<Configuration>::iterator it = _confs->begin() ; it != _confs->end(); ++it)
 		if (i == (*it).get_listen_sk())
 		{
 			accept_client_sk((*it).get_listen_sk());
 			return ;
 		}
+	// connect socket
 	connect_client_sk(i);
 }
 
