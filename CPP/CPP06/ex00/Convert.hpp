@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 11:42:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 15:07:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <limits>	// numeric_limits
 #include <sstream>	// istringstream
 #include <cstring>	// strlen
+#include <cfloat>
 
 enum	e_types {NONE, CHAR, INT, FLOAT, DOUBLE};
 
