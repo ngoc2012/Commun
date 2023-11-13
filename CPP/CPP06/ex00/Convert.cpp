@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 11:45:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 11:46:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	Convert::get_str(char *n)
 	std::stringstream ss(data);
 	long double _ldouble;
 	ss >> _ldouble;
-	//std::cout << "long double: " << _ldouble << std::endl;
+	std::cout << "long double: " << _ldouble << std::endl;
 	get_char();
 	get_int(n);
 	get_float(n);
@@ -198,13 +198,13 @@ void     Convert::get_double( char* n )
 		|| (_ldouble < 0 && _ldouble > -std::numeric_limits<double>::min())
 		|| _ldouble > std::numeric_limits<double>::max()
 		|| _ldouble < -std::numeric_limits<double>::max())
-		std::cout << "impossible";
+		std::cout << "impossible1";
 	else
 	{
 		switch (type)
 		{
 			case NONE:
-				std::cout << "impossible";
+				std::cout << "impossible2";
 				break;
 			case CHAR:
 			case INT:
