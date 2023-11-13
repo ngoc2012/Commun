@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 15:06:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 15:09:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,7 @@ void     Convert::get_double( char* n )
 	char*	endPtr;
 	errno = 0;
 
-	double convertedValue = strtod(inputString, &endPtr);
+	double convertedValue = strtod(n, &endPtr);
 
 	std::string s = std::string(n);
 	std::cout << "double: ";
@@ -196,7 +196,7 @@ void     Convert::get_double( char* n )
 	else if (type == NONE)
 		std::cout << "impossible";
 	else if ((errno == ERANGE && (convertedValue == HUGE_VAL || convertedValue == -HUGE_VAL)) ||
-        (errno != 0 && convertedValue == 0)) {
+        (errno != 0 && convertedValue == 0))
 		std::cout << "impossible";
 	else if (convertedValue >= DBL_MAX)
 		std::cout << "impossible";
