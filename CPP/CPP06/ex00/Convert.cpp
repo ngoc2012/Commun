@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 17:42:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 17:47:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,12 @@ void	Convert::get_str(char *n)
 	_float = static_cast<float>(c);
 	_double = static_cast<double>(c);
 	std::string data = std::string(n);
+	/*
 	std::stringstream ss(data);
 	long double _ldouble;
 	ss >> _ldouble;
 	std::cout << "long double: " << _ldouble << std::endl;
+	*/
 	get_char();
 	get_int(n);
 	get_float(n);
@@ -203,11 +205,6 @@ void     Convert::get_double( char* n )
 		|| (convertedValue < 0.0 && convertedValue > -DBL_MIN)
 		|| (convertedValue > 0.0 && convertedValue < DBL_MIN))
 		std::cout << "impossible";
-	//else if ((_double > 0 && _double < std::numeric_limits<double>::min())
-	//	|| (_double < 0 && _double > -std::numeric_limits<double>::min())
-	//	|| _double > std::numeric_limits<double>::max()
-	//	|| _double < -std::numeric_limits<double>::max())
-	//	std::cout << "impossible";
 	else
 	{
 		switch (type)
