@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 15:41:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 20:43:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,7 @@ inline void	Server::server_response(int i)
 inline void	Server::get_client_request(int i)
 {
 	std::cout << "Receive data from client" << std::endl;
+	ClientRequest			_request;
 	_request.clean();
 	char		response[BUFFER + 1];
 	std::string	s = "";
