@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 22:34:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 09:16:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ void	Convert::get_str(char *n)
 	switch (type)
 	{
 		case CHAR:
-			_char = *n;
+			std::cout << "char: "	<< *n << std::endl;
+			std::cout << "int: " 	<< *nt << std::endl;
+			std::cout << "float: "	<< *n<< std::endl;
+			std::cout << "double: "	<< *n< std::endl;
+			break;
 		case INT:
 			_char = *n;
 			_int = static_cast<int>(*n);
