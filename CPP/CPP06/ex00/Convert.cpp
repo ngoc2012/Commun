@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:28:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:30:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	Convert::get_str(char *n)
 	//get_char();
 	//get_int(n);
 	get_float(n);
+	get_double(n);
 	/*
 	switch (type)
 	{
@@ -205,11 +206,26 @@ void     Convert::get_double( char* n )
 		std::cout << "+inff";
 	else if (s == "nan" || s == "nanf")
 		std::cout << "nan";
-	else if ((c > 0 && c < std::numeric_limits<double>::min())
-		|| (c < 0 && c > -std::numeric_limits<double>::min())
-		|| c > std::numeric_limits<double>::max()
-		|| c < -std::numeric_limits<double>::max())
+	else if ((_double > 0 && _double < std::numeric_limits<double>::min())
+		|| (_double < 0 && _double > -std::numeric_limits<double>::min())
+		|| _double > std::numeric_limits<double>::max()
+		|| _double < -std::numeric_limits<double>::max())
 		std::cout << "impossible";
+	else
+	{
+		switch (type)
+		{
+			case NONE:
+				std::cout << "impossible";
+				break;
+			case CHAR:
+			case INT:
+			case FLOAT:
+			case DOUBLE:
+				std::cout << _double;
+				break;
+		}
+	}
 	std::cout << std::endl;
 }
 /*
