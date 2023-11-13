@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:17:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:19:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@ void	Convert::get_str(char *n)
 	_int = static_cast<int>(c);
 	_float = static_cast<float>(c);
 	_double = static_cast<double>(c);
-	get_char();
-	get_int(n);
+	//get_char();
+	//get_int(n);
+	get_float(n);
 	/*
 	switch (type)
 	{
@@ -192,6 +193,7 @@ void     Convert::get_float( char* n )
 			std::cout << ".0";
 		std::cout << "f";
 	}
+}
 /*
 //https://en.cppreference.com/w/cpp/types/numeric_limits
 void     Convert::getInt( char* n )
