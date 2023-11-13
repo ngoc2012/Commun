@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 15:10:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 17:32:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,8 +195,9 @@ void     Convert::get_double( char* n )
 		std::cout << "nan";
 	else if (type == NONE)
 		std::cout << "impossible";
-	else if ((errno == ERANGE && (convertedValue == DBL_MAX || convertedValue == -DBL_MAX)) ||
-        (errno != 0 && convertedValue == 0))
+	else if ((errno == ERANGE && (convertedValue == DBL_MAX || convertedValue == -DBL_MAX))
+		|| (errno == ERANGE && (convertedValue == DBL_MIN || convertedValue == -DBL_MIN))
+		|| (errno != 0 && convertedValue == 0))
 		std::cout << "impossible";
 	else if (convertedValue >= DBL_MAX)
 		std::cout << "impossible";
