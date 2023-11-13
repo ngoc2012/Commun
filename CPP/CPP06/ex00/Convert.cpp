@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:25:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:28:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,10 +195,21 @@ void     Convert::get_float( char* n )
 	}
 	std::cout << std::endl;
 }
-void     Convert::get_float( char* n )
+void     Convert::get_double( char* n )
 {
 	std::string s = std::string(n);
-	std::cout << "float: ";
+	std::cout << "double: ";
+	if (s == "-inf" || s == "-inff")
+		std::cout << "-inff";
+	else if (s == "+inf" || s == "+inff")
+		std::cout << "+inff";
+	else if (s == "nan" || s == "nanf")
+		std::cout << "nan";
+	else if ((c > 0 && c < std::numeric_limits<double>::min())
+		|| (c < 0 && c > -std::numeric_limits<double>::min())
+		|| c > std::numeric_limits<double>::max()
+		|| c < -std::numeric_limits<double>::max())
+		std::cout << "impossible";
 	std::cout << std::endl;
 }
 /*
