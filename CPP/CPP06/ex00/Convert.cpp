@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:15:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:17:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,13 +164,34 @@ void     Convert::get_float( char* n )
 		std::cout << "+inff";
 	else if (s == "nan" || s == "nanf")
 		std::cout << "nanf";
-	else if ((c > 0 && c < std::numeric_limits<float>::min())
-		|| (c < 0 && c > -std::numeric_limits<float>::min())
-		|| c > std::numeric_limits<float>::max()
-		|| c < -std::numeric_limits<float>::max())
+	else if ((_double > 0 && _double < std::numeric_limits<float>::min())
+		|| (_double < 0 && _double > -std::numeric_limits<float>::min())
+		|| _double > std::numeric_limits<float>::max()
+		|| _double < -std::numeric_limits<float>::max())
 		std::cout << "impossible";
 	else
 	{
+		std::ostringstream oss;
+		std::streambuf* oldCoutBuffer = std::cout.rdbuf(oss.rdbuf());
+		switch (type)
+		{
+			case NONE:
+				std::cout << "impossible";
+				break;
+			case CHAR:
+			case INT:
+			case FLOAT:
+			case DOUBLE:
+				std::cout << _float;
+				break;
+		}
+		std::cout.rdbuf(oldCoutBuffer);
+		std::cout << oss.str();
+		if (oss.str().find('e') == std::string::npos
+			&& oss.str().find('.') == std::string::npos)
+			std::cout << ".0";
+		std::cout << "f";
+	}
 /*
 //https://en.cppreference.com/w/cpp/types/numeric_limits
 void     Convert::getInt( char* n )
