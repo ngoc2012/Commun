@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 15:08:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 17:41:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 #include <cstring>	// strlen
 #include <cfloat>	// DLB_MAX
 #include <cerrno>	// errno
+
+# define DBL_TRUE_MIN std::numeric_limits<double>::min()
 
 enum	e_types {NONE, CHAR, INT, FLOAT, DOUBLE};
 
