@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:30:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:32:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,7 +222,14 @@ void     Convert::get_double( char* n )
 			case INT:
 			case FLOAT:
 			case DOUBLE:
+				std::ostringstream oss;
+				std::streambuf* oldCoutBuffer = std::cout.rdbuf(oss.rdbuf());
 				std::cout << _double;
+				std::cout.rdbuf(oldCoutBuffer);
+				std::cout << oss.str();
+				if (oss.str().find('e') == std::string::npos
+						&& oss.str().find('.') == std::string::npos)
+					std::cout << ".0";
 				break;
 		}
 	}
