@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 11:46:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 11:49:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,7 @@ Convert::~Convert() {}
 
 Convert::Convert(char *n)
 {
-	/*
-	_s_char = std::string("impossible");
-	_s_int = std::string("impossible");
-	_s_float = std::string("impossible");
-	_s_double = std::string("impossible");
-	*/
-	while (*n == '0')
+	while (*n == '0' && *(n + 1))
 		n++;
 	std::cout << "strlen: " << std::string(n).length() << std::endl;
 	if (std::string(n).length() > 405)
@@ -131,9 +125,9 @@ void     Convert::get_int( char* n )
 		switch (type)
 		{
 			case NONE:
+			case CHAR:
 				std::cout << "impossible";
 				break;
-			case CHAR:
 			case INT:
 			case FLOAT:
 			case DOUBLE:
@@ -164,9 +158,9 @@ void     Convert::get_float( char* n )
 		switch (type)
 		{
 			case NONE:
+			case CHAR:
 				std::cout << "impossible";
 				break;
-			case CHAR:
 			case INT:
 			case FLOAT:
 			case DOUBLE:
@@ -204,9 +198,9 @@ void     Convert::get_double( char* n )
 		switch (type)
 		{
 			case NONE:
+			case CHAR:
 				std::cout << "impossible2";
 				break;
-			case CHAR:
 			case INT:
 			case FLOAT:
 			case DOUBLE:
