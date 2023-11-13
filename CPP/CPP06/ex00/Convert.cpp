@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:19:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:21:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,8 +172,6 @@ void     Convert::get_float( char* n )
 		std::cout << "impossible";
 	else
 	{
-		std::ostringstream oss;
-		std::streambuf* oldCoutBuffer = std::cout.rdbuf(oss.rdbuf());
 		switch (type)
 		{
 			case NONE:
@@ -183,16 +181,19 @@ void     Convert::get_float( char* n )
 			case INT:
 			case FLOAT:
 			case DOUBLE:
+				std::ostringstream oss;
+				std::streambuf* oldCoutBuffer = std::cout.rdbuf(oss.rdbuf());
 				std::cout << _float;
+				std::cout.rdbuf(oldCoutBuffer);
+				std::cout << oss.str();
+				if (oss.str().find('e') == std::string::npos
+						&& oss.str().find('.') == std::string::npos)
+					std::cout << ".0";
+				std::cout << "f";
 				break;
 		}
-		std::cout.rdbuf(oldCoutBuffer);
-		std::cout << oss.str();
-		if (oss.str().find('e') == std::string::npos
-			&& oss.str().find('.') == std::string::npos)
-			std::cout << ".0";
-		std::cout << "f";
 	}
+	std::cout << std::endl;
 }
 /*
 //https://en.cppreference.com/w/cpp/types/numeric_limits
