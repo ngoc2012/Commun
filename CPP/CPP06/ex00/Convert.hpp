@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:06:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:08:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class Convert
 		virtual ~Convert();
 
 		void	get_str(char *);
-		void	get_char(char *);
+		void	get_char();
 		void	get_int(char *);
 		/*
 		void	setChar();
