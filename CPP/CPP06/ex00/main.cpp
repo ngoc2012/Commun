@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 20:43:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 09:21:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int main(int argc, char **argv)
 	std::stringstream ss(argv[1]);
 	long double ld;
 	ss >> ld;
+
+	Convert		c(argv[1]);
 /*
 	Convert		c;
 	//double	flt_max = atof("340282346638528859811704183484516925440");
