@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:37:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:39:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,35 +81,8 @@ void	Convert::get_str(char *n)
 	//get_int(n);
 	get_float(n);
 	get_double(n);
-	/*
-	switch (type)
-	{
-		case CHAR:
-			std::cout << "char: "	<< *n << std::endl;
-			std::cout << "int: " 	<< _int << std::endl;
-			std::cout << "float: "	<< _float << ".0" << std::endl;
-			std::cout << "double: "	<< _double << std::endl;
-			break;
-		case INT:
-			_char = *n;
-			_int = static_cast<int>(*n);
-			_float = static_cast<float>(*n);
-			_double = static_cast<double>(*n);
-		case FLOAT:
-		case DOUBLE:
-	}
-	*/
 }
-/*
-std::string	cout_value(void *c)
-{
-	std::ostringstream oss;
-	std::streambuf* oldCoutBuffer = std::cout.rdbuf(oss.rdbuf());
-	std::cout << *c;
-	std::cout.rdbuf(oldCoutBuffer);
-	return (oss.str());
-}
-*/
+
 void     Convert::get_char()
 {
 	std::cout << "char: ";
@@ -210,10 +183,10 @@ void     Convert::get_double( char* n )
 		std::cout << "+inff";
 	else if (s == "nan" || s == "nanf")
 		std::cout << "nan";
-	else if ((_double > 0 && _double < std::numeric_limits<double>::min())
-		|| (_double < 0 && _double > -std::numeric_limits<double>::min())
-		|| _double > std::numeric_limits<double>::max()
-		|| _double < -std::numeric_limits<double>::max())
+	else if ((_ldouble > 0 && _ldouble < std::numeric_limits<double>::min())
+		|| (_ldouble < 0 && _ldouble > -std::numeric_limits<double>::min())
+		|| _ldouble > std::numeric_limits<double>::max()
+		|| _ldouble < -std::numeric_limits<double>::max())
 		std::cout << "impossible";
 	else
 	{
@@ -239,86 +212,3 @@ void     Convert::get_double( char* n )
 	}
 	std::cout << std::endl;
 }
-/*
-//https://en.cppreference.com/w/cpp/types/numeric_limits
-void     Convert::getInt( char* n )
-{
-	if (n[strlen(n) - 1] == 'f')
-		n[strlen(n) - 1] = 0;
-	double	c = atof(n);
-	std::string s = std::string(n);
-	if (s == "-inf" || s == "-inff")
-		std::cout << "-inf";
-	else if (s == "+inf" || s == "+inff")
-		std::cout << "+inf";
-	else if (isNumber(std::string(n)) == false
-		|| c > std::numeric_limits<int>::max()
-		|| c < -(std::numeric_limits<int>::max() + 1))
-		std::cout << "impossible";
-	else
-		std::cout << static_cast<int>(c);
-}
-
-void     Convert::getFloat( char* n )
-{
-	if (n[strlen(n) - 1] == 'f')
-		n[strlen(n) - 1] = 0;
-	double	c = atof(n);
-	std::string s = std::string(n);
-	if (s == "-inf" || s == "-inff")
-		std::cout << "-inff";
-	else if (s == "+inf" || s == "+inff")
-		std::cout << "+inff";
-	else if (s == "nan" || s == "nanf")
-		std::cout << "nanf";
-	else if (isNumber(std::string(n)) == false
-		|| (c > 0 && c < std::numeric_limits<float>::min())
-		|| (c < 0 && c > -std::numeric_limits<float>::min())
-		|| c > std::numeric_limits<float>::max()
-		|| c < -std::numeric_limits<float>::max())
-		std::cout << "impossible";
-	else
-	{
-		std::ostringstream oss;
-		std::streambuf* oldCoutBuffer = std::cout.rdbuf(oss.rdbuf());
-		std::cout << static_cast<float>(c);
-		std::cout.rdbuf(oldCoutBuffer);
-		std::cout << oss.str();
-		if (oss.str().find('e') == std::string::npos
-			&& oss.str().find('.') == std::string::npos)
-			std::cout << ".0";
-		std::cout << "f";
-	}
-}
-
-void     Convert::getDouble( char* n )
-{
-	if (n[strlen(n) - 1] == 'f')
-		n[strlen(n) - 1] = 0;
-	double	c = atof(n);
-	std::string s = std::string(n);
-	if (s == "-inf" || s == "-inff")
-		std::cout << "-inff";
-	else if (s == "+inf" || s == "+inff")
-		std::cout << "+inff";
-	else if (s == "nan" || s == "nanf")
-		std::cout << "nan";
-	else if (isNumber(std::string(n)) == false
-		|| (c > 0 && c < std::numeric_limits<double>::min())
-		|| (c < 0 && c > -std::numeric_limits<double>::min())
-		|| c > std::numeric_limits<double>::max()
-		|| c < -std::numeric_limits<double>::max())
-		std::cout << "impossible";
-	else
-	{
-		std::ostringstream oss;
-		std::streambuf* oldCoutBuffer = std::cout.rdbuf(oss.rdbuf());
-		std::cout << static_cast<double>(c);
-		std::cout.rdbuf(oldCoutBuffer);
-		std::cout << oss.str();
-		if (oss.str().find('e') == std::string::npos
-			&& oss.str().find('.') == std::string::npos)
-			std::cout << ".0";
-	}
-}
-*/
