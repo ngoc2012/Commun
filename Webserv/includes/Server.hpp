@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/12 15:01:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 20:35:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ class Server
 		fd_set              		_working_set;
 		ClientRequest			_request;
 		std::vector<Configuration>	*_confs;
+		std::vector<ClientRequest>	*_client_requests;
 		bool				_end_server;
 
 		void			get_listen_sk(Configuration&);
@@ -55,6 +56,7 @@ class Server
 		void			get_client_request(int);
 		void			close_connection(int);
 		void			connect_sk(int);
+
 		Server();
 		Server(const Server&);
 		Server &operator=(const Server& op);
