@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 10:03:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 10:05:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	Convert::get_str(char *n)
 	_float = static_cast<float>(c);
 	_double = static_cast<double>(c);
 	get_char(n);
+	//get_int(n);
 	/*
 	switch (type)
 	{
@@ -101,7 +102,7 @@ std::string	cout_value(void *c)
 	return (oss.str());
 }
 */
-void     Convert::get_char( char* n )
+void     Convert::get_char()
 {
 	std::cout << "char: ";
 	switch (type)
@@ -110,8 +111,6 @@ void     Convert::get_char( char* n )
 			std::cout << "impossible";
 			break;
 		case CHAR:
-			std::cout << *n;
-			break;
 		case INT:
 		case FLOAT:
 		case DOUBLE:
@@ -124,7 +123,7 @@ void     Convert::get_char( char* n )
 	std::cout << std::endl;
 }
 
-void     Convert::get_int( char* n )
+void     Convert::get_int()
 {
 	std::cout << "int: ";
 	if (s == "-inf" || s == "-inff")
@@ -133,6 +132,7 @@ void     Convert::get_int( char* n )
 		std::cout << "+inf";
 	else if (_float > std::numeric_limits<int>::max()
 		|| _float < -(std::numeric_limits<int>::max() + 1))
+		std::cout << "impossible";
 	else
 	{
 		switch (type)
