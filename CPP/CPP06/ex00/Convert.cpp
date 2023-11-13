@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 09:24:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 09:27:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,16 @@ void     Convert::getChar( char* n )
 	std::cout << "char: ";
 	switch (type)
 	{
+		case NONE:
+			std::cout << "impossible";
+			break;
 		case CHAR:
-			std::cout << *n << std::endl;
+			std::cout << *n;
 			break;
 		case INT:
 		case FLOAT:
 		case DOUBLE:
-			if (c < 32 || c > 126)
+			if (_int < 32 || _int > 126)
 				std::cout << "Non displayable";
 			else
 				std::cout << "'" << _int << "'";
