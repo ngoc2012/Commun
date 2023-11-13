@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 09:16:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/13 09:23:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,14 @@ void	Convert::get_str(char *n)
 	_int = static_cast<int>(c);
 	_float = static_cast<float>(c);
 	_double = static_cast<double>(c);
+	/*
 	switch (type)
 	{
 		case CHAR:
 			std::cout << "char: "	<< *n << std::endl;
-			std::cout << "int: " 	<< *nt << std::endl;
-			std::cout << "float: "	<< *n<< std::endl;
-			std::cout << "double: "	<< *n< std::endl;
+			std::cout << "int: " 	<< _int << std::endl;
+			std::cout << "float: "	<< _float << ".0" << std::endl;
+			std::cout << "double: "	<< _double << std::endl;
 			break;
 		case INT:
 			_char = *n;
@@ -87,8 +88,9 @@ void	Convert::get_str(char *n)
 		case FLOAT:
 		case DOUBLE:
 	}
+	*/
 }
-
+/*
 std::string	cout_value(void *c)
 {
 	std::ostringstream oss;
@@ -96,32 +98,29 @@ std::string	cout_value(void *c)
 	std::cout << *c;
 	std::cout.rdbuf(oldCoutBuffer);
 	return (oss.str());
-	/*
-	   std::cout << oss.str();
-	   if (oss.str().find('e') == std::string::npos
-	   && oss.str().find('.') == std::string::npos)
-	   std::cout << ".0";
-	 */
 }
-/*
+*/
 void     Convert::getChar( char* n )
 {
-	if (n[strlen(n) - 1] == 'f')
-		n[strlen(n) - 1] = 0;
-	double	c = atof(n);
-	if (isNumber(std::string(n)) == false)
+	std::cout << "char: ";
+	switch (type)
 	{
-		if (std::string(n).length() == 1)
-			std::cout << "'" << n << "'";
-		else
-			std::cout << "impossible";
+		case CHAR:
+			std::cout << *n << std::endl;
+			break;
+		case INT:
+		case FLOAT:
+		case DOUBLE:
+			if (c < 32 || c > 126)
+				std::cout << "Non displayable";
+			else
+				std::cout << "'" << static_cast<char>(c) << "'";
+			break;
 	}
-	else if (c < 32 || c > 126)
-		std::cout << "Non displayable";
-	else
-		std::cout << "'" << static_cast<char>(c) << "'";
+	std::cout << std::endl;
 }
 
+/*
 //https://en.cppreference.com/w/cpp/types/numeric_limits
 void     Convert::getInt( char* n )
 {
