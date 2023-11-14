@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 18:23:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 18:31:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ ConfigurationParser::~ConfigurationParser() {}
 void	conf_file_error(std::vector<Server>& servers, std::string line, int i)
 {
 	for (std::vector<Server>::iterator it = servers.begin() ; it != servers.end(); ++it)
-		delete (it);
+		delete (&it);
 	std::cerr << "Configuration file error at line " << i << " :" << line << std::endl;
 }
 ConfigurationParser::ConfigurationParser(std::vector<Server>& servers, const char* conf)
 {
-	const char*	keys_server[] = {"listen", "server_name", "location"};
-	const char*	keys_location[] = {"methods", "client_max_body_size", "client_body_buffer_size", "fastcgi_pass", "fastcgi_param", "include"};
+	//const char*	keys_server[] = {"listen", "server_name", "location"};
+	//const char*	keys_location[] = {"methods", "client_max_body_size", "client_body_buffer_size", "fastcgi_pass", "fastcgi_param", "include"};
 	std::ifstream	conf_file(conf);
 	if (!conf_file.is_open()) {
 		std::cerr << "Error opening the file." << std::endl;
