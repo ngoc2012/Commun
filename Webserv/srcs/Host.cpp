@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Server.cpp                                         :+:      :+:    :+:   */
+/*   Host.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 20:51:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 09:21:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Server.hpp"
+#include "Host.hpp"
 
-Server::Server(const Server& src) { *this = src; }
+Host::Host(const Host& src) { *this = src; }
 
-Server::Server(std::vector<Configuration>* c) {
+Host::Host(std::vector<Configuration>* c) {
 	_max_sk = -1;
 	_confs = c;
 	_end_server = false;
 }
 
-Server&	Server::operator=( Server const & src )
+Host&	Host::operator=( Host const & src )
 {
 	//_confs = src.get_confs();
 	(void) src;
 	return (*this);
 }
 
-Server::~Server() {}
+Host::~Host() {}
 
-std::vector<Configuration>	*Server::get_confs(void) const {return (_confs);}
+std::vector<Configuration>	*Host::get_confs(void) const {return (_confs);}
 
-void	Server::set_end_server(bool e) {_end_server = e;}
+void	Host::set_end_server(bool e) {_end_server = e;}
 
-void	Server::start(void)
+void	Host::start(void)
 {
 	FD_ZERO(&_master_set);
 	for (std::vector<Configuration>::iterator it = _confs->begin() ; it != _confs->end(); ++it)
@@ -58,7 +58,7 @@ void	Server::start(void)
 	//end();
 }
 
-void	Server::connect_sk(int i)
+void	Host::connect_sk(int i)
 {
 	_sk_ready--;
 	// check if the socket is a listen socket
@@ -72,7 +72,7 @@ void	Server::connect_sk(int i)
 	connect_client_sk(i);
 }
 
-inline void	Server::connect_client_sk(int i)
+inline void	Host::connect_client_sk(int i)
 {
 	std::cout << "Socket " << i << " is readable." << std::endl;
 	get_client_request(i);
@@ -86,7 +86,7 @@ inline void	Server::connect_client_sk(int i)
 	close_connection(i);
 }
 
-void	Server::end(void)
+void	Host::end(void)
 {
 	for (int i = 0; i <= _max_sk; ++i)
 		if (FD_ISSET(i, &_master_set))
@@ -101,7 +101,7 @@ void		close_all_listen_sk(std::vector<Configuration> &confs)
 			close((*it).get_listen_sk());
 }
 
-void	Server::get_listen_sk(Configuration &c)
+void	Host::get_listen_sk(Configuration &c)
 {
 	c.set_listen_sk(socket(AF_INET, SOCK_STREAM, 0));
 	if (c.get_listen_sk() < 0)
@@ -120,7 +120,7 @@ void	Server::get_listen_sk(Configuration &c)
 	fcntl(c.get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
 }
 
-void	Server::bind_addr(Configuration &c)
+void	Host::bind_addr(Configuration &c)
 {
 	struct sockaddr_in	addr;
 
@@ -143,7 +143,7 @@ void	Server::bind_addr(Configuration &c)
 }
 
 //Accept all the new connections, create a new socket and add to the master set
-inline void	Server::accept_client_sk(int listen_sk)
+inline void	Host::accept_client_sk(int listen_sk)
 {
 	std::cout << "Listening socket is readable" << std::endl;
 	int	new_sk;
@@ -167,7 +167,7 @@ inline void	Server::accept_client_sk(int listen_sk)
 	} while (new_sk != -1);
 }
 
-inline bool	Server::select_available_sk(void)
+inline bool	Host::select_available_sk(void)
 {
 	std::cout << "Waiting on select() ..." << std::endl;
 	_sk_ready = select(_max_sk + 1, &_working_set, NULL, NULL, NULL);// No timeout
@@ -180,7 +180,7 @@ inline bool	Server::select_available_sk(void)
 	return (true);
 }
 
-inline void	Server::server_response(int i)
+inline void	Host::server_response(int i)
 {
 	//Send back data
 	const char* http_response =
@@ -199,7 +199,7 @@ inline void	Server::server_response(int i)
 	std::cout << "Data sent" << std::endl;
 }
 
-inline void	Server::get_client_request(int i)
+inline void	Host::get_client_request(int i)
 {
 	std::cout << "Receive data from client" << std::endl;
 	ClientRequest			_request;
@@ -274,7 +274,7 @@ inline void	Server::get_client_request(int i)
 	}
 }
 
-inline void	Server::close_connection(int i)
+inline void	Host::close_connection(int i)
 {
 	close(i);
 	FD_CLR(i, &_master_set);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Server.hpp                                         :+:      :+:    :+:   */
+/*   Host.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 20:48:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 09:21:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define BUFFER	2048
 
 //https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
-class Server
+class Host
 {
 	private:
 
@@ -56,13 +56,13 @@ class Server
 		void			close_connection(int);
 		void			connect_sk(int);
 
-		Server();
-		Server(const Server&);
-		Server &operator=(const Server& op);
+		Host();
+		Host(const Host&);
+		Host &operator=(const Host& op);
 
 	public:
-		Server(std::vector<Configuration>*);
-		virtual ~Server();
+		Host(std::vector<Configuration>*);
+		virtual ~Host();
 
 		void				set_end_server(bool);
 
