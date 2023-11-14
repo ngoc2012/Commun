@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 09:21:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 09:25:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 #include "ClientRequest.hpp"
 #include "Configuration.hpp"
 
-#ifndef SERVER_HPP
-# define SERVER_HPP
+#ifndef HOST_HPP
+# define HOST_HPP
 # define BUFFER	2048
 
 //https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
