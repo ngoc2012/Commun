@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 18:24:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 18:27:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Server::Server()
 {
-	_ip_address = "127.0.0.1";
+	_ip_address = std::string("127.0.0.1");
 	_port = 4242;
 	_max_clients = 128;
 	_listen_sk = -1;
@@ -31,7 +31,7 @@ Server&	Server::operator=( Server const & src )
 Server::~Server() {}
 Server::Server(const char* ip, int port)
 {
-	_ip_address = (char *) ip;
+	_ip_address = std::string(ip);
 	_port = port;
 	_max_clients = 128;
 	_listen_sk = -1;
