@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 17:54:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 18:05:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server>& servers, const cha
 		{
 			if (!new_server)
 				return (conf_file_error(servers, line, i));
+			std::cout << line << std::endl;
 		}
 	}
 	inputFile.close();
