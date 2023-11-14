@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 17:59:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 18:00:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ class Host
 {
 	private:
 
-		//int				_listen_sk;
 		int				_sk_ready;
 		int				_max_sk;
 		fd_set              		_master_set;
