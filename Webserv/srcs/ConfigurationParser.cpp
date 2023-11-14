@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 17:45:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 17:49:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ ConfigurationParser&	ConfigurationParser::operator=( ConfigurationParser const &
 	return (*this);
 }
 ConfigurationParser::~ConfigurationParser() {}
+void	conf_file_error(std::string line, int i)
+{
+	std::cerr << "Configuration file error at line " << i << " :" << line << std::endl;
+}
 ConfigurationParser::ConfigurationParser(std::vector<Server>& servers, const char conf*)
 {
 	const char*	keys_level_0[] = {"server"}
@@ -32,13 +36,19 @@ ConfigurationParser::ConfigurationParser(std::vector<Server>& servers, const cha
 		return 1;
 	}
 	Server	*new_server = 0;
+	int	i = 0;
 	std::string line;
 	while (std::getline(conf_file, line)) {
+		i++;
 		if (line.c_str()[0] == '#')
 			;
 		else if (line.substr(0, 6) == std::string("server"))
 			Server	*new_server = new Server();
 		else if (line.substr(0, 7) == std::string("	listen"))
+		{
+			if (!new_server)
+				return (conf_file_error(line, i));
+		}
 	}
 	inputFile.close();
 }
