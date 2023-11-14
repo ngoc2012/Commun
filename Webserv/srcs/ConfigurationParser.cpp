@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 22:45:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 22:47:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 			if (!new_server)
 			{
 				conf_file_error(servers, line, i);
-				return ;
+				break ;
 			}
 			std::vector<std::string>	tokens = split_string(line, std::string(" 	"));
 			std::vector<std::string>	tokens0 = split_string(tokens[1], std::string(":"));
-			std::cout << tokens[1] << std::endl;
+			//std::cout << tokens0[1] << std::endl;
 			//new_server->set_ip_address(tokens0[0]);
 			//new_server->set_port(std::atoi(tokens0[1].c_str()));
 			//std::cout << new_server->get_ip_address() << ":" << new_server->get_port() << std::endl;
