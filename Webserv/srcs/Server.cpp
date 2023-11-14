@@ -6,13 +6,19 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 09:48:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 18:24:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Server.hpp"
 
-Server::Server() {}
+Server::Server()
+{
+	_ip_address = "127.0.0.1";
+	_port = 4242;
+	_max_clients = 128;
+	_listen_sk = -1;
+}
 Server::Server(const Server& src) { *this = src; }
 Server&	Server::operator=( Server const & src )
 {
