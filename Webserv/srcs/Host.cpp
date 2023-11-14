@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 09:51:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 09:52:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,6 @@ inline void	Host::connect_client_sk(int i)
 {
 	std::cout << "Socket " << i << " is readable." << std::endl;
 	get_client_request(i);
-	std::cout << "Client send: \n"
-		<< "=============================================\n"
-		<< _request.get_http_request();
-	std::cout 
-		<< "============================================="
-		<< std::endl;
 	server_response(i);
 	close_connection(i);
 }
@@ -272,6 +266,12 @@ inline void	Host::get_client_request(int i)
 			_request.set_http_request(s);
 		}
 	}
+	std::cout << "Client send: \n"
+		<< "=============================================\n"
+		<< _request.get_http_request();
+	std::cout 
+		<< "============================================="
+		<< std::endl;
 }
 
 inline void	Host::close_connection(int i)
