@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 22:24:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 22:27:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class Server
 
 		void			set_listen_sk(int);
 		void			set_ip_address(std::string);
+		short unsigned int	get_port(void) const;
 };
 
 #endif
