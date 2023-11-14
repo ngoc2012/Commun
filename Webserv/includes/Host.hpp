@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 17:56:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 17:59:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ class Host
 		std::vector<ClientRequest>	*_client_requests;
 		bool				_end_host;
 
-		void			get_listen_sk(Server&);
-		void			bind_addr(Server&);
-		void			accept_client_sk(int);
-		bool			select_available_sk(void);
-		void			connect_client_sk(int);
-		void			server_response(int);
-		void			get_client_request(int);
-		void			close_connection(int);
-		void			connect_sk(int);
+		void				get_listen_sk(Server&);
+		void				bind_addr(Server&);
+		void				accept_client_sk(int);
+		bool				select_available_sk(void);
+		void				connect_client_sk(int);
+		void				server_response(int);
+		void				get_client_request(int);
+		void				close_connection(int);
+		void				connect_sk(int);
 
 		Host();
 		Host(const Host&);
@@ -66,7 +66,7 @@ class Host
 
 		void				set_end_host(bool);
 
-		std::vector<Server>	*get_servers(void) const;
+		std::vector<Server>		*get_servers(void) const;
 		void    			start(void);
 		void				end(void);
 };
