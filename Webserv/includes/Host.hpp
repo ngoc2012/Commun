@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 09:51:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 09:55:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class Host
 		fd_set              		_working_set;
 		std::vector<Server>	*_confs;
 		std::vector<ClientRequest>	*_client_requests;
-		bool				_end_server;
+		bool				_end_host;
 
 		void			get_listen_sk(Server&);
 		void			bind_addr(Server&);
@@ -64,7 +64,7 @@ class Host
 		Host(std::vector<Server>*);
 		virtual ~Host();
 
-		void				set_end_server(bool);
+		void				set_end_host(bool);
 
 		std::vector<Server>	*get_confs(void) const;
 		void    			start(void);

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 09:52:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 09:55:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Host::Host(const Host& src) { *this = src; }
 Host::Host(std::vector<Server>* c) {
 	_max_sk = -1;
 	_confs = c;
-	_end_server = false;
+	_end_host = false;
 }
 
 Host&	Host::operator=( Host const & src )
@@ -31,7 +31,7 @@ Host::~Host() {}
 
 std::vector<Server>	*Host::get_confs(void) const {return (_confs);}
 
-void	Host::set_end_server(bool e) {_end_server = e;}
+void	Host::set_end_host(bool e) {_end_host = e;}
 
 void	Host::start(void)
 {
@@ -44,7 +44,7 @@ void	Host::start(void)
 			_max_sk = (*it).get_listen_sk();
 		FD_SET((*it).get_listen_sk(), &_master_set);
 	}
-	//end_server = false;
+	//end_host = false;
 	do
 	{
 		memcpy(&_working_set, &_master_set, sizeof(_master_set));
@@ -54,7 +54,7 @@ void	Host::start(void)
 			if (FD_ISSET(i, &_working_set))
 				connect_sk(i);
 	} while (true);
-	//} while (end_server == false);
+	//} while (end_host == false);
 	//end();
 }
 
@@ -149,7 +149,7 @@ inline void	Host::accept_client_sk(int listen_sk)
 			if (errno != EWOULDBLOCK)
 			{
 				perror("accept() failed");
-				_end_server = true;
+				_end_host = true;
 			}
 			break;
 		}
@@ -167,7 +167,7 @@ inline bool	Host::select_available_sk(void)
 	_sk_ready = select(_max_sk + 1, &_working_set, NULL, NULL, NULL);// No timeout
 	if (_sk_ready < 0)
 	{
-		if (_end_server == false)
+		if (_end_host == false)
 			perror("working set select() failed");
 		return (false);
 	}

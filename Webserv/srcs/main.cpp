@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 09:53:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 09:55:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "Host.hpp"
 #include "Server.hpp"
 
-Server	*g_host;
+Host	*g_host;
 
 void	main_signal_handler(int sig)
 {
