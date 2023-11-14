@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 14:54:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 14:56:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main()
 	std::cout << "Login: " << deserialize( serialize( data ) )->name << std::endl;
 	std::cout << "Level: " << deserialize( serialize( data ) )->age << std::endl;
 
-	delete data;
+	delete(data);
 
-	return EXIT_SUCCESS;
+	return (0);
 }
