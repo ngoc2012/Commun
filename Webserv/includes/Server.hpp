@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 18:27:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 18:29:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@
 class Server
 {
 	private:
-		std::string		*_ip_address;
+		std::string		_ip_address;
 		short unsigned int	_port;
 		int			_max_clients;
-
 		int			_listen_sk;
-
 	public:
 		Server();
 		Server(const Server&);
@@ -31,7 +29,7 @@ class Server
 		Server(const char*, int);
 		virtual ~Server();
 
-		char			*get_ip_address(void) const;
+		const char*		get_ip_address(void) const;
 		short unsigned int	get_port(void) const;
 		int			get_max_clients(void) const;
 		int			get_listen_sk(void) const;
