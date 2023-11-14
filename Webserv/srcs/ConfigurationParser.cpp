@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 18:05:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 18:12:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	conf_file_error(std::vector<Server>& servers, std::string line, int i)
 		delete (it);
 	std::cerr << "Configuration file error at line " << i << " :" << line << std::endl;
 }
-ConfigurationParser::ConfigurationParser(std::vector<Server>& servers, const char conf*)
+ConfigurationParser::ConfigurationParser(std::vector<Server>& servers, const char* conf)
 {
 	const char*	keys_level_0[] = {"server"}
 	const char*	keys_level_1[] = {"listen", "server_name", "location"}

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 18:04:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 18:13:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	main_signal_handler(int sig)
 int	main()
 {
 	std::vector<Server>	servers;
-	ConfigurationParser	parser(&servers, ".conf")
+	ConfigurationParser	parser(servers, ".conf");
 	/*
 	struct sigaction	act;
 	act.sa_flags = SA_RESTART;
