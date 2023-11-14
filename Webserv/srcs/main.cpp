@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 18:40:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 18:43:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int	main()
 {
 	std::vector<Server*>	servers;
 	ConfigurationParser	parser(servers, ".conf");
+	for (std::vector<Server*>::iterator it = servers.begin() ; it != servers.end(); ++it)
+		delete (*it);
 	/*
 	struct sigaction	act;
 	act.sa_flags = SA_RESTART;
