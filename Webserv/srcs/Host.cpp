@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 09:21:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 09:51:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Host::Host(const Host& src) { *this = src; }
 
-Host::Host(std::vector<Configuration>* c) {
+Host::Host(std::vector<Server>* c) {
 	_max_sk = -1;
 	_confs = c;
 	_end_server = false;
@@ -29,14 +29,14 @@ Host&	Host::operator=( Host const & src )
 
 Host::~Host() {}
 
-std::vector<Configuration>	*Host::get_confs(void) const {return (_confs);}
+std::vector<Server>	*Host::get_confs(void) const {return (_confs);}
 
 void	Host::set_end_server(bool e) {_end_server = e;}
 
 void	Host::start(void)
 {
 	FD_ZERO(&_master_set);
-	for (std::vector<Configuration>::iterator it = _confs->begin() ; it != _confs->end(); ++it)
+	for (std::vector<Server>::iterator it = _confs->begin() ; it != _confs->end(); ++it)
 	{
 		get_listen_sk(*it);
 		bind_addr(*it);
@@ -62,7 +62,7 @@ void	Host::connect_sk(int i)
 {
 	_sk_ready--;
 	// check if the socket is a listen socket
-	for (std::vector<Configuration>::iterator it = _confs->begin() ; it != _confs->end(); ++it)
+	for (std::vector<Server>::iterator it = _confs->begin() ; it != _confs->end(); ++it)
 		if (i == (*it).get_listen_sk())
 		{
 			accept_client_sk((*it).get_listen_sk());
@@ -94,14 +94,14 @@ void	Host::end(void)
 	std::cout << "End server" << std::endl;
 }
 
-void		close_all_listen_sk(std::vector<Configuration> &confs)
+void		close_all_listen_sk(std::vector<Server> &confs)
 {
-	for (std::vector<Configuration>::iterator it = confs.begin() ; it != confs.end(); ++it)
+	for (std::vector<Server>::iterator it = confs.begin() ; it != confs.end(); ++it)
 		if ((*it).get_listen_sk() > 0)
 			close((*it).get_listen_sk());
 }
 
-void	Host::get_listen_sk(Configuration &c)
+void	Host::get_listen_sk(Server &c)
 {
 	c.set_listen_sk(socket(AF_INET, SOCK_STREAM, 0));
 	if (c.get_listen_sk() < 0)
@@ -120,7 +120,7 @@ void	Host::get_listen_sk(Configuration &c)
 	fcntl(c.get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
 }
 
-void	Host::bind_addr(Configuration &c)
+void	Host::bind_addr(Server &c)
 {
 	struct sockaddr_in	addr;
 

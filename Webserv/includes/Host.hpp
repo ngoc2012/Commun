@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 09:25:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 09:51:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 #include <vector>
 
 #include "ClientRequest.hpp"
-#include "Configuration.hpp"
+#include "Server.hpp"
 
 #ifndef HOST_HPP
 # define HOST_HPP
@@ -42,12 +42,12 @@ class Host
 		int				_max_sk;
 		fd_set              		_master_set;
 		fd_set              		_working_set;
-		std::vector<Configuration>	*_confs;
+		std::vector<Server>	*_confs;
 		std::vector<ClientRequest>	*_client_requests;
 		bool				_end_server;
 
-		void			get_listen_sk(Configuration&);
-		void			bind_addr(Configuration&);
+		void			get_listen_sk(Server&);
+		void			bind_addr(Server&);
 		void			accept_client_sk(int);
 		bool			select_available_sk(void);
 		void			connect_client_sk(int);
@@ -61,12 +61,12 @@ class Host
 		Host &operator=(const Host& op);
 
 	public:
-		Host(std::vector<Configuration>*);
+		Host(std::vector<Server>*);
 		virtual ~Host();
 
 		void				set_end_server(bool);
 
-		std::vector<Configuration>	*get_confs(void) const;
+		std::vector<Server>	*get_confs(void) const;
 		void    			start(void);
 		void				end(void);
 };
