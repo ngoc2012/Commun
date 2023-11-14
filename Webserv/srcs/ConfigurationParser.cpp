@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 17:37:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 17:42:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ ConfigurationParser::ConfigurationParser(std::vector<Server>& servers, const cha
 	}
 	std::string line;
 	while (std::getline(conf_file, line)) {
+		if (line.substr(0, 5) == std::string("server"))
+		{
+			Server	new_server = new Server;
+		}
 		std::cout << "Read line: " << line << std::endl;
 	}
 	inputFile.close();
