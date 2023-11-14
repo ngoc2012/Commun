@@ -6,11 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 15:02:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 15:05:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+//#include <cstdint>
+#include <stdint.h>
 
 /*
 uintptr_t: Hold a pointer converted to an integer without loss of information
