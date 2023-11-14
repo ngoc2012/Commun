@@ -1,74 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Server.hpp                                         :+:      :+:    :+:   */
+/*   Configuration.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 20:48:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/11 08:05:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/time.h>
-#include <arpa/inet.h>	// htons
-#include <unistd.h>	// close
-#include <stdlib.h>
-#include <netinet/in.h>
-#include <errno.h>
-#include <fcntl.h>	// fcntl
-#include <cstdio>	// perror
-#include <cstring>	// memcpy
-
 #include <iostream>
-#include <vector>
 
-#include "ClientRequest.hpp"
-#include "Configuration.hpp"
+#ifndef CONFIGURATION_HPP
+# define CONFIGURATION_HPP
 
-#ifndef SERVER_HPP
-# define SERVER_HPP
-# define BUFFER	2048
-
-//https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
-class Server
+class Configuration
 {
 	private:
+		char			*_ip_address;
+		short unsigned int	_port;
+		int			_max_clients;
 
-		//int				_listen_sk;
-		int				_sk_ready;
-		int				_max_sk;
-		fd_set              		_master_set;
-		fd_set              		_working_set;
-		std::vector<Configuration>	*_confs;
-		std::vector<ClientRequest>	*_client_requests;
-		bool				_end_server;
+		int			_listen_sk;
 
-		void			get_listen_sk(Configuration&);
-		void			bind_addr(Configuration&);
-		void			accept_client_sk(int);
-		bool			select_available_sk(void);
-		void			connect_client_sk(int);
-		void			server_response(int);
-		void			get_client_request(int);
-		void			close_connection(int);
-		void			connect_sk(int);
-
-		Server();
-		Server(const Server&);
-		Server &operator=(const Server& op);
-
+		Configuration();
 	public:
-		Server(std::vector<Configuration>*);
-		virtual ~Server();
+		Configuration(const Configuration&);
+		Configuration &operator=(const Configuration& op);
+		Configuration(const char*, int);
+		virtual ~Configuration();
 
-		void				set_end_server(bool);
+		char			*get_ip_address(void) const;
+		short unsigned int	get_port(void) const;
+		int			get_max_clients(void) const;
+		int			get_listen_sk(void) const;
 
-		std::vector<Configuration>	*get_confs(void) const;
-		void    			start(void);
-		void				end(void);
+		void			set_listen_sk(int);
 };
 
 #endif
