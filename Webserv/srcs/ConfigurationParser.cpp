@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 17:50:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 17:54:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ ConfigurationParser&	ConfigurationParser::operator=( ConfigurationParser const &
 ConfigurationParser::~ConfigurationParser() {}
 void	conf_file_error(std::vector<Server>& servers, std::string line, int i)
 {
+	for (std::vector<Server>::iterator it = _confs->begin() ; it != _confs->end(); ++it)
+		delete (it);
 	std::cerr << "Configuration file error at line " << i << " :" << line << std::endl;
 }
 ConfigurationParser::ConfigurationParser(std::vector<Server>& servers, const char conf*)
