@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 09:57:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 17:56:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,27 @@ Host::Host(const Host& src) { *this = src; }
 
 Host::Host(std::vector<Server>* c) {
 	_max_sk = -1;
-	_confs = c;
+	_servers = c;
 	_end_host = false;
 }
 
 Host&	Host::operator=( Host const & src )
 {
-	//_confs = src.get_confs();
+	//_servers = src.get_servers();
 	(void) src;
 	return (*this);
 }
 
 Host::~Host() {}
 
-std::vector<Server>	*Host::get_confs(void) const {return (_confs);}
+std::vector<Server>	*Host::get_servers(void) const {return (_servers);}
 
 void	Host::set_end_host(bool e) {_end_host = e;}
 
 void	Host::start(void)
 {
 	FD_ZERO(&_master_set);
-	for (std::vector<Server>::iterator it = _confs->begin() ; it != _confs->end(); ++it)
+	for (std::vector<Server>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
 	{
 		get_listen_sk(*it);
 		bind_addr(*it);
@@ -62,7 +62,7 @@ void	Host::connect_sk(int i)
 {
 	_sk_ready--;
 	// check if the socket is a listen socket
-	for (std::vector<Server>::iterator it = _confs->begin() ; it != _confs->end(); ++it)
+	for (std::vector<Server>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
 		if (i == (*it).get_listen_sk())
 		{
 			accept_client_sk((*it).get_listen_sk());
@@ -108,7 +108,7 @@ void	Host::get_listen_sk(Server &c)
                    (char *)&on, sizeof(on)) < 0)
 	{
 		perror("reusable socket: setsockopt() failed");
-		close_all_listen_sk(*_confs);
+		close_all_listen_sk(*_servers);
 		exit(-1);
 	}
 	fcntl(c.get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
@@ -125,13 +125,13 @@ void	Host::bind_addr(Server &c)
 	if (bind(c.get_listen_sk(), (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
 		perror("bind() failed");
-		close_all_listen_sk(*_confs);
+		close_all_listen_sk(*_servers);
 		exit(-1);
 	}
 	if (listen(c.get_listen_sk(), c.get_max_clients()) < 0)
 	{
 		perror("listen() failed");
-		close_all_listen_sk(*_confs);
+		close_all_listen_sk(*_servers);
 		exit(-1);
 	}
 }
