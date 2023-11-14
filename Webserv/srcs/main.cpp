@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 09:55:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 18:03:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 #include "Host.hpp"
 #include "Server.hpp"
+#include "ConfigurationParser.hpp"
 
+/*
 Host	*g_host;
 
 void	main_signal_handler(int sig)
@@ -26,9 +28,13 @@ void	main_signal_handler(int sig)
 		g_host->end();
 	}
 }
+*/
 
 int	main()
 {
+	std::vector<Server>	servers;
+	ConfigurationParser	parser(&servers, const char conf*)
+	/*
 	struct sigaction	act;
 	act.sa_flags = SA_RESTART;
 	act.sa_handler = main_signal_handler;
@@ -41,5 +47,6 @@ int	main()
 	Host host(&servers);
 	g_host = &host;
 	host.start();
+	*/
 	return (0);
 }
