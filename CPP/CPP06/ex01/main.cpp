@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 15:06:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 17:00:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ Data*	deserialize( uintptr_t data ) {
 int	main()
 {
 	Data *data = new Data;
-
 	data->login = "minh-ngu";
 	data->level = 4.5;
 
