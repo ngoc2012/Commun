@@ -6,10 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:14:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 22:41:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 22:42:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string>
 #include <vector>
 
 std::vector<std::string>	split_string(const std::string& input, std::string delimiters)
