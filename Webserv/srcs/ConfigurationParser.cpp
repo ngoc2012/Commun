@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 18:37:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 18:41:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ ConfigurationParser&	ConfigurationParser::operator=( ConfigurationParser const &
 	return (*this);
 }
 ConfigurationParser::~ConfigurationParser() {}
-void	conf_file_error(std::vector<Server>& servers, std::string line, int i)
+void	conf_file_error(std::vector<Server*>& servers, std::string line, int i)
 {
-	for (std::vector<Server>::iterator it = servers.begin() ; it != servers.end(); ++it)
-		delete (&it);
+	for (std::vector<Server*>::iterator it = servers.begin() ; it != servers.end(); ++it)
+		delete (*it);
 	std::cerr << "Configuration file error at line " << i << " :" << line << std::endl;
 }
-ConfigurationParser::ConfigurationParser(std::vector<Server>& servers, const char* conf)
+ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const char* conf)
 {
 	//const char*	keys_server[] = {"listen", "server_name", "location"};
 	//const char*	keys_location[] = {"methods", "client_max_body_size", "client_body_buffer_size", "fastcgi_pass", "fastcgi_param", "include"};
@@ -45,7 +45,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server>& servers, const cha
 		else if (line.substr(0, 6) == std::string("server"))
 		{
 			Server	*new_server = new Server();
-			servers.push_back(*new_server);
+			servers.push_back(new_server);
 		}
 		else if (line.substr(0, 7) == std::string("	listen"))
 		{
