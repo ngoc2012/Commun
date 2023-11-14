@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 09:48:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 18:24:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class Server
 
 		int			_listen_sk;
 
-		Server();
 	public:
+		Server();
 		Server(const Server&);
 		Server &operator=(const Server& op);
 		Server(const char*, int);
