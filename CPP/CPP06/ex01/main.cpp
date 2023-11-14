@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 15:05:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 15:06:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	main()
 	data->login = "minh-ngu";
 	data->level = 4.5;
 
-	std::cout << "Login: " << deserialize( serialize( data ) )->name << std::endl;
-	std::cout << "Level: " << deserialize( serialize( data ) )->age << std::endl;
+	std::cout << "Login: " << deserialize( serialize( data ) )->login << std::endl;
+	std::cout << "Level: " << deserialize( serialize( data ) )->level << std::endl;
 
 	delete(data);
 
