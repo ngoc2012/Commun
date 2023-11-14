@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 22:36:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 22:39:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <cstdlib>
 
 #include "Server.hpp"
+#include "main.hpp"
 
 #ifndef CONFIGURATIONPARSER_HPP
 # define CONFIGURATIONPARSER_HPP
