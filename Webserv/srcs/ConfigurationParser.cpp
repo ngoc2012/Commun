@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Configuration.cpp                                  :+:      :+:    :+:   */
+/*   ConfigurationParser.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 08:43:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 09:49:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Configuration.hpp"
+#include "ConfigurationParser.hpp"
 
-Configuration::Configuration() {}
-Configuration::Configuration(const Configuration& src) { *this = src; }
-Configuration&	Configuration::operator=( Configuration const & src )
+ConfigurationParser::ConfigurationParser() {}
+ConfigurationParser::ConfigurationParser(const ConfigurationParser& src) { *this = src; }
+ConfigurationParser&	ConfigurationParser::operator=( ConfigurationParser const & src )
 {
 	_ip_address = src.get_ip_address();
 	_port = src.get_port();
@@ -22,17 +22,17 @@ Configuration&	Configuration::operator=( Configuration const & src )
 	_listen_sk = src.get_listen_sk();
 	return (*this);
 }
-Configuration::~Configuration() {}
-Configuration::Configuration(const char* ip, int port)
+ConfigurationParser::~ConfigurationParser() {}
+ConfigurationParser::ConfigurationParser(const char* ip, int port)
 {
 	_ip_address = (char *) ip;
 	_port = port;
 	_max_clients = 128;
 	_listen_sk = -1;
 }
-char*			Configuration::get_ip_address(void) const {return (_ip_address);}
-short unsigned int	Configuration::get_port(void) const {return (_port);}
-int			Configuration::get_max_clients(void) const {return (_max_clients);}
-int			Configuration::get_listen_sk(void) const {return (_listen_sk);}
+char*			ConfigurationParser::get_ip_address(void) const {return (_ip_address);}
+short unsigned int	ConfigurationParser::get_port(void) const {return (_port);}
+int			ConfigurationParser::get_max_clients(void) const {return (_max_clients);}
+int			ConfigurationParser::get_listen_sk(void) const {return (_listen_sk);}
 
-void			Configuration::set_listen_sk(int i) {_listen_sk = i;}
+void			ConfigurationParser::set_listen_sk(int i) {_listen_sk = i;}

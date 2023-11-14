@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Configuration.hpp                                  :+:      :+:    :+:   */
+/*   ConfigurationParser.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/11 08:05:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 09:49:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-#ifndef CONFIGURATION_HPP
-# define CONFIGURATION_HPP
+#ifndef CONFIGURATIONPARSER_HPP
+# define CONFIGURATIONPARSER_HPP
 
-class Configuration
+class ConfigurationParser
 {
 	private:
 		char			*_ip_address;
@@ -24,12 +24,12 @@ class Configuration
 
 		int			_listen_sk;
 
-		Configuration();
+		ConfigurationParser();
 	public:
-		Configuration(const Configuration&);
-		Configuration &operator=(const Configuration& op);
-		Configuration(const char*, int);
-		virtual ~Configuration();
+		ConfigurationParser(const ConfigurationParser&);
+		ConfigurationParser &operator=(const ConfigurationParser& op);
+		ConfigurationParser(const char*, int);
+		virtual ~ConfigurationParser();
 
 		char			*get_ip_address(void) const;
 		short unsigned int	get_port(void) const;
