@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 17:09:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 17:34:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 class ConfigurationParser
 {
 	private:
+		const char*	keys_level_0[] = {"server"}
+		const char*	keys_level_1[] = {"listen", "server_name", "location"}
+		const char*	keys_location[] = {"listen", "server_name", "location"}
+
 		ConfigurationParser();
 		ConfigurationParser(const ConfigurationParser&);
 		ConfigurationParser &operator=(const ConfigurationParser& op);
