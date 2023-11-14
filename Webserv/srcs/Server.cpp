@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 18:29:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 22:25:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,4 @@ int			Server::get_max_clients(void) const {return (_max_clients);}
 int			Server::get_listen_sk(void) const {return (_listen_sk);}
 
 void			Server::set_listen_sk(int i) {_listen_sk = i;}
+void			Server::set_ip_address(std::string ip) {_ip_address = ip;}

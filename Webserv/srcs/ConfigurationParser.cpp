@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 18:42:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 22:24:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 		std::cerr << "Error opening the file." << std::endl;
 		return ;
 	}
-	Server	*new_server = 0;
-	int	i = 0;
-	std::string line;
+	Server		*new_server = 0;
+	int		i = 0;
+	std::string	line;
 	while (std::getline(conf_file, line)) {
 		i++;
 		if (line.c_str()[0] == '#')
@@ -54,6 +54,8 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 				conf_file_error(servers, line, i);
 				return ;
 			}
+			std::vector<std::string>	tokens = split_string(line, std::string(" 	"));
+			new_server
 			std::cout << line << std::endl;
 		}
 	}
