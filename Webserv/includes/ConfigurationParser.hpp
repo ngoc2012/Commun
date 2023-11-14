@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 17:36:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 17:38:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ class ConfigurationParser
 		const char*	keys_level_1[] = {"listen", "server_name", "location"}
 		const char*	keys_location[] = {"listen", "server_name", "location"}
 
+		ConfigurationParser();
 		ConfigurationParser(const ConfigurationParser&);
 		ConfigurationParser &operator=(const ConfigurationParser& op);
 	public:
-		ConfigurationParser();
-		std::vector<Server>	get_servers(const char *);
+		ConfigurationParser(std::vector<Server>& servers, const char conf*)
 		virtual			~ConfigurationParser();
 };
 
