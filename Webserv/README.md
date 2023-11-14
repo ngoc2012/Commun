@@ -34,6 +34,7 @@ Example header of a `fooserver.c`
 
 `qg` getter function
 `qs` setter function
+`qc` getter to setter function
 
 So to save a macro `'x'`, you can do:
 
