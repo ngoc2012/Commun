@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 18:33:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 18:35:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ ConfigurationParser::ConfigurationParser(std::vector<Server>& servers, const cha
 		else if (line.substr(0, 7) == std::string("	listen"))
 		{
 			if (!new_server)
-				return (conf_file_error(servers, line, i));
+			{
+				conf_file_error(servers, line, i);
+				return ;
+			}
 			std::cout << line << std::endl;
 		}
 	}
