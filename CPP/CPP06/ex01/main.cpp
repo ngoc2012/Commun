@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 14:58:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/14 15:02:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 /*
 uintptr_t: Hold a pointer converted to an integer without loss of information
+
+reinterpret_cast is a type of C++ casting operator that is used for converting one pointer type to another, or one integral type to another. It is the most powerful and potentially dangerous of the C++ casting operators because it can perform conversions that are not type-safe.
+
+No checks: Unlike dynamic_cast or static_cast, reinterpret_cast does not perform any runtime checks to ensure the validity of the conversion. It simply tells the compiler to treat the pointer or value as if it were of the new type.
+
 */
 
 struct Data
