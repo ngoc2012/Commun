@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 08:55:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 08:59:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,38 +50,27 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 		}
 		else if (line.substr(0, 7) == std::string("	listen"))
 		{
-			if (!new_server)
+			if (!new_server || !listen(new_server, line))
 			{
 				conf_file_error(servers, line, i);
 				break ;
 			}
-			if (!listen(servers, new_server, line, i))
-				break;
 		}
 	}
 	conf_file.close();
 }
 
-int	ConfigurationParser::listen(std::vector<Server*>& servers, Server* s, std::string line, int i)
+int	ConfigurationParser::listen(Server* s, std::string line)
 {
 	std::vector<std::string>	listen = split_string(line, std::string(" 	"));
 	if (listen.size() != 2)
-	{
-		conf_file_error(servers, line, i);
 		return (0);
-	}
 	std::vector<std::string>	address = split_string(listen[1], std::string(":"));
 	if (address.size() != 2)
-	{
-		conf_file_error(servers, line, i);
 		return (0);
-	}
 	std::vector<std::string>	ip = split_string(address[1], std::string(":"));
 	if (ip.size() != 4)
-	{
-		conf_file_error(servers, line, i);
 		return (0);
-	}
 	int	n;
 	for (int j = 0; j < 4; j++)
 	{
