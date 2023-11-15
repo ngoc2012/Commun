@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 08:39:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 08:41:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,38 +49,40 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 			servers.push_back(new_server);
 		}
 		else if (line.substr(0, 7) == std::string("	listen"))
-			listen(s, line, i);
+		{
+			if (!new_server)
+			{
+				conf_file_error(servers, line, i);
+				break ;
+			}
+			listen(new_server, line, i);
+		}
 	}
 	conf_file.close();
 }
 
 void	listen(Server* s, std::string line, int i)
 {
-			if (!new_server)
-			{
-				conf_file_error(servers, line, i);
-				break ;
-			}
-			std::vector<std::string>	listen = split_string(line, std::string(" 	"));
-			if (listen.size() != 2)
-			{
-				conf_file_error(servers, line, i);
-				break ;
-			}
-			std::vector<std::string>	address = split_string(listen[1], std::string(":"));
-			if (address.size() != 2)
-			{
-				conf_file_error(servers, line, i);
-				break ;
-			}
-			std::vector<std::string>	ip = split_string(address[1], std::string(":"));
-			if (ip.size() != 4)
-			{
-				conf_file_error(servers, line, i);
-				break ;
-			}
-			//std::cout << tokens0[1] << std::endl;
-			//new_server->set_ip_address(tokens0[0]);
-			//new_server->set_port(std::atoi(tokens0[1].c_str()));
-			//std::cout << new_server->get_ip_address() << ":" << new_server->get_port() << std::endl;
+	std::vector<std::string>	listen = split_string(line, std::string(" 	"));
+	if (listen.size() != 2)
+	{
+		conf_file_error(servers, line, i);
+		break ;
+	}
+	std::vector<std::string>	address = split_string(listen[1], std::string(":"));
+	if (address.size() != 2)
+	{
+		conf_file_error(servers, line, i);
+		break ;
+	}
+	std::vector<std::string>	ip = split_string(address[1], std::string(":"));
+	if (ip.size() != 4)
+	{
+		conf_file_error(servers, line, i);
+		break ;
+	}
+	//std::cout << tokens0[1] << std::endl;
+	//new_server->set_ip_address(tokens0[0]);
+	//new_server->set_port(std::atoi(tokens0[1].c_str()));
+	//std::cout << new_server->get_ip_address() << ":" << new_server->get_port() << std::endl;
 }
