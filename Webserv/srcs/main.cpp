@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 19:02:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 19:04:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main()
 	sigaction(SIGINT, &act, NULL);
 	std::vector<Server*>	servers;
 	ConfigurationParser	parser(servers, ".conf");
-	Host			host(servers);
+	Host			host(&servers);
 	g_host = &host;
 	host.start();
 	return (0);

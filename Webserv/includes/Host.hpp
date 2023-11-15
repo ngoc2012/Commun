@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 15:40:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 19:05:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ class Host
 		int				_max_sk;
 		fd_set              		_master_set;
 		fd_set              		_working_set;
-		std::vector<Server*>&		_servers;
+		std::vector<Server*>*		_servers;
 		std::vector<ClientRequest>	_client_requests;
 		bool				_end_host;
 
