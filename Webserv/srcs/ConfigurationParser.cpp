@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 10:54:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 10:57:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 	while (std::getline(conf_file, line))
 	{
 		std::vector<std::string>	words = split_string(line, std::string(" 	"));
-		std::cout << words.size() << std::endl;
+		//std::cout << words.size() << std::endl;
 		i++;
 		if (line.c_str()[0] == '#' || words.size() == 0)
 			;
@@ -54,7 +54,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 			}
 			if (line.substr(0, 7) == std::string("	listen"))
 			{
-				err = listen(new_server, line);
+				err = listen(new_server, words);
 				if (err)
 				{
 					conf_file_error(line, i);
@@ -66,9 +66,9 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 	conf_file.close();
 }
 
-int	ConfigurationParser::listen(Server* s, std::string line)
+int	ConfigurationParser::listen(Server* s, std::vector<std::string> words)
 {
-	std::vector<std::string>	listen = split_string(line, std::string(" 	"));
+	std::vector<std::string>	listen = split_string(words, std::string(" 	"));
 	if (listen.size() != 2)
 		return (1);
 	std::vector<std::string>	address = split_string(listen[1], std::string(":"));
