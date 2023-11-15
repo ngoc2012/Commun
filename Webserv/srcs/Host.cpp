@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 19:23:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 19:36:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	Host::end(void)
 	for (int i = 0; i <= _max_sk; ++i)
 		if (FD_ISSET(i, &_master_set))
 			close(i);
-	for (std::vector<Server*>::iterator it = servers.begin() ; it != servers.end(); ++it)
+	for (std::vector<Server*>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
 		delete (*it);
 	std::cout << "End server" << std::endl;
 }
