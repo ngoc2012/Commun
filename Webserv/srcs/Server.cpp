@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 22:45:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 22:57:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ Server&	Server::operator=( Server const & src )
 }
 Server::~Server() {}
 
-void	Server::new_listen_sk(Server* c)
+int	Server::new_listen_sk(Server* c)
 {
 	_listen_sk = socket(AF_INET, SOCK_STREAM, 0);
 	if (_listen_sk < 0)
 	{
 		perror("listen socket: socket() failed");
-		return ;
+		return (1);
 	}
 	int    on = 1;
 	if (setsockopt(c->get_listen_sk(), SOL_SOCKET,  SO_REUSEADDR,
@@ -44,12 +44,13 @@ void	Server::new_listen_sk(Server* c)
 	{
 		perror("reusable socket: setsockopt() failed");
 		close(_listen_sk);
-		return ;
+		return (2);
 	}
 	fcntl(c->get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
+	return (bind_addr());
 }
 
-void	Server::bind_addr(void)
+int	Server::bind_addr(void)
 {
 	struct sockaddr_in	addr;
 
@@ -60,15 +61,16 @@ void	Server::bind_addr(void)
 	{
 		perror("bind() failed");
 		close(_listen_sk);
-		return ;
+		return (3);
 	}
 	if (listen(_listen_sk, _host->get_max_clients()) < 0)
 	{
 		perror("listen() failed");
 		close(_listen_sk);
-		return ;
+		return (4);
 	}
 	std::cout << "Listening at " << _ip_address << ":" << _port << std::endl;
+	return (0);
 }
 
 const char*		Server::get_ip_address(void) const {return (_ip_address.c_str());}
