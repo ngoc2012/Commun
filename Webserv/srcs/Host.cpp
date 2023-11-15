@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 19:11:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 19:12:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	Host::get_listen_sk(Server* c)
 	fcntl(c->get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
 }
 
-void	Host::bind_addr(Server &c)
+void	Host::bind_addr(Server* c)
 {
 	struct sockaddr_in	addr;
 
