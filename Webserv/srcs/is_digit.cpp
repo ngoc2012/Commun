@@ -6,11 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 11:06:15 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 11:07:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 11:09:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cctype>
+#include <string>
 
 bool	is_digit(const std::string& str)
 {
