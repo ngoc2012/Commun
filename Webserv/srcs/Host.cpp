@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 19:39:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 19:40:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	Host::get_listen_sk(Server* c)
                    (char *)&on, sizeof(on)) < 0)
 	{
 		perror("reusable socket: setsockopt() failed");
-		close_all_listen_sk(*_servers);
+		close_all_listen_sk();
 		exit(-1);
 	}
 	fcntl(c->get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
@@ -127,13 +127,13 @@ void	Host::bind_addr(Server* c)
 	if (bind(c->get_listen_sk(), (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
 		perror("bind() failed");
-		close_all_listen_sk(*_servers);
+		close_all_listen_sk();
 		exit(-1);
 	}
 	if (listen(c->get_listen_sk(), c->get_max_clients()) < 0)
 	{
 		perror("listen() failed");
-		close_all_listen_sk(*_servers);
+		close_all_listen_sk();
 		exit(-1);
 	}
 }
