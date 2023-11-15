@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 22:33:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 22:42:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,25 @@ Server&	Server::operator=( Server const & src )
 	return (*this);
 }
 Server::~Server() {}
+
+void	Host::get_listen_sk(Server* c)
+{
+	c->set_listen_sk(socket(AF_INET, SOCK_STREAM, 0));
+	if (c->get_listen_sk() < 0)
+	{
+		perror("listen socket: socket() failed");
+		exit(-1);
+	}
+	int    on = 1;
+	if (setsockopt(c->get_listen_sk(), SOL_SOCKET,  SO_REUSEADDR,
+                   (char *)&on, sizeof(on)) < 0)
+	{
+		perror("reusable socket: setsockopt() failed");
+		close_all_listen_sk();
+		exit(-1);
+	}
+	fcntl(c->get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
+}
 
 int	Server::bind_addr(void)
 {
