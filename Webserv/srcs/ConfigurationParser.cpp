@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 10:39:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 10:41:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	conf_file_error(std::string line, int i)
 {
 	//for (std::vector<Server*>::iterator it = servers.begin() ; it != servers.end(); ++it)
 	//	delete (*it);
-	std::cerr << "Configuration file error at line " << i << " :" << line << std::endl;
+	std::cerr << "Configuration file error at line "
+		<< i << " :" << line << "(code err " << err << ")" << std::endl;
 }
 
 ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const char* conf)
@@ -52,8 +53,6 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 		{
 			if (!new_server || listen(new_server, line))
 			{
-				err = listen(new_server, line);
-				std::cout << err << std::endl;
 				conf_file_error(line, i);
 				break ;
 			}
@@ -70,7 +69,7 @@ int	ConfigurationParser::listen(Server* s, std::string line)
 	std::vector<std::string>	address = split_string(listen[1], std::string(":"));
 	if (address.size() != 2)
 		return (2);
-	std::vector<std::string>	ip = split_string(address[1], std::string(":"));
+	std::vector<std::string>	ip = split_string(address[0], std::string("."));
 	if (ip.size() != 4)
 		return (3);
 	int	n;
