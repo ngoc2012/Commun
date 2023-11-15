@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 10:43:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 10:45:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ ConfigurationParser&	ConfigurationParser::operator=( ConfigurationParser const &
 	return (*this);
 }
 ConfigurationParser::~ConfigurationParser() {}
-void	conf_file_error(std::string line, int i)
+void	ConfigurationParser::conf_file_error(std::string line, int i)
 {
-	//for (std::vector<Server*>::iterator it = servers.begin() ; it != servers.end(); ++it)
-	//	delete (*it);
 	std::cerr << "Configuration file error at line "
 		<< i << " :" << line << "(code err " << err << ")" << std::endl;
 }
@@ -50,15 +48,21 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 			new_server = new Server();
 			servers.push_back(new_server);
 		}
-		else if (line.substr(0, 7) == std::string("	listen"))
-		{
+		else{
 			if (!new_server)
-				break ;
-			err = listen(new_server, line);
-			if (err)
 			{
+				err = 100;
 				conf_file_error(line, i);
 				break ;
+			}
+			if (line.substr(0, 7) == std::string("	listen"))
+			{
+				err = listen(new_server, line);
+				if (err)
+				{
+					conf_file_error(line, i);
+					break ;
+				}
 			}
 		}
 	}
