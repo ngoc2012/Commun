@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 19:12:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 19:23:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,16 +121,16 @@ void	Host::bind_addr(Server* c)
 	struct sockaddr_in	addr;
 
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(c.get_port());
-	addr.sin_addr.s_addr = inet_addr(c.get_ip_address());
-	std::cout << "Listening at " << c.get_ip_address() << ":" << c.get_port() << std::endl;
-	if (bind(c.get_listen_sk(), (struct sockaddr *)&addr, sizeof(addr)) < 0)
+	addr.sin_port = htons(c->get_port());
+	addr.sin_addr.s_addr = inet_addr(c->get_ip_address());
+	std::cout << "Listening at " << c->get_ip_address() << ":" << c->get_port() << std::endl;
+	if (bind(c->get_listen_sk(), (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
 		perror("bind() failed");
 		close_all_listen_sk(*_servers);
 		exit(-1);
 	}
-	if (listen(c.get_listen_sk(), c.get_max_clients()) < 0)
+	if (listen(c->get_listen_sk(), c->get_max_clients()) < 0)
 	{
 		perror("listen() failed");
 		close_all_listen_sk(*_servers);
