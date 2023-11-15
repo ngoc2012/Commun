@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 15:35:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 17:44:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,6 +280,7 @@ inline void	Host::close_connection(int i)
 {
 	close(i);
 	FD_CLR(i, &_master_set);
+	// If i is max_sk -> find another max_sk
 	if (i == _max_sk)
 		while (!FD_ISSET(_max_sk, &_master_set))
 			_max_sk -= 1;
