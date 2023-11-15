@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 21:28:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 21:40:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@
 # define HOST_HPP
 # define BUFFER	2048
 
+// Forward declaration of Class Server
+class	Server;
+
 //https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
-class Host
+class	Host
 {
 	private:
 
