@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 10:35:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 15:29:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include "Server.hpp"
 #include "ConfigurationParser.hpp"
 
-/*
 Host	*g_host;
 
 void	main_signal_handler(int sig)
@@ -28,27 +27,21 @@ void	main_signal_handler(int sig)
 		g_host->end();
 	}
 }
-*/
 
 int	main()
 {
-	std::vector<Server*>	servers;
-	ConfigurationParser	parser(servers, ".conf");
-	for (std::vector<Server*>::iterator it = servers.begin() ; it != servers.end(); ++it)
-		delete (*it);
-	/*
 	struct sigaction	act;
 	act.sa_flags = SA_RESTART;
 	act.sa_handler = main_signal_handler;
 	sigemptyset(&act.sa_mask);
 	sigaction(SIGINT, &act, NULL);
 
-	std::vector<Server>	servers;
-	servers.push_back(Server("127.0.0.1", 4242));
-	servers.push_back(Server("127.0.0.1", 4141));
-	Host host(&servers);
+	std::vector<Server*>	servers;
+	ConfigurationParser	parser(servers, ".conf");
+	Host host(servers);
 	g_host = &host;
 	host.start();
-	*/
+	for (std::vector<Server*>::iterator it = servers.begin() ; it != servers.end(); ++it)
+		delete (*it);
 	return (0);
 }
