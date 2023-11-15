@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 08:41:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 08:50:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,31 +55,39 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 				conf_file_error(servers, line, i);
 				break ;
 			}
-			listen(new_server, line, i);
+			if (!listen(new_server, line, i))
+				break;
 		}
 	}
 	conf_file.close();
 }
 
-void	listen(Server* s, std::string line, int i)
+int	ConfigurationParser::listen(Server* s, std::string line, int i)
 {
 	std::vector<std::string>	listen = split_string(line, std::string(" 	"));
 	if (listen.size() != 2)
 	{
 		conf_file_error(servers, line, i);
-		break ;
+		return (0);
 	}
 	std::vector<std::string>	address = split_string(listen[1], std::string(":"));
 	if (address.size() != 2)
 	{
 		conf_file_error(servers, line, i);
-		break ;
+		return (0);
 	}
 	std::vector<std::string>	ip = split_string(address[1], std::string(":"));
 	if (ip.size() != 4)
 	{
 		conf_file_error(servers, line, i);
-		break ;
+		return (0);
+	}
+	int	n;
+	for (int j = 0; j < 4; j++)
+	{
+		n = std::atoi(ip[j].c_str());
+		if (n < 0 || n > 255)
+			return (0);
 	}
 	//std::cout << tokens0[1] << std::endl;
 	//new_server->set_ip_address(tokens0[0]);
