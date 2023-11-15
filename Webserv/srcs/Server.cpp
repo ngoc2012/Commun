@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 22:23:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 22:27:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Server&	Server::operator=( Server const & src )
 }
 Server::~Server() {}
 
-void	Server::bind_addr(void)
+int	Server::bind_addr(void)
 {
 	struct sockaddr_in	addr;
 
@@ -42,13 +42,13 @@ void	Server::bind_addr(void)
 	{
 		perror("bind() failed");
 		close_all_listen_sk();
-		exit(-1);
+		return (1);
 	}
 	if (listen(_listen_sk, _max_clients) < 0)
 	{
 		perror("listen() failed");
 		close_all_listen_sk();
-		exit(-1);
+		return (2);
 	}
 }
 
