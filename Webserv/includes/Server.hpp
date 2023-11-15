@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 22:23:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 22:24:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Server
 
 		Server(const Server&);
 		Server			&operator=(const Server& op);
+
 	public:
 		Server();
 		virtual ~Server();
