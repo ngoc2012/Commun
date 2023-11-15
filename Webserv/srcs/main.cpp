@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 15:36:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 19:02:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 #include "Server.hpp"
 #include "ConfigurationParser.hpp"
 
-Host	&g_host;
+Host	*g_host;
 
 void	main_signal_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
 		write(STDOUT_FILENO, "", 0);
-		g_host.set_end_host(true);
-		g_host.end();
+		g_host->set_end_host(true);
+		g_host->end();
 	}
 }
 
