@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 22:21:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 22:23:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ class Server
 		std::string		_ip_address;
 		short unsigned int	_port;
 		int			_listen_sk;
+
+		Server(const Server&);
+		Server			&operator=(const Server& op);
 	public:
 		Server();
-		Server(const Server&);
-		Server &operator=(const Server& op);
-		Server(const char*, int);
 		virtual ~Server();
+
+		void			bind_addr(void);
 
 		const char*		get_ip_address(void) const;
 		short unsigned int	get_port(void) const;
