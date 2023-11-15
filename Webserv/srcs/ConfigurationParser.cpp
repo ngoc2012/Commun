@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 10:53:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 10:54:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 	while (std::getline(conf_file, line))
 	{
 		std::vector<std::string>	words = split_string(line, std::string(" 	"));
+		std::cout << words.size() << std::endl;
 		i++;
 		if (line.c_str()[0] == '#' || words.size() == 0)
 			;

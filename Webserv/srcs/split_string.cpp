@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:14:49 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 22:42:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 10:55:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ std::vector<std::string>	split_string(const std::string& input, std::string deli
 				token.clear();
 			}
 		}
-	tokens.push_back(token);
+	if (token.length() > 0)
+		tokens.push_back(token);
 	return (tokens);
 }
