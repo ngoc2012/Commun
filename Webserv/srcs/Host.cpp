@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 17:56:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 15:32:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Host::Host(const Host& src) { *this = src; }
 
-Host::Host(std::vector<Server>* c) {
+Host::Host(std::vector<Server*> &c) {
 	_max_sk = -1;
 	_servers = c;
 	_end_host = false;
