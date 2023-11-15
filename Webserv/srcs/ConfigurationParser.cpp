@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 10:45:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 10:49:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,6 @@ ConfigurationParser&	ConfigurationParser::operator=( ConfigurationParser const &
 	return (*this);
 }
 ConfigurationParser::~ConfigurationParser() {}
-void	ConfigurationParser::conf_file_error(std::string line, int i)
-{
-	std::cerr << "Configuration file error at line "
-		<< i << " :" << line << "(code err " << err << ")" << std::endl;
-}
-
 ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const char* conf)
 {
 	//const char*	keys_server[] = {"listen", "server_name", "location"};
@@ -94,4 +88,10 @@ int	ConfigurationParser::listen(Server* s, std::string line)
 	s->set_port(std::atoi(address[1].c_str()));
 	std::cout << s->get_ip_address() << ":" << s->get_port() << std::endl;
 	return (0);
+}
+
+void	ConfigurationParser::conf_file_error(std::string line, int i)
+{
+	std::cerr << "Configuration file error at line "
+		<< i << " :" << line << "(code err " << err << ")" << std::endl;
 }

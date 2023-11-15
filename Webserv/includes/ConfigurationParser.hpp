@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 10:47:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 10:49:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class ConfigurationParser
 		virtual			~ConfigurationParser();
 
 		int			listen(Server*, std::string);
-		void	conf_file_error(std::string line, int i);
+		void			conf_file_error(std::string, int);
 };
 
 #endif
