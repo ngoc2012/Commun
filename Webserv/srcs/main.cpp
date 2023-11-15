@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 15:29:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 15:35:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,10 @@ int	main()
 	act.sa_handler = main_signal_handler;
 	sigemptyset(&act.sa_mask);
 	sigaction(SIGINT, &act, NULL);
-
 	std::vector<Server*>	servers;
 	ConfigurationParser	parser(servers, ".conf");
 	Host host(servers);
 	g_host = &host;
 	host.start();
-	for (std::vector<Server*>::iterator it = servers.begin() ; it != servers.end(); ++it)
-		delete (*it);
 	return (0);
 }
