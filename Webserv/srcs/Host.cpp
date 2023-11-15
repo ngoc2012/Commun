@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 19:05:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 19:07:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Host::Host(const Host& src) { *this = src; }
 
-Host::Host(std::vector<Server*> &c) {
+Host::Host(std::vector<Server*>* c) {
 	_max_sk = -1;
 	_servers = c;
 	_end_host = false;
@@ -29,7 +29,7 @@ Host&	Host::operator=( Host const & src )
 
 Host::~Host() {}
 
-std::vector<Server>	*Host::get_servers(void) const {return (_servers);}
+//std::vector<Server>	*Host::get_servers(void) const {return (_servers);}
 
 void	Host::set_end_host(bool e) {_end_host = e;}
 
@@ -62,10 +62,10 @@ void	Host::connect_sk(int i)
 {
 	_sk_ready--;
 	// check if the socket is a listen socket
-	for (std::vector<Server>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
-		if (i == (*it).get_listen_sk())
+	for (std::vector<Server*>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
+		if (i == (*it)->get_listen_sk())
 		{
-			accept_client_sk((*it).get_listen_sk());
+			accept_client_sk((*it)->get_listen_sk());
 			return ;
 		}
 	// connect socket

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 19:05:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 19:06:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ class Host
 		Host &operator=(const Host& op);
 
 	public:
-		Host(std::vector<Server*>&);
+		Host(std::vector<Server*>*);
 		virtual ~Host();
 
 		//std::vector<Server*>&		get_servers(void) const;
