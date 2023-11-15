@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 09:01:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 10:35:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ ConfigurationParser&	ConfigurationParser::operator=( ConfigurationParser const &
 	return (*this);
 }
 ConfigurationParser::~ConfigurationParser() {}
-void	conf_file_error(std::vector<Server*>& servers, std::string line, int i)
-{
-	for (std::vector<Server*>::iterator it = servers.begin() ; it != servers.end(); ++it)
-		delete (*it);
-	std::cerr << "Configuration file error at line " << i << " :" << line << std::endl;
-}
+//void	conf_file_error(std::vector<Server*>& servers, std::string line, int i)
+//{
+//	for (std::vector<Server*>::iterator it = servers.begin() ; it != servers.end(); ++it)
+//		delete (*it);
+//	std::cerr << "Configuration file error at line " << i << " :" << line << std::endl;
+//}
 
 ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const char* conf)
 {
@@ -51,10 +51,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 		else if (line.substr(0, 7) == std::string("	listen"))
 		{
 			if (!new_server || !listen(new_server, line))
-			{
-				conf_file_error(servers, line, i);
 				break ;
-			}
 		}
 	}
 	conf_file.close();
