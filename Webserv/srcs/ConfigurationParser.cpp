@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/14 22:50:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 08:37:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,13 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 				break ;
 			}
 			std::vector<std::string>	address = split_string(listen[1], std::string(":"));
-			std::vector<std::string>	ip = split_string(tokens[1], std::string(":"));
-			if (address[1].size() != 2)
+			if (address.size() != 2)
+			{
+				conf_file_error(servers, line, i);
+				break ;
+			}
+			std::vector<std::string>	ip = split_string(address[1], std::string(":"));
+			if (ip.size() != 4)
 			{
 				conf_file_error(servers, line, i);
 				break ;
