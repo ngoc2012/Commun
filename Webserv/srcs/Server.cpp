@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 22:57:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 22:58:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	Server::new_listen_sk(Server* c)
 	if (_listen_sk < 0)
 	{
 		perror("listen socket: socket() failed");
-		return (1);
+		return (-1);
 	}
 	int    on = 1;
 	if (setsockopt(c->get_listen_sk(), SOL_SOCKET,  SO_REUSEADDR,
@@ -44,7 +44,7 @@ int	Server::new_listen_sk(Server* c)
 	{
 		perror("reusable socket: setsockopt() failed");
 		close(_listen_sk);
-		return (2);
+		return (-1);
 	}
 	fcntl(c->get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
 	return (bind_addr());
@@ -61,16 +61,16 @@ int	Server::bind_addr(void)
 	{
 		perror("bind() failed");
 		close(_listen_sk);
-		return (3);
+		return (-1);
 	}
 	if (listen(_listen_sk, _host->get_max_clients()) < 0)
 	{
 		perror("listen() failed");
 		close(_listen_sk);
-		return (4);
+		return (-1);
 	}
 	std::cout << "Listening at " << _ip_address << ":" << _port << std::endl;
-	return (0);
+	return (_listen_sk);
 }
 
 const char*		Server::get_ip_address(void) const {return (_ip_address.c_str());}
