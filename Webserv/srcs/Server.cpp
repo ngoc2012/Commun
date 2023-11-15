@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 21:35:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 21:43:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ Server::Server()
 	_ip_address = std::string("127.0.0.1");
 	_port = 4242;
 	_listen_sk = -1;
+	_host = 0;
 }
 Server::Server(const Server& src) { *this = src; }
 Server&	Server::operator=( Server const & src )
@@ -24,6 +25,7 @@ Server&	Server::operator=( Server const & src )
 	_ip_address = std::string(src.get_ip_address());
 	_port = src.get_port();
 	_listen_sk = src.get_listen_sk();
+	_host = src.get_host();
 	return (*this);
 }
 Server::~Server() {}
@@ -32,6 +34,7 @@ Server::Server(const char* ip, int port)
 	_ip_address = std::string(ip);
 	_port = port;
 	_listen_sk = -1;
+	_host = 0;
 }
 
 void	Server::bind_addr(Server* c)
