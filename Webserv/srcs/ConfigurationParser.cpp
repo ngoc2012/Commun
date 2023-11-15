@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 11:00:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 11:05:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,11 @@ int	ConfigurationParser::listen(Server* s, std::vector<std::string> words)
 	for (int j = 0; j < 4; j++)
 	{
 		n = std::atoi(ip[j].c_str());
-		if (n < 0 || n > 255)
+		if (!isdigit(ip[j].c_str()) || n < 0 || n > 255)
 			return (4);
 	}
 	n = std::atoi(address[1].c_str());
-	if (n < 0 || n > 65535)
+	if (!isdigit(address[1].c_str()) || n < 0 || n > 65535)
 		return (5);
 	s->set_ip_address(address[0]);
 	s->set_port(std::atoi(address[1].c_str()));
