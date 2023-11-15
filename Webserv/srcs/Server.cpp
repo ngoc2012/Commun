@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 22:42:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 22:45:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,26 @@ Server&	Server::operator=( Server const & src )
 }
 Server::~Server() {}
 
-void	Host::get_listen_sk(Server* c)
+void	Server::new_listen_sk(Server* c)
 {
-	c->set_listen_sk(socket(AF_INET, SOCK_STREAM, 0));
-	if (c->get_listen_sk() < 0)
+	_listen_sk = socket(AF_INET, SOCK_STREAM, 0);
+	if (_listen_sk < 0)
 	{
 		perror("listen socket: socket() failed");
-		exit(-1);
+		return ;
 	}
 	int    on = 1;
 	if (setsockopt(c->get_listen_sk(), SOL_SOCKET,  SO_REUSEADDR,
                    (char *)&on, sizeof(on)) < 0)
 	{
 		perror("reusable socket: setsockopt() failed");
-		close_all_listen_sk();
-		exit(-1);
+		close(_listen_sk);
+		return ;
 	}
 	fcntl(c->get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
 }
 
-int	Server::bind_addr(void)
+void	Server::bind_addr(void)
 {
 	struct sockaddr_in	addr;
 
@@ -59,12 +59,14 @@ int	Server::bind_addr(void)
 	if (bind(_listen_sk, (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
 		perror("bind() failed");
-		return (1);
+		close(_listen_sk);
+		return ;
 	}
 	if (listen(_listen_sk, _host->get_max_clients()) < 0)
 	{
 		perror("listen() failed");
-		return (2);
+		close(_listen_sk);
+		return ;
 	}
 	std::cout << "Listening at " << _ip_address << ":" << _port << std::endl;
 }
