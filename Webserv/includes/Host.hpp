@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 19:12:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 19:38:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ class Host
 		void				get_client_request(int);
 		void				close_connection(int);
 		void				connect_sk(int);
+		void				close_all_listen_sk(void);
 
 		Host();
 		Host(const Host&);

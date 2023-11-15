@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 19:36:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 19:39:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,11 @@ void	Host::end(void)
 	std::cout << "End server" << std::endl;
 }
 
-void		close_all_listen_sk(std::vector<Server> &confs)
+void	Host::close_all_listen_sk(void)
 {
-	for (std::vector<Server>::iterator it = confs.begin() ; it != confs.end(); ++it)
-		if ((*it).get_listen_sk() > 0)
-			close((*it).get_listen_sk());
+	for (std::vector<Server*>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
+		if ((*it)->get_listen_sk() > 0)
+			close((*it)->get_listen_sk());
 }
 
 void	Host::get_listen_sk(Server* c)
