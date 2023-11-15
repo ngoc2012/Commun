@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 21:29:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 21:30:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	Host::bind_addr(Server* c)
 		close_all_listen_sk();
 		exit(-1);
 	}
-	if (listen(c->get_listen_sk(), c->get_max_clients()) < 0)
+	if (listen(c->get_listen_sk(), _max_clients) < 0)
 	{
 		perror("listen() failed");
 		close_all_listen_sk();
