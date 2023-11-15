@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 21:45:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 22:21:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,21 @@ Server::Server(const char* ip, int port)
 	_host = 0;
 }
 
-void	Server::bind_addr(Server* c)
+void	Server::bind_addr(void)
 {
 	struct sockaddr_in	addr;
 
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(_port);
 	addr.sin_addr.s_addr = inet_addr(_ip_address.c_str());
-	std::cout << "Listening at " << c->get_ip_address() << ":" << c->get_port() << std::endl;
-	if (bind(c->get_listen_sk(), (struct sockaddr *)&addr, sizeof(addr)) < 0)
+	std::cout << "Listening at " << _ip_address << ":" << _port << std::endl;
+	if (bind(_listen_sk, (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
 		perror("bind() failed");
 		close_all_listen_sk();
 		exit(-1);
 	}
-	if (listen(c->get_listen_sk(), _max_clients) < 0)
+	if (listen(_listen_sk, _max_clients) < 0)
 	{
 		perror("listen() failed");
 		close_all_listen_sk();
