@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 14:41:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 14:42:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class	Host
 		fd_set              		_master_set;	// Set of all fd
 		fd_set              		_working_set;	// Set of active fd
 		fd_set              		_server_set;
-		std::vector<Server*>*		_servers;
+		std::vector<Server*>		_servers;
 		std::vector<ClientRequest*>	_client_requests;
 		std::map<int, Server*>		_sk_server;
 		std::map<int, ClientRequest*>	_sk_client_request;
