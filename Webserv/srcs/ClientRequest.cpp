@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 14:56:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 16:12:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ ClientRequest&	ClientRequest::operator=( ClientRequest const & src )
 {
 	(void) src;
 	return (*this);
+}
+ClientRequest::ClientRequest(int sk) : _socket = sk
+{
 }
 ClientRequest::~ClientRequest()
 {
