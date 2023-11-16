@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 16:57:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 16:59:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,10 @@ void	Host::start(void)
 			if (FD_ISSET(i, &_working_set))
 			{
 				_sk_ready--;
-				connect_sk(i);
+				if (FD_ISSET(im &_server_set))
+					_servers[i]->accept_client_sk();
+				else
+					_client_requests[i]->connect_client_sk();
 			}
 	} while (true);
 	//} while (end_host == false);
@@ -90,7 +93,6 @@ void	Host::connect_sk(int i)
 			return ;
 		}
 	// connect socket
-	connect_client_sk(i);
 }
 
 inline void	Host::connect_client_sk(int i)
