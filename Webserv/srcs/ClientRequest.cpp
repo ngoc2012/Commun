@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 17:53:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 17:55:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ClientRequest::clean()
 	_url = "";
 }
 
-void	Host::connect_client_sk(void)
+void	ClientRequest::connect_client_sk(void)
 {
 	std::cout << "Socket " << _socket << " is readable." << std::endl;
 	get_client_request(i);

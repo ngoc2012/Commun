@@ -6,12 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 17:53:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 17:55:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Host.hpp"
 #include "Server.hpp"
+#include "ClientRequest.hpp"
 
 Host::Host(const Host& src) { *this = src; }
 
@@ -233,7 +234,7 @@ inline void	Host::get_client_request(int i)
 	}
 }
 
-inline void	Host::close_connection(int i)
+inline void	Host::close_sk(int i)
 {
 	close(i);
 	FD_CLR(i, &_master_set);

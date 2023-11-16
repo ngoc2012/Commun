@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 14:49:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 17:54:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 #include <vector>
 
-#include "ClientRequest.hpp"
 
 #ifndef HOST_HPP
 # define HOST_HPP
 # define BUFFER	2048
 
-// Forward declaration of Class Server
+// Forward declaration
 class	Server;
+class	ClientRequest;
 
 //https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
 class	Host
@@ -41,14 +41,11 @@ class	Host
 		std::map<int, ClientRequest*>	_sk_client_request;
 		bool				_end_host;
 
-		void				accept_client_sk(int);
 		bool				select_available_sk(void);
-		void				connect_client_sk(int);
 		void				server_response(int);
 		void				get_client_request(int);
-		void				close_connection(int);
+		void				close_sk(int);
 		void				connect_sk(int);
-		void				close_all_listen_sk(void);
 
 		Host();
 		Host(const Host&);
