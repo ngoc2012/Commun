@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 18:53:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 18:54:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	ClientRequest::connect_client_sk(void)
 inline void	Host::read_client_request(void)
 {
 	std::cout << "Receive data from client" << std::endl;
-	ClientRequest			_request;
 	clean();
 	char		response[BUFFER + 1];
 	std::string	s = "";
