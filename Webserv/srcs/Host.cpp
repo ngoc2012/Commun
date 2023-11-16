@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 13:36:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 13:39:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	Host::start(void)
 {
 	int	listen_sk;
 	FD_ZERO(&_master_set);
+	FD_ZERO(&_listen_set);
 	for (std::vector<Server*>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
 	{
 		(*it)->set_host(this);
@@ -50,6 +51,7 @@ void	Host::start(void)
 			if (listen_sk > _max_sk)
 				_max_sk = listen_sk;
 			FD_SET(listen_sk, &_master_set);
+			FD_SET(listen_sk, &_listen_set);
 		}
 	}
 	do
@@ -121,28 +123,6 @@ void	Host::get_listen_sk(Server* c)
 		exit(-1);
 	}
 	fcntl(c->get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
-}
-
-void	Host::bind_addr(Server* c)
-{
-	struct sockaddr_in	addr;
-
-	addr.sin_family = AF_INET;
-	addr.sin_port = htons(c->get_port());
-	addr.sin_addr.s_addr = inet_addr(c->get_ip_address());
-	std::cout << "Listening at " << c->get_ip_address() << ":" << c->get_port() << std::endl;
-	if (bind(c->get_listen_sk(), (struct sockaddr *)&addr, sizeof(addr)) < 0)
-	{
-		perror("bind() failed");
-		close_all_listen_sk();
-		exit(-1);
-	}
-	if (listen(c->get_listen_sk(), _max_clients) < 0)
-	{
-		perror("listen() failed");
-		close_all_listen_sk();
-		exit(-1);
-	}
 }
 
 //Accept all the new connections, create a new socket and add to the master set
