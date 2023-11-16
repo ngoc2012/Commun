@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 16:59:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 17:01:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	Host::new_client_request_sk(int new_sk, Server* s)
 
 void	Host::start(void)
 {
-	int	listen_sk;
 	FD_ZERO(&_master_set);
 	FD_ZERO(&_server_set);
+	int	listen_sk;
 	for (std::vector<Server*>::iterator it = _servers.begin() ; it != _servers.end(); ++it)
 	{
 		(*it)->set_host(this);
@@ -81,18 +81,6 @@ void	Host::start(void)
 	} while (true);
 	//} while (end_host == false);
 	//end();
-}
-
-void	Host::connect_sk(int i)
-{
-	// check if the socket is a listen socket
-	for (std::vector<Server*>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
-		if (i == (*it)->get_listen_sk())
-		{
-			accept_client_sk((*it)->get_listen_sk());
-			return ;
-		}
-	// connect socket
 }
 
 inline void	Host::connect_client_sk(int i)
