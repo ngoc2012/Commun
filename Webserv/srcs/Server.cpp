@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 14:54:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 16:55:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,30 @@ int	Server::bind_addr(void)
 	return (_socket);
 }
 
+//Accept all the new connections, create a new socket and add to the master set
+void	Server::accept_client_sk(void)
+{
+	std::cout << "Listening socket is readable" << std::endl;
+	int	new_sk;
+	do
+	{
+		new_sk = accept(listen_sk, NULL, NULL);
+		if (new_sk < 0)
+		{
+			if (errno != EWOULDBLOCK)
+			{
+				perror("accept() failed");
+				_end_host = true;
+			}
+			break;
+		}
+		fcntl(new_sk, F_SETFL, O_NONBLOCK);
+		std::cout << "  New incoming connection - " << new_sk << std::endl;
+		FD_SET(new_sk, &_master_set);
+		if (new_sk > _max_sk)
+			_max_sk = new_sk;
+	} while (new_sk != -1);
+}
 const char*		Server::get_ip_address(void) const {return (_ip_address.c_str());}
 short unsigned int	Server::get_port(void) const {return (_port);}
 int			Server::get_socket(void) const {return (_socket);}
