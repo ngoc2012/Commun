@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 14:39:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 16:11:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ class ClientRequest
 		std::string	_method;
 		std::string	_url;
 
+		ClientRequest();
 		ClientRequest(const ClientRequest&);
 		ClientRequest &operator=(const ClientRequest& op);
 	public:
-		ClientRequest();
+		ClientRequest(int);
 		virtual ~ClientRequest();
 
 		void		clean(void);
