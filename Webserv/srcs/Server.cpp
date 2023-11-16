@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 10:23:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 10:25:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,11 @@ int	Server::bind_addr(void)
 	if (bind(_listen_sk, (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
 		perror("bind() failed");
-		close(_listen_sk);
 		return (-1);
 	}
 	if (listen(_listen_sk, _host->get_max_clients()) < 0)
 	{
 		perror("listen() failed");
-		close(_listen_sk);
 		return (-1);
 	}
 	std::cout << "Listening at " << _ip_address << ":" << _port << std::endl;
