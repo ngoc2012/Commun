@@ -32,9 +32,9 @@ Example header of a `fooserver.c`
 ```
 ### Vim (personal)
 
-`qg` getter function
-`qs` setter function
-`qc` getter to setter function
+`qg` getter function declaration to function definition
+`qs` setter function declaration to function definition
+`qc` getter function definition to setter function definition
 `qt` function definition to forward declaration
 
 So to save a macro `'x'`, you can do:
