@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 08:46:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 10:23:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ Server&	Server::operator=( Server const & src )
 	_host = src.get_host();
 	return (*this);
 }
-Server::~Server() {}
+Server::~Server()
+{
+	if (_listen_sk > 0)
+		close(_listen_sk);
+}
 
 int	Server::new_listen_sk(void)
 {
