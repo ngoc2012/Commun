@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 19:15:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 19:17:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	Host::read_client_request(void)
 				perror("  recv() failed");
 			std::cout << "Client send: \n"
 				<< "=============================================\n"
-				<< _request.get_http_request();
+				<< response;
 			std::cout 
 				<< "============================================="
 				<< std::endl;
@@ -77,7 +77,6 @@ void	Host::read_client_request(void)
 		else
 		{
 			response[ret] = 0;
-			_request.set_http_request(s);
 		}
 	}
 	_host->servers[_socket]->response();
@@ -131,4 +130,5 @@ if (method == "multipart/form-data")
 	//// Save the file on the server
 	//saveFile("uploaded_file.txt", fileData);
 }
+_request.set_http_request(s);
 */
