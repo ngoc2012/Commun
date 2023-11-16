@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 14:46:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 19:55:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	main_signal_handler(int sig)
 	if (sig == SIGINT)
 	{
 		write(STDOUT_FILENO, "", 0);
-		g_host->set_end_host(true);
 		g_host->end();
 	}
 }
