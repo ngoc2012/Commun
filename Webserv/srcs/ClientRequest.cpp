@@ -6,13 +6,17 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 16:12:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 16:14:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClientRequest.hpp"
 
-ClientRequest::ClientRequest() { clean(); }
+ClientRequest::ClientRequest()
+{
+	std::cout << "ClientRequest Default constructor" << std::endl;
+	clean();
+}
 ClientRequest::ClientRequest(const ClientRequest& src) { *this = src; }
 ClientRequest&	ClientRequest::operator=( ClientRequest const & src )
 {
@@ -21,6 +25,7 @@ ClientRequest&	ClientRequest::operator=( ClientRequest const & src )
 }
 ClientRequest::ClientRequest(int sk) : _socket = sk
 {
+	std::cout << "ClientRequest Constructor sk: " << sk << std::endl;
 }
 ClientRequest::~ClientRequest()
 {
