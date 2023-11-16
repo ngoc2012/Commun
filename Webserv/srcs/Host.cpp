@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 13:39:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 13:44:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	Host::start(void)
 				_max_sk = listen_sk;
 			FD_SET(listen_sk, &_master_set);
 			FD_SET(listen_sk, &_listen_set);
+			_sk_server[listen_sk] = *it;
 		}
 	}
 	do
