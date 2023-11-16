@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 17:49:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 22:28:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ class	Server
 		int			bind_addr(void);
 		int			server_socket(void);
 		void			accept_client_sk(void);
+		void			response(int client_sk);
 
 		const char*		get_ip_address(void) const;
 		short unsigned int	get_port(void) const;

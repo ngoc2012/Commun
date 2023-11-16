@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 19:04:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 22:29:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,7 @@ void	Server::accept_client_sk(void)
 		if (new_sk < 0)
 		{
 			if (errno != EWOULDBLOCK)
-			{
 				perror("accept() failed");
-				_end_host = true;
-			}
 			break;
 		}
 		fcntl(new_sk, F_SETFL, O_NONBLOCK);
@@ -116,7 +113,7 @@ void	Server::response(int client_sk)
 	if (send(client_sk, http_response, strlen(http_response), 0) < 0)
 	{
 		perror("  send() failed");
-		_host->close_sk(client_sk);
+		_host->close_client_sk(client_sk);
 	}
 	std::cout << "Data sent" << std::endl;
 }
