@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 19:18:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 19:21:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ void	Host::read_client_request(void)
 	std::cout << "Receive data from client" << std::endl;
 	clean();
 	char		response[BUFFER + 1];
-	std::string	s = "";
 	int		ret = 1;
-	size_t		pos, pos0;
 	while (ret && ret > 0)
 	{
 		ret = recv(i, response, BUFFER, 0);
@@ -86,6 +84,8 @@ std::string	ClientRequest::get_method(void) const {return (_method);}
 std::string	ClientRequest::get_http_request(void) const {return (_http_request);}
 
 /*
+	std::string	s = "";
+	size_t		pos, pos0;
 s += std::string(response);
 if (method == "")
 {

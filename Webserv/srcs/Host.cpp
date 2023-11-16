@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 19:07:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 19:21:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ inline bool	Host::select_available_sk(void)
 	return (true);
 }
 
-void	Host::close_sk(int i)
+void	Host::close_client_sk(int i)
 {
 	close(i);
 	FD_CLR(i, &_master_set);
