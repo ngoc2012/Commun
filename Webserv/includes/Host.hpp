@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 10:39:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 10:41:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ class	Host
 		Host(std::vector<Server*>*);
 		virtual ~Host();
 
-		//std::vector<Server*>&		get_servers(void) const;
+		int				get_max_clients(void) const;
 
 		void				set_end_host(bool);
 
