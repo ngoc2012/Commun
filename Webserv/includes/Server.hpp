@@ -6,18 +6,18 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 10:28:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 10:31:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-#include "Host.hpp"
 
 #ifndef SERVER_HPP
 # define SERVER_HPP
 
-class Host;
+// Forward declaration of Class Server
+class	Host;
 
 class Server
 {

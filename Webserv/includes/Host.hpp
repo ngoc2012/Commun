@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 10:27:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 10:30:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 #include <vector>
 
 #include "ClientRequest.hpp"
-#include "Server.hpp"
 
 #ifndef HOST_HPP
 # define HOST_HPP
