@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 19:21:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 19:45:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,9 @@ inline bool	Host::select_available_sk(void)
 
 void	Host::close_client_sk(int i)
 {
-	close(i);
 	FD_CLR(i, &_master_set);
+	delete (_client_requests[i]);
+	_client_requests.erase(i);
 	// If i is max_sk -> find another max_sk
 	if (i == _max_sk)
 		while (!FD_ISSET(_max_sk, &_master_set))
