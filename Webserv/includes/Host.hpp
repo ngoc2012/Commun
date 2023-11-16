@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 14:42:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 14:47:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ class	Host
 		Host &operator=(const Host& op);
 
 	public:
-		Host(std::vector<Server*>*);
+		Host(std::string);
 		virtual ~Host();
 
 		int				get_max_clients(void) const;
