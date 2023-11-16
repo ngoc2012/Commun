@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 14:48:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 14:50:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 Host::Host(const Host& src) { *this = src; }
 
 Host::Host(const char* conf) {
-	ConfigurationParser	parser(servers, conf);
 	_max_sk = -1;
 	_max_clients = 128;
 	_servers = c;
 	_end_host = false;
+	ConfigurationParser	parser(servers, conf);
 }
 
 Host&	Host::operator=( Host const & src )
@@ -47,7 +47,7 @@ void	Host::start(void)
 {
 	int	listen_sk;
 	FD_ZERO(&_master_set);
-	FD_ZERO(&_listen_set);
+	FD_ZERO(&_server_set);
 	for (std::vector<Server*>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
 	{
 		(*it)->set_host(this);
