@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 21:30:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 08:47:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ Host::Host(std::vector<Server*>* c) {
 	_max_clients = 128;
 	_servers = c;
 	_end_host = false;
+	for (std::vector<Server*>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
+		get_listen_sk(*it);
 }
 
 Host&	Host::operator=( Host const & src )
