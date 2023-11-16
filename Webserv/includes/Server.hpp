@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 10:33:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 10:37:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 #ifndef SERVER_HPP
 # define SERVER_HPP
 
-// Forward declaration of Class Server
+// Forward declaration
 class	Host;
 
-class Server
+class	Server
 {
 	private:
 		Host*			_host;
