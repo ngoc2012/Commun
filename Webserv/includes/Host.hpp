@@ -6,14 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 17:56:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 20:04:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/select.h>
 
 #include <vector>
-
+#include <map>
 
 #ifndef HOST_HPP
 # define HOST_HPP
