@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 18:51:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 18:53:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ inline void	Host::read_client_request(void)
 {
 	std::cout << "Receive data from client" << std::endl;
 	ClientRequest			_request;
-	_request.clean();
+	clean();
 	char		response[BUFFER + 1];
 	std::string	s = "";
 	int		ret = 1;
@@ -133,7 +133,7 @@ inline void	Host::read_client_request(void)
 			_request.set_http_request(s);
 		}
 	}
-
+	_host->servers[_socket]->response();
 }
 
 void	ClientRequest::set_method(std::string m) {_method = m;}
