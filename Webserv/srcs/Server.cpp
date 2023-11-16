@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 14:53:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 14:54:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ Server::~Server()
 {
 	std::cout << "Destruction server: " << _ip_address << ":" << _port << std::endl;
 	if (_socket > 0)
+	{
+		std::cout << "Close socket: " << _socket << std::endl;
 		close(_socket);
+	}
 }
 
 int	Server::server_socket(void)
