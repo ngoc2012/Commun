@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 19:57:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 19:59:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,6 @@ Host&	Host::operator=( Host const & src )
 }
 
 Host::~Host() {}
-
-int	Host::get_max_clients(void) const {return (_max_clients);}
-
-void	Host::set_end_host(bool e) {_end_host = e;}
 
 void  	Host::add_new_sk_2_master_set(int new_sk, Server* s)
 {
@@ -80,6 +76,7 @@ void	Host::start(void)
 					_client_requests[i]->read_client_request();
 			}
 	} while (true);
+	end();
 }
 
 void	Host::end(void)
@@ -93,7 +90,7 @@ void	Host::end(void)
 	std::cout << "End server" << std::endl;
 }
 
-inline bool	Host::select_available_sk(void)
+bool	Host::select_available_sk(void)
 {
 	std::cout << "Waiting on select() ..." << std::endl;
 	_sk_ready = select(_max_sk + 1, &_working_set, NULL, NULL, NULL);// No timeout
@@ -115,3 +112,7 @@ void	Host::close_client_sk(int i)
 		while (!FD_ISSET(_max_sk, &_master_set))
 			_max_sk -= 1;
 }
+
+int	Host::get_max_clients(void) const {return (_max_clients);}
+
+void	Host::set_end_host(bool e) {_end_host = e;}
