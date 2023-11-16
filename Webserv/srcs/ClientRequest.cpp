@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 14:40:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 14:56:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,15 @@ ClientRequest&	ClientRequest::operator=( ClientRequest const & src )
 	(void) src;
 	return (*this);
 }
-ClientRequest::~ClientRequest() {}
+ClientRequest::~ClientRequest()
+{
+	std::cout << "Destruction client request" << std::endl;
+	if (_socket > 0)
+	{
+		std::cout << "Close socket: " << _socket << std::endl;
+		close(_socket);
+	}
+}
 
 void	ClientRequest::clean()
 {
