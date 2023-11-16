@@ -6,12 +6,24 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 10:31:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 10:33:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/time.h>
+#include <arpa/inet.h>	// htons
+#include <unistd.h>	// close
+#include <stdlib.h>
+#include <netinet/in.h>
+#include <errno.h>
+#include <fcntl.h>	// fcntl
+#include <cstdio>	// perror
+#include <cstring>	// memcpy
 
+#include <iostream>
+#include <vector>
 
 #ifndef SERVER_HPP
 # define SERVER_HPP

@@ -6,25 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 10:30:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 10:33:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/time.h>
-#include <arpa/inet.h>	// htons
-#include <unistd.h>	// close
-#include <stdlib.h>
-#include <netinet/in.h>
-#include <errno.h>
-#include <fcntl.h>	// fcntl
-#include <cstdio>	// perror
-#include <cstring>	// memcpy
-
-#include <iostream>
 #include <vector>
 
+#include "Server.hpp"
 #include "ClientRequest.hpp"
 
 #ifndef HOST_HPP
@@ -32,7 +20,7 @@
 # define BUFFER	2048
 
 // Forward declaration of Class Server
-class	Server;
+//class	Server;
 
 //https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
 class	Host
