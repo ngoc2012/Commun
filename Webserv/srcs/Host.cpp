@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 14:53:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 16:05:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void	Host::start(void)
 	int	listen_sk;
 	FD_ZERO(&_master_set);
 	FD_ZERO(&_server_set);
-	for (std::vector<Server*>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
+	for (std::vector<Server*>::iterator it = _servers.begin() ; it != _servers.end(); ++it)
 	{
 		(*it)->set_host(this);
-		listen_sk = (*it)->server_listen_sk();
+		listen_sk = (*it)->server_socket();
 		if (listen_sk > 0)
 		{
 			add_new_sk_2_master_set(listen_sk, *it);
