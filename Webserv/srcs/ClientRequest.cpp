@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 19:17:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 19:18:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,7 @@ void	Host::read_client_request(void)
 			std::cout << "Client send: \n"
 				<< "=============================================\n"
 				<< response;
-			std::cout 
-				<< "============================================="
-				<< std::endl;
+				<< "=============================================\n";
 			return ;
 		}
 		else if (ret == 0)
@@ -75,9 +73,7 @@ void	Host::read_client_request(void)
 			return ;
 		}
 		else
-		{
 			response[ret] = 0;
-		}
 	}
 	_host->servers[_socket]->response();
 }
