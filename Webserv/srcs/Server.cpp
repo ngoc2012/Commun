@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 13:21:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 13:24:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,8 @@ int	Server::bind_addr(void)
 		perror("listen() failed");
 		return (-1);
 	}
-	if (_listen_sk > _host->get_max_sk())
-		_host->set_max_sk() = _listen_sk;
-	FD_SET(_listen_sk, &_master_set);
-	std::cout << "Listening at " << _ip_address << ":" << _port << std::endl;
+	std::cout << "Listening at " << _ip_address << ":" << _port
+		<< " (socket : " << _listen_sk << ")" << std::endl;
 	return (_listen_sk);
 }
 
