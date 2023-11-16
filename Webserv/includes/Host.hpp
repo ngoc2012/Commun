@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 13:51:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 13:55:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ class	Host
 		int				_max_clients;
 
 		int				_sk_ready;
-		int				_max_sk;
-		fd_set              		_master_set;
-		fd_set              		_working_set;
-		fd_set              		_listen_set;
+		int				_max_sk;	// Max of all fd
+		fd_set              		_master_set;	// Set of all fd
+		fd_set              		_working_set;	// Set of active fd
+		fd_set              		_listen_set;	// Set of listen fd (for each server)
 		std::vector<Server*>*		_servers;
 		std::vector<ClientRequest>	_client_requests;
 		std::map<int, Server*>		_sk_server;
