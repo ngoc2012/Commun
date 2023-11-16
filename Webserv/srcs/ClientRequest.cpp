@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 19:21:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 19:53:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	Host::read_client_request(void)
 			response[ret] = 0;
 	}
 	_host->servers[_socket]->response();
+	_host->close_client_sk(_socket);
 }
 
 void	ClientRequest::set_method(std::string m) {_method = m;}
