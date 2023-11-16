@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 16:15:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 16:16:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ void	Host::start(void)
 			break;
 		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
 			if (FD_ISSET(i, &_working_set))
+			{
+				_sk_ready--;
 				connect_sk(i);
+			}
 	} while (true);
 	//} while (end_host == false);
 	//end();
@@ -79,7 +82,6 @@ void	Host::start(void)
 
 void	Host::connect_sk(int i)
 {
-	_sk_ready--;
 	// check if the socket is a listen socket
 	for (std::vector<Server*>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
 		if (i == (*it)->get_listen_sk())
