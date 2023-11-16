@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 18:59:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 19:07:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,18 +80,15 @@ void	Host::start(void)
 					_client_requests[i]->read_client_request();
 			}
 	} while (true);
-	//} while (end_host == false);
-	//end();
 }
 
 void	Host::end(void)
 {
-	for (int i = 0; i <= _max_sk; ++i)
-		if (FD_ISSET(i, &_master_set))
-			close(i);
-	for (std::vector<Server*>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
+	for (std::vector<Server*>::iterator it = _servers->begin();
+		it != _servers->end(); ++it)
 		delete (it);
-	for (std::vector<ClientRequest*>::iterator it = _client_requests->begin() ; it != _client_requests->end(); ++it)
+	for (std::vector<ClientRequest*>::iterator it = _client_requests->begin();
+		it != _client_requests->end(); ++it)
 		delete (it);
 	std::cout << "End server" << std::endl;
 }
@@ -107,25 +104,6 @@ inline bool	Host::select_available_sk(void)
 		return (false);
 	}
 	return (true);
-}
-
-inline void	Host::server_response(int i)
-{
-	//Send back data
-	const char* http_response =
-		"HTTP/1.1 200 OK\r\n"
-		"Content-Type: text/html\r\n"
-		"Connection: close\r\n"  // Close the connection after this response
-		"\r\n"  // End of headers
-		"<link rel=\"icon\" href=\"data:,\">"
-		"<html><body><h1>Hello, client!</h1></body></html>";
-	if (send(i, http_response, strlen(http_response), 0) < 0)
-	{
-		perror("  send() failed");
-		//close_conn = 1;
-		//break;
-	}
-	std::cout << "Data sent" << std::endl;
 }
 
 void	Host::close_sk(int i)
