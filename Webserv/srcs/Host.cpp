@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 21:33:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 21:49:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,12 @@ void	Host::start(void)
 
 void	Host::end(void)
 {
-	for (std::vector<Server*>::iterator it = _servers->begin();
-		it != _servers->end(); ++it)
-		delete (it);
-	for (std::vector<ClientRequest*>::iterator it = _client_requests->begin();
-		it != _client_requests->end(); ++it)
-		delete (it);
+	for (std::vector<Server*>::iterator it = _servers.begin();
+		it != _servers.end(); ++it)
+		delete (*it);
+	for (std::vector<ClientRequest*>::iterator it = _client_requests.begin();
+		it != _client_requests.end(); ++it)
+		delete (*it);
 	std::cout << "End server" << std::endl;
 }
 
