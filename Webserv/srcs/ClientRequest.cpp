@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 19:55:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 21:39:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ClientRequest::clean()
 	_url = "";
 }
 
-void	Host::read_client_request(void)
+void	ClientRequest::read_client_request(void)
 {
 	std::cout << "Receive data from client" << std::endl;
 	clean();
