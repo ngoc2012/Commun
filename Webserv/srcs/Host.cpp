@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 13:44:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 13:53:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ int	Host::get_max_clients(void) const {return (_max_clients);}
 
 void	Host::set_end_host(bool e) {_end_host = e;}
 
+void  	Host::add_new_sk(int new_sk, Server* s)
+{
+	if (new_sk > _max_sk)
+		_max_sk = new_sk;
+	FD_SET(new_sk, &_master_set);
+	_sk_server[new_sk] = s;
+}
+
 void	Host::start(void)
 {
 	int	listen_sk;
@@ -48,11 +56,8 @@ void	Host::start(void)
 		listen_sk = (*it)->server_listen_sk();
 		if (listen_sk > 0)
 		{
-			if (listen_sk > _max_sk)
-				_max_sk = listen_sk;
-			FD_SET(listen_sk, &_master_set);
+			add_new_sk(listen_sk, *it);
 			FD_SET(listen_sk, &_listen_set);
-			_sk_server[listen_sk] = *it;
 		}
 	}
 	do
