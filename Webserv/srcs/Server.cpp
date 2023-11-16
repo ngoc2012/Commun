@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 23:00:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 08:40:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,3 +81,4 @@ Host*			Server::get_host(void) const {return (_host);}
 void			Server::set_listen_sk(int i) {_listen_sk = i;}
 void			Server::set_ip_address(std::string ip) {_ip_address = ip;}
 void			Server::set_port(short unsigned int p) {_port = p;}
+Host*			Server::get_host(void) const {return (_host);}
