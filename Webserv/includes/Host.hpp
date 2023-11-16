@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 13:42:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 13:49:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ class	Host
 
 		void				set_end_host(bool);
 
+		void    			add_new_sk(int);
 		void    			start(void);
 		void				end(void);
 };
