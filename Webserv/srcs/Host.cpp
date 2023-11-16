@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 13:35:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 13:36:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,14 @@ void	Host::start(void)
 	for (std::vector<Server*>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
 	{
 		(*it)->set_host(this);
-		listen_sk = (*it)->new_listen_sk();
-		if (listen_sk > _max_sk)
-			_max_sk = listen_sk;
-		FD_SET(listen_sk, &_master_set);
+		listen_sk = (*it)->server_listen_sk();
+		if (listen_sk > 0)
+		{
+			if (listen_sk > _max_sk)
+				_max_sk = listen_sk;
+			FD_SET(listen_sk, &_master_set);
+		}
 	}
-	//end_host = false;
 	do
 	{
 		memcpy(&_working_set, &_master_set, sizeof(_master_set));
