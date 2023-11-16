@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 21:29:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 21:30:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,8 @@ class	Host
 		std::vector<ClientRequest*>	_client_requests;
 		std::map<int, Server*>		_sk_server;
 		std::map<int, ClientRequest*>	_sk_client_request;
-		bool				_end_host;
 
 		bool				select_available_sk(void);
-		void				server_response(int);
-		void				close_sk(int);
-		void				connect_sk(int);
 		void  				add_new_sk_2_master_set(int, Server*);
 
 		Host();
@@ -63,8 +59,6 @@ class	Host
 		void				close_client_sk(int);
 
 		int				get_max_clients(void) const;
-
-		void				set_end_host(bool);
 };
 
 #endif

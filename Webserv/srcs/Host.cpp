@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 21:27:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 21:31:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ Host::Host(const Host& src) { *this = src; }
 Host::Host(const char* conf) {
 	_max_sk = -1;
 	_max_clients = 128;
-	_end_host = false;
 	ConfigurationParser	parser(_servers, conf);
 }
 
@@ -113,5 +112,3 @@ void	Host::close_client_sk(int i)
 }
 
 int	Host::get_max_clients(void) const {return (_max_clients);}
-
-void	Host::set_end_host(bool e) {_end_host = e;}
