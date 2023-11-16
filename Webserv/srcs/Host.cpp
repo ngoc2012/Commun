@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 18:48:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 18:59:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,31 +94,6 @@ void	Host::end(void)
 	for (std::vector<ClientRequest*>::iterator it = _client_requests->begin() ; it != _client_requests->end(); ++it)
 		delete (it);
 	std::cout << "End server" << std::endl;
-}
-
-//Accept all the new connections, create a new socket and add to the master set
-inline void	Host::accept_client_sk(int listen_sk)
-{
-	std::cout << "Listening socket is readable" << std::endl;
-	int	new_sk;
-	do
-	{
-		new_sk = accept(listen_sk, NULL, NULL);
-		if (new_sk < 0)
-		{
-			if (errno != EWOULDBLOCK)
-			{
-				perror("accept() failed");
-				_end_host = true;
-			}
-			break;
-		}
-		fcntl(new_sk, F_SETFL, O_NONBLOCK);
-		std::cout << "  New incoming connection - " << new_sk << std::endl;
-		FD_SET(new_sk, &_master_set);
-		if (new_sk > _max_sk)
-			_max_sk = new_sk;
-	} while (new_sk != -1);
 }
 
 inline bool	Host::select_available_sk(void)

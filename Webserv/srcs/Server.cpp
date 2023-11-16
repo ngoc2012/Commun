@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 16:57:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 18:59:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,25 @@ void	Server::accept_client_sk(void)
 		std::cout << "  New incoming connection - " << new_sk << std::endl;
 		_host->new_client_request_sk(new_sk, this);
 	} while (new_sk != -1);
+}
+
+inline void	Host::server_response(int i)
+{
+	//Send back data
+	const char* http_response =
+		"HTTP/1.1 200 OK\r\n"
+		"Content-Type: text/html\r\n"
+		"Connection: close\r\n"  // Close the connection after this response
+		"\r\n"  // End of headers
+		"<link rel=\"icon\" href=\"data:,\">"
+		"<html><body><h1>Hello, client!</h1></body></html>";
+	if (send(i, http_response, strlen(http_response), 0) < 0)
+	{
+		perror("  send() failed");
+		//close_conn = 1;
+		//break;
+	}
+	std::cout << "Data sent" << std::endl;
 }
 
 const char*		Server::get_ip_address(void) const {return (_ip_address.c_str());}
