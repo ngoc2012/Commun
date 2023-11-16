@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 21:49:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 22:25:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,9 @@ void	Host::close_client_sk(int i)
 {
 	FD_CLR(i, &_master_set);
 	delete (_client_requests[i]);
-	_client_requests.erase(i);
+	std::map<int, ClientRequest*>::iterator	it;
+	it = _client_requests.find(i);
+	_client_requests.erase(it);
 	// If i is max_sk -> find another max_sk
 	if (i == _max_sk)
 		while (!FD_ISSET(_max_sk, &_master_set))
