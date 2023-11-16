@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 17:54:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 17:56:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ class	Host
 
 		bool				select_available_sk(void);
 		void				server_response(int);
-		void				get_client_request(int);
 		void				close_sk(int);
 		void				connect_sk(int);
 
@@ -55,13 +54,13 @@ class	Host
 		Host(const char *);
 		virtual ~Host();
 
-		int				get_max_clients(void) const;
-
-		void				set_end_host(bool);
-
 		void    			add_new_sk_2_master_set(int, Server*);
 		void    			start(void);
 		void				end(void);
+
+		int				get_max_clients(void) const;
+
+		void				set_end_host(bool);
 };
 
 #endif
