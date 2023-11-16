@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 22:59:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/15 23:00:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 class Server
 {
 	private:
-		int			_error;
 		Host*			_host;
 		std::string		_ip_address;
 		short unsigned int	_port;
