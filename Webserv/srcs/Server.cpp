@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 19:00:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 19:02:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void	Server::response(int client_sk)
 	if (send(client_sk, http_response, strlen(http_response), 0) < 0)
 	{
 		perror("  send() failed");
+		_host->close_sk(client_sk);
 		//close_conn = 1;
 		//break;
 	}
