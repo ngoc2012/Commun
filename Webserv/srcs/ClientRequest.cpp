@@ -6,11 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 17:51:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 17:53:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClientRequest.hpp"
+#include "Host.hpp"
 
 ClientRequest::ClientRequest()
 {
@@ -23,7 +24,7 @@ ClientRequest&	ClientRequest::operator=( ClientRequest const & src )
 	(void) src;
 	return (*this);
 }
-ClientRequest::ClientRequest(int sk) : _socket = sk
+ClientRequest::ClientRequest(int sk, Host* h) : _socket = sk, _host = h
 {
 	std::cout << "ClientRequest Constructor sk: " << sk << std::endl;
 }

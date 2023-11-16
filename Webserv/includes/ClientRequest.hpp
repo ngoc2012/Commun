@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 16:11:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 17:52:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 #ifndef CLIENTREQUEST_HPP
 # define CLIENTREQUEST_HPP
 
-class ClientRequest
+class	Host;
+
+class	ClientRequest
 {
 	private:
+		Host*		_host;
 		int		_socket;
 		std::string	_http_request;
 		std::string	_header;
@@ -29,7 +32,7 @@ class ClientRequest
 		ClientRequest(const ClientRequest&);
 		ClientRequest &operator=(const ClientRequest& op);
 	public:
-		ClientRequest(int);
+		ClientRequest(int, Host*);
 		virtual ~ClientRequest();
 
 		void		clean(void);

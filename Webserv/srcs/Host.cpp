@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 17:01:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 17:53:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void  	Host::add_new_sk_2_master_set(int new_sk, Server* s)
 void	Host::new_client_request_sk(int new_sk, Server* s)
 {
 	add_new_sk_2_master_set(int new_sk, Server* s);
-	_client_requests[new_sk] = new ClientRequest(new_sk);
+	_client_requests[new_sk] = new ClientRequest(new_sk, this);
 }
 
 void	Host::start(void)
@@ -81,14 +81,6 @@ void	Host::start(void)
 	} while (true);
 	//} while (end_host == false);
 	//end();
-}
-
-inline void	Host::connect_client_sk(int i)
-{
-	std::cout << "Socket " << i << " is readable." << std::endl;
-	get_client_request(i);
-	server_response(i);
-	close_connection(i);
 }
 
 void	Host::end(void)
