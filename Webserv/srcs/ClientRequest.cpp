@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 17:57:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 18:49:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ClientRequest::connect_client_sk(void)
 	close_connection(i);
 }
 
-inline void	Host::read_client_request(int i)
+inline void	Host::read_client_request(void)
 {
 	std::cout << "Receive data from client" << std::endl;
 	ClientRequest			_request;
