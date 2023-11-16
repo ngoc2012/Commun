@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 13:55:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 13:57:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ class	Host
 		std::map<int, Server*>		_sk_server;
 		bool				_end_host;
 
-		void				get_listen_sk(Server*);
-		void				bind_addr(Server*);
 		void				accept_client_sk(int);
 		bool				select_available_sk(void);
 		void				connect_client_sk(int);
@@ -63,7 +61,7 @@ class	Host
 
 		void				set_end_host(bool);
 
-		void    			add_new_sk(int, Server*);
+		void    			add_new_sk_2_master_set(int, Server*);
 		void    			start(void);
 		void				end(void);
 };

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 13:53:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 13:57:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	Host::get_max_clients(void) const {return (_max_clients);}
 
 void	Host::set_end_host(bool e) {_end_host = e;}
 
-void  	Host::add_new_sk(int new_sk, Server* s)
+void  	Host::add_new_sk_2_master_set(int new_sk, Server* s)
 {
 	if (new_sk > _max_sk)
 		_max_sk = new_sk;
@@ -56,7 +56,7 @@ void	Host::start(void)
 		listen_sk = (*it)->server_listen_sk();
 		if (listen_sk > 0)
 		{
-			add_new_sk(listen_sk, *it);
+			add_new_sk_2_master_set(listen_sk, *it);
 			FD_SET(listen_sk, &_listen_set);
 		}
 	}
@@ -110,25 +110,6 @@ void	Host::close_all_listen_sk(void)
 	for (std::vector<Server*>::iterator it = _servers->begin() ; it != _servers->end(); ++it)
 		if ((*it)->get_listen_sk() > 0)
 			close((*it)->get_listen_sk());
-}
-
-void	Host::get_listen_sk(Server* c)
-{
-	c->set_listen_sk(socket(AF_INET, SOCK_STREAM, 0));
-	if (c->get_listen_sk() < 0)
-	{
-		perror("listen socket: socket() failed");
-		exit(-1);
-	}
-	int    on = 1;
-	if (setsockopt(c->get_listen_sk(), SOL_SOCKET,  SO_REUSEADDR,
-                   (char *)&on, sizeof(on)) < 0)
-	{
-		perror("reusable socket: setsockopt() failed");
-		close_all_listen_sk();
-		exit(-1);
-	}
-	fcntl(c->get_listen_sk(), F_SETFL, O_NONBLOCK);	// ioctl not allowed
 }
 
 //Accept all the new connections, create a new socket and add to the master set
