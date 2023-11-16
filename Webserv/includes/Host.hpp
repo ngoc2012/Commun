@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 20:04:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 21:26:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #include <vector>
 #include <map>
+
+#include "ConfigurationParser.hpp"
 
 #ifndef HOST_HPP
 # define HOST_HPP
