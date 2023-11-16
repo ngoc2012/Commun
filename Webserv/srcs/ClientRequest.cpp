@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 19:17:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 14:39:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ ClientRequest&	ClientRequest::operator=( ClientRequest const & src )
 ClientRequest::~ClientRequest() {}
 void	ClientRequest::clean()
 {
+	_socket = -1;
 	_http_request = "";
 	_method = "";
 	_url = "";

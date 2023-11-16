@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 14:37:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 14:38:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ class	Server
 		virtual ~Server();
 
 		int			bind_addr(void);
-		int			server_listen_sk(void);
+		int			server_socket(void);
 
 		const char*		get_ip_address(void) const;
 		short unsigned int	get_port(void) const;
-		int			get_listen_sk(void) const;
+		int			get_socket(void) const;
 		Host*			get_host(void) const;
 
-		void			set_listen_sk(int);
+		void			set_socket(int);
 		void			set_ip_address(std::string);
 		void			set_port(short unsigned int);
 		void			set_host(Host*);
