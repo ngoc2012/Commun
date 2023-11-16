@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 21:31:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 21:33:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void  	Host::add_new_sk_2_master_set(int new_sk, Server* s)
 
 void	Host::new_client_request_sk(int new_sk, Server* s)
 {
-	add_new_sk_2_master_set(int new_sk, Server* s);
+	add_new_sk_2_master_set(new_sk, s);
 	_client_requests[new_sk] = new ClientRequest(new_sk, this);
 }
 
@@ -110,5 +110,3 @@ void	Host::close_client_sk(int i)
 		while (!FD_ISSET(_max_sk, &_master_set))
 			_max_sk -= 1;
 }
-
-int	Host::get_max_clients(void) const {return (_max_clients);}
