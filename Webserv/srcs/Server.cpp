@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 18:59:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/16 19:00:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	Server::accept_client_sk(void)
 	} while (new_sk != -1);
 }
 
-inline void	Host::server_response(int i)
+void	Server::response(int client_sk)
 {
 	//Send back data
 	const char* http_response =
@@ -113,7 +113,7 @@ inline void	Host::server_response(int i)
 		"\r\n"  // End of headers
 		"<link rel=\"icon\" href=\"data:,\">"
 		"<html><body><h1>Hello, client!</h1></body></html>";
-	if (send(i, http_response, strlen(http_response), 0) < 0)
+	if (send(client_sk, http_response, strlen(http_response), 0) < 0)
 	{
 		perror("  send() failed");
 		//close_conn = 1;
