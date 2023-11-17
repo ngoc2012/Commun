@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 15:55:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 15:57:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void	ClientRequest::read_client_request(void)
 			if (_http_request == "")
 			{
 				_http_request += std::string(response);
-				read_header(_http_request);
+				if (!read_header(_http_request))
+					break ;
 				//if (_method0 == "")
 				//{
 				//	std::cerr << "Error: no Content-Type" << std::endl;
@@ -96,7 +97,7 @@ void	ClientRequest::read_client_request(void)
 
 void	ClientRequest::cat_http_request(std::string s) {_http_request += s;}
 
-void	ClientRequest::read_header(std::string& header)
+bool	ClientRequest::read_header(std::string& header)
 {
 	size_t		pos, pos0;
 

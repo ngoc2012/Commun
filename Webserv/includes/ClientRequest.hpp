@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 15:55:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 15:56:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ class	ClientRequest
 		void		cat_http_request(std::string);
 		void		read_client_request(void);
 		void		clean(void);
-		void		read_header(std::string&);
-		void		read_method(std::string&);
+		bool		read_header(std::string&);
+		bool		read_method(std::string&);
 
 		//std::string	get_method(void) const;
 		std::string	get_http_request(void) const;
