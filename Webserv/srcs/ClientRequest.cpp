@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 22:17:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 22:19:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ bool	ClientRequest::read_header(std::string& header)
 	size_t		pos, pos0;
 
 	std::vector<std::string>	lines = split_string(header, "\n");
-	std::vector<std::string>	first_line = split_string(lines[0], "\n");
+	std::vector<std::string>	first_line = split_string(lines[0], " 	");
 
 	if (!read_method(first_line[0]))
 		return (false);
