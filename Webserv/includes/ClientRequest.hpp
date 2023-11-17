@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 15:33:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 15:35:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #ifndef CLIENTREQUEST_HPP
 # define CLIENTREQUEST_HPP
-
+ 
 class	Host;
 
 class	ClientRequest
