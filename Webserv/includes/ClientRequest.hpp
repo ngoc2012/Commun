@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 14:19:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 14:24:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ class	ClientRequest
 		std::string	_http_request;
 		std::string	_header;
 		std::string	_body;
-		std::string	_method0;
-		std::string	_method1;
+		std::string	_method;
+		std::string	_content_type0;
+		std::string	_content_type1;
 		std::string	_url;
 
 		ClientRequest();
