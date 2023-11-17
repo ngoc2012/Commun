@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 14:09:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 14:17:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,21 @@ void	ClientRequest::cat_http_request(std::string s) {_http_request += s;}
 
 void	ClientRequest::read_method(std::string& http)
 {
-	pos = s.find("Content-Type:");
-	if ( pos != std::string::npos)
+	size_t		pos, pos0;
+
+	pos = http.find("Content-Type:");
+	if (pos != std::string::npos)
 	{
-		pos0 = s.find(";", pos);
-		if ( pos0 != std::string::npos)
-		{
-			_request.set_method(s.substr(pos + 14, pos0 - pos - 14));
-			std::cout << "|" << _request.get_method() << "|" << std::endl;
-		}
+		pos0 = http.find(";", pos);
+		if (pos0 != std::string::npos)
+			_method = http.substr(pos + 14, pos0 - pos - 14);
+	}
+	pos = http.find("Content-Type:", pos0);
+	if (pos != std::string::npos)
+	{
+		pos0 = http.find(";", pos);
+		if (pos0 != std::string::npos)
+			_method = http.substr(pos + 14, pos0 - pos - 14);
 	}
 }
 
