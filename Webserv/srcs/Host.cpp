@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 12:23:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 13:06:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	Host::start(void)
 			FD_SET(listen_sk, &_server_set);
 		}
 	}
+	if (!_sk_server.size())
+		return ;
 	do
 	{
 		memcpy(&_working_set, &_master_set, sizeof(_master_set));
