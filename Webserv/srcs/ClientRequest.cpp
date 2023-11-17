@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 22:41:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 22:43:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void	ClientRequest::cat_http_request(std::string s) {_http_request += s;}
 
 bool	ClientRequest::read_header(std::string& header)
 {
-	std::cout << header << std::endl;
 
 	std::vector<std::string>	lines = split_string(header, "\n");
 	std::vector<std::string>	first_line = split_string(lines[0], " 	");
@@ -114,6 +113,7 @@ bool	ClientRequest::read_header(std::string& header)
 
 bool	ClientRequest::read_method(std::string& s)
 {
+	std::cout << s << std::endl;
 	if (s == "GET")
 		_method = GET;
 	else if (s == "POST")
@@ -129,6 +129,8 @@ bool	ClientRequest::read_method(std::string& s)
 
 bool	ClientRequest::read_content_type(std::string& s)
 {
+	std::cout << s << std::endl;
+
 	size_t	pos0 = s.length() - 1;
 	size_t	pos = s.find("Content-Type:");
 	if (pos != std::string::npos)
