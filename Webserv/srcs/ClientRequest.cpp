@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 15:43:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 15:45:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ ClientRequest::~ClientRequest()
 void	ClientRequest::clean()
 {
 	_http_request = "";
-	_method0 = "";
-	_method1 = "";
+	_method = NONE;
 	_url = "";
 }
 
@@ -103,6 +102,8 @@ void	ClientRequest::read_header(std::string& header)
 
 	std::vector<std::string>	lines = split_string(header, "\n");
 	std::vector<std::string>	first_line = split_string(lines[0], "\n");
+
+	if (first_line[0] == "GET")
 
 	//std::cout << header << std::endl;
 	pos0 = header.length() - 1;
