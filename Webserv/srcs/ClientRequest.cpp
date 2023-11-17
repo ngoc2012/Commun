@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 14:17:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 14:19:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ClientRequest::read_client_request(void)
 			_http_request += std::string(response);
 			if (_method0 == "")
 			{
-				read_method(_http_request)
+				read_method(_http_request);
 				if (_method0 == "")
 				{
 					std::cerr << "Error: no Content-Type" << std::endl;
@@ -103,40 +103,24 @@ void	ClientRequest::read_method(std::string& http)
 	{
 		pos0 = http.find(";", pos);
 		if (pos0 != std::string::npos)
-			_method = http.substr(pos + 14, pos0 - pos - 14);
+			_method0 = http.substr(pos + 14, pos0 - pos - 14);
 	}
 	pos = http.find("Content-Type:", pos0);
 	if (pos != std::string::npos)
 	{
 		pos0 = http.find(";", pos);
 		if (pos0 != std::string::npos)
-			_method = http.substr(pos + 14, pos0 - pos - 14);
+			_method1 = http.substr(pos + 14, pos0 - pos - 14);
 	}
 }
 
-void	ClientRequest::set_method(std::string m) {_method = m;}
+//void	ClientRequest::set_method(std::string m) {_method = m;}
 void	ClientRequest::set_http_request(std::string s) {_http_request = s;}
 
-std::string	ClientRequest::get_method(void) const {return (_method);}
+//std::string	ClientRequest::get_method(void) const {return (_method);}
 std::string	ClientRequest::get_http_request(void) const {return (_http_request);}
 
 /*
-	std::string	s = "";
-	size_t		pos, pos0;
-s += std::string(response);
-if (method == "")
-{
-	pos = s.find("Content-Type:");
-	if ( pos != std::string::npos)
-	{
-		pos0 = s.find(";", pos);
-		if ( pos0 != std::string::npos)
-		{
-			_request.set_method(s.substr(pos + 14, pos0 - pos - 14));
-			std::cout << "|" << _request.get_method() << "|" << std::endl;
-		}
-	}
-}
 if (method == "multipart/form-data")
 {
 	// The combination \r\n is often used to indicate the end of a line of text in text files
