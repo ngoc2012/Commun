@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 21:40:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 09:11:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ ClientRequest&	ClientRequest::operator=( ClientRequest const & src )
 	(void) src;
 	return (*this);
 }
-ClientRequest::ClientRequest(int sk, Host* h) : _socket = sk, _host = h
+ClientRequest::ClientRequest(int sk, Host* h) : _socket(sk), _host(h)
 {
 	std::cout << "ClientRequest Constructor sk: " << sk << std::endl;
 }
@@ -54,7 +54,7 @@ void	ClientRequest::read_client_request(void)
 	int		ret = 1;
 	while (ret && ret > 0)
 	{
-		ret = recv(i, response, BUFFER, 0);
+		ret = recv(_socket, response, BUFFER, 0);
 		if (ret < 0)
 		{
 			if (errno != EWOULDBLOCK)
