@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 22:29:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 09:43:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	Server::bind_addr(void)
 //Accept all the new connections, create a new socket and add to the master set
 void	Server::accept_client_sk(void)
 {
-	std::cout << "Listening socket is readable" << std::endl;
+	std::cout << "Listening socket is readable" << _socket << std::endl;
 	int	new_sk;
 	do
 	{
