@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 22:19:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 22:23:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,14 +124,14 @@ bool	read_content_type(std::string& s)
 {
 	size_t	pos0 = s.length() - 1;
 	size_t	pos = s.find("Content-Type:");
-	size_t	startPos = 0;
+	_start_pos_body = 0;
 	if (pos != std::string::npos)
 	{
 		pos0 = s.find(";", pos);
 		if (pos0 != std::string::npos)
 		{
 			_content_type0 = s.substr(pos + 14, pos0 - pos - 14);
-			startPos = s.find("\r\n\r\n", pos0) + 4;
+			_start_pos_body = s.find("\r\n\r\n", pos0) + 4;
 		}
 		else
 			return (false);
@@ -143,11 +143,13 @@ bool	read_content_type(std::string& s)
 		if (pos0 != std::string::npos)
 		{
 			_content_type0 = s.substr(pos + 14, pos0 - pos - 14);
-			startPos = s.find("\r\n\r\n", pos0) + 4;
+			_start_pos_body = s.find("\r\n\r\n", pos0) + 4;
 		}
 		else
 			return (false);
 	}
+	if (!_start_pos_body)
+		_start_pos_body = s.find("\r\n\r\n", pos0) + 4;
 	return (true);
 }
 
