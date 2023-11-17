@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 10:00:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 13:58:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,16 @@ ClientRequest::~ClientRequest()
 
 void	ClientRequest::clean()
 {
-	_socket = -1;
 	_http_request = "";
-	_method = "";
+	_method0 = "";
+	_method1 = "";
 	_url = "";
 }
 
 void	ClientRequest::read_client_request(void)
 {
 	std::cout << "Receive data from client" << std::endl;
+	clean();
 	char		response[BUFFER + 1];
 	int		ret = 1;
 	while (ret && ret > 0)
