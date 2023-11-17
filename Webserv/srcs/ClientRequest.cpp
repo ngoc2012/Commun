@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 14:19:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 14:21:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ void	ClientRequest::read_method(std::string& http)
 {
 	size_t		pos, pos0;
 
+	std::cout << http << std::endl;
+	pos0 = http.length() - 1;
 	pos = http.find("Content-Type:");
 	if (pos != std::string::npos)
 	{
