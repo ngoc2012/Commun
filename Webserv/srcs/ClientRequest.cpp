@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 16:03:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 22:12:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,28 +100,8 @@ bool	ClientRequest::read_header(std::string& header)
 
 	if (!read_method(first_line[0]))
 		return (false);
-	//std::cout << header << std::endl;
-	pos0 = header.length() - 1;
-	pos = header.find("Content-Type:");
-	if (pos != std::string::npos)
-	{
-		pos0 = header.find(";", pos);
-		if (pos0 != std::string::npos)
-			_method0 = header.substr(pos + 14, pos0 - pos - 14);
-	}
-	pos = header.find("Content-Type:", pos0);
-	if (pos != std::string::npos)
-	{
-		pos0 = header.find(";", pos);
-		if (pos0 != std::string::npos)
-			_method1 = header.substr(pos + 14, pos0 - pos - 14);
-	}
-	//if (_method0 == "")
-	//{
-	//	std::cerr << "Error: no Content-Type" << std::endl;
-	//	_host->get_sk_server()[_socket]->response(_socket);
-	//	break ;
-	//}
+	if (!read_content_type(header))
+		return (false);
 	return (true);
 }
 
@@ -136,6 +116,26 @@ bool	ClientRequest::read_method(std::string& s)
 		_error = 400;
 		std::cerr << "Error: Method unknown : " << s << std::endl;
 		return (false);
+	}
+	return (true);
+}
+
+bool	read_content_type(std::string& s)
+{
+	pos0 = s.length() - 1;
+	pos = s.find("Content-Type:");
+	if (pos != std::string::npos)
+	{
+		pos0 = s.find(";", pos);
+		if (pos0 != std::string::npos)
+			_content_type0 = s.substr(pos + 14, pos0 - pos - 14);
+	}
+	pos = s.find("Content-Type:", pos0);
+	if (pos != std::string::npos)
+	{
+		pos0 = s.find(";", pos);
+		if (pos0 != std::string::npos)
+			_content_type1 = s.substr(pos + 14, pos0 - pos - 14);
 	}
 	return (true);
 }
