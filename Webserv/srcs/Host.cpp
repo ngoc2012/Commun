@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 12:09:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 12:12:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ bool	Host::select_available_sk(void)
 	_sk_ready = select(_max_sk + 1, &_working_set, NULL, NULL, NULL);// No timeout
 	if (_sk_ready < 0)
 	{
+		if (errno != EWOULDBLOCK)
 		perror("working set select() failed");
 		return (false);
 	}
