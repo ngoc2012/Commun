@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 21:40:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 09:12:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ class	Host;
 class	ClientRequest
 {
 	private:
-		Host*		_host;
 		int		_socket;
+		Host*		_host;
 		std::string	_http_request;
 		std::string	_header;
 		std::string	_body;
