@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 09:20:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 09:23:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ClientRequest::read_client_request(void)
 				perror("  recv() failed");
 			std::cout << "Client send: \n"
 				<< "=============================================\n"
-				<< _http_request;
+				<< _http_request
 				<< "=============================================\n";
 			break ;
 		}
@@ -76,7 +76,7 @@ void	ClientRequest::read_client_request(void)
 			_http_request += std::string(response);
 		}
 	}
-	_host->get_sk_server()[_socket]->response();
+	_host->get_sk_server()[_socket]->response(_socket);
 	_host->close_client_sk(_socket);
 }
 
