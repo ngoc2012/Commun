@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 22:23:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 22:27:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ void	ClientRequest::read_client_request(void)
 				_http_request += std::string(response);
 				if (!read_header(_http_request))
 					break ;
+				std::cout << "=============== Body =============\n"
+					<< _http_request[_start_pos_body]
+					<< "===================================" << std::endl;
 			}
 			else
 				_http_request += std::string(response);
