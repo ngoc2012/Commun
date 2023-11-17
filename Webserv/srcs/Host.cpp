@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 22:27:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 09:21:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,3 +112,4 @@ void	Host::close_client_sk(int i)
 }
 
 int	Host::get_max_clients(void) const {return (_max_clients);}
+std::map<int, Server*>		Host::get_sk_server(void) const {return (_sk_server);}
