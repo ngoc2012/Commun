@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 15:30:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 15:33:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class	ClientRequest
 		Host*		_host;
 		std::string	_http_request;
 		std::string	_header;
-		std::string	_body;
+		char*		_body;
 		std::string	_method;
 		std::string	_content_type0;
 		std::string	_content_type1;
