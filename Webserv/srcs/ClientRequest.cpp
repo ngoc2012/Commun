@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 15:41:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 15:43:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ void	ClientRequest::read_header(std::string& header)
 	size_t		pos, pos0;
 
 	std::vector<std::string>	lines = split_string(header, "\n");
+	std::vector<std::string>	first_line = split_string(lines[0], "\n");
+
 	//std::cout << header << std::endl;
 	pos0 = header.length() - 1;
 	pos = header.find("Content-Type:");
