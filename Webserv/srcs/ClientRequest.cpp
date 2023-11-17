@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 14:22:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 15:31:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,25 +95,25 @@ void	ClientRequest::read_client_request(void)
 
 void	ClientRequest::cat_http_request(std::string s) {_http_request += s;}
 
-void	ClientRequest::read_method(std::string& http)
+void	ClientRequest::read_header(std::string& header)
 {
 	size_t		pos, pos0;
 
-	std::cout << http << std::endl;
-	pos0 = http.length() - 1;
-	pos = http.find("Content-Type:");
+	std::cout << header << std::endl;
+	pos0 = header.length() - 1;
+	pos = header.find("Content-Type:");
 	if (pos != std::string::npos)
 	{
-		pos0 = http.find(";", pos);
+		pos0 = header.find(";", pos);
 		if (pos0 != std::string::npos)
-			_method0 = http.substr(pos + 14, pos0 - pos - 14);
+			_method0 = header.substr(pos + 14, pos0 - pos - 14);
 	}
-	pos = http.find("Content-Type:", pos0);
+	pos = header.find("Content-Type:", pos0);
 	if (pos != std::string::npos)
 	{
-		pos0 = http.find(";", pos);
+		pos0 = header.find(";", pos);
 		if (pos0 != std::string::npos)
-			_method1 = http.substr(pos + 14, pos0 - pos - 14);
+			_method1 = header.substr(pos + 14, pos0 - pos - 14);
 	}
 }
 
