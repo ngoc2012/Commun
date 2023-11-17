@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 15:57:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 15:59:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,6 @@ void	ClientRequest::read_client_request(void)
 				_http_request += std::string(response);
 				if (!read_header(_http_request))
 					break ;
-				//if (_method0 == "")
-				//{
-				//	std::cerr << "Error: no Content-Type" << std::endl;
-				//	_host->get_sk_server()[_socket]->response(_socket);
-				//	break ;
-				//}
 			}
 			else
 				_http_request += std::string(response);
@@ -104,16 +98,8 @@ bool	ClientRequest::read_header(std::string& header)
 	std::vector<std::string>	lines = split_string(header, "\n");
 	std::vector<std::string>	first_line = split_string(lines[0], "\n");
 
-	if (first_line[0] == "GET")
-		_method = GET;
-	else if (first_line[0] == "POST")
-		_method = POST;
-	else
-	{
-		_error = 400;
-		std::cerr << "Error: Method unknown : " << first_line << std::endl;
-	}
-
+	if (!read_method(first_line[0]))
+		return (false);
 	//std::cout << header << std::endl;
 	pos0 = header.length() - 1;
 	pos = header.find("Content-Type:");
@@ -130,6 +116,28 @@ bool	ClientRequest::read_header(std::string& header)
 		if (pos0 != std::string::npos)
 			_method1 = header.substr(pos + 14, pos0 - pos - 14);
 	}
+	//if (_method0 == "")
+	//{
+	//	std::cerr << "Error: no Content-Type" << std::endl;
+	//	_host->get_sk_server()[_socket]->response(_socket);
+	//	break ;
+	//}
+	return (true);
+}
+
+bool	ClientRequest::read_method(std::string& s)
+{
+	if (first_line[0] == "GET")
+		_method = GET;
+	else if (first_line[0] == "POST")
+		_method = POST;
+	else
+	{
+		_error = 400;
+		std::cerr << "Error: Method unknown : " << first_line << std::endl;
+		return (false);
+	}
+	return (true);
 }
 
 //void	ClientRequest::set_method(std::string m) {_method = m;}
