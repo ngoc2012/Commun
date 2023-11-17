@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 09:51:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 09:53:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void  	Host::add_new_sk_2_master_set(int new_sk, Server* s)
 void	Host::new_client_request_sk(int new_sk, Server* s)
 {
 	add_new_sk_2_master_set(new_sk, s);
-	_client_requests[new_sk] = new ClientRequest(new_sk, this);
+	_sk_client_request[new_sk] = new ClientRequest(new_sk, this);
 }
 
 void	Host::start(void)
@@ -84,7 +84,7 @@ void	Host::end(void)
 		delete (*it);
 	for (std::map<int, ClientRequest*>::iterator it = _sk_client_request.begin();
 		it != _sk_client_request.end(); ++it)
-		delete (*it->second);
+		delete (it->second);
 	//for (std::vector<ClientRequest*>::iterator it = _client_requests.begin();
 	//	it != _client_requests.end(); ++it)
 	//	delete (*it);
@@ -106,7 +106,7 @@ bool	Host::select_available_sk(void)
 void	Host::close_client_sk(int i)
 {
 	FD_CLR(i, &_master_set);
-	delete (_client_requests[i]);
+	delete (_sk_client_request[i]);
 	_sk_client_request.erase(i);
 	// If i is max_sk -> find another max_sk
 	if (i == _max_sk)
