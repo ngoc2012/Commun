@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 19:55:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 12:11:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 #include "Server.hpp"
 #include "ConfigurationParser.hpp"
 
-Host	*g_host;
+//Host	*g_host;
 
 void	main_signal_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
 		write(STDOUT_FILENO, "", 0);
-		g_host->end();
+		//g_host->end();
 	}
 }
 
@@ -35,7 +35,7 @@ int	main()
 	sigemptyset(&act.sa_mask);
 	sigaction(SIGINT, &act, NULL);
 	Host			host(".conf");
-	g_host = &host;
+	//g_host = &host;
 	host.start();
 	return (0);
 }
