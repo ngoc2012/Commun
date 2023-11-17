@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 15:48:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/17 15:55:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,10 @@ void	ClientRequest::read_header(std::string& header)
 	else if (first_line[0] == "POST")
 		_method = POST;
 	else
+	{
+		_error = 400;
 		std::cerr << "Error: Method unknown : " << first_line << std::endl;
+	}
 
 	//std::cout << header << std::endl;
 	pos0 = header.length() - 1;
