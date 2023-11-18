@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 23:11:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 23:15:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ std::string	ConfigurationParser::remove_comments(std::string& s)
 		return (s);
 	return (s.substr(0, hash_pos));
 }
-std::string	ConfigurationParser::remove_spaces(std::string& s)
+std::string	ConfigurationParser::remove_spaces_end(std::string& s)
 {
-	size_t	hash_pos = s.find("#");
-	if (hash_pos == std::string::npos)
-		return (s);
-	return (s.substr(0, hash_pos));
+	n = s.length();
+	while (n > 0 && (s[n - 1] == ' ' || s[n - 1] == '	'))
+		n--;
+	return (s.substr(0, n));
 }
 ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const char* conf)
 {
@@ -50,6 +50,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 	while (std::getline(conf_file, line))
 	{
 		std::string		s = remove_comments(line);
+		s = remove_spaces_end(s);
 		std::vector<std::string>	words = split_string(s, std::string(" 	"));
 		i++;
 		if (words.size() == 0)
