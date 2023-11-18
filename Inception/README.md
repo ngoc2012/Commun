@@ -16,4 +16,7 @@ systemctl disable systemd-resolved
 ```console
 cat /etc/resolv.conf
 ```
+```console
+sudo nano /etc/hosts
+```
 
