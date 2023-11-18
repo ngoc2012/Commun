@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 23:39:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 23:41:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,12 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 		i++;
 		if (words.size() == 0)
 			;
+		else if (s == "events")
+		{
+			part = EVENTS;
+		else if (s == "http")
+		{
+			part = HTTP;
 		else if (s == "server")
 		{
 			part = SERVER;
@@ -69,15 +75,16 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 			if (part == P_NONE)
 			{
 				err = 100;
-				conf_file_error(line, i);
+				conf_file_error(s, i);
 				break ;
 			}
-			if (part == SERVER && line.substr(0, 7) == std::string("	listen"))
+			if (part == SERVER && s.substr(0, 7) == std::string("	listen")
+				&& words[0] == "listen")
 			{
 				err = listen(new_server, words);
 				if (err)
 				{
-					conf_file_error(line, i);
+					conf_file_error(s, i);
 					break ;
 				}
 			}
