@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 05:35:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 05:39:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,21 +127,34 @@ bool	ClientRequest::read_method(std::string& s)
 	return (true);
 }
 
-void	ClientRequest::find_start_pos_body(std::string& s)
+bool	ClientRequest::find_start_pos_body(std::string& s)
 {
 	size_t	pos0 = s.find("Content-Type:");
 	if (pos0 != std::string::npos)
 	{
 		size_t	pos1 = s.find("Content-Type:", pos0 + 14);
 		if (pos1 != std::string::npos)
-			_start_pos_body = pos1 + 4;
+		{
+			pos0 = s.find("\r\n\r\n", pos1);
+			if (pos0 != std::string::npos)
+				_start_pos_body = pos0 + 4;
+			else
+				return (false);
+		}
 		else
-			_start_pos_body = pos0 + 4;
+		{
+			pos1 = s.find("\r\n\r\n", pos0);
+			if (pos1 != std::string::npos)
+				_start_pos_body = pos1 + 4;
+			else
+				return (false);
+		}
 		return ;
 	}
 	pos0 = s.find("\r\n\r\n");
 	if (pos0 != std::string::npos)
 		_start_pos_body = pos0 + 4;
+	return (true);
 }
 
 bool	ClientRequest::read_content_type(std::string& s)
@@ -154,10 +167,7 @@ bool	ClientRequest::read_content_type(std::string& s)
 	{
 		pos0 = s.find(";", pos);
 		if (pos0 != std::string::npos)
-		{
 			_content_type0 = s.substr(pos + 14, pos0 - pos - 14);
-			_start_pos_body = s.find("\r\n\r\n", pos0) + 4;
-		}
 		else
 			return (false);
 	}
@@ -166,10 +176,7 @@ bool	ClientRequest::read_content_type(std::string& s)
 	{
 		pos0 = s.find(";", pos);
 		if (pos0 != std::string::npos)
-		{
 			_content_type0 = s.substr(pos + 14, pos0 - pos - 14);
-			_start_pos_body = s.find("\r\n\r\n", pos0) + 4;
-		}
 		else
 			return (false);
 	}
