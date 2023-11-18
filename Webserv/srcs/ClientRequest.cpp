@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 05:39:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 05:47:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,11 +163,13 @@ bool	ClientRequest::read_content_type(std::string& s)
 
 	size_t	pos0 = s.length() - 1;
 	size_t	pos = s.find("Content-Type:");
+	std::vector<std::string>	words;
 	if (pos != std::string::npos)
 	{
+		words = split_string(s.substr(pos + 14, pos0 - pos - 14), ";\n");
 		pos0 = s.find(";", pos);
 		if (pos0 != std::string::npos)
-			_content_type0 = s.substr(pos + 14, pos0 - pos - 14);
+			_content_type0 = ;
 		else
 			return (false);
 	}
