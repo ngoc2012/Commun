@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 22:51:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 23:11:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@ ConfigurationParser&	ConfigurationParser::operator=( ConfigurationParser const &
 }
 ConfigurationParser::~ConfigurationParser() {}
 std::string	ConfigurationParser::remove_comments(std::string& s)
+{
+	size_t	hash_pos = s.find("#");
+	if (hash_pos == std::string::npos)
+		return (s);
+	return (s.substr(0, hash_pos));
+}
+std::string	ConfigurationParser::remove_spaces(std::string& s)
 {
 	size_t	hash_pos = s.find("#");
 	if (hash_pos == std::string::npos)
@@ -47,7 +54,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 		i++;
 		if (words.size() == 0)
 			;
-		else if (line.substr(0, 6) == std::string("server"))
+		else if (s == "server")
 		{
 			new_server = new Server();
 			servers.push_back(new_server);
