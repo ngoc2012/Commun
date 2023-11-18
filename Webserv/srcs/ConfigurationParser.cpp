@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 22:43:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 22:51:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ ConfigurationParser&	ConfigurationParser::operator=( ConfigurationParser const &
 	return (*this);
 }
 ConfigurationParser::~ConfigurationParser() {}
-std::string	ConfigurationParser::remove_comments(std::string&)
+std::string	ConfigurationParser::remove_comments(std::string& s)
 {
+	size_t	hash_pos = s.find("#");
+	if (hash_pos == std::string::npos)
+		return (s);
+	return (s.substr(0, hash_pos));
 }
 ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const char* conf)
 {
@@ -39,9 +43,9 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 	while (std::getline(conf_file, line))
 	{
 		std::string		s = remove_comments(line);
-		std::vector<std::string>	words = split_string(line, std::string(" 	"));
+		std::vector<std::string>	words = split_string(s, std::string(" 	"));
 		i++;
-		if (line.c_str()[0] == '#' || words.size() == 0)
+		if (words.size() == 0)
 			;
 		else if (line.substr(0, 6) == std::string("server"))
 		{
