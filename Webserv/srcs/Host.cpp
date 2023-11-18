@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 23:51:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 23:52:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	Host::start(void)
 		else
 		{
 			delete (*it);
-			_servers.erase(*it);
+			_servers.erase(it);
 		}
 	}
 	if (!_sk_server.size())
