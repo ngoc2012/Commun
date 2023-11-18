@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 23:33:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 23:35:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 {
 	//const char*	keys_server[] = {"listen", "server_name", "location"};
 	//const char*	keys_location[] = {"methods", "client_max_body_size", "client_body_buffer_size", "fastcgi_pass", "fastcgi_param", "include"};
-	enum e_part = {EVENTS, HTTP, SERVER};
 	err = 0;
 	std::ifstream	conf_file(conf);
 	if (!conf_file.is_open()) {
 		std::cerr << "Error opening the file." << std::endl;
 		return ;
 	}
+	enum e_part = {EVENTS, HTTP, SERVER, P_NONE};
+	e_part	part = P_NONE;
 	Server		*new_server = 0;
 	int		i = 0;
 	std::string	line;
@@ -59,6 +60,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 			;
 		else if (s == "server")
 		{
+			part = SERVER;
 			new_server = new Server();
 			servers.push_back(new_server);
 		}
