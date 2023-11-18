@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 05:33:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 05:35:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,14 @@ void	ClientRequest::find_start_pos_body(std::string& s)
 {
 	size_t	pos0 = s.find("Content-Type:");
 	if (pos0 != std::string::npos)
-	size_t	pos1 = s.find("Content-Type:", pos0 + 14);
+	{
+		size_t	pos1 = s.find("Content-Type:", pos0 + 14);
+		if (pos1 != std::string::npos)
+			_start_pos_body = pos1 + 4;
+		else
+			_start_pos_body = pos0 + 4;
+		return ;
+	}
 	pos0 = s.find("\r\n\r\n");
 	if (pos0 != std::string::npos)
 		_start_pos_body = pos0 + 4;
