@@ -7,6 +7,7 @@ sudo vim /etc/hosts
 
 ```console
 IP_address   domain_name
+127.0.2.1	ngochphp.com
 ```
 
 Restart the service
