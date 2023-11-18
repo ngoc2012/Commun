@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 05:53:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 05:54:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,12 +161,31 @@ bool	ClientRequest::read_content_type(std::string& s, size_t &pos)
 {
 	std::cout << s << std::endl;
 
+	const char*	types[] = {
+    text/plain: Plain text
+    text/html: HTML (Hypertext Markup Language)
+    text/css: Cascading Style Sheets
+    text/javascript: JavaScript (deprecated, use application/javascript or application/ecmascript instead)
+    text/xml: Extensible Markup Language
+    application/json: JSON (JavaScript Object Notation)
+    application/xml: XML (Extensible Markup Language)
+    application/pdf: Portable Document Format
+    application/zip: ZIP archive
+    application/octet-stream: Binary data (often used for non-text file types)
+    image/jpeg: JPEG image
+    image/png: PNG image
+    image/gif: GIF image
+    image/svg+xml: SVG (Scalable Vector Graphics)
+    audio/mpeg: MP3 audio
+    video/mp4: MP4 video
+    multipart/form-data: Used in forms for file uploads
+    application/x-www-form-urlencoded: Default content type for HTML forms
+		};
 	pos = s.find("Content-Type:");
 	std::vector<std::string>	words;
 	if (pos != std::string::npos)
 	{
 		words = split_string(s.substr(pos + 14, 50), ";\n");
-		pos0 = s.find(";", pos);
 		if (pos0 != std::string::npos)
 			_content_type0 = ;
 		else
