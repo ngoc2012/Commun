@@ -1,7 +1,16 @@
 # Inception
 
+## Change the host name
 ```console
 sudo vim /etc/hosts
+```
+
+```console
+IP_address   domain_name
+```
+
+```console
+sudo systemd-resolve --flush-caches
 ```
 
 ### systemd-resolved
