@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 22:43:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 05:31:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,15 @@ bool	ClientRequest::read_method(std::string& s)
 	return (true);
 }
 
+void	ClientRequest::find_start_pos_body(std::string& s)
+{
+	size_t	pos0 = s.find("Content-Type:");
+	if (pos != std::string::npos)
+	size_t	pos1 = s.find("Content-Type:", pos0 + 14);
+	if (!_start_pos_body)
+		_start_pos_body = s.find("\r\n\r\n", pos0) + 4;
+}
+
 bool	ClientRequest::read_content_type(std::string& s)
 {
 	std::cout << s << std::endl;
@@ -156,8 +165,6 @@ bool	ClientRequest::read_content_type(std::string& s)
 		else
 			return (false);
 	}
-	if (!_start_pos_body)
-		_start_pos_body = s.find("\r\n\r\n", pos0) + 4;
 	return (true);
 }
 
