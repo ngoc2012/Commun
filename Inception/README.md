@@ -9,8 +9,9 @@ sudo vim /etc/hosts
 IP_address   domain_name
 ```
 
+Restart the service
 ```console
-sudo systemd-resolve --flush-caches
+systemctl restart systemd-resolved
 ```
 
 ### systemd-resolved
