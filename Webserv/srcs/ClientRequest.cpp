@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 05:50:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 05:53:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,12 +157,11 @@ bool	ClientRequest::find_start_pos_body(std::string& s)
 	return (true);
 }
 
-bool	ClientRequest::read_content_type(std::string& s)
+bool	ClientRequest::read_content_type(std::string& s, size_t &pos)
 {
 	std::cout << s << std::endl;
 
-	size_t	pos0 = s.length() - 1;
-	size_t	pos = s.find("Content-Type:");
+	pos = s.find("Content-Type:");
 	std::vector<std::string>	words;
 	if (pos != std::string::npos)
 	{
@@ -170,15 +169,6 @@ bool	ClientRequest::read_content_type(std::string& s)
 		pos0 = s.find(";", pos);
 		if (pos0 != std::string::npos)
 			_content_type0 = ;
-		else
-			return (false);
-	}
-	pos = s.find("Content-Type:", pos0);
-	if (pos != std::string::npos)
-	{
-		pos0 = s.find(";", pos);
-		if (pos0 != std::string::npos)
-			_content_type0 = s.substr(pos + 14, pos0 - pos - 14);
 		else
 			return (false);
 	}
