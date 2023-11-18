@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 05:59:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 06:01:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,8 +159,6 @@ bool	ClientRequest::find_start_pos_body(std::string& s)
 
 bool	ClientRequest::read_content_type(std::string& s, size_t &pos)
 {
-	std::cout << s << std::endl;
-
 	const char*	types[] = {
 		"text/plain",
 		"text/html",
@@ -186,7 +184,8 @@ bool	ClientRequest::read_content_type(std::string& s, size_t &pos)
 	if (pos != std::string::npos)
 	{
 		words = split_string(s.substr(pos + 14, 50), ";\n");
-		if (pos0 != std::string::npos)
+		std::cout << "|" << words[0] << "|" << std::endl;
+		if (words[0] == std::string::npos)
 			_content_type0 = ;
 		else
 			return (false);
