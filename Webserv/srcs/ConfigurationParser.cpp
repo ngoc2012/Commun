@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/15 11:10:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 22:43:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ ConfigurationParser&	ConfigurationParser::operator=( ConfigurationParser const &
 	return (*this);
 }
 ConfigurationParser::~ConfigurationParser() {}
+std::string	ConfigurationParser::remove_comments(std::string&)
+{
+}
 ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const char* conf)
 {
 	//const char*	keys_server[] = {"listen", "server_name", "location"};
@@ -35,6 +38,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 	std::string	line;
 	while (std::getline(conf_file, line))
 	{
+		std::string		s = remove_comments(line);
 		std::vector<std::string>	words = split_string(line, std::string(" 	"));
 		i++;
 		if (line.c_str()[0] == '#' || words.size() == 0)
