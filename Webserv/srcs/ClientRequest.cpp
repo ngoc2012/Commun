@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 06:15:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 06:19:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ClientRequest::read_client_request(void)
 					break ;
 				}
 				std::cout << "=============== Body =============\n"
-					<< _http_request[_start_pos_body]
+					<< &_http_request[_start_pos_body]
 					<< "===================================" << std::endl;
 			}
 			else
@@ -192,7 +192,7 @@ bool	ClientRequest::read_content_type(std::string& s, std::string& c)
 	if (pos != std::string::npos)
 	{
 		words = split_string(s.substr(pos + 14, 50), ";\n");
-		std::cout << "|" << words[0] << "|" << std::endl;
+		std::cout << "|" << words[0] << "|" << std::endl << std::flush;
 		for (int i = 0; i < 18; i++)
 			if (words[0] == std::string(types[i]))
 				c = words[0];
