@@ -1,6 +1,10 @@
 # Inception
 
-## systemd-resolved
+```console
+sudo vim /etc/hosts
+```
+
+### systemd-resolved
 
 [Wiki](https://wiki.archlinux.org/title/systemd-resolved)
 
@@ -15,8 +19,5 @@ systemctl disable systemd-resolved
 ```
 ```console
 cat /etc/resolv.conf
-```
-```console
-sudo nano /etc/hosts
 ```
 
