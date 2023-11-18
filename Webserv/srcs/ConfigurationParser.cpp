@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 23:35:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 23:36:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 		}
 		else
 		{
-			if (!new_server)
+			if (part == P_NONE)
 			{
 				err = 100;
 				conf_file_error(line, i);
