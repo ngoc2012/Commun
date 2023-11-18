@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 23:52:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 23:55:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ Host::~Host()
 	for (std::map<int, ClientRequest*>::iterator it = _sk_client_request.begin();
 		it != _sk_client_request.end(); ++it)
 		delete (it->second);
-	//for (std::vector<ClientRequest*>::iterator it = _client_requests.begin();
-	//	it != _client_requests.end(); ++it)
-	//	delete (*it);
 	std::cout << "End server" << std::endl;
 }
 
@@ -62,7 +59,7 @@ void	Host::start(void)
 	FD_ZERO(&_master_set);
 	FD_ZERO(&_server_set);
 	int	listen_sk;
-	for (std::vector<Server*>::iterator it = _servers.begin() ; it != _servers.end(); ++it)
+	for (std::vector<Server*>::iterator it = _servers.begin() ; it != _servers.end();)
 	{
 		(*it)->set_host(this);
 		listen_sk = (*it)->server_socket();
@@ -70,6 +67,7 @@ void	Host::start(void)
 		{
 			add_new_sk_2_master_set(listen_sk, *it);
 			FD_SET(listen_sk, &_server_set);
+			++it;
 		}
 		else
 		{
