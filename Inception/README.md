@@ -1,8 +1,14 @@
-# webserv
+# Inception
 
-## README.md
+## systemd-resolved
 
-[Example](https://github.com/github-linguist/linguist)
+[Wiki](https://wiki.archlinux.org/title/systemd-resolved)
+
+```console
+systemctl status systemd-resolved
+systemctl stop systemd-resolved
+systemctl disable systemd-resolved
+```
 
 ## Naming conventions
 
