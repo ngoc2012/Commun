@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 22:49:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 23:43:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class ConfigurationParser
 		int			listen(Server*, std::vector<std::string>);
 		void			conf_file_error(std::string, int);
 		std::string		remove_comments(std::string&);
+		std::string		remove_spaces_end(std::string&);
 };
 
 #endif
