@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 13:06:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/18 23:49:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	Host::start(void)
 			add_new_sk_2_master_set(listen_sk, *it);
 			FD_SET(listen_sk, &_server_set);
 		}
+		else
 	}
 	if (!_sk_server.size())
 		return ;
@@ -106,6 +107,17 @@ bool	Host::select_available_sk(void)
 		return (false);
 	}
 	return (true);
+}
+
+void	Host::close_server_sk(int i)
+{
+	FD_CLR(i, &_master_set);
+	delete (_sk_client_request[i]);
+	_sk_client_request.erase(i);
+	// If i is max_sk -> find another max_sk
+	if (i == _max_sk)
+		while (!FD_ISSET(_max_sk, &_master_set))
+			_max_sk -= 1;
 }
 
 void	Host::close_client_sk(int i)
