@@ -13,3 +13,7 @@ systemctl status systemd-resolved
 systemctl stop systemd-resolved
 systemctl disable systemd-resolved
 ```
+```console
+cat /etc/resolv.conf
+```
+
