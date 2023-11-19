@@ -1,6 +1,9 @@
 # Transcendence
 
-## Change the host name
+## The game
+
+[The Mechanics of Pong](https://dooglz.github.io/set09121/pong2)
+
 ```console
 sudo vim /etc/hosts
 ```
