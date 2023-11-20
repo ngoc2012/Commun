@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 20:21:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 20:22:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,14 @@ bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::ve
 		struct stat	info;
 		if (!(stat(folderPath, &info) == 0 && S_ISDIR(info.st_mode)))
 			return (true);
-		host->set_root(words[1]);
+		server.set_root(words[1]);
 	}
 	else
 		return (true);
 	return (false);
 }
 
-ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& host, const char* conf)
+ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* host, const char* conf)
 {
 	//const char*	keys_server[] = {"listen", "server_name", "location"};
 	//const char*	keys_location[] = {"methods", "client_max_body_size", "client_body_buffer_size", "fastcgi_pass", "fastcgi_param", "include"};

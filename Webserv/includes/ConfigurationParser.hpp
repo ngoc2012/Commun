@@ -6,11 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 20:20:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 20:23:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstdlib>
+#include <sys/stat.h>	// stat, S_ISDIR
 
 #include <iostream>
 #include <vector>
@@ -37,7 +38,7 @@ class ConfigurationParser
 		std::string		remove_comments(std::string&);
 		std::string		remove_spaces_end(std::string&);
 		bool			server_parser(std::string, Server&, std::vector<std::string>&, int);
-		bool			host_parser(std::string, Host&, std::vector<std::string>&, int);
+		bool			host_parser(std::string, Host*, std::vector<std::string>&, int);
 };
 
 #endif
