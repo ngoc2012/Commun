@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 22:38:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 22:41:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 		std::cerr << "Error opening the file." << std::endl;
 		return ;
 	}
-	enum e_part {HOST, SERVER, P_NONE};
+	enum e_part {LOCATION, HOST, SERVER, P_NONE};
 	e_part	part = P_NONE;
 	Server		*new_server = 0;
 	int		i = 0;
