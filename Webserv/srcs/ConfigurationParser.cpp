@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 22:17:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 22:19:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,11 @@ bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::ve
 {
 	if (cmd[0] != '	')
 		return (true);
-	else if (words[0] == "listen")
+	if (words[0] == "listen")
+	{
 		if (!listen(server, words))
 			return (true);
+	}
 	else if (words[0] == "root")
 	{
 		struct stat	info;
@@ -85,7 +87,6 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 {
 	//const char*	keys_server[] = {"listen", "server_name", "location"};
 	//const char*	keys_location[] = {"methods", "client_max_body_size", "client_body_buffer_size", "fastcgi_pass", "fastcgi_param", "include"};
-	err = 0;
 	std::ifstream	conf_file(conf);
 	if (!conf_file.is_open()) {
 		std::cerr << "Error opening the file." << std::endl;
