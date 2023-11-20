@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 11:43:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 11:45:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,20 @@ std::string	ConfigurationParser::remove_spaces_end(std::string& s)
 		n--;
 	return (s.substr(0, n));
 }
+
+bool	ConfigurationParser::server_parser(std::string str, Server& server, std::vector<std::string>&)
+{
+	if (str[0] == '	' && words[0] == "listen")
+	{
+		err = listen(new_server, words);
+		if (err)
+		{
+			conf_file_error(str, i);
+			break ;
+		}
+	}
+}
+
 ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& host, const char* conf)
 {
 	//const char*	keys_server[] = {"listen", "server_name", "location"};
@@ -75,16 +89,6 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 				break ;
 			}
 			if (part == SERVER
-				&& s.substr(0, 7) == std::string("	listen")
-				&& words[0] == "listen")
-			{
-				err = listen(new_server, words);
-				if (err)
-				{
-					conf_file_error(s, i);
-					break ;
-				}
-			}
 		}
 	}
 	conf_file.close();
