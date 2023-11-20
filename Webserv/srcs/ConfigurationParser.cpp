@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 20:22:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 20:24:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ std::string	ConfigurationParser::remove_spaces_end(std::string& s)
 	return (s.substr(0, n));
 }
 
-bool	ConfigurationParser::host_parser(std::string cmd, Host* host, std::vector<std::string>&, int i)
+bool	ConfigurationParser::host_parser(std::string cmd, Host* host, std::vector<std::string>& words, int i)
 {
 	int	n;
 
@@ -67,7 +67,7 @@ bool	ConfigurationParser::host_parser(std::string cmd, Host* host, std::vector<s
 	return (false);
 }
 
-bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::vector<std::string>&, int i)
+bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::vector<std::string>&words, int i)
 {
 	if (cmd[0] != '	')
 		return (true);
