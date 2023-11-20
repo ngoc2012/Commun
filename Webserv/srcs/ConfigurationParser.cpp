@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 16:07:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 16:11:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,31 @@ bool	ConfigurationParser::host_parser(std::string cmd, Host& host, std::vector<s
 	{
 		n = std::atoi(words[1].c_str());
 		if (!is_digit(words[1]) || n < 0 || n > 100)
+		{
 			conf_file_error(cmd, i);
 			return (false);
+		}
 		host.set_client_max_body_size(n);
 	}
 	else if (words[0] == "client_body_buffer_size")
 	{
 		n = std::atoi(words[1].c_str());
 		if (!is_digit(words[1]) || n < 0 || n > 1024)
+		{
 			conf_file_error(cmd, i);
 			return (false);
+		}
 		host.set_client_max_body_size(n);
 	}
 	else if (words[0] == "root")
 	{
-		n = std::atoi(words[1].c_str());
-		if (!is_digit(words[1]) || n < 0 || n > 1024)
+		struct stat	info;
+		if (!(stat(folderPath, &info) == 0 && S_ISDIR(info.st_mode)))
+		{
 			conf_file_error(cmd, i);
 			return (false);
-		host.set_root(n);
+		}
+		host.set_root(words[1]);
 	}
 	else
 	{
