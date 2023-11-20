@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 14:06:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 16:00:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,17 @@ std::string	ConfigurationParser::remove_spaces_end(std::string& s)
 	return (s.substr(0, n));
 }
 
-bool	ConfigurationParser::host_parser(std::string cmd, Server& server, std::vector<std::string>&, int i)
+bool	ConfigurationParser::host_parser(std::string cmd, Host& host, std::vector<std::string>&, int i)
 {
 	int	n;
 
 	if (cmd[0] == '	' && words[0] == "client_max_body_size")
 	{
 		n = std::atoi(words[1].c_str());
-		if (!is_digit(words[1]) || n < 0 || n > 65535)
+		if (!is_digit(words[1]) || n < 0 || n > 100)
 			conf_file_error(cmd, i);
 			return (false);
+		host.set_client_max_body_size(n);
 	}
 	return (true);
 }
