@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 11:27:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 17:30:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class	Server
 		short unsigned int	_port;
 		int			_socket;
 		std::string		_server_name;
+		std::string		_root;
 
 		Server(const Server&);
 		Server			&operator=(const Server& op);
@@ -56,11 +57,13 @@ class	Server
 		short unsigned int	get_port(void) const;
 		int			get_socket(void) const;
 		Host*			get_host(void) const;
+		std::string		get_root(void) const;
 
 		void			set_socket(int);
 		void			set_ip_address(std::string);
 		void			set_port(short unsigned int);
 		void			set_host(Host*);
+		void			set_root(std::string);
 };
 
 #endif
