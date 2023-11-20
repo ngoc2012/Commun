@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 09:52:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 11:26:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class	Host
 	private:
 
 		int				_max_clients;
+		size_t				_client_max_body_size;
 
 		int				_sk_ready;
 		int				_max_sk;	// Max of all fd
