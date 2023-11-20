@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 11:53:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 13:54:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ class ConfigurationParser
 {
 	private:
 		int			err;
-		static const char*	keys_server[];
-		static const char*	keys_location[];
 
 		ConfigurationParser();
 		ConfigurationParser(const ConfigurationParser&);

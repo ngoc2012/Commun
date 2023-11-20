@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 11:50:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 13:55:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,18 @@ std::string	ConfigurationParser::remove_spaces_end(std::string& s)
 	return (s.substr(0, n));
 }
 
+bool	ConfigurationParser::host_parser(std::string cmd, Server& server, std::vector<std::string>&)
+{
+	if (cmd[0] == '	' && words[0] == "client_max_body_size")
+	{
+		err = listen(server, words);
+		if (err)
+		{
+			conf_file_error(cmd, i);
+			break ;
+		}
+	}
+}
 bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::vector<std::string>&)
 {
 	if (cmd[0] == '	' && words[0] == "listen")
@@ -89,6 +101,9 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 					conf_file.close();
 					return ;
 				case SERVER:
+					server_parser(s, new_server, words);
+					break;
+				case HOST:
 					server_parser(s, new_server, words);
 					break;
 			}
