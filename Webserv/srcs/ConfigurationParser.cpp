@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 16:00:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 16:03:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,12 @@ bool	ConfigurationParser::host_parser(std::string cmd, Host& host, std::vector<s
 {
 	int	n;
 
-	if (cmd[0] == '	' && words[0] == "client_max_body_size")
+	if (cmd[0] != '	')
+	{
+		conf_file_error(cmd, i);
+		return (false);
+	}
+	if (words[0] == "client_max_body_size")
 	{
 		n = std::atoi(words[1].c_str());
 		if (!is_digit(words[1]) || n < 0 || n > 100)
@@ -47,8 +52,30 @@ bool	ConfigurationParser::host_parser(std::string cmd, Host& host, std::vector<s
 			return (false);
 		host.set_client_max_body_size(n);
 	}
+	else if (words[0] == "client_body_buffer_size")
+	{
+		n = std::atoi(words[1].c_str());
+		if (!is_digit(words[1]) || n < 0 || n > 1024)
+			conf_file_error(cmd, i);
+			return (false);
+		host.set_client_max_body_size(n);
+	}
+	else if (words[0] == "root")
+	{
+		n = std::atoi(words[1].c_str());
+		if (!is_digit(words[1]) || n < 0 || n > 1024)
+			conf_file_error(cmd, i);
+			return (false);
+		host.set_client_max_body_size(n);
+	}
+	else
+	{
+		conf_file_error(cmd, i);
+		return (false);
+	}
 	return (true);
 }
+
 bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::vector<std::string>&, int i)
 {
 	if (cmd[0] == '	' && words[0] == "listen")
