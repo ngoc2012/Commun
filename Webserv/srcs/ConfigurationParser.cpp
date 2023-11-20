@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 13:55:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 13:56:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 					server_parser(s, new_server, words);
 					break;
 				case HOST:
-					server_parser(s, new_server, words);
+					host_parser(s, host, words);
 					break;
 			}
 	}
