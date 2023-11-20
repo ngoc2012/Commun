@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 18:11:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 20:20:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class ConfigurationParser
 		ConfigurationParser(const ConfigurationParser&);
 		ConfigurationParser	&operator=(const ConfigurationParser& op);
 	public:
-		ConfigurationParser(std::vector<Server*>& servers, Host, const char* conf);
+		ConfigurationParser(std::vector<Server*>& servers, Host*, const char* conf);
 		virtual			~ConfigurationParser();
 
 		bool			listen(Server*, std::vector<std::string>);
