@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 22:13:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 22:14:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,15 @@ bool	Host::check_servers_conf(void)
 		if ((*it)->get_root() == "")
 		{
 			std::cerr << "Error: root null" << std::endl;
+			return (false);
 		}
-	return (true)
+	return (true);
 }
 
 void	Host::start(void)
 {
+	if (!check_servers_conf())
+		return ;
 	FD_ZERO(&_master_set);
 	FD_ZERO(&_server_set);
 	int	listen_sk;
