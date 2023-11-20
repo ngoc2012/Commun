@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 13:56:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 14:05:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,16 @@ std::string	ConfigurationParser::remove_spaces_end(std::string& s)
 
 bool	ConfigurationParser::host_parser(std::string cmd, Server& server, std::vector<std::string>&)
 {
+	int	n;
+
 	if (cmd[0] == '	' && words[0] == "client_max_body_size")
 	{
-		err = listen(server, words);
-		if (err)
-		{
+		n = std::atoi(words[1].c_str());
+		if (!is_digit(words[1]) || n < 0 || n > 65535)
 			conf_file_error(cmd, i);
-			break ;
-		}
+			return (false);
 	}
+	return (true);
 }
 bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::vector<std::string>&)
 {
@@ -101,10 +102,10 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 					conf_file.close();
 					return ;
 				case SERVER:
-					server_parser(s, new_server, words);
+					server_parser(s, new_server, words, i);
 					break;
 				case HOST:
-					host_parser(s, host, words);
+					host_parser(s, host, words, i);
 					break;
 			}
 	}
