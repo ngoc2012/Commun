@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 16:14:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 17:34:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ bool	ConfigurationParser::host_parser(std::string cmd, Host& host, std::vector<s
 
 bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::vector<std::string>&, int i)
 {
+	if (cmd[0] != '	')
+		return (false);
 	if (cmd[0] == '	' && words[0] == "listen")
 	{
 		err = listen(server, words);
