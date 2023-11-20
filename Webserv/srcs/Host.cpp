@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 17:31:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 18:05:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ Host::Host(const char* conf) {
 	_max_clients = 128;
 	_client_max_body_size = 1;
 	_client_body_buffer_size = 128;
-	_root = "";
 
 	_max_sk = -1;
 	ConfigurationParser	parser(_servers, this, conf);
