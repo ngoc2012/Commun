@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 14:01:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 14:03:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,3 +130,6 @@ int				Host::get_max_clients(void) const {return (_max_clients);}
 std::map<int, Server*>		Host::get_sk_server(void) const {return (_sk_server);}
 size_t				Host::get_client_max_body_size(void) const {return (_client_max_body_size);}
 size_t				Host::get_client_body_buffer_size(void) const {return (_client_body_buffer_size);}
+
+void				Host::set_client_max_body_size(size_t n) {_client_max_body_size = n;}
+void				Host::set_client_body_buffer_size(size_t n) {_client_body_buffer_size = n;}
