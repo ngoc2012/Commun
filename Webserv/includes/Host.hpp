@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 17:30:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 22:10:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ class	Host
 		virtual ~Host();
 
 		void    			start(void);
-		void				end(void);
 		void				new_client_request_sk(int, Server*);
 		void				close_client_sk(int);
+		bool				check_servers_conf(void);
 
 		int				get_max_clients(void) const;
 		std::map<int, Server*>		get_sk_server(void) const;

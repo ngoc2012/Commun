@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 22:09:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 22:11:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ void	Host::new_client_request_sk(int new_sk, Server* s)
 {
 	add_new_sk_2_master_set(new_sk, s);
 	_sk_client_request[new_sk] = new ClientRequest(new_sk, this);
+}
+
+bool	Host::check_servers_conf(void)
+{
+	for (std::vector<Server*>::iterator it = _servers.begin() ; it != _servers.end(); ++it)
+	{
 }
 
 void	Host::start(void)
