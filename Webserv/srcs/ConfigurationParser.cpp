@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 17:47:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 17:48:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,8 @@ bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::ve
 	if (cmd[0] != '	')
 		return (false);
 	else if (words[0] == "listen")
-	{
-		if (listen(server, words))
+		if (!listen(server, words))
 			return (false);
-	}
 	else if (words[0] == "root")
 	{
 		struct stat	info;
@@ -146,7 +144,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 	conf_file.close();
 }
 
-int	ConfigurationParser::listen(Server* s, std::vector<std::string> words)
+bool	ConfigurationParser::listen(Server* s, std::vector<std::string> words)
 {
 	if (words.size() != 2)
 		return (1);
