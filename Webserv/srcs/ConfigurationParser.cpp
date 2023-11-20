@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 17:53:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 17:55:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,49 +40,50 @@ bool	ConfigurationParser::host_parser(std::string cmd, Host& host, std::vector<s
 	int	n;
 
 	if (cmd[0] != '	')
-		return (false);
+		return (true);
 	if (words[0] == "client_max_body_size")
 	{
 		n = std::atoi(words[1].c_str());
 		if (!is_digit(words[1]) || n < 0 || n > 100)
-			return (false);
+			return (true);
 		host.set_client_max_body_size(n);
 	}
 	else if (words[0] == "client_body_buffer_size")
 	{
 		n = std::atoi(words[1].c_str());
 		if (!is_digit(words[1]) || n < 0 || n > 1024)
-			return (false);
+			return (true);
 		host.set_client_max_body_size(n);
 	}
 	else if (words[0] == "root")
 	{
 		struct stat	info;
 		if (!(stat(folderPath, &info) == 0 && S_ISDIR(info.st_mode)))
-			return (false);
+			return (true);
 		host.set_root(words[1]);
 	}
 	else
-		return (false);
-	return (true);
+		return (true);
+	return (false);
 }
 
 bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::vector<std::string>&, int i)
 {
 	if (cmd[0] != '	')
-		return (false);
+		return (true);
 	else if (words[0] == "listen")
 		if (!listen(server, words))
-			return (false);
+			return (true);
 	else if (words[0] == "root")
 	{
 		struct stat	info;
 		if (!(stat(folderPath, &info) == 0 && S_ISDIR(info.st_mode)))
-			return (false);
+			return (true);
 		host.set_root(words[1]);
 	}
 	else
-		return (false);
+		return (true);
+	return (false);
 }
 
 ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& host, const char* conf)
@@ -125,10 +126,10 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 					err = true;
 					break ;
 				case SERVER:
-					err = !server_parser(s, new_server, words, i);
+					err = server_parser(s, new_server, words, i);
 					break;
 				case HOST:
-					err = !host_parser(s, host, words, i);
+					err = host_parser(s, host, words, i);
 					break;
 			}
 		if (err)
