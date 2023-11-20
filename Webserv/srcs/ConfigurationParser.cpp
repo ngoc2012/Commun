@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 17:51:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 17:53:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 	Server		*new_server = 0;
 	int		i = 0;
 	std::string	line;
+	bool	err = false;
 	while (std::getline(conf_file, line))
 	{
 		std::string		s = remove_comments(line);
@@ -121,26 +122,20 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 			switch (part):
 			{
 				case P_NONE:
-					conf_file_error(s, i);
-					conf_file.close();
-					return ;
+					err = true;
+					break ;
 				case SERVER:
-					if (!server_parser(s, new_server, words, i))
-					{
-						conf_file_error(cmd, i);
-						conf_file.close();
-						return ;
-					}
+					err = !server_parser(s, new_server, words, i);
 					break;
 				case HOST:
-					if (!host_parser(s, host, words, i))
-					{
-						conf_file_error(cmd, i);
-						conf_file.close();
-						return ;
-					}
+					err = !host_parser(s, host, words, i);
 					break;
 			}
+		if (err)
+		{
+			conf_file_error(cmd, i);
+			break ;
+		}
 	}
 	conf_file.close();
 }
