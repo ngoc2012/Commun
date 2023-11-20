@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 22:11:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 22:13:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,12 @@ void	Host::new_client_request_sk(int new_sk, Server* s)
 
 bool	Host::check_servers_conf(void)
 {
-	for (std::vector<Server*>::iterator it = _servers.begin() ; it != _servers.end(); ++it)
-	{
+	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end(); ++it)
+		if ((*it)->get_root() == "")
+		{
+			std::cerr << "Error: root null" << std::endl;
+		}
+	return (true)
 }
 
 void	Host::start(void)
@@ -68,7 +72,7 @@ void	Host::start(void)
 	FD_ZERO(&_master_set);
 	FD_ZERO(&_server_set);
 	int	listen_sk;
-	for (std::vector<Server*>::iterator it = _servers.begin() ; it != _servers.end();)
+	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end();)
 	{
 		(*it)->set_host(this);
 		listen_sk = (*it)->server_socket();
