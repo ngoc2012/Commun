@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 22:35:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 22:37:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ bool	ConfigurationParser::host_parser(std::string cmd, Host* host, std::vector<s
 	return (false);
 }
 
-bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::vector<std::string>&words)
+bool	ConfigurationParser::server_parser(std::string cmd, Server* server, std::vector<std::string>&words)
 {
 	if (cmd[0] != '	')
 		return (true);
@@ -76,7 +76,7 @@ bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::ve
 		struct stat	info;
 		if (!(stat(words[1].c_str(), &info) == 0 && S_ISDIR(info.st_mode)))
 			return (true);
-		server.set_root(words[1]);
+		server->set_root(words[1]);
 	}
 	else
 		return (true);
@@ -122,7 +122,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 					err = true;
 					break ;
 				case SERVER:
-					err = server_parser(s, *new_server, words);
+					err = server_parser(s, new_server, words);
 					break;
 				case HOST:
 					err = host_parser(s, host, words);
@@ -130,14 +130,14 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 			}
 		if (err)
 		{
-			conf_file_error(cmd, i);
+			conf_file_error(s, i);
 			break ;
 		}
 	}
 	conf_file.close();
 }
 
-bool	ConfigurationParser::listen(Server& s, std::vector<std::string> words)
+bool	ConfigurationParser::listen(Server* s, std::vector<std::string> words)
 {
 	if (words.size() != 2)
 		return (false);
@@ -157,8 +157,8 @@ bool	ConfigurationParser::listen(Server& s, std::vector<std::string> words)
 	n = std::atoi(address[1].c_str());
 	if (!is_digit(address[1]) || n < 0 || n > 65535)
 		return (false);
-	s.set_ip_address(address[0]);
-	s.set_port(std::atoi(address[1].c_str()));
+	s->set_ip_address(address[0]);
+	s->set_port(std::atoi(address[1].c_str()));
 	//std::cout << s->get_ip_address() << ":" << s->get_port() << std::endl;
 	return (true);
 }
