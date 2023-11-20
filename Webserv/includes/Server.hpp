@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/16 22:28:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 11:25:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class	Server
 		std::string		_ip_address;
 		short unsigned int	_port;
 		int			_socket;
+		client_max_body_size	1m;
 
 		Server(const Server&);
 		Server			&operator=(const Server& op);
