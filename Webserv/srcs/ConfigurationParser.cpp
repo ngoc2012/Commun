@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 11:46:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 11:50:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,17 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 			servers.push_back(new_server);
 		}
 		else
-		{
-			if (part == P_NONE)
+			switch (part):
 			{
-				err = 100;
-				conf_file_error(s, i);
-				break ;
+				case P_NONE:
+					err = 100;
+					conf_file_error(s, i);
+					conf_file.close();
+					return ;
+				case SERVER:
+					server_parser(s, new_server, words);
+					break;
 			}
-			if (part == SERVER
-		}
 	}
 	conf_file.close();
 }
