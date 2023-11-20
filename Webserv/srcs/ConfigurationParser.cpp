@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 11:39:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 11:43:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,13 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 	{
 		std::string		s = remove_comments(line);
 		s = remove_spaces_end(s);
-		std::cout << "|" << s << "|" << std::endl;
+		//std::cout << "|" << s << "|" << std::endl;
 		std::vector<std::string>	words = split_string(s, std::string(" 	"));
 		i++;
 		if (words.size() == 0)
 			;
 		else if (s == "host")
-		{
 			part = HOST;
-		}
 		else if (s == "server")
 		{
 			part = SERVER;
