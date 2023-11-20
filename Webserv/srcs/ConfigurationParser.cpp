@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 16:11:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 16:13:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ bool	ConfigurationParser::host_parser(std::string cmd, Host& host, std::vector<s
 		n = std::atoi(words[1].c_str());
 		if (!is_digit(words[1]) || n < 0 || n > 100)
 		{
-			conf_file_error(cmd, i);
 			return (false);
 		}
 		host.set_client_max_body_size(n);
@@ -136,10 +135,18 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 					conf_file.close();
 					return ;
 				case SERVER:
-					server_parser(s, new_server, words, i);
+					if (!server_parser(s, new_server, words, i))
+					{
+						conf_file_error(cmd, i);
+						return ;
+					}
 					break;
 				case HOST:
-					host_parser(s, host, words, i);
+					if (!host_parser(s, host, words, i))
+					{
+						conf_file_error(cmd, i);
+						return ;
+					}
 					break;
 			}
 	}
