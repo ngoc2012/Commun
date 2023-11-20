@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 22:37:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 22:38:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,5 +166,5 @@ bool	ConfigurationParser::listen(Server* s, std::vector<std::string> words)
 void	ConfigurationParser::conf_file_error(std::string line, int i)
 {
 	std::cerr << "Configuration file error at line "
-		<< i << " :" << line << " (code err " << err << ")" << std::endl;
+		<< i << " :" << line << std::endl;
 }
