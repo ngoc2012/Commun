@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 18:11:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 22:09:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,6 @@ void	Host::start(void)
 					_sk_client_request[i]->read_client_request();
 			}
 	} while (true);
-}
-
-void	Host::end(void)
-{
 }
 
 bool	Host::select_available_sk(void)
