@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 17:48:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 17:50:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@
 class ConfigurationParser
 {
 	private:
-		int			err;
-
 		ConfigurationParser();
 		ConfigurationParser(const ConfigurationParser&);
 		ConfigurationParser	&operator=(const ConfigurationParser& op);

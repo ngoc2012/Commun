@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 17:48:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 17:51:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 			switch (part):
 			{
 				case P_NONE:
-					err = 100;
 					conf_file_error(s, i);
 					conf_file.close();
 					return ;
@@ -129,6 +128,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 					if (!server_parser(s, new_server, words, i))
 					{
 						conf_file_error(cmd, i);
+						conf_file.close();
 						return ;
 					}
 					break;
@@ -136,6 +136,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 					if (!host_parser(s, host, words, i))
 					{
 						conf_file_error(cmd, i);
+						conf_file.close();
 						return ;
 					}
 					break;
@@ -147,27 +148,27 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& ho
 bool	ConfigurationParser::listen(Server* s, std::vector<std::string> words)
 {
 	if (words.size() != 2)
-		return (1);
+		return (false);
 	std::vector<std::string>	address = split_string(words[1], std::string(":"));
 	if (address.size() != 2)
-		return (2);
+		return (false);
 	std::vector<std::string>	ip = split_string(address[0], std::string("."));
 	if (ip.size() != 4)
-		return (3);
+		return (false);
 	int	n;
 	for (int j = 0; j < 4; j++)
 	{
 		n = std::atoi(ip[j].c_str());
 		if (!is_digit(ip[j]) || n < 0 || n > 255)
-			return (4);
+			return (false);
 	}
 	n = std::atoi(address[1].c_str());
 	if (!is_digit(address[1]) || n < 0 || n > 65535)
-		return (5);
+		return (false);
 	s->set_ip_address(address[0]);
 	s->set_port(std::atoi(address[1].c_str()));
-	std::cout << s->get_ip_address() << ":" << s->get_port() << std::endl;
-	return (0);
+	//std::cout << s->get_ip_address() << ":" << s->get_port() << std::endl;
+	return (true);
 }
 
 void	ConfigurationParser::conf_file_error(std::string line, int i)
