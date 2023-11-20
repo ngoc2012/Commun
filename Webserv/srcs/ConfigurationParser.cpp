@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 17:34:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 17:36:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::ve
 {
 	if (cmd[0] != '	')
 		return (false);
-	if (cmd[0] == '	' && words[0] == "listen")
+	else if (words[0] == "listen")
 	{
 		err = listen(server, words);
 		if (err)
@@ -80,6 +80,15 @@ bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::ve
 			break ;
 		}
 	}
+	else if (words[0] == "root")
+	{
+		struct stat	info;
+		if (!(stat(folderPath, &info) == 0 && S_ISDIR(info.st_mode)))
+			return (false);
+		host.set_root(words[1]);
+	}
+	else
+		return (false);
 }
 
 ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& host, const char* conf)
