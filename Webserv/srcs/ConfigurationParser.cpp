@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 11:45:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 11:46:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ std::string	ConfigurationParser::remove_spaces_end(std::string& s)
 	return (s.substr(0, n));
 }
 
-bool	ConfigurationParser::server_parser(std::string str, Server& server, std::vector<std::string>&)
+bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::vector<std::string>&)
 {
-	if (str[0] == '	' && words[0] == "listen")
+	if (cmd[0] == '	' && words[0] == "listen")
 	{
-		err = listen(new_server, words);
+		err = listen(server, words);
 		if (err)
 		{
-			conf_file_error(str, i);
+			conf_file_error(cmd, i);
 			break ;
 		}
 	}
