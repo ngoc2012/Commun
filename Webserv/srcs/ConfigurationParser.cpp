@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/18 23:46:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 11:39:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ std::string	ConfigurationParser::remove_spaces_end(std::string& s)
 		n--;
 	return (s.substr(0, n));
 }
-ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const char* conf)
+ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host& host, const char* conf)
 {
 	//const char*	keys_server[] = {"listen", "server_name", "location"};
 	//const char*	keys_location[] = {"methods", "client_max_body_size", "client_body_buffer_size", "fastcgi_pass", "fastcgi_param", "include"};
@@ -44,7 +44,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 		std::cerr << "Error opening the file." << std::endl;
 		return ;
 	}
-	enum e_part {EVENTS, HTTP, SERVER, P_NONE};
+	enum e_part {HOST, SERVER, P_NONE};
 	e_part	part = P_NONE;
 	Server		*new_server = 0;
 	int		i = 0;
@@ -58,10 +58,10 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, const ch
 		i++;
 		if (words.size() == 0)
 			;
-		else if (s == "events")
-			part = EVENTS;
-		else if (s == "http")
-			part = HTTP;
+		else if (s == "host")
+		{
+			part = HOST;
+		}
 		else if (s == "server")
 		{
 			part = SERVER;
