@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 16:03:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 16:07:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ bool	ConfigurationParser::host_parser(std::string cmd, Host& host, std::vector<s
 		if (!is_digit(words[1]) || n < 0 || n > 1024)
 			conf_file_error(cmd, i);
 			return (false);
-		host.set_client_max_body_size(n);
+		host.set_root(n);
 	}
 	else
 	{
