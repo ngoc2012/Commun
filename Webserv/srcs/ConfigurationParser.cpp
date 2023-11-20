@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 22:07:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 22:17:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ std::string	ConfigurationParser::remove_spaces_end(std::string& s)
 	return (s.substr(0, n));
 }
 
-bool	ConfigurationParser::host_parser(std::string cmd, Host* host, std::vector<std::string>& words, int i)
+bool	ConfigurationParser::host_parser(std::string cmd, Host* host, std::vector<std::string>& words)
 {
 	int	n;
 
@@ -62,7 +62,7 @@ bool	ConfigurationParser::host_parser(std::string cmd, Host* host, std::vector<s
 	return (false);
 }
 
-bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::vector<std::string>&words, int i)
+bool	ConfigurationParser::server_parser(std::string cmd, Server& server, std::vector<std::string>&words)
 {
 	if (cmd[0] != '	')
 		return (true);
@@ -136,7 +136,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 	conf_file.close();
 }
 
-bool	ConfigurationParser::listen(Server* s, std::vector<std::string> words)
+bool	ConfigurationParser::listen(Server& s, std::vector<std::string> words)
 {
 	if (words.size() != 2)
 		return (false);
@@ -156,8 +156,8 @@ bool	ConfigurationParser::listen(Server* s, std::vector<std::string> words)
 	n = std::atoi(address[1].c_str());
 	if (!is_digit(address[1]) || n < 0 || n > 65535)
 		return (false);
-	s->set_ip_address(address[0]);
-	s->set_port(std::atoi(address[1].c_str()));
+	s.set_ip_address(address[0]);
+	s.set_port(std::atoi(address[1].c_str()));
 	//std::cout << s->get_ip_address() << ":" << s->get_port() << std::endl;
 	return (true);
 }
