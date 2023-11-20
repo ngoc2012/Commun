@@ -6,11 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 20:24:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 20:27:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ConfigurationParser.hpp"
+#include "Server.hpp"
 
 ConfigurationParser::ConfigurationParser() {}
 ConfigurationParser::ConfigurationParser(const ConfigurationParser& src) { *this = src; }
