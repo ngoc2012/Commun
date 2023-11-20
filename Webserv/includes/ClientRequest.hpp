@@ -6,12 +6,9 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 20:31:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/20 20:32:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <sys/socket.h> // recv
-#include <unistd.h>	// close
 
 #include <iostream>
 
