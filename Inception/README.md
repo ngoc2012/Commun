@@ -2,6 +2,13 @@
 
 ## Docker
 
+### Docker containers
+```console
+sudo docker stop $(sudo docker ps)
+sudo docker ps -a
+sudo docker rm 'id'
+sudo docker rm -f $(sudo docker ps -a -q)
+```
 ### Docker network
 ```console
 sudo docker network create bridge-net
