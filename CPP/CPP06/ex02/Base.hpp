@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serializer.hpp                                     :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 18:10:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 18:37:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@
 
 #include "Data.hpp"
 
-#ifndef SERIALIZER_HPP
-# define SERIALIZER_HPP
+#ifndef BASE_HPP
+# define BASE_HPP
 
-class Serializer
+class Base
 {
 	private:
-		Serializer(const Serializer&);
-		Serializer &operator=(const Serializer& op);
+		Base(const Base&);
+		Base &operator=(const Base& op);
 	public:
-		Serializer();
-		virtual ~Serializer();
+		Base();
+		virtual ~Base();
 
 		uintptr_t	serialize( Data *data );
 		Data*		deserialize( uintptr_t data );
