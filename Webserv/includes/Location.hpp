@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 08:18:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 08:20:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class	Location
 {
 	private:
-		e_method	_methods;
+		std::vector<e_method>		_methods;
 
 		Location(const Location&);
 		Location			&operator=(const Location& op);
