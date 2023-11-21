@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 07:27:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 07:28:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 		else if (s[0] != '	' && words[0] == "location")
 		{
 			if (part != SERVER)
-				err = true
+				err = true;
 			else
 			{
 				part = LOCATION;
