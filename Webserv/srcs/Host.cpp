@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 15:45:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 15:47:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ bool	Host::check_servers_conf(void)
 
 void	Host::start(void)
 {
-	if (!check_servers_conf())
+	if (_parser_error || !check_servers_conf())
 		return ;
 	FD_ZERO(&_master_set);
 	FD_ZERO(&_server_set);
@@ -142,3 +142,4 @@ size_t				Host::get_client_body_buffer_size(void) const {return (_client_body_bu
 
 void				Host::set_client_max_body_size(size_t n) {_client_max_body_size = n;}
 void				Host::set_client_body_buffer_size(size_t n) {_client_body_buffer_size = n;}
+void				Host::set_parser_error(bool e) {_parser_error = e;}

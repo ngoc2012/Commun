@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 13:54:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 15:46:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 			break ;
 		}
 	}
+	host->set_parser_error(err);
 	conf_file.close();
 }
 
