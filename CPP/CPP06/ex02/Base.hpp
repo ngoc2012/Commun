@@ -6,15 +6,9 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 18:37:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 18:38:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdint.h>
-
-#include <iostream>
-
-#include "Data.hpp"
 
 #ifndef BASE_HPP
 # define BASE_HPP
