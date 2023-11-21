@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 22:36:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 08:19:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <vector>
 #include <fstream>
 
-#include "main.hpp"
+#include "webserv.hpp"
 
 #ifndef CONFIGURATIONPARSER_HPP
 # define CONFIGURATIONPARSER_HPP
