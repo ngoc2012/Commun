@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 12:54:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 12:59:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ bool	ConfigurationParser::location_parser(std::string cmd, Location* loc, std::v
 				it != words.end(); ++it)
 		{
 			if (*it == "GET")
-				loc->set_method(GET);
+				loc->insert_methods(GET);
 			else if (*it == "PUT")
-				loc->set_method(PUT);
+				loc->insert_methods(PUT);
 			else if (*it == "POST")
-				loc->set_method(POST);
+				loc->insert_methods(POST);
 			else
 			{
-				std::cerr << "Error: Method unknown : " << s << std::endl;
+				std::cerr << "Error: Method unknown : " << *it << std::endl;
 				return (true);
 			}
 		}
@@ -152,7 +152,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 			{
 				part = LOCATION;
 				new_location = new Location();
-				new_server.insert_location(new_location);
+				new_server->insert_location(new_location);
 			}
 		}
 		else
