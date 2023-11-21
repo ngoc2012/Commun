@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 15:46:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 15:48:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ bool	ConfigurationParser::server_parser(std::string cmd, Server* server, std::ve
 	{
 		struct stat	info;
 		if (!(stat(words[1].c_str(), &info) == 0 && S_ISDIR(info.st_mode)))
+		{
+			std::cerr << "Error: folder not found" << std::endl;
 			return (true);
+		}
 		server->set_root(words[1]);
 	}
 	else
