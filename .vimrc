@@ -6,3 +6,4 @@ let @c = 'V=€khct	void€ýaf(1€krt)pF:fgss€ýaf{1€krdf(€ýaf)s = €ýaF{F(f)i €ý
 let @t = '€ýaV=€ýaf	€krdf:xA;V€ýa'
 let @v = '^ct	void€ýaf(1€krt)p€ýaF(€ýaT	ss€ýaf)1€krdt;€ýa'
 let @h = 'V=f;i(void) const€ýaF	€ýai€krget€ýa'
+let @r = 'V=f:1€#4d:€ýadf:xf{df}s;€krq€kb'

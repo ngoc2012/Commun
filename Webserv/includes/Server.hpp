@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 12:17:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 12:21:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ class	Server
 		int			server_socket(void);
 		void			accept_client_sk(void);
 		void			response(int client_sk);
-void			Server::insert_location(Location* l) {_locations.push_back(l);}
+		void			insert_location(Location* l);
 
 		const char*		get_ip_address(void) const;
 		short unsigned int	get_port(void) const;
