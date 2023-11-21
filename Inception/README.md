@@ -27,8 +27,14 @@ sudo docker network ls
 ```
 
 ### Docker utils
+
+Terminal of container
 ```console
 docker exec -it nginx /bin/bash
+```
+
+View Logs
+```console
 sudo docker logs wordpress
 ```
 
