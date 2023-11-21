@@ -6,9 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 18:38:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 19:09:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <cstdlib> // For rand() and srand()
+#include <ctime>   // For time()
 
 #ifndef BASE_HPP
 # define BASE_HPP
