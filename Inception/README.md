@@ -48,7 +48,8 @@ Run
 `d` run in background
 ```console
 sudo docker run -d --network bridge-net -p 443:443 nginx
-
+sudo docker run --name test -it wordpress
+```
 
 
 ## Wordpress
@@ -61,7 +62,11 @@ sudo docker run -d --network bridge-net -p 443:443 nginx
 ```console
 stat -c "%U %G" /var/www/html
 ```
-
+```console
+mkdir -p /srv/www
+chown www-data: /srv/www
+curl https://wordpress.org/latest.tar.gz | tar zx -C /srv/www
+```
 
 ## Host name
 ```console
