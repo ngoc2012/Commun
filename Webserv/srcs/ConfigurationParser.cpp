@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 12:52:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 12:54:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,10 @@ bool	ConfigurationParser::location_parser(std::string cmd, Location* loc, std::v
 			else if (*it == "POST")
 				loc->set_method(POST);
 			else
+			{
+				std::cerr << "Error: Method unknown : " << s << std::endl;
 				return (true);
+			}
 		}
 	else if (words[0] == "alias")
 		loc->set_alias(words[1]);
