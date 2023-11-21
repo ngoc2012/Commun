@@ -6,9 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 18:06:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 18:11:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "Serializer.hpp"
 
 /*
 uintptr_t: Hold a pointer converted to an integer without loss of information
