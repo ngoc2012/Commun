@@ -2,11 +2,25 @@
 
 ## Virtual machine
 
-`ssh minh-ngu@127.0.0.1 -p 4242`
+```console
+ssh minh-ngu@127.0.0.1 -p 4242
+VBoxManage startvm  Inception
+apt update -y
+apt upgrade -y
+apt install sudo
+usermod -aG sudo your_username
+getent group sudo
+sudo visudo
+your_username  	ALL=(ALL) ALL
+sudo apt install build-essential
+```
 
 ## Wordpress
 
 [Install on Debian](https://www.linuxtuto.com/how-to-install-wordpress-on-debian-12/)
+
+[Docker on Wordpress](https://github.com/docker/awesome-compose/tree/master/official-documentation-samples/wordpress/)
+
 ## Host name
 ```console
 sudo vim /etc/hosts
