@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 18:38:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 19:05:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ Base&	Base::operator=( Base const & src )
 
 Base::~Base() {}
 
-uintptr_t	Base::serialize( Data *data ) {
-	return ( reinterpret_cast< uintptr_t >( data ) );
+Base*	generate(void)
+{
 }
 
-Data*		Base::deserialize( uintptr_t data ) {
-	return ( reinterpret_cast< Data* >( data ) );
-}
+void	generate(Base*)
