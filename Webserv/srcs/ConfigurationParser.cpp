@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 08:04:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 12:22:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 			{
 				part = LOCATION;
 				new_location = new Location();
-				new_server.push_back(new_location);
+				new_server.insert_location(new_location);
 			}
 		}
 		else
