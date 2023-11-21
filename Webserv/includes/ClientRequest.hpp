@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 08:18:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 12:57:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class	ClientRequest
 		std::string	_content_type0;
 		std::string	_content_type1;
 		std::string	_url;
+		e_method	_method;
 
 		ClientRequest();
 		ClientRequest(const ClientRequest&);

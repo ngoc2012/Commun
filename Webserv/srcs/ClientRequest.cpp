@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 12:53:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 12:56:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ClientRequest::clean()
 	_http_request = "";
 	_content_type0 = "";
 	_content_type1 = "";
+	_method = NONE;
 	_url = "";
 }
 
