@@ -44,6 +44,11 @@ Build
 sudo docker build -t nginx .
 ```
 
+Run
+`d` run in background
+```console
+sudo docker run -d --network bridge-net -p 443:443 nginx
+
 ## Wordpress
 
 [Install on Debian](https://www.linuxtuto.com/how-to-install-wordpress-on-debian-12/)
