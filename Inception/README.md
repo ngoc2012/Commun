@@ -2,10 +2,11 @@
 
 ## Virtual machine
 
-```ssh minh-ngu@127.0.0.1 -p 4242```
+`ssh minh-ngu@127.0.0.1 -p 4242`
 
 ## Wordpress
 
+[Install on Debian](https://www.linuxtuto.com/how-to-install-wordpress-on-debian-12/)
 ## Host name
 ```console
 sudo vim /etc/hosts
