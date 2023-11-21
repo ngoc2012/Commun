@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 13:03:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 13:04:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ class	Server
 		void			set_port(short unsigned int);
 		void			set_host(Host*);
 		void			set_root(std::string);
-		std::string		get_server_name(void) const;
+		void			set_server_name(std::string);
 };
 
 #endif
