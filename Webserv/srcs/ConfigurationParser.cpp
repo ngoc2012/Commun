@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 12:31:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 12:32:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,10 @@ bool	ConfigurationParser::server_parser(std::string cmd, Server* server, std::ve
 	else
 		return (true);
 	return (false);
+}
+
+bool	ConfigurationParser::location_parser(std::string cmd, Location* loc, std::vector<std::string>& words)
+{
 }
 
 ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* host, const char* conf)
