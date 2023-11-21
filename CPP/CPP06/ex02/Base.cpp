@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 19:09:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 19:11:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,17 @@ Base::~Base() {}
 
 Base*	generate(void)
 {
-	#include <cstdlib> // For rand() and srand()
-#include <ctime>   // For time()
+	// Seed the random number generator with the current time
+	std::srand(static_cast<unsigned int>(std::time(0)));
 
-int main() {
-    // Seed the random number generator with the current time
-    std::srand(static_cast<unsigned int>(std::time(0)));
-
-    // Generate and print a random number
-    int randomNumber = std::rand();
-    std::cout << "Random number: " << randomNumber << std::endl;
-
+	if (std::rand() % 3 == 1)
+		return (new A);
+	else if (std::rand() % 3 == 2)
+		return (new B);
+	else
+		return (new C);
 }
 
-void	generate(Base* b)
+void	identify(Base* b)
 {
 }
