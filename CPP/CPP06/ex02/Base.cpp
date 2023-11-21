@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 19:14:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 19:17:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,19 @@ Base*	Base::generate(void)
 
 void	Base::identify(Base* b)
 {
+	if (dynamic_cast<A*>(b))
+		std::cout << "A" << std::endl;
+	else if (dynamic_cast<B*>(b))
+		std::cout << "B" << std::endl;
+	else if (dynamic_cast<C*>(b))
+		std::cout << "C" << std::endl;
+	else
+		std::cout << "unknown" << std::endl;
+}
+
+void	Base::identify(Base& b)
+{
+	try
+	{
+	} catch(const std::exception& e) {}
 }
