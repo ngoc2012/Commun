@@ -38,6 +38,12 @@ View Logs
 sudo docker logs wordpress
 ```
 
+Build
+`.` current folder
+```console
+sudo docker build -t nginx .
+```
+
 ## Wordpress
 
 [Install on Debian](https://www.linuxtuto.com/how-to-install-wordpress-on-debian-12/)
