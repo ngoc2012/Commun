@@ -1,5 +1,9 @@
 # webserv
 
+## Compile project 
+```console
+clear && make re && valgrind --track-fds=yes --leak-check=full --show-leak-kinds=all ./server
+```
 ## README.md
 
 [Example](https://github.com/github-linguist/linguist)
