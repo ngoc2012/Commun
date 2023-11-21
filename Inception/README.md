@@ -1,6 +1,6 @@
 # Inception
 
-## Change the host name
+## Host name
 ```console
 sudo vim /etc/hosts
 ```
@@ -31,4 +31,8 @@ systemctl disable systemd-resolved
 ```console
 cat /etc/resolv.conf
 ```
+
+## References
+
+[1](https://tuto.grademe.fr/inception/)
 
