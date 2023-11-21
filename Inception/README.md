@@ -25,6 +25,9 @@ sudo docker rm -f $(sudo docker ps -a -q)
 sudo docker network create bridge-net
 sudo docker network ls
 ```
+[NAT/Bridge/Host](https://superuser.com/questions/227505/what-is-the-difference-between-nat-bridged-host-only-networking)
+[Docker network](https://docs.docker.com/network/)
+[Vm network](https://www.virtualbox.org/manual/ch06.html)
 
 ### Docker utils
 
