@@ -49,11 +49,19 @@ Run
 ```console
 sudo docker run -d --network bridge-net -p 443:443 nginx
 
+
+
 ## Wordpress
 
 [Install on Debian](https://www.linuxtuto.com/how-to-install-wordpress-on-debian-12/)
 
 [Docker on Wordpress](https://github.com/docker/awesome-compose/tree/master/official-documentation-samples/wordpress/)
+
+* Check file owner:
+```console
+stat -c "%U %G" /var/www/html
+```
+
 
 ## Host name
 ```console
