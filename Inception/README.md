@@ -54,6 +54,12 @@ sudo docker run -d --network bridge-net -p 443:443 nginx
 sudo docker run --name test -it wordpress
 ```
 
+### Volumes
+```console
+Make folder for volumes
+sudo mkdir -p /srv/www/wordpress
+sudo mkdir -p /var/lib/mysql
+```
 
 ## Wordpress
 
