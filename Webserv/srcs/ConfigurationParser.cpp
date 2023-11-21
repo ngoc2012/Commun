@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 13:50:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 13:54:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,12 +148,12 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 		}
 		else if (s[0] == '	' && words[0] == "location")
 		{
-			if (part != SERVER)
+			if (part != SERVER && part != LOCATION)
 				err = true;
 			else
 			{
 				part = LOCATION;
-				new_location = new Location();
+				new_location = new Location(words[1]);
 				new_server->insert_location(new_location);
 			}
 		}
