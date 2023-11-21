@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 19:19:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 19:21:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ void	Base::identify(Base* b)
 
 void	Base::identify(Base& b)
 {
+	bool	err = true;
 	try
 	{
 		A& a = dynamic_cast<A&>(b);
 		std::cout << "A" << std::endl;
+		err = false;
 		(void) a;
 	}
 	catch(const std::exception& e) {}
@@ -65,6 +67,7 @@ void	Base::identify(Base& b)
 	{
 		B& a = dynamic_cast<B&>(b);
 		std::cout << "B" << std::endl;
+		err = false;
 		(void) a;
 	}
 	catch(const std::exception& e) {}
@@ -72,7 +75,10 @@ void	Base::identify(Base& b)
 	{
 		C& a = dynamic_cast<C&>(b);
 		std::cout << "C" << std::endl;
+		err = false;
 		(void) a;
 	}
 	catch(const std::exception& e) {}
+	if (err)
+		std::cout << "unknown" << std::endl;
 }
