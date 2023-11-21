@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 12:13:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 12:15:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ class	Server
 		int			_socket;
 		std::string		_server_name;
 		std::string		_root;
+		std::vector<Location>	_locations;	
 
 		Server(const Server&);
 		Server			&operator=(const Server& op);
