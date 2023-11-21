@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 17:58:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 18:02:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,10 @@ No checks: Unlike dynamic_cast or static_cast, reinterpret_cast does not perform
 
 */
 
-struct Data
-{
-	std::string	login;
-	float		level;
-};
-
 uintptr_t	serialize( Data *data ) {
 	return ( reinterpret_cast< uintptr_t >( data ) );
 }
 
 Data*	deserialize( uintptr_t data ) {
 	return ( reinterpret_cast< Data* >( data ) );
-}
-
-int	main()
-{
-	Data *data = new Data;
-	data->login = "minh-ngu";
-	data->level = 4.5;
-
-	std::cout << "Login: " << deserialize( serialize( data ) )->login << std::endl;
-	std::cout << "Level: " << deserialize( serialize( data ) )->level << std::endl;
-
-	delete(data);
-
-	return (0);
 }
