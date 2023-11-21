@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 12:12:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 12:31:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class ConfigurationParser
 		void			conf_file_error(std::string, int);
 		std::string		remove_comments(std::string&);
 		std::string		remove_spaces_end(std::string&);
-		bool			location_parser(std::string, Server*, std::vector<std::string>&);
+		bool			location_parser(std::string, Location*, std::vector<std::string>&);
 		bool			server_parser(std::string, Server*, std::vector<std::string>&);
 		bool			host_parser(std::string, Host*, std::vector<std::string>&);
 };

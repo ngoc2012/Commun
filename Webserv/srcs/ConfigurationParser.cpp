@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 12:22:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 12:31:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,9 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 				case P_NONE:
 					err = true;
 					break ;
+				case LOCATION:
+					err = location_parser(s, new_location, words);
+					break;
 				case SERVER:
 					err = server_parser(s, new_server, words);
 					break;
