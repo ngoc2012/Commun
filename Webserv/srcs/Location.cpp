@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 15:39:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 15:41:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ Location&	Location::operator=( Location const & src )
 	(void) src;
 	return (*this);
 }
+Location::Location(std::string u): _url(u) {}
 Location::~Location() {}
 
 std::vector<e_method>		Location::get_methods(void) const {return (_methods);}
