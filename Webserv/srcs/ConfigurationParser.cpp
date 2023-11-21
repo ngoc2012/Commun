@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 07:25:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 07:27:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,15 +101,15 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 	while (std::getline(conf_file, line))
 	{
 		std::string		s = remove_comments(line);
-		s = remove_spaces_end(s);
+		//s = remove_spaces_end(s);
 		//std::cout << "|" << s << "|" << std::endl;
 		std::vector<std::string>	words = split_string(s, std::string(" 	"));
 		i++;
 		if (words.size() == 0)
 			;
-		else if (s == "host")
+		else if (s[0] != 'h' && words[0] == "host")
 			part = HOST;
-		else if (s == "server")
+		else if (s[0] != 's' && words[0] == "server")
 		{
 			part = SERVER;
 			new_server = new Server();
