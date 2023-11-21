@@ -2,18 +2,36 @@
 
 ## Docker
 
+### Docker images
+* Remove all images
+```console
+sudo docker image prune --all --force
+```
+
 ### Docker containers
+* Stop all containers
 ```console
 sudo docker stop $(sudo docker ps)
+```
+* Remove all containers
+```console
 sudo docker ps -a
 sudo docker rm 'id'
 sudo docker rm -f $(sudo docker ps -a -q)
 ```
+
 ### Docker network
 ```console
 sudo docker network create bridge-net
 sudo docker network ls
 ```
+
+### Docker utils
+```console
+docker exec -it nginx /bin/bash
+sudo docker logs wordpress
+```
+
 ## Wordpress
 
 [Install on Debian](https://www.linuxtuto.com/how-to-install-wordpress-on-debian-12/)
