@@ -6,12 +6,9 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 18:02:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 18:06:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <iostream>
-#include <stdint.h>
 
 /*
 uintptr_t: Hold a pointer converted to an integer without loss of information
@@ -22,10 +19,22 @@ No checks: Unlike dynamic_cast or static_cast, reinterpret_cast does not perform
 
 */
 
-uintptr_t	serialize( Data *data ) {
+Serializer::Serializer() {}
+
+Serializer::Serializer(const Serializer& src) { *this = src; }
+
+Serializer&	Serializer::operator=( Serializer const & src )
+{
+	(void) src;
+	return (*this);
+}
+
+Serializer::~Serializer() {}
+
+uintptr_t	Serializer::serialize( Data *data ) {
 	return ( reinterpret_cast< uintptr_t >( data ) );
 }
 
-Data*	deserialize( uintptr_t data ) {
+Data*		Serializer::deserialize( uintptr_t data ) {
 	return ( reinterpret_cast< Data* >( data ) );
 }
