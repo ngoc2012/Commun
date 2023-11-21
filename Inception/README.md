@@ -1,5 +1,11 @@
 # Inception
 
+## Virtual machine
+
+```ssh minh-ngu@127.0.0.1 -p 4242```
+
+## Wordpress
+
 ## Host name
 ```console
 sudo vim /etc/hosts
