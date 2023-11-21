@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 22:10:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 15:45:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ class	Host
 		int				_max_clients;
 		size_t				_client_max_body_size;
 		size_t				_client_body_buffer_size;
+
+		bool				_parser_error;
 
 		int				_sk_ready;
 		int				_max_sk;	// Max of all fd
