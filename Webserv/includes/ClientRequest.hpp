@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 20:32:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 08:17:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #ifndef CLIENTREQUEST_HPP
 # define CLIENTREQUEST_HPP
  
-enum	e_method {GET, POST, NONE};
-
 class	Host;
 
 class	ClientRequest
