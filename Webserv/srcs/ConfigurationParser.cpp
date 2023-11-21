@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 12:39:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 12:49:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,23 @@ bool	ConfigurationParser::location_parser(std::string cmd, Location* loc, std::v
 	if (cmd.substr(0, 2) != "		")
 		return (true);
 	if (words[0] == "methods")
-	{
-		loc->set_method(words[1]);
-	}
+		for (std::vector<std::string>::iterator it = words.begin() + 1;
+				it != words.end(); ++it)
+		{
+			if (*it == "GET")
+				loc->set_method(GET);
+			else if (*it == "PUT")
+				loc->set_method(PUT);
+			else if (*it == "POST")
+				loc->set_method(POST);
+			else
+				return (true);
+		}
 	else if (words[0] == "alias")
 		loc->set_alias(words[1]);
+	else
+		return (true);
+	return (false);
 }
 
 ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* host, const char* conf)
