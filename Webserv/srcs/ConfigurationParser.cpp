@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 07:28:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 08:04:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 	enum e_part {LOCATION, HOST, SERVER, P_NONE};
 	e_part	part = P_NONE;
 	Server		*new_server = 0;
+	Location	*new_location = 0;
 	int		i = 0;
 	std::string	line;
 	bool	err = false;
