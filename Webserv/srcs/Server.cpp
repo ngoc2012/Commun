@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/20 17:31:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 12:17:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ void	Server::response(int client_sk)
 	}
 	std::cout << "Data sent" << std::endl;
 }
+
+void			Server::insert_location(Location* l) {_locations.push_back(l);}
 
 const char*		Server::get_ip_address(void) const {return (_ip_address.c_str());}
 short unsigned int	Server::get_port(void) const {return (_port);}
