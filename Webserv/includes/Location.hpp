@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 15:37:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 15:39:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 class	Location
 {
 	private:
-		std::vector<e_method>		_url;
+		std::string			_url;
 		std::vector<e_method>		_methods;
 		std::string			_alias;
 
@@ -33,9 +33,11 @@ class	Location
 
 		std::vector<e_method>		get_methods(void) const;
 		std::string			get_alias(void) const;
+		std::string			get_url(void) const;
 
 		void				insert_methods(e_method);
 		void				set_alias(std::string);
+		void				set_url(std::string);
 };
 
 #endif
