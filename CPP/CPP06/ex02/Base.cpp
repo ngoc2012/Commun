@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 19:11:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/21 19:14:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Base&	Base::operator=( Base const & src )
 
 Base::~Base() {}
 
-Base*	generate(void)
+Base*	Base::generate(void)
 {
 	// Seed the random number generator with the current time
 	std::srand(static_cast<unsigned int>(std::time(0)));
@@ -40,6 +40,6 @@ Base*	generate(void)
 		return (new C);
 }
 
-void	identify(Base* b)
+void	Base::identify(Base* b)
 {
 }
