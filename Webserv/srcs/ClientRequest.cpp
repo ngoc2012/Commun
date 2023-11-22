@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:17:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:19:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ ClientRequest::~ClientRequest()
 
 void	ClientRequest::clean()
 {
-	_start_pos_body = 0;
+	_body = "";
 	_content_type0 = "";
 	_content_type1 = "";
 	_method = NONE;
@@ -135,6 +135,7 @@ bool	ClientRequest::read_method(std::string& s)
 
 bool	ClientRequest::find_start_pos_body(std::string& s)
 {
+	size_t	_start_pos_body = 0;
 	size_t	pos0 = s.find("Content-Type:");
 	if (pos0 != std::string::npos)
 	{
