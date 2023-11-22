@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 15:36:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:30:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,9 @@ void	Server::accept_client_sk(void)
 	} while (new_sk != -1);
 }
 
-void	Server::response(int client_sk)
+void	Server::response(int client_sk, int err_code)
 {
+	(void) err_code;
 	//Send back data
 	const char* http_response =
 		"HTTP/1.1 200 OK\r\n"
