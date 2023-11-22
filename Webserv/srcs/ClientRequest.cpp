@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:29:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:33:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,12 +199,6 @@ bool	ClientRequest::read_content_type(std::string& s, std::string& c)
 	}
 	return (true);
 }
-
-//void	ClientRequest::set_method(std::string m) {_method = m;}
-void	ClientRequest::set_http_request(std::string s) {_http_request = s;}
-
-//std::string	ClientRequest::get_method(void) const {return (_method);}
-std::string	ClientRequest::get_http_request(void) const {return (_http_request);}
 
 /*
 if (method == "multipart/form-data")
