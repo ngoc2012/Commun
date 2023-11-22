@@ -105,3 +105,5 @@ HTTP requests typically include a Content-Type header that indicates the type of
 * `multipart/form-data`: Used when submitting forms that include binary data, like file uploads.
 * `text/plain`: Used for plain text data.
 * `application/octet-stream`: Used for binary data when the specific type is not known.
+
+## README.md
