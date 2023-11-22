@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 08:18:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 08:22:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ClientRequest::clean()
 	_url = "";
 }
 
-void	ClientRequest::read_client_request(void)
+void	ClientRequest::recv_client_request_header(void)
 {
 	std::cout << "Receive data from client" << std::endl;
 	clean();
@@ -58,7 +58,17 @@ void	ClientRequest::read_client_request(void)
 
 	int	ret = recv(_socket, response, BUFFER, 0);
 	if (ret <= 0)
+	{
 		perror(" recv() failed");
+		_host->close_client_sk(_socket);
+		return ;
+	}
+	_http_request += std::string(response);
+	if (!read_header(_http_request))
+	{
+		_host->get_sk_server()[_socket]->response(_socket);
+		break ;
+	}
 	_host->close_client_sk(_socket);
 }
 
@@ -91,12 +101,6 @@ void	ClientRequest::read_body(void)
 			response[ret] = 0;
 			if (_http_request == "")
 			{
-				_http_request += std::string(response);
-				if (!read_header(_http_request))
-				{
-					_host->get_sk_server()[_socket]->response(_socket);
-					break ;
-				}
 				std::cout << "=============== Body =============\n"
 					<< &_http_request[_start_pos_body]
 					<< "===================================" << std::endl;
