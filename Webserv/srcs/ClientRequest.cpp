@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 08:27:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 08:29:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,9 @@ void	ClientRequest::recv_client_request_header(void)
 		_host->close_client_sk(_socket);
 		return ;
 	}
-	_http_request += std::string(response);
-	if (!parser_header(_http_request))
+	response[ret] = 0;
+	_header	= std::string(response);
+	if (!parser_header())
 	{
 		_host->get_sk_server()[_socket]->response(_socket);
 		break ;
@@ -114,10 +115,10 @@ void	ClientRequest::read_body(void)
 
 void	ClientRequest::cat_http_request(std::string s) {_http_request += s;}
 
-bool	ClientRequest::parser_header(std::string& header)
+bool	ClientRequest::parser_header(void)
 {
 
-	std::vector<std::string>	lines = split_string(header, "\n");
+	std::vector<std::string>	lines = split_string(_header, "\n");
 	std::vector<std::string>	first_line = split_string(lines[0], " 	");
 
 	if (!read_method(first_line[0]))
