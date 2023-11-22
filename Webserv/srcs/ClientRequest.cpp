@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 08:30:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 08:33:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ void	ClientRequest::recv_client_request_header(void)
 	_header	= std::string(response);
 	if (!parser_header())
 	{
+		std::cerr << "Error: header invalid: \n" << _header << std::endl;
 		_host->get_sk_server()[_socket]->response(_socket);
+		_host->close_client_sk(_socket);
 		break ;
 	}
 	_host->close_client_sk(_socket);
