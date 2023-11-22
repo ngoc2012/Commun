@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 08:59:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:17:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ ClientRequest::~ClientRequest()
 void	ClientRequest::clean()
 {
 	_start_pos_body = 0;
-	_http_request = "";
 	_content_type0 = "";
 	_content_type1 = "";
 	_method = NONE;
@@ -110,14 +109,7 @@ void	ClientRequest::read_body(void)
 		else
 		{
 			response[ret] = 0;
-			if (_http_request == "")
-			{
-				std::cout << "=============== Body =============\n"
-					<< &_http_request[_start_pos_body]
-					<< "===================================" << std::endl;
-			}
-			else
-				_http_request += std::string(response);
+			_http_request += std::string(response);
 		}
 	}
 	while (ret && ret > 0)
