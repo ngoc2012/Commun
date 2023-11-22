@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 08:22:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 08:27:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ClientRequest::clean()
 
 void	ClientRequest::recv_client_request_header(void)
 {
-	std::cout << "Receive data from client" << std::endl;
+	//std::cout << "Receive data from client" << std::endl;
 	clean();
 	char		response[BUFFER + 1];
 	int		ret = 1;
@@ -64,7 +64,7 @@ void	ClientRequest::recv_client_request_header(void)
 		return ;
 	}
 	_http_request += std::string(response);
-	if (!read_header(_http_request))
+	if (!parser_header(_http_request))
 	{
 		_host->get_sk_server()[_socket]->response(_socket);
 		break ;
@@ -114,7 +114,7 @@ void	ClientRequest::read_body(void)
 
 void	ClientRequest::cat_http_request(std::string s) {_http_request += s;}
 
-bool	ClientRequest::read_header(std::string& header)
+bool	ClientRequest::parser_header(std::string& header)
 {
 
 	std::vector<std::string>	lines = split_string(header, "\n");
