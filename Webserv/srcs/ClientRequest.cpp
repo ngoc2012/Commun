@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:53:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:55:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ int	ClientRequest::read_client_request(void)
 	if (!read_body())
 		return (read_error("Error: body invalid: \n" + _body, 401));
 	std::cout << "Header:\n" << _header << std::endl;
+	std::cout << "===============================" << std::endl;
 	std::cout << "Body:\n" << _body << std::endl;
+	std::cout << "===============================" << std::endl;
 	_host->close_client_sk(_socket);
 	return (1);
 }
@@ -81,6 +83,8 @@ bool	ClientRequest::read_header(void)
 		return (false);
 	response[ret] = 0;
 	_header	= std::string(response);
+	std::cout << "Read header:\n" << _header << std::endl;
+	std::cout << "===============================" << std::endl;
 	return (true);
 }
 
