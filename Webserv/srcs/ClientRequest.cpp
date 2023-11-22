@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:19:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:21:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,9 @@ bool	ClientRequest::read_method(std::string& s)
 	return (true);
 }
 
-bool	ClientRequest::find_start_pos_body(std::string& s)
+bool	ClientRequest::find_start_body(std::string& s)
 {
-	size_t	_start_pos_body = 0;
+	size_t	start = 0;
 	size_t	pos0 = s.find("Content-Type:");
 	if (pos0 != std::string::npos)
 	{
@@ -144,7 +144,7 @@ bool	ClientRequest::find_start_pos_body(std::string& s)
 		{
 			pos0 = s.find("\r\n\r\n", pos1);
 			if (pos0 != std::string::npos)
-				_start_pos_body = pos0 + 4;
+				start = pos0 + 4;
 			else
 				return (false);
 		}
@@ -152,15 +152,17 @@ bool	ClientRequest::find_start_pos_body(std::string& s)
 		{
 			pos1 = s.find("\r\n\r\n", pos0);
 			if (pos1 != std::string::npos)
-				_start_pos_body = pos1 + 4;
+				start = pos1 + 4;
 			else
 				return (false);
 		}
-		return (true);
 	}
-	pos0 = s.find("\r\n\r\n");
-	if (pos0 != std::string::npos)
-		_start_pos_body = pos0 + 4;
+	else
+	{
+		pos0 = s.find("\r\n\r\n");
+		if (pos0 != std::string::npos)
+			_start_pos_body = pos0 + 4;
+	}
 	return (true);
 }
 
