@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:26:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:29:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	ClientRequest::read_client_request(void)
 		return (read_error("Error: can not receive client request", 401));
 	if (!parser_header())
 		return (read_error("Error: header invalid: \n" + _header, 401));
+	if (!read_body())
+		return (read_error("Error: body invalid: \n" + _body, 401));
 	_host->close_client_sk(_socket);
 }
 
@@ -96,7 +98,7 @@ bool	ClientRequest::parser_header(void)
 	return (true);
 }
 
-void	ClientRequest::read_body(void)
+bool	ClientRequest::read_body(void)
 {
 	do
 	{
@@ -108,9 +110,8 @@ void	ClientRequest::read_body(void)
 		}
 	} while (ret > 0);
 	std::cout << "Connection closed" << std::endl;
+	return (true);
 }
-
-void	ClientRequest::cat_http_request(std::string s) {_http_request += s;}
 
 bool	ClientRequest::read_method(std::string& s)
 {

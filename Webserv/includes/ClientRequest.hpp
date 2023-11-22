@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:26:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:29:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class	ClientRequest
 		int		_socket;
 		Host*		_host;
 		int		_error;
-		std::string	_http_request;
 		std::string	_header;
 		std::string	_body;
 		std::string	_content_type0;
@@ -38,7 +37,6 @@ class	ClientRequest
 		ClientRequest(int, Host*);
 		virtual ~ClientRequest();
 
-		void		cat_http_request(std::string);
 		int		read_client_request(void);
 		bool		read_header(void);
 		int		read_error(void);
