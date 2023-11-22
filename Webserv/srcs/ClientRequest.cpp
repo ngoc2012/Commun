@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 08:56:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 08:59:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,21 +102,7 @@ void	ClientRequest::read_body(void)
 	do
 	{
 		ret = recv(_socket, response, BUFFER, 0);
-		if (ret < 0)
-		{
-			if (errno != EWOULDBLOCK)
-				perror("  recv() failed");
-			else
-			{
-				std::cout << "Client send: \n"
-					<< "=============================================\n"
-					<< _http_request
-					<< "=============================================\n";
-				_host->get_sk_server()[_socket]->response(_socket);
-			}
-			break ;
-		}
-		else if (ret == 0)
+		if (ret <= 0)
 		{
 			std::cout << "Connection closed" << std::endl;
 			break ;
