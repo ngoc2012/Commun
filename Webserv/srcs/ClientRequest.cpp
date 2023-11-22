@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:51:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:53:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	ClientRequest::read_client_request(void)
 	std::cout << "Header:\n" << _header << std::endl;
 	std::cout << "Body:\n" << _body << std::endl;
 	_host->close_client_sk(_socket);
+	return (1);
 }
 
 bool	ClientRequest::read_header(void)
@@ -94,9 +95,8 @@ bool	ClientRequest::parser_header(void)
 	read_content_type(_header, _content_type0);
 	if (_content_type0 != "")
 	{
-		std::string
-		read_content_type((std::string)_header.substr(
-			_header.find("Content-Type:") + 14), _content_type1);
+		std::string s = _header.substr( _header.find("Content-Type:") + 14);
+		read_content_type(s, _content_type1);
 	}
 	if (!find_start_body(_header))
 		return (false);
@@ -164,7 +164,7 @@ bool	ClientRequest::find_start_body(std::string& s)
 	{
 		pos0 = s.find("\r\n\r\n");
 		if (pos0 != std::string::npos)
-			_start_pos_body = pos0 + 4;
+			start = pos0 + 4;
 	}
 	_body = _header.substr(start, _header.length() - start);
 	_header = _header.substr(0, start);
