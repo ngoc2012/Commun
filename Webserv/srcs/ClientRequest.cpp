@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 12:56:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 08:15:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	ClientRequest::read_client_request(void)
 	clean();
 	char		response[BUFFER + 1];
 	int		ret = 1;
-	while (ret && ret > 0)
+
+	do
 	{
 		ret = recv(_socket, response, BUFFER, 0);
 		if (ret < 0)
@@ -96,6 +97,7 @@ void	ClientRequest::read_client_request(void)
 				_http_request += std::string(response);
 		}
 	}
+	while (ret && ret > 0)
 	_host->close_client_sk(_socket);
 }
 
