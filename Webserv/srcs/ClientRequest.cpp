@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 08:55:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 08:56:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,22 @@ bool	ClientRequest::read_header(void)
 	return (true);
 }
 
+bool	ClientRequest::parser_header(void)
+{
+
+	std::vector<std::string>	lines = split_string(_header, "\n");
+	std::vector<std::string>	first_line = split_string(lines[0], " 	");
+
+	if (!read_method(first_line[0]))
+		return (false);
+	read_content_type(_header, _content_type0);
+	if (_content_type0 != "")
+		read_content_type(_header.substr(header.find("Content-Type:") + 14), _content_type1);
+	if (!find_start_pos_body(header))
+		return (false);
+	return (true);
+}
+
 void	ClientRequest::read_body(void)
 {
 	do
@@ -122,22 +138,6 @@ void	ClientRequest::read_body(void)
 }
 
 void	ClientRequest::cat_http_request(std::string s) {_http_request += s;}
-
-bool	ClientRequest::parser_header(void)
-{
-
-	std::vector<std::string>	lines = split_string(_header, "\n");
-	std::vector<std::string>	first_line = split_string(lines[0], " 	");
-
-	if (!read_method(first_line[0]))
-		return (false);
-	read_content_type(_header, _content_type0);
-	if (_content_type0 != "")
-		read_content_type(_header.substr(header.find("Content-Type:") + 14), _content_type1);
-	if (!find_start_pos_body(header))
-		return (false);
-	return (true);
-}
 
 bool	ClientRequest::read_method(std::string& s)
 {
