@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 08:15:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 08:18:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ void	ClientRequest::read_client_request(void)
 	char		response[BUFFER + 1];
 	int		ret = 1;
 
+	int	ret = recv(_socket, response, BUFFER, 0);
+	if (ret <= 0)
+		perror(" recv() failed");
 	do
 	{
 		ret = recv(_socket, response, BUFFER, 0);
