@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:29:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:34:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,6 @@ class	ClientRequest
 		bool		read_content_type(std::string&, std::string&);
 		bool		read_body(void);
 		bool		find_start_body(std::string&);
-
-		//std::string	get_method(void) const;
-		std::string	get_http_request(void) const;
-
-		//void		set_method(std::string);
-		void		set_http_request(std::string);
 };
 
 #endif

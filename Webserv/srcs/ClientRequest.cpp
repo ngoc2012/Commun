@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:33:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:35:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int	ClientRequest::read_client_request(void)
 		return (read_error("Error: header invalid: \n" + _header, 401));
 	if (!read_body())
 		return (read_error("Error: body invalid: \n" + _body, 401));
+	std::cout << "Header:\n" << _header << std::endl;
+	std::cout << "Body:\n" << _body << std::endl;
 	_host->close_client_sk(_socket);
 }
 
@@ -199,33 +201,3 @@ bool	ClientRequest::read_content_type(std::string& s, std::string& c)
 	}
 	return (true);
 }
-
-/*
-if (method == "multipart/form-data")
-{
-	// The combination \r\n is often used to indicate the end of a line of text in text files
-	// Find the start of the file content
-	const std::string boundary = "boundary=";
-	size_t boundaryPos = s.find(boundary);
-	//if (boundaryPos == std::string::npos) {
-	//	std::cerr << "Boundary not found in Content-Type header." << std::endl;
-	//	return;
-	//}
-
-	size_t startPos = s.find("\r\n\r\n", boundaryPos) + 4;
-	std::string	s0 = s.substr(startPos);
-	pos = s0.find("Content-Type:");
-	if ( pos != std::string::npos)
-	{
-		startPos = s0.find("\r\n\r\n", pos) + 4;
-		s0 = s0.substr(startPos);
-	}
-	////std::cout << s0 << std::endl;
-	//size_t endPos = s.find("--" + line.substr(boundaryPos + boundary.length()));
-	//// Extract the file content
-	//std::string fileData = fileContent.substr(startPos, endPos - startPos);
-	//// Save the file on the server
-	//saveFile("uploaded_file.txt", fileData);
-}
-_request.set_http_request(s);
-*/
