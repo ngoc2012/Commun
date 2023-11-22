@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:25:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:26:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	ClientRequest::read_body(void)
 		if (ret > 0)
 		{
 			response[ret] = 0;
-			_http_request += std::string(response);
+			_body += std::string(response);
 		}
 	} while (ret > 0);
 	std::cout << "Connection closed" << std::endl;
