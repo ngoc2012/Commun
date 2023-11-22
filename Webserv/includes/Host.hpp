@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 15:46:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:48:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 #ifndef HOST_HPP
 # define HOST_HPP
-# define BUFFER	2048
 
 // Forward declaration
 class	Server;

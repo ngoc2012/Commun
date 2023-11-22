@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:43:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:49:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,15 @@ bool	ClientRequest::parser_header(void)
 		return (false);
 	read_content_type(_header, _content_type0);
 	if (_content_type0 != "")
-		read_content_type(_header.substr(header.find("Content-Type:") + 14), _content_type1);
-	if (!find_start_pos_body(header))
+		read_content_type(_header.substr(_header.find("Content-Type:") + 14), _content_type1);
+	if (!find_start_body(_header))
 		return (false);
 	return (true);
 }
 
 bool	ClientRequest::read_body(void)
 {
+	char		response[BUFFER + 1];
 	do
 	{
 		int	ret = recv(_socket, response, BUFFER, 0);

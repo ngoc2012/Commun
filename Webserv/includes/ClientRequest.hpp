@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:42:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:48:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #ifndef CLIENTREQUEST_HPP
 # define CLIENTREQUEST_HPP
  
+# define BUFFER	2048
+
 class	Host;
 
 class	ClientRequest
