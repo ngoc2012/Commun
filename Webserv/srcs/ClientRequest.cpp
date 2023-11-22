@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 08:50:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 08:53:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,22 @@ void	ClientRequest::clean()
 	_url = "";
 }
 
-int	ClientRequest::read_error(void)
+int	ClientRequest::read_error(std::string s, int err_code)
 {
+	std::cerr << s << std::endl;
+	_host->get_sk_server()[_socket]->response(_socket, err_code);
+	_host->close_client_sk(_socket);
+	return (err_code);
 }
 
 int	ClientRequest::read_client_request(void)
 {
-	read_header();
+	if (!read_header())
+		return read_error(
+	if (!parser_header())
 }
 
-void	ClientRequest::read_header(void)
+bool	ClientRequest::read_header(void)
 {
 	//std::cout << "Receive data from client" << std::endl;
 	clean();
@@ -67,18 +73,11 @@ void	ClientRequest::read_header(void)
 
 	int	ret = recv(_socket, response, BUFFER, 0);
 	if (ret <= 0)
-	{
-		perror(" recv() failed");
-		_host->close_client_sk(_socket);
-		return ;
-	}
+		return (false);
 	response[ret] = 0;
 	_header	= std::string(response);
-	if (!parser_header())
 	{
 		std::cerr << "Error: header invalid: \n" << _header << std::endl;
-		_host->get_sk_server()[_socket]->response(_socket);
-		_host->close_client_sk(_socket);
 		break ;
 	}
 	_host->close_client_sk(_socket);
