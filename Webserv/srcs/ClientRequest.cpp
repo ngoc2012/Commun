@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:35:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:43:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ bool	ClientRequest::read_header(void)
 	//std::cout << "Receive data from client" << std::endl;
 	clean();
 	char		response[BUFFER + 1];
-	int		ret = 1;
 
 	int	ret = recv(_socket, response, BUFFER, 0);
 	if (ret <= 0)
