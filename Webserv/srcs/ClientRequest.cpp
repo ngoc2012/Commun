@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:21:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 10:23:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,8 @@ bool	ClientRequest::find_start_body(std::string& s)
 		if (pos0 != std::string::npos)
 			_start_pos_body = pos0 + 4;
 	}
+	_body = _header.substr(start, _header.length() - start);
+	_header = _header.substr(0, start);
 	return (true);
 }
 
