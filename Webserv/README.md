@@ -106,4 +106,12 @@ HTTP requests typically include a Content-Type header that indicates the type of
 * `text/plain`: Used for plain text data.
 * `application/octet-stream`: Used for binary data when the specific type is not known.
 
-## README.md
+## FastCGI
+
+1 - Persistent Connection:
+* Traditional CGI creates a new process for each request, leading to high process creation overhead.
+* FastCGI uses a persistent connection, allowing a single FastCGI process to handle multiple requests. This reduces the overhead associated with process creation and termination.
+
+2 - Communication Protocol:
+* Traditional CGI communicates with the web server through standard input (stdin) and standard output (stdout).
+* FastCGI uses a binary protocol over a socket connection for communication between the web server and the FastCGI process.
