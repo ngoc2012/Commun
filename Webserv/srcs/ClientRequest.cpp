@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:59:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/22 11:00:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,14 +127,13 @@ bool	ClientRequest::read_body(void)
 
 bool	ClientRequest::read_method(std::string& s)
 {
-	std::cout << s << std::endl;
+	//std::cout << s << std::endl;
 	if (s == "GET")
 		_method = GET;
 	else if (s == "POST")
 		_method = POST;
 	else
 	{
-		_error = 400;
 		std::cerr << "Error: Method unknown : " << s << std::endl;
 		return (false);
 	}
