@@ -3,6 +3,7 @@
 ## Compile project 
 ```console
 clear && make re && valgrind --track-fds=yes --leak-check=full --show-leak-kinds=all ./server
+clear && make re && valgrind --track-fds=yes --leak-check=full --show-leak-kinds=all ./server && make clean
 ```
 ## README.md
 
