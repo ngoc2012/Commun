@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:30:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 15:33:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	Server::accept_client_sk(void)
 		_host->new_client_request_sk(new_sk, this);
 	} while (new_sk != -1);
 }
-
+/*
 void	Server::response(int client_sk, int err_code)
 {
 	(void) err_code;
@@ -122,7 +122,7 @@ void	Server::response(int client_sk, int err_code)
 	}
 	std::cout << "Data sent" << std::endl;
 }
-
+*/
 void			Server::insert_location(Location* l) {_locations.push_back(l);}
 
 const char*		Server::get_ip_address(void) const {return (_ip_address.c_str());}
