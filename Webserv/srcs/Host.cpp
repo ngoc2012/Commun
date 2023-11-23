@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 15:59:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 16:35:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ Host::~Host()
 		delete (*it);
 	for (std::map<int, ClientRequest*>::iterator it = _sk_client_request.begin();
 		it != _sk_client_request.end(); ++it)
+		delete (it->second);
+	for (std::map<int, Server*>::iterator it = _sk_response.begin();
+		it != _sk_response.end(); ++it)
 		delete (it->second);
 	std::cout << "End server" << std::endl;
 }
