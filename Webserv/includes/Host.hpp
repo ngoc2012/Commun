@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 10:21:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 11:15:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <vector>
 #include <map>
 
-#include "ConfigurationParser.hpp"
 
 #ifndef HOST_HPP
 # define HOST_HPP
@@ -23,6 +22,8 @@
 // Forward declaration
 class	Server;
 class	ClientRequest;
+class	Response;
+class	ConfigurationParser;
 
 //https://www.ibm.com/docs/en/ztpf/2020?topic=overview-blocking-nonblocking
 class	Host
@@ -39,7 +40,6 @@ class	Host
 		int				_max_sk;		// Max of all fd
 		fd_set              		_master_read_set;	// Set of all read fd
 		fd_set              		_read_set;		// Set of active read fd
-		fd_set              		_master_write_set;	// Set of all write fd
 		fd_set              		_write_set;		// Set of active write fd
 		fd_set              		_server_set;
 		std::vector<Server*>		_servers;
