@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 13:27:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 13:29:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,8 @@ void	Host::start(void)
 	{
 		memcpy(&_read_set, &_master_set, sizeof(_master_set));
 		memcpy(&_write_set, &_master_set, sizeof(_master_set));
-		for (std::map<int, Server*>::iterator it = _sk_server.begin(); it != _sk_server.end();)
+		for (std::map<int, Server*>::iterator it = _sk_server.begin(); it != _sk_server.end();++it)
 			FD_CLR(it->first, &_write_set);
-		std::cout << "Here" << std::endl;
 		if (select_available_sk() == false)
 			break;
 		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
@@ -127,6 +126,7 @@ bool	Host::select_available_sk(void)
 {
 	std::cout << "Waiting on select() ..." << std::endl;
 	_sk_ready = select(_max_sk + 1, &_read_set, &_write_set, NULL, NULL);// No timeout
+	//_sk_ready = select(_max_sk + 1, &_read_set, NULL, NULL, NULL);// No timeout
 	std::cout << "_sk_ready = " << _sk_ready << std::endl;
 	if (_sk_ready < 0)
 	{
