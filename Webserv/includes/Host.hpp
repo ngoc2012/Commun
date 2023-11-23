@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 13:19:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 15:24:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class	Host
 
 		int				_sk_ready;
 		int				_max_sk;		// Max of all fd
-		fd_set              		_master_set;	// Set of all read fd
+		fd_set              		_master_set;		// Set of all read fd
 		fd_set              		_read_set;		// Set of active read fd
 		fd_set              		_write_set;		// Set of active write fd
 		fd_set              		_server_set;
