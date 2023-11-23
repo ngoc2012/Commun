@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 15:47:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 09:59:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,11 @@ void	Host::start(void)
 		return ;
 	do
 	{
-		memcpy(&_working_set, &_master_set, sizeof(_master_set));
+		memcpy(&_read_set, &_master_set, sizeof(_master_set));
 		if (select_available_sk() == false)
 			break;
 		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
-			if (FD_ISSET(i, &_working_set))
+			if (FD_ISSET(i, &_read_set))
 			{
 				_sk_ready--;
 				if (FD_ISSET(i, &_server_set))
@@ -114,7 +114,7 @@ void	Host::start(void)
 bool	Host::select_available_sk(void)
 {
 	std::cout << "Waiting on select() ..." << std::endl;
-	_sk_ready = select(_max_sk + 1, &_working_set, NULL, NULL, NULL);// No timeout
+	_sk_ready = select(_max_sk + 1, &_read_set, NULL, NULL, NULL);// No timeout
 	if (_sk_ready < 0)
 	{
 		if (errno != EINTR)
