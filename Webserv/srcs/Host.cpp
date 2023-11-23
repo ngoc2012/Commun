@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 13:19:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 13:21:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,15 +105,18 @@ void	Host::start(void)
 		if (select_available_sk() == false)
 			break;
 		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
-			if (FD_ISSET(i, &_read_set))
+			if (FD_ISSET(i, &_write_set) && _sk_response.find(i) != _sk_response.end())
+			{
+				_sk_ready--;
+				_sk_response[i]->send();
+			}
+			else if (FD_ISSET(i, &_read_set))
 			{
 				_sk_ready--;
 				if (FD_ISSET(i, &_server_set))
 					_sk_server[i]->accept_client_sk();
 				else
 				{
-					if (FD_ISSET(i, &_write_set) && _sk_response.find(i) != _sk_response.end())
-						_sk_response[i]->send();
 					else
 						_sk_client_request[i]->read_client_request();
 				}
@@ -125,6 +128,7 @@ bool	Host::select_available_sk(void)
 {
 	std::cout << "Waiting on select() ..." << std::endl;
 	_sk_ready = select(_max_sk + 1, &_read_set, &_write_set, NULL, NULL);// No timeout
+	std::cout << "_sk_ready = " << _sk_ready << std::endl;
 	if (_sk_ready < 0)
 	{
 		if (errno != EINTR)
