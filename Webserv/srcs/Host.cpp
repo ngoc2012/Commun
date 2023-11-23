@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 10:02:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 10:07:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	Host::start(void)
 	if (_parser_error || !check_servers_conf())
 		return ;
 	FD_ZERO(&_master_read_set);
+	FD_ZERO(&_master_write_set);
 	FD_ZERO(&_server_set);
 	int	listen_sk;
 	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end();)
