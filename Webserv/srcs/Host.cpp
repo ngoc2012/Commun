@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 18:20:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 18:25:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,10 +126,6 @@ void	Host::start(void)
 			{
 				std::cout << "Write set sk = " << i << std::endl;
 				_sk_ready--;
-			}
-			if (FD_ISSET(i, &_write_set) && _sk_response.find(i) != _sk_response.end())
-			{
-				std::cout << "Write response sk = " << i << std::endl;
 				_sk_response[i]->send();
 			}
 		}
