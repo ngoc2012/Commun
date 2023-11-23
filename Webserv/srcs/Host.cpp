@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 21:55:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 21:58:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,8 @@ bool	Host::check_servers_conf(void)
 	return (true);
 }
 
-void	Host::start(void)
+void	Host::start_server(void)
 {
-	if (_parser_error || !check_servers_conf())
-		return ;
-	FD_ZERO(&_master_read_set);
-	FD_ZERO(&_master_write_set);
-	FD_ZERO(&_server_set);
 	int	listen_sk;
 	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end();)
 	{
@@ -104,6 +99,16 @@ void	Host::start(void)
 			_servers.erase(it);
 		}
 	}
+}
+
+void	Host::start(void)
+{
+	if (_parser_error || !check_servers_conf())
+		return ;
+	FD_ZERO(&_master_read_set);
+	FD_ZERO(&_master_write_set);
+	FD_ZERO(&_server_set);
+	start_server();
 	if (!_sk_server.size())
 		return ;
 	do
@@ -140,7 +145,6 @@ bool	Host::select_available_sk(void)
 	//std::cout << "_sk_ready = " << _sk_ready << std::endl;
 	if (_sk_ready < 0)
 	{
-		//if (errno != EINTR)
 		perror("select() failed");
 		return (false);
 	}
