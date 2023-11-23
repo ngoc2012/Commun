@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 10:07:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 10:09:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Host::~Host()
 	std::cout << "End server" << std::endl;
 }
 
-void  	Host::add_new_sk_2_master_read_set(int new_sk, Server* s)
+void  	Host::add_sk_server_2_master_read_set(int new_sk, Server* s)
 {
 	if (new_sk > _max_sk)
 		_max_sk = new_sk;
@@ -54,7 +54,7 @@ void  	Host::add_new_sk_2_master_read_set(int new_sk, Server* s)
 
 void	Host::new_client_request_sk(int new_sk, Server* s)
 {
-	add_new_sk_2_master_read_set(new_sk, s);
+	add_sk_server_2_master_read_set(new_sk, s);
 	_sk_client_request[new_sk] = new ClientRequest(new_sk, this);
 }
 
@@ -83,7 +83,7 @@ void	Host::start(void)
 		listen_sk = (*it)->server_socket();
 		if (listen_sk > 0)
 		{
-			add_new_sk_2_master_read_set(listen_sk, *it);
+			add_sk_server_2_master_read_set(listen_sk, *it);
 			FD_SET(listen_sk, &_server_set);
 			++it;
 		}

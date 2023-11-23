@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 10:05:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 10:09:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ class	Host
 		std::map<int, ClientRequest*>	_sk_client_request;
 
 		bool				select_available_sk(void);
-		void  				add_new_sk_2_master_read_set(int, Server*);
+		void  				add_sk_server_2_master_read_set(int, Server*);
 
 		Host();
 		Host(const Host&);
