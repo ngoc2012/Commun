@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 15:52:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 16:03:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	ClientRequest::clean()
 
 int	ClientRequest::read_error(std::string s, int err_code)
 {
+	(void) err_code;
 	std::cerr << s << std::endl;
-	_host->get_sk_server()[_socket]->response(_socket, err_code);
-	_host->close_client_sk(_socket);
+	_host->new_response_sk(_socket, _server, this);
 	return (err_code);
 }
 

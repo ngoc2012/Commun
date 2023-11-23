@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 15:57:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 16:03:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	Response::send(void)
 		"\r\n"  			// End of headers
 		"<link rel=\"icon\" href=\"data:,\">"
 		"<html><body><h1>Hello, client!</h1></body></html>";
-	if (send(_socket, http_response, strlen(http_response), 0) < 0)
+	if (::send(_socket, http_response, strlen(http_response), 0) < 0)
 		perror("  send() failed");
 	_host->delete_response(_socket);
 	_host->close_client_sk(_socket);
