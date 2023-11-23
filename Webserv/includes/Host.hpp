@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 16:01:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 17:55:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ class	Host
 
 		int				_sk_ready;
 		int				_max_sk;		// Max of all fd
-		fd_set              		_master_set;		// Set of all read fd
+		fd_set              		_master_read_set;	// Set of all read fd
+		fd_set              		_master_write_set;	// Set of all read fd
 		fd_set              		_read_set;		// Set of active read fd
 		fd_set              		_write_set;		// Set of active write fd
 		fd_set              		_server_set;
@@ -44,7 +45,7 @@ class	Host
 		std::map<int, ClientRequest*>	_sk_client_request;
 
 		bool				select_available_sk(void);
-		void  				add_sk_2_master_set(int, Server*);
+		void  				add_sk_2_master_read_set(int, Server*);
 
 		Host();
 		Host(const Host&);
