@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 22:22:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 22:49:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ _host(h),
 _server(s),
 _request(r)
 {
+	_locations = s->get_locations();
 	std::cout << "Response Constructor sk: " << sk << std::endl;
 }
 Response::~Response()
@@ -40,7 +41,6 @@ Response::~Response()
 void	Response::send(void)
 {
 	//Send back data
-	//std::vector<Location*>&	_locations = _locations->get_locations();
 	const char* http_response =
 		"HTTP/1.1 200 OK\r\n"
 		"Content-Type: text/html\r\n"
