@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 18:19:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 18:20:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,6 @@ void	Host::start(void)
 	{
 		memcpy(&_read_set, &_master_read_set, sizeof(_master_read_set));
 		memcpy(&_write_set, &_master_write_set, sizeof(_master_read_set));
-		for (std::map<int, Server*>::iterator it = _sk_server.begin(); it != _sk_server.end();++it)
-			FD_CLR(it->first, &_write_set);
 		if (select_available_sk() == false)
 			break;
 		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
