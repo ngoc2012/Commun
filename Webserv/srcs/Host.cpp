@@ -109,7 +109,7 @@ void	Host::start(void)
 	do
 	{
 		memcpy(&_read_set, &_master_read_set, sizeof(_master_read_set));
-		memcpy(&_write_set, &_master_write_set, sizeof(_master_read_set));
+		memcpy(&_write_set, &_master_write_set, sizeof(_master_write_set));
 		if (select_available_sk() == false)
 			break;
 		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
