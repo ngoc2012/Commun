@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 15:42:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 15:53:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,11 +152,11 @@ void	Host::close_client_sk(int i)
 			_max_sk -= 1;
 }
 
-int				Host::get_max_clients(void) const {return (_max_clients);}
-std::map<int, Server*>		Host::get_sk_server(void) const {return (_sk_server);}
-size_t				Host::get_client_max_body_size(void) const {return (_client_max_body_size);}
-size_t				Host::get_client_body_buffer_size(void) const {return (_client_body_buffer_size);}
+int			Host::get_max_clients(void) const {return (_max_clients);}
+std::map<int, Server*>	Host::get_sk_server(void) const {return (_sk_server);}
+size_t			Host::get_client_max_body_size(void) const {return (_client_max_body_size);}
+size_t			Host::get_client_body_buffer_size(void) const {return (_client_body_buffer_size);}
 
-void				Host::set_client_max_body_size(size_t n) {_client_max_body_size = n;}
-void				Host::set_client_body_buffer_size(size_t n) {_client_body_buffer_size = n;}
-void				Host::set_parser_error(bool e) {_parser_error = e;}
+void			Host::set_client_max_body_size(size_t n) {_client_max_body_size = n;}
+void			Host::set_client_body_buffer_size(size_t n) {_client_body_buffer_size = n;}
+void			Host::set_parser_error(bool e) {_parser_error = e;}

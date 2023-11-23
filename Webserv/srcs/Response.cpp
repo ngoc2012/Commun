@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 15:40:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 15:52:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void	Response::send(void)
 		perror("  send() failed");
 		_host->close_client_sk(client_sk);
 	}
+	_host->close_client_sk(_socket);
 	std::cout << "Response sent" << std::endl;
 }
