@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 15:35:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 15:36:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class	ClientRequest
 		int		_socket;
 		Host*		_host;
 		Server*		_server;
+
 		int		_error;
 		std::string	_header;
 		std::string	_body;
@@ -37,7 +38,7 @@ class	ClientRequest
 		ClientRequest(const ClientRequest&);
 		ClientRequest &operator=(const ClientRequest& op);
 	public:
-		ClientRequest(int, Host*);
+		ClientRequest(int, Host*, Server*);
 		virtual ~ClientRequest();
 
 		int		read_client_request(void);
