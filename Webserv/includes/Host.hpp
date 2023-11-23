@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 15:55:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 16:01:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,21 @@ class	Host
 		Host(const char *);
 		virtual ~Host();
 
-		void    			start(void);
-		void				new_client_request_sk(int, Server*);
-		void				close_client_sk(int);
-		void				delete_response(int);
-		bool				check_servers_conf(void);
+		void    		start(void);
+		void			new_client_request_sk(int, Server*);
+		void			new_response_sk(int, Server*, ClientRequest*);
+		void			close_client_sk(int);
+		void			delete_response(int);
+		bool			check_servers_conf(void);
 
-		int				get_max_clients(void) const;
-		std::map<int, Server*>		get_sk_server(void) const;
-		size_t				get_client_max_body_size(void) const;
-		size_t				get_client_body_buffer_size(void) const;
+		int			get_max_clients(void) const;
+		std::map<int, Server*>	get_sk_server(void) const;
+		size_t			get_client_max_body_size(void) const;
+		size_t			get_client_body_buffer_size(void) const;
 
-		void				set_client_max_body_size(size_t);
-		void				set_client_body_buffer_size(size_t);
-		void				set_parser_error(bool);
+		void			set_client_max_body_size(size_t);
+		void			set_client_body_buffer_size(size_t);
+		void			set_parser_error(bool);
 };
 
 #endif
