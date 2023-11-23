@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 11:21:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 15:38:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ class	Response
 		int		_socket;
 		Host*		_host;
 		Server*		_server;
+		ClientRequest*	_request;
 
 		Response();
 		Response(const Response&);
 		Response &operator=(const Response& op);
 	public:
-		Response(int, Host*, Server*);
+		Response(int, Host*, Server*, ClientRequest*);
 		virtual ~Response();
 
 		void		send(void);
