@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 22:00:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 22:05:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ class	Host
 		bool				select_available_sk(void);
 		void  				add_sk_2_master_read_set(int, Server*);
 		void    			start_server(void);
+		void    			check_sk_ready(void);
 		bool				check_servers_conf(void);
 
 		Host();
