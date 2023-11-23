@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 15:24:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 15:55:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ class	Host
 		void    			start(void);
 		void				new_client_request_sk(int, Server*);
 		void				close_client_sk(int);
+		void				delete_response(int);
 		bool				check_servers_conf(void);
 
 		int				get_max_clients(void) const;
