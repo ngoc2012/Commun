@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 19:21:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 21:50:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	Response::send(void)
 		"<html><body><h1>Hello, client!</h1></body></html>";
 	if (::send(_socket, http_response, strlen(http_response), 0) < 0)
 		perror("  send() failed");
-	_host->delete_response(_socket);
 	_host->close_client_sk(_socket);
+	_host->delete_response(_socket);
 	std::cout << "Response sent" << std::endl;
 }
