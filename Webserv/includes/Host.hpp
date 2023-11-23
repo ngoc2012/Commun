@@ -6,15 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 11:19:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 11:29:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/select.h>
-
-#include <vector>
-#include <map>
-
+#include "webserv.hpp"
 
 #ifndef HOST_HPP
 # define HOST_HPP

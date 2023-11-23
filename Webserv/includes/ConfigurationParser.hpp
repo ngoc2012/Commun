@@ -6,16 +6,9 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 12:53:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 11:29:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <cstdlib>
-#include <sys/stat.h>	// stat, S_ISDIR
-
-#include <iostream>
-#include <vector>
-#include <fstream>
 
 #include "webserv.hpp"
 
