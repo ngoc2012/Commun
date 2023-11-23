@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 17:54:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 17:56:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	Host::start(void)
 	if (_parser_error || !check_servers_conf())
 		return ;
 	FD_ZERO(&_master_read_set);
+	FD_ZERO(&_master_write_set);
 	FD_ZERO(&_server_set);
 	int	listen_sk;
 	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end();)
@@ -106,8 +107,8 @@ void	Host::start(void)
 		return ;
 	do
 	{
-		memcpy(&_read_set, &_master_read_set, sizeof(_master_set));
-		memcpy(&_write_set, &_master_read_set, sizeof(_master_set));
+		memcpy(&_read_set, &_master_read_set, sizeof(_master_read_set));
+		memcpy(&_write_set, &_master_write_set, sizeof(_master_read_set));
 		for (std::map<int, Server*>::iterator it = _sk_server.begin(); it != _sk_server.end();++it)
 			FD_CLR(it->first, &_write_set);
 		if (select_available_sk() == false)
