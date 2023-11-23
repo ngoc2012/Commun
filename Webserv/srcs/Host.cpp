@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 19:01:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 21:53:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	Host::start(void)
 		{
 			if (FD_ISSET(i, &_read_set))
 			{
-				std::cout << "Read set sk = " << i << std::endl;
+				//std::cout << "Read set sk = " << i << std::endl;
 				_sk_ready--;
 				if (FD_ISSET(i, &_server_set))
 					_sk_server[i]->accept_client_sk();
@@ -125,7 +125,7 @@ void	Host::start(void)
 			}
 			if (FD_ISSET(i, &_write_set))
 			{
-				std::cout << "Write set sk = " << i << std::endl;
+				//std::cout << "Write set sk = " << i << std::endl;
 				_sk_ready--;
 				_sk_response[i]->send();
 			}
