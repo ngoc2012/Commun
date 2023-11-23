@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 10:48:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 15:35:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class	ClientRequest
 	private:
 		int		_socket;
 		Host*		_host;
+		Server*		_server;
 		int		_error;
 		std::string	_header;
 		std::string	_body;

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/22 11:00:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 15:34:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ClientRequest::read_client_request(void)
 	std::cout << "===============================" << std::endl;
 	std::cout << "Body:\n" << _body << std::endl;
 	std::cout << "===============================" << std::endl;
-	_host->get_sk_server()[_socket]->response(_socket, 200);
+	_host->new_response_sk(_socket, get_sk_server()[_socket]->response(_socket, 200), _host);
 	_host->close_client_sk(_socket);
 	return (1);
 }
