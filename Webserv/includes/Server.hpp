@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 22:25:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 22:27:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ class	Server
 		Host*			get_host(void) const;
 		std::string		get_root(void) const;
 		std::string		get_server_name(void) const;
-		std::vector<Location*>*	get_locations(void) const;	
+		std::vector<Location*>	get_locations(void) const;	
 
 		void			set_socket(int);
 		void			set_ip_address(std::string);

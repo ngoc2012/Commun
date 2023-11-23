@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 22:24:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 22:27:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int			Server::get_socket(void) const {return (_socket);}
 Host*			Server::get_host(void) const {return (_host);}
 std::string		Server::get_root(void) const {return (_root);}
 std::string		Server::get_server_name(void) const {return (_server_name);}
-std::vector<Location*>&	Server::get_locations(void) const {return (_locations);}
+std::vector<Location*>	Server::get_locations(void) const {return (_locations);}
 
 void			Server::set_socket(int i) {_socket = i;}
 void			Server::set_ip_address(std::string ip) {_ip_address = ip;}
