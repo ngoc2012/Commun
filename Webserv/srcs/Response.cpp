@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 10:28:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 11:22:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,9 @@ Response::Response(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(
 Response::~Response()
 {
 	std::cout << "Destruction response" << std::endl;
+}
+
+void	Response::send(void)
+{
+	std::cout << "Response sent" << std::endl;
 }
