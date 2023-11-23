@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 13:24:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 13:27:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	Host::start(void)
 		memcpy(&_write_set, &_master_set, sizeof(_master_set));
 		for (std::map<int, Server*>::iterator it = _sk_server.begin(); it != _sk_server.end();)
 			FD_CLR(it->first, &_write_set);
+		std::cout << "Here" << std::endl;
 		if (select_available_sk() == false)
 			break;
 		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
@@ -116,10 +117,7 @@ void	Host::start(void)
 				if (FD_ISSET(i, &_server_set))
 					_sk_server[i]->accept_client_sk();
 				else
-				{
-					else
-						_sk_client_request[i]->read_client_request();
-				}
+					_sk_client_request[i]->read_client_request();
 			}
 		}
 	} while (true);
