@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 21:58:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 22:06:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,28 @@ void	Host::start_server(void)
 	}
 }
 
+void	Host::check_sk_ready(void)
+{
+	for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
+	{
+		if (FD_ISSET(i, &_read_set))
+		{
+			//std::cout << "Read set sk = " << i << std::endl;
+			_sk_ready--;
+			if (FD_ISSET(i, &_server_set))
+				_sk_server[i]->accept_client_sk();
+			else
+				_sk_client_request[i]->read_client_request();
+		}
+		if (FD_ISSET(i, &_write_set))
+		{
+			//std::cout << "Write set sk = " << i << std::endl;
+			_sk_ready--;
+			_sk_response[i]->send();
+		}
+	}
+}
+
 void	Host::start(void)
 {
 	if (_parser_error || !check_servers_conf())
@@ -117,24 +139,7 @@ void	Host::start(void)
 		memcpy(&_write_set, &_master_write_set, sizeof(_master_write_set));
 		if (select_available_sk() == false)
 			break;
-		for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
-		{
-			if (FD_ISSET(i, &_read_set))
-			{
-				//std::cout << "Read set sk = " << i << std::endl;
-				_sk_ready--;
-				if (FD_ISSET(i, &_server_set))
-					_sk_server[i]->accept_client_sk();
-				else
-					_sk_client_request[i]->read_client_request();
-			}
-			if (FD_ISSET(i, &_write_set))
-			{
-				//std::cout << "Write set sk = " << i << std::endl;
-				_sk_ready--;
-				_sk_response[i]->send();
-			}
-		}
+		check_sk_ready();
 	} while (true);
 }
 
