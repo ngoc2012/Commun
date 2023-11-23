@@ -87,7 +87,7 @@ int	Server::bind_addr(void)
 //Accept all the new connections, create a new socket and add to the master set
 void	Server::accept_client_sk(void)
 {
-	std::cout << "Listening socket is readable" << _socket << std::endl;
+	std::cout << "Listening socket is readable " << _socket << std::endl;
 	int	new_sk;
 	do
 	{
