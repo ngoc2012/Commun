@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 11:22:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 15:40:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ Response&	Response::operator=( Response const & src )
 	(void) src;
 	return (*this);
 }
-Response::Response(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
+Response::Response(int sk, Host* h, Server* s, ClientRequest* r) :
+_socket(sk),
+_host(h),
+_server(s),
+_request(r)
 {
 	std::cout << "Response Constructor sk: " << sk << std::endl;
 }
@@ -35,5 +39,19 @@ Response::~Response()
 
 void	Response::send(void)
 {
+	(void) err_code;
+	//Send back data
+	const char* http_response =
+		"HTTP/1.1 200 OK\r\n"
+		"Content-Type: text/html\r\n"
+		"Connection: close\r\n"  // Close the connection after this response
+		"\r\n"  // End of headers
+		"<link rel=\"icon\" href=\"data:,\">"
+		"<html><body><h1>Hello, client!</h1></body></html>";
+	if (send(client_sk, http_response, strlen(http_response), 0) < 0)
+	{
+		perror("  send() failed");
+		_host->close_client_sk(client_sk);
+	}
 	std::cout << "Response sent" << std::endl;
 }
