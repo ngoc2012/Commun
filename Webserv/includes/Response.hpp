@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 22:30:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/23 22:47:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ class	Response
 
 		Response();
 		Response(const Response&);
-		Response &operator=(const Response& op);
+		Response		&operator=(const Response& op);
 	public:
 		Response(int, Host*, Server*, ClientRequest*);
 		virtual ~Response();
 
-		void		send(void);
+		void			send(void);
 };
 
 #endif
