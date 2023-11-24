@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 21:34:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:36:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ Header::~Header()
 
 std::string	Header::get_allow(void)
 {
+	Server*	server = _response->
 }
 
 std::string	Header::get_current_time(void)

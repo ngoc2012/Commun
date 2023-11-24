@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 21:35:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:37:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,3 +103,4 @@ void	Response::send(void)
 
 Location*	Response::get_location(void) const {return (_location);}
 size_t		Response::get_content_length(void) const {return (_content_length);}
+Server*		Response::get_server(void) const {return (_server);}
