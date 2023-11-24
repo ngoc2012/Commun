@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 14:51:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 17:27:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ _host(h),
 _server(s),
 _request(r)
 {
-	_locations = s->get_locations();
 	std::cout << "Response Constructor sk: " << sk << std::endl;
 }
 Response::~Response()
@@ -66,8 +65,9 @@ bool	Response::find_url(std::string url, std::string l_url)
 
 std::vector<Location*>::iterator	Response::find_location(std::string url)
 {
+	std::vector<Location*>		locations = s->get_locations();
 	std::vector<Location*>::iterator it;
-	for (it = _locations.begin(); it != _locations.end(); ++it)
+	for (it = locations.begin(); it != locations.end(); ++it)
 	{
 		std::vector<e_method>		methods = (*it)->get_methods();
 		if (find_method(_request->get_method(), methods) != methods.end()
@@ -80,9 +80,10 @@ std::vector<Location*>::iterator	Response::find_location(std::string url)
 void	Response::send(void)
 {
 	std::vector<Location*>::iterator it = find_location(_request->get_url());
-	if (it != _locations.end())
-		std::cout << "Found url: " << (*it)->get_url() << std::endl;
-
+	if (it == _locations.end())
+		return ;
+	_location = *it;
+	std::cout << "Found url: " << (*it)->get_url() << std::endl;
 	//Send back data
 	Header	header(200, this);
 	std::string	http_response = header.get_str();
