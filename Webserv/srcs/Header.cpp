@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 17:07:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 17:08:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ Header::Header(int e, Response* r) : _err_code(e), _response(r)
 	_str += "\r\n";
 	_str += "Allow: " + _allow + "\r\n";
 	//_str += "Content-Language: en" + "\r\n";
+	_str += "Content-Length: " + _contentLength + "\r\n";
 	std::cout << "Header Constructor" << std::endl;
 }
 Header::~Header()
