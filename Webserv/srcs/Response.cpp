@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 17:30:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 17:34:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,3 +99,5 @@ void	Response::send(void)
 	_host->delete_response(_socket);
 	std::cout << "Response sent" << std::endl;
 }
+
+Location*	get_location(void) const {return (_location);}
