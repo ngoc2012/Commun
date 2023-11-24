@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 14:56:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:21:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ class	Response;
 class	Header
 {
 	private:
-		int				_err_code;
-		Response*			_response;
-		std::map<int, std::string>	_status;
-		std::string			_str;
+		int					_err_code;
+		Response*				_response;
+		std::map<int, std::string>		_status;
+		std::map<std::string, std::string>	_types;
+		std::string				_str;
 
 		std::string			get_current_time(void);
 		std::string			file_last_modified_time(std::string);
