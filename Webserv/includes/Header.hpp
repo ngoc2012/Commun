@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 21:40:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:55:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ class	Header
 		Header(int, std::string, Response*);
 		virtual ~Header();
 
+		void				generate(void);
 		std::string			get_str(void) const;
 
 		void				set_allow(std::string);

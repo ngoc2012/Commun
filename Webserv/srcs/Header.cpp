@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 21:36:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:54:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ Header::~Header()
 
 std::string	Header::get_allow(void)
 {
-	Server*	server = _response->
+	Server*	server = _response->get_server();
+
 }
 
 std::string	Header::get_current_time(void)
@@ -107,3 +108,4 @@ std::string	Header::file_last_modified_time(std::string file_name)
 }
 
 std::string	Header::get_str(void) const {return (_str);}
+void		Header::set_allow(std::string a) {_allow = a;}
