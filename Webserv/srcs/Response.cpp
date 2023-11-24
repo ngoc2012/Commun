@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 22:49:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 09:46:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ _request(r)
 Response::~Response()
 {
 	std::cout << "Destruction response" << std::endl;
+}
+
+Location*	Response::find_location(std::string url)
+{
 }
 
 void	Response::send(void)
