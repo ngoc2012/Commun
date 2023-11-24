@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 14:19:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 14:35:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class	Header
 		int				_err_code;
 		Response*			_response;
 		std::map<int, std::string>	_status;
+		std::string			_str;
 
 		Header();
 		Header(const Header&);
@@ -35,7 +36,7 @@ class	Header
 		Header(int, Response*);
 		virtual ~Header();
 
-		void			send(void);
+		std::string			get_str(void) const;
 };
 
 #endif
