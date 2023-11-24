@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 21:30:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:40:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class	Header
 		std::map<int, std::string>		_status;
 		std::map<std::string, std::string>	_types;
 		std::string				_str;
+		std::string				_allow;
 
 		std::string			get_current_time(void);
 		std::string			file_last_modified_time(std::string);
@@ -45,6 +46,8 @@ class	Header
 		virtual ~Header();
 
 		std::string			get_str(void) const;
+
+		void				set_allow(std::string);
 };
 
 #endif
