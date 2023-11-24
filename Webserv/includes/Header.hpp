@@ -6,11 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 14:35:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 14:44:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ctime>	// time
+
 #include <iostream>
+#include <iomanip>	 // strftime, gmtime
 
 #ifndef HEADER_HPP
 # define HEADER_HPP
