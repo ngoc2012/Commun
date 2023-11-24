@@ -1,44 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Response.hpp                                       :+:      :+:    :+:   */
+/*   Header.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 10:35:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 13:16:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-#ifndef RESPONSE_HPP
-# define RESPONSE_HPP
+#ifndef HEADER_HPP
+# define HEADER_HPP
  
 class	Server;
 class	Location;
 class	ClientRequest;
 class	ConfigurationParser;
+class	Response;
 
-class	Response
+class	Header
 {
 	private:
-		int			_socket;
-		Host*			_host;
-		Server*			_server;
-		ClientRequest*		_request;
-		std::vector<Location*>	_locations;	
-
-		std::vector<e_method>::iterator		find_method(e_method m, std::vector<e_method> methods);
-		bool					find_url(std::string url, std::string l_url);
-		std::vector<Location*>::iterator	find_location(std::string url);
-
-		Response();
-		Response(const Response&);
-		Response		&operator=(const Response& op);
+		Header();
+		Header(const Header&);
+		Header		&operator=(const Header& op);
 	public:
-		Response(int, Host*, Server*, ClientRequest*);
-		virtual ~Response();
+		Header(int, Response*);
+		virtual ~Header();
 
 		void			send(void);
 };
