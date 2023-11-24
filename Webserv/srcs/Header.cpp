@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 21:19:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:29:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,6 @@ Header&	Header::operator=( Header const & src )
 }
 Header::Header(int e, Response* r) : _err_code(e), _response(r)
 {
-	_status[100] = "Continue";
-	_status[200] = "OK";
-	_status[201] = "Created";
-	_status[204] = "No Content";
-	_status[400] = "Bad Request";
-	_status[403] = "Forbidden";
-	_status[404] = "Not Found";
-	_status[405] = "Method Not Allowed";
-	_status[413] = "Payload Too Large";
-	_status[500] = "Internal Server Error";
 	_str += "HTTP/1.1 ";
 	_str += itos(e) + " ";
 	if (_status.find(e) == _status.end())
@@ -55,6 +45,30 @@ Header::Header(int e, Response* r) : _err_code(e), _response(r)
 	_str += "Content-Type: " + _content_type + "\r\n";
 	std::cout << "Header Constructor" << std::endl;
 }
+
+void	Header::init(void)
+{
+	_status[100] = "Continue";
+	_status[200] = "OK";
+	_status[201] = "Created";
+	_status[204] = "No Content";
+	_status[400] = "Bad Request";
+	_status[403] = "Forbidden";
+	_status[404] = "Not Found";
+	_status[405] = "Method Not Allowed";
+	_status[413] = "Payload Too Large";
+	_status[500] = "Internal Server Error";
+	_types["html"] = "text/html";
+	_types["css"] = "text/css";
+	_types["js"] = "text/javascript";
+	_types["jpeg"] = "image/jpeg";
+	_types["jpg"] = "image/jpeg";
+	_types["png"] = "image/png";
+	_types["bmp"] = "image/bmp";
+	_types["default"] = "text/plain";
+}
+
+
 Header::~Header()
 {
 	std::cout << "Header Destruction" << std::endl;
