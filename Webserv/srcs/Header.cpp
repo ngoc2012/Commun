@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 13:16:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 13:18:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,13 @@ Header&	Header::operator=( Header const & src )
 	(void) src;
 	return (*this);
 }
-Header::Header(int sk, Host* h, Server* s, ClientRequest* r) :
-_socket(sk),
-_host(h),
-_server(s),
-_request(r)
+Header::Header(int e, Response* r) :
+_err_code(e),
+_response(r)
 {
-	_locations = s->get_locations();
-	std::cout << "Header Constructor sk: " << sk << std::endl;
+	std::cout << "Header Constructor" << std::endl;
 }
 Header::~Header()
 {
-	std::cout << "Destruction response" << std::endl;
+	std::cout << "Header Destruction" << std::endl;
 }
