@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 14:53:22 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 14:54:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 15:01:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 std::string	itos(int n)
 {
 	std::ostringstream oss;
-	oss << number;
+	oss << n;
 	return (oss.str());
 }
