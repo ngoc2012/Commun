@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 22:20:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 22:24:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,8 @@ std::vector<e_method>::iterator	Response::find_method(e_method m, std::vector<e_
 	std::vector<e_method>::iterator	it;
 	for (it = methods.begin(); it != methods.end(); ++it)
 		if (m == *it)
-		{
-			std::cout << _request->get_method() << "==" << *it << std::endl;
 			return (it);
-		}
+	//std::cout << _request->get_method() << "==" << *it << std::endl;
 	return (it);
 }
 
@@ -114,10 +112,11 @@ void	Response::send(void)
 	//Send back data
 	Header	header(200, std::string("default"), this);
 	header.set_allow(get_methods_str());
-	std::string	http_response = header.generate();
 	std::string	body = "<link rel=\"icon\" href=\"data:,\">"
 		"<html><body><h1>Hello, client!</h1></body></html>";
 	_content_length = body.length();
+
+	std::string	http_response = header.generate();
 	http_response += body;
 	//const char* http_response =
 	//	"HTTP/1.1 200 OK\r\n"
