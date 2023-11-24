@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 21:22:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:30:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ class	Header
 		Header(const Header&);
 		Header		&operator=(const Header& op);
 	public:
-		Header(int, Response*);
+		Header(int, std::string, Response*);
 		virtual ~Header();
 
 		std::string			get_str(void) const;
