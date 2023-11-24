@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 21:29:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:32:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ Header&	Header::operator=( Header const & src )
 	(void) src;
 	return (*this);
 }
-Header::Header(int e, Response* r) : _err_code(e), _response(r)
+Header::Header(int e, std::string extension, Response* r)
 {
+	_err_code = e;
+	_response = r;
+	init();
 	_str += "HTTP/1.1 ";
 	_str += itos(e) + " ";
 	if (_status.find(e) == _status.end())
