@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 10:21:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 10:22:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ std::vector<Location*>::iterator	Response::find_location(std::string url)
 
 void	Response::send(void)
 {
-	std::vector<Location*>::iterator it = find_location(;
+	std::vector<Location*>::iterator it = find_location(_request->get_url());
 	//Send back data
 	const char* http_response =
 		"HTTP/1.1 200 OK\r\n"
