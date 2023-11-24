@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 10:01:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 10:21:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ std::vector<Location*>::iterator	Response::find_location(std::string url)
 		if (find_method(_request->get_method(), methods) != methods.end())
 		{
 			if (url == l_url)
+				return (it);
+			if (url.length() > 1 && url.substr(0, l_url.length()) == l_url)
 				return (it);
 		}
 	}
