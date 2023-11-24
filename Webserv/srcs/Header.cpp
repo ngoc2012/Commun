@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 14:56:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 14:59:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,16 @@ std::string	Header::get_current_time(void)
 	return (std::strftime(buffer, 80, "%a, %d %b %Y %H:%M:%S GMT", timeInfo));
 }
 
-std::string	Header::file_last_modified_time(void)
+std::string	Header::file_last_modified_time(std::string file_name)
 {
-	struct stat fileInfo;
-	if (stat(filename, &fileInfo) != 0) {
+	struct stat	file_info;
+	if (stat(file_name.c_str(), &file_info) != 0) {
 		std::cerr << "Error getting file information." << std::endl;
-		return 1;
+		return ("");
 	}
-	std::tm* timeInfo = std::gmtime(&fileInfo.st_mtime);
-	char buffer[80];
-	std::strftime(buffer, 80, "%a, %d %b %Y %H:%M:%S GMT", timeInfo);
+	std::tm*	time_info = std::gmtime(&file_info.st_mtime);
+	char		buffer[80];
+	std::strftime(buffer, 80, "%a, %d %b %Y %H:%M:%S GMT", time_info);
 }
 
 std::string	get_str(void) const {return (_str);}
