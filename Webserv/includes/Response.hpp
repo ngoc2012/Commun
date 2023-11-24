@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 22:47:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 10:33:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 #ifndef RESPONSE_HPP
 # define RESPONSE_HPP
  
+class	Server;
+class	ClientRequest;
+class	ConfigurationParser;
+
 class	Response
 {
 	private:
@@ -23,6 +27,10 @@ class	Response
 		Server*			_server;
 		ClientRequest*		_request;
 		std::vector<Location*>	_locations;	
+
+		std::vector<e_method>::iterator		find_method(e_method m, std::vector<e_method> methods);
+		bool					find_url(std::string url, std::string l_url);
+		std::vector<Location*>::iterator	find_location(std::string url);
 
 		Response();
 		Response(const Response&);
