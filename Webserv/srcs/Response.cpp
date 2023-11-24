@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 17:27:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 17:28:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ _host(h),
 _server(s),
 _request(r)
 {
+	_location = 0;
 	std::cout << "Response Constructor sk: " << sk << std::endl;
 }
 Response::~Response()
@@ -65,7 +66,7 @@ bool	Response::find_url(std::string url, std::string l_url)
 
 std::vector<Location*>::iterator	Response::find_location(std::string url)
 {
-	std::vector<Location*>		locations = s->get_locations();
+	std::vector<Location*>		locations = _server->get_locations();
 	std::vector<Location*>::iterator it;
 	for (it = locations.begin(); it != locations.end(); ++it)
 	{
