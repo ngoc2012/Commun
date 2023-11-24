@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 13:18:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 13:22:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,16 @@ Header::Header(int e, Response* r) :
 _err_code(e),
 _response(r)
 {
+	_status[100] = "Continue";
+	_status[200] = "OK";
+	_status[201] = "Created";
+	_status[204] = "No Content";
+	_status[400] = "Bad Request";
+	_status[403] = "Forbidden";
+	_status[404] = "Not Found";
+	_status[405] = "Method Not Allowed";
+	_status[413] = "Payload Too Large";
+	_status[500] = "Internal Server Error";
 	std::cout << "Header Constructor" << std::endl;
 }
 Header::~Header()
