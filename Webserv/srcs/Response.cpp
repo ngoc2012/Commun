@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 12:24:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 12:27:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ std::vector<e_method>::iterator	Response::find_method(e_method m, std::vector<e_
 
 bool	Response::find_url(std::string url, std::string l_url)
 {
+	std::cout << url << "==" << l_url << std::endl;
 	if (url == l_url)
 		return (true);
 	if (url.length() > 1 && url.substr(0, l_url.length()) == l_url)
