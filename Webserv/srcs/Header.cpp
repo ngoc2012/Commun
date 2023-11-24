@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 22:17:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 22:18:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ Header&	Header::operator=( Header const & src )
 	(void) src;
 	return (*this);
 }
-Header::Header(int e, std::string ext, Response* r)
+Header::Header(int e, std::string ext, Response* r) :
+	_err_code(e),
+	_response(r),
+	_extension(ext)
 {
-	_err_code = e;
-	_response = r;
-	_extension = ext;
 	init();
 	std::cout << "Header Constructor" << std::endl;
 }
@@ -86,12 +86,6 @@ Header::~Header()
 	std::cout << "Header Destruction" << std::endl;
 }
 
-std::string	Header::get_allow(void)
-{
-	Server*	server = _response->get_server();
-
-}
-
 std::string	Header::get_current_time(void)
 {
 	std::time_t currentTime = std::time(0);
@@ -114,5 +108,4 @@ std::string	Header::file_last_modified_time(std::string file_name)
 	return (std::string(buffer));
 }
 
-std::string	Header::get_str(void) const {return (_str);}
 void		Header::set_allow(std::string a) {_allow = a;}
