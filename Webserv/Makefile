@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/24 14:51:47 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/24 14:54:30 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES = main Host Server ClientRequest Response Header ConfigurationParser Location split_string is_digit
+FILES = main Host Server ClientRequest Response Header ConfigurationParser Location split_string is_digit itos
 SRCS = $(addsuffix .cpp, $(addprefix srcs/, $(FILES)))
 INCS = $(wildcard includes/*.hpp)
 OBJS = ${SRCS:.cpp=.o}
