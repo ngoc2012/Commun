@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 17:34:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:17:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	Response::send(void)
 	std::string	http_response = header.get_str();
 	std::string	body = "<link rel=\"icon\" href=\"data:,\">"
 		"<html><body><h1>Hello, client!</h1></body></html>";
+	_content_length = body.length();
 	http_response += body;
 	//const char* http_response =
 	//	"HTTP/1.1 200 OK\r\n"
@@ -100,4 +101,5 @@ void	Response::send(void)
 	std::cout << "Response sent" << std::endl;
 }
 
-Location*	get_location(void) const {return (_location);}
+Location*	Response::get_location(void) const {return (_location);}
+size_t		Response::get_content_length(void) const {return (_content_length);}
