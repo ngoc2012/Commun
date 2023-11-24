@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 10:33:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 10:35:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define RESPONSE_HPP
  
 class	Server;
+class	Location;
 class	ClientRequest;
 class	ConfigurationParser;
 

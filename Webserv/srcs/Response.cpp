@@ -6,14 +6,16 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 10:31:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 10:35:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Host.hpp"
 #include "Server.hpp"
-#include "Response.hpp"
+#include "Location.hpp"
 #include "ClientRequest.hpp"
+
+#include "Response.hpp"
 
 Response::Response()
 {
@@ -62,9 +64,8 @@ std::vector<Location*>::iterator	Response::find_location(std::string url)
 	for (it = _locations.begin(); it != _locations.end(); ++it)
 	{
 		std::vector<e_method>		methods = (*it)->get_methods();
-		std::string			l_url = ;
 		if (find_method(_request->get_method(), methods) != methods.end()
-			&& find_url(url, (*it)->get_url))
+			&& find_url(url, (*it)->get_url()))
 			return (it);
 	}
 	return (it);
