@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 14:44:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 14:56:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ class	Header
 		std::map<int, std::string>	_status;
 		std::string			_str;
 
+		std::string			get_current_time(void);
+		std::string			file_last_modified_time(std::string);
 		Header();
 		Header(const Header&);
 		Header		&operator=(const Header& op);

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 14:55:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 14:56:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Header::Header(int e, Response* r) : _err_code(e), _response(r)
 	_status[413] = "Payload Too Large";
 	_status[500] = "Internal Server Error";
 	_str += "HTTP/1.1 ";
-	_str += to_string(e) + " ";
+	_str += itos(e) + " ";
 	if (_status.find(e) == _status.end())
 		_str += "Unknown error code";
 	else
