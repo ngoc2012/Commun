@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 09:51:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 09:52:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Response::~Response()
 
 std::vector<Location*>::iterator	Response::find_location(std::string url)
 {
-	std::vector<Location*>::iterator it;;
+	std::vector<Location*>::iterator it;
 	for (it = _locations.begin(); it != _locations.end(); ++it)
 	{
 		std::string	l_url = (*it)->get_url;
