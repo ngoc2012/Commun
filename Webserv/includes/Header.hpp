@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 21:21:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:22:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ class	Header
 
 		std::string			get_current_time(void);
 		std::string			file_last_modified_time(std::string);
+		void				init(void);
+
 		Header();
 		Header(const Header&);
 		Header		&operator=(const Header& op);
