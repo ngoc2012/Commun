@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 22:04:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 22:07:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,30 @@ void	Response::find_location(std::string url)
 	}
 }
 
+std::string	Response::get_methods_str(void)
+{
+	if (!_location)
+		return (std::string(""));
+	std::vector<e_method>	methods = _location->get_methods();
+	std::string	s = "";
+	for(std::vector<e_method>::iterator it = methods.begin(); it != methods.end(); ++it)
+	{
+		if (it != methods.begin())
+			s += ",";
+		switch (*it)
+		{
+			case GET:
+				s += "GET";
+			case POST:
+				s += "POST";
+			case PUT:
+				s += "PUT";
+			case NONE:
+				s += "NONE";
+		}
+	}
+}
+
 void	Response::send(void)
 {
 	find_location(_request->get_url());
@@ -100,30 +124,6 @@ void	Response::send(void)
 	_host->close_client_sk(_socket);
 	_host->delete_response(_socket);
 	std::cout << "Response sent" << std::endl;
-}
-
-std::string	Response::get_methods_str(void)
-{
-	if (!_location)
-		return (std::string(""));
-	std::vector<e_method>	methods = _location->get_methods();
-	std::string	s = "";
-	for(std::vector<e_method>::iterator it = methods.begin(); it != methods.end(); ++it)
-	{
-		if (it != methods.begin())
-			s += ",";
-		switch (*it)
-		{
-			case: GET
-				s += "GET";
-			case: POST
-				s += "POST";
-			case: PUT
-				s += "PUT";
-			case: NONE
-				s += "NONE";
-		}
-	}
 }
 
 Location*	Response::get_location(void) const {return (_location);}
