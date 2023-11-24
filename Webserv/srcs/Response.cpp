@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 13:25:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 13:26:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,14 @@ void	Response::send(void)
 	//Send back data
 	Header	header(200, this);
 	std::string	http_response = header.get();
+	std::string	body = "<link rel=\"icon\" href=\"data:,\">"
+		"<html><body><h1>Hello, client!</h1></body></html>";
+	std::string	http_response += body;
 	const char* http_response =
 		"HTTP/1.1 200 OK\r\n"
 		"Content-Type: text/html\r\n"
 		"Connection: close\r\n" 	// Close the connection after this response
 		"\r\n"  			// End of headers
-		"<link rel=\"icon\" href=\"data:,\">"
-		"<html><body><h1>Hello, client!</h1></body></html>";
 	if (::send(_socket, http_response, strlen(http_response), 0) < 0)
 		perror("  send() failed");
 	_host->close_client_sk(_socket);
