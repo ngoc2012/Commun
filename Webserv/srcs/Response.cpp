@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 12:21:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 12:23:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,21 @@ std::vector<e_method>::iterator	Response::find_method(e_method m, std::vector<e_
 	std::vector<e_method>::iterator	it;
 	for (it = methods.begin(); it != methods.end(); ++it)
 		if (m == *it)
+		{
+			std::cout << _request->get_method() << "==" << *it << std::endl;
 			return (it);
-	std::cout << *it << std::endl;
+		}
 	return (it);
 }
 
 bool	Response::find_url(std::string url, std::string l_url)
 {
 	if (url == l_url)
-		return (false);
+		return (true);
 	if (url.length() > 1 && url.substr(0, l_url.length()) == l_url)
-		return (false);
+		return (true);
 	std::cout << "True" << std::endl;
-	return (true);
+	return (false);
 }
 
 std::vector<Location*>::iterator	Response::find_location(std::string url)
