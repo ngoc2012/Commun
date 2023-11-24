@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 14:40:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 14:46:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,16 +55,12 @@ Header::~Header()
 	std::cout << "Header Destruction" << std::endl;
 }
 
-void	Header::set_date(void)
+std::string	Header::get_current_time(void)
 {
-	char		buffer[100];
-	struct timeval	tv;
-	struct tm	*tm;
-
-	gettimeofday(&tv, NULL);
-	tm = gmtime(&tv.tv_sec);
-	strftime(buffer, 100, "%a, %d %b %Y %H:%M:%S GMT", tm);
-	_date = std::string(buffer);
+	std::time_t currentTime = std::time(0);
+	std::tm* timeInfo = std::gmtime(&currentTime);
+	char buffer[80];
+	return (std::strftime(buffer, 80, "%a, %d %b %Y %H:%M:%S GMT", timeInfo));
 }
 
 std::string	get_str(void) const {return (_str);}
