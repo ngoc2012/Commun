@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 17:28:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 17:30:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ bool	Response::find_url(std::string url, std::string l_url)
 	return (false);
 }
 
-std::vector<Location*>::iterator	Response::find_location(std::string url)
+void	Response::find_location(std::string url)
 {
 	std::vector<Location*>		locations = _server->get_locations();
 	std::vector<Location*>::iterator it;
@@ -73,18 +73,15 @@ std::vector<Location*>::iterator	Response::find_location(std::string url)
 		std::vector<e_method>		methods = (*it)->get_methods();
 		if (find_method(_request->get_method(), methods) != methods.end()
 			&& find_url(url, (*it)->get_url()))
-			return (it);
+			_location = *it;
 	}
-	return (it);
 }
 
 void	Response::send(void)
 {
-	std::vector<Location*>::iterator it = find_location(_request->get_url());
-	if (it == _locations.end())
-		return ;
-	_location = *it;
-	std::cout << "Found url: " << (*it)->get_url() << std::endl;
+	find_location(_request->get_url());
+	if (_locations)
+		std::cout << "Found url: " << _location->get_url() << std::endl;
 	//Send back data
 	Header	header(200, this);
 	std::string	http_response = header.get_str();

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 17:26:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 17:30:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class	Response
 
 		std::vector<e_method>::iterator		find_method(e_method m, std::vector<e_method> methods);
 		bool					find_url(std::string url, std::string l_url);
-		std::vector<Location*>::iterator	find_location(std::string url);
+		void					find_location(std::string url);
 
 		Response();
 		Response(const Response&);
