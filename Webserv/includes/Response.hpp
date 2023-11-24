@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 17:22:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 17:24:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ class	Response
 		Server*			_server;
 		ClientRequest*		_request;
 		std::vector<Location*>	_locations;	
-		std::string		_allow;
-		size_t			_content_length;
 
 		std::vector<e_method>::iterator		find_method(e_method m, std::vector<e_method> methods);
 		bool					find_url(std::string url, std::string l_url);

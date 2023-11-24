@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 17:19:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 17:24:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ Header::Header(int e, Response* r) : _err_code(e), _response(r)
 Header::~Header()
 {
 	std::cout << "Header Destruction" << std::endl;
+}
+
+std::string	Header::get_allow(void)
+{
 }
 
 std::string	Header::get_current_time(void)
