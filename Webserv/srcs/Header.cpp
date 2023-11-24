@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 13:22:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 14:21:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ _response(r)
 	_status[405] = "Method Not Allowed";
 	_status[413] = "Payload Too Large";
 	_status[500] = "Internal Server Error";
+	_response += "HTTP/1.1 ";
 	std::cout << "Header Constructor" << std::endl;
 }
 Header::~Header()
