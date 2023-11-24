@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 09:52:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 09:57:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,18 @@ Response::~Response()
 	std::cout << "Destruction response" << std::endl;
 }
 
+std::vector<e_method>::iterator	Response::find_method(e_method m)
+{
+	std::vector<e_method>::iterator	it;
+	for (it = methods.begin(); it != methods.end(); ++it)
+		if (m == *it)
+			return (it);
+}
+
 std::vector<Location*>::iterator	Response::find_location(std::string url)
 {
 	std::vector<Location*>::iterator it;
+	std::vector<e_method>		methods = get_methods();
 	for (it = _locations.begin(); it != _locations.end(); ++it)
 	{
 		std::string	l_url = (*it)->get_url;
@@ -52,6 +61,7 @@ std::vector<Location*>::iterator	Response::find_location(std::string url)
 
 void	Response::send(void)
 {
+	std::vector<Location*>::iterator it = find_location(;
 	//Send back data
 	const char* http_response =
 		"HTTP/1.1 200 OK\r\n"
