@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Response.cpp                                       :+:      :+:    :+:   */
+/*   Header.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 12:27:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 13:15:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,33 @@
 #include "Location.hpp"
 #include "ClientRequest.hpp"
 
-#include "Response.hpp"
+#include "Header.hpp"
 
-Response::Response()
+Header::Header()
 {
-	std::cout << "Response Default constructor" << std::endl;
+	std::cout << "Header Default constructor" << std::endl;
 }
-Response::Response(const Response& src) { *this = src; }
-Response&	Response::operator=( Response const & src )
+Header::Header(const Header& src) { *this = src; }
+Header&	Header::operator=( Header const & src )
 {
 	(void) src;
 	return (*this);
 }
-Response::Response(int sk, Host* h, Server* s, ClientRequest* r) :
+Header::Header(int sk, Host* h, Server* s, ClientRequest* r) :
 _socket(sk),
 _host(h),
 _server(s),
 _request(r)
 {
 	_locations = s->get_locations();
-	std::cout << "Response Constructor sk: " << sk << std::endl;
+	std::cout << "Header Constructor sk: " << sk << std::endl;
 }
-Response::~Response()
+Header::~Header()
 {
 	std::cout << "Destruction response" << std::endl;
 }
 
-std::vector<e_method>::iterator	Response::find_method(e_method m, std::vector<e_method> methods)
+std::vector<e_method>::iterator	Header::find_method(e_method m, std::vector<e_method> methods)
 {
 	std::vector<e_method>::iterator	it;
 	for (it = methods.begin(); it != methods.end(); ++it)
@@ -53,7 +53,7 @@ std::vector<e_method>::iterator	Response::find_method(e_method m, std::vector<e_
 	return (it);
 }
 
-bool	Response::find_url(std::string url, std::string l_url)
+bool	Header::find_url(std::string url, std::string l_url)
 {
 	std::cout << url << "==" << l_url << std::endl;
 	if (url == l_url)
@@ -63,7 +63,7 @@ bool	Response::find_url(std::string url, std::string l_url)
 	return (false);
 }
 
-std::vector<Location*>::iterator	Response::find_location(std::string url)
+std::vector<Location*>::iterator	Header::find_location(std::string url)
 {
 	std::vector<Location*>::iterator it;
 	for (it = _locations.begin(); it != _locations.end(); ++it)
@@ -76,7 +76,7 @@ std::vector<Location*>::iterator	Response::find_location(std::string url)
 	return (it);
 }
 
-void	Response::send(void)
+void	Header::send(void)
 {
 	std::vector<Location*>::iterator it = find_location(_request->get_url());
 	if (it != _locations.end())
@@ -94,5 +94,5 @@ void	Response::send(void)
 		perror("  send() failed");
 	_host->close_client_sk(_socket);
 	_host->delete_response(_socket);
-	std::cout << "Response sent" << std::endl;
+	std::cout << "Header sent" << std::endl;
 }
