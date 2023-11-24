@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 14:39:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 14:40:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ Header::~Header()
 	std::cout << "Header Destruction" << std::endl;
 }
 
-void	Header::setDate(void)
+void	Header::set_date(void)
 {
-	char			buffer[100];
+	char		buffer[100];
 	struct timeval	tv;
-	struct tm		*tm;
+	struct tm	*tm;
 
 	gettimeofday(&tv, NULL);
 	tm = gmtime(&tv.tv_sec);
