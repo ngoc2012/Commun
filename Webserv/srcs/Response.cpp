@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 10:35:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 10:36:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ std::vector<e_method>::iterator	Response::find_method(e_method m, std::vector<e_
 	for (it = methods.begin(); it != methods.end(); ++it)
 		if (m == *it)
 			return (it);
+	return (it);
 }
 
 bool	Response::find_url(std::string url, std::string l_url)
