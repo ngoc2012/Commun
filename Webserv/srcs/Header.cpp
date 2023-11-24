@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 14:22:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 14:24:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ _response(r)
 	_status[500] = "Internal Server Error";
 	_response += "HTTP/1.1 ";
 	_response += to_string(e) + " ";
+	if (_status.find(e) == _status.end())
+		_response += "Unknown error code";
+	else
+		_response += _status[e];
+	_response += "\r\n";
 	std::cout << "Header Constructor" << std::endl;
 }
 Header::~Header()
