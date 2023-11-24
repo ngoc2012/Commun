@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 12:23:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 12:24:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ bool	Response::find_url(std::string url, std::string l_url)
 		return (true);
 	if (url.length() > 1 && url.substr(0, l_url.length()) == l_url)
 		return (true);
-	std::cout << "True" << std::endl;
 	return (false);
 }
 
