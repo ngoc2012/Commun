@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 10:25:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 10:29:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ std::vector<Location*>::iterator	Response::find_location(std::string url)
 	for (it = _locations.begin(); it != _locations.end(); ++it)
 	{
 		std::vector<e_method>		methods = (*it)->get_methods();
-		std::string			l_url = (*it)->get_url;
-		if (find_method(_request->get_method(), methods) != methods.end())
-		{
-		}
+		std::string			l_url = ;
+		if (find_method(_request->get_method(), methods) != methods.end()
+			&& find_url(url, (*it)->get_url))
+			return (it);
 	}
 	return (it);
 }
@@ -73,7 +73,8 @@ void	Response::send(void)
 {
 	std::vector<Location*>::iterator it = find_location(_request->get_url());
 	if (it != _locations.end())
-		std::cout << "Found url: " << _request->get_url() << std::endl;
+		std::cout << "Found url: " << (*it)->get_url() << std::endl;
+
 	//Send back data
 	const char* http_response =
 		"HTTP/1.1 200 OK\r\n"
