@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 21:54:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:57:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,27 @@ Header::Header(int e, std::string extension, Response* r)
 	_err_code = e;
 	_response = r;
 	init();
-	_str += "HTTP/1.1 ";
-	_str += itos(e) + " ";
-	if (_status.find(e) == _status.end())
-		_str += "Unknown error code";
-	else
-		_str += _status[e];
-	_str += "\r\n";
-	_str += "Allow: " + _allow + "\r\n";
-	_str += "Content-Language: en" + "\r\n";
-	_str += "Content-Length: " + _response->get_content_length() + "\r\n";
-	if (_types.find(extension) == _types.end())
-		_str += "Content-Type: text/plain\r\n";
-	else
-		_str += "Content-Type: " + _types[extension] + "\r\n";
 	std::cout << "Header Constructor" << std::endl;
+}
+std::string	Header::generate(void)
+{
+	std::string	str;
+
+	str = "HTTP/1.1 ";
+	str += itos(e) + " ";
+	if (_status.find(e) == _status.end())
+		str += "Unknown error code";
+	else
+		str += _status[e];
+	str += "\r\n";
+	str += "Allow: " + _allow + "\r\n";
+	str += "Content-Language: en" + "\r\n";
+	str += "Content-Length: " + _response->get_content_length() + "\r\n";
+	if (_types.find(extension) == _types.end())
+		str += "Content-Type: text/plain\r\n";
+	else
+		str += "Content-Type: " + _types[extension] + "\r\n";
+	return (str);
 }
 
 void	Header::init(void)
