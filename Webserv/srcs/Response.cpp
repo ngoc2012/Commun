@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 21:31:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:35:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	Response::find_location(std::string url)
 void	Response::send(void)
 {
 	find_location(_request->get_url());
-	if (_locations)
+	if (_location)
 		std::cout << "Found url: " << _location->get_url() << std::endl;
 	//Send back data
 	Header	header(200, std::string("default"), this);

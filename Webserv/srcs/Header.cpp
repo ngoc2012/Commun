@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 21:32:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 21:34:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ Header::Header(int e, std::string extension, Response* r)
 	_str += "Allow: " + _allow + "\r\n";
 	_str += "Content-Language: en" + "\r\n";
 	_str += "Content-Length: " + _response->get_content_length() + "\r\n";
-	_str += "Content-Type: " + _content_type + "\r\n";
+	if (_types.find(extension) == _types.end())
+		_str += "Content-Type: text/plain\r\n";
+	else
+		_str += "Content-Type: " + _types[extension] + "\r\n";
 	std::cout << "Header Constructor" << std::endl;
 }
 
@@ -68,7 +71,6 @@ void	Header::init(void)
 	_types["jpg"] = "image/jpeg";
 	_types["png"] = "image/png";
 	_types["bmp"] = "image/bmp";
-	_types["default"] = "text/plain";
 }
 
 
