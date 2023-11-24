@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 14:35:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 14:37:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ Header::Header(int e, Response* r) : _err_code(e), _response(r)
 	else
 		_str += _status[e];
 	_str += "\r\n";
+	_str += 
 	std::cout << "Header Constructor" << std::endl;
 }
 Header::~Header()
