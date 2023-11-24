@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 14:46:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 14:49:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ Header::Header(int e, Response* r) : _err_code(e), _response(r)
 	else
 		_str += _status[e];
 	_str += "\r\n";
-	_str += 
+	//_str += 
 	std::cout << "Header Constructor" << std::endl;
 }
 Header::~Header()
@@ -61,6 +61,18 @@ std::string	Header::get_current_time(void)
 	std::tm* timeInfo = std::gmtime(&currentTime);
 	char buffer[80];
 	return (std::strftime(buffer, 80, "%a, %d %b %Y %H:%M:%S GMT", timeInfo));
+}
+
+std::string	Header::file_last_modified_time(void)
+{
+	struct stat fileInfo;
+	if (stat(filename, &fileInfo) != 0) {
+		std::cerr << "Error getting file information." << std::endl;
+		return 1;
+	}
+	std::tm* timeInfo = std::gmtime(&fileInfo.st_mtime);
+	char buffer[80];
+	std::strftime(buffer, 80, "%a, %d %b %Y %H:%M:%S GMT", timeInfo);
 }
 
 std::string	get_str(void) const {return (_str);}
