@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 09:46:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/24 09:51:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,16 @@ Response::~Response()
 	std::cout << "Destruction response" << std::endl;
 }
 
-Location*	Response::find_location(std::string url)
+std::vector<Location*>::iterator	Response::find_location(std::string url)
 {
+	std::vector<Location*>::iterator it;;
+	for (it = _locations.begin(); it != _locations.end(); ++it)
+	{
+		std::string	l_url = (*it)->get_url;
+		if (url == l_url)
+			return (it);
+	}
+	return (it);
 }
 
 void	Response::send(void)
