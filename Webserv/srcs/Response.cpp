@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:30:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 16:37:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,15 +126,17 @@ std::string	Response::get_file_extension(std::string& file_path) {
 
 void	Response::send(void)
 {
-	std::string	full_file_name;
+	std::string	full_file_name = "";
 	std::string	url = _request->get_url();
 	find_location(url);
 	if (_location)
 	{
 		if (_location->get_alias() == "")
-			full_file_name = _server->get_root() + url.substr(1, url.size() - 1);
+			full_file_name += _server->get_root();
 		else
-			full_file_name = _location->get_alias() + url.substr(1, url.size() - 1);
+			full_file_name += _location->get_alias();
+		if (url.size() < _location.get_url().size())
+ + url.substr(1, url.size() - 1)
 	}
 	std::cout << full_file_name << std::endl;
 	Header	header(_status_code, get_file_extension(full_file_name), this);
