@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:49:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 16:52:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,18 +117,17 @@ std::string	Response::get_methods_str(void)
 	return (s);
 }
 
-std::string	Response::get_file_extension(std::string& file_path) {
+std::string	Response::get_file_extension(std::string& file_path)
+{
 	size_t dot_position = file_path.find_last_of('.');
 	if (dot_position != std::string::npos && dot_position < file_path.size() - 1)
 		return (file_path.substr(dot_position + 1));
 	return ("");
 }
 
-void	Response::send(void)
+std::string	Response::get_full_file_name(void)
 {
 	std::string	full_file_name = "";
-	std::string	url = _request->get_url();
-	find_location(url);
 	if (_location)
 	{
 		if (_location->get_alias() == "")
@@ -145,6 +144,13 @@ void	Response::send(void)
 	if (stat(full_file_name.c_str(), &buffer) != 0)
 		_status_code = 404; // Not found
 	std::cout << full_file_name << std::endl;
+	return (full_file_name);
+}
+void	Response::send(void)
+{
+	std::string	url = _request->get_url();
+	find_location(url);
+	std::string	full_file_name = get_full_file_name();
 	Header	header(_status_code, get_file_extension(full_file_name), this);
 	//std::cout << "Found url: " << _location->get_url() << std::endl;
 	//Send back data
