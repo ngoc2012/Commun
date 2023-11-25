@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 18:47:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 18:48:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ _request(r)
 }
 Response::~Response()
 {
+	FD_CLR(_socket, &_master_write_set);
 	std::cout << "Destruction response" << std::endl;
 }
 
