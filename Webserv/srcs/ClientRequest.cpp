@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 23:36:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 23:36:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ClientRequest::read_client_request(void)
 	if (_header == "")
 	{
 		receive_data(_header);
-		std::cout << "_header\n" << _header << std::endl;
+		//std::cout << "_header\n" << _header << std::endl;
 		if (!parser_header())
 			return (read_error("Error: header invalid: \n" + _header, 401));
 	}
@@ -110,7 +110,7 @@ bool	ClientRequest::parser_header(void)
 {
 
 	if (_header.size() <= 0)
-		return (false)
+		return (false);
 	std::vector<std::string>	lines = split_string(_header, "\n");
 	std::vector<std::string>	first_line = split_string(lines[0], " 	");
 
