@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 18:49:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 19:09:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ bool	Host::select_available_sk(void)
 
 void	Host::delete_response(int i)
 {
+	FD_CLR(i, &_master_write_set);
 	delete (_sk_response[i]);
 	_sk_response.erase(i);
 }

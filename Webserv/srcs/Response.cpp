@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 18:48:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 19:09:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ _request(r)
 }
 Response::~Response()
 {
-	FD_CLR(_socket, &_master_write_set);
 	std::cout << "Destruction response" << std::endl;
 }
 
@@ -182,6 +181,9 @@ void	Response::send(void)
 
 std::string	Response::get(void)
 {
+	return ("<!doctype html>\n"
+		"<link rel=\"icon\" href=\"data:,\">\n"
+		"<html><body><h1>Hello, client!</h1></body></html>");
 }
 
 Location*	Response::get_location(void) const {return (_location);}
