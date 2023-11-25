@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:52:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 16:55:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,32 +125,32 @@ std::string	Response::get_file_extension(std::string& file_path)
 	return ("");
 }
 
-std::string	Response::get_full_file_name(void)
+void	Response::get_full_file_name(void)
 {
-	std::string	full_file_name = "";
+	std::string	url = _request->get_url();
+	_full_file_name = "";
 	if (_location)
 	{
 		if (_location->get_alias() == "")
-			full_file_name += _server->get_root();
+			_full_file_name += _server->get_root();
 		else
-			full_file_name += _location->get_alias();
+			_full_file_name += _location->get_alias();
 		if (url.size() > _location->get_url().size())
-			full_file_name += url.substr(1, url.size() - 1);
+			_full_file_name += url.substr(1, url.size() - 1);
 	}
 	struct stat	info;
-	if (stat(full_file_name.c_str(), &info) == 0 && S_ISDIR(info.st_mode))
-		full_file_name += "index.html";
+	if (stat(_full_file_name.c_str(), &info) == 0 && S_ISDIR(info.st_mode))
+		_full_file_name += "index.html";
 	struct stat buffer;
-	if (stat(full_file_name.c_str(), &buffer) != 0)
+	if (stat(_full_file_name.c_str(), &buffer) != 0)
 		_status_code = 404; // Not found
-	std::cout << full_file_name << std::endl;
-	return (full_file_name);
+	std::cout << _full_file_name << std::endl;
 }
 void	Response::send(void)
 {
 	std::string	url = _request->get_url();
 	find_location(url);
-	std::string	full_file_name = get_full_file_name();
+	get_full_file_name();
 	Header	header(_status_code, get_file_extension(full_file_name), this);
 	//std::cout << "Found url: " << _location->get_url() << std::endl;
 	//Send back data

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:53:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 16:55:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class	Response
 		void					find_location(std::string);
 		std::string				get_methods_str(void);
 		std::string				get_file_extension(std::string&);
+		void					get_full_file_name(void);
 
 		Response();
 		Response(const Response&);
