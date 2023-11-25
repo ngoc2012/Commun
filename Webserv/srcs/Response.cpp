@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 19:09:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 19:13:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,16 @@ Response::~Response()
 	std::cout << "Destruction response" << std::endl;
 }
 
-std::vector<e_method>::iterator	Response::find_method(e_method m, std::vector<e_method> methods)
+bool	Response::find_method(e_method m, Location* loc)
 {
-	std::vector<e_method>::iterator	it;
-	for (it = methods.begin(); it != methods.end(); ++it)
+	std::vector<e_method>	methods = (*it)->get_methods();
+
+	for (std::vector<e_method>::iterator	it = methods.begin();
+		it != methods.end(); ++it)
 		if (m == *it)
-			return (it);
+			return (true);
 	//std::cout << _request->get_method() << "==" << *it << std::endl;
-	return (it);
+	return (false);
 }
 
 bool	Response::compare_url(std::string url, std::string l_url)
@@ -77,7 +79,6 @@ void	Response::find_location(std::string url)
 	{
 		if (compare_url(url, (*it)->get_url()))
 		{
-			std::vector<e_method>		methods = (*it)->get_methods();
 			if (find_method(_request->get_method(), methods) != methods.end())
 				_location = *it;
 			else
