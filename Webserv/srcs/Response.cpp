@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 23:03:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 23:12:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,8 @@ void	Response::send(void)
 		switch (_request->get_method())
 		{
 			case GET:
-				_content_length = get_file_size(_full_file_name);
+				//_content_length = get_file_size(_full_file_name);
+				_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
 				_file.open(_full_file_name.c_str(), std::ios::binary);
 				if (!_file.is_open())
 				{
@@ -193,6 +194,7 @@ void	Response::send(void)
 		get();
 	//if (_end)
 	//{
+		get();
 		get();
 		_host->close_client_sk(_socket);
 		_host->delete_response(_socket);
