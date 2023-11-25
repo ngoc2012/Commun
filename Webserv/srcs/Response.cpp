@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 22:05:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 22:06:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ _request(r)
 }
 Response::~Response()
 {
+	if (_file.is_open())
+		close(_file);
 	std::cout << "Destruction response" << std::endl;
 }
 
