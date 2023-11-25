@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 14:48:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 15:01:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ std::vector<e_method>::iterator	Response::find_method(e_method m, std::vector<e_
 
 bool	Response::compare_url(std::string url, std::string l_url)
 {
-	std::cout << url << "==" << l_url << std::endl;
+	//std::cout << url << "==" << l_url << std::endl;
 	// Folder
 	if (l_url[l_url.size() - 1] == '/')
 	{
@@ -71,8 +71,8 @@ bool	Response::compare_url(std::string url, std::string l_url)
 void	Response::find_location(std::string url)
 {
 	std::vector<Location*>		locations = _server->get_locations();
-	std::vector<Location*>::iterator it;
-	for (it = locations.begin(); it != locations.end(); ++it)
+	for (std::vector<Location*>::iterator it = locations.begin();
+		it != locations.end(); ++it)
 	{
 		std::vector<e_method>		methods = (*it)->get_methods();
 		if ((find_method(_request->get_method(), methods) != methods.end())
