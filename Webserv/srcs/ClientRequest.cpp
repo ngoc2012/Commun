@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 10:22:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 10:29:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,20 @@ int	ClientRequest::read_client_request(void)
 	}
 	else
 	{
-		std::cout << "read_body" << std::endl;
+		std::cout << "read_body sk:" << _socket << std::endl;
 		receive_data(_body);
 	}
 	if (_end)
+	{
+		std::cout << "===============================" << std::endl;
+		std::cout << "Header:\n" << _header << std::endl;
+		std::cout << "===============================" << std::endl;
+		std::cout << "Body:\n" << _body << std::endl;
+		std::cout << "===============================" << std::endl;
 		_host->new_response_sk(_socket, _server, this);
+	}
 	//if (!read_body())
 	//	return (read_error("Error: body invalid: \n" + _body, 401));
-	//std::cout << "===============================" << std::endl;
-	//std::cout << "Header:\n" << _header << std::endl;
-	//std::cout << "===============================" << std::endl;
-	//std::cout << "Body:\n" << _body << std::endl;
-	//std::cout << "===============================" << std::endl;
 	return (1);
 }
 
