@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 11:51:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 15:14:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class	Response
 		ClientRequest*		_request;
 		Location*		_location;	
 		size_t			_content_length;
+		int			_error_code;
 
 		std::vector<e_method>::iterator		find_method(e_method m, std::vector<e_method> methods);
 		bool					compare_url(std::string url, std::string l_url);
