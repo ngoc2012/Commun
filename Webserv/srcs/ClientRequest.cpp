@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 08:56:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 09:01:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	ClientRequest::read_client_request(void)
 {
 	std::cout << "read_client_request\n" << std::endl;
 	clean();
+	_header = receive_data();
 	if (!read_header())
 		return (read_error("Error: can not receive client request", 401));
 	if (!parser_header())
@@ -90,13 +91,10 @@ std::string	ClientRequest::receive_data(void)
 	if (ret <= 0)
 	{
 		_end = false;
-		return (false);
+		return (std::string(""));
 	}
 	response[ret] = 0;
-	_header	= std::string(response);
-	//std::cout << "Read header:\n" << _header << std::endl;
-	//std::cout << "===============================" << std::endl;
-	return (true);
+	return (std::string(response));
 }
 
 bool	ClientRequest::parser_header(void)
@@ -116,23 +114,6 @@ bool	ClientRequest::parser_header(void)
 	}
 	if (!find_start_body(_header))
 		return (false);
-	return (true);
-}
-
-bool	ClientRequest::read_body(void)
-{
-	int	ret = 1;
-	char	response[_body_buffer + 1];
-	do
-	{
-		ret = recv(_socket, response, _body_buffer, 0);
-		if (ret > 0)
-		{
-			response[ret] = 0;
-			_body += std::string(response);
-		}
-	} while (ret > 0);
-	//std::cout << "Connection closed" << std::endl;
 	return (true);
 }
 

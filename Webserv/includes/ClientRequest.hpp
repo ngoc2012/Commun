@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 08:55:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 09:01:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ class	ClientRequest
 		bool		parser_header(void);
 		bool		read_method(std::string&);
 		bool		read_content_type(std::string&, std::string&);
-		bool		read_body(void);
 		bool		find_start_body(std::string&);
 
 		ClientRequest();
