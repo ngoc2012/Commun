@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 19:37:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 20:03:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ void	Response::send(void)
 	{
 		case GET:
 			_body = get();
+			_content_length = get_file_size(_full_file_name);
 			break;
 		default:
 			_body = "<!doctype html>\n"
