@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 19:35:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 19:37:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,9 +168,9 @@ void	Response::send(void)
 			_body = "<!doctype html>\n"
 				"<link rel=\"icon\" href=\"data:,\">\n"
 				"<html><body><h1>Hello, client!</h1></body></html>";
-		break;
+			_content_length = _body.length();
+			break;
 	}
-	_content_length = _body.length();
 
 	std::string	http_response = header.generate();
 	http_response += _body;
