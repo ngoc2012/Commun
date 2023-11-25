@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 21:58:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 22:05:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,12 @@ void	Response::send(void)
 			case GET:
 				_body = get();
 				_content_length = get_file_size(_full_file_name);
+				_file.open(_full_file_name, std::ios::binary);
+				if (!_file.is_open())
+				{
+					std::cerr << "Failed to open file!" << std::endl;
+					_end = true;
+				}
 				break;
 			default:
 				_body = "<!doctype html>\n"
