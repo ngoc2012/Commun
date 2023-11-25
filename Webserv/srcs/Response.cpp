@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 23:17:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 23:20:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,26 +161,27 @@ void	Response::send(void)
 			get_full_file_name(url);
 		Header	header(_status_code, get_file_extension(_full_file_name), this);
 		header.set_allow(get_methods_str());
-		switch (_request->get_method())
-		{
-			case GET:
-				_content_length = get_file_size(_full_file_name);
-				//_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
-				_file.open(_full_file_name.c_str(), std::ios::binary);
-				if (!_file.is_open())
-				{
-					std::cerr << "Failed to open file: " << _full_file_name << std::endl;
-					_status_code = 500;	// Internal server error
-					_end = true;
-				}
-				break;
-			default:
-				_body = "<!doctype html>\n"
-					"<link rel=\"icon\" href=\"data:,\">\n"
-					"<html><body><h1>Hello, client!</h1></body></html>";
-				_content_length = _body.length();
-				break;
-		}
+		if (_status_code == 200)
+			switch (_request->get_method())
+			{
+				case GET:
+					_content_length = get_file_size(_full_file_name);
+					//_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
+					_file.open(_full_file_name.c_str(), std::ios::binary);
+					if (!_file.is_open())
+					{
+						std::cerr << "Failed to open file: " << _full_file_name << std::endl;
+						_status_code = 500;	// Internal server error
+						_end = true;
+					}
+					break;
+				default:
+					_body = "<!doctype html>\n"
+						"<link rel=\"icon\" href=\"data:,\">\n"
+						"<html><body><h1>Hello, client!</h1></body></html>";
+					_content_length = _body.length();
+					break;
+			}
 
 		std::string	_header = header.generate();
 		std::cout << "Header:\n" << _header << std::endl;
