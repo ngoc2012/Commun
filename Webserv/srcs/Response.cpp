@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 23:27:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 23:31:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,14 +185,14 @@ void	Response::send(void)
 		else
 			_end = true;
 
-		std::string	_header = header.generate();
+		_header = header.generate();
 		std::cout << "Header:\n" << _header << std::endl;
 		if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
 			perror("send() failed");
 	}
 	else if (_request->get_method() == GET)
 	{
-		std::cout << "Get more" << std::endl;
+		//std::cout << "Get more" << std::endl;
 		get();
 	}
 	if (_end)
