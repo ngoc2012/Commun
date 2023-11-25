@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 20:05:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 21:58:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,41 +153,42 @@ void	Response::get_full_file_name(std::string url)
 
 void	Response::send(void)
 {
-	std::string	url = _request->get_url();
-
-	find_location(url);
-	if (_status_code == 200)
-		get_full_file_name(url);
-	Header	header(_status_code, get_file_extension(_full_file_name), this);
-	header.set_allow(get_methods_str());
-	switch (_request->get_method())
+	if (_header == "")
 	{
-		case GET:
-			_body = get();
-			_content_length = get_file_size(_full_file_name);
-			break;
-		default:
-			_body = "<!doctype html>\n"
-				"<link rel=\"icon\" href=\"data:,\">\n"
-				"<html><body><h1>Hello, client!</h1></body></html>";
-			_content_length = _body.length();
-			break;
-	}
+		std::string	url = _request->get_url();
+		find_location(url);
+		if (_status_code == 200)
+			get_full_file_name(url);
+		Header	header(_status_code, get_file_extension(_full_file_name), this);
+		header.set_allow(get_methods_str());
+		switch (_request->get_method())
+		{
+			case GET:
+				_body = get();
+				_content_length = get_file_size(_full_file_name);
+				break;
+			default:
+				_body = "<!doctype html>\n"
+					"<link rel=\"icon\" href=\"data:,\">\n"
+					"<html><body><h1>Hello, client!</h1></body></html>";
+				_content_length = _body.length();
+				break;
+		}
 
-	std::string	http_response = header.generate();
-	http_response += _body;
-	std::cout << http_response << std::endl;
-	if (::send(_socket, http_response.c_str(), http_response.length(), 0) < 0)
-		perror("  send() failed");
+		std::string	_header = header.generate();
+		if (::send(_socket, http_response.c_str(), http_response.length(), 0) < 0)
+			perror("  send() failed");
+	}
+	else if (_request->get_method() == GET)
 	if (_end)
 	{
-		_host->close_client_sk(_socket);
+		_host->close_client_sk(ket);
 		_host->delete_response(_socket);
 		std::cout << "Response sent" << std::endl;
 	}
 }
 
-size_t		Response::get_file_size(std::string &file_name)
+size_t		Response::get_file_size(std::ring &file_name)
 {
 	std::ifstream file(file_name, std::ios::binary | std::ios::ate);
 	if (!file.is_open()) {
