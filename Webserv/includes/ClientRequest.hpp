@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 08:30:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 08:33:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define CLIENTREQUEST_HPP
  
 # define BUFFER	2048
+# define MEGABYTE 1048576
 
 class	Host;
 
