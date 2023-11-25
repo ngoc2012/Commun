@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 10:11:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 10:19:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	ClientRequest::read_client_request(void)
 	if (_header == "")
 	{
 		receive_data(_header);
+		std::cout << "_header\n" << _header << std::endl;
 		if (!parser_header())
 			return (read_error("Error: header invalid: \n" + _header, 401));
 	}
