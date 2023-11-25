@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:56:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 18:43:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,13 +155,16 @@ void	Response::send(void)
 	//std::cout << "Found url: " << _location->get_url() << std::endl;
 	//Send back data
 	header.set_allow(get_methods_str());
-	std::string	body = "<!doctype html>\n"
+	if (_request->get_method() == GET)
+		_body = "<!doctype html>\n"
+	else
+		_body = "<!doctype html>\n"
 		"<link rel=\"icon\" href=\"data:,\">\n"
 		"<html><body><h1>Hello, client!</h1></body></html>";
-	_content_length = body.length();
+	_content_length = _body.length();
 
 	std::string	http_response = header.generate();
-	http_response += body;
+	http_response += _body;
 	std::cout << http_response << std::endl;
 	if (::send(_socket, http_response.c_str(), http_response.length(), 0) < 0)
 		perror("  send() failed");
