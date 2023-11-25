@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 22:49:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 22:51:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,12 +166,11 @@ void	Response::send(void)
 		switch (_request->get_method())
 		{
 			case GET:
-				_body = get();
 				_content_length = get_file_size(_full_file_name);
 				_file.open(_full_file_name.c_str(), std::ios::binary);
 				if (!_file.is_open())
 				{
-					std::cerr << "Failed to open file!" << std::endl;
+					std::cerr << "Failed to open file: " << _full_file_name << std::endl;
 					_status_code = 500;	// Internal server error
 					_end = true;
 				}
@@ -202,7 +201,8 @@ size_t		Response::get_file_size(std::string &file_name)
 {
 	std::ifstream file(file_name.c_str(), std::ios::binary | std::ios::ate);
 	if (!file.is_open()) {
-		std::cerr << "Failed to open file: " << filename << std::endl;
+		std::cerr << "Failed to open file: " << file_name << std::endl;
+		_status_code = 500;	// Internal server error
 		return 0;
 	}
 	return (file.tellg());
