@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 23:12:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 23:17:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,7 @@ bool	Response::find_method(e_method m, Location* loc)
 	for (std::vector<e_method>::iterator	it = methods.begin();
 		it != methods.end(); ++it)
 		if (m == *it)
-		{
-			std::cout << *it << std::endl;
 			return (true);
-		}
 	//std::cout << _request->get_method() << "==" << *it << std::endl;
 	return (false);
 }
@@ -167,8 +164,8 @@ void	Response::send(void)
 		switch (_request->get_method())
 		{
 			case GET:
-				//_content_length = get_file_size(_full_file_name);
-				_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
+				_content_length = get_file_size(_full_file_name);
+				//_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
 				_file.open(_full_file_name.c_str(), std::ios::binary);
 				if (!_file.is_open())
 				{
