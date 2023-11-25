@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:55:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 16:56:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,8 @@ std::string	Response::get_file_extension(std::string& file_path)
 	return ("");
 }
 
-void	Response::get_full_file_name(void)
+void	Response::get_full_file_name(std::string url)
 {
-	std::string	url = _request->get_url();
 	_full_file_name = "";
 	if (_location)
 	{
@@ -149,9 +148,10 @@ void	Response::get_full_file_name(void)
 void	Response::send(void)
 {
 	std::string	url = _request->get_url();
+
 	find_location(url);
-	get_full_file_name();
-	Header	header(_status_code, get_file_extension(full_file_name), this);
+	get_full_file_name(url);
+	Header	header(_status_code, get_file_extension(_full_file_name), this);
 	//std::cout << "Found url: " << _location->get_url() << std::endl;
 	//Send back data
 	header.set_allow(get_methods_str());
