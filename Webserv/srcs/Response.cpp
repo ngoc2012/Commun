@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 22:06:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 22:13:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,12 +206,13 @@ size_t		Response::get_file_size(std::ring &file_name)
 	return (file.tellg());
 }
 
-std::string	Response::get(void)
+void	Response::get(void)
 { 
-
-	return ("<!doctype html>\n"
-		"<link rel=\"icon\" href=\"data:,\">\n"
-		"<html><body><h1>Hello, client!</h1></body></html>");
+	char buffer[chunk_size];
+	file.read(buffer, chunk_size);
+	int bytes_read = file.gcount();
+	send(client_socket, buffer, bytes_read, 0);
+	if (!_file.eof())
 }
 
 Location*	Response::get_location(void) const {return (_location);}
