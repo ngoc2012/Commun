@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 12:03:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 14:00:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,18 @@ std::vector<e_method>::iterator	Response::find_method(e_method m, std::vector<e_
 bool	Response::compare_url(std::string url, std::string l_url)
 {
 	std::cout << url << "==" << l_url << std::endl;
-	if (url == l_url)
+	// Folder
+	if (l_url[l_url.size() - 1] == '/')
+	{
+		std::string l_url0 = l_url.substr(0, l_url.size() - 1);
+	}
+	// File
+
+	else if (url == l_url)
 	{
 		std::cout << "True\n" << std::endl;
 		return (true);
 	}
-	// Folder
-	if (l_url[l_url.size() - 1] == '/')
-	{
-		std::string l_url = l_url.substr(0, l_url.size() - 1);
-	}
-	// File
 	if (url.size() > 1 && url.size() < l_url.size() && url.substr(0, l_url.size()) == l_url)
 	{
 		std::cout << "True 2\n" << std::endl;
