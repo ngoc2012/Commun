@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 15:13:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 15:31:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ _host(h),
 _server(s),
 _request(r)
 {
+	_status_code = 200;
 	_location = 0;
 	std::cout << "Response Constructor sk: " << sk << std::endl;
 }
