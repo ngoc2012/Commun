@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:46:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 16:49:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,11 +156,6 @@ void	Response::send(void)
 
 	std::string	http_response = header.generate();
 	http_response += body;
-	//const char* http_response =
-	//	"HTTP/1.1 200 OK\r\n"
-	//	"Content-Type: text/html\r\n"
-	//	"Connection: close\r\n" 	// Close the connection after this response
-	//	"\r\n"  			// End of headers
 	std::cout << http_response << std::endl;
 	if (::send(_socket, http_response.c_str(), http_response.length(), 0) < 0)
 		perror("  send() failed");
