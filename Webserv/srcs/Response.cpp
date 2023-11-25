@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 15:03:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 15:04:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,8 @@ void	Response::send(void)
 {
 	find_location(_request->get_url());
 	if (!_location)
-		std::cout << "Found url: " << _location->get_url() << std::endl;
+		Header	header(404, std::string("html"), this);
+		//std::cout << "Found url: " << _location->get_url() << std::endl;
 	//Send back data
 	Header	header(200, std::string("html"), this);
 	header.set_allow(get_methods_str());
