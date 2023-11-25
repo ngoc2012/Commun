@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 08:35:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 08:43:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ class	ClientRequest
 		std::string	_content_type1;
 		std::string	_url;
 		e_method	_method;
+		bool		_end;
 
 		bool		read_header(void);
 		int		read_error(std::string, int);
