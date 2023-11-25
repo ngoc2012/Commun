@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 08:46:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 08:53:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ ClientRequest::~ClientRequest()
 void	ClientRequest::clean()
 {
 	_body = "";
+	_header = "";
 	_body_size = 0;
 	_content_type0 = "";
 	_content_type1 = "";
 	_method = NONE;
 	_url = "";
+	_end = false;
 }
 
 int	ClientRequest::read_error(std::string s, int err_code)
