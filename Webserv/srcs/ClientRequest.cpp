@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 09:01:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 09:03:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,21 @@ int	ClientRequest::read_client_request(void)
 {
 	std::cout << "read_client_request\n" << std::endl;
 	clean();
-	_header = receive_data();
-	if (!read_header())
-		return (read_error("Error: can not receive client request", 401));
-	if (!parser_header())
-		return (read_error("Error: header invalid: \n" + _header, 401));
-	if (!read_body())
-		return (read_error("Error: body invalid: \n" + _body, 401));
-	std::cout << "===============================" << std::endl;
-	std::cout << "Header:\n" << _header << std::endl;
-	std::cout << "===============================" << std::endl;
-	std::cout << "Body:\n" << _body << std::endl;
-	std::cout << "===============================" << std::endl;
+	if (_header == "")
+	{
+		_header = receive_data();
+		if (!parser_header())
+			return (read_error("Error: header invalid: \n" + _header, 401));
+	}
+	else
+		_body += receive_data();
+	//if (!read_body())
+	//	return (read_error("Error: body invalid: \n" + _body, 401));
+	//std::cout << "===============================" << std::endl;
+	//std::cout << "Header:\n" << _header << std::endl;
+	//std::cout << "===============================" << std::endl;
+	//std::cout << "Body:\n" << _body << std::endl;
+	//std::cout << "===============================" << std::endl;
 	_host->new_response_sk(_socket, _server, this);
 	return (1);
 }
