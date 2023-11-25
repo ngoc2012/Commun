@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 08:36:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 08:46:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	ClientRequest::read_error(std::string s, int err_code)
 
 int	ClientRequest::read_client_request(void)
 {
+	std::cout << "read_client_request\n" << std::endl;
 	if (!read_header())
 		return (read_error("Error: can not receive client request", 401));
 	if (!parser_header())
