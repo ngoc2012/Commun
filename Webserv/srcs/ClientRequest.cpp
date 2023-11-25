@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 08:31:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 08:35:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ ClientRequest&	ClientRequest::operator=( ClientRequest const & src )
 }
 ClientRequest::ClientRequest(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 {
-	_body_max = _host->get_client_max_body_size();
+	_body_max = _host->get_client_max_body_size() * MEGABYTE;
+	_body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
+	std::cout << _body_max << " " << _body_buffer << std::endl;
 	std::cout << "ClientRequest Constructor sk: " << sk << std::endl;
 }
 ClientRequest::~ClientRequest()
