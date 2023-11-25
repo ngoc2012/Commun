@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:25:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 16:28:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ std::string	Response::get_file_extension(std::string& file_path) {
 
 void	Response::send(void)
 {
-	int		full_file_name;
+	std::string	full_file_name;
 	std::string	url = _request->get_url();
 	find_location(url);
 	if (_location)

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:27:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 16:28:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ class	Response
 		size_t			_content_length;
 		int			_status_code;
 
-		std::vector<e_method>::iterator		find_method(e_method m, std::vector<e_method> methods);
-		bool					compare_url(std::string url, std::string l_url);
-		void					find_location(std::string url);
+		std::vector<e_method>::iterator		find_method(e_method, std::vector<e_method>);
+		bool					compare_url(std::string, std::string);
+		void					find_location(std::string);
 		std::string				get_methods_str(void);
 		std::string				get_file_extension(std::string&);
 
