@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 08:35:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 08:36:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ ClientRequest::~ClientRequest()
 void	ClientRequest::clean()
 {
 	_body = "";
+	_body_size = 0;
 	_content_type0 = "";
 	_content_type1 = "";
 	_method = NONE;
@@ -80,9 +81,9 @@ bool	ClientRequest::read_header(void)
 {
 	//std::cout << "Receive data from client" << std::endl;
 	clean();
-	char		response[BUFFER + 1];
+	char		response[_body_buffer + 1];
 
-	int	ret = recv(_socket, response, BUFFER, 0);
+	int	ret = recv(_socket, response, _body_buffer, 0);
 	if (ret <= 0)
 		return (false);
 	response[ret] = 0;
@@ -115,10 +116,10 @@ bool	ClientRequest::parser_header(void)
 bool	ClientRequest::read_body(void)
 {
 	int	ret = 1;
-	char	response[BUFFER + 1];
+	char	response[_body_buffer + 1];
 	do
 	{
-		ret = recv(_socket, response, BUFFER, 0);
+		ret = recv(_socket, response, _body_buffer, 0);
 		if (ret > 0)
 		{
 			response[ret] = 0;
