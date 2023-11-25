@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 22:42:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 22:45:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ _request(r)
 Response::~Response()
 {
 	if (_file.is_open())
-		close(_file);
+		_file.close();
 	std::cout << "Destruction response" << std::endl;
 }
 
@@ -172,6 +172,7 @@ void	Response::send(void)
 				if (!_file.is_open())
 				{
 					std::cerr << "Failed to open file!" << std::endl;
+					_status_code = 500;	// Internal server error
 					_end = true;
 				}
 				break;
@@ -188,6 +189,7 @@ void	Response::send(void)
 			perror("  send() failed");
 	}
 	else if (_request->get_method() == GET)
+		get();
 	if (_end)
 	{
 		_host->close_client_sk(ket);

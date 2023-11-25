@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 22:01:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 22:44:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class	Response
 		std::string	_header;
 		std::string	_body;
 		bool		_end;
-		std::ifstream	_file
+		std::ifstream	_file;
 
 		bool		find_method(e_method, Location*);
 		bool		compare_url(std::string, std::string);
