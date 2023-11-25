@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:42:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 16:45:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,10 +138,13 @@ void	Response::send(void)
 		if (url.size() > _location->get_url().size())
 			full_file_name += url.substr(1, url.size() - 1);
 	}
-	std::cout << full_file_name << std::endl;
 	struct stat	info;
 	if (stat(full_file_name.c_str(), &info) == 0 && S_ISDIR(info.st_mode))
-		full_file_name += "index.html"
+		full_file_name += "index.html";
+	struct stat buffer;
+	if (stat(full_file_name, &buffer) != 0)
+		_status_code = 404; // Not found
+	std::cout << full_file_name << std::endl;
 	Header	header(_status_code, get_file_extension(full_file_name), this);
 	//std::cout << "Found url: " << _location->get_url() << std::endl;
 	//Send back data
