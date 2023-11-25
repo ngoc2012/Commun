@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 10:30:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 11:17:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ClientRequest::read_error(std::string s, int err_code)
 
 int	ClientRequest::read_client_request(void)
 {
-	std::cout << "read_client_request" << std::endl;
+	//std::cout << "read_client_request" << std::endl;
 	//clean();
 	if (_header == "")
 	{
@@ -132,6 +132,8 @@ bool	ClientRequest::read_method(std::string& s)
 	if (s == "GET")
 		_method = GET;
 	else if (s == "POST")
+		_method = POST;
+	else if (s == "PUT")
 		_method = POST;
 	else
 	{
