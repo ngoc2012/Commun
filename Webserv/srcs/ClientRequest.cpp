@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 10:29:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 10:30:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ int	ClientRequest::read_client_request(void)
 		std::cout << "===============================" << std::endl;
 		_host->new_response_sk(_socket, _server, this);
 	}
-	//if (!read_body())
-	//	return (read_error("Error: body invalid: \n" + _body, 401));
 	return (1);
 }
 
@@ -99,7 +97,7 @@ int	ClientRequest::receive_data(std::string &data)
 	char		response[_body_buffer + 1];
 
 	int	ret = recv(_socket, response, _body_buffer, 0);
-	if (ret >= 0 && size_t(ret) < _body_buffer)
+	if (ret <= 0 || (ret > 0 && size_t(ret) < _body_buffer))
 		_end = true;
 	if (ret <= 0)
 		return (0);
