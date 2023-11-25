@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 23:23:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 23:25:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,12 +153,7 @@ void	Response::get_full_file_name(std::string url)
 
 void	Response::send(void)
 {
-	if (_header != "")
-	{
-		if (_request->get_method() == GET)
-			get();
-	}
-	else
+	if (_header == "")
 	{
 		std::string	url = _request->get_url();
 		find_location(url);
@@ -195,6 +190,8 @@ void	Response::send(void)
 		if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
 			perror("send() failed");
 	}
+	else if (_request->get_method() == GET)
+		get();
 	if (_end)
 	{
 	      _host->close_client_sk(_socket);
@@ -223,7 +220,7 @@ void	Response::get(void)
 	_file.read(buffer, chunk_size);
 	size_t	bytes_read = _file.gcount();
 	::send(_socket, buffer, bytes_read, 0);
-	if (!_file.eof())
+	if (_file.eof())
 		_end = true;
 }
 
