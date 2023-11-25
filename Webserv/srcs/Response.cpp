@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 19:20:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 19:35:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,8 +182,19 @@ void	Response::send(void)
 	std::cout << "Response sent" << std::endl;
 }
 
-std::string	Response::get(void)
+size_t		Response::get_file_size(std::string &file_name)
 {
+	std::ifstream file(file_name, std::ios::binary | std::ios::ate);
+	if (!file.is_open()) {
+		std::cerr << "Failed to open file: " << filename << std::endl;
+		return 0;
+	}
+	return (file.tellg());
+}
+
+std::string	Response::get(void)
+{ 
+
 	return ("<!doctype html>\n"
 		"<link rel=\"icon\" href=\"data:,\">\n"
 		"<html><body><h1>Hello, client!</h1></body></html>");
