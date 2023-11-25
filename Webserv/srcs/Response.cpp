@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 11:53:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 11:55:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ bool	Response::compare_url(std::string url, std::string l_url)
 		return (true);
 	}
 	if (url.length() > 1 && url.substr(0, l_url.length()) == l_url)
+	{
+		std::cout << "True 2\n" << std::endl;
 		return (true);
+	}
 	return (false);
 }
 
@@ -73,8 +76,9 @@ void	Response::find_location(std::string url)
 	{
 		std::vector<e_method>		methods = (*it)->get_methods();
 		if ((find_method(_request->get_method(), methods) != methods.end())
-			&& compare_url(url, (*it)->get_url()) == true)
+			&& (compare_url(url, (*it)->get_url()) == true))
 		{
+			std::cout << "FOUND\n" << std::endl;
 			_location = *it;
 			return ;
 		}
