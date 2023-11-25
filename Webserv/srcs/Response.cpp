@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 22:59:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 23:01:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ void	Response::send(void)
 		get();
 	//if (_end)
 	//{
+		get();
 		_host->close_client_sk(_socket);
 		_host->delete_response(_socket);
 		std::cout << "Response sent" << std::endl;
@@ -215,6 +216,7 @@ void	Response::get(void)
 	size_t	chunk_size = _host->get_client_body_buffer_size();
 
 	char	buffer[chunk_size];
+	std::cout << "chunk_size:\n" << chunk_size << std::endl;
 	_file.read(buffer, chunk_size);
 	size_t	bytes_read = _file.gcount();
 	::send(_socket, buffer, bytes_read, 0);
