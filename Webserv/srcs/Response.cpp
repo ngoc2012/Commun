@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 19:17:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 19:19:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,14 +155,13 @@ void	Response::send(void)
 	std::string	url = _request->get_url();
 
 	find_location(url);
-	get_full_file_name(url);
+	if (_status_code == 200)
+		get_full_file_name(url);
 	Header	header(_status_code, get_file_extension(_full_file_name), this);
-	//std::cout << "Found url: " << _location->get_url() << std::endl;
-	//Send back data
 	header.set_allow(get_methods_str());
 	switch (_request->get_method())
 	{
-		case PUT:
+		case GET:
 			_body = get();
 			break;
 		default:
