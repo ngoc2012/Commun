@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 09:03:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 09:04:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ClientRequest::read_error(std::string s, int err_code)
 int	ClientRequest::read_client_request(void)
 {
 	std::cout << "read_client_request\n" << std::endl;
-	clean();
+	//clean();
 	if (_header == "")
 	{
 		_header = receive_data();
