@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 15:33:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 15:35:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ bool	Response::compare_url(std::string url, std::string l_url)
 void	Response::find_location(std::string url)
 {
 	std::vector<Location*>		locations = _server->get_locations();
+	_location = locations.end();
 	for (std::vector<Location*>::iterator it = locations.begin();
 		it != locations.end(); ++it)
 	{
@@ -85,6 +86,7 @@ void	Response::find_location(std::string url)
 			return ;
 		}
 	}
+	_status_code = 404; // Not found
 }
 
 std::string	Response::get_methods_str(void)
