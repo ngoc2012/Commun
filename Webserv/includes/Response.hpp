@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:24:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 16:27:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class	Response
 		bool					compare_url(std::string url, std::string l_url);
 		void					find_location(std::string url);
 		std::string				get_methods_str(void);
+		std::string				get_file_extension(std::string&);
 
 		Response();
 		Response(const Response&);
