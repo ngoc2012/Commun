@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 23:20:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 23:23:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,12 @@ void	Response::get_full_file_name(std::string url)
 
 void	Response::send(void)
 {
-	if (_header == "")
+	if (_header != "")
+	{
+		if (_request->get_method() == GET)
+			get();
+	}
+	else
 	{
 		std::string	url = _request->get_url();
 		find_location(url);
@@ -182,22 +187,20 @@ void	Response::send(void)
 					_content_length = _body.length();
 					break;
 			}
+		else
+			_end = true;
 
 		std::string	_header = header.generate();
 		std::cout << "Header:\n" << _header << std::endl;
 		if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
-			perror("  send() failed");
+			perror("send() failed");
 	}
-	else if (_request->get_method() == GET)
-		get();
-	//if (_end)
-	//{
-		get();
-		get();
-		_host->close_client_sk(_socket);
-		_host->delete_response(_socket);
-		std::cout << "Response sent" << std::endl;
-	//}
+	if (_end)
+	{
+	      _host->close_client_sk(_socket);
+	      _host->delete_response(_socket);
+	      std::cout << "Response sent" << std::endl;
+	}
 }
 
 size_t		Response::get_file_size(std::string &file_name)
