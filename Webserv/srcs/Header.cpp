@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 07:47:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 07:48:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ std::string	Header::generate(void)
 		str += "Content-Type: text/plain\r\n";
 	else
 		str += "Content-Type: " + _types[_extension] + "\r\n";
-	std::cout << str << std::endl;
+	//std::cout << str << std::endl;
 	return (str);
 }
 

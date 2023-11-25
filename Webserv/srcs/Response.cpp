@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 22:24:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 07:49:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	Response::send(void)
 	//	"Content-Type: text/html\r\n"
 	//	"Connection: close\r\n" 	// Close the connection after this response
 	//	"\r\n"  			// End of headers
+	std::cout << http_response << std::endl;
 	if (::send(_socket, http_response.c_str(), http_response.length(), 0) < 0)
 		perror("  send() failed");
 	_host->close_client_sk(_socket);
