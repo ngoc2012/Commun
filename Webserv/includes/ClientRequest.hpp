@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 09:01:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 10:09:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class	ClientRequest
 		e_method	_method;
 		bool		_end;
 
-		bool		receive_data(void);
+		int		receive_data(std::string &);
 		int		read_error(std::string, int);
 		void		clean(void);
 		bool		parser_header(void);

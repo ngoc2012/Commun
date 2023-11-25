@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/25 08:16:29 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/25 10:09:09 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,4 +35,4 @@ clean:
 fclean: clean
 	rm -f $(MANDA)
 re: fclean all
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re test
