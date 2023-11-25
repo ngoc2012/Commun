@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 07:49:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 07:53:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	Response::send(void)
 	if (_location)
 		std::cout << "Found url: " << _location->get_url() << std::endl;
 	//Send back data
-	Header	header(200, std::string("default"), this);
+	Header	header(200, std::string("html"), this);
 	header.set_allow(get_methods_str());
 	std::string	body = "<link rel=\"icon\" href=\"data:,\">"
 		"<html><body><h1>Hello, client!</h1></body></html>";
