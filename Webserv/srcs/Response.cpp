@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 19:13:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 19:15:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,15 @@ Response::~Response()
 
 bool	Response::find_method(e_method m, Location* loc)
 {
-	std::vector<e_method>	methods = (*it)->get_methods();
+	std::vector<e_method>	methods = loc->get_methods();
 
 	for (std::vector<e_method>::iterator	it = methods.begin();
 		it != methods.end(); ++it)
 		if (m == *it)
+		{
+			std::cout << *it << std::endl;
 			return (true);
+		}
 	//std::cout << _request->get_method() << "==" << *it << std::endl;
 	return (false);
 }
@@ -79,7 +82,7 @@ void	Response::find_location(std::string url)
 	{
 		if (compare_url(url, (*it)->get_url()))
 		{
-			if (find_method(_request->get_method(), methods) != methods.end())
+			if (find_method(_request->get_method(), *it))
 				_location = *it;
 			else
 				_status_code = 405; // Method not allowed

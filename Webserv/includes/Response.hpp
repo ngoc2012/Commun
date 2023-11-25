@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 19:14:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 19:15:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class	Response
 		std::string	_full_file_name;
 		std::string	_body;
 
-		bool		find_method(e_method, std::vector<e_method>);
+		bool		find_method(e_method, Location*);
 		bool		compare_url(std::string, std::string);
 		void		find_location(std::string);
 		std::string	get_methods_str(void);
