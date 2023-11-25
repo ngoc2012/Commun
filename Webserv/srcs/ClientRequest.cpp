@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 09:04:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 09:07:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	ClientRequest::read_client_request(void)
 	}
 	else
 		_body += receive_data();
+	if (_end)
+		_host->new_response_sk(_socket, _server, this);
 	//if (!read_body())
 	//	return (read_error("Error: body invalid: \n" + _body, 401));
 	//std::cout << "===============================" << std::endl;
@@ -81,23 +83,21 @@ int	ClientRequest::read_client_request(void)
 	//std::cout << "===============================" << std::endl;
 	//std::cout << "Body:\n" << _body << std::endl;
 	//std::cout << "===============================" << std::endl;
-	_host->new_response_sk(_socket, _server, this);
 	return (1);
 }
 
-std::string	ClientRequest::receive_data(void)
+int	ClientRequest::receive_data(std::string &data)
 {
 	//std::cout << "Receive data from client" << std::endl;
 	char		response[_body_buffer + 1];
 
 	int	ret = recv(_socket, response, _body_buffer, 0);
+	if (ret < _body_buffer)
+		_end = true;
 	if (ret <= 0)
-	{
-		_end = false;
-		return (std::string(""));
-	}
-	response[ret] = 0;
-	return (std::string(response));
+		return (0);
+	data += response[ret];
+	return (ret);
 }
 
 bool	ClientRequest::parser_header(void)
