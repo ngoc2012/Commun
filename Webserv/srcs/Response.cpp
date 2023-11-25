@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 22:45:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 22:47:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ void	Response::send(void)
 			case GET:
 				_body = get();
 				_content_length = get_file_size(_full_file_name);
-				_file.open(_full_file_name, std::ios::binary);
+				_file.open(_full_file_name.c_str(), std::ios::binary);
 				if (!_file.is_open())
 				{
 					std::cerr << "Failed to open file!" << std::endl;
@@ -198,9 +198,9 @@ void	Response::send(void)
 	}
 }
 
-size_t		Response::get_file_size(std::ring &file_name)
+size_t		Response::get_file_size(std::string &file_name)
 {
-	std::ifstream file(file_name, std::ios::binary | std::ios::ate);
+	std::ifstream file(file_name.c_str(), std::ios::binary | std::ios::ate);
 	if (!file.is_open()) {
 		std::cerr << "Failed to open file: " << filename << std::endl;
 		return 0;

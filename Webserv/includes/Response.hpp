@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 22:44:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 22:46:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ class	Response
 		std::string	get_methods_str(void);
 		std::string	get_file_extension(std::string&);
 		void		get_full_file_name(std::string);
+		size_t		get_file_size(std::string &file_name);
 		std::string	get(void);
 
 		Response();
