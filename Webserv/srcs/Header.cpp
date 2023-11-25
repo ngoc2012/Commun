@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 22:18:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 07:47:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,12 @@ std::string	Header::generate(void)
 	str += "\r\n";
 	str += "Allow: " + _allow + "\r\n";
 	str += std::string("Content-Language: en") + "\r\n";
-	str += "Content-Length: " + itos(_response->get_content_length()) + "\r\n";
+	//str += "Content-Length: " + itos(_response->get_content_length()) + "\r\n";
 	if (_types.find(_extension) == _types.end())
 		str += "Content-Type: text/plain\r\n";
 	else
 		str += "Content-Type: " + _types[_extension] + "\r\n";
+	std::cout << str << std::endl;
 	return (str);
 }
 
