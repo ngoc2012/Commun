@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 19:15:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 19:17:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ _host(h),
 _server(s),
 _request(r)
 {
+	_full_file_name = "";
 	_status_code = 200;
 	_location = 0;
 	std::cout << "Response Constructor sk: " << sk << std::endl;
@@ -131,7 +132,6 @@ std::string	Response::get_file_extension(std::string& file_path)
 
 void	Response::get_full_file_name(std::string url)
 {
-	_full_file_name = "";
 	if (_location)
 	{
 		if (_location->get_alias() == "")
