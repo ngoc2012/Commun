@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 23:01:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 23:03:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,7 +213,7 @@ size_t		Response::get_file_size(std::string &file_name)
 
 void	Response::get(void)
 { 
-	size_t	chunk_size = _host->get_client_body_buffer_size();
+	size_t	chunk_size = _host->get_client_body_buffer_size() * KILOBYTE;
 
 	char	buffer[chunk_size];
 	std::cout << "chunk_size:\n" << chunk_size << std::endl;
