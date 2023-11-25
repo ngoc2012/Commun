@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 08:55:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 08:56:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	ClientRequest::read_error(std::string s, int err_code)
 int	ClientRequest::read_client_request(void)
 {
 	std::cout << "read_client_request\n" << std::endl;
+	clean();
 	if (!read_header())
 		return (read_error("Error: can not receive client request", 401));
 	if (!parser_header())
@@ -80,15 +81,15 @@ int	ClientRequest::read_client_request(void)
 	return (1);
 }
 
-bool	ClientRequest::receive_data(void)
+std::string	ClientRequest::receive_data(void)
 {
 	//std::cout << "Receive data from client" << std::endl;
-	clean();
 	char		response[_body_buffer + 1];
 
 	int	ret = recv(_socket, response, _body_buffer, 0);
 	if (ret <= 0)
 	{
+		_end = false;
 		return (false);
 	}
 	response[ret] = 0;
