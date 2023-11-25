@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:15:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 16:16:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,9 +128,8 @@ void	Response::send(void)
 {
 	find_location(_request->get_url());
 	Header	header(_status_code, get_file_extension(_request->get_url(), this);
-		//std::cout << "Found url: " << _location->get_url() << std::endl;
+	//std::cout << "Found url: " << _location->get_url() << std::endl;
 	//Send back data
-	Header	header(200, std::string("html"), this);
 	header.set_allow(get_methods_str());
 	std::string	body = "<!doctype html>\n"
 		"<link rel=\"icon\" href=\"data:,\">\n"
