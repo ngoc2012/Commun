@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 11:55:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 11:57:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool	Response::compare_url(std::string url, std::string l_url)
 		std::cout << "True\n" << std::endl;
 		return (true);
 	}
-	if (url.length() > 1 && url.substr(0, l_url.length()) == l_url)
+	if (url.size() > 1 && url.size() < l_url.size() && url.substr(0, l_url.size()) == l_url)
 	{
 		std::cout << "True 2\n" << std::endl;
 		return (true);
