@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 11:44:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 11:47:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ void	Response::find_location(std::string url)
 		std::vector<e_method>		methods = (*it)->get_methods();
 		if (find_method(_request->get_method(), methods) != methods.end()
 			&& find_url(url, (*it)->get_url()))
+		{
 			_location = *it;
+			return ;
+		}
 	}
 }
 
