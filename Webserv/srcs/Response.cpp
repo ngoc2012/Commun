@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:39:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 16:40:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void	Response::send(void)
 			full_file_name += _server->get_root();
 		else
 			full_file_name += _location->get_alias();
-		if (url.size() > _location.get_url().size())
+		if (url.size() > _location->get_url().size())
 			full_file_name += url.substr(1, url.size() - 1);
 	}
 	std::cout << full_file_name << std::endl;
