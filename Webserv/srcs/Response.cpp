@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 20:03:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 20:05:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ _request(r)
 	_full_file_name = "";
 	_status_code = 200;
 	_location = 0;
+	_end = false;
 	std::cout << "Response Constructor sk: " << sk << std::endl;
 }
 Response::~Response()
@@ -178,9 +179,12 @@ void	Response::send(void)
 	std::cout << http_response << std::endl;
 	if (::send(_socket, http_response.c_str(), http_response.length(), 0) < 0)
 		perror("  send() failed");
-	_host->close_client_sk(_socket);
-	_host->delete_response(_socket);
-	std::cout << "Response sent" << std::endl;
+	if (_end)
+	{
+		_host->close_client_sk(_socket);
+		_host->delete_response(_socket);
+		std::cout << "Response sent" << std::endl;
+	}
 }
 
 size_t		Response::get_file_size(std::string &file_name)
