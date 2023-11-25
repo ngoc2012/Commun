@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 22:33:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 22:42:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,7 +213,7 @@ void	Response::get(void)
 	char	buffer[chunk_size];
 	_file.read(buffer, chunk_size);
 	size_t	bytes_read = _file.gcount();
-	::send(client_socket, buffer, bytes_read, 0);
+	::send(_socket, buffer, bytes_read, 0);
 	if (!_file.eof())
 		_end = true;
 }
