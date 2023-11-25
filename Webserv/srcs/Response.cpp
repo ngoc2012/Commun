@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 18:45:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 18:47:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ void	Response::get_full_file_name(std::string url)
 		_status_code = 404; // Not found
 	std::cout << _full_file_name << std::endl;
 }
+
 void	Response::send(void)
 {
 	std::string	url = _request->get_url();
@@ -176,6 +177,10 @@ void	Response::send(void)
 	_host->close_client_sk(_socket);
 	_host->delete_response(_socket);
 	std::cout << "Response sent" << std::endl;
+}
+
+std::string	Response::get(void)
+{
 }
 
 Location*	Response::get_location(void) const {return (_location);}
