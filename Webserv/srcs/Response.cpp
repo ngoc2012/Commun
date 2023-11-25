@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 22:47:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 22:49:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,14 +185,14 @@ void	Response::send(void)
 		}
 
 		std::string	_header = header.generate();
-		if (::send(_socket, http_response.c_str(), http_response.length(), 0) < 0)
+		if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
 			perror("  send() failed");
 	}
 	else if (_request->get_method() == GET)
 		get();
 	if (_end)
 	{
-		_host->close_client_sk(ket);
+		_host->close_client_sk(_socket);
 		_host->delete_response(_socket);
 		std::cout << "Response sent" << std::endl;
 	}
