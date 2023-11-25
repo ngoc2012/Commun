@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 16:20:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/25 16:23:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	Response::send(void)
 	if (_location)
 	{
 		if (alias == "")
-			full_file_name = root + url;
+			full_file_name = _server->get_root() + url;
 		else
 			full_file_name = alias + url;
 	}
