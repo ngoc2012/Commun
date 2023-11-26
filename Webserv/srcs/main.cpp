@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 11:58:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 15:55:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	main_signal_handler(int sig)
 	{
 		/*
 		std::map<int, Response*>	sk_response = g_host->get_sk_response();
-		std::map<int, ClientRequest*>	sk_client_request = g_host->get_sk_client_request();
+		std::map<int, Request*>	sk_client_request = g_host->get_sk_client_request();
 		for (std::map<int, Response*>::iterator	it = sk_response.begin();
 			it != sk_response.end(); ++it)
 			g_host->delete_response(it->first);
-		for (std::map<int, ClientRequest*>::iterator	it = sk_client_request.begin();
+		for (std::map<int, Request*>::iterator	it = sk_client_request.begin();
 			it != sk_client_request.end(); ++it)
 			g_host->close_client_sk(it->first);
 			*/

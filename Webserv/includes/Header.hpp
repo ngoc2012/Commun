@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/24 22:14:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 15:55:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
  
 class	Server;
 class	Location;
-class	ClientRequest;
+class	Request;
 class	ConfigurationParser;
 class	Response;
 
