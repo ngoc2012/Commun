@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 13:56:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 13:59:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,7 +237,7 @@ void	Response::get(void)
 	size_t	chunk_size = _host->get_client_body_buffer_size() * KILOBYTE;
 
 	char	buffer[chunk_size];
-	std::cout << "chunk_size:\n" << chunk_size << std::endl;
+	//std::cout << "chunk_size: " << chunk_size << std::endl;
 	_file.read(buffer, chunk_size);
 	size_t	bytes_read = _file.gcount();
 	::send(_socket, buffer, bytes_read, 0);
