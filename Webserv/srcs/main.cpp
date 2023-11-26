@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/17 12:11:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 09:32:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	main_signal_handler(int sig)
 		write(STDOUT_FILENO, "", 0);
 		//g_host->end();
 	}
+	if (sig == SIGPIPE)
+	{
+	}
 }
 
 int	main()
@@ -34,6 +37,7 @@ int	main()
 	act.sa_handler = main_signal_handler;
 	sigemptyset(&act.sa_mask);
 	sigaction(SIGINT, &act, NULL);
+	sigaction(SIGPIPE, &act, NULL);
 	Host			host(".conf");
 	//g_host = &host;
 	host.start();
