@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 08:49:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 08:50:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,11 @@ void	Response::find_location(std::string url)
 			if (find_method(_request->get_method(), *it))
 			{
 				_location = *it;
-				_status_code = 200; // Method not allowed
+				_status_code = 200;
 				found = true;
 			}
 			else
 				_status_code = 405; // Method not allowed
-			return ;
 		}
 	}
 	if (!found)
