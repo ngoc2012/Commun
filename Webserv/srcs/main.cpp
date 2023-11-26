@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 09:48:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 09:50:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	main_signal_handler(int sig)
 	}
 	if (sig == SIGPIPE)
 	{
+		std::map<int, Response*>	sk_response = get_sk_response();
 		std::map<int, ClientRequest*>	sk_client_request = g_host->get_sk_client_request();
 	}
 }
