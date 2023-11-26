@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 12:41:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 13:44:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,8 @@ void	Response::send(void)
 		Header	header(_status_code, get_file_extension(_full_file_name), this);
 		header.set_allow(get_methods_str());
 		if (_status_code == 200)
+		{
+			std::cout << _full_file_name << std::endl;
 			switch (_request->get_method())
 			{
 				case GET:
@@ -199,6 +201,7 @@ void	Response::send(void)
 					_content_length = _body.length();
 					break;
 			}
+		}
 		else
 			_end = true;
 
