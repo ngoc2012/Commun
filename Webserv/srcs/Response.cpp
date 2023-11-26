@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 08:50:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 08:54:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,14 @@ bool	Response::compare_url(std::string url, std::string l_url)
 	// Folder
 	if (l_url[l_url.size() - 1] == '/')
 	{
+		if ((url.size() > l_url.size() && url.substr(0, l_url.size()) == l_url)
+			|| url == l_url.substr(0, l_url.size() - 1))
+			return (true);
+		/*
 		if (url == l_url || url == l_url.substr(0, l_url.size() - 1)
 			|| (l_url.size() > 1 && url.substr(0, l_url.size()) == l_url))
 			return (true);
+			*/
 	}
 	// File
 	else if (url == l_url)
