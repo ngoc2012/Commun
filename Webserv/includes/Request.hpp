@@ -6,11 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 16:15:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 18:30:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+
+#include "Response.hpp"
 
 #ifndef CLIENTREQUEST_HPP
 # define CLIENTREQUEST_HPP
@@ -26,8 +28,9 @@ class	Request
 		int		_socket;
 		Host*		_host;
 		Server*		_server;
+		Response	_response;
 
-		int		_error;
+		int		_status_code;
 		std::string	_header;
 		std::string	_body;
 		size_t		_body_max;
@@ -40,7 +43,6 @@ class	Request
 		bool		_end;
 
 		int		receive_data(std::string &);
-		int		read_error(std::string, int);
 		void		clean(void);
 		bool		parser_header(void);
 		bool		read_method(std::string&);
@@ -54,9 +56,12 @@ class	Request
 		Request(int, Host*, Server*);
 		virtual ~Request();
 
-		int		read_request(void);
+		void		read_request(void);
 		e_method	get_method(void) const;
 		std::string	get_url(void) const;
+		//Response*	get_response(void) const;
+		Response*	get_response(void);
+		int		get_status_code(void) const;
 };
 
 #endif

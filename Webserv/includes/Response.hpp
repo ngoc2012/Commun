@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 16:19:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 18:54:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,22 @@ class	Response
 		size_t		get_file_size(std::string &file_name);
 		void		get(void);
 
-		Response();
 		Response(const Response&);
 		Response	&operator=(const Response& op);
 	public:
-		Response(int, Host*, Server*, Request*);
+		//Response(int, Host*, Server*, Request*);
+		Response();
 		virtual ~Response();
 
 		void		send(void);
 		size_t		get_content_length(void) const;
 		Location*	get_location(void) const;	
+
+		void		set_socket(int);
+		void		set_host(Host*);
+		void		set_server(Server*);
+		void		set_request(Request*);
+		void		set_status_code(int);
 };
 
 #endif

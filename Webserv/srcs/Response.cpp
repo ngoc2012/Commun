@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 16:13:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 18:59:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 
 Response::Response()
 {
+	_header = "";
+	_full_file_name = "";
+	_status_code = 200;
+	_location = 0;
+	_end = false;
 	std::cout << "Response Default constructor" << std::endl;
 }
 Response::Response(const Response& src) { *this = src; }
@@ -28,6 +33,7 @@ Response&	Response::operator=( Response const & src )
 	(void) src;
 	return (*this);
 }
+/*
 Response::Response(int sk, Host* h, Server* s, Request* r) :
 _socket(sk),
 _host(h),
@@ -41,6 +47,7 @@ _request(r)
 	_end = false;
 	std::cout << "Response Constructor sk: " << sk << std::endl;
 }
+*/
 Response::~Response()
 {
 	if (_file.is_open())
@@ -164,7 +171,17 @@ void	Response::get_full_file_name(std::string url)
 
 void	Response::send(void)
 {
-	if (_header == "")
+	if (_status_code != 200)
+	{
+		Header	header(_status_code, std::string(""), this);
+		header.set_allow(get_methods_str());
+		_content_length = 0;
+		_header = header.generate();
+		_end = true;
+		if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
+			perror("send() failed");
+	}
+	else if(_header == "")
 	{
 		std::string	url = _request->get_url();
 		find_location(url);
@@ -216,7 +233,7 @@ void	Response::send(void)
 	if (_end)
 	{
 	      _host->close_client_sk(_socket);
-	      _host->delete_response(_socket);
+	      //_host->delete_response(_socket);
 	      std::cout << "Response sent" << std::endl;
 	}
 }
@@ -250,3 +267,8 @@ void	Response::get(void)
 
 Location*	Response::get_location(void) const {return (_location);}
 size_t		Response::get_content_length(void) const {return (_content_length);}
+void		Response::set_socket(int s) {_socket = s;}
+void		Response::set_host(Host* h) {_host = h;}
+void		Response::set_server(Server* s) {_server = s;}
+void		Response::set_request(Request* r) {_request = r;}
+void		Response::set_status_code(int e) {_status_code = e;}

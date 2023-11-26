@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 16:15:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 19:01:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 {
 	_body_max = _host->get_client_max_body_size() * MEGABYTE;
 	_body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
-	std::cout << _body_max << " " << _body_buffer << std::endl;
+	_response.set_socket(sk);
+	_response.set_host(h);
+	_response.set_server(s);
+	_response.set_request(this);
+	//std::cout << _body_max << " " << _body_buffer << std::endl;
 	clean();
 	std::cout << "Request Constructor sk: " << sk << std::endl;
 }
@@ -53,17 +57,10 @@ void	Request::clean()
 	_method = NONE;
 	_url = "";
 	_end = false;
+	_status_code = 200;
 }
 
-int	Request::read_error(std::string s, int err_code)
-{
-	(void) err_code;
-	std::cerr << s << std::endl;
-	_host->new_response_sk(_socket, _server, this);
-	return (err_code);
-}
-
-int	Request::read_request(void)
+void	Request::read_request(void)
 {
 	//std::cout << "read_request" << std::endl;
 	//clean();
@@ -72,37 +69,41 @@ int	Request::read_request(void)
 		receive_data(_header);
 		//std::cout << "_header\n" << _header << std::endl;
 		if (!parser_header())
-			return (read_error("Error: header invalid: \n" + _header, 401));
+		{
+			std::cerr << "Error: header invalid: \n" << _header << std::endl;
+			_end = true;
+			_status_code = 400;	// Bad Request
+		}
 	}
 	else
 	{
-		std::cout << "read_body sk:" << _socket << std::endl;
+		//std::cout << "read_body sk:" << _socket << std::endl;
 		receive_data(_body);
 	}
 	if (_end)
 	{
-		std::cout << "===============================" << std::endl;
-		std::cout << "Header:\n" << _header << std::endl;
-		std::cout << "===============================" << std::endl;
-		std::cout << "Body:\n" << _body << std::endl;
-		std::cout << "===============================" << std::endl;
-		_host->new_response_sk(_socket, _server, this);
+		//std::cout << "===============================" << std::endl;
+		//std::cout << "Header:\n" << _header << std::endl;
+		//std::cout << "===============================" << std::endl;
+		//std::cout << "Body:\n" << _body << std::endl;
+		//std::cout << "===============================" << std::endl;
+		_response.set_status_code(_status_code);
+		_host->new_response_sk(_socket);
 	}
-	return (1);
 }
 
 int	Request::receive_data(std::string &data)
 {
 	//std::cout << "Receive data from client" << std::endl;
-	char		response[_body_buffer + 1];
+	char		request[_body_buffer + 1];
 
-	int	ret = recv(_socket, response, _body_buffer, 0);
+	int	ret = recv(_socket, request, _body_buffer, 0);
 	if (ret <= 0 || (ret > 0 && size_t(ret) < _body_buffer))
 		_end = true;
 	if (ret <= 0)
 		return (0);
-	response[ret] = 0;
-	data += response;
+	request[ret] = 0;
+	data += request;
 	return (ret);
 }
 
@@ -218,3 +219,5 @@ bool	Request::read_content_type(std::string& s, std::string& c)
 
 e_method	Request::get_method(void) const {return (_method);}
 std::string	Request::get_url(void) const {return (_url);}
+Response*	Request::get_response(void) {return (&_response);}
+int		Request::get_status_code(void) const {return (_status_code);}

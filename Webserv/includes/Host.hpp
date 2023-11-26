@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 16:19:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 17:34:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class	Host
 		fd_set              		_write_set;		// Set of active write fd
 		fd_set              		_server_set;
 		std::vector<Server*>		_servers;
-		std::map<int, Response*>	_sk_response;
+		//std::map<int, Response*>	_sk_response;
 		std::map<int, Server*>		_sk_server;
 		std::map<int, Request*>	_sk_request;
 
@@ -60,9 +60,9 @@ class	Host
 
 		void    		start(void);
 		void			new_request_sk(int, Server*);
-		void			new_response_sk(int, Server*, Request*);
+		void			new_response_sk(int);
 		void			close_client_sk(int);
-		void			delete_response(int);
+		//void			delete_response(int);
 
 		int				get_max_clients(void) const;
 		std::map<int, Server*>		get_sk_server(void) const;

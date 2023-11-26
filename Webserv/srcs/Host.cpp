@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 16:19:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 18:15:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ Host::~Host()
 	for (std::map<int, Request*>::iterator it = _sk_request.begin();
 		it != _sk_request.end(); ++it)
 		delete (it->second);
-	for (std::map<int, Response*>::iterator it = _sk_response.begin();
-		it != _sk_response.end(); ++it)
-		delete (it->second);
+	//for (std::map<int, Response*>::iterator it = _sk_response.begin();
+	//	it != _sk_response.end(); ++it)
+	//	delete (it->second);
 	std::cout << "End server" << std::endl;
 }
 
@@ -63,10 +63,10 @@ void	Host::new_request_sk(int new_sk, Server* s)
 	_sk_request[new_sk] = new Request(new_sk, this, s);
 }
 
-void	Host::new_response_sk(int new_sk, Server* s, Request* r)
+void	Host::new_response_sk(int new_sk)
 {
 	FD_SET(new_sk, &_master_write_set);
-	_sk_response[new_sk] = new Response(new_sk, this, s, r);
+	//_sk_response[new_sk] = new Response(new_sk, this, s, r);
 }
 
 bool	Host::check_servers_conf(void)
@@ -118,7 +118,7 @@ void	Host::check_sk_ready(void)
 		{
 			//std::cout << "Write set sk = " << i << std::endl;
 			_sk_ready--;
-			_sk_response[i]->send();
+			_sk_request[i]->get_response()->send();
 		}
 	}
 }
@@ -155,16 +155,17 @@ bool	Host::select_available_sk(void)
 	}
 	return (true);
 }
-
+/*
 void	Host::delete_response(int i)
 {
 	FD_CLR(i, &_master_write_set);
-	delete (_sk_response[i]);
-	_sk_response.erase(i);
+	//delete (_sk_response[i]);
+	//_sk_response.erase(i);
 }
-
+*/
 void	Host::close_client_sk(int i)
 {
+	FD_CLR(i, &_master_write_set);
 	FD_CLR(i, &_master_read_set);
 	delete (_sk_request[i]);
 	_sk_request.erase(i);
@@ -177,7 +178,7 @@ void	Host::close_client_sk(int i)
 int			Host::get_max_clients(void) const {return (_max_clients);}
 std::map<int, Server*>	Host::get_sk_server(void) const {return (_sk_server);}
 std::map<int, Request*>	Host::get_sk_request(void) const {return (_sk_request);}
-std::map<int, Response*>	Host::get_sk_response(void) const {return (_sk_response);}
+//std::map<int, Response*>	Host::get_sk_response(void) const {return (_sk_response);}
 size_t			Host::get_client_max_body_size(void) const {return (_client_max_body_size);}
 size_t			Host::get_client_body_buffer_size(void) const {return (_client_body_buffer_size);}
 
