@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 13:59:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 14:37:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ Response::~Response()
 		else
 			std::cout << "File closed successfully" << std::endl;
 	}
-	std::cout << "Destruction response" << std::endl;
+	std::cout << "Destruction response: " << _socket << std::endl;
 }
 
 bool	Response::find_method(e_method m, Location* loc)
