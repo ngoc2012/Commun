@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 09:47:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 09:49:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ class	Host
 		int				get_max_clients(void) const;
 		std::map<int, Server*>		get_sk_server(void) const;
 		std::map<int, ClientRequest*>	get_sk_client_request(void) const;
+		std::map<int, Response*>	get_sk_response(void) const;
 		size_t				get_client_max_body_size(void) const;
 		size_t				get_client_body_buffer_size(void) const;
 
