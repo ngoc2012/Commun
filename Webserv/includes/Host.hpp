@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 15:55:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 09:49:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 // Forward declaration
 class	Server;
-class	Request;
+class	ClientRequest;
 class	Response;
 class	ConfigurationParser;
 
@@ -42,7 +42,7 @@ class	Host
 		std::vector<Server*>		_servers;
 		std::map<int, Response*>	_sk_response;
 		std::map<int, Server*>		_sk_server;
-		std::map<int, Request*>	_sk_client_request;
+		std::map<int, ClientRequest*>	_sk_client_request;
 
 		bool				select_available_sk(void);
 		void  				add_sk_2_master_read_set(int, Server*);
@@ -60,13 +60,13 @@ class	Host
 
 		void    		start(void);
 		void			new_client_request_sk(int, Server*);
-		void			new_response_sk(int, Server*, Request*);
+		void			new_response_sk(int, Server*, ClientRequest*);
 		void			close_client_sk(int);
 		void			delete_response(int);
 
 		int				get_max_clients(void) const;
 		std::map<int, Server*>		get_sk_server(void) const;
-		std::map<int, Request*>	get_sk_client_request(void) const;
+		std::map<int, ClientRequest*>	get_sk_client_request(void) const;
 		std::map<int, Response*>	get_sk_response(void) const;
 		size_t				get_client_max_body_size(void) const;
 		size_t				get_client_body_buffer_size(void) const;
