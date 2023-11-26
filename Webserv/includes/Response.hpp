@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 22:52:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 16:19:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
  
 class	Server;
 class	Location;
-class	ClientRequest;
-class	ConfigurationParser;
+class	Request;
+class	Configuration;
 
 class	Response
 {
@@ -26,7 +26,7 @@ class	Response
 		int		_socket;
 		Host*		_host;
 		Server*		_server;
-		ClientRequest*	_request;
+		Request*	_request;
 		Location*	_location;	
 		size_t		_content_length;
 		int		_status_code;
@@ -49,7 +49,7 @@ class	Response
 		Response(const Response&);
 		Response	&operator=(const Response& op);
 	public:
-		Response(int, Host*, Server*, ClientRequest*);
+		Response(int, Host*, Server*, Request*);
 		virtual ~Response();
 
 		void		send(void);

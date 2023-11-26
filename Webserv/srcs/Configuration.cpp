@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ConfigurationParser.cpp                            :+:      :+:    :+:   */
+/*   Configuration.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 11:29:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 16:19:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ConfigurationParser.hpp"
+#include "Configuration.hpp"
 #include "Host.hpp"
 #include "Server.hpp"
 #include "Location.hpp"
 
-ConfigurationParser::ConfigurationParser() {}
-ConfigurationParser::ConfigurationParser(const ConfigurationParser& src) { *this = src; }
-ConfigurationParser&	ConfigurationParser::operator=( ConfigurationParser const & src )
+Configuration::Configuration() {}
+Configuration::Configuration(const Configuration& src) { *this = src; }
+Configuration&	Configuration::operator=( Configuration const & src )
 {
 	(void) src;
 	return (*this);
 }
-ConfigurationParser::~ConfigurationParser() {}
-std::string	ConfigurationParser::remove_comments(std::string& s)
+Configuration::~Configuration() {}
+std::string	Configuration::remove_comments(std::string& s)
 {
 	size_t	hash_pos = s.find("#");
 	if (hash_pos == std::string::npos)
 		return (s);
 	return (s.substr(0, hash_pos));
 }
-std::string	ConfigurationParser::remove_spaces_end(std::string& s)
+std::string	Configuration::remove_spaces_end(std::string& s)
 {
 	size_t	n = s.length();
 	while (n > 0 && (s[n - 1] == ' ' || s[n - 1] == '	'))
@@ -38,7 +38,7 @@ std::string	ConfigurationParser::remove_spaces_end(std::string& s)
 	return (s.substr(0, n));
 }
 
-bool	ConfigurationParser::host_parser(std::string cmd, Host* host, std::vector<std::string>& words)
+bool	Configuration::host_parser(std::string cmd, Host* host, std::vector<std::string>& words)
 {
 	int	n;
 
@@ -63,7 +63,7 @@ bool	ConfigurationParser::host_parser(std::string cmd, Host* host, std::vector<s
 	return (false);
 }
 
-bool	ConfigurationParser::server_parser(std::string cmd, Server* server, std::vector<std::string>&words)
+bool	Configuration::server_parser(std::string cmd, Server* server, std::vector<std::string>&words)
 {
 	if (cmd[0] != '	')
 		return (true);
@@ -89,7 +89,7 @@ bool	ConfigurationParser::server_parser(std::string cmd, Server* server, std::ve
 	return (false);
 }
 
-bool	ConfigurationParser::location_parser(std::string cmd, Location* loc, std::vector<std::string>& words)
+bool	Configuration::location_parser(std::string cmd, Location* loc, std::vector<std::string>& words)
 {
 	if (cmd.substr(0, 2) != "		")
 		return (true);
@@ -124,7 +124,7 @@ bool	ConfigurationParser::location_parser(std::string cmd, Location* loc, std::v
 	return (false);
 }
 
-ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* host, const char* conf)
+Configuration::Configuration(std::vector<Server*>& servers, Host* host, const char* conf)
 {
 	//const char*	keys_server[] = {"listen", "server_name", "location"};
 	//const char*	keys_location[] = {"methods", "client_max_body_size", "client_body_buffer_size", "fastcgi_pass", "fastcgi_param", "include"};
@@ -194,7 +194,7 @@ ConfigurationParser::ConfigurationParser(std::vector<Server*>& servers, Host* ho
 	conf_file.close();
 }
 
-bool	ConfigurationParser::listen(Server* s, std::vector<std::string> words)
+bool	Configuration::listen(Server* s, std::vector<std::string> words)
 {
 	if (words.size() != 2)
 		return (false);
@@ -220,7 +220,7 @@ bool	ConfigurationParser::listen(Server* s, std::vector<std::string> words)
 	return (true);
 }
 
-void	ConfigurationParser::conf_file_error(std::string line, int i)
+void	Configuration::conf_file_error(std::string line, int i)
 {
 	std::cerr << "Configuration file error at line "
 		<< i << " :" << line << std::endl;

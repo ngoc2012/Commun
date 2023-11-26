@@ -6,15 +6,15 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 11:10:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 16:19:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Host.hpp"
 #include "Server.hpp"
 #include "Response.hpp"
-#include "ClientRequest.hpp"
-#include "ConfigurationParser.hpp"
+#include "Request.hpp"
+#include "Configuration.hpp"
 
 Host::Host(const Host& src) { *this = src; }
 
@@ -25,7 +25,7 @@ Host::Host(const char* conf) {
 	_parser_error = false;
 
 	_max_sk = -1;
-	ConfigurationParser	parser(_servers, this, conf);
+	Configuration	parser(_servers, this, conf);
 }
 
 Host&	Host::operator=( Host const & src )
@@ -40,8 +40,8 @@ Host::~Host()
 	for (std::vector<Server*>::iterator it = _servers.begin();
 		it != _servers.end(); ++it)
 		delete (*it);
-	for (std::map<int, ClientRequest*>::iterator it = _sk_client_request.begin();
-		it != _sk_client_request.end(); ++it)
+	for (std::map<int, Request*>::iterator it = _sk_request.begin();
+		it != _sk_request.end(); ++it)
 		delete (it->second);
 	for (std::map<int, Response*>::iterator it = _sk_response.begin();
 		it != _sk_response.end(); ++it)
@@ -57,13 +57,13 @@ void  	Host::add_sk_2_master_read_set(int new_sk, Server* s)
 	_sk_server[new_sk] = s;
 }
 
-void	Host::new_client_request_sk(int new_sk, Server* s)
+void	Host::new_request_sk(int new_sk, Server* s)
 {
 	add_sk_2_master_read_set(new_sk, s);
-	_sk_client_request[new_sk] = new ClientRequest(new_sk, this, s);
+	_sk_request[new_sk] = new Request(new_sk, this, s);
 }
 
-void	Host::new_response_sk(int new_sk, Server* s, ClientRequest* r)
+void	Host::new_response_sk(int new_sk, Server* s, Request* r)
 {
 	FD_SET(new_sk, &_master_write_set);
 	_sk_response[new_sk] = new Response(new_sk, this, s, r);
@@ -112,7 +112,7 @@ void	Host::check_sk_ready(void)
 			if (FD_ISSET(i, &_server_set))
 				_sk_server[i]->accept_client_sk();
 			else
-				_sk_client_request[i]->read_client_request();
+				_sk_request[i]->read_request();
 		}
 		if (FD_ISSET(i, &_write_set))
 		{
@@ -166,8 +166,8 @@ void	Host::delete_response(int i)
 void	Host::close_client_sk(int i)
 {
 	FD_CLR(i, &_master_read_set);
-	delete (_sk_client_request[i]);
-	_sk_client_request.erase(i);
+	delete (_sk_request[i]);
+	_sk_request.erase(i);
 	// If i is max_sk -> find another max_sk
 	if (i == _max_sk)
 		while (!FD_ISSET(_max_sk, &_master_read_set))
@@ -176,7 +176,7 @@ void	Host::close_client_sk(int i)
 
 int			Host::get_max_clients(void) const {return (_max_clients);}
 std::map<int, Server*>	Host::get_sk_server(void) const {return (_sk_server);}
-std::map<int, ClientRequest*>	Host::get_sk_client_request(void) const {return (_sk_client_request);}
+std::map<int, Request*>	Host::get_sk_request(void) const {return (_sk_request);}
 std::map<int, Response*>	Host::get_sk_response(void) const {return (_sk_response);}
 size_t			Host::get_client_max_body_size(void) const {return (_client_max_body_size);}
 size_t			Host::get_client_body_buffer_size(void) const {return (_client_body_buffer_size);}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ConfigurationParser.hpp                            :+:      :+:    :+:   */
+/*   Configuration.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 11:29:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 16:19:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ class Host;
 class Server;
 class Location;
 
-class ConfigurationParser
+class Configuration
 {
 	private:
-		ConfigurationParser();
-		ConfigurationParser(const ConfigurationParser&);
-		ConfigurationParser	&operator=(const ConfigurationParser& op);
+		Configuration();
+		Configuration(const Configuration&);
+		Configuration	&operator=(const Configuration& op);
 	public:
-		ConfigurationParser(std::vector<Server*>& servers, Host*, const char* conf);
-		virtual			~ConfigurationParser();
+		Configuration(std::vector<Server*>& servers, Host*, const char* conf);
+		virtual			~Configuration();
 
 		bool			listen(Server*, std::vector<std::string>);
 		void			conf_file_error(std::string, int);

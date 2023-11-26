@@ -6,14 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 14:37:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 16:13:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Host.hpp"
 #include "Server.hpp"
 #include "Location.hpp"
-#include "ClientRequest.hpp"
+#include "Request.hpp"
 #include "Header.hpp"
 
 #include "Response.hpp"
@@ -28,7 +28,7 @@ Response&	Response::operator=( Response const & src )
 	(void) src;
 	return (*this);
 }
-Response::Response(int sk, Host* h, Server* s, ClientRequest* r) :
+Response::Response(int sk, Host* h, Server* s, Request* r) :
 _socket(sk),
 _host(h),
 _server(s),

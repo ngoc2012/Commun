@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClientRequest.cpp                                  :+:      :+:    :+:   */
+/*   Request.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 23:36:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 16:15:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Host.hpp"
 #include "Server.hpp"
-#include "ClientRequest.hpp"
+#include "Request.hpp"
 
-ClientRequest::ClientRequest()
+Request::Request()
 {
-	std::cout << "ClientRequest Default constructor" << std::endl;
+	std::cout << "Request Default constructor" << std::endl;
 	clean();
 }
-ClientRequest::ClientRequest(const ClientRequest& src) { *this = src; }
-ClientRequest&	ClientRequest::operator=( ClientRequest const & src )
+Request::Request(const Request& src) { *this = src; }
+Request&	Request::operator=( Request const & src )
 {
 	(void) src;
 	return (*this);
 }
-ClientRequest::ClientRequest(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
+Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 {
 	_body_max = _host->get_client_max_body_size() * MEGABYTE;
 	_body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
 	std::cout << _body_max << " " << _body_buffer << std::endl;
 	clean();
-	std::cout << "ClientRequest Constructor sk: " << sk << std::endl;
+	std::cout << "Request Constructor sk: " << sk << std::endl;
 }
-ClientRequest::~ClientRequest()
+Request::~Request()
 {
 	std::cout << "Destruction client request" << std::endl;
 	if (_socket > 0)
@@ -43,7 +43,7 @@ ClientRequest::~ClientRequest()
 	}
 }
 
-void	ClientRequest::clean()
+void	Request::clean()
 {
 	_body = "";
 	_header = "";
@@ -55,7 +55,7 @@ void	ClientRequest::clean()
 	_end = false;
 }
 
-int	ClientRequest::read_error(std::string s, int err_code)
+int	Request::read_error(std::string s, int err_code)
 {
 	(void) err_code;
 	std::cerr << s << std::endl;
@@ -63,9 +63,9 @@ int	ClientRequest::read_error(std::string s, int err_code)
 	return (err_code);
 }
 
-int	ClientRequest::read_client_request(void)
+int	Request::read_request(void)
 {
-	//std::cout << "read_client_request" << std::endl;
+	//std::cout << "read_request" << std::endl;
 	//clean();
 	if (_header == "")
 	{
@@ -91,7 +91,7 @@ int	ClientRequest::read_client_request(void)
 	return (1);
 }
 
-int	ClientRequest::receive_data(std::string &data)
+int	Request::receive_data(std::string &data)
 {
 	//std::cout << "Receive data from client" << std::endl;
 	char		response[_body_buffer + 1];
@@ -106,7 +106,7 @@ int	ClientRequest::receive_data(std::string &data)
 	return (ret);
 }
 
-bool	ClientRequest::parser_header(void)
+bool	Request::parser_header(void)
 {
 
 	if (_header.size() <= 0)
@@ -128,7 +128,7 @@ bool	ClientRequest::parser_header(void)
 	return (true);
 }
 
-bool	ClientRequest::read_method(std::string& s)
+bool	Request::read_method(std::string& s)
 {
 	//std::cout << s << std::endl;
 	if (s == "GET")
@@ -145,7 +145,7 @@ bool	ClientRequest::read_method(std::string& s)
 	return (true);
 }
 
-bool	ClientRequest::find_start_body(std::string& s)
+bool	Request::find_start_body(std::string& s)
 {
 	size_t	start = 0;
 	size_t	pos0 = s.find("Content-Type:");
@@ -180,7 +180,7 @@ bool	ClientRequest::find_start_body(std::string& s)
 	return (true);
 }
 
-bool	ClientRequest::read_content_type(std::string& s, std::string& c)
+bool	Request::read_content_type(std::string& s, std::string& c)
 {
 	const char*	types[] = {
 		"text/plain",
@@ -216,5 +216,5 @@ bool	ClientRequest::read_content_type(std::string& s, std::string& c)
 	return (true);
 }
 
-e_method	ClientRequest::get_method(void) const {return (_method);}
-std::string	ClientRequest::get_url(void) const {return (_url);}
+e_method	Request::get_method(void) const {return (_method);}
+std::string	Request::get_url(void) const {return (_url);}

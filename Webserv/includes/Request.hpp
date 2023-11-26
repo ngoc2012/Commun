@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClientRequest.hpp                                  :+:      :+:    :+:   */
+/*   Request.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/25 10:09:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 16:15:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 class	Host;
 
-class	ClientRequest
+class	Request
 {
 	private:
 		int		_socket;
@@ -47,14 +47,14 @@ class	ClientRequest
 		bool		read_content_type(std::string&, std::string&);
 		bool		find_start_body(std::string&);
 
-		ClientRequest();
-		ClientRequest(const ClientRequest&);
-		ClientRequest &operator=(const ClientRequest& op);
+		Request();
+		Request(const Request&);
+		Request &operator=(const Request& op);
 	public:
-		ClientRequest(int, Host*, Server*);
-		virtual ~ClientRequest();
+		Request(int, Host*, Server*);
+		virtual ~Request();
 
-		int		read_client_request(void);
+		int		read_request(void);
 		e_method	get_method(void) const;
 		std::string	get_url(void) const;
 };

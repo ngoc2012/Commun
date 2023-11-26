@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 22:46:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 16:15:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	Server::accept_client_sk(void)
 		}
 		fcntl(new_sk, F_SETFL, O_NONBLOCK);
 		std::cout << "  New incoming connection - " << new_sk << std::endl;
-		_host->new_client_request_sk(new_sk, this);
+		_host->new_request_sk(new_sk, this);
 	} while (new_sk != -1);
 }
 
