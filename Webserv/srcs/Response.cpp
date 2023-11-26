@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 13:46:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/11/26 13:53:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,7 +247,10 @@ void	Response::get(void)
 	size_t	bytes_read = _file.gcount();
 	::send(_socket, buffer, bytes_read, 0);
 	if (_file.eof())
+	{
+		_file.close();
 		_end = true;
+	}
 }
 
 Location*	Response::get_location(void) const {return (_location);}
