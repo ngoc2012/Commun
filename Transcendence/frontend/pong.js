@@ -80,7 +80,7 @@ class Game
 			this.resetGame();
 		}
 
-		requestAnimationFrame(draw);
+		requestAnimationFrame(this.draw());
 	}
 
 	start()
@@ -134,6 +134,7 @@ document.addEventListener('keyup', function (event) {
 		break;
 		}
 		});
+
 /*
 // AJAX Polling
 function pollGameState() {
