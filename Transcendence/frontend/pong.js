@@ -129,7 +129,6 @@ document.addEventListener('keyup', function (event) {
 		}
 		});
 
-/*
 // AJAX Polling
 function pollGameState() {
     // Make an AJAX request to get the current game state
@@ -161,6 +160,7 @@ function sendAction(action) {
         }
     });
 }
+/*
 
 // Example: Move paddle up
 document.addEventListener('keydown', function (event) {
