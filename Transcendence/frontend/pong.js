@@ -4,11 +4,20 @@ class Game
 	width = 800;
 	paddleWidth = 10;
 	paddleHeight = 60;
-	canvas;
-	leftPaddle;
-	rightPaddle;
-	ctx;
-	ball;
+
+	constructor()
+	{
+		this.canvas = document.getElementById('pongCanvas');
+		this.ctx = this.canvas.getContext('2d');
+
+		// Create the paddles
+		this.leftPaddle = { x: 0, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
+		this.rightPaddle = { x: this.canvas.width - this.paddleWidth, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
+
+		// Create the this.ball
+		this.ball = { x: this.canvas.width / 2, y: this.canvas.height / 2, radius: 10, dx: 5, dy: 5 };
+
+	}
 
 	resetGame()
 	{
@@ -19,8 +28,6 @@ class Game
 	}
 
 	draw() {
-		this.canvas = document.getElementById('pongCanvas');
-		this.ctx = this.canvas.getContext('2d');
 		// Clear the canvas
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -84,28 +91,13 @@ class Game
 
 		requestAnimationFrame(draw);
 	}
-
-	start()
-	{
-		this.canvas = document.getElementById('pongCanvas');
-		this.ctx = this.canvas.getContext('2d');
-		// Create the paddles
-		this.leftPaddle = { x: 0, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
-		this.rightPaddle = { x: this.canvas.width - this.paddleWidth, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
-
-		// Create the this.ball
-		this.ball = { x: this.canvas.width / 2, y: this.canvas.height / 2, radius: 10, dx: 5, dy: 5 };
-
-		// Start the game loop
-		this.draw();
-	}
 }
 
 
 
 document.addEventListener('DOMContentLoaded', function (event) {
 		game = new Game();
-		game.start();
+		game.draw();
 		});
 
 // Handle keyboard input
