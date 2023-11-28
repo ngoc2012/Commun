@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import state, get_players_list
+from .views import state, action
+from .views import get_games_list, get_players_list
 
 urlpatterns = [
-    path('state/', get_games_list, name='games'),
-    path('action/', get_players_list, name='players'),
+    path('state/', state, name='games'),
+    path('action/', action, name='players'),
     path('games/', get_games_list, name='games'),
     path('players/', get_players_list, name='players'),
 ]
