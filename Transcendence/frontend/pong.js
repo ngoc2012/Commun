@@ -80,7 +80,7 @@ class Game
 			this.resetGame();
 		}
 
-		requestAnimationFrame(this.draw());
+		requestAnimationFrame(draw);
 	}
 
 	start()
