@@ -133,7 +133,7 @@ document.addEventListener('keyup', function (event) {
 function pollGameState() {
     // Make an AJAX request to get the current game state
     $.ajax({
-        url: '/api/game-state/',
+        url: '/api/state/',
         method: 'GET',
         success: function(data) {
             // Update game elements based on data received from the server
@@ -149,7 +149,7 @@ function pollGameState() {
 function sendAction(action) {
     // Make an AJAX request to send player action to the server
     $.ajax({
-        url: '/api/send-action/',
+        url: '/api/action/',
         method: 'POST',
         data: { action: action },
         success: function(response) {
