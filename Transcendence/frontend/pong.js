@@ -1,14 +1,14 @@
 class Game
 {
-#height = 400;
-#width = 800;
-#paddleWidth = 10;
-#paddleHeight = 60;
-#canvas = document.getElementById('pongCanvas');
-leftPaddle;
-rightPaddle;
-#ctx;
-#ball;
+	height = 400;
+	width = 800;
+	paddleWidth = 10;
+	paddleHeight = 60;
+	canvas = document.getElementById('pongCanvas');
+	leftPaddle;
+	rightPaddle;
+	ctx;
+	ball;
 
 	resetGame()
 	{
@@ -39,9 +39,12 @@ rightPaddle;
 		this.ball.y += this.ball.dy;
 
 		// Bounce off the top and bottom walls
-		if (this.ball.y - this.ball.radius < 0 || this.ball.y + this.ball.radius > canvas.height) {
+		if (this.ball.y - this.ball.radius < 0 || this.ball.y + this.ball.radius > canvas.height)
+		{
 			this.ball.dy = -this.ball.dy;
 		}
+	}
+
 	start()
 	{
 		this.ctx = this.canvas.getContext('2d');
