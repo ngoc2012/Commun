@@ -102,9 +102,11 @@ class Game
 }
 
 
-game = new Game();
 
-document.addEventListener('DOMContentLoaded', game.start());
+document.addEventListener('DOMContentLoaded', function (event) {
+		game = new Game();
+		game.start();
+		});
 
 // Handle keyboard input
 document.addEventListener('keydown', function (event) {
