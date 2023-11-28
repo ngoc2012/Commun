@@ -4,7 +4,7 @@ class Game
 	width = 800;
 	paddleWidth = 10;
 	paddleHeight = 60;
-	canvas = document.getElementById('pongCanvas');
+	canvas;
 	leftPaddle;
 	rightPaddle;
 	ctx;
@@ -47,6 +47,7 @@ class Game
 
 	start()
 	{
+		this.canvas = document.getElementById('pongCanvas');
 		this.ctx = this.canvas.getContext('2d');
 		// Create the paddles
 		this.leftPaddle = { x: 0, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
@@ -94,9 +95,6 @@ class Game
 		}
 
 		requestAnimationFrame(draw);
-		}
-
-
 
 		// Start the game loop
 		draw();
