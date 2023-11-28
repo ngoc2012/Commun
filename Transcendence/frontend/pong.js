@@ -96,7 +96,7 @@ class Game
 
 
 document.addEventListener('DOMContentLoaded', function (event) {
-		game = new Game();
+		const game = new Game();
 		game.draw();
 		});
 
