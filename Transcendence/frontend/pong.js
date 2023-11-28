@@ -5,8 +5,8 @@ class Game
 #paddleWidth = 10;
 #paddleHeight = 60;
 #canvas = document.getElementById('pongCanvas');
-#leftPaddle;
-#rightPaddle;
+leftPaddle;
+rightPaddle;
 #ctx;
 
 	resetGame()
@@ -43,10 +43,10 @@ class Game
 		}
 	start()
 	{
-		this.this.ctx = this.canvas.getContext('2d');
+		this.ctx = this.canvas.getContext('2d');
 		// Create the paddles
-		this.this.leftPaddle = { x: 0, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
-		this.this.rightPaddle = { x: this.canvas.width - this.paddleWidth, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
+		this.leftPaddle = { x: 0, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
+		this.rightPaddle = { x: this.canvas.width - this.paddleWidth, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
 
 		// Create the this.ball
 		const this.ball = { x: this.canvas.width / 2, y: this.canvas.height / 2, radius: 10, dx: 5, dy: 5 };
@@ -88,36 +88,6 @@ class Game
 		}
 
 
-		// Handle keyboard input
-		document.addEventListener('keydown', function (event) {
-				switch (event.key) {
-				case 'ArrowUp':
-				this.rightPaddle.dy = -5;
-				break;
-				case 'ArrowDown':
-				this.rightPaddle.dy = 5;
-				break;
-				case 'w':
-				this.leftPaddle.dy = -5;
-				break;
-				case 's':
-				this.leftPaddle.dy = 5;
-				break;
-				}
-				});
-
-		document.addEventListener('keyup', function (event) {
-				switch (event.key) {
-				case 'ArrowUp':
-				case 'ArrowDown':
-				this.rightPaddle.dy = 0;
-				break;
-				case 'w':
-				case 's':
-				this.leftPaddle.dy = 0;
-				break;
-				}
-				});
 
 		// Start the game loop
 		draw();
@@ -129,6 +99,36 @@ game = new Game();
 
 document.addEventListener('DOMContentLoaded', game.start());
 
+// Handle keyboard input
+document.addEventListener('keydown', function (event) {
+		switch (event.key) {
+		case 'ArrowUp':
+		game.rightPaddle.dy = -5;
+		break;
+		case 'ArrowDown':
+		game.rightPaddle.dy = 5;
+		break;
+		case 'w':
+		game.leftPaddle.dy = -5;
+		break;
+		case 's':
+		game.leftPaddle.dy = 5;
+		break;
+		}
+		});
+
+document.addEventListener('keyup', function (event) {
+		switch (event.key) {
+		case 'ArrowUp':
+		case 'ArrowDown':
+		game.rightPaddle.dy = 0;
+		break;
+		case 'w':
+		case 's':
+		game.leftPaddle.dy = 0;
+		break;
+		}
+		});
 /*
 // AJAX Polling
 function pollGameState() {
