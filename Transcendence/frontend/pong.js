@@ -19,68 +19,68 @@ class Game
 
 	draw() {
 		// Clear the canvas
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
 		// Draw paddles
-		ctx.fillStyle = '#8b3a62';
-		ctx.fillRect(leftPaddle.x, leftPaddle.y, leftPaddle.width, leftPaddle.height);
-		ctx.fillRect(rightPaddle.x, rightPaddle.y, rightPaddle.width, rightPaddle.height);
+		this.ctx.fillStyle = '#8b3a62';
+		this.ctx.fillRect(this.leftPaddle.x, this.leftPaddle.y, this.leftPaddle.width, this.leftPaddle.height);
+		this.ctx.fillRect(this.rightPaddle.x, this.rightPaddle.y, this.rightPaddle.width, this.rightPaddle.height);
 
-		// Draw ball
-		ctx.beginPath();
-		ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-		ctx.fillStyle = '#00ffcc';
-		ctx.fill();
-		ctx.closePath();
+		// Draw this.ball
+		this.ctx.beginPath();
+		this.ctx.arc(this.ball.x, this.ball.y, this.ball.radius, 0, Math.PI * 2);
+		this.ctx.fillStyle = '#00ffcc';
+		this.ctx.fill();
+		this.ctx.closePath();
 
-		// Update ball position
-		ball.x += ball.dx;
-		ball.y += ball.dy;
+		// Update this.ball position
+		this.ball.x += this.ball.dx;
+		this.ball.y += this.ball.dy;
 
 		// Bounce off the top and bottom walls
-		if (ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
-			ball.dy = -ball.dy;
+		if (this.ball.y - this.ball.radius < 0 || this.ball.y + this.ball.radius > canvas.height) {
+			this.ball.dy = -this.ball.dy;
 		}
 	start()
 	{
-		this.ctx = this.canvas.getContext('2d');
+		this.this.ctx = this.canvas.getContext('2d');
 		// Create the paddles
-		this.leftPaddle = { x: 0, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
-		this.rightPaddle = { x: this.canvas.width - this.paddleWidth, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
+		this.this.leftPaddle = { x: 0, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
+		this.this.rightPaddle = { x: this.canvas.width - this.paddleWidth, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
 
-		// Create the ball
-		const ball = { x: this.canvas.width / 2, y: this.canvas.height / 2, radius: 10, dx: 5, dy: 5 };
+		// Create the this.ball
+		const this.ball = { x: this.canvas.width / 2, y: this.canvas.height / 2, radius: 10, dx: 5, dy: 5 };
 
 
 		// Bounce off left paddle
 		if (
-				ball.x - ball.radius < leftPaddle.x + leftPaddle.width &&
-				ball.y > leftPaddle.y &&
-				ball.y < leftPaddle.y + leftPaddle.height
+				this.ball.x - this.ball.radius < this.leftPaddle.x + this.leftPaddle.width &&
+				this.ball.y > this.leftPaddle.y &&
+				this.ball.y < this.leftPaddle.y + this.leftPaddle.height
 		   ) {
-			ball.dx = -ball.dx;
+			this.ball.dx = -this.ball.dx;
 		}
 
 		// Bounce off right paddle
 		if (
-				ball.x + ball.radius > rightPaddle.x &&
-				ball.y > rightPaddle.y &&
-				ball.y < rightPaddle.y + rightPaddle.height
+				this.ball.x + this.ball.radius > this.rightPaddle.x &&
+				this.ball.y > this.rightPaddle.y &&
+				this.ball.y < this.rightPaddle.y + this.rightPaddle.height
 		   ) {
-			ball.dx = -ball.dx;
+			this.ball.dx = -this.ball.dx;
 		}
 
 		// Move paddles
-		if (leftPaddle.y + leftPaddle.dy > 0 && leftPaddle.y + leftPaddle.dy < canvas.height - leftPaddle.height) {
-			leftPaddle.y += leftPaddle.dy;
+		if (this.leftPaddle.y + this.leftPaddle.dy > 0 && this.leftPaddle.y + this.leftPaddle.dy < canvas.height - this.leftPaddle.height) {
+			this.leftPaddle.y += this.leftPaddle.dy;
 		}
 
-		if (rightPaddle.y + rightPaddle.dy > 0 && rightPaddle.y + rightPaddle.dy < canvas.height - rightPaddle.height) {
-			rightPaddle.y += rightPaddle.dy;
+		if (this.rightPaddle.y + this.rightPaddle.dy > 0 && this.rightPaddle.y + this.rightPaddle.dy < canvas.height - this.rightPaddle.height) {
+			this.rightPaddle.y += this.rightPaddle.dy;
 		}
 
 		// Check for game over
-		if (ball.x - ball.radius < 0 || ball.x + ball.radius > canvas.width) {
+		if (this.ball.x - this.ball.radius < 0 || this.ball.x + this.ball.radius > canvas.width) {
 			resetGame();
 		}
 
@@ -92,16 +92,16 @@ class Game
 		document.addEventListener('keydown', function (event) {
 				switch (event.key) {
 				case 'ArrowUp':
-				rightPaddle.dy = -5;
+				this.rightPaddle.dy = -5;
 				break;
 				case 'ArrowDown':
-				rightPaddle.dy = 5;
+				this.rightPaddle.dy = 5;
 				break;
 				case 'w':
-				leftPaddle.dy = -5;
+				this.leftPaddle.dy = -5;
 				break;
 				case 's':
-				leftPaddle.dy = 5;
+				this.leftPaddle.dy = 5;
 				break;
 				}
 				});
@@ -110,11 +110,11 @@ class Game
 				switch (event.key) {
 				case 'ArrowUp':
 				case 'ArrowDown':
-				rightPaddle.dy = 0;
+				this.rightPaddle.dy = 0;
 				break;
 				case 'w':
 				case 's':
-				leftPaddle.dy = 0;
+				this.leftPaddle.dy = 0;
 				break;
 				}
 				});
