@@ -4,7 +4,9 @@ class Game
 	#width = 800;
 	#paddleWidth = 10;
 	#paddleHeight = 60;
-	#canvas;
+	#canvas = document.getElementById('pongCanvas');
+	#leftPaddle;
+#rightPaddle;
 
 	resetGame() {
 		this.ball.x = this.canvas.width / 2;
@@ -15,9 +17,7 @@ class Game
 
 	start()
 	{
-		this.canvas = document.getElementById('pongCanvas');
 		const ctx = canvas.getContext('2d');
-
 		// Create the paddles
 		const leftPaddle = { x: 0, y: canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
 		const rightPaddle = { x: canvas.width - this.paddleWidth, y: canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
