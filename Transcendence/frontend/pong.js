@@ -20,14 +20,14 @@ class Game
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 		// Draw paddles
-		ctx.fillStyle = '#000';
+		ctx.fillStyle = '#8b3a62';
 		ctx.fillRect(leftPaddle.x, leftPaddle.y, leftPaddle.width, leftPaddle.height);
 		ctx.fillRect(rightPaddle.x, rightPaddle.y, rightPaddle.width, rightPaddle.height);
 
 		// Draw ball
 		ctx.beginPath();
 		ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-		ctx.fillStyle = '#000';
+		ctx.fillStyle = '#00ffcc';
 		ctx.fill();
 		ctx.closePath();
 
