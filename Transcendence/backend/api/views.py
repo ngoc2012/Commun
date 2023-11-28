@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 
-games_list = {{1, 2}, {3, 4}}
-players_list = {"haha", "hehe"}
+games_list = {{"haha", "hehe"}, {"hihi", "hoho"}}
+players_list = {"haha", "hehe", "hihi", "hoho"}
 width = 800
 height = 400
 game_state = {"paddle1_y": 50, "paddle2_y": 50, "ball_x": 100, "ball_y": 100}
