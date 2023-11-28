@@ -39,7 +39,7 @@ class Game
 		this.ball.y += this.ball.dy;
 
 		// Bounce off the top and bottom walls
-		if (this.ball.y - this.ball.radius < 0 || this.ball.y + this.ball.radius > canvas.height)
+		if (this.ball.y - this.ball.radius < 0 || this.ball.y + this.ball.radius > this.canvas.height)
 		{
 			this.ball.dy = -this.ball.dy;
 		}
