@@ -16,17 +16,7 @@ class Game
 		this.rightPaddle.y = this.canvas.height / 2 - this.paddleHeight / 2;
 	}
 
-	start()
-	{
-		const ctx = this.canvas.getContext('2d');
-		// Create the paddles
-		this.leftPaddle = { x: 0, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
-		this.rightPaddle = { x: this.canvas.width - this.paddleWidth, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
-
-		// Create the ball
-		const ball = { x: canvas.width / 2, y: canvas.height / 2, radius: 10, dx: 5, dy: 5 };
-
-		function draw() {
+	draw() {
 		// Clear the canvas
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -50,6 +40,16 @@ class Game
 		if (ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
 			ball.dy = -ball.dy;
 		}
+	start()
+	{
+		const ctx = this.canvas.getContext('2d');
+		// Create the paddles
+		this.leftPaddle = { x: 0, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
+		this.rightPaddle = { x: this.canvas.width - this.paddleWidth, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
+
+		// Create the ball
+		const ball = { x: this.canvas.width / 2, y: this.canvas.height / 2, radius: 10, dx: 5, dy: 5 };
+
 
 		// Bounce off left paddle
 		if (
