@@ -89,14 +89,12 @@ class Game
 			this.resetGame();
 		}
 
-		requestAnimationFrame(this.draw());
+		requestAnimationFrame(() => this.draw());
 	}
 }
 
-
-
+const game = new Game();
 document.addEventListener('DOMContentLoaded', function (event) {
-		const game = new Game();
 		game.draw();
 		});
 
