@@ -4,6 +4,7 @@ class Game
 	#width = 800;
 	#paddleWidth = 10;
 	#paddleHeight = 60;
+	#canvas
 	start()
 	{
 		const canvas = document.getElementById('pongCanvas');
