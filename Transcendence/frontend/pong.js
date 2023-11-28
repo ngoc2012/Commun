@@ -4,10 +4,18 @@ class Game
 	#width = 800;
 	#paddleWidth = 10;
 	#paddleHeight = 60;
-	#canvas
+	#canvas;
+
+	resetGame() {
+		ball.x = this.canvas.width / 2;
+		ball.y = this.canvas.height / 2;
+		leftPaddle.y = this.canvas.height / 2 - this.paddleHeight / 2;
+		rightPaddle.y = this.canvas.height / 2 - this.paddleHeight / 2;
+	}
+
 	start()
 	{
-		const canvas = document.getElementById('pongCanvas');
+		this.canvas = document.getElementById('pongCanvas');
 		const ctx = canvas.getContext('2d');
 
 		// Create the paddles
@@ -77,12 +85,6 @@ class Game
 		requestAnimationFrame(draw);
 		}
 
-		function resetGame() {
-			ball.x = canvas.width / 2;
-			ball.y = canvas.height / 2;
-			leftPaddle.y = canvas.height / 2 - this.paddleHeight / 2;
-			rightPaddle.y = canvas.height / 2 - this.paddleHeight / 2;
-		}
 
 		// Handle keyboard input
 		document.addEventListener('keydown', function (event) {
