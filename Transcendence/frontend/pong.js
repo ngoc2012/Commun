@@ -2,13 +2,8 @@ class Game
 {
 	#height = 400;
 	#width = 800;
-	constructor(){}
-}
-
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
+	start()
+	{
 		const canvas = document.getElementById('pongCanvas');
 		const ctx = canvas.getContext('2d');
 
@@ -120,7 +115,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Start the game loop
 		draw();
-});
+	}
+}
+
+
+game = new Game();
+
+document.addEventListener('DOMContentLoaded', game.start());
 
 /*
 // AJAX Polling
