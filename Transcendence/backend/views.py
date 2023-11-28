@@ -3,6 +3,8 @@ from django.http import JsonResponse
 
 games_list = {1, 2, 3, 4}
 players_list = {"haha", "hehe"}
+width = 800
+height = 400
 
 def pong_game(request):
 	# Handle game logic and return the current game state
