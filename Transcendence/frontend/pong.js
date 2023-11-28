@@ -89,7 +89,7 @@ class Game
 			this.resetGame();
 		}
 
-		requestAnimationFrame(draw);
+		//requestAnimationFrame(draw);
 	}
 }
 
