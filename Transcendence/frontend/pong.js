@@ -111,3 +111,59 @@ document.addEventListener('DOMContentLoaded', function () {
 		// Start the game loop
 		draw();
 });
+
+/*
+// AJAX Polling
+function pollGameState() {
+    // Make an AJAX request to get the current game state
+    $.ajax({
+        url: '/api/game-state/',
+        method: 'GET',
+        success: function(data) {
+            // Update game elements based on data received from the server
+            updateGame(data);
+        },
+        error: function(error) {
+            console.error('Error fetching game state:', error);
+        }
+    });
+}
+
+// Send player actions to the server
+function sendAction(action) {
+    // Make an AJAX request to send player action to the server
+    $.ajax({
+        url: '/api/send-action/',
+        method: 'POST',
+        data: { action: action },
+        success: function(response) {
+            // Handle server response if needed
+        },
+        error: function(error) {
+            console.error('Error sending player action:', error);
+        }
+    });
+}
+
+// Example: Move paddle up
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowUp') {
+        sendAction('move_up');
+    }
+});
+
+// Example: Move paddle down
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowDown') {
+        sendAction('move_down');
+    }
+});
+
+// Update game elements based on data received from the server
+function updateGame(data) {
+    // Update game elements (e.g., paddle and ball positions) based on data
+}
+
+// Poll for game state every 100 milliseconds (adjust as needed)
+setInterval(pollGameState, 100);
+*/
