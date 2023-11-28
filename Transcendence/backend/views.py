@@ -5,3 +5,6 @@
 #	# Handle game logic and return the current game state
 #	game_state = {"paddle1_y": 50, "paddle2_y": 50, "ball_x": 100, "ball_y": 100}
 #	return JsonResponse(game_state)
+
+def home(request):
+	return (render);
