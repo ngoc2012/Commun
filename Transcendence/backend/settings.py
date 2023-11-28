@@ -54,7 +54,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['../frontend'],
+        'DIRS': ['/home/ngoc/Commun/Transcendence/frontend'],
         'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
