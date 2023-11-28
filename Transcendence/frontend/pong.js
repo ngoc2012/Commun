@@ -1,14 +1,15 @@
 class Game
 {
-	#height = 400;
-	#width = 800;
-	#paddleWidth = 10;
-	#paddleHeight = 60;
-	#canvas = document.getElementById('pongCanvas');
-	#leftPaddle;
+#height = 400;
+#width = 800;
+#paddleWidth = 10;
+#paddleHeight = 60;
+#canvas = document.getElementById('pongCanvas');
+#leftPaddle;
 #rightPaddle;
 
-	resetGame() {
+	resetGame()
+	{
 		this.ball.x = this.canvas.width / 2;
 		this.ball.y = this.canvas.height / 2;
 		this.leftPaddle.y = this.canvas.height / 2 - this.paddleHeight / 2;
@@ -17,10 +18,10 @@ class Game
 
 	start()
 	{
-		const ctx = canvas.getContext('2d');
+		const ctx = this.canvas.getContext('2d');
 		// Create the paddles
-		const leftPaddle = { x: 0, y: canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
-		const rightPaddle = { x: canvas.width - this.paddleWidth, y: canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
+		this.leftPaddle = { x: 0, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
+		this.rightPaddle = { x: this.canvas.width - this.paddleWidth, y: this.canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
 
 		// Create the ball
 		const ball = { x: canvas.width / 2, y: canvas.height / 2, radius: 10, dx: 5, dy: 5 };
