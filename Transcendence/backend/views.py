@@ -7,4 +7,4 @@ from django.http import JsonResponse
 #	return JsonResponse(game_state)
 
 def home(request):
-	return (render(request, '../frontend/index.html'));
+	return (render(request, 'index.html'));
