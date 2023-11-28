@@ -1,4 +1,9 @@
-
+class Game
+{
+	#height = 400;
+	#width = 800;
+	constructor(){}
+}
 
 
 
