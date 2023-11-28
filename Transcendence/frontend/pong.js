@@ -2,15 +2,16 @@ class Game
 {
 	#height = 400;
 	#width = 800;
+	#paddleWidth = 10;
+	#paddleHeight = 60;
 	start()
 	{
 		const canvas = document.getElementById('pongCanvas');
 		const ctx = canvas.getContext('2d');
 
 		// Create the paddles
-		const paddleWidth = 10, paddleHeight = 60;
-		const leftPaddle = { x: 0, y: canvas.height / 2 - paddleHeight / 2, width: paddleWidth, height: paddleHeight, dy: 5 };
-		const rightPaddle = { x: canvas.width - paddleWidth, y: canvas.height / 2 - paddleHeight / 2, width: paddleWidth, height: paddleHeight, dy: 5 };
+		const leftPaddle = { x: 0, y: canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
+		const rightPaddle = { x: canvas.width - this.paddleWidth, y: canvas.height / 2 - this.paddleHeight / 2, width: this.paddleWidth, height: this.paddleHeight, dy: 5 };
 
 		// Create the ball
 		const ball = { x: canvas.width / 2, y: canvas.height / 2, radius: 10, dx: 5, dy: 5 };
@@ -78,8 +79,8 @@ class Game
 		function resetGame() {
 			ball.x = canvas.width / 2;
 			ball.y = canvas.height / 2;
-			leftPaddle.y = canvas.height / 2 - paddleHeight / 2;
-			rightPaddle.y = canvas.height / 2 - paddleHeight / 2;
+			leftPaddle.y = canvas.height / 2 - this.paddleHeight / 2;
+			rightPaddle.y = canvas.height / 2 - this.paddleHeight / 2;
 		}
 
 		// Handle keyboard input
