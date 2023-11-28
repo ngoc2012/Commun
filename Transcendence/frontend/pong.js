@@ -73,23 +73,23 @@ class Game
 		}
 
 		// Move paddles
-		if (this.leftPaddle.y + this.leftPaddle.dy > 0 && this.leftPaddle.y + this.leftPaddle.dy < canvas.height - this.leftPaddle.height)
+		if (this.leftPaddle.y + this.leftPaddle.dy > 0 && this.leftPaddle.y + this.leftPaddle.dy < this.canvas.height - this.leftPaddle.height)
 		{
 			this.leftPaddle.y += this.leftPaddle.dy;
 		}
 
-		if (this.rightPaddle.y + this.rightPaddle.dy > 0 && this.rightPaddle.y + this.rightPaddle.dy < canvas.height - this.rightPaddle.height)
+		if (this.rightPaddle.y + this.rightPaddle.dy > 0 && this.rightPaddle.y + this.rightPaddle.dy < this.canvas.height - this.rightPaddle.height)
 		{
 			this.rightPaddle.y += this.rightPaddle.dy;
 		}
 
 		// Check for game over
-		if (this.ball.x - this.ball.radius < 0 || this.ball.x + this.ball.radius > canvas.width)
+		if (this.ball.x - this.ball.radius < 0 || this.ball.x + this.ball.radius > this.canvas.width)
 		{
 			this.resetGame();
 		}
 
-		//requestAnimationFrame(draw);
+		//requestAnimationFrame(this.draw());
 	}
 }
 
