@@ -7,10 +7,10 @@ class Game
 	#canvas;
 
 	resetGame() {
-		ball.x = this.canvas.width / 2;
-		ball.y = this.canvas.height / 2;
-		leftPaddle.y = this.canvas.height / 2 - this.paddleHeight / 2;
-		rightPaddle.y = this.canvas.height / 2 - this.paddleHeight / 2;
+		this.ball.x = this.canvas.width / 2;
+		this.ball.y = this.canvas.height / 2;
+		this.leftPaddle.y = this.canvas.height / 2 - this.paddleHeight / 2;
+		this.rightPaddle.y = this.canvas.height / 2 - this.paddleHeight / 2;
 	}
 
 	start()
