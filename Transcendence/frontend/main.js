@@ -64,6 +64,8 @@ function new_player() {
         success: function(response) {
             // Handle server response if needed
 	    console.log(response);
+	    game.user_name = response.name;
+	    console.log(game.user_name);
         },
         error: function(error) {
             console.error('Error sending new player demand', error);
