@@ -2,6 +2,7 @@ import {Game} from "./game.js";
 
 const game = new Game();
 document.addEventListener('DOMContentLoaded', function (event) {
+		update_players_list();
 		new_player();
 		game.draw();
 		});
