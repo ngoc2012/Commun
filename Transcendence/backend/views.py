@@ -7,7 +7,7 @@ from django.http import JsonResponse
 #game_state = {"paddle1_y": 50, "paddle2_y": 50, "ball_x": 100, "ball_y": 100}
 #return JsonResponse(game_state)
 
-players = ["user0"]
+players = ["default"]
 
 def home(request):
 	return (render(request, 'index.html'));
