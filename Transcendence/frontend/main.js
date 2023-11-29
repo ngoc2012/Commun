@@ -15,6 +15,7 @@ function update(){
 }
 
 const btn_invite = document.querySelector("#invite");
+const dom_players_list = document.getElementById("players_list");
 
 btn_invite.addEventListener("click", function () {
     console.log("Invite");
@@ -128,7 +129,6 @@ function update_players_list(action) {
         success: function(response) {
             // Handle server response if needed
             //console.log(response);
-            var dom_players_list = document.getElementById("players_list");
             dom_players_list.innerHTML = "";
             //console.log(dom_players_list);
             if (response['players'].length > 0)
