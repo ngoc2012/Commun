@@ -95,3 +95,15 @@ In your HTML file, you can then reference the JavaScript file using the `{% stat
 ```
 
 When Django runs in development mode (using `python manage.py runserver`), it can serve static files for you. `STATIC_URL` is the base URL under which these static files are accessible. For example, if `STATIC_URL` is set to `'/static/'`, a file named `style.css` in your `static` directory would be accessible at `http://localhost:8000/static/style.css`.
+
+
+* Load the static template tag:
+
+At the top of your template file (before using `{% static %}`), make sure you include the `{% load static %}` template tag.
+
+```html
+{% load static %}
+<!DOCTYPE html>
+<html>
+...
+```
