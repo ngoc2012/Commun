@@ -14,7 +14,7 @@ def home(request):
 def new_player(request):
     i = 1
     user_name = "user" + i;
-    while (user_name in players)
-        i++;
-        user_name = "user" + i;
-	return (JsonResponse(user_name));
+    while (user_name in players):
+        i += 1
+        user_name = "user" + i
+    return (JsonResponse({"name": user_name}));

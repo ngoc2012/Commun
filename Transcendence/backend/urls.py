@@ -21,6 +21,6 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/pong', include('api.pong.urls')),
-    path('', views.home, name='home')
-    path('new_player', views.new_player, name='new_player')
+    path('', views.home, name='home'),
+    path('new_player', views.new_player, name='new_player'),
 ]
