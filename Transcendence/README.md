@@ -107,3 +107,8 @@ At the top of your template file (before using `{% static %}`), make sure you in
 <html>
 ...
 ```
+## Javascript
+
+[How to include a JavaScript file in another JavaScript file?](https://www.scaler.com/topics/javascript/import-js-file-in-js/)
+
+
