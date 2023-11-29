@@ -130,6 +130,22 @@ document.addEventListener('keyup', function (event) {
 		});
 
 // AJAX Polling
+function newplayer() {
+    // Make an AJAX request to get the current game state
+    $.ajax({
+        url: '/new_player',
+        method: 'POST',
+        data: {},
+        success: function(response) {
+            // Handle server response if needed
+        },
+        error: function(error) {
+            console.error('Error sending player action:', error);
+        }
+    });
+}
+
+// AJAX Polling
 function pollGameState() {
     // Make an AJAX request to get the current game state
     $.ajax({
