@@ -124,6 +124,7 @@ function update_players_list(action) {
             // Handle server response if needed
             //console.log(response);
             var dom_players_list = document.getElementById("players_list");
+            dom_players_list.innerHTML = "";
             //console.log(dom_players_list);
             response['players'].forEach((element) => {
                 var option = document.createElement("option");
