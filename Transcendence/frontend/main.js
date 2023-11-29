@@ -1,3 +1,5 @@
+import Game from "game.js";
+
 const game = new Game();
 document.addEventListener('DOMContentLoaded', function (event) {
 		game.draw();
