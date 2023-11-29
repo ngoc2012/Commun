@@ -14,6 +14,11 @@ function update(){
     setTimeout(update, 2000);
 }
 
+const btn = document.querySelector("button");
+
+btn.addEventListener("click", function () {
+    name.style.color = "blue";
+});
 
 // Handle keyboard input
 document.addEventListener('keydown', function (event) {
