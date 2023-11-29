@@ -14,7 +14,7 @@ function update(){
     setTimeout(update, 10000);
 }
 
-const btn_invite = document.querySelector("invite");
+const btn_invite = document.querySelector("#invite");
 
 btn_invite.addEventListener("click", function () {
     console.log("Invite");
