@@ -24,4 +24,4 @@ def new_player(request):
 
 @csrf_exempt
 def players_list(request):
-    return (JsonResponse(players));
+    return (JsonResponse({"players": players}));
