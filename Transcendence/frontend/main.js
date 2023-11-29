@@ -45,6 +45,7 @@ function newplayer() {
         data: {},
         success: function(response) {
             // Handle server response if needed
+	    console.log(response);
         },
         error: function(error) {
             console.error('Error sending player action:', error);
