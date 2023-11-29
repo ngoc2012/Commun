@@ -20,13 +20,13 @@ const dom_players_list = document.getElementById("players_list");
 btn_invite.addEventListener("click", function () {
     var options = dom_players_list && dom_players_list.options;
 
-    options.forEach((opt) => {
-        if (opt.selected)
+    for (var i=0; i < options.length; i++)
+    {
+        if (options[i].selected)
         {
-            console.log(opt.value);
+            console.log(options[i].value);
         }
-    })
-    console.log("Invite");
+    }
 });
 
 // Handle keyboard input
