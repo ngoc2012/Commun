@@ -39,7 +39,7 @@ Transcendence
 
 [Api urls in subfolder](https://stackoverflow.com/questions/10313475/moving-django-apps-into-subfolder-and-url-py-error)
 
-### Api
+### Static files
 If your JavaScript file is in a location that is not served by Django's development server, you need to make sure it's configured as a static file. In your Django project, you should have a folder named `static` where you store your static files (CSS, JavaScript, images, etc.). Ensure that your JavaScript file is placed in the appropriate static folder.
 
 Update your `settings.py` to include your static files:
@@ -64,5 +64,4 @@ In your HTML file, you can then reference the JavaScript file using the `{% stat
 <script src="{% static 'yourscript.js' %}"></script>
 ```
 
-#### Static files
 When Django runs in development mode (using `python manage.py runserver`), it can serve static files for you. `STATIC_URL` is the base URL under which these static files are accessible. For example, if `STATIC_URL` is set to `'/static/'`, a file named `style.css` in your `static` directory would be accessible at `http://localhost:8000/static/style.css`.
