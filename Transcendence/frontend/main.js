@@ -1,5 +1,10 @@
 import {Game} from "./game.js";
 
+function update_players_list()
+{
+	var players_list = document.getElementById("players_list");
+}
+
 const game = new Game();
 document.addEventListener('DOMContentLoaded', function (event) {
 		new_player();
