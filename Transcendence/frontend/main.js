@@ -108,7 +108,7 @@ function sendAction(action) {
 function update_players_list(action) {
     // Make an AJAX request to send player action to the server
     $.ajax({
-        url: '/api/action/',
+        url: '/players_list/',
         method: 'POST',
         data: { action: action },
         success: function(response) {
