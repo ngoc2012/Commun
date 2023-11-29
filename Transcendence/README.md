@@ -56,6 +56,36 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # ...
 ```
 
+Add or update the `STATIC_ROOT` setting to point to a directory where you want to collect all your static files. For example:
+
+```
+# settings.py
+
+# Your existing settings...
+
+# Add or update this line
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+```
+Replace `'staticfiles'` with the desired directory path. `BASE_DIR` is a variable that represents the root directory of your Django project.
+
+`STATICFILES_DIRS`: Specifies additional directories where Django should look for static files. These directories are searched when you use the `{% load static %}` template tag or the static() function in your templates. It is a list of strings representing paths.
+
+```
+# settings.py
+
+STATICFILES_DIRS = [
+    BASE_DIR / "myapp/static",
+    "/var/www/static/",
+]
+```
+`STATIC_ROOT`: Specifies the directory where Django will collect static files from all installed apps using the `collectstatic` management command. This is typically used in production to serve static files efficiently using a dedicated web server (e.g., Nginx or Apache).
+
+```
+# settings.py
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+```
+
 Make sure to run `python manage.py collectstatic` to collect static files into the `STATIC_ROOT` directory.
 
 In your HTML file, you can then reference the JavaScript file using the `{% static %}` template tag:
