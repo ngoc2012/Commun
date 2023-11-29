@@ -39,4 +39,13 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # ...
 ```
 
+Make sure to run `python manage.py collectstatic` to collect static files into the `STATIC_ROOT` directory.
 
+In your HTML file, you can then reference the JavaScript file using the `{% static %}` template tag:
+
+```
+<script src="{% static 'yourscript.js' %}"></script>
+```
+
+#### Static files
+When Django runs in development mode (using `python manage.py runserver`), it can serve static files for you. `STATIC_URL` is the base URL under which these static files are accessible. For example, if `STATIC_URL` is set to `'/static/'`, a file named `style.css` in your `static` directory would be accessible at `http://localhost:8000/static/style.css`.
