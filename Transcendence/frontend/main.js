@@ -19,7 +19,11 @@ const dom_players_list = document.getElementById("players_list");
 
 btn_invite.addEventListener("click", function () {
     dom_players_list.options.forEach((opt) => {
-    }
+        if (opt.selected)
+        {
+            console.log(opt.value);
+        }
+    })
     console.log("Invite");
 });
 
