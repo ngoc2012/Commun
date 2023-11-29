@@ -19,6 +19,10 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api')),
+    #path('api/', include('api.urls')),
+    path('state/', state, name='games'),
+    path('action/', action, name='players'),
+    path('games/', get_games_list, name='games'),
+    path('players/', get_players_list, name='players'),
     path('', views.home, name='home')
 ]
