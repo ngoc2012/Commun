@@ -19,4 +19,5 @@ def new_player(request):
     while (user_name in players):
         i += 1
         user_name = "user" + str(i)
+    players.append(user_name);
     return (JsonResponse({"name": user_name}));
