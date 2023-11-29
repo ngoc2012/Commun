@@ -2,10 +2,18 @@ import {Game} from "./game.js";
 
 const game = new Game();
 document.addEventListener('DOMContentLoaded', function (event) {
-    update_players_list();
+    update();
     new_player();
     game.draw();
 });
+
+function update(){
+    // do whatever you like here
+
+    update_players_list();
+    setTimeout(update, 2000);
+}
+
 
 // Handle keyboard input
 document.addEventListener('keydown', function (event) {
