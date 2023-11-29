@@ -1,4 +1,4 @@
-class Game
+export class Game
 {
 	user_name = "";
 	height = 400;
