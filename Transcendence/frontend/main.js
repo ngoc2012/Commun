@@ -36,7 +36,7 @@ document.addEventListener('keyup', function (event) {
 		break;
 		}
 		});
-
+/*
 function getCookie(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -52,16 +52,15 @@ function getCookie(name) {
     }
     return cookieValue;
 }
-
+*/
 // AJAX Polling
-var csrftoken = getCookie('csrftoken');
+//var csrftoken = getCookie('csrftoken');
 function new_player() {
     // Make an AJAX request to get the current game state
     $.ajax({
         url: '/new_player',
-        method: 'POST',
-        data: {"demand": "new player"},
-	headers: {'X-CSRFToken': csrftoken},
+        method: 'GET',
+	//headers: {'X-CSRFToken': csrftoken},
         success: function(response) {
             // Handle server response if needed
 	    console.log(response);
