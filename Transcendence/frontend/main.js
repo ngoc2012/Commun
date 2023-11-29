@@ -38,12 +38,14 @@ document.addEventListener('keyup', function (event) {
 		});
 
 // AJAX Polling
+var csrftoken = getCookie('csrftoken');
 function new_player() {
     // Make an AJAX request to get the current game state
     $.ajax({
         url: '/new_player',
         method: 'POST',
         data: {"demand": "new player"},
+	headers: {'X-CSRFToken': csrftoken},
         success: function(response) {
             // Handle server response if needed
 	    console.log(response);
