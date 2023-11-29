@@ -142,10 +142,13 @@ function update_players_list(action) {
             if (response['players'].length > 0)
             {
                 response['players'].forEach((element) => {
-                    var option = document.createElement("option");
-                    option.value = element;
-                    option.text = element;
-                    dom_players_list.add(option);
+                    if (element !== game.user_name)
+                    {
+                        var option = document.createElement("option");
+                        option.value = element;
+                        option.text = element;
+                        dom_players_list.add(option);
+                    }
                 });
             }
         },
