@@ -1,8 +1,14 @@
 import {Game} from "./game.js";
 
-function update_players_list()
+function update_players_list(players_list)
 {
-	var players_list = document.getElementById("players_list");
+	var dom_players_list = document.getElementById("players_list");
+	players_list.forEach((element) => {
+		var option = document.createElement("option");
+		option.value = element;
+		option.text = element;
+		selectElement.add(option);
+	});
 }
 
 const game = new Game();
