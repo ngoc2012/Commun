@@ -90,6 +90,6 @@ export class Game
 			this.resetGame();
 		}
 
-		requestAnimationFrame(() => this.draw());
+		//requestAnimationFrame(() => this.draw());
 	}
 }
