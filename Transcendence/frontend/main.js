@@ -114,6 +114,7 @@ function update_players_list(action) {
         data: { action: action },
         success: function(response) {
             // Handle server response if needed
+            console.log(response);
             var dom_players_list = document.getElementById("players_list");
             //response['players_list'].forEach((element) => {
             response.forEach((element) => {
