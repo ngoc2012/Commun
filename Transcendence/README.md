@@ -68,7 +68,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 ```
 Replace `'staticfiles'` with the desired directory path. `BASE_DIR` is a variable that represents the root directory of your Django project.
 
-`STATICFILES_DIRS`: Specifies additional directories where Django should look for static files. These directories are searched when you use the `{% load static %}` template tag or the static() function in your templates. It is a list of strings representing paths.
+`STATICFILES_DIRS`: Specifies additional directories where Django should look for static files. These directories are searched when you use the `{% load static %}` template tag or the `static()` function in your templates. It is a list of strings representing paths.
 
 ```
 # settings.py
