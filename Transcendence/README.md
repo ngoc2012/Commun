@@ -19,6 +19,23 @@ Bullets speed increase over times.
 ## Django
 
 ### Api
+```
+Transcendence
+├── backend
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── api
+│   ├── __init__.py
+│   └── pong
+│       ├── __init__.py
+│       ├── admin.py
+│       ├── models.py
+│       ├── tests.py
+│       └── views.py
+└── manage.py
+```
 
 [Api urls in subfolder](https://stackoverflow.com/questions/10313475/moving-django-apps-into-subfolder-and-url-py-error)
 
