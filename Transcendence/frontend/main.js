@@ -114,14 +114,14 @@ function update_players_list(action) {
         data: { action: action },
         success: function(response) {
             // Handle server response if needed
-            console.log(response);
+            //console.log(response);
             var dom_players_list = document.getElementById("players_list");
-            console.log(dom_players_list);
+            //console.log(dom_players_list);
             response['players'].forEach((element) => {
                 var option = document.createElement("option");
                 option.value = element;
                 option.text = element;
-                selectElement.add(option);
+                dom_players_list.add(option);
             });
         },
         error: function(error) {
