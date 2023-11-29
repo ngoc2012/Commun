@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-#from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 
 #def pong_game(request):
 ## Handle game logic and return the current game state
@@ -21,3 +21,7 @@ def new_player(request):
         user_name = "user" + str(i)
     players.append(user_name);
     return (JsonResponse({"name": user_name}));
+
+@csrf_exempt
+def players_list(request):
+    return (JsonResponse(players));
