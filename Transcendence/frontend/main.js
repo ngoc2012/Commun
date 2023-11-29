@@ -18,6 +18,8 @@ const btn_invite = document.querySelector("#invite");
 const dom_players_list = document.getElementById("players_list");
 
 btn_invite.addEventListener("click", function () {
+    dom_players_list.options.forEach((opt) => {
+    }
     console.log("Invite");
 });
 
