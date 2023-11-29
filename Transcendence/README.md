@@ -15,3 +15,9 @@
 Bullets speed increase over times.
 
 1 shot each second.
+
+## Django
+
+### Api
+
+[Api urls in subfolder](https://stackoverflow.com/questions/10313475/moving-django-apps-into-subfolder-and-url-py-error)
