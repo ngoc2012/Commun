@@ -7,6 +7,7 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
+autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
 set wildmenu
 set wildmode=longest:full,full
 let @g = '€khf(b3€kryt(€@7i{return ()€ýaA}€ýaF{€ýaf)P€ýaF{i €ýa'

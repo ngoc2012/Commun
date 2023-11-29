@@ -2,41 +2,41 @@ import {Game} from "./game.js";
 
 const game = new Game();
 document.addEventListener('DOMContentLoaded', function (event) {
-		update_players_list();
-		new_player();
-		game.draw();
-		});
+    update_players_list();
+    new_player();
+    game.draw();
+});
 
 // Handle keyboard input
 document.addEventListener('keydown', function (event) {
-		switch (event.key) {
-		case 'ArrowUp':
-		game.rightPaddle.dy = -5;
-		break;
-		case 'ArrowDown':
-		game.rightPaddle.dy = 5;
-		break;
-		case 'w':
-		game.leftPaddle.dy = -5;
-		break;
-		case 's':
-		game.leftPaddle.dy = 5;
-		break;
-		}
-		});
+    switch (event.key) {
+        case 'ArrowUp':
+            game.rightPaddle.dy = -5;
+            break;
+        case 'ArrowDown':
+            game.rightPaddle.dy = 5;
+            break;
+        case 'w':
+            game.leftPaddle.dy = -5;
+            break;
+        case 's':
+            game.leftPaddle.dy = 5;
+            break;
+    }
+});
 
 document.addEventListener('keyup', function (event) {
-		switch (event.key) {
-		case 'ArrowUp':
-		case 'ArrowDown':
-		game.rightPaddle.dy = 0;
-		break;
-		case 'w':
-		case 's':
-		game.leftPaddle.dy = 0;
-		break;
-		}
-		});
+    switch (event.key) {
+        case 'ArrowUp':
+        case 'ArrowDown':
+            game.rightPaddle.dy = 0;
+            break;
+        case 'w':
+        case 's':
+            game.leftPaddle.dy = 0;
+            break;
+    }
+});
 /*
 function getCookie(name) {
     var cookieValue = null;
