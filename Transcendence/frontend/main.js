@@ -2,6 +2,7 @@ import {Game} from "./game.js";
 
 const game = new Game();
 document.addEventListener('DOMContentLoaded', function (event) {
+		new_player();
 		game.draw();
 		});
 
@@ -37,7 +38,7 @@ document.addEventListener('keyup', function (event) {
 		});
 
 // AJAX Polling
-function newplayer() {
+function new_player() {
     // Make an AJAX request to get the current game state
     $.ajax({
         url: '/new_player',
