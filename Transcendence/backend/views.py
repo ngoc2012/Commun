@@ -6,10 +6,15 @@ from django.http import JsonResponse
 #game_state = {"paddle1_y": 50, "paddle2_y": 50, "ball_x": 100, "ball_y": 100}
 #return JsonResponse(game_state)
 
-player = ["user0"]
+players = ["user0"]
 
 def home(request):
 	return (render(request, 'index.html'));
 
 def new_player(request):
-	return (render(request, 'index.html'));
+    i = 1
+    user_name = "user" + i;
+    while (user_name in players)
+        i++;
+        user_name = "user" + i;
+	return (JsonResponse(user_name));
