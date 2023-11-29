@@ -1,5 +1,6 @@
 class Game
 {
+	user_name = "";
 	height = 400;
 	width = 800;
 	paddleWidth = 10;
