@@ -114,15 +114,15 @@ function update_players_list(action) {
         data: { action: action },
         success: function(response) {
             // Handle server response if needed
+            var dom_players_list = document.getElementById("players_list");
+            players_list.forEach((element) => {
+                var option = document.createElement("option");
+                option.value = element;
+                option.text = element;
+                selectElement.add(option);
+            });
         },
         error: function(error) {
-		var dom_players_list = document.getElementById("players_list");
-		players_list.forEach((element) => {
-			var option = document.createElement("option");
-			option.value = element;
-			option.text = element;
-			selectElement.add(option);
-		});
         }
     });
 }
