@@ -107,6 +107,12 @@ At the top of your template file (before using `{% static %}`), make sure you in
 <html>
 ...
 ```
+
+### Cross-Site Request Forgery (CSRF) protection
+
+By default, Django requires a valid CSRF token for any `POST` requests to be processed. This is a security feature to protect against CSRF attacks.
+
+
 ## Javascript
 
 [How to include a JavaScript file in another JavaScript file?](https://www.scaler.com/topics/javascript/import-js-file-in-js/)
