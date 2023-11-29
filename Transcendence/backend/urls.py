@@ -20,7 +20,7 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),
+    path('api/pong', include('api.pong.urls')),
     #path('state/', state, name='games'),
     #path('action/', action, name='players'),
     #path('games/', get_games_list, name='games'),
