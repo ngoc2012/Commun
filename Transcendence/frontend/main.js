@@ -11,13 +11,13 @@ function update(){
     // do whatever you like here
 
     update_players_list();
-    setTimeout(update, 2000);
+    setTimeout(update, 10000);
 }
 
-const btn = document.querySelector("button");
+const btn_invite = document.querySelector("invite");
 
-btn.addEventListener("click", function () {
-    name.style.color = "blue";
+btn_invite.addEventListener("click", function () {
+    console.log("Invite");
 });
 
 // Handle keyboard input
