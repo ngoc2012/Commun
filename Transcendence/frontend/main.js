@@ -43,13 +43,13 @@ function new_player() {
     $.ajax({
         url: '/new_player',
         method: 'POST',
-        data: {},
+        data: {"demand": "new player"},
         success: function(response) {
             // Handle server response if needed
 	    console.log(response);
         },
         error: function(error) {
-            console.error('Error sending player action:', error);
+            console.error('Error sending new player demand', error);
         }
     });
 }
