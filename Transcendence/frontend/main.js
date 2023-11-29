@@ -1,16 +1,5 @@
 import {Game} from "./game.js";
 
-function update_players_list(players_list)
-{
-	var dom_players_list = document.getElementById("players_list");
-	players_list.forEach((element) => {
-		var option = document.createElement("option");
-		option.value = element;
-		option.text = element;
-		selectElement.add(option);
-	});
-}
-
 const game = new Game();
 document.addEventListener('DOMContentLoaded', function (event) {
 		new_player();
@@ -115,6 +104,28 @@ function sendAction(action) {
         }
     });
 }
+
+function update_players_list(action) {
+    // Make an AJAX request to send player action to the server
+    $.ajax({
+        url: '/api/action/',
+        method: 'POST',
+        data: { action: action },
+        success: function(response) {
+            // Handle server response if needed
+        },
+        error: function(error) {
+		var dom_players_list = document.getElementById("players_list");
+		players_list.forEach((element) => {
+			var option = document.createElement("option");
+			option.value = element;
+			option.text = element;
+			selectElement.add(option);
+		});
+        }
+    });
+}
+
 /*
 
 // Example: Move paddle up
