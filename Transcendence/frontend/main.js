@@ -49,7 +49,6 @@ dom_invite.addEventListener("click", function () {
 });
 
 function invite(players) {
-    // Make an AJAX request to send player action to the server
     $.ajax({
         url: '/invite/',
         method: 'POST',
@@ -86,10 +85,10 @@ function accept_invitation() {
                 game.waiting = false;
             }
             else
-                console.log(response.status);
+                console.error(response.status);
         },
         error: function(error) {
-            console.error('Error sending new player demand', error);
+            console.error('Error: accept invitation POST fail', error);
         }
     });
 }
@@ -112,10 +111,10 @@ function cancel_invitation() {
                 game.waiting = false;
             }
             else
-                console.log(response.status);
+                console.error(response.status);
         },
         error: function(error) {
-            console.error('Error sending new player demand', error);
+            console.error('Error: cancel invitation POST fail', error);
         }
     });
 }
@@ -137,7 +136,7 @@ function check_game_status() {
                 console.log(response.status);
         },
         error: function(error) {
-            console.error('Error sending new player demand', error);
+            console.error('Error: check game GET fail', error);
         }
     });
 }
@@ -158,7 +157,7 @@ function new_player() {
 
 function update_players_list(action) {
     $.ajax({
-        url: '/players_list/',
+        url: '/players_list',
         method: 'POST',
         data: { "user": game.user },
         success: function(response) {
