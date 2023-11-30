@@ -53,6 +53,7 @@ function invite(players) {
         success: function(response) {
             game.id = response.game_id;
             game.waiting = true;
+            dom_status.textContent = "waiting...";
         },
         error: function(error) {
         }
