@@ -10,7 +10,7 @@ import time
 #return JsonResponse(game_state)
 
 players = {}
-pongs = []
+games = []
 
 def index(request):
 	return (render(request, 'index.html'));
@@ -25,15 +25,7 @@ def pong(request):
 	return (render(request, 'pong.html'));
 
 def invite(request):
-    users = list(players.keys())
-    for user in users:
-        if time.time() - players[user]["heart_beat"] > 3:
-            players.pop(user)
-    user = request.POST['user'];
-    users = list(players.keys())
-    if user in users:
-        players[user]["heart_beat"] = time.time();
-	return (render(request, 'pong.html'));
+	return ();
 
 def new_player(request):
     i = 0
@@ -46,7 +38,7 @@ def new_player(request):
 
 @csrf_exempt
 def players_list(request): 
-    #print(players)
+    print(games)
     users = list(players.keys())
     for user in users:
         if time.time() - players[user]["heart_beat"] > 3:
