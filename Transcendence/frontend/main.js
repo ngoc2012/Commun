@@ -1,4 +1,4 @@
-import {Game} from "./game.js";
+import {Pong} from "./pong.js";
 
 const game = new Game();
 document.addEventListener('DOMContentLoaded', function (event) {
