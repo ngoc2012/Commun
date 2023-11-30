@@ -81,12 +81,8 @@ function check_game_waiting() {
     $.ajax({
         url: '/check_game_waiting',
         method: 'GET',
-	//headers: {'X-CSRFToken': csrftoken},
         success: function(response) {
-            // Handle server response if needed
-	    //console.log(response);
-	    game.user = response.user;
-	    //console.log(game.user);
+            game.user = response.status;
         },
         error: function(error) {
             console.error('Error sending new player demand', error);
