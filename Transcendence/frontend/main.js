@@ -81,6 +81,7 @@ function check_game_waiting() {
     $.ajax({
         url: '/check_game_waiting',
         method: 'GET',
+        data: { "game_id": game.id },
         success: function(response) {
             game.user = response.status;
         },

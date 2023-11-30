@@ -26,6 +26,10 @@ def login(request):
 def pong(request):
 	return (render(request, 'pong.html'));
 
+def check_game_waiting(request):
+    if (request.POST['game']
+	return (render(request, 'pong.html'));
+
 def invite(request):
     game_id += 1
     games[game_id] = {
