@@ -27,7 +27,8 @@ def pong(request):
 	return (render(request, 'pong.html'));
 
 def check_game_waiting(request):
-    if (request.POST['game_id'] not in games.keys())
+    g_id = request.POST['game_id']
+    if (g_id not in games.keys())
         return (JsonResponse({"status": "canceled"}));
     return (JsonResponse({"status": "waiting"}));
 
