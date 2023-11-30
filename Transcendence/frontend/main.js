@@ -1,6 +1,7 @@
 class Game
 {
     user = "";
+    name = "";
     id = -1;
     waiting = false;
 }
@@ -53,6 +54,7 @@ function invite(players) {
         success: function(response) {
             game.id = response.game_id;
             game.waiting = true;
+            game.name = "pong";
             dom_status.textContent = "waiting...";
         },
         error: function(error) {
@@ -70,6 +72,7 @@ function check_game_waiting() {
         success: function(response) {
             if (response.status === "canceled")
             {
+                dom_status.textContent = "Game pong " + game.id + " is canceled";
                 game.id = -1;         
                 game.waiting = false;
             }
