@@ -3,7 +3,7 @@ class Game
     user_name = "";
 }
 
-export game = new Game();
+export var game = new Game();
 document.addEventListener('DOMContentLoaded', function (event) {
     update();
     new_player();
@@ -77,7 +77,7 @@ function update_players_list(action) {
         data: { action: action },
         success: function(response) {
             // Handle server response if needed
-            //console.log(response);
+            console.log(response);
             dom_players_list.innerHTML = "";
             //console.log(dom_players_list);
             if (response['players'].length > 0)
