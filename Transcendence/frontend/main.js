@@ -1,6 +1,7 @@
 class Game
 {
     user = "";
+    game = "";
 }
 
 export var game = new Game();
@@ -21,6 +22,7 @@ const dom_players_list = document.getElementById("players_list");
 
 btn_invite.addEventListener("click", function () {
     var options = dom_players_list && dom_players_list.options;
+    var players = [game.user];
 
     for (var i=0; i < options.length; i++)
     {
