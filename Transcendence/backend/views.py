@@ -56,4 +56,5 @@ def players_list(request):
     users = list(players.keys())
     if user in users:
         players[user]["heart_beat"] = time.time();
-    return (JsonResponse({"players": list(players.keys())}));
+    game_invited = -1
+    return (JsonResponse({"game_invited": game_invited, "players": list(players.keys())}));
