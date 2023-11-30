@@ -1,7 +1,7 @@
 class Game
 {
     user = "";
-    game_id = -1;
+    id = -1;
 }
 
 export var game = new Game();
@@ -47,8 +47,7 @@ function invite(players) {
         },
         success: function(response) {
             // Handle server response if needed
-            var options = dom_players_list && dom_players_list.options;
-            //console.log(dom_players_list);
+            game.id
             if (response.players.length > 0
                 && response.players.length !== options.length + 1)
             {
