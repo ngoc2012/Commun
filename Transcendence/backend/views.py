@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
 import time
@@ -25,7 +26,7 @@ def pong(request):
 	return (render(request, 'pong.html'));
 
 def invite(request):
-	return ();
+	return ("");
 
 def new_player(request):
     i = 0
