@@ -33,6 +33,7 @@ def invite(request):
         "game": request.POST['game'],
         "start": False,
         "players": request.POST['players'],
+        "host": request.POST['user'],
         "accepted": [request.POST['user']]
         }
     return (JsonResponse({"game_id": game_id}));

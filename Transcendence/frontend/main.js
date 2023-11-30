@@ -35,7 +35,7 @@ btn_invite.addEventListener("click", function () {
         invite();
 });
 
-function invite() {
+function invite(players) {
     // Make an AJAX request to send player action to the server
     $.ajax({
         url: '/invite/',
@@ -43,6 +43,7 @@ function invite() {
         data: {
             "user": game.user,
             "game": "pong",
+            "players": players
         },
         success: function(response) {
             // Handle server response if needed
