@@ -2,6 +2,7 @@ class Game
 {
     user = "";
     id = -1;
+    waiting = false;
 }
 
 export var game = new Game();
@@ -46,23 +47,8 @@ function invite(players) {
             "players": players
         },
         success: function(response) {
-            // Handle server response if needed
-            game.id
-            if (response.players.length > 0
-                && response.players.length !== options.length + 1)
-            {
-                console.log(response.players.length);
-                dom_players_list.innerHTML = "";
-                response.players.forEach((element) => {
-                    if (element !== game.user)
-                    {
-                        var option = document.createElement("option");
-                        option.value = element;
-                        option.text = element;
-                        dom_players_list.add(option);
-                    }
-                });
-            }
+            game.id = response.game_id;
+            game.waiting = true;
         },
         error: function(error) {
         }
