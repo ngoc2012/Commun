@@ -38,5 +38,8 @@ def players_list(request):
     for user in players.keys():
         if time.time() - players[user]["heart_beat"] > 2:
             players.pop(user)
-    players[request.POST['user']]["heart_beat"] = time.time();
+    user = request.POST['user'];
+    if user != '':
+        players[user]["heart_beat"] = time.time();
+        return (JsonResponse({"players": []}));
     return (JsonResponse({"players": [i['user'] for i in players]}));
