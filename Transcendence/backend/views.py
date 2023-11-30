@@ -26,6 +26,13 @@ def pong(request):
 	return (render(request, 'pong.html'));
 
 def invite(request):
+    games.append({
+        "game": request.POST['game'],
+        "start": False,
+        "players": request.POST['players'],
+        "admission": [request.POST['user']]
+        })
+    user = ;
 	return ("");
 
 def new_player(request):
