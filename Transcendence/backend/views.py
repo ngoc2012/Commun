@@ -34,7 +34,9 @@ def new_player(request):
     return (JsonResponse({"user": user_name}));
 
 @csrf_exempt
-def players_list(request):
-    
+def players_list(request): 
+    for user in players.keys():
+        if time.time() - players[user]["heart_beat"] > 2:
+            players.pop(user)
     players[request.POST['user']]["heart_beat"] = time.time();
     return (JsonResponse({"players": [i['user'] for i in players]}));
