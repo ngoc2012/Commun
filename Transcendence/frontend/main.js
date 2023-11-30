@@ -1,7 +1,7 @@
 class Game
 {
     user = "";
-    game = "";
+    game_id = -1;
 }
 
 export var game = new Game();
@@ -32,9 +32,42 @@ btn_invite.addEventListener("click", function () {
         }
     }
     if (players.length === 2)
-        game =
+        invite();
 });
 
+function invite() {
+    // Make an AJAX request to send player action to the server
+    $.ajax({
+        url: '/invite/',
+        method: 'POST',
+        data: {
+            "user": game.user,
+            "game": "pong",
+        },
+        success: function(response) {
+            // Handle server response if needed
+            var options = dom_players_list && dom_players_list.options;
+            //console.log(dom_players_list);
+            if (response.players.length > 0
+                && response.players.length !== options.length + 1)
+            {
+                console.log(response.players.length);
+                dom_players_list.innerHTML = "";
+                response.players.forEach((element) => {
+                    if (element !== game.user)
+                    {
+                        var option = document.createElement("option");
+                        option.value = element;
+                        option.text = element;
+                        dom_players_list.add(option);
+                    }
+                });
+            }
+        },
+        error: function(error) {
+        }
+    });
+}
 /*
 function getCookie(name) {
     var cookieValue = null;
