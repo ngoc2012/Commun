@@ -27,13 +27,14 @@ def pong(request):
 	return (render(request, 'pong.html'));
 
 def invite(request):
+    game_id += 1
     games[game_id] = {
         "game": request.POST['game'],
         "start": False,
         "players": request.POST['players'],
         "admission": [request.POST['user']]
         }
-    return (JsonResponse({"game_id": games.}));
+    return (JsonResponse({"game_id": game_id}));
 
 def new_player(request):
     i = 0
