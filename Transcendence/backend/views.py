@@ -30,9 +30,10 @@ def new_player(request):
     while (user_name in players):
         i += 1
         user_name = "user" + str(i)
-    players.append({"name": user_name, "heart_beat": datetime.datetime.now()});
-    return (JsonResponse({"name": user_name}));
+    players.append({"user": user_name, "heart_beat": datetime.datetime.now()});
+    return (JsonResponse({"user": user_name}));
 
 @csrf_exempt
 def players_list(request):
+    print(request.POST['user'])
     return (JsonResponse({"players": [i['name'] for i in players]}));
