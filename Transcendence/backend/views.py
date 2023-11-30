@@ -15,32 +15,33 @@ games = {}
 game_id = 0
 
 def index(request):
-	return (render(request, 'index.html'));
+	return (render(request, 'index.html'))
 
 def home(request):
-    return (redirect("index"));
+    return (redirect("index"))
 
 def login(request):
-	return (render(request, 'login.html'));
+	return (render(request, 'login.html'))
 
 def pong(request):
-	return (render(request, 'pong.html'));
+	return (render(request, 'pong.html'))
 
 def check_game_status(request):
     g_id = request.POST['game_id']
     if (g_id not in games.keys())
-        return (JsonResponse({"status": "canceled"}));
+        return (JsonResponse({"status": "canceled"}))
     if (len(game_id[g_id]['players']) == len(game_id[g_id]['accepted']))
-        return (JsonResponse({"status": "ready"}));
-    return (JsonResponse({"status": "waiting"}));
+        return (JsonResponse({"status": "ready"}))
+    return (JsonResponse({"status": "waiting"}))
 
 def cancel_invitation(request):
     g_id = request.POST['game_id']
     if (g_id not in games.keys())
-        return (JsonResponse({"status": "Error: game id " + str(g_id) + " is not found"}));
+        return (JsonResponse({"status": "Error: game id " + str(g_id) + " is not found"}))
     if (request.POST['user'] not in games[g_id]["players"])
-        return (JsonResponse({"status": "Error: player " + request.POST['user'] +  " is not found"}));
-    return (JsonResponse({"status": "canceled"}));
+        return (JsonResponse({"status": "Error: player " + request.POST['user'] +  " is not found"}))
+    games.pop(g_id)
+    return (JsonResponse({"status": "canceled"}))
 
 
 def invite(request):
@@ -53,7 +54,7 @@ def invite(request):
         "host": request.POST['user'],
         "accepted": [request.POST['user']]
         }
-    return (JsonResponse({"game_id": game_id}));
+    return (JsonResponse({"game_id": game_id}))
 
 def new_player(request):
     i = 0
@@ -61,8 +62,8 @@ def new_player(request):
     while (user_name in players.keys()):
         i += 1
         user_name = "user" + str(i)
-    players[user_name] = {"heart_beat": time.time()};
-    return (JsonResponse({"user": user_name}));
+    players[user_name] = {"heart_beat": time.time()}
+    return (JsonResponse({"user": user_name}))
 
 @csrf_exempt
 def players_list(request): 
@@ -71,13 +72,13 @@ def players_list(request):
     for user in users:
         if time.time() - players[user]["heart_beat"] > 3:
             players.pop(user)
-    user = request.POST['user'];
+    user = request.POST['user']
     users = list(players.keys())
     game_invited = -1
     if user in users:
-        players[user]["heart_beat"] = time.time();
+        players[user]["heart_beat"] = time.time()
         g_ids = list(games.keys())
         for i in g_ids:
             if (games[i]['start'] == False && user in games[i]['players'] && user not in games[i]['accepted'])
                 game_invited = games[i]['id']
-    return (JsonResponse({"game_invited": game_invited, "players": list(players.keys())}));
+    return (JsonResponse({"game_invited": game_invited, "players": list(players.keys())}))
