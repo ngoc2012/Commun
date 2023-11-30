@@ -32,7 +32,6 @@ def invite(request):
         "players": request.POST['players'],
         "admission": [request.POST['user']]
         })
-    user = ;
 	return ("");
 
 def new_player(request):
