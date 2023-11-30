@@ -74,7 +74,7 @@ function update_players_list(action) {
     $.ajax({
         url: '/players_list/',
         method: 'POST',
-        data: { action: action },
+        data: { "user": game.user_name },
         success: function(response) {
             // Handle server response if needed
             var options = dom_players_list && dom_players_list.options;
