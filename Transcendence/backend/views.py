@@ -34,8 +34,10 @@ def check_game_waiting(request):
 def cancel_invitation(request):
     g_id = request.POST['game_id']
     if (g_id not in games.keys())
-        return (JsonResponse({"status": "game id not found"}));
-    if (request.POST['game_id'] in games[g_id]["players"])
+        return (JsonResponse({"status": "Error: game id " + str(g_id) + " is not found"}));
+    if (request.POST['user'] not in games[g_id]["players"])
+        return (JsonResponse({"status": "Error: player " + request.POST['user'] +  " is not found"}));
+    return (JsonResponse({"status": "canceled"}));
 
 
 def invite(request):
