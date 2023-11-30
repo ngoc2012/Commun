@@ -29,5 +29,6 @@ urlpatterns = [
     path('new_player/', views.new_player, name='new_player'),
     path('players_list/', views.players_list, name='players_list'),
     path('check_game_status/', views.check_game_status, name='check_game_status'),
+    path('accept_invitation/', views.accept_invitation, name='accept_invitation'),
     path('cancel_invitation/', views.cancel_invitation, name='cancel_invitation'),
 ]
