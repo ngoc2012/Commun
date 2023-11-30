@@ -75,7 +75,7 @@ function cancel_invitation() {
         success: function(response) {
             if (response.status === "canceled")
             {
-                dom_status.textContent = "Game " + game.name +" " + game.id + " is canceled by " + game.user;
+                dom_status.textContent = "Game " + game.name + " " + game.id + " invitation is canceled by " + game.user;
                 game.name = "";
                 game.id = -1;         
                 game.waiting = false;

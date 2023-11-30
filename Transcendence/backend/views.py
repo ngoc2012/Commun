@@ -28,7 +28,8 @@ def pong(request):
 
 def check_game_waiting(request):
     if (request.POST['game_id'] not in games.keys())
-    return (JsonResponse({"status": game_id}));
+        return (JsonResponse({"status": "canceled"}));
+    return (JsonResponse({"status": "waiting"}));
 
 def cancel_invitation(request):
     g_id = request.POST['game_id']
