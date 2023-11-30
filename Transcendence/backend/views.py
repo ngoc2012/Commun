@@ -30,6 +30,8 @@ def check_game_waiting(request):
     g_id = request.POST['game_id']
     if (g_id not in games.keys())
         return (JsonResponse({"status": "canceled"}));
+    if (len(game_id[g_id]['players']) == len(game_id[g_id]['accepted']))
+        return (JsonResponse({"status": "ready"}));
     return (JsonResponse({"status": "waiting"}));
 
 def cancel_invitation(request):
