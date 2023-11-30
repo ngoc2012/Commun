@@ -11,7 +11,8 @@ import time
 #return JsonResponse(game_state)
 
 players = {}
-games = []
+games = {}
+game_id = 0
 
 def index(request):
 	return (render(request, 'index.html'));
@@ -26,13 +27,13 @@ def pong(request):
 	return (render(request, 'pong.html'));
 
 def invite(request):
-    games.append({
+    games[game_id] = {
         "game": request.POST['game'],
         "start": False,
         "players": request.POST['players'],
         "admission": [request.POST['user']]
-        })
-	return ("");
+        }
+    return (JsonResponse({"game_id": games.}));
 
 def new_player(request):
     i = 0
