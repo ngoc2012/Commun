@@ -12,6 +12,12 @@ players = []
 def home(request):
 	return (render(request, 'index.html'));
 
+def login(request):
+	return (render(request, 'login.html'));
+
+def pong(request):
+	return (render(request, 'pong.html'));
+
 #@csrf_exempt
 def new_player(request):
     i = 0
