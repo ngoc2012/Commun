@@ -25,7 +25,13 @@ function update(){
 const dom_invite = document.querySelector("#invite");
 const dom_players_list = document.getElementById("players_list");
 const dom_status = document.getElementById("status");
+const dom_accept_invitation = document.getElementById("accept_invitation");
 const dom_cancel_invitation = document.getElementById("cancel_invitation");
+
+dom_cancel_invitation.addEventListener("click", function () {
+    if (game.id != -1)
+        cancel_invitation();
+});
 
 dom_invite.addEventListener("click", function () {
     var options = dom_players_list && dom_players_list.options;
