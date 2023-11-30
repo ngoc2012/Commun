@@ -63,10 +63,10 @@ function invite(players) {
 }
 // AJAX Polling
 //var csrftoken = getCookie('csrftoken');
-function cancel_game() {
+function cancel_invitation() {
     // Make an AJAX request to get the current game state
     $.ajax({
-        url: '/cancel_game',
+        url: '/cancel_invitation',
         method: 'POST',
         data: {
             "user": game.user,
@@ -75,7 +75,7 @@ function cancel_game() {
         success: function(response) {
             if (response.status === "canceled")
             {
-                dom_status.textContent = "Game " + game.name +" " + game.id + " is canceled";
+                dom_status.textContent = "Game " + game.name +" " + game.id + " is canceled by " + game.user;
                 game.name = "";
                 game.id = -1;         
                 game.waiting = false;

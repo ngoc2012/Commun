@@ -30,7 +30,7 @@ def check_game_waiting(request):
     if (request.POST['game_id'] not in games.keys())
     return (JsonResponse({"status": game_id}));
 
-def cancel_game(request):
+def cancel_invitation(request):
     g_id = request.POST['game_id']
     if (g_id not in games.keys())
         return (JsonResponse({"status": "game id not found"}));
