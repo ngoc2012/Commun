@@ -35,7 +35,7 @@ def new_player(request):
 
 @csrf_exempt
 def players_list(request): 
-    users = players.keys()
+    users = list(players.keys())
     for user in users:
         if time.time() - players[user]["heart_beat"] > 2:
             players.pop(user)
