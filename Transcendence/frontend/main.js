@@ -22,11 +22,12 @@ function update(){
     setTimeout(update, 2000);
 }
 
-const btn_invite = document.querySelector("#invite");
+const dom_invite = document.querySelector("#invite");
 const dom_players_list = document.getElementById("players_list");
 const dom_status = document.getElementById("status");
+const dom_cancel_invitation = document.getElementById("cancel_invitation");
 
-btn_invite.addEventListener("click", function () {
+dom_invite.addEventListener("click", function () {
     var options = dom_players_list && dom_players_list.options;
     var players = [game.user];
 
