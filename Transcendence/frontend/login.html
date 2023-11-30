@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pong Game</title>
+  <title>Login</title>
   <link rel="stylesheet" href="{% static 'bootstrap-4.0.0-dist/css/bootstrap.css' %}">
   <link rel="icon" type="image/gif" href="{% static 'icons8-home.gif' %}">
   <script src="{% static 'jquery-3.7.1.js' %}"></script>
@@ -19,13 +19,9 @@
 </head>
 <body>
 
-<div class="container">
-  <h1 class="text-center">Pong Game</h1>
-  <canvas id="pongCanvas" width="800" height="400"></canvas>
-</div>
+<a href="{% url '' %}">Home</a>
 
-<select id="players_list" multiple></select>
-<button id="invite" type="button">Invite</button> 
+<button id="login" type="button">Invite</button> 
 
 <script src="{% static 'main.js' %}" type="module"></script>
 
