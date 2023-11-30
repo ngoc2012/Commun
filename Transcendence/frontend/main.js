@@ -1,6 +1,6 @@
 class Game
 {
-    user_name = "";
+    user = "";
 }
 
 export var game = new Game();
@@ -58,9 +58,9 @@ function new_player() {
 	//headers: {'X-CSRFToken': csrftoken},
         success: function(response) {
             // Handle server response if needed
-	    console.log(response);
-	    game.user_name = response.name;
-	    console.log(game.user_name);
+	    //console.log(response);
+	    game.user = response.user;
+	    //console.log(game.user);
         },
         error: function(error) {
             console.error('Error sending new player demand', error);
@@ -74,7 +74,7 @@ function update_players_list(action) {
     $.ajax({
         url: '/players_list/',
         method: 'POST',
-        data: { "user": game.user_name },
+        data: { "user": game.user },
         success: function(response) {
             // Handle server response if needed
             var options = dom_players_list && dom_players_list.options;
@@ -85,7 +85,7 @@ function update_players_list(action) {
                 console.log(response.players.length);
                 dom_players_list.innerHTML = "";
                 response.players.forEach((element) => {
-                    if (element !== game.user_name)
+                    if (element !== game.user)
                     {
                         var option = document.createElement("option");
                         option.value = element;

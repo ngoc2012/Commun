@@ -36,4 +36,4 @@ def new_player(request):
 @csrf_exempt
 def players_list(request):
     print(request.POST['user'])
-    return (JsonResponse({"players": [i['name'] for i in players]}));
+    return (JsonResponse({"players": [i['user'] for i in players]}));
