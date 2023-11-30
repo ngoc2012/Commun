@@ -28,6 +28,6 @@ urlpatterns = [
     path('invite/', views.invite, name='invite'),
     path('new_player/', views.new_player, name='new_player'),
     path('players_list/', views.players_list, name='players_list'),
-    path('check_game_waiting/', views.check_game_waiting, name='check_game_waiting'),
+    path('check_game_status/', views.check_game_status, name='check_game_status'),
     path('cancel_invitation/', views.cancel_invitation, name='cancel_invitation'),
 ]

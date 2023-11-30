@@ -87,10 +87,10 @@ function cancel_invitation() {
     });
 }
 
-function check_game_waiting() {
+function check_game_status() {
     // Make an AJAX request to get the current game state
     $.ajax({
-        url: '/check_game_waiting',
+        url: '/check_game_status',
         method: 'GET',
         data: { "game_id": game.id },
         success: function(response) {
