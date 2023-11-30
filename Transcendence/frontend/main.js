@@ -81,9 +81,10 @@ function update_players_list(action) {
             //console.log(dom_players_list);
             var options = dom_players_list && dom_players_list.options;
             if (response.players.length > 0
-                && response.players.length !== options.length)
+                && response.players.length !== options.length + 1)
             {
-                console.log("Update players");
+                console.log(response.players.length);
+                console.log(options.length);
                 response.players.forEach((element) => {
                     if (element !== game.user_name)
                     {
