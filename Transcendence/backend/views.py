@@ -10,8 +10,11 @@ from django.shortcuts import redirect
 
 players = []
 
-def home(request):
+def index(request):
 	return (render(request, 'index.html'));
+
+def home(request):
+    return (redirect("index"));
 
 def login(request):
 	return (render(request, 'login.html'));
