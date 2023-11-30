@@ -27,14 +27,15 @@ def pong(request):
 def new_player(request):
     i = 0
     user_name = "user" + str(i)
+    players_list = [i for (i, v) in players.items()]
     while (user_name in players):
         i += 1
         user_name = "user" + str(i)
-    players[user_name] = {"user": user_name, "heart_beat": datetime.datetime.now()};
+    players[user_name] = {"heart_beat": datetime.datetime.now()};
     return (JsonResponse({"user": user_name}));
 
 @csrf_exempt
 def players_list(request):
-    print(request.POST['user'])
-    players
+    print()
+    players[request.POST['user']]
     return (JsonResponse({"players": [i['user'] for i in players]}));
