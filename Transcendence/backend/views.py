@@ -29,10 +29,11 @@ def pong(request):
 def invite(request):
     game_id += 1
     games[game_id] = {
+        "id": game_id,
         "game": request.POST['game'],
         "start": False,
         "players": request.POST['players'],
-        "admission": [request.POST['user']]
+        "accepted": [request.POST['user']]
         }
     return (JsonResponse({"game_id": game_id}));
 
@@ -54,7 +55,11 @@ def players_list(request):
             players.pop(user)
     user = request.POST['user'];
     users = list(players.keys())
+    game_invited = -1
     if user in users:
         players[user]["heart_beat"] = time.time();
-    game_invited = -1
+        g_ids = list(games.keys())
+        for i in g_ids:
+            if (games[i]['start'] == False && user in games[i]['players'] && user not in games[i]['accepted'])
+                game_invited = games[i]['id']
     return (JsonResponse({"game_invited": game_invited, "players": list(players.keys())}));
