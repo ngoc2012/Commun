@@ -69,6 +69,31 @@ function invite(players) {
     });
 }
 
+function accept_invitation() {
+    $.ajax({
+        url: '/accept_invitation',
+        method: 'POST',
+        data: {
+            "user": game.user,
+            "game_id": game.id
+        },
+        success: function(response) {
+            if (response.status === "accepted")
+            {
+                dom_status.textContent = "Game " + game.name + " " + game.id + " invitation is canceled by " + game.user;
+                game.name = "";
+                game.id = -1;         
+                game.waiting = false;
+            }
+            else
+                console.log(response.status);
+        },
+        error: function(error) {
+            console.error('Error sending new player demand', error);
+        }
+    });
+}
+
 //var csrftoken = getCookie('csrftoken');
 function cancel_invitation() {
     $.ajax({
@@ -86,6 +111,8 @@ function cancel_invitation() {
                 game.id = -1;         
                 game.waiting = false;
             }
+            else
+                console.log(response.status);
         },
         error: function(error) {
             console.error('Error sending new player demand', error);
@@ -94,7 +121,6 @@ function cancel_invitation() {
 }
 
 function check_game_status() {
-    // Make an AJAX request to get the current game state
     $.ajax({
         url: '/check_game_status',
         method: 'GET',
@@ -107,6 +133,8 @@ function check_game_status() {
                 game.id = -1;         
                 game.waiting = false;
             }
+            else
+                console.log(response.status);
         },
         error: function(error) {
             console.error('Error sending new player demand', error);
@@ -128,7 +156,6 @@ function new_player() {
     });
 }
 
-// AJAX Polling
 function update_players_list(action) {
     $.ajax({
         url: '/players_list/',
