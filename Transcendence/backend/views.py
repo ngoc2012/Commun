@@ -35,10 +35,11 @@ def new_player(request):
 
 @csrf_exempt
 def players_list(request): 
-    for user in players.keys():
+    users = players.keys()
+    for user in users:
         if time.time() - players[user]["heart_beat"] > 2:
             players.pop(user)
     user = request.POST['user'];
-    if user in players.keys():
+    if user in users:
         players[user]["heart_beat"] = time.time();
     return (JsonResponse({"players": list(players.keys())}));
