@@ -3,7 +3,7 @@ class Game
     user_name = "";
 }
 
-const game = new Game();
+var game = new Game();
 document.addEventListener('DOMContentLoaded', function (event) {
     update();
     new_player();
