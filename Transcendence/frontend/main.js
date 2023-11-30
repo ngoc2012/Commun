@@ -13,7 +13,7 @@ function update(){
     // do whatever you like here
 
     update_players_list();
-    setTimeout(update, 10000);
+    setTimeout(update, 2000);
 }
 
 const btn_invite = document.querySelector("#invite");
@@ -80,10 +80,11 @@ function update_players_list(action) {
             dom_players_list.innerHTML = "";
             //console.log(dom_players_list);
             var options = dom_players_list && dom_players_list.options;
-            if (response['players'].length > 0
-                && response['player'].length !== options.length)
+            if (response.players.length > 0
+                && response.players.length !== options.length)
             {
-                response['players'].forEach((element) => {
+                console.log("Update players");
+                response.players.forEach((element) => {
                     if (element !== game.user_name)
                     {
                         var option = document.createElement("option");
