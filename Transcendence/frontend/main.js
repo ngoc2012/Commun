@@ -32,6 +32,7 @@ btn_invite.addEventListener("click", function () {
         }
     }
     if (players.length === 2)
+        game =
 });
 
 /*
