@@ -1,10 +1,12 @@
-import {Pong} from "./pong.js";
+class Game
+{
+    user_name = "";
+}
 
 const game = new Game();
 document.addEventListener('DOMContentLoaded', function (event) {
     update();
     new_player();
-    game.draw();
 });
 
 function update(){
