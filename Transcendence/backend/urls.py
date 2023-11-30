@@ -22,6 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/pong', include('api.pong.urls')),
     path('', views.home, name='home'),
-    path('new_player', views.new_player, name='new_player'),
+    path('login/', views.login, name='login'),
+    path('pong/', views.pong, name='pong'),
+    path('new_player/', views.new_player, name='new_player'),
     path('players_list/', views.players_list, name='players_list'),
 ]
