@@ -6,6 +6,7 @@ class Game
 }
 
 export var game = new Game();
+
 document.addEventListener('DOMContentLoaded', function (event) {
     update();
     new_player();
@@ -13,8 +14,10 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 function update(){
     // do whatever you like here
-
-    update_players_list();
+    if (waiting)
+        update_players_list();
+    else
+        check_game_waiting();
     setTimeout(update, 2000);
 }
 
@@ -73,6 +76,24 @@ function getCookie(name) {
 */
 // AJAX Polling
 //var csrftoken = getCookie('csrftoken');
+function check_game_waiting() {
+    // Make an AJAX request to get the current game state
+    $.ajax({
+        url: '/check_game_waiting',
+        method: 'GET',
+	//headers: {'X-CSRFToken': csrftoken},
+        success: function(response) {
+            // Handle server response if needed
+	    //console.log(response);
+	    game.user = response.user;
+	    //console.log(game.user);
+        },
+        error: function(error) {
+            console.error('Error sending new player demand', error);
+        }
+    });
+}
+
 function new_player() {
     // Make an AJAX request to get the current game state
     $.ajax({
