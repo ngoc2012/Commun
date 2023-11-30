@@ -24,7 +24,17 @@ def login(request):
 def pong(request):
 	return (render(request, 'pong.html'));
 
-#@csrf_exempt
+def invite(request):
+    users = list(players.keys())
+    for user in users:
+        if time.time() - players[user]["heart_beat"] > 3:
+            players.pop(user)
+    user = request.POST['user'];
+    users = list(players.keys())
+    if user in users:
+        players[user]["heart_beat"] = time.time();
+	return (render(request, 'pong.html'));
+
 def new_player(request):
     i = 0
     user_name = "user" + str(i)
