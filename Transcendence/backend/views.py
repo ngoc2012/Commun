@@ -5,11 +5,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
 import time
 
-#def pong_game(request):
-## Handle game logic and return the current game state
-#game_state = {"paddle1_y": 50, "paddle2_y": 50, "ball_x": 100, "ball_y": 100}
-#return JsonResponse(game_state)
-
 players = {}
 games = {}
 game_id = 0

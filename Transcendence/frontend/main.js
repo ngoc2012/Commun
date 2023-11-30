@@ -68,10 +68,9 @@ function invite(players) {
         }
     });
 }
-// AJAX Polling
+
 //var csrftoken = getCookie('csrftoken');
 function cancel_invitation() {
-    // Make an AJAX request to get the current game state
     $.ajax({
         url: '/cancel_invitation',
         method: 'POST',
