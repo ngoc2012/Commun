@@ -3,7 +3,7 @@ class Game
     user_name = "";
 }
 
-export var game = new Game();
+export game = new Game();
 document.addEventListener('DOMContentLoaded', function (event) {
     update();
     new_player();
