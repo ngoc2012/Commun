@@ -66,9 +66,12 @@ function invite(players) {
 function cancel_game() {
     // Make an AJAX request to get the current game state
     $.ajax({
-        url: '/check_game_waiting',
-        method: 'GET',
-        data: { "game_id": game.id },
+        url: '/cancel_game',
+        method: 'POST',
+        data: {
+            "user": game.user,
+            "game_id": game.id
+        },
         success: function(response) {
             if (response.status === "canceled")
             {

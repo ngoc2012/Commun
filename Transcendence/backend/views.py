@@ -27,8 +27,12 @@ def pong(request):
 	return (render(request, 'pong.html'));
 
 def check_game_waiting(request):
-    if (request.POST['game']
-	return (render(request, 'pong.html'));
+    if (request.POST['game_id'] not in games.keys())
+    return (JsonResponse({"status": game_id}));
+
+def cancel_game(request):
+    if (request.POST['game_id'] not in games.keys())
+    return (JsonResponse({"status": game_id}));
 
 def invite(request):
     game_id += 1
