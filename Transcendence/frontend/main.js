@@ -63,6 +63,27 @@ function invite(players) {
 }
 // AJAX Polling
 //var csrftoken = getCookie('csrftoken');
+function cancel_game() {
+    // Make an AJAX request to get the current game state
+    $.ajax({
+        url: '/check_game_waiting',
+        method: 'GET',
+        data: { "game_id": game.id },
+        success: function(response) {
+            if (response.status === "canceled")
+            {
+                dom_status.textContent = "Game " + game.name +" " + game.id + " is canceled";
+                game.name = "";
+                game.id = -1;         
+                game.waiting = false;
+            }
+        },
+        error: function(error) {
+            console.error('Error sending new player demand', error);
+        }
+    });
+}
+
 function check_game_waiting() {
     // Make an AJAX request to get the current game state
     $.ajax({
@@ -72,7 +93,8 @@ function check_game_waiting() {
         success: function(response) {
             if (response.status === "canceled")
             {
-                dom_status.textContent = "Game pong " + game.id + " is canceled";
+                dom_status.textContent = "Game " + game.name +" " + game.id + " is canceled";
+                game.name = "";
                 game.id = -1;         
                 game.waiting = false;
             }
