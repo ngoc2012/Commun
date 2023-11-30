@@ -23,6 +23,7 @@ function update(){
 
 const btn_invite = document.querySelector("#invite");
 const dom_players_list = document.getElementById("players_list");
+const dom_status = document.getElementById("status");
 
 btn_invite.addEventListener("click", function () {
     var options = dom_players_list && dom_players_list.options;
@@ -57,23 +58,6 @@ function invite(players) {
         }
     });
 }
-/*
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            // Check if this cookie string begins with the name we want
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-*/
 // AJAX Polling
 //var csrftoken = getCookie('csrftoken');
 function check_game_waiting() {
@@ -86,6 +70,7 @@ function check_game_waiting() {
             if (response.status === "canceled")
             {
                 game.id = -1;         
+                game.waiting = false;
             }
         },
         error: function(error) {
@@ -95,16 +80,12 @@ function check_game_waiting() {
 }
 
 function new_player() {
-    // Make an AJAX request to get the current game state
     $.ajax({
         url: '/new_player',
         method: 'GET',
 	//headers: {'X-CSRFToken': csrftoken},
         success: function(response) {
-            // Handle server response if needed
-	    //console.log(response);
-	    game.user = response.user;
-	    //console.log(game.user);
+            game.user = response.user;
         },
         error: function(error) {
             console.error('Error sending new player demand', error);
@@ -114,15 +95,12 @@ function new_player() {
 
 // AJAX Polling
 function update_players_list(action) {
-    // Make an AJAX request to send player action to the server
     $.ajax({
         url: '/players_list/',
         method: 'POST',
         data: { "user": game.user },
         success: function(response) {
-            // Handle server response if needed
             var options = dom_players_list && dom_players_list.options;
-            //console.log(dom_players_list);
             if (response.players.length > 0
                 && response.players.length !== options.length + 1)
             {
@@ -167,4 +145,21 @@ function updateGame(data) {
 
 // Poll for game state every 100 milliseconds (adjust as needed)
 setInterval(pollGameState, 100);
+*/
+/*
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Check if this cookie string begins with the name we want
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
 */
