@@ -9,7 +9,7 @@ import datetime
 #game_state = {"paddle1_y": 50, "paddle2_y": 50, "ball_x": 100, "ball_y": 100}
 #return JsonResponse(game_state)
 
-players = []
+players = {}
 
 def index(request):
 	return (render(request, 'index.html'));
@@ -30,10 +30,11 @@ def new_player(request):
     while (user_name in players):
         i += 1
         user_name = "user" + str(i)
-    players.append({"user": user_name, "heart_beat": datetime.datetime.now()});
+    players[user_name] = {"user": user_name, "heart_beat": datetime.datetime.now()};
     return (JsonResponse({"user": user_name}));
 
 @csrf_exempt
 def players_list(request):
     print(request.POST['user'])
+    players
     return (JsonResponse({"players": [i['user'] for i in players]}));
