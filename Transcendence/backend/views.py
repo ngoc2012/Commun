@@ -10,6 +10,7 @@ import time
 #return JsonResponse(game_state)
 
 players = {}
+pongs = []
 
 def index(request):
 	return (render(request, 'index.html'));
