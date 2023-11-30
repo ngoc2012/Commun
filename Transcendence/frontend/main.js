@@ -28,9 +28,10 @@ btn_invite.addEventListener("click", function () {
     {
         if (options[i].selected)
         {
-            console.log(options[i].value);
+            players.push(options[i].value);
         }
     }
+    if (players.length === 2)
 });
 
 /*
