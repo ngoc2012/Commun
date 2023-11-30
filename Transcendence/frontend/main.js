@@ -83,7 +83,10 @@ function check_game_waiting() {
         method: 'GET',
         data: { "game_id": game.id },
         success: function(response) {
-            game.user = response.status;
+            if (response.status === "canceled")
+            {
+                game.id = -1;         
+            }
         },
         error: function(error) {
             console.error('Error sending new player demand', error);
