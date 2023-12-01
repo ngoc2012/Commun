@@ -39,13 +39,13 @@ def players_list(request):
             players.pop(user)
     user = request.POST['user']
     users = list(players.keys())
-    game_invited = -1
+    game_invited = []
     if user in users:
         players[user]["heart_beat"] = time.time()
         g_ids = list(games.keys())
         for i in g_ids:
             if (games[i]['start'] == False && user in games[i]['players'] && user not in games[i]['accepted'])
-                game_invited = games[i]['id']
+                game_invited.append(games[i]['id'])
     return (JsonResponse({"game_invited": game_invited, "players": list(players.keys())}))
 
 def invite(request):
