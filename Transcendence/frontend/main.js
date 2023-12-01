@@ -3,7 +3,7 @@ import {Game} from './Game.js'
 export var game = new Game();
 
 const dom_invite = document.querySelector("#invite");
-const dom_players_list = document.getElementById("players_list");
+const dom_online_players_list = document.getElementById("online_players_list");
 const dom_status = document.getElementById("status");
 const dom_invitations = document.getElementById("invitations");
 const dom_accept_invitation = document.getElementById("accept_invitation");
@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
 });
 
 dom_invite.addEventListener("click", function () {
-    var players = get_list_players_selected();
-    if (players.length === 2)
-        invite(players);
+    var online_players = get_list_online_players_selected();
+    if (online_players.length === 2)
+        invite(online_players);
 });
 
 dom_cancel_invitation.addEventListener("click", function () {
@@ -25,17 +25,17 @@ dom_cancel_invitation.addEventListener("click", function () {
         cancel_invitation();
 });
 
-function    get_list_players_selected()
+function    get_list_online_players_selected()
 {
-    var options = dom_players_list && dom_players_list.options;
-    var players = [game.user];
+    var options = dom_online_players_list && dom_online_players_list.options;
+    var online_players = [game.user];
 
     for (var i=0; i < options.length; i++) {
         if (options[i].selected) {
-            players.push(options[i].value);
+            online_players.push(options[i].value);
         }
     }
-    return (players);
+    return (online_players);
 }
 
 /*

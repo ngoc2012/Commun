@@ -5,7 +5,7 @@ export class Game
     id = -1;
     status = "waiting";
 
-    update_players_list_time_interval = 2000;
+    update_online_players_list_time_interval = 2000;
     keep_alive_time_interval = 2000;
 
     function new_player() {
@@ -25,32 +25,32 @@ export class Game
     function update(){
         console.log("update :" + this.user);
         if (waiting)
-            this.update_players_list();
+            this.update_online_players_list();
         else
             this.check_game_status();
         if (status !== "playing")
-            setTimeout(update, this.update_players_list_time_interval);
+            setTimeout(update, this.update_online_players_list_time_interval);
     }
 
-    function update_players_list() {
+    function update_online_players_list() {
         $.ajax({
-            url: '/players_list',
+            url: '/online_players_list',
             method: 'POST',
             data: { "user": this.user },
             success: function(response) {
-                var options = dom_players_list && dom_players_list.options;
-                if (response.players_list.length > 0
-                    && response.players_list.length !== options.length + 1)
+                var options = dom_online_players_list && dom_online_players_list.options;
+                if (response.online_players_list.length > 0
+                    && response.online_players_list.length !== options.length + 1)
                 {
-                    //console.log(response.players_list.length);
-                    dom_players_list.innerHTML = "";
-                    response.players_list.forEach((element) => {
+                    //console.log(response.online_players_list.length);
+                    dom_online_players_list.innerHTML = "";
+                    response.online_players_list.forEach((element) => {
                         if (element !== this.user)
                         {
                             var option = document.createElement("option");
                             option.value = element;
                             option.text = element;
-                            dom_players_list.add(option);
+                            dom_online_players_list.add(option);
                         }
                     });
                 }
@@ -60,14 +60,14 @@ export class Game
         });
     }
 
-    function invite(players) {
+    function invite(online_players) {
         $.ajax({
             url: '/invite/',
             method: 'POST',
             data: {
                 "host": this.user,
                 "game": "pong",
-                "players": players
+                "online_players": online_players
             },
             success: function(response) {
                 this.id = response.game_id;
