@@ -29,27 +29,27 @@ def new_player(request):
         i += 1
         user_name = "user" + str(i)
     players[user_name] = {
-            "active": time.time(),
+            "online": time.time(),
             "invitations": [];
             "accepted": -1;
             }
     return (JsonResponse({"user": user_name}))
 
-def check_all_users_active():
+def check_all_users_online():
     users = list(players.keys())
     for user in users:
-        if time.time() - players[user]["active"] > 3:
+        if time.time() - players[user]["online"] > 3:
             players.pop(user)
 
 @csrf_exempt
 def players_list(request): 
     #print(games)
-    check_all_users_active()
+    check_all_users_online()
     user = request.POST['user']
     users = list(players.keys())
     invitations = []
     if user in users:
-        players[user]["active"] = time.time()
+        players[user]["online"] = time.time()
         g_ids = list(games.keys())
     return (JsonResponse({"user_status": players[user], "players_list": list(players.keys())}))
 
