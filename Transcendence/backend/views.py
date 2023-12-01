@@ -55,7 +55,7 @@ def online_players_list(request):
 def invite(request):
     for user in request.POST['players']
         if (user not in online_players.keys()):
-            return HttpResponseNotFound("Player " + user + " was not found in the game.")
+            return HttpResponseNotFound("Player " + user + " is not online.")
 
     game_id += 1
     for user in request.POST['players']
