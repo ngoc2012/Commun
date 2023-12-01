@@ -3,7 +3,7 @@ export class Game
     user = "";
     name = "";
     id = -1;
-    status = "waiting";
+    status = "";
 
     update_time_interval = 2000;
 
@@ -70,9 +70,19 @@ export class Game
             },
             success: function(response) {
                 this.id = response.game_id;
-                this.waiting = true;
+                this.status = "waiting";
                 this.name = "pong";
                 dom_status.textContent = "New game " + this.name + " " + this.id + " created. Wait for players...";
+                dom_online_players_list.innerHTML = "";
+                response.online_players_list.forEach((element) => {
+                    if (element !== this.user)
+                    {
+                        var option = document.createElement("option");
+                        option.value = element;
+                        option.text = element;
+                        dom_online_players_list.add(option);
+                    }
+                });
             },
             error: function(error) {
             }
