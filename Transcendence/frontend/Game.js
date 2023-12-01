@@ -6,6 +6,7 @@ export class Game
     waiting = false;
 
     function update(){
+        console.log("update :" + this.user);
         if (waiting)
             this.update_players_list();
         else
