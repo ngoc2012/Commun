@@ -59,23 +59,6 @@ export class Game
         });
     }
 
-    function keep_alive(){
-        console.log("keep alive :" + this.user);
-        $.ajax({
-            url: '/keep_alive/',
-            method: 'POST',
-            data: { "user": this.user },
-            success: function(response) {
-                if (response.status !== "accepted") {
-                    console.log(response.status);
-                }
-            },
-            error: function(error) {
-            }
-        });
-        setTimeout(update, this.keep_alive_time_interval);
-    }
-
     function invite(players) {
         $.ajax({
             url: '/invite/',
