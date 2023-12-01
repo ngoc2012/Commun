@@ -54,6 +54,11 @@ def players_list(request):
     return (JsonResponse({"user_status": players[user], "players_list": list(players.keys())}))
 
 def invite(request):
+    for user in request.POST['players']
+        if (user not in players.keys()):
+            return HttpResponseNotFound("Player " + user + " was not found in the game.")
+    for user in request.POST['players']
+
     game_id += 1
     games[game_id] = {
         "id": game_id,
@@ -63,6 +68,7 @@ def invite(request):
         "host": request.POST['host'],
         "accepted": [request.POST['host']]
         }
+        
     return (JsonResponse({"game_id": game_id}))
 
 def accept_invitation(request):
