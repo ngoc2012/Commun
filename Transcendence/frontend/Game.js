@@ -104,13 +104,13 @@ export class Game
         });
     }
 
-    function cancel_invitation() {
+    function cancel_invitation(game_id) {
         $.ajax({
             url: '/cancel_invitation',
             method: 'POST',
             data: {
                 "user": this.user,
-                "game_id": this.id
+                "game_id": game_id
             },
             success: function(response) {
                 if (response.status === "canceled") {
