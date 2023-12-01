@@ -20,6 +20,12 @@ dom_invite.addEventListener("click", function () {
         game.invite(players);
 });
 
+dom_accept_invitation.addEventListener("click", function () {
+    if (dom_invitations.selectedIndex !== -1) {
+        game.accept_invitation(dom_invitations.options[dom_invitations.selectedIndex].value);
+    }
+});
+
 dom_cancel_invitation.addEventListener("click", function () {
     if (dom_invitations.selectedIndex !== -1) {
         game.cancel_invitation(dom_invitations.options[dom_invitations.selectedIndex].value);
