@@ -73,15 +73,7 @@ export class Game
                 this.name = "pong";
                 dom_status.textContent = "New game " + this.name + " " + this.id + " created. Wait for players...";
                 dom_online_players_list.innerHTML = "";
-                response.online_players_list.forEach((element) => {
-                    if (element !== this.user)
-                    {
-                        var option = document.createElement("option");
-                        option.value = element;
-                        option.text = element;
-                        dom_online_players_list.add(option);
-                    }
-                });
+                dom_invitations.innerHTML = "";
             },
             error: function(error) {
             }
@@ -102,9 +94,9 @@ export class Game
                     //this.name = "";
                     //this.id = -1;         
                     //this.waiting = false;
+                } else {
+                    dom_status.textContent = response.status;
                 }
-                else
-                    console.error(response.status);
             },
             error: function(error) {
                 console.error('Error: accept invitation POST fail', error);
@@ -152,7 +144,7 @@ export class Game
                     this.status = "";
                 }
                 else if (response === "ready") {
-                    dom_status.textContent = response.status;
+                    dom_status.textContent = "Game " + this.name +" " + this.id + " is ready";
                 }
             },
             error: function(error) {
