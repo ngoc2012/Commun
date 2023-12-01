@@ -19,18 +19,13 @@ export class Game
     function keep_alive(){
         console.log("keep alive :" + this.user);
         $.ajax({
-            url: '/invite/',
+            url: '/keep_alive/',
             method: 'POST',
-            data: {
-                "host": this.user,
-                "game": "pong",
-                "players": players
-            },
+            data: { "user": this.user },
             success: function(response) {
-                this.id = response.game_id;
-                this.waiting = true;
-                this.name = "pong";
-                dom_status.textContent = "waiting...";
+                if (response.status !== "accepted") {
+                    console.log(response.status);
+                }
             },
             error: function(error) {
             }
