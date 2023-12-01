@@ -59,14 +59,14 @@ export class Game
         });
     }
 
-    function invite(online_players) {
+    function invite(players) {
         $.ajax({
             url: '/invite/',
             method: 'POST',
             data: {
                 "host": this.user,
                 "game": "pong",
-                "online_players": online_players
+                "players": players
             },
             success: function(response) {
                 this.id = response.game_id;

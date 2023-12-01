@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
 });
 
 dom_invite.addEventListener("click", function () {
-    var online_players = get_players_selected();
-    if (online_players.length === 2)
-        game.invite(online_players);
+    var players = get_players_selected();
+    if (players.length === 2)
+        game.invite(players);
 });
 
 dom_cancel_invitation.addEventListener("click", function () {
