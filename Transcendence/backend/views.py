@@ -50,8 +50,7 @@ def players_list(request):
     invitations = []
     if user in users:
         players[user]["online"] = time.time()
-        g_ids = list(games.keys())
-    return (JsonResponse({"user_status": players[user], "players_list": list(players.keys())}))
+    return (JsonResponse({"user_status": players[user], "players_list": users}))
 
 def invite(request):
     for user in request.POST['players']
