@@ -21,14 +21,10 @@ dom_invite.addEventListener("click", function () {
 });
 
 dom_cancel_invitation.addEventListener("click", function () {
-    if (dom_invitations.selectedIndex !== -1)
-    {
+    if (dom_invitations.selectedIndex !== -1) {
+        game.cancel_invitation(dom_invitations.options[dom_invitations.selectedIndex].value);
     }
-    e.options[e.selectedIndex].text
-    if (game.id != -1)
-        game.cancel_invitation();
 });
-
 
 function    get_players_selected()
 {
