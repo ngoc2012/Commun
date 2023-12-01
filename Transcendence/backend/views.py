@@ -93,7 +93,7 @@ def cancel_invitation(request):
     if (user not in games[g_id]["players"])
         return HttpResponseNotFound("Player " + user + " was not found in the game.")
     games.pop(g_id)
-    return (HttpResponse("canceled"))
+    return (JsonResponse({"game": games[g_id]['game'], "status": "canceled"}))
 
 def check_game_status(request):
     g_id = request.POST['game_id']
