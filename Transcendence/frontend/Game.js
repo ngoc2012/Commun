@@ -5,7 +5,7 @@ export class Game
     id = -1;
     waiting = false;
     update_players_list_time_interval = 2000;
-    check_alive_time_interval = 2000;
+    keep_alive_time_interval = 2000;
 
     function update(){
         console.log("update :" + this.user);
@@ -13,7 +13,16 @@ export class Game
             this.update_players_list();
         else
             this.check_game_waiting();
-        setTimeout(update, 2000);
+        setTimeout(update, this.keep_alive_time_interval);
+    }
+
+    function update(){
+        console.log("update :" + this.user);
+        if (waiting)
+            this.update_players_list();
+        else
+            this.check_game_waiting();
+        setTimeout(update, this.keep_alive_time_interval);
     }
 
     function invite(players) {
