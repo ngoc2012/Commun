@@ -43,7 +43,7 @@ export function accept_invitation() {
 }
 
 //var csrftoken = getCookie('csrftoken');
-function cancel_invitation() {
+export function cancel_invitation() {
     $.ajax({
         url: '/cancel_invitation',
         method: 'POST',
@@ -68,7 +68,7 @@ function cancel_invitation() {
     });
 }
 
-function check_game_status() {
+export function check_game_status() {
     $.ajax({
         url: '/check_game_status',
         method: 'GET',
@@ -90,7 +90,7 @@ function check_game_status() {
     });
 }
 
-function new_player() {
+export function new_player() {
     $.ajax({
         url: '/new_player',
         method: 'GET',
@@ -104,7 +104,7 @@ function new_player() {
     });
 }
 
-function update_players_list(action) {
+export function update_players_list() {
     $.ajax({
         url: '/players_list',
         method: 'POST',
@@ -132,30 +132,6 @@ function update_players_list(action) {
     });
 }
 
-/*
-
-// Example: Move paddle up
-document.addEventListener('keydown', function (event) {
-    if (event.key === 'ArrowUp') {
-        sendAction('move_up');
-    }
-});
-
-// Example: Move paddle down
-document.addEventListener('keydown', function (event) {
-    if (event.key === 'ArrowDown') {
-        sendAction('move_down');
-    }
-});
-
-// Update game elements based on data received from the server
-function updateGame(data) {
-    // Update game elements (e.g., paddle and ball positions) based on data
-}
-
-// Poll for game state every 100 milliseconds (adjust as needed)
-setInterval(pollGameState, 100);
-*/
 /*
 function getCookie(name) {
     var cookieValue = null;
