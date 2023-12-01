@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
 function update(){
     // do whatever you like here
     if (waiting)
-        update_players_list();
+        game.update_players_list();
     else
-        check_game_waiting();
+        game.check_game_waiting();
     setTimeout(update, 2000);
 }
 

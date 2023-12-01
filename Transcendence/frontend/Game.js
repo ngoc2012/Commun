@@ -1,6 +1,4 @@
-import {game} from './main.js'
-
-class Game
+export class Game
 {
     user = "";
     name = "";
@@ -12,14 +10,14 @@ class Game
             url: '/invite/',
             method: 'POST',
             data: {
-                "host": game.user,
+                "host": this.user,
                 "game": "pong",
                 "players": players
             },
             success: function(response) {
-                game.id = response.game_id;
-                game.waiting = true;
-                game.name = "pong";
+                this.id = response.game_id;
+                this.waiting = true;
+                this.name = "pong";
                 dom_status.textContent = "waiting...";
             },
             error: function(error) {
@@ -28,118 +26,117 @@ class Game
     }
 
     function accept_invitation() {
-    $.ajax({
-        url: '/accept_invitation',
-        method: 'POST',
-        data: {
-            "user": game.user,
-            "game_id": game.id
-        },
-        success: function(response) {
-            if (response.status === "accepted") {
-                dom_status.textContent = "Game " + game.name + " " + game.id + " invitation is accepted by " + game.user;
-                //game.name = "";
-                //game.id = -1;         
-                //game.waiting = false;
+        $.ajax({
+            url: '/accept_invitation',
+            method: 'POST',
+            data: {
+                "user": this.user,
+                "game_id": this.id
+            },
+            success: function(response) {
+                if (response.status === "accepted") {
+                    dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is accepted by " + this.user;
+                    //this.name = "";
+                    //this.id = -1;         
+                    //this.waiting = false;
+                }
+                else
+                    console.error(response.status);
+            },
+            error: function(error) {
+                console.error('Error: accept invitation POST fail', error);
             }
-            else
-                console.error(response.status);
-        },
-        error: function(error) {
-            console.error('Error: accept invitation POST fail', error);
-        }
-    });
-}
+        });
+    }
 
-//var csrftoken = getCookie('csrftoken');
     function cancel_invitation() {
-    $.ajax({
-        url: '/cancel_invitation',
-        method: 'POST',
-        data: {
-            "user": game.user,
-            "game_id": game.id
-        },
-        success: function(response) {
-            if (response.status === "canceled")
-            {
-                dom_status.textContent = "Game " + game.name + " " + game.id + " invitation is canceled by " + game.user;
-                game.name = "";
-                game.id = -1;         
-                game.waiting = false;
+        $.ajax({
+            url: '/cancel_invitation',
+            method: 'POST',
+            data: {
+                "user": this.user,
+                "game_id": this.id
+            },
+            success: function(response) {
+                if (response.status === "canceled")
+                {
+                    dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is canceled by " + this.user;
+                    this.name = "";
+                    this.id = -1;         
+                    this.waiting = false;
+                }
+                else
+                    console.error(response.status);
+            },
+            error: function(error) {
+                console.error('Error: cancel invitation POST fail', error);
             }
-            else
-                console.error(response.status);
-        },
-        error: function(error) {
-            console.error('Error: cancel invitation POST fail', error);
-        }
-    });
-}
+        });
+    }
 
     function check_game_status() {
-    $.ajax({
-        url: '/check_game_status',
-        method: 'GET',
-        data: { "game_id": game.id },
-        success: function(response) {
-            if (response.status === "canceled")
-            {
-                dom_status.textContent = "Game " + game.name +" " + game.id + " is canceled";
-                game.name = "";
-                game.id = -1;         
-                game.waiting = false;
+        $.ajax({
+            url: '/check_game_status',
+            method: 'GET',
+            data: { "game_id": this.id },
+            success: function(response) {
+                if (response.status === "canceled")
+                {
+                    dom_status.textContent = "Game " + this.name +" " + this.id + " is canceled";
+                    this.name = "";
+                    this.id = -1;         
+                    this.waiting = false;
+                }
+                else
+                    console.log(response.status);
+            },
+            error: function(error) {
+                console.error('Error: check game GET fail', error);
             }
-            else
-                console.log(response.status);
-        },
-        error: function(error) {
-            console.error('Error: check game GET fail', error);
-        }
-    });
-}
+        });
+    }
 
     function new_player() {
-    $.ajax({
-        url: '/new_player',
-        method: 'GET',
-	//headers: {'X-CSRFToken': csrftoken},
-        success: function(response) {
-            game.user = response.user;
-        },
-        error: function(error) {
-            console.error('Error sending new player demand', error);
-        }
-    });
-}
+        $.ajax({
+            url: '/new_player',
+            method: 'GET',
+            //headers: {'X-CSRFToken': csrftoken},
+            success: function(response) {
+                this.user = response.user;
+            },
+            error: function(error) {
+                console.error('Error sending new player demand', error);
+            }
+        });
+    }
 
     function update_players_list() {
-    $.ajax({
-        url: '/players_list',
-        method: 'POST',
-        data: { "user": game.user },
-        success: function(response) {
-            var options = dom_players_list && dom_players_list.options;
-            if (response.players.length > 0
-                && response.players.length !== options.length + 1)
-            {
-                console.log(response.players.length);
-                dom_players_list.innerHTML = "";
-                response.players.forEach((element) => {
-                    if (element !== game.user)
-                    {
-                        var option = document.createElement("option");
-                        option.value = element;
-                        option.text = element;
-                        dom_players_list.add(option);
-                    }
-                });
+        $.ajax({
+            url: '/players_list',
+            method: 'POST',
+            data: { "user": this.user },
+            success: function(response) {
+                var options = dom_players_list && dom_players_list.options;
+                if (response.players.length > 0
+                    && response.players.length !== options.length + 1)
+                {
+                    console.log(response.players.length);
+                    dom_players_list.innerHTML = "";
+                    response.players.forEach((element) => {
+                        if (element !== this.user)
+                        {
+                            var option = document.createElement("option");
+                            option.value = element;
+                            option.text = element;
+                            dom_players_list.add(option);
+                        }
+                    });
+                }
+            },
+            error: function(error) {
             }
-        },
-        error: function(error) {
-        }
-    });
-}
+        });
+    }
 }
 
 
