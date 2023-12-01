@@ -7,6 +7,20 @@ export class Game
     update_players_list_time_interval = 2000;
     keep_alive_time_interval = 2000;
 
+    function new_player() {
+        $.ajax({
+            url: '/new_player',
+            method: 'GET',
+            //headers: {'X-CSRFToken': csrftoken},
+            success: function(response) {
+                this.user = response.user;
+            },
+            error: function(error) {
+                console.error('Error sending new player demand', error);
+            }
+        });
+    }
+
     function update(){
         console.log("update :" + this.user);
         if (waiting)
@@ -14,6 +28,34 @@ export class Game
         else
             this.check_game_status();
         setTimeout(update, this.update_players_list_time_interval);
+    }
+
+    function update_players_list() {
+        $.ajax({
+            url: '/players_list',
+            method: 'POST',
+            data: { "user": this.user },
+            success: function(response) {
+                var options = dom_players_list && dom_players_list.options;
+                if (response.players.length > 0
+                    && response.players.length !== options.length + 1)
+                {
+                    console.log(response.players.length);
+                    dom_players_list.innerHTML = "";
+                    response.players.forEach((element) => {
+                        if (element !== this.user)
+                        {
+                            var option = document.createElement("option");
+                            option.value = element;
+                            option.text = element;
+                            dom_players_list.add(option);
+                        }
+                    });
+                }
+            },
+            error: function(error) {
+            }
+        });
     }
 
     function keep_alive(){
@@ -120,48 +162,6 @@ export class Game
             },
             error: function(error) {
                 console.error('Error: check game GET fail', error);
-            }
-        });
-    }
-
-    function new_player() {
-        $.ajax({
-            url: '/new_player',
-            method: 'GET',
-            //headers: {'X-CSRFToken': csrftoken},
-            success: function(response) {
-                this.user = response.user;
-            },
-            error: function(error) {
-                console.error('Error sending new player demand', error);
-            }
-        });
-    }
-
-    function update_players_list() {
-        $.ajax({
-            url: '/players_list',
-            method: 'POST',
-            data: { "user": this.user },
-            success: function(response) {
-                var options = dom_players_list && dom_players_list.options;
-                if (response.players.length > 0
-                    && response.players.length !== options.length + 1)
-                {
-                    console.log(response.players.length);
-                    dom_players_list.innerHTML = "";
-                    response.players.forEach((element) => {
-                        if (element !== this.user)
-                        {
-                            var option = document.createElement("option");
-                            option.value = element;
-                            option.text = element;
-                            dom_players_list.add(option);
-                        }
-                    });
-                }
-            },
-            error: function(error) {
             }
         });
     }
