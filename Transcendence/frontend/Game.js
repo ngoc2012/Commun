@@ -5,8 +5,7 @@ export class Game
     id = -1;
     status = "waiting";
 
-    update_online_players_list_time_interval = 2000;
-    keep_alive_time_interval = 2000;
+    update_time_interval = 2000;
 
     function new_player() {
         $.ajax({
@@ -17,7 +16,7 @@ export class Game
                 this.user = response.user;
             },
             error: function(error) {
-                console.error('Error sending new player demand', error);
+                console.error('Error: sending new player demand', error);
             }
         });
     }
@@ -29,7 +28,7 @@ export class Game
         else
             this.check_game_status();
         if (status !== "playing")
-            setTimeout(update, this.update_online_players_list_time_interval);
+            setTimeout(update, this.update_time_interval);
     }
 
     function update_online_players_list() {
