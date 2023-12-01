@@ -68,23 +68,23 @@ def invite(request):
 def accept_invitation(request):
     g_id = request.POST['game_id']
     if (g_id not in games.keys())
-        return (JsonResponse({"status": "Error: game id " + str(g_id) + " is not found"}))
+        return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
     user = request.POST['user']
     if (user not in games[g_id]["players"])
-        return (JsonResponse({"status": "Error: player " + user +  " is not found"}))
+        return HttpResponseNotFound("Player " + user + " was not found in the game.")
     if (user not in games[g_id]["accepted"])
         games[g_id]["accepted"].append(user)
-    return (JsonResponse({"status": "accepted"}))
+    return (HttpResponse("accepted"))
 
 def cancel_invitation(request):
     g_id = request.POST['game_id']
     if (g_id not in games.keys())
-        return (JsonResponse({"status": "Error: game id " + str(g_id) + " is not found"}))
+        return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
     user = request.POST['user']
     if (user not in games[g_id]["players"])
         return HttpResponseNotFound("Player " + user + " was not found in the game.")
     games.pop(g_id)
-    return (JsonResponse({"status": "canceled"}))
+    return (HttpResponse("canceled"))
 
 def check_game_status(request):
     g_id = request.POST['game_id']
