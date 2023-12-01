@@ -3,7 +3,7 @@ export class Game
     user = "";
     name = "";
     id = -1;
-    waiting = false;
+    status = "waiting";
 
     update_players_list_time_interval = 2000;
     keep_alive_time_interval = 2000;
@@ -28,7 +28,8 @@ export class Game
             this.update_players_list();
         else
             this.check_game_status();
-        setTimeout(update, this.update_players_list_time_interval);
+        if (status !== "playing")
+            setTimeout(update, this.update_players_list_time_interval);
     }
 
     function update_players_list() {
