@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.http import HttpResponse
+from django.http import HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
 import time
@@ -81,12 +82,12 @@ def cancel_invitation(request):
         return (JsonResponse({"status": "Error: game id " + str(g_id) + " is not found"}))
     user = request.POST['user']
     if (user not in games[g_id]["players"])
-        return (JsonResponse({"status": "Error: player " + user +  " is not found"}))
+        return HttpResponseNotFound("Player " + user + " was not found in the game.")
     games.pop(g_id)
     return (JsonResponse({"status": "canceled"}))
 
 def check_game_status(request):
     g_id = request.POST['game_id']
     if (g_id not in games.keys())
-        return (JsonResponse({"error": "canceled"}))
+        return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
     return (JsonResponse(game_id[g_id]))
