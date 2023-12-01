@@ -83,7 +83,7 @@ def accept_invitation(request):
         return HttpResponseNotFound("Player " + user + " was in another game.")
     if (user not in games[g_id]["accepted"])
         games[g_id]["accepted"].append(user)
-    return (JsonResponse({"game": games[g_id]['game'], "status": "accepted"}))
+    return (JsonResponse({"game": games[g_id]['game']}))
 
 def cancel_invitation(request):
     g_id = request.POST['game_id']

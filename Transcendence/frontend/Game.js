@@ -89,14 +89,10 @@ export class Game
                 "game_id": game_id
             },
             success: function(response) {
-                if (response.status === "accepted") {
-                    dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is accepted by " + this.user;
-                    this.name = response.game;
-                    this.id = game_id;         
-                    this.status = "waiting";
-                } else {
-                    dom_status.textContent = response.status;
-                }
+                dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is accepted by " + this.user;
+                this.name = response.game;
+                this.id = game_id;         
+                this.status = "waiting";
             },
             error: function(error) {
                 console.error('Error: accept invitation POST fail', error);
@@ -113,16 +109,12 @@ export class Game
                 "game_id": game_id
             },
             success: function(response) {
-                if (response === "canceled") {
-                    dom_status.textContent = "Game " + this.name + " " + game_id + " invitation is canceled by " + this.user;
-                    if (this.id === game_id)
-                    {
-                        this.name = "";
-                        this.id = -1;         
-                        this.waiting = false;
-                    }
-                } else {
-                    dom_status.textContent = response.status;
+                dom_status.textContent = "Game " + this.name + " " + game_id + " invitation is canceled by " + this.user;
+                if (this.id === game_id)
+                {
+                    this.name = "";
+                    this.id = -1;         
+                    this.waiting = false;
                 }
             },
             error: function(error) {
