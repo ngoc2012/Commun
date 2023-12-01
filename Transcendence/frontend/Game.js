@@ -151,7 +151,7 @@ export class Game
                     dom_status.textContent = "Game " + this.name +" " + this.id + " is canceled";
                     this.name = "";
                     this.id = -1;         
-                    this.waiting = false;
+                    this.status = "";
                 }
                 else
                     console.log(response.status);
