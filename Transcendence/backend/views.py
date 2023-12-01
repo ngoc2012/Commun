@@ -21,49 +21,6 @@ def login(request):
 def pong(request):
 	return (render(request, 'pong.html'))
 
-def check_game_status(request):
-    g_id = request.POST['game_id']
-    if (g_id not in games.keys())
-        return (JsonResponse({"status": "canceled"}))
-    if (len(game_id[g_id]['players']) == len(game_id[g_id]['accepted']))
-        return (JsonResponse({"status": "ready"}))
-    return (JsonResponse({"status": "waiting"}))
-
-def accept_invitation(request):
-    g_id = request.POST['game_id']
-    if (g_id not in games.keys())
-        return (JsonResponse({"status": "Error: game id " + str(g_id) + " is not found"}))
-    user = request.POST['user']
-    if (user not in games[g_id]["players"])
-        return (JsonResponse({"status": "Error: player " + user +  " is not found"}))
-    if (user not in games[g_id]["accepted"])
-        games[g_id]["accepted"].append(user)
-    return (JsonResponse({"status": "accepted"}))
-
-
-def cancel_invitation(request):
-    g_id = request.POST['game_id']
-    if (g_id not in games.keys())
-        return (JsonResponse({"status": "Error: game id " + str(g_id) + " is not found"}))
-    user = request.POST['user']
-    if (user not in games[g_id]["players"])
-        return (JsonResponse({"status": "Error: player " + user +  " is not found"}))
-    games.pop(g_id)
-    return (JsonResponse({"status": "canceled"}))
-
-
-def invite(request):
-    game_id += 1
-    games[game_id] = {
-        "id": game_id,
-        "game": request.POST['game'],
-        "start": False,
-        "players": request.POST['players'],
-        "host": request.POST['host'],
-        "accepted": [request.POST['host']]
-        }
-    return (JsonResponse({"game_id": game_id}))
-
 def new_player(request):
     i = 0
     user_name = "user" + str(i)
@@ -90,3 +47,45 @@ def players_list(request):
             if (games[i]['start'] == False && user in games[i]['players'] && user not in games[i]['accepted'])
                 game_invited = games[i]['id']
     return (JsonResponse({"game_invited": game_invited, "players": list(players.keys())}))
+
+def invite(request):
+    game_id += 1
+    games[game_id] = {
+        "id": game_id,
+        "game": request.POST['game'],
+        "start": False,
+        "players": request.POST['players'],
+        "host": request.POST['host'],
+        "accepted": [request.POST['host']]
+        }
+    return (JsonResponse({"game_id": game_id}))
+
+def accept_invitation(request):
+    g_id = request.POST['game_id']
+    if (g_id not in games.keys())
+        return (JsonResponse({"status": "Error: game id " + str(g_id) + " is not found"}))
+    user = request.POST['user']
+    if (user not in games[g_id]["players"])
+        return (JsonResponse({"status": "Error: player " + user +  " is not found"}))
+    if (user not in games[g_id]["accepted"])
+        games[g_id]["accepted"].append(user)
+    return (JsonResponse({"status": "accepted"}))
+
+
+def cancel_invitation(request):
+    g_id = request.POST['game_id']
+    if (g_id not in games.keys())
+        return (JsonResponse({"status": "Error: game id " + str(g_id) + " is not found"}))
+    user = request.POST['user']
+    if (user not in games[g_id]["players"])
+        return (JsonResponse({"status": "Error: player " + user +  " is not found"}))
+    games.pop(g_id)
+    return (JsonResponse({"status": "canceled"}))
+
+def check_game_status(request):
+    g_id = request.POST['game_id']
+    if (g_id not in games.keys())
+        return (JsonResponse({"status": "canceled"}))
+    if (len(game_id[g_id]['players']) == len(game_id[g_id]['accepted']))
+        return (JsonResponse({"status": "ready"}))
+    return (JsonResponse({"status": "waiting"}))
