@@ -4,6 +4,7 @@ export class Game
     name = "";
     id = -1;
     waiting = false;
+
     update_players_list_time_interval = 2000;
     keep_alive_time_interval = 2000;
 
