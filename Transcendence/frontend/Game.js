@@ -1,5 +1,12 @@
 import {game} from './main.js'
 
+class Game
+{
+    user = "";
+    name = "";
+    id = -1;
+    waiting = false;
+
 export function invite(players) {
     $.ajax({
         url: '/invite/',
@@ -133,6 +140,8 @@ export function update_players_list() {
         }
     });
 }
+}
+
 
 /*
 function getCookie(name) {
