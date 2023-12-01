@@ -98,5 +98,5 @@ def cancel_invitation(request):
 def check_game_status(request):
     g_id = request.POST['game_id']
     if (g_id not in games.keys())
-        return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
+        return HttpResponseNotFound("Game " + str(g_id) + " was not found or canceled.")
     return (JsonResponse(game_id[g_id]))
