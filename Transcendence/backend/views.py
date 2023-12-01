@@ -31,7 +31,7 @@ def new_player(request):
     players[user_name] = {
             "active": time.time(),
             "invitations": [];
-            "acceped": -1;
+            "accepted": -1;
             }
     return (JsonResponse({"user": user_name}))
 
