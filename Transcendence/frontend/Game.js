@@ -114,10 +114,13 @@ export class Game
             },
             success: function(response) {
                 if (response.status === "canceled") {
-                    dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is canceled by " + this.user;
-                    this.name = "";
-                    this.id = -1;         
-                    this.waiting = false;
+                    dom_status.textContent = "Game " + this.name + " " + game_id + " invitation is canceled by " + this.user;
+                    if (this.id === game_id)
+                    {
+                        this.name = "";
+                        this.id = -1;         
+                        this.waiting = false;
+                    }
                 } else {
                     dom_status.textContent = response.status;
                 }
