@@ -37,15 +37,13 @@ dom_invite.addEventListener("click", function () {
     var options = dom_players_list && dom_players_list.options;
     var players = [game.user];
 
-    for (var i=0; i < options.length; i++)
-    {
-        if (options[i].selected)
-        {
+    for (var i=0; i < options.length; i++) {
+        if (options[i].selected) {
             players.push(options[i].value);
         }
     }
     if (players.length === 2)
-        invite();
+        invite(players);
 });
 
 function invite(players) {
