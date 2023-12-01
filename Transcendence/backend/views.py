@@ -65,7 +65,7 @@ def invite(request):
         "id": game_id,
         "game": request.POST['game'],
         "status": "waiting",
-        "online_players": request.POST['players'],
+        "players": request.POST['players'],
         "host": request.POST['host'],
         "accepted": [request.POST['host']]
         }
@@ -90,7 +90,7 @@ def cancel_invitation(request):
     if (g_id not in games.keys())
         return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
     user = request.POST['user']
-    if (user not in games[g_id]["online_players"])
+    if (user not in games[g_id]["players"])
         return HttpResponseNotFound("Player " + user + " was not found in the game.")
     games.pop(g_id)
     return (HttpResponse("canceled"))

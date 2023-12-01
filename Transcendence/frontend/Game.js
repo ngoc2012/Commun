@@ -113,7 +113,7 @@ export class Game
                 "game_id": game_id
             },
             success: function(response) {
-                if (response.status === "canceled") {
+                if (response === "canceled") {
                     dom_status.textContent = "Game " + this.name + " " + game_id + " invitation is canceled by " + this.user;
                     if (this.id === game_id)
                     {
