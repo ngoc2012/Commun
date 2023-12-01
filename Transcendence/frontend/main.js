@@ -22,20 +22,20 @@ dom_invite.addEventListener("click", function () {
 
 dom_cancel_invitation.addEventListener("click", function () {
     if (game.id != -1)
-        cancel_invitation();
+        game.cancel_invitation();
 });
 
 function    get_players_selected()
 {
     var options = dom_online_players_list && dom_online_players_list.options;
-    var online_players = [game.user];
+    var players_selected = [game.user];
 
     for (var i=0; i < options.length; i++) {
         if (options[i].selected) {
-            online_players.push(options[i].value);
+            players_selected.push(options[i].value);
         }
     }
-    return (online_players);
+    return (players_selected);
 }
 
 /*
