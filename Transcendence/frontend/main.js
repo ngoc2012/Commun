@@ -21,6 +21,9 @@ dom_invite.addEventListener("click", function () {
 });
 
 dom_cancel_invitation.addEventListener("click", function () {
+    if (dom_invitations.selectedIndex !== -1)
+    {
+    }
     e.options[e.selectedIndex].text
     if (game.id != -1)
         game.cancel_invitation();

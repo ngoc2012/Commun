@@ -72,7 +72,7 @@ export class Game
                 this.id = response.game_id;
                 this.waiting = true;
                 this.name = "pong";
-                dom_status.textContent = "waiting...";
+                dom_status.textContent = "New game " + this.name + " " + this.id + " created. Wait for players...";
             },
             error: function(error) {
             }
