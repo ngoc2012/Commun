@@ -2,6 +2,12 @@ import {Game} from './Game.js'
 
 export var game = new Game();
 
+const dom_invite = document.querySelector("#invite");
+const dom_players_list = document.getElementById("players_list");
+const dom_status = document.getElementById("status");
+const dom_accept_invitation = document.getElementById("accept_invitation");
+const dom_cancel_invitation = document.getElementById("cancel_invitation");
+
 document.addEventListener('DOMContentLoaded', function (event) {
     update();
     new_player();
@@ -16,11 +22,6 @@ function update(){
     setTimeout(update, 2000);
 }
 
-const dom_invite = document.querySelector("#invite");
-const dom_players_list = document.getElementById("players_list");
-const dom_status = document.getElementById("status");
-const dom_accept_invitation = document.getElementById("accept_invitation");
-const dom_cancel_invitation = document.getElementById("cancel_invitation");
 
 dom_cancel_invitation.addEventListener("click", function () {
     if (game.id != -1)
