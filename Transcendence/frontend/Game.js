@@ -89,11 +89,11 @@ export class Game
                 "game_id": game_id
             },
             success: function(response) {
-                if (response === "accepted") {
+                if (response.status === "accepted") {
                     dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is accepted by " + this.user;
-                    //this.name = "";
-                    //this.id = -1;         
-                    //this.waiting = false;
+                    this.name = response.game;
+                    this.id = game_id;         
+                    this.status = "waiting";
                 } else {
                     dom_status.textContent = response.status;
                 }
