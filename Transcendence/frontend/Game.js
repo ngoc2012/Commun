@@ -86,7 +86,7 @@ export class Game
             method: 'POST',
             data: {
                 "user": this.user,
-                "game_id": this.id
+                "game_id": game_id
             },
             success: function(response) {
                 if (response === "accepted") {
