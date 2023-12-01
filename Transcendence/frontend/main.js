@@ -13,14 +13,19 @@ document.addEventListener('DOMContentLoaded', function (event) {
     game.update();
 });
 
-
+dom_invite.addEventListener("click", function () {
+    var players = get_list_players_selected();
+    if (players.length === 2)
+        invite(players);
+});
 
 dom_cancel_invitation.addEventListener("click", function () {
     if (game.id != -1)
         cancel_invitation();
 });
 
-dom_invite.addEventListener("click", function () {
+function    get_list_players_selected()
+{
     var options = dom_players_list && dom_players_list.options;
     var players = [game.user];
 
@@ -29,9 +34,8 @@ dom_invite.addEventListener("click", function () {
             players.push(options[i].value);
         }
     }
-    if (players.length === 2)
-        invite(players);
-});
+    return (players);
+}
 
 /*
 
