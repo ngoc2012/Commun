@@ -5,6 +5,14 @@ export class Game
     id = -1;
     waiting = false;
 
+    function update(){
+        if (waiting)
+            this.update_players_list();
+        else
+            this.check_game_waiting();
+        setTimeout(update, 2000);
+    }
+
     function invite(players) {
         $.ajax({
             url: '/invite/',

@@ -9,18 +9,10 @@ const dom_accept_invitation = document.getElementById("accept_invitation");
 const dom_cancel_invitation = document.getElementById("cancel_invitation");
 
 document.addEventListener('DOMContentLoaded', function (event) {
-    update();
-    new_player();
+    game.new_player();
+    game.update();
 });
 
-function update(){
-    // do whatever you like here
-    if (waiting)
-        game.update_players_list();
-    else
-        game.check_game_waiting();
-    setTimeout(update, 2000);
-}
 
 
 dom_cancel_invitation.addEventListener("click", function () {
