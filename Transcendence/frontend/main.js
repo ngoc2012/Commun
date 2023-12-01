@@ -21,6 +21,8 @@ dom_invite.addEventListener("click", function () {
 });
 
 dom_accept_invitation.addEventListener("click", function () {
+    if (game.status !== "")
+        return ;
     if (dom_invitations.selectedIndex !== -1) {
         game.accept_invitation(dom_invitations.options[dom_invitations.selectedIndex].value);
     }

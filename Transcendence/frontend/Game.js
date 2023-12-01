@@ -80,7 +80,7 @@ export class Game
         });
     }
 
-    function accept_invitation() {
+    function accept_invitation(game_id) {
         $.ajax({
             url: '/accept_invitation',
             method: 'POST',
@@ -89,7 +89,7 @@ export class Game
                 "game_id": this.id
             },
             success: function(response) {
-                if (response.status === "accepted") {
+                if (response === "accepted") {
                     dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is accepted by " + this.user;
                     //this.name = "";
                     //this.id = -1;         
