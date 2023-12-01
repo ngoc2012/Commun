@@ -21,9 +21,11 @@ dom_invite.addEventListener("click", function () {
 });
 
 dom_cancel_invitation.addEventListener("click", function () {
+    e.options[e.selectedIndex].text
     if (game.id != -1)
         game.cancel_invitation();
 });
+
 
 function    get_players_selected()
 {
