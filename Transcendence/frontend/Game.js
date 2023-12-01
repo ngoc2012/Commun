@@ -121,15 +121,14 @@ export class Game
                 "game_id": this.id
             },
             success: function(response) {
-                if (response.status === "canceled")
-                {
+                if (response.status === "canceled") {
                     dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is canceled by " + this.user;
                     this.name = "";
                     this.id = -1;         
                     this.waiting = false;
+                } else {
+                    dom_status.textContent = response.status;
                 }
-                else
-                    console.error(response.status);
             },
             error: function(error) {
                 console.error('Error: cancel invitation POST fail', error);
@@ -146,15 +145,15 @@ export class Game
                 "game_id": this.id
             },
             success: function(response) {
-                if (response === "canceled")
-                {
+                if (response === "canceled") {
                     dom_status.textContent = "Game " + this.name +" " + this.id + " is canceled";
                     this.name = "";
                     this.id = -1;         
                     this.status = "";
                 }
-                else
-                    console.log(response.status);
+                else if (response === "ready") {
+                    dom_status.textContent = response.status;
+                }
             },
             error: function(error) {
                 console.error('Error: check game GET fail', error);
