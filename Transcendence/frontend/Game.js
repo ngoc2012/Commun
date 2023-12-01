@@ -148,10 +148,13 @@ export class Game
     function check_game_status() {
         $.ajax({
             url: '/check_game_status',
-            method: 'GET',
-            data: { "game_id": this.id },
+            method: 'POST',
+            data: {
+                "user": this.user,
+                "game_id": this.id
+            },
             success: function(response) {
-                if (response.status === "canceled")
+                if (response === "canceled")
                 {
                     dom_status.textContent = "Game " + this.name +" " + this.id + " is canceled";
                     this.name = "";
