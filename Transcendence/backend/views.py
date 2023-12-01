@@ -34,13 +34,16 @@ def new_player(request):
             }
     return (JsonResponse({"user": user_name}))
 
-@csrf_exempt
-def players_list(request): 
-    print(games)
+def check_all_users_heart_beat():
     users = list(players.keys())
     for user in users:
         if time.time() - players[user]["heart_beat"] > 3:
             players.pop(user)
+
+@csrf_exempt
+def players_list(request): 
+    #print(games)
+    check_all_users_heart_beat()
     user = request.POST['user']
     users = list(players.keys())
     invitations = []
@@ -50,7 +53,7 @@ def players_list(request):
         for i in g_ids:
             if (games[i]['start'] == False && user in games[i]['players'] && user not in games[i]['accepted'])
                 game_invited.append(games[i]['id'])
-    return (JsonResponse({"invitations": players[user]["invitations"], "players": list(players.keys())}))
+    return (JsonResponse({"user_status": players[user], "players_list": list(players.keys())}))
 
 def invite(request):
     game_id += 1

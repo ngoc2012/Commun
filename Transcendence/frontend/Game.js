@@ -38,12 +38,12 @@ export class Game
             data: { "user": this.user },
             success: function(response) {
                 var options = dom_players_list && dom_players_list.options;
-                if (response.players.length > 0
-                    && response.players.length !== options.length + 1)
+                if (response.players_list.length > 0
+                    && response.players_list.length !== options.length + 1)
                 {
-                    console.log(response.players.length);
+                    //console.log(response.players_list.length);
                     dom_players_list.innerHTML = "";
-                    response.players.forEach((element) => {
+                    response.players_list.forEach((element) => {
                         if (element !== this.user)
                         {
                             var option = document.createElement("option");
