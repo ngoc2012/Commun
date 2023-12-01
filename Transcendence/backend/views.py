@@ -57,9 +57,11 @@ def invite(request):
     for user in request.POST['players']
         if (user not in players.keys()):
             return HttpResponseNotFound("Player " + user + " was not found in the game.")
-    for user in request.POST['players']
 
     game_id += 1
+    for user in request.POST['players']
+        players[user]['invitations'].append(game_id)
+
     games[game_id] = {
         "id": game_id,
         "game": request.POST['game'],
