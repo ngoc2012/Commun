@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 dom_invite.addEventListener("click", function () {
     var online_players = get_players_selected();
     if (online_players.length === 2)
-        invite(online_players);
+        game.invite(online_players);
 });
 
 dom_cancel_invitation.addEventListener("click", function () {
