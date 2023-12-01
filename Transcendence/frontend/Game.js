@@ -7,27 +7,27 @@ class Game
     id = -1;
     waiting = false;
 
-export function invite(players) {
-    $.ajax({
-        url: '/invite/',
-        method: 'POST',
-        data: {
-            "host": game.user,
-            "game": "pong",
-            "players": players
-        },
-        success: function(response) {
-            game.id = response.game_id;
-            game.waiting = true;
-            game.name = "pong";
-            dom_status.textContent = "waiting...";
-        },
-        error: function(error) {
-        }
-    });
-}
+    function invite(players) {
+        $.ajax({
+            url: '/invite/',
+            method: 'POST',
+            data: {
+                "host": game.user,
+                "game": "pong",
+                "players": players
+            },
+            success: function(response) {
+                game.id = response.game_id;
+                game.waiting = true;
+                game.name = "pong";
+                dom_status.textContent = "waiting...";
+            },
+            error: function(error) {
+            }
+        });
+    }
 
-export function accept_invitation() {
+    function accept_invitation() {
     $.ajax({
         url: '/accept_invitation',
         method: 'POST',
@@ -52,7 +52,7 @@ export function accept_invitation() {
 }
 
 //var csrftoken = getCookie('csrftoken');
-export function cancel_invitation() {
+    function cancel_invitation() {
     $.ajax({
         url: '/cancel_invitation',
         method: 'POST',
@@ -77,7 +77,7 @@ export function cancel_invitation() {
     });
 }
 
-export function check_game_status() {
+    function check_game_status() {
     $.ajax({
         url: '/check_game_status',
         method: 'GET',
@@ -99,7 +99,7 @@ export function check_game_status() {
     });
 }
 
-export function new_player() {
+    function new_player() {
     $.ajax({
         url: '/new_player',
         method: 'GET',
@@ -113,7 +113,7 @@ export function new_player() {
     });
 }
 
-export function update_players_list() {
+    function update_players_list() {
     $.ajax({
         url: '/players_list',
         method: 'POST',

@@ -1,10 +1,4 @@
-class Game
-{
-    user = "";
-    name = "";
-    id = -1;
-    waiting = false;
-}
+import {Game} from './Game.js'
 
 export var game = new Game();
 
