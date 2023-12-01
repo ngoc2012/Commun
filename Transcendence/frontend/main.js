@@ -1,3 +1,5 @@
+import {game} from './main.js'
+
 export function invite(players) {
     $.ajax({
         url: '/invite/',
