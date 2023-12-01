@@ -50,9 +50,6 @@ def players_list(request):
     if user in users:
         players[user]["heart_beat"] = time.time()
         g_ids = list(games.keys())
-        for i in g_ids:
-            if (games[i]['start'] == False && user in games[i]['players'] && user not in games[i]['accepted'])
-                game_invited.append(games[i]['id'])
     return (JsonResponse({"user_status": players[user], "players_list": list(players.keys())}))
 
 def invite(request):
@@ -60,7 +57,7 @@ def invite(request):
     games[game_id] = {
         "id": game_id,
         "game": request.POST['game'],
-        "start": False,
+        "status": "waiting",
         "players": request.POST['players'],
         "host": request.POST['host'],
         "accepted": [request.POST['host']]
