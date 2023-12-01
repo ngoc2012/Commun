@@ -80,6 +80,8 @@ def accept_invitation(request):
     user = request.POST['user']
     if (user not in games[g_id]["players"])
         return HttpResponseNotFound("Player " + user + " was not found in the game.")
+    if (players[user]['accepted'] != 1)
+        return HttpResponseNotFound("Player " + user + " was in another game.")
     if (user not in games[g_id]["accepted"])
         games[g_id]["accepted"].append(user)
     return (HttpResponse("accepted"))
