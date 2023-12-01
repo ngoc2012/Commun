@@ -12,16 +12,29 @@ export class Game
         if (waiting)
             this.update_players_list();
         else
-            this.check_game_waiting();
-        setTimeout(update, this.keep_alive_time_interval);
+            this.check_game_status();
+        setTimeout(update, this.update_players_list_time_interval);
     }
 
-    function update(){
-        console.log("update :" + this.user);
-        if (waiting)
-            this.update_players_list();
-        else
-            this.check_game_waiting();
+    function keep_alive(){
+        console.log("keep alive :" + this.user);
+        $.ajax({
+            url: '/invite/',
+            method: 'POST',
+            data: {
+                "host": this.user,
+                "game": "pong",
+                "players": players
+            },
+            success: function(response) {
+                this.id = response.game_id;
+                this.waiting = true;
+                this.name = "pong";
+                dom_status.textContent = "waiting...";
+            },
+            error: function(error) {
+            }
+        });
         setTimeout(update, this.keep_alive_time_interval);
     }
 
