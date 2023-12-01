@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 });
 
 dom_invite.addEventListener("click", function () {
-    var online_players = get_list_online_players_selected();
+    var online_players = get_players_selected();
     if (online_players.length === 2)
         invite(online_players);
 });
@@ -25,7 +25,7 @@ dom_cancel_invitation.addEventListener("click", function () {
         cancel_invitation();
 });
 
-function    get_list_online_players_selected()
+function    get_players_selected()
 {
     var options = dom_online_players_list && dom_online_players_list.options;
     var online_players = [game.user];
