@@ -46,51 +46,6 @@ dom_invite.addEventListener("click", function () {
         invite(players);
 });
 
-function invite(players) {
-    $.ajax({
-        url: '/invite/',
-        method: 'POST',
-        data: {
-            "user": game.user,
-            "game": "pong",
-            "players": players
-        },
-        success: function(response) {
-            game.id = response.game_id;
-            game.waiting = true;
-            game.name = "pong";
-            dom_status.textContent = "waiting...";
-        },
-        error: function(error) {
-        }
-    });
-}
-
-function accept_invitation() {
-    $.ajax({
-        url: '/accept_invitation',
-        method: 'POST',
-        data: {
-            "user": game.user,
-            "game_id": game.id
-        },
-        success: function(response) {
-            if (response.status === "accepted")
-            {
-                dom_status.textContent = "Game " + game.name + " " + game.id + " invitation is canceled by " + game.user;
-                game.name = "";
-                game.id = -1;         
-                game.waiting = false;
-            }
-            else
-                console.error(response.status);
-        },
-        error: function(error) {
-            console.error('Error: accept invitation POST fail', error);
-        }
-    });
-}
-
 //var csrftoken = getCookie('csrftoken');
 function cancel_invitation() {
     $.ajax({

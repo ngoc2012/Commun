@@ -3,7 +3,7 @@ export function invite(players) {
         url: '/invite/',
         method: 'POST',
         data: {
-            "user": game.user,
+            "host": game.user,
             "game": "pong",
             "players": players
         },
@@ -18,7 +18,7 @@ export function invite(players) {
     });
 }
 
-function accept_invitation() {
+export function accept_invitation() {
     $.ajax({
         url: '/accept_invitation',
         method: 'POST',
