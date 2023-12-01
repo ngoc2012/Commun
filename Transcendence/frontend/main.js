@@ -27,12 +27,11 @@ export function accept_invitation() {
             "game_id": game.id
         },
         success: function(response) {
-            if (response.status === "accepted")
-            {
-                dom_status.textContent = "Game " + game.name + " " + game.id + " invitation is canceled by " + game.user;
-                game.name = "";
-                game.id = -1;         
-                game.waiting = false;
+            if (response.status === "accepted") {
+                dom_status.textContent = "Game " + game.name + " " + game.id + " invitation is accepted by " + game.user;
+                //game.name = "";
+                //game.id = -1;         
+                //game.waiting = false;
             }
             else
                 console.error(response.status);
