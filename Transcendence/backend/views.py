@@ -106,6 +106,9 @@ def accept_invitation(request):
     online_players[user]["accepted"] = g_id
     if (user not in games[g_id]["accepted"]):
         games[g_id]["accepted"].append(user)
+        if (len(games[g_id]["accepted"]) == len(games[g_id]["players"])):
+            games[g_id]["status"] = "ready"
+            print("game " + str(g_id) + " is ready")
     return (JsonResponse({"game": games[g_id]['game']}))
 
 @csrf_exempt
