@@ -37,6 +37,7 @@ export class Main
                 //    "user": this.user
                 //}, page, page);
                 this.dom_game.innerHTML = html;
+                console.log("callback");
                 callback();
             },
             error: function(error) {
