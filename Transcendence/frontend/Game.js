@@ -4,9 +4,7 @@ export class Game
     name = "";
     id = -1;
     status = "";
-    dom_invite = document.querySelector("#invite");
-    dom_accept_invitation = document.getElementById("accept_invitation");
-    dom_cancel_invitation = document.getElementById("cancel_invitation");
+    doms = {};
     dom_status = document.getElementById("status");
     dom_online_players_list = document.getElementById("online_players_list");
     dom_invitations = document.getElementById("invitations");

@@ -1,5 +1,11 @@
 export function    game_events(game)
 {
+    dom_invite = document.querySelector("#invite");
+    dom_accept_invitation = document.getElementById("accept_invitation");
+    dom_cancel_invitation = document.getElementById("cancel_invitation");
+    dom_online_players_list = document.getElementById("online_players_list");
+    dom_invitations = document.getElementById("invitations");
+
     dom_invite.addEventListener("click", function () {
         var players = get_players_selected();
         //console.log(players);
