@@ -11,7 +11,7 @@ games = {}
 game_id = 0
 
 def index(request):
-	return (render(request, 'index.html'))
+	return (render(request, 'game.html'))
 
 def home(request):
     return (redirect("index"))
