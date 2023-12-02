@@ -1,7 +1,5 @@
 export class Game
 {
-    id = -1;
-
     update_time_interval = 2000;
 
     constructor(main) {
@@ -113,8 +111,8 @@ export class Game
                 "players": players
             },
             success: (response) => {
-                this.name = "pong";
-                this.id = response.game_id;
+                this.main.name = "pong";
+                this.main.id = response.game_id;
                 this.main.status = "waiting";
                 this.dom_status.textContent = "New game " + this.name + " " + this.id + " created. Wait for players...";
                 this.dom_online_players_list.innerHTML = "";
