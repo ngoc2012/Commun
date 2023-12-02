@@ -65,13 +65,13 @@ export class Game
     }
 
     update(){
-        //console.log("update :" + this.user);
-        if (this.status === "waiting")
-            this.check_game_status;
-        else
-            this.update_online_players_list;
-        if (status !== "playing")
-            setTimeout(this.update, this.update_time_interval);
+        console.log("update :" + this.user);
+        //if (this.status === "waiting")
+        //    this.check_game_status;
+        //else
+        //    this.update_online_players_list;
+        //if (status !== "playing")
+        //    setTimeout(this.update, this.update_time_interval);
     }
 
     invite(players) {
