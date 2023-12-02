@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
     //game.dom_status = dom_status;
     main.new_player();
     main.load('/home');
-    document.addEventListener('DOMContentLoaded', function (event) {
     var game = new Game(main);
+    document.addEventListener('DOMContentLoaded', function (event) {
+        game.events();
+    });
 });
 
