@@ -30,8 +30,8 @@ def new_player(request):
         user_name = "user" + str(i)
     online_players[user_name] = {
             "online": time.time(),
-            "invitations": [];
-            "accepted": -1;
+            "invitations": [],
+            "accepted": -1
             }
     return (JsonResponse({"user": user_name}))
 
@@ -99,4 +99,4 @@ def check_game_status(request):
     g_id = request.POST['game_id']
     if (g_id not in games.keys())
         return HttpResponseNotFound("Game " + str(g_id) + " was not found or canceled.")
-    return (JsonResponse(game_id[g_id]))
+    return (JsonResponse(games[g_id]))

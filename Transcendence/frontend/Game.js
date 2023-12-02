@@ -68,9 +68,9 @@ export class Game
                 "players": players
             },
             success: function(response) {
+                this.name = "pong";
                 this.id = response.game_id;
                 this.status = "waiting";
-                this.name = "pong";
                 dom_status.textContent = "New game " + this.name + " " + this.id + " created. Wait for players...";
                 dom_online_players_list.innerHTML = "";
                 dom_invitations.innerHTML = "";
