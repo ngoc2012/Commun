@@ -179,6 +179,7 @@ export class Game
             url: '/pong/',
             method: 'GET',
             success: (html) => {
+                window.history.pushState({}, '', newPath);
                 document.body.innerHTML = html;
             },
             error: function(error) {
