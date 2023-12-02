@@ -27,12 +27,12 @@ class Main
 
    load(page) {
         $.ajax({
-            url: '/' + page + '/',
+            url: page + '/',
             method: 'GET',
             success: (html) => {
                 window.history.pushState({
                     "user": this.user
-                }, page, '/' + page);
+                }, page, page);
                 document.body.innerHTML = html;
             },
             error: function(error) {
