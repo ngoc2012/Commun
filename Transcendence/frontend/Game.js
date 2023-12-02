@@ -25,12 +25,12 @@ export class Game
     }
 
     update_online_players_list() {
-        console.log("Update online");
+        //console.log("Update online");
         $.ajax({
             url: '/online_players_list/',
             method: 'POST',
             data: { "user": this.user },
-            success: function(response) {
+            success: (response) => {
                 var options = this.dom_online_players_list && this.dom_online_players_list.options;
                 if (options && response.online_players_list.length !== options.length + 1) {
                     this.dom_online_players_list.innerHTML = "";
@@ -64,12 +64,12 @@ export class Game
         });
     }
 
-    update(){
-        console.log("update :" + this.user);
-        //if (this.status === "waiting")
-        //    this.check_game_status;
-        //else
-        //    this.update_online_players_list;
+    update() {
+        //console.log("update :" + this.user);
+        if (this.status === "waiting")
+            this.check_game_status();
+        else
+            this.update_online_players_list();
         if (status !== "playing")
             setTimeout(() => {this.update();}, this.update_time_interval);
     }
@@ -83,7 +83,7 @@ export class Game
                 "game": "pong",
                 "players": players
             },
-            success: function(response) {
+            success: (response) => {
                 this.name = "pong";
                 this.id = response.game_id;
                 this.status = "waiting";
@@ -104,7 +104,7 @@ export class Game
                 "user": this.user,
                 "game_id": game_id
             },
-            success: function(response) {
+            success: (response) => {
                 this.dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is accepted by " + this.user;
                 this.name = response.game;
                 this.id = game_id;         
@@ -124,7 +124,7 @@ export class Game
                 "user": this.user,
                 "game_id": game_id
             },
-            success: function(response) {
+            success: (response) => {
                 this.dom_status.textContent = "Game " + this.name + " " + game_id + " invitation is canceled by " + this.user;
                 if (this.id === game_id)
                 {
@@ -147,7 +147,7 @@ export class Game
                 "user": this.user,
                 "game_id": this.id
             },
-            success: function(response) {
+            success: (response) => {
                 if (response === "canceled") {
                     this.dom_status.textContent = "Game " + this.name +" " + this.id + " is canceled";
                     this.name = "";
