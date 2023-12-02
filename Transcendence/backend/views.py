@@ -46,6 +46,7 @@ def check_all_users_online():
 def online_players_list(request): 
     #print(games)
     check_all_users_online()
+    print(request.POST)
     user = request.POST['user']
     users = list(online_players.keys())
     invitations = []

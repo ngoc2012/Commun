@@ -4,6 +4,7 @@ export class Game
 
     constructor(m) {
         this.main = m;
+        console.log(this.main.user);
     }
     
     events() {
