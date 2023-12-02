@@ -28,7 +28,7 @@ export class Main
     }
 
 
-   load(page) {
+   load(page, callback) {
         $.ajax({
             url: page + '/',
             method: 'GET',
