@@ -56,9 +56,7 @@ def invite(request):
     for user in request.POST['players']
         if (user not in online_players.keys()):
             return HttpResponseNotFound("Player " + user + " is not online.")
-
     game_id += 1
-
     games[game_id] = {
         "id": game_id,
         "game": request.POST['game'],
@@ -70,7 +68,6 @@ def invite(request):
 
     for user in request.POST['players']
         online_players[user]['invitations'].append(games[game_id])
-        
     return (JsonResponse({"game_id": game_id}))
 
 def accept_invitation(request):
