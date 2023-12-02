@@ -49,7 +49,7 @@ def online_players_list(request):
     user = request.POST['user']
     users = list(online_players.keys())
     invitations = []
-    print(user)
+    #print(user)
     if user in users:
         online_players[user]["online"] = time.time()
         return (JsonResponse({"user_info": online_players[user], "online_players_list": users}))
@@ -63,6 +63,8 @@ def invite(request):
     print(request.POST)
     for user in request.POST['players[]']:
         if (user not in online_players.keys()):
+            print(user)
+            print(online_players.keys())
             return HttpResponseNotFound("Player " + user + " is not online.")
     game_id += 1
     games[game_id] = {
