@@ -9,7 +9,7 @@ export class Main
     {
         this.dom_status = document.getElementById("status");
         this.dom_user_name = document.getElementById("user_name");
-        this.dom_game = document.getElementById("container");
+        this.dom_container = document.getElementById("container");
     }
 
     new_player() {
@@ -36,7 +36,7 @@ export class Main
                 //window.history.pushState({
                 //    "user": this.user
                 //}, page, page);
-                this.dom_game.innerHTML = html;
+                this.dom_container.innerHTML = html;
                 callback();
             },
             error: function(error) {
