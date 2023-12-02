@@ -20,7 +20,7 @@ export class Game
         });
 
         this.dom_accept_invitation.addEventListener("click", function () {
-            if (this.status !== "")
+            if (this.main.status !== "")
                 return ;
             if (this.dom_invitations.selectedIndex !== -1) {
                 this.accept_invitation(this.dom_invitations.options[this.dom_invitations.selectedIndex].value);
@@ -90,16 +90,14 @@ export class Game
 }
 
     update() {
-        if (this.main.status === "playing") {
+        if (this.main.status === "playing")
             return ;
-        }
         //console.log("update :" + this.user);
         if (this.main.status === "waiting")
             this.check_game_status();
         else
             this.update_online_players_list();
-        if (this.main.status !== "playing")
-            setTimeout(() => {this.update();}, this.update_time_interval);
+        setTimeout(() => {this.update();}, this.update_time_interval);
     }
 
     invite(players) {
@@ -115,7 +113,7 @@ export class Game
             success: (response) => {
                 this.name = "pong";
                 this.id = response.game_id;
-                this.status = "waiting";
+                this.main.status = "waiting";
                 this.dom_status.textContent = "New game " + this.name + " " + this.id + " created. Wait for players...";
                 this.dom_online_players_list.innerHTML = "";
                 this.dom_invitations.innerHTML = "";
@@ -138,7 +136,7 @@ export class Game
                 this.dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is accepted by " + this.user;
                 this.name = response.game;
                 this.id = game_id;         
-                this.status = "waiting";
+                this.main.status = "waiting";
             },
             error: function(error) {
                 console.error('Error: accept invitation POST fail', error.message);
@@ -160,7 +158,7 @@ export class Game
                 {
                     this.name = "";
                     this.id = -1;         
-                    this.status = "";
+                    this.main.status = "";
                 }
             },
             error: function(error) {
@@ -182,7 +180,7 @@ export class Game
                     this.dom_status.textContent = "Game " + this.name +" " + this.id + " is canceled";
                     this.name = "";
                     this.id = -1;         
-                    this.status = "";
+                    this.main.status = "";
                 }
                 else if (response === "ready") {
                     this.dom_status.textContent = "Game " + this.name +" " + this.id + " is ready";

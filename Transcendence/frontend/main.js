@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     var game = new Game(main);
     document.addEventListener('DOMContentLoaded', function (event) {
         game.events();
+        game.update();
     });
 });
 
