@@ -54,16 +54,14 @@ export class Game
                 var options_invitations = dom_invitations && dom_invitations.options;
                 dom_invitations.innerHTML = "";
                 if (response.user_info.invitations.length > 0) {
-                    response.user_info.invitations.forEach((element) => {
-                        if (element !== this.user) {
-                            var option = document.createElement("option");
-                            option.value = element.id;
-                            option.text = "" + element.id;
-                            element.players.forEach((p) => {
-                                option.text += " - " + p;
-                            });
-                            dom_invitations.add(option);
-                        }
+                    response.user_info.invitations.forEach((invitation) => {
+                        var option = document.createElement("option");
+                        option.value = invitation.id;
+                        option.text = "" + invitation.id;
+                        invitation.players.forEach((p) => {
+                            option.text += " - " + p;
+                        });
+                        dom_invitations.add(option);
                     });
                 }
             },
