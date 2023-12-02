@@ -87,6 +87,8 @@ def invite(request):
 
 @csrf_exempt
 def accept_invitation(request):
+    global games
+    global online_players
     g_id = request.POST['game_id']
     if (g_id not in games.keys()):
         return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
@@ -101,6 +103,7 @@ def accept_invitation(request):
 
 @csrf_exempt
 def cancel_invitation(request):
+    global games
     g_id = request.POST['game_id']
     if (g_id not in games.keys()):
         return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
@@ -112,6 +115,7 @@ def cancel_invitation(request):
 
 @csrf_exempt
 def check_game_status(request):
+    global games
     g_id = request.POST['game_id']
     if (g_id not in games.keys()):
         return HttpResponseNotFound("Game " + str(g_id) + " was not found or canceled.")
