@@ -25,6 +25,7 @@ export class Game
     }
 
     update_online_players_list() {
+        console.log("Update online");
         $.ajax({
             url: '/online_players_list/',
             method: 'POST',
