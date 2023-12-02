@@ -28,6 +28,8 @@ export function    game_events(game)
     });
 }
 
+
+
 function    get_players_selected()
 {
     var options = dom_online_players_list && dom_online_players_list.options;
