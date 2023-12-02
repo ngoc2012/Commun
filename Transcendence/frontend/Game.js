@@ -7,6 +7,7 @@ export class Game
     dom_status = document.getElementById("status");
     dom_online_players_list = document.getElementById("online_players_list");
     dom_invitations = document.getElementById("invitations");
+    dom_user_name = document.getElementById("user_name");
 
     update_time_interval = 2000;
 
@@ -16,8 +17,8 @@ export class Game
             method: 'GET',
             //headers: {'X-CSRFToken': csrftoken},
             success: (response) => {
-                this.dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is accepted by " + this.user;
                 this.user = response.user;
+                this.dom_user_name = this.user;
             },
             error: function(error) {
                 console.error('Error: sending new player demand', error.message);
@@ -175,8 +176,8 @@ export class Game
 
    load_pong() {
         $.ajax({
-            url: '/check_game_status/',
-            method: 'POST',
+            url: '/pong/',
+            method: 'GET',
             data: {
                 "user": this.user,
                 "game_id": this.id
