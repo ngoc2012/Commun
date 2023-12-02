@@ -115,7 +115,7 @@ export class Game
                 this.main.name = "pong";
                 this.main.id = response.game_id;
                 this.main.status = "waiting";
-                this.dom_status.textContent = "New game " + this.main.name + " " + this.main.id + " created. Wait for players...";
+                this.main.dom_status.textContent = "New game " + this.main.name + " " + this.main.id + " created. Wait for players...";
                 this.dom_online_players_list.innerHTML = "";
                 this.dom_invitations.innerHTML = "";
             },
