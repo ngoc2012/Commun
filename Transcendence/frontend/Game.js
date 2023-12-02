@@ -92,7 +92,7 @@ export class Game
     update() {
         if (this.main.status === "playing")
             return ;
-        //console.log("update :" + this.user);
+        console.log("update :" + this.user);
         if (this.main.status === "waiting")
             this.check_game_status();
         else
