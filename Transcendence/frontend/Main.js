@@ -19,7 +19,7 @@ export class Main
             //headers: {'X-CSRFToken': csrftoken},
             success: (response) => {
                 this.user = response.user;
-                this.dom_user_name = this.user;
+                this.dom_user_name.innerHTML = this.user;
             },
             error: function(error) {
                 console.error('Error: sending new player demand', error.message);
