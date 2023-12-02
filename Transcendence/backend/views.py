@@ -116,6 +116,7 @@ def cancel_invitation(request):
 @csrf_exempt
 def check_game_status(request):
     global games
+    print(request.POST)
     g_id = request.POST['game_id']
     if (g_id not in games.keys()):
         return HttpResponseNotFound("Game " + str(g_id) + " was not found or canceled.")
