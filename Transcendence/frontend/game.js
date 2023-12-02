@@ -1,6 +1,4 @@
-import {Game} from './Game.js'
-
-export function    game_events()
+export function    game_events(game)
 {
     dom_invite.addEventListener("click", function () {
         var players = get_players_selected();
