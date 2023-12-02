@@ -1,10 +1,13 @@
 export class Game
 {
-    dom_invite = document.querySelector("#invite");
-    dom_accept_invitation = document.getElementById("accept_invitation");
-    dom_cancel_invitation = document.getElementById("cancel_invitation");
-    dom_online_players_list = document.getElementById("online_players_list");
-    dom_invitations = document.getElementById("invitations");
+    constructor()
+    {
+        this.dom_invite = document.querySelector("#invite");
+        this.dom_accept_invitation = document.getElementById("accept_invitation");
+        this.dom_cancel_invitation = document.getElementById("cancel_invitation");
+        this.dom_online_players_list = document.getElementById("online_players_list");
+        this.dom_invitations = document.getElementById("invitations");
+    }
 
     update_online_players_list(game) {
     //console.log("Update online");
