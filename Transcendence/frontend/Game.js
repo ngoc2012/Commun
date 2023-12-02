@@ -38,27 +38,24 @@ export class Game
             data: { "user": this.user },
             success: function(response) {
                 var options = dom_online_players_list && dom_online_players_list.options;
-                if (response.online_players_list.length > 0
-                    && response.online_players_list.length !== options.length + 1)
-                {
-                    //console.log(response.online_players_list.length);
+                if (response.online_players_list.length !== options.length + 1) {
                     dom_online_players_list.innerHTML = "";
-                    response.online_players_list.forEach((element) => {
-                        if (element !== this.user) {
-                            var option = document.createElement("option");
-                            option.value = element;
-                            option.text = element;
-                            dom_online_players_list.add(option);
-                        }
-                    });
+                    if (response.online_players_list.length > 0) {
+                        //console.log(response.online_players_list.length);
+                        response.online_players_list.forEach((element) => {
+                            if (element !== this.user) {
+                                var option = document.createElement("option");
+                                option.value = element;
+                                option.text = element;
+                                dom_online_players_list.add(option);
+                            }
+                        });
+                    }
                 }
                 var options_invitations = dom_invitations && dom_invitations.options;
-                dom_online_players_list.innerHTML = "";
-                if (response.user_info.length > 0
-                    && response.user_info.length !== options.length + 1)
-                {
-                    //console.log(response.online_players_list.length);
-                    response.online_players_list.forEach((element) => {
+                dom_invitations.innerHTML = "";
+                if (response.user_info.invitations.length > 0) {
+                    response.user_info.invitations.forEach((element) => {
                         if (element !== this.user) {
                             var option = document.createElement("option");
                             option.value = element;
