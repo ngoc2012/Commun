@@ -1,5 +1,7 @@
 export class Game
 {
+    update_time_interval = 2000;
+
     constructor(main)
     {
         this.main = main;
