@@ -178,23 +178,11 @@ export class Game
         $.ajax({
             url: '/pong/',
             method: 'GET',
-            data: {
-                "user": this.user,
-                "game_id": this.id
-            },
-            success: (response) => {
-                if (response === "canceled") {
-                    this.dom_status.textContent = "Game " + this.name +" " + this.id + " is canceled";
-                    this.name = "";
-                    this.id = -1;         
-                    this.status = "";
-                }
-                else if (response === "ready") {
-                    this.dom_status.textContent = "Game " + this.name +" " + this.id + " is ready";
-                }
+            success: (html) => {
+                document.body.innerHTML = html;
             },
             error: function(error) {
-                console.error('Error: check game GET fail', error.message);
+                console.error('Error: pong GET fail', error.message);
             }
         });
     }
