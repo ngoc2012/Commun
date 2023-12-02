@@ -1,3 +1,5 @@
+update_time_interval = 2000;
+
 export function    game_events(game)
 {
     dom_invite = document.querySelector("#invite");
