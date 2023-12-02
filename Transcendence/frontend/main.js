@@ -6,5 +6,5 @@ var main = new Main();
 document.addEventListener('DOMContentLoaded', function (event) {
     main.new_player();
     var game = new Game(main);
-    main.load('/home', game.events);
+    main.load('/home', () => game.events());
 });
