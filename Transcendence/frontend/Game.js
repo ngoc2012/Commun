@@ -8,6 +8,7 @@ export class Game
     }
     
     events() {
+        console.log("events");
         this.dom_invite = document.querySelector("#invite");
         this.dom_accept_invitation = document.getElementById("accept_invitation");
         this.dom_cancel_invitation = document.getElementById("cancel_invitation");
