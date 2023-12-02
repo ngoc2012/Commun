@@ -1,6 +1,6 @@
 import {Game} from './Game.js'
 
-export var game = new Game();
+var game = new Game();
 
 const dom_invite = document.querySelector("#invite");
 const dom_status = document.getElementById("status");
