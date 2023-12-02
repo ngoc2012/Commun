@@ -6,18 +6,6 @@ export class Game
         this.main = m;
     }
     
-    get_players_selected() {
-        var options = this.dom_online_players_list && this.dom_online_players_list.options;
-        var players_selected = [this.main.user];
-
-        for (var i=0; i < options.length; i++) {
-            if (options[i].selected) {
-                players_selected.push(options[i].value);
-            }
-        }
-        return (players_selected);
-    }
-
     events() {
         this.dom_invite = document.querySelector("#invite");
         this.dom_accept_invitation = document.getElementById("accept_invitation");
@@ -45,6 +33,18 @@ export class Game
             }
         });
         this.update();
+    }
+
+    get_players_selected() {
+        var options = this.dom_online_players_list && this.dom_online_players_list.options;
+        var players_selected = [this.main.user];
+
+        for (var i=0; i < options.length; i++) {
+            if (options[i].selected) {
+                players_selected.push(options[i].value);
+            }
+        }
+        return (players_selected);
     }
 
     update_online_players_list(game) {
