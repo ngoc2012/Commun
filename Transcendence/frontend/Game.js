@@ -52,6 +52,21 @@ export class Game
                         }
                     });
                 }
+                var options_invitations = dom_invitations && dom_invitations.options;
+                if (response.online_players_list.length > 0
+                    && response.online_players_list.length !== options.length + 1)
+                {
+                    //console.log(response.online_players_list.length);
+                    dom_online_players_list.innerHTML = "";
+                    response.online_players_list.forEach((element) => {
+                        if (element !== this.user) {
+                            var option = document.createElement("option");
+                            option.value = element;
+                            option.text = element;
+                            dom_online_players_list.add(option);
+                        }
+                    });
+                }
             },
             error: function(error) {
             }
