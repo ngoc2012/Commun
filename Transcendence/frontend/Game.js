@@ -21,7 +21,7 @@ export class Game
         });
     }
 
-    function update(){
+    update(){
         //console.log("update :" + this.user);
         if (this.status === "waiting")
             this.check_game_status();
@@ -31,7 +31,7 @@ export class Game
             setTimeout(update, this.update_time_interval);
     }
 
-    function update_online_players_list() {
+    update_online_players_list() {
         $.ajax({
             url: '/online_players_list',
             method: 'POST',
@@ -70,7 +70,7 @@ export class Game
         });
     }
 
-    function invite(players) {
+    invite(players) {
         $.ajax({
             url: '/invite/',
             method: 'POST',
@@ -92,7 +92,7 @@ export class Game
         });
     }
 
-    function accept_invitation(game_id) {
+    accept_invitation(game_id) {
         $.ajax({
             url: '/accept_invitation',
             method: 'POST',
@@ -112,7 +112,7 @@ export class Game
         });
     }
 
-    function cancel_invitation(game_id) {
+    cancel_invitation(game_id) {
         $.ajax({
             url: '/cancel_invitation',
             method: 'POST',
@@ -135,7 +135,7 @@ export class Game
         });
     }
 
-    function check_game_status() {
+    check_game_status() {
         $.ajax({
             url: '/check_game_status',
             method: 'POST',
