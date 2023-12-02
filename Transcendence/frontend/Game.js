@@ -8,7 +8,7 @@ export class Game
     dom_online_players_list = document.getElementById("online_players_list");
     dom_invitations = document.getElementById("invitations");
     dom_user_name = document.getElementById("user_name");
-    dom_user_name = document.getElementById("user_name");
+    dom_game = document.getElementById("game");
 
     update_time_interval = 2000;
 
