@@ -19,7 +19,7 @@ export class Game
                 this.user = response.user;
             },
             error: function(error) {
-                console.error('Error: sending new player demand', error);
+                console.error('Error: sending new player demand', error.message);
             }
         });
     }
@@ -62,6 +62,7 @@ export class Game
                 }
             },
             error: function(error) {
+                console.error('Error: online players list POST fail', error.message);
             }
         });
     }
@@ -95,6 +96,7 @@ export class Game
                 this.dom_invitations.innerHTML = "";
             },
             error: function(error) {
+                console.error('Error: invite POST fail', error.message);
             }
         });
     }
@@ -114,7 +116,7 @@ export class Game
                 this.status = "waiting";
             },
             error: function(error) {
-                console.error('Error: accept invitation POST fail', error);
+                console.error('Error: accept invitation POST fail', error.message);
             }
         });
     }
@@ -137,7 +139,7 @@ export class Game
                 }
             },
             error: function(error) {
-                console.error('Error: cancel invitation POST fail', error);
+                console.error('Error: cancel invitation POST fail', error.message);
             }
         });
     }
@@ -162,7 +164,7 @@ export class Game
                 }
             },
             error: function(error) {
-                console.error('Error: check game GET fail', error);
+                console.error('Error: check game GET fail', error.message);
             }
         });
     }
