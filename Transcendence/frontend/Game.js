@@ -28,7 +28,7 @@ export class Game
         else
             this.update_online_players_list();
         if (status !== "playing")
-            setTimeout(update, this.update_time_interval);
+            setTimeout(this.update, this.update_time_interval);
     }
 
     update_online_players_list() {

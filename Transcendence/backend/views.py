@@ -50,6 +50,8 @@ def online_players_list(request):
     invitations = []
     if user in users:
         online_players[user]["online"] = time.time()
+    print(users)
+    print(online_players)
     return (JsonResponse({"user_info": online_players[user], "online_players_list": users}))
 
 @csrf_exempt
