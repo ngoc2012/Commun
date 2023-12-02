@@ -61,6 +61,9 @@ def online_players_list(request):
 def invite(request):
     #print(online_players)
     #print(request.POST)
+    global game_id
+    global online_players
+    global games
     players = request.POST.getlist('players[]')
     print(players)
     for user in players:
@@ -68,7 +71,7 @@ def invite(request):
             #print(user)
             #print(online_players.keys())
             return HttpResponseNotFound("Player " + user + " is not online.")
-    global game_id += 1
+    game_id += 1
     games[game_id] = {
         "id": game_id,
         "game": request.POST['game'],
