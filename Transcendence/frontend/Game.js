@@ -15,7 +15,7 @@ export class Game
             url: '/new_player',
             method: 'GET',
             //headers: {'X-CSRFToken': csrftoken},
-            success: function(response) {
+            success: (response) => {
                 this.user = response.user;
             },
             error: function(error) {
