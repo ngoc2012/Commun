@@ -33,7 +33,7 @@ export class Game
 
     update_online_players_list() {
         $.ajax({
-            url: '/online_players_list',
+            url: '/online_players_list/',
             method: 'POST',
             data: { "user": this.user },
             success: function(response) {
@@ -94,7 +94,7 @@ export class Game
 
     accept_invitation(game_id) {
         $.ajax({
-            url: '/accept_invitation',
+            url: '/accept_invitation/',
             method: 'POST',
             data: {
                 "user": this.user,
@@ -114,7 +114,7 @@ export class Game
 
     cancel_invitation(game_id) {
         $.ajax({
-            url: '/cancel_invitation',
+            url: '/cancel_invitation/',
             method: 'POST',
             data: {
                 "user": this.user,
@@ -137,7 +137,7 @@ export class Game
 
     check_game_status() {
         $.ajax({
-            url: '/check_game_status',
+            url: '/check_game_status/',
             method: 'POST',
             data: {
                 "user": this.user,
