@@ -7,7 +7,7 @@ export class Game
 
     update_time_interval = 2000;
 
-    function new_player() {
+    new_player() {
         $.ajax({
             url: '/new_player',
             method: 'GET',
