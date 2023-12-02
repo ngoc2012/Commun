@@ -100,7 +100,7 @@ def accept_invitation(request):
     if (user not in games[g_id]["players"]):
         print("Player " + user + " was not found in the game.")
         return HttpResponseNotFound("Player " + user + " was not found in the game.")
-    if (online_players[user]['accepted'] != 1):
+    if (online_players[user]['accepted'] != -1):
         print("Player " + user + " was in another game.")
         return HttpResponseNotFound("Player " + user + " was in another game.")
     if (user not in games[g_id]["accepted"]):
