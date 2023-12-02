@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.http import HttpResponse
 from django.http import HttpResponseNotFound
-#from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
 import time
 
@@ -52,6 +52,7 @@ def online_players_list(request):
         online_players[user]["online"] = time.time()
     return (JsonResponse({"user_info": online_players[user], "online_players_list": users}))
 
+@csrf_exempt
 def invite(request):
     for user in request.POST['players']:
         if (user not in online_players.keys()):
@@ -70,6 +71,7 @@ def invite(request):
         online_players[user]['invitations'].append(games[game_id])
     return (JsonResponse({"game_id": game_id}))
 
+@csrf_exempt
 def accept_invitation(request):
     g_id = request.POST['game_id']
     if (g_id not in games.keys()):
@@ -83,6 +85,7 @@ def accept_invitation(request):
         games[g_id]["accepted"].append(user)
     return (JsonResponse({"game": games[g_id]['game']}))
 
+@csrf_exempt
 def cancel_invitation(request):
     g_id = request.POST['game_id']
     if (g_id not in games.keys()):
@@ -93,6 +96,7 @@ def cancel_invitation(request):
     games.pop(g_id)
     return (HttpResponse("canceled"))
 
+@csrf_exempt
 def check_game_status(request):
     g_id = request.POST['game_id']
     if (g_id not in games.keys()):
