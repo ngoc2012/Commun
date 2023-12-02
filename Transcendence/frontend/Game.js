@@ -90,15 +90,15 @@ export class Game
 }
 
     update() {
-        if (this.status === "playing") {
+        if (this.main.status === "playing") {
             return ;
         }
         //console.log("update :" + this.user);
-        if (this.status === "waiting")
+        if (this.main.status === "waiting")
             this.check_game_status();
         else
             this.update_online_players_list();
-        if (status !== "playing")
+        if (this.main.status !== "playing")
             setTimeout(() => {this.update();}, this.update_time_interval);
     }
 
