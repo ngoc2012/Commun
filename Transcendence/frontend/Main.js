@@ -33,9 +33,9 @@ export class Main
             url: page + '/',
             method: 'GET',
             success: (html) => {
-                window.history.pushState({
-                    "user": this.user
-                }, page, page);
+                //window.history.pushState({
+                //    "user": this.user
+                //}, page, page);
                 this.dom_game.innerHTML = html;
             },
             error: function(error) {
