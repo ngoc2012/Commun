@@ -4,9 +4,9 @@ export class Game
     name = "";
     id = -1;
     status = "";
-    dom_status;
-    dom_online_players_list;
-    dom_invitations;
+    dom_status = document.getElementById("status");
+    dom_online_players_list = document.getElementById("online_players_list");
+    dom_invitations = document.getElementById("invitations");
 
     update_time_interval = 2000;
 
