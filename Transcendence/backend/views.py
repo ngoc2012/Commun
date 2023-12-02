@@ -59,6 +59,7 @@ def online_players_list(request):
 
 @csrf_exempt
 def invite(request):
+    print(request.POST['players'])
     for user in request.POST['players']:
         if (user not in online_players.keys()):
             return HttpResponseNotFound("Player " + user + " is not online.")

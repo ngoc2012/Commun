@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
 
 dom_invite.addEventListener("click", function () {
     var players = get_players_selected();
+    console.log(players)
     if (players.length === 2)
         game.invite(players);
 });
