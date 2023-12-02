@@ -174,7 +174,7 @@ export class Game
         });
     }
 
-   load_pong() {
+   load_page() {
         $.ajax({
             url: '/pong/',
             method: 'GET',
