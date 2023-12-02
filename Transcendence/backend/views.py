@@ -103,6 +103,7 @@ def accept_invitation(request):
     if (online_players[user]['accepted'] != -1):
         print("Player " + user + " was in another game.")
         return HttpResponseNotFound("Player " + user + " was in another game.")
+    online_players[user]["accepted"] = g_id
     if (user not in games[g_id]["accepted"]):
         games[g_id]["accepted"].append(user)
     return (JsonResponse({"game": games[g_id]['game']}))
@@ -116,6 +117,8 @@ def cancel_invitation(request):
     user = request.POST['user']
     if (user not in games[g_id]["players"]):
         return HttpResponseNotFound("Player " + user + " was not found in the game.")
+    if (online_players[user]["accepted"] == g_id)
+        online_players[user]["accepted"] = -1
     games.pop(g_id)
     return (HttpResponse("canceled"))
 
