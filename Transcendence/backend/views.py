@@ -61,7 +61,8 @@ def online_players_list(request):
 def invite(request):
     print(online_players)
     print(request.POST)
-    for user in request.POST['players[]']:
+    players = list(request.POST['players[]'])
+    for user in players:
         if (user not in online_players.keys()):
             print(user)
             print(online_players.keys())
@@ -71,12 +72,12 @@ def invite(request):
         "id": game_id,
         "game": request.POST['game'],
         "status": "waiting",
-        "players": request.POST['players[]'],
+        "players": players,
         "host": request.POST['host'],
         "accepted": [request.POST['host']]
         }
     print(games)
-    for user in request.POST['players[]']:
+    for user in players:
         online_players[user]['invitations'].append(games[game_id])
     return (JsonResponse({"game_id": game_id}))
 
