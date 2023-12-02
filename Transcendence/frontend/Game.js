@@ -41,7 +41,7 @@ export class Game
             data: { "user": this.user },
             success: function(response) {
                 var options = this.dom_online_players_list && this.dom_online_players_list.options;
-                if (response.online_players_list.length !== options.length + 1) {
+                if (options && response.online_players_list.length !== options.length + 1) {
                     this.dom_online_players_list.innerHTML = "";
                     if (response.online_players_list.length > 0) {
                         response.online_players_list.forEach((element) => {
@@ -56,7 +56,7 @@ export class Game
                 }
                 var options_invitations = this.dom_invitations && this.dom_invitations.options;
                 this.dom_invitations.innerHTML = "";
-                if (response.user_info.invitations.length > 0) {
+                if (options_invitations && response.user_info.invitations.length > 0) {
                     response.user_info.invitations.forEach((invitation) => {
                         var option = document.createElement("option");
                         option.value = invitation.id;
