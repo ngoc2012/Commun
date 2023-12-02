@@ -16,6 +16,7 @@ export class Game
             method: 'GET',
             //headers: {'X-CSRFToken': csrftoken},
             success: (response) => {
+                this.dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is accepted by " + this.user;
                 this.user = response.user;
             },
             error: function(error) {
