@@ -71,7 +71,7 @@ def invite(request):
         "host": request.POST['host'],
         "accepted": [request.POST['host']]
         }
-
+    print(games)
     for user in request.POST['players']:
         online_players[user]['invitations'].append(games[game_id])
     return (JsonResponse({"game_id": game_id}))
