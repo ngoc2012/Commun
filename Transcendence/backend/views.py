@@ -53,7 +53,7 @@ def online_players_list(request):
     return (JsonResponse({"user_info": online_players[user], "online_players_list": users}))
 
 def invite(request):
-    for user in request.POST['players']
+    for user in request.POST['players']:
         if (user not in online_players.keys()):
             return HttpResponseNotFound("Player " + user + " is not online.")
     game_id += 1
@@ -66,35 +66,35 @@ def invite(request):
         "accepted": [request.POST['host']]
         }
 
-    for user in request.POST['players']
+    for user in request.POST['players']:
         online_players[user]['invitations'].append(games[game_id])
     return (JsonResponse({"game_id": game_id}))
 
 def accept_invitation(request):
     g_id = request.POST['game_id']
-    if (g_id not in games.keys())
+    if (g_id not in games.keys()):
         return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
     user = request.POST['user']
-    if (user not in games[g_id]["online_players"])
+    if (user not in games[g_id]["online_players"]):
         return HttpResponseNotFound("Player " + user + " was not found in the game.")
-    if (online_players[user]['accepted'] != 1)
+    if (online_players[user]['accepted'] != 1):
         return HttpResponseNotFound("Player " + user + " was in another game.")
-    if (user not in games[g_id]["accepted"])
+    if (user not in games[g_id]["accepted"]):
         games[g_id]["accepted"].append(user)
     return (JsonResponse({"game": games[g_id]['game']}))
 
 def cancel_invitation(request):
     g_id = request.POST['game_id']
-    if (g_id not in games.keys())
+    if (g_id not in games.keys()):
         return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
     user = request.POST['user']
-    if (user not in games[g_id]["players"])
+    if (user not in games[g_id]["players"]):
         return HttpResponseNotFound("Player " + user + " was not found in the game.")
     games.pop(g_id)
     return (HttpResponse("canceled"))
 
 def check_game_status(request):
     g_id = request.POST['game_id']
-    if (g_id not in games.keys())
+    if (g_id not in games.keys()):
         return HttpResponseNotFound("Game " + str(g_id) + " was not found or canceled.")
     return (JsonResponse(games[g_id]))
