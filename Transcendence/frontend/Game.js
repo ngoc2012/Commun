@@ -1,9 +1,5 @@
 export class Game
 {
-    user = "";
-    name = "";
-    id = -1;
-    status = "";
     dom_status = document.getElementById("status");
     dom_user_name = document.getElementById("user_name");
     dom_game = document.getElementById("game");
