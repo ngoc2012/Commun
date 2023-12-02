@@ -2,18 +2,16 @@ export class Game
 {
     update_time_interval = 2000;
 
-    constructor(main)
-    {
+    constructor(main) {
         this.main = main;
+    }
+    
+    events() {
         this.dom_invite = document.querySelector("#invite");
         this.dom_accept_invitation = document.getElementById("accept_invitation");
         this.dom_cancel_invitation = document.getElementById("cancel_invitation");
         this.dom_online_players_list = document.getElementById("online_players_list");
         this.dom_invitations = document.getElementById("invitations");
-        this.events();
-    }
-    
-    events() {
         this.dom_invite.addEventListener("click", function () {
             var players = this.get_players_selected();
             //console.log(players);
