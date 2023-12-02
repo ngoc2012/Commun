@@ -36,7 +36,7 @@ export class Game
 
     get_players_selected() {
         var options = this.dom_online_players_list && this.dom_online_players_list.options;
-        var players_selected = [this.user];
+        var players_selected = [this.main.user];
 
         for (var i=0; i < options.length; i++) {
             if (options[i].selected) {
@@ -51,7 +51,7 @@ export class Game
     $.ajax({
         url: '/online_players_list/',
         method: 'POST',
-        data: { "user": this.user },
+        data: { "user": this.main.user },
         success: (response) => {
             //console.log(response.online_players_list);
             var options = this.dom_online_players_list && this.dom_online_players_list.options;
