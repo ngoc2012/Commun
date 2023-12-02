@@ -10,34 +10,35 @@ export class Game
         this.dom_cancel_invitation = document.getElementById("cancel_invitation");
         this.dom_online_players_list = document.getElementById("online_players_list");
         this.dom_invitations = document.getElementById("invitations");
+        this.events();
     }
     
     events() {
         this.dom_invite.addEventListener("click", function () {
-            var players = get_players_selected();
+            var players = this.get_players_selected();
             //console.log(players);
             if (players.length === 2)
-                game.invite(players);
+                this.invite(players);
         });
 
         this.dom_accept_invitation.addEventListener("click", function () {
-            if (game.status !== "")
+            if (this.status !== "")
                 return ;
-            if (dom_invitations.selectedIndex !== -1) {
-                game.accept_invitation(dom_invitations.options[dom_invitations.selectedIndex].value);
+            if (this.dom_invitations.selectedIndex !== -1) {
+                this.accept_invitation(this.dom_invitations.options[this.dom_invitations.selectedIndex].value);
             }
         });
 
         this.dom_cancel_invitation.addEventListener("click", function () {
-            if (dom_invitations.selectedIndex !== -1) {
-                game.cancel_invitation(dom_invitations.options[dom_invitations.selectedIndex].value);
+            if (this.dom_invitations.selectedIndex !== -1) {
+                this.cancel_invitation(this.dom_invitations.options[this.dom_invitations.selectedIndex].value);
             }
         });
     }
 
     get_players_selected() {
-        var options = dom_online_players_list && dom_online_players_list.options;
-        var players_selected = [game.user];
+        var options = this.dom_online_players_list && this.dom_online_players_list.options;
+        var players_selected = [this.user];
 
         for (var i=0; i < options.length; i++) {
             if (options[i].selected) {
