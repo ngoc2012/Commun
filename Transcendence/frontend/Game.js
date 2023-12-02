@@ -47,7 +47,8 @@ export class Game
                 }
                 var options_invitations = this.dom_invitations && this.dom_invitations.options;
                 this.dom_invitations.innerHTML = "";
-                if (options_invitations && response.user_info.invitations.length > 0) {
+                if (options_invitations && response.user_info.invitations
+                    && response.user_info.invitations.length > 0) {
                     response.user_info.invitations.forEach((invitation) => {
                         var option = document.createElement("option");
                         option.value = invitation.id;
