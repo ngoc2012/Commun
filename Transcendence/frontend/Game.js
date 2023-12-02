@@ -114,7 +114,7 @@ export class Game
                 {
                     this.name = "";
                     this.id = -1;         
-                    this.waiting = false;
+                    this.status = "";
                 }
             },
             error: function(error) {
