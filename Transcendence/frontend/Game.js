@@ -8,6 +8,7 @@ export class Game
     dom_online_players_list = document.getElementById("online_players_list");
     dom_invitations = document.getElementById("invitations");
     dom_user_name = document.getElementById("user_name");
+    dom_user_name = document.getElementById("user_name");
 
     update_time_interval = 2000;
 
@@ -174,14 +175,14 @@ export class Game
         });
     }
 
-   load_page() {
+   load_page(page) {
         $.ajax({
-            url: '/pong/',
+            url: '/' + page + '/',
             method: 'GET',
             success: (html) => {
                 window.history.pushState({
                     "user": this.user
-                }, 'pong', '/pong');
+                }, page, '/' + page);
                 document.body.innerHTML = html;
             },
             error: function(error) {
