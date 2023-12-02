@@ -33,6 +33,7 @@ export class Game
                 this.cancel_invitation(this.dom_invitations.options[this.dom_invitations.selectedIndex].value);
             }
         });
+        this.update();
     }
 
     get_players_selected() {
