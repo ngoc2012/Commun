@@ -4,10 +4,13 @@ class Main
     name = "";
     id = -1;
     status = "";
-    dom_status = document.getElementById("status");
-    dom_user_name = document.getElementById("user_name");
-    dom_game = document.getElementById("game");
-    update_time_interval = 2000;
+
+    constructor()
+    {
+        this.dom_status = document.getElementById("status");
+        this.dom_user_name = document.getElementById("user_name");
+        this.dom_game = document.getElementById("game");
+    }
 
     new_player() {
         $.ajax({
@@ -33,7 +36,7 @@ class Main
                 window.history.pushState({
                     "user": this.user
                 }, page, page);
-                document.body.innerHTML = html;
+                this.dom_game.innerHTML = html;
             },
             error: function(error) {
                 console.error('Error: pong GET fail', error.message);
