@@ -37,12 +37,7 @@ export class Main
                 //    "user": this.user
                 //}, page, page);
                 this.dom_game.innerHTML = html;
-                console.log("callback");
-                if (typeof callback === 'function') {
-                    callback();
-                } else {
-                    console.error('Callback is not a function.');
-                }
+                callback();
             },
             error: function(error) {
                 console.error('Error: pong GET fail', error.message);

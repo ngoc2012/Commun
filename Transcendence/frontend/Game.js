@@ -4,7 +4,6 @@ export class Game
 
     constructor(m) {
         this.main = m;
-        console.log(this.main.user);
     }
     
     events() {
@@ -61,7 +60,7 @@ export class Game
                 this.dom_online_players_list.innerHTML = "";
                 if (response.online_players_list.length > 0) {
                     response.online_players_list.forEach((element) => {
-                        if (element !== this.user) {
+                        if (element !== this.main.user) {
                             var option = document.createElement("option");
                             option.value = element;
                             option.text = element;
