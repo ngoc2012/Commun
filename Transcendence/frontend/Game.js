@@ -179,7 +179,7 @@ export class Game
             url: '/pong/',
             method: 'GET',
             success: (html) => {
-                window.history.pushState({}, '', newPath);
+                window.history.pushState({}, 'pong', '/pong');
                 document.body.innerHTML = html;
             },
             error: function(error) {
