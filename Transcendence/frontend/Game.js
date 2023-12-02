@@ -4,6 +4,7 @@ export class Game
     name = "";
     id = -1;
     status = "";
+    dom_status;
     dom_online_players_list;
     dom_invitations;
 
@@ -39,22 +40,22 @@ export class Game
             method: 'POST',
             data: { "user": this.user },
             success: function(response) {
-                var options = dom_online_players_list && dom_online_players_list.options;
+                var options = this.dom_online_players_list && this.dom_online_players_list.options;
                 if (response.online_players_list.length !== options.length + 1) {
-                    dom_online_players_list.innerHTML = "";
+                    this.dom_online_players_list.innerHTML = "";
                     if (response.online_players_list.length > 0) {
                         response.online_players_list.forEach((element) => {
                             if (element !== this.user) {
                                 var option = document.createElement("option");
                                 option.value = element;
                                 option.text = element;
-                                dom_online_players_list.add(option);
+                                this.dom_online_players_list.add(option);
                             }
                         });
                     }
                 }
-                var options_invitations = dom_invitations && dom_invitations.options;
-                dom_invitations.innerHTML = "";
+                var options_invitations = this.dom_invitations && this.dom_invitations.options;
+                this.dom_invitations.innerHTML = "";
                 if (response.user_info.invitations.length > 0) {
                     response.user_info.invitations.forEach((invitation) => {
                         var option = document.createElement("option");
@@ -63,7 +64,7 @@ export class Game
                         invitation.players.forEach((p) => {
                             option.text += " - " + p;
                         });
-                        dom_invitations.add(option);
+                        this.dom_invitations.add(option);
                     });
                 }
             },
@@ -85,9 +86,9 @@ export class Game
                 this.name = "pong";
                 this.id = response.game_id;
                 this.status = "waiting";
-                dom_status.textContent = "New game " + this.name + " " + this.id + " created. Wait for players...";
-                dom_online_players_list.innerHTML = "";
-                dom_invitations.innerHTML = "";
+                this.dom_status.textContent = "New game " + this.name + " " + this.id + " created. Wait for players...";
+                this.dom_online_players_list.innerHTML = "";
+                this.dom_invitations.innerHTML = "";
             },
             error: function(error) {
             }
@@ -103,7 +104,7 @@ export class Game
                 "game_id": game_id
             },
             success: function(response) {
-                dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is accepted by " + this.user;
+                this.dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is accepted by " + this.user;
                 this.name = response.game;
                 this.id = game_id;         
                 this.status = "waiting";
@@ -123,7 +124,7 @@ export class Game
                 "game_id": game_id
             },
             success: function(response) {
-                dom_status.textContent = "Game " + this.name + " " + game_id + " invitation is canceled by " + this.user;
+                this.dom_status.textContent = "Game " + this.name + " " + game_id + " invitation is canceled by " + this.user;
                 if (this.id === game_id)
                 {
                     this.name = "";
@@ -147,13 +148,13 @@ export class Game
             },
             success: function(response) {
                 if (response === "canceled") {
-                    dom_status.textContent = "Game " + this.name +" " + this.id + " is canceled";
+                    this.dom_status.textContent = "Game " + this.name +" " + this.id + " is canceled";
                     this.name = "";
                     this.id = -1;         
                     this.status = "";
                 }
                 else if (response === "ready") {
-                    dom_status.textContent = "Game " + this.name +" " + this.id + " is ready";
+                    this.dom_status.textContent = "Game " + this.name +" " + this.id + " is ready";
                 }
             },
             error: function(error) {

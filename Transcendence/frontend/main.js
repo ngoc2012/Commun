@@ -9,10 +9,10 @@ const dom_cancel_invitation = document.getElementById("cancel_invitation");
 const dom_online_players_list = document.getElementById("online_players_list");
 const dom_invitations = document.getElementById("invitations");
 
-game.dom_online_players_list = dom_online_players_list;
-game.dom_invitations = dom_invitations;
-
 document.addEventListener('DOMContentLoaded', function (event) {
+    game.dom_online_players_list = dom_online_players_list;
+    game.dom_invitations = dom_invitations;
+    game.dom_status = dom_status;
     game.new_player();
     game.update();
 });
