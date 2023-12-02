@@ -179,7 +179,9 @@ export class Game
             url: '/pong/',
             method: 'GET',
             success: (html) => {
-                window.history.pushState({}, 'pong', '/pong');
+                window.history.pushState({
+                    "user": this.user
+                }, 'pong', '/pong');
                 document.body.innerHTML = html;
             },
             error: function(error) {
