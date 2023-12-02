@@ -1,5 +1,7 @@
 export class Game
 {
+    id = -1;
+
     update_time_interval = 2000;
 
     constructor(main) {
@@ -90,7 +92,7 @@ export class Game
 }
 
     update() {
-        console.log("update :" + this.user);
+        console.log("update :" + this.main.user);
         if (this.main.status === "playing")
             return ;
         if (this.main.status === "waiting")
@@ -106,7 +108,7 @@ export class Game
             url: '/invite/',
             method: 'POST',
             data: {
-                "host": this.user,
+                "host": this.main.user,
                 "game": "pong",
                 "players": players
             },
