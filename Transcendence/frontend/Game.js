@@ -41,7 +41,6 @@ export class Game
                 if (response.online_players_list.length !== options.length + 1) {
                     dom_online_players_list.innerHTML = "";
                     if (response.online_players_list.length > 0) {
-                        //console.log(response.online_players_list.length);
                         response.online_players_list.forEach((element) => {
                             if (element !== this.user) {
                                 var option = document.createElement("option");
