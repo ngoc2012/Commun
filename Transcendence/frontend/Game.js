@@ -71,7 +71,7 @@ export class Game
         //else
         //    this.update_online_players_list;
         if (status !== "playing")
-            setTimeout(() => {this.update()}, this.update_time_interval);
+            setTimeout(function () {this.update();}, this.update_time_interval);
     }
 
     invite(players) {
