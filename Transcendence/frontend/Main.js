@@ -37,6 +37,7 @@ export class Main
                 //    "user": this.user
                 //}, page, page);
                 this.dom_game.innerHTML = html;
+                callback();
             },
             error: function(error) {
                 console.error('Error: pong GET fail', error.message);
