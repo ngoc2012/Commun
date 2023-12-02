@@ -59,8 +59,8 @@ def online_players_list(request):
 
 @csrf_exempt
 def invite(request):
-    print(request.POST)
-    for user in request.POST['players']:
+    #print(request.POST)
+    for user in request.POST['players[]']:
         if (user not in online_players.keys()):
             return HttpResponseNotFound("Player " + user + " is not online.")
     game_id += 1
@@ -68,12 +68,12 @@ def invite(request):
         "id": game_id,
         "game": request.POST['game'],
         "status": "waiting",
-        "players": request.POST['players'],
+        "players": request.POST['players[]'],
         "host": request.POST['host'],
         "accepted": [request.POST['host']]
         }
-    print(games)
-    for user in request.POST['players']:
+    #print(games)
+    for user in request.POST['players[]']:
         online_players[user]['invitations'].append(games[game_id])
     return (JsonResponse({"game_id": game_id}))
 
