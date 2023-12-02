@@ -24,14 +24,14 @@ export class Game
         this.dom_cancel_invitation = document.getElementById("cancel_invitation");
         this.dom_online_players_list = document.getElementById("online_players_list");
         this.dom_invitations = document.getElementById("invitations");
-        this.dom_invite.addEventListener("click", function () {
+        this.dom_invite.addEventListener("click", () => {
             var players = this.get_players_selected();
             //console.log(players);
             if (players.length === 2)
                 this.invite(players);
         });
 
-        this.dom_accept_invitation.addEventListener("click", function () {
+        this.dom_accept_invitation.addEventListener("click", () => {
             if (this.main.status !== "")
                 return ;
             if (this.dom_invitations.selectedIndex !== -1) {
@@ -39,7 +39,7 @@ export class Game
             }
         });
 
-        this.dom_cancel_invitation.addEventListener("click", function () {
+        this.dom_cancel_invitation.addEventListener("click", () => {
             if (this.dom_invitations.selectedIndex !== -1) {
                 this.cancel_invitation(this.dom_invitations.options[this.dom_invitations.selectedIndex].value);
             }
