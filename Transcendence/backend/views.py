@@ -11,10 +11,10 @@ games = {}
 game_id = 0
 
 def index(request):
-	return (render(request, 'home.html'))
+	return (render(request, 'index.html'))
 
 def home(request):
-    return (redirect("index"))
+	return (render(request, 'home.html'))
 
 def login(request):
 	return (render(request, 'login.html'))

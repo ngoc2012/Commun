@@ -1,4 +1,4 @@
-class Main
+export class Main
 {
     user = "";
     name = "";
