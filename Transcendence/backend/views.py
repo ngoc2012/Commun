@@ -33,6 +33,7 @@ def new_player(request):
             "invitations": [],
             "accepted": -1
             }
+    print(online_players)
     return (JsonResponse({"user": user_name}))
 
 def check_all_users_online():
@@ -48,6 +49,7 @@ def online_players_list(request):
     user = request.POST['user']
     users = list(online_players.keys())
     invitations = []
+    print(user)
     if user in users:
         online_players[user]["online"] = time.time()
         return (JsonResponse({"user_info": online_players[user], "online_players_list": users}))
