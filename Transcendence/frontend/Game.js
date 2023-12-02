@@ -2,8 +2,8 @@ export class Game
 {
     update_time_interval = 2000;
 
-    constructor(main) {
-        this.main = main;
+    constructor(m) {
+        this.main = m;
     }
     
     events() {
@@ -114,7 +114,7 @@ export class Game
                 this.main.name = "pong";
                 this.main.id = response.game_id;
                 this.main.status = "waiting";
-                this.dom_status.textContent = "New game " + this.name + " " + this.id + " created. Wait for players...";
+                this.dom_status.textContent = "New game " + this.main.name + " " + this.main.id + " created. Wait for players...";
                 this.dom_online_players_list.innerHTML = "";
                 this.dom_invitations.innerHTML = "";
             },
@@ -129,13 +129,13 @@ export class Game
             url: '/accept_invitation/',
             method: 'POST',
             data: {
-                "user": this.user,
+                "user": this.main.user,
                 "game_id": game_id
             },
             success: (response) => {
-                this.dom_status.textContent = "Game " + this.name + " " + this.id + " invitation is accepted by " + this.user;
-                this.name = response.game;
-                this.id = game_id;         
+                this.dom_status.textContent = "Game " + this.main.name + " " + this.main.id + " invitation is accepted by " + this.main.user;
+                this.main.name = response.game;
+                this.main.id = game_id;         
                 this.main.status = "waiting";
             },
             error: function(error) {
@@ -149,15 +149,15 @@ export class Game
             url: '/cancel_invitation/',
             method: 'POST',
             data: {
-                "user": this.user,
+                "user": this.main.user,
                 "game_id": game_id
             },
             success: (response) => {
-                this.dom_status.textContent = "Game " + this.name + " " + game_id + " invitation is canceled by " + this.user;
-                if (this.id === game_id)
+                this.dom_status.textContent = "Game " + this.main.name + " " + game_id + " invitation is canceled by " + this.main.user;
+                if (this.main.id === game_id)
                 {
-                    this.name = "";
-                    this.id = -1;         
+                    this.main.name = "";
+                    this.main.id = -1;         
                     this.main.status = "";
                 }
             },
@@ -172,18 +172,18 @@ export class Game
             url: '/check_game_status/',
             method: 'POST',
             data: {
-                "user": this.user,
-                "game_id": this.id
+                "user": this.main.user,
+                "game_id": this.main.id
             },
             success: (response) => {
                 if (response === "canceled") {
-                    this.dom_status.textContent = "Game " + this.name +" " + this.id + " is canceled";
-                    this.name = "";
-                    this.id = -1;         
+                    this.dom_status.textContent = "Game " + this.main.name +" " + this.main.id + " is canceled";
+                    this.main.name = "";
+                    this.main.id = -1;         
                     this.main.status = "";
                 }
                 else if (response === "ready") {
-                    this.dom_status.textContent = "Game " + this.name +" " + this.id + " is ready";
+                    this.dom_status.textContent = "Game " + this.main.name +" " + this.main.id + " is ready";
                 }
             },
             error: function(error) {
