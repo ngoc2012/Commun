@@ -91,6 +91,8 @@ def accept_invitation(request):
     global online_players
     print(request.POST)
     g_id = int(request.POST['game_id'])
+    print(games)
+    print(games[g_id])
     if (g_id not in games.keys()):
         return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
     user = request.POST['user']
