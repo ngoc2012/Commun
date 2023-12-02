@@ -1,3 +1,6 @@
+import {dom_online_players_lists} from './main.js'
+import {dom_invitations} from './main.js'
+
 export class Game
 {
     user = "";

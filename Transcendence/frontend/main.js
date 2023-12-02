@@ -3,11 +3,11 @@ import {Game} from './Game.js'
 export var game = new Game();
 
 const dom_invite = document.querySelector("#invite");
-const dom_online_players_list = document.getElementById("online_players_list");
 const dom_status = document.getElementById("status");
-const dom_invitations = document.getElementById("invitations");
 const dom_accept_invitation = document.getElementById("accept_invitation");
 const dom_cancel_invitation = document.getElementById("cancel_invitation");
+export const dom_online_players_list = document.getElementById("online_players_list");
+export const dom_invitations = document.getElementById("invitations");
 
 document.addEventListener('DOMContentLoaded', function (event) {
     game.new_player();
