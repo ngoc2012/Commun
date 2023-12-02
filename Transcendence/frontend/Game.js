@@ -7,6 +7,8 @@ export class Game
     name = "";
     id = -1;
     status = "";
+    dom_online_players_list;
+    dom_invitations;
 
     update_time_interval = 2000;
 
