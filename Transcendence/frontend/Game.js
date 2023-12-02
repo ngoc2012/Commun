@@ -134,7 +134,7 @@ export class Game
                 "game_id": game_id
             },
             success: (response) => {
-                this.dom_status.textContent = "Game " + this.main.name + " " + this.main.id + " invitation is accepted by " + this.main.user;
+                this.main.dom_status.textContent = "Game " + this.main.name + " " + this.main.id + " invitation is accepted by " + this.main.user;
                 this.main.name = response.game;
                 this.main.id = game_id;         
                 this.main.status = "waiting";
@@ -154,7 +154,7 @@ export class Game
                 "game_id": game_id
             },
             success: (response) => {
-                this.dom_status.textContent = "Game " + this.main.name + " " + game_id + " invitation is canceled by " + this.main.user;
+                this.main.dom_status.textContent = "Game " + this.main.name + " " + game_id + " invitation is canceled by " + this.main.user;
                 if (this.main.id === game_id)
                 {
                     this.main.name = "";
@@ -178,13 +178,13 @@ export class Game
             },
             success: (response) => {
                 if (response === "canceled") {
-                    this.dom_status.textContent = "Game " + this.main.name +" " + this.main.id + " is canceled";
+                    this.main.dom_status.textContent = "Game " + this.main.name +" " + this.main.id + " is canceled";
                     this.main.name = "";
                     this.main.id = -1;         
                     this.main.status = "";
                 }
                 else if (response === "ready") {
-                    this.dom_status.textContent = "Game " + this.main.name +" " + this.main.id + " is ready";
+                    this.main.dom_status.textContent = "Game " + this.main.name +" " + this.main.id + " is ready";
                 }
             },
             error: function(error) {

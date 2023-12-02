@@ -9,7 +9,7 @@ export class Main
     {
         this.dom_status = document.getElementById("status");
         this.dom_user_name = document.getElementById("user_name");
-        this.dom_game = document.getElementById("game");
+        this.dom_game = document.getElementById("container");
     }
 
     new_player() {
