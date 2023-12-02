@@ -25,7 +25,7 @@ class Main
     }
 
 
-   load_page(page) {
+   load(page) {
         $.ajax({
             url: '/' + page + '/',
             method: 'GET',
