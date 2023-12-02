@@ -58,9 +58,12 @@ export class Game
                     response.user_info.invitations.forEach((element) => {
                         if (element !== this.user) {
                             var option = document.createElement("option");
-                            option.value = element;
-                            option.text = element;
-                            dom_online_players_list.add(option);
+                            option.value = element.id;
+                            option.text = "" + element.id;
+                            element.players.forEach((p) => {
+                                option.text += " - " + p;
+                            });
+                            dom_invitations.add(option);
                         }
                     });
                 }
