@@ -89,11 +89,12 @@ def invite(request):
 def accept_invitation(request):
     global games
     global online_players
-    g_id = request.POST['game_id']
+    print(request.POST)
+    g_id = int(request.POST['game_id'])
     if (g_id not in games.keys()):
         return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
     user = request.POST['user']
-    if (user not in games[g_id]["online_players"]):
+    if (user not in games[g_id]["players"]):
         return HttpResponseNotFound("Player " + user + " was not found in the game.")
     if (online_players[user]['accepted'] != 1):
         return HttpResponseNotFound("Player " + user + " was in another game.")
