@@ -9,6 +9,6 @@ document.addEventListener('DOMContentLoaded', function (event) {
     //game.dom_status = dom_status;
     main.new_player();
     main.load('/home');
-    var game = new Game();
+    var game = new Game(main);
 });
 

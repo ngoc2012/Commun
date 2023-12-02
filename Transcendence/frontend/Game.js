@@ -1,7 +1,8 @@
 export class Game
 {
-    constructor()
+    constructor(main)
     {
+        this.main = main;
         this.dom_invite = document.querySelector("#invite");
         this.dom_accept_invitation = document.getElementById("accept_invitation");
         this.dom_cancel_invitation = document.getElementById("cancel_invitation");
@@ -10,14 +11,14 @@ export class Game
     }
     
     events() {
-        dom_invite.addEventListener("click", function () {
+        this.dom_invite.addEventListener("click", function () {
             var players = get_players_selected();
             //console.log(players);
             if (players.length === 2)
                 game.invite(players);
         });
 
-        dom_accept_invitation.addEventListener("click", function () {
+        this.dom_accept_invitation.addEventListener("click", function () {
             if (game.status !== "")
                 return ;
             if (dom_invitations.selectedIndex !== -1) {
@@ -25,7 +26,7 @@ export class Game
             }
         });
 
-        dom_cancel_invitation.addEventListener("click", function () {
+        this.dom_cancel_invitation.addEventListener("click", function () {
             if (dom_invitations.selectedIndex !== -1) {
                 game.cancel_invitation(dom_invitations.options[dom_invitations.selectedIndex].value);
             }
