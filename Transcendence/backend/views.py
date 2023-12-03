@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.http import HttpResponse
-from django.http import HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
 import time
@@ -72,7 +71,7 @@ def invite(request):
         if (user not in online_players.keys()):
             #print(user)
             #print(online_players.keys())
-            return HttpResponseNotFound("Player " + user + " is not online.")
+            return HttpResponse("Player " + user + " is not online.")
     game_id += 1
     games[game_id] = {
         "id": game_id,
@@ -97,14 +96,14 @@ def accept_invitation(request):
     print(games[g_id])
     if (g_id not in games.keys()):
         print("Game " + str(g_id) + " was not found.")
-        return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
+        return HttpResponse("Game " + str(g_id) + " was not found.")
     user = request.POST['user']
     if (user not in games[g_id]["players"]):
         print("Player " + user + " was not found in the game.")
-        return HttpResponseNotFound("Player " + user + " was not found in the game.")
+        return HttpResponse("Player " + user + " was not found in the game.")
     if (online_players[user]['accepted'] != -1):
         print("Player " + user + " was in another game.")
-        return HttpResponseNotFound("Player " + user + " was in another game.")
+        return HttpResponse("Player " + user + " was in another game.")
     online_players[user]["accepted"] = g_id
     if (user not in games[g_id]["accepted"]):
         games[g_id]["accepted"].append(user)
@@ -118,10 +117,10 @@ def cancel_invitation(request):
     print(request.POST)
     g_id = int(request.POST['game_id'])
     if (g_id not in games.keys()):
-        return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
+        return HttpResponse("Game " + str(g_id) + " was not found.")
     user = request.POST['user']
     if (user not in games[g_id]["players"]):
-        return HttpResponseNotFound("Player " + user + " was not found in the game.")
+        return HttpResponse("Player " + user + " was not found in the game.")
     if (online_players[user]["accepted"] == g_id):
         online_players[user]["accepted"] = -1
     for user in games[g_id]["players"]:
