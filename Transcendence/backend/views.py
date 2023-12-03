@@ -46,7 +46,7 @@ def check_all_users_online():
 def online_players_list(request): 
     #print(games)
     check_all_users_online()
-    #print(request.POST)
+    print(request.POST)
     user = request.POST['user']
     users = list(online_players.keys())
     invitations = []
@@ -109,7 +109,6 @@ def accept_invitation(request):
         games[g_id]["accepted"].append(user)
         if (len(games[g_id]["accepted"]) == len(games[g_id]["players"])):
             games[g_id]["status"] = "playing"
-            print("game " + str(g_id) + " is ready")
     return (JsonResponse({"game": games[g_id]['game']}))
 
 @csrf_exempt
