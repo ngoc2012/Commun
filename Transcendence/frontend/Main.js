@@ -7,7 +7,8 @@ export class Main
 
     constructor()
     {
-        this.pong = new Pong();
+        this.game = new Game(this);
+        this.pong = new Pong(this);
         this.dom_status = document.getElementById("status");
         this.dom_user_name = document.getElementById("user_name");
         this.dom_container = document.getElementById("container");
