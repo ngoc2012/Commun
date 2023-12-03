@@ -183,7 +183,7 @@ export class Game
                     this.main.status = "";
                 }
                 else if (response.status === "playing") {
-                    this.main.load('/pong', () => game.events());
+                    this.main.load('/pong', () => this.main.pong.start());
                     //this.main.dom_status.textContent = "Game " + this.main.name +" " + this.main.id + " is ready";
                 }
             },
