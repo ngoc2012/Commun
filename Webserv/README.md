@@ -156,3 +156,10 @@ int main() {
     return 0;
 }
 ```
+
+Handling Terminated Child Processes:
+* If `waitpid` returns a positive value (process ID of the terminated child), the parent process enters the loop to handle the termination.
+* The loop can process information about the terminated child, such as exit status or other details.
+* The loop continues to check for more terminated child processes using `waitpid` with `WNOHANG` until no more terminated child processes are found.
+
+
