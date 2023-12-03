@@ -73,6 +73,9 @@ export class Game
             this.dom_invitations.innerHTML = "";
             if (options_invitations && response.user_info.invitations
                 && response.user_info.invitations.length > 0) {
+                for (const [key, value] of Object.entries(response.user_info.invitations)) {
+                    console.log(key, value);
+                }
                 response.user_info.invitations.forEach((invitation) => {
                     var option = document.createElement("option");
                     option.value = invitation.id;
