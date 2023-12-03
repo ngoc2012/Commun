@@ -162,4 +162,12 @@ Handling Terminated Child Processes:
 * The loop can process information about the terminated child, such as exit status or other details.
 * The loop continues to check for more terminated child processes using `waitpid` with `WNOHANG` until no more terminated child processes are found.
 
+### Configuration file
 
+```nginx
+location /cgi-bin/ {
+    fastcgi_pass unix:/var/run/php-fpm.sock;
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+}
+```
