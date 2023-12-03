@@ -8,6 +8,7 @@ export class Pong
 	constructor(m) {
         this.main = m;
     }
+
 	start() {
 		this.canvas = document.getElementById('pongCanvas');
 		this.ctx = this.canvas.getContext('2d');
