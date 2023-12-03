@@ -54,7 +54,6 @@ export class Game
         method: 'POST',
         data: { "user": this.main.user },
         success: (response) => {
-            console.log(response.online_players_list);
             var options = this.dom_online_players_list && this.dom_online_players_list.options;
             if (options && response.online_players_list.length !== options.length + 1) {
                 this.dom_online_players_list.innerHTML = "";
@@ -69,22 +68,28 @@ export class Game
                     });
                 }
             }
+            console.log(response.user_info);
             var options_invitations = this.dom_invitations && this.dom_invitations.options;
             this.dom_invitations.innerHTML = "";
             if (options_invitations && response.user_info.invitations
                 && response.user_info.invitations.length > 0) {
-                for (const [key, value] of Object.entries(response.user_info.invitations)) {
-                    console.log(key, value);
-                }
-                response.user_info.invitations.forEach((invitation) => {
+                for (const [g_id, g] of Object.entries(response.user_info.invitations)) {
+                    console.log(g_id, g);
                     var option = document.createElement("option");
-                    option.value = invitation.id;
-                    option.text = "" + invitation.id;
-                    invitation.players.forEach((p) => {
-                        option.text += " - " + p;
-                    });
+                    option.value = g_id;
+                    option.text = "" + g_id;
+                    g.players.forEach((p) => { option.text += " - " + p; });
                     this.dom_invitations.add(option);
-                });
+                }
+                //response.user_info.invitations.forEach((invitation) => {
+                //    var option = document.createElement("option");
+                //    option.value = invitation.id;
+                //    option.text = "" + invitation.id;
+                //    invitation.players.forEach((p) => {
+                //        option.text += " - " + p;
+                //    });
+                //    this.dom_invitations.add(option);
+                //});
             }
         },
         error: function(error) {
