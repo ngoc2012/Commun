@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 18:59:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/03 17:46:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,75 @@ Response::~Response()
 			std::cout << "File closed successfully" << std::endl;
 	}
 	std::cout << "Destruction response: " << _socket << std::endl;
+}
+
+void	Response::send(void)
+{
+	if (_status_code != 200)
+	{
+		Header	header(_status_code, std::string(""), this);
+		header.set_allow(get_methods_str());
+		_content_length = 0;
+		_header = header.generate();
+		_end = true;
+		if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
+			perror("send() failed");
+	}
+	else if(_header == "")
+	{
+		std::string	url = _request->get_url();
+		find_location(url);
+		if (_status_code == 200)
+			get_full_file_name(url);
+		Header	header(_status_code, get_file_extension(_full_file_name), this);
+		header.set_allow(get_methods_str());
+		if (_status_code == 200)
+		{
+			std::cout << _full_file_name << std::endl;
+			switch (_request->get_method())
+			{
+				case GET:
+					_content_length = get_file_size(_full_file_name);
+					//_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
+					std::cout << "File open" << std::endl;
+					_file.open(_full_file_name.c_str(), std::ios::binary);
+					if (!_file.is_open())
+					{
+						std::cerr << "Failed to open file: " << _full_file_name << std::endl;
+						_status_code = 500;	// Internal server error
+						_end = true;
+					}
+					break;
+				default:
+					_body = "<!doctype html>\n"
+						"<link rel=\"icon\" href=\"data:,\">\n"
+						"<html><body><h1>Hello, client!</h1></body></html>";
+					_content_length = _body.length();
+					break;
+			}
+		}
+		else
+			_end = true;
+
+		_header = header.generate();
+		std::cout << "Header:\n" << _header << std::endl;
+		if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
+		{
+			_end = true;
+			perror("send() failed");
+		}
+	}
+	else if (_request->get_method() == GET)
+	{
+		//std::cout << "Get more" << std::endl;
+		get();
+	}
+	if (_end)
+	{
+	      _host->close_client_sk(_socket);
+	      //_host->delete_response(_socket);
+	      std::cout << "Response sent" << std::endl;
+	}
 }
 
 bool	Response::find_method(e_method m, Location* loc)
@@ -167,75 +236,6 @@ void	Response::get_full_file_name(std::string url)
 	if (stat(_full_file_name.c_str(), &buffer) != 0)
 		_status_code = 404; // Not found
 	std::cout << _full_file_name << std::endl;
-}
-
-void	Response::send(void)
-{
-	if (_status_code != 200)
-	{
-		Header	header(_status_code, std::string(""), this);
-		header.set_allow(get_methods_str());
-		_content_length = 0;
-		_header = header.generate();
-		_end = true;
-		if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
-			perror("send() failed");
-	}
-	else if(_header == "")
-	{
-		std::string	url = _request->get_url();
-		find_location(url);
-		if (_status_code == 200)
-			get_full_file_name(url);
-		Header	header(_status_code, get_file_extension(_full_file_name), this);
-		header.set_allow(get_methods_str());
-		if (_status_code == 200)
-		{
-			std::cout << _full_file_name << std::endl;
-			switch (_request->get_method())
-			{
-				case GET:
-					_content_length = get_file_size(_full_file_name);
-					//_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
-					std::cout << "File open" << std::endl;
-					_file.open(_full_file_name.c_str(), std::ios::binary);
-					if (!_file.is_open())
-					{
-						std::cerr << "Failed to open file: " << _full_file_name << std::endl;
-						_status_code = 500;	// Internal server error
-						_end = true;
-					}
-					break;
-				default:
-					_body = "<!doctype html>\n"
-						"<link rel=\"icon\" href=\"data:,\">\n"
-						"<html><body><h1>Hello, client!</h1></body></html>";
-					_content_length = _body.length();
-					break;
-			}
-		}
-		else
-			_end = true;
-
-		_header = header.generate();
-		std::cout << "Header:\n" << _header << std::endl;
-		if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
-		{
-			_end = true;
-			perror("send() failed");
-		}
-	}
-	else if (_request->get_method() == GET)
-	{
-		//std::cout << "Get more" << std::endl;
-		get();
-	}
-	if (_end)
-	{
-	      _host->close_client_sk(_socket);
-	      //_host->delete_response(_socket);
-	      std::cout << "Response sent" << std::endl;
-	}
 }
 
 size_t		Response::get_file_size(std::string &file_name)
