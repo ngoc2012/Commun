@@ -108,7 +108,7 @@ def accept_invitation(request):
     if (user not in games[g_id]["accepted"]):
         games[g_id]["accepted"].append(user)
         if (len(games[g_id]["accepted"]) == len(games[g_id]["players"])):
-            games[g_id]["status"] = "ready"
+            games[g_id]["status"] = "playing"
             print("game " + str(g_id) + " is ready")
     return (JsonResponse({"game": games[g_id]['game']}))
 

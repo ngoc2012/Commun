@@ -183,7 +183,7 @@ export class Game
                     this.main.id = -1;         
                     this.main.status = "";
                 }
-                else if (response.status === "ready") {
+                else if (response.status === "playing") {
                     this.main.dom_status.textContent = "Game " + this.main.name +" " + this.main.id + " is ready";
                 }
             },
