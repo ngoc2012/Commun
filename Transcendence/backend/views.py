@@ -53,7 +53,10 @@ def online_players_list(request):
     print(users)
     if user in users:
         online_players[user]["online"] = time.time()
-        return (JsonResponse({"user_info": online_players[user], "online_players_list": users}))
+        user_info = online_players[user]
+        user_info["invitations"] = [v for k, v in online_players[user]["invitations"].items()]
+        print(user_info)
+        return (JsonResponse({"user_info": user_info, "online_players_list": users}))
     #print(online_players)
     return (JsonResponse({"user_info": {}, "online_players_list": users}))
 

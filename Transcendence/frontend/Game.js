@@ -73,6 +73,7 @@ export class Game
             this.dom_invitations.innerHTML = "";
             if (options_invitations && response.user_info.invitations
                 && response.user_info.invitations.length > 0) {
+                /*
                 for (const [g_id, g] of Object.entries(response.user_info.invitations)) {
                     console.log(g_id, g);
                     var option = document.createElement("option");
@@ -81,15 +82,16 @@ export class Game
                     g.players.forEach((p) => { option.text += " - " + p; });
                     this.dom_invitations.add(option);
                 }
-                //response.user_info.invitations.forEach((invitation) => {
-                //    var option = document.createElement("option");
-                //    option.value = invitation.id;
-                //    option.text = "" + invitation.id;
-                //    invitation.players.forEach((p) => {
-                //        option.text += " - " + p;
-                //    });
-                //    this.dom_invitations.add(option);
-                //});
+                */
+                response.user_info.invitations.forEach((invitation) => {
+                    var option = document.createElement("option");
+                    option.value = invitation.id;
+                    option.text = "" + invitation.id;
+                    invitation.players.forEach((p) => {
+                        option.text += " - " + p;
+                    });
+                    this.dom_invitations.add(option);
+                });
             }
         },
         error: function(error) {
