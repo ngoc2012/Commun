@@ -5,8 +5,10 @@ export class Pong
 	paddleWidth = 10;
 	paddleHeight = 60;
 
-	constructor()
-	{
+	constructor(m) {
+        this.main = m;
+    }
+	start() {
 		this.canvas = document.getElementById('pongCanvas');
 		this.ctx = this.canvas.getContext('2d');
 
