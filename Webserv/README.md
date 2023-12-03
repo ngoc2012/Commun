@@ -182,7 +182,7 @@ location ~ \.cgi$ {
 * The `include fastcgi_params` line includes common FastCGI parameters.
 * The `fastcgi_param SCRIPT_FILENAME` line sets the script filename for the FastCGI server.
 * The `location ~ \.cgi$` block uses a regular expression (`~`) to match URIs ending with ".cgi".
-~: Indicates that the following string is a case-sensitive regular expression.
-\.: Escapes the dot (.) character. In regular expressions, a dot is a special character that matches any character. By escaping it with a backslash, we specifically match a literal dot.
-cgi: Matches the characters "cgi" literally.
-$: Anchors the regex to the end of the URI. This ensures that the regex matches only if the URI ends with ".cgi."
+* `~`: Indicates that the following string is a case-sensitive regular expression.
+* `\.`: Escapes the dot (.) character. In regular expressions, a dot is a special character that matches any character. By escaping it with a backslash, we specifically match a literal dot.
+* `cgi`: Matches the characters "cgi" literally.
+* `$`: Anchors the regex to the end of the URI. This ensures that the regex matches only if the URI ends with ".cgi."
