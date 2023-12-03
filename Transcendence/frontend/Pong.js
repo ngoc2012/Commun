@@ -16,7 +16,6 @@ export class Pong
 
 		// Create the this.ball
 		this.ball = { x: this.canvas.width / 2, y: this.canvas.height / 2, radius: 10, dx: 5, dy: 5 };
-
 	}
 
 	resetGame()
