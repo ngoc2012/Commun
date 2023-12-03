@@ -6,6 +6,7 @@ from django.shortcuts import redirect
 import time
 
 online_players = {}
+playings_players = {}
 games = {}
 game_id = 0
 
