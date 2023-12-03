@@ -85,7 +85,7 @@ export class Game
             }
         },
         error: function(error) {
-            console.error('Error: online players list POST fail', error.message);
+            //console.error('Error: online players list POST fail', error.message);
         }
     });
 }
@@ -183,12 +183,12 @@ export class Game
                     this.main.id = -1;         
                     this.main.status = "";
                 }
-                else if (response === "ready") {
+                else if (response.status === "ready") {
                     this.main.dom_status.textContent = "Game " + this.main.name +" " + this.main.id + " is ready";
                 }
             },
             error: function(error) {
-                console.error('Error: check game GET fail', error.message);
+                //console.error('Error: check game GET fail', error.message);
             }
         });
     }
