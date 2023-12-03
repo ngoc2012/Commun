@@ -170,6 +170,12 @@ location /cgi-bin/ {
     include fastcgi_params;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 }
+location ~ \.cgi$ {
+    # Set the CGI script execution handler
+    fastcgi_pass unix:/var/run/php-fpm.sock; # Adjust this line based on your setup
+    include fastcgi_params;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+}
 ```
 * The `location /cgi-bin/` block specifies that any request with a URI starting with "/cgi-bin/" should be processed as a CGI script.
 * The `fastcgi_pass` directive points to the FastCGI server that will handle the execution of CGI scripts. In this case, it assumes a PHP-FPM server running on a Unix socket. Adjust it based on your CGI script interpreter (e.g., Python, Perl, etc.).
