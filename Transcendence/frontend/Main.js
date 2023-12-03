@@ -1,3 +1,6 @@
+import {Game} from './Game.js'
+import {Pong} from './Pong.js'
+
 export class Main
 {
     user = "";

@@ -1,5 +1,4 @@
 import {Main} from './Main.js'
-import {Game} from './Game.js'
 
 var main = new Main();
 
