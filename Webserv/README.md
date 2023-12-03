@@ -107,12 +107,52 @@ HTTP requests typically include a Content-Type header that indicates the type of
 * `text/plain`: Used for plain text data.
 * `application/octet-stream`: Used for binary data when the specific type is not known.
 
-## FastCGI
+## CGI
 
-1 - Persistent Connection:
-* Traditional CGI creates a new process for each request, leading to high process creation overhead.
-* FastCGI uses a persistent connection, allowing a single FastCGI process to handle multiple requests. This reduces the overhead associated with process creation and termination.
+Non blocking CGI with fork:
 
-2 - Communication Protocol:
-* Traditional CGI communicates with the web server through standard input (stdin) and standard output (stdout).
-* FastCGI uses a binary protocol over a socket connection for communication between the web server and the FastCGI process.
+```cpp
+#include <iostream>
+#include <cstdlib>
+#include <unistd.h>
+#include <sys/wait.h>
+
+int main() {
+    // ... other server initialization code ...
+
+    while (true) {
+        // ... handle incoming requests ...
+
+        pid_t childPid = fork();
+
+        if (childPid == 0) {
+            // Child process: execute CGI script
+            // ... execute CGI script code ...
+            exit(EXIT_SUCCESS);
+        } else if (childPid < 0) {
+            // Handle fork error
+            std::cerr << "Fork failed." << std::endl;
+            exit(EXIT_FAILURE);
+        } else {
+            // Parent process: continue handling requests
+            // ... handle other server tasks ...
+
+            // Check for terminated child processes without blocking
+            int status;
+            pid_t terminatedChild = waitpid(-1, &status, WNOHANG);
+
+            while (terminatedChild > 0) {
+                // Process information about the terminated child
+                // ... handle termination information ...
+
+                // Check for more terminated child processes
+                terminatedChild = waitpid(-1, &status, WNOHANG);
+            }
+
+            // ... continue handling requests ...
+        }
+    }
+
+    return 0;
+}
+```
