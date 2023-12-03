@@ -30,7 +30,7 @@ def new_player(request):
         user_name = "user" + str(i)
     online_players[user_name] = {
             "online": time.time(),
-            "invitations": [],
+            "invitations": {},
             "accepted": -1
             }
     print(online_players)
@@ -49,7 +49,6 @@ def online_players_list(request):
     print(request.POST)
     user = request.POST['user']
     users = list(online_players.keys())
-    invitations = []
     #print(user)
     print(users)
     if user in users:
