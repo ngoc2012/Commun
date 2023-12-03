@@ -122,6 +122,9 @@ def cancel_invitation(request):
         return HttpResponseNotFound("Player " + user + " was not found in the game.")
     if (online_players[user]["accepted"] == g_id):
         online_players[user]["accepted"] = -1
+    for user in games[g_id]["players"]:
+        if g_id in online_players[user]["invitations"].keys():
+            online_players[user]["invitations"].pop(g_id)
     games.pop(g_id)
     return (HttpResponse("canceled"))
 
