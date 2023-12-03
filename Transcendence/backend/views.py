@@ -46,11 +46,11 @@ def check_all_users_online():
 def online_players_list(request): 
     #print(games)
     check_all_users_online()
-    print(request.POST)
+    #print(request.POST)
     user = request.POST['user']
     users = list(online_players.keys())
     #print(user)
-    print(users)
+    #print(users)
     if user in users:
         online_players[user]["online"] = time.time()
         return (JsonResponse({
