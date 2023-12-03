@@ -54,7 +54,7 @@ export class Game
         method: 'POST',
         data: { "user": this.main.user },
         success: (response) => {
-            //console.log(response.online_players_list);
+            console.log(response.online_players_list);
             var options = this.dom_online_players_list && this.dom_online_players_list.options;
             if (options && response.online_players_list.length !== options.length + 1) {
                 this.dom_online_players_list.innerHTML = "";
