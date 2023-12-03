@@ -116,7 +116,7 @@ def accept_invitation(request):
 def cancel_invitation(request):
     global games
     print(request.POST)
-    g_id = request.POST['game_id']
+    g_id = int(request.POST['game_id'])
     if (g_id not in games.keys()):
         return HttpResponseNotFound("Game " + str(g_id) + " was not found.")
     user = request.POST['user']
