@@ -53,12 +53,11 @@ def online_players_list(request):
     print(users)
     if user in users:
         online_players[user]["online"] = time.time()
-        user_info = online_players[user]
-        user_info["invitations"] = [v for k, v in online_players[user]["invitations"].items()]
-        print(user_info)
-        return (JsonResponse({"user_info": user_info, "online_players_list": users}))
+        return (JsonResponse({
+            "invitations": [v for k, v in online_players[user]["invitations"].items()],
+            "online_players_list": users}))
     #print(online_players)
-    return (JsonResponse({"user_info": {}, "online_players_list": users}))
+    return (JsonResponse({"invitations": [], "online_players_list": users}))
 
 @csrf_exempt
 def invite(request):
