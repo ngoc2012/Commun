@@ -51,10 +51,10 @@ def online_players_list(request):
     users = list(online_players.keys())
     invitations = []
     #print(user)
+    print(users)
     if user in users:
         online_players[user]["online"] = time.time()
         return (JsonResponse({"user_info": online_players[user], "online_players_list": users}))
-    #print(users)
     #print(online_players)
     return (JsonResponse({"user_info": {}, "online_players_list": users}))
 
@@ -131,6 +131,10 @@ def check_game_status(request):
     global games
     #print(request.POST)
     g_id = int(request.POST['game_id'])
+    user = request.POST['user']
+    users = list(online_players.keys())
+    if user in users:
+        online_players[user]["online"] = time.time()
     if (g_id not in games.keys()):
         return (HttpResponse("canceled"))
     return (JsonResponse(games[g_id]))
