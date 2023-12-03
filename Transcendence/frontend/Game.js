@@ -116,8 +116,8 @@ export class Game
                 this.main.id = response.game_id;
                 this.main.status = "waiting";
                 this.main.dom_status.textContent = "New game " + this.main.name + " " + this.main.id + " created. Wait for players...";
-                this.dom_online_players_list.innerHTML = "";
-                this.dom_invitations.innerHTML = "";
+                //this.dom_online_players_list.innerHTML = "";
+                //this.dom_invitations.innerHTML = "";
             },
             error: function(error) {
                 console.error('Error: invite POST fail', error.message);
