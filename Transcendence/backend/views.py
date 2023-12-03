@@ -82,7 +82,7 @@ def invite(request):
         }
     print(games)
     for user in players:
-        online_players[user]['invitations'].append(games[game_id])
+        online_players[user]['invitations'][game_id] = games[game_id]
     return (JsonResponse({"game_id": game_id}))
 
 @csrf_exempt
