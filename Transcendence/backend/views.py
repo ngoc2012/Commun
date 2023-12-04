@@ -83,15 +83,15 @@ def pong_state(request):
     g["ball_x"] += g["dx"];
     g["ball_y"] += g["dy"];
     # Bounce off the top and bottom walls
-		if (this.ball.y - this.ball.radius < 0 || this.ball.y + this.ball.radius > this.canvas.height)
+    if (g["ball_y"] - RADIUS < 0 || g["ball_y"] + RADIUS > this.canvas.height)
 		{
 			this.ball.dy = -this.ball.dy;
 		}
 		// Bounce off left paddle
 		if (
-				this.ball.x - this.ball.radius < this.leftPaddle.x + this.leftPaddle.width &&
-				this.ball.y > this.leftPaddle.y &&
-				this.ball.y < this.leftPaddle.y + this.leftPaddle.height
+				g["ball_x"] - RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
+				g["ball_y"] > this.leftPaddle.y &&
+				g["ball_y"] < this.leftPaddle.y + this.leftPaddle.height
 		   )
 		{
 			this.ball.dx = -this.ball.dx;
@@ -99,9 +99,9 @@ def pong_state(request):
 
 		// Bounce off right paddle
 		if (
-				this.ball.x + this.ball.radius > this.rightPaddle.x &&
-				this.ball.y > this.rightPaddle.y &&
-				this.ball.y < this.rightPaddle.y + this.rightPaddle.height
+				g["ball_x"] + RADIUS > this.rightPaddle.x &&
+				g["ball_y"] > this.rightPaddle.y &&
+				g["ball_y"] < this.rightPaddle.y + this.rightPaddle.height
 		   )
 		{
 			this.ball.dx = -this.ball.dx;
@@ -119,7 +119,7 @@ def pong_state(request):
 		}
 
 		// Check for game over
-		if (this.ball.x - this.ball.radius < 0 || this.ball.x + this.ball.radius > this.canvas.width)
+		if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > this.canvas.width)
 		{
 			this.resetGame();
 		}
