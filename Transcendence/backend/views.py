@@ -9,6 +9,10 @@ online_players = {}
 playings_players = {}
 games = {}
 game_id = 0
+HEIGHT = 400
+WIDTH = 800
+PADDLE_WIDTH = 10
+PADDLE_HEIGHT = 60
 
 def index(request):
 	return (render(request, 'index.html'))
@@ -60,12 +64,20 @@ def online_players_list(request):
     return (JsonResponse({"invitations": [], "online_players_list": users}))
 
 @csrf_exempt
+def pong_state(request):
+    #print(online_players)
+    global online_players
+    global games
+    global WIDTH, HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT
+
+@csrf_exempt
 def invite(request):
     #print(online_players)
     #print(request.POST)
     global game_id
     global online_players
     global games
+    global WIDTH, HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT
     players = request.POST.getlist('players[]')
     print(players)
     for user in players:
@@ -80,9 +92,15 @@ def invite(request):
         "status": "waiting",
         "players": players,
         "host": request.POST['host'],
-        "accepted": [request.POST['host']]
+        "accepted": [request.POST['host']],
+        "data": 
+        {
+            "ball_x": -WIDTH / 2 + PADDLE_WIDTH,
+            "ball_y": -HEIGHT / 2,
+            "paddle": [0 for i in range(len(players))]
         }
-    print(games)
+    }
+    #print(games)
     for user in players:
         online_players[user]['invitations'][game_id] = games[game_id]
     return (JsonResponse({"game_id": game_id}))
