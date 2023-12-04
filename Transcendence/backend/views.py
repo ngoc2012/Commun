@@ -14,6 +14,7 @@ WIDTH = 800
 PADDLE_WIDTH = 10
 PADDLE_HEIGHT = 60
 RADIUS = 10
+PADDLE_VITESSE = 5
 
 def index(request):
 	return (render(request, 'index.html'))
