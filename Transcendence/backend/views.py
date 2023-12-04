@@ -72,7 +72,7 @@ def pong_state(request):
     games[g_id]
     g_id = int(request.POST['game_id'])
     if (g_id not in games.keys()):
-        return HttpResponse("Game " + str(g_id) + " was not found.")
+        return HttpResponse("Error: Game " + str(g_id) + " was not found.")
     user = request.POST['user']
 
 @csrf_exempt
@@ -96,10 +96,11 @@ def invite(request):
         "game": request.POST['game'],
         "status": "waiting",
         "players": players,
+        "n": len(players),
         "order": {},
         "host": request.POST['host'],
         "accepted": [request.POST['host']],
-        "update": dict.fromkeys(players, False),
+        "update": [0 for i in range(len(players))],
         "data": 
         {
             "ball_x": -WIDTH / 2 + PADDLE_WIDTH,
