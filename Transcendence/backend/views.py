@@ -63,17 +63,17 @@ def online_players_list(request):
     #print(online_players)
     return (JsonResponse({"invitations": [], "online_players_list": users}))
 
-@csrf_exempt
-def pong_state(request):
-    #print(online_players)
-    global online_players
-    global games
-    global WIDTH, HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT
-    games[g_id]
-    g_id = int(request.POST['game_id'])
-    if (g_id not in games.keys()):
-        return HttpResponse("Game " + str(g_id) + " was not found.")
-    user = request.POST['user']
+#@csrf_exempt
+#def pong_state(request):
+#    #print(online_players)
+#    global online_players
+#    global games
+#    global WIDTH, HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT
+#    games[g_id]
+#    g_id = int(request.POST['game_id'])
+#    if (g_id not in games.keys()):
+#        return HttpResponse("Game " + str(g_id) + " was not found.")
+#    user = request.POST['user']
 
 @csrf_exempt
 def invite(request):
@@ -102,7 +102,7 @@ def invite(request):
         {
             "ball_x": -WIDTH / 2 + PADDLE_WIDTH,
             "ball_y": -HEIGHT / 2,
-            "paddle": dict.fromkeys(players, 0)
+            "position": dict.fromkeys(players, 0)
         }
     }
     #print(games)
