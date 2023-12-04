@@ -81,43 +81,34 @@ def pong_state(request):
     i = g["update"]["order"][user]
     if g["update"][i] == 1:
         return HttpResponse("wait")
-    g["ball_x"] += g["dx"];
-    g["ball_y"] += g["dy"];
-    # Bounce off the top and bottom walls
-    if (g["ball_y"] - RADIUS < 0 || g["ball_y"] + RADIUS > HEIGHT)
-		g["dy"] = -g["dy"];
-	# Bounce off left paddle
-	if (g["ball_x"] - RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
-		g["ball_y"] > this.leftPaddle.y &&
-		g["ball_y"] < this.leftPaddle.y + this.leftPaddle.height)
-		g["dx"] = -g["dx"];
-	# Bounce off right paddle
-	if (g["ball_x"] + RADIUS > this.rightPaddle.x &&
-		g["ball_y"] > this.rightPaddle.y &&
-		g["ball_y"] < this.rightPaddle.y + this.rightPaddle.height)
-		g["dx"] = -g["dx"];
     to_do = request.POST['do']
     if (to_do == "up" && d["data"]["position"][i] < HEIGHT - PADDLE_HEIGHT / 2)
 		d["data"]["position"][i] += PADDLE_VITESSE;
-
-	# Move paddles
-		if (this.leftPaddle.y + this.leftPaddle.dy > 0 && this.leftPaddle.y + this.leftPaddle.dy < HEIGHT - this.leftPaddle.height)
-		{
-		}
-
-		if (this.rightPaddle.y + this.rightPaddle.dy > 0 && this.rightPaddle.y + this.rightPaddle.dy < HEIGHT - this.rightPaddle.height)
-		{
-			this.rightPaddle.y += this.rightPaddle.dy;
-		}
-
-		// Check for game over
-		if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > WIDTH)
-		{
-			this.resetGame();
-		}
+    else if (to_do == "down" && d["data"]["position"][i] > PADDLE_HEIGHT / 2)
+		d["data"]["position"][i] -= PADDLE_VITESSE;
     g["update"][i] = 1
     if sum(g["update"]) == g["n"]
         g["update"] = [0 for i in range(len(players))]
+        g["ball_x"] += g["dx"];
+        g["ball_y"] += g["dy"];
+        # Bounce off the top and bottom walls
+        if (g["ball_y"] - RADIUS < 0 || g["ball_y"] + RADIUS > HEIGHT)
+	    	g["dy"] = -g["dy"];
+	    # Bounce off left paddle
+	    if (g["ball_x"] - RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
+	    	g["ball_y"] > this.leftPaddle.y &&
+	    	g["ball_y"] < this.leftPaddle.y + this.leftPaddle.height)
+	    	g["dx"] = -g["dx"];
+	    # Bounce off right paddle
+	    if (g["ball_x"] + RADIUS > this.rightPaddle.x &&
+	    	g["ball_y"] > this.rightPaddle.y &&
+	    	g["ball_y"] < this.rightPaddle.y + this.rightPaddle.height)
+	    	g["dx"] = -g["dx"];
+	    	// Check for game over
+	    	if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > WIDTH)
+	    	{
+	    		this.resetGame();
+	    	}
     return (JsonResponse(games[g_id]))
 
 @csrf_exempt
