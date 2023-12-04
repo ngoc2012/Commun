@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/04 08:26:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/04 08:31:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,12 +122,12 @@ bool	Configuration::location_parser(std::string cmd, Location* loc, std::vector<
 	else if (words[0] == "cgi_pass")
 	{
 		struct stat	info;
-		if (!(stat(words[1].c_str(), &info) == 0 && S_ISDIR(info.st_mode)))
+		if (!(stat(words[1].c_str(), &info) == 0))
 		{
 			std::cerr << "Error: cgi pass not found" << std::endl;
 			return (true);
 		}
-		loc->set_alias(words[1]);
+		loc->set_cgi_pass(words[1]);
 	}
 	else
 		return (true);
