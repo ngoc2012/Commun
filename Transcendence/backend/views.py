@@ -69,6 +69,11 @@ def pong_state(request):
     global online_players
     global games
     global WIDTH, HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT
+    games[g_id]
+    g_id = int(request.POST['game_id'])
+    if (g_id not in games.keys()):
+        return HttpResponse("Game " + str(g_id) + " was not found.")
+    user = request.POST['user']
 
 @csrf_exempt
 def invite(request):
