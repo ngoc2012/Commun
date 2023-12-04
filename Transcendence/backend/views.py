@@ -99,16 +99,16 @@ def invite(request):
         "order": {},
         "host": request.POST['host'],
         "accepted": [request.POST['host']],
-        "update": dict.fromkeys(players, False)
+        "update": dict.fromkeys(players, False),
         "data": 
         {
             "ball_x": -WIDTH / 2 + PADDLE_WIDTH,
             "ball_y": -HEIGHT / 2,
-            "position": dict.fromkeys(players, 0),
-            "side": dict.fromkeys(players, 1)
+            "position": [0 for i in range(len(players))],
+            "side": [i % 2 for i in range(len(players))]
         }
     }
-    #print(games)
+    print(games)
     for i, user in enumerate(players):
         games[game_id]["order"][user] = i
         online_players[user]['invitations'][game_id] = games[game_id]
