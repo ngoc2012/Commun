@@ -13,6 +13,7 @@ HEIGHT = 400
 WIDTH = 800
 PADDLE_WIDTH = 10
 PADDLE_HEIGHT = 60
+RADIUS = 10
 
 def index(request):
 	return (render(request, 'index.html'))
@@ -81,6 +82,47 @@ def pong_state(request):
         return HttpResponse("Error: Wait for update.")
     g["ball_x"] += g["dx"];
     g["ball_y"] += g["dy"];
+    # Bounce off the top and bottom walls
+		if (this.ball.y - this.ball.radius < 0 || this.ball.y + this.ball.radius > this.canvas.height)
+		{
+			this.ball.dy = -this.ball.dy;
+		}
+		// Bounce off left paddle
+		if (
+				this.ball.x - this.ball.radius < this.leftPaddle.x + this.leftPaddle.width &&
+				this.ball.y > this.leftPaddle.y &&
+				this.ball.y < this.leftPaddle.y + this.leftPaddle.height
+		   )
+		{
+			this.ball.dx = -this.ball.dx;
+		}
+
+		// Bounce off right paddle
+		if (
+				this.ball.x + this.ball.radius > this.rightPaddle.x &&
+				this.ball.y > this.rightPaddle.y &&
+				this.ball.y < this.rightPaddle.y + this.rightPaddle.height
+		   )
+		{
+			this.ball.dx = -this.ball.dx;
+		}
+
+		// Move paddles
+		if (this.leftPaddle.y + this.leftPaddle.dy > 0 && this.leftPaddle.y + this.leftPaddle.dy < this.canvas.height - this.leftPaddle.height)
+		{
+			this.leftPaddle.y += this.leftPaddle.dy;
+		}
+
+		if (this.rightPaddle.y + this.rightPaddle.dy > 0 && this.rightPaddle.y + this.rightPaddle.dy < this.canvas.height - this.rightPaddle.height)
+		{
+			this.rightPaddle.y += this.rightPaddle.dy;
+		}
+
+		// Check for game over
+		if (this.ball.x - this.ball.radius < 0 || this.ball.x + this.ball.radius > this.canvas.width)
+		{
+			this.resetGame();
+		}
     g["update"][i] = 1
     if sum(g["update"]) == g["n"]
         g["update"] = [0 for i in range(len(players))]
