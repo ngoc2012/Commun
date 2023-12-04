@@ -63,17 +63,17 @@ def online_players_list(request):
     #print(online_players)
     return (JsonResponse({"invitations": [], "online_players_list": users}))
 
-#@csrf_exempt
-#def pong_state(request):
-#    #print(online_players)
-#    global online_players
-#    global games
-#    global WIDTH, HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT
-#    games[g_id]
-#    g_id = int(request.POST['game_id'])
-#    if (g_id not in games.keys()):
-#        return HttpResponse("Game " + str(g_id) + " was not found.")
-#    user = request.POST['user']
+@csrf_exempt
+def pong_state(request):
+    #print(online_players)
+    global online_players
+    global games
+    global WIDTH, HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT
+    games[g_id]
+    g_id = int(request.POST['game_id'])
+    if (g_id not in games.keys()):
+        return HttpResponse("Game " + str(g_id) + " was not found.")
+    user = request.POST['user']
 
 @csrf_exempt
 def invite(request):
@@ -96,6 +96,7 @@ def invite(request):
         "game": request.POST['game'],
         "status": "waiting",
         "players": players,
+        "order": {},
         "host": request.POST['host'],
         "accepted": [request.POST['host']],
         "update": dict.fromkeys(players, False)
@@ -108,7 +109,8 @@ def invite(request):
         }
     }
     #print(games)
-    for user in players:
+    for i, user in enumerate(players):
+        games[game_id]["order"][user] = i
         online_players[user]['invitations'][game_id] = games[game_id]
     return (JsonResponse({"game_id": game_id}))
 
