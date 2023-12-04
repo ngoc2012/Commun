@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 15:40:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/04 08:27:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class	Location
 		std::string			_url;
 		std::vector<e_method>		_methods;
 		std::string			_alias;
+		std::string			_cgi_pass;
 
 		Location();
 		Location(const Location&);
