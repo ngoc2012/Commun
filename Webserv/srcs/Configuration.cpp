@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/04 08:34:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/04 08:39:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,10 @@ bool	Configuration::server_parser(std::string cmd, Server* server, std::vector<s
 bool	Configuration::location_parser(std::string cmd, Location* loc, std::vector<std::string>& words)
 {
 	if (cmd.substr(0, 2) != "		")
+    {
+        std::cerr << "Error: Indentation error" << std::endl;
 		return (true);
+    }
 	if (words[0] == "methods")
 		for (std::vector<std::string>::iterator it = words.begin() + 1;
 				it != words.end(); ++it)
