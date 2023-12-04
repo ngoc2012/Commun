@@ -98,6 +98,7 @@ def invite(request):
         "players": players,
         "host": request.POST['host'],
         "accepted": [request.POST['host']],
+        "update": dict.fromkeys(players, False)
         "data": 
         {
             "ball_x": -WIDTH / 2 + PADDLE_WIDTH,
