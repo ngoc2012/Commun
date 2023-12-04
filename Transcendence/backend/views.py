@@ -94,9 +94,9 @@ def pong_state(request):
         # Bounce off the top and bottom walls
         if (g["ball_y"] - RADIUS < 0 || g["ball_y"] + RADIUS > HEIGHT)
 	    	g["dy"] = -g["dy"];
-	    # Bounce off left paddle
+	    # Bounce off paddle
 	    if (g["ball_x"] - RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
-	        g["ball_x"] + RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
+	        g["ball_x"] + RADIUS > this.leftPaddle.x + this.leftPaddle.width &&
 	    	g["ball_y"] > this.leftPaddle.y - HEIGHT / 2 &&
 	    	g["ball_y"] < this.leftPaddle.y + HEIGHT / 2)
 	    	g["dx"] = -g["dx"];
@@ -149,6 +149,7 @@ def invite(request):
     }
     print(games)
     for i, user in enumerate(players):
+        games[game_id]["x"][i] = i
         games[game_id]["order"][user] = i
         online_players[user]['invitations'][game_id] = games[game_id]
     return (JsonResponse({"game_id": game_id}))
