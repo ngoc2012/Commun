@@ -83,43 +83,37 @@ def pong_state(request):
     g["ball_x"] += g["dx"];
     g["ball_y"] += g["dy"];
     # Bounce off the top and bottom walls
-    if (g["ball_y"] - RADIUS < 0 || g["ball_y"] + RADIUS > this.canvas.height)
-		{
-			this.ball.dy = -this.ball.dy;
-		}
-		// Bounce off left paddle
-		if (
-				g["ball_x"] - RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
-				g["ball_y"] > this.leftPaddle.y &&
-				g["ball_y"] < this.leftPaddle.y + this.leftPaddle.height
-		   )
-		{
-			this.ball.dx = -this.ball.dx;
-		}
+    if (g["ball_y"] - RADIUS < 0 || g["ball_y"] + RADIUS > HEIGHT)
+		g["dy"] = -g["dy"];
+	# Bounce off left paddle
+	if (g["ball_x"] - RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
+		g["ball_y"] > this.leftPaddle.y &&
+		g["ball_y"] < this.leftPaddle.y + this.leftPaddle.height)
+		g["dx"] = -g["dx"];
 
-		// Bounce off right paddle
+	# Bounce off right paddle
 		if (
 				g["ball_x"] + RADIUS > this.rightPaddle.x &&
 				g["ball_y"] > this.rightPaddle.y &&
 				g["ball_y"] < this.rightPaddle.y + this.rightPaddle.height
 		   )
 		{
-			this.ball.dx = -this.ball.dx;
+			g["dx"] = -g["dx"];
 		}
 
 		// Move paddles
-		if (this.leftPaddle.y + this.leftPaddle.dy > 0 && this.leftPaddle.y + this.leftPaddle.dy < this.canvas.height - this.leftPaddle.height)
+		if (this.leftPaddle.y + this.leftPaddle.dy > 0 && this.leftPaddle.y + this.leftPaddle.dy < HEIGHT - this.leftPaddle.height)
 		{
 			this.leftPaddle.y += this.leftPaddle.dy;
 		}
 
-		if (this.rightPaddle.y + this.rightPaddle.dy > 0 && this.rightPaddle.y + this.rightPaddle.dy < this.canvas.height - this.rightPaddle.height)
+		if (this.rightPaddle.y + this.rightPaddle.dy > 0 && this.rightPaddle.y + this.rightPaddle.dy < HEIGHT - this.rightPaddle.height)
 		{
 			this.rightPaddle.y += this.rightPaddle.dy;
 		}
 
 		// Check for game over
-		if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > this.canvas.width)
+		if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > WIDTH)
 		{
 			this.resetGame();
 		}
