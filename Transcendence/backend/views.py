@@ -144,7 +144,7 @@ def invite(request):
             "ball_y": -HEIGHT / 2,
             "dx": 5,
             "dy": 5,
-            "position": [0 for i in range(len(players))],
+            "position": [-PADDLE_HEIGHT / 2 for i in range(len(players))],
             "side": [i % 2 for i in range(len(players))]
         }
     }
