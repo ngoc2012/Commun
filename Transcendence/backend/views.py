@@ -96,8 +96,8 @@ def pong_state(request):
 	    	g["dy"] = -g["dy"];
 	    # Bounce off left paddle
 	    if (g["ball_x"] - RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
-	    	g["ball_y"] > this.leftPaddle.y &&
-	    	g["ball_y"] < this.leftPaddle.y + this.leftPaddle.height)
+	    	g["ball_y"] > this.leftPaddle.y - HEIGHT / 2 &&
+	    	g["ball_y"] < this.leftPaddle.y + HEIGHT / 2)
 	    	g["dx"] = -g["dx"];
 	    # Bounce off right paddle
 	    if (g["ball_x"] + RADIUS > this.rightPaddle.x &&
