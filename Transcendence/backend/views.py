@@ -96,6 +96,7 @@ def pong_state(request):
 	    	g["dy"] = -g["dy"];
 	    # Bounce off left paddle
 	    if (g["ball_x"] - RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
+	        g["ball_x"] + RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
 	    	g["ball_y"] > this.leftPaddle.y - HEIGHT / 2 &&
 	    	g["ball_y"] < this.leftPaddle.y + HEIGHT / 2)
 	    	g["dx"] = -g["dx"];
@@ -135,6 +136,7 @@ def invite(request):
         "host": request.POST['host'],
         "accepted": [request.POST['host']],
         "update": [0 for i in range(len(players))],
+        "x": [0 for i in range(len(players))],
         "data": 
         {
             "ball_x": -WIDTH / 2 + PADDLE_WIDTH,
