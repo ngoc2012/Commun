@@ -78,10 +78,12 @@ def pong_state(request):
     i = games[g_id]["update"]["order"][user]
     if games[g_id]["update"][i] == 1:
         return HttpResponse("Error: Wait for update.")
-    games[g_id]["update"][i] = 1:
-    if sum(games[g_id]["update"] == games[g_id]["n"])
-    if 
 
+
+    games[g_id]["update"][i] = 1:
+    if sum(games[g_id]["update"]) == games[g_id]["n"]
+        games[g_id]["update"] = [0 for i in range(len(players))]
+    return (JsonResponse(games[g_id]))
 
 @csrf_exempt
 def invite(request):
