@@ -87,7 +87,7 @@ def pong_state(request):
     else if (to_do == "down" && d["data"]["position"][i] > PADDLE_HEIGHT / 2)
 		d["data"]["position"][i] -= PADDLE_VITESSE;
     g["update"][i] = 1
-    if sum(g["update"]) == g["n"]
+    if sum(g["update"]) == g["n"]:
         g["update"] = [0 for i in range(len(players))]
         g["ball_x"] += g["dx"];
         g["ball_y"] += g["dy"];
@@ -104,11 +104,9 @@ def pong_state(request):
 	    	g["ball_y"] > this.rightPaddle.y &&
 	    	g["ball_y"] < this.rightPaddle.y + this.rightPaddle.height)
 	    	g["dx"] = -g["dx"];
-	    	// Check for game over
-	    	if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > WIDTH)
-	    	{
-	    		this.resetGame();
-	    	}
+	    # Check for game over
+	    if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > WIDTH)
+	    	this.resetGame();
     return (JsonResponse(games[g_id]))
 
 @csrf_exempt
