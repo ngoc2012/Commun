@@ -80,7 +80,7 @@ def pong_state(request):
     g = games[g_id]
     i = g["update"]["order"][user]
     if g["update"][i] == 1:
-        return HttpResponse("Error: Wait for update.")
+        return HttpResponse("wait")
     g["ball_x"] += g["dx"];
     g["ball_y"] += g["dy"];
     # Bounce off the top and bottom walls
