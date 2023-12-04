@@ -150,7 +150,10 @@ def invite(request):
     }
     print(games)
     for i, user in enumerate(players):
-        games[game_id]["x"][i] = i
+        if (i % 2 == 0)
+            games[game_id]["x"][i] = i / 2 * PADDLE_DISTANCE
+        else
+            games[game_id]["x"][i] = WIDTH - (int(i / 2) * PADDLE_DISTANCE)
         games[game_id]["order"][user] = i
         online_players[user]['invitations'][game_id] = games[game_id]
     return (JsonResponse({"game_id": game_id}))
