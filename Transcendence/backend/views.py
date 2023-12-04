@@ -75,8 +75,12 @@ def pong_state(request):
     user = request.POST['user']
     if user not in games[g_id]["players"]:
         return HttpResponse("Error: Player " + user + " was not found in the game.")
-    if games[g_id]["update"] == 1:
+    i = games[g_id]["update"]["order"][user]
+    if games[g_id]["update"][i] == 1:
         return HttpResponse("Error: Wait for update.")
+    games[g_id]["update"][i] = 1:
+    if sum(games[g_id]["update"] == games[g_id]["n"])
+    if 
 
 
 @csrf_exempt
