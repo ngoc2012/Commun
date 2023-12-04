@@ -80,7 +80,9 @@ def pong_state(request):
         return HttpResponse("Error: Wait for update.")
 
 
-    games[g_id]["update"][i] = 1:
+		this.ball.x += DX;
+		this.ball.y += DY;
+    games[g_id]["update"][i] = 1
     if sum(games[g_id]["update"]) == games[g_id]["n"]
         games[g_id]["update"] = [0 for i in range(len(players))]
     return (JsonResponse(games[g_id]))
@@ -115,6 +117,8 @@ def invite(request):
         {
             "ball_x": -WIDTH / 2 + PADDLE_WIDTH,
             "ball_y": -HEIGHT / 2,
+            "dx": 5,
+            "dy": 5,
             "position": [0 for i in range(len(players))],
             "side": [i % 2 for i in range(len(players))]
         }
