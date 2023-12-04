@@ -102,7 +102,7 @@ def invite(request):
         {
             "ball_x": -WIDTH / 2 + PADDLE_WIDTH,
             "ball_y": -HEIGHT / 2,
-            "paddle": [0 for i in range(len(players))]
+            "paddle": dict.fromkeys(players, 0)
         }
     }
     #print(games)
