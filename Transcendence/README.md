@@ -115,8 +115,8 @@ By default, Django requires a valid CSRF token for any `POST` requests to be pro
 * Include CSRF Token in Your POST Request:
 Make sure that your POST request includes the CSRF token. In a Django template, you can use the `{% csrf_token %}` template tag to include the CSRF token in your form.
 
-html
-```
+
+```html
 <form method="post" action="{% url 'my_post_endpoint' %}">
     {% csrf_token %}
     <!-- Your form fields go here -->
@@ -141,8 +141,7 @@ If you choose this approach, make sure that your application has other security 
 * Check if Middleware Order is Correct:
 Ensure that the 'django.middleware.csrf.CsrfViewMiddleware' middleware is included in your MIDDLEWARE setting and its order is correct. It should typically come before other middleware classes.
 
-python
-```
+```python
 MIDDLEWARE = [
     # ...
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -152,8 +151,7 @@ MIDDLEWARE = [
 * AJAX Requests Include CSRF Token:
 If you are making AJAX requests, make sure to include the CSRF token in the request headers. You can retrieve the token from a cookie named `csrftoken` and include it in the `X-CSRFToken` header.
 
-javascript
-```
+```javascript
 var csrftoken = getCookie('csrftoken');
 
 // Include the token in your AJAX request
@@ -171,8 +169,51 @@ $.ajax({
 });
 ```
 
-## Javascript
+## Javascript (SPA)
 
 [How to include a JavaScript file in another JavaScript file?](https://www.scaler.com/topics/javascript/import-js-file-in-js/)
 
+### SPA (Single-page application)
+#### URL history
 
+Use the pushState method to add a new state to the browser's history stack without causing a navigation.
+
+```javascript
+// Change the URL without reloading the page
+function changeURLWithoutReload(newPath) {
+    window.history.pushState({}, '', newPath);
+}
+
+// Example usage
+changeURLWithoutReload('/new-page');
+
+// You might also want to handle the popstate event to handle back/forward navigation
+window.onpopstate = function(event) {
+    // Handle the back/forward button click here
+    console.log('Back/Forward button clicked');
+};
+```
+
+#### Router
+In case client does not access main page at startup
+
+```javascript
+// Check the URL on page load
+window.onload = function() {
+    const currentPath = window.location.pathname;
+
+    // Use a switch statement or if-else conditions to handle different routes
+    switch (currentPath) {
+        case '/page1':
+            // Load content for Page 1
+            break;
+        case '/page2':
+            // Load content for Page 2
+            break;
+        default:
+            // Handle unknown routes or redirect to a default route
+            window.location.href = '/default';
+            break;
+    }
+};
+```
