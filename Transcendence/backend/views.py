@@ -109,7 +109,7 @@ def pong_state(request):
 	    # Check for game over
 	    if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > WIDTH)
 	    	this.resetGame();
-    return (JsonResponse(games[g_id]))
+    return (JsonResponse({"ball": [g["ball_x"], g["ball_y"]], "postion": d["data"]["position"]}))
 
 @csrf_exempt
 def invite(request):
