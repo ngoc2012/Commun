@@ -95,6 +95,7 @@ def pong_state(request):
 		g["ball_y"] > this.rightPaddle.y &&
 		g["ball_y"] < this.rightPaddle.y + this.rightPaddle.height)
 		g["dx"] = -g["dx"];
+    to_do = request.POST['do']
 
 	# Move paddles
 		if (this.leftPaddle.y + this.leftPaddle.dy > 0 && this.leftPaddle.y + this.leftPaddle.dy < HEIGHT - this.leftPaddle.height)
