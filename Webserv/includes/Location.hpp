@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/04 08:27:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/04 08:28:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ class	Location
 		std::vector<e_method>		get_methods(void) const;
 		std::string			get_alias(void) const;
 		std::string			get_url(void) const;
+        std::string			get_cgi_pass(void) const;
 
 		void				insert_methods(e_method);
 		void				set_alias(std::string);
 		void				set_url(std::string);
+        void			    set_cgi_pass(std::string);
 };
 
 #endif
