@@ -19,7 +19,7 @@ export class Pong
             url: '/pong_state/',
             method: 'POST',
             data: {
-                "host": this.main.user,
+                "user": this.main.user,
                 "game": "pong",
                 "players": players
             },
