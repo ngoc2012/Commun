@@ -73,7 +73,7 @@ def pong_state(request):
     global online_players
     global games
     global WIDTH, HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_VITESSE, RADIUS
-    print(request.POST)
+    #print(request.POST)
     g_id = int(request.POST['id'])
     if (g_id not in games.keys()):
         return (JsonResponse({"status": "error", "message": "Error: Game " + str(g_id) + " was not found."}))
