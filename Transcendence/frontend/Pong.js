@@ -1,7 +1,7 @@
 export class Pong
 {
     to_do = "";
-    update_time_interval = 2;
+    update_time_interval = 2000;
     data;
     canvas;
     ctx;
@@ -68,7 +68,7 @@ export class Pong
                 "do": this.to_do
             },
             success: (response) => {
-                if (response != "wait")
+                if (response.ball)
                 {
                     this.data = response;
                     this.draw();
