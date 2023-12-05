@@ -93,23 +93,23 @@ def pong_state(request):
         d["ball_x"] = d["position"][g["service"]]
     if g["status"] == "started" && sum(g["update"]) == g["n"]:
         g["update"] = [0 for i in range(len(players))]
-        d["ball_x"] += g["dx"];
-        d["ball_y"] += g["dy"];
+        d["ball_x"] += d["dx"];
+        d["ball_y"] += d["dy"];
         # Bounce off the top and bottom walls
-        if (g["data"]["ball_y"] - RADIUS < 0 || g["data"]["ball_y"] + RADIUS > HEIGHT)
-	    	g["dy"] = -g["dy"];
+        if (d["data"]["ball_y"] - RADIUS < 0 || d["data"]["ball_y"] + RADIUS > HEIGHT)
+	    	d["dy"] = -d["dy"];
 	    # Bounce off paddle
         for user in games[g_id]["players"]:
-	    if (g["ball_x"] - RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
-	        g["ball_x"] + RADIUS > this.leftPaddle.x + this.leftPaddle.width &&
-	    	g["ball_y"] > this.leftPaddle.y - HEIGHT / 2 &&
-	    	g["ball_y"] < this.leftPaddle.y + HEIGHT / 2)
-	    	g["dx"] = -g["dx"];
+	    if (d["ball_x"] - RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
+	        d["ball_x"] + RADIUS > this.leftPaddle.x + this.leftPaddle.width &&
+	    	d["ball_y"] > this.leftPaddle.y - HEIGHT / 2 &&
+	    	d["ball_y"] < this.leftPaddle.y + HEIGHT / 2)
+	    	d["dx"] = -d["dx"];
 	    # Check for game over
 	    if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > WIDTH)
             g["service"] = (g["service"] + 1) % g["n"]
             g["status"] = "end"
-    return (JsonResponse({"ball": [g["ball_x"], g["ball_y"]], "postion": d["data"]["position"]}))
+    return (JsonResponse({"ball": [d["ball_x"], d["ball_y"]], "postion": d["data"]["position"]}))
 
 @csrf_exempt
 def start_game(request):
