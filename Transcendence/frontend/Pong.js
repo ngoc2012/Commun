@@ -26,6 +26,13 @@ export class Pong
                     break;
             }
         });
+        dom_start = document.getElementById("start");
+        dom_start.addEventListener("click", () => {
+            var players = this.get_players_selected();
+            //console.log(players);
+            if (players.length === 2)
+                this.invite(players);
+        });
 
         /*
         document.addEventListener('keyup', function (event) {
