@@ -15,6 +15,26 @@ export class Pong
 	}
 
 	draw() {
+        $.ajax({
+            url: '/pong_state/',
+            method: 'POST',
+            data: {
+                "host": this.main.user,
+                "game": "pong",
+                "players": players
+            },
+            success: (response) => {
+                this.main.name = "pong";
+                this.main.id = response.game_id;
+                this.main.status = "waiting";
+                this.main.dom_status.textContent = "New game " + this.main.name + " " + this.main.id + " created. Wait for players...";
+                //this.dom_online_players_list.innerHTML = "";
+                //this.dom_invitations.innerHTML = "";
+            },
+            error: function(error) {
+                console.error('Error: invite POST fail', error.message);
+            }
+        });
 		// Clear the canvas
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
