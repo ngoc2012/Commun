@@ -1,9 +1,5 @@
 export class Pong
 {
-	height = 400;
-	width = 800;
-	paddleWidth = 10;
-	paddleHeight = 60;
     to_do = "";
     update_time_interval = 2;
     data;
@@ -68,7 +64,7 @@ export class Pong
 
 	draw() {
 		// Clear the canvas
-		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+		this.ctx.clearRect(0, 0, this.main.game_info.data.width, this.main.game_info.data.height);
 
 		// Draw paddles
 		this.ctx.fillStyle = '#8b3a62';
