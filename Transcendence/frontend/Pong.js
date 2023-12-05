@@ -74,7 +74,7 @@ export class Pong
                 "do": to_do
             },
             success: (response) => {
-                if (response.ball)
+                if (response.status === "ok")
                 {
                     console.log(this.to_do);
                     console.log(response);
