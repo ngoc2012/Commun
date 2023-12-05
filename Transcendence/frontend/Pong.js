@@ -74,7 +74,7 @@ export class Pong
 		// Draw paddles
 		this.ctx.fillStyle = '#8b3a62';
         this.data.forEach((y, i) => {
-		    this.ctx.fillRect(this.main.game_info.data.x[i], this.leftPaddle.y, this.leftPaddle.width, this.leftPaddle.height);
+		    this.ctx.fillRect(this.main.game_info.data.x[i], this.data.position[i], this.leftPaddle.width, this.data.position[i] + this.paddleWidth);
         }
 
 		// Draw this.ball
