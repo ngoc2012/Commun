@@ -86,9 +86,9 @@ def pong_state(request):
     #if g["update"][i] == 1:
     #    return HttpResponse("wait")
     to_do = request.POST['do']
-    if (to_do == "up" and d["position"][i] < HEIGHT - PADDLE_HEIGHT):
+    if to_do == "up" and d["position"][i] > 0:
         d["position"][i] -= PADDLE_VITESSE
-    elif (to_do == "down" and d["position"][i] > 0):
+    elif to_do == "down" and d["position"][i] < HEIGHT - PADDLE_HEIGHT:
         d["position"][i] += PADDLE_VITESSE
     g["update"][i] = 1
     if g["status"] != "started":
