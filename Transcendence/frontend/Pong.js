@@ -53,13 +53,13 @@ export class Pong
                     setTimeout(() => {this.loop();}, this.update_time_interval);
                 else
                 {
-                    this.data = response
+                    this.data = response;
                     this.draw();
                     this.to_do = "";
                 }
             },
             error: function(error) {
-                console.error('Error: invite POST fail', error.message);
+                console.error('Error: pong state POST fail', error.message);
             }
         });
     }
