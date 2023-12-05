@@ -8,18 +8,6 @@ export class Pong
 
 	constructor(m) {
         this.main = m;
-        // Handle keyboard input
-        document.addEventListener('keydown', function (event) {
-            switch (event.key) {
-                case 'ArrowUp':
-                    this.get_state("up");
-                    break;
-                case 'ArrowDown':
-                    this.get_state("down");
-                    break;
-            }
-            //console.log(event.key);
-        });
     }
 
 	init() {
@@ -44,6 +32,18 @@ export class Pong
                     console.error('Error: start POST fail', error.message);
                 }
             });
+        });
+        // Handle keyboard input
+        document.addEventListener('keydown', function (event) {
+            switch (event.key) {
+                case 'ArrowUp':
+                    this.get_state("up");
+                    break;
+                case 'ArrowDown':
+                    this.get_state("down");
+                    break;
+            }
+            //console.log(event.key);
         });
 
         /*
