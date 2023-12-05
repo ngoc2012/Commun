@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
 import time
+from random import randrange
 
 online_players = {}
 playings_players = {}
