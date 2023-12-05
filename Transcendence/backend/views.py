@@ -202,7 +202,7 @@ def invite(request):
             "update": [0 for i in range(len(players))],
         }
     }
-    g = games[g_id]
+    g = games[game_id]
     print(games)
     for i, user in enumerate(players):
         if (i % 2 == 0):
