@@ -60,13 +60,18 @@ export class Pong
 	}
 
 	loop() {
+        this.to_do = "";
+        setTimeout(() => {this.loop();}, this.update_time_interval);
+    }
+
+    get_state(to_do) {
         $.ajax({
             url: '/pong_state/',
             method: 'POST',
             data: {
                 "user": this.main.user,
                 "id": this.main.game_info.id,
-                "do": this.to_do
+                "do": to_do
             },
             success: (response) => {
                 if (response.ball)
@@ -75,9 +80,7 @@ export class Pong
                     console.log(response);
                     this.data = response;
                     this.draw();
-                    this.to_do = "";
                 }
-                setTimeout(() => {this.loop();}, this.update_time_interval);
             },
             error: function(error) {
                 console.error('Error: pong state POST fail', error.message);
