@@ -52,14 +52,13 @@ export class Pong
                 "to_do": this.to_do
             },
             success: (response) => {
-                if (response == "wait")
-                    setTimeout(() => {this.loop();}, this.update_time_interval);
-                else
+                if (response != "wait")
                 {
                     this.data = response;
                     this.draw();
                     this.to_do = "";
                 }
+                setTimeout(() => {this.loop();}, this.update_time_interval);
             },
             error: function(error) {
                 console.error('Error: pong state POST fail', error.message);
@@ -73,10 +72,10 @@ export class Pong
 
 		// Draw paddles
 		this.ctx.fillStyle = '#8b3a62';
-        this.data.forEach((y, i) => {
+        this.data.position.forEach((y, i) => {
 		    this.ctx.fillRect(
                 this.main.game_info.data.x[i],
-                this.data.position[i],
+                y,
                 this.main.game_info.data.paddle_width,
                 this.main.game_info.data.paddle_height);
         });
