@@ -123,6 +123,11 @@ def pong_state(request):
             if (g["ball_x"] - RADIUS < 0)
                 for i, user in enumerate(games[g_id]["players"]):
                     if (d["x"][i] > WIDTH / 2)
+                        g["point"][i] += 1
+            else
+                for i, user in enumerate(games[g_id]["players"]):
+                    if (d["x"][i] < WIDTH / 2)
+                        g["point"][i] += 1
             g["service"] = (g["service"] + 1) % g["n"]
             if d["x"][g["service"]] > WIDTH / 2
 	    	    d["dx"] = -abs(d["dx"]);
@@ -134,7 +139,7 @@ def pong_state(request):
             else
                 d["ball_x"] = d["x"][g["service"]] + PADDLE_WIDTH / 2 + RADIUS
             g["status"] = "end"
-    return (JsonResponse({"ball": [d["ball_x"], d["ball_y"]], "postion": d["data"]["position"]}))
+            return (JsonResponse({"ball": [d["ball_x"], d["ball_y"]], "position": d["position"], "point": g["point"]}))
 
 @csrf_exempt
 def start_game(request):
@@ -178,6 +183,7 @@ def invite(request):
         "host": request.POST['host'],
         "accepted": [request.POST['host']],
         "update": [0 for i in range(len(players))],
+        "point": [0 for i in range(len(players))],
         "service": 0,
         "data": 
         {
