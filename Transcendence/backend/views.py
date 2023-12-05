@@ -113,13 +113,14 @@ def pong_state(request):
 	        	    d["dx"] = -d["dx"];
         else
             for i, user in enumerate(games[g_id]["players"]):
-                if (d["x"][i] > WIDTH / 2 &&
+                if (d["x"][i] < WIDTH / 2 &&
 	                d["ball_x"] - RADIUS == d["x"][i] &&
 	        	    d["ball_y"] >= d["position"][i] &&
 	        	    d["ball_y"] <= d["position"][i] + PADDLE_HEIGHT)
 	        	    d["dx"] = -d["dx"];
 	    # Check for game over
 	    if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > WIDTH)
+            if (g["ball_x"] - RADIUS < 0)
             g["service"] = (g["service"] + 1) % g["n"]
             if d["x"][g["service"]] > WIDTH / 2
 	    	    d["dx"] = -abs(d["dx"]);
