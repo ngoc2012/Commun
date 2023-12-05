@@ -5,8 +5,10 @@ export class Pong
 	paddleWidth = 10;
 	paddleHeight = 60;
     to_do = "";
-    data;
     update_time_interval = 2;
+    data;
+    canvas;
+    ctx;
 
 	constructor(m) {
         this.main = m;
@@ -37,7 +39,7 @@ export class Pong
             }
         });
         */
-
+        this.loop();
 	}
 
 	loop() {
