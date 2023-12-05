@@ -108,6 +108,28 @@ def pong_state(request):
     return (JsonResponse({"ball": [g["ball_x"], g["ball_y"]], "postion": d["data"]["position"]}))
 
 @csrf_exempt
+def start_game(request):
+    global games
+    global online_players
+    #print(request.POST)
+    g_id = int(request.POST['game_id'])
+    #print(games)
+    #print(games[g_id])
+    if (g_id not in games.keys()):
+        return HttpResponse("Game " + str(g_id) + " was not found.")
+    user = request.POST['user']
+    if (user not in games[g_id]["players"]):
+        return HttpResponse("Player " + user + " was not found in the game.")
+    if (online_players[user]['accepted'] != -1):
+        return HttpResponse("Player " + user + " was in another game.")
+    online_players[user]["accepted"] = g_id
+    if (user not in games[g_id]["accepted"]):
+        games[g_id]["accepted"].append(user)
+        if (len(games[g_id]["accepted"]) == len(games[g_id]["players"])):
+            games[g_id]["status"] = "playing"
+    return (JsonResponse({"game": games[g_id]['game']}))
+
+@csrf_exempt
 def invite(request):
     #print(online_players)
     #print(request.POST)
@@ -166,14 +188,11 @@ def accept_invitation(request):
     print(games)
     print(games[g_id])
     if (g_id not in games.keys()):
-        print("Game " + str(g_id) + " was not found.")
         return HttpResponse("Game " + str(g_id) + " was not found.")
     user = request.POST['user']
     if (user not in games[g_id]["players"]):
-        print("Player " + user + " was not found in the game.")
         return HttpResponse("Player " + user + " was not found in the game.")
     if (online_players[user]['accepted'] != -1):
-        print("Player " + user + " was in another game.")
         return HttpResponse("Player " + user + " was in another game.")
     online_players[user]["accepted"] = g_id
     if (user not in games[g_id]["accepted"]):
