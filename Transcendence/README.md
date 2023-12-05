@@ -203,6 +203,13 @@ application = ProtocolTypeRouter({
 })
 ```
 
+* The `ProtocolTypeRouter` is used to define different protocols, such as HTTP and WebSocket.
+* The `URLRouter` is responsible for routing WebSocket connections based on URL patterns.
+* The `re_path` function is used to define a regular expression pattern for WebSocket paths.
+* The `PongConsumer` is the consumer class that will handle WebSocket connections for the "ws/pong/" path.
+
+You can add more consumers and paths as needed for your application. Each consumer handles the WebSocket connection, and you can define custom logic for handling messages, connecting, disconnecting, etc., within the respective consumer class (`PongConsumer` in this example).
+
 ### Other stuffs
 
 [Disable logging](https://stackoverflow.com/questions/5255657/how-can-i-disable-logging-while-running-unit-tests-in-python-django)
