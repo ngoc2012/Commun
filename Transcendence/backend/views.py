@@ -103,6 +103,7 @@ def pong_state(request):
 	    	g["dx"] = -g["dx"];
 	    # Check for game over
 	    if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > WIDTH)
+            g["service"] = (g["service"] + 1) % g["n"]
             g["status"] = "end"
     return (JsonResponse({"ball": [g["ball_x"], g["ball_y"]], "postion": d["data"]["position"]}))
 
