@@ -130,9 +130,9 @@ def pong_state(request):
                         g["point"][i] += 1
             g["service"] = (g["service"] + 1) % g["n"]
             if d["x"][g["service"]] > WIDTH / 2:
-	    	    d["dx"] = -abs(d["dx"])
+	            d["dx"] = -abs(d["dx"])
             else:
-	    	    d["dx"] = abs(d["dx"])
+	            d["dx"] = abs(d["dx"])
             d["ball_y"] = d["position"][g["service"]] + PADDLE_HEIGHT / 2
             if d["x"][g["service"]] > WIDTH / 2:
                 d["ball_x"] = d["x"][g["service"]] - RADIUS
@@ -193,16 +193,16 @@ def invite(request):
             "dx": 5,
             "dy": 5,
             "position": [-PADDLE_HEIGHT / 2 for i in range(len(players))],
-            "side": [i % 2 for i in range(len(players))]
+            "side": [i % 2 for i in range(len(players))],
             "update": [0 for i in range(len(players))],
         }
     }
     g = games[g_id]
     print(games)
     for i, user in enumerate(players):
-        if (i % 2 == 0)
+        if (i % 2 == 0):
             g["data"]["x"][i] = i / 2 * PADDLE_DISTANCE
-        else
+        else:
             g["data"]["x"][i] = WIDTH - (int(i / 2) * PADDLE_DISTANCE - PADDLE_WIDTH)
         g["order"][user] = i
         online_players[user]['invitations'][game_id] = g
