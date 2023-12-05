@@ -82,8 +82,8 @@ def pong_state(request):
     g = games[g_id]
     d = g["data"]
     i = g["order"][user]
-    if g["update"][i] == 1:
-        return HttpResponse("wait")
+    #if g["update"][i] == 1:
+    #    return HttpResponse("wait")
     to_do = request.POST['do']
     if (to_do == "up" and d["position"][i] < HEIGHT - PADDLE_HEIGHT):
         d["position"][i] += PADDLE_VITESSE
