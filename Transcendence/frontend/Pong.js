@@ -34,7 +34,7 @@ export class Pong
             });
         });
         // Handle keyboard input
-        document.addEventListener('keydown', function (event) {
+        document.addEventListener('keydown', (event) => {
             switch (event.key) {
                 case 'ArrowUp':
                     this.get_state("up");
