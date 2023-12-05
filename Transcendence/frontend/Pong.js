@@ -8,13 +8,6 @@ export class Pong
 
 	constructor(m) {
         this.main = m;
-    }
-
-	init() {
-		this.canvas = document.getElementById('pongCanvas');
-		this.ctx = this.canvas.getContext('2d');
-        this.ctx.canvas.width  = this.main.game_info.data.width;
-        this.ctx.canvas.height = this.main.game_info.data.height;
         // Handle keyboard input
         document.addEventListener('keydown', function (event) {
             switch (event.key) {
@@ -25,7 +18,15 @@ export class Pong
                     this.to_do = "down";
                     break;
             }
+            console.log(event.key);
         });
+    }
+
+	init() {
+		this.canvas = document.getElementById('pongCanvas');
+		this.ctx = this.canvas.getContext('2d');
+        this.ctx.canvas.width  = this.main.game_info.data.width;
+        this.ctx.canvas.height = this.main.game_info.data.height;
         let dom_start = document.getElementById("start");
         dom_start.addEventListener("click", () => {
             $.ajax({
