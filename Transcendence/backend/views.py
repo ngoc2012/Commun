@@ -104,13 +104,20 @@ def pong_state(request):
         if (d["data"]["ball_y"] - RADIUS < 0 || d["data"]["ball_y"] + RADIUS > HEIGHT)
 	    	d["dy"] = -d["dy"];
 	    # Bounce off paddle
-        for user in games[g_id]["players"]:
-            if (d["ball_x"] > WIDTH / 2)
-	        if (d["ball_x"] - RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
-	            d["ball_x"] + RADIUS > this.leftPaddle.x + this.leftPaddle.width &&
-	        	d["ball_y"] > this.leftPaddle.y - HEIGHT / 2 &&
-	        	d["ball_y"] < this.leftPaddle.y + HEIGHT / 2)
-	        	d["dx"] = -d["dx"];
+        if (d["ball_x"] > WIDTH / 2
+            for i, user in enumerate(games[g_id]["players"]):
+                if (d["x"][i] > WIDTH / 2 &&
+	                d["ball_x"] - RADIUS == d["x"][i] &&
+	        	    d["ball_y"] >= d["position"][i] &&
+	        	    d["ball_y"] <= d["position"][i] + PADDLE_HEIGHT)
+	        	    d["dx"] = -d["dx"];
+        else
+            for i, user in enumerate(games[g_id]["players"]):
+                if (d["x"][i] > WIDTH / 2 &&
+	                d["ball_x"] - RADIUS == d["x"][i] &&
+	        	    d["ball_y"] >= d["position"][i] &&
+	        	    d["ball_y"] <= d["position"][i] + PADDLE_HEIGHT)
+	        	    d["dx"] = -d["dx"];
 	    # Check for game over
 	    if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > WIDTH)
             g["service"] = (g["service"] + 1) % g["n"]
