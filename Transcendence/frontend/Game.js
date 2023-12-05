@@ -1,7 +1,6 @@
 export class Game
 {
     update_time_interval = 2000;
-    info;
 
     constructor(m) {
         this.main = m;
@@ -115,6 +114,7 @@ export class Game
                 this.main.name = "pong";
                 this.main.id = response.game_id;
                 this.main.status = "waiting";
+                this.main.game_info = response;
                 this.main.dom_status.textContent = "New game " + this.main.name + " " + this.main.id + " created. Wait for players...";
                 //this.dom_online_players_list.innerHTML = "";
                 //this.dom_invitations.innerHTML = "";
@@ -138,6 +138,7 @@ export class Game
                 this.main.name = response.game;
                 this.main.id = game_id;         
                 this.main.status = "waiting";
+                this.main.game_info = response;
             },
             error: function(error) {
                 console.error('Error: accept invitation POST fail', error.message);
