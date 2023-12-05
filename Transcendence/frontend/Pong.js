@@ -61,6 +61,7 @@ export class Pong
 
 	loop() {
         this.to_do = "";
+        get_state(this.to_do);
         setTimeout(() => {this.loop();}, this.update_time_interval);
     }
 
@@ -77,7 +78,7 @@ export class Pong
                 if (response.status === "ok")
                 {
                     console.log(this.to_do);
-                    console.log(response);
+                    //console.log(response);
                     this.data = response;
                     this.draw();
                 }
