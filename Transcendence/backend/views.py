@@ -203,7 +203,6 @@ def invite(request):
         }
     }
     g = games[game_id]
-    print(games)
     for i, user in enumerate(players):
         if (i % 2 == 0):
             g["data"]["x"][i] = i / 2 * PADDLE_DISTANCE
@@ -211,6 +210,7 @@ def invite(request):
             g["data"]["x"][i] = WIDTH - (int(i / 2) * PADDLE_DISTANCE - PADDLE_WIDTH)
         g["order"][user] = i
         online_players[user]['invitations'][game_id] = g
+    print(games)
     return (JsonResponse(g))
 
 @csrf_exempt
