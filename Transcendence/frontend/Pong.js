@@ -48,6 +48,7 @@ export class Pong
             method: 'POST',
             data: {
                 "user": this.main.user,
+                "game_id": this.main.game_info.id,
                 "to_do": this.to_do
             },
             success: (response) => {

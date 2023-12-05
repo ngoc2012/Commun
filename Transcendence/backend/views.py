@@ -228,7 +228,7 @@ def accept_invitation(request):
         games[g_id]["accepted"].append(user)
         if (len(games[g_id]["accepted"]) == len(games[g_id]["players"])):
             games[g_id]["status"] = "playing"
-    return (JsonResponse({"game": games[g_id]['game']}))
+    return (JsonResponse(games[g_id]))
 
 @csrf_exempt
 def cancel_invitation(request):
