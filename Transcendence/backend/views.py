@@ -103,7 +103,7 @@ def pong_state(request):
 	    	g["dx"] = -g["dx"];
 	    # Check for game over
 	    if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > WIDTH)
-	    	this.resetGame();
+            g["status"] = "end"
     return (JsonResponse({"ball": [g["ball_x"], g["ball_y"]], "postion": d["data"]["position"]}))
 
 @csrf_exempt
@@ -133,6 +133,7 @@ def invite(request):
         "accepted": [request.POST['host']],
         "update": [0 for i in range(len(players))],
         "x": [0 for i in range(len(players))],
+        "service": 0,
         "data": 
         {
             "ball_x": -WIDTH / 2 + PADDLE_WIDTH,
