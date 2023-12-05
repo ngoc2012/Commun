@@ -121,8 +121,8 @@ def pong_state(request):
                     d["ball_y"] <= d["position"][i] + PADDLE_HEIGHT):
 	                d["dx"] = -d["dx"]
 	    # Check for game over
-        if (g["ball_x"] - RADIUS < 0 or g["ball_x"] + RADIUS > WIDTH):
-            if (g["ball_x"] - RADIUS < 0):
+        if (d["ball_x"] - RADIUS < 0 or d["ball_x"] + RADIUS > WIDTH):
+            if (d["ball_x"] - RADIUS < 0):
                 for i, user in enumerate(games[g_id]["players"]):
                     if (d["x"][i] > WIDTH / 2):
                         g["point"][i] += 1
