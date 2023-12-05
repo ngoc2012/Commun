@@ -77,8 +77,9 @@ export class Pong
 		    this.ctx.fillRect(
                 this.main.game_info.data.x[i],
                 this.data.position[i],
-                this.leftPaddle.width, this.data.position[i] + this.main.game_info.data.paddle_width);
-        }
+                this.main.game_info.data.paddle_width,
+                this.main.game_info.data.paddle_height);
+        });
 
 		// Draw this.ball
 		this.ctx.beginPath();
