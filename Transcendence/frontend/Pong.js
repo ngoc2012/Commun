@@ -13,6 +13,27 @@ export class Pong
 	init() {
 		this.canvas = document.getElementById('pongCanvas');
 		this.ctx = this.canvas.getContext('2d');
+        // Handle keyboard input
+        document.addEventListener('keydown', function (event) {
+            switch (event.key) {
+                case 'ArrowUp':
+                    rightPaddle.dy = -5;
+                    break;
+                case 'ArrowDown':
+                    rightPaddle.dy = 5;
+                    break;
+            }
+        });
+
+        document.addEventListener('keyup', function (event) {
+            switch (event.key) {
+                case 'ArrowUp':
+                case 'ArrowDown':
+                    rightPaddle.dy = 0;
+                    break;
+            }
+        });
+
         $.ajax({
             url: '/pong_state/',
             method: 'POST',
