@@ -106,6 +106,7 @@ def pong_state(request):
         if d["ball_y"] - RADIUS <= 0 or d["ball_y"] + RADIUS >= HEIGHT:
             d["dy"] = -d["dy"]
 	    # Bounce off paddle
+        print(d["ball_x"])
         if d["ball_x"] > WIDTH / 2:
             for i in range(g["n"]):
                 if (d["x"][i] > WIDTH / 2 and
