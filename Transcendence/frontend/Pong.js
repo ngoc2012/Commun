@@ -28,6 +28,21 @@ export class Pong
         });
         dom_start = document.getElementById("start");
         dom_start.addEventListener("click", () => {
+            $.ajax({
+                url: '/start_game/',
+                method: 'POST',
+                data: {
+                    "user": this.main.user,
+                    "game_id": this.main.game_info.id
+                },
+                success: (response) => {
+                    if (response != "started")
+                        this.main.dom_status.textContent = response;
+                },
+                error: function(error) {
+                    console.error('Error: start POST fail', error.message);
+                }
+            });
             var players = this.get_players_selected();
             //console.log(players);
             if (players.length === 2)
