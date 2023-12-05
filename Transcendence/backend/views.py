@@ -105,6 +105,7 @@ def pong_state(request):
 	    	d["dy"] = -d["dy"];
 	    # Bounce off paddle
         for user in games[g_id]["players"]:
+            if (d["ball_x"] > WIDTH / 2)
 	        if (d["ball_x"] - RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
 	            d["ball_x"] + RADIUS > this.leftPaddle.x + this.leftPaddle.width &&
 	        	d["ball_y"] > this.leftPaddle.y - HEIGHT / 2 &&
