@@ -18,7 +18,7 @@ export class Pong
                     this.to_do = "down";
                     break;
             }
-            console.log(event.key);
+            //console.log(event.key);
         });
     }
 
@@ -60,8 +60,8 @@ export class Pong
 	}
 
 	loop() {
+        this.get_state(this.to_do);
         this.to_do = "";
-        get_state(this.to_do);
         setTimeout(() => {this.loop();}, this.update_time_interval);
     }
 
@@ -77,7 +77,7 @@ export class Pong
             success: (response) => {
                 if (response.status === "ok")
                 {
-                    console.log(this.to_do);
+                    console.log(to_do);
                     //console.log(response);
                     this.data = response;
                     this.draw();
