@@ -109,24 +109,24 @@ def pong_state(request):
                 if (d["x"][i] > WIDTH / 2 and
 	                d["ball_x"] - RADIUS == d["x"][i] and
 	        	    d["ball_y"] >= d["position"][i] and
-	        	    d["ball_y"] <= d["position"][i] + PADDLE_HEIGHT)
+                    d["ball_y"] <= d["position"][i] + PADDLE_HEIGHT):
 	        	    d["dx"] = -d["dx"]
         else
             for i, user in enumerate(games[g_id]["players"]):
                 if (d["x"][i] < WIDTH / 2 and
 	                d["ball_x"] + RADIUS == d["x"][i] + PADDLE_WIDTH and
 	        	    d["ball_y"] >= d["position"][i] and
-	        	    d["ball_y"] <= d["position"][i] + PADDLE_HEIGHT)
+                    d["ball_y"] <= d["position"][i] + PADDLE_HEIGHT):
 	        	    d["dx"] = -d["dx"]
 	    # Check for game over
 	    if (g["ball_x"] - RADIUS < 0 or g["ball_x"] + RADIUS > WIDTH)
             if (g["ball_x"] - RADIUS < 0)
                 for i, user in enumerate(games[g_id]["players"]):
-                    if (d["x"][i] > WIDTH / 2)
+                    if (d["x"][i] > WIDTH / 2):
                         g["point"][i] += 1
             else
                 for i, user in enumerate(games[g_id]["players"]):
-                    if (d["x"][i] < WIDTH / 2)
+                    if (d["x"][i] < WIDTH / 2):
                         g["point"][i] += 1
             g["service"] = (g["service"] + 1) % g["n"]
             if d["x"][g["service"]] > WIDTH / 2
