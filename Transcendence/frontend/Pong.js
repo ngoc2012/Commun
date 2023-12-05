@@ -14,14 +14,6 @@ export class Pong
 		this.ctx = this.canvas.getContext('2d');
 	}
 
-	resetGame()
-	{
-		this.ball.x = this.canvas.width / 2;
-		this.ball.y = this.canvas.height / 2;
-		this.leftPaddle.y = this.canvas.height / 2 - this.paddleHeight / 2;
-		this.rightPaddle.y = this.canvas.height / 2 - this.paddleHeight / 2;
-	}
-
 	draw() {
 		// Clear the canvas
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -37,7 +29,5 @@ export class Pong
 		this.ctx.fillStyle = '#00ffcc';
 		this.ctx.fill();
 		this.ctx.closePath();
-
-		//requestAnimationFrame(() => this.draw());
 	}
 }
