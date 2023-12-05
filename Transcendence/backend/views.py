@@ -84,9 +84,9 @@ def pong_state(request):
     if g["update"][i] == 1:
         return HttpResponse("wait")
     to_do = request.POST['do']
-    if (to_do == "up" && d["position"][i] < HEIGHT - PADDLE_HEIGHT)
+    if (to_do == "up" and d["position"][i] < HEIGHT - PADDLE_HEIGHT)
 		d["position"][i] += PADDLE_VITESSE;
-    else if (to_do == "down" && d["position"][i] > 0)
+    else if (to_do == "down" and d["position"][i] > 0)
 		d["position"][i] -= PADDLE_VITESSE;
     g["update"][i] = 1
     if g["status"] != "started"
@@ -96,12 +96,12 @@ def pong_state(request):
         else
             d["ball_x"] = d["x"][g["service"]] + PADDLE_WIDTH / 2 + RADIUS
     # new frame
-    if g["status"] == "started" && sum(g["update"]) == g["n"]:
+    if g["status"] == "started" and sum(g["update"]) == g["n"]:
         g["update"] = [0 for i in range(len(players))]
         d["ball_x"] += d["dx"]
         d["ball_y"] += d["dy"]
         # Bounce off the top and bottom walls
-        if d["data"]["ball_y"] - RADIUS <= 0 || d["data"]["ball_y"] + RADIUS >= HEIGHT:
+        if d["data"]["ball_y"] - RADIUS <= 0 or d["data"]["ball_y"] + RADIUS >= HEIGHT:
 	    	d["dy"] = -d["dy"]
 	    # Bounce off paddle
         if d["ball_x"] > WIDTH / 2:
