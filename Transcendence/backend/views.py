@@ -120,14 +120,8 @@ def start_game(request):
     user = request.POST['user']
     if (user not in games[g_id]["players"]):
         return HttpResponse("Player " + user + " was not found in the game.")
-    if (online_players[user]['accepted'] != -1):
-        return HttpResponse("Player " + user + " was in another game.")
-    online_players[user]["accepted"] = g_id
-    if (user not in games[g_id]["accepted"]):
-        games[g_id]["accepted"].append(user)
-        if (len(games[g_id]["accepted"]) == len(games[g_id]["players"])):
-            games[g_id]["status"] = "playing"
-    return (JsonResponse({"game": games[g_id]['game']}))
+    games[g_id]["status"] = "started"
+    return (HttpResponse("started"))
 
 @csrf_exempt
 def invite(request):
