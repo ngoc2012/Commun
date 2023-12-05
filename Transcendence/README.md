@@ -169,6 +169,12 @@ $.ajax({
 });
 ```
 
+
+### Other stuffs
+
+[Disable logging](https://stackoverflow.com/questions/5255657/how-can-i-disable-logging-while-running-unit-tests-in-python-django)
+
+
 ## Javascript (SPA)
 
 [How to include a JavaScript file in another JavaScript file?](https://www.scaler.com/topics/javascript/import-js-file-in-js/)
