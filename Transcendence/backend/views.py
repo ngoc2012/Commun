@@ -187,6 +187,8 @@ def invite(request):
         "service": 0,
         "data": 
         {
+            "paddle_width": PADDLE_WIDTH,
+            "paddle_height": PADDLE_HEIGHT,
             "ball_x": -WIDTH / 2 + PADDLE_WIDTH,
             "ball_y": -HEIGHT / 2,
             "x": [0 for i in range(len(players))],
