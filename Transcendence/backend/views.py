@@ -193,7 +193,7 @@ def invite(request):
             "paddle_height": PADDLE_HEIGHT,
             "ball_x": -WIDTH / 2 + PADDLE_WIDTH,
             "ball_y": -HEIGHT / 2,
-            "ball_y": -HEIGHT / 2,
+            "ball_r": 10,
             "x": [0 for i in range(len(players))],
             "dx": 5,
             "dy": 5,
