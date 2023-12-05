@@ -103,7 +103,7 @@ def pong_state(request):
         d["ball_x"] += d["dx"]
         d["ball_y"] += d["dy"]
         # Bounce off the top and bottom walls
-        if d["data"]["ball_y"] - RADIUS <= 0 or d["data"]["ball_y"] + RADIUS >= HEIGHT:
+        if d["ball_y"] - RADIUS <= 0 or d["ball_y"] + RADIUS >= HEIGHT:
             d["dy"] = -d["dy"]
 	    # Bounce off paddle
         if d["ball_x"] > WIDTH / 2:
