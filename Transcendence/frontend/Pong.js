@@ -12,10 +12,10 @@ export class Pong
         document.addEventListener('keydown', function (event) {
             switch (event.key) {
                 case 'ArrowUp':
-                    this.to_do = "up";
+                    this.get_state("up");
                     break;
                 case 'ArrowDown':
-                    this.to_do = "down";
+                    this.get_state("down");
                     break;
             }
             //console.log(event.key);
@@ -60,8 +60,7 @@ export class Pong
 	}
 
 	loop() {
-        this.get_state(this.to_do);
-        this.to_do = "";
+        this.get_state("");
         setTimeout(() => {this.loop();}, this.update_time_interval);
     }
 
@@ -90,7 +89,7 @@ export class Pong
     }
 
 	draw() {
-        console.log("draw");
+        //console.log("draw");
 		// Clear the canvas
 		this.ctx.clearRect(0, 0, this.main.game_info.data.width, this.main.game_info.data.height);
 
