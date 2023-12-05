@@ -43,10 +43,6 @@ export class Pong
                     console.error('Error: start POST fail', error.message);
                 }
             });
-            var players = this.get_players_selected();
-            //console.log(players);
-            if (players.length === 2)
-                this.invite(players);
         });
 
         /*
