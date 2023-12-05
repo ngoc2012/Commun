@@ -90,7 +90,11 @@ def pong_state(request):
 		d["position"][i] -= PADDLE_VITESSE;
     g["update"][i] = 1
     if g["status"] != "started"
-        d["ball_y"] = d["position"][g["service"]]
+        d["ball_y"] = d["position"][g["service"]] + PADDLE_HEIGHT / 2
+        if d["x"][g["service"]] > WIDTH / 2
+            d["ball_x"] = d["x"][g["service"]]
+        else
+            d["ball_x"] = d["x"][g["service"]] + PADDLE_WIDTH / 2
     # new frame
     if g["status"] == "started" && sum(g["update"]) == g["n"]:
         g["update"] = [0 for i in range(len(players))]
