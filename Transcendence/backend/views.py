@@ -88,7 +88,7 @@ def pong_state(request):
     else if (to_do == "down" && d["data"]["position"][i] > 0)
 		d["data"]["position"][i] -= PADDLE_VITESSE;
     g["update"][i] = 1
-    if sum(g["update"]) == g["n"]:
+    if g["status"] == "started" && sum(g["update"]) == g["n"]:
         g["update"] = [0 for i in range(len(players))]
         g["ball_x"] += g["dx"];
         g["ball_y"] += g["dy"];
