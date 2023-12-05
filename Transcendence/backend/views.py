@@ -191,7 +191,7 @@ def invite(request):
             "width": WIDTH,
             "paddle_width": PADDLE_WIDTH,
             "paddle_height": PADDLE_HEIGHT,
-            "ball_x": PADDLE_WIDTH,
+            "ball_x": PADDLE_WIDTH + RADIUS,
             "ball_y": HEIGHT / 2,
             "ball_r": 10,
             "x": [0 for i in range(len(players))],
@@ -210,6 +210,10 @@ def invite(request):
             g["data"]["x"][i] = WIDTH - (int(i / 2) * PADDLE_DISTANCE - PADDLE_WIDTH)
         g["order"][user] = i
         online_players[user]['invitations'][game_id] = g
+    if (randrange(2) == 0):
+        g["data"]["dy"] = 5
+    else:
+        g["data"]["dy"] = -5
     print(games)
     return (JsonResponse(g))
 
