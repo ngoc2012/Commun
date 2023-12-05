@@ -4,6 +4,7 @@ export class Pong
 	width = 800;
 	paddleWidth = 10;
 	paddleHeight = 60;
+    to_do = "";
 
 	constructor(m) {
         this.main = m;
@@ -12,15 +13,12 @@ export class Pong
 	init() {
 		this.canvas = document.getElementById('pongCanvas');
 		this.ctx = this.canvas.getContext('2d');
-	}
-
-	draw() {
         $.ajax({
             url: '/pong_state/',
             method: 'POST',
             data: {
                 "user": this.main.user,
-                "game": "pong",
+                "to_do": "pong",
                 "players": players
             },
             success: (response) => {
@@ -28,13 +26,15 @@ export class Pong
                 this.main.id = response.game_id;
                 this.main.status = "waiting";
                 this.main.dom_status.textContent = "New game " + this.main.name + " " + this.main.id + " created. Wait for players...";
-                //this.dom_online_players_list.innerHTML = "";
-                //this.dom_invitations.innerHTML = "";
+                to_do = "";
             },
             error: function(error) {
                 console.error('Error: invite POST fail', error.message);
             }
         });
+	}
+
+	draw() {
 		// Clear the canvas
 		this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
