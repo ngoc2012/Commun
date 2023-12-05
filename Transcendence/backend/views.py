@@ -208,7 +208,7 @@ def invite(request):
         if (i % 2 == 0):
             g["data"]["x"][i] = i / 2 * PADDLE_DISTANCE
         else:
-            g["data"]["x"][i] = WIDTH - (int(i / 2) * PADDLE_DISTANCE - PADDLE_WIDTH)
+            g["data"]["x"][i] = WIDTH - (int(i / 2) * PADDLE_DISTANCE + PADDLE_WIDTH)
         g["order"][user] = i
         online_players[user]['invitations'][game_id] = g
     if (randrange(2) == 0):
