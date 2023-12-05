@@ -70,8 +70,8 @@ export class Pong
             success: (response) => {
                 if (response.ball)
                 {
-                    this.data = response;
                     console.log(response);
+                    this.data = response;
                     this.draw();
                     this.to_do = "";
                 }
@@ -84,6 +84,7 @@ export class Pong
     }
 
 	draw() {
+        console.log("draw");
 		// Clear the canvas
 		this.ctx.clearRect(0, 0, this.main.game_info.data.width, this.main.game_info.data.height);
 
