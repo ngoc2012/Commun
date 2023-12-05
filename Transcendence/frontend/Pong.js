@@ -13,6 +13,8 @@ export class Pong
 	init() {
 		this.canvas = document.getElementById('pongCanvas');
 		this.ctx = this.canvas.getContext('2d');
+        ctx.canvas.width  = this.main.game_info.data.width;
+        ctx.canvas.height = this.main.game_info.data.height;
         // Handle keyboard input
         document.addEventListener('keydown', function (event) {
             switch (event.key) {
