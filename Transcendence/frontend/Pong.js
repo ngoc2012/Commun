@@ -6,6 +6,7 @@ export class Pong
 	paddleHeight = 60;
     to_do = "";
     data;
+    update_time_interval = 2;
 
 	constructor(m) {
         this.main = m;
@@ -18,10 +19,10 @@ export class Pong
         document.addEventListener('keydown', function (event) {
             switch (event.key) {
                 case 'ArrowUp':
-                    to_do = "up";
+                    this.to_do = "up";
                     break;
                 case 'ArrowDown':
-                    to_do = "down";
+                    this.to_do = "down";
                     break;
             }
         });
@@ -49,12 +50,13 @@ export class Pong
             },
             success: (response) => {
                 if (response == "wait")
-                this.data = 
-                this.main.name = "pong";
-                this.main.id = response.game_id;
-                this.main.status = "waiting";
-                this.main.dom_status.textContent = "New game " + this.main.name + " " + this.main.id + " created. Wait for players...";
-                to_do = "";
+                    setTimeout(() => {this.loop();}, this.update_time_interval);
+                else
+                {
+                    this.data = response
+                    this.draw();
+                    this.to_do = "";
+                }
             },
             error: function(error) {
                 console.error('Error: invite POST fail', error.message);
