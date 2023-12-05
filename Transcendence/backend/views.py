@@ -206,7 +206,7 @@ def invite(request):
             g["data"]["x"][i] = WIDTH - (int(i / 2) * PADDLE_DISTANCE - PADDLE_WIDTH)
         g["order"][user] = i
         online_players[user]['invitations'][game_id] = g
-    return (JsonResponse({"game_id": game_id}))
+    return (JsonResponse(g))
 
 @csrf_exempt
 def accept_invitation(request):

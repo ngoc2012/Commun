@@ -7,6 +7,7 @@ export class Main
     name = "";
     id = -1;
     status = "";
+    game_info;
 
     constructor()
     {
