@@ -80,7 +80,7 @@ def pong_state(request):
         return HttpResponse("Error: Player " + user + " was not found in the game.")
     g = games[g_id]
     d = g["data"]
-    i = g["update"]["order"][user]
+    i = g["order"][user]
     if g["update"][i] == 1:
         return HttpResponse("wait")
     to_do = request.POST['do']
@@ -91,6 +91,7 @@ def pong_state(request):
     g["update"][i] = 1
     if g["status"] != "started"
         d["ball_x"] = d["position"][g["service"]]
+    # new frame
     if g["status"] == "started" && sum(g["update"]) == g["n"]:
         g["update"] = [0 for i in range(len(players))]
         d["ball_x"] += d["dx"];
