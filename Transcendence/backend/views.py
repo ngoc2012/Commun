@@ -141,6 +141,7 @@ def invite(request):
             "dy": 5,
             "position": [-PADDLE_HEIGHT / 2 for i in range(len(players))],
             "side": [i % 2 for i in range(len(players))]
+            "update": [0 for i in range(len(players))],
         }
     }
     g = games[g_id]
