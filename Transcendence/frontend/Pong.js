@@ -5,6 +5,7 @@ export class Pong
 	paddleWidth = 10;
 	paddleHeight = 60;
     to_do = "";
+    data;
 
 	constructor(m) {
         this.main = m;
@@ -17,14 +18,15 @@ export class Pong
         document.addEventListener('keydown', function (event) {
             switch (event.key) {
                 case 'ArrowUp':
-                    rightPaddle.dy = -5;
+                    to_do = "up";
                     break;
                 case 'ArrowDown':
-                    rightPaddle.dy = 5;
+                    to_do = "down";
                     break;
             }
         });
 
+        /*
         document.addEventListener('keyup', function (event) {
             switch (event.key) {
                 case 'ArrowUp':
@@ -33,16 +35,21 @@ export class Pong
                     break;
             }
         });
+        */
 
+	}
+
+	loop() {
         $.ajax({
             url: '/pong_state/',
             method: 'POST',
             data: {
                 "user": this.main.user,
-                "to_do": "pong",
-                "players": players
+                "to_do": this.to_do
             },
             success: (response) => {
+                if (response == "wait")
+                this.data = 
                 this.main.name = "pong";
                 this.main.id = response.game_id;
                 this.main.status = "waiting";
@@ -53,7 +60,7 @@ export class Pong
                 console.error('Error: invite POST fail', error.message);
             }
         });
-	}
+    }
 
 	draw() {
 		// Clear the canvas
