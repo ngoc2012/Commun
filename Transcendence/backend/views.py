@@ -93,7 +93,7 @@ def pong_state(request):
         d["ball_y"] = d["position"][g["service"]] + PADDLE_HEIGHT / 2
         if d["x"][g["service"]] > WIDTH / 2:
             d["ball_x"] = d["x"][g["service"]] - RADIUS
-        else
+        else:
             d["ball_x"] = d["x"][g["service"]] + PADDLE_WIDTH / 2 + RADIUS
     # new frame
     if g["status"] == "started" and sum(g["update"]) == g["n"]:
@@ -102,41 +102,41 @@ def pong_state(request):
         d["ball_y"] += d["dy"]
         # Bounce off the top and bottom walls
         if d["data"]["ball_y"] - RADIUS <= 0 or d["data"]["ball_y"] + RADIUS >= HEIGHT:
-	    	d["dy"] = -d["dy"]
+            d["dy"] = -d["dy"]
 	    # Bounce off paddle
         if d["ball_x"] > WIDTH / 2:
             for i, user in enumerate(games[g_id]["players"]):
                 if (d["x"][i] > WIDTH / 2 and
 	                d["ball_x"] - RADIUS == d["x"][i] and
-	        	    d["ball_y"] >= d["position"][i] and
+	                d["ball_y"] >= d["position"][i] and
                     d["ball_y"] <= d["position"][i] + PADDLE_HEIGHT):
-	        	    d["dx"] = -d["dx"]
-        else
+	                d["dx"] = -d["dx"]
+        else:
             for i, user in enumerate(games[g_id]["players"]):
                 if (d["x"][i] < WIDTH / 2 and
 	                d["ball_x"] + RADIUS == d["x"][i] + PADDLE_WIDTH and
-	        	    d["ball_y"] >= d["position"][i] and
+	                d["ball_y"] >= d["position"][i] and
                     d["ball_y"] <= d["position"][i] + PADDLE_HEIGHT):
-	        	    d["dx"] = -d["dx"]
+	                d["dx"] = -d["dx"]
 	    # Check for game over
         if (g["ball_x"] - RADIUS < 0 or g["ball_x"] + RADIUS > WIDTH):
             if (g["ball_x"] - RADIUS < 0):
                 for i, user in enumerate(games[g_id]["players"]):
                     if (d["x"][i] > WIDTH / 2):
                         g["point"][i] += 1
-            else
+            else:
                 for i, user in enumerate(games[g_id]["players"]):
                     if (d["x"][i] < WIDTH / 2):
                         g["point"][i] += 1
             g["service"] = (g["service"] + 1) % g["n"]
             if d["x"][g["service"]] > WIDTH / 2:
 	    	    d["dx"] = -abs(d["dx"])
-            else
+            else:
 	    	    d["dx"] = abs(d["dx"])
             d["ball_y"] = d["position"][g["service"]] + PADDLE_HEIGHT / 2
             if d["x"][g["service"]] > WIDTH / 2:
                 d["ball_x"] = d["x"][g["service"]] - RADIUS
-            else
+            else:
                 d["ball_x"] = d["x"][g["service"]] + PADDLE_WIDTH / 2 + RADIUS
             g["status"] = "end"
             return (JsonResponse({"ball": [d["ball_x"], d["ball_y"]], "position": d["position"], "point": g["point"]}))
