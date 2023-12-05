@@ -101,7 +101,7 @@ export class Game
     }
 
     invite(players) {
-        console.log(players);
+        //console.log(players);
         $.ajax({
             url: '/invite/',
             method: 'POST',

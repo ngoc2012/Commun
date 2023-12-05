@@ -26,7 +26,7 @@ export class Pong
                     break;
             }
         });
-        dom_start = document.getElementById("start");
+        let dom_start = document.getElementById("start");
         dom_start.addEventListener("click", () => {
             $.ajax({
                 url: '/start_game/',
