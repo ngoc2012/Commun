@@ -114,7 +114,7 @@ def pong_state(request):
         else
             for i, user in enumerate(games[g_id]["players"]):
                 if (d["x"][i] < WIDTH / 2 &&
-	                d["ball_x"] - RADIUS == d["x"][i] &&
+	                d["ball_x"] + RADIUS == d["x"][i] + PADDLE_WIDTH &&
 	        	    d["ball_y"] >= d["position"][i] &&
 	        	    d["ball_y"] <= d["position"][i] + PADDLE_HEIGHT)
 	        	    d["dx"] = -d["dx"];
