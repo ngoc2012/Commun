@@ -27,6 +27,7 @@ urlpatterns = [
     path('pong/', views.pong, name='pong'),
     path('pong_state/', views.pong_state, name='pong_state'),
     path('new_player/', views.new_player, name='new_player'),
+    path('start_game/', views.start_game, name='start_game'),
     path('online_players_list/', views.online_players_list, name='online_players_list'),
     path('invite/', views.invite, name='invite'),
     path('accept_invitation/', views.accept_invitation, name='accept_invitation'),
