@@ -83,9 +83,9 @@ def pong_state(request):
     if g["update"][i] == 1:
         return HttpResponse("wait")
     to_do = request.POST['do']
-    if (to_do == "up" && d["data"]["position"][i] < HEIGHT - PADDLE_HEIGHT / 2)
+    if (to_do == "up" && d["data"]["position"][i] < HEIGHT - PADDLE_HEIGHT)
 		d["data"]["position"][i] += PADDLE_VITESSE;
-    else if (to_do == "down" && d["data"]["position"][i] > PADDLE_HEIGHT / 2)
+    else if (to_do == "down" && d["data"]["position"][i] > 0)
 		d["data"]["position"][i] -= PADDLE_VITESSE;
     g["update"][i] = 1
     if sum(g["update"]) == g["n"]:
@@ -100,11 +100,6 @@ def pong_state(request):
 	        g["ball_x"] + RADIUS > this.leftPaddle.x + this.leftPaddle.width &&
 	    	g["ball_y"] > this.leftPaddle.y - HEIGHT / 2 &&
 	    	g["ball_y"] < this.leftPaddle.y + HEIGHT / 2)
-	    	g["dx"] = -g["dx"];
-	    # Bounce off right paddle
-	    if (g["ball_x"] + RADIUS > this.rightPaddle.x &&
-	    	g["ball_y"] > this.rightPaddle.y &&
-	    	g["ball_y"] < this.rightPaddle.y + this.rightPaddle.height)
 	    	g["dx"] = -g["dx"];
 	    # Check for game over
 	    if (g["ball_x"] - RADIUS < 0 || g["ball_x"] + RADIUS > WIDTH)
@@ -148,14 +143,15 @@ def invite(request):
             "side": [i % 2 for i in range(len(players))]
         }
     }
+    g = games[g_id]
     print(games)
     for i, user in enumerate(players):
         if (i % 2 == 0)
-            games[game_id]["x"][i] = i / 2 * PADDLE_DISTANCE
+            g["x"][i] = i / 2 * PADDLE_DISTANCE
         else
-            games[game_id]["x"][i] = WIDTH - (int(i / 2) * PADDLE_DISTANCE)
-        games[game_id]["order"][user] = i
-        online_players[user]['invitations'][game_id] = games[game_id]
+            g["x"][i] = WIDTH - (int(i / 2) * PADDLE_DISTANCE - PADDLE_WIDTH)
+        g["order"][user] = i
+        online_players[user]['invitations'][game_id] = g
     return (JsonResponse({"game_id": game_id}))
 
 @csrf_exempt
