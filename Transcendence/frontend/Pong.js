@@ -1,7 +1,7 @@
 export class Pong
 {
     to_do = "";
-    update_time_interval = 2;
+    update_time_interval = 2000;
     data;
     canvas;
     ctx;
