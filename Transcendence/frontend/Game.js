@@ -112,7 +112,7 @@ export class Game
             },
             success: (response) => {
                 this.main.name = "pong";
-                this.main.id = response.game_id;
+                this.main.id = response.id;
                 this.main.status = "waiting";
                 this.main.game_info = response;
                 this.main.dom_status.textContent = "New game " + this.main.name + " " + this.main.id + " created. Wait for players...";
