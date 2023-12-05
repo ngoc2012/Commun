@@ -72,7 +72,7 @@ def pong_state(request):
     #print(online_players)
     global online_players
     global games
-    global WIDTH, HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT
+    global WIDTH, HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_VITESSE, RADIUS
     print(request.POST)
     g_id = int(request.POST['id'])
     if (g_id not in games.keys()):
@@ -166,7 +166,7 @@ def invite(request):
     global game_id
     global online_players
     global games
-    global WIDTH, HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT
+    global WIDTH, HEIGHT, PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_VITESSE, RADIUS
     players = request.POST.getlist('players[]')
     print(players)
     for user in players:
