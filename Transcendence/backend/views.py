@@ -187,6 +187,8 @@ def invite(request):
         "service": 0,
         "data": 
         {
+            "height": HEIGHT,
+            "width": WIDTH,
             "paddle_width": PADDLE_WIDTH,
             "paddle_height": PADDLE_HEIGHT,
             "ball_x": -WIDTH / 2 + PADDLE_WIDTH,
