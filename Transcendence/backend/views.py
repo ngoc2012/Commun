@@ -79,16 +79,16 @@ def pong_state(request):
     if user not in games[g_id]["players"]:
         return HttpResponse("Error: Player " + user + " was not found in the game.")
     g = games[g_id]
+    d = g["data"]
     i = g["update"]["order"][user]
     if g["update"][i] == 1:
         return HttpResponse("wait")
     to_do = request.POST['do']
-    if (to_do == "up" && d["data"]["position"][i] < HEIGHT - PADDLE_HEIGHT)
-		d["data"]["position"][i] += PADDLE_VITESSE;
-    else if (to_do == "down" && d["data"]["position"][i] > 0)
-		d["data"]["position"][i] -= PADDLE_VITESSE;
+    if (to_do == "up" && d["position"][i] < HEIGHT - PADDLE_HEIGHT)
+		d["position"][i] += PADDLE_VITESSE;
+    else if (to_do == "down" && d["position"][i] > 0)
+		d["position"][i] -= PADDLE_VITESSE;
     g["update"][i] = 1
-    data = g["data"]
     if g["status"] != "started"
         data["ball_x"] = 
     if g["status"] == "started" && sum(g["update"]) == g["n"]:
@@ -152,12 +152,12 @@ def invite(request):
         "host": request.POST['host'],
         "accepted": [request.POST['host']],
         "update": [0 for i in range(len(players))],
-        "x": [0 for i in range(len(players))],
         "service": 0,
         "data": 
         {
             "ball_x": -WIDTH / 2 + PADDLE_WIDTH,
             "ball_y": -HEIGHT / 2,
+            "x": [0 for i in range(len(players))],
             "dx": 5,
             "dy": 5,
             "position": [-PADDLE_HEIGHT / 2 for i in range(len(players))],
