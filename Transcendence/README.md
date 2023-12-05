@@ -148,6 +148,7 @@ MIDDLEWARE = [
     # ...
 ]
 ```
+
 * AJAX Requests Include CSRF Token:
 If you are making AJAX requests, make sure to include the CSRF token in the request headers. You can retrieve the token from a cookie named `csrftoken` and include it in the `X-CSRFToken` header.
 
@@ -169,11 +170,44 @@ $.ajax({
 });
 ```
 
+### ASGI
+
+ASGI stands for Asynchronous Server Gateway Interface. It's a specification for asynchronous web servers and frameworks in Python. ASGI enables handling multiple connections asynchronously, making it suitable for applications that require real-time features, such as chat applications, live notifications, or multiplayer games.
+
+
+The routing configuration in the `asgi.py` file defines how WebSocket connections are routed to consumers. Here's an example routing configuration:
+
+```python
+# asgi.py
+
+import os
+from django.core.asgi import get_asgi_application
+from channels.routing import ProtocolTypeRouter, URLRouter
+from channels.auth import AuthMiddlewareStack
+from pong.consumers import PongConsumer
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'pong_project.settings')
+
+application = ProtocolTypeRouter({
+    "http": get_asgi_application(),
+    "websocket": AuthMiddlewareStack(
+        URLRouter(
+            [
+                # Add your WebSocket consumers here
+                # For example:
+                # re_path(r"ws/some_path/$", SomeConsumer.as_asgi()),
+                re_path(r"ws/pong/$", PongConsumer.as_asgi()),
+            ]
+        )
+    ),
+})
+```
 
 ### Other stuffs
 
 [Disable logging](https://stackoverflow.com/questions/5255657/how-can-i-disable-logging-while-running-unit-tests-in-python-django)
 
+### Other stuffs
 
 ## Javascript (SPA)
 
