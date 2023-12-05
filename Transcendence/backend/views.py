@@ -139,7 +139,7 @@ def pong_state(request):
             else:
                 d["ball_x"] = d["x"][g["service"]] + PADDLE_WIDTH / 2 + RADIUS
             g["status"] = "end"
-            return (JsonResponse({"ball": {"x": d["ball_x"], "y": d["ball_y"]}, "position": d["position"], "point": g["point"]}))
+    return (JsonResponse({"ball": {"x": d["ball_x"], "y": d["ball_y"]}, "position": d["position"], "point": g["point"]}))
 
 @csrf_exempt
 def start_game(request):
