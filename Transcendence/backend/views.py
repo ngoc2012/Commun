@@ -99,7 +99,7 @@ def pong_state(request):
             d["ball_x"] = d["x"][g["service"]] + PADDLE_WIDTH / 2 + RADIUS
     # new frame
     if g["status"] == "started" and sum(g["update"]) == g["n"]:
-        g["update"] = [0 for i in range(len(players))]
+        g["update"] = [0 for i in range(g["n"])]
         d["ball_x"] += d["dx"]
         d["ball_y"] += d["dy"]
         # Bounce off the top and bottom walls
