@@ -76,8 +76,6 @@ export class Pong
             success: (response) => {
                 if (response.status === "ok")
                 {
-                    console.log(to_do);
-                    //console.log(response);
                     this.data = response;
                     this.draw();
                 }
