@@ -107,14 +107,14 @@ def pong_state(request):
             d["dy"] = -d["dy"]
 	    # Bounce off paddle
         if d["ball_x"] > WIDTH / 2:
-            for i, user in enumerate(games[g_id]["players"]):
+            for i in range(g["n"]):
                 if (d["x"][i] > WIDTH / 2 and
 	                d["ball_x"] - RADIUS == d["x"][i] and
 	                d["ball_y"] >= d["position"][i] and
                     d["ball_y"] <= d["position"][i] + PADDLE_HEIGHT):
 	                d["dx"] = -d["dx"]
         else:
-            for i, user in enumerate(games[g_id]["players"]):
+            for i in range(g["n"]):
                 if (d["x"][i] < WIDTH / 2 and
 	                d["ball_x"] + RADIUS == d["x"][i] + PADDLE_WIDTH and
 	                d["ball_y"] >= d["position"][i] and
