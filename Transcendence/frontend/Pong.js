@@ -71,6 +71,7 @@ export class Pong
             success: (response) => {
                 if (response.ball)
                 {
+                    console.log(this.to_do);
                     console.log(response);
                     this.data = response;
                     this.draw();
