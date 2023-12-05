@@ -90,15 +90,16 @@ def pong_state(request):
 		d["position"][i] -= PADDLE_VITESSE;
     g["update"][i] = 1
     if g["status"] != "started"
-        data["ball_x"] = 
+        d["ball_x"] = d["position"][g["service"]]
     if g["status"] == "started" && sum(g["update"]) == g["n"]:
         g["update"] = [0 for i in range(len(players))]
-        g["data"]["ball_x"] += g["dx"];
-        g["data"]["ball_y"] += g["dy"];
+        d["ball_x"] += g["dx"];
+        d["ball_y"] += g["dy"];
         # Bounce off the top and bottom walls
         if (g["data"]["ball_y"] - RADIUS < 0 || g["data"]["ball_y"] + RADIUS > HEIGHT)
 	    	g["dy"] = -g["dy"];
 	    # Bounce off paddle
+        for user in games[g_id]["players"]:
 	    if (g["ball_x"] - RADIUS < this.leftPaddle.x + this.leftPaddle.width &&
 	        g["ball_x"] + RADIUS > this.leftPaddle.x + this.leftPaddle.width &&
 	    	g["ball_y"] > this.leftPaddle.y - HEIGHT / 2 &&
