@@ -84,14 +84,14 @@ def pong_state(request):
     if g["update"][i] == 1:
         return HttpResponse("wait")
     to_do = request.POST['do']
-    if (to_do == "up" and d["position"][i] < HEIGHT - PADDLE_HEIGHT)
-		d["position"][i] += PADDLE_VITESSE;
-    else if (to_do == "down" and d["position"][i] > 0)
-		d["position"][i] -= PADDLE_VITESSE;
+    if (to_do == "up" and d["position"][i] < HEIGHT - PADDLE_HEIGHT):
+        d["position"][i] += PADDLE_VITESSE
+    elif (to_do == "down" and d["position"][i] > 0):
+        d["position"][i] -= PADDLE_VITESSE
     g["update"][i] = 1
-    if g["status"] != "started"
+    if g["status"] != "started":
         d["ball_y"] = d["position"][g["service"]] + PADDLE_HEIGHT / 2
-        if d["x"][g["service"]] > WIDTH / 2
+        if d["x"][g["service"]] > WIDTH / 2:
             d["ball_x"] = d["x"][g["service"]] - RADIUS
         else
             d["ball_x"] = d["x"][g["service"]] + PADDLE_WIDTH / 2 + RADIUS
@@ -119,8 +119,8 @@ def pong_state(request):
                     d["ball_y"] <= d["position"][i] + PADDLE_HEIGHT):
 	        	    d["dx"] = -d["dx"]
 	    # Check for game over
-	    if (g["ball_x"] - RADIUS < 0 or g["ball_x"] + RADIUS > WIDTH)
-            if (g["ball_x"] - RADIUS < 0)
+        if (g["ball_x"] - RADIUS < 0 or g["ball_x"] + RADIUS > WIDTH):
+            if (g["ball_x"] - RADIUS < 0):
                 for i, user in enumerate(games[g_id]["players"]):
                     if (d["x"][i] > WIDTH / 2):
                         g["point"][i] += 1
