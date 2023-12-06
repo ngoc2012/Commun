@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 19:01:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 16:28:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	Request::read_request(void)
 	if (_header == "")
 	{
 		receive_data(_header);
-		//std::cout << "_header\n" << _header << std::endl;
+		std::cout << "_header\n" << _header << std::endl;
 		if (!parser_header())
 		{
 			std::cerr << "Error: header invalid: \n" << _header << std::endl;
