@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 21:16:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 21:19:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,36 +136,10 @@ bool	Request::read_method(std::string& s)
 	return (true);
 }
 
-bool	Request::get_body(std::string& s)
+bool	Request::split_header_body(std::string& s)
 {
 	size_t	start = 0;
-	size_t	pos0 = s.find("Content-Type:");
-	if (pos0 != std::string::npos)
-	{
-		size_t	pos1 = s.find("Content-Type:", pos0 + 14);
-		if (pos1 != std::string::npos)
-		{
-			pos0 = s.find("\r\n\r\n", pos1);
-			if (pos0 != std::string::npos)
-				start = pos0 + 4;
-			else
-				return (false);
-		}
-		else
-		{
-			pos1 = s.find("\r\n\r\n", pos0);
-			if (pos1 != std::string::npos)
-				start = pos1 + 4;
-			else
-				return (false);
-		}
-	}
-	else
-	{
-		pos0 = s.find("\r\n\r\n");
-		if (pos0 != std::string::npos)
-			start = pos0 + 4;
-	}
+	size_t  pos0 = s.find("\r\n\r\n");
 	_body = _header.substr(start, _header.length() - start);
 	_header = _header.substr(0, start);
 	return (true);
