@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 21:19:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 21:25:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ bool	Request::parser_header(void)
 		std::string s = _header.substr( _header.find("Content-Type:") + 14);
 		read_content_type(s, _content_type1);
 	}
-	if (!find_start_body(_header))
+	if (!split_header_body(_header))
 		return (false);
 	return (true);
 }
