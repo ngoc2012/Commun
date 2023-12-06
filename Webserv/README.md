@@ -134,6 +134,20 @@ It can span multiple lines.
 --boundary123--
 ```
 
+* Boundary:
+    The boundary is a string that is used to separate different parts of the request.
+    It is specified in the `Content-Type` header, for example: `Content-Type: multipart/form-data; boundary=boundary123`.
+    The boundary should be unique and not appear in the data.
+
+* Parts:
+    Each part starts with the boundary preceded by two hyphens (`--boundary`).
+    After each part, there is a set of headers (such as `Content-Disposition` and `Content-Type`) followed by the actual data.
+
+* End of Parts:
+    The entire request is terminated with a final boundary followed by two hyphens and no additional content (`--boundary--`).
+
+* Content-Disposition:
+        This header is used to describe the nature of the part. It typically includes information about the name of the form field and, in the case of file uploads, the filename.
 
 ## CGI
 

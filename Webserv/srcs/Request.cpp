@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 16:53:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 17:01:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	Request::read_request(void)
 	//clean();
 	if (_header == "")
 	{
-		receive_data(_header);
+		_header.find("\r\n\r\n") receive_data(_header);
 		//std::cout << "_header\n" << _header << std::endl;
 		if (!parser_header())
 		{
