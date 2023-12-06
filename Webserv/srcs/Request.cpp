@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 21:34:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 21:40:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ void	Request::read_header(void)
 		std::cerr << "Error: header invalid: \n" << _header << std::endl;
 		_status_code = 400;	// Bad Request
 	}
-	//std::cout << "===============================" << std::endl;
-	//std::cout << "Header:\n" << _header << std::endl;
-	//std::cout << "===============================" << std::endl;
-	//std::cout << "Body:\n" << _body << std::endl;
-	//std::cout << "===============================" << std::endl;
+	std::cout << "===============================" << std::endl;
+	std::cout << "Header:\n" << _header << std::endl;
+	std::cout << "===============================" << std::endl;
+	std::cout << "Body:\n" << _body << std::endl;
+	std::cout << "===============================" << std::endl;
 	_response.set_status_code(_status_code);
 	_host->new_response_sk(_socket);
 }
