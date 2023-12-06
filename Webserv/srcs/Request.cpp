@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 17:01:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 17:45:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,32 +64,23 @@ void	Request::read_request(void)
 {
 	//std::cout << "read_request" << std::endl;
 	//clean();
-	if (_header == "")
+    int ret = 1;
+	while (_header.find("\r\n\r\n") == std:string:npos && ret)
+            ret = receive_data(_header);
+	//std::cout << "_header\n" << _header << std::endl;
+	if (!ret || !parser_header())
 	{
-		_header.find("\r\n\r\n") receive_data(_header);
-		//std::cout << "_header\n" << _header << std::endl;
-		if (!parser_header())
-		{
-			std::cerr << "Error: header invalid: \n" << _header << std::endl;
-			_end = true;
-			_status_code = 400;	// Bad Request
-		}
+		std::cerr << "Error: header invalid: \n" << _header << std::endl;
+		_end = true;
+		_status_code = 400;	// Bad Request
 	}
-	else
-	{
-		//std::cout << "read_body sk:" << _socket << std::endl;
-		receive_data(_body);
-	}
-	if (_end)
-	{
-		//std::cout << "===============================" << std::endl;
-		//std::cout << "Header:\n" << _header << std::endl;
-		//std::cout << "===============================" << std::endl;
-		//std::cout << "Body:\n" << _body << std::endl;
-		//std::cout << "===============================" << std::endl;
-		_response.set_status_code(_status_code);
-		_host->new_response_sk(_socket);
-	}
+	//std::cout << "===============================" << std::endl;
+	//std::cout << "Header:\n" << _header << std::endl;
+	//std::cout << "===============================" << std::endl;
+	//std::cout << "Body:\n" << _body << std::endl;
+	//std::cout << "===============================" << std::endl;
+	_response.set_status_code(_status_code);
+	_host->new_response_sk(_socket);
 }
 
 int	Request::receive_data(std::string &data)
