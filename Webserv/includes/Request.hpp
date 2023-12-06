@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 21:19:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 21:56:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ class	Request
 		std::string	get_url(void) const;
 		Response*	get_response(void);
 		int		    get_status_code(void) const;
+        std::string	get_body_in_header(void) const;
 };
 
 #endif
