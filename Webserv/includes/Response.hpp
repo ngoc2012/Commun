@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 15:01:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 21:51:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ class	Configuration;
 class	Response
 {
 	private:
-		int		    _socket;
-		Host*		_host;
-		Server*		_server;
-		Request*	_request;
-		Location*	_location;	
-		size_t		_content_length;
-		int		    _status_code;
-		std::string	_full_file_name;
-		std::string	_header;
-		std::string	_body;
-		bool		_end;
+		int		        _socket;
+		Host*		    _host;
+		Server*		    _server;
+		Request*	    _request;
+		Location*	    _location;	
+		size_t		    _content_length;
+		int		        _status_code;
+		std::string	    _full_file_name;
+		std::string	    _header;
+		std::string	    _body;
+		bool		    _end;
 		std::ifstream	_file;
 
 		bool		find_method(e_method, Location*);
