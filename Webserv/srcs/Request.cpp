@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 21:50:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 21:52:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	Request::read_header(void)
 
 int	Request::receive_data(std::string &data)
 {
-	//std::cout << "Receive data from client" << std::endl;
 	char		request[_body_buffer + 1];
 
 	int	ret = recv(_socket, request, _body_buffer, 0);
