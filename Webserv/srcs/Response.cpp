@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 08:31:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 11:13:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,8 @@ bool	Response::compare_url(std::string url, std::string l_url)
 	}
 	// File
 	else if (url == l_url)
+		return (true);
+    if (l_url.find('*') != std::string::npos && match_wildcard(url.c_str(), l_url.c_str()))
 		return (true);
 	return (false);
 }
