@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 12:19:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 21:59:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,7 @@ void	Response::get_content(void)
 void	Response::execute_cgi(void)
 {
     std::cout << _location->get_cgi_pass() << std::endl;
-    _content_length = get_file_size(_full_file_name);
-    //_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
-    //std::cout << "File open" << std::endl;
-    _file.open(_full_file_name.c_str(), std::ios::binary);
-    if (!_file.is_open())
-    {
-        std::cerr << "Failed to open file: " << _full_file_name << std::endl;
-        _status_code = 500;	// Internal server error
-        _end = true;
-    }
+    get_content();
 }
 
 void	Response::send(void)
