@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 11:31:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 11:33:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,7 @@ void	Response::send(void)
 					}
 					break;
 				default:
-					_body = "<!doctype html>\n"
-						"<link rel=\"icon\" href=\"data:,\">\n"
-						"<html><body><h1>Hello, client!</h1></body></html>";
+					_body = "default";
 					_content_length = _body.length();
 					break;
 			}
