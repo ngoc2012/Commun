@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 11:13:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 11:31:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,21 @@ Response::~Response()
 	std::cout << "Destruction response: " << _socket << std::endl;
 }
 
+void	Response::resquest_error(void)
+{
+    Header	header(_status_code, std::string(""), this);
+    header.set_allow(get_methods_str());
+    _content_length = 0;
+    _header = header.generate();
+    _end = true;
+    if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
+        perror("send() failed");
+}
+
 void	Response::send(void)
 {
 	if (_status_code != 200)
-	{
-		Header	header(_status_code, std::string(""), this);
-		header.set_allow(get_methods_str());
-		_content_length = 0;
-		_header = header.generate();
-		_end = true;
-		if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
-			perror("send() failed");
-	}
+        resquest_error();
 	else if(_header == "")
 	{
 		std::string	url = _request->get_url();
