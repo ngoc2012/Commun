@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/03 17:46:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 08:31:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ bool	Response::find_method(e_method m, Location* loc)
 
 bool	Response::compare_url(std::string url, std::string l_url)
 {
-	//std::cout << url << "==" << l_url << std::endl;
+	std::cout << url << "==" << l_url << std::endl;
 	// Folder
 	if (l_url[l_url.size() - 1] == '/')
 	{
