@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 18:30:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 16:22:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ class	Host;
 class	Request
 {
 	private:
-		int		_socket;
+		int		    _socket;
 		Host*		_host;
 		Server*		_server;
 		Response	_response;
 
-		int		_status_code;
+		int		    _status_code;
 		std::string	_header;
 		std::string	_body;
 		size_t		_body_max;
@@ -42,7 +42,7 @@ class	Request
 		e_method	_method;
 		bool		_end;
 
-		int		receive_data(std::string &);
+		int		    receive_data(std::string &);
 		void		clean(void);
 		bool		parser_header(void);
 		bool		read_method(std::string&);
