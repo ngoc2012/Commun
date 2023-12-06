@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 17:49:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 18:03:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ class	Request
 		std::string	_content_type;
 		std::string	_url;
 		e_method	_method;
-		bool		_end;
 
 		int		    receive_data(std::string &);
 		void		clean(void);
