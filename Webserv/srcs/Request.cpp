@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 21:40:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 21:42:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ void	Request::clean()
 	_body = "";
 	_header = "";
 	_body_size = 0;
-	_content_type0 = "";
-	_content_type1 = "";
+	_content_type = "";
 	_method = NONE;
 	_url = "";
 	_status_code = 200;
@@ -92,7 +91,7 @@ int	Request::receive_data(std::string &data)
 	if (ret <= 0)
 		return (0);
 	request[ret] = 0;
-    std::cout << request << std::endl;
+    //std::cout << request << std::endl;
 	data += request;
 	return (ret);
 }
