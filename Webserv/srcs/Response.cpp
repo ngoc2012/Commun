@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 11:33:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 11:36:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,20 @@ void	Response::resquest_error(void)
         perror("send() failed");
 }
 
+void	Response::get_content(void)
+{
+    _content_length = get_file_size(_full_file_name);
+    //_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
+    std::cout << "File open" << std::endl;
+    _file.open(_full_file_name.c_str(), std::ios::binary);
+    if (!_file.is_open())
+    {
+        std::cerr << "Failed to open file: " << _full_file_name << std::endl;
+        _status_code = 500;	// Internal server error
+        _end = true;
+    }
+}
+
 void	Response::send(void)
 {
 	if (_status_code != 200)
@@ -91,16 +105,7 @@ void	Response::send(void)
 			switch (_request->get_method())
 			{
 				case GET:
-					_content_length = get_file_size(_full_file_name);
-					//_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
-					std::cout << "File open" << std::endl;
-					_file.open(_full_file_name.c_str(), std::ios::binary);
-					if (!_file.is_open())
-					{
-						std::cerr << "Failed to open file: " << _full_file_name << std::endl;
-						_status_code = 500;	// Internal server error
-						_end = true;
-					}
+                    get_content();
 					break;
 				default:
 					_body = "default";
@@ -238,7 +243,7 @@ void	Response::get_full_file_name(std::string url)
 	struct stat	buffer;
 	if (stat(_full_file_name.c_str(), &buffer) != 0)
 		_status_code = 404; // Not found
-	std::cout << _full_file_name << std::endl;
+	//std::cout << _full_file_name << std::endl;
 }
 
 size_t		Response::get_file_size(std::string &file_name)

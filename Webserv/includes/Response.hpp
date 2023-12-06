@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 11:31:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 11:34:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ class	Response
 		size_t		get_file_size(std::string &file_name);
 		void		get(void);
         void	    resquest_error(void);
+        void	    get_content(void);
 
 		Response(const Response&);
 		Response	&operator=(const Response& op);
