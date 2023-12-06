@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 22:09:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 22:11:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	Request::read_header(void)
 	//std::cout << "read_request" << std::endl;
 	//clean();
     int ret = 1;
-	while (_header.find("\r\n\r\n") == std::string::npos && ret)
+	while (_header.find("\r\n\r\n") == std::string::npos && ret > 0)
             ret = receive_data(_header);
 	//std::cout << "_header\n" << _header << std::endl;
 	if (!ret || _header.size() <= 0 || !parser_header())
@@ -85,10 +85,8 @@ int	Request::receive_data(std::string &data)
 	char		request[_body_buffer + 1];
 
 	int	ret = recv(_socket, request, _body_buffer, 0);
-	if (ret <= 0 || (ret > 0 && size_t(ret) < _body_buffer))
-		_end = true;
 	if (ret <= 0)
-		return (0);
+		return (ret);
 	request[ret] = 0;
     //std::cout << request << std::endl;
 	data += request;
