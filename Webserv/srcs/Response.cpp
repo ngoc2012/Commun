@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 11:36:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 11:36:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	Response::get_content(void)
 {
     _content_length = get_file_size(_full_file_name);
     //_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
-    std::cout << "File open" << std::endl;
+    //std::cout << "File open" << std::endl;
     _file.open(_full_file_name.c_str(), std::ios::binary);
     if (!_file.is_open())
     {
