@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 17:45:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 17:49:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	Request::clean()
 	_status_code = 200;
 }
 
-void	Request::read_request(void)
+void	Request::read_header(void)
 {
 	//std::cout << "read_request" << std::endl;
 	//clean();
