@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 17:49:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 17:50:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	Request::clean()
 	_content_type1 = "";
 	_method = NONE;
 	_url = "";
-	_end = false;
 	_status_code = 200;
 }
 
@@ -71,7 +70,6 @@ void	Request::read_header(void)
 	if (!ret || !parser_header())
 	{
 		std::cerr << "Error: header invalid: \n" << _header << std::endl;
-		_end = true;
 		_status_code = 400;	// Bad Request
 	}
 	//std::cout << "===============================" << std::endl;
