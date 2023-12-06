@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 12:17:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 12:19:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	Response::get_content(void)
 
 void	Response::execute_cgi(void)
 {
-    std::cout << _location.get_cgi_pass() << std::endl;
+    std::cout << _location->get_cgi_pass() << std::endl;
     _content_length = get_file_size(_full_file_name);
     //_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
     //std::cout << "File open" << std::endl;
@@ -120,9 +120,9 @@ void	Response::send(void)
 			switch (_request->get_method())
 			{
 				case GET:
-                    if (_location.get_cgi_pass() != "")
+                    if (_location->get_cgi_pass() != "")
                         execute_cgi();
-                    else:
+                    else
                         get_content();
 					break;
 				default:
@@ -169,7 +169,7 @@ bool	Response::find_method(e_method m, Location* loc)
 
 bool	Response::compare_url(std::string url, std::string l_url)
 {
-	std::cout << url << "==" << l_url << std::endl;
+	//std::cout << url << "==" << l_url << std::endl;
 	// Folder
 	if (l_url[l_url.size() - 1] == '/')
 	{
