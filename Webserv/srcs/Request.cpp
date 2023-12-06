@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 21:44:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 21:49:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	Request::read_header(void)
 	while (_header.find("\r\n\r\n") == std:string:npos && ret)
             ret = receive_data(_header);
 	//std::cout << "_header\n" << _header << std::endl;
-	if (!ret || !parser_header())
+	if (!ret || _header.size() <= 0 || !parser_header())
 	{
 		std::cerr << "Error: header invalid: \n" << _header << std::endl;
 		_status_code = 400;	// Bad Request
@@ -98,13 +98,9 @@ int	Request::receive_data(std::string &data)
 
 bool	Request::parser_header(void)
 {
-
-	if (_header.size() <= 0)
-		return (false);
 	std::vector<std::string>	lines = split_string(_header, "\n");
 	std::vector<std::string>	first_line = split_string(lines[0], " 	");
-
-	if (!read_method(first_line[0]))
+	if (first_line.size() < 3 || !read_method(first_line[0]))
 		return (false);
 	_url = first_line[1];
 	read_content_type(_header, _content_type);
