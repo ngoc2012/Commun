@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 17:50:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 21:16:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ bool	Request::read_method(std::string& s)
 	return (true);
 }
 
-bool	Request::find_start_body(std::string& s)
+bool	Request::get_body(std::string& s)
 {
 	size_t	start = 0;
 	size_t	pos0 = s.find("Content-Type:");
