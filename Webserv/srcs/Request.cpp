@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 21:56:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 22:09:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ Request::~Request()
 
 void	Request::clean()
 {
-	_body = "";
+	_body_in_header = "";
 	_header = "";
 	_body_size = 0;
 	_content_type = "";
@@ -63,7 +63,7 @@ void	Request::read_header(void)
 	//std::cout << "read_request" << std::endl;
 	//clean();
     int ret = 1;
-	while (_header.find("\r\n\r\n") == std:string:npos && ret)
+	while (_header.find("\r\n\r\n") == std::string::npos && ret)
             ret = receive_data(_header);
 	//std::cout << "_header\n" << _header << std::endl;
 	if (!ret || _header.size() <= 0 || !parser_header())
@@ -74,7 +74,7 @@ void	Request::read_header(void)
 	std::cout << "===============================" << std::endl;
 	std::cout << "Header:\n" << _header << std::endl;
 	std::cout << "===============================" << std::endl;
-	std::cout << "Body:\n" << _body << std::endl;
+	std::cout << "Body:\n" << _body_in_header << std::endl;
 	std::cout << "===============================" << std::endl;
 	_response.set_status_code(_status_code);
 	_host->new_response_sk(_socket);
