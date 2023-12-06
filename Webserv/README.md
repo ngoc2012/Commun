@@ -97,7 +97,8 @@ Examples:
 
 [Static keyword](https://stackoverflow.com/questions/15235526/the-static-keyword-and-its-various-uses-in-c)
 
-## HTTP
+## HTTP requests
+
 HTTP requests typically include a Content-Type header that indicates the type of data in the request body. Here are some common Content-Type values:
 
 * `application/json`: Used for JSON data.
@@ -106,6 +107,33 @@ HTTP requests typically include a Content-Type header that indicates the type of
 * `multipart/form-data`: Used when submitting forms that include binary data, like file uploads.
 * `text/plain`: Used for plain text data.
 * `application/octet-stream`: Used for binary data when the specific type is not known.
+
+### multipart/form-data (not supported)
+
+`multipart/form-data` is a MIME type used in HTTP requests to submit binary data, especially files, as part of a form submission. It is commonly used when uploading files through HTML forms. In a `multipart/form-data` request, the data is divided into multiple parts, and each part is identified by a boundary.
+
+```css
+POST /upload HTTP/1.1
+Host: example.com
+Content-Type: multipart/form-data; boundary=boundary123
+
+--boundary123
+Content-Disposition: form-data; name="field1"
+
+value1
+--boundary123
+Content-Disposition: form-data; name="field2"
+
+value2
+--boundary123
+Content-Disposition: form-data; name="file"; filename="example.txt"
+Content-Type: text/plain
+
+This is the content of the file.
+It can span multiple lines.
+--boundary123--
+```
+
 
 ## CGI
 
