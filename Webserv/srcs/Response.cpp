@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 22:17:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/06 22:19:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ void	Response::send(void)
 
 
         char		request[_body_buffer + 1];
-
         int	ret = 1;
         while (ret > 0)
             ret = recv(_socket, request, _body_buffer, 0);
