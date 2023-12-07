@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 11:05:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 11:09:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	Response::resquest_error(void)
     header.set_allow(get_methods_str());
     _content_length = 0;
     _header = header.generate();
-    _end = true;
     if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
         perror("send() failed");
 }
@@ -96,7 +95,11 @@ void	Response::execute_cgi(void)
 void	Response::send_header(void)
 {
     if (_status_code != 200)
+    {
         resquest_error();
+        _end = true;
+        return ;
+    }
     std::string	url = _request->get_url();
     find_location(url);
     if (_status_code == 200)
