@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 21:51:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 21:54:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,20 +117,10 @@ void	Response::send(void)
         _header = "";
     }
 	else if (_request->get_method() == GET)
-        switch (_request->get_method())
-        {
-            case GET:
-                get();
-                break;
-            case PUT:
-                download();
-                break;
-            default:
-                _body = "default";
-                _content_length = _body.length();
-                break;
-        }
-		get();
+        if (_location->get_cgi_pass() != "")
+            execute_cgi();
+        else
+		    get();
     if (_end)
         _host->close_client_sk(_socket);
     //_host->delete_response(_socket);
