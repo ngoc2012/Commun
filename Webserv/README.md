@@ -228,3 +228,15 @@ location ~ \.cgi$ {
 * `\.`: Escapes the dot (.) character. In regular expressions, a dot is a special character that matches any character. By escaping it with a backslash, we specifically match a literal dot.
 * `cgi`: Matches the characters "cgi" literally.
 * `$`: Anchors the regex to the end of the URI. This ensures that the regex matches only if the URI ends with ".cgi."
+
+
+### Methods
+
+#### GET
+
+* Must contain no body
+According to the HTTP/1.1 specification (RFC 7231), a GET request is not expected to have a message body. The GET method is defined as a safe and idempotent method, and the use of a message body in a GET request is generally considered non-conforming.
+
+The HTTP/1.1 specification (RFC 7231, Section 4.3.1) states:
+
+    A payload within a GET request message has no defined semantics; sending a payload body on a GET request might cause some existing implementations to reject the request.
