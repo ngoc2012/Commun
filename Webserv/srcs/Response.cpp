@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 10:32:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 10:34:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,58 +93,58 @@ void	Response::execute_cgi(void)
     get_file_content();
 }
 
+void	Response::send_header(void)
+{
+    if (_status_code != 200)
+        resquest_error();
+    std::string	url = _request->get_url();
+    find_location(url);
+    if (_status_code == 200)
+        get_full_file_name(url);
+    Header	header(_status_code, get_file_extension(_full_file_name), this);
+    header.set_allow(get_methods_str());
+    if (_status_code == 200)
+    {
+        std::cout << _full_file_name << std::endl;
+        switch (_request->get_method())
+        {
+            case GET:
+                if (_location->get_cgi_pass() != "")
+                    execute_cgi();
+                else
+                    get_file_content();
+                break;
+            default:
+                _body = "default";
+                _content_length = _body.length();
+                break;
+        }
+    }
+    else
+        _end = true;
+
+
+    //size_t  body_buffer = _request->get_body_buffer();
+    //char	request[body_buffer + 1];
+    //int     ret = 1;
+    //while (ret > 0)
+    //    ret = recv(_socket, request, body_buffer, 0);
+    _header = header.generate();
+    std::cout << "Header:\n" << _header << std::endl;
+    if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
+    {
+        _end = true;
+        perror("send() failed");
+    }
+}
+
 void	Response::send(void)
 {
     //std::cout << _status_code << std::endl;
-	if (_status_code != 200)
-        resquest_error();
-	else if(_header == "")
-	{
-		std::string	url = _request->get_url();
-		find_location(url);
-		if (_status_code == 200)
-			get_full_file_name(url);
-		Header	header(_status_code, get_file_extension(_full_file_name), this);
-		header.set_allow(get_methods_str());
-		if (_status_code == 200)
-		{
-			std::cout << _full_file_name << std::endl;
-			switch (_request->get_method())
-			{
-				case GET:
-                    if (_location->get_cgi_pass() != "")
-                        execute_cgi();
-                    else
-                        get_file_content();
-					break;
-				default:
-					_body = "default";
-					_content_length = _body.length();
-					break;
-			}
-		}
-		else
-			_end = true;
-
-
-        //size_t  body_buffer = _request->get_body_buffer();
-        //char	request[body_buffer + 1];
-        //int     ret = 1;
-        //while (ret > 0)
-        //    ret = recv(_socket, request, body_buffer, 0);
-		_header = header.generate();
-		std::cout << "Header:\n" << _header << std::endl;
-		if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
-		{
-			_end = true;
-			perror("send() failed");
-		}
-	}
+	if(_header == "")
+        send_header();
 	else if (_request->get_method() == GET)
-	{
-		//std::cout << "Get more" << std::endl;
 		get();
-	}
 	if (_end)
 	{
 	      _host->close_client_sk(_socket);
