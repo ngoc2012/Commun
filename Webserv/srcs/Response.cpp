@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 14:17:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 14:21:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,18 @@ _request(r)
 Response::~Response()
 {
 	if (_file.is_open())
+		_file.close();
+	if (_download_file.is_open())
+		_download_file.close();
+    /*
 	{
 		std::cout << "File in response close" << std::endl;
-		_file.close();
 		if (_file.fail())
 			std::cerr << "Error closing file" << std::endl;
 		else
 			std::cout << "File closed successfully" << std::endl;
 	}
+    */
 	std::cout << "Destruction response: " << _socket << std::endl;
 }
 
@@ -127,19 +131,16 @@ void	Response::send(void)
     //std::cout << "Response sent" << std::endl;
 }
 
-void	Response::save_file(void)
+void	Response::download_file(void)
 {
-    std::ofstream outFile(_full_file_name);
-    if (!outFile.is_open()) {
+    _download_file.open(_full_file_name);
+    if (!_download_file.is_open()) {
         std::cerr << "Error: Can not open the file " << _full_file_name << std::endl;
         _status_code = 500;	// Internal server error
         _end = true;
-    } else {
-        // Display an error message if the file couldn't be opened
     }
-    // Write data to the file
-    outFile << "Hello, C++98 file I/O!" << std::endl;
-    outFile << "This is a new line." << std::endl;
+    _download_file << "Hello, C++98 file I/O!" << std::endl;
+    _download_file << "This is a new line." << std::endl;
 
     // Close the file
     outFile.close();
