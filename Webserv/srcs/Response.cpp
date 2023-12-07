@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 10:34:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 11:05:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,12 +145,10 @@ void	Response::send(void)
         send_header();
 	else if (_request->get_method() == GET)
 		get();
-	if (_end)
-	{
-	      _host->close_client_sk(_socket);
-	      //_host->delete_response(_socket);
-	      std::cout << "Response sent" << std::endl;
-	}
+    if (_end)
+        _host->close_client_sk(_socket);
+    //_host->delete_response(_socket);
+    //std::cout << "Response sent" << std::endl;
 }
 
 bool	Response::find_method(e_method m, Location* loc)
