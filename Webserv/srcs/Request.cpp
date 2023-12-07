@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 07:27:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 07:31:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ void	Request::read_header(void)
 	//std::cout << "_header\n" << _header << std::endl;
 	if (_header.size() <= 0 || !parser_header())
 	{
-		std::cerr << "Error: header invalid: \n" << _header << std::endl;
+        if (_header.size() <= 0)
+		    std::cerr << "Error: no header.\n" << std::endl;
+        else
+		    std::cerr << "Error: header invalid.\n" << _header << std::endl;
 		_status_code = 400;	// Bad Request
 	}
 	std::cout << "===============================" << std::endl;
