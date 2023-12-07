@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 09:25:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 09:25:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	Response::resquest_error(void)
         perror("send() failed");
 }
 
-void	Response::get_file_content(void)
+void	Response::get_content(void)
 {
     _content_length = get_file_size(_full_file_name);
     //_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
