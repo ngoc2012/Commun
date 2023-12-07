@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 15:34:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 21:38:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int     Response::build_header(void)
 void	Response::send(void)
 {
     std::cout << _status_code << std::endl;
-	if(_header == "")
+	if(_header != "")
     {
         std::cout << "Header:\n" << _header << std::endl;
         if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
@@ -113,6 +113,7 @@ void	Response::send(void)
             _end = true;
             perror("send() failed");
         }
+        _header = "";
     }
 	else if (_request->get_method() == GET)
 		get();
