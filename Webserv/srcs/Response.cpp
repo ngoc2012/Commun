@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 21:38:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 21:44:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ _request(r)
 */
 Response::~Response()
 {
-	if (_file.is_open())
-		_file.close();
+	if (_upload_file.is_open())
+		_upload_file.close();
 	if (_download_file.is_open())
 		_download_file.close();
     /*
@@ -164,8 +164,8 @@ void	Response::get_file_content(void)
     _content_length = get_file_size(_full_file_name);
     //_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
     //std::cout << "File open" << std::endl;
-    _file.open(_full_file_name.c_str(), std::ios::binary);
-    if (!_file.is_open())
+    _upload_file.open(_full_file_name.c_str(), std::ios::binary);
+    if (!_upload_file.is_open())
     {
         std::cerr << "Failed to open file: " << _full_file_name << std::endl;
         _status_code = 500;	// Internal server error
@@ -305,12 +305,12 @@ void	Response::get(void)
 
 	char	buffer[chunk_size];
 	//std::cout << "chunk_size: " << chunk_size << std::endl;
-	_file.read(buffer, chunk_size);
-	size_t	bytes_read = _file.gcount();
+	_upload_file.read(buffer, chunk_size);
+	size_t	bytes_read = _upload_file.gcount();
 	::send(_socket, buffer, bytes_read, 0);
-	if (_file.eof())
+	if (_upload_file.eof())
 	{
-		_file.close();
+		_upload_file.close();
 		_end = true;
 	}
 }
