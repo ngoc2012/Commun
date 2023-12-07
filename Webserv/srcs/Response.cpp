@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 22:00:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 22:06:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int     Response::build_header(int &sc)
 
 void	Response::send(void)
 {
-    std::cout << _status_code << std::endl;
+    //std::cout << _status_code << std::endl;
 	if(_header != "")
     {
         std::cout << "Header:\n" << _header << std::endl;
