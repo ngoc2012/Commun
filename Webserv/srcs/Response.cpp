@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 14:25:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 14:27:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,6 @@ int     Response::send_header(void)
         _end = true;
 
 
-    //size_t  body_buffer = _request->get_body_buffer();
-    //char	request[body_buffer + 1];
-    //int     ret = 1;
-    //while (ret > 0)
-    //    ret = recv(_socket, request, body_buffer, 0);
     _header = header.generate();
     std::cout << "Header:\n" << _header << std::endl;
     if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
@@ -139,6 +134,11 @@ void	Response::download(void)
         return ;
     }
     _download_file << _request->get_body_in_header() << std::endl;
+    size_t  body_buffer = _request->get_body_buffer();
+    char	request[body_buffer + 1];
+    int     ret = 1;
+    while (ret > 0)
+        ret = recv(_socket, request, body_buffer, 0);
     _download_file.close();
     _end = true;
 }
