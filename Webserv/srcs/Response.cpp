@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 22:22:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 09:15:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	Response::execute_cgi(void)
 
 void	Response::send(void)
 {
+    std::cout << _status_code << std::endl;
 	if (_status_code != 200)
         resquest_error();
 	else if(_header == "")
@@ -126,11 +127,11 @@ void	Response::send(void)
 			_end = true;
 
 
-        size_t  body_buffer = _request->get_body_buffer();
-        char	request[body_buffer + 1];
-        int     ret = 1;
-        while (ret > 0)
-            ret = recv(_socket, request, body_buffer, 0);
+        //size_t  body_buffer = _request->get_body_buffer();
+        //char	request[body_buffer + 1];
+        //int     ret = 1;
+        //while (ret > 0)
+        //    ret = recv(_socket, request, body_buffer, 0);
 		_header = header.generate();
 		std::cout << "Header:\n" << _header << std::endl;
 		if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
