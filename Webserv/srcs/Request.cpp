@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 22:26:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 07:13:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	Request::read_header(void)
     int ret = 1;
 	while (_header.find("\r\n\r\n") == std::string::npos && ret > 0)
             ret = receive_data(_header);
-	std::cout << "_header\n" << _header << std::endl;
-	if (!ret || _header.size() <= 0 || !parser_header())
+	//std::cout << "_header\n" << _header << std::endl;
+	if (_header.size() <= 0 || !parser_header())
 	{
 		std::cerr << "Error: header invalid: \n" << _header << std::endl;
 		_status_code = 400;	// Bad Request
