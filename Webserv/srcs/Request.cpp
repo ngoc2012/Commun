@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 07:25:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 07:27:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,9 +128,9 @@ bool	Request::split_header_body(std::string& s)
 	size_t  pos = s.find("\r\n\r\n");
     if (pos != std::string::npos)
     {
-        std::cout << pos << std::endl;
-    	_header = _header.substr(0, pos);
-	    _body_in_header = _header.substr(pos + 2, _header.size() - pos - 2);
+        //std::cout << pos << std::endl;
+	    _body_in_header = s.substr(pos + 2, _header.size() - pos - 2);
+    	_header = s.substr(0, pos);
 	    return (true);
     }
     return (false);
