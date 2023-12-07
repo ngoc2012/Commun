@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 14:34:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 14:40:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ Response::~Response()
 
 int     Response::send_header(void)
 {
+    std::cout << "Send header" << std::endl;
     if (_status_code != 200)
         return (resquest_error());
     std::string	url = _request->get_url();
@@ -113,7 +114,7 @@ int     Response::send_header(void)
 
 void	Response::send(void)
 {
-    //std::cout << _status_code << std::endl;
+    std::cout << _status_code << std::endl;
 	if(_header == "")
         send_header();
 	else if (_request->get_method() == GET)
