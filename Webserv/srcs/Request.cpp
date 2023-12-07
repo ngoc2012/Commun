@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 07:13:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 07:15:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ bool	Request::parser_header(void)
 {
 	std::vector<std::string>	lines = split_string(_header, "\n");
 	std::vector<std::string>	first_line = split_string(lines[0], " 	");
+    std::cout << first_line.size() << std::endl;
 	if (first_line.size() < 3 || !read_method(first_line[0]))
 		return (false);
 	_url = first_line[1];
@@ -162,6 +163,7 @@ bool	Request::read_content_type(std::string& s, std::string& c)
 		for (int i = 0; i < 18; i++)
 			if (words[0] == std::string(types[i]))
 				c = words[0];
+        std::cerr << "Error: Content type not found." << std::endl;
 		return (false);
 	}
 	return (true);
