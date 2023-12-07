@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 07:15:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 07:16:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ bool	Request::read_content_type(std::string& s, std::string& c)
 	if (pos != std::string::npos)
 	{
 		words = split_string(s.substr(pos + 14, 50), ";\n");
-		//std::cout << "|" << words[0] << "|" << std::endl << std::flush;
+		std::cout << "|" << words[0] << "|" << std::endl << std::flush;
 		for (int i = 0; i < 18; i++)
 			if (words[0] == std::string(types[i]))
 				c = words[0];
