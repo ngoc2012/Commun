@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 14:27:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 14:34:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,19 +126,24 @@ void	Response::send(void)
 
 void	Response::download(void)
 {
-    _download_file.open(_full_file_name);
+    _download_file.open(_full_file_name.c_str());
     if (!_download_file.is_open()) {
         std::cerr << "Error: Can not open the file " << _full_file_name << std::endl;
         _status_code = 500;	// Internal server error
         _end = true;
         return ;
     }
-    _download_file << _request->get_body_in_header() << std::endl;
+    std::string body_in_header = _request->get_body_in_header();
+    _download_file.write(body_in_header.c_str(), body_in_header.size());
     size_t  body_buffer = _request->get_body_buffer();
-    char	request[body_buffer + 1];
+    char	request[body_buffer];
+    std::memset(request, 0, sizeof(request));
     int     ret = 1;
-    while (ret > 0)
-        ret = recv(_socket, request, body_buffer, 0);
+    while ((ret = recv(_socket, request, body_buffer, 0)) > 0)
+    {
+        _download_file.write(request, ret);
+        std::memset(request, 0, sizeof(request));
+    }
     _download_file.close();
     _end = true;
 }
