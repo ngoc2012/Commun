@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 11:13:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 14:13:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,48 +62,15 @@ Response::~Response()
 	std::cout << "Destruction response: " << _socket << std::endl;
 }
 
-int	    Response::resquest_error(void)
-{
-    Header	header(_status_code, std::string(""), this);
-    header.set_allow(get_methods_str());
-    _end = true;
-    _content_length = 0;
-    _header = header.generate();
-    if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
-        perror("send() failed");
-}
-
-void	Response::get_file_content(void)
-{
-    _content_length = get_file_size(_full_file_name);
-    //_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
-    //std::cout << "File open" << std::endl;
-    _file.open(_full_file_name.c_str(), std::ios::binary);
-    if (!_file.is_open())
-    {
-        std::cerr << "Failed to open file: " << _full_file_name << std::endl;
-        _status_code = 500;	// Internal server error
-        _end = true;
-    }
-}
-
-void	Response::execute_cgi(void)
-{
-    std::cout << _location->get_cgi_pass() << std::endl;
-    get_file_content();
-}
-
 int     Response::send_header(void)
 {
     if (_status_code != 200)
-    {
-        resquest_error();
-        return ;
-    }
+        return (resquest_error());
     std::string	url = _request->get_url();
     find_location(url);
-    if (_status_code == 200)
-        get_full_file_name(url);
+    if (_status_code != 200)
+        return (resquest_error());
+    get_full_file_name(url);
     Header	header(_status_code, get_file_extension(_full_file_name), this);
     header.set_allow(get_methods_str());
     if (_status_code == 200)
@@ -116,6 +83,9 @@ int     Response::send_header(void)
                     execute_cgi();
                 else
                     get_file_content();
+                break;
+            case PUT:
+                save_file();
                 break;
             default:
                 _body = "default";
@@ -153,6 +123,38 @@ void	Response::send(void)
         _host->close_client_sk(_socket);
     //_host->delete_response(_socket);
     //std::cout << "Response sent" << std::endl;
+}
+
+int	    Response::resquest_error(void)
+{
+    Header	header(_status_code, std::string(""), this);
+    header.set_allow(get_methods_str());
+    _end = true;
+    _content_length = 0;
+    _header = header.generate();
+    if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
+        perror("send() failed");
+    return (_status_code);
+}
+
+void	Response::get_file_content(void)
+{
+    _content_length = get_file_size(_full_file_name);
+    //_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
+    //std::cout << "File open" << std::endl;
+    _file.open(_full_file_name.c_str(), std::ios::binary);
+    if (!_file.is_open())
+    {
+        std::cerr << "Failed to open file: " << _full_file_name << std::endl;
+        _status_code = 500;	// Internal server error
+        _end = true;
+    }
+}
+
+void	Response::execute_cgi(void)
+{
+    std::cout << _location->get_cgi_pass() << std::endl;
+    get_file_content();
 }
 
 bool	Response::find_method(e_method m, Location* loc)
