@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 14:37:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 14:38:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ bool	Request::read_method(std::string& s)
 	else if (s == "POST")
 		_method = POST;
 	else if (s == "PUT")
-		_method = POST;
+		_method = PUT;
 	else
 	{
 		std::cerr << "Error: Method unknown : " << s << std::endl;
