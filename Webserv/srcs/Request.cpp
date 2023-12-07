@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 07:22:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 07:25:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ bool	Request::parser_header(void)
 {
 	std::vector<std::string>	lines = split_string(_header, "\n");
 	std::vector<std::string>	first_line = split_string(lines[0], " 	");
-    std::cout << first_line.size() << std::endl;
+    //std::cout << first_line.size() << std::endl;
 	if (first_line.size() < 3 || !read_method(first_line[0]))
 		return (false);
 	_url = first_line[1];
@@ -126,9 +126,13 @@ bool	Request::read_method(std::string& s)
 bool	Request::split_header_body(std::string& s)
 {
 	size_t  pos = s.find("\r\n\r\n");
-	_header = _header.substr(0, pos);
-	_body_in_header = _header.substr(pos + 2, _header.size() - pos - 2);
-	return (true);
+    if (pos != std::string::npos)
+    {
+        std::cout << pos << std::endl;
+    	_header = _header.substr(0, pos);
+	    _body_in_header = _header.substr(pos + 2, _header.size() - pos - 2);
+	    return (true);
+    }
     return (false);
 }
 
@@ -159,7 +163,7 @@ bool	Request::read_content_type(std::string& s, std::string& c)
 	if (pos != std::string::npos)
 	{
 		words = split_string(s.substr(pos + 14, 50), ";\n");
-		std::cout << "|" << words[0] << "|" << std::endl << std::flush;
+		//std::cout << "|" << words[0] << "|" << std::endl << std::flush;
 		for (int i = 0; i < 18; i++)
 			if (words[0] == std::string(types[i]))
             {
