@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 22:06:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 22:19:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,11 @@ void	Response::send(void)
         _host->close_client_sk(_socket);
     //_host->delete_response(_socket);
     //std::cout << "Response sent" << std::endl;
+}
+
+void	Response::flush_request_body(void)
+{
+    size_t  body_buffer = _request->get_body_buffer();
 }
 
 void	Response::download(void)
