@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 14:13:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 14:17:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,31 @@ void	Response::send(void)
         send_header();
 	else if (_request->get_method() == GET)
 		get();
+	else if (_request->get_method() == GET)
+		get();
     if (_end)
         _host->close_client_sk(_socket);
     //_host->delete_response(_socket);
     //std::cout << "Response sent" << std::endl;
+}
+
+void	Response::save_file(void)
+{
+    std::ofstream outFile(_full_file_name);
+    if (!outFile.is_open()) {
+        std::cerr << "Error: Can not open the file " << _full_file_name << std::endl;
+        _status_code = 500;	// Internal server error
+        _end = true;
+    } else {
+        // Display an error message if the file couldn't be opened
+    }
+    // Write data to the file
+    outFile << "Hello, C++98 file I/O!" << std::endl;
+    outFile << "This is a new line." << std::endl;
+
+    // Close the file
+    outFile.close();
+    std::cout << "Data has been written to the file." << std::endl;
 }
 
 int	    Response::resquest_error(void)
