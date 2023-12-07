@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 10:33:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 11:13:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ class	Response
 		void		get_full_file_name(std::string);
 		size_t		get_file_size(std::string &file_name);
 		void		get(void);
-        void	    resquest_error(void);
+        int	        resquest_error(void);
         void	    get_file_content(void);
         void	    execute_cgi(void);
-        void	    send_header(void);
+        int	        send_header(void);
 
 		Response(const Response&);
 		Response	&operator=(const Response& op);

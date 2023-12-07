@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 11:09:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 11:13:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ Response::~Response()
 	std::cout << "Destruction response: " << _socket << std::endl;
 }
 
-void	Response::resquest_error(void)
+int	    Response::resquest_error(void)
 {
     Header	header(_status_code, std::string(""), this);
     header.set_allow(get_methods_str());
+    _end = true;
     _content_length = 0;
     _header = header.generate();
     if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
@@ -92,12 +93,11 @@ void	Response::execute_cgi(void)
     get_file_content();
 }
 
-void	Response::send_header(void)
+int     Response::send_header(void)
 {
     if (_status_code != 200)
     {
         resquest_error();
-        _end = true;
         return ;
     }
     std::string	url = _request->get_url();
@@ -139,6 +139,7 @@ void	Response::send_header(void)
         _end = true;
         perror("send() failed");
     }
+    return (0);
 }
 
 void	Response::send(void)
