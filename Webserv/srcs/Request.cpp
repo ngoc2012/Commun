@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 07:19:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 07:22:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,8 @@ bool	Request::parser_header(void)
 	if (first_line.size() < 3 || !read_method(first_line[0]))
 		return (false);
 	_url = first_line[1];
-	if (read_content_type(_header, _content_type))
+	if (!read_content_type(_header, _content_type) || !split_header_body(_header))
 		return (false);
-	split_header_body(_header);
 	return (true);
 }
 
@@ -130,6 +129,7 @@ bool	Request::split_header_body(std::string& s)
 	_header = _header.substr(0, pos);
 	_body_in_header = _header.substr(pos + 2, _header.size() - pos - 2);
 	return (true);
+    return (false);
 }
 
 bool	Request::read_content_type(std::string& s, std::string& c)
@@ -164,13 +164,13 @@ bool	Request::read_content_type(std::string& s, std::string& c)
 			if (words[0] == std::string(types[i]))
             {
 			    c = words[0];
-		        return (false);
+		        return (true);
             }
         std::cerr << "Error: Content type not found." << std::endl;
-	    return (true);
+	    return (false);
 	}
     std::cerr << "Error: Content type not found." << std::endl;
-	return (true);
+	return (false);
 }
 
 e_method	Request::get_method(void) const {return (_method);}
