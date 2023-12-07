@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 14:40:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 15:31:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ Response::~Response()
 	std::cout << "Destruction response: " << _socket << std::endl;
 }
 
-int     Response::send_header(void)
+int     Response::build_header(void)
 {
     std::cout << "Send header" << std::endl;
     if (_status_code != 200)
@@ -103,12 +103,6 @@ int     Response::send_header(void)
 
 
     _header = header.generate();
-    std::cout << "Header:\n" << _header << std::endl;
-    if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
-    {
-        _end = true;
-        perror("send() failed");
-    }
     return (0);
 }
 
@@ -116,7 +110,14 @@ void	Response::send(void)
 {
     std::cout << _status_code << std::endl;
 	if(_header == "")
-        send_header();
+    {
+        std::cout << "Header:\n" << _header << std::endl;
+        if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
+        {
+            _end = true;
+            perror("send() failed");
+        }
+    }
 	else if (_request->get_method() == GET)
 		get();
     if (_end)
