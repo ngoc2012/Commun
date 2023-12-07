@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 15:31:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/07 15:33:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ Response::~Response()
 
 int     Response::build_header(void)
 {
-    std::cout << "Send header" << std::endl;
+    std::cout << "Build header" << std::endl;
     if (_status_code != 200)
         return (resquest_error());
     std::string	url = _request->get_url();
@@ -98,10 +98,6 @@ int     Response::build_header(void)
                 break;
         }
     }
-    else
-        _end = true;
-
-
     _header = header.generate();
     return (0);
 }
