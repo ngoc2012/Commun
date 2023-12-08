@@ -2,6 +2,23 @@ import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 
 class PongConsumer(AsyncWebsocketConsumer):
+    #async def connect(self):
+    #    # Get the unique identifier from the query parameters or headers
+    #    user_id = self.scope.get('user')  # Adjust this based on your authentication method
+
+    #    # Create a unique room name based on the identifier
+    #    room_name = f"user_{user_id}"
+
+    #    self.room_name = room_name
+    #    self.room_group_name = f"room_{self.room_name}"
+
+    #    # Add the player to the room group
+    #    await self.channel_layer.group_add(
+    #        self.room_group_name,
+    #        self.channel_name
+    #    )
+
+    #    await self.accept()
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = f"pong_{self.room_name}"
