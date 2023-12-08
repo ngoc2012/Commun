@@ -51,6 +51,9 @@ class PongConsumer(AsyncWebsocketConsumer):
 
         await self.accept()
 
+        # Start a loop to continuously update the game state
+        await self.game_loop()
+
     async def disconnect(self, close_code):
         # Leave room group
         await self.channel_layer.group_discard(
@@ -62,10 +65,31 @@ class PongConsumer(AsyncWebsocketConsumer):
         # Handle user input (if needed)
         pass
 
-    async def update_state(self, event):
-        state = event['state']
-
+    async def update_state(self):
         # Send the updated game state back to all clients in the room
+        await self.channel_layer.group_send(
+            self.room_group_name,
+            {
+                'type': 'game_update_state',
+                'state': self.state,
+            }
+        )
+
+    async def game_loop(self):
+        # Simulate a game loop that updates the state every 1 second
+        while True:
+            await asyncio.sleep(1)  # Sleep for 1 second
+
+            # Update the game state (this is just an example, actual logic depends on your game)
+            self.state['ball_position']['x'] += 1
+            self.state['ball_position']['y'] += 1
+
+            # Notify all clients about the updated state
+            await self.update_state()
+
+    async def game_update_state(self, event):
+        # Handle the event when the game state is updated
+        state = event['state']
         await self.send(text_data=json.dumps({
             'state': state,
         }))
