@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/08 04:59:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/08 05:01:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,6 @@ void	Response::download(void)
     if (!_download_file.is_open()) {
         std::cerr << "Error: Can not open the file " << _full_file_name << std::endl;
         _status_code = 500;	// Internal server error
-        _end = true;
         return ;
     }
     std::string body_in_header = _request->get_body_in_header();
