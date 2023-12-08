@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/08 03:57:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/08 04:12:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Response::Response()
 	_status_code = 200;
 	_location = 0;
 	_end = false;
-	std::cout << "Response Default constructor" << std::endl;
+	//std::cout << "Response Default constructor" << std::endl;
 }
 Response::Response(const Response& src) { *this = src; }
 Response&	Response::operator=( Response const & src )
@@ -33,37 +33,13 @@ Response&	Response::operator=( Response const & src )
 	(void) src;
 	return (*this);
 }
-/*
-Response::Response(int sk, Host* h, Server* s, Request* r) :
-_socket(sk),
-_host(h),
-_server(s),
-_request(r)
-{
-	_header = "";
-	_full_file_name = "";
-	_status_code = 200;
-	_location = 0;
-	_end = false;
-	std::cout << "Response Constructor sk: " << sk << std::endl;
-}
-*/
 Response::~Response()
 {
 	if (_upload_file.is_open())
 		_upload_file.close();
 	if (_download_file.is_open())
 		_download_file.close();
-    /*
-	{
-		std::cout << "File in response close" << std::endl;
-		if (_file.fail())
-			std::cerr << "Error closing file" << std::endl;
-		else
-			std::cout << "File closed successfully" << std::endl;
-	}
-    */
-	std::cout << "Destruction response: " << _socket << std::endl;
+	//std::cout << "Destruction response: " << _socket << std::endl;
 }
 
 int     Response::build_header(int &sc)
