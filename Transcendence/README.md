@@ -169,6 +169,9 @@ $.ajax({
     }
 });
 ```
+### channels
+
+python3 -m pip install Django channels
 
 ### ASGI
 
