@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 16:13:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/08 05:09:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Header&	Header::operator=( Header const & src )
 	return (*this);
 }
 Header::Header(int e, std::string ext, Response* r) :
-	_err_code(e),
+	_status_code(e),
 	_response(r),
 	_extension(ext)
 {
@@ -43,11 +43,11 @@ std::string	Header::generate(void)
 	std::string	str;
 
 	str = "HTTP/1.1 ";
-	str += itos(_err_code) + " ";
-	if (_status.find(_err_code) == _status.end())
+	str += itos(_status_code) + " ";
+	if (_status.find(_status_code) == _status.end())
 		str += "Unknown error code";
 	else
-		str += _status[_err_code];
+		str += _status[_status_code];
 	str += "\r\n";
 	str += "Allow: " + _allow + "\r\n";
 	str += std::string("Content-Language: en") + "\r\n";
