@@ -213,6 +213,53 @@ application = ProtocolTypeRouter({
 
 You can add more consumers and paths as needed for your application. Each consumer handles the WebSocket connection, and you can define custom logic for handling messages, connecting, disconnecting, etc., within the respective consumer class (`PongConsumer` in this example).
 
+#### consumers.py
+
+# consumers.py
+
+```python
+import json
+from channels.generic.websocket import AsyncWebsocketConsumer
+
+class PongConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
+        self.room_name = self.scope['url_route']['kwargs']['room_name']
+        self.room_group_name = f"pong_{self.room_name}"
+
+        # Join room group
+        await self.channel_layer.group_add(
+            self.room_group_name,
+            self.channel_name
+        )
+
+        await self.accept()
+
+    async def disconnect(self, close_code):
+        # Leave room group
+        await self.channel_layer.group_discard(
+            self.room_group_name,
+            self.channel_name
+        )
+
+    async def receive(self, text_data):
+        # Handle user input (if needed)
+        pass
+
+    async def update_state(self, event):
+        state = event['state']
+
+        # Send the updated game state back to all clients in the room
+        await self.send(text_data=json.dumps({
+            'state': state,
+        }))
+
+    async def player_join(self, event):
+        # Notify all clients when a new player joins the room
+        player_count = event['player_count']
+        await self.send(text_data=json.dumps({
+            'player_count': player_count,
+        }))
+```
 
 These methods are invoked when the corresponding event types are specified in the `group_send` method. The `type` field in the message dictionary determines which method should be called on the consumer.
 
