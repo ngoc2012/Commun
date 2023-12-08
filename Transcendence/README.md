@@ -213,6 +213,33 @@ application = ProtocolTypeRouter({
 
 You can add more consumers and paths as needed for your application. Each consumer handles the WebSocket connection, and you can define custom logic for handling messages, connecting, disconnecting, etc., within the respective consumer class (`PongConsumer` in this example).
 
+
+These methods are invoked when the corresponding event types are specified in the `group_send` method. The `type` field in the message dictionary determines which method should be called on the consumer.
+
+```python
+# Server-side code triggering events
+
+# Update game state
+await self.channel_layer.group_send(
+    self.room_group_name,
+    {
+        'type': 'update_state',
+        'state': updated_state_data,
+    }
+)
+
+# Notify player join
+await self.channel_layer.group_send(
+    self.room_group_name,
+    {
+        'type': 'player_join',
+        'player_count': updated_player_count,
+    }
+)
+```
+
+
+
 ### Other stuffs
 
 [Disable logging](https://stackoverflow.com/questions/5255657/how-can-i-disable-logging-while-running-unit-tests-in-python-django)
