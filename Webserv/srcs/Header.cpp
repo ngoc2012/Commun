@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/08 05:09:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/08 05:11:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,5 @@ std::string	Header::file_last_modified_time(std::string file_name)
 	return (std::string(buffer));
 }
 
+void		Header::set_status_code(int s) {_status_code = s;}
 void		Header::set_allow(std::string a) {_allow = a;}
