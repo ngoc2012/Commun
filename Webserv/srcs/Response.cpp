@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 22:19:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/08 03:57:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int     Response::build_header(int &sc)
         switch (_request->get_method())
         {
             case GET:
+                flush_request_body();
                 get_file_content();
                 break;
             case PUT:
@@ -127,6 +128,11 @@ void	Response::send(void)
 void	Response::flush_request_body(void)
 {
     size_t  body_buffer = _request->get_body_buffer();
+    char	request[body_buffer];
+    int     ret;
+
+    while ((ret = recv(_socket, request, body_buffer, 0)) > 0)
+        ;
 }
 
 void	Response::download(void)

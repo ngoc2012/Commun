@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/07 21:47:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/08 03:57:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ class	Response
         void	    get_file_content(void);
         void	    execute_cgi(void);
         void        download(void);
+        void        flush_request_body(void);
 
 		Response(const Response&);
 		Response	&operator=(const Response& op);
