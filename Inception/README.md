@@ -113,7 +113,14 @@ cat /etc/resolv.conf
 
 [1](https://tuto.grademe.fr/inception/)
 
-## Virtual machine
+## Virtual machine Alpine
+
+[Install with graphic](https://www.youtube.com/watch?v=gW_mUnJB7ro)
+
+
+
+
+## Virtual machine Ubuntu
 
 ```console
 VBoxManage startvm  Inception
