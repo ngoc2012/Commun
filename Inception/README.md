@@ -117,17 +117,15 @@ cat /etc/resolv.conf
 
 [Install with graphic](https://www.youtube.com/watch?v=gW_mUnJB7ro)
 
-
-
-
 ## Virtual machine Ubuntu
 
 ```console
 VBoxManage startvm  Inception
+su
 apt update -y
 apt upgrade -y
 apt install sudo
-usermod -aG sudo your_username
+sudo usermod -aG sudo your_username
 getent group sudo
 sudo visudo
 your_username  	ALL=(ALL) ALL
