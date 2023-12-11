@@ -9,11 +9,14 @@ export class Lobby
     }
     
     events() {
+        this.main.game = null;
         this.dom_pong = document.querySelector("#pong");
         this.dom_pew = document.querySelector("#pew");
         this.dom_join = document.querySelector("#join");
         this.dom_rooms = document.getElementById("rooms");
         this.dom_pong.addEventListener("click", () => {
+            this.main.game = null;
+            this.main.game_socket = -1;
             new_connection({
                 socket: this.main.game_socket,
                 name: "join",
@@ -30,6 +33,8 @@ export class Lobby
         });
 
         this.dom_join.addEventListener("click", () => {
+            this.main.game = null;
+            this.main.game_socket = -1;
             if (this.dom_rooms.selectedIndex !== -1) {
                 new_connection({
                     socket: this.main.game_socket,
