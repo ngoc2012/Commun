@@ -1,4 +1,4 @@
-export class Game
+export class Lobby
 {
     update_time_interval = 2000;
 

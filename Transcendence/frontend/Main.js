@@ -1,4 +1,4 @@
-import {Game} from './Game.js'
+import {Lobby} from './Lobby.js'
 import {Pong} from './Pong.js'
 
 export class Main
