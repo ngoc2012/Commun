@@ -14,15 +14,16 @@
 ## Views
 ### Resize
 
+Short keys:
 * `Ctrl+W` `+/-`:   increase/decrease height (ex. `20<C-w>+`)
 * `Ctrl+W` `>/<`:   increase/decrease width (ex. `30<C-w><`)
 * `Ctrl+W` `_`:     set height (ex. `50<C-w>_`)
 * `Ctrl+W` `|`:     set width (ex. `50<C-w>|`)
 * `Ctrl+W` `=`:     equalize width and height of all windows
 
-* `:resize 60`
+Resize commands
+* `:resize 60` or `:res 4`
 * `:res +3.5`
-* `:res 4`
 * `:vertical resize 80`
 
 Drags events:
