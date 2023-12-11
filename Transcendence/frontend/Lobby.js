@@ -55,28 +55,14 @@ export class Lobby
     }
 
     join(game_id) {
-        this.main.game_socket = new WebSocket('ws://example.com/ws/?user=' + this.main.id + '&id=' game_id);
+        this.main.game_socket = new WebSocket('ws://127.0.0.1:8000/ws/?user=' + this.main.id + '&id=' game_id);
         // Event handler for when the connection is established
-        //socket.addEventListener('open', (event) => {
-        //    socket.send(JSON.stringify({ message: 'Hello, server!' }));
-        //});
-        $.ajax({
-            url: '/accept_invitation/',
-            method: 'POST',
-            data: {
-                "user": this.main.user,
-                "game_id": game_id
-            },
-            success: (response) => {
-                this.main.dom_status.textContent = "Game " + this.main.name + " " + this.main.id + " invitation is accepted by " + this.main.user;
-                this.main.name = response.game;
-                this.main.id = game_id;         
-                this.main.status = "waiting";
-                this.main.game_info = response;
-            },
-            error: function(error) {
-                console.error('Error: accept invitation POST fail', error.message);
-            }
+        socket.addEventListener('open', (event) => {
+            socket.send(JSON.stringify({ message: 'Hello, server!' }));
+
+            this.main.game = new Pong(this);
+            //this.main.load('/pong', () => this.main.game.init());
+            this.main.load('/pong', () => this.main.game.init());
         });
     }
 }
