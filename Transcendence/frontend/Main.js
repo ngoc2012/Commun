@@ -12,7 +12,6 @@ export class Main
     constructor()
     {
         this.lobby = new Lobby(this);
-        //this.pong = new Pong(this);
         this.dom_login = document.getElementById("login");
         this.dom_status = document.getElementById("status");
         this.dom_user_name = document.getElementById("user_name");
