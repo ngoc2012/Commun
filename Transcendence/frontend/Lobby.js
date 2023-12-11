@@ -23,7 +23,9 @@ export class Lobby
             if (this.dom_rooms.selectedIndex !== -1) {
                 new_connection({
                     name: "join",
-                    link: 'ws://127.0.0.1:8000/ws/join?user=' + this.main.id + '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
+                    link: 'ws://127.0.0.1:8000/ws/join' + \
+                        '?user=' + this.main.id + \
+                        '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
                     callback_open: null,
                     callback_message: null,
                 });
