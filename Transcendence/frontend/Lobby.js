@@ -8,8 +8,7 @@ export class Lobby
         this.main = m;
         this.game = null;
         this.info = null;
-        this.rooms_socket = -1;
-        this.game_socket = -1;
+        this.socket = -1;
     }
     
     events() {
@@ -28,7 +27,7 @@ export class Lobby
             return;
         this.end_game();
         new_connection({
-            socket: this.main.game_socket,
+            socket: this.main.socket,
             name: "join",
             link: 'ws://127.0.0.1:8000/ws/join' + \
             '?user=' + this.main.id + \
@@ -112,8 +111,7 @@ export class Lobby
         });
         param.socket.addEventListener('error', (event) => {
             clearTimeout(timeout); // Clear the timeout if there's an error
-            this.main.status = 'WebSocket ' + param.name + ' error:', event;
-            param.callback.message(data);
+            this.main.set_status = 'WebSocket ' + param.name + ' error:';
         });
         param.socket.addEventListener('close', (event) => {
             clearTimeout(timeout); // Clear the timeout if the connection is closed
