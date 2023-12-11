@@ -5,9 +5,6 @@ export class Main
     user = "";
     id = -1;
     status = "";
-    game;
-    rooms_socket = -1;
-    game_socket = -1;
 
     constructor()
     {

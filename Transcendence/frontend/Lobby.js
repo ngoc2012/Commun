@@ -7,6 +7,7 @@ export class Lobby
     constructor(m) {
         this.main = m;
         this.game = null;
+        this.info = null;
         this.rooms_socket = -1;
         this.game_socket = -1;
     }
