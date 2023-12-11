@@ -4,6 +4,9 @@
 * `:!`:     Terminal command
 * `:term`:  Viewport with terminal
 
+## Edition
+* `:%s/.$//`: Delete last characters of lines
+
 ## Views
 ### Resize
 
@@ -13,13 +16,21 @@
 * `Ctrl+W` `|`: set width (ex. `50<C-w>|`)
 * `Ctrl+W` `=`: equalize width and height of all windows
 
-* `resize 60`
-* `res +3.5`
-* `res 4`
-* `vertical resize 80`
+* `:resize 60`
+* `:res +3.5`
+* `:res 4`
+* `:vertical resize 80`
 
 
-## Views
-Copy a part of document to a file
-:100,200w filename
-V -> w fn or w >> fn to append
+## Files
+### Copy a part of document to a file
+* `:100,200w filename`: copy lines 100 to 200 to file
+* Select with `V` -> `:'<,'>w > fn`:    copy to file 
+* Select with `V` -> `:'<,'>w >> fn`:   append 
+
+## Macros
+
+* `q<register><commands>q`: new macro
+* `@<register>`: replay macro
+* `:reg h`: review macro
+
