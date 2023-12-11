@@ -10,8 +10,6 @@ export class Game
         this.dom_pong = document.querySelector("#pong");
         this.dom_rooms = document.getElementById("rooms");
         this.dom_pong.addEventListener("click", () => {
-            var players = this.get_players_selected();
-            //console.log(players);
             this.invite(players);
         });
 
