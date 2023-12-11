@@ -8,13 +8,14 @@ export class Main
     id = -1;
     status = "";
     ///game_info;
+    gamel;
     rooms_socket = -1;
     game_socket = -1;
 
     constructor()
     {
-        this.game = new Game(this);
-        this.pong = new Pong(this);
+        this.lobby = new Lobby(this);
+        //this.pong = new Pong(this);
         this.dom_login = document.getElementById("login");
         this.dom_status = document.getElementById("status");
         this.dom_user_name = document.getElementById("user_name");
