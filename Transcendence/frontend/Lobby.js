@@ -2,10 +2,13 @@ import {Pong} from './Pong.js'
 
 export class Lobby
 {
-    timeout_limit = 5000;
+    connection_timeout = 5000;
 
     constructor(m) {
         this.main = m;
+        this.game = null;
+        this.rooms_socket = -1;
+        this.game_socket = -1;
     }
     
     events() {
@@ -82,7 +85,7 @@ export class Lobby
         const timeout = setTimeout(() => {
             socket.close();
             console.error('WebSocket ' + param.name + ' connection could not be established within the timeout.');
-        }, timeout_limit);
+        }, connection_timeout);
 
         param.socket = new WebSocket(param.link);
         param.socket.addEventListener('open', (event) => {
