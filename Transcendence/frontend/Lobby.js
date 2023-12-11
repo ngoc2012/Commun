@@ -15,6 +15,7 @@ export class Lobby
         this.dom_rooms = document.getElementById("rooms");
         this.dom_pong.addEventListener("click", () => {
             this.main.game = new Pong(this);
+            //this.main.load('/pong', () => this.main.game.init());
             this.main.load('/pong', () => this.main.game.init());
         });
 
