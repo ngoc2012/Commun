@@ -54,7 +54,8 @@ export class Lobby
         });
     }
 
-    new_game(game_id) {
+    new_connection(link, callback)
+    {
         // Set a timeout for creating the WebSocket connection (e.g., 5 seconds)
         const timeout = setTimeout(() => {
             socket.close();
@@ -80,7 +81,6 @@ export class Lobby
             clearTimeout(timeout); // Clear the timeout if the connection is closed
             console.log('WebSocket connection closed:', event);
         });
-
     }
 
     join(game_id) {
