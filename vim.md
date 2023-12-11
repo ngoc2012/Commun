@@ -25,6 +25,9 @@
 * `:res 4`
 * `:vertical resize 80`
 
+Drags events:
+* `:set mouse=n` or `:set mouse=a`
+* `:set ttymouse=xterm2`
 
 ## Files
 ### Copy a part of document to a file
