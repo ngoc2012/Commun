@@ -33,7 +33,6 @@
 * Select with `V` -> `:'<,'>w >> fn`:   append 
 
 ## Macros
-
 * `q<register><commands>q`: new macro
 * `@<register>`:            apply macro
 * `:reg h`:                 review macro
@@ -41,3 +40,13 @@
 
 ## Indentation
 Use :set cindent (:set cin for short) or :set smartindent (:set si for short). If your line ends in an opening brace, and you hit Enter, the following line will automatically be indented one additional level. (This is better than :set autoindent, which merely indents the next line at the same level.) cindent is better tailored to C-like languages, while smartindent is more versatile for use with other programming languages.
+
+## Visual block 'V'
+
+[Demo](https://www.youtube.com/watch?v=Ydzw70SvF-g&t=193s)
+
+* "I" to insert to the left
+* "A" to append to the right
+* "c" to change the Visual Block 
+* "d" to delete the Visual Block
+* "o" to go to the opposite corner
