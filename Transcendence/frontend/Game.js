@@ -50,7 +50,7 @@ export class Game
         });
     }
 
-    invite(players) {
+    new_pong_room() {
         //console.log(players);
         $.ajax({
             url: '/invite/',
@@ -58,7 +58,6 @@ export class Game
             data: {
                 "host": this.main.user,
                 "game": "pong",
-                "players": players
             },
             success: (response) => {
                 this.main.name = "pong";
@@ -75,7 +74,7 @@ export class Game
         });
     }
 
-    accept_invitation(game_id) {
+    join(game_id) {
         $.ajax({
             url: '/accept_invitation/',
             method: 'POST',
@@ -95,73 +94,4 @@ export class Game
             }
         });
     }
-
-    cancel_invitation(game_id) {
-        $.ajax({
-            url: '/cancel_invitation/',
-            method: 'POST',
-            data: {
-                "user": this.main.user,
-                "game_id": game_id
-            },
-            success: (response) => {
-                this.main.dom_status.textContent = "Game " + this.main.name + " " + game_id + " invitation is canceled by " + this.main.user;
-                if (this.main.id === game_id)
-                {
-                    this.main.name = "";
-                    this.main.id = -1;         
-                    this.main.status = "";
-                }
-            },
-            error: function(error) {
-                console.error('Error: cancel invitation POST fail', error.message);
-            }
-        });
-    }
-
-    check_game_status() {
-        $.ajax({
-            url: '/check_game_status/',
-            method: 'POST',
-            data: {
-                "user": this.main.user,
-                "game_id": this.main.id
-            },
-            success: (response) => {
-                if (response === "canceled") {
-                    this.main.dom_status.textContent = "Game " + this.main.name +" " + this.main.id + " is canceled";
-                    this.main.name = "";
-                    this.main.id = -1;         
-                    this.main.status = "";
-                }
-                else if (response.status === "playing") {
-                    this.main.status = "playing";
-                    this.main.load('/pong', () => this.main.pong.init());
-                    //this.main.dom_status.textContent = "Game " + this.main.name +" " + this.main.id + " is ready";
-                }
-            },
-            error: function(error) {
-                //console.error('Error: check game GET fail', error.message);
-            }
-        });
-    }
 }
-
-
-/*
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            // Check if this cookie string begins with the name we want
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-*/
