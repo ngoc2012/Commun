@@ -9,3 +9,7 @@
 * `Ctrl+W` `|`: set width (ex. `50<C-w>|`)
 * `Ctrl+W` `=`: equalize width and height of all windows
 
+* `resize 60`
+* `res +3.5`
+* `res 4`
+* `vertical resize 80`
