@@ -13,3 +13,7 @@
 * `res +3.5`
 * `res 4`
 * `vertical resize 80`
+
+
+:100,200w filename
+V -> w fn or w >> fn to append
