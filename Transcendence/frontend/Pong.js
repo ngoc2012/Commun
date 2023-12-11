@@ -6,8 +6,8 @@ export class Pong
     ctx;
     info;
 
-	constructor(m, i) {
-        this.main = m;
+	constructor(g, i) {
+        this.game = g;
         this.info = i;
     }
 
@@ -34,33 +34,22 @@ export class Pong
                 }
             });
         });
+
         // Handle keyboard input
         document.addEventListener('keydown', (event) => {
             switch (event.key) {
                 case 'ArrowUp':
-                    this.get_state("up");
+                    this.set_state("up");
                     break;
                 case 'ArrowDown':
-                    this.get_state("down");
+                    this.set_state("down");
                     break;
             }
             //console.log(event.key);
         });
-
-        /*
-        document.addEventListener('keyup', function (event) {
-            switch (event.key) {
-                case 'ArrowUp':
-                case 'ArrowDown':
-                    rightPaddle.dy = 0;
-                    break;
-            }
-        });
-        */
-        this.loop();
 	}
 
-    get_state(to_do) {
+    update_state(data) {
         $.ajax({
             url: '/pong_state/',
             method: 'POST',
