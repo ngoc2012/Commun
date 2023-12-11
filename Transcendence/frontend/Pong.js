@@ -60,11 +60,6 @@ export class Pong
         this.loop();
 	}
 
-	loop() {
-        this.get_state("");
-        setTimeout(() => {this.loop();}, this.update_time_interval);
-    }
-
     get_state(to_do) {
         $.ajax({
             url: '/pong_state/',

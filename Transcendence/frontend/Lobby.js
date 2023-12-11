@@ -40,7 +40,8 @@ export class Lobby
                             this.pong_game(data);
                             break;
                     }
-                }
+                },
+                message: this.game.update_state
             }
         });
     }
@@ -54,7 +55,8 @@ export class Lobby
             '?user=' + this.main.id + \
             '&game=pong',
             callback: {
-                open: this.pong_game
+                open: this.pong_game,
+                message: this.game.update_state
             }
         });
     }
