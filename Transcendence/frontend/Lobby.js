@@ -54,7 +54,7 @@ export class Lobby
         });
     }
 
-    new_connection(link, callback)
+    new_connection(link, callback_open, callback_message)
     {
         // Set a timeout for creating the WebSocket connection (e.g., 5 seconds)
         const timeout = setTimeout(() => {
@@ -70,6 +70,10 @@ export class Lobby
             this.main.game = new Pong(this);
             //this.main.load('/pong', () => this.main.game.init());
             this.main.load('/pong', () => this.main.game.init());
+        });
+        socket.addEventListener('message', (event) => {
+            const data = JSON.parse(event.data);
+            callback_message(data);
         });
         // Event listener for handling errors
         socket.addEventListener('error', (event) => {
