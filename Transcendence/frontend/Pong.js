@@ -4,7 +4,6 @@ export class Pong
     data;
     canvas;
     ctx;
-    info;
 
 	constructor(g, i) {
         this.game = g;
@@ -18,21 +17,7 @@ export class Pong
         this.ctx.canvas.height = this.info.height;
         let dom_start = document.getElementById("start");
         dom_start.addEventListener("click", () => {
-            $.ajax({
-                url: '/start_game/',
-                method: 'POST',
-                data: {
-                    "user": this.main.user,
-                    "game_id": this.info.id
-                },
-                success: (response) => {
-                    if (response != "started")
-                        this.main.dom_status.textContent = response;
-                },
-                error: function(error) {
-                    console.error('Error: start POST fail', error.message);
-                }
-            });
+            set_state("start");
         });
 
         // Handle keyboard input
@@ -45,9 +30,12 @@ export class Pong
                     this.set_state("down");
                     break;
             }
-            //console.log(event.key);
         });
 	}
+
+    set_state(e) {
+        this.game.socket.send(JSON.stringify({ message: 'Hello, server!' }));
+    }
 
     update_state(data) {
         $.ajax({
