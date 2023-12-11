@@ -50,4 +50,6 @@ export class Main
             }
         });
     }
+
+    set_status(s) { dom.textContent = s; }
 }
