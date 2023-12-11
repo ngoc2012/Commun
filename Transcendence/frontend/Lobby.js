@@ -55,7 +55,19 @@ export class Lobby
     }
 
     join(game_id) {
-        this.main.game_socket = new WebSocket('ws://127.0.0.1:8000/ws/?user=' + this.main.id + '&id=' game_id);
+        this.main.game_socket = new WebSocket('ws://127.0.0.1:8000/ws/join?user=' + this.main.id + '&id=' game_id);
+        // Event handler for when the connection is established
+        socket.addEventListener('open', (event) => {
+            socket.send(JSON.stringify({ message: 'Hello, server!' }));
+
+            this.main.game = new Pong(this);
+            //this.main.load('/pong', () => this.main.game.init());
+            this.main.load('/pong', () => this.main.game.init());
+        });
+    }
+
+    join(game_id) {
+        this.main.game_socket = new WebSocket('ws://127.0.0.1:8000/ws/join?user=' + this.main.id + '&id=' game_id);
         // Event handler for when the connection is established
         socket.addEventListener('open', (event) => {
             socket.send(JSON.stringify({ message: 'Hello, server!' }));
