@@ -23,7 +23,7 @@ export class Game
     }
 
     rooms_update(game) {
-        this.rooms_socket = new WebSocket('ws://127.0.0.1:8000/ws/rooms');
+        this.main.rooms_socket = new WebSocket('ws://127.0.0.1:8000/ws/rooms');
         // Event handler for when the connection is established
         //socket.addEventListener('open', (event) => {
         //    socket.send(JSON.stringify({ message: 'Hello, server!' }));
@@ -50,6 +50,11 @@ export class Game
     }
 
     join(game_id) {
+        this.main.game_socket = new WebSocket('ws://example.com/ws/?user=2');
+        // Event handler for when the connection is established
+        //socket.addEventListener('open', (event) => {
+        //    socket.send(JSON.stringify({ message: 'Hello, server!' }));
+        //});
         $.ajax({
             url: '/accept_invitation/',
             method: 'POST',

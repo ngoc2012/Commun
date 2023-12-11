@@ -8,6 +8,8 @@ export class Main
     id = -1;
     status = "";
     game_info;
+    rooms_socket = -1;
+    game_socket = -1;
 
     constructor()
     {
