@@ -79,5 +79,6 @@ export class Pong
 	}
     
     end_game() {
+        this.main.load('/home', () => main.lobby.events());
     }
 }

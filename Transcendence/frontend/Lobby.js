@@ -12,6 +12,8 @@ export class Lobby
     }
     
     events() {
+        this.game = null;
+        this.end_connection();
         this.dom_pong = document.querySelector("#pong");
         this.dom_pew = document.querySelector("#pew");
         this.dom_join = document.querySelector("#join");
@@ -118,8 +120,8 @@ export class Lobby
     }
 
     end_connection() {
-        if (this.main.socket !== -1)
-            this.main.socket.close();
-        this.main.socket = -1;
+        if (this.socket !== -1)
+            this.socket.close();
+        this.socket = -1;
     }
 }
