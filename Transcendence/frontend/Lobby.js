@@ -14,9 +14,19 @@ export class Lobby
         this.dom_join = document.querySelector("#join");
         this.dom_rooms = document.getElementById("rooms");
         this.dom_pong.addEventListener("click", () => {
-            this.main.game = new Pong(this);
-            //this.main.load('/pong', () => this.main.game.init());
-            this.main.load('/pong', () => this.main.game.init());
+            new_connection({
+                socket: this.main.game_socket,
+                name: "join",
+                link: 'ws://127.0.0.1:8000/ws/join' + \
+                '?user=' + this.main.id + \
+                '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
+                callback: {
+                    open: () => {
+                        this.main.game = new Pong(this);
+                        this.main.load('/pong', () => this.main.game.init());
+                    }
+                }
+            });
         });
 
         this.dom_join.addEventListener("click", () => {
