@@ -7,6 +7,10 @@
 ## Edition
 * `:%s/.$//`: Delete last characters of lines
 
+### Replace in multiple files
+* `:args *.c`: Select files
+* `:argdo! %s/\s\+$//e | update`: Replace in files
+
 ## Views
 ### Resize
 
