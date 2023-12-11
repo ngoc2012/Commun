@@ -14,50 +14,40 @@ export class Lobby
         this.dom_pew = document.querySelector("#pew");
         this.dom_join = document.querySelector("#join");
         this.dom_rooms = document.getElementById("rooms");
-        this.dom_pong.addEventListener("click", () => {
-            this.main.game = null;
-            this.main.game_socket = -1;
-            new_connection({
-                socket: this.main.game_socket,
-                name: "join",
-                link: 'ws://127.0.0.1:8000/ws/new_room' + \
-                '?user=' + this.main.id + \
-                '&game=pong',
-                callback: {
-                    open: () => {
-                        this.main.game = new Pong(this);
-                        this.main.load('/pong', () => this.main.game.init());
-                    }
-                }
-            });
-        });
-
-        this.dom_join.addEventListener("click", () => {
-            this.join();
-        });
+        this.dom_pong.addEventListener("click", () => { this.new_pong(); });
+        this.dom_join.addEventListener("click", () => { this.join(); });
         this.rooms_update();
     }
 
-    end_game() {
-        this.main.game = null;
-        if (this.main.game_socket != -1)
-            this.main.game_socket.close();
-        this.main.game_socket = -1;
+    join() {
+        if (this.dom_rooms.selectedIndex === -1)
+            return;
+        this.end_game();
+        new_connection({
+            socket: this.main.game_socket,
+            name: "join",
+            link: 'ws://127.0.0.1:8000/ws/join' + \
+            '?user=' + this.main.id + \
+            '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
+            callback: {}
+        });
     }
 
-    join() {
-        this.main.game = null;
-        this.main.game_socket = -1;
-        if (this.dom_rooms.selectedIndex !== -1) {
-            new_connection({
-                socket: this.main.game_socket,
-                name: "join",
-                link: 'ws://127.0.0.1:8000/ws/join' + \
-                '?user=' + this.main.id + \
-                '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
-                callback: {}
-            });
-        }
+    new_pong() {
+        this.end_game();
+        new_connection({
+            socket: this.main.game_socket,
+            name: "join",
+            link: 'ws://127.0.0.1:8000/ws/new_room' + \
+            '?user=' + this.main.id + \
+            '&game=pong',
+            callback: {
+                open: () => {
+                    this.main.game = new Pong(this);
+                    this.main.load('/pong', () => this.main.game.init());
+                }
+            }
+        });
     }
 
     rooms_update() {
@@ -112,5 +102,12 @@ export class Lobby
             clearTimeout(timeout); // Clear the timeout if the connection is closed
             console.log('WebSocket ' + param.name + ' connection closed:', event);
         });
+    }
+
+    end_game() {
+        this.main.game = null;
+        if (this.main.game_socket !== -1)
+            this.main.game_socket.close();
+        this.main.game_socket = -1;
     }
 }
