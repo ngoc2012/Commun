@@ -2,7 +2,7 @@ import {Pong} from './Pong.js'
 
 export class Lobby
 {
-    update_time_interval = 2000;
+    timeout_limit = 5000;
 
     constructor(m) {
         this.main = m;
@@ -54,7 +54,13 @@ export class Lobby
         });
     }
 
-    join(game_id) {
+    new_game(game_id) {
+        // Set a timeout for creating the WebSocket connection (e.g., 5 seconds)
+        const timeout = setTimeout(() => {
+            socket.close();
+            console.error('WebSocket connection could not be established within the timeout.');
+        }, timeout_limit);
+
         this.main.game_socket = new WebSocket('ws://127.0.0.1:8000/ws/join?user=' + this.main.id + '&id=' game_id);
         // Event handler for when the connection is established
         socket.addEventListener('open', (event) => {
@@ -64,6 +70,17 @@ export class Lobby
             //this.main.load('/pong', () => this.main.game.init());
             this.main.load('/pong', () => this.main.game.init());
         });
+        // Event listener for handling errors
+        socket.addEventListener('error', (event) => {
+            clearTimeout(timeout); // Clear the timeout if there's an error
+            console.error('WebSocket error:', event);
+        });
+        // Event listener for when the socket is closed
+        socket.addEventListener('close', (event) => {
+            clearTimeout(timeout); // Clear the timeout if the connection is closed
+            console.log('WebSocket connection closed:', event);
+        });
+
     }
 
     join(game_id) {
