@@ -20,9 +20,9 @@ export class Lobby
             new_connection({
                 socket: this.main.game_socket,
                 name: "join",
-                link: 'ws://127.0.0.1:8000/ws/join' + \
+                link: 'ws://127.0.0.1:8000/ws/new_room' + \
                 '?user=' + this.main.id + \
-                '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
+                '&game=pong',
                 callback: {
                     open: () => {
                         this.main.game = new Pong(this);
@@ -47,11 +47,19 @@ export class Lobby
             }
 
         });
+        new_connection({
+            socket: this.main.rooms_socket,
+            name: "join",
+            link: 'ws://127.0.0.1:8000/ws/rooms',
+            '?user=' + this.main.id + \
+            '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
+            callback: {}
+        });
         this.rooms_update();
     }
 
     rooms_update(game) {
-        this.main.rooms_socket = new WebSocket('ws://127.0.0.1:8000/ws/rooms');
+        this.main.rooms_socket = new WebSocket();
         // Event handler for when the connection is established
         //socket.addEventListener('open', (event) => {
         //    socket.send(JSON.stringify({ message: 'Hello, server!' }));
