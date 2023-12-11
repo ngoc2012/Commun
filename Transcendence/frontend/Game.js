@@ -23,6 +23,7 @@ export class Game
     }
 
     rooms_update(game) {
+        this.rooms_socket = new WebSocket('ws://127.0.0.1:8000/ws/?user=1');
         //console.log("Update online");
         $.ajax({
             url: '/rooms_updates/',
