@@ -50,6 +50,8 @@ export class Lobby
                     this.main.game = new Pong(this);
                     this.main.load('/pong', () => this.main.game.init());
                 }
+                message: (data) => {
+                }
             }
         });
     }
@@ -91,7 +93,8 @@ export class Lobby
         param.socket = new WebSocket(param.link);
         param.socket.addEventListener('open', (event) => {
             //socket.send(JSON.stringify({ message: 'Hello, server!' }));
-            param.callback.open();
+            const data = JSON.parse(event.data);
+            param.callback.open(data);
         });
         param.socket.addEventListener('message', (event) => {
             const data = JSON.parse(event.data);
