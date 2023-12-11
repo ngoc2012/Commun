@@ -23,53 +23,25 @@ export class Game
     }
 
     rooms_update(game) {
-        this.rooms_socket = new WebSocket('ws://127.0.0.1:8000/ws/?user=1');
-        //console.log("Update online");
-        $.ajax({
-            url: '/rooms_updates/',
-            method: 'POST',
-            data: { "user": this.main.user },
-            success: (response) => {
-                var options_rooms = this.dom_rooms && this.dom_rooms.options;
-                this.dom_rooms.innerHTML = "";
-                if (options_rooms && response.rooms
-                    && response.rooms.length > 0) {
-                    response.rooms.forEach((room) => {
-                        var option = document.createElement("option");
-                        option.value = room.id;
-                        option.text = "" + room.id;
-                        room.players.forEach((p) => {
-                            option.text += " - " + p;
-                        });
-                        this.dom_rooms.add(option);
-                    });
-                }
-            },
-            error: function(error) {
-                //console.error('Error: online players list POST fail', error.message);
-            }
+        this.rooms_socket = new WebSocket('ws://127.0.0.1:8000/ws/rooms');
+        // Event handler for when the connection is established
+        socket.addEventListener('open', (event) => {
+            socket.send(JSON.stringify({ message: 'Hello, server!' }));
+        });
+
+        // Event handler for incoming messages from the server
+        socket.addEventListener('message', (event) => {
+            const receivedData = JSON.parse(event.data);
+            console.log('Received from server:', receivedData.message);
         });
     }
 
     new_pong_room() {
-        //console.log(players);
-        $.ajax({
-            url: '/invite/',
-            method: 'POST',
-            data: {
-                "host": this.main.user,
-                "game": "pong",
-            },
-            success: (response) => {
-                this.main.name = "pong";
-                this.main.id = response.id;
-                this.main.status = "waiting";
-                this.main.load('/pong', () => this.main.pong.init());
-            },
-            error: function(error) {
-                console.error('Error: invite POST fail', error.message);
-            }
-        });
+        //this.main.name = "pong";
+        //this.main.id = response.id;
+        //this.main.status = "waiting";
+        this.main.load('/pong', () => this.main.pong.init());
+        //this.rooms_socket = new WebSocket('ws://127.0.0.1:8000/ws/?user=1');
     }
 
     join(game_id) {
