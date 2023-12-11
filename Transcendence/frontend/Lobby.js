@@ -60,8 +60,8 @@ export class Lobby
     }
 
     pong_game(data) {
-        this.main.game = new Pong(this, data);
-        this.main.load('/pong', () => this.main.game.init());
+        this.game = new Pong(this, data);
+        this.main.load('/pong', () => this.game.init());
     }
 
     rooms_update() {
