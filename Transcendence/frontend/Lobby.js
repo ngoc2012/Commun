@@ -27,8 +27,7 @@ export class Lobby
                     link: 'ws://127.0.0.1:8000/ws/join' + \
                         '?user=' + this.main.id + \
                         '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
-                    callback_open: null,
-                    callback_message: null,
+                    callback: {}
                 });
             }
 
@@ -73,28 +72,20 @@ export class Lobby
         param.socket = new WebSocket(param.link);
         param.socket.addEventListener('open', (event) => {
             //socket.send(JSON.stringify({ message: 'Hello, server!' }));
-            param.callback_open();
+            param.callback.open();
         });
         param.socket.addEventListener('message', (event) => {
             const data = JSON.parse(event.data);
-            callback_message(data);
+            param.callback.message(data);
         });
         param.socket.addEventListener('error', (event) => {
             clearTimeout(timeout); // Clear the timeout if there's an error
-            console.error('WebSocket ' + param.name + ' error:', event);
+            this.main.status = 'WebSocket ' + param.name + ' error:', event;
+            param.callback.message(data);
         });
         param.socket.addEventListener('close', (event) => {
             clearTimeout(timeout); // Clear the timeout if the connection is closed
             console.log('WebSocket ' + param.name + ' connection closed:', event);
-        });
-    }
-
-    join(game_id) {
-        this.main.game_socket = new WebSocket('ws://127.0.0.1:8000/ws/join?user=' + this.main.id + '&id=' game_id);
-        // Event handler for when the connection is established
-        socket.addEventListener('open', (event) => {
-            socket.send(JSON.stringify({ message: 'Hello, server!' }));
-
         });
     }
 }
