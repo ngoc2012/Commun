@@ -1,10 +1,10 @@
 export class Pong
 {
-    to_do = "";
     update_time_interval = 50;
     data;
     canvas;
     ctx;
+    info;
 
 	constructor(m) {
         this.main = m;

@@ -37,9 +37,7 @@ export class Lobby
                 open: (data) => {
                     switch (data.game) {
                         case 'pong':
-                            this.main.game = new Pong(this);
-                            this.main.game.info = data;
-                            this.main.load('/pong', () => this.main.game.init());
+                            this.pong_game(data);
                             break;
                     }
                 }
@@ -56,13 +54,15 @@ export class Lobby
             '?user=' + this.main.id + \
             '&game=pong',
             callback: {
-                open: (data) => {
-                    this.main.game = new Pong(this);
-                    this.main.game.info = data;
-                    this.main.load('/pong', () => this.main.game.init());
-                }
+                open: this.pong_game
             }
         });
+    }
+
+    pong_game(data) {
+        this.main.game = new Pong(this);
+        this.main.game.info = data;
+        this.main.load('/pong', () => this.main.game.init());
     }
 
     rooms_update() {
