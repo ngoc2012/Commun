@@ -21,8 +21,14 @@ export class Lobby
 
         this.dom_join.addEventListener("click", () => {
             if (this.dom_rooms.selectedIndex !== -1) {
-                this.join(this.dom_rooms.options[this.dom_rooms.selectedIndex].value);
+                new_connection({
+                    name: "join",
+                    link: 'ws://127.0.0.1:8000/ws/join?user=' + this.main.id + '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
+                    callback_open: null,
+                    callback_message: null,
+                });
             }
+
         });
         this.rooms_update();
     }
@@ -54,22 +60,18 @@ export class Lobby
         });
     }
 
-    new_connection(link, callback_open, callback_message)
+    new_connection(param)
     {
-        // Set a timeout for creating the WebSocket connection (e.g., 5 seconds)
         const timeout = setTimeout(() => {
             socket.close();
-            console.error('WebSocket connection could not be established within the timeout.');
+            console.error('WebSocket ' + param.name + ' connection could not be established within the timeout.');
         }, timeout_limit);
 
-        this.main.game_socket = new WebSocket('ws://127.0.0.1:8000/ws/join?user=' + this.main.id + '&id=' game_id);
+        this.main.game_socket = new WebSocket(param.link);
         // Event handler for when the connection is established
         socket.addEventListener('open', (event) => {
             socket.send(JSON.stringify({ message: 'Hello, server!' }));
 
-            this.main.game = new Pong(this);
-            //this.main.load('/pong', () => this.main.game.init());
-            this.main.load('/pong', () => this.main.game.init());
         });
         socket.addEventListener('message', (event) => {
             const data = JSON.parse(event.data);
@@ -93,9 +95,6 @@ export class Lobby
         socket.addEventListener('open', (event) => {
             socket.send(JSON.stringify({ message: 'Hello, server!' }));
 
-            this.main.game = new Pong(this);
-            //this.main.load('/pong', () => this.main.game.init());
-            this.main.load('/pong', () => this.main.game.init());
         });
     }
 }
