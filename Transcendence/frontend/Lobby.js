@@ -40,10 +40,8 @@ export class Lobby
 
     end_game() {
         this.main.game = null;
-        if (this.main.game_socket = -1)
-        {
-            this.main.game_socket.close;
-        }
+        if (this.main.game_socket != -1)
+            this.main.game_socket.close();
         this.main.game_socket = -1;
     }
 
