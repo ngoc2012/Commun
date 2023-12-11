@@ -68,7 +68,7 @@ export class Lobby
 
     rooms_update() {
         new_connection({
-            name: "join",
+            name: "rooms update",
             link: 'ws://127.0.0.1:8000/ws/rooms',
             '?user=' + this.main.id + \
             '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
