@@ -25,14 +25,14 @@ export class Game
     rooms_update(game) {
         this.rooms_socket = new WebSocket('ws://127.0.0.1:8000/ws/rooms');
         // Event handler for when the connection is established
-        socket.addEventListener('open', (event) => {
-            socket.send(JSON.stringify({ message: 'Hello, server!' }));
-        });
+        //socket.addEventListener('open', (event) => {
+        //    socket.send(JSON.stringify({ message: 'Hello, server!' }));
+        //});
 
         // Event handler for incoming messages from the server
         socket.addEventListener('message', (event) => {
-            const receivedData = JSON.parse(event.data);
-            console.log('Received from server:', receivedData.message);
+            const data = JSON.parse(event.data);
+            //console.log('Received from server:', data.message);
         });
     }
 
