@@ -8,16 +8,15 @@ export class Game
     
     events() {
         this.dom_pong = document.querySelector("#pong");
+        this.dom_join = document.querySelector("#join");
         this.dom_rooms = document.getElementById("rooms");
         this.dom_pong.addEventListener("click", () => {
             this.invite(players);
         });
 
-        this.dom_accept_invitation.addEventListener("click", () => {
-            if (this.main.status !== "")
-                return ;
-            if (this.dom_invitations.selectedIndex !== -1) {
-                this.accept_invitation(this.dom_invitations.options[this.dom_invitations.selectedIndex].value);
+        this.dom_join.addEventListener("click", () => {
+            if (this.dom_rooms.selectedIndex !== -1) {
+                this.join(this.dom_rooms.options[this.dom_rooms.selectedIndex].value);
             }
         });
 
@@ -27,18 +26,6 @@ export class Game
             }
         });
         this.update();
-    }
-
-    get_players_selected() {
-        var options = this.dom_online_players_list && this.dom_online_players_list.options;
-        var players_selected = [this.main.user];
-
-        for (var i=0; i < options.length; i++) {
-            if (options[i].selected) {
-                players_selected.push(options[i].value);
-            }
-        }
-        return (players_selected);
     }
 
     update_online_players_list(game) {
