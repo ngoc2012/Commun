@@ -12,7 +12,6 @@ export class Lobby
     }
     
     events() {
-        this.main.game = null;
         this.dom_pong = document.querySelector("#pong");
         this.dom_pew = document.querySelector("#pew");
         this.dom_join = document.querySelector("#join");
@@ -25,7 +24,8 @@ export class Lobby
     join() {
         if (this.dom_rooms.selectedIndex === -1)
             return;
-        this.end_game();
+        this.game = null;
+        this.end_connection();
         new_connection({
             name: "join",
             link: 'ws://127.0.0.1:8000/ws/join' + \
@@ -45,7 +45,8 @@ export class Lobby
     }
 
     new_pong() {
-        this.end_game();
+        this.game = null;
+        this.end_connection();
         new_connection({
             name: "join",
             link: 'ws://127.0.0.1:8000/ws/new_room' + \
@@ -117,7 +118,6 @@ export class Lobby
     }
 
     end_connection() {
-        this.main.game = null;
         if (this.main.socket !== -1)
             this.main.socket.close();
         this.main.socket = -1;
