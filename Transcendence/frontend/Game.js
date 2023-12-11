@@ -63,10 +63,7 @@ export class Game
                 this.main.name = "pong";
                 this.main.id = response.id;
                 this.main.status = "waiting";
-                this.main.game_info = response;
-                this.main.dom_status.textContent = "New game " + this.main.name + " " + this.main.id + " created. Wait for players...";
-                //this.dom_online_players_list.innerHTML = "";
-                //this.dom_invitations.innerHTML = "";
+                this.main.load('/pong', () => this.main.pong.init());
             },
             error: function(error) {
                 console.error('Error: invite POST fail', error.message);
