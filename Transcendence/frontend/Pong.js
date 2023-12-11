@@ -13,8 +13,8 @@ export class Pong
 	init() {
 		this.canvas = document.getElementById('pongCanvas');
 		this.ctx = this.canvas.getContext('2d');
-        this.ctx.canvas.width  = this.main.game_info.data.width;
-        this.ctx.canvas.height = this.main.game_info.data.height;
+        this.ctx.canvas.width  = this.info.data.width;
+        this.ctx.canvas.height = this.info.data.height;
         let dom_start = document.getElementById("start");
         dom_start.addEventListener("click", () => {
             $.ajax({
@@ -22,7 +22,7 @@ export class Pong
                 method: 'POST',
                 data: {
                     "user": this.main.user,
-                    "game_id": this.main.game_info.id
+                    "game_id": this.info.id
                 },
                 success: (response) => {
                     if (response != "started")
@@ -70,7 +70,7 @@ export class Pong
             method: 'POST',
             data: {
                 "user": this.main.user,
-                "id": this.main.game_info.id,
+                "id": this.info.id,
                 "do": to_do
             },
             success: (response) => {
@@ -89,21 +89,21 @@ export class Pong
 	draw() {
         //console.log("draw");
 		// Clear the canvas
-		this.ctx.clearRect(0, 0, this.main.game_info.data.width, this.main.game_info.data.height);
+		this.ctx.clearRect(0, 0, this.info.data.width, this.info.data.height);
 
 		// Draw paddles
 		this.ctx.fillStyle = '#8b3a62';
         this.data.position.forEach((y, i) => {
 		    this.ctx.fillRect(
-                this.main.game_info.data.x[i],
+                this.info.data.x[i],
                 y,
-                this.main.game_info.data.paddle_width,
-                this.main.game_info.data.paddle_height);
+                this.info.data.paddle_width,
+                this.info.data.paddle_height);
         });
 
 		// Draw this.ball
 		this.ctx.beginPath();
-		this.ctx.arc(this.data.ball.x, this.data.ball.y, this.main.game_info.data.ball_r, 0, Math.PI * 2);
+		this.ctx.arc(this.data.ball.x, this.data.ball.y, this.info.data.ball_r, 0, Math.PI * 2);
 		this.ctx.fillStyle = '#00ffcc';
 		this.ctx.fill();
 		this.ctx.closePath();
