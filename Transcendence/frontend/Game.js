@@ -11,7 +11,7 @@ export class Game
         this.dom_join = document.querySelector("#join");
         this.dom_rooms = document.getElementById("rooms");
         this.dom_pong.addEventListener("click", () => {
-            this.new_pong_room();
+            this.main.load('/pong', () => this.main.pong.init());
         });
 
         this.dom_join.addEventListener("click", () => {
@@ -33,15 +33,21 @@ export class Game
         socket.addEventListener('message', (event) => {
             const data = JSON.parse(event.data);
             //console.log('Received from server:', data.message);
+            var options_rooms = this.dom_rooms && this.dom_rooms.options;
+            this.dom_rooms.innerHTML = "";
+            if (options_rooms && response.rooms
+                && response.rooms.length > 0) {
+                response.rooms.forEach((room) => {
+                    var option = document.createElement("option");
+                    option.value = room.id;
+                    option.text = "" + room.id;
+                    room.players.forEach((p) => {
+                        option.text += " - " + p;
+                    });
+                    this.dom_rooms.add(option);
+                });
+            }
         });
-    }
-
-    new_pong_room() {
-        //this.main.name = "pong";
-        //this.main.id = response.id;
-        //this.main.status = "waiting";
-        this.main.load('/pong', () => this.main.pong.init());
-        //this.rooms_socket = new WebSocket('ws://127.0.0.1:8000/ws/?user=1');
     }
 
     join(game_id) {
