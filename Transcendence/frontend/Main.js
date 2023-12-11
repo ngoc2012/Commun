@@ -13,6 +13,7 @@ export class Main
     {
         this.game = new Game(this);
         this.pong = new Pong(this);
+        this.dom_login = document.getElementById("login");
         this.dom_status = document.getElementById("status");
         this.dom_user_name = document.getElementById("user_name");
         this.dom_container = document.getElementById("container");
