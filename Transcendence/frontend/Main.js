@@ -1,14 +1,11 @@
 import {Lobby} from './Lobby.js'
-import {Pong} from './Pong.js'
 
 export class Main
 {
     user = "";
-    //name = "";
     id = -1;
     status = "";
-    ///game_info;
-    gamel;
+    game;
     rooms_socket = -1;
     game_socket = -1;
 

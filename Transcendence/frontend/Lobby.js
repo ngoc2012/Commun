@@ -1,3 +1,5 @@
+import {Pong} from './Pong.js'
+
 export class Lobby
 {
     update_time_interval = 2000;
@@ -8,10 +10,12 @@ export class Lobby
     
     events() {
         this.dom_pong = document.querySelector("#pong");
+        this.dom_pew = document.querySelector("#pew");
         this.dom_join = document.querySelector("#join");
         this.dom_rooms = document.getElementById("rooms");
         this.dom_pong.addEventListener("click", () => {
-            this.main.load('/pong', () => this.main.pong.init());
+            this.main.game = new Pong(this);
+            this.main.load('/pong', () => this.main.game.init());
         });
 
         this.dom_join.addEventListener("click", () => {
