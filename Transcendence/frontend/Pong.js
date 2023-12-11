@@ -6,15 +6,16 @@ export class Pong
     ctx;
     info;
 
-	constructor(m) {
+	constructor(m, i) {
         this.main = m;
+        this.info = i;
     }
 
 	init() {
 		this.canvas = document.getElementById('pongCanvas');
 		this.ctx = this.canvas.getContext('2d');
-        this.ctx.canvas.width  = this.info.data.width;
-        this.ctx.canvas.height = this.info.data.height;
+        this.ctx.canvas.width  = this.info.width;
+        this.ctx.canvas.height = this.info.height;
         let dom_start = document.getElementById("start");
         dom_start.addEventListener("click", () => {
             $.ajax({
