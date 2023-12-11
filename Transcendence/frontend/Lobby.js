@@ -71,21 +71,21 @@ export class Lobby
         }, timeout_limit);
 
         param.socket = new WebSocket(param.link);
-        socket.addEventListener('open', (event) => {
+        param.socket.addEventListener('open', (event) => {
             //socket.send(JSON.stringify({ message: 'Hello, server!' }));
             param.callback_open();
         });
-        socket.addEventListener('message', (event) => {
+        param.socket.addEventListener('message', (event) => {
             const data = JSON.parse(event.data);
             callback_message(data);
         });
-        socket.addEventListener('error', (event) => {
+        param.socket.addEventListener('error', (event) => {
             clearTimeout(timeout); // Clear the timeout if there's an error
-            console.error('WebSocket error:', event);
+            console.error('WebSocket ' + param.name + ' error:', event);
         });
-        socket.addEventListener('close', (event) => {
+        param.socket.addEventListener('close', (event) => {
             clearTimeout(timeout); // Clear the timeout if the connection is closed
-            console.log('WebSocket connection closed:', event);
+            console.log('WebSocket ' + param.name + ' connection closed:', event);
         });
     }
 
