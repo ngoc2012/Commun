@@ -7,16 +7,12 @@ export class Game
     }
     
     events() {
-        this.dom_invite = document.querySelector("#invite");
-        this.dom_accept_invitation = document.getElementById("accept_invitation");
-        this.dom_cancel_invitation = document.getElementById("cancel_invitation");
-        this.dom_online_players_list = document.getElementById("online_players_list");
-        this.dom_invitations = document.getElementById("invitations");
-        this.dom_invite.addEventListener("click", () => {
+        this.dom_pong = document.querySelector("#pong");
+        this.dom_rooms = document.getElementById("rooms");
+        this.dom_pong.addEventListener("click", () => {
             var players = this.get_players_selected();
             //console.log(players);
-            if (players.length === 2)
-                this.invite(players);
+            this.invite(players);
         });
 
         this.dom_accept_invitation.addEventListener("click", () => {
