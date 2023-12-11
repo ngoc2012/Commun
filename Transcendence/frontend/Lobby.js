@@ -27,7 +27,6 @@ export class Lobby
             return;
         this.end_game();
         new_connection({
-            socket: this.main.socket,
             name: "join",
             link: 'ws://127.0.0.1:8000/ws/join' + \
             '?user=' + this.main.id + \
@@ -48,7 +47,6 @@ export class Lobby
     new_pong() {
         this.end_game();
         new_connection({
-            socket: this.main.game_socket,
             name: "join",
             link: 'ws://127.0.0.1:8000/ws/new_room' + \
             '?user=' + this.main.id + \
@@ -67,7 +65,6 @@ export class Lobby
 
     rooms_update() {
         new_connection({
-            socket: this.main.rooms_socket,
             name: "join",
             link: 'ws://127.0.0.1:8000/ws/rooms',
             '?user=' + this.main.id + \
@@ -95,34 +92,34 @@ export class Lobby
     new_connection(param)
     {
         const timeout = setTimeout(() => {
-            socket.close();
+            this.socket.close();
             console.error('WebSocket ' + param.name + ' connection could not be established within the timeout.');
         }, connection_timeout);
 
-        param.socket = new WebSocket(param.link);
-        param.socket.addEventListener('open', (event) => {
+        this.socket = new WebSocket(param.link);
+        this.socket.addEventListener('open', (event) => {
             //socket.send(JSON.stringify({ message: 'Hello, server!' }));
             const data = JSON.parse(event.data);
             param.callback.open(data);
         });
-        param.socket.addEventListener('message', (event) => {
+        this.socket.addEventListener('message', (event) => {
             const data = JSON.parse(event.data);
             param.callback.message(data);
         });
-        param.socket.addEventListener('error', (event) => {
+        this.socket.addEventListener('error', (event) => {
             clearTimeout(timeout); // Clear the timeout if there's an error
             this.main.set_status = 'WebSocket ' + param.name + ' error:';
         });
-        param.socket.addEventListener('close', (event) => {
+        this.socket.addEventListener('close', (event) => {
             clearTimeout(timeout); // Clear the timeout if the connection is closed
             console.log('WebSocket ' + param.name + ' connection closed:', event);
         });
     }
 
-    end_game() {
+    end_connection() {
         this.main.game = null;
-        if (this.main.game_socket !== -1)
-            this.main.game_socket.close();
-        this.main.game_socket = -1;
+        if (this.main.socket !== -1)
+            this.main.socket.close();
+        this.main.socket = -1;
     }
 }
