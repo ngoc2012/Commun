@@ -1,9 +1,4 @@
 ============ vim split ============
-:resize 60
-:res +3.5
-:res 4
-
-:vertical resize 80
 Ctrl-w + and Ctrl-w - to resize the height
 Ctrl-w > and Ctrl-w < to resize the width
 Ctrl-w 10 +
@@ -12,13 +7,7 @@ Ctrl-w 10 +
 ============ macro =============
 record: q (a...z) smt q
 use: @ (a...z)
-select block of lines -> :'<,'>norm@a
 
 ============ indent =============
-Use :set cindent (:set cin for short) or :set smartindent (:set si for short). If your line ends in an opening brace, and you hit Enter, the following line will automatically be indented one additional level. (This is better than :set autoindent, which merely indents the next line at the same level.) cindent is better tailored to C-like languages, while smartindent is more versatile for use with other programming languages.
 
-Delete last characters of lines
-:%s/.$//
 
-:args *.c
-:argdo! %s/\s\+$//e | update
