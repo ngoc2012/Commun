@@ -22,6 +22,7 @@ export class Lobby
         this.dom_join.addEventListener("click", () => {
             if (this.dom_rooms.selectedIndex !== -1) {
                 new_connection({
+                    socket: this.main.game_socket,
                     name: "join",
                     link: 'ws://127.0.0.1:8000/ws/join' + \
                         '?user=' + this.main.id + \
@@ -69,22 +70,19 @@ export class Lobby
             console.error('WebSocket ' + param.name + ' connection could not be established within the timeout.');
         }, timeout_limit);
 
-        this.main.game_socket = new WebSocket(param.link);
-        // Event handler for when the connection is established
+        param.socket = new WebSocket(param.link);
         socket.addEventListener('open', (event) => {
-            socket.send(JSON.stringify({ message: 'Hello, server!' }));
-
+            //socket.send(JSON.stringify({ message: 'Hello, server!' }));
+            param.callback_open();
         });
         socket.addEventListener('message', (event) => {
             const data = JSON.parse(event.data);
             callback_message(data);
         });
-        // Event listener for handling errors
         socket.addEventListener('error', (event) => {
             clearTimeout(timeout); // Clear the timeout if there's an error
             console.error('WebSocket error:', event);
         });
-        // Event listener for when the socket is closed
         socket.addEventListener('close', (event) => {
             clearTimeout(timeout); // Clear the timeout if the connection is closed
             console.log('WebSocket connection closed:', event);
