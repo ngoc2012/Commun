@@ -55,7 +55,7 @@ export class Lobby
     }
 
     join(game_id) {
-        this.main.game_socket = new WebSocket('ws://example.com/ws/?user=2');
+        this.main.game_socket = new WebSocket('ws://example.com/ws/?user=' + this.main.id + '&id=' game_id);
         // Event handler for when the connection is established
         //socket.addEventListener('open', (event) => {
         //    socket.send(JSON.stringify({ message: 'Hello, server!' }));
