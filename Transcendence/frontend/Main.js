@@ -4,10 +4,10 @@ import {Pong} from './Pong.js'
 export class Main
 {
     user = "";
-    name = "";
+    //name = "";
     id = -1;
     status = "";
-    game_info;
+    ///game_info;
     rooms_socket = -1;
     game_socket = -1;
 
