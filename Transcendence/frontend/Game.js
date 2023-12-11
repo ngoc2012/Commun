@@ -11,18 +11,12 @@ export class Game
         this.dom_join = document.querySelector("#join");
         this.dom_rooms = document.getElementById("rooms");
         this.dom_pong.addEventListener("click", () => {
-            this.invite(players);
+            this.new_pong_room();
         });
 
         this.dom_join.addEventListener("click", () => {
             if (this.dom_rooms.selectedIndex !== -1) {
                 this.join(this.dom_rooms.options[this.dom_rooms.selectedIndex].value);
-            }
-        });
-
-        this.dom_cancel_invitation.addEventListener("click", () => {
-            if (this.dom_invitations.selectedIndex !== -1) {
-                this.cancel_invitation(this.dom_invitations.options[this.dom_invitations.selectedIndex].value);
             }
         });
         this.rooms_update();
@@ -31,22 +25,22 @@ export class Game
     rooms_update(game) {
         //console.log("Update online");
         $.ajax({
-            url: '/online_players_list/',
+            url: '/rooms_updates/',
             method: 'POST',
             data: { "user": this.main.user },
             success: (response) => {
-                var options_invitations = this.dom_invitations && this.dom_invitations.options;
-                this.dom_invitations.innerHTML = "";
-                if (options_invitations && response.invitations
-                    && response.invitations.length > 0) {
-                    response.invitations.forEach((invitation) => {
+                var options_rooms = this.dom_rooms && this.dom_rooms.options;
+                this.dom_rooms.innerHTML = "";
+                if (options_rooms && response.rooms
+                    && response.rooms.length > 0) {
+                    response.rooms.forEach((room) => {
                         var option = document.createElement("option");
-                        option.value = invitation.id;
-                        option.text = "" + invitation.id;
-                        invitation.players.forEach((p) => {
+                        option.value = room.id;
+                        option.text = "" + room.id;
+                        room.players.forEach((p) => {
                             option.text += " - " + p;
                         });
-                        this.dom_invitations.add(option);
+                        this.dom_rooms.add(option);
                     });
                 }
             },
