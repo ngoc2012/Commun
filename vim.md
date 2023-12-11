@@ -1,5 +1,9 @@
 # Vim
 
+## Commands
+* `:!`:     Terminal command
+* `:term`:  Viewport with terminal
+
 ## Views
 ### Resize
 
@@ -15,5 +19,7 @@
 * `vertical resize 80`
 
 
+## Views
+Copy a part of document to a file
 :100,200w filename
 V -> w fn or w >> fn to append
