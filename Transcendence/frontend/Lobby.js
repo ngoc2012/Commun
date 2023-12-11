@@ -33,7 +33,17 @@ export class Lobby
             link: 'ws://127.0.0.1:8000/ws/join' + \
             '?user=' + this.main.id + \
             '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
-            callback: {}
+            callback: {
+                open: (data) => {
+                    switch (data.game) {
+                        case 'pong':
+                            this.main.game = new Pong(this);
+                            this.main.game.info = data;
+                            this.main.load('/pong', () => this.main.game.init());
+                            break;
+                    }
+                }
+            }
         });
     }
 
@@ -46,11 +56,10 @@ export class Lobby
             '?user=' + this.main.id + \
             '&game=pong',
             callback: {
-                open: () => {
+                open: (data) => {
                     this.main.game = new Pong(this);
+                    this.main.game.info = data;
                     this.main.load('/pong', () => this.main.game.init());
-                }
-                message: (data) => {
                 }
             }
         });
