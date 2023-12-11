@@ -25,61 +25,35 @@ export class Game
                 this.cancel_invitation(this.dom_invitations.options[this.dom_invitations.selectedIndex].value);
             }
         });
-        this.update();
+        this.rooms_update();
     }
 
-    update_online_players_list(game) {
-    //console.log("Update online");
-    $.ajax({
-        url: '/online_players_list/',
-        method: 'POST',
-        data: { "user": this.main.user },
-        success: (response) => {
-            var options = this.dom_online_players_list && this.dom_online_players_list.options;
-            if (options && response.online_players_list.length !== options.length + 1) {
-                this.dom_online_players_list.innerHTML = "";
-                if (response.online_players_list.length > 0) {
-                    response.online_players_list.forEach((element) => {
-                        if (element !== this.main.user) {
-                            var option = document.createElement("option");
-                            option.value = element;
-                            option.text = element;
-                            this.dom_online_players_list.add(option);
-                        }
+    rooms_update(game) {
+        //console.log("Update online");
+        $.ajax({
+            url: '/online_players_list/',
+            method: 'POST',
+            data: { "user": this.main.user },
+            success: (response) => {
+                var options_invitations = this.dom_invitations && this.dom_invitations.options;
+                this.dom_invitations.innerHTML = "";
+                if (options_invitations && response.invitations
+                    && response.invitations.length > 0) {
+                    response.invitations.forEach((invitation) => {
+                        var option = document.createElement("option");
+                        option.value = invitation.id;
+                        option.text = "" + invitation.id;
+                        invitation.players.forEach((p) => {
+                            option.text += " - " + p;
+                        });
+                        this.dom_invitations.add(option);
                     });
                 }
+            },
+            error: function(error) {
+                //console.error('Error: online players list POST fail', error.message);
             }
-            var options_invitations = this.dom_invitations && this.dom_invitations.options;
-            this.dom_invitations.innerHTML = "";
-            if (options_invitations && response.invitations
-                && response.invitations.length > 0) {
-                response.invitations.forEach((invitation) => {
-                    var option = document.createElement("option");
-                    option.value = invitation.id;
-                    option.text = "" + invitation.id;
-                    invitation.players.forEach((p) => {
-                        option.text += " - " + p;
-                    });
-                    this.dom_invitations.add(option);
-                });
-            }
-        },
-        error: function(error) {
-            //console.error('Error: online players list POST fail', error.message);
-        }
-    });
-}
-
-    update() {
-        //console.log("update :" + this.main.user);
-        //console.log("status :" + this.main.status);
-        if (this.main.status === "playing")
-            return ;
-        if (this.main.status === "waiting")
-            this.check_game_status();
-        else
-            this.update_online_players_list();
-        setTimeout(() => {this.update();}, this.update_time_interval);
+        });
     }
 
     invite(players) {
