@@ -17,6 +17,10 @@ def new_player(request):
 
 def new_room(request):
     global rooms
+
+    # Get the channel layer
+    channel_layer = get_channel_layer()
+
     i = 0
     while (i in rooms):
         i += 1
