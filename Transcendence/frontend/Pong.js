@@ -90,12 +90,4 @@ export class Pong
 		this.ctx.fill();
 		this.ctx.closePath();
 	}
-    /*
-    end_connection() {
-        this.game = null;
-        if (this.socket !== -1)
-            this.socket.close();
-        this.socket = -1;
-    }
-    */
 }
