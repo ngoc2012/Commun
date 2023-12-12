@@ -36,5 +36,5 @@ def new_player(request):
             "accepted": -1
             }
     #print(online_players)
-    return (JsonResponse({"user": user_name}))
+    return (HttpResponse(user_name))
 
