@@ -3,8 +3,6 @@ import {new_connection} from './new_connection.js'
 
 export class Lobby
 {
-    CONNECTION_TIMEOUT = 5000;
-
     constructor(m) {
         this.main = m;
         this.socket = -1;
@@ -61,7 +59,7 @@ export class Lobby
     }
 
     rooms_update() {
-        this.new_connection({
+        new_connection({
             name: "rooms update",
             socket: this.socket,
             link: 'ws://127.0.0.1:8000/ws/rooms',

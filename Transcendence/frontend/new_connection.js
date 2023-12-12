@@ -1,5 +1,7 @@
 export function new_connection(param)
 {
+    const CONNECTION_TIMEOUT = 5000;
+
     const timeout = setTimeout(() => {
         param.socket.close();
         console.error('WebSocket ' + param.name + ' connection could not be established within the timeout.');

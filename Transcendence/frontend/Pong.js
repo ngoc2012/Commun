@@ -1,3 +1,5 @@
+import {new_connection} from './new_connection.js'
+
 export class Pong
 {
 	constructor(m, g, i) {
@@ -38,7 +40,7 @@ export class Pong
 
     connect() {
         this.main.set_status("Connecting to server...");
-        this.new_connection({
+        new_connection({
             name: "Connect to server",
             link: 'ws://127.0.0.1:8000/ws/' + this.info.room + \
             '?user=' + this.main.id,
