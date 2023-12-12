@@ -1,4 +1,5 @@
 import json
+
 from channels.generic.websocket import AsyncWebsocketConsumer
 
 class PongConsumer(AsyncWebsocketConsumer):
@@ -21,6 +22,7 @@ class PongConsumer(AsyncWebsocketConsumer):
     #    await self.accept()
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
+        user_id = self.scope.get('user')
         self.room_group_name = f"pong_{self.room_name}"
 
         # Server-side code triggering events
