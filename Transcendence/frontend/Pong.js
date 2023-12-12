@@ -15,7 +15,9 @@ export class Pong
         this.ctx.canvas.width  = this.info.width;
         this.ctx.canvas.height = this.info.height;
         let dom_start = document.getElementById("start");
-        dom_start.addEventListener("click", () => { set_state("start"); });
+        let dom_quit = document.getElementById("quit");
+        dom_start.addEventListener("click", () => this.set_state("start"));
+        dom_quit.addEventListener("click", () => this.quit());
         document.addEventListener('keydown', (event) => {
             switch (event.key) {
                 case 'ArrowUp':
@@ -30,7 +32,7 @@ export class Pong
 
     set_state(e) {
         if (this.game.socket !== -1)
-            this.game.socket.send(JSON.stringify({ 'do': 'up' }));
+            this.game.socket.send(JSON.stringify({ 'do': e }));
     }
 
     update_state(data) {
