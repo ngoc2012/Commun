@@ -16,7 +16,7 @@ export class Lobby
         this.dom_pew = document.querySelector("#pew");
         this.dom_join = document.querySelector("#join");
         this.dom_rooms = document.getElementById("rooms");
-        this.dom_pong.addEventListener("click", () => this.new_pong());
+        this.dom_pong.addEventListener("click", () => this.new_pong("pong"));
         this.dom_join.addEventListener("click", () => this.join());
         this.rooms_update();
     }
@@ -33,7 +33,7 @@ export class Lobby
             url: '/join_game',
             method: 'POST',
             data: {
-                "user": this.main.use,
+                "user": this.main.user,
                 "id": this.dom_rooms.options[this.dom_rooms.selectedIndex].value
             },
             success: (info) => this.pong_game(info),
@@ -46,7 +46,7 @@ export class Lobby
             url: '/new_game',
             method: 'POST',
             data: {
-                "user": this.main.use,
+                "user": this.main.user,
                 "game": game
             },
             success: (info) => this.pong_game(info),
@@ -134,12 +134,5 @@ export class Lobby
             if ("close" in param.callback)
                 param.callback.close();
         });
-    }
-
-    end_connection() {
-        this.game = null;
-        if (this.socket !== -1)
-            this.socket.close();
-        this.socket = -1;
     }
 }

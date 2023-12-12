@@ -42,7 +42,6 @@ export class Pong
             callback: {
                 open: () => {
                     this.connected = true;
-                    this.draw();
                 },
                 message: this.game.update_state,
                 close: this.lobby.reload
@@ -58,7 +57,10 @@ export class Pong
     update_state(data) {
         this.data = data;
         if (this.connected && this.lobby.socket !== -1)
+        {
             this.lobby.socket.send("got");
+            this.draw();
+        }
     }
 
 	draw() {
@@ -83,4 +85,12 @@ export class Pong
 		this.ctx.fill();
 		this.ctx.closePath();
 	}
+    /*
+    end_connection() {
+        this.game = null;
+        if (this.socket !== -1)
+            this.socket.close();
+        this.socket = -1;
+    }
+    */
 }
