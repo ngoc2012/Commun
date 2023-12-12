@@ -49,19 +49,16 @@ export class Lobby
         });
     }
 
-    new_game() {
+    new_game(game) {
         $.ajax({
             url: '/new_game',
             method: 'POST',
-            data: { "user": this.main.user },
-            success: (response) => {
-                this.user = response;
-                console.log("new player :", this.user);
-                this.dom_user_name.innerHTML = this.user;
+            data: {
+                "user": this.main.use,
+                "game": game
             },
-            error: function(error) {
-                console.error('Error: sending new player demand', error.message);
-            }
+            success: (info) => this.pong_game(info),
+            error: (error) => this.main.set_status('Error: Can not create game')
         });
     }
 
