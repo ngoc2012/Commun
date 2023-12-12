@@ -47,8 +47,8 @@ export class Pong
             callback: {
                 open: () => {
                     this.connected = true;
-                    if (this.socket.readyState === WebSocket.OPEN)
-                        this.socket.send(info);
+                    if (this.lobby.socket.readyState === WebSocket.OPEN)
+                        this.lobby.socket.send(this.info);
                     else
                         this.main.set_status('Error: WebSocket connection not open.')
                 },
