@@ -33,7 +33,7 @@ export class Pong
 	}
 
     connect() {
-        this.lob
+        this.main.set_status("Connecting to server...");
         this.new_connection({
             name: "join",
             link: 'ws://127.0.0.1:8000/ws/new_room' + \
