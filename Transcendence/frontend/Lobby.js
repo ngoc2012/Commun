@@ -11,7 +11,6 @@ export class Lobby
     }
     
     events() {
-        this.end_connection();
         this.dom_pong = document.querySelector("#pong");
         this.dom_pew = document.querySelector("#pew");
         this.dom_join = document.querySelector("#join");
@@ -22,7 +21,6 @@ export class Lobby
     }
 
     reload() {
-        this.end_connection();
         this.main.load('/lobby', () => this.events());
     }
 
@@ -62,6 +60,7 @@ export class Lobby
     rooms_update() {
         this.new_connection({
             name: "rooms update",
+            socket: this.socket,
             link: 'ws://127.0.0.1:8000/ws/rooms',
             '?user=' + this.main.id + \
             '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
@@ -135,4 +134,5 @@ export class Lobby
                 param.callback.close();
         });
     }
+
 }
