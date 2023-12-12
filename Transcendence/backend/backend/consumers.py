@@ -1,6 +1,8 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 
+games = {}
+
 class GameConsumer(AsyncWebsocketConsumer):
     #async def connect(self):
     #    # Get the unique identifier from the query parameters or headers
