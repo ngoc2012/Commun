@@ -40,7 +40,10 @@ export class Pong
             link: 'ws://127.0.0.1:8000/ws/' + this.info.room + \
             '?user=' + this.main.id,
             callback: {
-                open: this.pong_game,
+                open: () => {
+                    this.connected = true;
+                    this.draw();
+                },
                 message: this.game.update_state,
                 close: this.lobby.reload
             }
@@ -48,13 +51,13 @@ export class Pong
     }
 
     set_state(e) {
-        if (this.lobby.socket !== -1)
+        if (this.connected && this.lobby.socket !== -1)
             this.lobby.socket.send(JSON.stringify({ 'do': e }));
     }
 
     update_state(data) {
         this.data = data;
-        if (this.lobby.socket !== -1)
+        if (this.connected && this.lobby.socket !== -1)
             this.lobby.socket.send("got");
     }
 
