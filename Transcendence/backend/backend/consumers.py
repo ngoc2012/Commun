@@ -22,8 +22,6 @@ class GameConsumer(AsyncWebsocketConsumer):
 
     #    await self.accept()
     async def connect(self):
-        self.room_name = self.scope['url_route']['kwargs']['room_name']
-        rooms.add(self.room_name)
         self.user = self.scope.get('user')  # Adjust this based on your authentication method
         self.room_group_name = f"pong_{self.room_name}"
 
@@ -69,10 +67,3 @@ class GameConsumer(AsyncWebsocketConsumer):
 
     async def update_state(self):
         # Send the updated game state back to all clients in the room
-        await self.channel_layer.group_send(
-            self.room_group_name,
-            {
-                'type': 'game_update_state',
-                'state': self.state,
-            }
-        )
