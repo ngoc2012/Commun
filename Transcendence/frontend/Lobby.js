@@ -46,7 +46,7 @@ export class Lobby
                             break;
                     }
                 },
-                message: this.game.update_state
+                message: this.game.update_state,
             }
         });
     }
@@ -93,7 +93,8 @@ export class Lobby
                             this.dom_rooms.add(option);
                         });
                     }
-                }
+                },
+                error: this.rooms_update
             }
         });
     }
