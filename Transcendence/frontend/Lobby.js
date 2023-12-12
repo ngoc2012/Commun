@@ -29,22 +29,15 @@ export class Lobby
     join() {
         if (this.dom_rooms.selectedIndex === -1)
             return;
-        this.new_connection({
-            name: "join",
-            link: 'ws://127.0.0.1:8000/ws/join' + \
-            '?user=' + this.main.id + \
-            '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
-            callback: {
-                open: (info) => {
-                    switch (info.game) {
-                        case 'pong':
-                            this.pong_game(info);
-                            break;
-                    }
-                },
-                message: this.game.update_state,
-                close: this.return_lobby
-            }
+        $.ajax({
+            url: '/join_game',
+            method: 'POST',
+            data: {
+                "user": this.main.use,
+                "id": this.dom_rooms.options[this.dom_rooms.selectedIndex].value
+            },
+            success: (info) => this.pong_game(info),
+            error: (error) => this.main.set_status('Error: Can not join game')
         });
     }
 
