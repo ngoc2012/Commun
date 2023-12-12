@@ -8,6 +8,7 @@ export class Pong
         this.main = m;
         this.lobby = g;
         this.info = i;
+        this.connected = false;
     }
 
 	init() {
