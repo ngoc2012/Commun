@@ -62,8 +62,4 @@ export class Pong
 		this.ctx.fill();
 		this.ctx.closePath();
 	}
-    
-    quit() {
-        this.lobby.main.load('/home', () => main.lobby.events());
-    }
 }
