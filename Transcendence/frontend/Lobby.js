@@ -21,7 +21,7 @@ export class Lobby
         this.rooms_update();
     }
 
-    return_lobby() {
+    reload() {
         this.end_connection();
         this.main.load('/lobby', () => this.events());
     }

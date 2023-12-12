@@ -17,7 +17,7 @@ export class Pong
         let dom_start = document.getElementById("start");
         let dom_quit = document.getElementById("quit");
         dom_start.addEventListener("click", () => this.set_state("start"));
-        dom_quit.addEventListener("click", () => this.quit());
+        dom_quit.addEventListener("click", () => this.lobby.reload());
         document.addEventListener('keydown', (event) => {
             switch (event.key) {
                 case 'ArrowUp':
