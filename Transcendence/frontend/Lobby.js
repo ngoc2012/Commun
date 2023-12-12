@@ -25,7 +25,7 @@ export class Lobby
     return_lobby() {
         this.game = null;
         this.end_connection();
-        this.main.load('/main', () => this.events());
+        this.main.load('/lobby', () => this.events());
     }
 
     join() {
@@ -47,6 +47,7 @@ export class Lobby
                     }
                 },
                 message: this.game.update_state,
+                close: this.return_lobby
             }
         });
     }
@@ -61,7 +62,7 @@ export class Lobby
             '&game=pong',
             callback: {
                 open: this.pong_game,
-                message: this.game.update_state
+                message: this.game.update_state,
                 close: this.return_lobby
             }
         });
