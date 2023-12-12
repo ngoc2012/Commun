@@ -53,7 +53,7 @@ export class Pong
                         this.main.set_status('Error: WebSocket lobby not open.')
                 },
                 message: this.update_state,
-                close: this.lobby.reload
+                close: this.quit
             }
         });
     }
