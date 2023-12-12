@@ -5,7 +5,7 @@ export class Pong
     ctx;
 
 	constructor(g, i) {
-        this.game = g;
+        this.lobby = g;
         this.info = i;
     }
 
@@ -31,14 +31,14 @@ export class Pong
 	}
 
     set_state(e) {
-        if (this.game.socket !== -1)
-            this.game.socket.send(JSON.stringify({ 'do': e }));
+        if (this.lobby.socket !== -1)
+            this.lobby.socket.send(JSON.stringify({ 'do': e }));
     }
 
     update_state(data) {
-        this.data = data;
-        if (this.game.socket !== -1)
-            this.game.socket.send("got");
+        this. = data;
+        if (this.lobby.socket !== -1)
+            this.lobby.socket.send("got");
     }
 
 	draw() {
@@ -63,7 +63,7 @@ export class Pong
 		this.ctx.closePath();
 	}
     
-    end_game() {
-        this.main.load('/home', () => main.lobby.events());
+    quit() {
+        this.lobby.main.load('/home', () => main.lobby.events());
     }
 }
