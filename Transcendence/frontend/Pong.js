@@ -9,6 +9,7 @@ export class Pong
         this.lobby = g;
         this.info = i;
         this.connected = false;
+        this.socket = -1;
     }
 
 	init() {
@@ -19,7 +20,7 @@ export class Pong
         let dom_start = document.getElementById("start");
         let dom_quit = document.getElementById("quit");
         dom_start.addEventListener("click", () => this.set_state("start"));
-        dom_quit.addEventListener("click", () => this.lobby.reload());
+        dom_quit.addEventListener("click", () => this.quit());
         document.addEventListener('keydown', (event) => {
             switch (event.key) {
                 case 'ArrowUp':
@@ -32,6 +33,10 @@ export class Pong
         });
         this.connect();
 	}
+
+    quit() {
+        this.main.load('/lobby', () => this.lobby.events()));
+    }
 
     connect() {
         this.main.set_status("Connecting to server...");
