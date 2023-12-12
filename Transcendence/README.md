@@ -27,14 +27,11 @@ Transcendence
 │   ├── urls.py
 │   ├── asgi.py
 │   └── wsgi.py
-├── api
+├── pong
 │   ├── __init__.py
-│   └── pong
-│       ├── __init__.py
-│       ├── admin.py
-│       ├── models.py
-│       ├── tests.py
-│       └── views.py
+│   ├── settings.py
+│   ├── apps.py
+│   └── views.py
 └── manage.py
 ```
 
