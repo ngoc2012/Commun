@@ -169,14 +169,18 @@ $.ajax({
     }
 });
 ```
-### channels
-
-python3 -m pip install Django channels
 
 ### ASGI
 
 ASGI stands for Asynchronous Server Gateway Interface. It's a specification for asynchronous web servers and frameworks in Python. ASGI enables handling multiple connections asynchronously, making it suitable for applications that require real-time features, such as chat applications, live notifications, or multiplayer games.
 
+#### Install `channels`
+
+python3 -m pip install Django channels
+[Channels](https://channels.readthedocs.io/en/latest/index.html)
+
+
+#### Configuration
 
 The routing configuration in the `asgi.py` file defines how WebSocket connections are routed to consumers. Here's an example routing configuration:
 
