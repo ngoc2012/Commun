@@ -29,7 +29,6 @@ export class Lobby
     join() {
         if (this.dom_rooms.selectedIndex === -1)
             return;
-        this.end_connection();
         this.new_connection({
             name: "join",
             link: 'ws://127.0.0.1:8000/ws/join' + \
@@ -97,11 +96,11 @@ export class Lobby
     new_connection(param)
     {
         const timeout = setTimeout(() => {
-            this.socket.close();
+            param.socket.close();
             console.error('WebSocket ' + param.name + ' connection could not be established within the timeout.');
         }, CONNECTION_TIMEOUT);
 
-        this.socket = new WebSocket(param.link);
+        param.socket = new WebSocket(param.link);
         /*
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
@@ -119,24 +118,24 @@ export class Lobby
             }
         };
          * */
-        this.socket.addEventListener('open', (event) => {
+        param.socket.addEventListener('open', (event) => {
             //socket.send(JSON.stringify({ message: 'Hello, server!' }));
             const data = JSON.parse(event.data);
             if ("open" in param.callback)
                 param.callback.open(data);
         });
-        this.socket.addEventListener('message', (event) => {
+        param.socket.addEventListener('message', (event) => {
             const data = JSON.parse(event.data);
             if ("message" in param.callback)
                 param.callback.message(data);
         });
-        this.socket.addEventListener('error', (event) => {
+        param.socket.addEventListener('error', (event) => {
             clearTimeout(timeout); // Clear the timeout if there's an error
             this.main.set_status = 'WebSocket ' + param.name + ' error:';
             if ("error" in param.callback)
                 param.callback.error();
         });
-        this.socket.addEventListener('close', (event) => {
+        param.socket.addEventListener('close', (event) => {
             clearTimeout(timeout); // Clear the timeout if the connection is closed
             this.main.set_status = 'WebSocket ' + param.name + ' connection closed:';
             if ("close" in param.callback)
