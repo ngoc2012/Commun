@@ -43,7 +43,7 @@ export class Pong
 
 	draw() {
 		// Clear the canvas
-		this.ctx.clearRect(0, 0, this.info.data.width, this.info.data.height);
+		this.ctx.clearRect(0, 0, this.info.width, this.info.height);
 
 		// Draw paddles
 		this.ctx.fillStyle = '#8b3a62';
