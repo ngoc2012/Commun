@@ -2,7 +2,7 @@ import {Pong} from './Pong.js'
 
 export class Lobby
 {
-    connection_timeout = 5000;
+    CONNECTION_TIMEOUT = 5000;
 
     constructor(m) {
         this.main = m;
@@ -11,7 +11,6 @@ export class Lobby
     }
     
     events() {
-        this.game = null;
         this.end_connection();
         this.dom_pong = document.querySelector("#pong");
         this.dom_pew = document.querySelector("#pew");
@@ -23,7 +22,6 @@ export class Lobby
     }
 
     return_lobby() {
-        this.game = null;
         this.end_connection();
         this.main.load('/lobby', () => this.events());
     }
@@ -31,9 +29,8 @@ export class Lobby
     join() {
         if (this.dom_rooms.selectedIndex === -1)
             return;
-        this.game = null;
         this.end_connection();
-        new_connection({
+        this.new_connection({
             name: "join",
             link: 'ws://127.0.0.1:8000/ws/join' + \
             '?user=' + this.main.id + \
@@ -53,9 +50,8 @@ export class Lobby
     }
 
     new_pong() {
-        this.game = null;
         this.end_connection();
-        new_connection({
+        this.new_connection({
             name: "join",
             link: 'ws://127.0.0.1:8000/ws/new_room' + \
             '?user=' + this.main.id + \
@@ -74,7 +70,7 @@ export class Lobby
     }
 
     rooms_update() {
-        new_connection({
+        this.new_connection({
             name: "rooms update",
             link: 'ws://127.0.0.1:8000/ws/rooms',
             '?user=' + this.main.id + \
@@ -105,7 +101,7 @@ export class Lobby
         const timeout = setTimeout(() => {
             this.socket.close();
             console.error('WebSocket ' + param.name + ' connection could not be established within the timeout.');
-        }, connection_timeout);
+        }, CONNECTION_TIMEOUT);
 
         this.socket = new WebSocket(param.link);
         this.socket.addEventListener('open', (event) => {
@@ -134,6 +130,7 @@ export class Lobby
     }
 
     end_connection() {
+        this.game = null;
         if (this.socket !== -1)
             this.socket.close();
         this.socket = -1;
