@@ -4,7 +4,8 @@ export class Pong
     canvas;
     ctx;
 
-	constructor(g, i) {
+	constructor(m, g, i) {
+        this.main = m;
         this.lobby = g;
         this.info = i;
     }
@@ -28,7 +29,23 @@ export class Pong
                     break;
             }
         });
+        this.connect();
 	}
+
+    connect() {
+        this.lob
+        this.new_connection({
+            name: "join",
+            link: 'ws://127.0.0.1:8000/ws/new_room' + \
+            '?user=' + this.main.id + \
+            '&game=pong',
+            callback: {
+                open: this.pong_game,
+                message: this.game.update_state,
+                close: this.return_lobby
+            }
+        });
+    }
 
     set_state(e) {
         if (this.lobby.socket !== -1)

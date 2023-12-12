@@ -50,22 +50,10 @@ export class Lobby
     }
 
     new_pong() {
-        this.end_connection();
-        this.new_connection({
-            name: "join",
-            link: 'ws://127.0.0.1:8000/ws/new_room' + \
-            '?user=' + this.main.id + \
-            '&game=pong',
-            callback: {
-                open: this.pong_game,
-                message: this.game.update_state,
-                close: this.return_lobby
-            }
-        });
     }
 
     pong_game(info) {
-        this.game = new Pong(this, info);
+        this.game = new Pong(this.main, this, info);
         this.main.load('/pong', () => this.game.init());
     }
 
