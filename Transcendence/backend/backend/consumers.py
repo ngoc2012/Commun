@@ -49,10 +49,6 @@ class GameConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
 
-        await self.accept()
-
-        # Start a loop to continuously update the game state
-        await self.game_loop()
 
     async def disconnect(self, close_code):
         # Leave room group
