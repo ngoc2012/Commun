@@ -36,10 +36,10 @@ export class Lobby
             '?user=' + this.main.id + \
             '&id=' this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
             callback: {
-                open: (data) => {
-                    switch (data.game) {
+                open: (info) => {
+                    switch (info.game) {
                         case 'pong':
-                            this.pong_game(data);
+                            this.pong_game(info);
                             break;
                     }
                 },
@@ -64,8 +64,8 @@ export class Lobby
         });
     }
 
-    pong_game(data) {
-        this.game = new Pong(this, data);
+    pong_game(info) {
+        this.game = new Pong(this, info);
         this.main.load('/pong', () => this.game.init());
     }
 

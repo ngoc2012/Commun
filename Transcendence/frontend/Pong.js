@@ -36,7 +36,7 @@ export class Pong
     }
 
     update_state(data) {
-        this. = data;
+        this.data = data;
         if (this.lobby.socket !== -1)
             this.lobby.socket.send("got");
     }
@@ -49,15 +49,15 @@ export class Pong
 		this.ctx.fillStyle = '#8b3a62';
         this.data.position.forEach((y, i) => {
 		    this.ctx.fillRect(
-                this.info.data.x[i],
+                this.data.x[i],
                 y,
-                this.info.data.paddle_width,
-                this.info.data.paddle_height);
+                this.info.paddle_width,
+                this.info.paddle_height);
         });
 
 		// Draw this.ball
 		this.ctx.beginPath();
-		this.ctx.arc(this.data.ball.x, this.data.ball.y, this.info.data.ball_r, 0, Math.PI * 2);
+		this.ctx.arc(this.data.ball.x, this.data.ball.y, this.info.ball_r, 0, Math.PI * 2);
 		this.ctx.fillStyle = '#00ffcc';
 		this.ctx.fill();
 		this.ctx.closePath();
