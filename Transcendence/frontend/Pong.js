@@ -29,7 +29,8 @@ export class Pong
 	}
 
     set_state(e) {
-        this.game.socket.send(JSON.stringify({ message: 'Hello, server!' }));
+        if (this.game.socket !== -1)
+            this.game.socket.send(JSON.stringify({ 'do': 'up' }));
     }
 
     update_state(data) {
@@ -39,7 +40,6 @@ export class Pong
     }
 
 	draw() {
-        //console.log("draw");
 		// Clear the canvas
 		this.ctx.clearRect(0, 0, this.info.data.width, this.info.data.height);
 
