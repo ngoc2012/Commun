@@ -1,7 +1,6 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
-
-rooms = {}
+from views import rooms
 
 class GameConsumer(AsyncWebsocketConsumer):
     global games

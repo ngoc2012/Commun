@@ -28,3 +28,10 @@ def new_player(request):
     #print(online_players)
     return (HttpResponse(user_name))
 
+def new_room(request):
+    global rooms
+    i = 0
+    while (i in rooms):
+        i += 1
+    return (HttpResponse(i))
+
