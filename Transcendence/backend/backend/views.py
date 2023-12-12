@@ -6,17 +6,7 @@ from django.shortcuts import redirect
 import time
 from random import randrange
 
-online_players = {}
-playings_players = {}
-games = {}
-game_id = 0
-HEIGHT = 400
-WIDTH = 800
-PADDLE_WIDTH = 10
-PADDLE_HEIGHT = 60
-RADIUS = 10
-PADDLE_VITESSE = 5
-PADDLE_DISTANCE = 20
+rooms = {}
 
 def lobby(request):
 	return (render(request, 'lobby.html'))
