@@ -56,11 +56,10 @@ export class Lobby
     pong_game(info) {
         this.game = new Pong(this.main, this, info);
         this.main.load('/pong', () => this.game.init());
-        if (this.socket.readyState === WebSocket.OPEN) {
-            this.socket.send(data);
-        } else {
-            console.error('WebSocket connection not open.');
-        }
+        if (this.socket.readyState === WebSocket.OPEN)
+            this.socket.send(info);
+        else
+            this.main.set_status('Error: WebSocket connection not open.')
     }
 
     rooms_update() {
