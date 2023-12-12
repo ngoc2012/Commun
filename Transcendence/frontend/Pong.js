@@ -42,13 +42,13 @@ export class Pong
         this.main.set_status("Connecting to server...");
         new_connection({
             name: "Connect to server",
-            link: 'ws://127.0.0.1:8000/ws/' + this.info.room + \
+            link: 'ws://127.0.0.1:8000/ws/room/' + this.info.room + \
             '?user=' + this.main.id,
             callback: {
                 open: () => {
                     this.connected = true;
                 },
-                message: this.game.update_state,
+                message: this.update_state,
                 close: this.lobby.reload
             }
         });
