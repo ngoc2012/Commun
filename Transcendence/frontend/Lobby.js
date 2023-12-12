@@ -49,7 +49,20 @@ export class Lobby
         });
     }
 
-    new_pong() {
+    new_game() {
+        $.ajax({
+            url: '/new_game',
+            method: 'POST',
+            data: { "user": this.main.user },
+            success: (response) => {
+                this.user = response;
+                console.log("new player :", this.user);
+                this.dom_user_name.innerHTML = this.user;
+            },
+            error: function(error) {
+                console.error('Error: sending new player demand', error.message);
+            }
+        });
     }
 
     pong_game(info) {
