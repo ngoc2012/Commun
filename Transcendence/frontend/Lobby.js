@@ -104,6 +104,23 @@ export class Lobby
         }, CONNECTION_TIMEOUT);
 
         this.socket = new WebSocket(param.link);
+        /*
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            document.querySelector('#chat-log').value += (data.message + '\n');
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+        document.querySelector('#chat-message-input').focus();
+        document.querySelector('#chat-message-input').onkeyup = function(e) {
+            if (e.key === 'Enter') {  // enter, return
+                document.querySelector('#chat-message-submit').click();
+            }
+        };
+         * */
         this.socket.addEventListener('open', (event) => {
             //socket.send(JSON.stringify({ message: 'Hello, server!' }));
             const data = JSON.parse(event.data);
