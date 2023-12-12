@@ -114,10 +114,14 @@ export class Lobby
         this.socket.addEventListener('error', (event) => {
             clearTimeout(timeout); // Clear the timeout if there's an error
             this.main.set_status = 'WebSocket ' + param.name + ' error:';
+            if ("error" in param.callback)
+                param.callback.error();
         });
         this.socket.addEventListener('close', (event) => {
             clearTimeout(timeout); // Clear the timeout if the connection is closed
             this.main.set_status = 'WebSocket ' + param.name + ' connection closed:';
+            if ("close" in param.callback)
+                param.callback.close();
         });
     }
 

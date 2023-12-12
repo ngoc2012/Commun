@@ -34,25 +34,7 @@ export class Pong
     }
 
     update_state(data) {
-        $.ajax({
-            url: '/pong_state/',
-            method: 'POST',
-            data: {
-                "user": this.main.user,
-                "id": this.info.id,
-                "do": to_do
-            },
-            success: (response) => {
-                if (response.status === "ok")
-                {
-                    this.data = response;
-                    this.draw();
-                }
-            },
-            error: function(error) {
-                console.error('Error: pong state POST fail', error.message);
-            }
-        });
+        this.data = data;
     }
 
 	draw() {
