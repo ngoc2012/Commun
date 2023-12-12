@@ -1,6 +1,5 @@
 export class Pong
 {
-    update_time_interval = 50;
     data;
     canvas;
     ctx;
@@ -35,6 +34,8 @@ export class Pong
 
     update_state(data) {
         this.data = data;
+        if (this.game.socket !== -1)
+            this.game.socket.send("got");
     }
 
 	draw() {
