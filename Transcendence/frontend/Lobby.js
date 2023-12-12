@@ -17,15 +17,15 @@ export class Lobby
         this.dom_pew = document.querySelector("#pew");
         this.dom_join = document.querySelector("#join");
         this.dom_rooms = document.getElementById("rooms");
-        this.dom_pong.addEventListener("click", () => { this.new_pong(); });
-        this.dom_join.addEventListener("click", () => { this.join(); });
+        this.dom_pong.addEventListener("click", () => this.new_pong());
+        this.dom_join.addEventListener("click", () => this.join());
         this.rooms_update();
     }
 
     return_lobby() {
         this.game = null;
         this.end_connection();
-        this.main.load('/main', () => this.game.init());
+        this.main.load('/main', () => this.events());
     }
 
     join() {
