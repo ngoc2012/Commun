@@ -3,7 +3,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from views import rooms
 
 class GameConsumer(AsyncWebsocketConsumer):
-    global games
+    global rooms
     #async def connect(self):
     #    # Get the unique identifier from the query parameters or headers
     #    user_id = self.scope.get('user')  # Adjust this based on your authentication method
