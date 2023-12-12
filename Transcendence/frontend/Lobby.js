@@ -6,11 +6,11 @@ export class Lobby
 
     constructor(m) {
         this.main = m;
-        this.game = null;
         this.socket = -1;
     }
     
     events() {
+        this.game = null;
         this.dom_pong = document.querySelector("#pong");
         this.dom_pew = document.querySelector("#pew");
         this.dom_join = document.querySelector("#join");
@@ -18,10 +18,6 @@ export class Lobby
         this.dom_pong.addEventListener("click", () => this.new_pong("pong"));
         this.dom_join.addEventListener("click", () => this.join());
         this.rooms_update();
-    }
-
-    reload() {
-        this.main.load('/lobby', () => this.events());
     }
 
     join() {
@@ -34,7 +30,13 @@ export class Lobby
                 "user": this.main.user,
                 "id": this.dom_rooms.options[this.dom_rooms.selectedIndex].value
             },
-            success: (info) => this.pong_game(info),
+            success: (info) => {
+                switch (info.game) {
+                    case 'pong':
+                        this.pong_game(info);
+                        break;
+                }
+            }
             error: (error) => this.main.set_status('Error: Can not join game')
         });
     }

@@ -1,9 +1,5 @@
 export class Pong
 {
-    data;
-    canvas;
-    ctx;
-
 	constructor(m, g, i) {
         this.main = m;
         this.lobby = g;
@@ -35,6 +31,8 @@ export class Pong
 	}
 
     quit() {
+        if (this.socket !== -1)
+            this.socket.close();
         this.main.load('/lobby', () => this.lobby.events()));
     }
 
