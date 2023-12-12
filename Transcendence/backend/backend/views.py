@@ -1,10 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
 from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import redirect
-import time
-from random import randrange
 
 rooms = {}
 online_players = {}
@@ -25,5 +20,12 @@ def new_room(request):
     i = 0
     while (i in rooms):
         i += 1
+        await self.channel_layer.group_send(
+            self.room_group_name,
+            {
+                'type': 'game_update_state',
+                'state': self.state,
+            }
+        )
     return (HttpResponse(str(i)))
 
