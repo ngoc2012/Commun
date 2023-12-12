@@ -59,15 +59,15 @@ export class Pong
     }
 
     set_state(e) {
-        if (this.connected && this.lobby.socket !== -1)
-            this.lobby.socket.send(JSON.stringify({ 'do': e }));
+        if (this.connected && this.socket !== -1)
+            this.socket.send(JSON.stringify({ 'do': e }));
     }
 
     update_state(data) {
         this.data = data;
         if (this.connected && this.lobby.socket !== -1)
         {
-            this.lobby.socket.send("got");
+            this.socket.send("got");
             this.draw();
         }
     }
