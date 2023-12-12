@@ -21,7 +21,8 @@ export class Main
             method: 'GET',
             //headers: {'X-CSRFToken': csrftoken},
             success: (response) => {
-                this.user = response.user;
+                this.user = response;
+                console.log("new player :", this.user);
                 this.dom_user_name.innerHTML = this.user;
             },
             error: function(error) {
