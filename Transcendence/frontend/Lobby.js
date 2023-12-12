@@ -7,7 +7,6 @@ export class Lobby
     constructor(m) {
         this.main = m;
         this.game = null;
-        this.info = null;
         this.socket = -1;
     }
     
@@ -21,6 +20,12 @@ export class Lobby
         this.dom_pong.addEventListener("click", () => { this.new_pong(); });
         this.dom_join.addEventListener("click", () => { this.join(); });
         this.rooms_update();
+    }
+
+    return_lobby() {
+        this.game = null;
+        this.end_connection();
+        this.main.load('/main', () => this.game.init());
     }
 
     join() {
@@ -57,6 +62,7 @@ export class Lobby
             callback: {
                 open: this.pong_game,
                 message: this.game.update_state
+                close: this.return_lobby
             }
         });
     }
