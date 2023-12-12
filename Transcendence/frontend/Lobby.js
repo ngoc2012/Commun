@@ -103,11 +103,13 @@ export class Lobby
         this.socket.addEventListener('open', (event) => {
             //socket.send(JSON.stringify({ message: 'Hello, server!' }));
             const data = JSON.parse(event.data);
-            param.callback.open(data);
+            if ("open" in param.callback)
+                param.callback.open(data);
         });
         this.socket.addEventListener('message', (event) => {
             const data = JSON.parse(event.data);
-            param.callback.message(data);
+            if ("message" in param.callback)
+                param.callback.message(data);
         });
         this.socket.addEventListener('error', (event) => {
             clearTimeout(timeout); // Clear the timeout if there's an error
@@ -115,7 +117,7 @@ export class Lobby
         });
         this.socket.addEventListener('close', (event) => {
             clearTimeout(timeout); // Clear the timeout if the connection is closed
-            console.log('WebSocket ' + param.name + ' connection closed:', event);
+            this.main.set_status = 'WebSocket ' + param.name + ' connection closed:';
         });
     }
 
