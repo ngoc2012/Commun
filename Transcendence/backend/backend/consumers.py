@@ -34,6 +34,5 @@ class GameConsumer(AsyncWebsocketConsumer):
         )
 
     async def update_rooms(self, event):
-        # Handle the event when the game state is updated
         state = event['state']
         await self.send(text_data=json.dumps(rooms))
