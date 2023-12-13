@@ -9,9 +9,6 @@ class GameConsumer(AsyncWebsocketConsumer):
         self.group_name = "rooms"
 
         # Join group
-        self.room_name = self.scope['url_route']['kwargs']['room_name']
-        if 'room_name' in self.scope['url_route']['kwargs']:
-            room_name = self.scope['url_route']['kwargs']['room_name']
         await self.channel_layer.group_add(
             self.group_name,
             self.channel_name
@@ -25,7 +22,6 @@ class GameConsumer(AsyncWebsocketConsumer):
         )
 
     async def receive(self, text_data):
-        pass
         #data = json.loads(text_data)
         #message = text_data_json['message']
         rooms.add(text_data)
