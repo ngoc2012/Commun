@@ -62,7 +62,7 @@ export class Lobby
         new_connection({
             name: "rooms update",
             socket: this.socket,
-            link: 'ws://127.0.0.1:8000/rooms',
+            link: 'ws://127.0.0.1:8000/rooms?user=' + this.main.user,
             callback: {
                 message: (data) => {
                     var options_rooms = this.dom_rooms && this.dom_rooms.options;

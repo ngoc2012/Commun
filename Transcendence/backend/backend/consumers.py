@@ -6,6 +6,7 @@ class GameConsumer(AsyncWebsocketConsumer):
     global rooms
 
     async def connect(self):
+        user_id = self.scope.get('user')
         self.group_name = "rooms"
 
         # Join group
