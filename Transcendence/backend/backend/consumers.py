@@ -25,6 +25,12 @@ class GameConsumer(AsyncWebsocketConsumer):
         self.user = self.scope.get('user')  # Adjust this based on your authentication method
         self.rooms = "rooms"
 
+        # Join room group
+        await self.channel_layer.group_add(
+            self.room_group_name,
+            self.channel_name
+        )
+
         # Update game state
         await self.channel_layer.group_send(
             self.rooms,
@@ -43,11 +49,6 @@ class GameConsumer(AsyncWebsocketConsumer):
             }
         )
 
-        # Join room group
-        await self.channel_layer.group_add(
-            self.room_group_name,
-            self.channel_name
-        )
 
 
     async def disconnect(self, close_code):
