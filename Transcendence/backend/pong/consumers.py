@@ -24,29 +24,21 @@ class PongConsumer(AsyncWebsocketConsumer):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         user_id = self.scope.get('user')
 
-        # Update game state
-        #await self.channel_layer.group_send(
-        #    self.room_group_name,
-        #    {
-        #        'type': 'update_state',
-        #        'state': updated_state_data,
-        #    }
-        #)
-        
-        # Notify player join
+        # Join room group
+        await self.channel_layer.group_add(
+            self.room_name,
+            self.channel_name
+        )
+
+        # Update game state (new paddle)
         await self.channel_layer.group_send(
-            self.room_group_name,
+            self.room_name,
             {
-                'type': 'player_join',
-                'player_count': updated_player_count,
+                'type': 'update_state',
+                'state': updated_state_data,
             }
         )
 
-        # Join room group
-        await self.channel_layer.group_add(
-            self.room_group_name,
-            self.channel_name
-        )
 
         await self.accept()
 
