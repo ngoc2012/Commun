@@ -29,3 +29,10 @@ class GameConsumer(AsyncWebsocketConsumer):
                 'state': self.state,
             }
         )
+
+    async def game_update_state(self, event):
+        # Handle the event when the game state is updated
+        state = event['state']
+        await self.send(text_data=json.dumps({
+            'state': state,
+        }))
