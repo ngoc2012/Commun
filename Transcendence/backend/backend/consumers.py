@@ -21,18 +21,19 @@ class GameConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
 
-    async def receive(self, data):
+    async def receive(self, text_data):
+        #data = json.loads(text_data)
+        #message = text_data_json['message']
+        rooms.add(text_data)
         await self.channel_layer.group_send(
             self.group_name,
             {
-                'type': 'game_update_state',
+                'type': 'update_rooms',
                 'state': self.state,
             }
         )
 
-    async def game_update_state(self, event):
+    async def update_rooms(self, event):
         # Handle the event when the game state is updated
         state = event['state']
-        await self.send(text_data=json.dumps({
-            'state': state,
-        }))
+        await self.send(text_data=json.dumps(rooms))
