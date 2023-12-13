@@ -36,23 +36,32 @@ class GameConsumer(AsyncWebsocketConsumer):
             }
         )
 
-    async def send_room_list_periodically(self):
-        while True:
-            # Get the updated room list (customize as needed)
-            room_list = self.get_rooms_list()
-
-            # Send the room list to the consumer group
-            await self.channel_layer.group_send(
-                "room_list",
-                {
-                    'type': 'update_rooms',
-                    'room_list': room_list,
-                }
-            )
-
-            # Wait for a specific interval before sending the next update
-            await asyncio.sleep(10)  # Adjust the interval as needed
-
     async def update_rooms(self, event):
         state = event['state']
         await self.send(text_data=json.dumps(rooms))
+
+    #async def update_rooms(self, event):
+    #    room_list = event['room_list']
+
+    #    # Send the updated room list to the connected clients
+    #    await self.send(text_data=json.dumps({
+    #        'type': 'update_rooms',
+    #        'room_list': room_list,
+    #    }))
+
+    #async def send_room_list_periodically(self):
+    #    while True:
+    #        # Get the updated room list (customize as needed)
+    #        room_list = self.get_rooms_list()
+
+    #        # Send the room list to the consumer group
+    #        await self.channel_layer.group_send(
+    #            "room_list",
+    #            {
+    #                'type': 'update_rooms',
+    #                'room_list': room_list,
+    #            }
+    #        )
+
+    #        # Wait for a specific interval before sending the next update
+    #        await asyncio.sleep(10)  # Adjust the interval as needed
