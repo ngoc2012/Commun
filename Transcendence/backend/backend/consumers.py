@@ -2,8 +2,11 @@ import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from views import rooms
 
-class GameConsumer(AsyncWebsocketConsumer):
+user_channel = {}
+
+class RoomsConsumer(AsyncWebsocketConsumer):
     global rooms
+    global user_channel
 
     async def connect(self):
         user_id = self.scope.get('user')
