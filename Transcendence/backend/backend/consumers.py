@@ -23,14 +23,9 @@ class GameConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, data):
         await self.channel_layer.group_send(
-            self.room_group_name,
+            self.group_name,
             {
                 'type': 'game_update_state',
                 'state': self.state,
             }
         )
-        # Handle user input (if needed)
-        pass
-
-    async def update_state(self):
-        # Send the updated game state back to all clients in the room
