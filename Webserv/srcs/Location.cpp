@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:38:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 13:01:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Location*	Location::find_location(std::string url, std::vector<Location*> locati
 	for (std::vector<Location*>::iterator it = locations.begin();
 		it != locations.end(); ++it)
 	{
-		if (compare_url(url, (*it)->get_url()))
+		if (Location::compare_url(url, (*it)->get_url()))
 		{
 			if (find_method(_request->get_method(), *it))
 				status_code = 200;
