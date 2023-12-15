@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:07:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 10:11:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Location::Location(std::string u): _url(u) {}
 Location::~Location() {}
 
 
-void	Response::find_location(std::string url)
+void	Location::find_location(std::string url)
 {
 	bool	found = false;
 
@@ -48,7 +48,7 @@ void	Response::find_location(std::string url)
 		_status_code = 404; // Not found
 }
 
-bool	Response::compare_url(std::string url, std::string l_url)
+bool	Location::compare_url(std::string url, std::string l_url)
 {
 	//std::cout << url << "==" << l_url << std::endl;
 	// Folder
@@ -66,7 +66,7 @@ bool	Response::compare_url(std::string url, std::string l_url)
 	return (false);
 }
 
-bool	Response::find_method(e_method m, Location* loc)
+bool	Location::find_method(e_method m, Location* loc)
 {
 	std::vector<e_method>	methods = loc->get_methods();
 
@@ -78,7 +78,7 @@ bool	Response::find_method(e_method m, Location* loc)
 	return (false);
 }
 
-void	Response::get_full_file_name(std::string url)
+void	Location::get_full_file_name(std::string url)
 {
 	if (_location)
 	{
