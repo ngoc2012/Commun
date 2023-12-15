@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 12:58:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 13:03:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ class	Location
 		std::string			_alias;
 		std::string			_cgi_pass;
 
-		bool	            compare_url(std::string, std::string);
-		bool		        find_method(e_method, Location*);
 
 		Location();
 		Location(const Location&);
@@ -37,6 +35,8 @@ class	Location
 		virtual ~Location();
 
         static Location*	find_location(std::string, std::vector<Location*>, int &);
+		bool	            compare_url(std::string, std::string);
+		bool		        find_method(e_method, Location*);
         std::string	        get_full_file_name(std::string, std::string);
 		std::string         get_methods_str(void);
 
