@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 14:21:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 14:46:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ bool	Location::find_method(e_method m, Location* loc)
 		it != methods.end(); ++it)
 		if (m == *it)
 			return (true);
-	//std::cout << _request->get_method() << "==" << *it << std::endl;
+	std::cout << _request->get_method() << "==" << *it << std::endl;
 	return (false);
 }
 
