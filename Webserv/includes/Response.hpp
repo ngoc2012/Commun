@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/08 03:57:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 10:08:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,8 @@ class	Response
 		std::ifstream	_upload_file;
 		std::ofstream	_download_file;
 
-		bool		find_method(e_method, Location*);
-		bool		compare_url(std::string, std::string);
-		void		find_location(std::string);
 		std::string	get_methods_str(void);
 		std::string	get_file_extension(std::string&);
-		void		get_full_file_name(std::string);
 		size_t		get_file_size(std::string &file_name);
 		void		get(void);
         int	        resquest_error(void);
