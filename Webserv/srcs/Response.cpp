@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:29:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 10:38:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,35 +169,6 @@ void	Response::execute_cgi(void)
 {
     std::cout << _location->get_cgi_pass() << std::endl;
     get_file_content();
-}
-
-std::string	Response::get_methods_str(void)
-{
-	if (!_location)
-		return (std::string(""));
-	std::vector<e_method>	methods = _location->get_methods();
-	std::string	s = "";
-	for(std::vector<e_method>::iterator it = methods.begin(); it != methods.end(); ++it)
-	{
-		if (it != methods.begin())
-			s += ",";
-		switch (*it)
-		{
-			case GET:
-				s += "GET";
-				break;
-			case POST:
-				s += "POST";
-				break;
-			case PUT:
-				s += "PUT";
-				break;
-			case NONE:
-				s += "NONE";
-				break;
-		}
-	}
-	return (s);
 }
 
 std::string	Response::get_file_extension(std::string& file_path)

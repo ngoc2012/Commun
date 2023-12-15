@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:35:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 10:38:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,15 @@ bool	Location::compare_url(std::string url, std::string l_url)
 	if (l_url[l_url.size() - 1] == '/')
 	{
 		if (url == l_url || url == l_url.substr(0, l_url.size() - 1)
-			|| (url.size() > l_url.size() && url.substr(0, l_url.size()) == l_url))
+			|| (url.size() > l_url.size()
+                && url.substr(0, l_url.size()) == l_url))
 			return (true);
 	}
 	// File
 	else if (url == l_url)
 		return (true);
-    if (l_url.find('*') != NPOS && match_wildcard(url.c_str(), l_url.c_str()))
+    if (l_url.find('*') != NPOS
+            && match_wildcard(url.c_str(), l_url.c_str()))
 		return (true);
 	return (false);
 }
@@ -95,7 +97,8 @@ std::string	Location::get_full_file_name(std::string url, std::string root)
 std::string	Location::get_methods_str(void)
 {
 	std::string	s = "";
-	for(std::vector<e_method>::iterator it = _methods.begin(); it != _methods.end(); ++it)
+	for(std::vector<e_method>::iterator it = _methods.begin();
+            it != _methods.end(); ++it)
 	{
 		if (it != _methods.begin())
 			s += ",";
