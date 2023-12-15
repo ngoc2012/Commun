@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 12:53:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 12:54:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class	Location
         static Location*	find_location(std::string, std::vector<Location*>, int &);
 		bool	            compare_url(std::string, std::string);
 		bool		        find_method(e_method, Location*);
-		void		        get_full_file_name(std::string, std::string);
+        std::string	        get_full_file_name(std::string, std::string);
 		std::string         get_methods_str(void);
 
 		std::vector<e_method>		get_methods(void) const;
