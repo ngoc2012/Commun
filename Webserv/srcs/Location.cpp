@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:20:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 10:22:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,6 @@ void	Location::get_full_file_name(std::string url)
 	struct stat	info;
 	if (stat(_full_file_name.c_str(), &info) == 0 && S_ISDIR(info.st_mode))
 		_full_file_name += "index.html";
-	struct stat	buffer;
-	if (_request->get_method() != PUT && stat(_full_file_name.c_str(), &buffer) != 0)
-		_status_code = 404; // Not found
 	//std::cout << _full_file_name << std::endl;
 }
 

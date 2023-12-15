@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:21:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 10:23:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,10 @@ int     Response::build_header(int &sc)
     _location = Location::find_location(url, _server->get_locations(),_status_code);
     if (_status_code != 200)
         return (resquest_error());
-    get_full_file_name(url);
-	if (_request->get_method() != PUT && stat(_full_file_name.c_str(), &buffer) != 0)
+    _location->get_full_file_name(url);
+	struct stat buffer;
+	if (_request->get_method() != PUT
+            && stat(_full_file_name.c_str(), &buffer) != 0)
 		_status_code = 404; // Not found
     Header	header(_status_code, get_file_extension(_full_file_name), this);
     header.set_allow(get_methods_str());
