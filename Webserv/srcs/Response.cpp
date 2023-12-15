@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 14:44:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 15:29:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ int     Response::build_header(int &sc)
                 get_file_content();
                 break;
             case PUT:
-                download();
+                //download();
                 std::cout << "flush_request_body" << std::endl;
-                flush_request_body();
+                //flush_request_body();
                 break;
             default:
                 _body = "default";
