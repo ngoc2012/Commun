@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 09:05:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 09:45:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ bool	Request::parser_header(void)
     //std::cout << first_line.size() << std::endl;
 	if (first_line.size() < 3)
     {
+        std::cerr << "Error: first line header" << std::endl;
 		return (false);
     }
 	if (!read_method(first_line[0]))
