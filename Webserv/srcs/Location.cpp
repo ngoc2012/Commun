@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 15:17:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 15:19:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,11 @@ bool	Location::find_method(e_method m)
 {
 	for (std::vector<e_method>::iterator	it = _methods.begin();
 		it != _methods.end(); ++it)
+	{
+        std::cout << m << "==" << *it << std::endl;
 		if (m == *it)
 			return (true);
-	//std::cout << _request->get_method() << "==" << *it << std::endl;
+    }
 	return (false);
 }
 
