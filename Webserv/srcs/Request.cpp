@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 16:33:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 16:35:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,11 +185,12 @@ bool	Request::read_content_type(std::string& s, std::string& c)
 		"application/x-www-form-urlencoded"
 	};
 	size_t	pos = s.find("Content-Type:");
-	std::vector<std::string>	words;
+	//std::vector<std::string>	words;
 	if (pos != NPOS)
 	{
-		words = split_string(s.substr(pos + 14, 50), " ;\n");
-		std::cout << "|" << words[0] << "|" << std::endl;
+		//words = split_string(s.substr(pos + 14, 50), " ;\n");
+		//std::cout << "|" << words[0] << "|" << std::endl;
+		//	if (words[0] == std::string(types[i]))
 		for (int i = 0; i < 18; i++)
 			if (words[0] == std::string(types[i]))
             {
