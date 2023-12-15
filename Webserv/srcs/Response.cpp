@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 08:36:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 08:43:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,26 @@ void	Response::send(void)
         _host->close_client_sk(_socket);
     //_host->delete_response(_socket);
     //std::cout << "Response sent" << std::endl;
+}
+
+void	Response::get_full_file_name(std::string url)
+{
+	if (_location)
+	{
+		if (_location->get_alias() == "")
+			_full_file_name += _server->get_root();
+		else
+			_full_file_name += _location->get_alias();
+		if (url.size() > _location->get_url().size())
+			_full_file_name += url.substr(1, url.size() - 1);
+	}
+	struct stat	info;
+	if (stat(_full_file_name.c_str(), &info) == 0 && S_ISDIR(info.st_mode))
+		_full_file_name += "index.html";
+	struct stat	buffer;
+	if (_request->get_method() != PUT && stat(_full_file_name.c_str(), &buffer) != 0)
+		_status_code = 404; // Not found
+	//std::cout << _full_file_name << std::endl;
 }
 
 void	Response::flush_request_body(void)
@@ -253,26 +273,6 @@ std::string	Response::get_file_extension(std::string& file_path)
 	if (dot_position != std::string::npos && dot_position < file_path.size() - 1)
 		return (file_path.substr(dot_position + 1));
 	return ("");
-}
-
-void	Response::get_full_file_name(std::string url)
-{
-	if (_location)
-	{
-		if (_location->get_alias() == "")
-			_full_file_name += _server->get_root();
-		else
-			_full_file_name += _location->get_alias();
-		if (url.size() > _location->get_url().size())
-			_full_file_name += url.substr(1, url.size() - 1);
-	}
-	struct stat	info;
-	if (stat(_full_file_name.c_str(), &info) == 0 && S_ISDIR(info.st_mode))
-		_full_file_name += "index.html";
-	struct stat	buffer;
-	if (_request->get_method() != PUT && stat(_full_file_name.c_str(), &buffer) != 0)
-		_status_code = 404; // Not found
-	//std::cout << _full_file_name << std::endl;
 }
 
 size_t		Response::get_file_size(std::string &file_name)
