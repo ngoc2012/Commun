@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 15:19:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 15:20:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ Location*	Location::find_location(std::string url, std::vector<Location*> locati
 	for (std::vector<Location*>::iterator it = locations.begin();
 		it != locations.end(); ++it)
 	{
+        std::cout << url << ":" << (*it)->get_url() << std::endl;
 		if ((*it)->compare_url(url, (*it)->get_url()))
 		{
 			if ((*it)->find_method(method))
