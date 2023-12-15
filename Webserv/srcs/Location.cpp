@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:28:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 10:32:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,35 @@ std::string	Location::get_full_file_name(std::string url, std::string root)
 		file_name += "index.html";
     return (file_name);
 	//std::cout << _full_file_name << std::endl;
+}
+
+std::string	Location::get_methods_str(void)
+{
+	if (!_location)
+		return (std::string(""));
+	std::vector<e_method>	methods = _location->get_methods();
+	std::string	s = "";
+	for(std::vector<e_method>::iterator it = methods.begin(); it != methods.end(); ++it)
+	{
+		if (it != methods.begin())
+			s += ",";
+		switch (*it)
+		{
+			case GET:
+				s += "GET";
+				break;
+			case POST:
+				s += "POST";
+				break;
+			case PUT:
+				s += "PUT";
+				break;
+			case NONE:
+				s += "NONE";
+				break;
+		}
+	}
+	return (s);
 }
 
 std::vector<e_method>		Location::get_methods(void) const {return (_methods);}
