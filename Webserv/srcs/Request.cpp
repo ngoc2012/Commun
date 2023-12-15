@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 09:55:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 15:31:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,16 @@ void	Request::read_header(void)
 	std::cout << "============================" << std::endl;
 	_response.set_status_code(_status_code);
 	_host->new_response_sk(_socket);
+	_response.build_header(_status_code);
+    _response.send();
+    _host->close_client_sk(_socket);
+    /*
 	if (_response.build_header(_status_code) != 200)
     {
 	    _response.send();
         _host->close_client_sk(_socket);
     }
+    */
 }
 
 int	Request::receive_data(std::string &data)
