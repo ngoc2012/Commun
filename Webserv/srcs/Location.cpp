@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:11:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 10:15:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	Location::find_location(std::string url)
 				_status_code = 405; // Method not allowed
 		}
 	}
-	if (!found)
-		_status_code = 404; // Not found
+    _status_code = 404; // Not found
+    return (0);
 }
 
 bool	Location::compare_url(std::string url, std::string l_url)
