@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 13:05:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 14:21:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,9 @@ std::string	Location::get_full_file_name(std::string url, std::string root)
     else
         file_name += _alias;
     if (url.size() > _url.size())
+    {
         file_name += url.substr(_url.size(), url.size() - 1);
+    }
 	struct stat	info;
 	if (stat(file_name.c_str(), &info) == 0
             && S_ISDIR(info.st_mode))
