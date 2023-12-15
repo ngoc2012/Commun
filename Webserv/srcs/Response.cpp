@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 08:48:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 08:58:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int     Response::build_header(int &sc)
                 break;
         }
     }
-    //std::cout << _status_code << std::endl;
+    std::cout << _status_code << std::endl;
     header.set_status_code(_status_code);
     _header = header.generate();
     return (_status_code);
