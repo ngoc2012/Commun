@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:22:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 10:26:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,19 +74,16 @@ bool	Location::find_method(e_method m, Location* loc)
 	return (false);
 }
 
-void	Location::get_full_file_name(std::string url)
+void	Location::get_full_file_name(std::string url, std::string root)
 {
-	if (_location)
-	{
-		if (_location->get_alias() == "")
-			_full_file_name += _server->get_root();
-		else
-			_full_file_name += _location->get_alias();
-		//if (url.size() > _location->get_url().size())
-		//	_full_file_name += url.substr(1, url.size() - 1);
-		if (url.size() > _location->get_url().size())
-			_full_file_name += url.substr(_location->get_url().size(), url.size() - 1);
-	}
+    if (_alias == "")
+        _full_file_name += root;
+    else
+        _full_file_name += _alias;
+    //if (url.size() > _location->get_url().size())
+    //	_full_file_name += url.substr(1, url.size() - 1);
+    if (url.size() > _url.size())
+        _full_file_name += url.substr(_url.size(), url.size() - 1);
 	struct stat	info;
 	if (stat(_full_file_name.c_str(), &info) == 0 && S_ISDIR(info.st_mode))
 		_full_file_name += "index.html";
