@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 14:46:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 14:49:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,11 @@ bool	Location::compare_url(std::string url, std::string l_url)
 
 bool	Location::find_method(e_method m, Location* loc)
 {
-	std::vector<e_method>	methods = loc->get_methods();
-
-	for (std::vector<e_method>::iterator	it = methods.begin();
-		it != methods.end(); ++it)
+	for (std::vector<e_method>::iterator	it = _methods.begin();
+		it != _methods.end(); ++it)
 		if (m == *it)
 			return (true);
-	std::cout << _request->get_method() << "==" << *it << std::endl;
+	//std::cout << _request->get_method() << "==" << *it << std::endl;
 	return (false);
 }
 
