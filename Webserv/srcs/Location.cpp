@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:15:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 10:17:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,22 @@ Location::Location(std::string u): _url(u) {}
 Location::~Location() {}
 
 
-void	Location::find_location(std::string url)
+Location*	Location::find_location(std::string url, std::vector<Location*> locations, int &status_code)
 {
-	bool	found = false;
-
 	std::vector<Location*>		locations = _server->get_locations();
 	for (std::vector<Location*>::iterator it = locations.begin();
 		it != locations.end(); ++it)
 	{
 		if (compare_url(url, (*it)->get_url()))
 		{
-			_location = *it;
-			found = true;
 			if (find_method(_request->get_method(), *it))
-				_status_code = 200;
+				status_code = 200;
 			else
-				_status_code = 405; // Method not allowed
+				status_code = 405; // Method not allowed
+            return (*it);
 		}
 	}
-    _status_code = 404; // Not found
+    status_code = 404; // Not found
     return (0);
 }
 
