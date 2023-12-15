@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:38:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 11:12:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 09:02:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 #ifndef WEBSERV_HPP
 # define WEBSERV_HPP
+
+# define NPOS std::string::npos
 
 enum	e_method {GET, POST, PUT, NONE};
 
