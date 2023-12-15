@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:04:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 10:07:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,28 @@ Location::Location(std::string u): _url(u) {}
 Location::~Location() {}
 
 
+void	Response::find_location(std::string url)
+{
+	bool	found = false;
+
+	std::vector<Location*>		locations = _server->get_locations();
+	for (std::vector<Location*>::iterator it = locations.begin();
+		it != locations.end(); ++it)
+	{
+		if (compare_url(url, (*it)->get_url()))
+		{
+			_location = *it;
+			found = true;
+			if (find_method(_request->get_method(), *it))
+				_status_code = 200;
+			else
+				_status_code = 405; // Method not allowed
+		}
+	}
+	if (!found)
+		_status_code = 404; // Not found
+}
+
 bool	Response::compare_url(std::string url, std::string l_url)
 {
 	//std::cout << url << "==" << l_url << std::endl;
@@ -41,6 +63,18 @@ bool	Response::compare_url(std::string url, std::string l_url)
 		return (true);
     if (l_url.find('*') != std::string::npos && match_wildcard(url.c_str(), l_url.c_str()))
 		return (true);
+	return (false);
+}
+
+bool	Response::find_method(e_method m, Location* loc)
+{
+	std::vector<e_method>	methods = loc->get_methods();
+
+	for (std::vector<e_method>::iterator	it = methods.begin();
+		it != methods.end(); ++it)
+		if (m == *it)
+			return (true);
+	//std::cout << _request->get_method() << "==" << *it << std::endl;
 	return (false);
 }
 
