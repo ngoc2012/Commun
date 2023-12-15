@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 12:57:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 12:58:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ void	Response::download(void)
 int	    Response::resquest_error(void)
 {
     Header	header(_status_code, std::string(""), this);
-    header.set_allow(get_methods_str());
+    header.set_allow(_location->get_methods_str());
     _end = true;
     _content_length = 0;
     _header = header.generate();
