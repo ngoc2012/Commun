@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 09:45:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 09:48:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,16 @@ bool	Request::parser_header(void)
 	if (!read_method(first_line[0]))
 		return (false);
 	_url = first_line[1];
-    if ((_method != GET && !read_content_type(_header, _content_type))
-            || !split_header_body(_header))
+    if (_method != GET && !read_content_type(_header, _content_type)
+    {
+        std::cerr << "Error: Content type unknown" << std::endl;
 		return (false);
+    }
+    if (!split_header_body(_header))
+    {
+        std::cerr << "Error: no newline in header" << std::endl;
+		return (false);
+    }
 	return (true);
 }
 
