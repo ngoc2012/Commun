@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 16:10:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 16:29:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void	Response::flush_request_body(void)
 
 void	Response::download(void)
 {
+    /*
 	const char*	types_supported[] = {
 		"text/plain",
 		"text/html",
@@ -142,6 +143,7 @@ void	Response::download(void)
             c = words[0];
             return (true);
         }
+        */
     _download_file.open(_full_file_name.c_str());
     if (!_download_file.is_open()) {
         std::cerr << "Error: Can not open the file " << _full_file_name << std::endl;
