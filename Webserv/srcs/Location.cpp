@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:26:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 10:28:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,21 @@ bool	Location::find_method(e_method m, Location* loc)
 	return (false);
 }
 
-void	Location::get_full_file_name(std::string url, std::string root)
+std::string	Location::get_full_file_name(std::string url, std::string root)
 {
+    std::string file_name;
+
     if (_alias == "")
-        _full_file_name += root;
+        file_name += root;
     else
-        _full_file_name += _alias;
+        file_name += _alias;
     if (url.size() > _url.size())
-        _full_file_name += url.substr(_url.size(), url.size() - 1);
+        file_name += url.substr(_url.size(), url.size() - 1);
 	struct stat	info;
-	if (stat(_full_file_name.c_str(), &info) == 0
+	if (stat(file_name.c_str(), &info) == 0
             && S_ISDIR(info.st_mode))
-		_full_file_name += "index.html";
+		file_name += "index.html";
+    return (file_name);
 	//std::cout << _full_file_name << std::endl;
 }
 
