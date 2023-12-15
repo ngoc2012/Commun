@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:38:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 12:57:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int     Response::build_header(int &sc)
             && stat(_full_file_name.c_str(), &buffer) != 0)
 		_status_code = 404; // Not found
     Header	header(_status_code, get_file_extension(_full_file_name), this);
-    header.set_allow(get_methods_str());
+    header.set_allow(_location->get_methods_str());
     if (_status_code == 200)
     {
         std::cout << _full_file_name << std::endl;
