@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 16:05:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 16:10:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,20 +131,12 @@ void	Response::download(void)
 		"text/html",
 		"text/css",
 		"text/javascript",
-		"text/xml",
-		"application/json",
-		"application/xml",
-		"application/pdf",
-		"application/zip",
-		"application/octet-stream",
 		"image/jpeg",
 		"image/png",
 		"image/gif",
-		"image/svg+xml",
-		"audio/mpeg",
 		"video/mp4",
 	};
-    for (int i = 0; i < 18; i++)
+    for (int i = 0; i < 8; i++)
         if (words[0] == std::string(types[i]))
         {
             c = words[0];
