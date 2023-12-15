@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 08:35:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 08:36:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,29 +40,6 @@ Response::~Response()
 	if (_download_file.is_open())
 		_download_file.close();
 	//std::cout << "Destruction response: " << _socket << std::endl;
-}
-
-void	Response::send(void)
-{
-	if(_header != "")
-    {
-        std::cout << "Header:\n" << _header << std::endl;
-        if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
-        {
-            _end = true;
-            perror("send() failed");
-        }
-        _header = "";
-    }
-    else if ((_request->get_method() == GET || _request->get_method() == POST)
-        && _location->get_cgi_pass() != "")
-        execute_cgi();
-    else if (_request->get_method() == GET)
-		get();
-    if (_end)
-        _host->close_client_sk(_socket);
-    //_host->delete_response(_socket);
-    //std::cout << "Response sent" << std::endl;
 }
 
 int     Response::build_header(int &sc)
@@ -100,6 +77,29 @@ int     Response::build_header(int &sc)
     header.set_status_code(_status_code);
     _header = header.generate();
     return (_status_code);
+}
+
+void	Response::send(void)
+{
+	if(_header != "")
+    {
+        std::cout << "Header:\n" << _header << std::endl;
+        if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
+        {
+            _end = true;
+            perror("send() failed");
+        }
+        _header = "";
+    }
+    else if ((_request->get_method() == GET || _request->get_method() == POST)
+        && _location->get_cgi_pass() != "")
+        execute_cgi();
+    else if (_request->get_method() == GET)
+		get();
+    if (_end)
+        _host->close_client_sk(_socket);
+    //_host->delete_response(_socket);
+    //std::cout << "Response sent" << std::endl;
 }
 
 void	Response::flush_request_body(void)
