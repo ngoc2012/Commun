@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 13:05:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/15 13:06:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,16 @@ int     Response::build_header(int &sc)
     if (_status_code != 200)
         return (resquest_error());
     std::string	url = _request->get_url();
-    _location = Location::find_location(url, _server->get_locations(), _request->get_method(), _status_code);
+
+    _location = Location::find_location(url,
+            _server->get_locations(),
+            _request->get_method(),
+    _status_code);
     if (!_location || _status_code != 200)
         return (resquest_error());
-    _full_file_name = _location->get_full_file_name(url, _server->get_root());
+
+    _full_file_name = _location->get_full_file_name(url,
+            _server->get_root());
 	struct stat buffer;
 	if (_request->get_method() != PUT
             && stat(_full_file_name.c_str(), &buffer) != 0)
