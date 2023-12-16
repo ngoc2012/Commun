@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 10:52:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 10:57:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void	Response::send(void)
 
 void	Response::flush_request_body(void)
 {
+    std::cout << "Flush body" << std::endl;
     size_t  body_buffer = _request->get_body_buffer();
     char	request[body_buffer];
     int     ret;
