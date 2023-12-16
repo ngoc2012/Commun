@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 14:15:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 14:16:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,10 @@ void	Request::receive_data()
         }
         _header += request;
     }
-	if (_header.find("\r\n\r\n") == NPOS && ret > 0)
+	if (_header.find("\r\n\r\n"))
     {
 		_status_code = 400;	// Bad Request
+        return ;
     }
     //std::cout << request << std::endl;
 	return (ret);
