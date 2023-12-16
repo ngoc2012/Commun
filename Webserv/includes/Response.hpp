@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 11:18:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 11:58:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 #ifndef RESPONSE_HPP
 # define RESPONSE_HPP
  
+# define MEGABYTE 1048576
+# define KILOBYTE 1024
+
 class	Server;
 class	Location;
 class	Request;
