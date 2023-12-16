@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 11:18:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 11:52:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,7 @@ void	Response::send(void)
 void	Response::flush_request_body(void)
 {
     std::cout << "Flush body" << std::endl;
-    size_t  body_buffer = _request->get_body_buffer();
-    char	request[body_buffer];
+    char	request[_body_buffer];
     int     ret;
 
     while ((ret = recv(_socket, request, body_buffer, 0)) > 0)
@@ -155,8 +154,7 @@ void	Response::download(void)
     }
     std::string body_in_header = _request->get_body_in_header();
     _download_file.write(body_in_header.c_str(), body_in_header.size());
-    size_t  body_buffer = _request->get_body_buffer();
-    char	request[body_buffer];
+    char	request[_body_buffer];
     std::memset(request, 0, sizeof(request));
     size_t  size_total = 0;
     int     ret = 1;
