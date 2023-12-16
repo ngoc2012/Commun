@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 15:58:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 16:32:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ Response::~Response()
 	if (_download_file.is_open())
 		_download_file.close();
 	//std::cout << "Destruction response: " << _socket << std::endl;
+}
+
+int     Response::body()
+{
 }
 
 int     Response::header()

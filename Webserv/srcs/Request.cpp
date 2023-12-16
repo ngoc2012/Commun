@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 15:50:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 16:33:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	Request::read_header(void)
 	_host->new_response_sk(_socket);
 	_response.set_status_code(_status_code);
 	_response.header();
+	_response.body();
     _response.send();
     _host->close_client_sk(_socket);
 }
