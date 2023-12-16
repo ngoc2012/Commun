@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/23 22:31:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 11:17:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ class	Location;
 class	Server
 {
 	private:
-		Host*			_host;
-		std::string		_ip_address;
-		short unsigned int	_port;
-		int			_socket;
-		std::string		_server_name;
-		std::string		_root;
+		Host*			        _host;
+		std::string		        _ip_address;
+		short unsigned int	    _port;
+		int			            _socket;
+		std::string		        _server_name;
+		std::string	        	_root;
 		std::vector<Location*>	_locations;	
 
 		int			bind_addr(void);

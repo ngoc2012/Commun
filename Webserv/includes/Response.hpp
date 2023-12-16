@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 10:39:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 11:17:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class	Response
 		bool		    _end;
 		std::ifstream	_upload_file;
 		std::ofstream	_download_file;
+		size_t		    _body_buffer;
 
 		std::string	get_file_extension(std::string&);
 		size_t		get_file_size(std::string &file_name);
