@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/15 16:30:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 10:52:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,13 +155,16 @@ void	Response::download(void)
     size_t  body_buffer = _request->get_body_buffer();
     char	request[body_buffer];
     std::memset(request, 0, sizeof(request));
+    size_t  size_total = 0;
     int     ret = 1;
     while ((ret = recv(_socket, request, body_buffer, 0)) > 0)
     {
+        size_total += ret;
         _download_file.write(request, ret);
         std::memset(request, 0, sizeof(request));
     }
     _download_file.close();
+    std::cout << "size_total = " << size_total << std::endl;
 }
 
 int	    Response::resquest_error(void)
