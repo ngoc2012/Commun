@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 15:57:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 15:58:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,26 +54,7 @@ int     Response::header()
     Header	header(_status_code, get_file_extension(_full_file_name), this);
     header.set_allow(_location->get_methods_str());
     if (_status_code == 200)
-    {
-        std::cout << _full_file_name << std::endl;
-        switch (_request->get_method())
-        {
-            case GET:
-                flush_request_body();
-                get_file_content();
-                break;
-            case PUT:
-                download();
-                //std::cout << "flush_request_body" << std::endl;
-                //flush_request_body();
-                break;
-            default:
-                _body = "default";
-                _content_length = _body.length();
-                break;
-        }
-    }
-    std::cout << _status_code << std::endl;
+        request_body();
     header.set_status_code(_status_code);
     _header = header.generate();
 }
@@ -101,6 +82,23 @@ void     Response::request_header()
 
 void     Response::request_body()
 {
+    std::cout << _full_file_name << std::endl;
+    switch (_request->get_method())
+    {
+        case GET:
+            flush_request_body();
+            get_file_content();
+            break;
+        case PUT:
+            download();
+            //std::cout << "flush_request_body" << std::endl;
+            //flush_request_body();
+            break;
+        default:
+            _body = "default";
+            _content_length = _body.length();
+            break;
+    }
 }
 
 void	Response::send(void)
