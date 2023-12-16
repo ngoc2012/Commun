@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 14:39:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 14:53:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 	_response.set_host(h);
 	_response.set_server(s);
 	_response.set_request(this);
-	//std::cout << _body_max << " " << _body_buffer << std::endl;
 	clean();
 	std::cout << "Request Constructor sk: " << sk << std::endl;
 }
@@ -75,9 +74,9 @@ void	Request::read_header(void)
         std::cout << "Body:" << _body_in_header.size() << std::endl << _body_in_header << std::endl;
         std::cout << "============================" << std::endl;
     }
-	_response.set_status_code(_status_code);
 	_host->new_response_sk(_socket);
-	_response.build_header(_status_code);
+	_response.set_status_code(_status_code);
+	_response.header();
     _response.send();
     _host->close_client_sk(_socket);
 }

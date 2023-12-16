@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 17:49:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 14:53:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ Host::~Host()
 	for (std::map<int, Request*>::iterator it = _sk_request.begin();
 		it != _sk_request.end(); ++it)
 		delete (it->second);
-	//for (std::map<int, Response*>::iterator it = _sk_response.begin();
-	//	it != _sk_response.end(); ++it)
-	//	delete (it->second);
 	std::cout << "End server" << std::endl;
 }
 
@@ -66,7 +63,6 @@ void	Host::new_request_sk(int new_sk, Server* s)
 void	Host::new_response_sk(int new_sk)
 {
 	FD_SET(new_sk, &_master_write_set);
-	//_sk_response[new_sk] = new Response(new_sk, this, s, r);
 }
 
 bool	Host::check_servers_conf(void)
