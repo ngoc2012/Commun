@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 11:53:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 14:06:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #ifndef CLIENTREQUEST_HPP
 # define CLIENTREQUEST_HPP
  
-# define MEGABYTE 1048576
-# define KILOBYTE 1024
 # define HEADER_BUFFER 1024
 
 class	Host;
@@ -40,7 +38,7 @@ class	Request
 		std::string	_url;
 		e_method	_method;
 
-		int		    receive_data(std::string &);
+		void		receive_data(std::string &);
 		void		clean(void);
 		bool		parser_header(void);
 		bool		read_method(std::string&);

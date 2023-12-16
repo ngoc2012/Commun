@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 14:06:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 14:06:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	Request::read_header(void)
 {
 	//std::cout << "read_request" << std::endl;
 	//clean();
-            ret = receive_data(_header);
+    ret = receive_data(_header);
 	std::cout << "_header" << _header.size() << std::endl << _header << std::endl;
 	if (_header.size() <= 0 || !parser_header())
 	{
