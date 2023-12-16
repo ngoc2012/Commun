@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 14:53:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 15:50:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,7 @@ void	Request::clean()
 
 void	Request::read_header(void)
 {
-	//std::cout << "read_request" << std::endl;
-	//clean();
     receive_data();
-	//std::cout << "_header" << _header.size() << std::endl << _header << std::endl;
 	if (_status_code == 200 && !parser_header())
 	{
         std::cerr << "Error: request header invalid.\n" << std::endl;
@@ -98,6 +95,7 @@ void	Request::receive_data()
             _header += _raw;
         }
     }
+	//std::cout << "_header" << _header.size() << std::endl << _header << std::endl;
 	if (_header.find("\r\n\r\n"))
     {
         std::cerr << "Error: no end header found.\n" << std::endl;
