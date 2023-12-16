@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 14:23:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 14:24:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,6 @@ void	Request::receive_data()
 		_status_code = 400;	// Bad Request
         return ;
     }
-    //std::cout << request << std::endl;
-	return (ret);
 }
 
 bool	Request::parser_header(void)
