@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 11:14:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 11:20:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
  
 # define MEGABYTE 1048576
 # define KILOBYTE 1024
+# define HEADER_BUFFER 1024
 
 class	Host;
 
@@ -33,10 +34,8 @@ class	Request
 		int		    _status_code;
 		std::string	_header;
 		std::string	_body_in_header;
-		size_t		_body_max;
-		size_t		_body_buffer;
 		size_t		_body_size;
-        char		_request[_body_buffer + 1];
+        char		_raw[HEADER_BUFFER + 1];
 		std::string	_content_type;
 		std::string	_url;
 		e_method	_method;
@@ -61,7 +60,6 @@ class	Request
 		Response*	get_response(void);
 		int		    get_status_code(void) const;
         std::string	get_body_in_header(void) const;
-        size_t		get_body_buffer(void) const;
         std::string	get_content_type(void) const;
 };
 

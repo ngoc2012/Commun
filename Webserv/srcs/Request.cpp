@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 10:55:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 11:20:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ Request&	Request::operator=( Request const & src )
 }
 Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 {
-	_body_max = _host->get_client_max_body_size() * MEGABYTE;
-	_body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
 	_response.set_socket(sk);
 	_response.set_host(h);
 	_response.set_server(s);
@@ -198,5 +196,4 @@ std::string	Request::get_url(void) const {return (_url);}
 Response*	Request::get_response(void) {return (&_response);}
 int		    Request::get_status_code(void) const {return (_status_code);}
 std::string	Request::get_body_in_header(void) const {return (_body_in_header);}
-size_t		Request::get_body_buffer(void) const {return (_body_buffer);}
 std::string	Request::get_content_type(void) const {return (_content_type);}
