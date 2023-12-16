@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 14:06:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 14:15:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	Request::read_header(void)
 {
 	//std::cout << "read_request" << std::endl;
 	//clean();
-    ret = receive_data(_header);
-	std::cout << "_header" << _header.size() << std::endl << _header << std::endl;
-	if (_header.size() <= 0 || !parser_header())
+    receive_data();
+	//std::cout << "_header" << _header.size() << std::endl << _header << std::endl;
+	if (_status_code == 200 && (_header.size() <= 0 || !parser_header()))
 	{
         if (_header.size() <= 0)
 		    std::cerr << "Error: no request header.\n" << std::endl;
@@ -82,16 +82,28 @@ void	Request::read_header(void)
     _host->close_client_sk(_socket);
 }
 
-int	Request::receive_data(std::string &data)
+void	Request::receive_data()
 {
     int ret = 1;
 	while (_header.find("\r\n\r\n") == NPOS && ret > 0)
-	int	ret = recv(_socket, _raw, _body_buffer, 0);
-	if (ret <= 0)
-		return (ret);
-	request[ret] = 0;
+    {
+        ret = recv(_socket, _raw, HEADER_BUFFER, 0);
+        if (ret < 0)
+        {
+            _status_code = 500;
+            return ;
+        }
+        if (ret > 0)
+        {
+            _raw[ret] = 0;
+        }
+        _header += request;
+    }
+	if (_header.find("\r\n\r\n") == NPOS && ret > 0)
+    {
+		_status_code = 400;	// Bad Request
+    }
     //std::cout << request << std::endl;
-	data += request;
 	return (ret);
 }
 
