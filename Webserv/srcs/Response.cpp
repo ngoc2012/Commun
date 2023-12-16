@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 11:52:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 14:51:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,9 @@ Response::~Response()
 	//std::cout << "Destruction response: " << _socket << std::endl;
 }
 
-int     Response::build_header(int &sc)
+int     Response::build_header()
 {
     //std::cout << "Build header" << std::endl;
-    _status_code = sc;
     if (_status_code != 200)
         return (resquest_error());
     std::string	url = _request->get_url();
