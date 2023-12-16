@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 11:17:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 11:54:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ class	Server
 		std::string	        	_root;
 		std::vector<Location*>	_locations;	
 
-		int			bind_addr(void);
+		int			            bind_addr(void);
 
 		Server(const Server&);
 		Server			&operator=(const Server& op);
