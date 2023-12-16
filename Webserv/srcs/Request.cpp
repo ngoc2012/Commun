@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 10:50:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/16 10:55:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	Request::read_header(void)
     int ret = 1;
 	while (_header.find("\r\n\r\n") == NPOS && ret > 0)
             ret = receive_data(_header);
-	std::cout << "_header\n" << _header << std::endl;
+	std::cout << "_header" << _header.size() << std::endl << _header << std::endl;
 	if (_header.size() <= 0 || !parser_header())
 	{
         if (_header.size() <= 0)
@@ -75,7 +75,7 @@ void	Request::read_header(void)
 		_status_code = 400;	// Bad Request
 	}
 	std::cout << "============================" << std::endl;
-	std::cout << "Header:\n" << _header << std::endl;
+	std::cout << "Header:" << _header.size() << std::endl  << _header << std::endl;
 	std::cout << "============================" << std::endl;
 	std::cout << "Body:" << _body_in_header.size() << std::endl << _body_in_header << std::endl;
 	std::cout << "============================" << std::endl;
