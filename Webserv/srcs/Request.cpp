@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/18 18:34:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 18:38:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Request&	Request::operator=( Request const & src )
 }
 Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 {
+    _fd_in = -1;
 	_response.set_socket(sk);
 	_response.set_host(h);
 	_response.set_server(s);
@@ -65,15 +66,12 @@ void	Request::read(void)
 
 void	Request::read_body()
 {
-    char	request[_body_buffer];
+    char	buffer[_body_buffer];
     int     ret;
 
-    while ((ret = recv(_socket, request, _body_buffer, 0)) > 0)
-    {
+    while ((ret = recv(_socket, buffer, _body_buffer, 0)) > 0)
         if (fd_in > 0)
-        {
-        }
-    }
+            write(fd_in, buffer, _body_size);
 }
 
 void	Request::read_header()
