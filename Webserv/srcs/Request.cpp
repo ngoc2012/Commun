@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/18 14:01:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 14:03:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,12 @@ void	Request::read(void)
 {
     if (_header == "")
         read_header();
+    else
+        read_body();
+}
+
+void	Request::read_body(int fd)
+{
 }
 
 void	Request::read_header()
