@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/18 18:38:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 18:46:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,10 @@ void	Request::read_body()
     char	buffer[_body_buffer];
     int     ret;
 
-    while ((ret = recv(_socket, buffer, _body_buffer, 0)) > 0)
+    ret = recv(_socket, buffer, _body_buffer, 0);
         if (fd_in > 0)
             write(fd_in, buffer, _body_size);
+    if (fd_in > 0)
 }
 
 void	Request::read_header()
