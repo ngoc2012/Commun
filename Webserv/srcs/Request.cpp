@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/18 13:57:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 13:59:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	Request::clean()
 
 void	Request::read(void)
 {
-    receive_data();
+    read_header();
 	if (_status_code == 200 && !parser_header())
 	{
         std::cerr << "Error: request header invalid.\n" << std::endl;

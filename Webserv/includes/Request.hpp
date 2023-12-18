@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/18 13:55:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 13:58:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class	Request
 		std::string	_url;
 		e_method	_method;
 
-		void		receive_data();
+		void		read_header(void);
 		void		clean(void);
 		bool		parser_header(void);
 		bool		read_method(std::string&);
@@ -52,7 +52,7 @@ class	Request
 		Request(int, Host*, Server*);
 		virtual ~Request();
 
-		void		read_header(void);
+		void		read();
 		e_method	get_method(void) const;
 		std::string	get_url(void) const;
 		Response*	get_response(void);
