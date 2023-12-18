@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 11:17:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 13:53:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ class	Host
 {
 	private:
 
-		int				_max_clients;
-		size_t				_client_max_body_size;
-		size_t				_client_body_buffer_size;
+		int				            _max_clients;
+		size_t				        _client_max_body_size;
+		size_t				        _client_body_buffer_size;
 
-		bool				_parser_error;
+		bool				        _parser_error;
 
-		int				_sk_ready;
-		int				_max_sk;		// Max of all fd
+		int				            _sk_ready;
+		int				            _max_sk;		// Max of all fd
 		fd_set              		_master_read_set;	// Set of all read fd
 		fd_set              		_master_write_set;	// Set of all read fd
 		fd_set              		_read_set;		// Set of active read fd
@@ -42,7 +42,7 @@ class	Host
 		std::vector<Server*>		_servers;
 		//std::map<int, Response*>	_sk_response;
 		std::map<int, Server*>		_sk_server;
-		std::map<int, Request*>	_sk_request;
+		std::map<int, Request*>	    _sk_request;
 
 		bool				select_available_sk(void);
 		void  				add_sk_2_master_read_set(int, Server*);
