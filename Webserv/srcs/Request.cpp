@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/18 13:59:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 14:01:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,8 @@ void	Request::clean()
 
 void	Request::read(void)
 {
-    read_header();
-	if (_status_code == 200 && !parser_header())
-	{
-        std::cerr << "Error: request header invalid.\n" << std::endl;
-		_status_code = 400;	// Bad Request
-	}
-    else
-    {
-        std::cout << "============================" << std::endl;
-        std::cout << "Header:" << _header.size() << std::endl  << _header << std::endl;
-        std::cout << "============================" << std::endl;
-        std::cout << "Body:" << _body_in_header.size() << std::endl << _body_in_header << std::endl;
-        std::cout << "============================" << std::endl;
-    }
-	_host->new_response_sk(_socket);
-	_response.set_status_code(_status_code);
-	_response.header();
-	_response.body();
-    _response.send();
-    _host->close_client_sk(_socket);
+    if (_header == "")
+        read_header();
 }
 
 void	Request::read_header()
@@ -104,6 +86,25 @@ void	Request::read_header()
         return ;
     }
     _body_size = ret - _header.find("\r\n\r\n") - 4;
+	if (_status_code == 200 && !parser_header())
+	{
+        std::cerr << "Error: request header invalid.\n" << std::endl;
+		_status_code = 400;	// Bad Request
+	}
+    else
+    {
+        std::cout << "============================" << std::endl;
+        std::cout << "Header:" << _header.size() << std::endl  << _header << std::endl;
+        std::cout << "============================" << std::endl;
+        std::cout << "Body:" << _body_in_header.size() << std::endl << _body_in_header << std::endl;
+        std::cout << "============================" << std::endl;
+    }
+	_host->new_response_sk(_socket);
+	_response.set_status_code(_status_code);
+	_response.header();
+	_response.body();
+    _response.send();
+    _host->close_client_sk(_socket);
 }
 
 bool	Request::parser_header(void)
