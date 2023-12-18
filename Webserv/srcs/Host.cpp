@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/18 08:55:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 08:57:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,17 @@ void	Host::start(void)
 			break;
 		check_sk_ready();
 	} while (true);
+}
+
+bool	Host::check_servers_conf(void)
+{
+	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end(); ++it)
+		if ((*it)->get_root() == "")
+		{
+			std::cerr << "Error: root null" << std::endl;
+			return (false);
+		}
+	return (true);
 }
 
 void	Host::start_server(void)
@@ -139,17 +150,6 @@ void	Host::new_request_sk(int new_sk, Server* s)
 void	Host::new_response_sk(int new_sk)
 {
 	FD_SET(new_sk, &_master_write_set);
-}
-
-bool	Host::check_servers_conf(void)
-{
-	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end(); ++it)
-		if ((*it)->get_root() == "")
-		{
-			std::cerr << "Error: root null" << std::endl;
-			return (false);
-		}
-	return (true);
 }
 
 void	Host::close_client_sk(int i)
