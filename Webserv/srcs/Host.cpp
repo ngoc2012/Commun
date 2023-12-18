@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 16:37:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 08:55:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,82 @@ Host::~Host()
 	std::cout << "End server" << std::endl;
 }
 
+void	Host::start(void)
+{
+	if (_parser_error || !check_servers_conf())
+		return ;
+	FD_ZERO(&_master_read_set);
+	FD_ZERO(&_master_write_set);
+	FD_ZERO(&_server_set);
+	start_server();
+	if (!_sk_server.size())
+		return ;
+	do
+	{
+		memcpy(&_read_set, &_master_read_set, sizeof(_master_read_set));
+		memcpy(&_write_set, &_master_write_set, sizeof(_master_write_set));
+		if (select_available_sk() == false)
+			break;
+		check_sk_ready();
+	} while (true);
+}
+
+void	Host::start_server(void)
+{
+	int	listen_sk;
+	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end();)
+	{
+		(*it)->set_host(this);
+		listen_sk = (*it)->server_socket();
+		if (listen_sk > 0)
+		{
+			add_sk_2_master_read_set(listen_sk, *it);
+			FD_SET(listen_sk, &_server_set);
+			++it;
+		}
+		else
+		{
+			delete (*it);
+			_servers.erase(it);
+		}
+	}
+}
+
+bool	Host::select_available_sk(void)
+{
+	std::cout << "Waiting on select() ..." << std::endl;
+	_sk_ready = select(_max_sk + 1, &_read_set, &_write_set, NULL, NULL);// No timeout
+	//std::cout << "_sk_ready = " << _sk_ready << std::endl;
+	if (_sk_ready < 0)
+	{
+		perror("select() failed");
+		return (false);
+	}
+	return (true);
+}
+
+void	Host::check_sk_ready(void)
+{
+	for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
+	{
+		if (FD_ISSET(i, &_read_set))
+		{
+			//std::cout << "Read set sk = " << i << std::endl;
+			_sk_ready--;
+			if (FD_ISSET(i, &_server_set))
+				_sk_server[i]->accept_client_sk();
+			else
+				_sk_request[i]->read_header();
+		}
+		if (FD_ISSET(i, &_write_set))
+		{
+			//std::cout << "Write set sk = " << i << std::endl;
+			_sk_ready--;
+			_sk_request[i]->get_response()->send();
+		}
+	}
+}
+
 void  	Host::add_sk_2_master_read_set(int new_sk, Server* s)
 {
 	if (new_sk > _max_sk)
@@ -73,82 +149,6 @@ bool	Host::check_servers_conf(void)
 			std::cerr << "Error: root null" << std::endl;
 			return (false);
 		}
-	return (true);
-}
-
-void	Host::start_server(void)
-{
-	int	listen_sk;
-	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end();)
-	{
-		(*it)->set_host(this);
-		listen_sk = (*it)->server_socket();
-		if (listen_sk > 0)
-		{
-			add_sk_2_master_read_set(listen_sk, *it);
-			FD_SET(listen_sk, &_server_set);
-			++it;
-		}
-		else
-		{
-			delete (*it);
-			_servers.erase(it);
-		}
-	}
-}
-
-void	Host::check_sk_ready(void)
-{
-	for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
-	{
-		if (FD_ISSET(i, &_read_set))
-		{
-			//std::cout << "Read set sk = " << i << std::endl;
-			_sk_ready--;
-			if (FD_ISSET(i, &_server_set))
-				_sk_server[i]->accept_client_sk();
-			else
-				_sk_request[i]->read_header();
-		}
-		if (FD_ISSET(i, &_write_set))
-		{
-			//std::cout << "Write set sk = " << i << std::endl;
-			_sk_ready--;
-			_sk_request[i]->get_response()->send();
-		}
-	}
-}
-
-void	Host::start(void)
-{
-	if (_parser_error || !check_servers_conf())
-		return ;
-	FD_ZERO(&_master_read_set);
-	FD_ZERO(&_master_write_set);
-	FD_ZERO(&_server_set);
-	start_server();
-	if (!_sk_server.size())
-		return ;
-	do
-	{
-		memcpy(&_read_set, &_master_read_set, sizeof(_master_read_set));
-		memcpy(&_write_set, &_master_write_set, sizeof(_master_write_set));
-		if (select_available_sk() == false)
-			break;
-		check_sk_ready();
-	} while (true);
-}
-
-bool	Host::select_available_sk(void)
-{
-	std::cout << "Waiting on select() ..." << std::endl;
-	_sk_ready = select(_max_sk + 1, &_read_set, &_write_set, NULL, NULL);// No timeout
-	//std::cout << "_sk_ready = " << _sk_ready << std::endl;
-	if (_sk_ready < 0)
-	{
-		perror("select() failed");
-		return (false);
-	}
 	return (true);
 }
 
