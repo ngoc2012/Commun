@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/18 10:52:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 18:41:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ void	Response::download(void)
         std::memset(request, 0, sizeof(request));
     }
     _download_file.close();
-    std::cout << "size_total = " << size_total << std::endl;
+    //std::cout << "size_total = " << size_total << std::endl;
 }
 
 int	    Response::resquest_error(void)
