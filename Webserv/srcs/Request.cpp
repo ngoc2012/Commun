@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/18 18:49:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 18:51:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,13 @@ void	Request::read_body()
         std::cerr << "Error: recv error" << std::endl;
         return ;
     }
-        if (fd_in > 0)
-            write(fd_in, buffer, _body_size);
-    if (fd_in > 0)
+    if (ret == 0 && fd_in > 0)
+    {
+        close(fd_in);
+        return ;
+    }
+    if (ret > 0 && fd_in > 0)
+        write(fd_in, buffer, _body_size);
 }
 
 void	Request::read_header()
