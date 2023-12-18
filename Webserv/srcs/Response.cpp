@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/18 10:49:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 10:52:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,15 @@ void     Response::body()
 {
 }
 
-int     Response::header()
+void     Response::header()
 {
     //std::cout << "Build header" << std::endl;
     if (_status_code != 200)
-        return (resquest_error());
+    {
+        resquest_error();
+        return ;
+    }
     request_header();
-
     Header	header(_status_code, get_file_extension(_full_file_name), this);
     header.set_allow(_location->get_methods_str());
     if (_status_code == 200)
@@ -134,7 +136,7 @@ void	Response::flush_request_body(void)
     char	request[_body_buffer];
     int     ret;
 
-    while ((ret = recv(_socket, request, body_buffer, 0)) > 0)
+    while ((ret = recv(_socket, request, _body_buffer, 0)) > 0)
         ;
 }
 
@@ -170,7 +172,7 @@ void	Response::download(void)
     std::memset(request, 0, sizeof(request));
     size_t  size_total = 0;
     int     ret = 1;
-    while ((ret = recv(_socket, request, body_buffer, 0)) > 0)
+    while ((ret = recv(_socket, request, _body_buffer, 0)) > 0)
     {
         size_total += ret;
         _download_file.write(request, ret);
