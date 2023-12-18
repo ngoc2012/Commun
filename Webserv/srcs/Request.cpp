@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 16:33:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 13:57:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	Request::clean()
 	_status_code = 200;
 }
 
-void	Request::read_header(void)
+void	Request::read(void)
 {
     receive_data();
 	if (_status_code == 200 && !parser_header())
@@ -79,7 +79,7 @@ void	Request::read_header(void)
     _host->close_client_sk(_socket);
 }
 
-void	Request::receive_data()
+void	Request::read_header()
 {
     int ret = 1;
 	while (_header.find("\r\n\r\n") == NPOS && ret > 0)
@@ -207,3 +207,4 @@ int		    Request::get_status_code(void) const {return (_status_code);}
 std::string	Request::get_body_in_header(void) const {return (_body_in_header);}
 std::string	Request::get_content_type(void) const {return (_content_type);}
 size_t		Request::get_body_size(void) const {return (_body_size);}
+std::string	Request::get_header(void) const {return (_header);}
