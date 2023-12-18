@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/18 18:41:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 19:00:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,10 +182,10 @@ void	Response::download(void)
     //std::cout << "size_total = " << size_total << std::endl;
 }
 
-int	    Response::resquest_error(void)
+int	    Response::resquest_error(int status_code)
 {
     flush_request_body();
-    Header	header(_status_code, std::string(""), this);
+    Header	header(status_code, std::string(""), this);
     header.set_allow(_location->get_methods_str());
     _end = true;
     _content_length = 0;
