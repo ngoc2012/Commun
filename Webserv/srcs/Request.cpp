@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/18 18:30:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/18 18:34:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,17 @@ void	Request::read(void)
         read_body();
 }
 
-void	Request::read_body(int fd)
+void	Request::read_body()
 {
     char	request[_body_buffer];
     int     ret;
 
     while ((ret = recv(_socket, request, _body_buffer, 0)) > 0)
-        ;
+    {
+        if (fd_in > 0)
+        {
+        }
+    }
 }
 
 void	Request::read_header()
