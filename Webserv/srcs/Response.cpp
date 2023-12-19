@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 22:10:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 22:12:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void     Response::write()
     if (!_write_queue
 }
 
-void     Response::generate()
+void     Response::generate(int st)
 {
+    _status_code = st;
 }
 
 void     Response::body()

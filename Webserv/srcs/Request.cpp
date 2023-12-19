@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 22:11:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 22:12:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,6 @@ int     Request::end_read(void)
     _end_fd_in = true;
     _host->new_response_sk(_socket);
     _response.generate(_status_code);
-    _response.header();
-    _response.body();
-    _response.send();
     return (0);
 }
 
