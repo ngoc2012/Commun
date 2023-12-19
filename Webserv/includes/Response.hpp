@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 06:48:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 06:51:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class	Response
 		Server*		    _server;
 		Request*	    _request;
 		Location*	    _location;	
+
 		size_t		    _content_length;
 		int		        _status_code;
 		std::string	    _full_file_name;
@@ -41,6 +42,7 @@ class	Response
 		std::ofstream	_download_file;
 		size_t		    _body_buffer;
 		size_t		    _body_max;
+		bool		    _end_fd_out;
 
 		std::string	get_file_extension(std::string&);
 		size_t		get_file_size(std::string &file_name);
