@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 06:47:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 06:48:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,11 @@ class	Response
 		virtual ~Response();
 
 		void		send(void);
-		size_t		get_content_length(void) const;
         void	    header(void);
 		void		body(void);
         int	        resquest_error(void);
+
+		size_t		get_content_length(void) const;
 
 		void		set_socket(int);
 		void		set_host(Host*);
