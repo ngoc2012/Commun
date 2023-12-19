@@ -113,32 +113,32 @@ bool	Host::select_available_sk(void)
 
 void	Host::check_sk_ready(void)
 {
-	for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
-	{
-	if (_sk_request[i]->get_end_fd_in()
-	    && _sk_request[i]->get_response()->get_end_fd_out())
-	{
-	    close_client_sk(_socket);
-	}
-	else
-	{
-	    if (FD_ISSET(i, &_read_set))
-	    {
-	        //std::cout << "Read set sk = " << i << std::endl;
-	        _sk_ready--;
-	        if (FD_ISSET(i, &_server_set))
-	            _sk_server[i]->accept_client_sk();
-	        else
-	            _sk_request[i]->read();
-	    }
-	    if (FD_ISSET(i, &_write_set))
-	    {
-	        //std::cout << "Write set sk = " << i << std::endl;
-	        _sk_ready--;
-	        _sk_request[i]->get_response()->write();
-	    }
-	}
-	}
+    for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
+    {
+        if (_sk_request[i]->get_end_fd_in()
+                && _sk_request[i]->get_response()->get_end_fd_out())
+        {
+            close_client_sk(_socket);
+        }
+        else
+        {
+            if (FD_ISSET(i, &_read_set))
+            {
+                //std::cout << "Read set sk = " << i << std::endl;
+                _sk_ready--;
+                if (FD_ISSET(i, &_server_set))
+                    _sk_server[i]->accept_client_sk();
+                else
+                    _sk_request[i]->read();
+            }
+            if (FD_ISSET(i, &_write_set))
+            {
+                //std::cout << "Write set sk = " << i << std::endl;
+                _sk_ready--;
+                _sk_request[i]->get_response()->write();
+            }
+        }
+    }
 }
 
 void  	Host::add_sk_2_master_read_set(int new_sk, Server* s)

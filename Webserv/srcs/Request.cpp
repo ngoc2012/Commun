@@ -152,11 +152,11 @@ void	Request::check_location()
     if (!_location || _status_code != 200)
         return ;
 
-    _full_file_name = _location->get_full_file_name(url,
+    _full_file_name = _location->get_full_file_name(_url,
             _server->get_root());
 
 	struct stat buffer;
-	if (_request->get_method() != PUT
+	if (_method != PUT
             && stat(_full_file_name.c_str(), &buffer) != 0)
 		_status_code = 404; // Not found
 }
