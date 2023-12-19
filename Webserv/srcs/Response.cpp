@@ -20,13 +20,13 @@
 
 Response::Response()
 {
-	_header = "";
-	_status_code = 200;
-	_location = 0;
-	_end = false;
-	_body_max = _host->get_client_max_body_size() * MEGABYTE;
-	_body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
-	//std::cout << "Response Default constructor" << std::endl;
+    _header = "";
+    _status_code = 200;
+    _location = 0;
+    _end = false;
+    _body_max = _host->get_client_max_body_size() * MEGABYTE;
+    _body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
+    //std::cout << "Response Default constructor" << std::endl;
 }
 Response::Response(const Response& src) { *this = src; }
 Response&	Response::operator=( Response const & src )

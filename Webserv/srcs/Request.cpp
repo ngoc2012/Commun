@@ -130,6 +130,7 @@ void	Request::read_header()
         std::cout << "============================" << std::endl;
         std::cout << "Body:" << _body_in_header.size() << std::endl << _body_in_header << std::endl;
         std::cout << "============================" << std::endl;
+        check_location();
     }
 }
 
