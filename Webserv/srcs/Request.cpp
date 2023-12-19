@@ -138,7 +138,7 @@ void	Request::check_location()
 {
     _location = Location::find_location(_url,
             _server->get_locations(),
-            _request->get_method(),
+            _method,
     _status_code);
 
     if (!_location || _status_code != 200)
