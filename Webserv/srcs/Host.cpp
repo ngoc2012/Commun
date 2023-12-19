@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 07:01:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 07:05:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	Host::check_sk_ready(void)
 {
 	for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
 	{
+        close_client_sk(_socket);
 		if (FD_ISSET(i, &_read_set))
 		{
 			//std::cout << "Read set sk = " << i << std::endl;
