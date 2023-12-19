@@ -68,19 +68,18 @@ int     Request::end_read(void)
     _response.header();
     _response.body();
     _response.send();
+    return (0);
 }
 
 int     Request::read(void)
 {
     if (!_read_queue)
-        return ;
+        return (0);
     if (_header == "")
     {
         read_header();
         if (_status_code != 200)
-        {
-            return ;
-        }
+            return (end_read);
         analyse();
     }
     else
@@ -95,8 +94,8 @@ void	Request::read_body()
     ret = recv(_socket, buffer, _body_buffer, 0);
     if (ret < 0)
     {
-        _status_code = 500;
         std::cerr << "Error: recv error" << std::endl;
+        _status_code = 500;
         return ;
     }
     if (ret == 0 && fd_in > 0)
@@ -114,7 +113,7 @@ void	Request::read_header()
 
 	while (_header.find("\r\n\r\n") == NPOS && ret > 0)
     {
-        ret = recv(_socket, _raw, HEADER_BUFFER, 0);
+        ret = recv(_socket, _raw, REQUEST_BUFFER, 0);
         if (ret < 0)
         {
             _status_code = 500;
