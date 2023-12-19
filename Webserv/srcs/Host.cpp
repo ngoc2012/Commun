@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 06:57:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 07:01:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,6 @@ bool	Host::select_available_sk(void)
 
 void	Host::check_sk_ready(void)
 {
-    Response*    response;
-
 	for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
 	{
 		if (FD_ISSET(i, &_read_set))
@@ -129,9 +127,8 @@ void	Host::check_sk_ready(void)
 		if (FD_ISSET(i, &_write_set))
 		{
 			//std::cout << "Write set sk = " << i << std::endl;
-            response = _sk_request[i]->get_response();
 			_sk_ready--;
-			response->write();
+			_sk_request[i]->get_response()->write();
 		}
 	}
 }

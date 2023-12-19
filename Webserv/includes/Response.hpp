@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 06:58:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 07:00:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ class	Response
 		void		write(void);
         void	    header(void);
 		void		body(void);
-        int	        resquest_error(void);
+        void	    resquest_error(void);
 
 		size_t		get_content_length(void) const;
 

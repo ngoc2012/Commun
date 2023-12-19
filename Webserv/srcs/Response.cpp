@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 06:59:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 07:00:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,7 @@ void	    Response::resquest_error(int status_code)
     _end_fd_out = true;
     _content_length = 0;
     _header = header.generate();
+    _http = _header;
     //if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
     //    perror("send() failed");
 }
