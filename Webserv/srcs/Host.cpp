@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/18 13:56:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 06:57:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,14 +124,14 @@ void	Host::check_sk_ready(void)
 			if (FD_ISSET(i, &_server_set))
 				_sk_server[i]->accept_client_sk();
             else
-				_sk_request[i]->read_header();
+				_sk_request[i]->read();
 		}
 		if (FD_ISSET(i, &_write_set))
 		{
 			//std::cout << "Write set sk = " << i << std::endl;
             response = _sk_request[i]->get_response();
 			_sk_ready--;
-			response->send();
+			response->write();
 		}
 	}
 }
