@@ -134,6 +134,16 @@ void	Request::read_header()
 
 void	Request::analyse()
 {
+    switch (_method)
+    {
+        case GET:
+            std::cout << "GET: fd_in = " << fd_in << std::endl;
+            // Flush the body
+            read_body();
+            break;
+        case POST:
+            break;
+    }
 	_host->new_response_sk(_socket);
 	_response.set_status_code(_status_code);
 	_response.header();
