@@ -24,23 +24,23 @@ class	Host;
 class	Request
 {
 	private:
-		int		    _socket;
-		Host*		_host;
-		Server*		_server;
-		Response	_response;
-		Location*	_location;	
+		int		        _socket;
+		Host*		    _host;
+		Server*		    _server;
+		Response	    _response;
+		Location*	    _location;	
 
-		int		    _fd_in;
-		int		    _status_code;
-		std::string	_header;
-		std::string	_body_in_header;
-		size_t		_body_size;
-        char		_raw[HEADER_BUFFER + 1];
-		std::string	_content_type;
-		std::string	_url;
-		e_method	_method;
-        bool        _read_queue;
-        bool        _end_fd_in;
+		int		        _fd_in;
+		int		        _status_code;
+		std::string	    _header;
+		std::string	    _body_in_header;
+		size_t		    _body_size;
+        char		    _raw[HEADER_BUFFER + 1];
+		std::string	    _content_type;
+		std::string	    _url;
+		e_method	    _method;
+        bool            _read_queue;
+        bool            _end_fd_in;
 		std::string	    _full_file_name;
 
 		void		read_header(void);

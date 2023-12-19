@@ -30,11 +30,9 @@ class	Response
 		Host*		    _host;
 		Server*		    _server;
 		Request*	    _request;
-		Location*	    _location;	
 
 		size_t		    _content_length;
 		int		        _status_code;
-		std::string	    _full_file_name;
 		std::string	    _header;
 		std::string	    _body;
 		std::string	    _http;
