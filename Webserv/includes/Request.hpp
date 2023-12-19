@@ -50,6 +50,7 @@ class	Request
 		bool		read_method(std::string&);
 		bool		read_content_type(std::string&, std::string&);
 		bool		split_header_body(std::string&);
+		int         end_read(void);
 
 		Request();
 		Request(const Request&);
@@ -58,7 +59,7 @@ class	Request
 		Request(int, Host*, Server*);
 		virtual ~Request();
 
-		void		read();
+		int         read(void);
 
         bool        get_end_fd_in(void) const;
 		e_method	get_method(void) const;

@@ -59,7 +59,7 @@ void	Request::clean()
 	_read_queue = true;
 }
 
-void	Request::end_read(void)
+int     Request::end_read(void)
 {
     _read_queue = false;
     _end_fd_in = true;
@@ -70,7 +70,7 @@ void	Request::end_read(void)
     _response.send();
 }
 
-void	Request::read(void)
+int     Request::read(void)
 {
     if (!_read_queue)
         return ;
