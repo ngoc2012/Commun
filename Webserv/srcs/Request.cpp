@@ -59,6 +59,17 @@ void	Request::clean()
 	_read_queue = true;
 }
 
+void	Request::end_read(void)
+{
+    _read_queue = false;
+    _end_fd_in = true;
+    _host->new_response_sk(_socket);
+    _response.set_status_code(_status_code);
+    _response.header();
+    _response.body();
+    _response.send();
+}
+
 void	Request::read(void)
 {
     if (!_read_queue)
@@ -68,8 +79,6 @@ void	Request::read(void)
         read_header();
         if (_status_code != 200)
         {
-            _read_queue = false;
-            _end_fd_in = true;
             return ;
         }
         analyse();
@@ -174,11 +183,6 @@ void	Request::analyse()
         case POST:
             break;
     }
-	_host->new_response_sk(_socket);
-	_response.set_status_code(_status_code);
-	_response.header();
-	_response.body();
-    _response.send();
 }
 
 bool	Request::parser_header(void)
