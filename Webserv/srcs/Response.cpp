@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 06:50:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 06:54:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,7 @@ int	    Response::resquest_error(int status_code)
     //flush_request_body();
     Header	header(status_code, std::string(""), this);
     header.set_allow(_location->get_methods_str());
+    _write_queue = true;
     _end_fd_out = true;
     _content_length = 0;
     _header = header.generate();
