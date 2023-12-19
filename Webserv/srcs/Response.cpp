@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 06:54:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 06:59:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,7 @@ void	Response::download(void)
     //std::cout << "size_total = " << size_total << std::endl;
 }
 
-int	    Response::resquest_error(int status_code)
+void	    Response::resquest_error(int status_code)
 {
     //flush_request_body();
     Header	header(status_code, std::string(""), this);
@@ -191,9 +191,8 @@ int	    Response::resquest_error(int status_code)
     _end_fd_out = true;
     _content_length = 0;
     _header = header.generate();
-    if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
-        perror("send() failed");
-    return (_status_code);
+    //if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
+    //    perror("send() failed");
 }
 
 void	Response::get_file_content(void)
