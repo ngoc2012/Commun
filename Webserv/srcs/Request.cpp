@@ -132,6 +132,25 @@ void	Request::read_header()
     }
 }
 
+void	Request::check_location()
+{
+    _location = Location::find_location(_url,
+            _server->get_locations(),
+            _request->get_method(),
+    _status_code);
+
+    if (!_location || _status_code != 200)
+        return ;
+
+    _full_file_name = _location->get_full_file_name(url,
+            _server->get_root());
+
+	struct stat buffer;
+	if (_request->get_method() != PUT
+            && stat(_full_file_name.c_str(), &buffer) != 0)
+		_status_code = 404; // Not found
+}
+
 void	Request::analyse()
 {
     switch (_method)

@@ -28,6 +28,7 @@ class	Request
 		Host*		_host;
 		Server*		_server;
 		Response	_response;
+		Location*	_location;	
 
 		int		    _fd_in;
 		int		    _status_code;
@@ -40,6 +41,7 @@ class	Request
 		e_method	_method;
         bool        _read_queue;
         bool        _end_fd_in;
+		std::string	    _full_file_name;
 
 		void		read_header(void);
 		void		clean(void);
