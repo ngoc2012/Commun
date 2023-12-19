@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 07:10:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 21:33:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ void	Request::analyse()
             // Flush the body
             break;
         case PUT:
+            _fd_in = open(fn, O_CREAT | O_WRONLY | O_APPEND, 0664);
             break;
         case POST:
             break;
