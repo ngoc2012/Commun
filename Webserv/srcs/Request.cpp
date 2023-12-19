@@ -70,6 +70,7 @@ void	Request::read(void)
         {
             _read_queue = false;
             _end_fd_in = true;
+            return ;
         }
         analyse();
     }
