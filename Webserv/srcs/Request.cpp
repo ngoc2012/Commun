@@ -118,10 +118,11 @@ void	Request::read_header()
         return ;
     }
     _body_size = ret - _header.find("\r\n\r\n") - 4;
-	if (_status_code == 200 && !parser_header())
+	if (!parser_header())
 	{
         std::cerr << "Error: request header invalid.\n" << std::endl;
 		_status_code = 400;	// Bad Request
+        return ;
 	}
     else
     {
