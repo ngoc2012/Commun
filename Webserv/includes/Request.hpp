@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 06:30:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 06:38:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ class	Request
 		virtual ~Request();
 
 		void		read();
+
 		e_method	get_method(void) const;
 		std::string	get_url(void) const;
 		Response*	get_response(void);
