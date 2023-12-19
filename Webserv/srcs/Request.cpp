@@ -177,7 +177,6 @@ void	Request::analyse()
         case GET:
             std::cout << "GET: fd_in = " << fd_in << std::endl;
             // Flush the body
-            read_body();
             break;
         case POST:
             break;

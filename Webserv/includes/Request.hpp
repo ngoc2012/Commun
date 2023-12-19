@@ -17,7 +17,7 @@
 #ifndef CLIENTREQUEST_HPP
 # define CLIENTREQUEST_HPP
  
-# define HEADER_BUFFER 1024
+# define REQUEST_BUFFER 1024
 
 class	Host;
 
@@ -35,7 +35,7 @@ class	Request
 		std::string	    _header;
 		std::string	    _body_in_header;
 		size_t		    _body_size;
-        char		    _raw[HEADER_BUFFER + 1];
+        char		    _raw[REQUEST_BUFFER + 1];
 		std::string	    _content_type;
 		std::string	    _url;
 		e_method	    _method;
