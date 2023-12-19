@@ -66,6 +66,11 @@ void	Request::read(void)
     if (_header == "")
     {
         read_header();
+        if (_status_code != 200)
+        {
+            _read_queue = false;
+            _end_fd_in = true;
+        }
         analyse();
     }
     else
