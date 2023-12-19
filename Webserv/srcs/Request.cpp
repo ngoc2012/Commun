@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 06:38:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 06:45:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,10 @@ void	Request::read_header()
         std::cout << "Body:" << _body_in_header.size() << std::endl << _body_in_header << std::endl;
         std::cout << "============================" << std::endl;
     }
+}
+
+void	Request::analyse()
+{
 	_host->new_response_sk(_socket);
 	_response.set_status_code(_status_code);
 	_response.header();
