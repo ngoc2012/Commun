@@ -13,6 +13,7 @@
 #include "Host.hpp"
 #include "Server.hpp"
 #include "Request.hpp"
+#include "Location.hpp"
 
 Request::Request()
 {
@@ -95,6 +96,7 @@ void	Request::read_body()
 void	Request::read_header()
 {
     int ret = 1;
+
 	while (_header.find("\r\n\r\n") == NPOS && ret > 0)
     {
         ret = recv(_socket, _raw, HEADER_BUFFER, 0);
