@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 15:58:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 06:47:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ class	Response
 		std::string	get_file_extension(std::string&);
 		size_t		get_file_size(std::string &file_name);
 		void		get(void);
-        int	        resquest_error(void);
         void	    get_file_content(void);
         void	    execute_cgi(void);
         void        download(void);
@@ -62,9 +61,9 @@ class	Response
 
 		void		send(void);
 		size_t		get_content_length(void) const;
-		Location*	get_location(void) const;	
         void	    header(void);
 		void		body(void);
+        int	        resquest_error(void);
 
 		void		set_socket(int);
 		void		set_host(Host*);
