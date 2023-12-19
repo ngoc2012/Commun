@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 06:51:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 06:53:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ class	Response
 		std::ofstream	_download_file;
 		size_t		    _body_buffer;
 		size_t		    _body_max;
+        bool            _write_queue;
 		bool		    _end_fd_out;
 
 		std::string	get_file_extension(std::string&);
