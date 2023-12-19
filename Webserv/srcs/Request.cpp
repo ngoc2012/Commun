@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 06:32:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 06:33:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ Request&	Request::operator=( Request const & src )
 }
 Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 {
-    _fd_in = -1;
-    _read_queue = false;
 	_response.set_socket(sk);
 	_response.set_host(h);
 	_response.set_server(s);
@@ -55,6 +53,8 @@ void	Request::clean()
 	_method = NONE;
 	_url = "";
 	_status_code = 200;
+    _fd_in = -1;
+    _read_queue = true;
 }
 
 void	Request::read(void)
@@ -105,6 +105,7 @@ void	Request::read_header()
             _header += _raw;
         }
     }
+    _read_queue = false;
 	//std::cout << "_header" << _header.size() << std::endl << _header << std::endl;
 	if (_header.find("\r\n\r\n"))
     {
