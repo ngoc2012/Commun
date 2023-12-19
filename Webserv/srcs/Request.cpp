@@ -53,8 +53,9 @@ void	Request::clean()
 	_method = NONE;
 	_url = "";
 	_status_code = 200;
-    _fd_in = -1;
-    _read_queue = true;
+	_full_file_name = "";
+	_fd_in = -1;
+	_read_queue = true;
 }
 
 void	Request::read(void)

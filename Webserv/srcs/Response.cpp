@@ -21,7 +21,6 @@
 Response::Response()
 {
 	_header = "";
-	_full_file_name = "";
 	_status_code = 200;
 	_location = 0;
 	_end = false;
