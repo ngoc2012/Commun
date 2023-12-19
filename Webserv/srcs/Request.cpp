@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 21:33:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 21:35:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int     Request::read(void)
         if (_status_code != 200)
             return (end_read);
         analyse();
+        if (_status_code != 200)
+            return (end_read);
     }
     else
         read_body();
@@ -180,6 +182,8 @@ void	Request::analyse()
             break;
         case PUT:
             _fd_in = open(fn, O_CREAT | O_WRONLY | O_APPEND, 0664);
+            if (_fd_in == -1)
+                _status_code = 500;
             break;
         case POST:
             break;
