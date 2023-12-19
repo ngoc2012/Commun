@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 07:05:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/19 07:13:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,22 +115,29 @@ void	Host::check_sk_ready(void)
 {
 	for (int i = 0; i <= _max_sk && _sk_ready > 0; ++i)
 	{
-        close_client_sk(_socket);
-		if (FD_ISSET(i, &_read_set))
-		{
-			//std::cout << "Read set sk = " << i << std::endl;
-			_sk_ready--;
-			if (FD_ISSET(i, &_server_set))
-				_sk_server[i]->accept_client_sk();
-            else
-				_sk_request[i]->read();
-		}
-		if (FD_ISSET(i, &_write_set))
-		{
-			//std::cout << "Write set sk = " << i << std::endl;
-			_sk_ready--;
-			_sk_request[i]->get_response()->write();
-		}
+        if (_sk_request[i]->get_end_fd_in()
+            && _sk_request[i]->get_response()->get_end_fd_out())
+        {
+            close_client_sk(_socket);
+        }
+        else
+        {
+            if (FD_ISSET(i, &_read_set))
+            {
+                //std::cout << "Read set sk = " << i << std::endl;
+                _sk_ready--;
+                if (FD_ISSET(i, &_server_set))
+                    _sk_server[i]->accept_client_sk();
+                else
+                    _sk_request[i]->read();
+            }
+            if (FD_ISSET(i, &_write_set))
+            {
+                //std::cout << "Write set sk = " << i << std::endl;
+                _sk_ready--;
+                _sk_request[i]->get_response()->write();
+            }
+        }
 	}
 }
 
