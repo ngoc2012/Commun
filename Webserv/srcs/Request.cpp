@@ -178,6 +178,8 @@ void	Request::analyse()
             std::cout << "GET: fd_in = " << fd_in << std::endl;
             // Flush the body
             break;
+        case PUT:
+            break;
         case POST:
             break;
     }
