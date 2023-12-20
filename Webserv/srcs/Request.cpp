@@ -129,7 +129,8 @@ void	Request::read_header()
 		_status_code = 400;	// Bad Request
         return ;
     }
-    _body_size = ret - _header.find("\r\n\r\n") - 4;
+    _body_position = _header.find("\r\n\r\n") + 4;
+    _body_size = ret - _body_position;
 	if (!parser_header())
 	{
         std::cerr << "Error: request header invalid.\n" << std::endl;
@@ -182,7 +183,8 @@ void	Request::check_method()
         case POST:
             break;
     }
-    write_body_in_header();
+    if (_fd_in != -1)
+        write(_fd_in, _raw[_body_position], _body_size);
 }
 
 bool	Request::parser_header(void)
