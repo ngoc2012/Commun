@@ -182,6 +182,7 @@ void	Request::check_method()
         case POST:
             break;
     }
+    write_body_in_header();
 }
 
 bool	Request::parser_header(void)

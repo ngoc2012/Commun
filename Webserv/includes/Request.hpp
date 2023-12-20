@@ -50,6 +50,8 @@ class	Request
 		bool		read_content_type(std::string&, std::string&);
 		bool		split_header_body(std::string&);
 		int         end_read(void);
+		void		read_header(void);
+		void		write_body_in_header(void);
 
 		Request();
 		Request(const Request&);
