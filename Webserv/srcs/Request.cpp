@@ -31,21 +31,6 @@ Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 	_response.set_host(h);
 	_response.set_server(s);
 	_response.set_request(this);
-	clean();
-	std::cout << "Request Constructor sk: " << sk << std::endl;
-}
-Request::~Request()
-{
-	std::cout << "Destruction client request" << std::endl;
-	if (_socket > 0)
-	{
-		std::cout << "Close socket: " << _socket << std::endl;
-		close(_socket);
-	}
-}
-
-void	Request::clean()
-{
 	_body_in_header = "";
 	_header = "";
 	_body_size = 0;
@@ -56,6 +41,18 @@ void	Request::clean()
 	_full_file_name = "";
 	_fd_in = -1;
 	_read_queue = true;
+    _end_fd_in = false;
+	std::cout << "Request Constructor sk: " << sk << std::endl;
+}
+
+Request::~Request()
+{
+	std::cout << "Destruction client request" << std::endl;
+	if (_socket > 0)
+	{
+		std::cout << "Close socket: " << _socket << std::endl;
+		close(_socket);
+	}
 }
 
 int     Request::end_read(void)
