@@ -35,6 +35,7 @@ class	Request
 		std::string	    _header;
 		std::string	    _body_in_header;
 		size_t		    _body_size;
+		size_t		    _body_position;
         char		    _raw[REQUEST_BUFFER + 1];
 		std::string	    _content_type;
 		std::string	    _url;
