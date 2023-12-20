@@ -23,7 +23,7 @@ Response::Response()
     _header = "";
     _status_code = 200;
     _location = 0;
-    _end = false;
+    _write_queue = false;
     _end_fd_out = false;
     _body_max = _host->get_client_max_body_size() * MEGABYTE;
     _body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
@@ -44,9 +44,10 @@ Response::~Response()
 	//std::cout << "Destruction response: " << _socket << std::endl;
 }
 
-void     Response::write()
+int     Response::write()
 {
-    if (!_write_queue
+    if (!_write_queue)
+        return (0);
 }
 
 void     Response::generate(int st)
@@ -126,16 +127,6 @@ void	Response::send(void)
         _host->close_client_sk(_socket);
     //_host->delete_response(_socket);
     //std::cout << "Response sent" << std::endl;
-}
-
-void	Response::flush_request_body(void)
-{
-    std::cout << "Flush body" << std::endl;
-    char	request[_body_buffer];
-    int     ret;
-
-    while ((ret = recv(_socket, request, _body_buffer, 0)) > 0)
-        ;
 }
 
 void	Response::download(void)
