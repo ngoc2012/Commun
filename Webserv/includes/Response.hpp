@@ -49,8 +49,6 @@ class	Response
 		void		get(void);
         void	    get_file_content(void);
         void	    execute_cgi(void);
-        void        download(void);
-        void        flush_request_body(void);
         void        request_header(void);
         void        request_body(void);
         void	    header(void);

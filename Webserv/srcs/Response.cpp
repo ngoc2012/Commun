@@ -129,48 +129,6 @@ void	Response::send(void)
     //std::cout << "Response sent" << std::endl;
 }
 
-void	Response::download(void)
-{
-    /*
-	const char*	types_supported[] = {
-		"text/plain",
-		"text/html",
-		"text/css",
-		"text/javascript",
-		"image/jpeg",
-		"image/png",
-		"image/gif",
-		"video/mp4",
-	};
-    for (int i = 0; i < 8; i++)
-        if (words[0] == std::string(types[i]))
-        {
-            c = words[0];
-            return (true);
-        }
-        */
-    _download_file.open(_full_file_name.c_str());
-    if (!_download_file.is_open()) {
-        std::cerr << "Error: Can not open the file " << _full_file_name << std::endl;
-        _status_code = 500;	// Internal server error
-        return ;
-    }
-    std::string body_in_header = _request->get_body_in_header();
-    _download_file.write(body_in_header.c_str(), body_in_header.size());
-    char	request[_body_buffer];
-    std::memset(request, 0, sizeof(request));
-    size_t  size_total = 0;
-    int     ret = 1;
-    while ((ret = recv(_socket, request, _body_buffer, 0)) > 0)
-    {
-        size_total += ret;
-        _download_file.write(request, ret);
-        std::memset(request, 0, sizeof(request));
-    }
-    _download_file.close();
-    //std::cout << "size_total = " << size_total << std::endl;
-}
-
 void	    Response::resquest_error(int status_code)
 {
     //flush_request_body();
