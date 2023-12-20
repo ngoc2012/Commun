@@ -18,7 +18,6 @@
 Request::Request()
 {
 	std::cout << "Request Default constructor" << std::endl;
-	clean();
 }
 Request::Request(const Request& src) { *this = src; }
 Request&	Request::operator=( Request const & src )

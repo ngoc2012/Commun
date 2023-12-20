@@ -44,7 +44,6 @@ class	Request
 		std::string	    _full_file_name;
 
 		void		read_header(void);
-		void		clean(void);
 		void		check_method(void);
 		bool		parser_header(void);
 		bool		read_method(std::string&);
