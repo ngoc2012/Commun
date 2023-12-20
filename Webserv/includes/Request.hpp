@@ -45,7 +45,7 @@ class	Request
 
 		void		read_header(void);
 		void		clean(void);
-		void		analyse(void);
+		void		check_method(void);
 		bool		parser_header(void);
 		bool		read_method(std::string&);
 		bool		read_content_type(std::string&, std::string&);

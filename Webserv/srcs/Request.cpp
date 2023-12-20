@@ -77,7 +77,7 @@ int     Request::read(void)
         read_header();
         if (_status_code != 200)
             return (end_read);
-        analyse();
+        check_method();
         if (_status_code != 200)
             return (end_read);
     }
@@ -170,7 +170,7 @@ void	Request::check_location()
 		_status_code = 404; // Not found
 }
 
-void	Request::analyse()
+void	Request::check_method()
 {
     switch (_method)
     {
