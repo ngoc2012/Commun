@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 09:45:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 09:47:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,12 @@ void     Response::write_header(int st)
         request_body();
     header.set_status_code(_status_code);
     _header = header.generate();
-    check_method();
+    std::cout << "Header:\n" << _header << std::endl;
+    if (send(_socket, _header.c_str(), _header.length(), 0) < 0)
+    {
+        _status_code = 500;
+        return ;
+    }
 }
 
 void     Response::check_method()
@@ -100,6 +105,8 @@ void     Response::check_method()
     {
         case GET:
             _fd_out = open(_full_file_name, O_RDONLY);
+            if (_fd_in == -1)
+                _status_code = 500;
             break;
         case PUT:
             download();
@@ -117,12 +124,6 @@ void	Response::send(void)
 {
 	if(_header != "")
     {
-        std::cout << "Header:\n" << _header << std::endl;
-        if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
-        {
-            _end = true;
-            perror("send() failed");
-        }
         _header = "";
     }
     else if ((_request->get_method() == GET || _request->get_method() == POST)
@@ -131,20 +132,6 @@ void	Response::send(void)
     else if (_request->get_method() == GET)
 		get();
     if (_end)
-}
-
-void	    Response::resquest_error(int status_code)
-{
-    //flush_request_body();
-    Header	header(status_code, std::string(""), this);
-    header.set_allow(_location->get_methods_str());
-    _write_queue = true;
-    _end_fd_out = true;
-    _content_length = 0;
-    _header = header.generate();
-    _http = _header;
-    //if (::send(_socket, _header.c_str(), _header.length(), 0) < 0)
-    //    perror("send() failed");
 }
 
 void	Response::get_file_content(void)
