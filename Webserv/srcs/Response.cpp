@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 08:53:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 08:57:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void     Response::header(int st)
         request_body();
     header.set_status_code(_status_code);
     _header = header.generate();
+    check_method();
 }
 
 void     Response::check_method()
