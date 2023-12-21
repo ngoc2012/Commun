@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 18:41:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 18:43:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void     Response::write_header()
 {
     std::string ext = ;
 
+    _full_file_name = _request->get_full_file_name();
     //std::cout << "Build header" << std::endl;
-    Header	header(this,
-            get_file_extension(_request->get_full_file_name()));
+    Header	header(this, get_file_extension(_full_file_name));
     header.set_allow(_location->get_methods_str());
     if (_status_code == 200)
     {
