@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 08:57:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 09:00:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void     Response::check_method()
     switch (_request->get_method())
     {
         case GET:
-            get_file_content();
+            _fd_out = open(_full_file_name, O_RDONLY);
             break;
         case PUT:
             download();
