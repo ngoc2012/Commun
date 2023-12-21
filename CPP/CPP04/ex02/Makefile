@@ -6,11 +6,12 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/10/10 15:04:42 by ngoc             ###   ########.fr        #
+#    Updated: 2023/12/14 13:54:50 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
+INCS = *.hpp
 OBJS = ${SRCS:.c=.o}
 MANDA = main
 CC = c++
@@ -18,7 +19,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
 .cpp.o:
 	$(CC) $(FLAGS) -g -c $< -o ${<:.cpp=.o} -I.
-$(MANDA): $(SRCS)
+$(MANDA): $(SRCS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
 	make re && valgrind ./main
