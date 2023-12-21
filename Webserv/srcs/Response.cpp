@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 08:45:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 08:47:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,12 @@ void     Response::header(int st)
     _header = header.generate();
 }
 
-void     Response::request_body()
+void     Response::check_method()
 {
     std::cout << _full_file_name << std::endl;
     switch (_request->get_method())
     {
         case GET:
-            flush_request_body();
             get_file_content();
             break;
         case PUT:

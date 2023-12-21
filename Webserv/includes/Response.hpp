@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 08:45:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 08:47:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ class	Response
         bool            _write_queue;
 		bool		    _end_fd_out;
 
-		std::string	get_file_extension(std::string&);
-		size_t		get_file_size(std::string &file_name);
-		void		get(void);
-        void	    get_file_content(void);
-		void		body(void);
+		std::string	    get_file_extension(std::string&);
+		size_t		    get_file_size(std::string &file_name);
+		void		    get(void);
+        void	        get_file_content(void);
+		void		    check_method(void);
 
 		Response(const Response&);
 		Response	&operator=(const Response& op);
