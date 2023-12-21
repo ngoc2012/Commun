@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 09:47:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 09:48:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,12 +109,8 @@ void     Response::check_method()
                 _status_code = 500;
             break;
         case PUT:
-            download();
-            //std::cout << "flush_request_body" << std::endl;
-            //flush_request_body();
             break;
         default:
-            _body = "default";
             _content_length = _body.length();
             break;
     }
