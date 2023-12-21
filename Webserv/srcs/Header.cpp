@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/08 05:11:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 18:37:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Header&	Header::operator=( Header const & src )
 	(void) src;
 	return (*this);
 }
-Header::Header(int e, std::string ext, Response* r) :
+Header::Header(std::string ext, Response* r) :
 	_status_code(e),
 	_response(r),
 	_extension(ext)
