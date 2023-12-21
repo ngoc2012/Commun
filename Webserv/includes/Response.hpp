@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 09:00:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 09:43:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ class	Response
         void	        get_file_content(void);
 		void		    check_method(void);
 		int 		    end_connection(void);
+        void	        write_header(int);
 
 		Response(const Response&);
 		Response	&operator=(const Response& op);
@@ -56,7 +57,6 @@ class	Response
 		Response();
 		virtual ~Response();
 
-        void	    header(int);
 		void		write(void);
 
         bool		get_end_fd_out(void) const;
