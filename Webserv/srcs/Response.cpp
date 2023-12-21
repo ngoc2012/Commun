@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 08:51:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 08:53:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ Response::~Response()
 
 int     Request::end_connection(void)
 {
-    _host->close_client_sk(_socket);
+    _end_fd_out = true;
+    return (0);
 }
 
 int     Response::write()

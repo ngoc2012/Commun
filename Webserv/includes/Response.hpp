@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 08:48:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 08:52:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ class	Response
 		void		    get(void);
         void	        get_file_content(void);
 		void		    check_method(void);
+		int 		    end_connection(void);
 
 		Response(const Response&);
 		Response	&operator=(const Response& op);
