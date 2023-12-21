@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 18:39:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 18:45:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ Header::Header(Response* r, std::string ext) :
 	_extension(ext)
 {
 	init();
-    _status_code = _response->get_status_code();
 	std::cout << "Header Constructor" << std::endl;
 }
 std::string	Header::generate(void)
 {
 	std::string	str;
 
+    _status_code = _response->get_status_code();
 	str = "HTTP/1.1 ";
 	str += itos(_status_code) + " ";
 	if (_status.find(_status_code) == _status.end())
