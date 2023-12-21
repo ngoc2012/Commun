@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 16:47:03 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2023/12/21 18:23:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int     Response::write()
             return (end_connection);
     }
     else
-        read_body();
+        write_body();
 }
 
 void     Response::body()
