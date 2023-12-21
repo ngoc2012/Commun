@@ -54,6 +54,10 @@ So to save a macro `'x'`, you can do:
     insert a line `let @x = '...'` (see the following)
     For the above `...` pattern, you can use `"xp` or `Ctrl+r Ctrl+r registerName` just at the place where the pattern should be placed. But this is not essential, you can just type in the macro definition.
 
+## Basic knowledge
+
+[rfc9110](https://www.rfc-editor.org/rfc/rfc9110.html)
+
 ## Basics tests
 
 ### How the netcat command `nc` works:
