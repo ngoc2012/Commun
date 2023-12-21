@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 07:09:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 18:26:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ class	Request
         std::string	get_content_type(void) const;
         size_t		get_body_size(void) const;
         std::string	get_header(void) const;
+        std::string	get_full_file_name(void) const;
 };
 
 #endif
