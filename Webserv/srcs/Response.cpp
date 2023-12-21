@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 08:47:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 08:51:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,18 @@ Response::~Response()
 	//std::cout << "Destruction response: " << _socket << std::endl;
 }
 
+int     Request::end_connection(void)
+{
+    _host->close_client_sk(_socket);
+}
+
 int     Response::write()
 {
     if (!_write_queue)
         return (0);
     if (_header == "")
     {
-        read_header();
+        write_header();
         if (_status_code != 200)
             return (end_read);
         check_method();
@@ -121,9 +126,6 @@ void	Response::send(void)
     else if (_request->get_method() == GET)
 		get();
     if (_end)
-        _host->close_client_sk(_socket);
-    //_host->delete_response(_socket);
-    //std::cout << "Response sent" << std::endl;
 }
 
 void	    Response::resquest_error(int status_code)
