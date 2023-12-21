@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 18:46:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 18:52:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,16 @@ void     Response::write_header()
                 if (_fd_in == -1)
                 {
                     std::cerr << "Can not open file " << _full_file_name << std::endl;
+                    _status_code = 500;
+                    break;
+                }
+                struct stat fileStat;
+                if (stat(filename, &fileStat) == 0) {
+                    size_t fileSize = fileStat.st_size;
+                }
+                else
+                {
+                    std::cerr << "Error getting file size." << std::endl;
                     _status_code = 500;
                     break;
                 }
