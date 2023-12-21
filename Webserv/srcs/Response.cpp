@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 18:23:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 18:34:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,9 @@ void     Response::body()
 {
 }
 
-void     Response::write_header(int st)
+void     Response::write_header()
 {
-    _status_code = st;
     //std::cout << "Build header" << std::endl;
-    if (_status_code != 200)
-    {
-        resquest_error();
-        return ;
-    }
-    request_header();
     Header	header(_status_code, get_file_extension(_full_file_name), this);
     header.set_allow(_location->get_methods_str());
     if (_status_code == 200)
@@ -91,11 +84,11 @@ void     Response::write_header(int st)
     header.set_status_code(_status_code);
     _header = header.generate();
     std::cout << "Header:\n" << _header << std::endl;
-    if (send(_socket, _header.c_str(), _header.length(), 0) < 0)
+    if (_status_code == 200)
     {
-        _status_code = 500;
-        return ;
     }
+    if (send(_socket, _header.c_str(), _header.length(), 0) < 0)
+        end_connection();
 }
 
 void     Response::check_method()
