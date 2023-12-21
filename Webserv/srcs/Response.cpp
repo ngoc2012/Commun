@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 09:00:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 09:45:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ Response::~Response()
 
 int     Request::end_connection(void)
 {
+    if (_fd_out > 0)
+        close(_fd_out);
+    _write_queue = false;
     _end_fd_out = true;
     return (0);
 }
@@ -58,10 +61,10 @@ int     Response::write()
     {
         write_header();
         if (_status_code != 200)
-            return (end_read);
+            return (end_connection);
         check_method();
         if (_status_code != 200)
-            return (end_read);
+            return (end_connection);
     }
     else
         read_body();
@@ -71,7 +74,7 @@ void     Response::body()
 {
 }
 
-void     Response::header(int st)
+void     Response::write_header(int st)
 {
     _status_code = st;
     //std::cout << "Build header" << std::endl;
