@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/19 22:31:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/21 08:43:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ class	Response
         void	    execute_cgi(void);
         void        request_header(void);
         void        request_body(void);
-        void	    header(void);
 		void		body(void);
 
 		Response(const Response&);
@@ -61,7 +60,7 @@ class	Response
 		Response();
 		virtual ~Response();
 
-		void		generate(int);
+        void	    header(int);
 		void		write(void);
         void	    resquest_error(void);
 
