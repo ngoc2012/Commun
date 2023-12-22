@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 18:41:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 18:43:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	Host::check_sk_ready(void)
             end_read();
         if (FD_ISSET(i, &_write_set))
         {
-            std::cout << "Write set sk = " << i << std::endl;
+            //std::cout << "Write set sk = " << i << std::endl;
             _sk_ready--;
             if (_sk_request[i]->get_response()->get_end_fd_out())
                 close_client_sk(i);
@@ -158,13 +158,13 @@ void	Host::new_request_sk(int new_sk, Server* s)
 
 void	Host::new_response_sk(int new_sk)
 {
+	FD_CLR(i, &_master_read_set);
 	FD_SET(new_sk, &_master_write_set);
 }
 
 void	Host::close_client_sk(int i)
 {
 	FD_CLR(i, &_master_write_set);
-	FD_CLR(i, &_master_read_set);
 	delete (_sk_request[i]);
 	_sk_request.erase(i);
 	// If i is max_sk -> find another max_sk
