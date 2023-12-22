@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 07:27:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 07:31:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int     Response::write()
         write_header();
         if (_status_code != 200)
             return (end_connection);
-        check_method();
+        get_fd_in();
         if (_status_code != 200)
             return (end_connection);
     }
@@ -83,44 +83,47 @@ void     Response::write_header()
     Header	header(this, get_file_extension(_full_file_name));
     header.set_allow(_location->get_methods_str());
     if (_status_code == 200)
-    {
-        switch (_request->get_method())
-        {
-            case GET:
-                _fd_out = open(_full_file_name, O_RDONLY);
-                if (_fd_in == -1)
-                {
-                    std::cerr << "Error: Can not open file " << _full_file_name << std::endl;
-                    _status_code = 500;
-                    break;
-                }
-                struct stat fileStat;
-                if (stat(filename, &fileStat) == 0)
-                    _content_length = fileStat.st_size;
-                else
-                {
-                    std::cerr << "Error: Get file size." << std::endl;
-                    _status_code = 500;
-                    break;
-                }
-                _content_length = _body.length();
-                break;
-            case PUT:
-                _content_length = 0;
-                break;
-            case POST:
-                break;
-            default:
-                break;
-        }
-    }
+        check_content_length();
     _header = header.generate();
     std::cout << "Header:\n" << _header << std::endl;
     if (send(_socket, _header.c_str(), _header.length(), 0) < 0)
         end_connection();
 }
 
-void     Response::check_method()
+void     Response::check_content_length()
+{
+    switch (_request->get_method())
+    {
+        case GET:
+            _fd_out = open(_full_file_name, O_RDONLY);
+            if (_fd_in == -1)
+            {
+                std::cerr << "Error: Can not open file " << _full_file_name << std::endl;
+                _status_code = 500;
+                break;
+            }
+            struct stat fileStat;
+            if (stat(filename, &fileStat) == 0)
+                _content_length = fileStat.st_size;
+            else
+            {
+                std::cerr << "Error: Get file size." << std::endl;
+                _status_code = 500;
+                break;
+            }
+            _content_length = _body.length();
+            break;
+        case PUT:
+            _content_length = 0;
+            break;
+        case POST:
+            break;
+        default:
+            break;
+    }
+}
+
+void     Response::get_fd_in()
 {
     std::cout << _full_file_name << std::endl;
     switch (_request->get_method())
