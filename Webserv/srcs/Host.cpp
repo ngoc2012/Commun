@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 17:09:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 17:11:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,6 @@ void  	Host::add_sk_2_master_read_set(int new_sk, Server* s)
 	if (new_sk > _max_sk)
 		_max_sk = new_sk;
 	FD_SET(new_sk, &_master_read_set);
-	FD_SET(new_sk, &_master_write_set);
 	_sk_server[new_sk] = s;
 }
 
@@ -155,9 +154,10 @@ void	Host::new_request_sk(int new_sk, Server* s)
 	_sk_request[new_sk] = new Request(new_sk, this, s);
 }
 
-//void	Host::new_response_sk(int new_sk)
-//{
-//}
+void	Host::new_response_sk(int new_sk)
+{
+	FD_SET(new_sk, &_master_write_set);
+}
 
 void	Host::close_client_sk(int i)
 {
