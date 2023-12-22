@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 07:33:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 07:35:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void     Response::get_body_size()
     switch (_request->get_method())
     {
         case GET:
-            _fd_out = open(_full_file_name, O_RDONLY);
+            _fd_out = open(_full_file_name.c_str(), O_RDONLY);
             if (_fd_in == -1)
             {
                 std::cerr << "Error: Can not open file " << _full_file_name << std::endl;
@@ -142,40 +142,6 @@ void     Response::get_fd_in()
     }
 }
 
-void	Response::send(void)
-{
-	if(_header != "")
-    {
-        _header = "";
-    }
-    else if ((_request->get_method() == GET || _request->get_method() == POST)
-        && _location->get_cgi_pass() != "")
-        execute_cgi();
-    else if (_request->get_method() == GET)
-		get();
-    if (_end)
-}
-
-void	Response::get_file_content(void)
-{
-    _content_length = get_file_size(_full_file_name);
-    //_content_length = 2 * _host->get_client_body_buffer_size() * KILOBYTE;
-    //std::cout << "File open" << std::endl;
-    _upload_file.open(_full_file_name.c_str(), std::ios::binary);
-    if (!_upload_file.is_open())
-    {
-        std::cerr << "Failed to open file: " << _full_file_name << std::endl;
-        _status_code = 500;	// Internal server error
-        _end = true;
-    }
-}
-
-void	Response::execute_cgi(void)
-{
-    std::cout << _location->get_cgi_pass() << std::endl;
-    get_file_content();
-}
-
 std::string	Response::get_file_extension(std::string& file_path)
 {
 	size_t dot_position = file_path.find_last_of('.');
@@ -184,16 +150,16 @@ std::string	Response::get_file_extension(std::string& file_path)
 	return ("");
 }
 
-size_t		Response::get_file_size(std::string &file_name)
-{
-	std::ifstream file(file_name.c_str(), std::ios::binary | std::ios::ate);
-	if (!file.is_open()) {
-		std::cerr << "Failed to open file: " << file_name << std::endl;
-		_status_code = 500;	// Internal server error
-		return 0;
-	}
-	return (file.tellg());
-}
+//size_t		Response::get_file_size(std::string &file_name)
+//{
+//	std::ifstream file(file_name.c_str(), std::ios::binary | std::ios::ate);
+//	if (!file.is_open()) {
+//		std::cerr << "Failed to open file: " << file_name << std::endl;
+//		_status_code = 500;	// Internal server error
+//		return 0;
+//	}
+//	return (file.tellg());
+//}
 
 void	Response::get(void)
 { 
