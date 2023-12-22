@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:14:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:15:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,7 +216,8 @@ void	Request::read_body()
     if (ret < 0)
     {
         std::cerr << "Error: recv error" << std::endl;
-        _status_code = 500;
+        _status_code = 400;
+        end_read();
         return ;
     }
     if (ret == 0)
