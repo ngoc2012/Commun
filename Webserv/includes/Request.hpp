@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 09:53:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 09:55:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,22 @@ class	Request
 		Response	    _response;
 		Location*	    _location;	
 
-		int		        _fd_in;
 		int		        _status_code;
-        char*   	    _buffer;
-		size_t		    _body_buffer;
-		size_t		    _body_max;
 
 		std::string	    _url;
 		std::string	    _header;
 		std::string	    _content_type;
 		size_t		    _body_size;
 		size_t		    _body_position;
-
 		e_method	    _method;
+
+		int		        _fd_in;
+		std::string	    _full_file_name;
+        char*   	    _buffer;
+		size_t		    _body_buffer;
+		size_t		    _body_max;
         bool            _read_queue;
         bool            _end_fd_in;
-		std::string	    _full_file_name;
 
 		void		read_header(void);
 		void		get_fd_out(void);
