@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:15:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:16:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,8 +250,6 @@ void	Request::get_fd_in()
     switch (_method)
     {
         case GET:
-            std::cout << "GET: fd_in = " << fd_in << std::endl;
-            // Flush the body
             break;
         case PUT:
             _fd_in = open(_full_file_name.c_str(), O_CREAT | O_WRONLY | O_APPEND, 0664);
