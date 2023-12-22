@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:33:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:34:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,8 +144,8 @@ bool	Request::read_method_url(std::string& s)
     if (newline == NPOS)
         return (false);
 
-	std::vector<std::string>	line0 = split_string(_header.substr(0, newline), "     ");
-
+	std::vector<std::string>	line0;
+    line0 = split_string(_header.substr(0, newline), "     ");
 	if (line0.size() != 3)
     {
         std::cerr << "Error: First line header" << std::endl;
