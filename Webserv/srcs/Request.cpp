@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 12:35:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 12:48:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,6 +263,8 @@ void	Request::get_fd_in()
 
 int     Request::end_read(void)
 {
+    std::cout << "end_read" << std::endl;
+
     if (_fd_in > 0)
         close(_fd_in);
     _read_queue = false;
