@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 12:34:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 12:39:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int     Response::write()
     }
     else
         write_body();
+    return (0);
 }
 
 void     Response::write_header()
@@ -78,7 +79,7 @@ void     Response::write_header()
 void     Response::get_file_size()
 {
     _fd_out = open(_full_file_name.c_str(), O_RDONLY);
-    if (_fd_in == -1)
+    if (_fd_out == -1)
     {
         std::cerr << "Error: Can not open file " << _full_file_name << std::endl;
         _status_code = 500;
