@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:43:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:44:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,6 @@ bool	Request::parser_header(void)
 bool	Request::read_method_url()
 {
     size_t  newline = _header.find("\n");
-
     if (newline == NPOS)
         return (false);
 

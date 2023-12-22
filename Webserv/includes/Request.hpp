@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:43:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:45:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ class	Request
 		bool		    parser_header(void);
 		bool		    read_method_url(void);
 		bool		    read_content_type(std::string&, std::string&);
-        void	        check_location();
+        void	        check_location(void);
 
-		void		    get_fd_out(void);
+		void		    get_fd_in(void);
+        void	        read_body();
 
 		int             end_read(void);
 
