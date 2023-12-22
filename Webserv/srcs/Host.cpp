@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 16:11:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 16:15:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ bool	Host::select_available_sk(void)
 {
 	std::cout << "Waiting on select() ..." << std::endl;
 	_sk_ready = select(_max_sk + 1, &_read_set, &_write_set, NULL, NULL);// No timeout
-	std::cout << "_sk_ready = " << _sk_ready << std::endl;
+	//std::cout << "_sk_ready = " << _sk_ready << std::endl;
 	if (_sk_ready < 0)
 	{
 		perror("select() failed");
@@ -117,7 +117,7 @@ void	Host::check_sk_ready(void)
     {
         if (FD_ISSET(i, &_read_set))
         {
-            std::cout << "Read set sk = " << i << std::endl;
+            //std::cout << "Read set sk = " << i << std::endl;
             _sk_ready--;
             if (FD_ISSET(i, &_server_set))
                 _sk_server[i]->accept_client_sk();
@@ -126,7 +126,7 @@ void	Host::check_sk_ready(void)
         }
         if (FD_ISSET(i, &_write_set))
         {
-            std::cout << "Write set sk = " << i << std::endl;
+            //std::cout << "Write set sk = " << i << std::endl;
             _sk_ready--;
             if (_sk_request[i]->get_response()->get_end_fd_out())
                 close_client_sk(i);
