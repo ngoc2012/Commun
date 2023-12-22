@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:05:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:06:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ bool	Request::parser_header(void)
 	return (true);
 }
 
-bool	Request::read_method(std::string& s)
+bool	Request::read_method_url(std::string& s)
 {
     size_t  newline = _header.find("\n");
 
@@ -153,7 +153,6 @@ bool	Request::read_method(std::string& s)
 		return (false);
     }
 	_url = line0[1];
-	//std::cout << s << std::endl;
 	if (line0[0] == "GET")
 		_method = GET;
 	else if (line0[0] == "POST")
