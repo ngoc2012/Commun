@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 08:52:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 09:36:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,7 @@ void	Request::check_location()
 		_status_code = 404; // Not found
 }
 
-void	Request::get_fd_out()
+void	Request::get_fd_in()
 {
     switch (_method)
     {
