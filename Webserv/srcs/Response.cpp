@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 10:31:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 10:33:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ Response::Response()
 {
     _header = "";
     _status_code = 200;
+    _content_length = 0;
+
     _write_queue = false;
+    _fd_out = -1;
     _end_fd_out = false;
     //std::cout << "Response Default constructor" << std::endl;
 }
@@ -96,34 +99,25 @@ void     Response::write_header()
 
 void     Response::get_body_size()
 {
-    switch (_request->get_method())
+    if (_request->get_method() == GET)
     {
-        case GET:
-            _fd_out = open(_full_file_name.c_str(), O_RDONLY);
-            if (_fd_in == -1)
-            {
-                std::cerr << "Error: Can not open file " << _full_file_name << std::endl;
-                _status_code = 500;
-                break;
-            }
-            struct stat fileStat;
-            if (stat(_full_file_name.c_str(), &fileStat) == 0)
-                _content_length = fileStat.st_size;
-            else
-            {
-                std::cerr << "Error: Get file size." << std::endl;
-                _status_code = 500;
-                break;
-            }
-            _content_length = _body.length();
+        _fd_out = open(_full_file_name.c_str(), O_RDONLY);
+        if (_fd_in == -1)
+        {
+            std::cerr << "Error: Can not open file " << _full_file_name << std::endl;
+            _status_code = 500;
             break;
-        case PUT:
-            _content_length = 0;
+        }
+        struct stat fileStat;
+        if (stat(_full_file_name.c_str(), &fileStat) == 0)
+            _content_length = fileStat.st_size;
+        else
+        {
+            std::cerr << "Error: Get file size." << std::endl;
+            _status_code = 500;
             break;
-        case POST:
-            break;
-        default:
-            break;
+        }
+        _content_length = _body.length();
     }
 }
 
