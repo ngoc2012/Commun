@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 17:11:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 18:41:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ void	Host::check_sk_ready(void)
                     close_client_sk(i);
             }
         }
+        else if (!FD_ISSET(i, &_server_set) && FD_ISSET(i, &_master_read_set))
+            end_read();
         if (FD_ISSET(i, &_write_set))
         {
             std::cout << "Write set sk = " << i << std::endl;
