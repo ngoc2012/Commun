@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:44:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:47:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int     Request::read(void)
     }
     else
         read_body();
+    return (0);
 }
 
 void	Request::read_header()
@@ -218,8 +219,8 @@ void	Request::read_body()
     }
     if (ret == 0)
         end_read();
-    if (ret > 0 && fd_in > 0)
-        write(fd_in, buffer, ret);
+    if (ret > 0 && _fd_in > 0)
+        write(_fd_in, buffer, ret);
 }
 
 void	Request::check_location()
@@ -253,15 +254,17 @@ void	Request::get_fd_in()
             break;
         case POST:
             break;
+        case NONE:
+            break;
     }
     if (_body_size > 0 && _fd_in != -1)
-        write(_fd_in, _buffer[_body_position], _body_size);
+        write(_fd_in, &_buffer[_body_position], _body_size);
 }
 
 int     Request::end_read(void)
 {
     if (_fd_in > 0)
-        close(fd_in);
+        close(_fd_in);
     _read_queue = false;
     _end_fd_in = true;
     _host->new_response_sk(_socket);
