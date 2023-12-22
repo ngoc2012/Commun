@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 09:53:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 10:29:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,6 @@ Request::~Request()
 		std::cout << "Close socket: " << _socket << std::endl;
 		close(_socket);
 	}
-}
-
-int     Request::end_read(void)
-{
-    if (_fd_in > 0)
-        close(fd_in);
-    _read_queue = false;
-    _end_fd_in = true;
-    _host->new_response_sk(_socket);
-    _response.set_status_code(_status_code);
-    _response.set_write_queue(true);
-    return (0);
 }
 
 int     Request::read(void)
@@ -285,12 +273,23 @@ bool	Request::read_content_type(std::string& s, std::string& c)
 	return (false);
 }
 
+int     Request::end_read(void)
+{
+    if (_fd_in > 0)
+        close(fd_in);
+    _read_queue = false;
+    _end_fd_in = true;
+    _host->new_response_sk(_socket);
+    _response.set_status_code(_status_code);
+    _response.set_write_queue(true);
+    return (0);
+}
+
 bool        Request::get_end_fd_in(void) const {return (_end_fd_in);}
 e_method	Request::get_method(void) const {return (_method);}
 std::string	Request::get_url(void) const {return (_url);}
 Response*	Request::get_response(void) {return (&_response);}
 int		    Request::get_status_code(void) const {return (_status_code);}
-std::string	Request::get_body_in_header(void) const {return (_body_in_header);}
 std::string	Request::get_content_type(void) const {return (_content_type);}
 size_t		Request::get_body_size(void) const {return (_body_size);}
 std::string	Request::get_header(void) const {return (_header);}
