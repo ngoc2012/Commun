@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:41:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:43:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,33 +136,33 @@ bool	Request::parser_header(void)
 	return (true);
 }
 
-bool	Request::read_method_url(std::string& s)
+bool	Request::read_method_url()
 {
     size_t  newline = _header.find("\n");
 
     if (newline == NPOS)
         return (false);
 
-	std::vector<std::string>	line0;
+    std::vector<std::string>	line0;
     line0 = split_string(_header.substr(0, newline), "     ");
-	if (line0.size() != 3)
+    if (line0.size() != 3)
     {
         std::cerr << "Error: First line header" << std::endl;
-		return (false);
+        return (false);
     }
-	_url = line0[1];
-	if (line0[0] == "GET")
-		_method = GET;
-	else if (line0[0] == "POST")
-		_method = POST;
-	else if (line0[0] == "PUT")
-		_method = PUT;
-	else
-	{
-		std::cerr << "Error: Method unknown : " << line0[0] << std::endl;
-		return (false);
-	}
-	return (true);
+    _url = line0[1];
+    if (line0[0] == "GET")
+        _method = GET;
+    else if (line0[0] == "POST")
+        _method = POST;
+    else if (line0[0] == "PUT")
+        _method = PUT;
+    else
+    {
+        std::cerr << "Error: Method unknown : " << line0[0] << std::endl;
+        return (false);
+    }
+    return (true);
 }
 
 bool	Request::read_content_type(std::string& s, std::string& c)
