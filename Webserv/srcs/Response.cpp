@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 12:24:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 12:33:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void     Response::get_fd_out()
     switch (_request->get_method())
     {
         case GET:
-            _fd_out = open(_full_file_name, O_RDONLY);
+            _fd_out = open(_full_file_name.c_str(), O_RDONLY);
             if (_fd_out == -1)
                 _status_code = 500;
             break;
