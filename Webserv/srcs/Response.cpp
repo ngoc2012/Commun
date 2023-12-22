@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 12:33:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 12:34:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void     Response::write_header()
 
     _full_file_name = _request->get_full_file_name();
     Header	header(this, file_extension(_full_file_name));
-    header.set_allow(_location->get_methods_str());
+    header.set_allow(_request->get_location()->get_methods_str());
     if (_status_code == 200 && _request->get_method() == GET)
         get_file_size();
     _header = header.generate();
