@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 09:36:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 09:39:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int     Response::write()
         write_header();
         if (_status_code != 200)
             return (end_connection);
-        get_fd_in();
+        get_fd_out();
         if (_status_code != 200)
             return (end_connection);
     }
@@ -110,7 +110,7 @@ void     Response::get_body_size()
                 break;
             }
             struct stat fileStat;
-            if (stat(filename, &fileStat) == 0)
+            if (stat(_full_file_name.c_str(), &fileStat) == 0)
                 _content_length = fileStat.st_size;
             else
             {

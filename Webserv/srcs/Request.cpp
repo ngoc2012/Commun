@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 09:36:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 09:38:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int     Request::read(void)
         read_header();
         if (_status_code != 200)
             return (end_read);
-        get_fd_out();
+        get_fd_in();
         if (_status_code != 200)
             return (end_read);
     }
