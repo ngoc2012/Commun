@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 12:23:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 12:24:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ int     Response::write()
     {
         write_header();
         if (_status_code != 200)
-            return (end_connection);
+            return (end_connection());
         get_fd_out();
         if (_status_code != 200)
-            return (end_connection);
+            return (end_connection());
     }
     else
         write_body();
