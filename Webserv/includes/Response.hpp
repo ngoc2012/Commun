@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 18:28:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 07:04:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ class	Response
 		void		    check_method(void);
 		int 		    end_connection(void);
         void	        write_header(void);
+        void	        write_body(void);
 
 		Response(const Response&);
 		Response	&operator=(const Response& op);

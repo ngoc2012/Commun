@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 07:01:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 07:05:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,16 @@ int     Response::write()
         write_body();
 }
 
-void     Response::body()
+void     Response::write_body()
 {
 }
 
 void     Response::write_header()
 {
+    //std::cout << "write_header" << std::endl;
     std::string ext = ;
 
     _full_file_name = _request->get_full_file_name();
-    //std::cout << "Build header" << std::endl;
     Header	header(this, get_file_extension(_full_file_name));
     header.set_allow(_location->get_methods_str());
     if (_status_code == 200)
@@ -95,9 +95,8 @@ void     Response::write_header()
                     break;
                 }
                 struct stat fileStat;
-                if (stat(filename, &fileStat) == 0) {
+                if (stat(filename, &fileStat) == 0)
                     _content_length = fileStat.st_size;
-                }
                 else
                 {
                     std::cerr << "Error: Get file size." << std::endl;
