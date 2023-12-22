@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 09:40:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 09:53:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 #ifndef RESPONSE_HPP
 # define RESPONSE_HPP
  
-# define MEGABYTE 1048576
-# define KILOBYTE 1024
+# define RESPONSE_BUFFER 1024
 
 class	Server;
 class	Location;
@@ -36,8 +35,6 @@ class	Response
 		std::string	    _header;
 		std::string	    _body;
 		std::string	    _http;
-		size_t		    _body_buffer;
-		size_t		    _body_max;
         bool            _write_queue;
 		bool		    _end_fd_out;
         int             _fd_out;

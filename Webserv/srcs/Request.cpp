@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 09:49:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 09:53:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 	_body_in_header = "";
     _body_max = _host->get_client_max_body_size() * MEGABYTE;
     _body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
-    _buffer = malloc(sizeof(char) * (_body_buffer + 1));
+    _buffer = new char[_body_buffer + 1];
 	_header = "";
 	_body_size = 0;
 	_content_type = "";
@@ -50,7 +50,7 @@ Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 
 Request::~Request()
 {
-    free(_buffer);
+    delete[] _buffer;
 	std::cout << "Destruction client request" << std::endl;
 	if (_socket > 0)
 	{
@@ -113,7 +113,7 @@ void	Request::read_header()
 
 	while (_header.find("\r\n\r\n") == NPOS && ret > 0)
     {
-        ret = recv(_socket, _buffer, REQUEST_BUFFER, 0);
+        ret = recv(_socket, _buffer, _body_buffer, 0);
         if (ret < 0)
         {
             _status_code = 500;
