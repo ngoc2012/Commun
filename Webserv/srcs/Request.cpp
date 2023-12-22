@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:06:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:14:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ Request&	Request::operator=( Request const & src )
 }
 Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 {
+	std::cout << "Request Constructor sk: " << sk << std::endl;
+
 	_response.set_socket(sk);
 	_response.set_host(h);
 	_response.set_server(s);
@@ -47,14 +49,13 @@ Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
     _end_fd_in = false;
 
 	_status_code = 200;
-
-	std::cout << "Request Constructor sk: " << sk << std::endl;
 }
 
 Request::~Request()
 {
-    delete[] _buffer;
 	std::cout << "Destruction client request" << std::endl;
+
+    delete[] _buffer;
 	if (_socket > 0)
 	{
 		std::cout << "Close socket: " << _socket << std::endl;
@@ -261,19 +262,6 @@ void	Request::get_fd_in()
     }
     if (_body_size > 0 && _fd_in != -1)
         write(_fd_in, _buffer[_body_position], _body_size);
-}
-
-bool	Request::split_header_body(std::string& s)
-{
-	size_t  pos = s.find("\r\n\r\n");
-    if (pos != std::string::npos)
-    {
-        //std::cout << pos << std::endl;
-	    _body_in_header = s.substr(pos + 4);
-    	_header = s.substr(0, pos);
-	    return (true);
-    }
-    return (false);
 }
 
 int     Request::end_read(void)
