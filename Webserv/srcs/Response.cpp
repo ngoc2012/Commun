@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 12:40:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 12:43:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 Response::Response()
 {
+    std::cout << "Response Default constructor" << std::endl;
     _header = "";
     _status_code = 200;
     _content_length = 0;
@@ -28,7 +29,6 @@ Response::Response()
     _write_queue = false;
     _fd_out = -1;
     _end_fd_out = false;
-    //std::cout << "Response Default constructor" << std::endl;
 }
 Response::Response(const Response& src) { *this = src; }
 Response&	Response::operator=( Response const & src )
