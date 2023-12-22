@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 10:44:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:19:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class	Response
 		bool		    _end_fd_out;
 
         void	        write_header(void);
-        void	        get_body_size(void);
+        void	        get_file_size(void);
 
 		void		    get_fd_out(void);
         void	        write_body(void);
