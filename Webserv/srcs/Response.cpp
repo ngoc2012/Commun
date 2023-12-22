@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 10:38:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 10:41:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,14 +127,6 @@ void     Response::get_fd_out()
             end_connection();
             break;
     }
-}
-
-std::string	Response::get_file_extension(std::string& file_path)
-{
-	size_t dot_position = file_path.find_last_of('.');
-	if (dot_position != std::string::npos && dot_position < file_path.size() - 1)
-		return (file_path.substr(dot_position + 1));
-	return ("");
 }
 
 //size_t		Response::get_file_size(std::string &file_name)
