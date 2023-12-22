@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:03:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:05:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	Request::read_header()
 	//std::cout << "_header" << _header.size() << std::endl << _header << std::endl;
 	if (_body_position == NPOS)
     {
-        std::cerr << "Error: no end header found.\n" << std::endl;
+        std::cerr << "Error: No end header found.\n" << std::endl;
 		_status_code = 400;	// Bad Request
         return ;
     }
@@ -135,11 +135,6 @@ bool	Request::parser_header(void)
         std::cerr << "Error: Content type unknown" << std::endl;
 		return (false);
     }
-    if (!split_header_body(_header))
-    {
-        std::cerr << "Error: no newline in header" << std::endl;
-		return (false);
-    }
 	return (true);
 }
 
@@ -150,24 +145,24 @@ bool	Request::read_method(std::string& s)
     if (newline == NPOS)
         return (false);
 
-	std::vector<std::string>	first_line = split_string(_header.substr(0, newline), "     ");
+	std::vector<std::string>	line0 = split_string(_header.substr(0, newline), "     ");
 
-	if (first_line.size() != 3)
+	if (line0.size() != 3)
     {
         std::cerr << "Error: First line header" << std::endl;
 		return (false);
     }
-	_url = first_line[1];
+	_url = line0[1];
 	//std::cout << s << std::endl;
-	if (s == "GET")
+	if (line0[0] == "GET")
 		_method = GET;
-	else if (s == "POST")
+	else if (line0[0] == "POST")
 		_method = POST;
-	else if (s == "PUT")
+	else if (line0[0] == "PUT")
 		_method = PUT;
 	else
 	{
-		std::cerr << "Error: Method unknown : " << s << std::endl;
+		std::cerr << "Error: Method unknown : " << line0[0] << std::endl;
 		return (false);
 	}
 	return (true);
