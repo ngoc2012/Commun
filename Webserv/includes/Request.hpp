@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 09:57:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 09:59:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,13 @@ class	Request
 		Response	    _response;
 		Location*	    _location;	
 
-		int		        _status_code;
 
-		std::string	    _url;
 		std::string	    _header;
+		std::string	    _url;
+		e_method	    _method;
 		std::string	    _content_type;
 		size_t		    _body_size;
 		size_t		    _body_position;
-		e_method	    _method;
 
 		int		        _fd_in;
 		std::string	    _full_file_name;
@@ -48,15 +47,17 @@ class	Request
         bool            _read_queue;
         bool            _end_fd_in;
 
-		void		read_header(void);
-		bool		parser_header(void);
-		bool		read_content_type(std::string&, std::string&);
-		bool		read_method(std::string&);
-		bool		split_header_body(std::string&);
+		int		        _status_code;
 
-		void		get_fd_out(void);
+		void		    read_header(void);
+		bool		    parser_header(void);
+		bool		    read_content_type(std::string&, std::string&);
+		bool		    read_method(std::string&);
+		bool		    split_header_body(std::string&);
 
-		int         end_read(void);
+		void		    get_fd_out(void);
+
+		int             end_read(void);
 
 		Request();
 		Request(const Request&);
