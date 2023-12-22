@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 10:35:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 10:38:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void     Response::write_header()
     std::string ext = ;
 
     _full_file_name = _request->get_full_file_name();
-    Header	header(this, get_file_extension(_full_file_name));
+    Header	header(this, file_extension(_full_file_name));
     header.set_allow(_location->get_methods_str());
     if (_status_code == 200)
         get_body_size();
