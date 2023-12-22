@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:19:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:48:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ class	Response
 		Response();
 		virtual ~Response();
 
-		void		    write(void);
+		int 		    write(void);
 
         bool		    get_end_fd_out(void) const;
 		size_t		    get_content_length(void) const;

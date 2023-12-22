@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:20:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:49:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ Response::Response()
     _status_code = 200;
     _content_length = 0;
 
+    _full_file_name = "";
     _write_queue = false;
     _fd_out = -1;
     _end_fd_out = false;
@@ -62,7 +63,6 @@ int     Response::write()
 void     Response::write_header()
 {
     //std::cout << "write_header" << std::endl;
-    std::string ext = ;
 
     _full_file_name = _request->get_full_file_name();
     Header	header(this, file_extension(_full_file_name));
