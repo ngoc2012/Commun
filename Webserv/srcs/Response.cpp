@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 10:41:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 10:42:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,6 @@ int     Response::write()
     }
     else
         write_body();
-}
-
-void     Response::write_body()
-{
-    _write_queue = true;
-
-	char	buffer[_body_buffer];
-	_fd_out.read(buffer, _body_buffer);
-	size_t	bytes_read = _fd_out.gcount();
-	if (send(_socket, buffer, bytes_read, 0) < 0)
-        end_connection();
 }
 
 void     Response::write_header()
@@ -129,16 +118,16 @@ void     Response::get_fd_out()
     }
 }
 
-//size_t		Response::get_file_size(std::string &file_name)
-//{
-//	std::ifstream file(file_name.c_str(), std::ios::binary | std::ios::ate);
-//	if (!file.is_open()) {
-//		std::cerr << "Failed to open file: " << file_name << std::endl;
-//		_status_code = 500;	// Internal server error
-//		return 0;
-//	}
-//	return (file.tellg());
-//}
+void     Response::write_body()
+{
+    _write_queue = true;
+
+	char	buffer[_body_buffer];
+	_fd_out.read(buffer, _body_buffer);
+	size_t	bytes_read = _fd_out.gcount();
+	if (send(_socket, buffer, bytes_read, 0) < 0)
+        end_connection();
+}
 
 int     Request::end_connection(void)
 {
@@ -158,3 +147,14 @@ void		Response::set_server(Server* s) {_server = s;}
 void		Response::set_request(Request* r) {_request = r;}
 void		Response::set_status_code(int e) {_status_code = e;}
 void        Response::set_write_queue(bool b) {_write_queue = b;}
+
+//size_t		Response::get_file_size(std::string &file_name)
+//{
+//	std::ifstream file(file_name.c_str(), std::ios::binary | std::ios::ate);
+//	if (!file.is_open()) {
+//		std::cerr << "Failed to open file: " << file_name << std::endl;
+//		_status_code = 500;	// Internal server error
+//		return 0;
+//	}
+//	return (file.tellg());
+//}

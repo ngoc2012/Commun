@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 10:30:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 10:43:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ class	Response
 		bool		    _end_fd_out;
 
         void	        write_header(void);
-		std::string	    get_file_extension(std::string&);
         void	        get_body_size(void);
 
 		void		    get_fd_out(void);
@@ -63,6 +62,7 @@ class	Response
 		void		    set_server(Server*);
 		void		    set_request(Request*);
         void            set_write_queue(bool);
+        void		    set_status_code(int);
 };
 
 #endif
