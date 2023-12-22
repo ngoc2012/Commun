@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 09:43:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 09:47:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ class	Request
 
 		int		        _fd_in;
 		int		        _status_code;
-        char		    _buffer[REQUEST_BUFFER + 1];
+        char*   	    _buffer[REQUEST_BUFFER + 1];
+		size_t		    _body_buffer;
+		size_t		    _body_max;
+
 		std::string	    _url;
 		std::string	    _header;
 		std::string	    _content_type;
