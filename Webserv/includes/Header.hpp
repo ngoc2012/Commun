@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 18:38:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 12:37:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,21 @@ class	Header
 		std::string				            _allow;
 		std::string				            _extension;
 
-		std::string			get_current_time(void);
-		std::string			file_last_modified_time(std::string);
-		void				init(void);
+		std::string			                get_current_time(void);
+		std::string			                file_last_modified_time(std::string);
+		void				                init(void);
 
 		Header();
 		Header(const Header&);
 		Header		&operator=(const Header& op);
 	public:
-		Header(std::string, Response*);
+		Header(Response*, std::string);
 		virtual ~Header();
 
-		std::string			generate(void);
+		std::string			                generate(void);
 
-        void				set_status_code(int);
-		void				set_allow(std::string);
+        void				                set_status_code(int);
+		void				                set_allow(std::string);
 };
 
 #endif
