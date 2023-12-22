@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 16:13:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 16:23:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,6 +234,8 @@ void	Request::check_location()
 
     _full_file_name = _location->get_full_file_name(_url,
             _server->get_root());
+
+    std::cout << "check_location " << _full_file_name << std::endl;
 
 	struct stat buffer;
 	if (_method != PUT
