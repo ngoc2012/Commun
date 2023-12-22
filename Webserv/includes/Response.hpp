@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:48:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 12:20:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ class	Response
 		int		        _status_code;
 		size_t		    _content_length;
 
-        bool            _write_queue;
         int             _fd_out;
+		std::string	    _full_file_name;
+        bool            _write_queue;
 		bool		    _end_fd_out;
 
         void	        write_header(void);
