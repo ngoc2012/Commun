@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:39:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:41:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void	Request::read_header()
             _body_position = _header.find("\r\n\r\n");
         }
     }
-    _read_queue = false;
 	//std::cout << "_header" << _header.size() << std::endl << _header << std::endl;
 	if (_body_position == NPOS)
     {
