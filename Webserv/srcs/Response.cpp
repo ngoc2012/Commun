@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 07:05:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 07:27:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,9 +131,10 @@ void     Response::check_method()
                 _status_code = 500;
             break;
         case PUT:
+            end_connection();
             break;
-        default:
-            _content_length = _body.length();
+        case POST:
+            end_connection();
             break;
     }
 }
