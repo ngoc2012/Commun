@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 10:49:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 10:51:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,25 +79,6 @@ int     Request::read(void)
         read_body();
 }
 
-void	Request::read_body()
-{
-    char	buffer[_body_buffer];
-    int     ret;
-
-	//std::cout << "chunk_size: " << chunk_size << std::endl;
-    ret = recv(_socket, buffer, _body_buffer, 0);
-    if (ret < 0)
-    {
-        std::cerr << "Error: recv error" << std::endl;
-        _status_code = 500;
-        return ;
-    }
-    if (ret == 0)
-        end_read();
-    if (ret > 0 && fd_in > 0)
-        write(fd_in, buffer, ret);
-}
-
 void	Request::read_header()
 {
     int ret = 1;
@@ -143,45 +124,6 @@ void	Request::read_header()
     }
 }
 
-void	Request::check_location()
-{
-    _location = Location::find_location(_url,
-            _server->get_locations(),
-            _method,
-    _status_code);
-
-    if (!_location || _status_code != 200)
-        return ;
-
-    _full_file_name = _location->get_full_file_name(_url,
-            _server->get_root());
-
-	struct stat buffer;
-	if (_method != PUT
-            && stat(_full_file_name.c_str(), &buffer) != 0)
-		_status_code = 404; // Not found
-}
-
-void	Request::get_fd_in()
-{
-    switch (_method)
-    {
-        case GET:
-            std::cout << "GET: fd_in = " << fd_in << std::endl;
-            // Flush the body
-            break;
-        case PUT:
-            _fd_in = open(_full_file_name.c_str(), O_CREAT | O_WRONLY | O_APPEND, 0664);
-            if (_fd_in == -1)
-                _status_code = 500;
-            break;
-        case POST:
-            break;
-    }
-    if (_body_size > 0 && _fd_in != -1)
-        write(_fd_in, _buffer[_body_position], _body_size);
-}
-
 bool	Request::parser_header(void)
 {
 	std::vector<std::string>	lines = split_string(_header, "\n");
@@ -225,19 +167,6 @@ bool	Request::read_method(std::string& s)
 	return (true);
 }
 
-bool	Request::split_header_body(std::string& s)
-{
-	size_t  pos = s.find("\r\n\r\n");
-    if (pos != std::string::npos)
-    {
-        //std::cout << pos << std::endl;
-	    _body_in_header = s.substr(pos + 4);
-    	_header = s.substr(0, pos);
-	    return (true);
-    }
-    return (false);
-}
-
 bool	Request::read_content_type(std::string& s, std::string& c)
 {
 	const char*	types[] = {
@@ -274,6 +203,77 @@ bool	Request::read_content_type(std::string& s, std::string& c)
 	}
     std::cerr << "Error: Content type not found." << std::endl;
 	return (false);
+}
+
+void	Request::read_body()
+{
+    char	buffer[_body_buffer];
+    int     ret;
+
+	//std::cout << "chunk_size: " << chunk_size << std::endl;
+    ret = recv(_socket, buffer, _body_buffer, 0);
+    if (ret < 0)
+    {
+        std::cerr << "Error: recv error" << std::endl;
+        _status_code = 500;
+        return ;
+    }
+    if (ret == 0)
+        end_read();
+    if (ret > 0 && fd_in > 0)
+        write(fd_in, buffer, ret);
+}
+
+void	Request::check_location()
+{
+    _location = Location::find_location(_url,
+            _server->get_locations(),
+            _method,
+    _status_code);
+
+    if (!_location || _status_code != 200)
+        return ;
+
+    _full_file_name = _location->get_full_file_name(_url,
+            _server->get_root());
+
+	struct stat buffer;
+	if (_method != PUT
+            && stat(_full_file_name.c_str(), &buffer) != 0)
+		_status_code = 404; // Not found
+}
+
+void	Request::get_fd_in()
+{
+    switch (_method)
+    {
+        case GET:
+            std::cout << "GET: fd_in = " << fd_in << std::endl;
+            // Flush the body
+            break;
+        case PUT:
+            _fd_in = open(_full_file_name.c_str(), O_CREAT | O_WRONLY | O_APPEND, 0664);
+            if (_fd_in == -1)
+                _status_code = 500;
+            break;
+        case POST:
+            break;
+    }
+    if (_body_size > 0 && _fd_in != -1)
+        write(_fd_in, _buffer[_body_position], _body_size);
+}
+
+bool	Request::split_header_body(std::string& s)
+{
+	size_t  pos = s.find("\r\n\r\n");
+    if (pos != std::string::npos)
+    {
+        //std::cout << pos << std::endl;
+	    _body_in_header = s.substr(pos + 4);
+    	_header = s.substr(0, pos);
+	    return (true);
+    }
+    return (false);
 }
 
 int     Request::end_read(void)
