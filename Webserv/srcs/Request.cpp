@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 09:38:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 09:43:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	Request::read_header()
 
 	while (_header.find("\r\n\r\n") == NPOS && ret > 0)
     {
-        ret = recv(_socket, _raw, REQUEST_BUFFER, 0);
+        ret = recv(_socket, _buffer, REQUEST_BUFFER, 0);
         if (ret < 0)
         {
             _status_code = 500;
@@ -117,8 +117,8 @@ void	Request::read_header()
         }
         if (ret > 0)
         {
-            _raw[ret] = 0;
-            _header += _raw;
+            _buffer[ret] = 0;
+            _header += _buffer;
         }
     }
     _read_queue = false;
@@ -184,7 +184,7 @@ void	Request::get_fd_in()
             break;
     }
     if (_fd_in != -1)
-        write(_fd_in, _raw[_body_position], _body_size);
+        write(_fd_in, _buffer[_body_position], _body_size);
 }
 
 bool	Request::parser_header(void)
