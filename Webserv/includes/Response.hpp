@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 09:53:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 09:57:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,22 @@ class	Response
 		Server*		    _server;
 		Request*	    _request;
 
-		size_t		    _content_length;
-		int		        _status_code;
 		std::string	    _header;
-		std::string	    _body;
-		std::string	    _http;
-        bool            _write_queue;
-		bool		    _end_fd_out;
-        int             _fd_out;
+		int		        _status_code;
+		size_t		    _content_length;
 
-		std::string	    get_file_extension(std::string&);
-		void		    get_fd_out(void);
-		int 		    end_connection(void);
+        bool            _write_queue;
+        int             _fd_out;
+		bool		    _end_fd_out;
+
         void	        write_header(void);
-        void	        write_body(void);
+		std::string	    get_file_extension(std::string&);
         void	        get_body_size(void);
+
+		void		    get_fd_out(void);
+        void	        write_body(void);
+
+		int 		    end_connection(void);
 
 		Response(const Response&);
 		Response	&operator=(const Response& op);
