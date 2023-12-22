@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 10:47:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 10:49:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,16 @@ Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 	_content_type = "";
 	_body_size = 0;
 
+	_fd_in = -1;
+	_full_file_name = "";
     _body_max = _host->get_client_max_body_size() * MEGABYTE;
     _body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
-
     _buffer = new char[_body_buffer + 1];
-	_status_code = 200;
-	_full_file_name = "";
-	_fd_in = -1;
 	_read_queue = true;
     _end_fd_in = false;
+
+	_status_code = 200;
+
 	std::cout << "Request Constructor sk: " << sk << std::endl;
 }
 
@@ -177,7 +178,7 @@ void	Request::get_fd_in()
         case POST:
             break;
     }
-    if (_fd_in != -1)
+    if (_body_size > 0 && _fd_in != -1)
         write(_fd_in, _buffer[_body_position], _body_size);
 }
 
