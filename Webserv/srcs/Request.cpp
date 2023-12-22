@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:34:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:39:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ int     Request::read(void)
     {
         read_header();
         if (_status_code != 200)
-            return (end_read);
+            return (end_read());
         get_fd_in();
         if (_status_code != 200)
-            return (end_read);
+            return (end_read());
     }
     else
         read_body();
@@ -97,8 +97,8 @@ void	Request::read_header()
         {
             _buffer[ret] = 0;
             _header += _buffer;
+            _body_position = _header.find("\r\n\r\n");
         }
-        _body_position = _header.find("\r\n\r\n");
     }
     _read_queue = false;
 	//std::cout << "_header" << _header.size() << std::endl << _header << std::endl;
