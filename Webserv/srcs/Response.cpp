@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 10:33:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 10:35:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,9 @@ Response&	Response::operator=( Response const & src )
 }
 Response::~Response()
 {
-	if (_upload_file.is_open())
-		_upload_file.close();
-	if (_download_file.is_open())
-		_download_file.close();
-	//std::cout << "Destruction response: " << _socket << std::endl;
-}
-
-int     Request::end_connection(void)
-{
     if (_fd_out > 0)
         close(_fd_out);
-    _write_queue = false;
-    _end_fd_out = true;
-    return (0);
+	//std::cout << "Destruction response: " << _socket << std::endl;
 }
 
 int     Response::write()
@@ -158,6 +147,15 @@ std::string	Response::get_file_extension(std::string& file_path)
 //	}
 //	return (file.tellg());
 //}
+
+int     Request::end_connection(void)
+{
+    if (_fd_out > 0)
+        close(_fd_out);
+    _write_queue = false;
+    _end_fd_out = true;
+    return (0);
+}
 
 bool		Response::get_end_fd_out(void) const {return (_end_fd_out);}
 size_t		Response::get_content_length(void) const {return (_content_length);}
