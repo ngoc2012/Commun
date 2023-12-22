@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 07:35:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 07:36:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,21 +161,21 @@ std::string	Response::get_file_extension(std::string& file_path)
 //	return (file.tellg());
 //}
 
-void	Response::get(void)
-{ 
-	size_t	chunk_size = _host->get_client_body_buffer_size() * KILOBYTE;
-
-	char	buffer[chunk_size];
-	//std::cout << "chunk_size: " << chunk_size << std::endl;
-	_upload_file.read(buffer, chunk_size);
-	size_t	bytes_read = _upload_file.gcount();
-	::send(_socket, buffer, bytes_read, 0);
-	if (_upload_file.eof())
-	{
-		_upload_file.close();
-		_end = true;
-	}
-}
+//void	Response::get(void)
+//{ 
+//	size_t	chunk_size = _host->get_client_body_buffer_size() * KILOBYTE;
+//
+//	char	buffer[chunk_size];
+//	//std::cout << "chunk_size: " << chunk_size << std::endl;
+//	_upload_file.read(buffer, chunk_size);
+//	size_t	bytes_read = _upload_file.gcount();
+//	::send(_socket, buffer, bytes_read, 0);
+//	if (_upload_file.eof())
+//	{
+//		_upload_file.close();
+//		_end = true;
+//	}
+//}
 
 bool		Response::get_end_fd_out(void) const {return (_end_fd_out);}
 size_t		Response::get_content_length(void) const {return (_content_length);}

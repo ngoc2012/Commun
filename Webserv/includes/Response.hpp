@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 07:35:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 07:36:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ class	Response
 
 		std::string	    get_file_extension(std::string&);
 		//size_t		    get_file_size(std::string &file_name);
-		void		    get(void);
-        void	        get_file_content(void);
 		void		    get_fd_in(void);
 		int 		    end_connection(void);
         void	        write_header(void);
