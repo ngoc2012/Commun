@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 12:21:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 12:23:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,14 +116,13 @@ void     Response::write_body()
     _write_queue = true;
 
 	char	buffer[RESPONSE_BUFFER];
-	_fd_out.read(buffer, RESPONSE_BUFFER);
+	int ret = read(_fd_out, buffer, RESPONSE_BUFFER);
 
-	size_t	bytes_read = _fd_out.gcount();
-	if (send(_socket, buffer, bytes_read, 0) < 0)
+	if (send(_socket, buffer, ret, 0) < 0)
         end_connection();
 }
 
-int     Request::end_connection(void)
+int     Response::end_connection(void)
 {
     if (_fd_out > 0)
         close(_fd_out);
