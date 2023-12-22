@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 10:59:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:03:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,12 +145,16 @@ bool	Request::parser_header(void)
 
 bool	Request::read_method(std::string& s)
 {
-	std::vector<std::string>	lines = split_string(_header, "\n");
-	std::vector<std::string>	first_line = split_string(lines[0], " 	");
-    //std::cout << first_line.size() << std::endl;
-	if (first_line.size() < 3)
+    size_t  newline = _header.find("\n");
+
+    if (newline == NPOS)
+        return (false);
+
+	std::vector<std::string>	first_line = split_string(_header.substr(0, newline), "     ");
+
+	if (first_line.size() != 3)
     {
-        std::cerr << "Error: first line header" << std::endl;
+        std::cerr << "Error: First line header" << std::endl;
 		return (false);
     }
 	_url = first_line[1];
