@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:16:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:23:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,6 @@ void	Request::read_header()
     {
         std::cout << "============================" << std::endl;
         std::cout << "Header:" << _header.size() << std::endl  << _header << std::endl;
-        std::cout << "============================" << std::endl;
-        std::cout << "Body:" << _body_in_header.size() << std::endl << _body_in_header << std::endl;
         std::cout << "============================" << std::endl;
         check_location();
     }
