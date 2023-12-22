@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 11:23:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 11:33:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,9 +227,7 @@ void	Request::read_body()
 void	Request::check_location()
 {
     _location = Location::find_location(_url,
-            _server->get_locations(),
-            _method,
-    _status_code);
+            _server->get_locations(), _method, _status_code);
 
     if (!_location || _status_code != 200)
         return ;
@@ -250,7 +248,8 @@ void	Request::get_fd_in()
         case GET:
             break;
         case PUT:
-            _fd_in = open(_full_file_name.c_str(), O_CREAT | O_WRONLY | O_APPEND, 0664);
+            _fd_in = open(_full_file_name.c_str(),
+                    O_CREAT | O_WRONLY | O_APPEND, 0664);
             if (_fd_in == -1)
                 _status_code = 500;
             break;
