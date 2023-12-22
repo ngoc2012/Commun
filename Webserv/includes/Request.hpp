@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/21 18:26:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/22 07:32:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ class	Request
 		std::string	    _full_file_name;
 
 		void		read_header(void);
-		void		check_method(void);
+		void		get_fd_out(void);
 		bool		parser_header(void);
 		bool		read_method(std::string&);
 		bool		read_content_type(std::string&, std::string&);
