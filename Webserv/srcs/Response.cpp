@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 21:52:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 22:12:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,13 @@ void     Response::write_body()
     std::cout << "write_body " << _fd_out << std::endl;
     _write_queue = true;
 
-	char	buffer[RESPONSE_BUFFER];
-	int ret = read(_fd_out, buffer, RESPONSE_BUFFER);
+    char	buffer[RESPONSE_BUFFER];
+    int ret = read(_fd_out, buffer, RESPONSE_BUFFER);
 
-	if (send(_socket, buffer, ret, 0) < 0)
+    if (ret <= 0)
+        end_connection();
+
+    if (send(_socket, buffer, ret, 0) < 0)
         end_connection();
 }
 
