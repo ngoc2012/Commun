@@ -6,9 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 08:47:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:48:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 08:50:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <string>
 
 unsigned int	get_base(char *base)
 {
@@ -46,7 +48,7 @@ void	get_str(unsigned int nbr, char *base, unsigned int b)
 
 namespace ft {
 
-void	itoa_base(int nbr, char *base)
+std::string	itoa_base(int nbr, char *base)
 {
 	unsigned int	n;
 	int				b;
