@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 07:49:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 07:55:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 	_url = "";
 	_method = NONE;
 	_content_type = "";
+	_content_length = 0;
 	_body_size = 0;
 
 	_fd_in = -1;
@@ -215,7 +216,7 @@ bool	Request::read_content_length()
         std::cerr << "Error: Content length not found." << std::endl;
         return (false);
 	}
-    _content_length = stoi(
+    _content_length = std::atoi(_header.substr(pos, pos1));
 }
 
 void	Request::read_body()
