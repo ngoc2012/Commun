@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:10:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 16:28:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ bool	Host::select_available_sk(void)
 {
 	std::cout << "Waiting on select() ..." << std::endl;
 	_sk_ready = select(_max_sk + 1, &_read_set, &_write_set, NULL, NULL);// No timeout
-	std::cout << "_sk_ready = " << _sk_ready << std::endl;
+	//std::cout << "_sk_ready = " << _sk_ready << std::endl;
 	if (_sk_ready < 0)
 	{
 		perror("select() failed");
