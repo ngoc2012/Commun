@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 22:26:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 22:28:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 Response::Response()
 {
-    std::cout << "Response Default constructor" << std::endl;
+    //std::cout << "Response Default constructor" << std::endl;
     _header = "";
     _status_code = 200;
     _content_length = 0;
@@ -35,13 +35,7 @@ Response&	Response::operator=( Response const & src )
 	(void) src;
 	return (*this);
 }
-Response::~Response()
-{
-    //std::cout << "_fd_out: " << _fd_out << std::endl;
-    //if (_fd_out > 0)
-    //    close(_fd_out);
-    std::cout << "Destruction response: " << _socket << std::endl;
-}
+Response::~Response() {}
 
 int     Response::write()
 {

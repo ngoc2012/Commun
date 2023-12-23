@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 22:23:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 22:29:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 Request::Request()
 {
-	std::cout << "Request Default constructor" << std::endl;
+	//std::cout << "Request Default constructor" << std::endl;
 }
 Request::Request(const Request& src) { *this = src; }
 Request&	Request::operator=( Request const & src )
@@ -28,7 +28,7 @@ Request&	Request::operator=( Request const & src )
 }
 Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 {
-	std::cout << "Request Constructor sk: " << sk << std::endl;
+	//std::cout << "Request Constructor sk: " << sk << std::endl;
 
 	_response.set_socket(sk);
 	_response.set_host(h);
@@ -54,14 +54,9 @@ Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 
 Request::~Request()
 {
-	std::cout << "Destruction client request" << std::endl;
-
     delete[] _buffer;
 	if (_socket > 0)
-	{
-		std::cout << "Close socket: " << _socket << std::endl;
 		close(_socket);
-	}
 }
 
 int     Request::read(void)
