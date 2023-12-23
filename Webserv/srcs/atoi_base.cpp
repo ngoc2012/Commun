@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 08:42:44 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 15:05:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 15:06:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ size_t	in_str(char *c, char *base)
 		base++;
 		i++;
 	}
-	return (-1);
+	return (0);
 }
 
-int	get_base(char *base)
+size_t	get_base(char *base)
 {
-	int		i;
-	int		j;
+	size_t		i;
+	size_t		j;
 	char	*c;
 
 	c = base;
@@ -56,7 +56,7 @@ namespace ft {
 
 size_t	atoi_base(char *str, char *base)
 {
-    int		    b;
+    size_t		b;
 	size_t		nbr;
 	//int		sign;
 
