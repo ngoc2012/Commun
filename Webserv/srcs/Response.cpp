@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 17:03:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 17:05:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void     Response::get_fd_out()
 
 void     Response::write_body()
 {
-    std::cout << "write_body" << std::endl;
+    std::cout << "write_body " << _fd_out << std::endl;
     _write_queue = true;
 
 	char	buffer[RESPONSE_BUFFER];
