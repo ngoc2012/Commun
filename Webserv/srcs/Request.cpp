@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:01:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 08:02:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,7 +239,7 @@ void	Request::read_body()
     if (ret > 0 && _fd_in > 0)
         write(_fd_in, buffer, ret);
     //if (ret < (int) _body_buffer)
-    if (ret == 0)
+    if (ret == 0 || _body_size >= _content_length)
         end_read();
 }
 
