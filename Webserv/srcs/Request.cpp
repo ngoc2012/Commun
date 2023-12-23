@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:16:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 08:29:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ bool	Request::read_method_url()
         return (false);
 
     std::vector<std::string>	line0;
-    line0 = split_string(_header.substr(0, newline), "     ");
+    line0 = ft::split_string(_header.substr(0, newline), "     ");
     if (line0.size() != 3)
     {
         std::cerr << "Error: First line header" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 12:43:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 08:29:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void     Response::write_header()
     //std::cout << "write_header" << std::endl;
 
     _full_file_name = _request->get_full_file_name();
-    Header	header(this, file_extension(_full_file_name));
+    Header	header(this, ft::file_extension(_full_file_name));
     header.set_allow(_request->get_location()->get_methods_str());
     if (_status_code == 200 && _request->get_method() == GET)
         get_file_size();

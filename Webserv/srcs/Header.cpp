@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 12:38:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 08:29:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ std::string	Header::generate(void)
 
     _status_code = _response->get_status_code();
 	str = "HTTP/1.1 ";
-	str += itos(_status_code) + " ";
+	str += ft::itos(_status_code) + " ";
 	if (_status.find(_status_code) == _status.end())
 		str += "Unknown error code";
 	else
