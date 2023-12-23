@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 16:58:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 16:58:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ Response&	Response::operator=( Response const & src )
 }
 Response::~Response()
 {
-	std::cout << "_fd_out: " << _fd_out << std::endl;
+    std::cout << "_fd_out: " << _fd_out << std::endl;
     if (_fd_out > 0)
         close(_fd_out);
-	std::cout << "Destruction response: " << _socket << std::endl;
+    std::cout << "Destruction response: " << _socket << std::endl;
 }
 
 int     Response::write()
