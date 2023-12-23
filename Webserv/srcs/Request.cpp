@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 22:29:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 22:30:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,12 +113,7 @@ void	Request::read_header()
         return ;
 	}
     else
-    {
-        //std::cout << "============================" << std::endl;
-        //std::cout << "Header:" << _header.size() << std::endl  << _header << std::endl;
-        //std::cout << "============================" << std::endl;
         check_location();
-    }
 }
 
 bool	Request::parser_header(void)
@@ -240,6 +235,9 @@ void	Request::read_body()
 
 void	Request::check_location()
 {
+    //std::cout << "============================" << std::endl;
+    //std::cout << "Header:" << _header.size() << std::endl  << _header << std::endl;
+    //std::cout << "============================" << std::endl;
     _location = Location::find_location(_url,
             _server->get_locations(), _method, _status_code);
 
