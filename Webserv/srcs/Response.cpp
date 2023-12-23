@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 16:46:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 16:55:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,16 @@ int     Response::write()
         if (_status_code != 200)
             return (end_connection());
         get_fd_out();
-        end_connection();
-        _host->close_client_sk(_socket);
-        return (0);
         if (_status_code != 200)
             return (end_connection());
     }
     else
+    {
         write_body();
+        end_connection();
+        _host->close_client_sk(_socket);
+        return (0);
+    }
     return (0);
 }
 
@@ -117,6 +119,7 @@ void     Response::get_fd_out()
 
 void     Response::write_body()
 {
+    std::cout << "write_body" << std::endl;
     _write_queue = true;
 
 	char	buffer[RESPONSE_BUFFER];
