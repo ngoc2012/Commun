@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 07:30:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 08:00:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ class	Request
 		size_t		    _body_position;
 
 		int		        _fd_in;
-		int		        _fd_in_size;
 		std::string	    _full_file_name;
 		size_t		    _body_buffer;
 		size_t		    _body_max;
