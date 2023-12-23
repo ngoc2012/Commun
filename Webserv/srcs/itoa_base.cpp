@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 08:47:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:50:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 08:53:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,16 @@ unsigned int	get_base(char *base)
 	return (i);
 }
 
-void	get_str(unsigned int nbr, char *base, unsigned int b)
+void	get_str(unsigned int nbr, char *base, unsigned int b, std::string& s)
 {
+    char    o[2];
+
+    o[1] = 0;
 	if (nbr > (b - 1))
 		get_str((nbr - nbr % b) / b, base, b);
-	write(1, &base[nbr % b], 1);
+    o[0] = base[nbr % b];
+    s += o;
+	//write(1, &base[nbr % b], 1);
 }
 
 namespace ft {
@@ -52,20 +57,23 @@ std::string	itoa_base(int nbr, char *base)
 {
 	unsigned int	n;
 	int				b;
+    std::string     s = "";
 
 	b = get_base(base);
 	if (b == 0)
 		return ;
 	if (nbr < 0)
 	{
-		write(1, "-", 1);
+		//write(1, "-", 1);
+        s += "-";
 		n = -nbr;
 	}
 	else
 	{
 		n = nbr;
 	}
-	get_str(n, base, b);
+	get_str(n, base, b, s);
+    return (s);
 }
 
 }
