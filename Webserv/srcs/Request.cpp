@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:14:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 08:16:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,6 +215,7 @@ bool	Request::read_content_length()
         return (false);
 	}
     _content_length = std::atoi(_header.substr(pos, pos1).c_str());
+    std::cout << _header.substr(pos, pos1) << std::endl;
     std::cout << "_content_length: " << _content_length << std::endl;
     return (true);
 }
