@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 16:37:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 16:56:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ void	Host::new_response_sk(int new_sk)
 
 void	Host::close_client_sk(int i)
 {
+    std::cout << "close_client_sk " << i << std::endl;
 	FD_CLR(i, &_master_write_set);
 	delete (_sk_request[i]);
 	_sk_request.erase(i);
