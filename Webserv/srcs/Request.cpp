@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 07:20:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 07:24:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,24 @@ bool	Request::read_content_type(std::string& s, std::string& c)
 		"multipart/form-data",
 		"application/x-www-form-urlencoded"
 	};
+	size_t	pos = s.find("Content-Type:");
+	if (pos != NPOS)
+	{
+		for (int i = 0; i < 18; i++)
+			if (s.substr(pos + 14, 50).find(types[i]) != NPOS)
+            {
+			    c = types[i];
+		        return (true);
+            }
+        std::cerr << "Error: Content type not found." << std::endl;
+	    return (false);
+	}
+    std::cerr << "Error: Content type not found." << std::endl;
+	return (false);
+}
+
+bool	Request::read_content_length(std::string& s, std::string& c)
+{
 	size_t	pos = s.find("Content-Type:");
 	if (pos != NPOS)
 	{
