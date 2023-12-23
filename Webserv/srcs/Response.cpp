@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 22:18:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 22:21:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ Response::Response()
     _full_file_name = "";
     _write_queue = false;
     _fd_out = -1;
-    _end_fd_out = false;
 }
 Response::Response(const Response& src) { *this = src; }
 Response&	Response::operator=( Response const & src )
@@ -128,13 +127,11 @@ int     Response::end_connection(void)
     if (_fd_out > 0)
         close(_fd_out);
     _write_queue = false;
-    _end_fd_out = true;
     _host->close_client_sk(_socket);
     return (0);
 }
 
 int		    Response::get_status_code(void) const {return (_status_code);}
-bool		Response::get_end_fd_out(void) const {return (_end_fd_out);}
 size_t		Response::get_content_length(void) const {return (_content_length);}
 
 void		Response::set_socket(int s) {_socket = s;}
