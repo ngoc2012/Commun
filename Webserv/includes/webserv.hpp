@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:38:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 15:02:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 15:08:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ bool				        is_digit(std::string& str);
 std::string			        itos(int n);
 bool                        match_wildcard(const char* str, const char* pattern);
 std::string	                file_extension(std::string&);
-size_t                      atoi_base(char *str, char *base);
+size_t                      atoi_base(const char *str, char *base);
 std::string                 itoa_base(int nbr, char *base);
 
 }
