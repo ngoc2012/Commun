@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 18:42:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 07:20:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 	_body_size = 0;
 
 	_fd_in = -1;
+	_fd_in_size = 0;
 	_full_file_name = "";
     _body_max = _host->get_client_max_body_size() * MEGABYTE;
     _body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
