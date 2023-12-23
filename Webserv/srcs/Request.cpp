@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 23:11:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 23:12:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,8 +216,8 @@ void	Request::read_body()
 	//std::cout << "chunk_size: " << chunk_size << std::endl;
     ret = recv(_socket, buffer, _body_buffer, 0);
     _body_size += ret;
-	//std::cout << "read_body: " << ret << std::endl;
-	//std::cout << "_body_size: " << _body_size << std::endl;
+	std::cout << "read_body: " << ret << std::endl;
+	std::cout << "_body_size: " << _body_size << std::endl;
     if (ret < 0)
     {
         std::cerr << "Error: recv error" << std::endl;
@@ -251,7 +251,11 @@ bool	Request::check_location()
 	struct stat buffer;
 	if (_method != PUT
             && stat(_full_file_name.c_str(), &buffer) != 0)
+    {
 		_status_code = 404; // Not found
+        return (false);             
+    }
+    return (true);
 }
 
 void	Request::get_fd_in()
