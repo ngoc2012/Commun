@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/12/22 10:37:29 by ngoc             ###   ########.fr        #
+#    Updated: 2023/12/23 15:18:56 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES = main Host Server Request Response Header Configuration Location split_string is_digit itos match_wildcard file_extension
+FILES = main Host Server Request Response Header Configuration Location split_string is_digit itos match_wildcard file_extension atoi_base itoa_base
 SRCS = $(addsuffix .cpp, $(addprefix srcs/, $(FILES)))
 INCS = $(wildcard includes/*.hpp)
 OBJS = ${SRCS:.cpp=.o}
