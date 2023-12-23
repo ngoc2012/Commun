@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 23:16:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 23:18:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	Request::read_header()
     int ret = 1;
 
     _body_position = NPOS;
-	while (_body_position == NPOS && ret > 0)
+    while (_body_position == NPOS && ret > 0)
     {
         ret = recv(_socket, _buffer, _body_buffer, 0);
         if (ret < 0)
@@ -97,21 +97,23 @@ void	Request::read_header()
             _body_position = _header.find("\r\n\r\n");
         }
     }
-	std::cout << "_header" << _header.size() << std::endl << _header << std::endl;
-	if (_body_position == NPOS)
+    std::cout << "_header" << _header.size() << std::endl << _header << std::endl;
+    if (_body_position == NPOS)
     {
         std::cerr << "Error: No end header found.\n" << std::endl;
-		_status_code = 400;	// Bad Request
+        _status_code = 400;	// Bad Request
         return ;
     }
     _body_position += 4;
     _body_size = ret - _body_position;
-	std::cout << "read_header _body_size: " << _body_size << std::endl;
-	if (!parser_header())
-	{
+    std::cout << "read_header _body_size: " << _body_size << std::endl;
+    if (!parser_header())
+    {
         std::cerr << "Error: request header invalid.\n" << std::endl;
-		_status_code = 400;	// Bad Request
-	}
+        _status_code = 400;	// Bad Request
+    }
+    if (_status_code != 200 || !_body_size)
+        end_read();
 }
 
 bool	Request::parser_header(void)
