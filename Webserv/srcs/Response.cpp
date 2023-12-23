@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 17:06:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 21:46:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ void     Response::get_file_size()
     {
         std::cerr << "Error: Get file size." << std::endl;
         _status_code = 500;
-        return ;
     }
+    std::cout << "get_file_size _content_length: " << _content_length << std::endl;
 }
 
 void     Response::get_fd_out()
