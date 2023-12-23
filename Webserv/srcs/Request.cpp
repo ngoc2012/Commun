@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 15:25:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 15:27:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,9 @@ bool	Request::read_content_length()
 	}
     //const char*   base = "0123456789";
     _content_length = ft::atoi_base(_header.substr(pos, pos1).c_str(), "0123456789");
-    std::cout << _header.substr(pos, pos1) << std::endl;
+    std::cout << pos << " " << pos1 << std::endl;
+    std::cout << "|" << _header.substr(pos, pos1) << "|" << std::endl;
+    std::cout << _header.substr(pos, pos1).c_str() << std::endl;
     std::cout << "_content_length: " << ft::atoi_base(_header.substr(pos, pos1).c_str(), "0123456789") << _content_length << std::endl;
     return (true);
 }
