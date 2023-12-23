@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:17:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 22:22:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ class	Request
 		size_t		    _body_max;
         char*   	    _buffer;
         bool            _read_queue;
-        bool            _end_fd_in;
 
 		int		        _status_code;
 

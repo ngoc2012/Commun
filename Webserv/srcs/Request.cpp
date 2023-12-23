@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 21:53:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 22:23:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
     _body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
     _buffer = new char[_body_buffer + 1];
 	_read_queue = true;
-    _end_fd_in = false;
 
 	_status_code = 200;
 }
@@ -120,9 +119,9 @@ void	Request::read_header()
 	}
     else
     {
-        std::cout << "============================" << std::endl;
-        std::cout << "Header:" << _header.size() << std::endl  << _header << std::endl;
-        std::cout << "============================" << std::endl;
+        //std::cout << "============================" << std::endl;
+        //std::cout << "Header:" << _header.size() << std::endl  << _header << std::endl;
+        //std::cout << "============================" << std::endl;
         check_location();
     }
 }
@@ -228,8 +227,8 @@ void	Request::read_body()
 	//std::cout << "chunk_size: " << chunk_size << std::endl;
     ret = recv(_socket, buffer, _body_buffer, 0);
     _body_size += ret;
-	std::cout << "read_body: " << ret << std::endl;
-	std::cout << "_body_size: " << _body_size << std::endl;
+	//std::cout << "read_body: " << ret << std::endl;
+	//std::cout << "_body_size: " << _body_size << std::endl;
     if (ret < 0)
     {
         std::cerr << "Error: recv error" << std::endl;
@@ -255,7 +254,7 @@ void	Request::check_location()
     _full_file_name = _location->get_full_file_name(_url,
             _server->get_root());
 
-    std::cout << "check_location " << _full_file_name << std::endl;
+    //std::cout << "check_location " << _full_file_name << std::endl;
 
 	struct stat buffer;
 	if (_method != PUT
@@ -286,19 +285,17 @@ void	Request::get_fd_in()
 
 int     Request::end_read(void)
 {
-    std::cout << "end_read" << std::endl;
+    //std::cout << "end_read" << std::endl;
 
     if (_fd_in > 0)
         close(_fd_in);
     _read_queue = false;
-    _end_fd_in = true;
     _host->new_response_sk(_socket);
     _response.set_status_code(_status_code);
     _response.set_write_queue(true);
     return (0);
 }
 
-bool        Request::get_end_fd_in(void) const {return (_end_fd_in);}
 e_method	Request::get_method(void) const {return (_method);}
 std::string	Request::get_url(void) const {return (_url);}
 Response*	Request::get_response(void) {return (&_response);}
