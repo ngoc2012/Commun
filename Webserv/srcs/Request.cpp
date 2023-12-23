@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 07:55:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 07:56:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	Request::read_header()
         return ;
     }
     _body_position += 4;
-    _body_size = ret - _body_position;
+    _fd_in_size = ret - _body_position;
 	if (!parser_header())
 	{
         std::cerr << "Error: request header invalid.\n" << std::endl;
@@ -278,7 +278,7 @@ void	Request::get_fd_in()
             break;
     }
     if (_body_size > 0 && _fd_in != -1)
-        write(_fd_in, &_buffer[_body_position], _body_size);
+        write(_fd_in, &_buffer[_body_position], _fd_in_size);
 }
 
 int     Request::end_read(void)
