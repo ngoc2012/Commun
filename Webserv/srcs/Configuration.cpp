@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/04 08:39:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 08:31:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ bool	Configuration::host_parser(std::string cmd, Host* host, std::vector<std::st
 	if (words[0] == "client_max_body_size")
 	{
 		n = std::atoi(words[1].c_str());
-		if (!is_digit(words[1]) || n < 0 || n > 100)
+		if (!ft::is_digit(words[1]) || n < 0 || n > 100)
 			return (true);
 		host->set_client_max_body_size(n);
 	}
 	else if (words[0] == "client_body_buffer_size")
 	{
 		n = std::atoi(words[1].c_str());
-		if (!is_digit(words[1]) || n < 0 || n > 1024)
+		if (!ft::is_digit(words[1]) || n < 0 || n > 1024)
 			return (true);
 		host->set_client_body_buffer_size(n);
 	}
@@ -158,7 +158,7 @@ Configuration::Configuration(std::vector<Server*>& servers, Host* host, const ch
 		std::string		s = remove_comments(line);
 		//s = remove_spaces_end(s);
 		//std::cout << "|" << s << "|" << std::endl;
-		std::vector<std::string>	words = split_string(s, std::string(" 	"));
+		std::vector<std::string>	words = ft::split_string(s, std::string(" 	"));
 		i++;
 		if (words.size() == 0)
 			;
@@ -211,21 +211,21 @@ bool	Configuration::listen(Server* s, std::vector<std::string> words)
 {
 	if (words.size() != 2)
 		return (false);
-	std::vector<std::string>	address = split_string(words[1], std::string(":"));
+	std::vector<std::string>	address = ft::split_string(words[1], std::string(":"));
 	if (address.size() != 2)
 		return (false);
-	std::vector<std::string>	ip = split_string(address[0], std::string("."));
+	std::vector<std::string>	ip = ft::split_string(address[0], std::string("."));
 	if (ip.size() != 4)
 		return (false);
 	int	n;
 	for (int j = 0; j < 4; j++)
 	{
 		n = std::atoi(ip[j].c_str());
-		if (!is_digit(ip[j]) || n < 0 || n > 255)
+		if (!ft::is_digit(ip[j]) || n < 0 || n > 255)
 			return (false);
 	}
 	n = std::atoi(address[1].c_str());
-	if (!is_digit(address[1]) || n < 0 || n > 65535)
+	if (!ft::is_digit(address[1]) || n < 0 || n > 65535)
 		return (false);
 	s->set_ip_address(address[0]);
 	s->set_port(std::atoi(address[1].c_str()));
