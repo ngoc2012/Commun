@@ -1,0 +1,86 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   atoi_base.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/23 08:42:44 by ngoc              #+#    #+#             */
+/*   Updated: 2023/12/23 08:43:48 by ngoc             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	in_str(char *c, char *base)
+{
+	int	i;
+
+	i = 0;
+	while (*base != '\0')
+	{
+		if (*base == *c)
+			return (i);
+		base++;
+		i++;
+	}
+	return (-1);
+}
+
+int	get_base(char *base)
+{
+	int		i;
+	int		j;
+	char	*c;
+
+	c = base;
+	i = 0;
+	while (*base != '\0')
+	{
+		if (*base == '+' || *base == '-' || (!(*base >= 33 && *base <= 126)))
+			return (0);
+		j = 0;
+		while (j < i)
+		{
+			if (c[j] == *base)
+				return (0);
+			j++;
+		}
+		i++;
+		base++;
+	}
+	if (i <= 1)
+		return (0);
+	return (i);
+}
+
+namespace ft {
+
+int	atoi_base(char *str, char *base)
+{
+	int		b;
+	int		nbr;
+	int		sign;
+
+	b = get_base(base);
+	if (b == 0)
+		return (0);
+	nbr = 0;
+	sign = 1;
+	while (*str == 9 || *str == 10 || *str == 11
+		|| *str == 12 || *str == 13 || *str == 32)
+		str++;
+	while (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign *= -1;
+		str++;
+	}
+	while (*str != '\0' && in_str(str, base) != -1)
+	{
+		nbr *= b;
+		nbr += in_str(str, base);
+		str++;
+	}
+	return (sign * nbr);
+}
+
+}
