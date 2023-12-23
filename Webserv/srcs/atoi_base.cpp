@@ -6,11 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 08:42:44 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 15:08:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 15:12:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	in_str(char *c, char *base)
+size_t	in_str(char *c, const char *base)
 {
 	size_t	i;
 
@@ -25,7 +25,7 @@ size_t	in_str(char *c, char *base)
 	return (0);
 }
 
-size_t	get_base(char *base)
+size_t	get_base(const char *base)
 {
 	size_t		i;
 	size_t		j;
@@ -54,7 +54,7 @@ size_t	get_base(char *base)
 
 namespace ft {
 
-size_t	atoi_base(const char *str, char *base)
+size_t	atoi_base(const char *str, const char *base)
 {
     size_t		b;
 	size_t		nbr;
