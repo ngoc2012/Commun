@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 08:47:38 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:53:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 15:23:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	get_str(unsigned int nbr, char *base, unsigned int b, std::string& s)
 
     o[1] = 0;
 	if (nbr > (b - 1))
-		get_str((nbr - nbr % b) / b, base, b);
+		get_str((nbr - nbr % b) / b, base, b, s);
     o[0] = base[nbr % b];
     s += o;
 	//write(1, &base[nbr % b], 1);
@@ -61,7 +61,7 @@ std::string	itoa_base(int nbr, char *base)
 
 	b = get_base(base);
 	if (b == 0)
-		return ;
+		return (s);
 	if (nbr < 0)
 	{
 		//write(1, "-", 1);

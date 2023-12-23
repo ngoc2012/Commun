@@ -6,15 +6,15 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 08:42:44 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 15:21:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 15:22:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstddef>
 
-size_t	in_str(const char *c, const char *base)
+int	in_str(const char *c, const char *base)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (*base)
@@ -24,7 +24,7 @@ size_t	in_str(const char *c, const char *base)
 		base++;
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 size_t	get_base(const char *base)
