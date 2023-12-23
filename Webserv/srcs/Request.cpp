@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:05:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 08:07:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ bool	Request::parser_header(void)
 {
 	if (!read_method_url())
 		return (false);
-    if (_method != GET && !read_content_type(_header, _content_type))
+    if (_method != GET && !read_content_type())
     {
         std::cerr << "Error: Content type unknown" << std::endl;
 		return (false);
@@ -210,12 +210,12 @@ bool	Request::read_content_length()
 	size_t	pos = _header.find("Content-Length:");
 	if (pos != NPOS)
         pos1 = _header.substr(pos).find("\n");
-	if (pos == NPOS || pos1 = NPOS)
+	if (pos == NPOS || pos1 == NPOS)
 	{
         std::cerr << "Error: Content length not found." << std::endl;
         return (false);
 	}
-    _content_length = std::atoi(_header.substr(pos, pos1));
+    _content_length = std::atoi(_header.substr(pos, pos1).c_str());
 }
 
 void	Request::read_body()
