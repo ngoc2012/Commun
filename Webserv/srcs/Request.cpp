@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 07:31:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 07:41:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,37 +189,37 @@ bool	Request::read_content_type()
 		"application/x-www-form-urlencoded"
 	};
 	size_t	pos = _header.find("Content-Type:");
-	if (pos != NPOS)
+	if (pos == NPOS)
 	{
-		for (int i = 0; i < 18; i++)
-			if (_header.substr(pos + 14, 50).find(types[i]) != NPOS)
-            {
-			    _content_type = types[i];
-		        return (true);
-            }
         std::cerr << "Error: Content type not found." << std::endl;
-	    return (false);
+        return (false);
 	}
+    for (int i = 0; i < 18; i++)
+        if (_header.substr(pos + 14, 50).find(types[i]) != NPOS)
+        {
+            _content_type = types[i];
+            return (true);
+        }
     std::cerr << "Error: Content type not found." << std::endl;
-	return (false);
+    return (false);
 }
 
 bool	Request::read_content_length()
 {
-	size_t	pos = s.find("Content-Length:");
-	if (pos != NPOS)
+	size_t	pos = _header.find("Content-Length:");
+	if (pos == NPOS)
 	{
-		for (int i = 0; i < 18; i++)
-			if (s.substr(pos + 14, 50).find(types[i]) != NPOS)
-            {
-			    c = types[i];
-		        return (true);
-            }
         std::cerr << "Error: Content type not found." << std::endl;
-	    return (false);
+        return (false);
 	}
+    for (int i = 0; i < 18; i++)
+        if (_header.substr(pos + 14, 50).find(types[i]) != NPOS)
+        {
+            c = types[i];
+            return (true);
+        }
     std::cerr << "Error: Content type not found." << std::endl;
-	return (false);
+    return (false);
 }
 
 void	Request::read_body()
