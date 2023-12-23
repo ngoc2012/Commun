@@ -6,11 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 08:42:44 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 15:17:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 15:21:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	in_str(char *c, const char *base)
+#include <cstddef>
+
+size_t	in_str(const char *c, const char *base)
 {
 	size_t	i;
 
@@ -29,7 +31,7 @@ size_t	get_base(const char *base)
 {
 	size_t		i;
 	size_t		j;
-	char	*c;
+	const char	*c;
 
 	c = base;
 	i = 0;
@@ -64,7 +66,7 @@ size_t	atoi_base(const char *str, const char *base)
 	if (b == 0)
 		return (0);
 	nbr = 0;
-	sign = 1;
+	//sign = 1;
 	while (*str == 9 || *str == 10 || *str == 11
 		|| *str == 12 || *str == 13 || *str == 32)
 		str++;
