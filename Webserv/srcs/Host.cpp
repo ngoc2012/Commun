@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:03:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 08:04:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ void	Host::new_request_sk(int new_sk, Server* s)
 
 void	Host::new_response_sk(int new_sk)
 {
-	FD_CLR(i, &_master_read_set);
+	FD_CLR(new_sk, &_master_read_set);
 	FD_SET(new_sk, &_master_write_set);
 }
 
