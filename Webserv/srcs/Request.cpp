@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 07:45:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 07:49:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,16 +206,13 @@ bool	Request::read_content_type()
 
 bool	Request::read_content_length()
 {
+	size_t	pos1;
 	size_t	pos = _header.find("Content-Length:");
-	if (pos == NPOS)
+	if (pos != NPOS)
+        pos1 = _header.substr(pos).find("\n");
+	if (pos == NPOS || pos1 = NPOS)
 	{
-        std::cerr << "Error: Content type not found." << std::endl;
-        return (false);
-	}
-	size_t	pos1 = _header.substr(pos).find("\n");
-	if (pos1 == NPOS)
-	{
-        std::cerr << "Error: Content type not found." << std::endl;
+        std::cerr << "Error: Content length not found." << std::endl;
         return (false);
 	}
     _content_length = stoi(
