@@ -6,16 +6,16 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 08:42:44 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:43:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 15:05:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	in_str(char *c, char *base)
+size_t	in_str(char *c, char *base)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (*base != '\0')
+	while (*base)
 	{
 		if (*base == *c)
 			return (i);
@@ -33,7 +33,7 @@ int	get_base(char *base)
 
 	c = base;
 	i = 0;
-	while (*base != '\0')
+	while (*base)
 	{
 		if (*base == '+' || *base == '-' || (!(*base >= 33 && *base <= 126)))
 			return (0);
@@ -54,11 +54,11 @@ int	get_base(char *base)
 
 namespace ft {
 
-int	atoi_base(char *str, char *base)
+size_t	atoi_base(char *str, char *base)
 {
-	int		b;
-	int		nbr;
-	int		sign;
+    int		    b;
+	size_t		nbr;
+	//int		sign;
 
 	b = get_base(base);
 	if (b == 0)
@@ -70,17 +70,18 @@ int	atoi_base(char *str, char *base)
 		str++;
 	while (*str == '-' || *str == '+')
 	{
-		if (*str == '-')
-			sign *= -1;
+		//if (*str == '-')
+		//	sign *= -1;
 		str++;
 	}
-	while (*str != '\0' && in_str(str, base) != -1)
+	while (*str && in_str(str, base) != -1)
 	{
 		nbr *= b;
 		nbr += in_str(str, base);
 		str++;
 	}
-	return (sign * nbr);
+	//return (sign * nbr);
+	return (nbr);
 }
 
 }
