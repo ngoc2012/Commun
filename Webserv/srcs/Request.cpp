@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 23:05:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 23:11:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,15 +110,14 @@ void	Request::read_header()
 	{
         std::cerr << "Error: request header invalid.\n" << std::endl;
 		_status_code = 400;	// Bad Request
-        return ;
 	}
-    else
-        check_location();
 }
 
 bool	Request::parser_header(void)
 {
     if (!read_method_url())
+        return (false);
+    if (!check_location())
         return (false);
     if (_method != GET && !read_content_type())
         return (false);
@@ -233,7 +232,7 @@ void	Request::read_body()
         end_read();
 }
 
-void	Request::check_location()
+bool	Request::check_location()
 {
     //std::cout << "============================" << std::endl;
     //std::cout << "Header:" << _header.size() << std::endl  << _header << std::endl;
@@ -242,7 +241,7 @@ void	Request::check_location()
             _server->get_locations(), _method, _status_code);
 
     if (!_location || _status_code != 200)
-        return ;
+        return (false);
 
     _full_file_name = _location->get_full_file_name(_url,
             _server->get_root());
