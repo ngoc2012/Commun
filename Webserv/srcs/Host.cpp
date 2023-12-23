@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 16:28:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 16:37:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,11 +132,11 @@ void	Host::check_sk_ready(void)
         {
             _sk_ready--;
             std::cout << "Write set sk = " << i << std::endl;
-            close_client_sk(i);
-            //if (_sk_request[i]->get_response()->get_end_fd_out())
-            //    close_client_sk(i);
-            //else
-            //    _sk_request[i]->get_response()->write();
+            //close_client_sk(i);
+            if (_sk_request[i]->get_response()->get_end_fd_out())
+                close_client_sk(i);
+            else
+                _sk_request[i]->get_response()->write();
         }
     }
 }
