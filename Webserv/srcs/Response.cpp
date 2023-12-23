@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 22:24:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 22:26:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,14 +140,3 @@ void		Response::set_server(Server* s) {_server = s;}
 void		Response::set_request(Request* r) {_request = r;}
 void		Response::set_status_code(int e) {_status_code = e;}
 void        Response::set_write_queue(bool b) {_write_queue = b;}
-
-//size_t		Response::get_file_size(std::string &file_name)
-//{
-//	std::ifstream file(file_name.c_str(), std::ios::binary | std::ios::ate);
-//	if (!file.is_open()) {
-//		std::cerr << "Failed to open file: " << file_name << std::endl;
-//		_status_code = 500;	// Internal server error
-//		return 0;
-//	}
-//	return (file.tellg());
-//}
