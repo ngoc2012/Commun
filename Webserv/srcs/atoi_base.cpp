@@ -6,11 +6,9 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 08:42:44 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 15:15:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 15:17:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <string>
 
 size_t	in_str(char *c, const char *base)
 {
@@ -56,9 +54,8 @@ size_t	get_base(const char *base)
 
 namespace ft {
 
-size_t	atoi_base(std::string s, const char *base)
+size_t	atoi_base(const char *str, const char *base)
 {
-    char*   str = s.c_str();
     size_t		b;
 	size_t		nbr;
 	//int		sign;
