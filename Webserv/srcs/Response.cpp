@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 22:17:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 22:18:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,6 @@ void     Response::write_header()
 
 void     Response::get_file_size()
 {
-    //_fd_out = open(_full_file_name.c_str(), O_RDONLY);
-    //if (_fd_out == -1)
-    //{
-    //    std::cerr << "Error: Can not open file " << _full_file_name << std::endl;
-    //    _status_code = 500;
-    //    return ;
-    //}
     struct stat fileStat;
     if (stat(_full_file_name.c_str(), &fileStat) == 0)
         _content_length = fileStat.st_size;
@@ -116,7 +109,7 @@ void     Response::get_fd_out()
 
 int     Response::write_body()
 {
-    std::cout << "write_body " << _fd_out << std::endl;
+    //std::cout << "write_body " << _fd_out << std::endl;
     _write_queue = true;
 
     char	buffer[RESPONSE_BUFFER];
