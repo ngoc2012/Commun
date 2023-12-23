@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 17:05:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 17:06:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,11 @@ void     Response::get_file_size()
 
 void     Response::get_fd_out()
 {
-    std::cout << _full_file_name << std::endl;
     switch (_request->get_method())
     {
         case GET:
             _fd_out = open(_full_file_name.c_str(), O_RDONLY);
+            std::cout << _full_file_name << _fd_out << std::endl;
             if (_fd_out == -1)
                 _status_code = 500;
             break;
