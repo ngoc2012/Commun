@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 12:35:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 07:19:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ class	Request
 		std::string	    _url;
 		e_method	    _method;
 		std::string	    _content_type;
+		size_t		    _content_length;
 		size_t		    _body_size;
 		size_t		    _body_position;
 
 		int		        _fd_in;
+		int		        _fd_in_size;
 		std::string	    _full_file_name;
 		size_t		    _body_buffer;
 		size_t		    _body_max;
