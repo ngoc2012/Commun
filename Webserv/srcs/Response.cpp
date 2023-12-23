@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 21:49:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/23 21:51:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ Response&	Response::operator=( Response const & src )
 Response::~Response()
 {
     //std::cout << "_fd_out: " << _fd_out << std::endl;
-    if (_fd_out > 0)
-        close(_fd_out);
-    _host->close_client_sk(_socket);
+    //if (_fd_out > 0)
+    //    close(_fd_out);
     std::cout << "Destruction response: " << _socket << std::endl;
 }
 
@@ -137,6 +136,7 @@ int     Response::end_connection(void)
         close(_fd_out);
     _write_queue = false;
     _end_fd_out = true;
+    _host->close_client_sk(_socket);
     return (0);
 }
 
