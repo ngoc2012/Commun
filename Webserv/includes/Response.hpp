@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 22:21:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/24 18:59:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ class	Response
 		std::string	    _header;
 		int		        _status_code;
 		size_t		    _content_length;
+		size_t		    _body_size;
 
         int             _fd_out;
 		std::string	    _full_file_name;
