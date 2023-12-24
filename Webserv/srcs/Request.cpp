@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/24 05:37:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/24 05:43:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	Request::read_header()
     }
     _body_position += 4;
     _body_size = ret - _body_position;
-    std::cout << "read_header _body_size: " << _body_size << std::endl;
+    //std::cout << "read_header _body_size: " << _body_size << std::endl;
     if (!parser_header())
     {
         std::cerr << "Error: request header invalid.\n" << std::endl;
