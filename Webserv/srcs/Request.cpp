@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/24 05:55:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/24 05:56:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	Request::read_header()
             _body_position = _header.find("\r\n\r\n");
         }
     }
-    std::cout << "_header" << _header.size() << std::endl << _header << std::endl;
+    std::cout << "Request header: " << _header.size() << std::endl << _header << std::endl;
     if (_body_position == NPOS)
     {
         std::cerr << "Error: No end header found.\n" << std::endl;
