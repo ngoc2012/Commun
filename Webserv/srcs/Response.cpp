@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/24 11:37:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/24 12:33:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void     Response::get_fd_out()
     {
         case GET:
             _fd_out = open(_full_file_name.c_str(), O_RDONLY);
-            std::cout << "get_fd_out _full_file_name " << _fd_out << " " << _full_file_name << std::endl;
+            std::cout << "get_fd_out _full_file_name " << _fd_out << " " << _full_file_name << " " << _socket << std::endl;
             std::cout << _full_file_name << _fd_out << std::endl;
             if (_fd_out == -1)
                 _status_code = 500;
