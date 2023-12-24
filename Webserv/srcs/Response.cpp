@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/24 19:33:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/24 19:34:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int     Response::write_body()
 
 int     Response::end_connection(void)
 {
-    std::cout << "end_connection read |" << _full_file_name << "| " << _body_size << "/" << _content_length << std::endl;
+    std::cout << "end_connection read |" << _full_file_name << "| " << _socket << " " << _body_size << "/" << _content_length << std::endl;
     if (_fd_out > 0)
         close(_fd_out);
     _write_queue = false;
