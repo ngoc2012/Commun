@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/24 05:56:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/24 11:37:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void     Response::get_file_size()
         std::cerr << "Error: Get file size." << std::endl;
         _status_code = 500;
     }
-    //std::cout << "get_file_size _content_length: " << _content_length << std::endl;
+    std::cout << "get_file_size _content_length: " << _content_length << std::endl;
 }
 
 void     Response::get_fd_out()
@@ -91,6 +91,7 @@ void     Response::get_fd_out()
     {
         case GET:
             _fd_out = open(_full_file_name.c_str(), O_RDONLY);
+            std::cout << "get_fd_out _full_file_name " << _fd_out << " " << _full_file_name << std::endl;
             std::cout << _full_file_name << _fd_out << std::endl;
             if (_fd_out == -1)
                 _status_code = 500;
@@ -103,11 +104,12 @@ void     Response::get_fd_out()
 
 int     Response::write_body()
 {
-    //std::cout << "write_body " << _fd_out << std::endl;
     _write_queue = true;
 
     char	buffer[RESPONSE_BUFFER];
     int ret = read(_fd_out, buffer, RESPONSE_BUFFER);
+
+    std::cout << "write_body read " << ret << "bytes" << std::endl;
 
     if (ret <= 0)
         return (end_connection());
