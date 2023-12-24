@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/24 18:59:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/24 19:03:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,14 @@ int     Response::write_body()
     char	buffer[RESPONSE_BUFFER];
     int ret = read(_fd_out, buffer, RESPONSE_BUFFER);
 
-    std::cout << "write_body read " << ret << "bytes" << std::endl;
-
     if (ret <= 0)
         return (end_connection());
 
+    _body_size += ret;
+
     if (send(_socket, buffer, ret, 0) < 0)
         return (end_connection());
+    std::cout << "write_body read " << _socket << " " << _body_size << "/" << _content_length << std::endl;
     return (0);
 }
 
