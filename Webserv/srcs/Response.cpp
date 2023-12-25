@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/24 19:38:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/25 07:17:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ int     Response::write_body()
 {
     _write_queue = true;
 
-    char	buffer[RESPONSE_BUFFER];
-    int ret = read(_fd_out, buffer, RESPONSE_BUFFER);
+    char	buffer[RESPONSE_BUFFER * 1028];
+    int ret = read(_fd_out, buffer, RESPONSE_BUFFER * 1028);
 
     if (ret <= 0)
         return (end_connection());

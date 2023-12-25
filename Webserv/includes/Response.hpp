@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/24 18:59:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/25 07:17:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #ifndef RESPONSE_HPP
 # define RESPONSE_HPP
  
-# define RESPONSE_BUFFER 1024
+# define RESPONSE_BUFFER 64
 
 class	Server;
 class	Location;
