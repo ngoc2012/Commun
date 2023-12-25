@@ -3799,3 +3799,4057 @@ Write set sk = 4
 end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/index.js| 4 934/934
 close_client_sk 4
 Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 665
+GET /HOPPY_DAYS.html HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: cross-site
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS.html
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 57413
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/html
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS.html 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS.html9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS.html| 4 57413/57413
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS.html| 4 57413/57413
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS.html| 4 57413/57413
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 630
+GET /HOPPY_DAYS_files/google-analytics_analytics.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/google-analytics_analytics.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 3695
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/google-analytics_analytics.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/google-analytics_analytics.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/google-analytics_analytics.js| 4 3695/3695
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/google-analytics_analytics.js| 4 3695/3695
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/google-analytics_analytics.js| 4 3695/3695
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 630
+GET /HOPPY_DAYS_files/logo.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 23743
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg| 4 23743/23743
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg| 4 23743/23743
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg| 4 23743/23743
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 638
+GET /HOPPY_DAYS_files/bg-gold-back.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 677
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg| 4 677/677
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg| 4 677/677
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg| 4 677/677
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 635
+GET /HOPPY_DAYS_files/bbeade08f58e153c.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 102662
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css| 4 65792/102662
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css| 4 65792/102662
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css| 4 102662/102662
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css| 4 102662/102662
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css| 4 102662/102662
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 635
+GET /HOPPY_DAYS_files/ed403b1e74dfa728.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/ed403b1e74dfa728.css
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 26344
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/ed403b1e74dfa728.css 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/ed403b1e74dfa728.css9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/ed403b1e74dfa728.css| 4 26344/26344
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/ed403b1e74dfa728.css| 4 26344/26344
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/ed403b1e74dfa728.css| 4 26344/26344
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 628
+GET /HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 4057
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js| 4 4057/4057
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js| 4 4057/4057
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js| 4 4057/4057
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 630
+GET /HOPPY_DAYS_files/framework-7a7e500878b44665.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 140978
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 4 65792/140978
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 4 65792/140978
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 4 131584/140978
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 4 131584/140978
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 4 140978/140978
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 4 140978/140978
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 4 140978/140978
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 625
+GET /HOPPY_DAYS_files/main-3f070227c52dc969.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 105968
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js| 4 65792/105968
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js| 4 65792/105968
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js| 4 105968/105968
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js| 4 105968/105968
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js| 4 105968/105968
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 625
+GET /HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 163458
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 4 65792/163458
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 4 65792/163458
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 4 131584/163458
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 4 131584/163458
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 4 163458/163458
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 4 163458/163458
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 4 163458/163458
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 629
+GET /HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 957
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js| 4 957/957
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js| 4 957/957
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js| 4 957/957
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 629
+GET /HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 925
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js| 4 925/925
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js| 4 925/925
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js| 4 925/925
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 624
+GET /HOPPY_DAYS_files/933-f67d91cce9928815.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 89212
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js| 4 65792/89212
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js| 4 65792/89212
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js| 4 89212/89212
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js| 4 89212/89212
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js| 4 89212/89212
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 626
+GET /HOPPY_DAYS_files/index-8f5748feaa6e55c5.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 13975
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js| 4 13975/13975
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js| 4 13975/13975
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js| 4 13975/13975
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 618
+GET /HOPPY_DAYS_files/_buildManifest.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_buildManifest.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 1648
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_buildManifest.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_buildManifest.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_buildManifest.js| 4 1648/1648
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_buildManifest.js| 4 1648/1648
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_buildManifest.js| 4 1648/1648
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 616
+GET /HOPPY_DAYS_files/_ssgManifest.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_ssgManifest.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 244
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_ssgManifest.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_ssgManifest.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_ssgManifest.js| 4 244/244
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_ssgManifest.js| 4 244/244
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_ssgManifest.js| 4 244/244
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 624
+GET /HOPPY_DAYS_files/697-da59df9c0fa0d007.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 20321
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js| 4 20321/20321
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js| 4 20321/20321
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js| 4 20321/20321
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 625
+GET /HOPPY_DAYS_files/[id]-dc9a03a28d427905.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 1073
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js| 4 1073/1073
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js| 4 1073/1073
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js| 4 1073/1073
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 625
+GET /HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 967
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js| 4 967/967
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js| 4 967/967
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js| 4 967/967
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 639
+GET /HOPPY_DAYS_files/bg-gold-front.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 648
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg| 4 648/648
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg| 4 648/648
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg| 4 648/648
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 643
+GET /HOPPY_DAYS_files/img-bubble-yellow.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 398
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg| 4 398/398
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg| 4 398/398
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg| 4 398/398
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 637
+GET /HOPPY_DAYS_files/img-mv-copy.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 136343
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 65792/136343
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 65792/136343
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 131584/136343
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 131584/136343
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 136343/136343
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 136343/136343
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 136343/136343
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 642
+GET /HOPPY_DAYS_files/img-bubble-white.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 395
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg| 4 395/395
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg| 4 395/395
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg| 4 395/395
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 700
+GET /_next/static/media/c6908836934a19a7-s.p.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/c6908836934a19a7-s.p.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/c6908836934a19a7-s.p.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 700
+GET /_next/static/media/c6908836934a19a7-s.p.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/c6908836934a19a7-s.p.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/c6908836934a19a7-s.p.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/42a1e07c3bc0f8ae-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/42a1e07c3bc0f8ae-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/42a1e07c3bc0f8ae-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 646
+GET /common/bg-noise.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/ed403b1e74dfa728.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/bg-noise.png
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: image/png
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/bg-noise.png| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/11cb4d4dfe3d81df-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/11cb4d4dfe3d81df-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/11cb4d4dfe3d81df-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/f467ff9551a57091-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/f467ff9551a57091-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/f467ff9551a57091-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/f99493d47a664c11-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/f99493d47a664c11-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/f99493d47a664c11-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 700
+GET /_next/static/media/39df11406cb636d1-s.p.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/39df11406cb636d1-s.p.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/39df11406cb636d1-s.p.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/226388c2d65eece4-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/226388c2d65eece4-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/226388c2d65eece4-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/18c790c06eb3cbde-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/18c790c06eb3cbde-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/18c790c06eb3cbde-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/d07316a1121d2afc-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/d07316a1121d2afc-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/d07316a1121d2afc-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/3f40c7c69ef373bc-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/3f40c7c69ef373bc-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/3f40c7c69ef373bc-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/209ac0af81f4b739-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/209ac0af81f4b739-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/209ac0af81f4b739-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/e11994e2ab67d98d-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/e11994e2ab67d98d-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/e11994e2ab67d98d-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/80a4dbe2270ad3bf-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/80a4dbe2270ad3bf-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/80a4dbe2270ad3bf-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/69576a4f0f48545d-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/69576a4f0f48545d-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/69576a4f0f48545d-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/2ab334bbbb8e75e2-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/2ab334bbbb8e75e2-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/2ab334bbbb8e75e2-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/f6749225630fe93f-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/f6749225630fe93f-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/f6749225630fe93f-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/670c25c148ad8881-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/670c25c148ad8881-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/670c25c148ad8881-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/5c04c665375ee862-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/5c04c665375ee862-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/5c04c665375ee862-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/bfa8a857259ba564-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/bfa8a857259ba564-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/bfa8a857259ba564-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/48763d6652cebf74-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/48763d6652cebf74-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/48763d6652cebf74-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/45616baa4df057f4-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/45616baa4df057f4-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/45616baa4df057f4-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/78acb83ec2522541-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/78acb83ec2522541-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/78acb83ec2522541-s.woff2| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 620
+GET /common/logo.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/logo.svg
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/logo.svg| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 628
+GET /common/bg-gold-back.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/bg-gold-back.svg
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/bg-gold-back.svg| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 629
+GET /common/bg-gold-front.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/bg-gold-front.svg
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/bg-gold-front.svg| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 633
+GET /common/img-bubble-yellow.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/img-bubble-yellow.svg
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/img-bubble-yellow.svg| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 627
+GET /common/img-mv-copy.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/img-mv-copy.svg
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/img-mv-copy.svg| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 632
+GET /common/img-bubble-white.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/img-bubble-white.svg
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/img-bubble-white.svg| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 619
+GET /sw.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Service-Worker: script
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: serviceworker
+Sec-Fetch-Mode: same-origin
+Sec-Fetch-Site: same-origin
+Pragma: no-cache
+Cache-Control: no-cache
+
+
+check_location /home/ngoc/Commun/Webserv/www/sw.js
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/sw.js| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 664
+GET /_next/data/U-U_RdZ6xQ62Y_3SiIKQK/recommend.json HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+purpose: prefetch
+x-nextjs-data: 1
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/recommend.json
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/recommend.json| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 660
+GET /_next/data/U-U_RdZ6xQ62Y_3SiIKQK/nippo.json HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+purpose: prefetch
+x-nextjs-data: 1
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/nippo.json
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/nippo.json| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 660
+GET /_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+purpose: prefetch
+x-nextjs-data: 1
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json| 4 0/0
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 630
+GET /HOPPY_DAYS_files/logo.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 23743
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg| 4 23743/23743
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg| 4 23743/23743
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg| 4 23743/23743
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 638
+GET /HOPPY_DAYS_files/bg-gold-back.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 677
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg| 4 677/677
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg| 4 677/677
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg| 4 677/677
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 639
+GET /HOPPY_DAYS_files/bg-gold-front.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 648
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg| 4 648/648
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg| 4 648/648
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg| 4 648/648
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 643
+GET /HOPPY_DAYS_files/img-bubble-yellow.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 398
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg| 4 398/398
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg| 4 398/398
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg| 4 398/398
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 637
+GET /HOPPY_DAYS_files/img-mv-copy.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 136343
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 65792/136343
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 65792/136343
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 131584/136343
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 131584/136343
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 136343/136343
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 136343/136343
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 4 136343/136343
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 642
+GET /HOPPY_DAYS_files/img-bubble-white.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 395
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg9
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg| 4 395/395
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg| 4 395/395
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg| 4 395/395
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+  New incoming connection - 9
+  New incoming connection - 12
+  New incoming connection - 13
+  New incoming connection - 14
+Waiting on select() ...
+Request header: 666
+GET /Monastik_living_in_Athina_files/call_black.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg
+end_read
+Write set sk = 5
+Header Constructor
+get_file_size _content_length: 271
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 15 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/language-cookie.js 5
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/language-cookie.js15
+Write set sk = 6
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 6 698338/698338
+close_client_sk 6
+Write set sk = 7
+Header Constructor
+get_file_size _content_length: 105251
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 6 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/fancybox.js 7
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/fancybox.js6
+Write set sk = 8
+Header Constructor
+get_file_size _content_length: 14169
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 11 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/crawler.js 8
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/crawler.js11
+Request header: 664
+GET /Monastik_living_in_Athina_files/logo_big.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg
+end_read
+Write set sk = 10
+Header Constructor
+get_file_size _content_length: 82404
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+
+
+Header Destruction
+get_fd_out _full_file_name 16 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/theme.css 10
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/theme.css16
+Request header: 658
+GET /Monastik_living_in_Athina_files/en.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg
+end_read
+Request header: 670
+GET /Monastik_living_in_Athina_files/logo_big_black.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg
+end_read
+Request header: 660
+GET /Monastik_living_in_Athina_files/call.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 1432
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 17 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg 4
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg17
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/language-cookie.js| 5 271/271
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/language-cookie.js| 5 271/271
+close_client_sk 5
+Write set sk = 7
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/fancybox.js| 7 65792/105251
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/fancybox.js| 7 65792/105251
+close_client_sk 7
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/crawler.js| 8 14169/14169
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/crawler.js| 8 14169/14169
+close_client_sk 8
+Write set sk = 9
+Header Constructor
+get_file_size _content_length: 6642
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 5 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg 9
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg5
+Write set sk = 10
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/theme.css| 10 65792/82404
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/theme.css| 10 65792/82404
+close_client_sk 10
+Write set sk = 12
+Header Constructor
+get_file_size _content_length: 1290
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 6 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg 12
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg6
+Write set sk = 13
+Header Constructor
+get_file_size _content_length: 9098
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 7 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg 13
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg7
+Write set sk = 14
+Header Constructor
+get_file_size _content_length: 1433
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 8 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg 14
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg8
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg| 4 1432/1432
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg| 4 1432/1432
+Write set sk = 9
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg| 9 6642/6642
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg| 9 6642/6642
+Write set sk = 12
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg| 12 1290/1290
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg| 12 1290/1290
+Write set sk = 13
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg| 13 9098/9098
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg| 13 9098/9098
+Write set sk = 14
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg| 14 1433/1433
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg| 14 1433/1433
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg| 4 1432/1432
+close_client_sk 4
+Write set sk = 9
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg| 9 6642/6642
+close_client_sk 9
+Write set sk = 12
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg| 12 1290/1290
+close_client_sk 12
+Write set sk = 13
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg| 13 9098/9098
+close_client_sk 13
+Write set sk = 14
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg| 14 1433/1433
+close_client_sk 14
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 386
+GET /Monastik_living_in_Athina_files/theme.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://127.0.0.1:4141/
+Connection: keep-alive
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/theme.css
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 82404
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+
+
+Header Destruction
+get_fd_out _full_file_name 5 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/theme.css 4
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/theme.css5
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/theme.css| 4 65792/82404
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/theme.css| 4 65792/82404
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/theme.css| 4 82404/82404
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/theme.css| 4 82404/82404
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/theme.css| 4 82404/82404
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 649
+GET /Monastik_living_in_Athina_files/language-cookie.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/language-cookie.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 271
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 5 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/language-cookie.js 4
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/language-cookie.js5
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/language-cookie.js| 4 271/271
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/language-cookie.js| 4 271/271
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/language-cookie.js| 4 271/271
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 642
+GET /Monastik_living_in_Athina_files/fancybox.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/fancybox.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 105251
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 5 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/fancybox.js 4
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/fancybox.js5
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/fancybox.js| 4 65792/105251
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/fancybox.js| 4 65792/105251
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/fancybox.js| 4 105251/105251
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/fancybox.js| 4 105251/105251
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/fancybox.js| 4 105251/105251
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 641
+GET /Monastik_living_in_Athina_files/crawler.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/crawler.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 14169
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 5 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/crawler.js 4
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/crawler.js5
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/crawler.js| 4 14169/14169
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/crawler.js| 4 14169/14169
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/crawler.js| 4 14169/14169
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+  New incoming connection - 5
+Waiting on select() ...
+Request header: 670
+GET /Monastik_living_in_Athina_files/logo_big_black.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+  New incoming connection - 7
+  New incoming connection - 8
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 9098
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg 4
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg9
+Request header: 660
+GET /Monastik_living_in_Athina_files/call.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg| 4 9098/9098
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg| 4 9098/9098
+Write set sk = 5
+Header Constructor
+get_file_size _content_length: 1433
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 10 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg 5
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg10
+Request header: 666
+GET /Monastik_living_in_Athina_files/call_black.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg
+end_read
+Request header: 664
+GET /Monastik_living_in_Athina_files/logo_big.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg
+end_read
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5447.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 11
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg| 4 9098/9098
+close_client_sk 4
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg| 5 1433/1433
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg| 5 1433/1433
+Write set sk = 6
+Header Constructor
+get_file_size _content_length: 1432
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 4 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg 6
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg4
+Write set sk = 7
+Header Constructor
+get_file_size _content_length: 6642
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg 7
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg9
+Write set sk = 8
+Header Constructor
+get_file_size _content_length: 698338
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+
+
+Header Destruction
+get_fd_out _full_file_name 12 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png 8
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png12
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 13
+Write set sk = 5
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg| 5 1433/1433
+close_client_sk 5
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg| 6 1432/1432
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg| 6 1432/1432
+Write set sk = 7
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg| 7 6642/6642
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg| 7 6642/6642
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 65792/698338
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 65792/698338
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5149.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5149.png
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Write set sk = 6
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg| 6 1432/1432
+close_client_sk 6
+Write set sk = 7
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg| 7 6642/6642
+close_client_sk 7
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 131584/698338
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 131584/698338
+Write set sk = 11
+Header Constructor
+get_file_size _content_length: 63469
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+
+
+Header Destruction
+get_fd_out _full_file_name 4 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5149.png 11
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5149.png4
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5247.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5247.png
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+  New incoming connection - 7
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5189.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5189.png
+end_read
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 197376/698338
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 197376/698338
+Write set sk = 11
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5149.png| 11 63469/63469
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5149.png| 11 63469/63469
+Write set sk = 13
+Header Constructor
+get_file_size _content_length: 77056
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5247.png 13
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5247.png9
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+get_file_size _content_length: 73844
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+
+
+Header Destruction
+get_fd_out _full_file_name 10 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5189.png 5
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5189.png10
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5050.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5050.png
+end_read
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5457.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5457.png
+end_read
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 263168/698338
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 263168/698338
+Write set sk = 11
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5149.png| 11 63469/63469
+close_client_sk 11
+Write set sk = 13
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5247.png| 13 65792/77056
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5247.png| 13 65792/77056
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5189.png| 5 65792/73844
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5189.png| 5 65792/73844
+Write set sk = 6
+Header Constructor
+get_file_size _content_length: 71141
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+
+
+Header Destruction
+get_fd_out _full_file_name 11 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5050.png 6
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5050.png11
+Write set sk = 7
+Header Constructor
+get_file_size _content_length: 80103
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+
+
+Header Destruction
+get_fd_out _full_file_name 14 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5457.png 7
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5457.png14
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 328960/698338
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 328960/698338
+Write set sk = 13
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5247.png| 13 77056/77056
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5247.png| 13 77056/77056
+Waiting on select() ...
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5332.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5332.png
+end_read
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5189.png| 5 73844/73844
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5189.png| 5 73844/73844
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5050.png| 6 65792/71141
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5050.png| 6 65792/71141
+Write set sk = 7
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5457.png| 7 65792/80103
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5457.png| 7 65792/80103
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 394752/698338
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 394752/698338
+Write set sk = 13
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5247.png| 13 77056/77056
+close_client_sk 13
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 9
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 165548
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+
+
+Header Destruction
+get_fd_out _full_file_name 13 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5332.png 4
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5332.png13
+Write set sk = 5
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5189.png| 5 73844/73844
+close_client_sk 5
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5050.png| 6 71141/71141
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5050.png| 6 71141/71141
+Write set sk = 7
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5457.png| 7 80103/80103
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5457.png| 7 80103/80103
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 460544/698338
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 460544/698338
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5048.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5048.png
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5332.png| 4 65792/165548
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5332.png| 4 65792/165548
+Write set sk = 6
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5050.png| 6 71141/71141
+close_client_sk 6
+Write set sk = 7
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5457.png| 7 80103/80103
+close_client_sk 7
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 526336/698338
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 526336/698338
+Write set sk = 9
+Header Constructor
+get_file_size _content_length: 122476
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+
+
+Header Destruction
+get_fd_out _full_file_name 6 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5048.png 9
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5048.png6
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5332.png| 4 131584/165548
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5332.png| 4 131584/165548
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5260.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5260.png
+end_read
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 592128/698338
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 592128/698338
+Write set sk = 9
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5048.png| 9 65792/122476
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5048.png| 9 65792/122476
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5332.png| 4 165548/165548
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5332.png| 4 165548/165548
+Write set sk = 5
+Header Constructor
+get_file_size _content_length: 131331
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+
+
+Header Destruction
+get_fd_out _full_file_name 7 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5260.png 5
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5260.png7
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 657920/698338
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 657920/698338
+Write set sk = 9
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5048.png| 9 122476/122476
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5048.png| 9 122476/122476
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5332.png| 4 165548/165548
+close_client_sk 4
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5260.png| 5 65792/131331
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5260.png| 5 65792/131331
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 698338/698338
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 698338/698338
+Write set sk = 9
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5048.png| 9 122476/122476
+close_client_sk 9
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+  New incoming connection - 6
+  New incoming connection - 9
+Waiting on select() ...
+Request header: 691
+GET /Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png
+end_read
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5260.png| 5 131331/131331
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5260.png| 5 131331/131331
+Request header: 659
+GET /Monastik_living_in_Athina_files/bar.jpg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/bar.jpg
+end_read
+Write set sk = 8
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5447.png| 8 698338/698338
+close_client_sk 8
+Request header: 691
+GET /Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 238885
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+
+
+Header Destruction
+get_fd_out _full_file_name 8 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png 4
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png8
+Write set sk = 5
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/drz-monastik_5260.png| 5 131331/131331
+close_client_sk 5
+Write set sk = 6
+Header Constructor
+get_file_size _content_length: 22587
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/jpeg
+
+
+Header Destruction
+get_fd_out _full_file_name 5 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/bar.jpg 6
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/bar.jpg5
+Write set sk = 9
+Header Constructor
+get_file_size _content_length: 137777
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+
+
+Header Destruction
+get_fd_out _full_file_name 7 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png 9
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png7
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png| 4 65792/238885
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png| 4 65792/238885
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/bar.jpg| 6 22587/22587
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/bar.jpg| 6 22587/22587
+Write set sk = 9
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png| 9 65792/137777
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png| 9 65792/137777
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png| 4 131584/238885
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png| 4 131584/238885
+Write set sk = 6
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/bar.jpg| 6 22587/22587
+close_client_sk 6
+Write set sk = 9
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png| 9 131584/137777
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png| 9 131584/137777
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png| 4 197376/238885
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png| 4 197376/238885
+Write set sk = 9
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png| 9 137777/137777
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png| 9 137777/137777
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png| 4 238885/238885
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png| 4 238885/238885
+Write set sk = 9
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png| 9 137777/137777
+close_client_sk 9
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png| 4 238885/238885
+close_client_sk 4
+Request header: 658
+GET /Monastik_living_in_Athina_files/en.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg
+end_read
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+get_file_size _content_length: 1290
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 4 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg 5
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg4
+Waiting on select() ...
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg| 5 1290/1290
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg| 5 1290/1290
+Waiting on select() ...
+Write set sk = 5
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg| 5 1290/1290
+close_client_sk 5
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 755
+GET /Monastik_living_in_Athina_files/anchor.html HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: iframe
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor.html
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 107091
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/html
+
+
+Header Destruction
+get_fd_out _full_file_name 5 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor.html 4
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor.html5
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor.html| 4 65792/107091
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor.html| 4 65792/107091
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor.html| 4 107091/107091
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor.html| 4 107091/107091
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor.html| 4 107091/107091
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Waiting on select() ...
+Request header: 685
+GET /Monastik_living_in_Athina_files/anchor_data/styles__ltr.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina_files/anchor.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor_data/styles__ltr.css
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+  New incoming connection - 6
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 56398
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+
+
+Header Destruction
+get_fd_out _full_file_name 7 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor_data/styles__ltr.css 4
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor_data/styles__ltr.css7
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor_data/styles__ltr.css| 4 56398/56398
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor_data/styles__ltr.css| 4 56398/56398
+Request header: 660
+GET /Monastik_living_in_Athina_files/recaptcha__en.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina_files/anchor.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js
+end_read
+Request header: 702
+GET /Monastik_living_in_Athina_files/anchor_data/lEEM4ZLDLFuvATVvcnxglI8CLvLrSc6BLt7Ue_ua1SM.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina_files/anchor.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor_data/lEEM4ZLDLFuvATVvcnxglI8CLvLrSc6BLt7Ue_ua1SM.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor_data/styles__ltr.css| 4 56398/56398
+close_client_sk 4
+Write set sk = 5
+Header Constructor
+get_file_size _content_length: 514678
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 4 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js 5
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js4
+Write set sk = 6
+Header Constructor
+get_file_size _content_length: 17029
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 7 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor_data/lEEM4ZLDLFuvATVvcnxglI8CLvLrSc6BLt7Ue_ua1SM.js 6
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor_data/lEEM4ZLDLFuvATVvcnxglI8CLvLrSc6BLt7Ue_ua1SM.js7
+Waiting on select() ...
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 65792/514678
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 65792/514678
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor_data/lEEM4ZLDLFuvATVvcnxglI8CLvLrSc6BLt7Ue_ua1SM.js| 6 17029/17029
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor_data/lEEM4ZLDLFuvATVvcnxglI8CLvLrSc6BLt7Ue_ua1SM.js| 6 17029/17029
+Waiting on select() ...
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 131584/514678
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 131584/514678
+Write set sk = 6
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/anchor_data/lEEM4ZLDLFuvATVvcnxglI8CLvLrSc6BLt7Ue_ua1SM.js| 6 17029/17029
+close_client_sk 6
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+  New incoming connection - 7
+  New incoming connection - 8
+  New incoming connection - 9
+Waiting on select() ...
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 197376/514678
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 197376/514678
+Request header: 670
+GET /Monastik_living_in_Athina_files/logo_big_black.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg
+end_read
+Request header: 660
+GET /Monastik_living_in_Athina_files/call.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg
+end_read
+Request header: 666
+GET /Monastik_living_in_Athina_files/call_black.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg
+end_read
+Request header: 664
+GET /Monastik_living_in_Athina_files/logo_big.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg
+end_read
+Waiting on select() ...
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 263168/514678
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 263168/514678
+Write set sk = 6
+Header Constructor
+get_file_size _content_length: 9098
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 10 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg 6
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg10
+Write set sk = 7
+Header Constructor
+get_file_size _content_length: 1433
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 11 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg 7
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg11
+Write set sk = 8
+Header Constructor
+get_file_size _content_length: 1432
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 12 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg 8
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg12
+Write set sk = 9
+Header Constructor
+get_file_size _content_length: 6642
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 13 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg 9
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg13
+Waiting on select() ...
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 328960/514678
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 328960/514678
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg| 6 9098/9098
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg| 6 9098/9098
+Write set sk = 7
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg| 7 1433/1433
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg| 7 1433/1433
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg| 8 1432/1432
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg| 8 1432/1432
+Write set sk = 9
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg| 9 6642/6642
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg| 9 6642/6642
+Waiting on select() ...
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 394752/514678
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 394752/514678
+Write set sk = 6
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big_black.svg| 6 9098/9098
+close_client_sk 6
+Write set sk = 7
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call.svg| 7 1433/1433
+close_client_sk 7
+Write set sk = 8
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/call_black.svg| 8 1432/1432
+close_client_sk 8
+Write set sk = 9
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/logo_big.svg| 9 6642/6642
+close_client_sk 9
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+Waiting on select() ...
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 460544/514678
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 460544/514678
+Request header: 658
+GET /Monastik_living_in_Athina_files/en.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg
+end_read
+Waiting on select() ...
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 514678/514678
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 514678/514678
+Write set sk = 6
+Header Constructor
+get_file_size _content_length: 1290
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+
+
+Header Destruction
+get_fd_out _full_file_name 7 /home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg 6
+/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg7
+Waiting on select() ...
+Write set sk = 5
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/recaptcha__en.js| 5 514678/514678
+close_client_sk 5
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg| 6 1290/1290
+write_body send |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg| 6 1290/1290
+Waiting on select() ...
+Write set sk = 6
+end_connection read |/home/ngoc/Commun/Webserv/www/Monastik_living_in_Athina_files/en.svg| 6 1290/1290
+close_client_sk 6
+Waiting on select() ...
