@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 16:11:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 16:15:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ Header::Header(Response* r, std::string ext) :
 	_extension(ext)
 {
     _host = _response->get_host();
+    _mimes = _host->get_mimes();
 	init();
 	std::cout << "Header Constructor" << std::endl;
 }
@@ -53,10 +54,10 @@ std::string	Header::generate(void)
 	str += "Allow: " + _allow + "\r\n";
 	str += std::string("Content-Language: en") + "\r\n";
 	//str += "Content-Length: " + itos(_response->get_content_length()) + "\r\n";
-	if (_types.find(_extension) == _types.end())
+	if (_mimes->find(_extension) == _mimes->end())
 		str += "Content-Type: text/plain\r\n";
 	else
-		str += "Content-Type: " + (*(_host->get_mimes()))[_extension] + "\r\n";
+		str += "Content-Type: " + (*_mimes)[_extension] + "\r\n";
 	str += "\r\n";
 	//std::cout << str << std::endl;
 	return (str);
