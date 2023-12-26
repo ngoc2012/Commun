@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/22 12:38:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 15:56:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class	Header
 {
 	private:
 		int					                _status_code;
+		Host*		                        _host;
 		Response*				            _response;
 		std::map<int, std::string>		    _status;
 		std::map<std::string, std::string>	_types;

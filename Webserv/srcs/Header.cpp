@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:29:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 15:57:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ Header::Header(Response* r, std::string ext) :
 	_response(r),
 	_extension(ext)
 {
+    _host = _response->get_host();
 	init();
 	std::cout << "Header Constructor" << std::endl;
 }
