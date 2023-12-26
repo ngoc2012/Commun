@@ -6,13 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 10:21:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 14:45:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
 #include "Response.hpp"
+#include "Cgi.hpp"
 
 #ifndef CLIENTREQUEST_HPP
 # define CLIENTREQUEST_HPP
@@ -71,18 +72,18 @@ class	Request
 		Request(int, Host*, Server*);
 		virtual ~Request();
 
-		int         read(void);
+		int             read(void);
 
-		e_method	get_method(void) const;
-		std::string	get_url(void) const;
-		Response*	get_response(void);
-		int		    get_status_code(void) const;
-        std::string	get_content_type(void) const;
-        size_t		get_body_size(void) const;
-        std::string	get_header(void) const;
-        std::string	get_full_file_name(void) const;
-        Location*	get_location(void) const;	
-        int		    get_fd_in(void) const;
+		e_method	    get_method(void) const;
+		std::string	    get_url(void) const;
+		Response*	    get_response(void);
+		int		        get_status_code(void) const;
+        std::string	    get_content_type(void) const;
+        size_t		    get_body_size(void) const;
+        std::string	    get_header(void) const;
+        std::string	    get_full_file_name(void) const;
+        Location*	    get_location(void) const;	
+        int		        get_fd_in(void) const;
 };
 
 #endif
