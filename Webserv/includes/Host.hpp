@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 13:57:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 13:58:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ class	Host
 		std::map<int, Request*>	                _sk_request;
 		std::map<std::string, std::string>	    _mimes;
 
-		bool				select_available_sk(void);
-		void  				add_sk_2_master_read_set(int, Server*);
-		void    			start_server(void);
-		void    			check_sk_ready(void);
-		bool				check_servers_conf(void);
-		void				mimes(void);
+		bool				                    select_available_sk(void);
+		void  				                    add_sk_2_master_read_set(int, Server*);
+		void    			                    start_server(void);
+		void    			                    check_sk_ready(void);
+		bool				                    check_servers_conf(void);
+		void				                    mimes(void);
 
 		Host();
 		Host(const Host&);
@@ -60,18 +60,18 @@ class	Host
 		Host(const char *);
 		virtual ~Host();
 
-		void    		start(void);
-		void			new_request_sk(int, Server*);
-		void			new_response_sk(int);
-		void			close_client_sk(int);
-		//void			delete_response(int);
+		void    		                    start(void);
+		void			                    new_request_sk(int, Server*);
+		void			                    new_response_sk(int);
+		void			                    close_client_sk(int);
+		//void			                    delete_response(int);
 
-		int				get_max_clients(void) const;
-		std::map<int, Server*>		get_sk_server(void) const;
-		std::map<int, Request*>	get_sk_request(void) const;
-		std::map<int, Response*>	get_sk_response(void) const;
-		size_t				get_client_max_body_size(void) const;
-		size_t				get_client_body_buffer_size(void) const;
+		int				                    get_max_clients(void) const;
+		std::map<int, Server*>		        get_sk_server(void) const;
+		std::map<int, Request*>	            get_sk_request(void) const;
+		std::map<int, Response*>	        get_sk_response(void) const;
+		size_t				                get_client_max_body_size(void) const;
+		size_t				                get_client_body_buffer_size(void) const;
         std::map<std::string, std::string>&	get_mimes(void) const;
 
 		void			set_client_max_body_size(size_t);
