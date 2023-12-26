@@ -6,16 +6,16 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 10:24:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 14:31:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
 #include "Host.hpp"
 #include "Server.hpp"
 #include "Location.hpp"
-#include "Request.hpp"
 #include "Header.hpp"
 */
+#include "Request.hpp"
 #include "Cgi.hpp"
 
 Cgi::Cgi()
@@ -33,8 +33,7 @@ Cgi&	Cgi::operator=( Cgi const & src )
 	(void) src;
 	return (*this);
 }
-Cgi::Cgi(Request* r) :
-_request(r)
+Cgi::Cgi(Request* r) : _request(r)
 {
     _request = r;
 }
