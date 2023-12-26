@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 23:10:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 10:02:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ class	Request
 		bool		    read_content_length(void);
         bool	        check_location(void);
 
-		void		    get_fd_in(void);
+		void		    process_fd_in(void);
         void	        read_body();
 
 		int             end_read(void);
@@ -70,7 +70,6 @@ class	Request
 
 		int         read(void);
 
-        bool        get_end_fd_in(void) const;
 		e_method	get_method(void) const;
 		std::string	get_url(void) const;
 		Response*	get_response(void);
