@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/24 11:49:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 10:59:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,9 @@ void	Host::close_client_sk(int i)
 	if (i == _max_sk)
 		while (!FD_ISSET(_max_sk, &_master_read_set))
 			_max_sk -= 1;
+}
+void	mimes(void)
+{
 }
 
 int			Host::get_max_clients(void) const {return (_max_clients);}
