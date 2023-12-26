@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 14:46:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 14:48:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
 	_read_queue = true;
 
 	_status_code = 200;
+    _cgi.set_request(this);
 }
 
 Request::~Request()
