@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 09:09:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 09:10:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,13 @@ void     Response::get_fd_out()
             std::cout << "get_fd_out _full_file_name " << _fd_out << " " << _full_file_name << " " << _socket << std::endl;
             std::cout << _full_file_name << _fd_out << std::endl;
             if (_fd_out == -1)
+            {
                 _status_code = 500;
-            break;
-        case PUT:
+                end_connection();
+            }
             break;
         default:
+            end_connection();
             break;
     }
 }
