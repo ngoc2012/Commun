@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 10:03:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 10:05:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,3 +305,4 @@ size_t		Request::get_body_size(void) const {return (_body_size);}
 std::string	Request::get_header(void) const {return (_header);}
 std::string	Request::get_full_file_name(void) const {return (_full_file_name);}
 Location*	Request::get_location(void) const {return (_location);}
+int		    Request::get_fd_in(void) const {return (_fd_in);}
