@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 10:05:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 10:17:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class	Request
 		Server*		    _server;
 		Response	    _response;
 		Location*	    _location;	
+        Cgi             _cgi;
 
 
 		std::string	    _header;
@@ -60,6 +61,7 @@ class	Request
         void	        read_body();
 
 		int             end_read(void);
+        void            init_env();
 
 		Request();
 		Request(const Request&);
