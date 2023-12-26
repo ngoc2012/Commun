@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/24 05:56:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 09:15:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,7 +270,7 @@ void	Request::get_fd_in()
             break;
         case PUT:
             _fd_in = open(_full_file_name.c_str(),
-                    O_CREAT | O_WRONLY | O_APPEND, 0664);
+                    O_CREAT | O_WRONLY | O_TRUNC, 0664);
             if (_fd_in == -1)
                 _status_code = 500;
             break;
