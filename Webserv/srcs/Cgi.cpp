@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 17:40:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 18:59:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -39,14 +39,16 @@ void    Cgi::envs()
     std::map<std::string, std::string>  envs;
 
     if (config_.getMethod() == "POST") {
-        envs["CONTENT_TYPE"] = req_headers_["Content-Type"];
+        envs["CONTENT_TYPE"] = _request->get_content_type();
         envs["CONTENT_LENGTH"] = ft::itoa(_request->get_content_length());
     }
     envs["GATEWAY_INTERFACE"] = "CGI/1.1";
-    envs["PATH_INFO"] = file_path_;
-    envs["PATH_TRANSLATED"] = file_path_;
+    envs["PATH_INFO"] = _file;
+    envs["PATH_TRANSLATED"] = _file;
     envs["QUERY_STRING"] = config_.getQuery();
     envs["REMOTE_ADDR"] = config_.getClient().getAddr();
+    //envs["QUERY_STRING"] = config_.getQuery();
+    //envs["REMOTE_ADDR"] = config_.getClient().getAddr();
 
     if (config_.getAuth() != "off") {
         envs["AUTH_TYPE"] = "Basic";
