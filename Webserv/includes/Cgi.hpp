@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 16:04:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 10:00:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ class	Configuration;
 class	Cgi
 {
 	private:
-        std::string _pass;
-        std::string _file;
+        std::string     _pass;
+        std::string     _file;
+		Request*	    _request;
 		//Response*	_response;
 
 		Cgi();
