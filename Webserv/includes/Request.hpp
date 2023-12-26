@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 10:17:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 10:21:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ class	Request
         void	        read_body();
 
 		int             end_read(void);
-        void            init_env();
+        void            envs(void);
+        void            exec(void);
 
 		Request();
 		Request(const Request&);
