@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 14:43:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 16:17:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class	Host
 		//std::map<int, Response*>	            _sk_response;
 		std::map<int, Server*>		            _sk_server;
 		std::map<int, Request*>	                _sk_request;
+		std::map<int, std::string>  		    _status_message;
 		std::map<std::string, std::string>	    _mimes;
 
 		bool				                    select_available_sk(void);
@@ -73,6 +74,7 @@ class	Host
 		size_t				                get_client_max_body_size(void) const;
 		size_t				                get_client_body_buffer_size(void) const;
         std::map<std::string, std::string>*	get_mimes(void);
+        std::map<int, std::string>  		get_status_message(void) const;
 
 		void			set_client_max_body_size(size_t);
 		void			set_client_body_buffer_size(size_t);
