@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 15:04:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 15:41:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -21,11 +21,6 @@
 
 Cgi::Cgi()
 {
-	_header = "";
-	_full_file_name = "";
-	_status_code = 200;
-	_location = 0;
-	_end = false;
 	std::cout << "Cgi Default constructor" << std::endl;
 }
 Cgi::Cgi(const Cgi& src) { *this = src; }
@@ -34,10 +29,10 @@ Cgi&	Cgi::operator=( Cgi const & src )
 	(void) src;
 	return (*this);
 }
-Cgi::Cgi(Request* r) : _request(r)
-{
-    _request = r;
-}
+//Cgi::Cgi(Request* r) : _request(r)
+//{
+//    _request = r;
+//}
 
 void    Cgi::envs()
 {
