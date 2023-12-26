@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/06 15:10:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 09:55:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -50,14 +50,14 @@ _request(r)
 */
 Cgi::~Cgi()
 {
-	if (_file.is_open())
-	{
-		std::cout << "File in response close" << std::endl;
-		_file.close();
-		if (_file.fail())
-			std::cerr << "Error closing file" << std::endl;
-		else
-			std::cout << "File closed successfully" << std::endl;
-	}
+	//if (_file.is_open())
+	//{
+	//	std::cout << "File in response close" << std::endl;
+	//	_file.close();
+	//	if (_file.fail())
+	//		std::cerr << "Error closing file" << std::endl;
+	//	else
+	//		std::cout << "File closed successfully" << std::endl;
+	//}
 	std::cout << "Destruction response: " << _socket << std::endl;
 }
