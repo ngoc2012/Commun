@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 13:58:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 14:34:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ class	Host
 		std::map<int, Response*>	        get_sk_response(void) const;
 		size_t				                get_client_max_body_size(void) const;
 		size_t				                get_client_body_buffer_size(void) const;
-        std::map<std::string, std::string>&	get_mimes(void) const;
+        std::map<std::string, std::string>*	get_mimes(void) const;
 
 		void			set_client_max_body_size(size_t);
 		void			set_client_body_buffer_size(size_t);
