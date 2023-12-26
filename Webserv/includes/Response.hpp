@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 10:07:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 15:07:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
  
 # define RESPONSE_BUFFER 64
 
+class	Host;
 class	Server;
 class	Location;
 class	Request;
