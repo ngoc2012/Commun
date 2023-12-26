@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 14:42:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 16:19:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,21 @@ void	Host::close_client_sk(int i)
 		while (!FD_ISSET(_max_sk, &_master_read_set))
 			_max_sk -= 1;
 }
+
+void    Host::status_message(void)
+{
+	_status_message[100] = "Continue";
+	_status_message[200] = "OK";
+	_status_message[201] = "Created";
+	_status_message[204] = "No Content";
+	_status_message[400] = "Bad Request";
+	_status_message[403] = "Forbidden";
+	_status_message[404] = "Not Found";
+	_status_message[405] = "Method Not Allowed";
+	_status_message[413] = "Payload Too Large";
+	_status_message[500] = "Internal Server Error";
+}
+
 void	Host::mimes(void)
 {
     _mimes["html"] = "text/html";
@@ -293,6 +308,7 @@ std::map<int, Request*>	            Host::get_sk_request(void) const {return (_s
 size_t			                    Host::get_client_max_body_size(void) const {return (_client_max_body_size);}
 size_t			                    Host::get_client_body_buffer_size(void) const {return (_client_body_buffer_size);}
 std::map<std::string, std::string>*	Host::get_mimes(void) {return (&_mimes);}
+std::map<int, std::string>*  		Host::get_status_message(void) {return (&_status_message);}
 
 void			Host::set_client_max_body_size(size_t n) {_client_max_body_size = n;}
 void			Host::set_client_body_buffer_size(size_t n) {_client_body_buffer_size = n;}
