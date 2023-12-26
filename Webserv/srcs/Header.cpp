@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 16:15:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 16:20:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ Header::Header(Response* r, std::string ext) :
 {
     _host = _response->get_host();
     _mimes = _host->get_mimes();
+    _status_message = _host->get_status_message();
 	init();
 	std::cout << "Header Constructor" << std::endl;
 }
@@ -46,10 +47,10 @@ std::string	Header::generate(void)
     _status_code = _response->get_status_code();
 	str = "HTTP/1.1 ";
 	str += ft::itos(_status_code) + " ";
-	if (_status.find(_status_code) == _status.end())
+	if (_status_message->find(_status_code) == _status_message->end())
 		str += "Unknown error code";
 	else
-		str += _status[_status_code];
+		str += (*_status_message)[_status_code];
 	str += "\r\n";
 	str += "Allow: " + _allow + "\r\n";
 	str += std::string("Content-Language: en") + "\r\n";
@@ -65,16 +66,6 @@ std::string	Header::generate(void)
 
 void	Header::init(void)
 {
-	_status[100] = "Continue";
-	_status[200] = "OK";
-	_status[201] = "Created";
-	_status[204] = "No Content";
-	_status[400] = "Bad Request";
-	_status[403] = "Forbidden";
-	_status[404] = "Not Found";
-	_status[405] = "Method Not Allowed";
-	_status[413] = "Payload Too Large";
-	_status[500] = "Internal Server Error";
 }
 
 
