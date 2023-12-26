@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 10:00:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 10:21:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -37,6 +37,14 @@ Cgi::Cgi(Request* r) :
 _request(r)
 {
     _request = r;
+}
+
+void    Cgi::envs()
+{
+}
+
+void    Cgi::execute()
+{
 }
 /*
 Cgi::Cgi(int sk, Host* h, Server* s, Request* r) :
