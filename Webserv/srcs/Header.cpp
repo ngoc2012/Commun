@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 16:20:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 16:56:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ Header::Header(Response* r, std::string ext) :
 	init();
 	std::cout << "Header Constructor" << std::endl;
 }
+
 std::string	Header::generate(void)
 {
 	std::string	str;
