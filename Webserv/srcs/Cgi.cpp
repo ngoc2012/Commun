@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 14:31:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 14:47:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -77,3 +77,5 @@ Cgi::~Cgi()
 	//}
 	std::cout << "Destruction response: " << _socket << std::endl;
 }
+
+void        Cgi::set_request(Request* r) {_request = r;}
