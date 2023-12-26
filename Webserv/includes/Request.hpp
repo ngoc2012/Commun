@@ -6,12 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 15:05:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 15:09:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
+#include "webserv.hpp"
 #include "Response.hpp"
 #include "Cgi.hpp"
 
@@ -22,6 +23,7 @@
 # define KILOBYTE 1024
 
 class	Host;
+enum    e_method;
 
 class	Request
 {
