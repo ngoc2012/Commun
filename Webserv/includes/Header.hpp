@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 15:56:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 16:02:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class	Header
 		Host*		                        _host;
 		Response*				            _response;
 		std::map<int, std::string>		    _status;
-		std::map<std::string, std::string>	_types;
+		//std::map<std::string, std::string>	_types;
 		std::string				            _allow;
 		std::string				            _extension;
 
