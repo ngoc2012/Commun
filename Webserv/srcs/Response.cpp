@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 09:10:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 10:07:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int     Response::write()
         write_header();
         if (_status_code != 200)
             return (end_connection());
-        get_fd_out();
+        process_fd_out();
     }
     else
         write_body();
@@ -84,7 +84,7 @@ void     Response::get_file_size()
     std::cout << "get_file_size _content_length: " << _content_length << std::endl;
 }
 
-void     Response::get_fd_out()
+void     Response::process_fd_out()
 {
     switch (_request->get_method())
     {
@@ -135,6 +135,7 @@ int     Response::end_connection(void)
 
 int		    Response::get_status_code(void) const {return (_status_code);}
 size_t		Response::get_content_length(void) const {return (_content_length);}
+int         Response::get_fd_out(void) const;
 
 void		Response::set_socket(int s) {_socket = s;}
 void		Response::set_host(Host* h) {_host = h;}

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/25 07:17:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 10:07:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ class	Response
         void	        write_header(void);
         void	        get_file_size(void);
 
-		void		    get_fd_out(void);
+		void		    process_fd_out(void);
         int 	        write_body(void);
 
 		int 		    end_connection(void);
@@ -58,6 +58,7 @@ class	Response
         int		        get_status_code(void) const;
         bool		    get_end_fd_out(void) const;
 		size_t		    get_content_length(void) const;
+        int             get_fd_out(void) const;
 
 		void		    set_socket(int);
 		void		    set_host(Host*);
