@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 09:55:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 09:59:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -33,6 +33,7 @@ Cgi&	Cgi::operator=( Cgi const & src )
 	(void) src;
 	return (*this);
 }
+Cgi::Cgi(Request* r) :
 /*
 Cgi::Cgi(int sk, Host* h, Server* s, Request* r) :
 _socket(sk),
