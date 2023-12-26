@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 15:41:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 15:43:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -40,38 +40,14 @@ void    Cgi::envs()
 
 void    Cgi::execute()
 {
-    int std_in;
-    int std_out;
+    //int std_in;
+    //int std_out;
 
 
 }
-/*
-Cgi::Cgi(int sk, Host* h, Server* s, Request* r) :
-_socket(sk),
-_host(h),
-_server(s),
-_request(r)
-{
-	_header = "";
-	_full_file_name = "";
-	_status_code = 200;
-	_location = 0;
-	_end = false;
-	std::cout << "Cgi Constructor sk: " << sk << std::endl;
-}
-*/
 Cgi::~Cgi()
 {
-	//if (_file.is_open())
-	//{
-	//	std::cout << "File in response close" << std::endl;
-	//	_file.close();
-	//	if (_file.fail())
-	//		std::cerr << "Error closing file" << std::endl;
-	//	else
-	//		std::cout << "File closed successfully" << std::endl;
-	//}
-	std::cout << "Destruction response: " << _socket << std::endl;
+	std::cout << "Destruction Cgi" << std::endl;
 }
 
 void        Cgi::set_request(Request* r) {_request = r;}
