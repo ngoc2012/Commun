@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 18:59:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 19:00:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -45,8 +45,8 @@ void    Cgi::envs()
     envs["GATEWAY_INTERFACE"] = "CGI/1.1";
     envs["PATH_INFO"] = _file;
     envs["PATH_TRANSLATED"] = _file;
-    envs["QUERY_STRING"] = config_.getQuery();
-    envs["REMOTE_ADDR"] = config_.getClient().getAddr();
+    envs["QUERY_STRING"] = "";
+    envs["REMOTE_ADDR"] = "";
     //envs["QUERY_STRING"] = config_.getQuery();
     //envs["REMOTE_ADDR"] = config_.getClient().getAddr();
 
@@ -54,6 +54,8 @@ void    Cgi::envs()
         envs["AUTH_TYPE"] = "Basic";
         envs["REMOTE_IDENT"] = config_.getAuth().substr(0, config_.getAuth().find(':'));
         envs["REMOTE_USER"] = config_.getAuth().substr(0, config_.getAuth().find(':'));
+        //envs["REMOTE_IDENT"] = config_.getAuth().substr(0, config_.getAuth().find(':'));
+        //envs["REMOTE_USER"] = config_.getAuth().substr(0, config_.getAuth().find(':'));
     }
 
     envs["REQUEST_METHOD"] = config_.getMethod();
