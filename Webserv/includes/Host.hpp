@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 16:17:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 16:55:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ class	Host
 		void    			                    check_sk_ready(void);
 		bool				                    check_servers_conf(void);
 		void				                    mimes(void);
+		void				                    status_message(void);
 
 		Host();
 		Host(const Host&);
@@ -74,7 +75,7 @@ class	Host
 		size_t				                get_client_max_body_size(void) const;
 		size_t				                get_client_body_buffer_size(void) const;
         std::map<std::string, std::string>*	get_mimes(void);
-        std::map<int, std::string>  		get_status_message(void) const;
+        std::map<int, std::string>*  		get_status_message(void);
 
 		void			set_client_max_body_size(size_t);
 		void			set_client_body_buffer_size(size_t);
