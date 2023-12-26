@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 16:00:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/26 16:11:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ std::string	Header::generate(void)
 	if (_types.find(_extension) == _types.end())
 		str += "Content-Type: text/plain\r\n";
 	else
-		str += "Content-Type: " + _host->get_mimes[_extension] + "\r\n";
+		str += "Content-Type: " + (*(_host->get_mimes()))[_extension] + "\r\n";
 	str += "\r\n";
 	//std::cout << str << std::endl;
 	return (str);
