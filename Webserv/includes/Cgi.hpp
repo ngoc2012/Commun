@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 09:41:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 17:13:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ class	Request;
 class	Cgi
 {
 	private:
-        std::string    _pass;
-        std::string    _file;
-		Request*       _request;
-        char**         _envs;
+        std::string     _pass;
+        std::string     _file;
+		Request*        _request;
+        char**          _envs;
+        char*           argv_[3];
 
-        bool           envs();
+        bool            envs();
 
 		Cgi(const Cgi&);
 		Cgi	&operator=(const Cgi& op);
