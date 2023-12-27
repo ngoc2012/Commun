@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 16:00:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 19:18:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ class	Response
 		int 		    write(void);
 
         int		        get_status_code(void) const;
-        bool		    get_end_fd_out(void) const;
 		size_t		    get_content_length(void) const;
         int             get_fd_out(void) const;
         Host*		    get_host(void) const;
@@ -68,6 +67,7 @@ class	Response
 		void		    set_request(Request*);
         void		    set_status_code(int);
         void            set_write_queue(bool);
+        void            set_fd_out(int);
 };
 
 #endif
