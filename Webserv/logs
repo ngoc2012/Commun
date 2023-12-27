@@ -1,14 +1,5 @@
 clear && make re && make clean && valgrind --track-fds=yes --leak-check=full --show-leak-kinds=all ./server
 [H[2J[3Jmake[1]: Entering directory '/home/ngoc/Commun/Webserv'
-rm -f srcs/main.o srcs/Host.o srcs/Server.o srcs/Request.o srcs/Response.o srcs/Header.o srcs/Configuration.o srcs/Location.o srcs/Cgi.o srcs/split_string.o srcs/is_digit.o srcs/itos.o srcs/match_wildcard.o srcs/file_extension.o srcs/atoi_base.o srcs/itoa_base.o srcs/str_replace.o
+rm -f srcs/main.o srcs/Host.o srcs/Server.o srcs/Request.o srcs/Response.o srcs/Header.o srcs/Configuration.o srcs/Location.o srcs/Cgi.o srcs/split_string.o srcs/is_digit.o srcs/itos.o srcs/match_wildcard.o srcs/file_extension.o srcs/atoi_base.o srcs/itoa_base.o srcs/str_replace.o srcs/to_upper.o
 rm -f server
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/main.cpp -o srcs/main.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Host.cpp -o srcs/Host.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Server.cpp -o srcs/Server.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Request.cpp -o srcs/Request.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Response.cpp -o srcs/Response.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Header.cpp -o srcs/Header.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Configuration.cpp -o srcs/Configuration.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Location.cpp -o srcs/Location.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Cgi.cpp -o srcs/Cgi.o -I./includes
 make[1]: Leaving directory '/home/ngoc/Commun/Webserv'
