@@ -6,11 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 16:03:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 16:05:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstring>
+#include <unistd.h>
+
 /*
 #include "Header.hpp"
 */
@@ -42,8 +44,8 @@ Cgi::~Cgi()
 void    Cgi::execute()
 {
     envs();
-    int std_in = dup (STDIN_FILENO);
-    int std_out = dup (STDOUT_FILENO);
+    int std_in = dup(STDIN_FILENO);
+    int std_out = dup(STDOUT_FILENO);
 
 
 }
