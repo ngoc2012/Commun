@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 22:36:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 23:24:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ void    Cgi::execute()
     get_envs();
     int pipe_in[2];
     int pipe_out[2];
+    
+    if (pipe(pipe_in) == -1 || pipe(pipe_out) == -1) {
+        std::cerr << "Error: pipe" << std::endl;
+        perror("pipe");
+        return ;
+    }
 
     int _pid = fork();
 
