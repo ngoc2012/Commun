@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 09:40:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 09:43:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -90,15 +90,17 @@ bool    Cgi::envs()
     if (!(_envs = malloc(sizeof(char *) * (envs.size() + 1))))
         return false;
 
-    int i = 0;
-
-    for (std::map<std::string, std::string>::iterator it = envs.begin(); it != envs.end(); it++) {
-        std::string tmp = it->first + "=" + it->second;
-        if (!(env_[i] = ft::strdup(tmp.c_str())))
+    i = 0;
+    for (std::map<std::string, std::string>::iterator it = envs.begin();
+        it != envs.end(); it++)
+    {
+        std::string     tmp = it->first + "=" + it->second;
+        if (!(env_[i] = tmp.c_str()))
             return false;
         i++;
     }
-    env_[i] = NULL;
+    env_[i] = 0;
+    return (true);
 }
 
 void    Cgi::execute()
