@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 07:40:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 07:42:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -61,13 +61,14 @@ void    Cgi::envs()
     envs["REQUEST_METHOD"] = Location::get_method_str(_request->get_method());
     envs["REQUEST_URI"] = _request->get_url();
 
+    Host*   host = _request->get_host();
     envs["SCRIPT_NAME"] = _file;
-    envs["SERVER_NAME"] = _request->get_host()->get_server_name();
+    envs["SERVER_NAME"] = host->get_server_name();
     envs["SERVER_PROTOCOL"] = "";
-    envs["SERVER_PORT"] = ft::to_string(config_.getPort());
+    envs["SERVER_PORT"] = ft::itos((int) host->get_port());
     envs["SERVER_SOFTWARE"] = "WEBSERV/1.0";
 
-    if (extension_ == ".php")
+    if (extension_ == "php")
         envs["REDIRECT_STATUS"] = "200";
 
     for (std::map<std::string, std::string, ft::comp>::iterator it = req_headers_.begin(); it != req_headers_.end(); it++) {
