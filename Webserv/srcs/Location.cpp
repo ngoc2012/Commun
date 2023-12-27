@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 07:04:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 07:07:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,25 +110,22 @@ std::string	Location::get_methods_str(void)
 	{
 		if (it != _methods.begin())
 			s += ",";
+        s += get_method_str(*it);
 	}
 	return (s);
 }
 
-static std::string	Location::get_method_str(e_method e) {
+static std::string	Location::get_method_str(e_method& e) {
     switch (e)
     {
         case GET:
-            s += "GET";
-            break;
+            return ("GET");
         case POST:
-            s += "POST";
-            break;
+            return ("POST";
         case PUT:
-            s += "PUT";
-            break;
+            return ("PUT");
         case NONE:
-            s += "UNKWOUN";
-            break;
+            return ("UNKWOUN");
     }
 }
 
