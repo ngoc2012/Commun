@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:38:19 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 14:51:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 14:54:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ std::vector<std::string>	split_string(const std::string& input, std::string deli
 bool				        is_digit(std::string& str);
 std::string			        itos(int n);
 bool                        match_wildcard(const char* str, const char* pattern);
-std::string	                file_extension(std::string&);
+std::string	                file_extension(std::string);
 size_t                      atoi_base(const char *str, const char *base);
 std::string                 itoa_base(int nbr, const char *base);
 std::string                 str_replace(std::string src, std::string find, std::string rep);

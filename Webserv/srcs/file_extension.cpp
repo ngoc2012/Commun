@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 10:40:59 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:28:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 14:54:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 namespace ft {
 
-std::string	file_extension(std::string& file_path)
+std::string	file_extension(std::string file_path)
 {
 	size_t dot_position = file_path.find_last_of('.');
 	if (dot_position != std::string::npos && dot_position < file_path.size() - 1)
