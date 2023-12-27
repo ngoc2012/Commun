@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 09:57:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 10:00:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -83,7 +83,7 @@ bool    Cgi::envs()
         i = it->find(":");
         if (i != NPOS)
         {
-            key = "HTTP_" + std::to_upper(it->substr(0, i);
+            key = "HTTP_" + std::to_upper(it->substr(0, i));
             std::replace(key.begin(), key.end(), '-', '_');
             envs[key] = it->substr(i + 2);
         }
@@ -94,14 +94,9 @@ bool    Cgi::envs()
 
     i = 0;
     for (std::map<std::string, std::string>::iterator it = envs.begin();
-        it != envs.end(); it++)
-    {
-        std::string     s = it->first + "=" + it->second;
-        if (!(env_[i] = s.c_str()))
-            return false;
-        i++;
-    }
-    env_[i] = 0;
+            it != envs.end(); it++)
+        _envs[i++] = it->c_str();
+    _envs[i] = 0;
     return (true);
 }
 
