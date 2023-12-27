@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 07:08:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 07:11:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -59,7 +59,7 @@ void    Cgi::envs()
     }
 
     envs["REQUEST_METHOD"] = Location::get_method_str(_request->get_method());
-    envs["REQUEST_URI"] = file_path_;
+    envs["REQUEST_URI"] = _request->get_url();
 
     envs["SCRIPT_NAME"] = cgi_path_;
     envs["SERVER_NAME"] = config_.getHost();
