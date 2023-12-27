@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 22:37:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 23:21:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ class	Request
 		e_method	    get_method(void) const;
 		std::string	    get_url(void) const;
 		Response*	    get_response(void);
-        Cgi*            get_cgi(void) const;
+        const Cgi*      get_cgi(void) const;
 		int		        get_status_code(void) const;
         std::string	    get_content_type(void) const;
         size_t		    get_content_length(void) const;

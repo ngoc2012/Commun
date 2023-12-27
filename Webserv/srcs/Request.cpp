@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 22:37:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 23:21:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -302,6 +302,7 @@ Server*		Request::get_server(void) const {return (_server);}
 e_method	Request::get_method(void) const {return (_method);}
 std::string	Request::get_url(void) const {return (_url);}
 Response*	Request::get_response(void) {return (&_response);}
+const Cgi*  Request::get_cgi(void) const {return (&_cgi);}
 int		    Request::get_status_code(void) const {return (_status_code);}
 std::string	Request::get_content_type(void) const {return (_content_type);}
 size_t		Request::get_content_length(void) const {return (_content_length);}
@@ -310,6 +311,5 @@ std::string	Request::get_header(void) const {return (_header);}
 std::string	Request::get_full_file_name(void) const {return (_full_file_name);}
 Location*	Request::get_location(void) const {return (_location);}
 int		    Request::get_fd_in(void) const {return (_fd_in);}
-Cgi*        Request::get_cgi(void) const {return (&_cgi);}
 
 void		Request::set_fd_in(int f) {_fd_in = f;}
