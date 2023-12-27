@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 15:59:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 23:33:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,3 +144,4 @@ void		Response::set_server(Server* s) {_server = s;}
 void		Response::set_request(Request* r) {_request = r;}
 void		Response::set_status_code(int e) {_status_code = e;}
 void        Response::set_write_queue(bool b) {_write_queue = b;}
+void        Response::set_fd_out(int f) {_fd_out = f;}
