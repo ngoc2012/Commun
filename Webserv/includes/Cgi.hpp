@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 17:13:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 17:14:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class	Cgi
         std::string     _file;
 		Request*        _request;
         char**          _envs;
-        char*           argv_[3];
+        char*           _argv[3];
 
         bool            envs();
 
