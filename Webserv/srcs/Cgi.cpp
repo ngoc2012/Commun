@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 09:52:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 09:54:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -22,6 +22,7 @@
 Cgi::Cgi()
 {
 	std::cout << "Cgi Default constructor" << std::endl;
+    _envs = 0;
 }
 Cgi::Cgi(const Cgi& src) { *this = src; }
 Cgi&	Cgi::operator=( Cgi const & src )
