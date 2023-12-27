@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 10:00:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 10:31:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -34,6 +34,15 @@ Cgi::~Cgi()
 {
     if (_envs)
         delete[] _envs;
+}
+
+void    Cgi::execute()
+{
+    envs();
+    //int std_in;
+    //int std_out;
+
+
 }
 
 bool    Cgi::envs()
@@ -98,18 +107,6 @@ bool    Cgi::envs()
         _envs[i++] = it->c_str();
     _envs[i] = 0;
     return (true);
-}
-
-void    Cgi::execute()
-{
-    //int std_in;
-    //int std_out;
-
-
-}
-Cgi::~Cgi()
-{
-	std::cout << "Destruction Cgi" << std::endl;
 }
 
 void        Cgi::set_request(Request* r) {_request = r;}
