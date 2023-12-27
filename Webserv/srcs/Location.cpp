@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 07:03:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 07:04:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,26 +110,27 @@ std::string	Location::get_methods_str(void)
 	{
 		if (it != _methods.begin())
 			s += ",";
-		switch (*it)
-		{
-			case GET:
-				s += "GET";
-				break;
-			case POST:
-				s += "POST";
-				break;
-			case PUT:
-				s += "PUT";
-				break;
-			case NONE:
-				s += "NONE";
-				break;
-		}
 	}
 	return (s);
 }
 
-static std::string	Location::get_method_str(e_method) {return (_method);}
+static std::string	Location::get_method_str(e_method e) {
+    switch (e)
+    {
+        case GET:
+            s += "GET";
+            break;
+        case POST:
+            s += "POST";
+            break;
+        case PUT:
+            s += "PUT";
+            break;
+        case NONE:
+            s += "UNKWOUN";
+            break;
+    }
+}
 
 std::vector<e_method>		Location::get_methods(void) const {return (_methods);}
 std::string			Location::get_alias(void) const {return (_alias);}
