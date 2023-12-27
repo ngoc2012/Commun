@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:31:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 07:03:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ std::string	Location::get_methods_str(void)
 	}
 	return (s);
 }
+
+static std::string	Location::get_method_str(e_method) {return (_method);}
 
 std::vector<e_method>		Location::get_methods(void) const {return (_methods);}
 std::string			Location::get_alias(void) const {return (_alias);}
