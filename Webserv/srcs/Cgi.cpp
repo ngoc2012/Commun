@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 07:42:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 08:19:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -71,6 +71,7 @@ void    Cgi::envs()
     if (extension_ == "php")
         envs["REDIRECT_STATUS"] = "200";
 
+    std::string header = _request->get_header();
     for (std::map<std::string, std::string, ft::comp>::iterator it = req_headers_.begin(); it != req_headers_.end(); it++) {
         if (!it->second.empty()) {
             std::string header = "HTTP_" + ft::to_upper(it->first);
