@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 17:50:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 17:53:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void    Cgi::execute()
     int std_in = dup(STDIN_FILENO);
     int std_out = dup(STDOUT_FILENO);
 
-    pid = fork();
+    int pid = fork();
 
     if (pid == -1)
     {
@@ -58,13 +58,12 @@ void    Cgi::execute()
     else if (!pid)
     {
         char*   argv[3];
-        argv[0] = _pass.c_str();
-        argv[1] = _file.c_str();
+        argv[0] = (char*) _pass.c_str();
+        argv[1] = (char*) _file.c_str();
         argv[2] = 0;
         dup2(_request->get_fd_in(), STDIN_FILENO);
-        dup2(_request->get_response->get_fd_in(), STDIN_FILENO);
+        dup2(_request->get_response()->get_fd_in(), STDIN_FILENO);
         execve(argv[0], argv, _envs);
-        return (1);
     }
     else
     {
