@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 13:56:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 14:15:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -79,7 +79,8 @@ bool    Cgi::envs()
     envs.push_back("SERVER_PORT=" + ft::itos((int) server->get_port()));
     envs.push_back("SERVER_SOFTWARE=WEBSERV/1.0");
 
-    if (extension_ == "php")
+    std::string extension = ft::file_extension(_request->get_full_file_name());
+    if (extension == "php")
         envs.push_back("REDIRECT_STATUS=200");
 
     std::vector<std::string> header_lines = ft::split_string(_request->get_header(), "\n");
