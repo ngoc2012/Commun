@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 09:39:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 09:40:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -34,7 +34,7 @@ Cgi&	Cgi::operator=( Cgi const & src )
 //    _request = r;
 //}
 
-void    Cgi::envs()
+bool    Cgi::envs()
 {
     std::map<std::string, std::string>  envs;
 
@@ -87,7 +87,7 @@ void    Cgi::envs()
         }
     }
 
-    if (!(_envs = (char **)malloc(sizeof(char *) * (envs.size() + 1))))
+    if (!(_envs = malloc(sizeof(char *) * (envs.size() + 1))))
         return false;
 
     int i = 0;
