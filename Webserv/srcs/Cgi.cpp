@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 06:58:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 07:08:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -58,7 +58,7 @@ void    Cgi::envs()
         //envs["REMOTE_USER"] = config_.getAuth().substr(0, config_.getAuth().find(':'));
     }
 
-    envs["REQUEST_METHOD"] = config_.getMethod();
+    envs["REQUEST_METHOD"] = Location::get_method_str(_request->get_method());
     envs["REQUEST_URI"] = file_path_;
 
     envs["SCRIPT_NAME"] = cgi_path_;
