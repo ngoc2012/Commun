@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 09:43:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 09:45:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -94,8 +94,8 @@ bool    Cgi::envs()
     for (std::map<std::string, std::string>::iterator it = envs.begin();
         it != envs.end(); it++)
     {
-        std::string     tmp = it->first + "=" + it->second;
-        if (!(env_[i] = tmp.c_str()))
+        std::string     s = it->first + "=" + it->second;
+        if (!(env_[i] = s.c_str()))
             return false;
         i++;
     }
