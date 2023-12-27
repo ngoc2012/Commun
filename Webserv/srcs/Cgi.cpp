@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 22:17:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 22:19:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void    Cgi::execute()
 
     close(pipe_in[0]);
     close(pipe_out[1]);
+    _request->set_fd_in(pipe_in[1]);
     dup2(pipe_in[0], STDIN_FILENO);
     dup2(pipe_out[1], STDOUT_FILENO);
     close(pipe_in[0]);
