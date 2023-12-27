@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 14:17:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 14:51:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -16,6 +16,7 @@
 #include "Server.hpp"
 #include "Location.hpp"
 #include "Request.hpp"
+#include "webserv.hpp"
 
 #include "Cgi.hpp"
 
@@ -84,19 +85,15 @@ bool    Cgi::envs()
         envs.push_back("REDIRECT_STATUS=200");
 
     std::vector<std::string> header_lines = ft::split_string(_request->get_header(), "\n");
-    std::string     key;
     size_t          i;
-
     for (std::vector<std::string>::iterator it = header_lines.begin();
             it != header_lines.end(); it++)
     {
         i = it->find(":");
         if (i != NPOS)
-        {
-            key = "HTTP_" + std::towupper(it->substr(0, i));
-            std::replace(key.begin(), key.end(), '-', '_');
-            envs.push_back(key + "=" + it->substr(i + 2));
-        }
+            envs.push_back(ft::str_replace(
+                    "HTTP_" + std::towupper(it->substr(0, i)), "-", "_")
+                    + "=" + it->substr(i + 2));
     }
 
     if (!(_envs = new char*[envs.size() + 1]))
