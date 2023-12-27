@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 09:45:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 09:50:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -36,40 +36,40 @@ Cgi&	Cgi::operator=( Cgi const & src )
 
 bool    Cgi::envs()
 {
-    std::map<std::string, std::string>  envs;
+    std::vector<std::string>  envs;
 
     if (config_.getMethod() == "POST") {
-        envs["CONTENT_TYPE"] = _request->get_content_type();
-        envs["CONTENT_LENGTH"] = ft::itos(_request->get_content_length());
+        envs.push_back("CONTENT_TYPE=" + _request->get_content_type());
+        envs.push_back("CONTENT_LENGTH"] = ft::itos(_request->get_content_length()));
     }
-    envs["GATEWAY_INTERFACE"] = "CGI/1.1";
-    envs["PATH_INFO"] = _file;
-    envs["PATH_TRANSLATED"] = _file;
-    envs["QUERY_STRING"] = "";
-    envs["REMOTE_ADDR"] = "";
-    //envs["QUERY_STRING"] = config_.getQuery();
-    //envs["REMOTE_ADDR"] = config_.getClient().getAddr();
+    envs.push_back("GATEWAY_INTERFACE" + "CGI/1.1");
+    envs.push_back("PATH_INFO" + _file);
+    envs.push_back("PATH_TRANSLATED" + _file);
+    envs.push_back("QUERY_STRING" + "");
+    envs.push_back("REMOTE_ADDR" + "");
+    //envs["QUERY_STRING" + config_.getQuery();
+    //envs["REMOTE_ADDR" + config_.getClient().getAddr();
 
     if (config_.getAuth() != "off") {
-        envs["AUTH_TYPE"] = "Basic";
-        envs["REMOTE_IDENT"] = "";
-        envs["REMOTE_USER"] = "";
-        //envs["REMOTE_IDENT"] = config_.getAuth().substr(0, config_.getAuth().find(':'));
-        //envs["REMOTE_USER"] = config_.getAuth().substr(0, config_.getAuth().find(':'));
+        envs.push_back("AUTH_TYPE" + "Basic");
+        envs.push_back("REMOTE_IDENT" + "");
+        envs.push_back("REMOTE_USER" + "");
+        //envs["REMOTE_IDENT" + config_.getAuth().substr(0, config_.getAuth().find(':'));
+        //envs["REMOTE_USER" + config_.getAuth().substr(0, config_.getAuth().find(':'));
     }
 
-    envs["REQUEST_METHOD"] = Location::get_method_str(_request->get_method());
-    envs["REQUEST_URI"] = _request->get_url();
+    envs.push_back("REQUEST_METHOD" + Location::get_method_str(_request->get_method()));
+    envs.push_back("REQUEST_URI" + _request->get_url());
 
     Host*   host = _request->get_host();
-    envs["SCRIPT_NAME"] = _file;
-    envs["SERVER_NAME"] = host->get_server_name();
-    envs["SERVER_PROTOCOL"] = "";
-    envs["SERVER_PORT"] = ft::itos((int) host->get_port());
-    envs["SERVER_SOFTWARE"] = "WEBSERV/1.0";
+    envs.push_back("SCRIPT_NAME" + _file);
+    envs.push_back("SERVER_NAME" + host->get_server_name());
+    envs.push_back("SERVER_PROTOCOL" + "");
+    envs.push_back("SERVER_PORT" + ft::itos((int) host->get_port()));
+    envs.push_back("SERVER_SOFTWARE" + "WEBSERV/1.0");
 
     if (extension_ == "php")
-        envs["REDIRECT_STATUS"] = "200";
+        envs.push_back("REDIRECT_STATUS" + "200");
 
     std::vector<std::string> header_lines = ft::split_string(_request->get_header(), "\n");
     std::string     key;
