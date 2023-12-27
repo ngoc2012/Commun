@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 22:20:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 22:23:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,6 @@ void    Cgi::execute()
 
     int pid = fork();
 
-    close(pipe_in[0]);
-    close(pipe_out[1]);
-    _request->set_fd_in(pipe_in[1]);
-    _request->get_response()->set_fd_out(pipe_out[0]);
     if (pid == -1)
     {
         std::cerr << "Error: fork" << std::endl;
@@ -80,6 +76,10 @@ void    Cgi::execute()
     }
     else
     {
+        close(pipe_in[0]);
+        close(pipe_out[1]);
+        _request->set_fd_in(pipe_in[1]);
+        _request->get_response()->set_fd_out(pipe_out[0]);
         waitpid(pid, NULL, 0);
     }
 
