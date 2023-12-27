@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 10:31:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 10:57:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -49,9 +49,9 @@ bool    Cgi::envs()
 {
     std::vector<std::string>  envs;
 
-    if (config_.getMethod() == "POST") {
+    if (_request->get_method() == POST) {
         envs.push_back("CONTENT_TYPE=" + _request->get_content_type());
-        envs.push_back("CONTENT_LENGTH"] = ft::itos(_request->get_content_length()));
+        envs.push_back("CONTENT_LENGTH" + ft::itos(_request->get_content_length()));
     }
     envs.push_back("GATEWAY_INTERFACE" + "CGI/1.1");
     envs.push_back("PATH_INFO" + _file);
