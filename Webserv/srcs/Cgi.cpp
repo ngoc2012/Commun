@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 22:10:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 22:12:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,16 @@ void    Cgi::execute()
     }
     else if (!pid)
     {
+        close(pipe_in[1]);
+        close(pipe_out[0]);
+        dup2(pipe_in[0], STDIN_FILENO);
+        dup2(pipe_out[1], STDOUT_FILENO);
+        close(pipe_in[0]);
+        close(pipe_out[1]);
         char*   argv[3];
         argv[0] = (char*) _pass.c_str();
         argv[1] = (char*) _file.c_str();
         argv[2] = 0;
-        dup2(pipe_in[0], STDIN_FILENO);
-        dup2(pipe_out[1], STDOUT_FILENO);
         execve(argv[0], argv, _envs);
     }
     else
