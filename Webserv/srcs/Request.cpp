@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 21:55:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 22:33:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,6 +275,7 @@ void	Request::process_fd_in()
                 _status_code = 500;
             break;
         case POST:
+            _cgi.execute();
             break;
         case NONE:
             break;
