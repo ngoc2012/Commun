@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 11:03:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 11:55:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -86,7 +86,7 @@ bool    Cgi::envs()
     std::string     key;
     size_t          i;
 
-    for (std::map<std::string>::iterator it = header_lines.begin();
+    for (std::vector<std::string>::iterator it = header_lines.begin();
             it != header_lines.end(); it++)
     {
         i = it->find(":");
