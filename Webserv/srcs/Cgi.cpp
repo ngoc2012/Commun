@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 08:24:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 09:36:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -73,14 +73,16 @@ void    Cgi::envs()
 
     std::vector<std::string> header_lines = ft::split_string(_request->get_header(), "\n");
     std::string     key;
+    size_t          i;
 
     for (std::map<std::string>::iterator it = header_lines.begin();
             it != header_lines.end(); it++)
     {
-        if (it->find(":") != NPOS)
+        i = it->find(":");
+        if (i != NPOS)
         {
-            key = "HTTP_" + std::to_upper(it->first);
-            std::replace(header.begin(), header.end(), '-', '_');
+            key = "HTTP_" + std::to_upper(it->substr(0, );
+            std::replace(key.begin(), key.end(), '-', '_');
             envs[header] = it->second;
         }
     }
