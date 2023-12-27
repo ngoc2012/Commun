@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 09:50:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 09:52:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -29,10 +29,11 @@ Cgi&	Cgi::operator=( Cgi const & src )
 	(void) src;
 	return (*this);
 }
-//Cgi::Cgi(Request* r) : _request(r)
-//{
-//    _request = r;
-//}
+Cgi::~Cgi()
+{
+    if (_envs)
+        free(_envs);
+}
 
 bool    Cgi::envs()
 {
