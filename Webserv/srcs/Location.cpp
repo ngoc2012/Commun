@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 07:07:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 07:37:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,12 +121,13 @@ static std::string	Location::get_method_str(e_method& e) {
         case GET:
             return ("GET");
         case POST:
-            return ("POST";
+            return ("POST");
         case PUT:
             return ("PUT");
         case NONE:
-            return ("UNKWOUN");
+            return ("UNKNOWN");
     }
+    return ("");
 }
 
 std::vector<e_method>		Location::get_methods(void) const {return (_methods);}
