@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 16:53:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 16:55:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include "Server.hpp"
 #include "Location.hpp"
 #include "Request.hpp"
+#include "Response.hpp"
 #include "webserv.hpp"
 
 #include "Cgi.hpp"
@@ -52,6 +53,15 @@ void    Cgi::execute()
     if (pid == -1)
     {
         std::cerr << "Error: fork" << std::endl;
+        return ;
+    }
+    else if (!pid)
+    {
+        dup2(
+    }
+    else
+    {
+        waitpid(pid, NULL, 0);
     }
 
     dup2(std_in, STDIN_FILENO);
