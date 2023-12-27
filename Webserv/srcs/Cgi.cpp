@@ -6,15 +6,15 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 11:00:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 11:03:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
-#include "Host.hpp"
 #include "Server.hpp"
-#include "Location.hpp"
 #include "Header.hpp"
 */
+#include "Host.hpp"
+#include "Location.hpp"
 #include "Request.hpp"
 
 #include "Cgi.hpp"
@@ -61,13 +61,13 @@ bool    Cgi::envs()
     //envs["QUERY_STRING" + config_.getQuery();
     //envs["REMOTE_ADDR" + config_.getClient().getAddr();
 
-    if (config_.getAuth() != "off") {
+    //if (config_.getAuth() != "off") {
         envs.push_back("AUTH_TYPE=Basic");
         envs.push_back("REMOTE_IDENT=");
         envs.push_back("REMOTE_USER=");
         //envs["REMOTE_IDENT" + config_.getAuth().substr(0, config_.getAuth().find(':'));
         //envs["REMOTE_USER" + config_.getAuth().substr(0, config_.getAuth().find(':'));
-    }
+    //}
 
     envs.push_back("REQUEST_METHOD=" + Location::get_method_str(_request->get_method()));
     envs.push_back("REQUEST_URI=" + _request->get_url());
@@ -77,10 +77,10 @@ bool    Cgi::envs()
     envs.push_back("SERVER_NAME=" + host->get_server_name());
     envs.push_back("SERVER_PROTOCOL=");
     envs.push_back("SERVER_PORT=" + ft::itos((int) host->get_port()));
-    envs.push_back("SERVER_SOFTWARE=" + "WEBSERV/1.0");
+    envs.push_back("SERVER_SOFTWARE=WEBSERV/1.0");
 
     if (extension_ == "php")
-        envs.push_back("REDIRECT_STATUS=" + "200");
+        envs.push_back("REDIRECT_STATUS=200");
 
     std::vector<std::string> header_lines = ft::split_string(_request->get_header(), "\n");
     std::string     key;
