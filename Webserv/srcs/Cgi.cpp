@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 15:57:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 16:03:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ Cgi::~Cgi()
 void    Cgi::execute()
 {
     envs();
-    int std_in;
-    int std_out;
+    int std_in = dup (STDIN_FILENO);
+    int std_out = dup (STDOUT_FILENO);
 
 
 }
