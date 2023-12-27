@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 07:37:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 07:38:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,9 +131,9 @@ static std::string	Location::get_method_str(e_method& e) {
 }
 
 std::vector<e_method>		Location::get_methods(void) const {return (_methods);}
-std::string			Location::get_alias(void) const {return (_alias);}
-std::string			Location::get_url(void) const {return (_url);}
-std::string			Location::get_cgi_pass(void) const {return (_cgi_pass);}
+std::string			        Location::get_alias(void) const {return (_alias);}
+std::string			        Location::get_url(void) const {return (_url);}
+std::string			        Location::get_cgi_pass(void) const {return (_cgi_pass);}
 
 void				Location::insert_methods(e_method e) {_methods.push_back(e);}
 void				Location::set_alias(std::string s) {_alias = s;}

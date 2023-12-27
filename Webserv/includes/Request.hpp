@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 15:09:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 07:39:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ class	Request
 
 		int             read(void);
 
+        Host*		    get_host(void) const;
 		e_method	    get_method(void) const;
 		std::string	    get_url(void) const;
 		Response*	    get_response(void);
