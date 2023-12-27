@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 07:33:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 07:40:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -62,8 +62,8 @@ void    Cgi::envs()
     envs["REQUEST_URI"] = _request->get_url();
 
     envs["SCRIPT_NAME"] = _file;
-    envs["SERVER_NAME"] = config_.getHost();
-    envs["SERVER_PROTOCOL"] = config_.getProtocol();
+    envs["SERVER_NAME"] = _request->get_host()->get_server_name();
+    envs["SERVER_PROTOCOL"] = "";
     envs["SERVER_PORT"] = ft::to_string(config_.getPort());
     envs["SERVER_SOFTWARE"] = "WEBSERV/1.0";
 
