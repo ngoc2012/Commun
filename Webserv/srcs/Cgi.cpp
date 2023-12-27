@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 19:00:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 06:58:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -40,7 +40,7 @@ void    Cgi::envs()
 
     if (config_.getMethod() == "POST") {
         envs["CONTENT_TYPE"] = _request->get_content_type();
-        envs["CONTENT_LENGTH"] = ft::itoa(_request->get_content_length());
+        envs["CONTENT_LENGTH"] = ft::itos(_request->get_content_length());
     }
     envs["GATEWAY_INTERFACE"] = "CGI/1.1";
     envs["PATH_INFO"] = _file;
@@ -52,8 +52,8 @@ void    Cgi::envs()
 
     if (config_.getAuth() != "off") {
         envs["AUTH_TYPE"] = "Basic";
-        envs["REMOTE_IDENT"] = config_.getAuth().substr(0, config_.getAuth().find(':'));
-        envs["REMOTE_USER"] = config_.getAuth().substr(0, config_.getAuth().find(':'));
+        envs["REMOTE_IDENT"] = "";
+        envs["REMOTE_USER"] = "";
         //envs["REMOTE_IDENT"] = config_.getAuth().substr(0, config_.getAuth().find(':'));
         //envs["REMOTE_USER"] = config_.getAuth().substr(0, config_.getAuth().find(':'));
     }
