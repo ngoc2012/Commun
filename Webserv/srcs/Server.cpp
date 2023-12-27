@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 16:15:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 07:35:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,14 @@ void	Server::accept_client_sk(void)
 	} while (new_sk != -1);
 }
 
-void			Server::insert_location(Location* l) {_locations.push_back(l);}
+void			        Server::insert_location(Location* l) {_locations.push_back(l);}
 
-const char*		Server::get_ip_address(void) const {return (_ip_address.c_str());}
-short unsigned int	Server::get_port(void) const {return (_port);}
-int			Server::get_socket(void) const {return (_socket);}
-Host*			Server::get_host(void) const {return (_host);}
-std::string		Server::get_root(void) const {return (_root);}
-std::string		Server::get_server_name(void) const {return (_server_name);}
+const char*		        Server::get_ip_address(void) const {return (_ip_address.c_str());}
+short unsigned int	    Server::get_port(void) const {return (_port);}
+int			            Server::get_socket(void) const {return (_socket);}
+Host*			        Server::get_host(void) const {return (_host);}
+std::string		        Server::get_root(void) const {return (_root);}
+std::string		        Server::get_server_name(void) const {return (_server_name);}
 std::vector<Location*>	Server::get_locations(void) const {return (_locations);}
 
 void			Server::set_socket(int i) {_socket = i;}
