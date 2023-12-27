@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 17:57:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 22:09:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void    Cgi::execute()
     get_envs();
     int std_in = dup(STDIN_FILENO);
     int std_out = dup(STDOUT_FILENO);
+    int pipe_in[2];
+    int pipe_out[2];
 
     int pid = fork();
 
