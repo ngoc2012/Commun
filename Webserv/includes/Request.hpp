@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 13:54:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 21:54:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ class	Request
         std::string	    get_full_file_name(void) const;
         Location*	    get_location(void) const;	
         int		        get_fd_in(void) const;
+
+        void		    set_fd_in(int);
 };
 
 #endif
