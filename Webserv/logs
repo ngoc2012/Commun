@@ -11,19 +11,4 @@ c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Header.cpp -o srcs/Header.o -I./
 c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Configuration.cpp -o srcs/Configuration.o -I./includes
 c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Location.cpp -o srcs/Location.o -I./includes
 c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Cgi.cpp -o srcs/Cgi.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/split_string.cpp -o srcs/split_string.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/is_digit.cpp -o srcs/is_digit.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/itos.cpp -o srcs/itos.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/match_wildcard.cpp -o srcs/match_wildcard.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/file_extension.cpp -o srcs/file_extension.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/atoi_base.cpp -o srcs/atoi_base.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/itoa_base.cpp -o srcs/itoa_base.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 srcs/main.o srcs/Host.o srcs/Server.o srcs/Request.o srcs/Response.o srcs/Header.o srcs/Configuration.o srcs/Location.o srcs/Cgi.o srcs/split_string.o srcs/is_digit.o srcs/itos.o srcs/match_wildcard.o srcs/file_extension.o srcs/atoi_base.o srcs/itoa_base.o -o server
 make[1]: Leaving directory '/home/ngoc/Commun/Webserv'
-make[1]: Entering directory '/home/ngoc/Commun/Webserv'
-rm -f srcs/main.o srcs/Host.o srcs/Server.o srcs/Request.o srcs/Response.o srcs/Header.o srcs/Configuration.o srcs/Location.o srcs/Cgi.o srcs/split_string.o srcs/is_digit.o srcs/itos.o srcs/match_wildcard.o srcs/file_extension.o srcs/atoi_base.o srcs/itoa_base.o
-make[1]: Leaving directory '/home/ngoc/Commun/Webserv'
-Destruction server: 127.0.2.1:80
-Close socket: 3
-Listening at 127.0.0.1:4141 (socket : 3)
-Waiting on select() ...
