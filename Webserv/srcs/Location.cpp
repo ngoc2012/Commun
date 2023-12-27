@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 07:38:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 10:55:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ std::string	Location::get_methods_str(void)
 	return (s);
 }
 
-static std::string	Location::get_method_str(e_method& e) {
+std::string	Location::get_method_str(e_method& e) {
     switch (e)
     {
         case GET:
