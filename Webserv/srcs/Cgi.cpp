@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 17:16:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 17:45:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void    Cgi::execute()
         argv[2] = 0;
         dup2(_request->get_fd_in(), STDIN_FILENO);
         dup2(_request->get_response->get_fd_in(), STDIN_FILENO);
-        execve(
+        execve(argv[0], argv, _envs);
         return (1);
     }
     else
