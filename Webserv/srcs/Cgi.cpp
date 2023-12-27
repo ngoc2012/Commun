@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 22:35:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 22:36:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ Cgi::~Cgi()
 void    Cgi::execute()
 {
     get_envs();
-    int std_in = dup(STDIN_FILENO);
-    int std_out = dup(STDOUT_FILENO);
     int pipe_in[2];
     int pipe_out[2];
 
@@ -82,9 +80,6 @@ void    Cgi::execute()
         _request->get_response()->set_fd_out(pipe_out[0]);
         waitpid(_pid, NULL, 0);
     }
-
-    dup2(std_in, STDIN_FILENO);
-    dup2(std_out, STDOUT_FILENO);
 }
 
 bool    Cgi::get_envs()
