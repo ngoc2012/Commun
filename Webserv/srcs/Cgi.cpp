@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 17:49:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 17:50:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Cgi::~Cgi()
 
 void    Cgi::execute()
 {
-    envs();
+    get_envs();
     int std_in = dup(STDIN_FILENO);
     int std_out = dup(STDOUT_FILENO);
 
@@ -75,7 +75,7 @@ void    Cgi::execute()
     dup2(std_out, STDOUT_FILENO);
 }
 
-bool    Cgi::envs()
+bool    Cgi::get_envs()
 {
     std::vector<std::string>  envs;
 
