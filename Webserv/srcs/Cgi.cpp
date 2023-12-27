@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 10:59:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/27 11:00:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -51,7 +51,7 @@ bool    Cgi::envs()
 
     if (_request->get_method() == POST) {
         envs.push_back("CONTENT_TYPE=" + _request->get_content_type());
-        envs.push_back("CONTENT_LENGTH=" + ft::itos(_request->get_content_length()));
+        envs.push_back("CONTENT_LENGTH=" + ft::itos((int) _request->get_content_length()));
     }
     envs.push_back("GATEWAY_INTERFACE=CGI/1.1");
     envs.push_back("PATH_INFO=" + _file);
@@ -62,7 +62,7 @@ bool    Cgi::envs()
     //envs["REMOTE_ADDR" + config_.getClient().getAddr();
 
     if (config_.getAuth() != "off") {
-        envs.push_back("AUTH_TYPE=" + "Basic");
+        envs.push_back("AUTH_TYPE=Basic");
         envs.push_back("REMOTE_IDENT=");
         envs.push_back("REMOTE_USER=");
         //envs["REMOTE_IDENT" + config_.getAuth().substr(0, config_.getAuth().find(':'));
