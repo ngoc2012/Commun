@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/28 11:01:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/28 11:13:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
     _body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
     _buffer = new char[_body_buffer + 1];
 	_read_queue = true;
+	_tmp_file = "";
 
 	_status_code = 200;
     _cgi.set_request(this);
@@ -57,6 +58,8 @@ Request::~Request()
     delete[] _buffer;
 	if (_socket > 0)
 		close(_socket);
+	if (_tmp_file != "")
+        unlink(_tmp_file);
 }
 
 int     Request::read(void)
@@ -275,8 +278,11 @@ void	Request::process_fd_in()
                 _status_code = 500;
             break;
         case POST:
-            std::string = std::itos(i);
-            _fd_in = open(_full_file_name.c_str(),
+            std::string tmp_file = "/tmp/" + std::itos(i);
+            struct stat buffer;
+            while (stat(tmp_file.c_str(), &buffer) != 0)
+                tmp_file = "/tmp/" + std::itos(++i);
+            _fd_in = open(tmp_file.c_str(),
                     O_CREAT | O_WRONLY | O_TRUNC, 0664);
             if (_fd_in == -1)
                 _status_code = 500;
