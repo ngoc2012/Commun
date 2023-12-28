@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/28 11:13:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/28 11:15:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ Request::~Request()
 	if (_socket > 0)
 		close(_socket);
 	if (_tmp_file != "")
-        unlink(_tmp_file);
+        std::remove(_tmp_file);
 }
 
 int     Request::read(void)
@@ -278,11 +278,12 @@ void	Request::process_fd_in()
                 _status_code = 500;
             break;
         case POST:
-            std::string tmp_file = "/tmp/" + std::itos(i);
+            _tmp_file = "/tmp/0";
+            int i = 0;
             struct stat buffer;
-            while (stat(tmp_file.c_str(), &buffer) != 0)
-                tmp_file = "/tmp/" + std::itos(++i);
-            _fd_in = open(tmp_file.c_str(),
+            while (stat(_tmp_file.c_str(), &buffer) != 0)
+                _tmp_file = "/tmp/" + std::itos(++i);
+            _fd_in = open(_tmp_file.c_str(),
                     O_CREAT | O_WRONLY | O_TRUNC, 0664);
             if (_fd_in == -1)
                 _status_code = 500;
