@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/28 11:22:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/28 11:25:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,14 @@ Cgi::~Cgi()
 
 void    Cgi::execute()
 {
+    Response*       response;
+
+    response = _request->get_response();
     if (!get_envs())
-        return (
+    {
+        response->set_status_code(500);
+        return ;
+    }
 
     std::cout << "Cgi execute" << std::endl;
 
