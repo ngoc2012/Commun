@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 23:21:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/28 11:01:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,7 +275,11 @@ void	Request::process_fd_in()
                 _status_code = 500;
             break;
         case POST:
-            _cgi.execute();
+            std::string = std::itos(i);
+            _fd_in = open(_full_file_name.c_str(),
+                    O_CREAT | O_WRONLY | O_TRUNC, 0664);
+            if (_fd_in == -1)
+                _status_code = 500;
             break;
         case NONE:
             break;
@@ -291,6 +295,7 @@ int     Request::end_read(void)
     if (_fd_in > 0)
         close(_fd_in);
     _read_queue = false;
+    _cgi.execute();
     _host->new_response_sk(_socket);
     _response.set_status_code(_status_code);
     _response.set_write_queue(true);
