@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 23:24:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/28 11:19:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ Cgi::~Cgi()
 void    Cgi::execute()
 {
     get_envs();
+
+    std::cout << "Cgi execute" << std::endl;
+
     int pipe_in[2];
     int pipe_out[2];
     
