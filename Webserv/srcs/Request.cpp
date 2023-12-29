@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/29 16:21:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/29 16:23:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,6 +267,7 @@ bool	Request::check_location()
 
 void	Request::process_fd_in()
 {
+    int i = 0;
     switch (_method)
     {
         case GET:
@@ -279,7 +280,6 @@ void	Request::process_fd_in()
             break;
         case POST:
             _tmp_file = "/tmp/0";
-            int i = 0;
             struct stat buffer;
             while (stat(_tmp_file.c_str(), &buffer) != 0)
                 _tmp_file = "/tmp/" + ft::itos(++i);
@@ -304,8 +304,10 @@ int     Request::end_read(void)
     _read_queue = false;
     _host->new_response_sk(_socket);
     _response.set_status_code(_status_code);
+    /*
     if (_status_code == 200)
         _cgi.execute();
+        */
     _response.set_write_queue(true);
     return (0);
 }
