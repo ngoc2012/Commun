@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/29 19:22:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/29 20:57:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 #include "webserv.hpp"
 
 #include "Cgi.hpp"
+
+#define BUFFER_SIZE 65792
 
 Cgi::Cgi()
 {
@@ -92,10 +94,11 @@ void    Cgi::execute()
     {
         close(pipe_in[0]);
         close(pipe_out[1]);
-        int fd_in = _request->get_fd_in();
+        int     fd_in = _request->get_fd_in();
         fseek(fd_in, 0, SEEK_SET);
-        char buffer[BUFFER_SIZE];
-        ssize_t bytesRead;
+        char    buffer[BUFFER_SIZE];
+
+        size_t  bytesRead;
         while ((bytesRead = read(fileDescriptor, buffer, sizeof(buffer))) > 0) {
             write(pipeFileDescriptors[1], buffer, bytesRead);
         }
