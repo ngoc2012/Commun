@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/29 17:51:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/29 22:40:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ int     Response::end_connection(void)
         close(_fd_out);
     _write_queue = false;
     _host->close_client_sk(_socket);
+    waitpid(_request->get_cgi()->get_pid(), NULL, 0);
     return (0);
 }
 
