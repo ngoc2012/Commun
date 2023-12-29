@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/29 21:04:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/29 22:45:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ void    Cgi::execute()
         while ((bytesRead = read(fd_in, buffer, BUFFER_SIZE)) > 0)
             write(pipe_in[1], buffer, bytesRead);
         _request->get_response()->set_fd_out(pipe_out[0]);
-        waitpid(_pid, NULL, 0);
     }
 }
 
