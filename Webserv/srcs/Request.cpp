@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/28 11:22:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/29 16:21:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ Request::~Request()
     delete[] _buffer;
 	if (_socket > 0)
 		close(_socket);
-	if (_tmp_file != "" && std::remove(_tmp_file))
+	if (_tmp_file != "" && std::remove(_tmp_file.c_str()))
         std::cerr << "Error: Can not delete file " << _tmp_file << std::endl;
 }
 
@@ -282,7 +282,7 @@ void	Request::process_fd_in()
             int i = 0;
             struct stat buffer;
             while (stat(_tmp_file.c_str(), &buffer) != 0)
-                _tmp_file = "/tmp/" + std::itos(++i);
+                _tmp_file = "/tmp/" + ft::itos(++i);
             _fd_in = open(_tmp_file.c_str(),
                     O_CREAT | O_WRONLY | O_TRUNC, 0664);
             if (_fd_in == -1)
