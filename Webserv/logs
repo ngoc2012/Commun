@@ -8856,3 +8856,2363 @@ Header Destruction
 end_connection read |/home/ngoc/Commun/Webserv/www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/nippo.json| 6 0/0
 close_client_sk 6
 Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Cgi Default constructor
+Waiting on select() ...
+Request header: 636
+GET /HOPPY_DAYS.html HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: cross-site
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS.html
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 57413
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/html
+
+
+Header Destruction
+get_fd_out _full_file_name 5 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS.html 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS.html5
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS.html| 4 57413/57413
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS.html| 4 57413/57413
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS.html| 4 57413/57413
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Cgi Default constructor
+Waiting on select() ...
+Request header: 601
+GET /HOPPY_DAYS_files/google-analytics_analytics.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/google-analytics_analytics.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 3695
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 5 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/google-analytics_analytics.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/google-analytics_analytics.js5
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/google-analytics_analytics.js| 4 3695/3695
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/google-analytics_analytics.js| 4 3695/3695
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/google-analytics_analytics.js| 4 3695/3695
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Cgi Default constructor
+Waiting on select() ...
+Request header: 601
+GET /HOPPY_DAYS_files/logo.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+  New incoming connection - 6
+Cgi Default constructor
+  New incoming connection - 7
+Cgi Default constructor
+  New incoming connection - 8
+Cgi Default constructor
+  New incoming connection - 9
+Cgi Default constructor
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 23743
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+get_fd_out _full_file_name 10 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg10
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg| 4 23743/23743
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg| 4 23743/23743
+Request header: 609
+GET /HOPPY_DAYS_files/bg-gold-back.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg
+end_read
+Request header: 610
+GET /HOPPY_DAYS_files/bg-gold-front.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg
+end_read
+Request header: 614
+GET /HOPPY_DAYS_files/img-bubble-yellow.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg
+end_read
+Request header: 608
+GET /HOPPY_DAYS_files/img-mv-copy.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg
+end_read
+Request header: 613
+GET /HOPPY_DAYS_files/img-bubble-white.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg
+end_read
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo.svg| 4 23743/23743
+close_client_sk 4
+Write set sk = 5
+Header Constructor
+get_file_size _content_length: 677
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+get_fd_out _full_file_name 4 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg 5
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg4
+Write set sk = 6
+Header Constructor
+get_file_size _content_length: 648
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+get_fd_out _full_file_name 10 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg 6
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg10
+Write set sk = 7
+Header Constructor
+get_file_size _content_length: 398
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+get_fd_out _full_file_name 11 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg 7
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg11
+Write set sk = 8
+Header Constructor
+get_file_size _content_length: 136343
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+get_fd_out _full_file_name 12 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg 8
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg12
+Write set sk = 9
+Header Constructor
+get_file_size _content_length: 395
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+get_fd_out _full_file_name 13 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg 9
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg13
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 14
+Cgi Default constructor
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg| 5 677/677
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg| 5 677/677
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg| 6 648/648
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg| 6 648/648
+Write set sk = 7
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg| 7 398/398
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg| 7 398/398
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 8 65792/136343
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 8 65792/136343
+Write set sk = 9
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg| 9 395/395
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg| 9 395/395
+Waiting on select() ...
+Write set sk = 5
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-back.svg| 5 677/677
+close_client_sk 5
+Write set sk = 6
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bg-gold-front.svg| 6 648/648
+close_client_sk 6
+Write set sk = 7
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-yellow.svg| 7 398/398
+close_client_sk 7
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 8 131584/136343
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 8 131584/136343
+Write set sk = 9
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-bubble-white.svg| 9 395/395
+close_client_sk 9
+Request header: 606
+GET /HOPPY_DAYS_files/bbeade08f58e153c.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Cgi Default constructor
+  New incoming connection - 5
+Cgi Default constructor
+  New incoming connection - 6
+Cgi Default constructor
+  New incoming connection - 7
+Cgi Default constructor
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 8 136343/136343
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 8 136343/136343
+Write set sk = 14
+Header Constructor
+get_file_size _content_length: 102662
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+
+
+Header Destruction
+get_fd_out _full_file_name 9 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css 14
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css9
+Waiting on select() ...
+Request header: 606
+GET /HOPPY_DAYS_files/ed403b1e74dfa728.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/ed403b1e74dfa728.css
+end_read
+Request header: 599
+GET /HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js
+end_read
+Request header: 601
+GET /HOPPY_DAYS_files/framework-7a7e500878b44665.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js
+end_read
+Request header: 596
+GET /HOPPY_DAYS_files/main-3f070227c52dc969.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js
+end_read
+Write set sk = 8
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/img-mv-copy.svg| 8 136343/136343
+close_client_sk 8
+Write set sk = 14
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css| 14 65792/102662
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css| 14 65792/102662
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 8
+Cgi Default constructor
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 26344
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+
+
+Header Destruction
+get_fd_out _full_file_name 10 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/ed403b1e74dfa728.css 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/ed403b1e74dfa728.css10
+Write set sk = 5
+Header Constructor
+get_file_size _content_length: 4057
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 11 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js 5
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js11
+Write set sk = 6
+Header Constructor
+get_file_size _content_length: 140978
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 12 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js 6
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js12
+Write set sk = 7
+Header Constructor
+get_file_size _content_length: 105968
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 13 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js 7
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js13
+Write set sk = 14
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css| 14 102662/102662
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css| 14 102662/102662
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/ed403b1e74dfa728.css| 4 26344/26344
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/ed403b1e74dfa728.css| 4 26344/26344
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js| 5 4057/4057
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js| 5 4057/4057
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 6 65792/140978
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 6 65792/140978
+Write set sk = 7
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js| 7 65792/105968
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js| 7 65792/105968
+Request header: 596
+GET /HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js
+end_read
+Write set sk = 14
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/bbeade08f58e153c.css| 14 102662/102662
+close_client_sk 14
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 9
+Cgi Default constructor
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/ed403b1e74dfa728.css| 4 26344/26344
+close_client_sk 4
+Write set sk = 5
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js| 5 4057/4057
+close_client_sk 5
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 6 131584/140978
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 6 131584/140978
+Write set sk = 7
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js| 7 105968/105968
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js| 7 105968/105968
+Write set sk = 8
+Header Constructor
+get_file_size _content_length: 163458
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 4 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js 8
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js4
+Request header: 600
+GET /HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+  New incoming connection - 10
+Cgi Default constructor
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 6 140978/140978
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 6 140978/140978
+Write set sk = 7
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/main-3f070227c52dc969.js| 7 105968/105968
+close_client_sk 7
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 8 65792/163458
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 8 65792/163458
+Write set sk = 9
+Header Constructor
+get_file_size _content_length: 957
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 7 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js 9
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js7
+Waiting on select() ...
+Request header: 600
+GET /HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js
+end_read
+Write set sk = 6
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 6 140978/140978
+close_client_sk 6
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 8 131584/163458
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 8 131584/163458
+Write set sk = 9
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js| 9 957/957
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js| 9 957/957
+Request header: 595
+GET /HOPPY_DAYS_files/933-f67d91cce9928815.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+Cgi Default constructor
+  New incoming connection - 11
+Cgi Default constructor
+Write set sk = 5
+Header Constructor
+get_file_size _content_length: 925
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 12 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js 5
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js12
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 8 163458/163458
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 8 163458/163458
+Write set sk = 9
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js| 9 957/957
+close_client_sk 9
+Write set sk = 10
+Header Constructor
+get_file_size _content_length: 89212
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 7 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js 10
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js7
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 9
+Cgi Default constructor
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js| 5 925/925
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js| 5 925/925
+Request header: 597
+GET /HOPPY_DAYS_files/index-8f5748feaa6e55c5.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js
+end_read
+Write set sk = 8
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 8 163458/163458
+close_client_sk 8
+Write set sk = 10
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js| 10 65792/89212
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js| 10 65792/89212
+Request header: 589
+GET /HOPPY_DAYS_files/_buildManifest.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_buildManifest.js
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Cgi Default constructor
+Write set sk = 5
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js| 5 925/925
+close_client_sk 5
+Write set sk = 6
+Header Constructor
+get_file_size _content_length: 13975
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 5 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js 6
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js5
+Request header: 587
+GET /HOPPY_DAYS_files/_ssgManifest.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_ssgManifest.js
+end_read
+Write set sk = 10
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js| 10 89212/89212
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js| 10 89212/89212
+Write set sk = 11
+Header Constructor
+get_file_size _content_length: 1648
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 8 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_buildManifest.js 11
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_buildManifest.js8
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 12
+Cgi Default constructor
+Request header: 595
+GET /HOPPY_DAYS_files/697-da59df9c0fa0d007.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js
+end_read
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js| 6 13975/13975
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js| 6 13975/13975
+Write set sk = 9
+Header Constructor
+get_file_size _content_length: 244
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 13 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_ssgManifest.js 9
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_ssgManifest.js13
+Write set sk = 10
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/933-f67d91cce9928815.js| 10 89212/89212
+close_client_sk 10
+Write set sk = 11
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_buildManifest.js| 11 1648/1648
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_buildManifest.js| 11 1648/1648
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 7
+Cgi Default constructor
+Write set sk = 4
+Header Constructor
+get_file_size _content_length: 20321
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 10 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js 4
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js10
+Write set sk = 6
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js| 6 13975/13975
+close_client_sk 6
+Write set sk = 9
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_ssgManifest.js| 9 244/244
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_ssgManifest.js| 9 244/244
+Write set sk = 11
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_buildManifest.js| 11 1648/1648
+close_client_sk 11
+Request header: 596
+GET /HOPPY_DAYS_files/[id]-dc9a03a28d427905.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js
+end_read
+Waiting on select() ...
+Write set sk = 4
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js| 4 20321/20321
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js| 4 20321/20321
+Request header: 596
+GET /HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js
+end_read
+Write set sk = 9
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/_ssgManifest.js| 9 244/244
+close_client_sk 9
+Write set sk = 12
+Header Constructor
+get_file_size _content_length: 1073
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 5 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js 12
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js5
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js| 4 20321/20321
+close_client_sk 4
+Write set sk = 7
+Header Constructor
+get_file_size _content_length: 967
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+get_fd_out _full_file_name 4 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js 7
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js4
+Write set sk = 12
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js| 12 1073/1073
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js| 12 1073/1073
+Waiting on select() ...
+Write set sk = 7
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js| 7 967/967
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js| 7 967/967
+Write set sk = 12
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js| 12 1073/1073
+close_client_sk 12
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+  New incoming connection - 6
+Cgi Default constructor
+  New incoming connection - 8
+Cgi Default constructor
+  New incoming connection - 9
+Cgi Default constructor
+  New incoming connection - 10
+Cgi Default constructor
+Waiting on select() ...
+Request header: 606
+GET /HOPPY_DAYS_files/IMG_6792.webp HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6792.webp
+end_read
+Request header: 606
+GET /HOPPY_DAYS_files/IMG_6789.webp HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6789.webp
+end_read
+Write set sk = 7
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js| 7 967/967
+close_client_sk 7
+Request header: 606
+GET /HOPPY_DAYS_files/IMG_6794.webp HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6794.webp
+end_read
+Request header: 606
+GET /HOPPY_DAYS_files/IMG_6790.webp HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6790.webp
+end_read
+Request header: 608
+GET /HOPPY_DAYS_files/logo-yellow.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-yellow.svg
+end_read
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+get_file_size _content_length: 232542
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/webp
+
+
+Header Destruction
+get_fd_out _full_file_name 4 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6792.webp 5
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6792.webp4
+Write set sk = 6
+Header Constructor
+get_file_size _content_length: 130734
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/webp
+
+
+Header Destruction
+get_fd_out _full_file_name 7 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6789.webp 6
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6789.webp7
+Write set sk = 8
+Header Constructor
+get_file_size _content_length: 205686
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/webp
+
+
+Header Destruction
+get_fd_out _full_file_name 11 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6794.webp 8
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6794.webp11
+Write set sk = 9
+Header Constructor
+get_file_size _content_length: 124818
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/webp
+
+
+Header Destruction
+get_fd_out _full_file_name 12 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6790.webp 9
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6790.webp12
+Write set sk = 10
+Header Constructor
+get_file_size _content_length: 24367
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+get_fd_out _full_file_name 13 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-yellow.svg 10
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-yellow.svg13
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 14
+Cgi Default constructor
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6792.webp| 5 65792/232542
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6792.webp| 5 65792/232542
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6789.webp| 6 65792/130734
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6789.webp| 6 65792/130734
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6794.webp| 8 65792/205686
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6794.webp| 8 65792/205686
+Write set sk = 9
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6790.webp| 9 65792/124818
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6790.webp| 9 65792/124818
+Write set sk = 10
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-yellow.svg| 10 24367/24367
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-yellow.svg| 10 24367/24367
+Waiting on select() ...
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6792.webp| 5 131584/232542
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6792.webp| 5 131584/232542
+Write set sk = 6
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6789.webp| 6 130734/130734
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6789.webp| 6 130734/130734
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6794.webp| 8 131584/205686
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6794.webp| 8 131584/205686
+Write set sk = 9
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6790.webp| 9 124818/124818
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6790.webp| 9 124818/124818
+Write set sk = 10
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-yellow.svg| 10 24367/24367
+close_client_sk 10
+Request header: 605
+GET /HOPPY_DAYS_files/logo-myc.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-myc.svg
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 10
+Cgi Default constructor
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6792.webp| 5 197376/232542
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6792.webp| 5 197376/232542
+Write set sk = 6
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6789.webp| 6 130734/130734
+close_client_sk 6
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6794.webp| 8 197376/205686
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6794.webp| 8 197376/205686
+Write set sk = 9
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6790.webp| 9 124818/124818
+close_client_sk 9
+Write set sk = 14
+Header Constructor
+get_file_size _content_length: 12152
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+get_fd_out _full_file_name 6 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-myc.svg 14
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-myc.svg6
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 7
+Cgi Default constructor
+  New incoming connection - 9
+Cgi Default constructor
+Write set sk = 5
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6792.webp| 5 232542/232542
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6792.webp| 5 232542/232542
+Write set sk = 8
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6794.webp| 8 205686/205686
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6794.webp| 8 205686/205686
+Request header: 606
+GET /HOPPY_DAYS_files/logo-wicd.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-wicd.svg
+end_read
+Write set sk = 14
+write_body read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-myc.svg| 14 12152/12152
+write_body send |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-myc.svg| 14 12152/12152
+Waiting on select() ...
+Write set sk = 5
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6792.webp| 5 232542/232542
+close_client_sk 5
+Request header: 671
+GET /_next/static/media/c6908836934a19a7-s.p.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/c6908836934a19a7-s.p.woff2
+end_read
+end_read
+Write set sk = 8
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/IMG_6794.webp| 8 205686/205686
+close_client_sk 8
+Request header: 669
+GET /_next/static/media/42a1e07c3bc0f8ae-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/42a1e07c3bc0f8ae-s.woff2
+end_read
+end_read
+Write set sk = 10
+Header Constructor
+get_file_size _content_length: 2451
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+get_fd_out _full_file_name 4 /home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-wicd.svg 10
+/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-wicd.svg4
+Write set sk = 14
+end_connection read |/home/ngoc/Commun/Webserv/www/HOPPY_DAYS_files/logo-myc.svg| 14 12152/12152
+close_client_sk 14
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+Waiting on select() ...
+Request header: 671
+GET /_next/static/media/c6908836934a19a7-s.p.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/c6908836934a19a7-s.p.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/c6908836934a19a7-s.p.woff2| 5 0/0
+close_client_sk 5
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+Waiting on select() ...
+Request header: 617
+GET /common/bg-noise.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/ed403b1e74dfa728.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/bg-noise.png
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: image/png
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/bg-noise.png| 5 0/0
+close_client_sk 5
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+Waiting on select() ...
+Request header: 671
+GET /_next/static/media/39df11406cb636d1-s.p.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/39df11406cb636d1-s.p.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/39df11406cb636d1-s.p.woff2| 5 0/0
+close_client_sk 5
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+Waiting on select() ...
+Request header: 669
+GET /_next/static/media/11cb4d4dfe3d81df-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/11cb4d4dfe3d81df-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/11cb4d4dfe3d81df-s.woff2| 5 0/0
+close_client_sk 5
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+Waiting on select() ...
+Request header: 669
+GET /_next/static/media/80a4dbe2270ad3bf-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/80a4dbe2270ad3bf-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/80a4dbe2270ad3bf-s.woff2| 5 0/0
+close_client_sk 5
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+Waiting on select() ...
+Request header: 669
+GET /_next/static/media/f467ff9551a57091-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/f467ff9551a57091-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/f467ff9551a57091-s.woff2| 5 0/0
+close_client_sk 5
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+Waiting on select() ...
+Request header: 669
+GET /_next/static/media/f99493d47a664c11-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/f99493d47a664c11-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/f99493d47a664c11-s.woff2| 5 0/0
+close_client_sk 5
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+  New incoming connection - 6
+Cgi Default constructor
+  New incoming connection - 8
+Cgi Default constructor
+Waiting on select() ...
+Request header: 669
+GET /_next/static/media/226388c2d65eece4-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/226388c2d65eece4-s.woff2
+end_read
+end_read
+Request header: 669
+GET /_next/static/media/18c790c06eb3cbde-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/18c790c06eb3cbde-s.woff2
+end_read
+end_read
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/c6908836934a19a7-s.p.woff2| 7 0/0
+close_client_sk 7
+Request header: 669
+GET /_next/static/media/d07316a1121d2afc-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/d07316a1121d2afc-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 7
+Cgi Default constructor
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/226388c2d65eece4-s.woff2| 5 0/0
+close_client_sk 5
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/18c790c06eb3cbde-s.woff2| 6 0/0
+close_client_sk 6
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/d07316a1121d2afc-s.woff2| 8 0/0
+close_client_sk 8
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+  New incoming connection - 6
+Cgi Default constructor
+  New incoming connection - 8
+Cgi Default constructor
+Request header: 669
+GET /_next/static/media/3f40c7c69ef373bc-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/3f40c7c69ef373bc-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Request header: 669
+GET /_next/static/media/209ac0af81f4b739-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/209ac0af81f4b739-s.woff2
+end_read
+end_read
+Request header: 669
+GET /_next/static/media/e11994e2ab67d98d-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/e11994e2ab67d98d-s.woff2
+end_read
+end_read
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/3f40c7c69ef373bc-s.woff2| 7 0/0
+close_client_sk 7
+Request header: 669
+GET /_next/static/media/69576a4f0f48545d-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/69576a4f0f48545d-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 7
+Cgi Default constructor
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/209ac0af81f4b739-s.woff2| 5 0/0
+close_client_sk 5
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/e11994e2ab67d98d-s.woff2| 6 0/0
+close_client_sk 6
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/69576a4f0f48545d-s.woff2| 8 0/0
+close_client_sk 8
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+  New incoming connection - 6
+Cgi Default constructor
+  New incoming connection - 8
+Cgi Default constructor
+Request header: 669
+GET /_next/static/media/2ab334bbbb8e75e2-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/2ab334bbbb8e75e2-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Request header: 669
+GET /_next/static/media/f6749225630fe93f-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/f6749225630fe93f-s.woff2
+end_read
+end_read
+Request header: 669
+GET /_next/static/media/670c25c148ad8881-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/670c25c148ad8881-s.woff2
+end_read
+end_read
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/2ab334bbbb8e75e2-s.woff2| 7 0/0
+close_client_sk 7
+Request header: 669
+GET /_next/static/media/5c04c665375ee862-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/5c04c665375ee862-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 7
+Cgi Default constructor
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/f6749225630fe93f-s.woff2| 5 0/0
+close_client_sk 5
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/670c25c148ad8881-s.woff2| 6 0/0
+close_client_sk 6
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/5c04c665375ee862-s.woff2| 8 0/0
+close_client_sk 8
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+  New incoming connection - 6
+Cgi Default constructor
+Request header: 669
+GET /_next/static/media/bfa8a857259ba564-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/bfa8a857259ba564-s.woff2
+end_read
+end_read
+Waiting on select() ...
+Request header: 669
+GET /_next/static/media/48763d6652cebf74-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/48763d6652cebf74-s.woff2
+end_read
+end_read
+Request header: 669
+GET /_next/static/media/45616baa4df057f4-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/static/media/45616baa4df057f4-s.woff2
+end_read
+end_read
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/bfa8a857259ba564-s.woff2| 7 0/0
+close_client_sk 7
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 7
+Cgi Default constructor
+  New incoming connection - 8
+Cgi Default constructor
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/48763d6652cebf74-s.woff2| 5 0/0
+close_client_sk 5
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: font/woff2
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/static/media/45616baa4df057f4-s.woff2| 6 0/0
+close_client_sk 6
+Request header: 591
+GET /common/logo.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/logo.svg
+end_read
+end_read
+Request header: 599
+GET /common/bg-gold-back.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/bg-gold-back.svg
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/logo.svg| 7 0/0
+close_client_sk 7
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/bg-gold-back.svg| 8 0/0
+close_client_sk 8
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+  New incoming connection - 6
+Cgi Default constructor
+  New incoming connection - 7
+Cgi Default constructor
+  New incoming connection - 8
+Cgi Default constructor
+Waiting on select() ...
+Request header: 600
+GET /common/bg-gold-front.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/bg-gold-front.svg
+end_read
+end_read
+Request header: 604
+GET /common/img-bubble-yellow.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/img-bubble-yellow.svg
+end_read
+end_read
+Request header: 598
+GET /common/img-mv-copy.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/img-mv-copy.svg
+end_read
+end_read
+Request header: 603
+GET /common/img-bubble-white.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/common/img-bubble-white.svg
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/bg-gold-front.svg| 5 0/0
+close_client_sk 5
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/img-bubble-yellow.svg| 6 0/0
+close_client_sk 6
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/img-mv-copy.svg| 7 0/0
+close_client_sk 7
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: image/svg+xml
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/common/img-bubble-white.svg| 8 0/0
+close_client_sk 8
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+Cgi Default constructor
+  New incoming connection - 7
+Cgi Default constructor
+Waiting on select() ...
+Request header: 631
+GET /_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+purpose: prefetch
+x-nextjs-data: 1
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json
+end_read
+end_read
+Request header: 635
+GET /_next/data/U-U_RdZ6xQ62Y_3SiIKQK/recommend.json HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+purpose: prefetch
+x-nextjs-data: 1
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/recommend.json
+end_read
+end_read
+Request header: 631
+GET /_next/data/U-U_RdZ6xQ62Y_3SiIKQK/nippo.json HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+purpose: prefetch
+x-nextjs-data: 1
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location /home/ngoc/Commun/Webserv/www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/nippo.json
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: application/json
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json| 5 0/0
+close_client_sk 5
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: application/json
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/recommend.json| 6 0/0
+close_client_sk 6
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: application/json
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/nippo.json| 7 0/0
+close_client_sk 7
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 5
+Cgi Default constructor
+Waiting on select() ...
+Request header: 590
+GET /sw.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Service-Worker: script
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Sec-Fetch-Dest: serviceworker
+Sec-Fetch-Mode: same-origin
+Sec-Fetch-Site: same-origin
+Pragma: no-cache
+Cache-Control: no-cache
+
+
+check_location /home/ngoc/Commun/Webserv/www/sw.js
+end_read
+end_read
+Waiting on select() ...
+Write set sk = 5
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Allow: 
+Content-Language: en
+Content-Type: application/javascript
+
+
+Header Destruction
+end_connection read |/home/ngoc/Commun/Webserv/www/sw.js| 5 0/0
+close_client_sk 5
+Waiting on select() ...
