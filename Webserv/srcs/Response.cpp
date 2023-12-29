@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/29 22:40:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/29 22:42:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,12 +125,13 @@ int     Response::write_body()
 
 int     Response::end_connection(void)
 {
-    std::cout << "end_connection read |" << _full_file_name << "| " << _socket << " " << _body_size << "/" << _content_length << std::endl;
+    if (_request->get_method() == POST)
+        waitpid(_request->get_cgi()->get_pid(), NULL, 0);
+    //std::cout << "end_connection read |" << _full_file_name << "| " << _socket << " " << _body_size << "/" << _content_length << std::endl;
     if (_fd_out > 0)
         close(_fd_out);
     _write_queue = false;
     _host->close_client_sk(_socket);
-    waitpid(_request->get_cgi()->get_pid(), NULL, 0);
     return (0);
 }
 
