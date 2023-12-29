@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/29 20:59:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/29 21:01:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ void    Cgi::execute()
     else if (!_pid)
     {
         close(pipe_in[1]);
-        close(pipe_out[0]);
         dup2(pipe_in[0], STDIN_FILENO);
+        close(pipe_out[0]);
         dup2(pipe_out[1], STDOUT_FILENO);
         close(pipe_in[0]);
         close(pipe_out[1]);
@@ -101,7 +101,6 @@ void    Cgi::execute()
         size_t  bytesRead;
         while ((bytesRead = read(fd_in, buffer, BUFFER_SIZE)) > 0)
             write(pipe_in[1], buffer, bytesRead);
-        write(pipe_in[1], 
         _request->set_fd_in(pipe_in[1]);
         _request->get_response()->set_fd_out(pipe_out[0]);
         waitpid(_pid, NULL, 0);
