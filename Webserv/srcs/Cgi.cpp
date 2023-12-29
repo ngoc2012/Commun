@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/28 11:25:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/29 18:47:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void    Cgi::execute()
     {
         close(pipe_in[0]);
         close(pipe_out[1]);
+        int fd_in = _request->get_fd_in();
+        fseek(fd_in, 0, SEEK_SET);
         _request->set_fd_in(pipe_in[1]);
         _request->get_response()->set_fd_out(pipe_out[0]);
         waitpid(_pid, NULL, 0);
