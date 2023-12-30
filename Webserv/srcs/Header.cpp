@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 13:03:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 13:05:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ std::string	Header::file_last_modified_time(std::string file_name)
 	return (std::string(buffer));
 }
 
-bool	    Header::parse_content_type(std::string &s, std::string& ct)
+bool	    Header::parse_content_type(Host* host, std::string &s, std::string& ct)
 {
 	size_t	pos = s.find("Content-Type:");
 	if (pos == NPOS)
@@ -106,6 +106,7 @@ bool	    Header::parse_content_type(std::string &s, std::string& ct)
         return (false);
 	}
     std::string type = _header.substr(pos + 14, 50);
+    std::map<std::string, std::string>*	mimes = host->get_mimes();
     for (int i = 0; i < 18; i++)
         if (type.find(types[i]) != NPOS)
         {
