@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/29 17:18:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 12:19:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,7 @@ int     Request::read(void)
     if (!_read_queue)
         return (0);
     if (_header == "")
-    {
         read_header();
-        if (_status_code != 200)
-            return (end_read());
-        process_fd_in();
-        if (_status_code != 200)
-            return (end_read());
-    }
     else
         read_body();
     return (0);
@@ -115,6 +108,8 @@ void	Request::read_header()
         std::cerr << "Error: request header invalid.\n" << std::endl;
         _status_code = 400;	// Bad Request
     }
+    else
+        process_fd_in();
     if (_status_code != 200 || !_body_size)
         end_read();
 }
