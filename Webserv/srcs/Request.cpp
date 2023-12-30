@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 13:39:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 13:41:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int     Request::read_header()
     //std::cout << "read_header _body_size: " << _body_size << std::endl;
     if (!receive_header())
         return (end_read());
-    if (!parser_header())
+    if (!parse_header())
     {
         _status_code = 400;	// Bad Request
         return (end_read());
@@ -122,9 +122,9 @@ bool	Request::receive_header(void)
     return (true);
 }
 
-bool	Request::parser_header(void)
+bool	Request::parse_header(void)
 {
-    if (!parse_method_url(_header, _url, _method))
+    if (!Header::parse_method_url(_header, _url, _method))
         return (false);
     check_location();
     if (_method == GET)

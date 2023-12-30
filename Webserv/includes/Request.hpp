@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 12:58:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 13:40:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ class	Request
 
 		int 		    read_header(void);
 		bool		    receive_header(void);
-		bool		    parser_header(void);
-		bool		    read_method_url(void);
+		bool		    parse_header(void);
 		bool		    read_content_length(void);
         bool	        check_location(void);
 
