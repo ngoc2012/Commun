@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 12:41:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 12:42:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,9 +224,8 @@ void	Request::read_body()
 
 	//std::cout << "chunk_size: " << chunk_size << std::endl;
     ret = recv(_socket, buffer, _body_buffer, 0);
-    _body_size += ret;
-	std::cout << "read_body: " << ret << std::endl;
-	std::cout << "_body_size: " << _body_size << std::endl;
+	//std::cout << "read_body: " << ret << std::endl;
+	//std::cout << "_body_size: " << _body_size << std::endl;
     if (ret < 0)
     {
         std::cerr << "Error: recv error" << std::endl;
@@ -234,6 +233,7 @@ void	Request::read_body()
         end_read();
         return ;
     }
+    _body_size += ret;
     if (ret > 0 && _fd_in > 0)
         write(_fd_in, buffer, ret);
     //if (ret < (int) _body_buffer)
