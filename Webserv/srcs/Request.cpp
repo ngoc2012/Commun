@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 13:41:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 13:43:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,13 @@ bool	Request::parse_header(void)
         return (true);
     if (!Header::parse_content_type(_host, _header, _content_type))
         return (false);
-    if (!read_content_length())
+    if (!Header::parse_content_length())
         return (false);
+    if (_content_length > _body_max)
+	{
+        std::cerr << "Error: Content length bigger than " << _body_max << std::endl;
+        return (false);
+	}
     return (true);
 }
 
@@ -149,11 +154,6 @@ bool	Request::read_content_length()
 	}
     pos += 16;
     _content_length = std::atoi(_header.substr(pos, pos1).c_str());
-    if (_content_length > _body_max)
-	{
-        std::cerr << "Error: Content length bigger than " << _body_max << std::endl;
-        return (false);
-	}
     return (true);
 }
 
