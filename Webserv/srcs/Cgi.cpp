@@ -6,16 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 11:59:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 12:04:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstring>
 #include <unistd.h>
 
-/*
-#include "Header.hpp"
-*/
 #include "Host.hpp"
 #include "Server.hpp"
 #include "Location.hpp"
