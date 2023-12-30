@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 13:00:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 13:03:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,9 @@ bool	    Header::parse_content_type(std::string &s, std::string& ct)
         std::cerr << "Error: Content type not found." << std::endl;
         return (false);
 	}
+    std::string type = _header.substr(pos + 14, 50);
     for (int i = 0; i < 18; i++)
-        if (_header.substr(pos + 14, 50).find(types[i]) != NPOS)
+        if (type.find(types[i]) != NPOS)
         {
             ct = types[i];
             return (true);
