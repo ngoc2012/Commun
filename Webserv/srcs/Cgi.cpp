@@ -6,15 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/29 22:45:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 11:54:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cstring>
 #include <unistd.h>
-
-# include <sys/types.h>
-# include <sys/wait.h>
 
 /*
 #include "Header.hpp"
