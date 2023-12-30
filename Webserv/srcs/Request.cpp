@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 13:11:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 13:17:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,7 +268,7 @@ void	Request::process_fd_in()
 
 int     Request::end_read(void)
 {
-    std::cout << "end_read" << std::endl;
+    std::cout << "end_read " << _full_file_name << std::endl;
 
     if (_fd_in > 0)
         close(_fd_in);
