@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 12:34:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 12:44:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ class	Request
         bool	        check_location(void);
 
 		void		    process_fd_in(void);
-        void	        read_body();
+        int 	        read_body();
 
 		int             end_read(void);
         void            envs(void);
