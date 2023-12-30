@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 12:57:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 13:01:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,8 @@ bool	Request::parser_header(void)
     check_location();
     //if (!check_location())
     //    return (false);
-    if (_method != GET && !read_content_type())
+    if (_method != GET 
+        && !Header::parse_content_type(_header, _content_type))
         return (false);
     if (_method != GET && !read_content_length())
         return (false);

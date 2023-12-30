@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 12:59:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 13:00:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ std::string	Header::file_last_modified_time(std::string file_name)
 	return (std::string(buffer));
 }
 
-bool	Header::read_content_type(std::string &s, std::string& ct)
+bool	    Header::parse_content_type(std::string &s, std::string& ct)
 {
-	size_t	pos = _header.find("Content-Type:");
+	size_t	pos = s.find("Content-Type:");
 	if (pos == NPOS)
 	{
         std::cerr << "Error: Content type not found." << std::endl;
