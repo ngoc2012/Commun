@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 13:45:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 13:48:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,16 +149,16 @@ bool	    Header::parse_content_type(Host* host, std::string &s, std::string& ct)
 bool	Header::parse_content_length(std::string& s, size_t& cl)
 {
 	size_t	pos1;
-	size_t	pos = _header.find("Content-Length: ");
+	size_t	pos = s.find("Content-Length: ");
 	if (pos != NPOS)
-        pos1 = _header.substr(pos).find("\n");
+        pos1 = s.substr(pos).find("\n");
 	if (pos == NPOS || pos1 == NPOS)
 	{
         std::cerr << "Error: Content length not found." << std::endl;
         return (false);
 	}
     pos += 16;
-    cl = std::atoi(_header.substr(pos, pos1).c_str());
+    cl = std::atoi(s.substr(pos, pos1).c_str());
     return (true);
 }
 
