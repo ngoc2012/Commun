@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 13:43:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 13:47:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,22 +138,6 @@ bool	Request::parse_header(void)
         std::cerr << "Error: Content length bigger than " << _body_max << std::endl;
         return (false);
 	}
-    return (true);
-}
-
-bool	Request::read_content_length()
-{
-	size_t	pos1;
-	size_t	pos = _header.find("Content-Length: ");
-	if (pos != NPOS)
-        pos1 = _header.substr(pos).find("\n");
-	if (pos == NPOS || pos1 == NPOS)
-	{
-        std::cerr << "Error: Content length not found." << std::endl;
-        return (false);
-	}
-    pos += 16;
-    _content_length = std::atoi(_header.substr(pos, pos1).c_str());
     return (true);
 }
 
