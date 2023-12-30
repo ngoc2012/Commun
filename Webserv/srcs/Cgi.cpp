@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 11:54:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 11:59:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,10 @@ void    Cgi::execute()
         close(pipe_in[0]);
         close(pipe_out[1]);
         int     fd_in = _request->get_fd_in();
-        fseek(fd_in, 0, SEEK_SET);
+        if (lseek(fd_in, 0, SEEK_SET) == -1) {
+            std::cerr << "Error: using lseek" << std::endl;
+            return ;
+        }
         char    buffer[BUFFER_SIZE];
         size_t  bytesRead;
         while ((bytesRead = read(fd_in, buffer, BUFFER_SIZE)) > 0)
