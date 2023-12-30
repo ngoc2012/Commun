@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 12:45:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 12:47:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,29 +217,27 @@ bool	Request::read_content_length()
     return (true);
 }
 
-void	Request::read_body()
+int     Request::read_body()
 {
     char	buffer[_body_buffer];
     int     ret;
 
-	//std::cout << "chunk_size: " << chunk_size << std::endl;
     ret = recv(_socket, buffer, _body_buffer, 0);
-	//std::cout << "read_body: " << ret << std::endl;
-	//std::cout << "_body_size: " << _body_size << std::endl;
     if (ret < 0)
     {
         std::cerr << "Error: recv error" << std::endl;
         _status_code = 400;
-        end_read();
-        return ;
+        return (end_read());
     }
     _body_size += ret;
+	//std::cout << "read_body: " << ret << std::endl;
+	//std::cout << "_body_size: " << _body_size << std::endl;
     if (ret > 0 && _fd_in > 0
         && write(_fd_in, buffer, ret) == -1)
         return (end_read());
-    //if (ret < (int) _body_buffer)
     if (ret == 0 || _body_size >= _content_length)
-        end_read();
+        return (end_read());
+    return (0);
 }
 
 bool	Request::check_location()
