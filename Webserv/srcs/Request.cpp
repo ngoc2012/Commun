@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 12:47:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 12:49:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,11 @@ bool	Request::read_content_length()
 	}
     pos += 16;
     _content_length = std::atoi(_header.substr(pos, pos1).c_str());
+    if (_content_length > _body_max)
+	{
+        std::cerr << "Error: Content length bigger than " << _body_max << std::endl;
+        return (false);
+	}
     return (true);
 }
 
