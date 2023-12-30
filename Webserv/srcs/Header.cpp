@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 12:57:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 12:59:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,28 +97,8 @@ std::string	Header::file_last_modified_time(std::string file_name)
 	return (std::string(buffer));
 }
 
-bool	Request::read_content_type()
+bool	Header::read_content_type(std::string &s, std::string& ct)
 {
-	const char*	types[] = {
-		"text/plain",
-		"text/html",
-		"text/css",
-		"text/javascript",
-		"text/xml",
-		"application/json",
-		"application/xml",
-		"application/pdf",
-		"application/zip",
-		"application/octet-stream",
-		"image/jpeg",
-		"image/png",
-		"image/gif",
-		"image/svg+xml",
-		"audio/mpeg",
-		"video/mp4",
-		"multipart/form-data",
-		"application/x-www-form-urlencoded"
-	};
 	size_t	pos = _header.find("Content-Type:");
 	if (pos == NPOS)
 	{
@@ -128,7 +108,7 @@ bool	Request::read_content_type()
     for (int i = 0; i < 18; i++)
         if (_header.substr(pos + 14, 50).find(types[i]) != NPOS)
         {
-            _content_type = types[i];
+            ct = types[i];
             return (true);
         }
     std::cerr << "Error: Content type not found." << std::endl;

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 12:56:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 12:59:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ class	Header
 		virtual ~Header();
 
 		std::string			                generate(void);
-        static bool	                        read_content_type();
+        static bool	                        parse_content_type();
 
         void				                set_status_code(int);
 		void				                set_allow(std::string);
