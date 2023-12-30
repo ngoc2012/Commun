@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 11:45:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 11:47:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,21 +88,13 @@ void     Response::get_file_size()
 
 void     Response::process_fd_out()
 {
-    switch (_request->get_method())
+    _fd_out = open(_full_file_name.c_str(), O_RDONLY);
+    //std::cout << "get_fd_out _full_file_name " << _fd_out << " " << _full_file_name << " " << _socket << std::endl;
+    std::cout << _full_file_name << _fd_out << std::endl;
+    if (_fd_out == -1)
     {
-        case GET:
-            _fd_out = open(_full_file_name.c_str(), O_RDONLY);
-            //std::cout << "get_fd_out _full_file_name " << _fd_out << " " << _full_file_name << " " << _socket << std::endl;
-            std::cout << _full_file_name << _fd_out << std::endl;
-            if (_fd_out == -1)
-            {
-                _status_code = 500;
-                end_connection();
-            }
-            break;
-        default:
-            end_connection();
-            break;
+        _status_code = 500;
+        end_connection();
     }
 }
 
