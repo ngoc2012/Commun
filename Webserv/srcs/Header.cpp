@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 16:56:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 12:57:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ Header::Header(Response* r, std::string ext) :
 	init();
 	std::cout << "Header Constructor" << std::endl;
 }
+Header::~Header()
+{
+	std::cout << "Header Destruction" << std::endl;
+}
+
 
 std::string	Header::generate(void)
 {
@@ -70,11 +75,6 @@ void	Header::init(void)
 }
 
 
-Header::~Header()
-{
-	std::cout << "Header Destruction" << std::endl;
-}
-
 std::string	Header::get_current_time(void)
 {
 	std::time_t currentTime = std::time(0);
@@ -95,6 +95,44 @@ std::string	Header::file_last_modified_time(std::string file_name)
 	char		buffer[80];
 	std::strftime(buffer, 80, "%a, %d %b %Y %H:%M:%S GMT", time_info);
 	return (std::string(buffer));
+}
+
+bool	Request::read_content_type()
+{
+	const char*	types[] = {
+		"text/plain",
+		"text/html",
+		"text/css",
+		"text/javascript",
+		"text/xml",
+		"application/json",
+		"application/xml",
+		"application/pdf",
+		"application/zip",
+		"application/octet-stream",
+		"image/jpeg",
+		"image/png",
+		"image/gif",
+		"image/svg+xml",
+		"audio/mpeg",
+		"video/mp4",
+		"multipart/form-data",
+		"application/x-www-form-urlencoded"
+	};
+	size_t	pos = _header.find("Content-Type:");
+	if (pos == NPOS)
+	{
+        std::cerr << "Error: Content type not found." << std::endl;
+        return (false);
+	}
+    for (int i = 0; i < 18; i++)
+        if (_header.substr(pos + 14, 50).find(types[i]) != NPOS)
+        {
+            _content_type = types[i];
+            return (true);
+        }
+    std::cerr << "Error: Content type not found." << std::endl;
+    return (false);
 }
 
 void		Header::set_status_code(int s) {_status_code = s;}

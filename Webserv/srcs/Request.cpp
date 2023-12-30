@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 12:51:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 12:57:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,44 +161,6 @@ bool	Request::read_method_url()
         return (false);
     }
     return (true);
-}
-
-bool	Request::read_content_type()
-{
-	const char*	types[] = {
-		"text/plain",
-		"text/html",
-		"text/css",
-		"text/javascript",
-		"text/xml",
-		"application/json",
-		"application/xml",
-		"application/pdf",
-		"application/zip",
-		"application/octet-stream",
-		"image/jpeg",
-		"image/png",
-		"image/gif",
-		"image/svg+xml",
-		"audio/mpeg",
-		"video/mp4",
-		"multipart/form-data",
-		"application/x-www-form-urlencoded"
-	};
-	size_t	pos = _header.find("Content-Type:");
-	if (pos == NPOS)
-	{
-        std::cerr << "Error: Content type not found." << std::endl;
-        return (false);
-	}
-    for (int i = 0; i < 18; i++)
-        if (_header.substr(pos + 14, 50).find(types[i]) != NPOS)
-        {
-            _content_type = types[i];
-            return (true);
-        }
-    std::cerr << "Error: Content type not found." << std::endl;
-    return (false);
 }
 
 bool	Request::read_content_length()
