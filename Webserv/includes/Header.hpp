@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 13:11:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 13:39:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ class	Header
 		Header(Response*, std::string);
 		virtual ~Header();
 
-		std::string			                generate(void);
-        static bool	                        parse_content_type(Host*, std::string&, std::string&);
+		std::string			generate(void);
+        static bool	        parse_content_type(Host*, std::string&, std::string&);
+        static bool	        parse_method_url(std::string&, std::string&, e_method&)
 
-        void				                set_status_code(int);
-		void				                set_allow(std::string);
+        void				set_status_code(int);
+		void				set_allow(std::string);
 };
 
 #endif
