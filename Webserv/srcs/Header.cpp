@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 13:05:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 13:12:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,18 +99,19 @@ std::string	Header::file_last_modified_time(std::string file_name)
 
 bool	    Header::parse_content_type(Host* host, std::string &s, std::string& ct)
 {
-	size_t	pos = s.find("Content-Type:");
-	if (pos == NPOS)
-	{
+    size_t	pos = s.find("Content-Type:");
+    if (pos == NPOS)
+    {
         std::cerr << "Error: Content type not found." << std::endl;
         return (false);
-	}
-    std::string type = _header.substr(pos + 14, 50);
+    }
+    std::string type = s.substr(pos + 14, 50);
     std::map<std::string, std::string>*	mimes = host->get_mimes();
-    for (int i = 0; i < 18; i++)
-        if (type.find(types[i]) != NPOS)
+    for (std::map<std::string, std::string>::iterator it = mimes->begin();
+            it != mimes->end(); ++it)
+        if (type.find(it->second) != NPOS)
         {
-            ct = types[i];
+            ct = *(it->second);
             return (true);
         }
     std::cerr << "Error: Content type not found." << std::endl;
