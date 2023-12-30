@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 13:12:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 13:13:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ bool	    Header::parse_content_type(Host* host, std::string &s, std::string& ct)
             it != mimes->end(); ++it)
         if (type.find(it->second) != NPOS)
         {
-            ct = *(it->second);
+            ct = it->second;
             return (true);
         }
     std::cerr << "Error: Content type not found." << std::endl;
