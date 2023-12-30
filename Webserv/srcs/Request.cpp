@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 12:34:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/30 12:38:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,16 @@ int     Request::read_header()
 {
     //std::cout << "read_header _body_size: " << _body_size << std::endl;
     if (!receive_header())
-    else if (!parser_header())
+        return (end_read);
+    if (!parser_header())
     {
         std::cerr << "Error: request header invalid.\n" << std::endl;
         _status_code = 400;	// Bad Request
+        return (end_read);
     }
-    else
-        process_fd_in();
+    process_fd_in();
     if (_status_code != 200 || !_body_size)
-        end_read();
+        return (end_read());
 }
 
 bool	Request::receive_header(void)
@@ -292,8 +293,9 @@ void	Request::process_fd_in()
         case NONE:
             break;
     }
-    if (_body_size > 0 && _fd_in != -1)
-        write(_fd_in, &_buffer[_body_position], _body_size);
+    if (_body_size > 0 && _fd_in != -1
+        && write(_fd_in, &_buffer[_body_position], _body_size) == -1)
+        _status_code = 500;
 }
 
 int     Request::end_read(void)
