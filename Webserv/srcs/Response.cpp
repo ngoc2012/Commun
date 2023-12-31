@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 15:22:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/31 15:23:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void     Response::write_header()
 void     Response::get_file_size()
 {
     struct stat fileStat;
-    if (stat(fn, &fileStat) != 0)
+    if (stat(_full_file_name.c_str(), &fileStat) != 0)
     {
 
         std::cerr << "Error: Get file size." << std::endl;
@@ -95,8 +95,7 @@ void     Response::get_file_size()
         _content_length = _body.size();
         return ;
     }
-    const char*   fn = _full_file_name.c_str();
-    _fd_out = open(fn, O_RDONLY);
+    _fd_out = open(_full_file_name.c_str(), O_RDONLY);
     if (_fd_out == -1)
     {
         _status_code = 500;
@@ -115,7 +114,7 @@ int     Response::write_body()
         if (len > RESPONSE_BUFFER * 1028)
             len = RESPONSE_BUFFER * 1028;
 
-        if (send(_socketm _body.c_str()[pos], len, 0) < 0)
+        if (send(_socket, _body.c_str()[pos], len, 0) < 0)
             return (end_connection());
 
         pos += len;
