@@ -33,55 +33,6 @@ Listening socket is readable 3
   New incoming connection - 4
 Cgi Default constructor
 Waiting on select() ...
-Request header: 1024
-GET / HTTP/1.1
-Host: 127.0.0.1:4141
-User-Agent: curl/7.81.0
-Accept: */*
-Content-Length: 4242
-Content-Type: multipart/form-data; boundary=------------------------7e81a9d5b7d40c25
-
---------------------------7e81a9d5b7d40c25
-Content-Disposition: form-data; name="file"; filename=".conf"
-Content-Type: application/octet-stream
-
-#Setup the configuration file as follow:
-#- / must answer to GET request ONLY
-#- /put_test/* must answer to PUT request and save files to a directory of your choice
-#- any file with .bla as extension must answer to POST request by calling the cgi_test executable
-#- /post_body must answer anything to POST request with a maxBody of 100
-#- /directory/ must answer to GET request and the root of it would be the repository YoupiBanane and if no file are requested, it should search for youpi.bad_extension files
-
-host 	 	
-	#worker_connections 1024;
-	#include /etc/nginx/mime.types	
-	#default_type application/octet-stream
-	# Specifies the maximum accepted body size of a client request, as
-	
-check_location /home/ngoc/Commun/Webserv/www/index.html
-Waiting on select() ...
-end_read /home/ngoc/Commun/Webserv/www/index.html
-Waiting on select() ...
-Write set sk = 4
-Header Constructor
-Response Header:
-HTTP/1.1 200 OK
-Allow: GET
-Content-Language: en
-Content-Type: text/html
-
-
-Header Destruction
-Waiting on select() ...
-Write set sk = 4
-Waiting on select() ...
-Write set sk = 4
-close_client_sk 4
-Waiting on select() ...
-Listening socket is readable 3
-  New incoming connection - 4
-Cgi Default constructor
-Waiting on select() ...
 Request header: 149
 PUT /put_test/port6.jpg HTTP/1.1
 Host: 127.0.0.1:4141
@@ -194,6 +145,55 @@ Content-Type: image/jpeg
 
 
 Header Destruction
+Waiting on select() ...
+Write set sk = 4
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Cgi Default constructor
+Waiting on select() ...
+Request header: 1024
+GET / HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: curl/7.81.0
+Accept: */*
+Content-Length: 4242
+Content-Type: multipart/form-data; boundary=------------------------77c398995d4eb734
+
+--------------------------77c398995d4eb734
+Content-Disposition: form-data; name="file"; filename=".conf"
+Content-Type: application/octet-stream
+
+#Setup the configuration file as follow:
+#- / must answer to GET request ONLY
+#- /put_test/* must answer to PUT request and save files to a directory of your choice
+#- any file with .bla as extension must answer to POST request by calling the cgi_test executable
+#- /post_body must answer anything to POST request with a maxBody of 100
+#- /directory/ must answer to GET request and the root of it would be the repository YoupiBanane and if no file are requested, it should search for youpi.bad_extension files
+
+host 	 	
+	#worker_connections 1024;
+	#include /etc/nginx/mime.types	
+	#default_type application/octet-stream
+	# Specifies the maximum accepted body size of a client request, as
+	
+check_location /home/ngoc/Commun/Webserv/www/index.html
+Waiting on select() ...
+end_read /home/ngoc/Commun/Webserv/www/index.html
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/html
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 4
 Waiting on select() ...
 Write set sk = 4
 close_client_sk 4

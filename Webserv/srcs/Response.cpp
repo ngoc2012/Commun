@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 09:48:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/31 09:50:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ void     Response::get_file_size()
 
 int     Response::write_body()
 {
+    if (_fd_out == -1)
+        return (end_connection());
     char	buffer[RESPONSE_BUFFER * 1028];
     int ret = read(_fd_out, buffer, RESPONSE_BUFFER * 1028);
 
