@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Listing.cpp                                        :+:      :+:    :+:   */
+/*   Listing.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 10:19:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/31 10:19:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cstring>
-#include <unistd.h>
+#include <iostream>
 
-#include "Host.hpp"
-#include "Server.hpp"
-#include "Location.hpp"
-#include "Request.hpp"
-#include "Response.hpp"
-#include "webserv.hpp"
+#ifndef LISTING_HPP
+# define LISTING_HPP
 
-#include "Listing.hpp"
-
-Listing::Listing()
+class	Listing
 {
-	std::cout << "Listing Default constructor" << std::endl;
-}
-Listing::Listing(const Listing& src) { *this = src; }
-Listing&	Listing::operator=( Listing const & src )
-{
-	(void) src;
-	return (*this);
-}
-Listing::~Listing() {}
+	private:
+		Listing(const Listing&);
+		Listing	&operator=(const Listing& op);
+	public:
+		Listing();
+		virtual ~Listing();
+};
+
+#endif
