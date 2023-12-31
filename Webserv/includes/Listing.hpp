@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 10:19:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/31 10:21:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 #ifndef LISTING_HPP
 # define LISTING_HPP
+
+class   Response;
 
 class	Listing
 {
@@ -23,6 +25,8 @@ class	Listing
 	public:
 		Listing();
 		virtual ~Listing();
+
+        static std::string get(Response*);
 };
 
 #endif
