@@ -6,12 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 10:02:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/31 10:16:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <sys/types.h>
-# include <sys/wait.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 #include "Host.hpp"
 #include "Server.hpp"
