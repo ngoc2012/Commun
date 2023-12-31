@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 10:49:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/31 15:25:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Listing&	Listing::operator=( Listing const & src )
 }
 Listing::~Listing() {}
 
-std::string get_html(Response* response)
+std::string Listing::get_html(Response* response)
 {
     (void)response;
     return "Listing";

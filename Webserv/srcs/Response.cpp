@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 15:23:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/31 15:24:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,14 @@ void     Response::get_file_size()
 
 int     Response::write_body()
 {
-    static int pos = 0;
+    static size_t pos = 0;
     if (_body != "")
     {
-        int     len = _content_length - pos;
+        size_t     len = _content_length - pos;
         if (len > RESPONSE_BUFFER * 1028)
             len = RESPONSE_BUFFER * 1028;
 
-        if (send(_socket, _body.c_str()[pos], len, 0) < 0)
+        if (send(_socket, &_body.c_str()[pos], len, 0) < 0)
             return (end_connection());
 
         pos += len;
