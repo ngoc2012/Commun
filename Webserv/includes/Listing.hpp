@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 10:21:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/31 10:23:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ class	Listing
 	private:
 		Listing(const Listing&);
 		Listing	&operator=(const Listing& op);
+
 	public:
 		Listing();
 		virtual ~Listing();
 
-        static std::string get(Response*);
+        static std::string get_html(Response*);
 };
 
 #endif
