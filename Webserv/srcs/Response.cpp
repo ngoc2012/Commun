@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 09:53:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/31 10:02:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ Response&	Response::operator=( Response const & src )
 	(void) src;
 	return (*this);
 }
-Response::~Response() {}
+Response::~Response()
+{
+    if (_fd_out != -1)
+        close(_fd_out);
+}
 
 int     Response::write()
 {
