@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 19:18:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/31 11:47:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class	Response
 		Request*	    _request;
 
 		std::string	    _header;
+		std::string	    _body;
 		int		        _status_code;
 		size_t		    _content_length;
 		size_t		    _body_size;
