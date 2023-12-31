@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 11:55:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2023/12/31 15:19:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,14 @@ int     Response::write_body()
     static int pos = 0;
     if (_body != "")
     {
+        int     len = _content_length - pos;
+        if (len > RESPONSE_BUFFER * 1028)
+            len = RESPONSE_BUFFER * 1028;
+
+        if (send(_socketm _body.c_str()[pos], len, 0) < 0)
+            return (end_connection());
+        if (len <= RESPONSE_BUFFER * 1028)
+            return (end_connection());
         return (0);
     }
     if (_fd_out == -1)
