@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 16:26:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 23:41:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void     Response::get_file_size()
     if (stat(_full_file_name.c_str(), &fileStat) != 0)
     {
 
-        std::cerr << "Error: Get file size." << std::endl;
+        std::cerr << "Error: File or folder not found." << std::endl;
         _status_code = 500;
         return ;
     }
