@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 23:22:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 23:33:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,13 @@ std::string	Location::get_full_file_name(std::string url, std::string root)
     else
         file_name += _alias;
     if (url.size() > _url.size())
-    {
         file_name += url.substr(_url.size(), url.size() - 1);
-    }
-	struct stat	info;
-	if (stat(file_name.c_str(), &info) == 0
-            && S_ISDIR(info.st_mode))
-		file_name += "index.html";
+    struct stat	info;
+    if (stat(file_name.c_str(), &info) == 0
+            && S_ISDIR(info.st_mode) && !_autoindex)
+        file_name += "/index.html";
     return (file_name);
-	//std::cout << _full_file_name << std::endl;
+    //std::cout << _full_file_name << std::endl;
 }
 
 std::string	Location::get_methods_str(void)
