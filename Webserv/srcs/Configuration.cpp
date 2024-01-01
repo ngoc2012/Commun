@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/23 08:31:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 23:19:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,10 @@ bool	Configuration::location_parser(std::string cmd, Location* loc, std::vector<
 				return (true);
 			}
 		}
+	else if (words[0] == "autoindex")
+	{
+        if (words[1] == "on")
+    }
 	else if (words[0] == "alias")
 	{
 		struct stat	info;
