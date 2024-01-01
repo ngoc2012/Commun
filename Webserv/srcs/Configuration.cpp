@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 23:21:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 23:22:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ bool	Configuration::location_parser(std::string cmd, Location* loc, std::vector<
 			return (true);
         }
         if (words[1] == "on")
+            loc->set_autoindex(true);
     }
 	else if (words[0] == "alias")
 	{

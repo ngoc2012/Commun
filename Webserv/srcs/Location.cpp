@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 23:21:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 23:22:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ Location&	Location::operator=( Location const & src )
 	(void) src;
 	return (*this);
 }
-Location::Location(std::string u): _url(u) {}
+Location::Location(std::string u): _url(u)
+{
+    _autoindex = false;
+}
 Location::~Location() {}
 
 
