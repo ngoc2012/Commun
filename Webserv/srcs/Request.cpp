@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 09:53:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 10:37:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,7 @@ int     Request::read_header()
     if (!receive_header())
         return (end_read());
     if (!parse_header())
-    {
-        _status_code = 400;	// Bad Request
         return (end_read());
-    }
     process_fd_in();
     if (_status_code != 200 || !_body_size)
         return (end_read());
@@ -125,17 +122,27 @@ bool	Request::receive_header(void)
 bool	Request::parse_header(void)
 {
     if (!Header::parse_method_url(_header, _url, _method))
+    {
+        _status_code = 400;	// Bad Request
         return (false);
+    }
     if (!check_location())
         return (false);
     if (_method == GET)
         return (true);
     if (!Header::parse_content_type(_host, _header, _content_type))
+    {
+        _status_code = 400;	// Bad Request
         return (false);
+    }
     if (!Header::parse_content_length(_header, _content_length))
+    {
+        _status_code = 400;	// Bad Request
         return (false);
+    }
     if (_content_length > _body_max)
 	{
+        _status_code = 400;	// Bad Request
         std::cerr << "Error: Content length bigger than " << _body_max << std::endl;
         return (false);
 	}
