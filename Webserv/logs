@@ -383,3 +383,325 @@ write_body 141 0 <!DOCTYPE html>
 end_connection read |/home/ngoc/Commun/Webserv/www/index_files/index.html| 4 0/141
 close_client_sk 4
 Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Cgi Default constructor
+Waiting on select() ...
+Request header: 650
+GET /index_filesdfg/ HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+
+
+check_location 4 /home/ngoc/Commun/Webserv/www/index_filesdfg/
+end_read 4 /home/ngoc/Commun/Webserv/www/index_filesdfg/
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+error_body <!DOCTYPE html>
+    <html>
+    <head>
+    <title>404 Not Found</title>
+    </head>
+    <body>
+    <h1>Not Found</h1>
+    </body>
+    </html>
+
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Mon, 01 Jan 2024 11:52:36 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 4
+write_body 141 0 <!DOCTYPE html>
+    <html>
+    <head>
+    <title>404 Not Found</title>
+    </head>
+    <body>
+    <h1>Not Found</h1>
+    </body>
+    </html>
+
+end_connection read |/home/ngoc/Commun/Webserv/www/index_filesdfg/| 4 0/141
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Cgi Default constructor
+Waiting on select() ...
+Request header: 1024
+GET /index_filessdfsdf/ HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: curl/7.81.0
+Accept: */*
+Content-Length: 4242
+Content-Type: multipart/form-data; boundary=------------------------dc979757fd9833a8
+
+--------------------------dc979757fd9833a8
+Content-Disposition: form-data; name="file"; filename=".conf"
+Content-Type: application/octet-stream
+
+#Setup the configuration file as follow:
+#- / must answer to GET request ONLY
+#- /put_test/* must answer to PUT request and save files to a directory of your choice
+#- any file with .bla as extension must answer to POST request by calling the cgi_test executable
+#- /post_body must answer anything to POST request with a maxBody of 100
+#- /directory/ must answer to GET request and the root of it would be the repository YoupiBanane and if no file are requested, it should search for youpi.bad_extension files
+
+host 	 	
+	#worker_connections 1024;
+	#include /etc/nginx/mime.types	
+	#default_type application/octet-stream
+	# Specifies the maximum accepted body size of a cl
+check_location 4 /home/ngoc/Commun/Webserv/www/index_filessdfsdf/
+end_read 4 /home/ngoc/Commun/Webserv/www/index_filessdfsdf/
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+error_body <!DOCTYPE html>
+    <html>
+    <head>
+    <title>404 Not Found</title>
+    </head>
+    <body>
+    <h1>Not Found</h1>
+    </body>
+    </html>
+
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Mon, 01 Jan 2024 11:52:48 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 4
+write_body 141 0 <!DOCTYPE html>
+    <html>
+    <head>
+    <title>404 Not Found</title>
+    </head>
+    <body>
+    <h1>Not Found</h1>
+    </body>
+    </html>
+
+end_connection read |/home/ngoc/Commun/Webserv/www/index_filessdfsdf/| 4 0/141
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Cgi Default constructor
+Waiting on select() ...
+Request header: 1024
+GET /index_filessdfsdf/ HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: curl/7.81.0
+Accept: */*
+Content-Length: 4242
+Content-Type: multipart/form-data; boundary=------------------------94f96265b7ab7452
+
+--------------------------94f96265b7ab7452
+Content-Disposition: form-data; name="file"; filename=".conf"
+Content-Type: application/octet-stream
+
+#Setup the configuration file as follow:
+#- / must answer to GET request ONLY
+#- /put_test/* must answer to PUT request and save files to a directory of your choice
+#- any file with .bla as extension must answer to POST request by calling the cgi_test executable
+#- /post_body must answer anything to POST request with a maxBody of 100
+#- /directory/ must answer to GET request and the root of it would be the repository YoupiBanane and if no file are requested, it should search for youpi.bad_extension files
+
+host 	 	
+	#worker_connections 1024;
+	#include /etc/nginx/mime.types	
+	#default_type application/octet-stream
+	# Specifies the maximum accepted body size of a cl
+check_location 4 /home/ngoc/Commun/Webserv/www/index_filessdfsdf/
+end_read 4 /home/ngoc/Commun/Webserv/www/index_filessdfsdf/
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+error_body <!DOCTYPE html>
+    <html>
+    <head>
+    <title>404 Not Found</title>
+    </head>
+    <body>
+    <h1>Not Found</h1>
+    </body>
+    </html>
+
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Mon, 01 Jan 2024 11:53:02 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 4
+write_body 141 0 <!DOCTYPE html>
+    <html>
+    <head>
+    <title>404 Not Found</title>
+    </head>
+    <body>
+    <h1>Not Found</h1>
+    </body>
+    </html>
+
+end_connection read |/home/ngoc/Commun/Webserv/www/index_filessdfsdf/| 4 0/141
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Cgi Default constructor
+Waiting on select() ...
+Request header: 1024
+GET /index_files/ HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: curl/7.81.0
+Accept: */*
+Content-Length: 4242
+Content-Type: multipart/form-data; boundary=------------------------c44ebc0e0bd23278
+
+--------------------------c44ebc0e0bd23278
+Content-Disposition: form-data; name="file"; filename=".conf"
+Content-Type: application/octet-stream
+
+#Setup the configuration file as follow:
+#- / must answer to GET request ONLY
+#- /put_test/* must answer to PUT request and save files to a directory of your choice
+#- any file with .bla as extension must answer to POST request by calling the cgi_test executable
+#- /post_body must answer anything to POST request with a maxBody of 100
+#- /directory/ must answer to GET request and the root of it would be the repository YoupiBanane and if no file are requested, it should search for youpi.bad_extension files
+
+host 	 	
+	#worker_connections 1024;
+	#include /etc/nginx/mime.types	
+	#default_type application/octet-stream
+	# Specifies the maximum accepted body size of a client r
+check_location 4 /home/ngoc/Commun/Webserv/www/index_files/index.html
+end_read 4 /home/ngoc/Commun/Webserv/www/index_files/index.html
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+error_body <!DOCTYPE html>
+    <html>
+    <head>
+    <title>404 Not Found</title>
+    </head>
+    <body>
+    <h1>Not Found</h1>
+    </body>
+    </html>
+
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Mon, 01 Jan 2024 11:53:05 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 4
+write_body 141 0 <!DOCTYPE html>
+    <html>
+    <head>
+    <title>404 Not Found</title>
+    </head>
+    <body>
+    <h1>Not Found</h1>
+    </body>
+    </html>
+
+end_connection read |/home/ngoc/Commun/Webserv/www/index_files/index.html| 4 0/141
+close_client_sk 4
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Cgi Default constructor
+Waiting on select() ...
+Request header: 1024
+GET /index_files/ HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: curl/7.81.0
+Accept: */*
+Content-Length: 4242
+Content-Type: multipart/form-data; boundary=------------------------95c417b29ba8b19c
+
+--------------------------95c417b29ba8b19c
+Content-Disposition: form-data; name="file"; filename=".conf"
+Content-Type: application/octet-stream
+
+#Setup the configuration file as follow:
+#- / must answer to GET request ONLY
+#- /put_test/* must answer to PUT request and save files to a directory of your choice
+#- any file with .bla as extension must answer to POST request by calling the cgi_test executable
+#- /post_body must answer anything to POST request with a maxBody of 100
+#- /directory/ must answer to GET request and the root of it would be the repository YoupiBanane and if no file are requested, it should search for youpi.bad_extension files
+
+host 	 	
+	#worker_connections 1024;
+	#include /etc/nginx/mime.types	
+	#default_type application/octet-stream
+	# Specifies the maximum accepted body size of a client r
+check_location 4 /home/ngoc/Commun/Webserv/www/index_files/index.html
+end_read 4 /home/ngoc/Commun/Webserv/www/index_files/index.html
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+error_body <!DOCTYPE html>
+    <html>
+    <head>
+    <title>404 Not Found</title>
+    </head>
+    <body>
+    <h1>Not Found</h1>
+    </body>
+    </html>
+
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Mon, 01 Jan 2024 11:53:11 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 4
+write_body 141 0 <!DOCTYPE html>
+    <html>
+    <head>
+    <title>404 Not Found</title>
+    </head>
+    <body>
+    <h1>Not Found</h1>
+    </body>
+    </html>
+
+end_connection read |/home/ngoc/Commun/Webserv/www/index_files/index.html| 4 0/141
+close_client_sk 4
+Waiting on select() ...
