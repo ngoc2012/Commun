@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 12:45:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 12:46:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,16 +84,16 @@ void     Response::write_header()
 void     Response::error_body()
 {
     std::string mess = (*_host->get_status_message())[_status_code];
-    _body += "<!DOCTYPE html>\n"
-    _body += "    <html>\n"
-    _body += "    <head>\n"
-    _body += "    <title>" + ft::itos(_status_code) + " " + mess  + "</title>\n"
-    _body += "    </head>\n"
-    _body += "    <body>\n"
-    _body += "    <h1>" + mess + "</h1>\n"
-    //_body += "    <p>The requested URL /example-page was not found on this server.</p>\n"
-    _body += "    </body>\n"
-    _body += "    </html>\n"
+    _body += "<!DOCTYPE html>\n";
+    _body += "    <html>\n";
+    _body += "    <head>\n";
+    _body += "    <title>" + ft::itos(_status_code) + " " + mess  + "</title>\n";
+    _body += "    </head>\n";
+    _body += "    <body>\n";
+    _body += "    <h1>" + mess + "</h1>\n";
+    //_body += "    <p>The requested URL /example-page was not found on this server.</p>\n";
+    _body += "    </body>\n";
+    _body += "    </html>\n";
     //_body = (*_host->get_status_message())[_status_code];
     _content_length = _body.size();
     std::cout << "error_body " << _body << std::endl;
@@ -134,7 +134,7 @@ int     Response::write_body()
         if (len > RESPONSE_BUFFER * 1028)
             len = RESPONSE_BUFFER * 1028;
 
-        std::cout << "write_body " << pos << " " << len << " " << _body << std::endl;
+        //std::cout << "write_body " << pos << " " << len << " " << _body << std::endl;
         if (send(_socket, &_body.c_str()[pos], len, 0) < 0)
             return (end_connection());
 
