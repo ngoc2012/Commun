@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 13:03:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 16:21:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void     Response::write_header()
     //    std::cout << "Header sent" << std::endl;
 }
 
-void     Response::error_body()
+void     Response::mess_body(std::string title, std::string body)
 {
     std::string mess = (*_host->get_status_message())[_status_code];
     _body += "<!DOCTYPE html>\n";
