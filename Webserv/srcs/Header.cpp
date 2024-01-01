@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 12:39:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 12:44:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ std::string	Header::generate(void)
             str += "Content-Type: " + (*_mimes)[_extension] + "\r\n";
     }
     else
-        str += "Content-Type: text/plain\r\n";
+        str += "Content-Type: text/html\r\n";
     str += "Content-Length: " + ft::itos(_response->get_content_length()) + "\r\n";
     str += "Date: " + get_current_time() + "\r\n\r\n";
 	//std::cout << str << std::endl;
