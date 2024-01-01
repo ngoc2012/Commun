@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 13:48:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 10:17:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,19 @@ std::string	Header::generate(void)
 	else
 		str += (*_status_message)[_status_code];
 	str += "\r\n";
-	str += "Allow: " + _allow + "\r\n";
-	str += std::string("Content-Language: en") + "\r\n";
-	//str += "Content-Length: " + itos(_response->get_content_length()) + "\r\n";
-	if (_mimes->find(_extension) == _mimes->end())
-		str += "Content-Type: text/plain\r\n";
-	else
-		str += "Content-Type: " + (*_mimes)[_extension] + "\r\n";
-	str += "\r\n";
+    if (_status_code == 200)
+    {
+        str += "Allow: " + _allow + "\r\n";
+        str += std::string("Content-Language: en") + "\r\n";
+        //str += "Content-Length: " + itos(_response->get_content_length()) + "\r\n";
+        if (_mimes->find(_extension) == _mimes->end())
+            str += "Content-Type: text/plain\r\n";
+        else
+            str += "Content-Type: " + (*_mimes)[_extension] + "\r\n";
+        str += "\r\n";
+        return (str);
+    }
+    str += "Content-Type: text/html\r\n";
 	//std::cout << str << std::endl;
 	return (str);
 }
