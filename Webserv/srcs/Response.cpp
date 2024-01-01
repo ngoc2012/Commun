@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 16:21:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 16:22:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,10 @@ void     Response::write_header()
             get_file_size();
     }
     if (_status_code != 200)
-        error_body();
+    {
+        std::string mess = (*_host->get_status_message())[_status_code];
+        mess_body(ft::itos(_status_code) + " " + mess, mess);
+    }
     _header = header.generate();
     std::cout << "Response Header:\n" << _header << std::endl;
     if (send(_socket, _header.c_str(), _header.length(), 0) < 0)
@@ -84,14 +87,13 @@ void     Response::write_header()
 
 void     Response::mess_body(std::string title, std::string body)
 {
-    std::string mess = (*_host->get_status_message())[_status_code];
     _body += "<!DOCTYPE html>\n";
     _body += "    <html>\n";
     _body += "    <head>\n";
-    _body += "    <title>" + ft::itos(_status_code) + " " + mess  + "</title>\n";
+    _body += "    <title>" + title + "</title>\n";
     _body += "    </head>\n";
     _body += "    <body>\n";
-    _body += "    <h1>" + mess + "</h1>\n";
+    _body += "    <h1>" + body + "</h1>\n";
     //_body += "    <p>The requested URL /example-page was not found on this server.</p>\n";
     _body += "    </body>\n";
     _body += "    </html>\n";
