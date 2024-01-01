@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 12:35:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 12:40:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,14 @@ void     Response::write_header()
         if (_request->get_method() == GET)
             get_file_size();
     }
+    if (_status_code != 200)
+        error_body();
     _header = header.generate();
     std::cout << "Response Header:\n" << _header << std::endl;
     if (send(_socket, _header.c_str(), _header.length(), 0) < 0)
         end_connection();
     //else
     //    std::cout << "Header sent" << std::endl;
-    if (_status_code != 200)
-        error_body();
 }
 
 void     Response::error_body()
