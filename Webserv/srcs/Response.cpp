@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 10:30:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 10:32:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void     Response::write_header()
 void     Response::error_body()
 {
     _body = (*_host->get_status_message())[_status_code];
-    std::cout << _body << std::endl;
+    std::cout << "error_body " << _body << std::endl;
 }
 
 void     Response::get_file_size()
@@ -118,6 +118,7 @@ int     Response::write_body()
     static size_t pos = 0;
     if (_body != "")
     {
+        std::cout << "write_body " << _body << std::endl;
         size_t     len = _content_length - pos;
         if (len > RESPONSE_BUFFER * 1028)
             len = RESPONSE_BUFFER * 1028;
