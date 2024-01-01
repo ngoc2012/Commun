@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 10:19:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 10:21:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,15 @@ std::string	Header::generate(void)
             str += "Content-Type: text/plain\r\n";
         else
             str += "Content-Type: " + (*_mimes)[_extension] + "\r\n";
+        str += "Date: " + date() + "\r\n";
         str += "\r\n";
         return (str);
     }
-    str += "Content-Type: text/html\r\n";
-    str += "Date: " + date() + "\r\n";
+    else
+    {
+        str += "Content-Type: text/plain\r\n";
+        str += "Date: " + date() + "\r\n";
+    }
 	//std::cout << str << std::endl;
 	return (str);
 }

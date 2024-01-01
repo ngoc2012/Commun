@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 10:05:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 10:20:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,10 @@ void     Response::write_header()
         std::cout << "Header sent" << std::endl;
     if (_status_code != 200)
         end_connection();
+}
+
+void     Response::error_body()
+{
 }
 
 void     Response::get_file_size()
