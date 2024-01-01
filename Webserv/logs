@@ -294,3 +294,61 @@ write_body 0 141 <!DOCTYPE html>
 end_connection read |/home/ngoc/Commun/Webserv/www/index_files/index.html| 4 0/141
 close_client_sk 4
 Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Cgi Default constructor
+Waiting on select() ...
+Request header: 647
+GET /index_files/ HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+
+
+check_location 4 /home/ngoc/Commun/Webserv/www/index_files/index.html
+end_read 4 /home/ngoc/Commun/Webserv/www/index_files/index.html
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+error_body <!DOCTYPE html>
+    <html>
+    <head>
+    <title>404 Not Found</title>
+    </head>
+    <body>
+    <h1>Not Found</h1>
+    </body>
+    </html>
+
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Mon, 01 Jan 2024 12:04:09 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 4
+write_body 0 141 <!DOCTYPE html>
+    <html>
+    <head>
+    <title>404 Not Found</title>
+    </head>
+    <body>
+    <h1>Not Found</h1>
+    </body>
+    </html>
+
+end_connection read |/home/ngoc/Commun/Webserv/www/index_files/index.html| 4 0/141
+close_client_sk 4
+Waiting on select() ...
