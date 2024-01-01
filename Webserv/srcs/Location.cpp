@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/27 12:47:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 15:49:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ std::string	Location::get_method_str(e_method e) {
             return ("GET");
         case POST:
             return ("POST");
+        case DELETE:
+            return ("DELETE");
         case PUT:
             return ("PUT");
         case NONE:
