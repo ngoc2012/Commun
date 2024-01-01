@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 12:46:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 13:03:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Response::Response()
     _status_code = 200;
     _content_length = 0;
     _body_size = 0;
+    _pos = 0;
 
     _full_file_name = "";
     _write_queue = false;
@@ -127,20 +128,18 @@ void     Response::get_file_size()
 
 int     Response::write_body()
 {
-    static size_t pos = 0;
     if (_body != "")
     {
-        size_t     len = _content_length - pos;
+        size_t     len = _content_length - _pos;
         if (len > RESPONSE_BUFFER * 1028)
             len = RESPONSE_BUFFER * 1028;
 
-        //std::cout << "write_body " << pos << " " << len << " " << _body << std::endl;
-        if (send(_socket, &_body.c_str()[pos], len, 0) < 0)
+        std::cout << "write_body " << _pos << " " << len << " " << _body << std::endl;
+        if (send(_socket, &_body.c_str()[_pos], len, 0) < 0)
             return (end_connection());
 
-        pos += len;
-
-        if (pos >= _content_length)
+        _pos += len;
+        if (_pos >= _content_length)
             return (end_connection());
         return (0);
     }
