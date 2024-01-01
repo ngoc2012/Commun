@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 16:27:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 23:38:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,9 +188,9 @@ bool	Request::check_location()
 
     std::cout << "check_location " << _socket << " " << _full_file_name << std::endl;
 
-	struct stat buffer;
+	struct stat info;
 	if (_method != PUT
-            && stat(_full_file_name.c_str(), &buffer) != 0)
+            && stat(_full_file_name.c_str(), &info) != 0)
     {
 		_status_code = 404; // Not found
         return (false);             
