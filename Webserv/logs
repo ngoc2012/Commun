@@ -40,9 +40,9 @@ Host: 127.0.0.1:4141
 User-Agent: curl/7.81.0
 Accept: */*
 Content-Length: 4242
-Content-Type: multipart/form-data; boundary=------------------------8d80bcc33f01c349
+Content-Type: multipart/form-data; boundary=------------------------658ae9a30b721142
 
---------------------------8d80bcc33f01c349
+--------------------------658ae9a30b721142
 Content-Disposition: form-data; name="file"; filename=".conf"
 Content-Type: application/octet-stream
 
@@ -66,9 +66,10 @@ Header Constructor
 Response Header:
 HTTP/1.1 400 Bad Request
 Content-Type: text/plain
-Date: Mon, 01 Jan 2024 09:28:38 GMT
+Date: Mon, 01 Jan 2024 09:31:04 GMT
 
 
+Bad Request
 Header Destruction
 Waiting on select() ...
 Write set sk = 4
