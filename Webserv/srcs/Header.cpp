@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 10:23:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 10:25:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "Location.hpp"
 #include "Request.hpp"
 #include "Response.hpp"
-
 #include "webserv.hpp"
 
 #include "Header.hpp"
@@ -70,7 +69,7 @@ std::string	Header::generate(void)
     }
     else
         str += "Content-Type: text/plain\r\n";
-    str += "Date: " + date() + "\r\n\r\n";
+    str += "Date: " + get_current_time() + "\r\n\r\n";
 	//std::cout << str << std::endl;
 	return (str);
 }
@@ -78,7 +77,7 @@ std::string	Header::generate(void)
 void	Header::init(void)
 {
 }
-
+/*
 std::string     Header::date() {
     struct timeval tv;
     char buf[32];
@@ -89,7 +88,7 @@ std::string     Header::date() {
     int ret = strftime(buf, 32, "%a, %d %b %Y %T GMT", tm);
     return std::string(buf, ret);
 }
-
+*/
 std::string	Header::get_current_time(void)
 {
 	std::time_t currentTime = std::time(0);
