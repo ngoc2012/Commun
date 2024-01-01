@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 16:22:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 16:24:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void     Response::write_header()
         std::string mess = (*_host->get_status_message())[_status_code];
         mess_body(ft::itos(_status_code) + " " + mess, mess);
     }
+    else if (_request->get_method() == DELETE)
+        mess_body("Delete", "File deleted");
     _header = header.generate();
     std::cout << "Response Header:\n" << _header << std::endl;
     if (send(_socket, _header.c_str(), _header.length(), 0) < 0)
