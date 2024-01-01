@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 10:37:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 16:27:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,10 @@ void	Request::process_fd_in()
                     O_CREAT | O_WRONLY | O_TRUNC, 0664);
             if (_fd_in == -1)
                 _status_code = 500;
+            break;
+        case DELETE:
+            if (std::remove(_full_file_name.c_str()))
+                std::cerr << "Error: Can not delete file " << _tmp_file << std::endl;
             break;
         case NONE:
             break;

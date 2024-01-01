@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 16:20:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 16:27:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class	Response
 
         void	        write_header(void);
         void	        get_file_size(void);
-        void	        mess_body(void);
+        void	        mess_body(std::string, std::string);
 
 		void		    process_fd_out(void);
         int 	        write_body(void);
