@@ -40,9 +40,9 @@ Host: 127.0.0.1:4141
 User-Agent: curl/7.81.0
 Accept: */*
 Content-Length: 4242
-Content-Type: multipart/form-data; boundary=------------------------4e9dd5b2eb628db1
+Content-Type: multipart/form-data; boundary=------------------------a6b8aa276028d391
 
---------------------------4e9dd5b2eb628db1
+--------------------------a6b8aa276028d391
 Content-Disposition: form-data; name="file"; filename=".conf"
 Content-Type: application/octet-stream
 
@@ -70,6 +70,8 @@ Content-Language: en
 Content-Type: text/html
 
 
+Header sent
+end_connection read |/home/ngoc/Commun/Webserv/www/index_files/index.html| 4 0/0
 close_client_sk 4
 Header Destruction
 Waiting on select() ...

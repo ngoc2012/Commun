@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 15:24:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 10:05:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void     Response::write_header()
     std::cout << "Response Header:\n" << _header << std::endl;
     if (send(_socket, _header.c_str(), _header.length(), 0) < 0)
         end_connection();
+    else
+        std::cout << "Header sent" << std::endl;
     if (_status_code != 200)
         end_connection();
 }
@@ -142,7 +144,7 @@ int     Response::end_connection(void)
     if (_request->get_method() == POST
         && _request->get_cgi()->get_pid() != -1)
         waitpid(_request->get_cgi()->get_pid(), NULL, 0);
-    //std::cout << "end_connection read |" << _full_file_name << "| " << _socket << " " << _body_size << "/" << _content_length << std::endl;
+    std::cout << "end_connection read |" << _full_file_name << "| " << _socket << " " << _body_size << "/" << _content_length << std::endl;
     if (_fd_out > 0)
         close(_fd_out);
     _write_queue = false;
