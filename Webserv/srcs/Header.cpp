@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 10:17:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 10:19:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ std::string	Header::generate(void)
         return (str);
     }
     str += "Content-Type: text/html\r\n";
+    str += "Date: " + date() + "\r\n";
 	//std::cout << str << std::endl;
 	return (str);
 }
@@ -79,6 +80,16 @@ void	Header::init(void)
 {
 }
 
+std::string     Header::date() {
+    struct timeval tv;
+    char buf[32];
+    gettimeofday(&tv, NULL);
+
+    struct tm	*tm;
+    tm = gmtime(&tv.tv_sec);
+    int ret = strftime(buf, 32, "%a, %d %b %Y %T GMT", tm);
+    return std::string(buf, ret);
+}
 
 std::string	Header::get_current_time(void)
 {
