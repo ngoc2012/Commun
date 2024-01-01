@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 10:32:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 12:35:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void     Response::write_header()
 void     Response::error_body()
 {
     _body = (*_host->get_status_message())[_status_code];
+    _content_length = _body.size();
     std::cout << "error_body " << _body << std::endl;
 }
 
@@ -118,11 +119,11 @@ int     Response::write_body()
     static size_t pos = 0;
     if (_body != "")
     {
-        std::cout << "write_body " << _body << std::endl;
         size_t     len = _content_length - pos;
         if (len > RESPONSE_BUFFER * 1028)
             len = RESPONSE_BUFFER * 1028;
 
+        std::cout << "write_body " << pos << " " << len << " " << _body << std::endl;
         if (send(_socket, &_body.c_str()[pos], len, 0) < 0)
             return (end_connection());
 
