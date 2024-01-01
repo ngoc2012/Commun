@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 10:25:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 12:39:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ std::string	Header::generate(void)
     {
         str += "Allow: " + _allow + "\r\n";
         str += std::string("Content-Language: en") + "\r\n";
-        //str += "Content-Length: " + itos(_response->get_content_length()) + "\r\n";
         if (_mimes->find(_extension) == _mimes->end())
             str += "Content-Type: text/plain\r\n";
         else
@@ -69,6 +68,7 @@ std::string	Header::generate(void)
     }
     else
         str += "Content-Type: text/plain\r\n";
+    str += "Content-Length: " + ft::itos(_response->get_content_length()) + "\r\n";
     str += "Date: " + get_current_time() + "\r\n\r\n";
 	//std::cout << str << std::endl;
 	return (str);
