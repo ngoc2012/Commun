@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 23:13:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 23:26:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ class	Location
 		void				        set_alias(std::string);
 		void				        set_url(std::string);
         void			            set_cgi_pass(std::string);
-        bool                        get_autoindex(void) const;
+        void                        set_autoindex(bool);
 };
 
 #endif

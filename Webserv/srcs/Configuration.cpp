@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 23:22:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 23:26:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ bool	Configuration::location_parser(std::string cmd, Location* loc, std::vector<
 				loc->insert_methods(PUT);
 			else if (*it == "POST")
 				loc->insert_methods(POST);
+			else if (*it == "DELETE")
+				loc->insert_methods(DELETE);
 			else
 			{
 				std::cerr << "Error: Method unknown : " << *it << std::endl;
