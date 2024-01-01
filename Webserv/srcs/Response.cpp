@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 10:27:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 10:28:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void     Response::write_header()
 
 void     Response::error_body()
 {
-    _body = _host->get_status_message()[_status_code];
+    _body = (*_host->get_status_message())[_status_code];
 }
 
 void     Response::get_file_size()

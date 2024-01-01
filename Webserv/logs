@@ -7,4 +7,71 @@ c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Host.cpp -o srcs/Host.o -I./incl
 c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Server.cpp -o srcs/Server.o -I./includes
 c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Request.cpp -o srcs/Request.o -I./includes
 c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Response.cpp -o srcs/Response.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Header.cpp -o srcs/Header.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Configuration.cpp -o srcs/Configuration.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Location.cpp -o srcs/Location.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Cgi.cpp -o srcs/Cgi.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Listing.cpp -o srcs/Listing.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/split_string.cpp -o srcs/split_string.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/is_digit.cpp -o srcs/is_digit.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/itos.cpp -o srcs/itos.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/match_wildcard.cpp -o srcs/match_wildcard.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/file_extension.cpp -o srcs/file_extension.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/atoi_base.cpp -o srcs/atoi_base.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/itoa_base.cpp -o srcs/itoa_base.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/str_replace.cpp -o srcs/str_replace.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/to_upper.cpp -o srcs/to_upper.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 srcs/main.o srcs/Host.o srcs/Server.o srcs/Request.o srcs/Response.o srcs/Header.o srcs/Configuration.o srcs/Location.o srcs/Cgi.o srcs/Listing.o srcs/split_string.o srcs/is_digit.o srcs/itos.o srcs/match_wildcard.o srcs/file_extension.o srcs/atoi_base.o srcs/itoa_base.o srcs/str_replace.o srcs/to_upper.o -o server
 make[1]: Leaving directory '/home/ngoc/Commun/Webserv'
+make[1]: Entering directory '/home/ngoc/Commun/Webserv'
+rm -f srcs/main.o srcs/Host.o srcs/Server.o srcs/Request.o srcs/Response.o srcs/Header.o srcs/Configuration.o srcs/Location.o srcs/Cgi.o srcs/Listing.o srcs/split_string.o srcs/is_digit.o srcs/itos.o srcs/match_wildcard.o srcs/file_extension.o srcs/atoi_base.o srcs/itoa_base.o srcs/str_replace.o srcs/to_upper.o
+make[1]: Leaving directory '/home/ngoc/Commun/Webserv'
+Destruction server: 127.0.2.1:80
+Close socket: 3
+Listening at 127.0.0.1:4141 (socket : 3)
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 4
+Cgi Default constructor
+Waiting on select() ...
+Request header: 1024
+GET /index_files/ HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: curl/7.81.0
+Accept: */*
+Content-Length: 4242
+Content-Type: multipart/form-data; boundary=------------------------8d80bcc33f01c349
+
+--------------------------8d80bcc33f01c349
+Content-Disposition: form-data; name="file"; filename=".conf"
+Content-Type: application/octet-stream
+
+#Setup the configuration file as follow:
+#- / must answer to GET request ONLY
+#- /put_test/* must answer to PUT request and save files to a directory of your choice
+#- any file with .bla as extension must answer to POST request by calling the cgi_test executable
+#- /post_body must answer anything to POST request with a maxBody of 100
+#- /directory/ must answer to GET request and the root of it would be the repository YoupiBanane and if no file are requested, it should search for youpi.bad_extension files
+
+host 	 	
+	#worker_connections 1024;
+	#include /etc/nginx/mime.types	
+	#default_type application/octet-stream
+	# Specifies the maximum accepted body size of a client r
+check_location 4 /home/ngoc/Commun/Webserv/www/index_files/index.html
+end_read 4 /home/ngoc/Commun/Webserv/www/index_files/index.html
+Waiting on select() ...
+Write set sk = 4
+Header Constructor
+Response Header:
+HTTP/1.1 400 Bad Request
+Content-Type: text/plain
+Date: Mon, 01 Jan 2024 09:28:38 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 4
+end_connection read |/home/ngoc/Commun/Webserv/www/index_files/index.html| 4 0/0
+close_client_sk 4
+Waiting on select() ...
