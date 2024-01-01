@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 12:44:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 15:50:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,8 @@ bool	Header::parse_method_url(std::string& s, std::string& url, e_method& m)
         m = POST;
     else if (line0[0] == "PUT")
         m = PUT;
+    else if (line0[0] == "DELETE")
+        m = DELETE;
     else
     {
         std::cerr << "Error: Method unknown : " << line0[0] << std::endl;
