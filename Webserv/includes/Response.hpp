@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 11:47:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 10:27:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class	Response
 
         void	        write_header(void);
         void	        get_file_size(void);
+        void	        error_body(void);
 
 		void		    process_fd_out(void);
         int 	        write_body(void);
