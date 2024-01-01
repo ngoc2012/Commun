@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 23:18:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/01 23:21:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 Location::Location()
 {
+    _autoindex = false;
 }
 Location::Location(const Location& src) { *this = src; }
 Location&	Location::operator=( Location const & src )
