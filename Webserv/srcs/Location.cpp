@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/02 19:07:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/02 19:09:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ std::string	Location::get_full_file_name(std::string url, std::string root, e_me
         file_name += _alias;
     file_name += "/";
     int     pos = 0;
-    while (url[pos] = _url[pos])
+    while (url[pos] == _url[pos])
         pos++;
     //if (url.size() > _url.size())
     //    file_name += url.substr(_url.size(), url.size() - 1);
