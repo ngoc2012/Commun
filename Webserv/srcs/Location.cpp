@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/02 11:17:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/02 11:18:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ std::string	Location::get_full_file_name(std::string url, std::string root)
     if (_autoindex)
         return (file_name);
     struct stat	info;
-    if (stat(file_name.c_str(), &info) == 0 && !S_ISDIR(info.st_mode))
+    if (!stat(file_name.c_str(), &info) && !S_ISDIR(info.st_mode))
         return (file_name);
     file_name += "/";
     if (!_index.size())
@@ -109,7 +109,7 @@ std::string	Location::get_full_file_name(std::string url, std::string root)
     }
     i = 0;
     std::string fn0 = file_name + _index[i];
-    while (stat(fn0.c_str(), &info) == 0)
+    while (stat(fn0.c_str(), &info))
         fn0 = file_name + _index[++i];
     return (fn0);
 }
