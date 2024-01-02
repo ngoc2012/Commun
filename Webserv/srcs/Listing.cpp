@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/02 16:41:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/02 16:44:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ Listing::~Listing() {}
 std::string Listing::get_html(Response* response)
 {
     (void)response;
-    return "Listing";
+    Request* request = response->get_request();
+    std::string     folder_name = request->get_full_file_name();
+    return "Listing " + folder_name;
 }
