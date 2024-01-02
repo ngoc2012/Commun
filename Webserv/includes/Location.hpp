@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 23:26:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/02 10:55:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class	Location
 		std::string			        _alias;
 		std::string			        _cgi_pass;
 		bool                        _autoindex;
+		std::vector<std::string>	_index;
 
 
 		Location();
