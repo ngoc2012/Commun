@@ -35,86 +35,6 @@ Listening socket is readable 6
   New incoming connection - 7
 Cgi Default constructor
 Waiting on select() ...
-Request header: 675
-GET /index_files HTTP/1.1
-Host: 127.0.0.1:4141
-User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate, br
-Connection: keep-alive
-Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
-Upgrade-Insecure-Requests: 1
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-
-
-check_location 7 www/index_files
-end_read 7 www/index_files
-Waiting on select() ...
-Write set sk = 7
-Header Constructor
-Response Header:
-HTTP/1.1 200 OK
-Allow: PUT,GET,DELETE
-Content-Language: en
-Content-Type: text/plain
-Content-Length: 23
-Date: Tue, 02 Jan 2024 21:06:51 GMT
-
-
-Header Destruction
-Waiting on select() ...
-Write set sk = 7
-end_connection read |www/index_files| 7 0/23
-close_client_sk 7
-Waiting on select() ...
-Listening socket is readable 6
-  New incoming connection - 7
-Cgi Default constructor
-Waiting on select() ...
-Request header: 675
-GET /index_files HTTP/1.1
-Host: 127.0.0.1:4141
-User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
-Accept-Language: en-US,en;q=0.5
-Accept-Encoding: gzip, deflate, br
-Connection: keep-alive
-Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
-Upgrade-Insecure-Requests: 1
-Sec-Fetch-Dest: document
-Sec-Fetch-Mode: navigate
-Sec-Fetch-Site: none
-Sec-Fetch-User: ?1
-
-
-check_location 7 www/index_files
-end_read 7 www/index_files
-Waiting on select() ...
-Write set sk = 7
-Header Constructor
-Response Header:
-HTTP/1.1 200 OK
-Allow: PUT,GET,DELETE
-Content-Language: en
-Content-Type: text/plain
-Content-Length: 23
-Date: Tue, 02 Jan 2024 21:06:53 GMT
-
-
-Header Destruction
-Waiting on select() ...
-Write set sk = 7
-end_connection read |www/index_files| 7 0/23
-close_client_sk 7
-Waiting on select() ...
-Listening socket is readable 6
-  New incoming connection - 7
-Cgi Default constructor
-Waiting on select() ...
 Request header: 149
 PUT /put_test/port6.jpg HTTP/1.1
 Host: 127.0.0.1:4141
@@ -225,64 +145,12 @@ Allow: PUT,GET,DELETE
 Content-Language: en
 Content-Type: image/jpeg
 Content-Length: 0
-Date: Tue, 02 Jan 2024 21:08:51 GMT
+Date: Tue, 02 Jan 2024 21:11:29 GMT
 
 
 Header Destruction
 Waiting on select() ...
 Write set sk = 7
 end_connection read |www/put//port6.jpg| 7 0/0
-close_client_sk 7
-Waiting on select() ...
-Listening socket is readable 4
-  New incoming connection - 7
-Cgi Default constructor
-Waiting on select() ...
-Request header: 1024
-GET / HTTP/1.1
-Host: 127.0.4.1
-User-Agent: curl/7.81.0
-Accept: */*
-Content-Length: 6973
-Content-Type: multipart/form-data; boundary=------------------------997e4f824c94bd18
-
---------------------------997e4f824c94bd18
-Content-Disposition: form-data; name="file"; filename=".conf"
-Content-Type: application/octet-stream
-
-#Setup the configuration file as follow:
-#- / must answer to GET request ONLY
-#- /put_test/* must answer to PUT request and save files to a directory of your choice
-#- any file with .bla as extension must answer to POST request by calling the cgi_test executable
-#- /post_body must answer anything to POST request with a maxBody of 100
-#- /directory/ must answer to GET request and the root of it would be the repository YoupiBanane and if no file are requested, it should search for youpi.bad_extension files
-
-host 	 	
-	#worker_connections 1024;
-	#include /etc/nginx/mime.types	
-	#default_type application/octet-stream
-	# Specifies the maximum accepted body size of a client request, as
-	# ind
-check_location 7 www//HOPPY_DAYS.html
-Waiting on select() ...
-end_read 7 www//HOPPY_DAYS.html
-Waiting on select() ...
-Write set sk = 7
-Header Constructor
-Response Header:
-HTTP/1.1 200 OK
-Allow: GET
-Content-Language: en
-Content-Type: text/html
-Content-Length: 57413
-Date: Tue, 02 Jan 2024 21:09:36 GMT
-
-
-Header Destruction
-Waiting on select() ...
-Write set sk = 7
-Waiting on select() ...
-Write set sk = 7
-end_connection read |www//HOPPY_DAYS.html| 7 57413/57413
 close_client_sk 7
 Waiting on select() ...
