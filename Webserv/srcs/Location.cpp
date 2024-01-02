@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/02 17:38:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/02 19:07:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ std::string	Location::get_full_file_name(std::string url, std::string root, e_me
         pos++;
     //if (url.size() > _url.size())
     //    file_name += url.substr(_url.size(), url.size() - 1);
-    file_name += _url.substr(pos);
+    file_name += url.substr(pos);
     if (_autoindex || e == PUT || e == POST)
         return (file_name);
     struct stat	info;
