@@ -6,10 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 15:25:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/02 16:41:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Request.hpp"
 #include "Response.hpp"
 #include "webserv.hpp"
 
