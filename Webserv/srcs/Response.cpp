@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/02 16:43:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/02 17:18:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int     Response::write_body()
         if (len > RESPONSE_BUFFER * 1028)
             len = RESPONSE_BUFFER * 1028;
 
-        std::cout << "write_body " << _pos << " " << len << " " << _body << std::endl;
+        //std::cout << "write_body " << _pos << " " << len << " " << _body << std::endl;
         if (send(_socket, &_body.c_str()[_pos], len, 0) < 0)
             return (end_connection());
 
