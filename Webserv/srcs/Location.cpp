@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 23:33:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/02 11:03:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ std::string	Location::get_method_str(e_method e) {
     }
     return ("");
 }
+
+void        Location::push_back_index(std::string s) { _index.push_back(s); }
 
 std::vector<e_method>		Location::get_methods(void) const {return (_methods);}
 std::string			        Location::get_alias(void) const {return (_alias);}

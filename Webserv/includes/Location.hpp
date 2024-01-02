@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/02 10:55:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/02 11:02:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ class	Location
         std::string	                get_full_file_name(std::string, std::string);
 		std::string                 get_methods_str(void);
         static std::string	        get_method_str(e_method);
+		void                        push_back_index(std::string);
 
 		std::vector<e_method>		get_methods(void) const;
 		std::string			        get_alias(void) const;
