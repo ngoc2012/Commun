@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/02 11:13:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/02 11:14:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ std::string	Location::get_full_file_name(std::string url, std::string root)
     i = 0;
     std::string fn0 = file_name + _index[i];
     while (stat(fn0.c_str(), &info) == 0)
-        fn0 = file_name + _index[++i]
-    return (file_name);
+        fn0 = file_name + _index[++i];
+    return (fn0);
     //std::cout << _full_file_name << std::endl;
 }
 
