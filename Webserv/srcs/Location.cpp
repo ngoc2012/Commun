@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/02 11:09:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/02 11:13:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,10 @@ std::string	Location::get_full_file_name(std::string url, std::string root)
         file_name += "/index.html";
         return (file_name);
     }
-    if (stat(file_name.c_str(), &info) == 0
-            && S_ISDIR(info.st_mode) && !_autoindex)
-        file_name += "/index.html";
+    i = 0;
+    std::string fn0 = file_name + _index[i];
+    while (stat(fn0.c_str(), &info) == 0)
+        fn0 = file_name + _index[++i]
     return (file_name);
     //std::cout << _full_file_name << std::endl;
 }
