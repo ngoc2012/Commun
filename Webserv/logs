@@ -51,8 +51,8 @@ Sec-Fetch-Site: none
 Sec-Fetch-User: ?1
 
 
-check_location 7 www/
-end_read 7 www/
+check_location 7 www//index_files
+end_read 7 www//index_files
 Waiting on select() ...
 Write set sk = 7
 Header Constructor
@@ -61,13 +61,13 @@ HTTP/1.1 200 OK
 Allow: PUT,GET,DELETE
 Content-Language: en
 Content-Type: text/plain
-Content-Length: 12
-Date: Tue, 02 Jan 2024 18:12:02 GMT
+Content-Length: 24
+Date: Tue, 02 Jan 2024 21:01:20 GMT
 
 
 Header Destruction
 Waiting on select() ...
 Write set sk = 7
-end_connection read |www/| 7 0/12
+end_connection read |www//index_files| 7 0/24
 close_client_sk 7
 Waiting on select() ...
