@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 14:19:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 14:25:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,21 @@ Configuration&	Configuration::operator=( Configuration const & src )
 }
 Configuration::~Configuration() {}
 
-Configuration::add_server(Server* new_server, std::map<std::string, Address*>& address)
+bool    Configuration::add_server(Server* new_server, std::map<std::string, Address*>& address)
 {
-    if (new_server)
+    if (new_server.get_address() == "" || !new_server->get_locations().size())
+        return (false);
+    if (!address[new_server->get_address()])
     {
-        if (new_server.get_address() == "" || !new_server->get_locations().size())
-        {
+        new_address = new Address(new_server->get_ip_address(), new_server->get_port());
+        if (!new_address)
             return (false);
-            break;
-        }
-        if (!address[new_server->get_address()])
-        {
-            new_address = new Address(new_server->get_ip_address(), new_server->get_port());
-            address[new_server->get_address()] = new_address;
-            new_address->push(new_server);
-        }
-        else
-            address[new_server->get_address()]->push(new_server);
+        address[new_server->get_address()] = new_address;
+        new_address->push(new_server);
     }
+    else
+        address[new_server->get_address()]->push(new_server);
+    return (true);
 }
 void    Configuration::parser(Host* host, const char* conf)
 {
