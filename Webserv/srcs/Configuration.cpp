@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 22:16:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 22:19:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,10 +129,12 @@ void    Configuration::parser(Host* host, const char* conf)
             break ;
         }
 	}
-	host->set_parser_error(err);
+    if (new_server)
+        add_server(new_server, address);
+    host->set_parser_error(err);
     host->set_servers(servers);
     host->set_address(address);
-	conf_file.close();
+    conf_file.close();
 }
 
 std::string	Configuration::remove_comments(std::string& s)
