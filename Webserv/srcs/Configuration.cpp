@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 14:31:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 14:33:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ bool    Configuration::add_server(Server* new_server, std::map<std::string, Addr
         address[new_server->get_address()]->push(new_server);
     return (true);
 }
+
 void    Configuration::parser(Host* host, const char* conf)
 {
     std::vector<Server*>                servers;
