@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 10:41:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 10:42:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Configuration
 		Configuration();
 		virtual			~Configuration();
 
-		static          parser(Host*, const char* conf);
+		static void     parser(Host*, const char* conf);
 };
 
 #endif
