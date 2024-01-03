@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 11:57:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 14:13:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void    Configuration::parser(Host* host, const char* conf)
                 }
                 if (!address[new_server->get_address()])
                 {
-                    new_address = new Address();
+                    new_address = new Address(new_server->get_ip_address(), new_server->get_port());
                 }
             }
 			part = SERVER;
