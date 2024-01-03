@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/26 17:03:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 10:32:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Host::Host(const char* conf) {
 	_max_sk = -1;
     mimes();
     status_message();
-	Configuration	parser(_servers, this, conf);
+	Configuration	parser(this, conf);
 }
 
 Host&	Host::operator=( Host const & src )

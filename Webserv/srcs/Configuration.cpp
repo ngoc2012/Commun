@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 10:29:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 10:33:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ Configuration&	Configuration::operator=( Configuration const & src )
 }
 Configuration::~Configuration() {}
 
-Configuration::Configuration(std::vector<Server*>& servers, Host* host, const char* conf)
+Configuration::Configuration(Host* host, const char* conf)
 {
-	std::ifstream	conf_file(conf);
+    std::vector<Server*>    servers;
+	std::ifstream	        conf_file(conf);
 	if (!conf_file.is_open()) {
 		std::cerr << "Error opening the file." << std::endl;
 		return ;
@@ -88,6 +89,7 @@ Configuration::Configuration(std::vector<Server*>& servers, Host* host, const ch
 		}
 	}
 	host->set_parser_error(err);
+    host->set_servers(servers);
 	conf_file.close();
 }
 
