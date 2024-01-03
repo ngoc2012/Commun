@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 11:27:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 11:28:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,4 @@ Address::~Address()
 		delete (*it);
 }
 
-void    Address::push(Server*)
-{
-}
+void    Address::push(Server* s) { _servers.push_back(s); }
