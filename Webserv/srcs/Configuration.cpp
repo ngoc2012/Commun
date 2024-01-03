@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 10:36:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 10:41:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Configuration&	Configuration::operator=( Configuration const & src )
 }
 Configuration::~Configuration() {}
 
-Configuration::Configuration(Host* host, const char* conf)
+Configuration::parser(Host* host, const char* conf)
 {
     std::vector<Server*>    servers;
 
