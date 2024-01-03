@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 17:18:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 22:16:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,15 @@ void    Configuration::parser(Host* host, const char* conf)
 		else if (s[0] == 's' && words[0] == "server")
 		{
             if (new_server && !add_server(new_server, address))
-				err = true;
+                err = true;
             else
             {
                 part = SERVER;
                 new_server = new Server();
-                servers.push_back(new_server);
+                if (!new_server)
+                    err = true;
+                else
+                    servers.push_back(new_server);
             }
 		}
 		else if (s[0] == '	' && words[0] == "location")
