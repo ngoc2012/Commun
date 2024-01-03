@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/16 11:54:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 11:35:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class	Server
 		Host*			        _host;
 		std::string		        _ip_address;
 		short unsigned int	    _port;
+		std::string		        _address;
 		int			            _socket;
 		std::string		        _server_name;
 		std::string	        	_root;
@@ -53,19 +54,20 @@ class	Server
 		virtual ~Server();
 
 		void			accept_client_sk(void);
-		int			server_socket(void);
+		int			    server_socket(void);
 		void			insert_location(Location* l);
 
-		const char*		get_ip_address(void) const;
-		short unsigned int	get_port(void) const;
-		int			get_socket(void) const;
-		Host*			get_host(void) const;
-		std::string		get_root(void) const;
-		std::string		get_server_name(void) const;
+		const char*		        get_ip_address(void) const;
+		short unsigned int	    get_port(void) const;
+		int			            get_socket(void) const;
+		Host*			        get_host(void) const;
+		std::string		        get_root(void) const;
+		std::string		        get_server_name(void) const;
 		std::vector<Location*>	get_locations(void) const;	
 
 		void			set_socket(int);
 		void			set_ip_address(std::string);
+		void			set_address(std::string);
 		void			set_port(short unsigned int);
 		void			set_host(Host*);
 		void			set_root(std::string);
