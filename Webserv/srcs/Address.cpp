@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Listing.cpp                                        :+:      :+:    :+:   */
+/*   Address.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/02 16:44:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 09:16:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Request.hpp"
-#include "Response.hpp"
+//#include "Request.hpp"
+//#include "Response.hpp"
 #include "webserv.hpp"
 
-#include "Listing.hpp"
+#include "Address.hpp"
 
-Listing::Listing()
+Address::Address()
 {
-	std::cout << "Listing Default constructor" << std::endl;
+	std::cout << "Address Default constructor" << std::endl;
 }
-Listing::Listing(const Listing& src) { *this = src; }
-Listing&	Listing::operator=( Listing const & src )
+Address::Address(const Address& src) { *this = src; }
+Address&	Address::operator=( Address const & src )
 {
 	(void) src;
 	return (*this);
 }
-Listing::~Listing() {}
+Address::~Address() {}
 
-std::string Listing::get_html(Response* response)
-{
-    (void)response;
-    Request* request = response->get_request();
-    std::string     folder_name = request->get_full_file_name();
-    return "Listing " + folder_name;
-}
