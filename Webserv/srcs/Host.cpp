@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 10:32:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 10:34:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,7 +305,6 @@ void	Host::mimes(void)
 int			                        Host::get_max_clients(void) const {return (_max_clients);}
 std::map<int, Server*>	            Host::get_sk_server(void) const {return (_sk_server);}
 std::map<int, Request*>	            Host::get_sk_request(void) const {return (_sk_request);}
-//std::map<int, Response*>	Host::get_sk_response(void) const {return (_sk_response);}
 size_t			                    Host::get_client_max_body_size(void) const {return (_client_max_body_size);}
 size_t			                    Host::get_client_body_buffer_size(void) const {return (_client_body_buffer_size);}
 std::map<std::string, std::string>*	Host::get_mimes(void) {return (&_mimes);}
@@ -314,3 +313,4 @@ std::map<int, std::string>*  		Host::get_status_message(void) {return (&_status_
 void			Host::set_client_max_body_size(size_t n) {_client_max_body_size = n;}
 void			Host::set_client_body_buffer_size(size_t n) {_client_body_buffer_size = n;}
 void			Host::set_parser_error(bool e) {_parser_error = e;}
+void		    Host::set_servers(std::vector<Server*>);
