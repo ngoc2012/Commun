@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 14:29:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 14:31:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,24 +80,14 @@ void    Configuration::parser(Host* host, const char* conf)
 			part = HOST;
 		else if (s[0] == 's' && words[0] == "server")
 		{
-            if (new_server)
+            if (new_server && !add_server(new_server, address);
+				err = true;
+            else
             {
-                if (new_server.get_address() == "" || !new_server->get_locations().size())
-                {
-                    err = true;
-                    break;
-                }
-                if (!address[new_server->get_address()])
-                {
-                    new_address = new Address(new_server->get_ip_address(), new_server->get_port());
-                    new_address->push(new_server);
-                }
-                else
-                    address[new_server->get_address()]->push(new_server);
+                part = SERVER;
+                new_server = new Server();
+                servers.push_back(new_server);
             }
-			part = SERVER;
-			new_server = new Server();
-			servers.push_back(new_server);
 		}
 		else if (s[0] == '	' && words[0] == "location")
 		{
@@ -126,15 +116,15 @@ void    Configuration::parser(Host* host, const char* conf)
 					err = host_parser(s, host, words);
 					break;
 			}
+        if (err)
+        {
+            conf_file_error(s, i);
+            for (std::vector<Server*>::iterator it = servers.begin();
+                    it != servers.end(); ++it)
+                delete (*it);
+            break ;
+        }
 	}
-    if (err)
-    {
-        conf_file_error(s, i);
-        for (std::vector<Server*>::iterator it = servers.begin();
-                it != servers.end(); ++it)
-            delete (*it);
-        break ;
-    }
 	host->set_parser_error(err);
     host->set_servers(servers);
     host->set_address(address);
