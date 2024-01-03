@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 11:53:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 11:55:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void    Configuration::parser(Host* host, const char* conf)
 	enum e_part {LOCATION, HOST, SERVER, P_NONE};
 	e_part	        part = P_NONE;
 	Server		    *new_server = 0;
+	Server		    *new_address = 0;
 	Location	    *new_location = 0;
 	std::string	    line;
 	int		        i = 0;
@@ -61,6 +62,9 @@ void    Configuration::parser(Host* host, const char* conf)
                 {
                     err = true;
                     break;
+                }
+                if (!address[new_server->get_address()])
+                {
                 }
             }
 			part = SERVER;
