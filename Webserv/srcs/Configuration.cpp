@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 22:20:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 22:23:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ bool    Configuration::add_server(Server* new_server, std::map<std::string, Addr
     {
         Address* new_address = new Address(new_server->get_ip_address(), new_server->get_port());
         if (!new_address)
+        {
+            delete (new_server);
             return (false);
+        }
         address[new_server->get_address()] = new_address;
         new_address->push(new_server);
     }
@@ -82,7 +85,10 @@ void    Configuration::parser(Host* host, const char* conf)
 		else if (s[0] == 's' && words[0] == "server")
 		{
             if (new_server && !add_server(new_server, address))
+            {
+                new_server = 0;
                 err = true;
+            }
             else
             {
                 part = SERVER;
