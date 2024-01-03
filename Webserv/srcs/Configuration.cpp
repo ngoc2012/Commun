@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 14:33:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 14:34:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,9 @@ void    Configuration::parser(Host* host, const char* conf)
         if (err)
         {
             conf_file_error(s, i);
-            for (std::vector<Server*>::iterator it = servers.begin();
-                    it != servers.end(); ++it)
-                delete (*it);
+            //for (std::vector<Server*>::iterator it = servers.begin();
+            //        it != servers.end(); ++it)
+            //    delete (*it);
             break ;
         }
 	}
@@ -139,6 +139,7 @@ std::string	Configuration::remove_comments(std::string& s)
 		return (s);
 	return (s.substr(0, hash_pos));
 }
+
 std::string	Configuration::remove_spaces_end(std::string& s)
 {
 	size_t	n = s.length();
