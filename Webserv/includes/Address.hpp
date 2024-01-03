@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 11:34:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 11:57:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ class	Address
 
         void    push(Server*);
         int	    bind_addr(void);
+        std::string		    get_ip_address(void) const;
+        short unsigned int	get_port(void) const;
 };
 
 #endif
