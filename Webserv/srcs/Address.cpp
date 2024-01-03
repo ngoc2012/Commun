@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 11:15:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 11:16:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ Address&	Address::operator=( Address const & src )
 }
 Address::~Address()
 {
+	std::cout << "Address Destructor" << std::endl;
 	for (std::vector<Server*>::iterator it = _servers.begin();
 		it != _servers.end(); ++it)
 		delete (*it);
