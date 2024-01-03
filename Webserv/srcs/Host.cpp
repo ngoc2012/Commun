@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 11:14:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 11:19:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ Host&	Host::operator=( Host const & src )
 Host::~Host()
 {
 	std::cout << "Host Destructor" << std::endl;
-	//for (std::vector<Server*>::iterator it = _servers.begin();
-	//	it != _servers.end(); ++it)
-	//	delete (*it);
 	for (std::map<int, Request*>::iterator it = _sk_request.begin();
 		it != _sk_request.end(); ++it)
 		delete (it->second);
