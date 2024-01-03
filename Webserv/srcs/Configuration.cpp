@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 14:13:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 14:17:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,24 @@ Configuration&	Configuration::operator=( Configuration const & src )
 }
 Configuration::~Configuration() {}
 
+Configuration::add_server(Server* new_server, std::map<std::string, Address*>& address)
+{
+    if (new_server)
+    {
+        if (new_server.get_address() == "" || !new_server->get_locations().size())
+        {
+            err = true;
+            break;
+        }
+        if (!address[new_server->get_address()])
+        {
+            new_address = new Address(new_server->get_ip_address(), new_server->get_port());
+            new_address->push(new_server);
+        }
+        else
+            address[new_server->get_address()]->push(new_server);
+    }
+}
 void    Configuration::parser(Host* host, const char* conf)
 {
     std::vector<Server*>                servers;
@@ -66,7 +84,10 @@ void    Configuration::parser(Host* host, const char* conf)
                 if (!address[new_server->get_address()])
                 {
                     new_address = new Address(new_server->get_ip_address(), new_server->get_port());
+                    new_address->push(new_server);
                 }
+                else
+                    address[new_server->get_address()]->push(new_server);
             }
 			part = SERVER;
 			new_server = new Server();
