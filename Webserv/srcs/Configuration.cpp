@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 11:20:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 11:26:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Configuration::~Configuration() {}
 void    Configuration::parser(Host* host, const char* conf)
 {
     std::vector<Server*>                servers;
-    std::map<std::string, Address>		address;
+    std::map<std::string, Address*>		address;
 
 	enum e_part {LOCATION, HOST, SERVER, P_NONE};
 	e_part	        part = P_NONE;
@@ -94,6 +94,7 @@ void    Configuration::parser(Host* host, const char* conf)
 	}
 	host->set_parser_error(err);
     host->set_servers(servers);
+    host->set_address(address);
 	conf_file.close();
 }
 
