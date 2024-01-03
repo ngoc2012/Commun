@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 11:38:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 11:44:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ void    Configuration::parser(Host* host, const char* conf)
 			part = HOST;
 		else if (s[0] == 's' && words[0] == "server")
 		{
+            if (new_server)
+            {
+            }
 			part = SERVER;
 			new_server = new Server();
 			servers.push_back(new_server);
