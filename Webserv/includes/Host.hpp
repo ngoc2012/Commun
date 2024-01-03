@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 11:49:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 16:34:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define HOST_HPP
 
 // Forward declaration
+class	Address;
 class	Server;
 class	Request;
 class	Response;
