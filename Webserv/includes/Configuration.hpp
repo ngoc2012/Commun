@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 14:26:04 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 16:40:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define CONFIGURATIONPARSER_HPP
 
 class Host;
+class Address;
 class Server;
 class Location;
 

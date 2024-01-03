@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 16:39:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 16:40:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ Address::Address(std::string ip, short unsigned int p): _ip_address(ip), _port(p
 
 void    Address::push(Server* s) { _servers.push_back(s); }
 
+/*
 int	    Address::bind_addr(Host* host, int socket)
 {
 	struct sockaddr_in	addr;
@@ -60,3 +61,4 @@ int	    Address::bind_addr(Host* host, int socket)
 		<< " (socket : " << socket << ")" << std::endl;
 	return (socket);
 }
+*/
