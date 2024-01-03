@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 22:18:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 22:20:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ Host::~Host()
 	for (std::map<std::string, Address*>::iterator it = _address.begin();
 		it != _address.end(); ++it)
 		delete (it->second);
-	//for (std::vector<Server*>::iterator it = _servers.begin();
-	//	it != _servers.end(); ++it)
-	//	delete (*it);
 	std::cout << "End server" << std::endl;
 }
 

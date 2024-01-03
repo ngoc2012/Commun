@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 22:19:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 22:20:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,6 @@ void    Configuration::parser(Host* host, const char* conf)
         if (err)
         {
             conf_file_error(s, i);
-            //for (std::vector<Server*>::iterator it = servers.begin();
-            //        it != servers.end(); ++it)
-            //    delete (*it);
             break ;
         }
 	}
