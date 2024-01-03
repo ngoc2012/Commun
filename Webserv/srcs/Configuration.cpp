@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 10:33:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 10:36:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,21 @@ Configuration::~Configuration() {}
 Configuration::Configuration(Host* host, const char* conf)
 {
     std::vector<Server*>    servers;
+
+	enum e_part {LOCATION, HOST, SERVER, P_NONE};
+	e_part	        part = P_NONE;
+	Server		    *new_server = 0;
+	Location	    *new_location = 0;
+	std::string	    line;
+	int		        i = 0;
+	bool	        err = false;
+
 	std::ifstream	        conf_file(conf);
 	if (!conf_file.is_open()) {
 		std::cerr << "Error opening the file." << std::endl;
 		return ;
 	}
-	enum e_part {LOCATION, HOST, SERVER, P_NONE};
-	e_part	part = P_NONE;
-	Server		*new_server = 0;
-	Location	*new_location = 0;
-	int		i = 0;
-	std::string	line;
-	bool	err = false;
+
 	while (std::getline(conf_file, line))
 	{
 		std::string		s = remove_comments(line);
