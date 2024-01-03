@@ -4,10 +4,3 @@ rm -f srcs/main.o srcs/Host.o srcs/Address.o srcs/Server.o srcs/Request.o srcs/R
 rm -f server
 c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/main.cpp -o srcs/main.o -I./includes
 c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Host.cpp -o srcs/Host.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Address.cpp -o srcs/Address.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Server.cpp -o srcs/Server.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Request.cpp -o srcs/Request.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Response.cpp -o srcs/Response.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Header.cpp -o srcs/Header.o -I./includes
-c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Configuration.cpp -o srcs/Configuration.o -I./includes
-make[1]: Leaving directory '/home/ngoc/Commun/Webserv'

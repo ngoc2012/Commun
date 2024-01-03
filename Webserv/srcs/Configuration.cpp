@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 16:41:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 17:18:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Configuration::~Configuration() {}
 
 bool    Configuration::add_server(Server* new_server, std::map<std::string, Address*>& address)
 {
-    if (new_server.get_address() == "")
+    if (new_server->get_address() == "")
     {
         std::cerr << "Error: Server without address." << std::endl;
         return (false);
@@ -39,7 +39,7 @@ bool    Configuration::add_server(Server* new_server, std::map<std::string, Addr
     }
     if (!address[new_server->get_address()])
     {
-        new_address = new Address(new_server->get_ip_address(), new_server->get_port());
+        Address* new_address = new Address(new_server->get_ip_address(), new_server->get_port());
         if (!new_address)
             return (false);
         address[new_server->get_address()] = new_address;
@@ -58,7 +58,6 @@ void    Configuration::parser(Host* host, const char* conf)
 	enum e_part {LOCATION, HOST, SERVER, P_NONE};
 	e_part	        part = P_NONE;
 	Server*		    new_server = 0;
-	Address*		new_address = 0;
 	Location*	    new_location = 0;
 	std::string	    line;
 	int		        i = 0;
@@ -82,7 +81,7 @@ void    Configuration::parser(Host* host, const char* conf)
 			part = HOST;
 		else if (s[0] == 's' && words[0] == "server")
 		{
-            if (new_server && !add_server(new_server, address);
+            if (new_server && !add_server(new_server, address))
 				err = true;
             else
             {
