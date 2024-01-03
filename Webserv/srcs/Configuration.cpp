@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 11:26:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 11:38:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,6 +250,7 @@ bool	Configuration::listen(Server* s, std::vector<std::string> words)
 	n = std::atoi(address[1].c_str());
 	if (!ft::is_digit(address[1]) || n < 0 || n > 65535)
 		return (false);
+	s->set_address(words[1]);
 	s->set_ip_address(address[0]);
 	s->set_port(std::atoi(address[1].c_str()));
 	//std::cout << s->get_ip_address() << ":" << s->get_port() << std::endl;
