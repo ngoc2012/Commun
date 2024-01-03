@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 11:17:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/03 11:21:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ class	Host
 		void			set_client_body_buffer_size(size_t);
 		void			set_parser_error(bool);
         void		    set_servers(std::vector<Server*>);
+        void		    set_address(std::map<std::string, Address>);
 };
 
 #endif
