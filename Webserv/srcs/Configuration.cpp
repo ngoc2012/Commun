@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 13:38:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:45:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ bool    Configuration::add_server(Host* host, Server* new_server, std::map<std::
     return (true);
 }
 
-void    Configuration::parser(Host* host, const char* conf)
+bool    Configuration::parser(Host* host, const char* conf)
 {
-    std::vector<Server*>                servers;
+    //std::vector<Server*>                servers;
     std::map<std::string, Address*>		address;
 
 	enum e_part {LOCATION, HOST, SERVER, P_NONE};
@@ -70,7 +70,7 @@ void    Configuration::parser(Host* host, const char* conf)
 	std::ifstream	        conf_file(conf);
 	if (!conf_file.is_open()) {
 		std::cerr << "Error opening the file." << std::endl;
-		return ;
+		return (false);
 	}
 
 	while (std::getline(conf_file, line))
@@ -108,7 +108,7 @@ void    Configuration::parser(Host* host, const char* conf)
 			{
 				part = LOCATION;
 				new_location = new Location(words[1]);
-				new_server->insert_location(new_location);
+				//new_server->insert_location(new_location);
 			}
 		}
 		else
@@ -136,9 +136,10 @@ void    Configuration::parser(Host* host, const char* conf)
     if (new_server)
         add_server(host, new_server, address);
     host->set_parser_error(err);
-    host->set_servers(servers);
+    //host->set_servers(servers);
     host->set_str_address(address);
     conf_file.close();
+    return (!err);
 }
 
 std::string	Configuration::remove_comments(std::string& s)
