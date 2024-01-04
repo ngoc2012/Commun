@@ -6,15 +6,9 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:51:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:53:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <iostream>
-
-#include "webserv.hpp"
-#include "Response.hpp"
-#include "Cgi.hpp"
 
 #ifndef REQUEST_HPP
 # define REQUEST_HPP
@@ -24,6 +18,7 @@
 
 class	Host;
 class	Address;
+class	Response;
 enum    e_method;
 
 class	Request
