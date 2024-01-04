@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 11:37:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 13:37:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ Server&	Server::operator=( Server const & src )
 	_socket = src.get_socket();
 	_host = src.get_host();
 	return (*this);
+}
+Server::Server(Host* host): _host(host)
+{
+	_ip_address = std::string("127.0.0.1");
+	_port = 4242;
+	_socket = -1;
+	_host = 0;
 }
 Server::~Server()
 {

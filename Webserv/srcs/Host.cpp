@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 13:35:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 13:36:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,13 @@ bool	Host::check_servers_conf(void)
 void	Host::start_server(void)
 {
 	int	listen_sk;
-	for (std::map<std::string, Address*>::iterator ad = _str_address.begin();
-		ad != _str_address.end(); ++ad)
-    {
-    }
-    /*
+	//for (std::map<std::string, Address*>::iterator ad = _str_address.begin();
+	//	ad != _str_address.end(); ++ad)
+    //{
+    //}
 	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end();)
 	{
-		(*it)->set_host(this);
+		//(*it)->set_host(this);
 		listen_sk = (*it)->server_socket();
 		if (listen_sk > 0)
 		{
@@ -104,7 +103,6 @@ void	Host::start_server(void)
 			_servers.erase(it);
 		}
 	}
-    */
 }
 
 bool	Host::select_available_sk(void)
