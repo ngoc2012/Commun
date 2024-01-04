@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:57:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:59:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ Request::~Request()
     delete[] _buffer;
     if (_cgi)
         delete (_cgi);
-	if (_socket > 0)
-		close(_socket);
-	if (_tmp_file != "" && std::remove(_tmp_file.c_str()))
+    if (_socket > 0)
+        close(_socket);
+    if (_tmp_file != "" && std::remove(_tmp_file.c_str()))
         std::cerr << "Error: Can not delete file " << _tmp_file << std::endl;
 }
 

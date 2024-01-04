@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/31 09:51:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:58:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 
 #define BUFFER_SIZE 65792
 
-Cgi::Cgi()
+Cgi::Cgi() {}
+Cgi::Cgi(Request* request): _request(request)
 {
-	std::cout << "Cgi Default constructor" << std::endl;
     _envs = 0;
     _pid = -1;
 }
