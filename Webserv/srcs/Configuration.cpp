@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 16:01:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 16:05:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ bool    Configuration::add_server(Host* host, Server* new_server, std::map<std::
     if (new_server->get_address() == "")
     {
         std::cerr << "Error: Server without address." << std::endl;
+        delete (new_server);
         return (false);
     }
     if (!new_server->get_locations().size())
     {
         std::cerr << "Error: Server without location." << std::endl;
+        delete (new_server);
         return (false);
     }
     if (!address[new_server->get_address()])
