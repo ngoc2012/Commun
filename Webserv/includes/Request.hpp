@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:53:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:54:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 
 class	Host;
 class	Address;
+class	Server;
 class	Response;
+class	Cgi;
 enum    e_method;
 
 class	Request
