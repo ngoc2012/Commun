@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 12:57:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 13:38:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void    Configuration::parser(Host* host, const char* conf)
             else
             {
                 part = SERVER;
-                new_server = new Server();
+                new_server = new Server(host);
                 if (!new_server)
                     err = true;
                 else
