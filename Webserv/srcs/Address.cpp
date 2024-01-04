@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:50:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:32:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,6 @@ void	Address::accept_client_sk(void)
 	} while (new_sk != -1);
 }
 
+std::vector<Server*>    get_servers(void) const {return (_servers);}
 //std::string		    Address::get_ip_address(void) const {return (_ip_address);}
 //short unsigned int	Address::get_port(void) const {return (_port);}
