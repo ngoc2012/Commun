@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 16:35:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 10:41:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ class	Address
 		virtual ~Address();
 
         void    push(Server*);
+        int     listen_socket(void);
         int	    bind_addr(void);
 
         //std::string		    get_ip_address(void) const;
         //short unsigned int	get_port(void) const;
 
-        //void                set_ip_address(std::string);
+        //void                  set_ip_address(std::string);
         //void	            set_port(short unsigned int);
 };
 
