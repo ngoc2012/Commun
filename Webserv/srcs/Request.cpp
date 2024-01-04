@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:34:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:40:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,7 +258,7 @@ Server*		Request::get_server(void) const {return (_server);}
 e_method	Request::get_method(void) const {return (_method);}
 std::string	Request::get_url(void) const {return (_url);}
 Response*	Request::get_response(void) {return (&_response);}
-const Cgi*  Request::get_cgi(void) const {return (&_cgi);}
+Cgi*        Request::get_cgi(void) const {return (_cgi);}
 int		    Request::get_status_code(void) const {return (_status_code);}
 std::string	Request::get_content_type(void) const {return (_content_type);}
 size_t		Request::get_content_length(void) const {return (_content_length);}
