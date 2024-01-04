@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 12:10:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 12:12:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ class	Address
 		virtual ~Address();
 
         void    push(Server*);
-        int     listen_socket(Host* host);
-        int	    bind_addr(Host* host, int socket);
+        int     listen_socket(void);
+        int	    bind_addr(void);
         void	accept_client_sk(void);
 
         //std::string		    get_ip_address(void) const;

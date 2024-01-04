@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 12:08:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 12:12:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Address::Address(Host* host, std::string ip, short unsigned int p):
 
 void    Address::push(Server* s) { _servers.push_back(s); }
 
-int     Address::listen_socket(Host* host)
+int     Address::listen_socket(void)
 {
 	_listen_socket = socket(AF_INET, SOCK_STREAM, 0);
 	if (_listen_socket < 0)
@@ -59,29 +59,29 @@ int     Address::listen_socket(Host* host)
 		return (-1);
 	}
 	fcntl(_listen_socket, F_SETFL, O_NONBLOCK);	// ioctl not allowed
-	return (bind_addr(host));
+	return (bind_addr());
 }
 
-int	    Address::bind_addr(Host* host)
+int	    Address::bind_addr()
 {
 	struct sockaddr_in	addr;
 
 	addr.sin_family = AF_INET;
 	addr.sin_port = htons(_port);
 	addr.sin_addr.s_addr = inet_addr(_ip_address.c_str());
-	if (bind(socket, (struct sockaddr *)&addr, sizeof(addr)) < 0)
+	if (bind(_listen_socket, (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
 		perror("bind() failed");
 		return (-1);
 	}
-	if (listen(socket, host->get_max_clients()) < 0)
+	if (listen(_listen_socket, _host->get_max_clients()) < 0)
 	{
 		perror("listen() failed");
 		return (-1);
 	}
 	std::cout << "Listening at " << _ip_address << ":" << _port
-		<< " (socket : " << socket << ")" << std::endl;
-	return (socket);
+		<< " (socket : " << _listen_socket << ")" << std::endl;
+	return (_listen_socket);
 }
 
 //Accept all the new connections, create a new socket and add to the master set
