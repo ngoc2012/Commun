@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 16:21:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 16:22:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,68 +48,7 @@ Server::~Server()
 		close(_socket);
 	}
 }
-/*
-int	Server::server_socket(void)
-{
-	_socket = socket(AF_INET, SOCK_STREAM, 0);
-	if (_socket < 0)
-	{
-		perror("listen socket: socket() failed");
-		return (-1);
-	}
-	int    on = 1;
-	if (setsockopt(_socket, SOL_SOCKET,  SO_REUSEADDR,
-                   (char *)&on, sizeof(on)) < 0)
-	{
-		perror("reusable socket: setsockopt() failed");
-		return (-1);
-	}
-	fcntl(_socket, F_SETFL, O_NONBLOCK);	// ioctl not allowed
-	return (bind_addr());
-}
 
-int	Server::bind_addr(void)
-{
-	struct sockaddr_in	addr;
-
-	addr.sin_family = AF_INET;
-	addr.sin_port = htons(_port);
-	addr.sin_addr.s_addr = inet_addr(_ip_address.c_str());
-	if (bind(_socket, (struct sockaddr *)&addr, sizeof(addr)) < 0)
-	{
-		perror("bind() failed");
-		return (-1);
-	}
-	if (listen(_socket, _host->get_max_clients()) < 0)
-	{
-		perror("listen() failed");
-		return (-1);
-	}
-	std::cout << "Listening at " << _ip_address << ":" << _port
-		<< " (socket : " << _socket << ")" << std::endl;
-	return (_socket);
-}
-
-//Accept all the new connections, create a new socket and add to the master set
-void	Server::accept_client_sk(void)
-{
-	std::cout << "Listening socket is readable " << _socket << std::endl;
-	int	new_sk;
-	do
-	{
-		new_sk = accept(_socket, NULL, NULL);
-		if (new_sk < 0)
-		{
-			if (errno != EWOULDBLOCK)
-				perror("accept() failed");
-			break;
-		}
-		fcntl(new_sk, F_SETFL, O_NONBLOCK);
-		std::cout << "  New incoming connection - " << new_sk << std::endl;
-		_host->new_request_sk(new_sk, this);
-	} while (new_sk != -1);
-}
-*/
 void			        Server::insert_location(Location* l) {_locations.push_back(l);}
 
 std::string		        Server::get_address(void) const {return (_address);}

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:50:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 16:23:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ Address::~Address()
 	for (std::vector<Server*>::iterator it = _servers.begin();
 		it != _servers.end(); ++it)
 		delete (*it);
+	if (_listen_socket > 0)
+	{
+		std::cout << "Close listen socket: " << _listen_socket << std::endl;
+		close(_listen_socket);
+	}
 }
 Address::Address(Host* host, std::string ip, short unsigned int p):
     _host(host),
