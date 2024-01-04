@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 10:45:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 12:05:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,24 @@ void    Address::push(Server* s) { _servers.push_back(s); }
 
 int     Address::listen_socket(Host* host)
 {
-    int     s;
-	s = socket(AF_INET, SOCK_STREAM, 0);
-	if (s < 0)
+	_listen_socket = socket(AF_INET, SOCK_STREAM, 0);
+	if (_listen_socket < 0)
 	{
 		perror("listen socket: socket() failed");
 		return (-1);
 	}
 	int    on = 1;
-	if (setsockopt(s, SOL_SOCKET,  SO_REUSEADDR,
+	if (setsockopt(_listen_socket, SOL_SOCKET,  SO_REUSEADDR,
                    (char *)&on, sizeof(on)) < 0)
 	{
 		perror("reusable socket: setsockopt() failed");
 		return (-1);
 	}
-	fcntl(s, F_SETFL, O_NONBLOCK);	// ioctl not allowed
-	return (bind_addr(host, s));
+	fcntl(_listen_socket, F_SETFL, O_NONBLOCK);	// ioctl not allowed
+	return (bind_addr(host));
 }
 
-int	    Address::bind_addr(Host* host, int socket)
+int	    Address::bind_addr(Host* host)
 {
 	struct sockaddr_in	addr;
 

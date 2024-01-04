@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 12:03:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 12:04:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class	Address
 		std::vector<Server*>    _servers;
 		std::string		        _ip_address;
 		short unsigned int	    _port;
+        int                     _listen_socket;
 
 		Address();
 		Address(const Address&);
