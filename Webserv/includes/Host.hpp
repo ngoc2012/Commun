@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 16:34:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 10:21:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ class	Host
 		fd_set              		            _write_set;		// Set of active write fd
 		fd_set              		            _server_set;
 		std::vector<Server*>		            _servers;
-		std::map<std::string, Address*>		    _address;
+		std::map<std::string, Address*>		    _addresses;
+		std::map<int, Address*>		            _sk_address;
 		//std::map<int, Response*>	            _sk_response;
 		std::map<int, Server*>		            _sk_server;
 		std::map<int, Request*>	                _sk_request;
