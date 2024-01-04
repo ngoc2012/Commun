@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:00:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:03:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,18 @@ void	Host::start_server(void)
 	for (std::map<std::string, Address*>::iterator ad = _str_address.begin();
 		ad != _str_address.end(); ++ad)
     {
+        listen_sk = (ad->second)->listen_socket();
+		if (listen_sk > 0)
+		{
+			add_sk_2_master_read_set(listen_sk, *it);
+			FD_SET(listen_sk, &_server_set);
+			++it;
+		}
+		else
+		{
+			delete (ad->second);
+			_str_address.erase(ad->first);
+		}
     }
     /*
 	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end();)
