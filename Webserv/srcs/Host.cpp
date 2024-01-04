@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 10:21:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 10:23:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ Host::~Host()
 	for (std::map<int, Request*>::iterator it = _sk_request.begin();
 		it != _sk_request.end(); ++it)
 		delete (it->second);
-	for (std::map<std::string, Address*>::iterator it = _address.begin();
-		it != _address.end(); ++it)
+	for (std::map<std::string, Address*>::iterator it = _str_address.begin();
+		it != _str_address.end(); ++it)
 		delete (it->second);
 	std::cout << "End server" << std::endl;
 }
