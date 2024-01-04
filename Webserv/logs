@@ -7914,3 +7914,77 @@ Write set sk = 10
 end_connection read |www/Monastik_living_in_Athina_files/anchor_data/lEEM4ZLDLFuvATVvcnxglI8CLvLrSc6BLt7Ue_ua1SM.js| 10 17029/17029
 close_client_sk 10
 Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 8
+Cgi Default constructor
+  New incoming connection - 10
+Cgi Default constructor
+Waiting on select() ...
+Write set sk = 7
+Request header: 660
+GET /_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+purpose: prefetch
+x-nextjs-data: 1
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json
+end_read 8 www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json
+Request header: 617
+GET /_next/static/css/ed403b1e74dfa728.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: empty
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 10 www/_next/static/css/ed403b1e74dfa728.css
+end_read 10 www/_next/static/css/ed403b1e74dfa728.css
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Thu, 04 Jan 2024 09:34:32 GMT
+
+
+Header Destruction
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Thu, 04 Jan 2024 09:34:32 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+end_connection read |www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json| 8 0/141
+close_client_sk 8
+Write set sk = 10
+end_connection read |www/_next/static/css/ed403b1e74dfa728.css| 10 0/141
+close_client_sk 10
+Waiting on select() ...
