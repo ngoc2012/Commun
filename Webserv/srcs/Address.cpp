@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 10:21:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 10:45:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,26 @@ Address::Address(std::string ip, short unsigned int p): _ip_address(ip), _port(p
 
 void    Address::push(Server* s) { _servers.push_back(s); }
 
-/*
+int     Address::listen_socket(Host* host)
+{
+    int     s;
+	s = socket(AF_INET, SOCK_STREAM, 0);
+	if (s < 0)
+	{
+		perror("listen socket: socket() failed");
+		return (-1);
+	}
+	int    on = 1;
+	if (setsockopt(s, SOL_SOCKET,  SO_REUSEADDR,
+                   (char *)&on, sizeof(on)) < 0)
+	{
+		perror("reusable socket: setsockopt() failed");
+		return (-1);
+	}
+	fcntl(s, F_SETFL, O_NONBLOCK);	// ioctl not allowed
+	return (bind_addr(host, s));
+}
+
 int	    Address::bind_addr(Host* host, int socket)
 {
 	struct sockaddr_in	addr;
@@ -61,6 +80,7 @@ int	    Address::bind_addr(Host* host, int socket)
 		<< " (socket : " << socket << ")" << std::endl;
 	return (socket);
 }
+
 //Accept all the new connections, create a new socket and add to the master set
 void	Address::accept_client_sk(void)
 {
@@ -80,4 +100,3 @@ void	Address::accept_client_sk(void)
 		_host->new_request_sk(new_sk, this);
 	} while (new_sk != -1);
 }
-*/
