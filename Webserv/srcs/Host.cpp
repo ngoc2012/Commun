@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:49:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 17:45:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,23 +101,6 @@ void	Host::start_server(void)
 			_str_address.erase(ad->first);
 		}
     }
-    /*
-	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end();)
-	{
-		listen_sk = (*it)->server_socket();
-		if (listen_sk > 0)
-		{
-			add_sk_2_master_read_set(listen_sk, *it);
-			FD_SET(listen_sk, &_server_set);
-			++it;
-		}
-		else
-		{
-			delete (*it);
-			_servers.erase(it);
-		}
-	}
-    */
 }
 
 bool	Host::select_available_sk(void)
