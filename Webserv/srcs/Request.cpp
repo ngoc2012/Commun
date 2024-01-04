@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:52:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:31:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ Request&	Request::operator=( Request const & src )
 	(void) src;
 	return (*this);
 }
-Request::Request(int sk, Host* h, Server* s) : _socket(sk), _host(h), _server(s)
+Request::Request(int sk, Host* h, Address* a) : _socket(sk), _host(h), _address(a)
 {
 	//std::cout << "Request Constructor sk: " << sk << std::endl;
 
 	_response.set_socket(sk);
 	_response.set_host(h);
-	_response.set_server(s);
+	_response.set_server(_server);
 	_response.set_request(this);
 
 	_header = "";
