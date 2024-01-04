@@ -6,9 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:40:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:52:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "Response.hpp"
 
 #ifndef REQUEST_HPP
 # define REQUEST_HPP
