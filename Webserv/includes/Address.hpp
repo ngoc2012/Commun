@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 12:12:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 12:14:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class	Address
 		Address(const Address&);
 		Address	&operator=(const Address& op);
 	public:
-		Address(std::string, short unsigned int);
+		Address(Host*, std::string, short unsigned int);
 		virtual ~Address();
 
         void    push(Server*);
