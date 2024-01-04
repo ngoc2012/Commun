@@ -6,11 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:53:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:55:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Host.hpp"
+#include "Address.hpp"
 #include "Server.hpp"
 #include "Location.hpp"
 #include "Request.hpp"
@@ -38,6 +39,7 @@ Request::Request(int sk, Host* h, Address* a) : _socket(sk), _host(h), _address(
 	_response.set_host(h);
 	_response.set_server(_server);
 	_response.set_request(this);
+    _cgi = 0;
 
 	_header = "";
 	_url = "";
@@ -61,6 +63,8 @@ Request::Request(int sk, Host* h, Address* a) : _socket(sk), _host(h), _address(
 Request::~Request()
 {
     delete[] _buffer;
+    if (_cgi)
+        delete (_cgi);
 	if (_socket > 0)
 		close(_socket);
 	if (_tmp_file != "" && std::remove(_tmp_file.c_str()))
