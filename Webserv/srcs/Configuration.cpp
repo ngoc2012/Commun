@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 16:05:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 16:07:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ bool    Configuration::parser(Host* host, const char* conf)
 			{
 				part = LOCATION;
 				new_location = new Location(words[1]);
-				//new_server->insert_location(new_location);
+				new_server->insert_location(new_location);
 			}
 		}
 		else
