@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:11:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:13:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	Host::start_server(void)
 		}
 		else
 		{
-            std::cout << "Error: Listening -> Address " << ad->first << " closed." << std::endl;
+            std::cerr << "Error: Listening -> Address " << ad->first << " closed." << std::endl;
 			delete (ad->second);
 			_str_address.erase(ad->first);
 		}
@@ -162,10 +162,10 @@ void  	Host::add_sk_2_master_read_set(int new_sk, Address* a)
 	_sk_address[new_sk] = a;
 }
 
-void	Host::new_request_sk(int new_sk, Server* s)
+void	Host::new_request_sk(int new_sk, Address* a)
 {
 	add_sk_2_master_read_set(new_sk, s);
-	_sk_request[new_sk] = new Request(new_sk, this, s);
+	_sk_request[new_sk] = new Request(new_sk, this, a);
 }
 
 void	Host::new_response_sk(int new_sk)

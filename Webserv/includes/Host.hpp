@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:10:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:13:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ class	Host
 		virtual ~Host();
 
 		void    		                    start(void);
-		void			                    new_request_sk(int, Server*);
+		void			                    new_request_sk(int, Address*);
 		void			                    new_response_sk(int);
 		void			                    close_client_sk(int);
 		//void			                    delete_response(int);
