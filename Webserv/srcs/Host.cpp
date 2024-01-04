@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 17:45:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 17:49:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,7 @@ void	Host::mimes(void)
     _mimes["jpeg"] = "image/jpeg";
     _mimes["jpg"] = "image/jpeg";
     _mimes["js"] = "application/javascript";
+    _mimes["es"] = "application/javascript";
     _mimes["atom"] = "application/atom+xml";
     _mimes["rss"] = "application/rss+xml";
 
