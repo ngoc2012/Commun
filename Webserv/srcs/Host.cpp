@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:03:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:06:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	Host::start_server(void)
 		}
 		else
 		{
+            std::cout << "Error: Listening -> Address " << ad->first << " closed." << std::endl;
 			delete (ad->second);
 			_str_address.erase(ad->first);
 		}
