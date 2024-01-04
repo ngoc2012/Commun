@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/28 11:29:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:57:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ class	Cgi
 
         bool            get_envs();
 
+		Cgi();
 		Cgi(const Cgi&);
 		Cgi	&operator=(const Cgi& op);
 	public:
-		Cgi();
-		//Cgi(Request*);
+		Cgi(Request*);
 		virtual ~Cgi();
 
         void            execute();

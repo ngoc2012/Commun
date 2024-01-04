@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:55:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:57:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ Request::Request(int sk, Host* h, Address* a) : _socket(sk), _host(h), _address(
 	_tmp_file = "";
 
 	_status_code = 200;
-    //_cgi.set_request(this);
 }
 
 Request::~Request()
@@ -136,6 +135,8 @@ bool	Request::parse_header(void)
     }
     if (!check_location())
         return (false);
+    if (_method == POST)
+        _cgi = new Cgi(this);
     if (_method == GET)
         return (true);
     if (!Header::parse_content_type(_host, _header, _content_type))
@@ -250,8 +251,8 @@ int     Request::end_read(void)
     _read_queue = false;
     _host->new_response_sk(_socket);
     _response.set_status_code(_status_code);
-    //if (_status_code == 200 && _method == POST)
-    //    _cgi.execute();
+    if (_status_code == 200 && _method == POST)
+        _cgi->execute();
     _response.set_write_queue(true);
     return (0);
 }
