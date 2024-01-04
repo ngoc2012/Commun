@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 10:22:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 10:25:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void    Configuration::parser(Host* host, const char* conf)
         add_server(new_server, address);
     host->set_parser_error(err);
     host->set_servers(servers);
-    host->set_addresses(address);
+    host->set_str_address(address);
     conf_file.close();
 }
 

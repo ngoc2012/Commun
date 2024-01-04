@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 10:23:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 10:24:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -315,4 +315,4 @@ void			Host::set_client_max_body_size(size_t n) {_client_max_body_size = n;}
 void			Host::set_client_body_buffer_size(size_t n) {_client_body_buffer_size = n;}
 void			Host::set_parser_error(bool e) {_parser_error = e;}
 void		    Host::set_servers(std::vector<Server*> s) {_servers = s;}
-void		    Host::set_addresses(std::map<std::string, Address*> a) {_addresses = a;}
+void		    Host::set_str_address(std::map<std::string, Address*> a) {_str_address = a;}
