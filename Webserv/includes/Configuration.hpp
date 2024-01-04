@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/03 16:40:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 12:09:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Configuration
 		static bool			    location_parser(std::string, Location*, std::vector<std::string>&);
 		static bool			    server_parser(std::string, Server*, std::vector<std::string>&);
 		static bool			    host_parser(std::string, Host*, std::vector<std::string>&);
-        static bool             add_server(Server*, std::map<std::string, Address*>&);
+        static bool             add_server(Host*, Server*, std::map<std::string, Address*>&);
 
 		Configuration(const Configuration&);
 		Configuration	&operator=(const Configuration& op);

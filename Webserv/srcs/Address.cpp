@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 12:05:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 12:08:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,11 @@ Address::~Address()
 		it != _servers.end(); ++it)
 		delete (*it);
 }
-Address::Address(std::string ip, short unsigned int p): _ip_address(ip), _port(p) {}
+Address::Address(Host* host, std::string ip, short unsigned int p):
+    _host(host),
+    _ip_address(ip),
+    _port(p)
+{}
 
 void    Address::push(Server* s) { _servers.push_back(s); }
 

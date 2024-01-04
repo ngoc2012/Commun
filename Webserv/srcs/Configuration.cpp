@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 10:25:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 12:09:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Configuration&	Configuration::operator=( Configuration const & src )
 }
 Configuration::~Configuration() {}
 
-bool    Configuration::add_server(Server* new_server, std::map<std::string, Address*>& address)
+bool    Configuration::add_server(Host* host, Server* new_server, std::map<std::string, Address*>& address)
 {
     if (new_server->get_address() == "")
     {
@@ -39,7 +39,8 @@ bool    Configuration::add_server(Server* new_server, std::map<std::string, Addr
     }
     if (!address[new_server->get_address()])
     {
-        Address* new_address = new Address(new_server->get_ip_address(), new_server->get_port());
+        Address* new_address = new Address(host,
+                new_server->get_ip_address(), new_server->get_port());
         if (!new_address)
         {
             delete (new_server);
@@ -84,7 +85,7 @@ void    Configuration::parser(Host* host, const char* conf)
 			part = HOST;
 		else if (s[0] == 's' && words[0] == "server")
 		{
-            if (new_server && !add_server(new_server, address))
+            if (new_server && !add_server(host, new_server, address))
             {
                 new_server = 0;
                 err = true;
