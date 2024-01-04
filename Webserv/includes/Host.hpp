@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:35:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:38:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,11 @@ class	Host
 		void				                    mimes(void);
 		void				                    status_message(void);
 
-		Host();
 		Host(const Host&);
 		Host &operator=(const Host& op);
 
 	public:
-		Host(const char *);
+		Host();
 		virtual ~Host();
 
 		void    		                    start(void);
