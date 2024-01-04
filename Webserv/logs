@@ -3319,3 +3319,3307 @@ Write set sk = 14
 end_connection read |www/Monastik_living_in_Athina_files/gsap.min.js| 14 72145/72145
 close_client_sk 14
 Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 14
+Cgi Default constructor
+Waiting on select() ...
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 82404
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 8
+end_connection read |www/Monastik_living_in_Athina_files/language-cookie.js| 8 271/271
+close_client_sk 8
+Write set sk = 10
+end_connection read |www/Monastik_living_in_Athina_files/ScrollTrigger.min.js| 10 43137/43137
+close_client_sk 10
+Write set sk = 13
+end_connection read |www/Monastik_living_in_Athina_files/index.js| 13 934/934
+close_client_sk 13
+Request header: 694
+GET /Monastik_living_in_Athina.html HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+
+
+check_location 14 www/Monastik_living_in_Athina.html
+end_read 14 www/Monastik_living_in_Athina.html
+Waiting on select() ...
+Write set sk = 7
+end_connection read |www/Monastik_living_in_Athina_files/theme.css| 7 65792/82404
+close_client_sk 7
+Write set sk = 14
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/html
+Content-Length: 104941
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 14
+Waiting on select() ...
+Write set sk = 14
+Waiting on select() ...
+Write set sk = 14
+end_connection read |www/Monastik_living_in_Athina.html| 14 104941/104941
+close_client_sk 14
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+  New incoming connection - 8
+Cgi Default constructor
+Waiting on select() ...
+Request header: 644
+GET /Monastik_living_in_Athina_files/recaptcha__en.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/Monastik_living_in_Athina_files/recaptcha__en.js
+end_read 7 www/Monastik_living_in_Athina_files/recaptcha__en.js
+Request header: 644
+GET /Monastik_living_in_Athina_files/jquery.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/Monastik_living_in_Athina_files/jquery.min.js
+end_read 8 www/Monastik_living_in_Athina_files/jquery.min.js
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 9
+Cgi Default constructor
+  New incoming connection - 10
+Cgi Default constructor
+  New incoming connection - 11
+Cgi Default constructor
+  New incoming connection - 12
+Cgi Default constructor
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 514678
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 89476
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+Request header: 651
+GET /Monastik_living_in_Athina_files/swiper-bundle.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 9 www/Monastik_living_in_Athina_files/swiper-bundle.min.js
+end_read 9 www/Monastik_living_in_Athina_files/swiper-bundle.min.js
+Request header: 651
+GET /Monastik_living_in_Athina_files/imagesloaded.pkgd.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 10 www/Monastik_living_in_Athina_files/imagesloaded.pkgd.js
+end_read 10 www/Monastik_living_in_Athina_files/imagesloaded.pkgd.js
+Request header: 646
+GET /Monastik_living_in_Athina_files/masonry.pkgd.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 11 www/Monastik_living_in_Athina_files/masonry.pkgd.js
+end_read 11 www/Monastik_living_in_Athina_files/masonry.pkgd.js
+Request header: 660
+GET /Monastik_living_in_Athina_files/google-analytics_analytics.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 12 www/Monastik_living_in_Athina_files/google-analytics_analytics.js
+end_read 12 www/Monastik_living_in_Athina_files/google-analytics_analytics.js
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 135912
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 12075
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 63316
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 12
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 3695
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+end_connection read |www/Monastik_living_in_Athina_files/jquery.min.js| 8 89476/89476
+close_client_sk 8
+Write set sk = 9
+Write set sk = 10
+Write set sk = 11
+Write set sk = 12
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 8
+Cgi Default constructor
+Write set sk = 7
+Write set sk = 9
+Write set sk = 10
+end_connection read |www/Monastik_living_in_Athina_files/imagesloaded.pkgd.js| 10 12075/12075
+close_client_sk 10
+Write set sk = 11
+end_connection read |www/Monastik_living_in_Athina_files/masonry.pkgd.js| 11 63316/63316
+close_client_sk 11
+Write set sk = 12
+end_connection read |www/Monastik_living_in_Athina_files/google-analytics_analytics.js| 12 3695/3695
+close_client_sk 12
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 10
+Cgi Default constructor
+  New incoming connection - 11
+Cgi Default constructor
+  New incoming connection - 12
+Cgi Default constructor
+Write set sk = 7
+Request header: 649
+GET /Monastik_living_in_Athina_files/language-cookie.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/Monastik_living_in_Athina_files/language-cookie.js
+end_read 8 www/Monastik_living_in_Athina_files/language-cookie.js
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 271
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 9
+Request header: 638
+GET /Monastik_living_in_Athina_files/util.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 10 www/Monastik_living_in_Athina_files/util.js
+end_read 10 www/Monastik_living_in_Athina_files/util.js
+Request header: 643
+GET /Monastik_living_in_Athina_files/anime.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 11 www/Monastik_living_in_Athina_files/anime.min.js
+end_read 11 www/Monastik_living_in_Athina_files/anime.min.js
+Request header: 642
+GET /Monastik_living_in_Athina_files/gsap.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 12 www/Monastik_living_in_Athina_files/gsap.min.js
+end_read 12 www/Monastik_living_in_Athina_files/gsap.min.js
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+Write set sk = 9
+end_connection read |www/Monastik_living_in_Athina_files/swiper-bundle.min.js| 9 135912/135912
+close_client_sk 9
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 158979
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 11233
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 12
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 72145
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 17
+Cgi Default constructor
+Write set sk = 7
+Write set sk = 8
+end_connection read |www/Monastik_living_in_Athina_files/language-cookie.js| 8 271/271
+close_client_sk 8
+Write set sk = 10
+Write set sk = 11
+Write set sk = 12
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 8
+Cgi Default constructor
+Write set sk = 7
+end_connection read |www/Monastik_living_in_Athina_files/recaptcha__en.js| 7 514678/514678
+close_client_sk 7
+Write set sk = 10
+Write set sk = 11
+end_connection read |www/Monastik_living_in_Athina_files/anime.min.js| 11 11233/11233
+close_client_sk 11
+Write set sk = 12
+Request header: 652
+GET /Monastik_living_in_Athina_files/MorphSVGPlugin.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 17 www/Monastik_living_in_Athina_files/MorphSVGPlugin.min.js
+end_read 17 www/Monastik_living_in_Athina_files/MorphSVGPlugin.min.js
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+  New incoming connection - 11
+Cgi Default constructor
+Request header: 647
+GET /Monastik_living_in_Athina_files/SplitText.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/Monastik_living_in_Athina_files/SplitText.min.js
+end_read 8 www/Monastik_living_in_Athina_files/SplitText.min.js
+Write set sk = 10
+Write set sk = 12
+end_connection read |www/Monastik_living_in_Athina_files/gsap.min.js| 12 72145/72145
+close_client_sk 12
+Write set sk = 17
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 16748
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 13
+Cgi Default constructor
+Request header: 640
+GET /Monastik_living_in_Athina_files/bundle.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/Monastik_living_in_Athina_files/bundle.js
+end_read 7 www/Monastik_living_in_Athina_files/bundle.js
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 15685
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 10
+end_connection read |www/Monastik_living_in_Athina_files/util.js| 10 158979/158979
+close_client_sk 10
+Request header: 637
+GET /Monastik_living_in_Athina_files/api.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 11 www/Monastik_living_in_Athina_files/api.js
+end_read 11 www/Monastik_living_in_Athina_files/api.js
+Write set sk = 17
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 9
+Cgi Default constructor
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 157152
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 8
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 884
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Request header: 649
+GET /Monastik_living_in_Athina_files/wp-polyfill.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 13 www/Monastik_living_in_Athina_files/wp-polyfill.min.js
+end_read 13 www/Monastik_living_in_Athina_files/wp-polyfill.min.js
+Write set sk = 17
+end_connection read |www/Monastik_living_in_Athina_files/MorphSVGPlugin.min.js| 17 16748/16748
+close_client_sk 17
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+end_connection read |www/Monastik_living_in_Athina_files/SplitText.min.js| 8 15685/15685
+close_client_sk 8
+Request header: 639
+GET /Monastik_living_in_Athina_files/index.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 9 www/Monastik_living_in_Athina_files/index.js
+end_read 9 www/Monastik_living_in_Athina_files/index.js
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 8
+Cgi Default constructor
+  New incoming connection - 12
+Cgi Default constructor
+Write set sk = 7
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 934
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+Request header: 652
+GET /Monastik_living_in_Athina_files/aos.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/Monastik_living_in_Athina_files/aos.css
+end_read 8 www/Monastik_living_in_Athina_files/aos.css
+Write set sk = 9
+Write set sk = 11
+Request header: 657
+GET /Monastik_living_in_Athina_files/fancybox.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 12 www/Monastik_living_in_Athina_files/fancybox.css
+end_read 12 www/Monastik_living_in_Athina_files/fancybox.css
+Waiting on select() ...
+Write set sk = 7
+end_connection read |www/Monastik_living_in_Athina_files/bundle.js| 7 157152/157152
+close_client_sk 7
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 28765
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 9
+end_connection read |www/Monastik_living_in_Athina_files/index.js| 9 934/934
+close_client_sk 9
+Write set sk = 11
+end_connection read |www/Monastik_living_in_Athina_files/api.js| 11 884/884
+close_client_sk 11
+Write set sk = 12
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 15598
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 10
+Cgi Default constructor
+  New incoming connection - 11
+Cgi Default constructor
+  New incoming connection - 14
+Cgi Default constructor
+Write set sk = 8
+Write set sk = 12
+Waiting on select() ...
+Write set sk = 8
+end_connection read |www/Monastik_living_in_Athina_files/aos.css| 8 28765/28765
+close_client_sk 8
+Request header: 640
+GET /Monastik_living_in_Athina_files/common.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 10 www/Monastik_living_in_Athina_files/common.js
+end_read 10 www/Monastik_living_in_Athina_files/common.js
+Request header: 651
+GET /Monastik_living_in_Athina_files/ScrollTrigger.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 11 www/Monastik_living_in_Athina_files/ScrollTrigger.min.js
+end_read 11 www/Monastik_living_in_Athina_files/ScrollTrigger.min.js
+Write set sk = 12
+end_connection read |www/Monastik_living_in_Athina_files/fancybox.css| 12 15598/15598
+close_client_sk 12
+Write set sk = 13
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 115127
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Request header: 652
+GET /Monastik_living_in_Athina_files/ScrollToPlugin.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 14 www/Monastik_living_in_Athina_files/ScrollToPlugin.min.js
+end_read 14 www/Monastik_living_in_Athina_files/ScrollToPlugin.min.js
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 8
+Cgi Default constructor
+  New incoming connection - 9
+Cgi Default constructor
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 260238
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 43137
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 13
+Write set sk = 14
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 4038
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Request header: 655
+GET /Monastik_living_in_Athina_files/wp-polyfill-inert.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/Monastik_living_in_Athina_files/wp-polyfill-inert.min.js
+end_read 8 www/Monastik_living_in_Athina_files/wp-polyfill-inert.min.js
+Request header: 657
+GET /Monastik_living_in_Athina_files/regenerator-runtime.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 9 www/Monastik_living_in_Athina_files/regenerator-runtime.min.js
+end_read 9 www/Monastik_living_in_Athina_files/regenerator-runtime.min.js
+Write set sk = 10
+Write set sk = 11
+Write set sk = 13
+Write set sk = 14
+Waiting on select() ...
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 8171
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 6625
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 10
+Write set sk = 11
+end_connection read |www/Monastik_living_in_Athina_files/ScrollTrigger.min.js| 11 43137/43137
+close_client_sk 11
+Write set sk = 13
+end_connection read |www/Monastik_living_in_Athina_files/wp-polyfill.min.js| 13 115127/115127
+close_client_sk 13
+Write set sk = 14
+end_connection read |www/Monastik_living_in_Athina_files/ScrollToPlugin.min.js| 14 4038/4038
+close_client_sk 14
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+Waiting on select() ...
+Request header: 642
+GET /Monastik_living_in_Athina_files/fancybox.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/Monastik_living_in_Athina_files/fancybox.js
+end_read 7 www/Monastik_living_in_Athina_files/fancybox.js
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 11
+Cgi Default constructor
+  New incoming connection - 13
+Cgi Default constructor
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 105251
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+Write set sk = 9
+Write set sk = 10
+Request header: 641
+GET /Monastik_living_in_Athina_files/crawler.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 11 www/Monastik_living_in_Athina_files/crawler.js
+end_read 11 www/Monastik_living_in_Athina_files/crawler.js
+Request header: 652
+GET /Monastik_living_in_Athina_files/ScrollSmoother.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 13 www/Monastik_living_in_Athina_files/ScrollSmoother.min.js
+end_read 13 www/Monastik_living_in_Athina_files/ScrollSmoother.min.js
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+end_connection read |www/Monastik_living_in_Athina_files/wp-polyfill-inert.min.js| 8 8171/8171
+close_client_sk 8
+Write set sk = 9
+end_connection read |www/Monastik_living_in_Athina_files/regenerator-runtime.min.js| 9 6625/6625
+close_client_sk 9
+Write set sk = 10
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 14169
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 13
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 13531
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 15
+Cgi Default constructor
+  New incoming connection - 16
+Cgi Default constructor
+Write set sk = 7
+end_connection read |www/Monastik_living_in_Athina_files/fancybox.js| 7 105251/105251
+close_client_sk 7
+Write set sk = 10
+end_connection read |www/Monastik_living_in_Athina_files/common.js| 10 260238/260238
+close_client_sk 10
+Write set sk = 11
+Write set sk = 13
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+  New incoming connection - 10
+Cgi Default constructor
+Write set sk = 11
+end_connection read |www/Monastik_living_in_Athina_files/crawler.js| 11 14169/14169
+close_client_sk 11
+Write set sk = 13
+end_connection read |www/Monastik_living_in_Athina_files/ScrollSmoother.min.js| 13 13531/13531
+close_client_sk 13
+Request header: 636
+GET /Monastik_living_in_Athina_files/js.es HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 15 www/Monastik_living_in_Athina_files/js.es
+end_read 15 www/Monastik_living_in_Athina_files/js.es
+Request header: 656
+GET /Monastik_living_in_Athina_files/ewc8vxs.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 16 www/Monastik_living_in_Athina_files/ewc8vxs.css
+end_read 16 www/Monastik_living_in_Athina_files/ewc8vxs.css
+Waiting on select() ...
+Request header: 666
+GET /Monastik_living_in_Athina_files/swiper-bundle.min.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/Monastik_living_in_Athina_files/swiper-bundle.min.css
+end_read 7 www/Monastik_living_in_Athina_files/swiper-bundle.min.css
+Request header: 654
+GET /Monastik_living_in_Athina_files/theme.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 10 www/Monastik_living_in_Athina_files/theme.css
+end_read 10 www/Monastik_living_in_Athina_files/theme.css
+Write set sk = 15
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+Content-Length: 178522
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 16
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 2014
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 15563
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 82404
+Date: Thu, 04 Jan 2024 11:58:26 GMT
+
+
+Header Destruction
+Write set sk = 15
+Write set sk = 16
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 10
+Write set sk = 15
+Write set sk = 16
+end_connection read |www/Monastik_living_in_Athina_files/ewc8vxs.css| 16 2014/2014
+close_client_sk 16
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 9
+Cgi Default constructor
+Waiting on select() ...
+Write set sk = 7
+end_connection read |www/Monastik_living_in_Athina_files/swiper-bundle.min.css| 7 15563/15563
+close_client_sk 7
+Request header: 694
+GET /Monastik_living_in_Athina.html HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+
+
+check_location 9 www/Monastik_living_in_Athina.html
+end_read 9 www/Monastik_living_in_Athina.html
+Waiting on select() ...
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/html
+Content-Length: 104941
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 9
+Waiting on select() ...
+Write set sk = 9
+Waiting on select() ...
+Write set sk = 9
+end_connection read |www/Monastik_living_in_Athina.html| 9 104941/104941
+close_client_sk 9
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 9
+Cgi Default constructor
+  New incoming connection - 11
+Cgi Default constructor
+  New incoming connection - 13
+Cgi Default constructor
+  New incoming connection - 14
+Cgi Default constructor
+Request header: 656
+GET /Monastik_living_in_Athina_files/ewc8vxs.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/Monastik_living_in_Athina_files/ewc8vxs.css
+end_read 7 www/Monastik_living_in_Athina_files/ewc8vxs.css
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 16
+Cgi Default constructor
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 2014
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Request header: 644
+GET /Monastik_living_in_Athina_files/recaptcha__en.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 9 www/Monastik_living_in_Athina_files/recaptcha__en.js
+end_read 9 www/Monastik_living_in_Athina_files/recaptcha__en.js
+Write set sk = 10
+Request header: 644
+GET /Monastik_living_in_Athina_files/jquery.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 11 www/Monastik_living_in_Athina_files/jquery.min.js
+end_read 11 www/Monastik_living_in_Athina_files/jquery.min.js
+Request header: 651
+GET /Monastik_living_in_Athina_files/swiper-bundle.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 13 www/Monastik_living_in_Athina_files/swiper-bundle.min.js
+end_read 13 www/Monastik_living_in_Athina_files/swiper-bundle.min.js
+Request header: 666
+GET /Monastik_living_in_Athina_files/swiper-bundle.min.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 14 www/Monastik_living_in_Athina_files/swiper-bundle.min.css
+end_read 14 www/Monastik_living_in_Athina_files/swiper-bundle.min.css
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 514678
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 10
+end_connection read |www/Monastik_living_in_Athina_files/theme.css| 10 82404/82404
+close_client_sk 10
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 89476
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 13
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 135912
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 14
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 15563
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 15
+Request header: 652
+GET /Monastik_living_in_Athina_files/aos.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 16 www/Monastik_living_in_Athina_files/aos.css
+end_read 16 www/Monastik_living_in_Athina_files/aos.css
+Waiting on select() ...
+Write set sk = 7
+end_connection read |www/Monastik_living_in_Athina_files/ewc8vxs.css| 7 2014/2014
+close_client_sk 7
+Write set sk = 9
+Write set sk = 11
+Write set sk = 13
+Write set sk = 14
+Write set sk = 15
+end_connection read |www/Monastik_living_in_Athina_files/js.es| 15 178522/178522
+close_client_sk 15
+Write set sk = 16
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 28765
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 8
+Cgi Default constructor
+Write set sk = 9
+Write set sk = 11
+Write set sk = 13
+Write set sk = 14
+end_connection read |www/Monastik_living_in_Athina_files/swiper-bundle.min.css| 14 15563/15563
+close_client_sk 14
+Write set sk = 16
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 14
+Cgi Default constructor
+Request header: 646
+GET /Monastik_living_in_Athina_files/masonry.pkgd.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/Monastik_living_in_Athina_files/masonry.pkgd.js
+end_read 8 www/Monastik_living_in_Athina_files/masonry.pkgd.js
+Write set sk = 9
+Write set sk = 11
+end_connection read |www/Monastik_living_in_Athina_files/jquery.min.js| 11 89476/89476
+close_client_sk 11
+Write set sk = 13
+Write set sk = 16
+end_connection read |www/Monastik_living_in_Athina_files/aos.css| 16 28765/28765
+close_client_sk 16
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+  New incoming connection - 10
+Cgi Default constructor
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 63316
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 9
+Write set sk = 13
+end_connection read |www/Monastik_living_in_Athina_files/swiper-bundle.min.js| 13 135912/135912
+close_client_sk 13
+Request header: 657
+GET /Monastik_living_in_Athina_files/fancybox.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 14 www/Monastik_living_in_Athina_files/fancybox.css
+end_read 14 www/Monastik_living_in_Athina_files/fancybox.css
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 12
+Cgi Default constructor
+Request header: 642
+GET /Monastik_living_in_Athina_files/fancybox.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/Monastik_living_in_Athina_files/fancybox.js
+end_read 7 www/Monastik_living_in_Athina_files/fancybox.js
+Write set sk = 8
+Write set sk = 9
+Request header: 640
+GET /Monastik_living_in_Athina_files/common.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 10 www/Monastik_living_in_Athina_files/common.js
+end_read 10 www/Monastik_living_in_Athina_files/common.js
+Write set sk = 14
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 15598
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 105251
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 8
+end_connection read |www/Monastik_living_in_Athina_files/masonry.pkgd.js| 8 63316/63316
+close_client_sk 8
+Write set sk = 9
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 260238
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Request header: 638
+GET /Monastik_living_in_Athina_files/util.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 12 www/Monastik_living_in_Athina_files/util.js
+end_read 12 www/Monastik_living_in_Athina_files/util.js
+Write set sk = 14
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 11
+Cgi Default constructor
+Write set sk = 7
+Write set sk = 9
+Write set sk = 10
+Write set sk = 12
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 158979
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 14
+end_connection read |www/Monastik_living_in_Athina_files/fancybox.css| 14 15598/15598
+close_client_sk 14
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 9
+Write set sk = 10
+Request header: 643
+GET /Monastik_living_in_Athina_files/anime.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 11 www/Monastik_living_in_Athina_files/anime.min.js
+end_read 11 www/Monastik_living_in_Athina_files/anime.min.js
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 13
+Cgi Default constructor
+Write set sk = 7
+end_connection read |www/Monastik_living_in_Athina_files/fancybox.js| 7 105251/105251
+close_client_sk 7
+Write set sk = 9
+end_connection read |www/Monastik_living_in_Athina_files/recaptcha__en.js| 9 514678/514678
+close_client_sk 9
+Write set sk = 10
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 11233
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 9
+Cgi Default constructor
+  New incoming connection - 14
+Cgi Default constructor
+Write set sk = 10
+Write set sk = 11
+Write set sk = 12
+Request header: 651
+GET /Monastik_living_in_Athina_files/ScrollTrigger.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 13 www/Monastik_living_in_Athina_files/ScrollTrigger.min.js
+end_read 13 www/Monastik_living_in_Athina_files/ScrollTrigger.min.js
+Waiting on select() ...
+Request header: 652
+GET /Monastik_living_in_Athina_files/ScrollSmoother.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 9 www/Monastik_living_in_Athina_files/ScrollSmoother.min.js
+end_read 9 www/Monastik_living_in_Athina_files/ScrollSmoother.min.js
+Write set sk = 10
+end_connection read |www/Monastik_living_in_Athina_files/common.js| 10 260238/260238
+close_client_sk 10
+Write set sk = 11
+end_connection read |www/Monastik_living_in_Athina_files/anime.min.js| 11 11233/11233
+close_client_sk 11
+Write set sk = 12
+Write set sk = 13
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 43137
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Request header: 647
+GET /Monastik_living_in_Athina_files/SplitText.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 14 www/Monastik_living_in_Athina_files/SplitText.min.js
+end_read 14 www/Monastik_living_in_Athina_files/SplitText.min.js
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 8
+Cgi Default constructor
+  New incoming connection - 10
+Cgi Default constructor
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 13531
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 12
+Write set sk = 13
+Write set sk = 14
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 15685
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Request header: 660
+GET /Monastik_living_in_Athina_files/google-analytics_analytics.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/Monastik_living_in_Athina_files/google-analytics_analytics.js
+end_read 8 www/Monastik_living_in_Athina_files/google-analytics_analytics.js
+Write set sk = 9
+Request header: 637
+GET /Monastik_living_in_Athina_files/api.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 10 www/Monastik_living_in_Athina_files/api.js
+end_read 10 www/Monastik_living_in_Athina_files/api.js
+Write set sk = 12
+end_connection read |www/Monastik_living_in_Athina_files/util.js| 12 158979/158979
+close_client_sk 12
+Write set sk = 13
+end_connection read |www/Monastik_living_in_Athina_files/ScrollTrigger.min.js| 13 43137/43137
+close_client_sk 13
+Write set sk = 14
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+  New incoming connection - 12
+Cgi Default constructor
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 3695
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 9
+end_connection read |www/Monastik_living_in_Athina_files/ScrollSmoother.min.js| 9 13531/13531
+close_client_sk 9
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 884
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 14
+end_connection read |www/Monastik_living_in_Athina_files/SplitText.min.js| 14 15685/15685
+close_client_sk 14
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 11
+Cgi Default constructor
+  New incoming connection - 14
+Cgi Default constructor
+Request header: 639
+GET /Monastik_living_in_Athina_files/index.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/Monastik_living_in_Athina_files/index.js
+end_read 7 www/Monastik_living_in_Athina_files/index.js
+Write set sk = 8
+Write set sk = 10
+Request header: 654
+GET /Monastik_living_in_Athina_files/theme.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 12 www/Monastik_living_in_Athina_files/theme.css
+end_read 12 www/Monastik_living_in_Athina_files/theme.css
+Waiting on select() ...
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 934
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 8
+end_connection read |www/Monastik_living_in_Athina_files/google-analytics_analytics.js| 8 3695/3695
+close_client_sk 8
+Write set sk = 10
+end_connection read |www/Monastik_living_in_Athina_files/api.js| 10 884/884
+close_client_sk 10
+Request header: 641
+GET /Monastik_living_in_Athina_files/crawler.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 11 www/Monastik_living_in_Athina_files/crawler.js
+end_read 11 www/Monastik_living_in_Athina_files/crawler.js
+Write set sk = 12
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 82404
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Request header: 651
+GET /Monastik_living_in_Athina_files/imagesloaded.pkgd.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 14 www/Monastik_living_in_Athina_files/imagesloaded.pkgd.js
+end_read 14 www/Monastik_living_in_Athina_files/imagesloaded.pkgd.js
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 9
+Cgi Default constructor
+  New incoming connection - 10
+Cgi Default constructor
+Write set sk = 7
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 14169
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 12
+Write set sk = 14
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 12075
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+end_connection read |www/Monastik_living_in_Athina_files/index.js| 7 934/934
+close_client_sk 7
+Request header: 652
+GET /Monastik_living_in_Athina_files/MorphSVGPlugin.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 9 www/Monastik_living_in_Athina_files/MorphSVGPlugin.min.js
+end_read 9 www/Monastik_living_in_Athina_files/MorphSVGPlugin.min.js
+Request header: 636
+GET /Monastik_living_in_Athina_files/js.es HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 10 www/Monastik_living_in_Athina_files/js.es
+end_read 10 www/Monastik_living_in_Athina_files/js.es
+Write set sk = 11
+Write set sk = 12
+Write set sk = 14
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 16748
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/plain
+Content-Length: 178522
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 11
+end_connection read |www/Monastik_living_in_Athina_files/crawler.js| 11 14169/14169
+close_client_sk 11
+Write set sk = 12
+end_connection read |www/Monastik_living_in_Athina_files/theme.css| 12 82404/82404
+close_client_sk 12
+Write set sk = 14
+end_connection read |www/Monastik_living_in_Athina_files/imagesloaded.pkgd.js| 14 12075/12075
+close_client_sk 14
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 8
+Cgi Default constructor
+  New incoming connection - 11
+Cgi Default constructor
+  New incoming connection - 12
+Cgi Default constructor
+Request header: 655
+GET /Monastik_living_in_Athina_files/wp-polyfill-inert.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/Monastik_living_in_Athina_files/wp-polyfill-inert.min.js
+end_read 7 www/Monastik_living_in_Athina_files/wp-polyfill-inert.min.js
+Waiting on select() ...
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 8171
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Request header: 642
+GET /Monastik_living_in_Athina_files/gsap.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/Monastik_living_in_Athina_files/gsap.min.js
+end_read 8 www/Monastik_living_in_Athina_files/gsap.min.js
+Write set sk = 9
+Write set sk = 10
+Request header: 652
+GET /Monastik_living_in_Athina_files/ScrollToPlugin.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 11 www/Monastik_living_in_Athina_files/ScrollToPlugin.min.js
+end_read 11 www/Monastik_living_in_Athina_files/ScrollToPlugin.min.js
+Request header: 640
+GET /Monastik_living_in_Athina_files/bundle.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 12 www/Monastik_living_in_Athina_files/bundle.js
+end_read 12 www/Monastik_living_in_Athina_files/bundle.js
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 72145
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 9
+end_connection read |www/Monastik_living_in_Athina_files/MorphSVGPlugin.min.js| 9 16748/16748
+close_client_sk 9
+Write set sk = 10
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 4038
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Write set sk = 12
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 157152
+Date: Thu, 04 Jan 2024 11:58:58 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 16
+Cgi Default constructor
+Write set sk = 7
+end_connection read |www/Monastik_living_in_Athina_files/wp-polyfill-inert.min.js| 7 8171/8171
+close_client_sk 7
+Write set sk = 8
+Write set sk = 10
+Write set sk = 11
+Write set sk = 12
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+Write set sk = 8
+Write set sk = 10
+end_connection read |www/Monastik_living_in_Athina_files/js.es| 10 178522/178522
+close_client_sk 10
+Write set sk = 11
+end_connection read |www/Monastik_living_in_Athina_files/ScrollToPlugin.min.js| 11 4038/4038
+close_client_sk 11
+Write set sk = 12
+Request header: 649
+GET /Monastik_living_in_Athina_files/language-cookie.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 16 www/Monastik_living_in_Athina_files/language-cookie.js
+end_read 16 www/Monastik_living_in_Athina_files/language-cookie.js
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 9
+Cgi Default constructor
+  New incoming connection - 10
+Cgi Default constructor
+Request header: 657
+GET /Monastik_living_in_Athina_files/regenerator-runtime.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/Monastik_living_in_Athina_files/regenerator-runtime.min.js
+end_read 7 www/Monastik_living_in_Athina_files/regenerator-runtime.min.js
+Write set sk = 8
+end_connection read |www/Monastik_living_in_Athina_files/gsap.min.js| 8 72145/72145
+close_client_sk 8
+Write set sk = 12
+Write set sk = 16
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 271
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 11
+Cgi Default constructor
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 6625
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Request header: 666
+GET /Monastik_living_in_Athina_files/call_black.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 9 www/Monastik_living_in_Athina_files/call_black.svg
+end_read 9 www/Monastik_living_in_Athina_files/call_black.svg
+Request header: 649
+GET /Monastik_living_in_Athina_files/wp-polyfill.min.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 10 www/Monastik_living_in_Athina_files/wp-polyfill.min.js
+end_read 10 www/Monastik_living_in_Athina_files/wp-polyfill.min.js
+Write set sk = 12
+end_connection read |www/Monastik_living_in_Athina_files/bundle.js| 12 157152/157152
+close_client_sk 12
+Write set sk = 16
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 1432
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 115127
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Request header: 664
+GET /Monastik_living_in_Athina_files/logo_big.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 11 www/Monastik_living_in_Athina_files/logo_big.svg
+end_read 11 www/Monastik_living_in_Athina_files/logo_big.svg
+Write set sk = 16
+end_connection read |www/Monastik_living_in_Athina_files/language-cookie.js| 16 271/271
+close_client_sk 16
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 8
+Cgi Default constructor
+Waiting on select() ...
+Write set sk = 7
+end_connection read |www/Monastik_living_in_Athina_files/regenerator-runtime.min.js| 7 6625/6625
+close_client_sk 7
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5149.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/Monastik_living_in_Athina_files/drz-monastik_5149.png
+end_read 8 www/Monastik_living_in_Athina_files/drz-monastik_5149.png
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+  New incoming connection - 13
+Cgi Default constructor
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+Content-Length: 63469
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5050.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/Monastik_living_in_Athina_files/drz-monastik_5050.png
+end_read 7 www/Monastik_living_in_Athina_files/drz-monastik_5050.png
+Write set sk = 8
+Write set sk = 9
+Write set sk = 10
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 6642
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5457.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 13 www/Monastik_living_in_Athina_files/drz-monastik_5457.png
+end_read 13 www/Monastik_living_in_Athina_files/drz-monastik_5457.png
+Waiting on select() ...
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+Content-Length: 71141
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Write set sk = 8
+end_connection read |www/Monastik_living_in_Athina_files/drz-monastik_5149.png| 8 63469/63469
+close_client_sk 8
+Write set sk = 9
+end_connection read |www/Monastik_living_in_Athina_files/call_black.svg| 9 1432/1432
+close_client_sk 9
+Write set sk = 10
+Write set sk = 11
+Write set sk = 13
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+Content-Length: 80103
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 9
+Cgi Default constructor
+Write set sk = 7
+Write set sk = 10
+end_connection read |www/Monastik_living_in_Athina_files/wp-polyfill.min.js| 10 115127/115127
+close_client_sk 10
+Write set sk = 11
+end_connection read |www/Monastik_living_in_Athina_files/logo_big.svg| 11 6642/6642
+close_client_sk 11
+Write set sk = 13
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 10
+Cgi Default constructor
+Write set sk = 7
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5260.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 9 www/Monastik_living_in_Athina_files/drz-monastik_5260.png
+end_read 9 www/Monastik_living_in_Athina_files/drz-monastik_5260.png
+Write set sk = 13
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 11
+Cgi Default constructor
+  New incoming connection - 12
+Cgi Default constructor
+Write set sk = 7
+end_connection read |www/Monastik_living_in_Athina_files/drz-monastik_5050.png| 7 71141/71141
+close_client_sk 7
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+Content-Length: 131331
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Request header: 658
+GET /Monastik_living_in_Athina_files/en.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 10 www/Monastik_living_in_Athina_files/en.svg
+end_read 10 www/Monastik_living_in_Athina_files/en.svg
+Write set sk = 13
+end_connection read |www/Monastik_living_in_Athina_files/drz-monastik_5457.png| 13 80103/80103
+close_client_sk 13
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 8
+Cgi Default constructor
+  New incoming connection - 13
+Cgi Default constructor
+Write set sk = 9
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 1290
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Request header: 691
+GET /Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 11 www/Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png
+end_read 11 www/Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png
+Request header: 670
+GET /Monastik_living_in_Athina_files/logo_big_black.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 12 www/Monastik_living_in_Athina_files/logo_big_black.svg
+end_read 12 www/Monastik_living_in_Athina_files/logo_big_black.svg
+Waiting on select() ...
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5247.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/Monastik_living_in_Athina_files/drz-monastik_5247.png
+end_read 8 www/Monastik_living_in_Athina_files/drz-monastik_5247.png
+Write set sk = 9
+Write set sk = 10
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+Content-Length: 137777
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Write set sk = 12
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 9098
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5189.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 13 www/Monastik_living_in_Athina_files/drz-monastik_5189.png
+end_read 13 www/Monastik_living_in_Athina_files/drz-monastik_5189.png
+Waiting on select() ...
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+Content-Length: 77056
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Write set sk = 9
+end_connection read |www/Monastik_living_in_Athina_files/drz-monastik_5260.png| 9 131331/131331
+close_client_sk 9
+Write set sk = 10
+end_connection read |www/Monastik_living_in_Athina_files/en.svg| 10 1290/1290
+close_client_sk 10
+Write set sk = 11
+Write set sk = 12
+Write set sk = 13
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+Content-Length: 73844
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 9
+Cgi Default constructor
+  New incoming connection - 10
+Cgi Default constructor
+Write set sk = 8
+Write set sk = 11
+Write set sk = 12
+end_connection read |www/Monastik_living_in_Athina_files/logo_big_black.svg| 12 9098/9098
+close_client_sk 12
+Write set sk = 13
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 12
+Cgi Default constructor
+Write set sk = 8
+Request header: 691
+GET /Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 9 www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png
+end_read 9 www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png
+Request header: 659
+GET /Monastik_living_in_Athina_files/bar.jpg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 10 www/Monastik_living_in_Athina_files/bar.jpg
+end_read 10 www/Monastik_living_in_Athina_files/bar.jpg
+Write set sk = 11
+Write set sk = 13
+Waiting on select() ...
+Write set sk = 8
+end_connection read |www/Monastik_living_in_Athina_files/drz-monastik_5247.png| 8 77056/77056
+close_client_sk 8
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+Content-Length: 238885
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/jpeg
+Content-Length: 22587
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Write set sk = 11
+end_connection read |www/Monastik_living_in_Athina_files/arno-senoner-iQ6PCaBWrQs-unsplash-1.png| 11 137777/137777
+close_client_sk 11
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5447.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 12 www/Monastik_living_in_Athina_files/drz-monastik_5447.png
+end_read 12 www/Monastik_living_in_Athina_files/drz-monastik_5447.png
+Write set sk = 13
+end_connection read |www/Monastik_living_in_Athina_files/drz-monastik_5189.png| 13 73844/73844
+close_client_sk 13
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+  New incoming connection - 11
+Cgi Default constructor
+  New incoming connection - 13
+Cgi Default constructor
+Waiting on select() ...
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5332.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/Monastik_living_in_Athina_files/drz-monastik_5332.png
+end_read 7 www/Monastik_living_in_Athina_files/drz-monastik_5332.png
+Write set sk = 9
+Write set sk = 10
+Request header: 673
+GET /Monastik_living_in_Athina_files/drz-monastik_5048.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 11 www/Monastik_living_in_Athina_files/drz-monastik_5048.png
+end_read 11 www/Monastik_living_in_Athina_files/drz-monastik_5048.png
+Write set sk = 12
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+Content-Length: 698338
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Request header: 660
+GET /Monastik_living_in_Athina_files/call.svg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 13 www/Monastik_living_in_Athina_files/call.svg
+end_read 13 www/Monastik_living_in_Athina_files/call.svg
+Waiting on select() ...
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+Content-Length: 165548
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Write set sk = 9
+Write set sk = 10
+end_connection read |www/Monastik_living_in_Athina_files/bar.jpg| 10 22587/22587
+close_client_sk 10
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/png
+Content-Length: 122476
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Write set sk = 12
+Write set sk = 13
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 1433
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 9
+Write set sk = 11
+Write set sk = 12
+Write set sk = 13
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 9
+Write set sk = 11
+Write set sk = 12
+Write set sk = 13
+end_connection read |www/Monastik_living_in_Athina_files/call.svg| 13 1433/1433
+close_client_sk 13
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 13
+Cgi Default constructor
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 9
+end_connection read |www/Monastik_living_in_Athina_files/stefan-johnson-xIFbDeGcy44-unsplash.png| 9 238885/238885
+close_client_sk 9
+Write set sk = 11
+end_connection read |www/Monastik_living_in_Athina_files/drz-monastik_5048.png| 11 122476/122476
+close_client_sk 11
+Write set sk = 12
+Request header: 755
+GET /Monastik_living_in_Athina_files/anchor.html HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: iframe
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+
+
+check_location 13 www/Monastik_living_in_Athina_files/anchor.html
+end_read 13 www/Monastik_living_in_Athina_files/anchor.html
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 8
+Cgi Default constructor
+Write set sk = 7
+end_connection read |www/Monastik_living_in_Athina_files/drz-monastik_5332.png| 7 165548/165548
+close_client_sk 7
+Write set sk = 12
+Write set sk = 13
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/html
+Content-Length: 107091
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 9
+Cgi Default constructor
+Request header: 686
+GET /fonts/Helvetica-Light.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina_files/theme.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/fonts/Helvetica-Light.woff2
+end_read 8 www/fonts/Helvetica-Light.woff2
+Write set sk = 12
+Write set sk = 13
+Waiting on select() ...
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Request header: 680
+GET /fonts/Helvetica.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina_files/theme.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 9 www/fonts/Helvetica.woff2
+end_read 9 www/fonts/Helvetica.woff2
+Write set sk = 12
+Write set sk = 13
+Waiting on select() ...
+Write set sk = 8
+end_connection read |www/fonts/Helvetica-Light.woff2| 8 0/141
+close_client_sk 8
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Write set sk = 12
+Write set sk = 13
+end_connection read |www/Monastik_living_in_Athina_files/anchor.html| 13 107091/107091
+close_client_sk 13
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+Waiting on select() ...
+Request header: 685
+GET /fonts/Helvetica-Light.woff HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina_files/theme.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/fonts/Helvetica-Light.woff
+end_read 7 www/fonts/Helvetica-Light.woff
+Waiting on select() ...
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+end_connection read |www/fonts/Helvetica-Light.woff| 7 0/141
+close_client_sk 7
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+Waiting on select() ...
+Request header: 693
+GET /fonts/Helvetica-Light.ttf HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina_files/theme.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/fonts/Helvetica-Light.ttf
+end_read 7 www/fonts/Helvetica-Light.ttf
+Waiting on select() ...
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+end_connection read |www/fonts/Helvetica-Light.ttf| 7 0/141
+close_client_sk 7
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Cgi Default constructor
+Waiting on select() ...
+Request header: 660
+GET /Monastik_living_in_Athina_files/recaptcha__en.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina_files/anchor.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/Monastik_living_in_Athina_files/recaptcha__en.js
+end_read 7 www/Monastik_living_in_Athina_files/recaptcha__en.js
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 8
+Cgi Default constructor
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 514678
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+Request header: 685
+GET /Monastik_living_in_Athina_files/anchor_data/styles__ltr.css HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina_files/anchor.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: style
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/Monastik_living_in_Athina_files/anchor_data/styles__ltr.css
+end_read 8 www/Monastik_living_in_Athina_files/anchor_data/styles__ltr.css
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 56398
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+end_connection read |www/Monastik_living_in_Athina_files/anchor_data/styles__ltr.css| 8 56398/56398
+close_client_sk 8
+Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 8
+Cgi Default constructor
+Waiting on select() ...
+Write set sk = 7
+Request header: 702
+GET /Monastik_living_in_Athina_files/anchor_data/lEEM4ZLDLFuvATVvcnxglI8CLvLrSc6BLt7Ue_ua1SM.js HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/Monastik_living_in_Athina_files/anchor.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: script
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/Monastik_living_in_Athina_files/anchor_data/lEEM4ZLDLFuvATVvcnxglI8CLvLrSc6BLt7Ue_ua1SM.js
+end_read 8 www/Monastik_living_in_Athina_files/anchor_data/lEEM4ZLDLFuvATVvcnxglI8CLvLrSc6BLt7Ue_ua1SM.js
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 17029
+Date: Thu, 04 Jan 2024 11:58:59 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+Waiting on select() ...
+Write set sk = 7
+Write set sk = 8
+end_connection read |www/Monastik_living_in_Athina_files/anchor_data/lEEM4ZLDLFuvATVvcnxglI8CLvLrSc6BLt7Ue_ua1SM.js| 8 17029/17029
+close_client_sk 8
+Waiting on select() ...
