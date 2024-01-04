@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:49:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:35:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "Response.hpp"
 #include "Request.hpp"
 #include "Configuration.hpp"
+
+#include "webserv.hpp"
 
 Host::Host(const Host& src) { *this = src; }
 
@@ -51,11 +53,11 @@ Host::~Host()
 
 void	Host::start(void)
 {
-	if (_parser_error || !check_servers_conf())
+	if (_parser_error)
 		return ;
 	FD_ZERO(&_master_read_set);
 	FD_ZERO(&_master_write_set);
-	FD_ZERO(&_server_set);
+	FD_ZERO(&_listen_set);
 	start_server();
 	if (!_sk_address.size())
 		return ;
@@ -69,6 +71,7 @@ void	Host::start(void)
 	} while (true);
 }
 
+/*
 bool	Host::check_servers_conf(void)
 {
 	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end(); ++it)
@@ -79,6 +82,7 @@ bool	Host::check_servers_conf(void)
 		}
 	return (true);
 }
+*/
 
 void	Host::start_server(void)
 {
