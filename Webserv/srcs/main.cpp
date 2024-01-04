@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/26 16:19:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:37:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ int	main()
 	sigemptyset(&act.sa_mask);
 	sigaction(SIGINT, &act, NULL);
 	sigaction(SIGPIPE, &act, NULL);
-	Host			host(".conf");
+	Host			host();
+    if (!Configuration::parser(this, ".conf"))
+        return (1);
 	g_host = &host;
 	host.start();
 	return (0);
