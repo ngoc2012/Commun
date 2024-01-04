@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:47:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:50:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ void	Address::accept_client_sk(void)
 		new_sk = accept(_listen_socket, NULL, NULL);
 		if (new_sk < 0)
 		{
-			if (errno != EWOULDBLOCK)
-				perror("accept() failed");
+			//if (errno != EWOULDBLOCK)
+			//	perror("accept() failed");
 			break;
 		}
 		fcntl(new_sk, F_SETFL, O_NONBLOCK);

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2023/12/30 13:43:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:51:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 #include "Response.hpp"
 #include "Cgi.hpp"
 
-#ifndef CLIENTREQUEST_HPP
-# define CLIENTREQUEST_HPP
+#ifndef REQUEST_HPP
+# define REQUEST_HPP
  
 # define MEGABYTE 1048576
 # define KILOBYTE 1024
 
 class	Host;
+class	Address;
 enum    e_method;
 
 class	Request
@@ -70,7 +71,7 @@ class	Request
 		Request(const Request&);
 		Request &operator=(const Request& op);
 	public:
-		Request(int, Host*, Server*);
+		Request(int, Host*, Address*);
 		virtual ~Request();
 
 		int             read(void);
