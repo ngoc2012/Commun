@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:45:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:47:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 Host::Host(const Host& src) { *this = src; }
 
 Host::Host() {
-	_max_clients = 128;
-	_client_max_body_size = 1;
-	_client_body_buffer_size = 128;
-	_parser_error = false;
+    _max_clients = 128;
+    _client_max_body_size = 1;
+    _client_body_buffer_size = 128;
+    _parser_error = false;
 
-	_max_sk = -1;
+    _max_sk = -1;
     mimes();
     status_message();
 }
@@ -92,7 +92,7 @@ void	Host::start_server(void)
 		{
 			add_sk_2_master_read_set(listen_sk, ad->second);
 			FD_SET(listen_sk, &_listen_set);
-			++it;
+			++ad;
 		}
 		else
 		{
