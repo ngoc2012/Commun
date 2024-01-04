@@ -32,3 +32,54 @@ Listening at 127.0.0.1:80 (socket : 4)
 Listening at 127.0.2.1:4242 (socket : 5)
 Listening at 127.0.4.1:80 (socket : 6)
 Waiting on select() ...
+Listening socket is readable 6
+  New incoming connection - 7
+Waiting on select() ...
+Request header: 1024
+GET / HTTP/1.1
+Host: 127.0.4.1
+User-Agent: curl/7.81.0
+Accept: */*
+Content-Length: 6973
+Content-Type: multipart/form-data; boundary=------------------------3be125e36a189bfd
+
+--------------------------3be125e36a189bfd
+Content-Disposition: form-data; name="file"; filename=".conf"
+Content-Type: application/octet-stream
+
+#Setup the configuration file as follow:
+#- / must answer to GET request ONLY
+#- /put_test/* must answer to PUT request and save files to a directory of your choice
+#- any file with .bla as extension must answer to POST request by calling the cgi_test executable
+#- /post_body must answer anything to POST request with a maxBody of 100
+#- /directory/ must answer to GET request and the root of it would be the repository YoupiBanane and if no file are requested, it should search for youpi.bad_extension files
+
+host 	 	
+	#worker_connections 1024;
+	#include /etc/nginx/mime.types	
+	#default_type application/octet-stream
+	# Specifies the maximum accepted body size of a client request, as
+	# ind
+check_location 7 www//HOPPY_DAYS.html
+Waiting on select() ...
+end_read 7 www//HOPPY_DAYS.html
+Waiting on select() ...
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/html
+Content-Length: 57413
+Date: Thu, 04 Jan 2024 16:41:51 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+Waiting on select() ...
+Write set sk = 7
+end_connection read |www//HOPPY_DAYS.html| 7 57413/57413
+close_client_sk 7
+Waiting on select() ...
