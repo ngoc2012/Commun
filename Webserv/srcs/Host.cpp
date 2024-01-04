@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:20:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:49:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ void	Host::check_sk_ready(void)
         {
             //std::cout << "Read set sk = " << i << std::endl;
             _sk_ready--;
-            if (FD_ISSET(i, &_server_set))
+            if (FD_ISSET(i, &_listen_set))
                 _sk_address[i]->accept_client_sk();
             else
                 _sk_request[i]->read();
@@ -164,7 +164,7 @@ void  	Host::add_sk_2_master_read_set(int new_sk, Address* a)
 
 void	Host::new_request_sk(int new_sk, Address* a)
 {
-	add_sk_2_master_read_set(new_sk, s);
+	add_sk_2_master_read_set(new_sk, a);
 	_sk_request[new_sk] = new Request(new_sk, this, a);
 }
 

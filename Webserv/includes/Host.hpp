@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:17:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:49:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ class	Host
 		void			                    new_request_sk(int, Address*);
 		void			                    new_response_sk(int);
 		void			                    close_client_sk(int);
-		//void			                    delete_response(int);
 
 		int				                    get_max_clients(void) const;
 		std::map<int, Server*>		        get_sk_server(void) const;
