@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:13:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:16:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	Host::start(void)
 	FD_ZERO(&_master_write_set);
 	FD_ZERO(&_server_set);
 	start_server();
-	if (!_sk_server.size())
+	if (!_sk_address.size())
 		return ;
 	do
 	{
