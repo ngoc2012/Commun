@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:06:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:08:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	Host::start_server(void)
 		if (listen_sk > 0)
 		{
 			add_sk_2_master_read_set(listen_sk, *it);
-			FD_SET(listen_sk, &_server_set);
+			FD_SET(listen_sk, &_listen_set);
 			++it;
 		}
 		else
