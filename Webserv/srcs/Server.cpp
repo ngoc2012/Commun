@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 16:22:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 21:57:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ Server::~Server()
 
 void			        Server::insert_location(Location* l) {_locations.push_back(l);}
 
-std::string		        Server::get_address(void) const {return (_address);}
-const char*		        Server::get_ip_address(void) const {return (_ip_address.c_str());}
-short unsigned int	    Server::get_port(void) const {return (_port);}
-int			            Server::get_socket(void) const {return (_socket);}
-Host*			        Server::get_host(void) const {return (_host);}
-std::string		        Server::get_root(void) const {return (_root);}
-std::string		        Server::get_server_name(void) const {return (_server_name);}
+std::string		            Server::get_address(void) const {return (_address);}
+const char*		            Server::get_ip_address(void) const {return (_ip_address.c_str());}
+short unsigned int	        Server::get_port(void) const {return (_port);}
+int			                Server::get_socket(void) const {return (_socket);}
+Host*			            Server::get_host(void) const {return (_host);}
+std::string		            Server::get_root(void) const {return (_root);}
+std::vector<std::string>    Server::get_server_name(void) const {return (_server_name);}
 std::vector<Location*>	Server::get_locations(void) const {return (_locations);}
 
 void			Server::set_socket(int i) {_socket = i;}
