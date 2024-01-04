@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 13:38:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:51:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ class	Server
 		std::string	        	_root;
 		std::vector<Location*>	_locations;	
 
-		int			            bind_addr(void);
-
 		Server(const Server&);
 		Server			&operator=(const Server& op);
 		Server();
@@ -53,9 +51,7 @@ class	Server
 		Server(Host*);
 		virtual ~Server();
 
-		void			accept_client_sk(void);
-		int			    server_socket(void);
-		void			insert_location(Location* l);
+		void			        insert_location(Location* l);
 
 		const char*		        get_ip_address(void) const;
 		short unsigned int	    get_port(void) const;

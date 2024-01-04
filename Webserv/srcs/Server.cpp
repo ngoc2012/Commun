@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 13:39:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:50:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ Server::~Server()
 		close(_socket);
 	}
 }
-
+/*
 int	Server::server_socket(void)
 {
 	_socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -109,7 +109,7 @@ void	Server::accept_client_sk(void)
 		_host->new_request_sk(new_sk, this);
 	} while (new_sk != -1);
 }
-
+*/
 void			        Server::insert_location(Location* l) {_locations.push_back(l);}
 
 std::string		        Server::get_address(void) const {return (_address);}

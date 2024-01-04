@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:32:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:50:19 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class	Address
         int	    bind_addr(void);
         void	accept_client_sk(void);
 
-        std::vector<Server*>    get_servers(void) const;
+        std::vector<Server*>    get_servers(void);
         //std::string		    get_ip_address(void) const;
         //short unsigned int	get_port(void) const;
 
