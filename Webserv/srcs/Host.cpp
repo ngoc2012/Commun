@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:08:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:11:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	Host::start_server(void)
         listen_sk = (ad->second)->listen_socket();
 		if (listen_sk > 0)
 		{
-			add_sk_2_master_read_set(listen_sk, *it);
+			add_sk_2_master_read_set(listen_sk, ad->second);
 			FD_SET(listen_sk, &_listen_set);
 			++it;
 		}
@@ -126,7 +126,7 @@ bool	Host::select_available_sk(void)
 	//std::cout << "_sk_ready = " << _sk_ready << std::endl;
 	if (_sk_ready < 0)
 	{
-		perror("select() failed");
+        std::cerr << "Error: select() failed" << std::endl;
 		return (false);
 	}
 	return (true);
@@ -154,12 +154,12 @@ void	Host::check_sk_ready(void)
     }
 }
 
-void  	Host::add_sk_2_master_read_set(int new_sk, Server* s)
+void  	Host::add_sk_2_master_read_set(int new_sk, Address* a)
 {
 	if (new_sk > _max_sk)
 		_max_sk = new_sk;
 	FD_SET(new_sk, &_master_read_set);
-	_sk_server[new_sk] = s;
+	_sk_address[new_sk] = a;
 }
 
 void	Host::new_request_sk(int new_sk, Server* s)

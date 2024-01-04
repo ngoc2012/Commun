@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 14:08:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 14:10:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ class	Host
 		std::map<std::string, std::string>	    _mimes;
 
 		bool				                    select_available_sk(void);
-		void  				                    add_sk_2_master_read_set(int, Server*);
+		void  				                    add_sk_2_master_read_set(int, Address*);
 		void    			                    start_server(void);
 		void    			                    check_sk_ready(void);
 		bool				                    check_servers_conf(void);
