@@ -10,4 +10,7 @@ c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Request.cpp -o srcs/Request.o -I
 c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Response.cpp -o srcs/Response.o -I./includes
 c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Header.cpp -o srcs/Header.o -I./includes
 c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Configuration.cpp -o srcs/Configuration.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Location.cpp -o srcs/Location.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Cgi.cpp -o srcs/Cgi.o -I./includes
+c++ -Wall -Wextra -Werror -std=c++98 -g -c srcs/Listing.cpp -o srcs/Listing.o -I./includes
 make[1]: Leaving directory '/home/ngoc/Commun/Webserv'

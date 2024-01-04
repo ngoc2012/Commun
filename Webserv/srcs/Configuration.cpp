@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:45:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 16:01:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,6 @@ bool    Configuration::parser(Host* host, const char* conf)
                 new_server = new Server(host);
                 if (!new_server)
                     err = true;
-                else
-                    servers.push_back(new_server);
             }
 		}
 		else if (s[0] == '	' && words[0] == "location")
@@ -133,10 +131,9 @@ bool    Configuration::parser(Host* host, const char* conf)
             break ;
         }
 	}
-    if (new_server)
-        add_server(host, new_server, address);
+    if (new_server && !add_server(host, new_server, address))
+        err = true;
     host->set_parser_error(err);
-    //host->set_servers(servers);
     host->set_str_address(address);
     conf_file.close();
     return (!err);
