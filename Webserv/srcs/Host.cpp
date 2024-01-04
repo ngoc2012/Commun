@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:47:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/04 15:49:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	Host::start_server(void)
 {
 	int	listen_sk;
 	for (std::map<std::string, Address*>::iterator ad = _str_address.begin();
-		ad != _str_address.end(); ++ad)
+		ad != _str_address.end();)
     {
         listen_sk = (ad->second)->listen_socket();
 		if (listen_sk > 0)
@@ -323,7 +323,6 @@ void	Host::mimes(void)
 }
 
 int			                        Host::get_max_clients(void) const {return (_max_clients);}
-std::map<int, Server*>	            Host::get_sk_server(void) const {return (_sk_server);}
 std::map<int, Request*>	            Host::get_sk_request(void) const {return (_sk_request);}
 size_t			                    Host::get_client_max_body_size(void) const {return (_client_max_body_size);}
 size_t			                    Host::get_client_body_buffer_size(void) const {return (_client_body_buffer_size);}
