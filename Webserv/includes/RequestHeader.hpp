@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:49:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:51:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ class	Response;
 class	RequestHeader
 {
 	private:
-		size_t		    _pos;
 		Host*		    _host;
 		std::string*    _str;
+		size_t		    _pos;
 
 		RequestHeader(const RequestHeader&);
 		RequestHeader		&operator=(const RequestHeader& op);
