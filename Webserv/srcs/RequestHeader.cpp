@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 21:57:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 22:01:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,8 @@ size_t	RequestHeader::parse_content_length()
         std::cerr << "Error: Content-Length not found." << std::endl;
         return (NPOS);
     }
-    size_t  pos = _str->find("\n", last_pos);
+    std::string s = _str->substr(last_pos + 16);
+    size_t  pos = s.find("\n");
     if (pos == NPOS)
     {
         std::cerr << "Error: No newline for Content-Length." << std::endl;
@@ -159,7 +160,7 @@ size_t	RequestHeader::parse_content_length()
     }
     return (std::atoi(words[1].c_str()));
     */
-    return (std::atoi(_str->substr(last_pos, pos - last_pos).c_str()));
+    return (std::atoi(s.substr(0, pos).c_str()));
 }
 
 void	RequestHeader::set_host(Host* h) {_host = h;}
