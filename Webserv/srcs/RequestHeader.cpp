@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 13:07:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 13:09:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,21 @@ bool	RequestHeader::parse_method_url(std::string& url, e_method& m)
 
 bool	RequestHeader::parse_host_name()
 {
+    size_t  last_pos = _pos;
+
+    _pos = s.find("\n", last_pos + 1);
+    if (_pos == NPOS)
+    {
+        std::cerr << "Error: No newline for host name." << std::endl;
+        return (false);
+    }
+    std::vector<std::string>	line0;
+    line0 = ft::split_string(s.substr(0, _pos), "     ");
+    if (line0.size() != 2)
+    {
+        std::cerr << "Error: Second line header invalid." << std::endl;
+        return (false);
+    }
 }
 
 bool	    RequestHeader::parse_content_type(Host* host, std::string &s, std::string& ct)
