@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 17:22:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 17:26:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ bool	RequestHeader::parse_method_url(std::string& url, e_method& m)
 
 std::string	    RequestHeader::parse_host_name()
 {
-    size_t  last_pos = _str->find("Content-Type:", _pos);
+    size_t  last_pos = _str->find("Host:", _pos);
     if (last_pos == NPOS)
     {
         std::cerr << "Error: Host name not found." << std::endl;
@@ -89,7 +89,7 @@ std::string	    RequestHeader::parse_host_name()
 
 std::string	    RequestHeader::parse_content_type()
 {
-    size_t  last_pos = _str->find("Content-Type:", _pos);
+    size_t  last_pos = _str->find("Content-Type:", 0);
     if (last_pos == NPOS)
     {
         std::cerr << "Error: Content-Type not found." << std::endl;
@@ -102,12 +102,7 @@ std::string	    RequestHeader::parse_content_type()
         return ("");
     }
     std::vector<std::string>	words;
-    words = ft::split_string(_str->substr(last_pos, _pos), "     ");
-    if (words.size() != 2)
-    {
-        std::cerr << "Error request header: Content-Type line invalid." << std::endl;
-        return ("");
-    }
+    words = ft::split_string(_str->substr(last_pos, _pos), "     ;");
     std::set<std::string>*	set_mimes = _host->get_set_mimes();
     if (set_mimes->find(words[1]) != set_mimes->end())
         return (words[1]);
@@ -128,7 +123,7 @@ std::string	    RequestHeader::parse_content_type()
 
 size_t	RequestHeader::parse_content_length()
 {
-    size_t  last_pos = _str->find("Content-Length:", _pos);
+    size_t  last_pos = _str->find("Content-Length:", 0);
     if (last_pos == NPOS)
     {
         std::cerr << "Error: Content-Length not found." << std::endl;
