@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 22:59:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 23:01:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,22 +95,12 @@ std::string	    RequestHeader::parse_content_type()
         std::cerr << "Error: No newline for Content-Type." << std::endl;
         return ("");
     }
-    std::string     type = _str->substr(last_pos, _pos - last_pos);
+    std::string     type = _str->substr(last_pos, pos - last_pos);
     std::set<std::string>*	set_mimes = _host->get_set_mimes();
-    if (set_mimes->find(words[1]) != set_mimes->end())
-        return (words[1]);
-    std::cerr << "Error: Content type not found." << _str->substr(last_pos, pos - last_pos) << "," << words[1] << std::endl;
-    return ("");
-    /*
-    std::string type = _str->substr(last_pos + 14, 50);
-    std::map<std::string, std::string>*	mimes = _host->get_mimes();
-    for (std::map<std::string, std::string>::iterator it = mimes->begin();
-            it != mimes->end(); ++it)
-        if (type.find(it->second) != NPOS)
-            return (it->second);
+    if (set_mimes->find(type) != set_mimes->end())
+        return (type);
     std::cerr << "Error: Content type not found." << std::endl;
     return ("");
-    */
 }
 
 size_t	RequestHeader::parse_content_length()
