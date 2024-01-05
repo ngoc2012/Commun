@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 15:29:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 15:31:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ bool	RequestHeader::parse_method_url(std::string& url, e_method& m)
 
 std::string	    RequestHeader::parse_host_name()
 {
-    size_t  last_pos = s.find("Content-Type:", _pos);
+    size_t  last_pos = _str.find("Content-Type:", _pos);
     if (last_pos == NPOS)
     {
         std::cerr << "Error: Host name not found." << std::endl;
@@ -77,7 +77,7 @@ std::string	    RequestHeader::parse_host_name()
         return ("");
     }
     std::vector<std::string>	words;
-    words = ft::split_string(s.substr(last_pos, _pos), "     ");
+    words = ft::split_string(_str.substr(last_pos, _pos), "     ");
     if (words.size() != 2)
     {
         std::cerr << "Error request header: Host line invalid." << std::endl;
@@ -88,7 +88,7 @@ std::string	    RequestHeader::parse_host_name()
 
 std::string	    RequestHeader::parse_content_type()
 {
-    size_t  last_pos = s.find("Content-Type:", _pos);
+    size_t  last_pos = _str.find("Content-Type:", _pos);
     if (last_pos == NPOS)
     {
         std::cerr << "Error: Content-Type not found." << std::endl;
@@ -100,7 +100,8 @@ std::string	    RequestHeader::parse_content_type()
         std::cerr << "Error: No newline for Content-Type." << std::endl;
         return ("");
     }
-    words = ft::split_string(s.substr(last_pos, _pos), "     ");
+    std::vector<std::string>	words;
+    words = ft::split_string(_str.substr(last_pos, _pos), "     ");
     if (words.size() != 2)
     {
         std::cerr << "Error request header: Content-Type line invalid." << std::endl;
@@ -126,7 +127,7 @@ std::string	    RequestHeader::parse_content_type()
 
 size_t	RequestHeader::parse_content_length(std::string& s, size_t& cl)
 {
-    size_t  last_pos = s.find("Content-Length:", _pos);
+    size_t  last_pos = _str.find("Content-Length:", _pos);
     if (last_pos == NPOS)
     {
         std::cerr << "Error: Content-Length not found." << std::endl;
@@ -135,19 +136,9 @@ size_t	RequestHeader::parse_content_length(std::string& s, size_t& cl)
     _pos = _str.find("\n", last_pos);
     if (_pos == NPOS)
     {
-        std::cerr << "Error: No newline for Content-Type." << std::endl;
+        std::cerr << "Error: No newline for Content-Length." << std::endl;
         return ("");
     }
-	size_t	pos1;
-	size_t	pos = s.find("Content-Length: ");
-	if (pos != NPOS)
-        pos1 = s.substr(pos).find("\n");
-	if (pos == NPOS || pos1 == NPOS)
-	{
-        std::cerr << "Error: Content length not found." << std::endl;
-        return (false);
-	}
-    pos += 16;
     cl = std::atoi(s.substr(pos, pos1).c_str());
     return (true);
 }
