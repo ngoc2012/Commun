@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 21:54:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 21:57:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,33 @@ std::string	    RequestHeader::parse_content_type()
         std::cerr << "Error: Content-Type not found." << std::endl;
         return ("");
     }
-    std::string type = s.substr(last_pos + 14, 50);
+    /*
+    size_t  pos = _str->find("\n", last_pos);
+    if (pos == NPOS)
+    {
+        std::cerr << "Error: No newline for Content-Type." << std::endl;
+        return ("");
+    }
+    std::vector<std::string>	words;
+    words = ft::split_string(_str->substr(last_pos, pos - last_pos), " 	;");
+    std::set<std::string>*	set_mimes = _host->get_set_mimes();
+
+    // Print the first few elements using iterators
+    std::set<std::string>::iterator it = set_mimes->begin();
+    for (int i = 0; i < 3 && it != set_mimes->end(); ++i, ++it) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "Content-Type:" << std::flush;
+    std::cout << words[1] << std::flush;
+    std::cout << "," << std::endl;
+    if (set_mimes->find(words[1]) != set_mimes->end())
+        return (words[1]);
+    std::cerr << "Error: Content type not found." << _str->substr(last_pos, pos - last_pos) << "," << words[1] << std::endl;
+    return ("");
+    */
+    std::string type = _str->substr(last_pos + 14, 50);
     std::map<std::string, std::string>*	mimes = _host->get_mimes();
     for (std::map<std::string, std::string>::iterator it = mimes->begin();
             it != mimes->end(); ++it)
@@ -121,6 +147,7 @@ size_t	RequestHeader::parse_content_length()
         std::cerr << "Error: No newline for Content-Length." << std::endl;
         return (NPOS);
     }
+    /*
     std::vector<std::string>	words;
     words = ft::split_string(_str->substr(last_pos, pos - last_pos), " 	");
     std::cout << pos << "Content-Length:" + words[1] + "," << std::endl;
@@ -131,6 +158,8 @@ size_t	RequestHeader::parse_content_length()
         return (NPOS);
     }
     return (std::atoi(words[1].c_str()));
+    */
+    return (std::atoi(_str->substr(last_pos, pos - last_pos).c_str()));
 }
 
 void	RequestHeader::set_host(Host* h) {_host = h;}
