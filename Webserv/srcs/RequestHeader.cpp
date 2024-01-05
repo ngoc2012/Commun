@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 22:56:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 22:57:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,6 @@ std::string	    RequestHeader::parse_host_name()
         std::cerr << "Error: No newline for host name." << std::endl;
         return ("");
     }
-    //std::vector<std::string>	words;
-    //words = ft::split_string(_str->substr(last_pos, _pos - last_pos), " 	");
-    //if (words.size() != 2)
-    //{
-    //    //std::cout << words.size() << " "  << _str->substr(last_pos, _pos) << std::flush;
-    //    //std::cout << words[0] << "|" << words[1] << "|" << words[2] << std::flush;
-    //    std::cerr << "Error request header: Host line invalid." << std::endl;
-    //    return ("");
-    //}
-    //std::cout << "Host name:" << words[1] << std::endl;
     return (_str->substr(last_pos, _pos - last_pos));
 }
 
@@ -98,6 +88,7 @@ std::string	    RequestHeader::parse_content_type()
         std::cerr << "Error: Content-Type not found." << std::endl;
         return ("");
     }
+    last_pos += 13;
     size_t  pos = _str->find("\r\n", last_pos);
     if (pos == NPOS)
     {
