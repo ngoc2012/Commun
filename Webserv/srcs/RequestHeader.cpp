@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 22:07:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 22:52:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ RequestHeader::~RequestHeader()
 
 bool	RequestHeader::parse_method_url(std::string& url, e_method& m)
 {
-    _pos = _str->find("\n");
+    _pos = _str->find("\r\n");
     if (_pos == NPOS)
     {
         std::cerr << "Error: No newline." << std::endl;
@@ -70,7 +70,7 @@ std::string	    RequestHeader::parse_host_name()
         std::cerr << "Error: Host name not found." << std::endl;
         return ("");
     }
-    _pos = _str->find("\n", last_pos);
+    _pos = _str->find("\r\n", last_pos);
     if (_pos == NPOS)
     {
         std::cerr << "Error: No newline for host name." << std::endl;
@@ -97,8 +97,7 @@ std::string	    RequestHeader::parse_content_type()
         std::cerr << "Error: Content-Type not found." << std::endl;
         return ("");
     }
-    /*
-    size_t  pos = _str->find("\n", last_pos);
+    size_t  pos = _str->find("\r\n", last_pos);
     if (pos == NPOS)
     {
         std::cerr << "Error: No newline for Content-Type." << std::endl;
@@ -122,7 +121,7 @@ std::string	    RequestHeader::parse_content_type()
         return (words[1]);
     std::cerr << "Error: Content type not found." << _str->substr(last_pos, pos - last_pos) << "," << words[1] << std::endl;
     return ("");
-    */
+    /*
     std::string type = _str->substr(last_pos + 14, 50);
     std::map<std::string, std::string>*	mimes = _host->get_mimes();
     for (std::map<std::string, std::string>::iterator it = mimes->begin();
@@ -131,6 +130,7 @@ std::string	    RequestHeader::parse_content_type()
             return (it->second);
     std::cerr << "Error: Content type not found." << std::endl;
     return ("");
+    */
 }
 
 size_t	RequestHeader::parse_content_length()
