@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 13:04:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 13:07:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ RequestHeader::~RequestHeader()
 	std::cout << "RequestHeader Destruction" << std::endl;
 }
 
-bool	RequestHeader::parse_method_url(std::string& s, std::string& url, e_method& m)
+bool	RequestHeader::parse_method_url(std::string& url, e_method& m)
 {
     _pos = s.find("\n");
     if (_pos == NPOS)
@@ -68,6 +68,10 @@ bool	RequestHeader::parse_method_url(std::string& s, std::string& url, e_method&
     line0 = ft::split_string(s.substr(0, newline), "     ");
     */
     return (true);
+}
+
+bool	RequestHeader::parse_host_name()
+{
 }
 
 bool	    RequestHeader::parse_content_type(Host* host, std::string &s, std::string& ct)
