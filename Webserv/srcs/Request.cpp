@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:13:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:40:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ Request::Request(int sk, Host* h, Address* a) : _socket(sk), _host(h), _address(
 	_response.set_request(this);
     _cgi = 0;
 
-	_header = "";
+	_str_header = "";
 	_url = "";
 	_method = NONE;
 	_content_type = "";

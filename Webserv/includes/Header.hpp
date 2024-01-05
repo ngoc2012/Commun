@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:10:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:40:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ class	Header
         std::map<std::string, std::string>*	_mimes;
 		std::string				            _allow;
 		std::string				            _extension;
+
 		size_t					            _pos;
+		std::string				            _extension;
 
 		std::string			                get_current_time(void);
 		std::string			                file_last_modified_time(std::string);
