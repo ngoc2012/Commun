@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 15:23:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 15:25:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ RequestHeader::~RequestHeader()
 
 bool	RequestHeader::parse_method_url(std::string& url, e_method& m)
 {
-    _pos = s.find("\n");
+    _pos = _str.find("\n");
     if (_pos == NPOS)
     {
         std::cerr << "Error: No newline." << std::endl;
         return (false);
     }
-    std::vector<std::string>	line0;
-    words = ft::split_string(s.substr(0, _pos), "     ");
+    std::vector<std::string>	words;
+    words = ft::split_string(_str.substr(0, _pos), "     ");
     if (words.size() != 3)
     {
         std::cerr << "Error: First line header invalid." << std::endl;
@@ -59,22 +59,18 @@ bool	RequestHeader::parse_method_url(std::string& url, e_method& m)
         std::cerr << "Error: Method unknown : " << words[0] << std::endl;
         return (false);
     }
-    /*
-    size_t  newline1 = s.find("\n", newline + 1);
-    if (newline == NPOS)
-        return (false);
-
-    std::vector<std::string>	line0;
-    line0 = ft::split_string(s.substr(0, newline), "     ");
-    */
     return (true);
 }
 
 std::string	    RequestHeader::parse_host_name()
 {
-    size_t  last_pos = _pos + 1;
-
-    _pos = s.find("\n", last_pos);
+    size_t  last_pos = s.find("Content-Type:", last_pos);
+    if (last_pos == NPOS)
+    {
+        std::cerr << "Error: Host name not found." << std::endl;
+        return ("");
+    }
+    _pos = _str.find("\n", last_pos);
     if (_pos == NPOS)
     {
         std::cerr << "Error: No newline for host name." << std::endl;
