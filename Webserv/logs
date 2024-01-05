@@ -60,7 +60,7 @@ Response Header:
 HTTP/1.1 400 Bad Request
 Content-Type: text/html
 Content-Length: 145
-Date: Fri, 05 Jan 2024 20:23:26 GMT
+Date: Fri, 05 Jan 2024 20:27:25 GMT
 
 
 Header Destruction

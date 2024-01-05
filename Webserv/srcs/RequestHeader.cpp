@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 21:25:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 21:27:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ std::string	    RequestHeader::parse_content_type()
     std::cout << "," << std::endl;
     if (set_mimes->find(words[1]) != set_mimes->end())
         return (words[1]);
-    //std::cerr << "Error: Content type not found." << _str->substr(last_pos, pos - last_pos) << "," << words[1] << std::endl;
+    std::cerr << "Error: Content type not found." << _str->substr(last_pos, pos - last_pos) << "," << words[1] << std::endl;
     return ("");
     /*
     for (std::map<std::string, std::string>::iterator it = mimes->begin();
