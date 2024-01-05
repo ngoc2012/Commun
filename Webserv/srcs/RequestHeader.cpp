@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 13:11:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 13:13:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,16 @@ bool	RequestHeader::parse_method_url(std::string& url, e_method& m)
 
 std::string	    RequestHeader::parse_host_name()
 {
-    size_t  last_pos = _pos;
+    size_t  last_pos = _pos + 1;
 
-    _pos = s.find("\n", last_pos + 1);
+    _pos = s.find("\n", last_pos);
     if (_pos == NPOS)
     {
         std::cerr << "Error: No newline for host name." << std::endl;
         return ("");
     }
     std::vector<std::string>	words;
-    words = ft::split_string(s.substr(0, _pos), "     ");
+    words = ft::split_string(s.substr(last_pos, _pos), "     ");
     if (words.size() != 2)
     {
         std::cerr << "Error: Second line header invalid." << std::endl;
@@ -90,16 +90,16 @@ std::string	    RequestHeader::parse_host_name()
     return (words[1])
 }
 
-bool	    RequestHeader::parse_content_type(Host* host, std::string &s, std::string& ct)
+std::string	    RequestHeader::parse_content_type()
 {
-    size_t	pos = s.find("Content-Type:");
-    if (pos == NPOS)
+    _pos = s.find("Content-Type:", _pos);
+    if (_pos == NPOS)
     {
         std::cerr << "Error: Content type not found." << std::endl;
         return (false);
     }
-    std::string type = s.substr(pos + 14, 50);
-    std::map<std::string, std::string>*	mimes = host->get_mimes();
+    std::string type = s.substr(_pos + 14, 50);
+    std::map<std::string, std::string>*	mimes = _host->get_mimes();
     for (std::map<std::string, std::string>::iterator it = mimes->begin();
             it != mimes->end(); ++it)
         if (type.find(it->second) != NPOS)
