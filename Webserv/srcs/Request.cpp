@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 16:02:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 10:34:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Request::Request(int sk, Host* h, Address* a) : _socket(sk), _host(h), _address(
 {
 	//std::cout << "Request Constructor sk: " << sk << std::endl;
 
-    _server = _address->get_servers()[0];
+    _server = 0;
 	_response.set_socket(sk);
 	_response.set_host(h);
 	_response.set_server(_server);
@@ -131,6 +131,7 @@ bool	Request::parse_header(void)
         _status_code = 400;	// Bad Request
         return (false);
     }
+    _server = _address->get_servers()[0];
     if (!check_location())
         return (false);
     if (_method == POST)
