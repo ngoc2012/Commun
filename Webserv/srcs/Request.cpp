@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:55:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:58:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ Request::Request(int sk, Host* h, Address* a) : _socket(sk), _host(h), _address(
 	_content_type = "";
 	_content_length = 0;
 	_body_size = 0;
+    _header.set_host(h);
+    _header.set_str(&_str_header);
 
 	_fd_in = -1;
 	_full_file_name = "";
@@ -109,11 +111,11 @@ bool	Request::receive_header(void)
         if (ret > 0)
         {
             _buffer[ret] = 0;
-            _header += _buffer;
-            _body_position = _header.find("\r\n\r\n");
+            _str_header += _buffer;
+            _body_position = _str_header.find("\r\n\r\n");
         }
     }
-    std::cout << "Request header: " << _header.size() << std::endl << _header << std::endl;
+    std::cout << "Request header: " << _str_header.size() << std::endl << _str_header << std::endl;
     if (_body_position == NPOS)
     {
         std::cerr << "Error: No end header found.\n" << std::endl;
@@ -267,7 +269,7 @@ int		    Request::get_status_code(void) const {return (_status_code);}
 std::string	Request::get_content_type(void) const {return (_content_type);}
 size_t		Request::get_content_length(void) const {return (_content_length);}
 size_t		Request::get_body_size(void) const {return (_body_size);}
-std::string	Request::get_header(void) const {return (_header);}
+std::string	Request::get_str_header(void) const {return (_str_header);}
 std::string	Request::get_full_file_name(void) const {return (_full_file_name);}
 Location*	Request::get_location(void) const {return (_location);}
 int		    Request::get_fd_in(void) const {return (_fd_in);}
