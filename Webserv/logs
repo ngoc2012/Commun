@@ -42,9 +42,9 @@ Host: 127.0.0.1:4141
 User-Agent: curl/7.81.0
 Accept: */*
 Content-Length: 5516
-Content-Type: multipart/form-data; boundary=------------------------5f00b0d6b1dd15cd
+Content-Type: multipart/form-data; boundary=------------------------d4fec55d8c6ba7c6
 
---------------------------5f00b0d6b1dd15cd
+--------------------------d4fec55d8c6ba7c6
 Content-Disposition: form-data; name="file"; filename=".conf"
 Content-Type: application/octet-stream
 
@@ -61,10 +61,8 @@ host
 	#default_type application/octet-stream
 	# Specifies the maximum accepted body size of a client request, as
 	
-6 Content-Type: multipart/form-data; boundary=------------------------5f00b0d6b1dd15cd
-
---------------------------5f00b0d6b1dd15cd
-Content-Disposition: form-data; name="file"; filena
+3 Host: 127.0.0.1:4141
+User-Agent: cur
 end_read 6 
 Waiting on select() ...
 Write set sk = 6
@@ -73,7 +71,7 @@ Response Header:
 HTTP/1.1 400 Bad Request
 Content-Type: text/html
 Content-Length: 145
-Date: Fri, 05 Jan 2024 16:22:57 GMT
+Date: Fri, 05 Jan 2024 17:17:58 GMT
 
 
 Header Destruction
