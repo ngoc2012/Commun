@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 11:22:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:04:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ bool	Header::parse_method_url(std::string& s, std::string& url, e_method& m)
     return (true);
 }
 
-bool	Header::parse_header(std::string& s, std::string& host_name)
+bool	Header::parse_host_name(std::string& s, std::string& host_name)
 {
     size_t  newline = s.find("\n");
     if (newline == NPOS)
