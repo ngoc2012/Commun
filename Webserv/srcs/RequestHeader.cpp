@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 13:03:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 13:04:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,8 @@ bool	RequestHeader::parse_method_url(std::string& s, std::string& url, e_method&
         std::cerr << "Error: No newline." << std::endl;
         return (false);
     }
-
     std::vector<std::string>	line0;
-    line0 = ft::split_string(s.substr(0, newline), "     ");
+    line0 = ft::split_string(s.substr(0, _pos), "     ");
     if (line0.size() != 3)
     {
         std::cerr << "Error: First line header invalid." << std::endl;
