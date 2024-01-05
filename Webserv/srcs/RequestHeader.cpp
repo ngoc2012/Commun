@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 13:13:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 13:23:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ std::string	    RequestHeader::parse_content_type()
         return (false);
     }
     std::string type = s.substr(_pos + 14, 50);
-    std::map<std::string, std::string>*	mimes = _host->get_mimes();
+    std::set<std::string>*	set_mimes = _host->get_set_mimes();
+    /*
     for (std::map<std::string, std::string>::iterator it = mimes->begin();
             it != mimes->end(); ++it)
         if (type.find(it->second) != NPOS)
@@ -109,6 +110,7 @@ std::string	    RequestHeader::parse_content_type()
         }
     std::cerr << "Error: Content type not found." << std::endl;
     return (false);
+    */
 }
 
 size_t	RequestHeader::parse_content_length(std::string& s, size_t& cl)
