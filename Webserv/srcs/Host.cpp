@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 13:21:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 21:00:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,6 @@ void	Host::start(void)
 		check_sk_ready();
 	} while (true);
 }
-
-/*
-bool	Host::check_servers_conf(void)
-{
-	for (std::vector<Server*>::iterator it = _servers.begin(); it != _servers.end(); ++it)
-		if ((*it)->get_root() == "")
-		{
-			std::cerr << "Error: root null" << std::endl;
-			return (false);
-		}
-	return (true);
-}
-*/
 
 void	Host::start_server(void)
 {
@@ -306,12 +293,9 @@ void	Host::mimes(void)
     _mimes["avi"] = "video/x-msvideo";
 
     _set_mimes.insert("text/html");
-    _set_mimes.insert("text/html");
-    _set_mimes.insert("text/html");
     _set_mimes.insert("text/css");
     _set_mimes.insert("text/xml");
     _set_mimes.insert("image/gif");
-    _set_mimes.insert("image/jpeg");
     _set_mimes.insert("image/jpeg");
     _set_mimes.insert("application/javascript");
     _set_mimes.insert("application/javascript");
