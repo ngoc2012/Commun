@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 23:02:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 23:05:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,12 @@ size_t	RequestHeader::parse_content_length()
         std::cerr << "Error: Content-Length not found." << std::endl;
         return (NPOS);
     }
-    last_pos += 14;
+    last_pos += 16;
     size_t  pos = _str->find("\n", last_pos);
-    if (pos == NPOS)
+    size_t  pos1 = _str->find(";", last_pos);
+    if (pos1 < pos)
+        pos = pos1;
+    if (pos == NPOS && pos1 == NPOS)
     {
         std::cerr << "Error: No newline for Content-Length." << std::endl;
         return (NPOS);
