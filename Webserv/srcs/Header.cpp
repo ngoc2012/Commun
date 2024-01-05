@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:04:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:07:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,36 +138,12 @@ bool	Header::parse_method_url(std::string& s, std::string& url, e_method& m)
         std::cerr << "Error: Method unknown : " << line0[0] << std::endl;
         return (false);
     }
-    return (true);
-}
-
-bool	Header::parse_host_name(std::string& s, std::string& host_name)
-{
-    size_t  newline = s.find("\n");
+    size_t  newline1 = s.find("\n");
     if (newline == NPOS)
         return (false);
 
     std::vector<std::string>	line0;
     line0 = ft::split_string(s.substr(0, newline), "     ");
-    if (line0.size() != 3)
-    {
-        std::cerr << "Error: First line header invalid" << std::endl;
-        return (false);
-    }
-    url = line0[1];
-    if (line0[0] == "GET")
-        m = GET;
-    else if (line0[0] == "POST")
-        m = POST;
-    else if (line0[0] == "PUT")
-        m = PUT;
-    else if (line0[0] == "DELETE")
-        m = DELETE;
-    else
-    {
-        std::cerr << "Error: Method unknown : " << line0[0] << std::endl;
-        return (false);
-    }
     return (true);
 }
 
