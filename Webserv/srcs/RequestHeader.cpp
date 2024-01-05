@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 17:18:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 17:21:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ std::string	    RequestHeader::parse_host_name()
     words = ft::split_string(_str->substr(last_pos, _pos), "     ");
     if (words.size() != 2)
     {
+        std::cout << _str->substr(last_pos << std::endl;
         std::cerr << "Error request header: Host line invalid." << std::endl;
         return ("");
     }
