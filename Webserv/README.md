@@ -8,6 +8,13 @@ clear && make re && valgrind --track-fds=yes --leak-check=full --show-leak-kinds
 
 ## Basics tests
 
+### In browser:
+```console
+http://127.0.0.1:4141
+http://127.0.0.1:4141/HOPPY_DAYS.html
+http://127.0.0.1:4141/Monastik_living_in_Athina.html
+```
+
 ### Autoindex:
 ```console
 http://127.0.0.1:4141/index_files
