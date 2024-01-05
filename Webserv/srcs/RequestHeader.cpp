@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 21:11:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 21:15:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ std::string	    RequestHeader::parse_content_type()
     std::cout << "Content-Type:" << words[1] << "," << std::endl;
     if (set_mimes->find(words[1]) != set_mimes->end())
         return (words[1]);
-    std::cerr << "Error: Content type not found." << _str->substr(last_pos, pos - last_pos) << "," << words[1] << std::endl;
+    //std::cerr << "Error: Content type not found." << _str->substr(last_pos, pos - last_pos) << "," << words[1] << std::endl;
     return ("");
     /*
     for (std::map<std::string, std::string>::iterator it = mimes->begin();
@@ -143,7 +143,7 @@ size_t	RequestHeader::parse_content_length()
     std::cout << "Content-Length:" << words[1] << std::endl;
     if (words.size() != 2 || !ft::is_digit(words[1]))
     {
-        std::cout << words.size() << " "  << _str->substr(last_pos, pos) << std::flush;
+        std::cout << words.size() << " " << ft::is_digit(words[1]) << " "  << _str->substr(last_pos, pos) << std::flush;
         std::cerr << "Error request header: Content-Length line invalid." << std::endl;
         return (NPOS);
     }
