@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 15:27:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 15:29:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ bool	RequestHeader::parse_method_url(std::string& url, e_method& m)
 
 std::string	    RequestHeader::parse_host_name()
 {
-    size_t  last_pos = s.find("Content-Type:", last_pos);
+    size_t  last_pos = s.find("Content-Type:", _pos);
     if (last_pos == NPOS)
     {
         std::cerr << "Error: Host name not found." << std::endl;
@@ -88,10 +88,10 @@ std::string	    RequestHeader::parse_host_name()
 
 std::string	    RequestHeader::parse_content_type()
 {
-    size_t  last_pos = s.find("Content-Type:", last_pos);
+    size_t  last_pos = s.find("Content-Type:", _pos);
     if (last_pos == NPOS)
     {
-        std::cerr << "Error: Content type not found." << std::endl;
+        std::cerr << "Error: Content-Type not found." << std::endl;
         return ("");
     }
     _pos = _str.find("\n", last_pos);
@@ -126,6 +126,18 @@ std::string	    RequestHeader::parse_content_type()
 
 size_t	RequestHeader::parse_content_length(std::string& s, size_t& cl)
 {
+    size_t  last_pos = s.find("Content-Length:", _pos);
+    if (last_pos == NPOS)
+    {
+        std::cerr << "Error: Content-Length not found." << std::endl;
+        return ("");
+    }
+    _pos = _str.find("\n", last_pos);
+    if (_pos == NPOS)
+    {
+        std::cerr << "Error: No newline for Content-Type." << std::endl;
+        return ("");
+    }
 	size_t	pos1;
 	size_t	pos = s.find("Content-Length: ");
 	if (pos != NPOS)
