@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 13:24:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 14:59:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ std::string	    RequestHeader::parse_host_name()
     words = ft::split_string(s.substr(last_pos, _pos), "     ");
     if (words.size() != 2)
     {
-        std::cerr << "Error: Second line header invalid." << std::endl;
+        std::cerr << "Error request header: Host line invalid." << std::endl;
         return ("");
     }
     return (words[1])
@@ -92,13 +92,13 @@ std::string	    RequestHeader::parse_host_name()
 
 std::string	    RequestHeader::parse_content_type()
 {
-    _pos = s.find("Content-Type:", _pos);
+    size_t  last_pos = s.find("Content-Type:", last_pos);
     if (_pos == NPOS)
     {
         std::cerr << "Error: Content type not found." << std::endl;
-        return (false);
+        return ("");
     }
-    std::string type = s.substr(_pos + 14, 50);
+    words = ft::split_string(s.substr(last_pos, _pos), "     ");
     std::set<std::string>*	set_mimes = _host->get_set_mimes();
     if (set_mimes->find(
     /*
