@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 22:06:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 22:07:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,8 +160,6 @@ size_t	RequestHeader::parse_content_length()
     }
     return (std::atoi(words[1].c_str()));
     */
-    if (!ft::is_digit(s.substr(0, pos)))
-        return (NPOS);
     return (std::atoi(s.substr(0, pos).c_str()));
 }
 
