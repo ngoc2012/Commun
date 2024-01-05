@@ -9226,3 +9226,756 @@ Write set sk = 7
 end_connection read |www/_next/static/media/45616baa4df057f4-s.woff2| 7 0/141
 close_client_sk 7
 Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+Waiting on select() ...
+Request header: 700
+GET /_next/static/media/c6908836934a19a7-s.p.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 6 www/_next/static/media/c6908836934a19a7-s.p.woff2
+end_read 6 www/_next/static/media/c6908836934a19a7-s.p.woff2
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: font/woff2
+Content-Length: 37860
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/_next/static/media/c6908836934a19a7-s.p.woff2| 6 37860/37860
+close_client_sk 6
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/42a1e07c3bc0f8ae-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 6 www/_next/static/media/42a1e07c3bc0f8ae-s.woff2
+end_read 6 www/_next/static/media/42a1e07c3bc0f8ae-s.woff2
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/_next/static/media/42a1e07c3bc0f8ae-s.woff2| 6 0/141
+close_client_sk 6
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+Waiting on select() ...
+Request header: 700
+GET /_next/static/media/c6908836934a19a7-s.p.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 6 www/_next/static/media/c6908836934a19a7-s.p.woff2
+end_read 6 www/_next/static/media/c6908836934a19a7-s.p.woff2
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: font/woff2
+Content-Length: 37860
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/_next/static/media/c6908836934a19a7-s.p.woff2| 6 37860/37860
+close_client_sk 6
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+  New incoming connection - 7
+Waiting on select() ...
+Request header: 624
+GET /common/bg-noise.png HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS.html
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: image
+Sec-Fetch-Mode: no-cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 6 www/common/bg-noise.png
+end_read 6 www/common/bg-noise.png
+Request header: 698
+GET /_next/static/media/11cb4d4dfe3d81df-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/_next/static/media/11cb4d4dfe3d81df-s.woff2
+end_read 7 www/_next/static/media/11cb4d4dfe3d81df-s.woff2
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/common/bg-noise.png| 6 0/141
+close_client_sk 6
+Write set sk = 7
+end_connection read |www/_next/static/media/11cb4d4dfe3d81df-s.woff2| 7 0/141
+close_client_sk 7
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+  New incoming connection - 7
+  New incoming connection - 8
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/69576a4f0f48545d-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 6 www/_next/static/media/69576a4f0f48545d-s.woff2
+end_read 6 www/_next/static/media/69576a4f0f48545d-s.woff2
+Request header: 698
+GET /_next/static/media/f467ff9551a57091-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/_next/static/media/f467ff9551a57091-s.woff2
+end_read 7 www/_next/static/media/f467ff9551a57091-s.woff2
+Request header: 698
+GET /_next/static/media/2ab334bbbb8e75e2-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/_next/static/media/2ab334bbbb8e75e2-s.woff2
+end_read 8 www/_next/static/media/2ab334bbbb8e75e2-s.woff2
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 9
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/_next/static/media/69576a4f0f48545d-s.woff2| 6 0/141
+close_client_sk 6
+Write set sk = 7
+end_connection read |www/_next/static/media/f467ff9551a57091-s.woff2| 7 0/141
+close_client_sk 7
+Write set sk = 8
+end_connection read |www/_next/static/media/2ab334bbbb8e75e2-s.woff2| 8 0/141
+close_client_sk 8
+Request header: 698
+GET /_next/static/media/f6749225630fe93f-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 9 www/_next/static/media/f6749225630fe93f-s.woff2
+end_read 9 www/_next/static/media/f6749225630fe93f-s.woff2
+Waiting on select() ...
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 9
+end_connection read |www/_next/static/media/f6749225630fe93f-s.woff2| 9 0/141
+close_client_sk 9
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/670c25c148ad8881-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 6 www/_next/static/media/670c25c148ad8881-s.woff2
+end_read 6 www/_next/static/media/670c25c148ad8881-s.woff2
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 7
+  New incoming connection - 8
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 9
+Write set sk = 6
+end_connection read |www/_next/static/media/670c25c148ad8881-s.woff2| 6 0/141
+close_client_sk 6
+Request header: 698
+GET /_next/static/media/5c04c665375ee862-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/_next/static/media/5c04c665375ee862-s.woff2
+end_read 7 www/_next/static/media/5c04c665375ee862-s.woff2
+Request header: 698
+GET /_next/static/media/bfa8a857259ba564-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/_next/static/media/bfa8a857259ba564-s.woff2
+end_read 8 www/_next/static/media/bfa8a857259ba564-s.woff2
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+  New incoming connection - 11
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Request header: 698
+GET /_next/static/media/d07316a1121d2afc-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 9 www/_next/static/media/d07316a1121d2afc-s.woff2
+end_read 9 www/_next/static/media/d07316a1121d2afc-s.woff2
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/18c790c06eb3cbde-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 6 www/_next/static/media/18c790c06eb3cbde-s.woff2
+end_read 6 www/_next/static/media/18c790c06eb3cbde-s.woff2
+Write set sk = 7
+end_connection read |www/_next/static/media/5c04c665375ee862-s.woff2| 7 0/141
+close_client_sk 7
+Write set sk = 8
+end_connection read |www/_next/static/media/bfa8a857259ba564-s.woff2| 8 0/141
+close_client_sk 8
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Request header: 698
+GET /_next/static/media/48763d6652cebf74-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 11 www/_next/static/media/48763d6652cebf74-s.woff2
+end_read 11 www/_next/static/media/48763d6652cebf74-s.woff2
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Write set sk = 9
+end_connection read |www/_next/static/media/d07316a1121d2afc-s.woff2| 9 0/141
+close_client_sk 9
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/_next/static/media/18c790c06eb3cbde-s.woff2| 6 0/141
+close_client_sk 6
+Write set sk = 11
+end_connection read |www/_next/static/media/48763d6652cebf74-s.woff2| 11 0/141
+close_client_sk 11
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+  New incoming connection - 7
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/f99493d47a664c11-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 6 www/_next/static/media/f99493d47a664c11-s.woff2
+end_read 6 www/_next/static/media/f99493d47a664c11-s.woff2
+Request header: 698
+GET /_next/static/media/3f40c7c69ef373bc-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/_next/static/media/3f40c7c69ef373bc-s.woff2
+end_read 7 www/_next/static/media/3f40c7c69ef373bc-s.woff2
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/_next/static/media/f99493d47a664c11-s.woff2| 6 0/141
+close_client_sk 6
+Write set sk = 7
+end_connection read |www/_next/static/media/3f40c7c69ef373bc-s.woff2| 7 0/141
+close_client_sk 7
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+  New incoming connection - 7
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/226388c2d65eece4-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 6 www/_next/static/media/226388c2d65eece4-s.woff2
+end_read 6 www/_next/static/media/226388c2d65eece4-s.woff2
+Request header: 698
+GET /_next/static/media/209ac0af81f4b739-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/_next/static/media/209ac0af81f4b739-s.woff2
+end_read 7 www/_next/static/media/209ac0af81f4b739-s.woff2
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 8
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/_next/static/media/226388c2d65eece4-s.woff2| 6 0/141
+close_client_sk 6
+Write set sk = 7
+end_connection read |www/_next/static/media/209ac0af81f4b739-s.woff2| 7 0/141
+close_client_sk 7
+Request header: 698
+GET /_next/static/media/e11994e2ab67d98d-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 8 www/_next/static/media/e11994e2ab67d98d-s.woff2
+end_read 8 www/_next/static/media/e11994e2ab67d98d-s.woff2
+Waiting on select() ...
+Write set sk = 8
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 8
+end_connection read |www/_next/static/media/e11994e2ab67d98d-s.woff2| 8 0/141
+close_client_sk 8
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/80a4dbe2270ad3bf-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 6 www/_next/static/media/80a4dbe2270ad3bf-s.woff2
+end_read 6 www/_next/static/media/80a4dbe2270ad3bf-s.woff2
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:40 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/_next/static/media/80a4dbe2270ad3bf-s.woff2| 6 0/141
+close_client_sk 6
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+Waiting on select() ...
+Request header: 698
+GET /_next/static/media/45616baa4df057f4-s.woff2 HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/HOPPY_DAYS_files/bbeade08f58e153c.css
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+; wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 6 www/_next/static/media/45616baa4df057f4-s.woff2
+end_read 6 www/_next/static/media/45616baa4df057f4-s.woff2
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Fri, 05 Jan 2024 11:38:41 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/_next/static/media/45616baa4df057f4-s.woff2| 6 0/141
+close_client_sk 6
+Waiting on select() ...

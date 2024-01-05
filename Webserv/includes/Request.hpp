@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:11:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:39:41 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class	Request
 		Location*	    _location;	
         Cgi*            _cgi;
 
-		std::string	    _header;
+		std::string	    _str_header;
 		std::string	    _url;
 		std::string	    _host_name;
 		e_method	    _method;
