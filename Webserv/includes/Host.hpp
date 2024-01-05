@@ -6,9 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:42:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 13:15:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <set>
 
 #include "webserv.hpp"
 
@@ -47,6 +49,7 @@ class	Host
 		//std::map<int, Server*>		            _sk_server;
 		std::map<int, Request*>	                _sk_request;
 		std::map<int, std::string>  		    _status_message;
+		std::map<std::string, std::string>	    _mimes;
 		std::map<std::string, std::string>	    _mimes;
 
 		bool				                    select_available_sk(void);
