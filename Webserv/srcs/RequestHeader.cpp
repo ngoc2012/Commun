@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 13:23:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 13:24:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ std::string	    RequestHeader::parse_content_type()
     }
     std::string type = s.substr(_pos + 14, 50);
     std::set<std::string>*	set_mimes = _host->get_set_mimes();
+    if (set_mimes->find(
     /*
     for (std::map<std::string, std::string>::iterator it = mimes->begin();
             it != mimes->end(); ++it)
