@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 23:09:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 23:12:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,22 +119,15 @@ size_t	RequestHeader::parse_content_length()
         return (NPOS);
     }
     std::string     num = _str->substr(last_pos, pos - last_pos);
-    size_t  pos = _str->find(";");
+    pos = _str->find(";");
     if (pos != NPOS)
         num = num.substr(0, pos);
-    /*
-    std::vector<std::string>	words;
-    words = ft::split_string(_str->substr(last_pos, pos - last_pos), " 	");
-    std::cout << pos << "Content-Length:" + words[1] + "," << std::endl;
-    if (words.size() != 2 || !ft::is_digit(words[1]))
+    if (!ft::is_digit(num))
     {
-        std::cout << words.size() << " " << ft::is_digit(words[1]) << " "  << _str->substr(last_pos, pos) << std::flush;
-        std::cerr << "Error request header: Content-Length line invalid." << std::endl;
+        std::cerr << "Error: Content-Length is not a number." << std::endl;
         return (NPOS);
     }
-    return (std::atoi(words[1].c_str()));
-    */
-    return (std::atoi(s.substr(0, pos).c_str()));
+    return (std::atoi(num.c_str()));
 }
 
 void	RequestHeader::set_host(Host* h) {_host = h;}
