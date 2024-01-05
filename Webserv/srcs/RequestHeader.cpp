@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 13:00:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 13:03:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,16 @@ bool	RequestHeader::parse_method_url(std::string& s, std::string& url, e_method&
 {
     _pos = s.find("\n");
     if (_pos == NPOS)
+    {
+        std::cerr << "Error: No newline." << std::endl;
         return (false);
+    }
 
     std::vector<std::string>	line0;
     line0 = ft::split_string(s.substr(0, newline), "     ");
     if (line0.size() != 3)
     {
-        std::cerr << "Error: First line header invalid" << std::endl;
+        std::cerr << "Error: First line header invalid." << std::endl;
         return (false);
     }
     url = line0[1];
@@ -89,7 +92,7 @@ bool	    RequestHeader::parse_content_type(Host* host, std::string &s, std::stri
     return (false);
 }
 
-bool	RequestHeader::parse_content_length(std::string& s, size_t& cl)
+size_t	RequestHeader::parse_content_length(std::string& s, size_t& cl)
 {
 	size_t	pos1;
 	size_t	pos = s.find("Content-Length: ");

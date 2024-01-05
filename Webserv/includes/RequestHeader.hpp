@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 13:00:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 13:02:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ class	RequestHeader
 		RequestHeader();
 		virtual ~RequestHeader();
 
-        bool    parse_method_url(std::string&, std::string&, e_method&);
-        bool    parse_host_name(std::string&, std::string&, e_method&);
-        bool    parse_content_type(Host*, std::string&, std::string&);
-        bool    parse_content_length(std::string&, size_t&);
+        bool            parse_method_url(std::string&, e_method&);
+        std::string     parse_host_name();
+        std::string     parse_content_type();
+        size_t          parse_content_length();
 
         void	set_host(Host*);
         void    set_str(std::string*);
