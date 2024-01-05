@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 10:34:18 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 11:20:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,11 @@ bool	Request::receive_header(void)
 bool	Request::parse_header(void)
 {
     if (!Header::parse_method_url(_header, _url, _method))
+    {
+        _status_code = 400;	// Bad Request
+        return (false);
+    }
+    if (!Header::parse_method_url(_header, _host_name))
     {
         _status_code = 400;	// Bad Request
         return (false);
