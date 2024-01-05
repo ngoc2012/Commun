@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 13:09:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 13:11:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,24 +39,24 @@ bool	RequestHeader::parse_method_url(std::string& url, e_method& m)
         return (false);
     }
     std::vector<std::string>	line0;
-    line0 = ft::split_string(s.substr(0, _pos), "     ");
-    if (line0.size() != 3)
+    words = ft::split_string(s.substr(0, _pos), "     ");
+    if (words.size() != 3)
     {
         std::cerr << "Error: First line header invalid." << std::endl;
         return (false);
     }
-    url = line0[1];
-    if (line0[0] == "GET")
+    url = words[1];
+    if (words[0] == "GET")
         m = GET;
-    else if (line0[0] == "POST")
+    else if (words[0] == "POST")
         m = POST;
-    else if (line0[0] == "PUT")
+    else if (words[0] == "PUT")
         m = PUT;
-    else if (line0[0] == "DELETE")
+    else if (words[0] == "DELETE")
         m = DELETE;
     else
     {
-        std::cerr << "Error: Method unknown : " << line0[0] << std::endl;
+        std::cerr << "Error: Method unknown : " << words[0] << std::endl;
         return (false);
     }
     /*
@@ -70,7 +70,7 @@ bool	RequestHeader::parse_method_url(std::string& url, e_method& m)
     return (true);
 }
 
-bool	RequestHeader::parse_host_name()
+std::string	    RequestHeader::parse_host_name()
 {
     size_t  last_pos = _pos;
 
@@ -78,15 +78,16 @@ bool	RequestHeader::parse_host_name()
     if (_pos == NPOS)
     {
         std::cerr << "Error: No newline for host name." << std::endl;
-        return (false);
+        return ("");
     }
-    std::vector<std::string>	line0;
-    line0 = ft::split_string(s.substr(0, _pos), "     ");
-    if (line0.size() != 2)
+    std::vector<std::string>	words;
+    words = ft::split_string(s.substr(0, _pos), "     ");
+    if (words.size() != 2)
     {
         std::cerr << "Error: Second line header invalid." << std::endl;
-        return (false);
+        return ("");
     }
+    return (words[1])
 }
 
 bool	    RequestHeader::parse_content_type(Host* host, std::string &s, std::string& ct)
