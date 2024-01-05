@@ -42,9 +42,9 @@ Host: 127.0.0.1:4141
 User-Agent: curl/7.81.0
 Accept: */*
 Content-Length: 5516
-Content-Type: multipart/form-data; boundary=------------------------d4fec55d8c6ba7c6
+Content-Type: multipart/form-data; boundary=------------------------d10fc4d068c40050
 
---------------------------d4fec55d8c6ba7c6
+--------------------------d10fc4d068c40050
 Content-Disposition: form-data; name="file"; filename=".conf"
 Content-Type: application/octet-stream
 
@@ -71,7 +71,7 @@ Response Header:
 HTTP/1.1 400 Bad Request
 Content-Type: text/html
 Content-Length: 145
-Date: Fri, 05 Jan 2024 17:17:58 GMT
+Date: Fri, 05 Jan 2024 17:21:56 GMT
 
 
 Header Destruction

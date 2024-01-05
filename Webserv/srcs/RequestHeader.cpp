@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 18:19:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 18:21:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ std::string	    RequestHeader::parse_host_name()
         return ("");
     }
     std::vector<std::string>	words;
-    words = ft::split_string(_str->substr(last_pos, _pos - 1), "     ");
+    words = ft::split_string(_str->substr(last_pos, _pos), " 	");
     if (words.size() != 2)
     {
         std::cout << words.size() << " "  << _str->substr(last_pos, _pos) << std::endl;
@@ -102,7 +102,7 @@ std::string	    RequestHeader::parse_content_type()
         return ("");
     }
     std::vector<std::string>	words;
-    words = ft::split_string(_str->substr(last_pos, _pos), "     ;");
+    words = ft::split_string(_str->substr(last_pos, _pos), " 	;");
     std::set<std::string>*	set_mimes = _host->get_set_mimes();
     if (set_mimes->find(words[1]) != set_mimes->end())
         return (words[1]);
@@ -136,7 +136,7 @@ size_t	RequestHeader::parse_content_length()
         return (NPOS);
     }
     std::vector<std::string>	words;
-    words = ft::split_string(_str->substr(last_pos, _pos), "     ");
+    words = ft::split_string(_str->substr(last_pos, _pos), " 	");
     if (words.size() != 2)
     {
         std::cerr << "Error request header: Content-Length line invalid." << std::endl;
