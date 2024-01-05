@@ -42,9 +42,9 @@ Host: 127.0.0.1:4141
 User-Agent: curl/7.81.0
 Accept: */*
 Content-Length: 5516
-Content-Type: multipart/form-data; boundary=------------------------d10fc4d068c40050
+Content-Type: multipart/form-data; boundary=------------------------b444fcc6cf26addc
 
---------------------------d10fc4d068c40050
+--------------------------b444fcc6cf26addc
 Content-Disposition: form-data; name="file"; filename=".conf"
 Content-Type: application/octet-stream
 
@@ -63,6 +63,8 @@ host
 	
 3 Host: 127.0.0.1:4141
 User-Agent: cur
+Host:|127.0.0.1:4141
+User-Agent:|cur
 end_read 6 
 Waiting on select() ...
 Write set sk = 6
@@ -71,7 +73,7 @@ Response Header:
 HTTP/1.1 400 Bad Request
 Content-Type: text/html
 Content-Length: 145
-Date: Fri, 05 Jan 2024 17:21:56 GMT
+Date: Fri, 05 Jan 2024 17:23:29 GMT
 
 
 Header Destruction
