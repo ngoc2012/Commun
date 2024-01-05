@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 15:25:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 15:27:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,18 @@ std::string	    RequestHeader::parse_host_name()
 std::string	    RequestHeader::parse_content_type()
 {
     size_t  last_pos = s.find("Content-Type:", last_pos);
-    if (_pos == NPOS)
+    if (last_pos == NPOS)
     {
         std::cerr << "Error: Content type not found." << std::endl;
         return ("");
     }
     _pos = _str.find("\n", last_pos);
-    words = ft::split_string(s.substr(last_pos, _pos), "     ;");
+    if (_pos == NPOS)
+    {
+        std::cerr << "Error: No newline for Content-Type." << std::endl;
+        return ("");
+    }
+    words = ft::split_string(s.substr(last_pos, _pos), "     ");
     if (words.size() != 2)
     {
         std::cerr << "Error request header: Content-Type line invalid." << std::endl;
