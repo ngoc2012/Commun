@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:50:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:54:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,5 @@ bool	RequestHeader::parse_content_length(std::string& s, size_t& cl)
     return (true);
 }
 
-void	RequestHeader::set_host(Host*);
-void    RequestHeader::set_str(std::string*);
+void	RequestHeader::set_host(Host* h) {_host = h;}
+void    RequestHeader::set_str(std::string* s) {_str = s;}
