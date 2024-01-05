@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 13:16:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 13:21:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,8 @@ class	Host
 		fd_set              		            _read_set;		    // Set of active read fd
 		fd_set              		            _write_set;		    // Set of active write fd
 		fd_set              		            _listen_set;
-		//std::vector<Server*>		            _servers;
 		std::map<std::string, Address*>		    _str_address;
 		std::map<int, Address*>		            _sk_address;
-		//std::map<int, Response*>	            _sk_response;
-		//std::map<int, Server*>		            _sk_server;
 		std::map<int, Request*>	                _sk_request;
 		std::map<int, std::string>  		    _status_message;
 		std::map<std::string, std::string>	    _mimes;
@@ -82,11 +79,11 @@ class	Host
         std::set<std::string>*	            get_set_mimes(void);
         std::map<int, std::string>*  		get_status_message(void);
 
-		void			set_client_max_body_size(size_t);
-		void			set_client_body_buffer_size(size_t);
-		void			set_parser_error(bool);
-        void		    set_servers(std::vector<Server*>);
-        void		    set_str_address(std::map<std::string, Address*>);
+		void	set_client_max_body_size(size_t);
+		void	set_client_body_buffer_size(size_t);
+		void	set_parser_error(bool);
+        void    set_servers(std::vector<Server*>);
+        void    set_str_address(std::map<std::string, Address*>);
 };
 
 #endif
