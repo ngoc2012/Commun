@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 15:33:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 15:34:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,8 @@ size_t	RequestHeader::parse_content_length(std::string& s, size_t& cl)
         std::cerr << "Error request header: Content-Length line invalid." << std::endl;
         return (NPOS);
     }
-    // Verify is_digit
+    if (!ft::is_digit(words[1]))
+        return (NPOS);
     return (std::atoi(word[1]));
 }
 
