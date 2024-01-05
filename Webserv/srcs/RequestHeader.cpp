@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 21:27:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 21:29:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ std::string	    RequestHeader::parse_content_type()
     }
     std::vector<std::string>	words;
     words = ft::split_string(_str->substr(last_pos, pos - last_pos), " 	;");
+    /*
     std::set<std::string>*	set_mimes = _host->get_set_mimes();
 
     // Print the first few elements using iterators
@@ -121,17 +122,17 @@ std::string	    RequestHeader::parse_content_type()
         return (words[1]);
     std::cerr << "Error: Content type not found." << _str->substr(last_pos, pos - last_pos) << "," << words[1] << std::endl;
     return ("");
-    /*
+    */
+    std::map<std::string, std::string>*	mimes = _host->get_mimes();
     for (std::map<std::string, std::string>::iterator it = mimes->begin();
             it != mimes->end(); ++it)
-        if (type.find(it->second) != NPOS)
+        if (words[1].find(it->second) != NPOS)
         {
             ct = it->second;
-            return (true);
+            return (it->second);
         }
     std::cerr << "Error: Content type not found." << std::endl;
-    return (false);
-    */
+    return ("");
 }
 
 size_t	RequestHeader::parse_content_length()
