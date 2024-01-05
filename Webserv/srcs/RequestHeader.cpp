@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:13:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:49:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,25 @@
 #include "Response.hpp"
 #include "webserv.hpp"
 
-#include "Header.hpp"
+#include "RequestHeader.hpp"
 
-Header::Header()
+RequestHeader::RequestHeader()
 {
-	std::cout << "Header Default constructor" << std::endl;
+	std::cout << "RequestHeader Default constructor" << std::endl;
 }
-Header::Header(const Header& src) { *this = src; }
-Header&	Header::operator=( Header const & src )
+RequestHeader::RequestHeader(const RequestHeader& src) { *this = src; }
+RequestHeader&	RequestHeader::operator=( RequestHeader const & src )
 {
 	(void) src;
 	return (*this);
 }
-Header::Header(Response* r, std::string ext) :
-	_response(r),
-	_extension(ext)
+RequestHeader::~RequestHeader()
 {
-    _host = _response->get_host();
-    _mimes = _host->get_mimes();
-    _status_message = _host->get_status_message();
-	init();
-	std::cout << "Header Constructor" << std::endl;
-}
-Header::~Header()
-{
-	std::cout << "Header Destruction" << std::endl;
+	std::cout << "RequestHeader Destruction" << std::endl;
 }
 
 
-std::string	Header::generate(void)
+std::string	RequestHeader::generate(void)
 {
 	std::string	str;
 
@@ -74,11 +64,11 @@ std::string	Header::generate(void)
 	return (str);
 }
 
-void	Header::init(void)
+void	RequestHeader::init(void)
 {
 }
 /*
-std::string     Header::date() {
+std::string     RequestHeader::date() {
     struct timeval tv;
     char buf[32];
     gettimeofday(&tv, NULL);
@@ -89,7 +79,7 @@ std::string     Header::date() {
     return std::string(buf, ret);
 }
 */
-std::string	Header::get_current_time(void)
+std::string	RequestHeader::get_current_time(void)
 {
 	std::time_t currentTime = std::time(0);
 	std::tm* timeInfo = std::gmtime(&currentTime);
@@ -98,7 +88,7 @@ std::string	Header::get_current_time(void)
 	return (std::string(buffer));
 }
 
-std::string	Header::file_last_modified_time(std::string file_name)
+std::string	RequestHeader::file_last_modified_time(std::string file_name)
 {
 	struct stat	file_info;
 	if (stat(file_name.c_str(), &file_info) != 0) {
@@ -111,7 +101,7 @@ std::string	Header::file_last_modified_time(std::string file_name)
 	return (std::string(buffer));
 }
 
-bool	Header::parse_method_url_host(std::string& s, std::string& url, e_method& m)
+bool	RequestHeader::parse_method_url_host(std::string& s, std::string& url, e_method& m)
 {
     size_t  newline = s.find("\n");
     if (newline == NPOS)
@@ -149,7 +139,7 @@ bool	Header::parse_method_url_host(std::string& s, std::string& url, e_method& m
     return (true);
 }
 
-bool	    Header::parse_content_type(Host* host, std::string &s, std::string& ct)
+bool	    RequestHeader::parse_content_type(Host* host, std::string &s, std::string& ct)
 {
     size_t	pos = s.find("Content-Type:");
     if (pos == NPOS)
@@ -170,7 +160,7 @@ bool	    Header::parse_content_type(Host* host, std::string &s, std::string& ct)
     return (false);
 }
 
-bool	Header::parse_content_length(std::string& s, size_t& cl)
+bool	RequestHeader::parse_content_length(std::string& s, size_t& cl)
 {
 	size_t	pos1;
 	size_t	pos = s.find("Content-Length: ");
@@ -186,5 +176,5 @@ bool	Header::parse_content_length(std::string& s, size_t& cl)
     return (true);
 }
 
-void		Header::set_status_code(int s) {_status_code = s;}
-void		Header::set_allow(std::string a) {_allow = a;}
+void	RequestHeader::set_host(Host*);
+void    RequestHeader::set_str(std::string*);

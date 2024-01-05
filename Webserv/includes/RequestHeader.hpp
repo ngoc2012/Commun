@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:47:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:49:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,25 @@ class	Request;
 class	Configuration;
 class	Response;
 
-class	Header
+class	RequestHeader
 {
 	private:
 		size_t		    _pos;
 		Host*		    _host;
 		std::string*    _str;
 
-		Header(const Header&);
-		Header		&operator=(const Header& op);
+		RequestHeader(const RequestHeader&);
+		RequestHeader		&operator=(const RequestHeader& op);
 	public:
-		Header();
-		virtual ~Header();
+		RequestHeader();
+		virtual ~RequestHeader();
 
         bool    parse_method_url_host(std::string&, std::string&, e_method&);
         bool    parse_content_type(Host*, std::string&, std::string&);
         bool    parse_content_length(std::string&, size_t&);
 
-        Host*		    get_host(void) const;
-        std::string*    get_str(void) const;
+        void	set_host(Host*);
+        void    set_str(std::string*);
 };
 
 #endif
