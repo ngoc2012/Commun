@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 16:02:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 11:14:59 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ class	Request
 
 		std::string	    _header;
 		std::string	    _url;
+		std::string	    _host_name;
 		e_method	    _method;
 		std::string	    _content_type;
 		size_t		    _content_length;
