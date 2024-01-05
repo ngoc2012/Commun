@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:40:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:53:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ class	Header
 		std::string				            _allow;
 		std::string				            _extension;
 
-		size_t					            _pos;
-		std::string				            _extension;
-
 		std::string			                get_current_time(void);
 		std::string			                file_last_modified_time(std::string);
 		void				                init(void);
@@ -51,9 +48,6 @@ class	Header
 		virtual ~Header();
 
 		std::string			generate(void);
-        static bool	        parse_method_url_host(std::string&, std::string&, e_method&);
-        static bool	        parse_content_type(Host*, std::string&, std::string&);
-        static bool	        parse_content_length(std::string&, size_t&);
 
         void				set_status_code(int);
 		void				set_allow(std::string);
