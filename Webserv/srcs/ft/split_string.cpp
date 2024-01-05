@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:14:49 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 21:45:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 21:46:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ std::vector<std::string>	split_string(const std::string& input, std::string deli
 		while (i < input.size() && delimiters.find(input[i]) == std::string::npos)
             i++;
         if (i > start)
-            tokens.push_back(input.substr(start, end));
+            tokens.push_back(input.substr(start, i - start));
     }
 	return (tokens);
 }
