@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 15:38:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 17:16:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "Server.hpp"
 #include "Location.hpp"
 #include "Request.hpp"
-#include "RequestHeader.hpp"
 #include "Header.hpp"
 #include "Cgi.hpp"
 

@@ -6,12 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:58:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 17:16:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "webserv.hpp"
 
+#include "RequestHeader.hpp"
 #include "Response.hpp"
 
 #ifndef REQUEST_HPP
@@ -35,7 +36,7 @@ class	Request
 		Host*		    _host;
 		Address*		_address;
 		Server*		    _server;
-		ResponseHeader	_header;
+		RequestHeader	_header;
 		Response	    _response;
 		Location*	    _location;	
         Cgi*            _cgi;
