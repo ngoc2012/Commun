@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 15:37:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 15:38:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,12 +147,9 @@ bool	Request::parse_header(void)
         _cgi = new Cgi(this);
     if (_method == GET)
         return (true);
-    if (!Header::parse_content_type())
-    {
-        _status_code = 400;	// Bad Request
-        return (false);
-    }
-    if (!Header::parse_content_length(_header, _content_length))
+    _content_type = _header.parse_content_type();
+    _content_length = _header.parse_content_length();
+    if (_content_type == "" || _content_length == NPOS)
     {
         _status_code = 400;	// Bad Request
         return (false);
