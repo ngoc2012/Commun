@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 21:09:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 21:11:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ std::string	    RequestHeader::parse_content_type()
 
 size_t	RequestHeader::parse_content_length()
 {
-    size_t  last_pos = _str->find("Content-Length:", 0);
+    size_t  last_pos = _str->find("Content-Length:", _pos);
     if (last_pos == NPOS)
     {
         std::cerr << "Error: Content-Length not found." << std::endl;
@@ -143,6 +143,7 @@ size_t	RequestHeader::parse_content_length()
     std::cout << "Content-Length:" << words[1] << std::endl;
     if (words.size() != 2 || !ft::is_digit(words[1]))
     {
+        std::cout << words.size() << " "  << _str->substr(last_pos, pos) << std::flush;
         std::cerr << "Error request header: Content-Length line invalid." << std::endl;
         return (NPOS);
     }

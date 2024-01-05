@@ -47,9 +47,11 @@ Content-Length: 91762
 ÿØÿà
 Host name:127.0.0.1:4141
 check_location 6 www/put//port6.jpg
-Content-Type:image/jpeg
+Content-Type:image/jpeg,
 Content-Length:91762
-end_read 6 www/put//port6.jpg
+2 Content-Length: 91762
+
+ÿØÿàend_read 6 www/put//port6.jpg
 Waiting on select() ...
 Write set sk = 6
 Header Constructor
@@ -57,7 +59,7 @@ Response Header:
 HTTP/1.1 400 Bad Request
 Content-Type: text/html
 Content-Length: 145
-Date: Fri, 05 Jan 2024 20:05:28 GMT
+Date: Fri, 05 Jan 2024 20:11:33 GMT
 
 
 Header Destruction
