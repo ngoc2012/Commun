@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 21:15:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 21:17:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ std::string	    RequestHeader::parse_content_type()
     std::vector<std::string>	words;
     words = ft::split_string(_str->substr(last_pos, pos - last_pos), " 	;");
     std::set<std::string>*	set_mimes = _host->get_set_mimes();
-    std::cout << "Content-Type:" << words[1] << "," << std::endl;
+    std::cout << "Content-Type:" + words[1] + "," << std::endl;
     if (set_mimes->find(words[1]) != set_mimes->end())
         return (words[1]);
     //std::cerr << "Error: Content type not found." << _str->substr(last_pos, pos - last_pos) << "," << words[1] << std::endl;
@@ -140,7 +140,7 @@ size_t	RequestHeader::parse_content_length()
     }
     std::vector<std::string>	words;
     words = ft::split_string(_str->substr(last_pos, pos - last_pos), " 	");
-    std::cout << "Content-Length:" << words[1] << std::endl;
+    std::cout << "Content-Length:" + words[1] + "," << std::endl;
     if (words.size() != 2 || !ft::is_digit(words[1]))
     {
         std::cout << words.size() << " " << ft::is_digit(words[1]) << " "  << _str->substr(last_pos, pos) << std::flush;

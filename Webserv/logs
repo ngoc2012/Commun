@@ -28,3 +28,44 @@ make[1]: Leaving directory '/home/ngoc/Commun/Webserv'
 make[1]: Entering directory '/home/ngoc/Commun/Webserv'
 rm -f srcs/main.o srcs/Host.o srcs/Address.o srcs/Server.o srcs/Request.o srcs/RequestHeader.o srcs/Response.o srcs/Header.o srcs/Configuration.o srcs/Location.o srcs/Cgi.o srcs/Listing.o srcs/ft/split_string.o srcs/ft/is_digit.o srcs/ft/itos.o srcs/ft/match_wildcard.o srcs/ft/file_extension.o srcs/ft/atoi_base.o srcs/ft/itoa_base.o srcs/ft/str_replace.o srcs/ft/to_upper.o
 make[1]: Leaving directory '/home/ngoc/Commun/Webserv'
+Listening at 127.0.0.1:4141 (socket : 3)
+Listening at 127.0.0.1:80 (socket : 4)
+Listening at 127.0.2.1:4242 (socket : 5)
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 149
+PUT /put_test/port6.jpg HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: curl/7.81.0
+Accept: */*
+Content-Type: image/jpeg
+Content-Length: 91762
+
+ÿØÿà
+Host name:127.0.0.1:4141
+check_location 6 www/put//port6.jpg
+Content-Type:image/jpeg,
+Content-Length:91762
+2 0 Content-Length: 91762
+
+ÿØÿàend_read 6 www/put//port6.jpg
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 400 Bad Request
+Content-Type: text/html
+Content-Length: 145
+Date: Fri, 05 Jan 2024 20:17:08 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/put//port6.jpg| 6 0/145
+close_client_sk 6
+RequestHeader Destruction
+Waiting on select() ...
