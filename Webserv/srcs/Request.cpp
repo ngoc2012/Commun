@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 17:16:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 21:51:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,9 @@ bool	Request::parse_header(void)
     if (_method == GET)
         return (true);
     _content_type = _header.parse_content_type();
+    std::cout << "Content-Type: " << _content_type << std::endl;
     _content_length = _header.parse_content_length();
+    std::cout << "Content-Length: " << _content_length << std::endl;
     if (_content_type == "" || _content_length == NPOS)
     {
         _status_code = 400;	// Bad Request
