@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 15:50:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 11:22:43 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,36 @@ std::string	Header::file_last_modified_time(std::string file_name)
 }
 
 bool	Header::parse_method_url(std::string& s, std::string& url, e_method& m)
+{
+    size_t  newline = s.find("\n");
+    if (newline == NPOS)
+        return (false);
+
+    std::vector<std::string>	line0;
+    line0 = ft::split_string(s.substr(0, newline), "     ");
+    if (line0.size() != 3)
+    {
+        std::cerr << "Error: First line header invalid" << std::endl;
+        return (false);
+    }
+    url = line0[1];
+    if (line0[0] == "GET")
+        m = GET;
+    else if (line0[0] == "POST")
+        m = POST;
+    else if (line0[0] == "PUT")
+        m = PUT;
+    else if (line0[0] == "DELETE")
+        m = DELETE;
+    else
+    {
+        std::cerr << "Error: Method unknown : " << line0[0] << std::endl;
+        return (false);
+    }
+    return (true);
+}
+
+bool	Header::parse_header(std::string& s, std::string& host_name)
 {
     size_t  newline = s.find("\n");
     if (newline == NPOS)
