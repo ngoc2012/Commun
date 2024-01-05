@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 15:31:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 15:33:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,16 +131,23 @@ size_t	RequestHeader::parse_content_length(std::string& s, size_t& cl)
     if (last_pos == NPOS)
     {
         std::cerr << "Error: Content-Length not found." << std::endl;
-        return ("");
+        return (NPOS);
     }
     _pos = _str.find("\n", last_pos);
     if (_pos == NPOS)
     {
         std::cerr << "Error: No newline for Content-Length." << std::endl;
-        return ("");
+        return (NPOS);
     }
-    cl = std::atoi(s.substr(pos, pos1).c_str());
-    return (true);
+    std::vector<std::string>	words;
+    words = ft::split_string(_str.substr(last_pos, _pos), "     ");
+    if (words.size() != 2)
+    {
+        std::cerr << "Error request header: Content-Length line invalid." << std::endl;
+        return (NPOS);
+    }
+    // Verify is_digit
+    return (std::atoi(word[1]));
 }
 
 void	RequestHeader::set_host(Host* h) {_host = h;}
