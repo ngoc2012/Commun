@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:09:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:13:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ std::string	Header::file_last_modified_time(std::string file_name)
 	return (std::string(buffer));
 }
 
-bool	Header::parse_method_url(std::string& s, std::string& url, e_method& m)
+bool	Header::parse_method_url_host(std::string& s, std::string& url, e_method& m)
 {
     size_t  newline = s.find("\n");
     if (newline == NPOS)
@@ -138,12 +138,14 @@ bool	Header::parse_method_url(std::string& s, std::string& url, e_method& m)
         std::cerr << "Error: Method unknown : " << line0[0] << std::endl;
         return (false);
     }
+    /*
     size_t  newline1 = s.find("\n", newline + 1);
     if (newline == NPOS)
         return (false);
 
     std::vector<std::string>	line0;
     line0 = ft::split_string(s.substr(0, newline), "     ");
+    */
     return (true);
 }
 
