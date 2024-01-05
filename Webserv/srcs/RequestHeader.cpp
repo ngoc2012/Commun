@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 15:18:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 15:21:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,11 @@ std::string	    RequestHeader::parse_content_type()
         return ("");
     }
     words = ft::split_string(s.substr(last_pos, _pos), "     ;");
+    if (words.size() != 2)
+    {
+        std::cerr << "Error request header: Content-Type line invalid." << std::endl;
+        return ("");
+    }
     std::set<std::string>*	set_mimes = _host->get_set_mimes();
     if (set_mimes->find(
     /*
