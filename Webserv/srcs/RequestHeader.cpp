@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 21:03:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 21:05:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,21 +132,20 @@ size_t	RequestHeader::parse_content_length()
         std::cerr << "Error: Content-Length not found." << std::endl;
         return (NPOS);
     }
-    _pos = _str->find("\n", last_pos);
-    if (_pos == NPOS)
+    size_t  pos = _str->find("\n", last_pos);
+    if (pos == NPOS)
     {
         std::cerr << "Error: No newline for Content-Length." << std::endl;
         return (NPOS);
     }
     std::vector<std::string>	words;
-    words = ft::split_string(_str->substr(last_pos, _pos - last_pos), " 	");
-    if (words.size() != 2)
+    words = ft::split_string(_str->substr(last_pos, pos - last_pos), " 	");
+    std::cout << "Content-Length:" << words[1] << std::endl;
+    if (words.size() != 2 || !ft::is_digit(words[1]))
     {
         std::cerr << "Error request header: Content-Length line invalid." << std::endl;
         return (NPOS);
     }
-    if (!ft::is_digit(words[1]))
-        return (NPOS);
     return (std::atoi(words[1].c_str()));
 }
 
