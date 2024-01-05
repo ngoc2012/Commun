@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 23:07:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 23:09:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,9 @@ size_t	RequestHeader::parse_content_length()
         return (NPOS);
     }
     std::string     num = _str->substr(last_pos, pos - last_pos);
+    size_t  pos = _str->find(";");
+    if (pos != NPOS)
+        num = num.substr(0, pos);
     /*
     std::vector<std::string>	words;
     words = ft::split_string(_str->substr(last_pos, pos - last_pos), " 	");
