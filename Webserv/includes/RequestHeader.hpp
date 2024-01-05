@@ -6,18 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:59:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 13:00:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef REQUESTHEADER_HPP
 # define REQUESTHEADER_HPP
  
-class	Server;
-class	Location;
-class	Request;
-class	Configuration;
-class	Response;
+class	Host;
 
 class	RequestHeader
 {

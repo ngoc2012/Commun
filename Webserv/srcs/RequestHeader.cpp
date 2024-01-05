@@ -6,15 +6,11 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:59:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 13:00:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Host.hpp"
-#include "Server.hpp"
-#include "Location.hpp"
-#include "Request.hpp"
-#include "Response.hpp"
 #include "webserv.hpp"
 
 #include "RequestHeader.hpp"
