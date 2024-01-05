@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 12:39:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 12:45:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class	Request
 		Host*		    _host;
 		Address*		_address;
 		Server*		    _server;
-		//Header	        _header;
+		ResponseHeader	_header;
 		Response	    _response;
 		Location*	    _location;	
         Cgi*            _cgi;
