@@ -48,6 +48,7 @@ Content-Length: 91762
 Host name:127.0.0.1:4141
 check_location 6 www/put//port6.jpg
 Content-Type: image/jpeg
+|91762|
 Content-Length: 18446744073709551615
 end_read 6 www/put//port6.jpg
 Waiting on select() ...
@@ -57,7 +58,7 @@ Response Header:
 HTTP/1.1 400 Bad Request
 Content-Type: text/html
 Content-Length: 145
-Date: Fri, 05 Jan 2024 21:03:36 GMT
+Date: Fri, 05 Jan 2024 21:05:11 GMT
 
 
 Header Destruction
