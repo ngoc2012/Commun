@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 10:30:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/05 17:19:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ bool    Cgi::get_envs()
     if (extension == "php")
         envs.push_back("REDIRECT_STATUS=200");
 
-    std::vector<std::string> header_lines = ft::split_string(_request->get_header(), "\n");
+    std::vector<std::string> header_lines = ft::split_string(_request->get_str_header(), "\n");
     size_t          i;
     for (std::vector<std::string>::iterator it = header_lines.begin();
             it != header_lines.end(); it++)
