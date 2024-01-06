@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/06 09:13:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/06 09:15:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,9 +198,9 @@ bool	Configuration::server_parser(std::string cmd, Server* server, std::vector<s
 			return (true);
 	}
 	else if (words[0] == "server_name")
-    {
-		server->set_server_name(words[1]);
-    }
+		for (std::vector<std::string>::iterator it = words.begin() + 1;
+				it != words.end(); ++it)
+            server->set_server_name(*it);
 	else if (words[0] == "root")
 	{
 		struct stat	info;
