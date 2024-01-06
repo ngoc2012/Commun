@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/06 09:24:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/06 09:26:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ bool	Request::parse_header(void)
     for (std::vector<Server*>::iterator sv = servers.begin() + 1;
             sv != servers.end(); ++sv)
     {
-        server_names = sv->get_server_names();
+        server_names = (*sv)->get_server_names();
         for (std::vector<std::string>::iterator it = server_names.begin() + 1;
                 it != server_names.end(); ++it)
             if (_host_name == *it)
