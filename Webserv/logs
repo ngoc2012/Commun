@@ -267,3 +267,83 @@ end_connection read |www/index_files/test| 6 0/555
 close_client_sk 6
 RequestHeader Destruction
 Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 715
+GET /index_files/encoreuntest HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/index_files/test
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+
+
+check_location 6 www/index_files/encoreuntest
+end_read 6 www/index_files/encoreuntest
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:12:02 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/index_files/encoreuntest| 6 0/141
+close_client_sk 6
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 715
+GET /index_files/encoreuntest HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://127.0.0.1:4141/index_files/test
+Cookie: wc_visitor=98503-5f99d83b-247b-bc74-f175-423093d72941; wc_client=direct+..+none+..++..++..++..++..+http%3A%2F%2F127.0.0.1%3A4141%2F+..+98503-5f99d83b-247b-bc74-f175-423093d72941+..+
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+
+
+check_location 6 www/index_files/encoreuntest
+end_read 6 www/index_files/encoreuntest
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:12:59 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/index_files/encoreuntest| 6 0/141
+close_client_sk 6
+RequestHeader Destruction
+Waiting on select() ...
