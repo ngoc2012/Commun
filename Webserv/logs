@@ -8210,3 +8210,2114 @@ end_connection read |www/_next/static/media/e11994e2ab67d98d-s.woff2| 6 0/141
 close_client_sk 6
 RequestHeader Destruction
 Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 340
+GET / HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+
+
+check_location 6 www//HOPPY_DAYS.html
+end_read 6 www//HOPPY_DAYS.html
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/html
+Content-Length: 57413
+Date: Sat, 06 Jan 2024 11:26:12 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www//HOPPY_DAYS.html| 6 57413/57413
+close_client_sk 6
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 301
+GET /HOPPY_DAYS_files/framework-7a7e500878b44665.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 6 www/HOPPY_DAYS_files/framework-7a7e500878b44665.js
+end_read 6 www/HOPPY_DAYS_files/framework-7a7e500878b44665.js
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 140978
+Date: Sat, 06 Jan 2024 11:26:12 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+Waiting on select() ...
+Write set sk = 6
+Waiting on select() ...
+Write set sk = 6
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 6 140978/140978
+close_client_sk 6
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+  New incoming connection - 14
+RequestHeader Default constructor
+  New incoming connection - 17
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 296
+GET /HOPPY_DAYS_files/main-3f070227c52dc969.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 6 www/HOPPY_DAYS_files/main-3f070227c52dc969.js
+end_read 6 www/HOPPY_DAYS_files/main-3f070227c52dc969.js
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 967
+Date: Sat, 06 Jan 2024 11:26:12 GMT
+
+
+Header Destruction
+Write set sk = 9
+end_connection read |www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js| 9 925/925
+close_client_sk 9
+RequestHeader Destruction
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 4057
+Date: Sat, 06 Jan 2024 11:26:12 GMT
+
+
+Header Destruction
+Write set sk = 13
+end_connection read |www/HOPPY_DAYS_files/_buildManifest.js| 13 1648/1648
+close_client_sk 13
+RequestHeader Destruction
+Request header: 296
+GET /HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 14 www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js
+end_read 14 www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js
+Write set sk = 16
+end_connection read |www/HOPPY_DAYS_files/framework-7a7e500878b44665.js| 16 140978/140978
+close_client_sk 16
+RequestHeader Destruction
+Request header: 300
+GET /HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 17 www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js
+end_read 17 www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 10
+RequestHeader Default constructor
+  New incoming connection - 12
+RequestHeader Default constructor
+  New incoming connection - 13
+RequestHeader Default constructor
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 105968
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 7
+end_connection read |www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js| 7 967/967
+close_client_sk 7
+RequestHeader Destruction
+Write set sk = 11
+end_connection read |www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js| 11 4057/4057
+close_client_sk 11
+RequestHeader Destruction
+Write set sk = 14
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 163458
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 17
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 957
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+Request header: 314
+GET /HOPPY_DAYS_files/img-bubble-white.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 10 www/HOPPY_DAYS_files/img-bubble-white.svg
+end_read 10 www/HOPPY_DAYS_files/img-bubble-white.svg
+Request header: 300
+GET /HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 12 www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js
+end_read 12 www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js
+Request header: 295
+GET /HOPPY_DAYS_files/933-f67d91cce9928815.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 13 www/HOPPY_DAYS_files/933-f67d91cce9928815.js
+end_read 13 www/HOPPY_DAYS_files/933-f67d91cce9928815.js
+Write set sk = 14
+Write set sk = 17
+Waiting on select() ...
+Write set sk = 6
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 395
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 12
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 925
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 13
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 89212
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 14
+Write set sk = 17
+end_connection read |www/HOPPY_DAYS_files/d64684d8-9d33fddc11a27efe.js| 17 957/957
+close_client_sk 17
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 9
+RequestHeader Default constructor
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/HOPPY_DAYS_files/main-3f070227c52dc969.js| 6 105968/105968
+close_client_sk 6
+RequestHeader Destruction
+Request header: 297
+GET /HOPPY_DAYS_files/index-8f5748feaa6e55c5.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 9 www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js
+end_read 9 www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 13975
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Request header: 307
+GET /HOPPY_DAYS_files/bbeade08f58e153c.css HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 6 www/HOPPY_DAYS_files/bbeade08f58e153c.css
+end_read 6 www/HOPPY_DAYS_files/bbeade08f58e153c.css
+Write set sk = 9
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 102662
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 9
+end_connection read |www/HOPPY_DAYS_files/index-8f5748feaa6e55c5.js| 9 13975/13975
+close_client_sk 9
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 9
+RequestHeader Default constructor
+Waiting on select() ...
+Write set sk = 6
+Request header: 289
+GET /HOPPY_DAYS_files/_buildManifest.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 9 www/HOPPY_DAYS_files/_buildManifest.js
+end_read 9 www/HOPPY_DAYS_files/_buildManifest.js
+Waiting on select() ...
+Write set sk = 6
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 1648
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/HOPPY_DAYS_files/bbeade08f58e153c.css| 6 102662/102662
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 9
+Waiting on select() ...
+Write set sk = 9
+end_connection read |www/HOPPY_DAYS_files/_buildManifest.js| 9 1648/1648
+close_client_sk 9
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+  New incoming connection - 9
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 287
+GET /HOPPY_DAYS_files/_ssgManifest.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 6 www/HOPPY_DAYS_files/_ssgManifest.js
+end_read 6 www/HOPPY_DAYS_files/_ssgManifest.js
+Request header: 295
+GET /HOPPY_DAYS_files/697-da59df9c0fa0d007.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 9 www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js
+end_read 9 www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 244
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 20321
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+Write set sk = 9
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/HOPPY_DAYS_files/_ssgManifest.js| 6 244/244
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 9
+end_connection read |www/HOPPY_DAYS_files/697-da59df9c0fa0d007.js| 9 20321/20321
+close_client_sk 9
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 9
+RequestHeader Default constructor
+Request header: 296
+GET /HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 6 www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js
+end_read 6 www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 967
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Request header: 307
+GET /HOPPY_DAYS_files/ed403b1e74dfa728.css HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: text/css,*/*;q=0.1
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 9 www/HOPPY_DAYS_files/ed403b1e74dfa728.css
+end_read 9 www/HOPPY_DAYS_files/ed403b1e74dfa728.css
+Waiting on select() ...
+Write set sk = 6
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: text/css
+Content-Length: 26344
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/HOPPY_DAYS_files/[id]-38032fb9d32c5eba.js| 6 967/967
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 9
+Waiting on select() ...
+Write set sk = 9
+end_connection read |www/HOPPY_DAYS_files/ed403b1e74dfa728.css| 9 26344/26344
+close_client_sk 9
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+  New incoming connection - 9
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 299
+GET /HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 6 www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js
+end_read 6 www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js
+Request header: 296
+GET /HOPPY_DAYS_files/[id]-dc9a03a28d427905.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 9 www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js
+end_read 9 www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 4057
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 1073
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+Write set sk = 9
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/HOPPY_DAYS_files/webpack-e39c22a57e2dae05.js| 6 4057/4057
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 9
+end_connection read |www/HOPPY_DAYS_files/[id]-dc9a03a28d427905.js| 9 1073/1073
+close_client_sk 9
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+  New incoming connection - 9
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 310
+GET /HOPPY_DAYS_files/bg-gold-back.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 6 www/HOPPY_DAYS_files/bg-gold-back.svg
+end_read 6 www/HOPPY_DAYS_files/bg-gold-back.svg
+Request header: 301
+GET /HOPPY_DAYS_files/google-analytics_analytics.js HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 9 www/HOPPY_DAYS_files/google-analytics_analytics.js
+end_read 9 www/HOPPY_DAYS_files/google-analytics_analytics.js
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 677
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: application/javascript
+Content-Length: 3695
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+Write set sk = 9
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/HOPPY_DAYS_files/bg-gold-back.svg| 6 677/677
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 9
+end_connection read |www/HOPPY_DAYS_files/google-analytics_analytics.js| 9 3695/3695
+close_client_sk 9
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+  New incoming connection - 9
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 309
+GET /HOPPY_DAYS_files/img-mv-copy.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 6 www/HOPPY_DAYS_files/img-mv-copy.svg
+end_read 6 www/HOPPY_DAYS_files/img-mv-copy.svg
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 136343
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Request header: 302
+GET /HOPPY_DAYS_files/logo.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 9 www/HOPPY_DAYS_files/logo.svg
+end_read 9 www/HOPPY_DAYS_files/logo.svg
+Waiting on select() ...
+Write set sk = 6
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 23743
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+Write set sk = 9
+Waiting on select() ...
+Write set sk = 6
+Write set sk = 9
+end_connection read |www/HOPPY_DAYS_files/logo.svg| 9 23743/23743
+close_client_sk 9
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 9
+RequestHeader Default constructor
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/HOPPY_DAYS_files/img-mv-copy.svg| 6 136343/136343
+close_client_sk 6
+RequestHeader Destruction
+Request header: 311
+GET /HOPPY_DAYS_files/bg-gold-front.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 9 www/HOPPY_DAYS_files/bg-gold-front.svg
+end_read 9 www/HOPPY_DAYS_files/bg-gold-front.svg
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 648
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Request header: 315
+GET /HOPPY_DAYS_files/img-bubble-yellow.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 6 www/HOPPY_DAYS_files/img-bubble-yellow.svg
+end_read 6 www/HOPPY_DAYS_files/img-bubble-yellow.svg
+Write set sk = 9
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 398
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 9
+end_connection read |www/HOPPY_DAYS_files/bg-gold-front.svg| 9 648/648
+close_client_sk 9
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 9
+RequestHeader Default constructor
+Waiting on select() ...
+Write set sk = 6
+Request header: 309
+GET /HOPPY_DAYS_files/logo-yellow.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 9 www/HOPPY_DAYS_files/logo-yellow.svg
+end_read 9 www/HOPPY_DAYS_files/logo-yellow.svg
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/HOPPY_DAYS_files/img-bubble-yellow.svg| 6 398/398
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 24367
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 9
+Waiting on select() ...
+Write set sk = 9
+end_connection read |www/HOPPY_DAYS_files/logo-yellow.svg| 9 24367/24367
+close_client_sk 9
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 306
+GET /HOPPY_DAYS_files/logo-myc.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 6 www/HOPPY_DAYS_files/logo-myc.svg
+end_read 6 www/HOPPY_DAYS_files/logo-myc.svg
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 9
+RequestHeader Default constructor
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 12152
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+Request header: 307
+GET /HOPPY_DAYS_files/IMG_6792.webp HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 9 www/HOPPY_DAYS_files/IMG_6792.webp
+end_read 9 www/HOPPY_DAYS_files/IMG_6792.webp
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/HOPPY_DAYS_files/logo-myc.svg| 6 12152/12152
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/webp
+Content-Length: 232542
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 15
+RequestHeader Default constructor
+Write set sk = 9
+Waiting on select() ...
+Write set sk = 9
+Write set sk = 10
+Write set sk = 12
+Write set sk = 13
+Write set sk = 14
+Request header: 307
+GET /HOPPY_DAYS_files/IMG_6794.webp HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 15 www/HOPPY_DAYS_files/IMG_6794.webp
+end_read 15 www/HOPPY_DAYS_files/IMG_6794.webp
+Waiting on select() ...
+Write set sk = 9
+Write set sk = 10
+end_connection read |www/HOPPY_DAYS_files/img-bubble-white.svg| 10 395/395
+close_client_sk 10
+RequestHeader Destruction
+Write set sk = 12
+end_connection read |www/HOPPY_DAYS_files/7779ef99-62ad8e538439a018.js| 12 925/925
+close_client_sk 12
+RequestHeader Destruction
+Write set sk = 13
+Write set sk = 14
+end_connection read |www/HOPPY_DAYS_files/_app-d7fcd773d0d0524a.js| 14 163458/163458
+close_client_sk 14
+RequestHeader Destruction
+Write set sk = 15
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/webp
+Content-Length: 205686
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 10
+RequestHeader Default constructor
+  New incoming connection - 11
+RequestHeader Default constructor
+Write set sk = 9
+Write set sk = 13
+end_connection read |www/HOPPY_DAYS_files/933-f67d91cce9928815.js| 13 89212/89212
+close_client_sk 13
+RequestHeader Destruction
+Write set sk = 15
+Waiting on select() ...
+Write set sk = 9
+end_connection read |www/HOPPY_DAYS_files/IMG_6792.webp| 9 232542/232542
+close_client_sk 9
+RequestHeader Destruction
+Request header: 307
+GET /HOPPY_DAYS_files/logo-wicd.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 10 www/HOPPY_DAYS_files/logo-wicd.svg
+end_read 10 www/HOPPY_DAYS_files/logo-wicd.svg
+Request header: 307
+GET /HOPPY_DAYS_files/IMG_6789.webp HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 11 www/HOPPY_DAYS_files/IMG_6789.webp
+end_read 11 www/HOPPY_DAYS_files/IMG_6789.webp
+Write set sk = 15
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/svg+xml
+Content-Length: 2451
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/webp
+Content-Length: 130734
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 15
+Waiting on select() ...
+Request header: 307
+GET /HOPPY_DAYS_files/IMG_6790.webp HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 6 www/HOPPY_DAYS_files/IMG_6790.webp
+end_read 6 www/HOPPY_DAYS_files/IMG_6790.webp
+Write set sk = 10
+Write set sk = 11
+Write set sk = 15
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: image/webp
+Content-Length: 124818
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 10
+end_connection read |www/HOPPY_DAYS_files/logo-wicd.svg| 10 2451/2451
+close_client_sk 10
+RequestHeader Destruction
+Write set sk = 11
+Write set sk = 15
+end_connection read |www/HOPPY_DAYS_files/IMG_6794.webp| 15 205686/205686
+close_client_sk 15
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 7
+RequestHeader Default constructor
+Waiting on select() ...
+Write set sk = 6
+Request header: 393
+GET /_next/static/media/42a1e07c3bc0f8ae-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 7 www/_next/static/media/42a1e07c3bc0f8ae-s.woff2
+end_read 7 www/_next/static/media/42a1e07c3bc0f8ae-s.woff2
+Waiting on select() ...
+Write set sk = 6
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/HOPPY_DAYS_files/IMG_6790.webp| 6 124818/124818
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 7
+end_connection read |www/_next/static/media/42a1e07c3bc0f8ae-s.woff2| 7 0/141
+close_client_sk 7
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+  New incoming connection - 7
+RequestHeader Default constructor
+  New incoming connection - 9
+RequestHeader Default constructor
+  New incoming connection - 10
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 333
+GET /common/bg-noise.png HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/ed403b1e74dfa728.css
+
+
+check_location 6 www/common/bg-noise.png
+end_read 6 www/common/bg-noise.png
+Request header: 395
+GET /_next/static/media/c6908836934a19a7-s.p.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 7 www/_next/static/media/c6908836934a19a7-s.p.woff2
+end_read 7 www/_next/static/media/c6908836934a19a7-s.p.woff2
+Request header: 393
+GET /_next/static/media/11cb4d4dfe3d81df-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 9 www/_next/static/media/11cb4d4dfe3d81df-s.woff2
+end_read 9 www/_next/static/media/11cb4d4dfe3d81df-s.woff2
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 13
+RequestHeader Default constructor
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: font/woff2
+Content-Length: 37860
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Request header: 393
+GET /_next/static/media/f467ff9551a57091-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 10 www/_next/static/media/f467ff9551a57091-s.woff2
+end_read 10 www/_next/static/media/f467ff9551a57091-s.woff2
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/common/bg-noise.png| 6 0/141
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 7
+Write set sk = 9
+end_connection read |www/_next/static/media/11cb4d4dfe3d81df-s.woff2| 9 0/141
+close_client_sk 9
+RequestHeader Destruction
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 11
+end_connection read |www/HOPPY_DAYS_files/IMG_6789.webp| 11 130734/130734
+close_client_sk 11
+RequestHeader Destruction
+Request header: 393
+GET /_next/static/media/f99493d47a664c11-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 13 www/_next/static/media/f99493d47a664c11-s.woff2
+end_read 13 www/_next/static/media/f99493d47a664c11-s.woff2
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+  New incoming connection - 9
+RequestHeader Default constructor
+  New incoming connection - 11
+RequestHeader Default constructor
+Write set sk = 7
+end_connection read |www/_next/static/media/c6908836934a19a7-s.p.woff2| 7 37860/37860
+close_client_sk 7
+RequestHeader Destruction
+Write set sk = 10
+end_connection read |www/_next/static/media/f467ff9551a57091-s.woff2| 10 0/141
+close_client_sk 10
+RequestHeader Destruction
+Write set sk = 13
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 7
+RequestHeader Default constructor
+  New incoming connection - 10
+RequestHeader Default constructor
+Request header: 393
+GET /_next/static/media/226388c2d65eece4-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 6 www/_next/static/media/226388c2d65eece4-s.woff2
+end_read 6 www/_next/static/media/226388c2d65eece4-s.woff2
+Request header: 393
+GET /_next/static/media/d07316a1121d2afc-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 9 www/_next/static/media/d07316a1121d2afc-s.woff2
+end_read 9 www/_next/static/media/d07316a1121d2afc-s.woff2
+Request header: 393
+GET /_next/static/media/3f40c7c69ef373bc-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 11 www/_next/static/media/3f40c7c69ef373bc-s.woff2
+end_read 11 www/_next/static/media/3f40c7c69ef373bc-s.woff2
+Write set sk = 13
+end_connection read |www/_next/static/media/f99493d47a664c11-s.woff2| 13 0/141
+close_client_sk 13
+RequestHeader Destruction
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Request header: 393
+GET /_next/static/media/209ac0af81f4b739-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 7 www/_next/static/media/209ac0af81f4b739-s.woff2
+end_read 7 www/_next/static/media/209ac0af81f4b739-s.woff2
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Request header: 393
+GET /_next/static/media/80a4dbe2270ad3bf-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 10 www/_next/static/media/80a4dbe2270ad3bf-s.woff2
+end_read 10 www/_next/static/media/80a4dbe2270ad3bf-s.woff2
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 12
+RequestHeader Default constructor
+Write set sk = 6
+end_connection read |www/_next/static/media/226388c2d65eece4-s.woff2| 6 0/141
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 9
+end_connection read |www/_next/static/media/d07316a1121d2afc-s.woff2| 9 0/141
+close_client_sk 9
+RequestHeader Destruction
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+  New incoming connection - 9
+RequestHeader Default constructor
+Write set sk = 7
+end_connection read |www/_next/static/media/209ac0af81f4b739-s.woff2| 7 0/141
+close_client_sk 7
+RequestHeader Destruction
+Write set sk = 10
+end_connection read |www/_next/static/media/80a4dbe2270ad3bf-s.woff2| 10 0/141
+close_client_sk 10
+RequestHeader Destruction
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Request header: 393
+GET /_next/static/media/2ab334bbbb8e75e2-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 12 www/_next/static/media/2ab334bbbb8e75e2-s.woff2
+end_read 12 www/_next/static/media/2ab334bbbb8e75e2-s.woff2
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 7
+RequestHeader Default constructor
+  New incoming connection - 10
+RequestHeader Default constructor
+Request header: 393
+GET /_next/static/media/f6749225630fe93f-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 6 www/_next/static/media/f6749225630fe93f-s.woff2
+end_read 6 www/_next/static/media/f6749225630fe93f-s.woff2
+Request header: 393
+GET /_next/static/media/5c04c665375ee862-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 9 www/_next/static/media/5c04c665375ee862-s.woff2
+end_read 9 www/_next/static/media/5c04c665375ee862-s.woff2
+Write set sk = 11
+end_connection read |www/_next/static/media/3f40c7c69ef373bc-s.woff2| 11 0/141
+close_client_sk 11
+RequestHeader Destruction
+Write set sk = 12
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Request header: 393
+GET /_next/static/media/bfa8a857259ba564-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 7 www/_next/static/media/bfa8a857259ba564-s.woff2
+end_read 7 www/_next/static/media/bfa8a857259ba564-s.woff2
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Request header: 393
+GET /_next/static/media/48763d6652cebf74-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 10 www/_next/static/media/48763d6652cebf74-s.woff2
+end_read 10 www/_next/static/media/48763d6652cebf74-s.woff2
+Write set sk = 12
+end_connection read |www/_next/static/media/2ab334bbbb8e75e2-s.woff2| 12 0/141
+close_client_sk 12
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 11
+RequestHeader Default constructor
+  New incoming connection - 12
+RequestHeader Default constructor
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/_next/static/media/f6749225630fe93f-s.woff2| 6 0/141
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 9
+end_connection read |www/_next/static/media/5c04c665375ee862-s.woff2| 9 0/141
+close_client_sk 9
+RequestHeader Destruction
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Request header: 393
+GET /_next/static/media/45616baa4df057f4-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 11 www/_next/static/media/45616baa4df057f4-s.woff2
+end_read 11 www/_next/static/media/45616baa4df057f4-s.woff2
+Request header: 393
+GET /_next/static/media/78acb83ec2522541-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 12 www/_next/static/media/78acb83ec2522541-s.woff2
+end_read 12 www/_next/static/media/78acb83ec2522541-s.woff2
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+  New incoming connection - 9
+RequestHeader Default constructor
+Write set sk = 7
+end_connection read |www/_next/static/media/bfa8a857259ba564-s.woff2| 7 0/141
+close_client_sk 7
+RequestHeader Destruction
+Write set sk = 10
+end_connection read |www/_next/static/media/48763d6652cebf74-s.woff2| 10 0/141
+close_client_sk 10
+RequestHeader Destruction
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 12
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 7
+RequestHeader Default constructor
+  New incoming connection - 10
+RequestHeader Default constructor
+Request header: 393
+GET /_next/static/media/18c790c06eb3cbde-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 6 www/_next/static/media/18c790c06eb3cbde-s.woff2
+end_read 6 www/_next/static/media/18c790c06eb3cbde-s.woff2
+Request header: 393
+GET /_next/static/media/e11994e2ab67d98d-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 9 www/_next/static/media/e11994e2ab67d98d-s.woff2
+end_read 9 www/_next/static/media/e11994e2ab67d98d-s.woff2
+Write set sk = 11
+end_connection read |www/_next/static/media/45616baa4df057f4-s.woff2| 11 0/141
+close_client_sk 11
+RequestHeader Destruction
+Write set sk = 12
+end_connection read |www/_next/static/media/78acb83ec2522541-s.woff2| 12 0/141
+close_client_sk 12
+RequestHeader Destruction
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Request header: 393
+GET /_next/static/media/69576a4f0f48545d-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 7 www/_next/static/media/69576a4f0f48545d-s.woff2
+end_read 7 www/_next/static/media/69576a4f0f48545d-s.woff2
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Request header: 393
+GET /_next/static/media/670c25c148ad8881-s.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 10 www/_next/static/media/670c25c148ad8881-s.woff2
+end_read 10 www/_next/static/media/670c25c148ad8881-s.woff2
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 11
+RequestHeader Default constructor
+Write set sk = 6
+end_connection read |www/_next/static/media/18c790c06eb3cbde-s.woff2| 6 0/141
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Write set sk = 9
+end_connection read |www/_next/static/media/e11994e2ab67d98d-s.woff2| 9 0/141
+close_client_sk 9
+RequestHeader Destruction
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+end_connection read |www/_next/static/media/69576a4f0f48545d-s.woff2| 7 0/141
+close_client_sk 7
+RequestHeader Destruction
+Write set sk = 10
+end_connection read |www/_next/static/media/670c25c148ad8881-s.woff2| 10 0/141
+close_client_sk 10
+RequestHeader Destruction
+Request header: 395
+GET /_next/static/media/c6908836934a19a7-s.p.woff2 HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://giun.com/HOPPY_DAYS_files/bbeade08f58e153c.css
+
+
+check_location 11 www/_next/static/media/c6908836934a19a7-s.p.woff2
+end_read 11 www/_next/static/media/c6908836934a19a7-s.p.woff2
+Waiting on select() ...
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: GET
+Content-Language: en
+Content-Type: font/woff2
+Content-Length: 37860
+Date: Sat, 06 Jan 2024 11:26:13 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 11
+Waiting on select() ...
+Write set sk = 11
+end_connection read |www/_next/static/media/c6908836934a19a7-s.p.woff2| 11 37860/37860
+close_client_sk 11
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+  New incoming connection - 7
+RequestHeader Default constructor
+  New incoming connection - 9
+RequestHeader Default constructor
+  New incoming connection - 10
+RequestHeader Default constructor
+  New incoming connection - 11
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 292
+GET /common/logo.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 6 www/common/logo.svg
+end_read 6 www/common/logo.svg
+Request header: 300
+GET /common/bg-gold-back.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 7 www/common/bg-gold-back.svg
+end_read 7 www/common/bg-gold-back.svg
+Request header: 301
+GET /common/bg-gold-front.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 9 www/common/bg-gold-front.svg
+end_read 9 www/common/bg-gold-front.svg
+Request header: 305
+GET /common/img-bubble-yellow.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 10 www/common/img-bubble-yellow.svg
+end_read 10 www/common/img-bubble-yellow.svg
+Request header: 299
+GET /common/img-mv-copy.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 11 www/common/img-mv-copy.svg
+end_read 11 www/common/img-mv-copy.svg
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 12
+RequestHeader Default constructor
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:14 GMT
+
+
+Header Destruction
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:14 GMT
+
+
+Header Destruction
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:14 GMT
+
+
+Header Destruction
+Write set sk = 10
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:14 GMT
+
+
+Header Destruction
+Write set sk = 11
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:14 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/common/logo.svg| 6 0/141
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 7
+end_connection read |www/common/bg-gold-back.svg| 7 0/141
+close_client_sk 7
+RequestHeader Destruction
+Write set sk = 9
+end_connection read |www/common/bg-gold-front.svg| 9 0/141
+close_client_sk 9
+RequestHeader Destruction
+Write set sk = 10
+end_connection read |www/common/img-bubble-yellow.svg| 10 0/141
+close_client_sk 10
+RequestHeader Destruction
+Write set sk = 11
+end_connection read |www/common/img-mv-copy.svg| 11 0/141
+close_client_sk 11
+RequestHeader Destruction
+Request header: 304
+GET /common/img-bubble-white.svg HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: image/avif,image/webp,*/*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://giun.com/
+
+
+check_location 12 www/common/img-bubble-white.svg
+end_read 12 www/common/img-bubble-white.svg
+Waiting on select() ...
+Write set sk = 12
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:14 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 12
+end_connection read |www/common/img-bubble-white.svg| 12 0/141
+close_client_sk 12
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 7
+RequestHeader Default constructor
+  New incoming connection - 9
+RequestHeader Default constructor
+Request header: 335
+GET /_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://giun.com/
+purpose: prefetch
+x-nextjs-data: 1
+Connection: keep-alive
+
+
+check_location 6 www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json
+end_read 6 www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:14 GMT
+
+
+Header Destruction
+Request header: 339
+GET /_next/data/U-U_RdZ6xQ62Y_3SiIKQK/recommend.json HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://giun.com/
+purpose: prefetch
+x-nextjs-data: 1
+Connection: keep-alive
+
+
+check_location 7 www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/recommend.json
+end_read 7 www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/recommend.json
+Request header: 335
+GET /_next/data/U-U_RdZ6xQ62Y_3SiIKQK/nippo.json HTTP/1.1
+Host: giun.com
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://giun.com/
+purpose: prefetch
+x-nextjs-data: 1
+Connection: keep-alive
+
+
+check_location 9 www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/nippo.json
+end_read 9 www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/nippo.json
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/index.json| 6 0/141
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:14 GMT
+
+
+Header Destruction
+Write set sk = 9
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 11:26:14 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+end_connection read |www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/recommend.json| 7 0/141
+close_client_sk 7
+RequestHeader Destruction
+Write set sk = 9
+end_connection read |www/_next/data/U-U_RdZ6xQ62Y_3SiIKQK/nippo.json| 9 0/141
+close_client_sk 9
+RequestHeader Destruction
+Waiting on select() ...
