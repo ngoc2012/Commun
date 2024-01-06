@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/06 11:55:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/06 11:56:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,11 @@ std::string Listing::get_listing(const std::string& directory_name) {
                 listing_html += entry->d_name;
                 listing_html += "</a>";
                 listing_html += "</li>\n";
-            } else if (entry->d_type == DT_DIR && strcmp(entry->d_name, ".") != 0 && strcmp(entry->d_name, "..") != 0) {
+            } else if (entry->d_type == DT_DIR
+                    && std::string(entry->d_name) == "."
+                    && std::string(entry->d_name) == "..") {
+                //    && strcmp(entry->d_name, ".") != 0
+                //    && strcmp(entry->d_name, "..") != 0) {
                 // Dossier (à l'exception des dossiers '.' et '..')
                 listing_html += "<li>";
                 listing_html += "        <a href='/index_files/";
