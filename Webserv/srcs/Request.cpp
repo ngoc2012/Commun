@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/06 09:21:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/06 09:23:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,16 +139,17 @@ bool	Request::parse_header(void)
         _status_code = 400;	// Bad Request
         return (false);
     }
-    std::vector<Server*>    servers = _address->get_servers();
+    std::vector<Server*>        servers = _address->get_servers();
     std::vector<std::string>    server_names;
     _server = servers[0];
     for (std::vector<Server*>::iterator sv = servers.begin() + 1;
             sv != servers.end(); ++sv)
     {
         server_names = sv->get_server_names();
-    for (std::vector<std::string>::iterator it = words.begin() + 1;
-            it != words.end(); ++it)
-        server->set_server_name(*it);
+        for (std::vector<std::string>::iterator it = server_names.begin() + 1;
+                it != server_names.end(); ++it)
+            if (_host_name == it)
+                _server = sv;
     }
     _server = [0];
     if (!check_location())
