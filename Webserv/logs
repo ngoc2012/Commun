@@ -57,13 +57,105 @@ end_read 6 www/index_files
 Waiting on select() ...
 Write set sk = 6
 Header Constructor
+check-mark.svg
+steadfast-dark.svg
+top-wave-dark-m.webp
+landing-bigT-dark.png
+port8.jpg
+port7.jpg
+right-arrow.svg
+lead-capture-sdk-v1.js
+landing-t.png
+landing-t-dark.png
+easy-installation.svg
+loader.js
+local-solar-m.webp
+server.svg
+recaptcha__en.js
+faq.js
+embed.html
+solar-panels.jpg
+launchdarkly-js-client-sdk@3
+2e901695-d600-4ad7-a59c-01e92b66e5d8_data
+short-arrow.svg
+port6-m.webp
+root.css
+port2.jpg
+panels.png
+bottom-wave-dark.png
+port4-m.webp
+port7-m.webp
+port5.jpg
+a.html
+bottom-curve2.svg
+landing-t.webp
+gtm.js
+panels-m.webp
+logo.svg
+port1-m.webp
+partnersw.svg
+sun.svg
+chat-widget.js
+2e901695-d600-4ad7-a59c-01e92b66e5d8.html
+..
+css.css
+landing-bigT.webp
+port9-m.webp
+dark.js
+design.svg
+chat-widget.esm.js
+lead-capture-sdk.0.7706.0.js
+night-time.png
+port8-m.webp
+chevron-down-white.svg
+solar-panels-night.jpg
+top-wave-dark.png
+chevron-down.svg
+office.svg
+98503.js
+landing-1400.png
+port3-m.webp
+port5-m.webp
+.
+solar-panels-night-m.webp
+embed_data
+whitecurve.svg
+landing-m.webp
+salesman.svg
+statesw.svg
+logo-dark.svg
+port1.jpg
+likew.svg
+panels.webp
+long-arrow.svg
+landing-m-dark2.webp
+application.css
+netlify-identity-widget.js
+port6.jpg
+fail.svg
+steadfast-light.svg
+landing-1400-dark.png
+clockw.svg
+dark.css
+port3.jpg
+port9.jpg
+solar-panels-m.webp
+bottom-wave-dark-m.webp
+local-solar.png
+critical.css
+local.css
+port4.jpg
+nav.js
+port2-m.webp
+api.js
+landing.webp
 Response Header:
 HTTP/1.1 200 OK
 Allow: PUT,GET,DELETE
 Content-Language: en
 Content-Type: text/html
 Content-Length: 6699
-Date: Sat, 06 Jan 2024 11:04:20 GMT
+Date: Sat, 06 Jan 2024 11:07:25 GMT
 
 
 Header Destruction
