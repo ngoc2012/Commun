@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 21:51:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/06 09:17:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,10 @@ bool	Request::parse_header(void)
         _status_code = 400;	// Bad Request
         return (false);
     }
+    std::vector<std::string>
+    for (std::vector<std::string>::iterator it = words.begin() + 1;
+            it != words.end(); ++it)
+        server->set_server_name(*it);
     _host_name = _header.parse_host_name();
     if (_host_name == "")
     {
