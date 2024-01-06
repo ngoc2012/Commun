@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/02 16:44:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/06 11:55:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,15 @@ Listing::~Listing() {
 }
 
 std::string Listing::get_listing(const std::string& directory_name) {
-    std::string listing_html = "<!DOCTYPE html>\n<html>\n    <head>\n        <title>Listing</title>\n    </head>\n    <body>\n";
+    std::string     listing_html = "<!DOCTYPE html>\n
+        <html>\n
+        <head>\n
+        <title>Listing</title>\n
+        </head>\n
+        <body>\n";
     const char* directory_path = directory_name.c_str();
     DIR* directory = opendir(directory_path);
-    if (directory != nullptr) {
+    if (directory != 0) {
         listing_html += "        <h2>Contenu du repertoire : " + directory_name + "</h2>\n";
         listing_html += "        <ul>\n";
         struct dirent* entry;
