@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/06 12:07:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/06 12:08:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ std::string Listing::get_listing(const std::string& directory_name) {
         listing_html += "        <ul>\n";
         struct dirent* entry;
         while ((entry = readdir(directory))) {
-            std::cout << entry->d_name << std::endl;
+            std::cout << entry->d_name << " - " << entry->d_type << std::endl;
             if (entry->d_type == DT_REG) {
                 // Fichier régulier
                 listing_html += "<li>";
