@@ -11155,3 +11155,148 @@ end_connection read |www/fonts/Helvetica-Light.ttf| 7 0/141
 close_client_sk 7
 RequestHeader Destruction
 Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 492
+GET /fonts/Helvetica-Light.woff HTTP/1.1
+Host: localhost
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://localhost/Monastik_living_in_Athina_files/theme.css
+Cookie: wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 6 www/fonts/Helvetica-Light.woff
+end_read 6 www/fonts/Helvetica-Light.woff
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 7
+RequestHeader Default constructor
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 08:38:11 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/fonts/Helvetica-Light.woff| 6 0/141
+close_client_sk 6
+RequestHeader Destruction
+Request header: 486
+GET /fonts/Helvetica.woff HTTP/1.1
+Host: localhost
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: identity
+Connection: keep-alive
+Referer: http://localhost/Monastik_living_in_Athina_files/theme.css
+Cookie: wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/fonts/Helvetica.woff
+end_read 7 www/fonts/Helvetica.woff
+Waiting on select() ...
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 08:38:11 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 7
+end_connection read |www/fonts/Helvetica.woff| 7 0/141
+close_client_sk 7
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 4
+  New incoming connection - 6
+RequestHeader Default constructor
+  New incoming connection - 7
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 500
+GET /fonts/Helvetica-Light.ttf HTTP/1.1
+Host: localhost
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://localhost/Monastik_living_in_Athina_files/theme.css
+Cookie: wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 6 www/fonts/Helvetica-Light.ttf
+end_read 6 www/fonts/Helvetica-Light.ttf
+Request header: 494
+GET /fonts/Helvetica.ttf HTTP/1.1
+Host: localhost
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/119.0
+Accept: application/font-woff2;q=1.0,application/font-woff;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Referer: http://localhost/Monastik_living_in_Athina_files/theme.css
+Cookie: wp-wpml_current_language=en
+Sec-Fetch-Dest: font
+Sec-Fetch-Mode: cors
+Sec-Fetch-Site: same-origin
+
+
+check_location 7 www/fonts/Helvetica.ttf
+end_read 7 www/fonts/Helvetica.ttf
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 08:38:12 GMT
+
+
+Header Destruction
+Write set sk = 7
+Header Constructor
+Response Header:
+HTTP/1.1 404 Not Found
+Content-Type: text/html
+Content-Length: 141
+Date: Sat, 06 Jan 2024 08:38:12 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/fonts/Helvetica-Light.ttf| 6 0/141
+close_client_sk 6
+RequestHeader Destruction
+Write set sk = 7
+end_connection read |www/fonts/Helvetica.ttf| 7 0/141
+close_client_sk 7
+RequestHeader Destruction
+Waiting on select() ...
