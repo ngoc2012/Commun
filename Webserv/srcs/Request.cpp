@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 22:17:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 22:19:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,7 +188,7 @@ int     Request::read_body()
 {
     int     ret;
 
-    ret = recv(_socket, buffer, _body_buffer, 0);
+    ret = recv(_socket, _buffer + _body_left, _body_buffer, 0);
     if (ret < 0)
     {
         std::cerr << "Error: recv error" << std::endl;
