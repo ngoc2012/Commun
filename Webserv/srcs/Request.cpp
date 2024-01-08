@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 22:02:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 22:04:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,7 +249,6 @@ int     Request::read_body_chunked()
 
 int 	        write_chunked(int start, int len)
 {
-    size_t      buffer_size = _str_buffer.size();
     size_t     pos;
     size_t     len;
     pos = _str_buffer.find("\r\n", _body_position);
