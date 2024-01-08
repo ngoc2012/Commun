@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 19:25:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 21:53:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,6 +245,10 @@ int     Request::read_body_chunked()
     if (ret < (int) _body_buffer || (!_chunked && _body_size >= _content_length))
         return (end_read());
     return (0);
+}
+
+int 	        write_chunked(int)
+{
 }
 
 bool	Request::check_location()
