@@ -77,9 +77,6 @@ _body_size: 4948
 Waiting on select() ...
 read_body: 384
 _body_size: 5332
-Waiting on select() ...
-read_body: 0
-_body_size: 5332
 end_read 6 www/put//test.txt
 Waiting on select() ...
 Write set sk = 6
@@ -90,7 +87,7 @@ Allow: PUT,GET,DELETE
 Content-Language: en
 Content-Type: text/plain
 Content-Length: 0
-Date: Mon, 08 Jan 2024 08:17:49 GMT
+Date: Mon, 08 Jan 2024 08:43:59 GMT
 
 
 Header Destruction
