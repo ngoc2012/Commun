@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 18:28:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 18:31:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,11 +295,9 @@ void	Request::process_fd_in()
         if (_chunked)
         {
             int     pos;
-            do
+            pos = _str_header.find("\r\n", _body_position);
+            while (pos != NPOS)
             {
-                pos = _str_header.find("\r\n", _body_position);
-                if (pos == NPOS)
-                    break ;
                 _chunked_size = ft::atoi_base(_str_header.substr(_body_position, pos - _body_position).c_str(), "0123456789abcdef");
                 _body_position = pos + 2;
                 _chunked_received = header_size - _body_position;
@@ -314,8 +312,8 @@ void	Request::process_fd_in()
                     _body_position += _chunked_received;
                     return ;
                 }
+                pos = _str_header.find("\r\n", _body_position);
             }
-            while (_chunked_received > _chunked_size)
             int     
                 if (_body_size - pos - 2)
                     std::cout << "_chunked_size = " << _chunked_size << std::endl;
