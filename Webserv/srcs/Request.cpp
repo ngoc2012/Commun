@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 22:21:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 22:23:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,11 @@ int     Request::read_header()
 
 bool	Request::receive_header(void)
 {
-    size_t		    _body_position;
+    size_t		    body_position;
     int ret = 1;
 
-    _body_position = NPOS;
-    while (_body_position == NPOS && ret > 0)
+    body_position = NPOS;
+    while (body_position == NPOS && ret > 0)
     {
         ret = recv(_socket, _buffer, _body_buffer, 0);
         if (ret < 0)
@@ -118,19 +118,19 @@ bool	Request::receive_header(void)
             _buffer[ret] = 0;
             _str_buffer = std::string(_buffer);
             _str_header += _str_buffer;
-            _body_position = _str_buffer.find("\r\n\r\n");
+            body_position = _str_buffer.find("\r\n\r\n");
         }
     }
     std::cout << "Request header: " << _str_header.size() << std::endl << _str_header << std::endl;
-    if (_body_position == NPOS)
+    if (body_position == NPOS)
     {
         std::cerr << "Error: No end header found.\n" << std::endl;
         _status_code = 400;	// Bad Request
         return (false);
     }
-    _body_position += 4;
-    _body_left = ret - _body_position;
-    memcpy(_buffer, _buffer + _body_position, _body_left);
+    body_position += 4;
+    _body_left = ret - body_position;
+    memcpy(_buffer, _buffer + body_position, _body_left);
     return (true);
 }
 
@@ -227,7 +227,7 @@ int     Request::read_body_chunked()
         _status_code = 400;
         return (end_read());
     }
-    _body_size += ret;
+    _body_size += ret + _body_left;
 	std::cout << "read_body: " << ret << std::endl;
 	std::cout << "_body_size: " << _body_size << std::endl;
     if (ret > 0 && _fd_in > 0)
