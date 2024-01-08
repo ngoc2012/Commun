@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 18:54:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 18:56:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -306,12 +306,12 @@ void	Request::process_fd_in()
                 if (!_body_header_size)
                     return ;
                 // case 2
-                if (chunked_received < _chunked_size)
+                if (_body_header_size < _chunked_size)
                 {
-                    if (write(_fd_in, &_buffer[_body_position], chunked_received) == -1)
+                    if (write(_fd_in, &_buffer[_body_position], _body_header_size) == -1)
                         _status_code = 500;
-                    _body_position += chunked_received;
-                    _body_header_size = header_size - _body_position;
+                    _body_position = header_size;
+                    _body_header_size = 0;
                     return ;
                 }
                 else
@@ -319,7 +319,7 @@ void	Request::process_fd_in()
                     if (write(_fd_in, &_buffer[_body_position], _chunked_size) == -1)
                         _status_code = 500;
                     _body_position += _chunked_size;
-                    _body_header_size = header_size - _body_position;
+                    _body_header_size -= _chunked_size;
                 }
                 pos = _str_header.find("\r\n", _body_position);
             }
