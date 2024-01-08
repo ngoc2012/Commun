@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 10:12:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 10:20:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ class	Request
 		bool		    _chunked;
 		size_t		    _body_size;
 		size_t 		    _chunked_size;
+		size_t 		    _chunked_received;
 		size_t		    _body_position;
 
 		int		        _fd_in;

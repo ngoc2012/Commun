@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 10:16:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 10:21:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ Request::Request(int sk, Host* h, Address* a) : _socket(sk), _host(h), _address(
 	_content_type = "";
 	_content_length = 0;
 	_chunked = false;
+    _chunked_size = 0;
+    _chunked_received = 0;
 	_body_size = 0;
     _header.set_host(h);
     _header.set_str(&_str_header);
@@ -182,6 +184,7 @@ bool	Request::parse_header(void)
         std::cout << "_chunked_size = " << _chunked_size << std::endl;
         _body_position += len + 2;
         _body_size = _str_header.size() - _body_position;
+        _chunked_received = _body_size;
         return (true);
     }
     _content_type = _header.parse_content_type();
