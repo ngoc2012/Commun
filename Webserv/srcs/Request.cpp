@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 08:27:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 08:49:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,8 @@ bool	Request::parse_header(void)
         std::cerr << "Error: Content length bigger than " << _body_max << std::endl;
         return (false);
 	}
+    _chunked = _header.parse_transfer_encoding();
+    std::cout << "chunked: " << _chunked << std::endl;
     return (true);
 }
 
