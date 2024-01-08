@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 21:55:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 21:57:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ Request::Request(int sk, Host* h, Address* a) : _socket(sk), _host(h), _address(
 	_content_length = 0;
 	_chunked = false;
     _chunked_size = 0;
-    _chunked_received = 0;
+    _chunked_left = 0;
 	_body_size = 0;
     _header.set_host(h);
     _header.set_str(&_str_header);
