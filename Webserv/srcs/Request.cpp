@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 18:51:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 18:54:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,6 +295,7 @@ void	Request::process_fd_in()
         if (_chunked)
         {
             size_t     pos;
+            size_t     len;
             pos = _str_header.find("\r\n", _body_position);
             while (pos != NPOS)
             {
@@ -302,7 +303,7 @@ void	Request::process_fd_in()
                 _body_position = pos + 2;
                 _body_header_size = header_size - _body_position;
                 // case 1
-                if (!chunked_received)
+                if (!_body_header_size)
                     return ;
                 // case 2
                 if (chunked_received < _chunked_size)
@@ -310,7 +311,7 @@ void	Request::process_fd_in()
                     if (write(_fd_in, &_buffer[_body_position], chunked_received) == -1)
                         _status_code = 500;
                     _body_position += chunked_received;
-                    _body_size = header_size - _body_position;
+                    _body_header_size = header_size - _body_position;
                     return ;
                 }
                 else
@@ -318,7 +319,7 @@ void	Request::process_fd_in()
                     if (write(_fd_in, &_buffer[_body_position], _chunked_size) == -1)
                         _status_code = 500;
                     _body_position += _chunked_size;
-                    _body_size = header_size - _body_position;
+                    _body_header_size = header_size - _body_position;
                 }
                 pos = _str_header.find("\r\n", _body_position);
             }
