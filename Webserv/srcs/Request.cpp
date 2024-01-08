@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 18:31:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 18:36:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,7 +291,7 @@ void	Request::process_fd_in()
     // write body header to the file
     if (_body_size > 0 && _fd_in != -1 && _status_code == 200)
     {
-        //size_t      header_size = _str_header.size();
+        size_t      header_size = _str_header.size();
         if (_chunked)
         {
             int     pos;
@@ -300,6 +300,7 @@ void	Request::process_fd_in()
             {
                 _chunked_size = ft::atoi_base(_str_header.substr(_body_position, pos - _body_position).c_str(), "0123456789abcdef");
                 _body_position = pos + 2;
+                _body_size = header_size - _body_position;
                 _chunked_received = header_size - _body_position;
                 // case 1
                 if (!_chunked_received)
@@ -310,14 +311,14 @@ void	Request::process_fd_in()
                     if (write(_fd_in, &_buffer[_body_position], _chunked_received) == -1)
                         _status_code = 500;
                     _body_position += _chunked_received;
+                    _body_size = header_size - _body_position;
                     return ;
+                }
+                else
+                {
                 }
                 pos = _str_header.find("\r\n", _body_position);
             }
-            int     
-                if (_body_size - pos - 2)
-                    std::cout << "_chunked_size = " << _chunked_size << std::endl;
-            _body_position = len + 2;
             _body_size = _str_header.size() - _body_position;
             _chunked_received = _body_size;
         }
