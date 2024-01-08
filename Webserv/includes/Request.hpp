@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 19:19:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 19:23:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ class	Request
 		Location*	    _location;	
         Cgi*            _cgi;
 
-		std::string	    _str_buffer;
 		std::string	    _str_header;
 		std::string	    _url;
 		std::string	    _host_name;
@@ -59,6 +58,7 @@ class	Request
 		size_t		    _body_buffer;
 		size_t		    _body_max;
         char*   	    _buffer;
+		size_t		    _buffer_size;
         bool            _read_queue;
         std::string     _tmp_file;
 
