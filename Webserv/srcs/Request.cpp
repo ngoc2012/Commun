@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 21:53:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 21:55:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,8 +247,38 @@ int     Request::read_body_chunked()
     return (0);
 }
 
-int 	        write_chunked(int)
+int 	        write_chunked(int start)
 {
+    size_t      buffer_size = _str_buffer.size();
+    size_t     pos;
+    size_t     len;
+    pos = _str_buffer.find("\r\n", _body_position);
+    while (pos != NPOS)
+    {
+        _chunked_size = ft::atoi_base(_str_header.substr(_body_position, pos - _body_position).c_str(), "0123456789abcdef");
+        _body_position = pos + 2;
+        _body_header_size = header_size - _body_position;
+        if (!_body_header_size)
+            return ;
+        if (_body_header_size < _chunked_size)
+        {
+            if (write(_fd_in, &_buffer[_body_position], _body_header_size) == -1)
+                _status_code = 500;
+            _body_position = header_size;
+            _body_size += _body_header_size;
+            _body_header_size = 0;
+            return ;
+        }
+        else
+        {
+            if (write(_fd_in, &_buffer[_body_position], _chunked_size) == -1)
+                _status_code = 500;
+            _body_position += _chunked_size;
+            _body_header_size -= _chunked_size;
+            _body_size += _chunked_size;
+        }
+        pos = _str_header.find("\r\n", _body_position);
+    }
 }
 
 bool	Request::check_location()
@@ -310,39 +340,8 @@ void	Request::process_fd_in()
     // write body header to the file
     if (_body_header_size > 0 && _fd_in != -1 && _status_code == 200)
     {
-        size_t      buffer_size = _str_buffer.size();
         if (_chunked)
-        {
-            size_t     pos;
-            size_t     len;
-            pos = _str_buffer.find("\r\n", _body_position);
-            while (pos != NPOS)
-            {
-                _chunked_size = ft::atoi_base(_str_header.substr(_body_position, pos - _body_position).c_str(), "0123456789abcdef");
-                _body_position = pos + 2;
-                _body_header_size = header_size - _body_position;
-                if (!_body_header_size)
-                    return ;
-                if (_body_header_size < _chunked_size)
-                {
-                    if (write(_fd_in, &_buffer[_body_position], _body_header_size) == -1)
-                        _status_code = 500;
-                    _body_position = header_size;
-                    _body_size += _body_header_size;
-                    _body_header_size = 0;
-                    return ;
-                }
-                else
-                {
-                    if (write(_fd_in, &_buffer[_body_position], _chunked_size) == -1)
-                        _status_code = 500;
-                    _body_position += _chunked_size;
-                    _body_header_size -= _chunked_size;
-                    _body_size += _chunked_size;
-                }
-                pos = _str_header.find("\r\n", _body_position);
-            }
-        }
+            write_chunked(_body_position);
         else if (write(_fd_in, &_buffer[_body_position], _body_size) == -1)
             _status_code = 500;
     }
