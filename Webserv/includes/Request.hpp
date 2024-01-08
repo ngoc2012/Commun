@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 17:16:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 08:26:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ class	Request
 		e_method	    _method;
 		std::string	    _content_type;
 		size_t		    _content_length;
+		bool		    _chunked;
 		size_t		    _body_size;
 		size_t		    _body_position;
 
