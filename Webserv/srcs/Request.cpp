@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 12:53:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 12:54:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,6 +307,7 @@ void	Request::process_fd_in()
                 if (!_chunked_received)
                     return ;
                 len = _chunked_received;
+                // case 3
                 if (len > _chunked_size)
                     len = _chunked_size;
                 if (_chunked_received
