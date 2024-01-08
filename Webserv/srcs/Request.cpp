@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 12:07:13 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 12:08:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ bool	Request::parse_header(void)
                 _str_header += _buffer;
             }
         }
+        _body_size = _str_header.size() - _body_position;
         return (true);
     }
     _content_type = _header.parse_content_type();
@@ -289,6 +290,14 @@ void	Request::process_fd_in()
     }
     if (_body_size > 0 && _fd_in != -1 && _status_code == 200
         && write(_fd_in, &_buffer[_body_position], _body_size) == -1)
+    {
+        int     len = _str_header.find("\r\n", _body_position);
+        _chunked_size = ft::atoi_base(_str_header.substr(_body_position, len).c_str(), "0123456789abcdef");
+        std::cout << "_chunked_size = " << _chunked_size << std::endl;
+        _body_position = len + 2;
+        _body_size = _str_header.size() - _body_position;
+        _chunked_received = _body_size;
+    }
         _status_code = 500;
 }
 
