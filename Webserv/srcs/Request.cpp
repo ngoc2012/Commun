@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 22:19:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 22:21:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int     Request::read_header()
 
 bool	Request::receive_header(void)
 {
+    size_t		    _body_position;
     int ret = 1;
 
     _body_position = NPOS;
@@ -336,6 +337,7 @@ void	Request::process_fd_in()
             break;
     }
     // write body header to the file
+    /*
     if (_body_header_size > 0 && _fd_in != -1 && _status_code == 200)
     {
         if (_chunked)
@@ -343,6 +345,7 @@ void	Request::process_fd_in()
         else if (write(_fd_in, _buffer, _body_left) == -1)
             _status_code = 500;
     }
+    */
 }
 
 int     Request::end_read(void)
