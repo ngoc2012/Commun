@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 19:05:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 19:07:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ Request::Request(int sk, Host* h, Address* a) : _socket(sk), _host(h), _address(
 	_full_file_name = "";
     _body_max = _host->get_client_max_body_size() * MEGABYTE;
     _body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
-    _buffer = new char[_body_buffer * 2 + 1];
+    _buffer = new char[_body_buffer + 1];
 	_read_queue = true;
 	_tmp_file = "";
 
@@ -79,6 +79,8 @@ int     Request::read(void)
         return (0);
     if (_str_header == "")
         read_header();
+    else if (_chunked)
+        read_body_chunked();
     else
         read_body();
     return (0);
