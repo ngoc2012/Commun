@@ -194,3 +194,108 @@ end_connection read |www/put//port6.jpg| 6 0/0
 close_client_sk 6
 RequestHeader Destruction
 Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 139
+PUT /put_test/test.txt HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: curl/7.81.0
+Accept: */*
+Content-Length: 5319
+Expect: 100-continue
+
+
+check_location 6 www/put//test.txt
+chunked: 0
+Content-Type: 
+Content-Length: 5319
+end_read 6 www/put//test.txt
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 400 Bad Request
+Content-Type: text/html
+Content-Length: 145
+Date: Mon, 08 Jan 2024 08:04:47 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/put//test.txt| 6 0/145
+close_client_sk 6
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 139
+PUT /put_test/test.txt HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: curl/7.81.0
+Accept: */*
+Content-Length: 5319
+Expect: 100-continue
+
+
+check_location 6 www/put//test.txt
+chunked: 0
+Content-Type: 
+Content-Length: 5319
+end_read 6 www/put//test.txt
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 400 Bad Request
+Content-Type: text/html
+Content-Length: 145
+Date: Mon, 08 Jan 2024 08:05:01 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/put//test.txt| 6 0/145
+close_client_sk 6
+RequestHeader Destruction
+Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 145
+PUT /put_test/test.txt HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: curl/7.81.0
+Accept: */*
+Transfer-Encoding: chunked
+Expect: 100-continue
+
+
+check_location 6 www/put//test.txt
+chunked: 1
+end_read 6 www/put//test.txt
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 200 OK
+Allow: PUT,GET,DELETE
+Content-Language: en
+Content-Type: text/plain
+Content-Length: 0
+Date: Mon, 08 Jan 2024 08:05:12 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/put//test.txt| 6 0/0
+close_client_sk 6
+RequestHeader Destruction
+Waiting on select() ...
