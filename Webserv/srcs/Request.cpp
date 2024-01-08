@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 19:09:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 19:11:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,10 +216,10 @@ int     Request::read_body()
 
 int     Request::read_body_chunked()
 {
-    char	buffer[_body_buffer * 2];
+    //char	buffer[_body_buffer * 2];
     int     ret;
 
-    ret = recv(_socket, , _body_buffer, 0);
+    ret = recv(_socket, _buffer + _body_size + , _body_buffer, 0);
     if (ret < 0)
     {
         std::cerr << "Error: recv error" << std::endl;
