@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 18:58:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 19:01:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -311,6 +311,7 @@ void	Request::process_fd_in()
                     if (write(_fd_in, &_buffer[_body_position], _body_header_size) == -1)
                         _status_code = 500;
                     _body_position = header_size;
+                    _body_size += _body_header_size;
                     _body_header_size = 0;
                     return ;
                 }
@@ -320,6 +321,7 @@ void	Request::process_fd_in()
                         _status_code = 500;
                     _body_position += _chunked_size;
                     _body_header_size -= _chunked_size;
+                    _body_size += _chunked_size;
                 }
                 pos = _str_header.find("\r\n", _body_position);
             }
