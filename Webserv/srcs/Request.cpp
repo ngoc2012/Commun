@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 10:51:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 10:53:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,8 @@ int     Request::read_body()
         if (_chunked)
         {
             len = _chunked_size - _chunked_received;
-            ret = 
+            if (len > ret)
+                return (end_read());
         }
         if (write(_fd_in, buffer, len) == -1)
             return (end_read());
