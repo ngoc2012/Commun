@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 13:44:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 18:26:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,6 @@ bool	Request::parse_header(void)
     std::cout << "chunked: " << _chunked << std::endl;
     if (_chunked)
     {
-        /*
         int ret = 1;
         while (_str_header.find("\r\n", _body_position) == NPOS && ret > 0)
         {
@@ -182,7 +181,6 @@ bool	Request::parse_header(void)
         }
         _body_size = _str_header.size() - _body_position;
         return (true);
-        */
     }
     _content_type = _header.parse_content_type();
     std::cout << "Content-Type: " << _content_type << std::endl;
