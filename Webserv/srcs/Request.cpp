@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 19:02:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 19:05:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,26 +162,6 @@ bool	Request::parse_header(void)
         return (true);
     _chunked = _header.parse_transfer_encoding();
     std::cout << "chunked: " << _chunked << std::endl;
-    if (_chunked)
-    {
-        int ret = 1;
-        while (_str_header.find("\r\n", _body_position) == NPOS && ret > 0)
-        {
-            ret = recv(_socket, _buffer, _body_buffer, 0);
-            if (ret < 0)
-            {
-                _status_code = 500;
-                return (false);
-            }
-            if (ret > 0)
-            {
-                _buffer[ret] = 0;
-                _str_header += _buffer;
-            }
-        }
-        _body_header_size = _str_header.size() - _body_position;
-        return (true);
-    }
     _content_type = _header.parse_content_type();
     std::cout << "Content-Type: " << _content_type << std::endl;
     _content_length = _header.parse_content_length();
@@ -302,10 +282,8 @@ void	Request::process_fd_in()
                 _chunked_size = ft::atoi_base(_str_header.substr(_body_position, pos - _body_position).c_str(), "0123456789abcdef");
                 _body_position = pos + 2;
                 _body_header_size = header_size - _body_position;
-                // case 1
                 if (!_body_header_size)
                     return ;
-                // case 2
                 if (_body_header_size < _chunked_size)
                 {
                     if (write(_fd_in, &_buffer[_body_position], _body_header_size) == -1)
