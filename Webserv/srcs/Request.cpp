@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 19:07:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 19:09:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ Request::Request(int sk, Host* h, Address* a) : _socket(sk), _host(h), _address(
 	_full_file_name = "";
     _body_max = _host->get_client_max_body_size() * MEGABYTE;
     _body_buffer = _host->get_client_body_buffer_size() * KILOBYTE;
-    _buffer = new char[_body_buffer + 1];
+    _buffer = new char[_body_buffer * 2 + 1];
 	_read_queue = true;
 	_tmp_file = "";
 
@@ -188,6 +188,38 @@ int     Request::read_body()
     int     ret;
 
     ret = recv(_socket, buffer, _body_buffer, 0);
+    if (ret < 0)
+    {
+        std::cerr << "Error: recv error" << std::endl;
+        _status_code = 400;
+        return (end_read());
+    }
+    _body_size += ret;
+	std::cout << "read_body: " << ret << std::endl;
+	std::cout << "_body_size: " << _body_size << std::endl;
+    if (ret > 0 && _fd_in > 0)
+    {
+        int     len = ret;
+        if (_chunked)
+        {
+            len = _chunked_size - _chunked_received;
+            if (len > ret)
+                return (end_read());
+        }
+        if (write(_fd_in, buffer, len) == -1)
+            return (end_read());
+    }
+    if (ret < (int) _body_buffer || (!_chunked && _body_size >= _content_length))
+        return (end_read());
+    return (0);
+}
+
+int     Request::read_body_chunked()
+{
+    char	buffer[_body_buffer * 2];
+    int     ret;
+
+    ret = recv(_socket, , _body_buffer, 0);
     if (ret < 0)
     {
         std::cerr << "Error: recv error" << std::endl;
