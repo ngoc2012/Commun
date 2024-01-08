@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 12:44:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 12:47:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,6 +291,7 @@ void	Request::process_fd_in()
     // write body header to the file
     if (_body_size > 0 && _fd_in != -1 && _status_code == 200)
     {
+        size_t      header_size = _str_header.size();
         if (_chunked)
         {
             int     pos;
@@ -301,6 +302,8 @@ void	Request::process_fd_in()
                 if (pos == NPOS)
                     break ;
                 _body_position = pos + 2;
+                if (_body_position == header_size)
+                    return ;
                 _chunked_size = ft::atoi_base(_str_header.substr(_body_position, len).c_str(), "0123456789abcdef");
                 _chunked_received = _body_size - pos - 2;
                 len = _chunked_received;
