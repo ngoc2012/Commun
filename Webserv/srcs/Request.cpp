@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 18:47:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 18:49:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ bool	Request::receive_header(void)
         return (false);
     }
     _body_position += 4;
-    _body_size = _str_header.size() - _body_position;
+    _body_header_size = _str_header.size() - _body_position;
     return (true);
 }
 
@@ -289,10 +289,10 @@ void	Request::process_fd_in()
             break;
     }
     // write body header to the file
-    if (_body_size > 0 && _fd_in != -1 && _status_code == 200)
+    if (_body_header_size > 0 && _fd_in != -1 && _status_code == 200)
     {
-        size_t 		_chunked_size;
-        size_t 		_chunked_received;
+        size_t 		chunked_size;
+        size_t 		chunked_received;
         size_t      header_size = _str_header.size();
         if (_chunked)
         {
@@ -300,27 +300,27 @@ void	Request::process_fd_in()
             pos = _str_header.find("\r\n", _body_position);
             while (pos != NPOS)
             {
-                _chunked_size = ft::atoi_base(_str_header.substr(_body_position, pos - _body_position).c_str(), "0123456789abcdef");
+                chunked_size = ft::atoi_base(_str_header.substr(_body_position, pos - _body_position).c_str(), "0123456789abcdef");
                 _body_position = pos + 2;
                 _body_size = header_size - _body_position;
-                _chunked_received = header_size - _body_position;
+                chunked_received = header_size - _body_position;
                 // case 1
-                if (!_chunked_received)
+                if (!chunked_received)
                     return ;
                 // case 2
-                if (_chunked_received < _chunked_size)
+                if (chunked_received < chunked_size)
                 {
-                    if (write(_fd_in, &_buffer[_body_position], _chunked_received) == -1)
+                    if (write(_fd_in, &_buffer[_body_position], chunked_received) == -1)
                         _status_code = 500;
-                    _body_position += _chunked_received;
+                    _body_position += chunked_received;
                     _body_size = header_size - _body_position;
                     return ;
                 }
                 else
                 {
-                    if (write(_fd_in, &_buffer[_body_position], _chunked_size) == -1)
+                    if (write(_fd_in, &_buffer[_body_position], chunked_size) == -1)
                         _status_code = 500;
-                    _body_position += _chunked_size;
+                    _body_position += chunked_size;
                     _body_size = header_size - _body_position;
                 }
                 pos = _str_header.find("\r\n", _body_position);
