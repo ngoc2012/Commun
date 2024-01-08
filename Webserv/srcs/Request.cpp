@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 22:34:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 22:37:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,9 +217,9 @@ int     Request::read_body()
 int 	        write_chunked(int len)
 {
     _buffer[len] = 0;
-    size_t     pos;
-
-    pos = _str_buffer.find("\r\n", _body_position);
+    std::string     str_buffer(_buffer);
+    size_t          pos = str_buffer.find("\r\n");
+    size_t		    body_position = 0;
     while (pos != NPOS)
     {
         _chunked_size = ft::atoi_base(_str_header.substr(_body_position, pos - _body_position).c_str(), "0123456789abcdef");
@@ -244,7 +244,7 @@ int 	        write_chunked(int len)
             _body_header_size -= _chunked_size;
             _body_size += _chunked_size;
         }
-        pos = _str_header.find("\r\n", _body_position);
+        pos = str_buffer.find("\r\n", body_position);
     }
 }
 
