@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 22:33:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 22:34:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int     Request::read_header()
 
 bool	Request::receive_header(void)
 {
+    std::string     str_buffer;
     size_t		    body_position;
     int ret = 1;
 
@@ -116,9 +117,9 @@ bool	Request::receive_header(void)
         if (ret > 0)
         {
             _buffer[ret] = 0;
-            _str_buffer = std::string(_buffer);
-            _str_header += _str_buffer;
-            body_position = _str_buffer.find("\r\n\r\n");
+            str_buffer = std::string(_buffer);
+            _str_header += str_buffer;
+            body_position = str_buffer.find("\r\n\r\n");
         }
     }
     std::cout << "Request header: " << _str_header.size() << std::endl << _str_header << std::endl;
@@ -215,7 +216,9 @@ int     Request::read_body()
 
 int 	        write_chunked(int len)
 {
+    _buffer[len] = 0;
     size_t     pos;
+
     pos = _str_buffer.find("\r\n", _body_position);
     while (pos != NPOS)
     {
