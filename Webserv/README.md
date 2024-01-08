@@ -276,3 +276,15 @@ According to the HTTP/1.1 specification (RFC 7231), a GET request is not expecte
 The HTTP/1.1 specification (RFC 7231, Section 4.3.1) states:
 
     A payload within a GET request message has no defined semantics; sending a payload body on a GET request might cause some existing implementations to reject the request.
+    
+    
+    
+
+
+## Cookies
+
+https://chat.openai.com/share/e0578a25-3675-4a77-bec1-fe7f4534702e
+
+https://chat.openai.com/share/c8de0f6f-04d2-41b5-8af5-59b85e8943a4
+
+https://chat.openai.com/share/2423918d-7d61-4da0-8042-6ddc37253629
