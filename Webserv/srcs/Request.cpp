@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 22:25:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 22:29:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ int     Request::read(void)
         return (0);
     if (_str_header == "")
         read_header();
-    else if (_chunked)
-        read_body_chunked();
+    //else if (_chunked)
+    //    read_body_chunked();
     else
         read_body();
     return (0);
@@ -196,22 +196,13 @@ int     Request::read_body()
         _status_code = 400;
         return (end_read());
     }
-    _body_size += ret;
+    _body_size += ret + _body_left;
 	std::cout << "read_body: " << ret << std::endl;
 	std::cout << "_body_size: " << _body_size << std::endl;
-    if (ret > 0 && _fd_in > 0)
-    {
-        int     len = ret;
-        if (_chunked)
-        {
-            len = _chunked_size - _chunked_received;
-            if (len > ret)
-                return (end_read());
-        }
-        if (write(_fd_in, buffer, len) == -1)
-            return (end_read());
-    }
-    if (ret < (int) _body_buffer || (!_chunked && _body_size >= _content_length))
+    if (ret > 0 && write(_fd_in, buffer, ret + _body_left) == -1)
+        return (end_read());
+    _body_left = 0;
+    if (ret < (int) _body_buffer || _body_size >= _content_length)
         return (end_read());
     return (0);
 }
