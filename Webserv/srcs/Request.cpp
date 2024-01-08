@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 22:01:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 22:02:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -341,7 +341,7 @@ void	Request::process_fd_in()
     if (_body_header_size > 0 && _fd_in != -1 && _status_code == 200)
     {
         if (_chunked)
-            write_chunked(_body_position, 0);
+            write_chunked(_body_position, _str_buffer.size() - _body_position);
         else if (write(_fd_in, &_buffer[_body_position], _body_size) == -1)
             _status_code = 500;
     }
