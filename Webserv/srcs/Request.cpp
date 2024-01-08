@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 19:13:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 19:17:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int     Request::read_header()
 bool	Request::receive_header(void)
 {
     int ret = 1;
+    std::string     str_buffer;
 
     _body_position = NPOS;
     while (_body_position == NPOS && ret > 0)
@@ -115,8 +116,9 @@ bool	Request::receive_header(void)
         if (ret > 0)
         {
             _buffer[ret] = 0;
-            _str_header += _buffer;
-            _body_position = _str_header.find("\r\n\r\n");
+            str_buffer = std::string(_buffer);
+            _str_header += str_buffer;
+            _body_position = str_buffer.find("\r\n\r\n");
         }
     }
     std::cout << "Request header: " << _str_header.size() << std::endl << _str_header << std::endl;
