@@ -32,3 +32,37 @@ Listening at 127.0.0.1:4141 (socket : 3)
 Listening at 127.0.0.1:80 (socket : 4)
 Listening at 127.0.2.1:4242 (socket : 5)
 Waiting on select() ...
+Listening socket is readable 3
+  New incoming connection - 6
+RequestHeader Default constructor
+Waiting on select() ...
+Request header: 145
+PUT /put_test/test.txt HTTP/1.1
+Host: 127.0.0.1:4141
+User-Agent: curl/7.81.0
+Accept: */*
+Transfer-Encoding: chunked
+Expect: 100-continue
+
+
+check_location 6 www/put//test.txt
+Content-Type: 
+Content-Length: 18446744073709551615
+end_read 6 www/put//test.txt
+Waiting on select() ...
+Write set sk = 6
+Header Constructor
+Response Header:
+HTTP/1.1 400 Bad Request
+Content-Type: text/html
+Content-Length: 145
+Date: Mon, 08 Jan 2024 07:53:09 GMT
+
+
+Header Destruction
+Waiting on select() ...
+Write set sk = 6
+end_connection read |www/put//test.txt| 6 0/145
+close_client_sk 6
+RequestHeader Destruction
+Waiting on select() ...
