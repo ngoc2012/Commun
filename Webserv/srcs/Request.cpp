@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 18:40:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 18:47:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,6 +291,8 @@ void	Request::process_fd_in()
     // write body header to the file
     if (_body_size > 0 && _fd_in != -1 && _status_code == 200)
     {
+        size_t 		_chunked_size;
+        size_t 		_chunked_received;
         size_t      header_size = _str_header.size();
         if (_chunked)
         {
