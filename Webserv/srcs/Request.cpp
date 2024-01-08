@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 12:56:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 12:59:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,13 +295,13 @@ void	Request::process_fd_in()
         if (_chunked)
         {
             int     pos;
-            int     len;
             do
             {
                 pos = _str_header.find("\r\n", _body_position);
                 if (pos == NPOS)
                     break ;
                 _chunked_size = ft::atoi_base(_str_header.substr(_body_position, pos - _body_position).c_str(), "0123456789abcdef");
+                _body_position = pos + 2;
                 _chunked_received = header_size - _body_position;
                 // case 1
                 if (!_chunked_received)
@@ -309,17 +309,10 @@ void	Request::process_fd_in()
                 // case 2
                 if (_chunked_received < _chunked_size)
                 {
-                    if (write(_fd_in, &_buffer[_body_position + pos + 2], len) == -1)
-                    {
+                    if (write(_fd_in, &_buffer[_body_position], _chunked_received) == -1)
                         _status_code = 500;
-                        return ;
-                    }
+                    return ;
                 }
-                len = _chunked_received;
-                // case 3
-                if (len > _chunked_size)
-                    len = _chunked_size;
-                if (_chunked_received
                 _body_position += len;
             }
             while (_chunked_received > _chunked_size)
