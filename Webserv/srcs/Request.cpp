@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 22:37:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 22:39:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ Request::Request(int sk, Host* h, Address* a) : _socket(sk), _host(h), _address(
 	_content_length = 0;
 	_chunked = false;
     _chunked_size = 0;
+    _chunked_writed = 0;
     _body_left = 0;
 	_body_size = 0;
     _header.set_host(h);
@@ -218,6 +219,7 @@ int 	        write_chunked(int len)
 {
     _buffer[len] = 0;
     std::string     str_buffer(_buffer);
+    if (_chunked_size - _chunked_writed > 0)
     size_t          pos = str_buffer.find("\r\n");
     size_t		    body_position = 0;
     while (pos != NPOS)
