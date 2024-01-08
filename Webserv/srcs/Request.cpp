@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 22:11:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 22:13:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,8 @@ bool	Request::receive_header(void)
         return (false);
     }
     _body_position += 4;
-    _body_header_size = ret - _body_position;
-    memcpy(_buffer, _buffer + _body_position, _body_header_size);
+    _body_left = ret - _body_position;
+    memcpy(_buffer, _buffer + _body_position, _body_left);
     return (true);
 }
 
@@ -341,8 +341,8 @@ void	Request::process_fd_in()
     if (_body_header_size > 0 && _fd_in != -1 && _status_code == 200)
     {
         if (_chunked)
-            write_chunked(_body_position, _str_buffer.size() - _body_position);
-        else if (write(_fd_in, _buffer, _body_header_size) == -1)
+            write_chunked();
+        else if (write(_fd_in, _buffer, _body_left) == -1)
             _status_code = 500;
     }
 }
