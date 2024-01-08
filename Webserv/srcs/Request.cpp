@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 09:43:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 10:04:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,12 @@ bool	Request::parse_header(void)
     _chunked = _header.parse_transfer_encoding();
     std::cout << "chunked: " << _chunked << std::endl;
     if (_chunked)
+    {
+        _body_position += 4;
+            _str_header += _buffer;
+        if (
         return (true);
+    }
     _content_type = _header.parse_content_type();
     std::cout << "Content-Type: " << _content_type << std::endl;
     _content_length = _header.parse_content_length();
