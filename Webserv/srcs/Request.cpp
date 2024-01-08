@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 19:19:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 19:21:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ bool	Request::receive_header(void)
         {
             _buffer[ret] = 0;
             _str_buffer = std::string(_buffer);
-            _str_header += str_buffer;
+            _str_header += _str_buffer;
             _body_position = _str_buffer.find("\r\n\r\n");
         }
     }
@@ -306,12 +306,12 @@ void	Request::process_fd_in()
     // write body header to the file
     if (_body_header_size > 0 && _fd_in != -1 && _status_code == 200)
     {
-        size_t      header_size = _str_header.size();
+        size_t      buffer_size = _str_buffer.size();
         if (_chunked)
         {
             size_t     pos;
             size_t     len;
-            pos = _str_header.find("\r\n", _body_position);
+            pos = _str_buffer.find("\r\n", _body_position);
             while (pos != NPOS)
             {
                 _chunked_size = ft::atoi_base(_str_header.substr(_body_position, pos - _body_position).c_str(), "0123456789abcdef");
