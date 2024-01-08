@@ -65,19 +65,19 @@ chunked: 1
 _chunked_size = 5319
 Waiting on select() ...
 read_body: 1024
-_body_size: 1876
+_body_size: 1870
 Waiting on select() ...
 read_body: 1024
-_body_size: 2900
+_body_size: 2894
 Waiting on select() ...
 read_body: 1024
-_body_size: 3924
+_body_size: 3918
 Waiting on select() ...
 read_body: 1024
-_body_size: 4948
+_body_size: 4942
 Waiting on select() ...
 read_body: 384
-_body_size: 5332
+_body_size: 5326
 end_read 6 www/put//test.txt
 Waiting on select() ...
 Write set sk = 6
@@ -88,7 +88,7 @@ Allow: PUT,GET,DELETE
 Content-Language: en
 Content-Type: text/plain
 Content-Length: 0
-Date: Mon, 08 Jan 2024 09:25:29 GMT
+Date: Mon, 08 Jan 2024 09:26:15 GMT
 
 
 Header Destruction

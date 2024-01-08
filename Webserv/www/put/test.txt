@@ -1,4 +1,3 @@
-14c7
 #Setup the configuration file as follow:
 #- / must answer to GET request ONLY
 #- /put_test/* must answer to PUT request and save files to a directory of your choice

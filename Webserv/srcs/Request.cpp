@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 10:25:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 10:26:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,8 +183,8 @@ bool	Request::parse_header(void)
         _chunked_size = ft::atoi_base(_str_header.substr(_body_position, len).c_str(), "0123456789abcdef");
         std::cout << "_chunked_size = " << _chunked_size << std::endl;
         _body_position = len + 2;
-        //_body_size = _str_header.size() - _body_position;
-        //_chunked_received = _body_size;
+        _body_size = _str_header.size() - _body_position;
+        _chunked_received = _body_size;
         return (true);
     }
     _content_type = _header.parse_content_type();
