@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 22:31:11 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 22:33:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,16 +205,17 @@ int     Request::read_body()
             return (end_read());
     }
     else
+        if (!write_chunked(ret + _body_left))
+            return (end_read());
     _body_left = 0;
     if (ret < (int) _body_buffer || _body_size >= _content_length)
         return (end_read());
     return (0);
 }
 
-int 	        write_chunked()
+int 	        write_chunked(int len)
 {
     size_t     pos;
-    size_t     len;
     pos = _str_buffer.find("\r\n", _body_position);
     while (pos != NPOS)
     {
