@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 10:06:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 10:08:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,10 +162,21 @@ bool	Request::parse_header(void)
     std::cout << "chunked: " << _chunked << std::endl;
     if (_chunked)
     {
-        if (_str_header.find("\r\n", _body_position) != NPOS);
-        _body_position += 4;
-            _str_header += _buffer;
-        if (
+        int ret = 1;
+        while (_str_header.find("\r\n", _body_position) == NPOS && ret > 0)
+        {
+            ret = recv(_socket, _buffer, _body_buffer, 0);
+            if (ret < 0)
+            {
+                _status_code = 500;
+                return (false);
+            }
+            if (ret > 0)
+            {
+                _buffer[ret] = 0;
+                _str_header += _buffer;
+            }
+        }
         return (true);
     }
     _content_type = _header.parse_content_type();
