@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 10:10:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/08 10:13:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,8 @@ bool	Request::parse_header(void)
                 _str_header += _buffer;
             }
         }
-        int     pos = _str_header.find("\r\n", _body_position);
+        int     len = _str_header.find("\r\n", _body_position);
+        _chunked_size = ft::atoi_base(_str_header.substr(_body_position, len).c_str());
         return (true);
     }
     _content_type = _header.parse_content_type();
