@@ -35,7 +35,7 @@ export class Lobby
                         this.pong_game(info);
                         break;
                 }
-            }
+            },
             error: (error) => this.main.set_status('Error: Can not join game')
         });
     }
