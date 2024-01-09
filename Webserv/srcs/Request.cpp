@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/09 15:55:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/09 15:57:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ int     Request::read(void)
         return (0);
     if (_str_header == "")
         read_header();
-    //else if (_chunked)
-    //    read_body_chunked();
     else
         read_body();
     return (0);
@@ -203,7 +201,7 @@ int     Request::read_body()
 	std::cout << "_body_size: " << _body_size << std::endl;
     if (!_chunked)
     {
-        if (ret > 0 && write(_fd_in, buffer, ret + _body_left) == -1)
+        if (ret > 0 && write(_fd_in, _buffer, ret + _body_left) == -1)
             return (end_read());
     }
     else
@@ -215,7 +213,7 @@ int     Request::read_body()
     return (0);
 }
 
-bool 	        write_chunked(int len)
+bool    Request::write_chunked(size_t len)
 {
     size_t		    body_position = 0;
 
@@ -234,7 +232,7 @@ bool 	        write_chunked(int len)
     size_t          pos = str_buffer.find("\r\n", body_position);
     while (pos != NPOS)
     {
-        _chunked_size = ft::atoi_base(_str_header.substr(_body_position, pos - _body_position).c_str(), "0123456789abcdef");
+        _chunked_size = ft::atoi_base(_str_header.substr(body_position, pos - _body_position).c_str(), "0123456789abcdef");
         body_position = pos + 2;
         _chunked_writed = len - body_position;
         if (_chunked_writed > _chunked_size)
