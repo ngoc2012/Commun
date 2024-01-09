@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/09 15:57:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/09 15:59:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,25 +225,29 @@ bool    Request::write_chunked(size_t len)
         if (body_position > len)
             body_position = len;
         if (write(_fd_in, _buffer, body_position) == -1)
+        {
             _status_code = 500;
+            return (false);
+        }
     }
     if (body_position > len - 1)
         return (true);
     size_t          pos = str_buffer.find("\r\n", body_position);
     while (pos != NPOS)
     {
-        _chunked_size = ft::atoi_base(_str_header.substr(body_position, pos - _body_position).c_str(), "0123456789abcdef");
+        _chunked_size = ft::atoi_base(_str_header.substr(body_position, pos - body_position).c_str(), "0123456789abcdef");
         body_position = pos + 2;
         _chunked_writed = len - body_position;
         if (_chunked_writed > _chunked_size)
             _chunked_writed = _chunked_size;
         if (!_chunked_writed)
             return (true);
-        if (write(_fd_in, &_buffer[_body_position], _body_header_size) == -1)
+        if (write(_fd_in, &_buffer[body_position], _chunked_writed) == -1)
             _status_code = 500;
         body_position += _chunked_writed;
         pos = str_buffer.find("\r\n", body_position);
     }
+    return (true);
 }
 
 bool	Request::check_location()
