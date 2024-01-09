@@ -1,5 +1,5 @@
 import {Pong} from 'Pong.js'
-import {game} from './main.js'
+import {game} from '../main.js'
 
 var pong = new Pong();
 
