@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/09 13:33:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/09 15:55:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ int     Request::read_body()
     _body_size += ret + _body_left;
 	std::cout << "read_body: " << ret << std::endl;
 	std::cout << "_body_size: " << _body_size << std::endl;
-    if (!chunked)
+    if (!_chunked)
     {
         if (ret > 0 && write(_fd_in, buffer, ret + _body_left) == -1)
             return (end_read());
