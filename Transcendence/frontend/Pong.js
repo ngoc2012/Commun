@@ -35,7 +35,7 @@ export class Pong
     quit() {
         if (this.socket !== -1)
             this.socket.close();
-        this.main.load('/lobby', () => this.lobby.events()));
+        this.main.load('/lobby', () => this.lobby.events());
     }
 
     connect() {
