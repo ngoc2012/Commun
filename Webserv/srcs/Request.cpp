@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/09 13:27:06 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/09 13:29:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,8 @@ int 	        write_chunked(int len)
     if (_chunked_size - _chunked_writed > 0)
     {
         body_position = _chunked_size - _chunked_writed;
+        if (body_position > len)
+            body_position = len;
         if (write(_fd_in, _buffer, body_position) == -1)
             _status_code = 500;
     }
@@ -232,6 +234,7 @@ int 	        write_chunked(int len)
     {
         _chunked_size = ft::atoi_base(_str_header.substr(_body_position, pos - _body_position).c_str(), "0123456789abcdef");
         body_position = pos + 2;
+        _chunked_writed = len - body_position;
         if (!_body_header_size)
             return ;
         if (_body_header_size < _chunked_size)
