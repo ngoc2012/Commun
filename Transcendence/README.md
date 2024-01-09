@@ -4,6 +4,12 @@
 
 [The Mechanics of Pong](https://dooglz.github.io/set09121/pong2)
 
+## Start game
+
+```console
+python3 manage.py runserver 0.0.0.0:8000
+```
+
 ## Bootstrap toolkit
 
 [Introduction](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
