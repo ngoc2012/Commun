@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/09 13:31:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/09 13:33:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,25 +239,11 @@ bool 	        write_chunked(int len)
         _chunked_writed = len - body_position;
         if (_chunked_writed > _chunked_size)
             _chunked_writed = _chunked_size;
-        if (!_body_header_size)
-            return ;
-        if (_body_header_size < _chunked_size)
-        {
-            if (write(_fd_in, &_buffer[_body_position], _body_header_size) == -1)
-                _status_code = 500;
-            _body_position = header_size;
-            _body_size += _body_header_size;
-            _body_header_size = 0;
-            return ;
-        }
-        else
-        {
-            if (write(_fd_in, &_buffer[_body_position], _chunked_size) == -1)
-                _status_code = 500;
-            _body_position += _chunked_size;
-            _body_header_size -= _chunked_size;
-            _body_size += _chunked_size;
-        }
+        if (!_chunked_writed)
+            return (true);
+        if (write(_fd_in, &_buffer[_body_position], _body_header_size) == -1)
+            _status_code = 500;
+        body_position += _chunked_writed;
         pos = str_buffer.find("\r\n", body_position);
     }
 }
