@@ -42,8 +42,7 @@ export class Pong
         this.main.set_status("Connecting to server...");
         new_connection({
             name: "Connect to pong server",
-            link: 'ws://127.0.0.1:8000/pong/' + this.info.room + \
-            '?user=' + this.main.id,
+            link: 'ws://127.0.0.1:8000/pong/' + this.info.room + '?user=' + this.main.id,
             callback: {
                 open: () => {
                     this.connected = true;
