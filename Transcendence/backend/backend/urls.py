@@ -20,13 +20,13 @@ from . import views
 from pong.urls import urlpatterns
 from django.urls import include, path
 
-#ws://127.0.0.1:8000/ws/chat/lobby/
+from .consumers import RoomsConsumer
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('lobby/', views.lobby, name='lobby'),
     path('signup/', views.signup, name='signup'),
     path('login/', views.login, name='login'),
-    path('rooms/', MyConsumer.as_asgi()),
+    path('rooms/', RoomsConsumer.as_asgi()),
     path('pong/', include("pong.urls", namespace='pong')),
 ]
