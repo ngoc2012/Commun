@@ -19,8 +19,9 @@ export class Signup
             url: '/new_player',
             method: 'POST',
             data: {
-                "user": this.main.user,
-                "id": this.dom_rooms.options[this.dom_rooms.selectedIndex].value
+                "login": this.dom_login.value,
+                "password": this.dom_password.value,
+                "name": this.dom_name.value
             },
             success: (info) => {
                 switch (info.game) {
