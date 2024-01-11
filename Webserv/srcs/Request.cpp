@@ -345,7 +345,7 @@ void	Request::process_fd_in()
                     O_CREAT | O_WRONLY | O_TRUNC, 0664);
             if (_fd_in == -1)
                 _status_code = 500;
-            if (_content_length == NPOS)
+            if (!_content_length || _content_length == NPOS)
                 end_read();
             break;
         case DELETE:
