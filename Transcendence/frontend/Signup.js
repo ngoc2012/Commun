@@ -24,13 +24,10 @@ export class Signup
                 "name": this.dom_name.value
             },
             success: (info) => {
-                switch (info.game) {
-                    case 'pong':
-                        this.pong_game(info);
-                        break;
-                }
+                this.main.login = info.login;
+                this.main.name = info.name;
             },
-            error: (error) => this.main.set_status('Error: Can not join game')
+            error: (error) => this.main.set_status(error.error)
         });
     }
 

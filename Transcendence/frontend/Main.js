@@ -3,6 +3,7 @@ import {Lobby} from './Lobby.js'
 export class Main
 {
     login = "";
+    name = "";
     id = -1;
     status = "";
 
