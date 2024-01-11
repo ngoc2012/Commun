@@ -14,11 +14,9 @@ export class Signup
         this.dom_cancel.addEventListener("click", () => this.cancel());
     }
 
-    join() {
-        if (this.dom_rooms.selectedIndex === -1)
-            return;
+    signup() {
         $.ajax({
-            url: '/join_game',
+            url: '/new_player',
             method: 'POST',
             data: {
                 "user": this.main.user,
