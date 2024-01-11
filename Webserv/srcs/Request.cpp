@@ -345,6 +345,8 @@ void	Request::process_fd_in()
                     O_CREAT | O_WRONLY | O_TRUNC, 0664);
             if (_fd_in == -1)
                 _status_code = 500;
+            if (_content_length == NPOS)
+                end_read();
             break;
         case DELETE:
             if (std::remove(_full_file_name.c_str()))
@@ -359,7 +361,7 @@ int     Request::end_read(void)
 {
     std::cout << "end_read " << _socket << " " << _body_size << " " << _full_file_name << std::endl;
 
-    if (_fd_in > 0)
+    if (_method != POST && _fd_in > 0)
         close(_fd_in);
     _read_queue = false;
     _host->new_response_sk(_socket);
