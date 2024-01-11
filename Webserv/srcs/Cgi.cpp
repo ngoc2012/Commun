@@ -133,7 +133,7 @@ bool    Cgi::get_envs()
     Server*   server = _request->get_server();
     envs.push_back("SCRIPT_NAME=" + _file);
     //envs.push_back("SERVER_NAME=" + server->get_server_name());
-    envs.push_back("SERVER_PROTOCOL=");
+    envs.push_back("SERVER_PROTOCOL=HTTP/1.1");
     envs.push_back("SERVER_PORT=" + ft::itos((int) server->get_port()));
     envs.push_back("SERVER_SOFTWARE=WEBSERV/1.0");
 
