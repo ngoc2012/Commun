@@ -5,13 +5,13 @@ export class Signup
     }
     
     events() {
+        this.dom_login = document.querySelector("#login");
+        this.dom_password = document.querySelector("#password");
+        this.dom_name = document.querySelector("#name");
         this.dom_signup = document.querySelector("#signup");
-        this.dom_pew = document.querySelector("#pew");
-        this.dom_join = document.querySelector("#join");
-        this.dom_rooms = document.getElementById("rooms");
-        this.dom_pong.addEventListener("click", () => this.new_pong("pong"));
-        this.dom_join.addEventListener("click", () => this.join());
-        this.rooms_update();
+        this.dom_cancel = document.querySelector("#cancel");
+        this.dom_signup.addEventListener("click", () => this.signup());
+        this.dom_cancel.addEventListener("click", () => this.cancel());
     }
 
     join() {
