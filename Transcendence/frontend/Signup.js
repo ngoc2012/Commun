@@ -27,51 +27,11 @@ export class Signup
                 this.main.login = info.login;
                 this.main.name = info.name;
             },
-            error: (error) => this.main.set_status(error.error)
+            error: (data) => this.main.set_status(data.error)
         });
     }
 
-    new_game(game) {
-        $.ajax({
-            url: '/new_game',
-            method: 'POST',
-            data: {
-                "user": this.main.user,
-                "game": game
-            },
-            success: (info) => this.pong_game(info),
-            error: (error) => this.main.set_status('Error: Can not create game')
-        });
-    }
-
-    pong_game(info) {
-        this.game = new Pong(this.main, this, info);
-        this.main.load('/pong', () => this.game.init());
-    }
-
-    rooms_update() {
-        new_connection({
-            name: "rooms update",
-            socket: this.socket,
-            link: 'ws://127.0.0.1:8000/rooms?user=' + this.main.user,
-            callback: {
-                message: (data) => {
-                    var options_rooms = this.dom_rooms && this.dom_rooms.options;
-                    this.dom_rooms.innerHTML = "";
-                    if (options_rooms && data.rooms && data.rooms.length > 0) {
-                        data.rooms.forEach((room) => {
-                            var option = document.createElement("option");
-                            option.value = room.id;
-                            option.text = "" + room.id;
-                            room.players.forEach((p) => {
-                                option.text += " - " + p;
-                            });
-                            this.dom_rooms.add(option);
-                        });
-                    }
-                },
-                error: this.rooms_update
-            }
-        });
+    cancel() {
+        main.load('/lobby', () => main.lobby.events());
     }
 }
