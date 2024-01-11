@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import PlayersModel
+from django.views.decorators.csrf import csrf_exempt
+from game.models import PlayersModel
 
 def lobby(request):
 	return (render(request, 'lobby.html'))
