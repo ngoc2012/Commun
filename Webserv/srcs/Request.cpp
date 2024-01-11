@@ -338,11 +338,9 @@ void	Request::process_fd_in()
         case POST:
             _tmp_file = "/tmp/0";
             struct stat buffer;
-            while (stat(_tmp_file.c_str(), &buffer) != 0)
-            {
-                std::cout << _tmp_file << std::endl;
+            while (stat(_tmp_file.c_str(), &buffer) == 0)
                 _tmp_file = "/tmp/" + ft::itos(++i);
-            }
+            std::cout << _tmp_file << std::endl;
             _fd_in = open(_tmp_file.c_str(),
                     O_CREAT | O_WRONLY | O_TRUNC, 0664);
             if (_fd_in == -1)

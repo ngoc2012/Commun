@@ -54,7 +54,7 @@ void    Cgi::execute()
     }
 
     std::cout << "Cgi execute" << std::endl;
-    /*
+    
     int pipe_in[2];
     int pipe_out[2];
     
@@ -100,7 +100,7 @@ void    Cgi::execute()
             write(pipe_in[1], buffer, bytesRead);
         _request->get_response()->set_fd_out(pipe_out[0]);
     }
-    */
+    
 }
 
 bool    Cgi::get_envs()
