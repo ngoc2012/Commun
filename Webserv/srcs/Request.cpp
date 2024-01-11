@@ -170,7 +170,7 @@ bool	Request::parse_header(void)
     if (_chunked)
         return (true);
     _content_length = _header.parse_content_length();
-    //std::cout << "Content-Length: " << _content_length << std::endl;
+    std::cout << "Content-Length: " << _content_length << std::endl;
     if (_method == GET)
     {
         if (_content_length == NPOS)
@@ -178,7 +178,7 @@ bool	Request::parse_header(void)
         return (true);
     }
     _content_type = _header.parse_content_type();
-    //std::cout << "Content-Type: " << _content_type << std::endl;
+    std::cout << "Content-Type: " << _content_type << std::endl;
     if (_method == PUT && _content_length != NPOS)
         return (true);
     if (_content_type == "" || _content_length == NPOS)
