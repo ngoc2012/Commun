@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 08:48:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/10 10:03:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,14 @@
 
 #include "RequestHeader.hpp"
 
-RequestHeader::RequestHeader()
-{
-	std::cout << "RequestHeader Default constructor" << std::endl;
-}
+RequestHeader::RequestHeader() { }
 RequestHeader::RequestHeader(const RequestHeader& src) { *this = src; }
 RequestHeader&	RequestHeader::operator=( RequestHeader const & src )
 {
 	(void) src;
 	return (*this);
 }
-RequestHeader::~RequestHeader()
-{
-	std::cout << "RequestHeader Destruction" << std::endl;
-}
+RequestHeader::~RequestHeader() { }
 
 bool	RequestHeader::parse_method_url(std::string& url, e_method& m)
 {
@@ -85,7 +79,7 @@ std::string	    RequestHeader::parse_content_type()
     size_t  last_pos = _str->find("Content-Type:", _pos);
     if (last_pos == NPOS)
     {
-        std::cerr << "Error: Content-Type not found." << std::endl;
+        //std::cerr << "Error: Content-Type not found." << std::endl;
         return ("");
     }
     last_pos += 14;
@@ -99,7 +93,7 @@ std::string	    RequestHeader::parse_content_type()
     std::set<std::string>*	set_mimes = _host->get_set_mimes();
     if (set_mimes->find(type) != set_mimes->end())
         return (type);
-    std::cerr << "Error: Content type not found." << std::endl;
+    std::cerr << "Error: Content type " << type << " not found." << std::endl;
     return ("");
 }
 
@@ -108,7 +102,7 @@ size_t	RequestHeader::parse_content_length()
     size_t  last_pos = _str->find("Content-Length:", _pos);
     if (last_pos == NPOS)
     {
-        std::cerr << "Error: Content-Length not found." << std::endl;
+        //std::cerr << "Error: Content-Length not found." << std::endl;
         return (NPOS);
     }
     last_pos += 16;

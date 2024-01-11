@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:59:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/10 10:17:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void     Response::write_header()
     else if (_request->get_method() == DELETE)
         mess_body("Delete", "File deleted");
     _header = header.generate();
-    std::cout << "Response Header:\n" << _header << std::endl;
+    //std::cout << "Response Header:\n" << _header << std::endl;
     if (send(_socket, _header.c_str(), _header.length(), 0) < 0)
         end_connection();
     //else
@@ -167,7 +167,7 @@ int     Response::end_connection(void)
     if (_request->get_method() == POST
         && _request->get_cgi()->get_pid() != -1)
         waitpid(_request->get_cgi()->get_pid(), NULL, 0);
-    std::cout << "end_connection read |" << _full_file_name << "| " << _socket << " " << _body_size << "/" << _content_length << std::endl;
+    std::cout << "end_connection " << _socket << " " << _full_file_name << std::endl;
     if (_fd_out > 0)
         close(_fd_out);
     _write_queue = false;

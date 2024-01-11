@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 14:16:20 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/10 10:08:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@
 
 #include "Address.hpp"
 
-Address::Address()
-{
-	std::cout << "Address Default constructor" << std::endl;
-}
+Address::Address() { }
 Address::Address(const Address& src) { *this = src; }
 Address&	Address::operator=( Address const & src )
 {
@@ -30,13 +27,12 @@ Address&	Address::operator=( Address const & src )
 }
 Address::~Address()
 {
-	std::cout << "Address Destructor" << std::endl;
 	for (std::vector<Server*>::iterator it = _servers.begin();
 		it != _servers.end(); ++it)
 		delete (*it);
 	if (_listen_socket > 0)
 	{
-		std::cout << "Close listen socket: " << _listen_socket << std::endl;
+		std::cout << "~Address: Close listen socket: " << _listen_socket << std::endl;
 		close(_listen_socket);
 	}
 }
@@ -53,14 +49,14 @@ int     Address::listen_socket(void)
 	_listen_socket = socket(AF_INET, SOCK_STREAM, 0);
 	if (_listen_socket < 0)
 	{
-		perror("listen socket: socket() failed");
+        std::cout << "Error: listen_socket: socket() failed " << _ip_address << ":" << _port << std::endl;
 		return (-1);
 	}
 	int    on = 1;
 	if (setsockopt(_listen_socket, SOL_SOCKET,  SO_REUSEADDR,
                    (char *)&on, sizeof(on)) < 0)
 	{
-		perror("reusable socket: setsockopt() failed");
+        std::cout << "Error: listen_socket: setsockopt() failed " << _ip_address << ":" << _port << std::endl;
 		return (-1);
 	}
 	fcntl(_listen_socket, F_SETFL, O_NONBLOCK);	// ioctl not allowed
@@ -77,12 +73,12 @@ int	    Address::bind_addr()
     //std::cout << _ip_address << ":" << _port << std::endl;
 	if (bind(_listen_socket, (struct sockaddr *)&addr, sizeof(addr)) < 0)
 	{
-		perror("bind() failed");
+        std::cout << "Error: bind_addr: bind() failed " << _ip_address << ":" << _port << std::endl;
 		return (-1);
 	}
 	if (listen(_listen_socket, _host->get_max_clients()) < 0)
 	{
-		perror("listen() failed");
+        std::cout << "Error: bind_addr: listen() failed " << _ip_address << ":" << _port << std::endl;
 		return (-1);
 	}
 	std::cout << "Listening at " << _ip_address << ":" << _port
@@ -93,7 +89,7 @@ int	    Address::bind_addr()
 //Accept all the new connections, create a new socket and add to the master set
 void	Address::accept_client_sk(void)
 {
-	std::cout << "Listening socket is readable " << _listen_socket << std::endl;
+	//std::cout << "Listening socket is readable " << _listen_socket << std::endl;
 	int	new_sk;
 	do
 	{
@@ -105,7 +101,7 @@ void	Address::accept_client_sk(void)
 			break;
 		}
 		fcntl(new_sk, F_SETFL, O_NONBLOCK);
-		std::cout << "  New incoming connection - " << new_sk << std::endl;
+		std::cout << "accept_client_sk " << new_sk << std::endl;
 		_host->new_request_sk(new_sk, this);
 	} while (new_sk != -1);
 }

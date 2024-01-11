@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/08 14:22:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/10 10:09:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	Host::start_server(void)
 		}
 		else
 		{
-            std::cerr << "Error: Listening -> Address " << ad->first << " closed." << std::endl;
+            //std::cerr << "Error: Listening -> Address " << ad->first << " closed." << std::endl;
 			delete (ad->second);
 			_str_address.erase(ad++);
 		}
@@ -92,7 +92,7 @@ void	Host::start_server(void)
 
 bool	Host::select_available_sk(void)
 {
-	std::cout << "Waiting on select() ..." << std::endl;
+	//std::cout << "Waiting on select() ..." << std::endl;
 	_sk_ready = select(_max_sk + 1, &_read_set, &_write_set, NULL, NULL);// No timeout
 	//std::cout << "_sk_ready = " << _sk_ready << std::endl;
 	if (_sk_ready < 0)
@@ -119,7 +119,7 @@ void	Host::check_sk_ready(void)
         if (FD_ISSET(i, &_write_set))
         {
             _sk_ready--;
-            std::cout << "Write set sk = " << i << std::endl;
+            //std::cout << "Write set sk = " << i << std::endl;
             _sk_request[i]->get_response()->write();
         }
     }

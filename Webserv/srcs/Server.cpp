@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 21:58:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/10 10:10:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ Server::~Server()
 	for (std::vector<Location*>::iterator it = _locations.begin();
 			it != _locations.end(); ++it)
 		delete(*it);
-	std::cout << "Destruction server: " << _ip_address << ":" << _port << std::endl;
+	//std::cout << "Destruction server: " << _ip_address << ":" << _port << std::endl;
 	if (_socket > 0)
 	{
-		std::cout << "Close socket: " << _socket << std::endl;
+		std::cout << "~Server: Close socket " << _socket << std::endl;
 		close(_socket);
 	}
 }

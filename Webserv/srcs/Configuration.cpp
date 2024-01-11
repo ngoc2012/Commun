@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/06 09:15:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/10 08:02:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ bool	Configuration::host_parser(std::string cmd, Host* host, std::vector<std::st
 	if (words[0] == "client_max_body_size")
 	{
 		n = std::atoi(words[1].c_str());
-		if (!ft::is_digit(words[1]) || n < 0 || n > 100)
+		if (!ft::is_digit(words[1]) || n < 0 || n > 10000)
 			return (true);
 		host->set_client_max_body_size(n);
 	}

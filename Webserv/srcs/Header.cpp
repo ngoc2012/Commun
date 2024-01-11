@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 18:31:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/10 09:54:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@
 
 #include "Header.hpp"
 
-Header::Header()
-{
-	std::cout << "Header Default constructor" << std::endl;
-}
+Header::Header() { }
 Header::Header(const Header& src) { *this = src; }
 Header&	Header::operator=( Header const & src )
 {
@@ -37,13 +34,8 @@ Header::Header(Response* r, std::string ext) :
     _mimes = _host->get_mimes();
     _status_message = _host->get_status_message();
 	init();
-	std::cout << "Header Constructor" << std::endl;
 }
-Header::~Header()
-{
-	std::cout << "Header Destruction" << std::endl;
-}
-
+Header::~Header() { }
 
 std::string	Header::generate(void)
 {

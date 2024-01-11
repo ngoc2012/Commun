@@ -28,7 +28,9 @@ curl -X PUT -H "Transfer-Encoding: chunked" --data-binary "@.conf" 127.0.0.1:414
 
 curl -T .conf --header "Transfer-Encoding: chunked" 127.0.0.1:4141/put_test/test.txt
 
-curl -T your_file.iso --header "Transfer-Encoding: chunked" 127.0.0.1:4141/put_test/test.iso
+curl -T ../../Downloads/alpine-virt-3.19.0-x86_64.iso --header "Transfer-Encoding: chunked" 127.0.0.1:4141/put_test/test.iso
+
+curl -T test.mp4 --header "Transfer-Encoding: chunked" 127.0.0.1:4141/put_test/test.mp4
 
 curl -X PUT -H "Content-Type: application/octet-stream" -H "Transfer-Encoding: chunked" --data-raw $'1a\nThis is the first chunk\n1c\nand this is the second one\n0' 127.0.0.1:4141/put_test/test.txt
 
