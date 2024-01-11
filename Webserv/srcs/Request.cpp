@@ -323,7 +323,7 @@ bool	Request::check_location()
 
 void	Request::process_fd_in()
 {
-    td::cout << "process_fd_in" << std::endl;
+    std::cout << "process_fd_in" << std::endl;
     int i = 0;
     switch (_method)
     {
@@ -339,8 +339,10 @@ void	Request::process_fd_in()
             _tmp_file = "/tmp/0";
             struct stat buffer;
             while (stat(_tmp_file.c_str(), &buffer) != 0)
+            {
+                std::cout << _tmp_file << std::endl;
                 _tmp_file = "/tmp/" + ft::itos(++i);
-            std::cout << _tmp_file << std::endl;
+            }
             _fd_in = open(_tmp_file.c_str(),
                     O_CREAT | O_WRONLY | O_TRUNC, 0664);
             if (_fd_in == -1)
