@@ -218,7 +218,7 @@ int     Request::read_body()
         _body_left = 0;
     }
     else if (!write_chunked(ret + _body_left))
-            return (end_read());
+        return (end_read());
     //std::cout << "_body_size: " << _body_size << std::endl;
     //std::cout << "ret: " << ret << std::endl;
     //std::cout << "_content_length: " << _content_length << std::endl;
@@ -323,6 +323,7 @@ bool	Request::check_location()
 
 void	Request::process_fd_in()
 {
+    td::cout << "process_fd_in" << std::endl;
     int i = 0;
     switch (_method)
     {
@@ -339,6 +340,7 @@ void	Request::process_fd_in()
             struct stat buffer;
             while (stat(_tmp_file.c_str(), &buffer) != 0)
                 _tmp_file = "/tmp/" + ft::itos(++i);
+            std::cout << _tmp_file << std::endl;
             _fd_in = open(_tmp_file.c_str(),
                     O_CREAT | O_WRONLY | O_TRUNC, 0664);
             if (_fd_in == -1)
