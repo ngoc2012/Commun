@@ -26,4 +26,4 @@ class RoomsModel(models.Model):
 
 class PlayerRoomModel(models.Model):
     player = models.ForeignKey(PlayersModel, on_delete=models.CASCADE)
-    room = models.ForeignKey(RoomsModel, on_delete=models.SET_NULL, null=True)
+    room = models.ForeignKey(RoomsModel, on_delete=models.CASCADE)
