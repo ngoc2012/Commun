@@ -122,7 +122,7 @@ bool	Request::receive_header(void)
             body_position = str_buffer.find("\r\n\r\n");
         }
     }
-    //std::cout << "Request header: " << _str_header.size() << std::endl << _str_header << std::endl;
+    std::cout << "Request header: " << _str_header.size() << std::endl << _str_header << std::endl;
     if (body_position == NPOS)
     {
         std::cerr << "Error: No end header found.\n" << std::endl;
@@ -180,6 +180,8 @@ bool	Request::parse_header(void)
     _content_type = _header.parse_content_type();
     std::cout << "Content-Type: " << _content_type << std::endl;
     if (_method == PUT && _content_length != NPOS)
+        return (true);
+    if (_method == POST)
         return (true);
     if (_content_type == "" || _content_length == NPOS)
     {
