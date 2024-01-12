@@ -17,7 +17,7 @@ export class Main
         this.dom_login = document.getElementById("login");
         this.dom_signup = document.getElementById("signup");
         this.dom_status = document.getElementById("status");
-        this.dom_user_name = document.getElementById("user_name");
+        this.dom_name = document.getElementById("name");
         this.dom_container = document.getElementById("container");
         this.dom_signup.addEventListener("click", () => this.signup_click());
         this.dom_login.addEventListener("click", () => this.login_click());
