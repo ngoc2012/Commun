@@ -24,6 +24,7 @@ from .consumers import RoomsConsumer
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path("chat/", include("chat.urls")),
     path('admin/', admin.site.urls),
     path('lobby/', views.lobby, name='lobby'),
     path('signup/', views.signup, name='signup'),
