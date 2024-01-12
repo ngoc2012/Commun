@@ -41,7 +41,7 @@ def log_in(request):
     if 'login' not in request.POST or 'password' not in request.POST:
           return (HttpResponse({'error' : 'Form not correct!'}))
     if not PlayersModel.objects.filter(login=request.POST['login']).exists():
-        return (HttpResponse({"error": "Login '" + request.POST['login'] + "' does not exist!"}))
+        return (HttpResponse({'error': "Login '" + request.POST['login'] + "' does not exist!"}))
     user = PlayersModel.objects.filter(login=request.POST['login'])
     if user.password == request.POST['password']:
         return (HttpResponse({
