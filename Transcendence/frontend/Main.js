@@ -17,9 +17,7 @@ export class Main
         this.dom_status = document.getElementById("status");
         this.dom_user_name = document.getElementById("user_name");
         this.dom_container = document.getElementById("container");
-        this.dom_signup.addEventListener("click", () => {
-            this.load('/signup', () => this.signup.events());
-        });
+        this.dom_signup.addEventListener("click", () => this.signup());
     }
 
     new_player() {
@@ -56,5 +54,8 @@ export class Main
         });
     }
 
+    signup() {
+        this.load('/signup', () => this.signup.events());
+    }
     set_status(s) { dom.textContent = s; }
 }
