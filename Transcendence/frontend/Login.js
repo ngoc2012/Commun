@@ -5,6 +5,7 @@ export class Login
     }
     
     events() {
+        this.main.set_status('')
         this.dom_login = document.querySelector("#login0");
         this.dom_password = document.querySelector("#password");
         this.dom_log_in = document.querySelector("#log_in");
