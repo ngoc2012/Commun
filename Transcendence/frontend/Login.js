@@ -22,7 +22,7 @@ export class Login
                 "password": this.dom_password.value,
             },
             success: (info) => {
-                if (error in info)
+                if ('error' in info)
                 {
                     this.main.set_status(info.error)
                 }

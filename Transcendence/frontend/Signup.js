@@ -24,7 +24,7 @@ export class Signup
                 "name": this.dom_name.value
             },
             success: (info) => {
-                if (error in info)
+                if ('error' in info)
                 {
                     this.main.set_status(info.error)
                 }
