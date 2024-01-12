@@ -18,6 +18,8 @@ export class Main
         this.dom_signup = document.getElementById("signup");
         this.dom_status = document.getElementById("status");
         this.dom_name = document.getElementById("name");
+        console.log('this.dom_name.value');
+        console.log(this.dom_name.value);
         this.dom_container = document.getElementById("container");
         this.dom_signup.addEventListener("click", () => this.signup_click());
         this.dom_login.addEventListener("click", () => this.login_click());
