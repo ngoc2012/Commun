@@ -29,6 +29,7 @@ export class Login
                 {
                     console.log(info);
                     console.log(info.error);
+                    console.log(info['error']);
                     this.main.set_status(info.error)
                 }
                 else
