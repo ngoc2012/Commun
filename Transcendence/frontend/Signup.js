@@ -5,7 +5,7 @@ export class Signup
     }
     
     events() {
-        this.main.set_status('')
+        this.main.set_status('');
         this.dom_login = document.querySelector("#login");
         this.dom_password = document.querySelector("#password");
         this.dom_name = document.querySelector("#name");
@@ -50,6 +50,7 @@ export class Signup
     }
 
     cancel() {
+        this.main.set_status('');
         this.main.load('/lobby', () => this.main.lobby.events());
     }
 }
