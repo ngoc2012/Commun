@@ -20,7 +20,6 @@ export class Login
             this.main.set_status('Field must not be empty')
             return;
         }
-        console.log("login");
         $.ajax({
             url: '/log_in/',
             method: 'POST',
