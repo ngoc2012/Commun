@@ -10,18 +10,15 @@ export class Login
         this.dom_name = document.querySelector("#name");
         this.dom_signup = document.querySelector("#signup");
         this.dom_cancel = document.querySelector("#cancel");
-        this.dom_signup.addEventListener("click", () => this.signup());
-        this.dom_cancel.addEventListener("click", () => this.cancel());
     }
 
     signup() {
         $.ajax({
-            url: '/new_player',
+            url: '/login',
             method: 'POST',
             data: {
                 "login": this.dom_login.value,
-                "password": this.dom_password.value,
-                "name": this.dom_name.value
+                "password": this.dom_password.value
             },
             success: (info) => {
                 this.main.login = info.login;
