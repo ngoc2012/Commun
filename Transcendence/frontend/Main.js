@@ -18,6 +18,7 @@ export class Main
         this.dom_user_name = document.getElementById("user_name");
         this.dom_container = document.getElementById("container");
         this.dom_signup.addEventListener("click", () => this.signup_click());
+        this.dom_login.addEventListener("click", () => this.login_click());
     }
 
     load(page, callback) {
