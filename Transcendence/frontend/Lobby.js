@@ -59,7 +59,7 @@ export class Lobby
     }
 
     rooms_update() {
-        console.log(this.rooms_update);
+        console.log('this.rooms_update');
         new_connection({
             name: "rooms update",
             socket: this.socket,

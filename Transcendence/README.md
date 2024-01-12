@@ -522,7 +522,32 @@ By default, the Django Admin provides a basic and functional interface for manag
 Remember to secure your Django Admin by configuring the `ADMIN` settings in your project's `settings.py` file, restricting access only to authorized users.
 
 
+#### Django admin not work
 
+1. **Ensure `django.contrib.admin` is in `INSTALLED_APPS`:**
+   In your `settings.py` file, make sure that `'django.contrib.admin'` is included in the `INSTALLED_APPS` list:
+
+    ```python
+    INSTALLED_APPS = [
+        # ...
+        'django.contrib.admin',
+        # ...
+    ]
+    ```
+
+2. **Check Template Loaders:**
+   Ensure that your `TEMPLATES` setting in `settings.py` includes `'django.contrib.admin'` in the `'APP_DIRS'` option. The default Django project template usually includes this, but it's worth checking:
+
+    ```python
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [],
+            'APP_DIRS': True,
+            # ...
+        },
+    ]
+    ```
 
 
 
