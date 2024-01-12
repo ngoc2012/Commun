@@ -15,9 +15,9 @@ export class Signup
     }
 
     signup() {
-        if (this.dom_login.value == ''
-            || this.dom_password.value == ''
-            || this.dom_name.value == '')
+        if (this.dom_login.trim() === ''
+            || this.dom_password.trim() === ''
+            || this.dom_name.trim() === '')
             return;
         console.log("signup");
         $.ajax({
