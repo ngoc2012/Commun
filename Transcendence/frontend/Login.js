@@ -14,7 +14,7 @@ export class Login
     }
 
     login() {
-        if (this.dom_login.value == null || this.dom_password.value == null)
+        if (this.dom_login.value == '' || this.dom_password.value == '')
             return;
         console.log("login");
         $.ajax({
