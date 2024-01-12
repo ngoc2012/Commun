@@ -23,6 +23,7 @@ export class Signup
             this.main.set_status('Field must not be empty');
             return;
         }
+        console.log("signup");
         $.ajax({
             url: '/new_player/',
             method: 'POST',
