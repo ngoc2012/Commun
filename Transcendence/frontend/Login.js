@@ -28,7 +28,7 @@ export class Login
                 "password": this.dom_password.value,
             },
             success: (info) => {
-                if (info.includes('Error'))
+                if (typeof info === 'string')
                 {
                     this.main.set_status(info)
                 }

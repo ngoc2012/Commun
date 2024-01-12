@@ -30,7 +30,7 @@ export class Signup
                 "name": this.dom_name.value
             },
             success: (info) => {
-                if (info.includes('Error'))
+                if (typeof info === 'string')
                 {
                     this.main.set_status(info)
                 }
