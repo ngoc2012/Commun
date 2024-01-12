@@ -6,24 +6,21 @@ export class Signup
     
     events() {
         this.main.set_status('');
-        this.dom_login = document.querySelector("#login");
-        this.dom_password = document.querySelector("#password");
-        this.dom_name = document.querySelector("#name");
-        this.dom_signup = document.querySelector("#signup");
+        this.dom_login = document.querySelector("#login1");
+        this.dom_password = document.querySelector("#password1");
+        this.dom_name = document.querySelector("#name1");
+        this.dom_signup = document.querySelector("#signup1");
         this.dom_cancel = document.querySelector("#cancel");
         this.dom_signup.addEventListener("click", () => this.signup());
         this.dom_cancel.addEventListener("click", () => this.cancel());
     }
 
     signup() {
-        console.log("start signup");
         if (this.dom_login.value === '' || this.dom_password.value === '' || this.dom_name.value === '')
         {
-            console.log("Field must not be empty");
             this.main.set_status('Field must not be empty');
             return;
         }
-        console.log("signup");
         $.ajax({
             url: '/new_player/',
             method: 'POST',
