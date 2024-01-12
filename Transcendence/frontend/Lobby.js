@@ -16,7 +16,7 @@ export class Lobby
         this.dom_rooms = document.getElementById("rooms");
         this.dom_pong.addEventListener("click", () => this.new_pong("pong"));
         this.dom_join.addEventListener("click", () => this.join());
-        //this.rooms_update();
+        this.rooms_update();
     }
 
     join() {
@@ -59,6 +59,7 @@ export class Lobby
     }
 
     rooms_update() {
+        console.log(this.rooms_update);
         new_connection({
             name: "rooms update",
             socket: this.socket,
