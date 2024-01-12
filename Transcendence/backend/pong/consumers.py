@@ -18,7 +18,7 @@ class PongConsumer(AsyncWebsocketConsumer):
             self.room_name,
             {
                 'type': 'update_state',
-                'state': updated_state_data,
+                'state': {},
             }
         )
         await self.accept()

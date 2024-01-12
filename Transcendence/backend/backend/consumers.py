@@ -28,14 +28,14 @@ class RoomsConsumer(AsyncWebsocketConsumer):
 
     async def update_rooms(self, event):
         action = event['action']
-        if (action['action'] == "new")
+        if (action['action'] == "new"):
             RoomsModel(
                 game="pong",
                 name=action['name'],
                 nplayers=1,
                 owner=action['owner']
             ).save()
-        if (action['action'] == "delete")
+        if (action['action'] == "delete"):
             RoomsModel.objects.get(id=action['id']).delete()
         await self.send(text_data=json.dumps([
             {
