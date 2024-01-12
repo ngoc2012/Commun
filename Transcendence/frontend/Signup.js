@@ -31,6 +31,7 @@ export class Signup
             success: (info) => {
                 if (info.includes('error'))
                 {
+                    console.log(info);
                     this.main.set_status(info.error)
                 }
                 else
