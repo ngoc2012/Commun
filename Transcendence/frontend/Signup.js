@@ -16,7 +16,7 @@ export class Signup
 
     signup() {
         $.ajax({
-            url: '/new_player',
+            url: '/new_player/',
             method: 'POST',
             data: {
                 "login": this.dom_login.value,
