@@ -13,15 +13,16 @@ export class Login
 
     signup() {
         $.ajax({
-            url: '/login',
+            url: '/login/',
             method: 'POST',
             data: {
                 "login": this.dom_login.value,
-                "password": this.dom_password.value
+                "password": this.dom_password.value,
             },
             success: (info) => {
                 this.main.login = info.login;
                 this.main.name = info.name;
+                this.dom_user_name.textContent = info.name;
             },
             error: (data) => this.main.set_status(data.error)
         });
