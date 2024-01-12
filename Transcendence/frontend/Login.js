@@ -9,9 +9,10 @@ export class Login
         this.dom_password = document.querySelector("#password");
         this.dom_log_in = document.querySelector("#log_in");
         this.dom_cancel = document.querySelector("#cancel");
+        this.dom_log_in.addEventListener("click", () => this.login());
     }
 
-    signup() {
+    login() {
         $.ajax({
             url: '/login/',
             method: 'POST',

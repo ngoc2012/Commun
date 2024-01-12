@@ -13,6 +13,7 @@ export class Main
     {
         this.lobby = new Lobby(this);
         this.signup = new Signup(this);
+        this.log_in = new Login(this);
         this.dom_login = document.getElementById("login");
         this.dom_signup = document.getElementById("signup");
         this.dom_status = document.getElementById("status");
@@ -44,7 +45,7 @@ export class Main
     }
 
     login_click() {
-        this.load('/login', () => this.signup.events());
+        this.load('/login', () => this.log_in.events());
     }
     set_status(s) { this.dom_status.textContent = s; }
 }
