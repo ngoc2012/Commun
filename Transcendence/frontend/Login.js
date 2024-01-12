@@ -10,11 +10,12 @@ export class Login
         this.dom_log_in = document.querySelector("#log_in");
         this.dom_cancel = document.querySelector("#cancel");
         this.dom_log_in.addEventListener("click", () => this.login());
+        this.dom_cancel.addEventListener("click", () => this.cancel());
     }
 
     login() {
         $.ajax({
-            url: '/login/',
+            url: '/log_in/',
             method: 'POST',
             data: {
                 "login": this.dom_login.value,

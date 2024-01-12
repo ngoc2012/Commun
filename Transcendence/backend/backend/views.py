@@ -12,6 +12,9 @@ def lobby(request):
 def signup(request):
 	return (render(request, 'signup.html'))
 
+def login(request):
+	return (render(request, 'login.html'))
+
 @csrf_exempt
 def new_player(request):
     if 'login' not in request.POST or 'password' not in request.POST or 'name' not in request.POST:
@@ -34,7 +37,7 @@ def new_player(request):
         }))
 
 @csrf_exempt
-def login(request):
+def log_in(request):
     if 'login' not in request.POST or 'password' not in request.POST:
           return (HttpResponse({'error' : 'Form not correct!'}))
     if not PlayersModel.objects.filter(login=request.POST['login']).exists():
