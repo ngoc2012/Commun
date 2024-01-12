@@ -20,9 +20,16 @@ export class Login
                 "password": this.dom_password.value,
             },
             success: (info) => {
-                this.main.login = info.login;
-                this.main.name = info.name;
-                this.dom_user_name.textContent = info.name;
+                if (error in info)
+                {
+                    this.main.set_status(info.error)
+                }
+                else
+                {
+                    this.main.login = info.login;
+                    this.main.name = info.name;
+                    this.dom_user_name.textContent = info.name;
+                }
             },
             error: (data) => this.main.set_status(data.error)
         });
