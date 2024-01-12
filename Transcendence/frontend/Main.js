@@ -41,5 +41,5 @@ export class Main
     signup_click() {
         this.load('/signup', () => this.signup.events());
     }
-    set_status(s) { dom.textContent = s; }
+    set_status(s) { this.dom_status.textContent = s; }
 }
