@@ -39,7 +39,6 @@ export class Main
     }
 
     signup_click() {
-        console.log('signup')
         this.load('/signup', () => this.signup.events());
     }
     set_status(s) { dom.textContent = s; }
