@@ -47,8 +47,5 @@ export class Main
     login_click() {
         this.load('/login', () => this.log_in.events());
     }
-    set_status(s) {
-        console.log(s);
-        this.dom_status.innerHTML = s; 
-    }
+    set_status(s) {this.dom_status.innerHTML = s;}
 }
