@@ -20,7 +20,7 @@ export class Signup
             || this.dom_password.value === ''
             || this.dom_name.value === '')
         {
-            this.main.set_status('Field must not be empty')
+            this.main.set_status('Field must not be empty');
             return;
         }
         $.ajax({
