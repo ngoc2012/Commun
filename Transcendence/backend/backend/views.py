@@ -35,8 +35,8 @@ def new_player(request):
 
 @csrf_exempt
 def login(request):
-    if PlayersModel.objects.filter(login=request.POST['login']).exists():
-        return (HttpResponse({"error": "Login '" + request.POST['login'] + "' exist. Please login!"}))
+    if not PlayersModel.objects.filter(login=request.POST['login']).exists():
+        return (HttpResponse({"error": "Login '" + request.POST['login'] + "' does not exist!"}))
     user = PlayersModel.objects.filter(login=request.POST['login'])
     if user.password == request.POST['password']:
         return (HttpResponse({

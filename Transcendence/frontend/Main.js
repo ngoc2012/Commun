@@ -1,5 +1,6 @@
 import {Lobby} from './Lobby.js'
 import {Signup} from './Signup.js'
+import {Login} from './Login.js'
 
 export class Main
 {
@@ -40,6 +41,10 @@ export class Main
 
     signup_click() {
         this.load('/signup', () => this.signup.events());
+    }
+
+    login_click() {
+        this.load('/login', () => this.signup.events());
     }
     set_status(s) { this.dom_status.textContent = s; }
 }
