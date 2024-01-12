@@ -59,7 +59,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(PROJECT_DIR, 'frontend')],
-        'APP_DIRS': False,
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -125,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 #STATIC_ROOT = BASE_DIR / 'frontend'
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'frontend')
+#STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 STATICFILES_DIRS = [os.path.join(PROJECT_DIR, 'frontend')]
 
 # Default primary key field type
