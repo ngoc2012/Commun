@@ -15,6 +15,7 @@ export class Login
 
     login() {
         console.log(this.dom_login.value.trim());
+        //console.log(this.dom_password.value);
         console.log(this.dom_password.value.trim());
         if (this.dom_login.value.trim() === '' || this.dom_password.value.trim() === '')
             return;
