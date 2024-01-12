@@ -20,24 +20,7 @@ export class Main
         this.dom_signup.addEventListener("click", () => this.signup());
     }
 
-    new_player() {
-        $.ajax({
-            url: '/new_player',
-            method: 'GET',
-            //headers: {'X-CSRFToken': csrftoken},
-            success: (response) => {
-                this.user = response;
-                console.log("new player :", this.user);
-                this.dom_user_name.innerHTML = this.user;
-            },
-            error: function(error) {
-                console.error('Error: sending new player demand', error.message);
-            }
-        });
-    }
-
-
-   load(page, callback) {
+    load(page, callback) {
         $.ajax({
             url: page + '/',
             method: 'GET',
