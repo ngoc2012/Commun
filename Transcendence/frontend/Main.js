@@ -17,7 +17,7 @@ export class Main
         this.dom_status = document.getElementById("status");
         this.dom_user_name = document.getElementById("user_name");
         this.dom_container = document.getElementById("container");
-        this.dom_signup.addEventListener("click", () => this.signup());
+        this.dom_signup.addEventListener("click", () => this.signup_click());
     }
 
     load(page, callback) {
@@ -37,7 +37,7 @@ export class Main
         });
     }
 
-    signup() {
+    signup_click() {
         console.log('signup')
         this.load('/signup', () => this.signup.events());
     }
