@@ -10,7 +10,7 @@ export class Signup
         this.dom_password = document.querySelector("#password1");
         this.dom_name = document.querySelector("#name1");
         this.dom_signup = document.querySelector("#signup1");
-        this.dom_cancel = document.querySelector("#cancel");
+        this.dom_cancel = document.querySelector("#cancel1");
         this.dom_signup.addEventListener("click", () => this.signup());
         this.dom_cancel.addEventListener("click", () => this.cancel());
     }
