@@ -25,12 +25,9 @@ export class Login
                 "password": this.dom_password.value,
             },
             success: (info) => {
-                if (info.includes('error'))
+                if (info.includes('Error'))
                 {
-                    console.log(info);
-                    console.log(info.error);
-                    console.log(info['error']);
-                    this.main.set_status(info.error)
+                    this.main.set_status(info)
                 }
                 else
                 {

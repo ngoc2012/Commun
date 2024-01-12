@@ -29,10 +29,9 @@ export class Signup
                 "name": this.dom_name.value
             },
             success: (info) => {
-                if (info.includes('error'))
+                if (info.includes('Error'))
                 {
-                    console.log(info);
-                    this.main.set_status(info.error)
+                    this.main.set_status(info)
                 }
                 else
                 {
