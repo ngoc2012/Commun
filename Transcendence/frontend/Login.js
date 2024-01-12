@@ -14,9 +14,6 @@ export class Login
     }
 
     login() {
-        console.log(this.dom_login.value);
-        //console.log(this.dom_password.value);
-        console.log(this.dom_password.value);
         if (this.dom_login.value === '' || this.dom_password.value === '')
             return;
         console.log("login");
@@ -28,7 +25,7 @@ export class Login
                 "password": this.dom_password.value,
             },
             success: (info) => {
-                if ('error' in info)
+                if (info.includes('error'))
                 {
                     this.main.set_status(info.error)
                 }
