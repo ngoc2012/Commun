@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from game.models import PlayersModel
 
@@ -18,11 +18,11 @@ def login(request):
 @csrf_exempt
 def new_player(request):
     if 'login' not in request.POST or 'password' not in request.POST or 'name' not in request.POST:
-          return (HttpResponse({'error' : 'Form not correct!'}))
+          return (HttpResponse({'error: Form not correct!'}))
     if request.POST['login'] == "" or request.POST['password'] == "" or request.POST['name'] == "":
-          return (HttpResponse({'error' : 'Form not correct!'}))
+        return (HttpResponse({'error : Form not correct!'}))
     if PlayersModel.objects.filter(login=request.POST['login']).exists():
-        return (HttpResponse({"error": "Login '" + request.POST['login'] + "' exist. Please login!"}))
+        return (HttpResponse({"error: Login '" + request.POST['login'] + "' exist. Please login!"}))
     new_player = PlayersModel(
             login=request.POST['login'],
             password=request.POST['password'],
@@ -31,7 +31,7 @@ def new_player(request):
             y=0
             )
     new_player.save()
-    return (HttpResponse({
+    return (JsonResponse({
         'login': new_player.login,
         'name': new_player.name
         }))
@@ -39,16 +39,14 @@ def new_player(request):
 @csrf_exempt
 def log_in(request):
     if 'login' not in request.POST or 'password' not in request.POST:
-        print({'error' : 'Form not correct!'})
-        return (HttpResponse({'error' : 'Form not correct!'}))
+        return (HttpResponse({'error: Form not correct!'}))
     if not PlayersModel.objects.filter(login=request.POST['login']).exists():
-        print({'error': "Login '" + request.POST['login'] + "' does not exist!"})
-        return (HttpResponse({'error': "Login '" + request.POST['login'] + "' does not exist!"}))
+        return (HttpResponse({"error: Login '" + request.POST['login'] + "' does not exist!"}))
     user = PlayersModel.objects.filter(login=request.POST['login'])
     if user.password == request.POST['password']:
-        return (HttpResponse({
+        return (JsonResponse({
             'login': user.login,
             'name': user.name
         }))
-    print({'error' : 'Password not correct!'})
-    return (HttpResponse({'error' : 'Password not correct!'}))
+    print({'error: Password not correct!'})
+    return (HttpResponse({'error: Password not correct!'}))
