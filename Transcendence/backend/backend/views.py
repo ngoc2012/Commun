@@ -22,7 +22,7 @@ def new_player(request):
     if request.POST['login'] == "" or request.POST['password'] == "" or request.POST['name'] == "":
         return (HttpResponse({'Error : Form not correct!'}))
     if PlayersModel.objects.filter(login=request.POST['login']).exists():
-        return (HttpResponse({"Error: Login '" + request.POST['login'] + "' exist. Please login!"}))
+        return (HttpResponse({"Error: Login '" + request.POST['login'] + "' exist."}))
     new_player = PlayersModel(
             login=request.POST['login'],
             password=request.POST['password'],
