@@ -32,6 +32,6 @@ export class Signup
     }
 
     cancel() {
-        main.load('/lobby', () => main.lobby.events());
+        this.main.load('/lobby', () => this.main.lobby.events());
     }
 }

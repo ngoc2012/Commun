@@ -7,8 +7,7 @@ export class Login
     events() {
         this.dom_login = document.querySelector("#login");
         this.dom_password = document.querySelector("#password");
-        this.dom_name = document.querySelector("#name");
-        this.dom_signup = document.querySelector("#signup");
+        this.dom_log_in = document.querySelector("#log_in");
         this.dom_cancel = document.querySelector("#cancel");
     }
 
@@ -29,6 +28,6 @@ export class Login
     }
 
     cancel() {
-        main.load('/lobby', () => main.lobby.events());
+        this.main.load('/lobby', () => this.main.lobby.events());
     }
 }
