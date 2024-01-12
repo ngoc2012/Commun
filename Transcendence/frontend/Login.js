@@ -14,6 +14,9 @@ export class Login
     }
 
     login() {
+        if (this.dom_login.value == null || this.dom_password.value == null)
+            return;
+        console.log("login");
         $.ajax({
             url: '/log_in/',
             method: 'POST',

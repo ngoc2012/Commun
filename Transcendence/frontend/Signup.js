@@ -15,6 +15,11 @@ export class Signup
     }
 
     signup() {
+        if (this.dom_login.value == null
+            || this.dom_password.value == null
+            || this.dom_name.value == null)
+            return;
+        console.log("signup");
         $.ajax({
             url: '/new_player/',
             method: 'POST',
