@@ -61,6 +61,7 @@ export class Lobby
     rooms_update() {
         console.log('this.rooms_update');
         new_connection({
+            main: this.main,
             name: "rooms update",
             socket: this.socket,
             link: 'ws://127.0.0.1:8000/rooms',
