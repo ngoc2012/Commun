@@ -39,8 +39,10 @@ def new_player(request):
 @csrf_exempt
 def log_in(request):
     if 'login' not in request.POST or 'password' not in request.POST:
-          return (HttpResponse({'error' : 'Form not correct!'}))
+        print({'error' : 'Form not correct!'})
+        return (HttpResponse({'error' : 'Form not correct!'}))
     if not PlayersModel.objects.filter(login=request.POST['login']).exists():
+        print({'error': "Login '" + request.POST['login'] + "' does not exist!"})
         return (HttpResponse({'error': "Login '" + request.POST['login'] + "' does not exist!"}))
     user = PlayersModel.objects.filter(login=request.POST['login'])
     if user.password == request.POST['password']:
@@ -48,4 +50,5 @@ def log_in(request):
             'login': user.login,
             'name': user.name
         }))
+    print({'error' : 'Password not correct!'})
     return (HttpResponse({'error' : 'Password not correct!'}))
