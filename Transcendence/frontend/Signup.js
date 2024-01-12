@@ -16,6 +16,7 @@ export class Signup
     }
 
     signup() {
+        console.log("start signup");
         if (this.dom_login.value === '' || this.dom_password.value === '' || this.dom_name.value === '')
         {
             console.log("Field must not be empty");
