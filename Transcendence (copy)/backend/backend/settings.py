@@ -125,7 +125,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 #STATIC_ROOT = BASE_DIR / 'frontend'
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'frontend')
 STATICFILES_DIRS = [os.path.join(PROJECT_DIR, 'frontend')]
 
 # Default primary key field type
