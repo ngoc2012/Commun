@@ -23,6 +23,7 @@ from django.urls import include, path
 from .consumers import RoomsConsumer
 
 urlpatterns = [
+    path('', views.index, name='index'),
     path('admin/', admin.site.urls),
     path('lobby/', views.lobby, name='lobby'),
     path('signup/', views.signup, name='signup'),

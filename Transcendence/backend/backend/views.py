@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from game.models import PlayersModel
 
+def index(request):
+	return (render(request, 'index.html'))
+
 def lobby(request):
 	return (render(request, 'lobby.html'))
 
