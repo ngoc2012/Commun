@@ -5,7 +5,7 @@ export class Login
     }
     
     events() {
-        this.dom_login = document.querySelector("#login");
+        this.dom_login = document.querySelector("#login0");
         this.dom_password = document.querySelector("#password");
         this.dom_log_in = document.querySelector("#log_in");
         this.dom_cancel = document.querySelector("#cancel");
@@ -14,10 +14,10 @@ export class Login
     }
 
     login() {
-        console.log(this.dom_login.value.trim());
+        console.log(this.dom_login.value);
         //console.log(this.dom_password.value);
-        console.log(this.dom_password.value.trim());
-        if (this.dom_login.value.trim() === '' || this.dom_password.value.trim() === '')
+        console.log(this.dom_password.value);
+        if (this.dom_login.value === '' || this.dom_password.value === '')
             return;
         console.log("login");
         $.ajax({
