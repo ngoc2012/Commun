@@ -37,5 +37,6 @@ def new_player(request):
 def login(request):
     if PlayersModel.objects.filter(login=request.POST['login']).exists():
         return (HttpResponse({"error": "Login '" + request.POST['login'] + "' exist. Please login!"}))
-    new_user = PlayersModel.objects.filter(login=request.POST['login'])
+    user = PlayersModel.objects.filter(login=request.POST['login'])
+    if user
     return (HttpResponse({'error' : 'Form not correct!'}))
