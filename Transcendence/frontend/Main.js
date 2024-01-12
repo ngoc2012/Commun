@@ -11,6 +11,7 @@ export class Main
     {
         this.lobby = new Lobby(this);
         this.dom_login = document.getElementById("login");
+        this.dom_signup = document.getElementById("signup");
         this.dom_status = document.getElementById("status");
         this.dom_user_name = document.getElementById("user_name");
         this.dom_container = document.getElementById("container");
