@@ -19,7 +19,10 @@ export class Signup
         if (this.dom_login.value === ''
             || this.dom_password.value === ''
             || this.dom_name.value === '')
+        {
+            this.main.set_status('Field must not be empty')
             return;
+        }
         console.log("signup");
         $.ajax({
             url: '/new_player/',

@@ -16,7 +16,10 @@ export class Login
 
     login() {
         if (this.dom_login.value === '' || this.dom_password.value === '')
+        {
+            this.main.set_status('Field must not be empty')
             return;
+        }
         console.log("login");
         $.ajax({
             url: '/log_in/',
