@@ -80,7 +80,7 @@ export class Lobby
                         });
                     }
                 },
-                error: this.rooms_update
+                error: this.rooms_update()
             }
         });
     }
