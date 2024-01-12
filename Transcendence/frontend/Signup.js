@@ -42,6 +42,7 @@ export class Signup
                     this.main.login = info.login;
                     this.main.name = info.name;
                     this.dom_user_name.textContent = info.name;
+                    this.main.load('/lobby', () => this.main.lobby.events());
                 }
             },
             error: (data) => this.main.set_status(data.error)

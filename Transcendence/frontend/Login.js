@@ -7,9 +7,9 @@ export class Login
     events() {
         this.main.set_status('')
         this.dom_login = document.querySelector("#login0");
-        this.dom_password = document.querySelector("#password");
+        this.dom_password = document.querySelector("#password0");
         this.dom_log_in = document.querySelector("#log_in");
-        this.dom_cancel = document.querySelector("#cancel");
+        this.dom_cancel = document.querySelector("#cancel0");
         this.dom_log_in.addEventListener("click", () => this.login());
         this.dom_cancel.addEventListener("click", () => this.cancel());
     }
