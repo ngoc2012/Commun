@@ -181,6 +181,9 @@ ASGI stands for Asynchronous Server Gateway Interface. It's a specification for 
 #### Install `channels`
 
 python3 -m pip install Django channels
+
+pip install channels daphne
+
 [Channels](https://channels.readthedocs.io/en/latest/index.html)
 
 
