@@ -32,7 +32,7 @@ export class Signup
             success: (info) => {
                 if (typeof info === 'string')
                 {
-                    this.main.set_status(info)
+                    this.main.set_status(info);
                 }
                 else
                 {

@@ -30,14 +30,14 @@ export class Login
             success: (info) => {
                 if (typeof info === 'string')
                 {
-                    this.main.set_status(info)
+                    this.main.set_status(info);
                 }
                 else
                 {
                     this.main.login = info.login;
                     this.main.name = info.name;
                     this.main.dom_name.innerHTML = info.name;
-                    is.main.load('/lobby', () => this.main.lobby.events());
+                    this.main.load('/lobby', () => this.main.lobby.events());
                 }
             },
             error: (data) => this.main.set_status(data.error)
