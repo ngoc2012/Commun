@@ -16,10 +16,9 @@ export class Signup
     }
 
     signup() {
-        if (this.dom_login.value === ''
-            || this.dom_password.value === ''
-            || this.dom_name.value === '')
+        if (this.dom_login.value === '' || this.dom_password.value === '' || this.dom_name.value === '')
         {
+            console.log("Field must not be empty");
             this.main.set_status('Field must not be empty');
             return;
         }
