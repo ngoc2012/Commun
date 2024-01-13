@@ -42,6 +42,7 @@ export class Lobby
     }
 
     new_game(game) {
+        console.log("new_game");
         this.main.set_status('');
         if (this.main.login === '')
         {
