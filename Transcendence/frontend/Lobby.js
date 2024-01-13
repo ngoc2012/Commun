@@ -78,16 +78,12 @@ export class Lobby
             console.log(rooms);
             var options_rooms = this.dom_rooms && this.dom_rooms.options;
             this.dom_rooms.innerHTML = "";
-            if (options_invitations && response.invitations
-                && response.invitations.length > 0) {
-                response.invitations.forEach((invitation) => {
+            if (options_rooms && rooms && rooms.length > 0) {
+                rooms.forEach((room) => {
                     var option = document.createElement("option");
-                    option.value = invitation.id;
-                    option.text = "" + invitation.id;
-                    invitation.players.forEach((p) => {
-                        option.text += " - " + p;
-                    });
-                    this.dom_invitations.add(option);
+                    option.value = room.id;
+                    option.text = room.id + " - " + room.name;
+                    this.dom_rooms.add(option);
                 });
             }
         };
