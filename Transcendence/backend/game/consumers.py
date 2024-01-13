@@ -24,27 +24,9 @@ class RoomsConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):
         self.accept()
-        #self.group_name = "rooms"
-        #await self.channel_layer.group_add(
-        #    self.group_name,
-        #    self.channel_name
-        #)
 
     async def disconnect(self, close_code):
         pass
-        #await self.channel_layer.group_discard(
-        #    self.group_name,
-        #    self.channel_name
-        #)
 
     async def receive(self, text_data):
         self.send(text_data=json.dumps(update_rooms(json.loads(text_data))))
-        #await self.channel_layer.group_send(
-        #    self.group_name,
-        #    {
-        #        'type': 'update_rooms',
-        #        'action': json.loads(text_data),
-        #    }
-        #)
-
-
