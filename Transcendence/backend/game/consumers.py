@@ -1,6 +1,7 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 #from channels.generic.websocket import WebsocketConsumer
+from channels.db import database_sync_to_async
 from .models import RoomsModel, PlayersModel
 
 class RoomsConsumer(AsyncWebsocketConsumer):
