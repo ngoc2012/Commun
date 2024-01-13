@@ -3,9 +3,10 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 #from channels.generic.websocket import WebsocketConsumer
 #from channels.db import database_sync_to_async
 from asgiref.sync import sync_to_async
+from channels.db import database_sync_to_async
 from .models import RoomsModel, PlayersModel
 
-@sync_to_async
+@database_sync_to_async
 def room_list():
     return json.dumps([
         {
