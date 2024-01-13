@@ -14,9 +14,9 @@ from django.core.asgi import get_asgi_application
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.security.websocket import AllowedHostsOriginValidator
-from django.urls import path
+from django.urls import path, re_path
 from game.consumers import RoomsConsumer
-
+from chat.consumers import ChatConsumer
 
 #os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 #
@@ -35,7 +35,7 @@ from game.consumers import RoomsConsumer
 #})
 
 
-from chat.routing import websocket_urlpatterns
+#from chat.routing import websocket_urlpatterns
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
 # Initialize Django ASGI application early to ensure the AppRegistry
@@ -48,7 +48,8 @@ application = ProtocolTypeRouter(
     {
         "http": django_asgi_app,
         "websocket": AllowedHostsOriginValidator(
-            AuthMiddlewareStack(URLRouter(websocket_urlpatterns + [
+            AuthMiddlewareStack(URLRouter([
+                re_path(r"ws/chat/(?P<room_name>\w+)/$", ChatConsumer.as_asgi()),
                 path("ws/game/rooms/", RoomsConsumer.as_asgi()),
             ]))
         ),
