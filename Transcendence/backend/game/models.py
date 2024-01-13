@@ -26,8 +26,9 @@ class RoomsModel(models.Model):
     y = models.IntegerField(blank=True, null=True)
     def __str__(self):
         return self.id
-    def has_expired(self):
-        return self.expires < timezone.now()
+    def check_expired(self):
+        if self.expires and self.expires < timezone.now():
+            self.delete()
 
 class PlayerRoomModel(models.Model):
     player = models.ForeignKey(PlayersModel, on_delete=models.CASCADE)
