@@ -41,16 +41,11 @@ export class Lobby
     }
 
     new_game(game) {
-        $.ajax({
-            url: '/new_game',
-            method: 'POST',
-            data: {
-                "user": this.main.user,
-                "game": game
-            },
-            success: (info) => this.pong_game(info),
-            error: (error) => this.main.set_status('Error: Can not create game')
-        });
+        if (this.socket !== -1)
+            const message = messageInputDom.value;
+            this.socket.send(JSON.stringify({
+                'message': message
+            }));
     }
 
     pong_game(info) {
