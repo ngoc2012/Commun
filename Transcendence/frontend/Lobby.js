@@ -74,6 +74,7 @@ export class Lobby
         );
 
         this.socket.onmessage = function(data) {
+            console.log(data);
             const rooms = JSON.parse(data);
             console.log(rooms);
             var options_rooms = this.dom_rooms && this.dom_rooms.options;
