@@ -3,24 +3,6 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 #from channels.generic.websocket import WebsocketConsumer
 from .models import RoomsModel
 
-#def update_rooms(event):
-#    action = event['action']
-#    if (action['action'] == "new"):
-#        RoomsModel(
-#            game="pong",
-#            name=action['name'],
-#            nplayers=1,
-#            owner=action['owner']
-#        ).save()
-#    if (action['action'] == "delete"):
-#        RoomsModel.objects.get(id=action['id']).delete()
-#    return ([
-#        {
-#            "id": i.id,
-#            "name": i.name
-#        } for i in RoomsModel.objects.all()
-#        ])
-        
 class RoomsConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):
@@ -64,22 +46,4 @@ class RoomsConsumer(AsyncWebsocketConsumer):
                 "id": i.id,
                 "name": i.name
             } for i in RoomsModel.objects.all()]))
-        #return ([
-        #    {
-        #        "id": i.id,
-        #        "name": i.name
-        #        } for i in RoomsModel.objects.all()
-        #    ])
-        #action = event['action']
-        #if action['action'] == "new":
-        #    # Your implementation for handling a new action
-        #elif action['action'] == "delete":
-        #    # Your implementation for handling a delete action
-
-        ## Send the updated room data to the group
-        #await self.send(text_data=json.dumps([
-        #    {
-        #        "id": i.id,
-        #        "name": i.name
-        #    } for i in RoomsModel.objects.all()]))
 

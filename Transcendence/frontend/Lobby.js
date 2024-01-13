@@ -43,7 +43,8 @@ export class Lobby
     new_game(game) {
         if (this.socket !== -1 && this.main.login !== '')
             this.socket.send(JSON.stringify({
-                'login': this.main.login,
+                'action': 'new',
+                'login': this.main.login
             }));
     }
 
