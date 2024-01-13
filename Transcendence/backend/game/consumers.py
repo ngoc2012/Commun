@@ -39,13 +39,13 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         await self.channel_layer.group_send(
             self.group_name,
             {
-                'type': 'update_rooms',
+                'type': 'group_update_rooms',
                 'action': data,
             }
         )
         #self.send(text_data=json.dumps(update_rooms(json.loads(text_data))))
 
-    async def update_rooms(self, event):
+    async def group_update_rooms(self, event):
         print("update_rooms")
         print(event)
         if 'action' not in event.keys():
