@@ -13,6 +13,24 @@ def room_list(rooms):
             "name": i.name
             } for i in rooms])
 
+def check_event(event)
+    if 'action' not in event.keys():
+        print("Error: No action in event.")
+        return None
+    action = event['action']
+    if 'action' not in action.keys():
+        print("Error: No action.")
+        return None
+    if 'game' not in action.keys():
+        print("Error: No game.")
+        return None
+    if 'login' not in action.keys():
+        print("Error: No login.")
+        return None
+    if not PlayersModel.objects.filter(login=action['login']).exists():
+        print("Error: Login " + action['login'] + " does not exist.")
+        return None
+    return action
 class RoomsConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):
@@ -48,22 +66,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
     async def group_update_rooms(self, event):
         print("update_rooms")
         print(event)
-        if 'action' not in event.keys():
-            print("Error: No action in event.")
-            return
-        action = event['action']
-        if 'action' not in action.keys():
-            print("Error: No action.")
-            return
-        if 'game' not in action.keys():
-            print("Error: No game.")
-            return
-        if 'login' not in action.keys():
-            print("Error: No login.")
-            return
-        if not PlayersModel.objects.filter(login=action['login']).exists():
-            print("Error: Login " + action['login'] + " does not exist.")
-            return
+        action = await check_event(event)
         owner = PlayersModel.objects.get(login=action['login'])
         if (action['action'] == "new"):
             RoomsModel(
