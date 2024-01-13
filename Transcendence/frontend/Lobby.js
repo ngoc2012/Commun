@@ -76,6 +76,20 @@ export class Lobby
         this.socket.onmessage = function(e) {
             const data = JSON.parse(e.data);
             console.log(e);
+            var options_invitations = this.dom_invitations && this.dom_invitations.options;
+            this.dom_invitations.innerHTML = "";
+            if (options_invitations && response.invitations
+                && response.invitations.length > 0) {
+                response.invitations.forEach((invitation) => {
+                    var option = document.createElement("option");
+                    option.value = invitation.id;
+                    option.text = "" + invitation.id;
+                    invitation.players.forEach((p) => {
+                        option.text += " - " + p;
+                    });
+                    this.dom_invitations.add(option);
+                });
+            }
         };
 
         this.socket.onclose = function(e) {
