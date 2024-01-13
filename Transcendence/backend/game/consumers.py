@@ -1,7 +1,7 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 #from channels.generic.websocket import WebsocketConsumer
-from .models import RoomsModel
+from .models import RoomsModel, PlayersModel
 
 class RoomsConsumer(AsyncWebsocketConsumer):
 
@@ -38,6 +38,10 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         if 'action' not in action.keys():
             print("Error: No action")
             return
+        if 'login' not in action.keys():
+            print("Error: No login")
+            return
+        if PlayersModel.objects.filter(login=request.POST['login']).exists():
         if 'login' not in action.keys():
             print("Error: No login")
             return
