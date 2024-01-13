@@ -3,16 +3,15 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 #from channels.generic.websocket import WebsocketConsumer
 #from channels.db import database_sync_to_async
 from asgiref.sync import sync_to_async
-from channels.db import database_sync_to_async
 from .models import RoomsModel, PlayersModel
 
-@database_sync_to_async
-def room_list():
+@sync_to_async
+def room_list(rooms):
     return json.dumps([
         {
             "id": i.id,
             "name": i.name
-            } for i in RoomsModel.objects.all()])
+            } for i in rooms])
 
 class RoomsConsumer(AsyncWebsocketConsumer):
 
@@ -23,7 +22,8 @@ class RoomsConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
         await self.accept()
-        await self.send(room_list)
+        rooms = RoomsModel.objects.all()
+        await self.send(room_list(rooms))
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(
