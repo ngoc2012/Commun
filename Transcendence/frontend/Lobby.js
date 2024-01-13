@@ -63,7 +63,9 @@ export class Lobby
             main: this.main,
             name: "rooms update",
             socket: this.socket,
-            link: 'ws://127.0.0.1:8000/ws/rooms',
+            link: 'ws://'
+                + window.location.host
+                + '/ws/game/rooms/',
             callback: {
                 message: (data) => {
                     var options_rooms = this.dom_rooms && this.dom_rooms.options;
