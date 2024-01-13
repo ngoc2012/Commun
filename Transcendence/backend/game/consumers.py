@@ -34,6 +34,8 @@ class RoomsConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         data = json.loads(text_data)
+        print("receive")
+        print(data)
         await self.channel_layer.group_send(
             self.group_name,
             {
@@ -44,6 +46,8 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         #self.send(text_data=json.dumps(update_rooms(json.loads(text_data))))
 
     async def update_rooms(self, event):
+        print("update_rooms")
+        print(event)
         if 'action' not in event.keys():
             print("Error: No action in event.")
             return
