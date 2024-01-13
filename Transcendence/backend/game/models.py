@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 
 class PlayersModel(models.Model):
@@ -14,7 +15,7 @@ class PlayersModel(models.Model):
         return self.name
 
 class RoomsModel(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     game = models.CharField(max_length=20)
     nplayers = models.IntegerField(blank=True, null=True)
