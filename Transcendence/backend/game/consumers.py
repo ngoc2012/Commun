@@ -5,6 +5,14 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import sync_to_async
 from .models import RoomsModel, PlayersModel
 
+@sync_to_async
+def room_list():
+    return json.dumps([
+        {
+            "id": i.id,
+            "name": i.name
+            } for i in RoomsModel.objects.all()])
+
 class RoomsConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):
