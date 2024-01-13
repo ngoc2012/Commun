@@ -1,7 +1,8 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 #from channels.generic.websocket import WebsocketConsumer
-from channels.db import database_sync_to_async
+#from channels.db import database_sync_to_async
+from asgiref.sync import sync_to_async
 from .models import RoomsModel, PlayersModel
 
 class RoomsConsumer(AsyncWebsocketConsumer):
@@ -13,11 +14,13 @@ class RoomsConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
         await self.accept()
+        #rooms = sync_to_async(RoomsModel.objects.all())
+        rooms = RoomsModel.objects.all()
         await self.send(text_data=json.dumps([
             {
                 "id": i.id,
                 "name": i.name
-            } for i in RoomsModel.objects.all()]))
+            } for i in rooms]))
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(
@@ -63,9 +66,9 @@ class RoomsConsumer(AsyncWebsocketConsumer):
                     ).save()
         if (action['action'] == "delete"):
             RoomsModel.objects.get(id=action['id']).delete()
+        rooms = sync_to_async(RoomsModel.objects.all())
         await self.send(text_data=json.dumps([
             {
                 "id": i.id,
                 "name": i.name
-            } for i in RoomsModel.objects.all()]))
-
+            } for i in rooms]))
