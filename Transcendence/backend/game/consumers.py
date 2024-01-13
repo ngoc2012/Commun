@@ -13,7 +13,8 @@ def room_list(rooms):
             "name": i.name
             } for i in rooms])
 
-def check_event(event)
+@sync_to_async
+def check_event(event):
     if 'action' not in event.keys():
         print("Error: No action in event.")
         return None
@@ -92,3 +93,12 @@ if method and inspect.iscoroutinefunction(method):
 else:
     print(f"{method_name} is not an asynchronous method.")
 
+if check_event and inspect.iscoroutinefunction(check_event):
+    print("check_event is an asynchronous method.")
+else:
+    print("check_event is not an asynchronous method.")
+
+if room_list and inspect.iscoroutinefunction(room_list):
+    print("room_list is an asynchronous method.")
+else:
+    print("room_list is not an asynchronous method.")
