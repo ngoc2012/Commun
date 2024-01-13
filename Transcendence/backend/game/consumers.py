@@ -6,17 +6,19 @@ from .models import RoomsModel
 class RoomsConsumer(WebsocketConsumer):
 
     async def connect(self):
-        self.group_name = "rooms"
-        await self.channel_layer.group_add(
-            self.group_name,
-            self.channel_name
-        )
+        self.accept()
+        #self.group_name = "rooms"
+        #await self.channel_layer.group_add(
+        #    self.group_name,
+        #    self.channel_name
+        #)
 
     async def disconnect(self, close_code):
-        await self.channel_layer.group_discard(
-            self.group_name,
-            self.channel_name
-        )
+        pass
+        #await self.channel_layer.group_discard(
+        #    self.group_name,
+        #    self.channel_name
+        #)
 
     async def receive(self, text_data):
         await self.channel_layer.group_send(
