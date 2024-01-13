@@ -46,16 +46,16 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         if 'login' not in action.keys():
             print("Error: No login")
             return
-        if PlayersModel.objects.filter(login=request.POST['login']).exists():
-        if 'login' not in action.keys():
-            print("Error: No login")
+        if not PlayersModel.objects.filter(login=action['login']).exists():
+            print("Error: Login " + action['login'] + " does not exist.")
             return
+        owner = PlayersModel.objects.filter(login=action['login'])
         if (action['action'] == "new"):
             RoomsModel(
                     game="pong",
                     name=action['name'],
                     nplayers=1,
-                    owner=action['owner']
+                    owner=owner
                     ).save()
         if (action['action'] == "delete"):
             RoomsModel.objects.get(id=action['id']).delete()
