@@ -37,14 +37,17 @@ class RoomsConsumer(AsyncWebsocketConsumer):
 
     async def update_rooms(self, event):
         if 'action' not in event.keys():
-            print("Error: No action in event")
+            print("Error: No action in event.")
             return
         action = event['action']
         if 'action' not in action.keys():
-            print("Error: No action")
+            print("Error: No action.")
+            return
+        if 'game' not in action.keys():
+            print("Error: No game.")
             return
         if 'login' not in action.keys():
-            print("Error: No login")
+            print("Error: No login.")
             return
         if not PlayersModel.objects.filter(login=action['login']).exists():
             print("Error: Login " + action['login'] + " does not exist.")
