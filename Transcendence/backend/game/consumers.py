@@ -23,23 +23,23 @@ from .models import RoomsModel
         
 class RoomsConsumer(AsyncWebsocketConsumer):
 
-    def connect(self):
+    async def connect(self):
         self.group_name = "rooms"
         self.channel_layer.group_add(
             self.group_name,
             self.channel_name
         )
-        self.accept()
+        await self.accept()
 
-    def disconnect(self, close_code):
-        self.channel_layer.group_discard(
+    async def disconnect(self, close_code):
+        await self.channel_layer.group_discard(
             self.group_name,
             self.channel_name
         )
 
-    def receive(self, text_data):
+    async def receive(self, text_data):
         data = json.loads(text_data)
-        self.channel_layer.group_send(
+        await self.channel_layer.group_send(
             self.group_name,
             {
                 'type': 'update_rooms',
@@ -48,7 +48,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         )
         #self.send(text_data=json.dumps(update_rooms(json.loads(text_data))))
 
-    def update_rooms(self, event):
+    async def update_rooms(self, event):
         action = event['action']
         if (action['action'] == "new"):
             RoomsModel(
@@ -59,7 +59,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
                     ).save()
         if (action['action'] == "delete"):
             RoomsModel.objects.get(id=action['id']).delete()
-        self.send(text_data=json.dumps([
+        await self.send(text_data=json.dumps([
             {
                 "id": i.id,
                 "name": i.name
