@@ -1,8 +1,9 @@
 import json
-from channels.generic.websocket import AsyncWebsocketConsumer
+#from channels.generic.websocket import AsyncWebsocketConsumer
+from channels.generic.websocket import WebsocketConsumer
 from .models import RoomsModel
 
-class RoomsConsumer(AsyncWebsocketConsumer):
+class RoomsConsumer(WebsocketConsumer):
 
     async def connect(self):
         self.group_name = "rooms"
