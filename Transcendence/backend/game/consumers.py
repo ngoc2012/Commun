@@ -64,7 +64,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         if not PlayersModel.objects.filter(login=action['login']).exists():
             print("Error: Login " + action['login'] + " does not exist.")
             return
-        owner = PlayersModel.objects.filter(login=action['login'])
+        owner = PlayersModel.objects.get(login=action['login'])
         if (action['action'] == "new"):
             RoomsModel(
                     game=action['game'],
