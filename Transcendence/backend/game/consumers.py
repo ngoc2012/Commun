@@ -23,7 +23,8 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         )
         await self.accept()
         rooms = RoomsModel.objects.all()
-        await self.send(text_data=room_list(rooms))
+        rooms_data = await room_list(rooms)
+        await self.send(text_data=rooms_data)
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(
@@ -69,5 +70,6 @@ class RoomsConsumer(AsyncWebsocketConsumer):
                     ).save()
         if (action['action'] == "delete"):
             RoomsModel.objects.get(id=action['id']).delete()
-        rooms = sync_to_async(RoomsModel.objects.all())
-        await self.send(room_list)
+        rooms = RoomsModel.objects.all()
+        rooms_data = await room_list(rooms)
+        await self.send(text_data=rooms_data)
