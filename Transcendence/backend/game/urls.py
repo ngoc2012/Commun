@@ -6,6 +6,6 @@ from . import consumers
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path('rooms/', consumers.RoomsConsumer.as_asgi()),
+    path('ws/rooms/', consumers.RoomsConsumer.as_asgi()),
 ]
 
