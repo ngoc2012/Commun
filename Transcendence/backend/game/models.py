@@ -23,7 +23,7 @@ class RoomsModel(models.Model):
     x = models.IntegerField(blank=True, null=True)
     y = models.IntegerField(blank=True, null=True)
     def __str__(self):
-        return self.name
+        return self.id
 
 class PlayerRoomModel(models.Model):
     player = models.ForeignKey(PlayersModel, on_delete=models.CASCADE)
