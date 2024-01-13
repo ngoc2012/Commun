@@ -21,13 +21,21 @@ def update_rooms(event):
         } for i in RoomsModel.objects.all()
         ])
         
-class RoomsConsumer(WebsocketConsumer):
+class RoomsConsumer(AsyncWebsocketConsumer):
 
-    def connect(self):
-        self.accept()
+    async def connect(self):
+        self.group_name = "rooms"
+        await self.channel_layer.group_add(
+            self.group_name,
+            self.channel_name
+        )
+        await self.accept()
 
-    def disconnect(self, close_code):
-        pass
+    async def disconnect(self, close_code):
+        await self.channel_layer.group_discard(
+            self.group_name,
+            self.channel_name
+        )
 
-    def receive(self, text_data):
+    async def receive(self, text_data):
         self.send(text_data=json.dumps(update_rooms(json.loads(text_data))))
