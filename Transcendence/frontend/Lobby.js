@@ -73,10 +73,10 @@ export class Lobby
             + '/ws/game/rooms/'
         );
 
-        this.socket.onmessage = function(e) {
+        this.socket.onmessage = (e) => {
             if (!('data' in e))
                 return;
-            console.log(data);
+            console.log(e.data);
             const rooms = JSON.parse(e.data);
             console.log(rooms);
             var options_rooms = this.dom_rooms && this.dom_rooms.options;
@@ -91,7 +91,7 @@ export class Lobby
             }
         };
 
-        this.socket.onclose = function(e) {
+        this.socket.onclose = (e) => {
             console.error('Chat socket closed unexpectedly');
         };
         /*
