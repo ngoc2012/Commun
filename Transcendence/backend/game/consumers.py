@@ -23,7 +23,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         )
         await self.accept()
         rooms = RoomsModel.objects.all()
-        await self.send(room_list(rooms))
+        await self.send(text_data=room_list(rooms))
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(
