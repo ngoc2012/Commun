@@ -41,11 +41,21 @@ export class Lobby
     }
 
     new_game(game) {
-        if (this.socket !== -1 && this.main.login !== '')
-            this.socket.send(JSON.stringify({
-                'action': 'new',
-                'login': this.main.login
-            }));
+        this.main.set_status('');
+        if (this.main.login === '')
+        {
+            this.main.set_status('Please login or sign up');
+            return;
+        }
+        if (this.socket === -1)
+        {
+            this.main.set_status('No connection');
+            return;
+        }
+        this.socket.send(JSON.stringify({
+            'action': 'new',
+            'login': this.main.login
+        }));
     }
 
     pong_game(info) {
@@ -54,6 +64,7 @@ export class Lobby
     }
 
     rooms_update() {
+        this.main.set_status('');
         this.socket = new WebSocket(
             'ws://'
             + window.location.host
