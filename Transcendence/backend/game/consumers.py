@@ -31,7 +31,11 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         #self.send(text_data=json.dumps(update_rooms(json.loads(text_data))))
 
     async def update_rooms(self, event):
+        if 'action' not in event.keys():
+            return
         action = event['action']
+        if 'action' not in action.keys() or 'login' not in action.keys():
+            return
         if (action['action'] == "new"):
             RoomsModel(
                     game="pong",
