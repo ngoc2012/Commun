@@ -55,7 +55,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         owner = PlayersModel.objects.filter(login=action['login'])
         if (action['action'] == "new"):
             RoomsModel(
-                    game="pong",
+                    game=action['game'],
                     name=action['name'],
                     nplayers=1,
                     owner=owner

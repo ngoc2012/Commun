@@ -54,6 +54,7 @@ export class Lobby
         }
         this.socket.send(JSON.stringify({
             'action': 'new',
+            'name': 'Game name here',
             'game': game,
             'login': this.main.login
         }));
