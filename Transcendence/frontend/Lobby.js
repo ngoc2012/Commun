@@ -41,10 +41,9 @@ export class Lobby
     }
 
     new_game(game) {
-        if (this.socket !== -1)
-            const message = messageInputDom.value;
+        if (this.socket !== -1 && this.main.login !== '')
             this.socket.send(JSON.stringify({
-                'message': message
+                'login': this.main.login,
             }));
     }
 
