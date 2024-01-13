@@ -14,13 +14,11 @@ class RoomsConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
         await self.accept()
-        #rooms = sync_to_async(RoomsModel.objects.all())
-        rooms = RoomsModel.objects.all()
         await self.send(text_data=sync_to_async(json.dumps([
             {
                 "id": i.id,
                 "name": i.name
-            } for i in rooms])))
+            } for i in RoomsModel.objects.all()])))
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(
