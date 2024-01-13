@@ -76,4 +76,16 @@ class RoomsConsumer(AsyncWebsocketConsumer):
             RoomsModel.objects.get(id=action['id']).delete()
         rooms = RoomsModel.objects.all()
         rooms_data = await room_list(rooms)
-        await self.send(text_data=rooms_data)
+        await self.send(text_data=rooms_data)        
+
+import inspect
+
+# Check if the method is asynchronous
+method_name = 'group_update_rooms'
+method = getattr("RoomsConsumer", method_name, None)
+
+if method and inspect.iscoroutinefunction(method):
+    print(f"{method_name} is an asynchronous method.")
+else:
+    print(f"{method_name} is not an asynchronous method.")
+
