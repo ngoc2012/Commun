@@ -14,7 +14,7 @@ export class Lobby
         this.dom_pew = document.querySelector("#pew");
         this.dom_join = document.querySelector("#join");
         this.dom_rooms = document.getElementById("rooms");
-        this.dom_pong.addEventListener("click", () => this.new_pong("pong"));
+        this.dom_pong.addEventListener("click", () => this.new_game("pong"));
         this.dom_join.addEventListener("click", () => this.join());
         this.rooms_update();
     }
@@ -75,6 +75,7 @@ export class Lobby
 
         this.socket.onmessage = function(e) {
             const data = JSON.parse(e.data);
+            console.log(e);
             //document.querySelector('#chat-log').value += (data.message + '\n');
         };
 
