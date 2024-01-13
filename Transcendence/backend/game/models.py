@@ -21,13 +21,13 @@ class RoomsModel(models.Model):
     game = models.CharField(max_length=20)
     nplayers = models.IntegerField(blank=True, null=True)
     owner = models.ForeignKey(PlayersModel, on_delete=models.CASCADE)
-    expiration = models.DateTimeField(default=timezone.now() + timezone.timedelta(days=1))
+    expires = models.DateTimeField(default=timezone.now() + timezone.timedelta(minutes=15))
     x = models.IntegerField(blank=True, null=True)
     y = models.IntegerField(blank=True, null=True)
     def __str__(self):
         return self.id
     def has_expired(self):
-        return self.expiration < timezone.now()
+        return self.expires < timezone.now()
 
 class PlayerRoomModel(models.Model):
     player = models.ForeignKey(PlayersModel, on_delete=models.CASCADE)
