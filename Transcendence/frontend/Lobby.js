@@ -15,6 +15,7 @@ export class Lobby
         this.dom_join = document.querySelector("#join");
         this.dom_rooms = document.getElementById("rooms");
         this.dom_pong.addEventListener("click", () => this.new_game("pong"));
+        this.dom_pew.addEventListener("click", () => this.new_game("pew"));
         this.dom_join.addEventListener("click", () => this.join());
         this.rooms_update();
     }
@@ -76,9 +77,7 @@ export class Lobby
         this.socket.onmessage = (e) => {
             if (!('data' in e))
                 return;
-            console.log(e.data);
             const rooms = JSON.parse(e.data);
-            console.log(rooms);
             var options_rooms = this.dom_rooms && this.dom_rooms.options;
             this.dom_rooms.innerHTML = "";
             if (options_rooms && rooms && rooms.length > 0) {
