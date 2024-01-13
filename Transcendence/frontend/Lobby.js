@@ -76,7 +76,6 @@ export class Lobby
         this.socket.onmessage = function(e) {
             const data = JSON.parse(e.data);
             console.log(e);
-            //document.querySelector('#chat-log').value += (data.message + '\n');
         };
 
         this.socket.onclose = function(e) {
