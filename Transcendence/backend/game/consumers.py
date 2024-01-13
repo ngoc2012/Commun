@@ -1,5 +1,5 @@
 import json
-from channels.generic.websocket import AsyncWebsocketConsumer
+#from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.generic.websocket import WebsocketConsumer
 from .models import RoomsModel
 
@@ -21,27 +21,21 @@ def update_rooms(event):
         } for i in RoomsModel.objects.all()
         ])
         
-class RoomsConsumer(AsyncWebsocketConsumer):
+class RoomsConsumer(WebsocketConsumer):
 
-    async def connect(self):
+    def connect(self):
         self.group_name = "rooms"
-        await self.channel_layer().group_add(
+        self.channel_layer.group_add(
             self.group_name,
             self.channel_name
         )
-        await self.accept()
+        self.accept()
 
-    async def disconnect(self, close_code):
-        await self.channel_layer().group_discard(
+    def disconnect(self, close_code):
+        self.channel_layer().group_discard(
             self.group_name,
             self.channel_name
         )
 
-    async def receive(self, text_data):
-        await self.send(text_data=json.dumps(update_rooms(json.loads(text_data))))
-
-    async def channel_layer(self):
-        """
-        This method is automatically called by Channels to get the channel layer.
-        """
-        return self.channel_layer
+    def receive(self, text_data):
+        self.send(text_data=json.dumps(update_rooms(json.loads(text_data))))
