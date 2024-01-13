@@ -20,6 +20,7 @@ class RoomsModel(models.Model):
     game = models.CharField(max_length=20)
     nplayers = models.IntegerField(blank=True, null=True)
     owner = models.ForeignKey(PlayersModel, on_delete=models.CASCADE)
+    expires = models.DateTimeField()
     x = models.IntegerField(blank=True, null=True)
     y = models.IntegerField(blank=True, null=True)
     def __str__(self):
