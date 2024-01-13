@@ -15,7 +15,7 @@ from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.security.websocket import AllowedHostsOriginValidator
 from django.urls import path
-from .consumers import RoomsConsumer
+#from .consumers import RoomsConsumer
 
 
 #os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
@@ -42,7 +42,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
 # is populated before importing code that may import ORM models.
 django_asgi_app = get_asgi_application()
 
-import chat.routing
+#import chat.routing
 
 application = ProtocolTypeRouter(
     {
