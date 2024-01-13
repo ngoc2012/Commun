@@ -59,18 +59,18 @@ export class Lobby
     }
 
     rooms_update() {
-        const chatSocket = new WebSocket(
+        this.socket = new WebSocket(
             'ws://'
             + window.location.host
             + '/ws/game/rooms/'
         );
 
-        chatSocket.onmessage = function(e) {
+        this.socket.onmessage = function(e) {
             const data = JSON.parse(e.data);
             //document.querySelector('#chat-log').value += (data.message + '\n');
         };
 
-        chatSocket.onclose = function(e) {
+        this.socket.onclose = function(e) {
             console.error('Chat socket closed unexpectedly');
         };
         /*
