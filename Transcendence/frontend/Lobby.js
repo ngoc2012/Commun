@@ -76,8 +76,8 @@ export class Lobby
         this.socket.onmessage = function(e) {
             const data = JSON.parse(e.data);
             console.log(e);
-            var options_invitations = this.dom_invitations && this.dom_invitations.options;
-            this.dom_invitations.innerHTML = "";
+            var options_rooms = this.dom_rooms && this.dom_rooms.options;
+            this.dom_rooms.innerHTML = "";
             if (options_invitations && response.invitations
                 && response.invitations.length > 0) {
                 response.invitations.forEach((invitation) => {
