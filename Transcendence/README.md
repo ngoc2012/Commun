@@ -478,6 +478,12 @@ def your_view(request):
 This way, you separate your JavaScript code into a template file, and Django will take care of setting the correct content type for you. Make sure to adjust the paths and names according to your project structure.
 
 
+### Django models
+
+```bash
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
 
 ### Django admin
 
