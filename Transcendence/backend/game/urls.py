@@ -2,11 +2,10 @@
 from django.urls import path
 
 from . import views
-
+from . import consumers
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("rooms/", views.room, name="room"),
-    path('rooms/', RoomsConsumer.as_asgi()),
+    path('rooms/', consumers.RoomsConsumer.as_asgi()),
 ]
 
