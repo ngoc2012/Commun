@@ -73,9 +73,9 @@ export class Lobby
             + '/ws/game/rooms/'
         );
 
-        this.socket.onmessage = function(e) {
-            const data = JSON.parse(e.data);
-            console.log(e);
+        this.socket.onmessage = function(data) {
+            const rooms = JSON.parse(data);
+            console.log(rooms);
             var options_rooms = this.dom_rooms && this.dom_rooms.options;
             this.dom_rooms.innerHTML = "";
             if (options_invitations && response.invitations
