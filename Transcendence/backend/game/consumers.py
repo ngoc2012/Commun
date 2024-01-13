@@ -32,9 +32,14 @@ class RoomsConsumer(AsyncWebsocketConsumer):
 
     async def update_rooms(self, event):
         if 'action' not in event.keys():
+            print("Error: No action in event")
             return
         action = event['action']
-        if 'action' not in action.keys() or 'login' not in action.keys():
+        if 'action' not in action.keys():
+            print("Error: No action")
+            return
+        if 'login' not in action.keys():
+            print("Error: No login")
             return
         if (action['action'] == "new"):
             RoomsModel(
