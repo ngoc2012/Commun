@@ -54,6 +54,7 @@ export class Lobby
             this.main.set_status('No connection');
             return;
         }
+        console.log("send new_game");
         this.socket.send(JSON.stringify({
             'action': 'new',
             'name': 'Game name here',
