@@ -1,6 +1,5 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
-#from channels.generic.websocket import WebsocketConsumer
 from .models import RoomsModel
 
 def update_rooms(event):
