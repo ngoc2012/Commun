@@ -43,6 +43,7 @@ export class Lobby
 
     new_game(game) {
         console.log("new_game");
+        /*
         this.main.set_status('');
         if (this.main.login === '')
         {
@@ -61,6 +62,7 @@ export class Lobby
             'game': game,
             'login': this.main.login
         }));
+        */
     }
 
     pong_game(info) {
