@@ -3,6 +3,9 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import RoomsModel, PlayersModel
 
+# Delete all instances of YourModel
+RoomsModel.objects.all().delete()
+
 @csrf_exempt
 def new_game(request):
     if 'game' not in request.POST:
