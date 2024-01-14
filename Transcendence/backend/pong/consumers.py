@@ -5,11 +5,10 @@ from game.models import RoomsModel, PlayersModel, PlayerRoomModel
 
 @sync_to_async
 def get_room_data(players, room):
-    return json.dumps([
-        {
-            "id": str(i),
-            "name": i.name
-            } for i in rooms])
+    return json.dumps({
+        'ball': {'x': room.x, 'y':room.y},
+        'players': [{'x': i.x, 'y': i.y} for i in players]
+    })
 
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
