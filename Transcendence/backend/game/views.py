@@ -26,6 +26,8 @@ def new_game(request):
     new_game.save()
     if new_game.game == 'pong':
         data = pong_data
+        new_game.x = data['PADDLE_WIDTH'] / 2
+        new_game.y = data['HEIGHT'] / 2
     else:
         data = {}
     return (JsonResponse({
