@@ -55,13 +55,13 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         data = json.loads(text_data)
         print("receive")
         print(data)
-        await self.channel_layer.group_send(
-            self.group_name,
-            {
-                'type': 'group_update_rooms',
-                'action': data,
-            }
-        )
+        #await self.channel_layer.group_send(
+        #    self.group_name,
+        #    {
+        #        'type': 'group_update_rooms',
+        #        'action': data,
+        #    }
+        #)
         #self.send(text_data=json.dumps(update_rooms(json.loads(text_data))))
 
     async def group_update_rooms(self, event):
@@ -82,23 +82,3 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         rooms_data = await room_list(rooms)
         await self.send(text_data=rooms_data)        
 
-import inspect
-
-# Check if the method is asynchronous
-method_name = 'group_update_rooms'
-method = getattr("RoomsConsumer", method_name, None)
-
-if method and inspect.iscoroutinefunction(method):
-    print(f"{method_name} is an asynchronous method.")
-else:
-    print(f"{method_name} is not an asynchronous method.")
-
-if check_event and inspect.iscoroutinefunction(check_event):
-    print("check_event is an asynchronous method.")
-else:
-    print("check_event is not an asynchronous method.")
-
-if room_list and inspect.iscoroutinefunction(room_list):
-    print("room_list is an asynchronous method.")
-else:
-    print("room_list is not an asynchronous method.")
