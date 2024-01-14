@@ -46,12 +46,6 @@ class PongConsumer(AsyncWebsocketConsumer):
                 'state': self.state,
             }
         )
-
-    async def channel_layer(self):
-        """
-        This method is automatically called by Channels to get the channel layer.
-        """
-        return self.channel_layer
     
     #async def game_loop(self):
     #    # Simulate a game loop that updates the state every 1 second
@@ -71,11 +65,3 @@ class PongConsumer(AsyncWebsocketConsumer):
     #    await self.send(text_data=json.dumps({
     #        'state': state,
     #    }))
-
-    #async def player_join(self, event):
-    #    # Notify all clients when a new player joins the room
-    #    player_count = event['player_count']
-    #    await self.send(text_data=json.dumps({
-    #        'player_count': player_count,
-    #    }))
-
