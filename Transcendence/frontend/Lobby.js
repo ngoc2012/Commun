@@ -26,11 +26,11 @@ export class Lobby
         if (this.dom_rooms.selectedIndex === -1)
             return;
         $.ajax({
-            url: '/join_game',
+            url: '/join',
             method: 'POST',
             data: {
                 "user": this.main.user,
-                "id": this.dom_rooms.options[this.dom_rooms.selectedIndex].value
+                "game_id": this.dom_rooms.options[this.dom_rooms.selectedIndex].value
             },
             success: (info) => {
                 switch (info.game) {
@@ -52,7 +52,7 @@ export class Lobby
             return;
         }
         $.ajax({
-            url: '/new_game',
+            url: '/new',
             method: 'POST',
             data: {
                 'name': 'Game name here',
@@ -71,30 +71,26 @@ export class Lobby
     }
 
     delete_game() {
-        console.log("new_game");
+        console.log("delete_game");
         this.main.set_status('');
         if (this.main.login === '')
         {
             this.main.set_status('Please login or sign up');
             return;
         }
-        if (this.dom_rooms.selectedIndex !== -1) {
-            this.accept_invitation();
+        if (this.dom_rooms.selectedIndex === -1) {
+            this.main.set_status('Select a game');
+            return;
         }
         $.ajax({
-            url: '/new_game',
+            url: '/delete',
             method: 'POST',
             data: {
-                'name': 'Game name here',
-                'game': this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
+                'game_id': this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
                 'login': this.main.login
             },
             success: (info) => {
-                switch (info.game) {
-                    case 'pong':
-                        this.pong_game(info);
-                        break;
-                }
+                this.main.set_status(info)
             },
             error: (error) => this.main.set_status('Error: Can not join game')
         });
