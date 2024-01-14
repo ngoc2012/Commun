@@ -16,24 +16,24 @@ def new_game(request):
     if not PlayersModel.objects.filter(login=request.POST['login']).exists():
         return (HttpResponse("Error: Login '" + request.POST['login'] + "' does not exist!"))
     owner = PlayersModel.objects.get(login=request.POST['login'])
-    new_game = RoomsModel(
+    new_room = RoomsModel(
         game=request.POST['game'],
         name=request.POST['name'],
         nplayers=1,
         owner=owner,
         server=owner
     )
-    if new_game.game == 'pong':
+    if new_room.game == 'pong':
         data = pong_data
-        new_game.x = data['PADDLE_WIDTH'] / 2
-        new_game.y = data['HEIGHT'] / 2
+        new_room.x = data['PADDLE_WIDTH'] / 2
+        new_room.y = data['HEIGHT'] / 2
     else:
         data = {}
-    new_game.save()
+    new_room.save()
     return (JsonResponse({
-        'id': str(new_game),
-        'game': new_game.game,
-        'name': new_game.name,
+        'id': str(new_room),
+        'game': new_room.game,
+        'name': new_room.name,
         'data': pong_data
         }))
 
