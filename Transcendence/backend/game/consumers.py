@@ -15,6 +15,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):
         self.group_name = "rooms"
+
         self.channel_layer.group_add(
             self.group_name,
             self.channel_name
@@ -36,14 +37,14 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         await self.channel_layer.group_send(
             self.group_name,
             {
-                'type': 'group_room_list',
+                'type': 'chat.message',
                 'data': text_data
             }
         )
     
-    async def group_room_list(self, event):
+    async def chat_message(self, event):
         print(event)
-        await self.send(text_data='rooms_data')
-        #rooms = RoomsModel.objects.all()
-        #rooms_data = await room_list(rooms)
-        #await self.send(text_data=rooms_data)
+        #await self.send(text_data='rooms_data')
+        rooms = RoomsModel.objects.all()
+        rooms_data = await room_list(rooms)
+        await self.send(text_data=rooms_data)
