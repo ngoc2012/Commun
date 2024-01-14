@@ -64,36 +64,13 @@ export class Pong
         this.socket.onclose = (e) => {
             //console.error('Chat socket closed unexpectedly');
         };
-        this.main.set_status("Connecting to server...");
-        /*
-        new_connection({
-            main: this.main,
-            name: "Connect to pong server",
-            link: 'ws://'
-                + window.location.host
-                + '/ws/pong/'
-                + this.room.data.room
-                + '?user=' + this.main.id,
-            callback: {
-                open: () => {
-                    this.connected = true;
-                    if (this.lobby.socket.readyState === WebSocket.OPEN)
-                        this.lobby.socket.send(this.room.data);
-                    else
-                        this.main.set_status('Error: WebSocket lobby not open.')
-                },
-                message: this.update_state,
-                close: this.quit
-            }
-        });
-        */
     }
 
     set_state(e) {
         if (this.connected && this.socket !== -1)
             this.socket.send(JSON.stringify({ 
                 'login': this.main.login,
-                'do': e
+                'action': e
         }));
     }
 
