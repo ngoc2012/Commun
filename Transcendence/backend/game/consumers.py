@@ -43,6 +43,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
     
     async def group_room_list(self, event):
         print(event)
-        rooms = RoomsModel.objects.all()
-        rooms_data = await room_list(rooms)
-        await self.send(text_data=rooms_data)
+        await self.send(text_data='rooms_data')
+        #rooms = RoomsModel.objects.all()
+        #rooms_data = await room_list(rooms)
+        #await self.send(text_data=rooms_data)
