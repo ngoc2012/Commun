@@ -24,6 +24,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
             self.group_name,
             {
                 'type': 'group_room_list',
+                'data': 'text_data'
             }
         )
 
@@ -39,10 +40,12 @@ class RoomsConsumer(AsyncWebsocketConsumer):
             self.group_name,
             {
                 'type': 'group_room_list',
+                'data': text_data
             }
         )
     
-    async def group_room_list(self):
+    async def group_room_list(self, event):
+        print(event)
         # Send the message to the connected WebSocket
         rooms = RoomsModel.objects.all()
         rooms_data = await room_list(rooms)
