@@ -31,7 +31,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         )
 
     async def receive(self, text_data):
-        if text_data == 'update':
-            rooms = RoomsModel.objects.all()
-            rooms_data = await room_list(rooms)
-            await self.send(text_data=rooms_data)        
+        print(text_data)
+        rooms = RoomsModel.objects.all()
+        rooms_data = await room_list(rooms)
+        await self.send(text_data=rooms_data)        
