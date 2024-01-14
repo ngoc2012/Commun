@@ -78,12 +78,15 @@ export class Lobby
             this.main.set_status('Please login or sign up');
             return;
         }
+        if (this.dom_rooms.selectedIndex !== -1) {
+            this.accept_invitation();
+        }
         $.ajax({
             url: '/new_game',
             method: 'POST',
             data: {
                 'name': 'Game name here',
-                'game': game,
+                'game': this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
                 'login': this.main.login
             },
             success: (info) => {
@@ -134,7 +137,7 @@ export class Lobby
                 rooms.forEach((room) => {
                     var option = document.createElement("option");
                     option.value = room.id;
-                    option.text = room.id + " - " + room.name;
+                    option.text = room.name + " - " + room.id;
                     this.dom_rooms.add(option);
                 });
             }
