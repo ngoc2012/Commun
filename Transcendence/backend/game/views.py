@@ -3,6 +3,8 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import RoomsModel, PlayersModel
 
+from ../models import RoomsModel, PlayersModel
+
 @csrf_exempt
 def new_game(request):
     if 'game' not in request.POST:
