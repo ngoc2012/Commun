@@ -9,9 +9,7 @@ class PlayersModel(models.Model):
     name = models.CharField(max_length=255)
     #session_id = models.CharField(max_length=40)
     #expires = models.DateTimeField()
-    x = models.IntegerField(blank=True, null=True)
-    y = models.IntegerField(blank=True, null=True)
-
+    
     def __str__(self):
         return self.name
 
@@ -37,3 +35,5 @@ class PlayerRoomModel(models.Model):
     room = models.ForeignKey(RoomsModel, on_delete=models.CASCADE)
     side = models.IntegerField(blank=True, null=True)
     position = models.IntegerField(blank=True, null=True)
+    x = models.IntegerField(blank=True, null=True)
+    y = models.IntegerField(blank=True, null=True)
