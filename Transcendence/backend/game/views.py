@@ -28,6 +28,19 @@ def new_game(request):
         }))
 
 @csrf_exempt
+def join(request):
+    if 'game_id' not in request.POST:
+        return (HttpResponse("Error: No game id!"))
+    if 'login' not in request.POST:
+        return (HttpResponse("Error: No login!"))
+    if not PlayersModel.objects.filter(login=request.POST['login']).exists():
+        return (HttpResponse("Error: Login '" + request.POST['login'] + "' does not exist!"))
+    owner = PlayersModel.objects.get(login=request.POST['login'])
+    if not RoomsModel.objects.filter(id=request.POST['game_id']).exists():
+        return (HttpResponse("Error: Room with id '" + request.POST['game_id'] + "' does not exist!"))
+    room = RoomsModel.objects.get(id=request.POST['game_id'])
+
+@csrf_exempt
 def delete(request):
     if 'game_id' not in request.POST:
         return (HttpResponse("Error: No game id!"))
