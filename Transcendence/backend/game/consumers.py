@@ -23,7 +23,14 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         await self.accept()
         rooms = RoomsModel.objects.all()
         rooms_data = await room_list(rooms)
-        await self.send(text_data=rooms_data)
+        print(rooms_data)
+        await self.channel_layer.group_send(
+            self.group_name,
+            {
+                'type': 'chat_message',
+                'data': rooms_data
+            }
+        )
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(
@@ -39,7 +46,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         await self.channel_layer.group_send(
             self.group_name,
             {
-                'type': 'chat.message',
+                'type': 'chat_message',
                 'data': rooms_data
             }
         )
