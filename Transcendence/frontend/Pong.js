@@ -64,7 +64,10 @@ export class Pong
 
     set_state(e) {
         if (this.connected && this.socket !== -1)
-            this.socket.send(JSON.stringify({ 'do': e }));
+            this.socket.send(JSON.stringify({ 
+                'login': this.main.login,
+                'do': e
+        }));
     }
 
     update_state(data) {
