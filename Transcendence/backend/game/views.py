@@ -22,7 +22,7 @@ def new_game(request):
     )
     new_game.save()
     return (JsonResponse({
-        'id': new_game.id,
+        'id': str(new_game),
         'game': new_game.game,
         'name': new_game.name
         }))
@@ -39,6 +39,11 @@ def join(request):
     if not RoomsModel.objects.filter(id=request.POST['game_id']).exists():
         return (HttpResponse("Error: Room with id '" + request.POST['game_id'] + "' does not exist!"))
     room = RoomsModel.objects.get(id=request.POST['game_id'])
+    return (JsonResponse({
+        'id': str(new_game),
+        'game': new_game.game,
+        'name': new_game.name
+        }))
 
 @csrf_exempt
 def delete(request):
