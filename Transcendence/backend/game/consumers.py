@@ -20,9 +20,12 @@ class RoomsConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
         await self.accept()
-        rooms = RoomsModel.objects.all()
-        rooms_data = await room_list(rooms)
-        await self.send(text_data=rooms_data)
+        await self.channel_layer.group_send(
+            self.group_name,
+            {
+                'type': 'group_room_list',
+            }
+        )
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(
@@ -32,7 +35,6 @@ class RoomsConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         print(text_data)
-        
         await self.channel_layer.group_send(
             self.group_name,
             {
@@ -40,7 +42,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
             }
         )
     
-    async def group_room_list(self, event):
+    async def group_room_list(self):
         # Send the message to the connected WebSocket
         rooms = RoomsModel.objects.all()
         rooms_data = await room_list(rooms)
