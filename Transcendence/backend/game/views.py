@@ -56,12 +56,14 @@ def join(request):
     if not RoomsModel.objects.filter(id=request.POST['game_id']).exists():
         return (HttpResponse("Error: Room with id '" + request.POST['game_id'] + "' does not exist!"))
     room = RoomsModel.objects.get(id=request.POST['game_id'])
+    player = PlayersModel.objects.get(login=request.POST['login'])
     player_room = PlayerRoomModel(
-        player=owner,
-        room=new_room,
+        player=player,
+        room=room,
         side=0,
         position=0
     )
+    player_room.save()
     return (JsonResponse({
         'id': str(room),
         'game': room.game,
