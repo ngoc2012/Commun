@@ -4,7 +4,7 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 from game.models import RoomsModel, PlayersModel, PlayerRoomModel
 
 @sync_to_async
-def room_list(rooms):
+def get_room_data(players, room):
     return json.dumps([
         {
             "id": str(i),
@@ -37,7 +37,7 @@ class PongConsumer(AsyncWebsocketConsumer):
     
     async def group_data(self, event):
         players = PlayerRoomModel.objects.filter(room=self.room_id)
-        room_data = await room_list(players, self.room)
+        room_data = await get_room_data(players, self.room)
         await self.send(text_data=room_data)
     
     #async def game_loop(self):
