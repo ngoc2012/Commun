@@ -51,10 +51,10 @@ def join(request):
     if 'login' not in request.POST:
         return (HttpResponse("Error: No login!"))
     if not PlayersModel.objects.filter(login=request.POST['login']).exists():
-        return (HttpResponse("Error: Login '" + request.POST['login'] + "' does not exist!"))
+        return (HttpResponse("Error: Login " + request.POST['login'] + " does not exist!"))
     #uuid_obj = UUID(uuid_str)
     if not RoomsModel.objects.filter(id=request.POST['game_id']).exists():
-        return (HttpResponse("Error: Room with id '" + request.POST['game_id'] + "' does not exist!"))
+        return (HttpResponse("Error: Room with id " + request.POST['game_id'] + " does not exist!"))
     room = RoomsModel.objects.get(id=request.POST['game_id'])
     n0 = PlayerRoomModel.objects.filter(room=room, side=0).count()
     n1 = PlayerRoomModel.objects.filter(room=room, side=1).count()
