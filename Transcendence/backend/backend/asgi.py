@@ -17,6 +17,7 @@ from channels.security.websocket import AllowedHostsOriginValidator
 from django.urls import path, re_path
 from game.consumers import RoomsConsumer
 from chat.consumers import ChatConsumer
+from pong.consumers import PongConsumer
 
 #os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 #
@@ -50,6 +51,7 @@ application = ProtocolTypeRouter(
         "websocket": AllowedHostsOriginValidator(
             AuthMiddlewareStack(URLRouter([
                 re_path(r"ws/chat/(?P<room_name>\w+)/$", ChatConsumer.as_asgi()),
+                re_path(r"ws/pong/(?P<room_name>\w+)/$", PongConsumer.as_asgi()),
                 path("ws/game/rooms/", RoomsConsumer.as_asgi()),
             ]))
         ),
