@@ -6,10 +6,10 @@ export class Lobby
     constructor(m) {
         this.main = m;
         this.socket = -1;
+        this.game = null;
     }
     
     events() {
-        this.game = null;
         this.dom_rooms = document.getElementById("rooms");
         this.dom_join = document.querySelector("#join");
         this.dom_pong = document.querySelector("#pong");

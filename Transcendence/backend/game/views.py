@@ -40,9 +40,9 @@ def join(request):
         return (HttpResponse("Error: Room with id '" + request.POST['game_id'] + "' does not exist!"))
     room = RoomsModel.objects.get(id=request.POST['game_id'])
     return (JsonResponse({
-        'id': str(new_game),
-        'game': new_game.game,
-        'name': new_game.name
+        'id': str(room),
+        'game': room.game,
+        'name': room.name
         }))
 
 @csrf_exempt
