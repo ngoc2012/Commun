@@ -20,19 +20,28 @@ class PongConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
         await self.accept()
+        await self.channel_layer.group_send(
+            self.room_id,
+            {
+                'type': 'group_data'
+            }
+        )
         # Start a loop to continuously update the game state
         #await self.game_loop()
 
     async def disconnect(self, close_code):
-        # Leave room group
         await self.channel_layer.group_discard(
             self.room_id,
             self.channel_name
         )
 
     async def receive(self, text_data):
-        # Handle user input (if needed)
-        pass
+        await self.channel_layer.group_send(
+            self.room_id,
+            {
+                'type': 'group_data'
+            }
+        )
     
     async def group_data(self, event):
         players = PlayerRoomModel.objects.filter(room=self.room_id)
