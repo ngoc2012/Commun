@@ -147,6 +147,7 @@ export class Lobby
         );
 
         this.socket.onmessage = (e) => {
+            console.log(e);
             if (!('data' in e))
                 return;
             const rooms = JSON.parse(e.data);
