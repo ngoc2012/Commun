@@ -16,7 +16,7 @@ class PlayersModel(models.Model):
         return self.name
 
 class RoomsModel(models.Model):
-    id = models.CharField(primary_key=True, max_length=50)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     game = models.CharField(max_length=20)
     nplayers = models.IntegerField(blank=True, null=True)
@@ -25,7 +25,7 @@ class RoomsModel(models.Model):
     x = models.IntegerField(blank=True, null=True)
     y = models.IntegerField(blank=True, null=True)
     def __str__(self):
-        return self.id
+        return str(self.id)
     def check_expired(self):
         if self.expires and self.expires < timezone.now():
             self.delete()
