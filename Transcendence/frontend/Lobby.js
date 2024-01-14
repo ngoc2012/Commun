@@ -33,13 +33,23 @@ export class Lobby
                 "game_id": this.dom_rooms.options[this.dom_rooms.selectedIndex].value
             },
             success: (info) => {
-                switch (info.game) {
-                    case 'pong':
-                        this.pong_game(info);
-                        break;
+                if (typeof info === 'string')
+                {
+                    this.main.set_status(info);
+                }
+                else
+                {
+                    //this.main.set_status('Game ' + info.name + ' created.');
+                    if (this.socket !== -1)
+                        this.socket.send('update');
+                    switch (info.game) {
+                        case 'pong':
+                            this.pong_game(info);
+                            break;
+                    }
                 }
             },
-            error: (error) => this.main.set_status('Error: Can not join game')
+            error: () => this.main.set_status('Error: Can not join game')
         });
     }
 
@@ -65,20 +75,17 @@ export class Lobby
                 }
                 else
                 {
-                    this.main.set_status('Game ' + info.name + ' created.');
+                    //this.main.set_status('Game ' + info.name + ' created.');
                     if (this.socket !== -1)
                         this.socket.send('update');
-                    /*
                     switch (info.game) {
                         case 'pong':
                             this.pong_game(info);
                             break;
                     }
-                    */
                 }
-                
             },
-            error: (error) => this.main.set_status('Error: Can not join game')
+            error: () => this.main.set_status('Error: Can not create game')
         });
     }
 
