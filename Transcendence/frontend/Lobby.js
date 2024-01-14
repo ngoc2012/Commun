@@ -29,7 +29,7 @@ export class Lobby
             url: '/game/join',
             method: 'POST',
             data: {
-                "user": this.main.user,
+                'login': this.main.login,
                 "game_id": this.dom_rooms.options[this.dom_rooms.selectedIndex].value
             },
             success: (info) => {
