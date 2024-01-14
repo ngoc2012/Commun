@@ -13,16 +13,15 @@ def new_player(request):
         return (HttpResponse("Error: No name!"))
     if not PlayersModel.objects.filter(login=request.POST['login']).exists():
         return (HttpResponse("Error: Login '" + request.POST['login'] + "' does not exist!"))
-    owner = PlayersModel.objects.get(login=action['login'])
-    if (action['action'] == "new"):
-        RoomsModel(
-                game=action['game'],
-                name=action['name'],
-                nplayers=1,
-                owner=owner
-                ).save()
-    if (action['action'] == "delete"):
-        RoomsModel.objects.get(id=action['id']).delete()
+    owner = PlayersModel.objects.get(login=request.POST['login'])
+    new_game = RoomsModel(
+        game=request.POST['game'],
+        name=request.POST['name'],
+        nplayers=1,
+        owner=owner
+    ).save()
+    #if (action['action'] == "delete"):
+    #    RoomsModel.objects.get(id=action['id']).delete()
     return (JsonResponse({
         'id': new_game.id,
         'name': new_game.name
