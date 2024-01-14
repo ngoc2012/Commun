@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import RoomsModel, PlayersModel
 
-from ../models import RoomsModel, PlayersModel
+from pong.data import pong_data
 
 @csrf_exempt
 def new_game(request):
@@ -27,7 +27,7 @@ def new_game(request):
         'id': str(new_game),
         'game': new_game.game,
         'name': new_game.name,
-        'data': data
+        'data': pong_data
         }))
 
 @csrf_exempt
