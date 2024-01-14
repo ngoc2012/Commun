@@ -4,6 +4,6 @@ pong_data = {
     'PADDLE_WIDTH': 10,
     'PADDLE_HEIGHT': 60,
     'RADIUS': 10,
-    'PADDLE_VITESSE': 5,
+    'PADDLE_SPEED': 5,
     'PADDLE_DISTANCE': 20
 }
