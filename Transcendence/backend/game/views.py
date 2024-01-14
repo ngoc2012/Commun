@@ -3,24 +3,6 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import RoomsModel, PlayersModel
 
-# Delete all instances of YourModel
-import uuid
-
-# Fetch all instances
-instances = RoomsModel.objects.all()
-
-# Update each instance's UUID to the standard format
-for instance in instances:
-    try:
-        instance.uuid_field = uuid.UUID(str(instance.uuid_field))
-        instance.save()
-    except ValueError:
-        # Handle the case where the UUID is not in a valid format
-        pass
-
-# Now you can delete all instances
-RoomsModel.objects.all().delete()
-
 @csrf_exempt
 def new_game(request):
     if 'game' not in request.POST:
