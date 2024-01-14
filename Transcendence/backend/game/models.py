@@ -21,7 +21,7 @@ class RoomsModel(models.Model):
     game = models.CharField(max_length=20)
     nplayers = models.IntegerField(blank=True, null=True)
     owner = models.ForeignKey(PlayersModel, on_delete=models.CASCADE, related_name='own')
-    server = models.ForeignKey(PlayersModel, on_delete=models.CASCADE, related_name='serve')
+    server = models.ForeignKey(PlayersModel, on_delete=models.CASCADE, related_name='serve', null=True)
     expires = models.DateTimeField(default=timezone.now() + timezone.timedelta(minutes=15))
     x = models.IntegerField(blank=True, null=True)
     y = models.IntegerField(blank=True, null=True)
