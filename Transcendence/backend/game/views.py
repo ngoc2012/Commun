@@ -19,7 +19,8 @@ def new_game(request):
         name=request.POST['name'],
         nplayers=1,
         owner=owner
-    ).save()
+    )
+    new_game.save()
     return (JsonResponse({
         'id': new_game.id,
         'name': new_game.name
