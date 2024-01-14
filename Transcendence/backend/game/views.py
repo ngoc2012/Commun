@@ -11,11 +11,8 @@ def new_player(request):
         return (HttpResponse("Error: No login!"))
     if 'name' not in request.POST:
         return (HttpResponse("Error: No name!"))
-    if 'login' not in request.POST or 'password' not in request.POST or 'name' not in request.POST:
-    if request.POST['login'] == "" or request.POST['password'] == "" or request.POST['name'] == "":
-        return (HttpResponse({'Error : Form not correct!'}))
     if PlayersModel.objects.filter(login=request.POST['login']).exists():
-        return (HttpResponse({"Error: Login '" + request.POST['login'] + "' exist."}))
+        return (HttpResponse("Error: Login '" + request.POST['login'] + "' exist."))
     new_player = PlayersModel(
             login=request.POST['login'],
             password=request.POST['password'],
