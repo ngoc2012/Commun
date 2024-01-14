@@ -40,5 +40,5 @@ def delete(request):
     room = RoomsModel.objects.get(id=request.POST['game_id'])
     room.delete()
     if room.owner == owner:
-        return (HttpResponse("Room " + str(room.id) + " deleted"))
+        return (HttpResponse("Room " + str(room) + " deleted"))
     return (HttpResponse("Error: Login '" + request.POST['login'] + "' is not the owner of '" + request.POST['game_id'] + "'!"))
