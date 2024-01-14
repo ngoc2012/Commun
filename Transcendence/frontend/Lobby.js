@@ -153,7 +153,7 @@ export class Lobby
         };
 
         this.socket.onclose = (e) => {
-            console.error('Chat socket closed unexpectedly');
+            //console.error('Chat socket closed unexpectedly');
         };
         /*
         new_connection({
