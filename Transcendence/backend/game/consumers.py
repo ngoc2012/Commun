@@ -53,11 +53,12 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         )
 
     async def receive(self, text_data):
+        print("receive")
+        print(text_data)
         rooms = RoomsModel.objects.all()
         rooms_data = await room_list(rooms)
         await self.send(text_data=rooms_data)        
         #data = json.loads(text_data)
-        #print("receive")
         #print(data)
         #await self.channel_layer.group_send(
         #    self.group_name,
