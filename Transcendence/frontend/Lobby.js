@@ -59,6 +59,9 @@ export class Lobby
                 'login': this.main.login
             },
             success: (info) => {
+                //this.main.set_status(info);
+                if (this.socket !== -1)
+                    this.socket.send('update');
                 /*
                 switch (info.game) {
                     case 'pong':
@@ -92,7 +95,7 @@ export class Lobby
             },
             success: (info) => {
                 this.main.set_status(info);
-                if (this.socket === -1)
+                if (this.socket !== -1)
                     this.socket.send('update');
             },
             error: (error) => this.main.set_status('Error: Can not join game')
