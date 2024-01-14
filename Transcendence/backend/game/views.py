@@ -25,7 +25,7 @@ def new_game(request):
     )
     if new_room.game == 'pong':
         data = pong_data
-        new_room.x = data['PADDLE_WIDTH'] / 2
+        new_room.x = data['PADDLE_WIDTH'] + data['PADDLE_WIDTH']RADIUS
         new_room.y = data['HEIGHT'] / 2
     else:
         data = {}
@@ -68,6 +68,9 @@ def join(request):
         side = 1
         position = n1
     player = PlayersModel.objects.get(login=request.POST['login'])
+    player.x = n0 * 
+    owner.y = data['HEIGHT'] / 2 - data['PADDLE_HEIGHT'] / 2
+    owner.save()
     player_room = PlayerRoomModel(
         player=player,
         room=room,
