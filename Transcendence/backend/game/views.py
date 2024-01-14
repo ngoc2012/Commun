@@ -23,6 +23,7 @@ def new_game(request):
     new_game.save()
     return (JsonResponse({
         'id': new_game.id,
+        'game': new_game.game,
         'name': new_game.name
         }))
 
