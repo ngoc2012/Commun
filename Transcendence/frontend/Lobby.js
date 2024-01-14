@@ -55,7 +55,7 @@ export class Lobby
             url: '/new',
             method: 'POST',
             data: {
-                'name': 'Game name here',
+                'name': 'Stars war',
                 'game': game,
                 'login': this.main.login
             },
