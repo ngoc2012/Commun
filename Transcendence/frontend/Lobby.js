@@ -49,6 +49,23 @@ export class Lobby
             this.main.set_status('Please login or sign up');
             return;
         }
+        $.ajax({
+            url: '/join_game',
+            method: 'POST',
+            data: {
+                "user": this.main.user,
+                "id": this.dom_rooms.options[this.dom_rooms.selectedIndex].value
+            },
+            success: (info) => {
+                switch (info.game) {
+                    case 'pong':
+                        this.pong_game(info);
+                        break;
+                }
+            },
+            error: (error) => this.main.set_status('Error: Can not join game')
+        });
+        /*
         if (this.socket === -1)
         {
             this.main.set_status('No connection');
@@ -61,6 +78,7 @@ export class Lobby
             'game': game,
             'login': this.main.login
         }));
+        */
     }
 
     pong_game(info) {
