@@ -39,6 +39,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         print(text_data)
+        print(self.group_name)
         await self.channel_layer.group_send(
             self.group_name,
             {
