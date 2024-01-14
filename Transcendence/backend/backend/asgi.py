@@ -51,7 +51,7 @@ application = ProtocolTypeRouter(
         "websocket": AllowedHostsOriginValidator(
             AuthMiddlewareStack(URLRouter([
                 re_path(r"ws/chat/(?P<room_name>\w+)/$", ChatConsumer.as_asgi()),
-                re_path(r"ws/pong/(?P<room_name>\w+)/$", PongConsumer.as_asgi()),
+                re_path(r"ws/pong/(?P<room_id>\w+)/$", PongConsumer.as_asgi()),
                 path("ws/game/rooms/", RoomsConsumer.as_asgi()),
             ]))
         ),
