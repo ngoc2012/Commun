@@ -14,7 +14,7 @@ def room_list(rooms):
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_id = self.scope['url_route']['kwargs']['room_id']
-
+        self.room = PlayersModel.objects.get(id=self.room_id)
         # Join room group
         await self.channel_layer.group_add(
             self.room_id,
@@ -36,9 +36,10 @@ class PongConsumer(AsyncWebsocketConsumer):
         pass
     
     async def group_data(self, event):
+        
         players = PlayerRoomModel.objects.filter(room=self.room_id)
-        rooms_data = await room_list(players)
-        await self.send(text_data=rooms_data)
+        room_data = await room_list(players, self.room)
+        await self.send(text_data=room_data)
     
     #async def game_loop(self):
     #    # Simulate a game loop that updates the state every 1 second
