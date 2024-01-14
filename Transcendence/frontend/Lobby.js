@@ -117,20 +117,6 @@ export class Lobby
             },
             error: (error) => this.main.set_status('Error: Can not join game')
         });
-        /*
-        if (this.socket === -1)
-        {
-            this.main.set_status('No connection');
-            return;
-        }
-        console.log("send new_game");
-        this.socket.send(JSON.stringify({
-            'action': 'new',
-            'name': 'Game name here',
-            'game': game,
-            'login': this.main.login
-        }));
-        */
     }
 
     pong_game(info) {
@@ -165,33 +151,5 @@ export class Lobby
         this.socket.onclose = (e) => {
             //console.error('Chat socket closed unexpectedly');
         };
-        /*
-        new_connection({
-            main: this.main,
-            name: "rooms update",
-            socket: this.socket,
-            link: 'ws://'
-                + window.location.host
-                + '/ws/game/rooms/',
-            callback: {
-                message: (data) => {
-                    var options_rooms = this.dom_rooms && this.dom_rooms.options;
-                    this.dom_rooms.innerHTML = "";
-                    if (options_rooms && data.rooms && data.rooms.length > 0) {
-                        data.rooms.forEach((room) => {
-                            var option = document.createElement("option");
-                            option.value = room.id;
-                            option.text = "" + room.id;
-                            room.players.forEach((p) => {
-                                option.text += " - " + p;
-                            });
-                            this.dom_rooms.add(option);
-                        });
-                    }
-                },
-                error: this.rooms_update()
-            }
-        });
-        */
     }
 }

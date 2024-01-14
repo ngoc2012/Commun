@@ -23,8 +23,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         await self.channel_layer.group_send(
             self.group_name,
             {
-                'type': 'group_room_list',
-                'data': 'rooms_data'
+                'type': 'group_room_list'
             }
         )
 
@@ -38,8 +37,7 @@ class RoomsConsumer(AsyncWebsocketConsumer):
         await self.channel_layer.group_send(
             self.group_name,
             {
-                'type': 'group_room_list',
-                'data': text_data
+                'type': 'group_room_list'
             }
         )
     
