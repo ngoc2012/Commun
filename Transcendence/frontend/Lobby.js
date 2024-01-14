@@ -26,7 +26,7 @@ export class Lobby
         if (this.dom_rooms.selectedIndex === -1)
             return;
         $.ajax({
-            url: '/join',
+            url: '/game/join',
             method: 'POST',
             data: {
                 "user": this.main.user,
@@ -44,7 +44,6 @@ export class Lobby
     }
 
     new_game(game) {
-        console.log("new_game");
         this.main.set_status('');
         if (this.main.login === '')
         {
@@ -52,7 +51,7 @@ export class Lobby
             return;
         }
         $.ajax({
-            url: '/new',
+            url: '/game/new',
             method: 'POST',
             data: {
                 'name': 'Stars war',
@@ -85,7 +84,7 @@ export class Lobby
             return;
         }
         $.ajax({
-            url: '/delete',
+            url: '/game/delete',
             method: 'POST',
             data: {
                 'game_id': this.dom_rooms.options[this.dom_rooms.selectedIndex].value,
