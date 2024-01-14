@@ -20,7 +20,8 @@ def new_game(request):
         game=request.POST['game'],
         name=request.POST['name'],
         nplayers=1,
-        owner=owner
+        owner=owner,
+        server=owner
     )
     new_game.save()
     if new_game.game == 'pong':
