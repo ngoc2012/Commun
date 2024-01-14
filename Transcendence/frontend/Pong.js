@@ -1,10 +1,8 @@
-import {new_connection} from './new_connection.js'
-
 export class Pong
 {
-	constructor(m, g, i) {
+	constructor(m, l, i) {
         this.main = m;
-        this.lobby = g;
+        this.lobby = l;
         this.info = i;
         this.connected = false;
         this.socket = -1;
@@ -40,6 +38,7 @@ export class Pong
 
     connect() {
         this.main.set_status("Connecting to server...");
+        /*
         new_connection({
             main: this.main,
             name: "Connect to pong server",
@@ -60,6 +59,7 @@ export class Pong
                 close: this.quit
             }
         });
+        */
     }
 
     set_state(e) {
