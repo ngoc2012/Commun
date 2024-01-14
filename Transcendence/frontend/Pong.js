@@ -11,8 +11,8 @@ export class Pong
 	init() {
 		this.canvas = document.getElementById('pongCanvas');
 		this.ctx = this.canvas.getContext('2d');
-        this.ctx.canvas.width  = this.info.width;
-        this.ctx.canvas.height = this.info.height;
+        this.ctx.canvas.width  = this.game.data.width;
+        this.ctx.canvas.height = this.game.data.height;
         let dom_start = document.getElementById("start");
         let dom_quit = document.getElementById("quit");
         dom_start.addEventListener("click", () => this.set_state("start"));
@@ -45,13 +45,13 @@ export class Pong
             link: 'ws://'
                 + window.location.host
                 + '/ws/pong/'
-                + this.info.room
+                + this.game.data.room
                 + '?user=' + this.main.id,
             callback: {
                 open: () => {
                     this.connected = true;
                     if (this.lobby.socket.readyState === WebSocket.OPEN)
-                        this.lobby.socket.send(this.info);
+                        this.lobby.socket.send(this.game.data);
                     else
                         this.main.set_status('Error: WebSocket lobby not open.')
                 },
@@ -81,7 +81,7 @@ export class Pong
 
 	draw() {
 		// Clear the canvas
-		this.ctx.clearRect(0, 0, this.info.width, this.info.height);
+		this.ctx.clearRect(0, 0, this.game.data.width, this.game.data.height);
 
 		// Draw paddles
 		this.ctx.fillStyle = '#8b3a62';
@@ -90,13 +90,13 @@ export class Pong
 		    this.ctx.fillRect(
                 p.x,
                 p.y,
-                this.info.paddle_width,
-                this.info.paddle_height);
+                this.game.data.paddle_width,
+                this.game.data.paddle_height);
         });
 
 		// Draw this.ball
 		this.ctx.beginPath();
-		this.ctx.arc(this.data.ball.x, this.data.ball.y, this.info.ball_r, 0, Math.PI * 2);
+		this.ctx.arc(this.data.ball.x, this.data.ball.y, this.game.data.ball_r, 0, Math.PI * 2);
 		this.ctx.fillStyle = '#00ffcc';
 		this.ctx.fill();
 		this.ctx.closePath();
