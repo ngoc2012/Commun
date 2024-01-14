@@ -37,6 +37,31 @@ export class Pong
     }
 
     connect() {
+        this.socket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/game/rooms/'
+        );
+
+        this.socket.onmessage = (e) => {
+            if (!('data' in e))
+                return;
+            const rooms = JSON.parse(e.data);
+            var options_rooms = this.dom_rooms && this.dom_rooms.options;
+            this.dom_rooms.innerHTML = "";
+            if (options_rooms && rooms && rooms.length > 0) {
+                rooms.forEach((room) => {
+                    var option = document.createElement("option");
+                    option.value = room.id;
+                    option.text = room.name + " - " + room.id;
+                    this.dom_rooms.add(option);
+                });
+            }
+        };
+
+        this.socket.onclose = (e) => {
+            //console.error('Chat socket closed unexpectedly');
+        };
         this.main.set_status("Connecting to server...");
         /*
         new_connection({
