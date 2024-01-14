@@ -79,12 +79,15 @@ def join(request):
     player_room.save()
     if room.game == 'pong':
         player.x = position * pong_data['PADDLE_WIDTH'] + position * pong_data['PADDLE_DISTANCE']
+        if side == 1:
+            player.x = pong_data['WIDTH'] - player.x - pong_data['PADDLE_WIDTH']
         player.y = pong_data['HEIGHT'] / 2 - pong_data['PADDLE_HEIGHT'] / 2
     player.save()
     return (JsonResponse({
         'id': str(room),
         'game': room.game,
-        'name': room.name
+        'name': room.name,
+        'data': get_data(room.game)
         }))
 
 @csrf_exempt
