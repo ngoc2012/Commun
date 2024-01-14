@@ -5,6 +5,11 @@ from .models import RoomsModel, PlayersModel, PlayerRoomModel
 
 from pong.data import pong_data
 
+def get_data(game):
+    if game == 'pong':
+        return pong_data
+    return {}
+
 @csrf_exempt
 def new_game(request):
     if 'game' not in request.POST:
