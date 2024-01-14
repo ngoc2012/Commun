@@ -59,7 +59,13 @@ export class Lobby
                 'login': this.main.login
             },
             success: (info) => {
-                //this.main.set_status(info);
+                if (typeof info === 'string')
+                {
+                    this.main.set_status(info);
+                }
+                else
+                {
+                    this.main.set_status(info.name);
                 if (this.socket !== -1)
                     this.socket.send('update');
                 /*
@@ -69,6 +75,8 @@ export class Lobby
                         break;
                 }
                 */
+                }
+                
             },
             error: (error) => this.main.set_status('Error: Can not join game')
         });
