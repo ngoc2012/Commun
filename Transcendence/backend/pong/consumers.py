@@ -36,8 +36,8 @@ class PongConsumer(AsyncWebsocketConsumer):
         pass
     
     async def group_data(self, event):
-        rooms = RoomsModel.objects.all()
-        rooms_data = await room_list(rooms)
+        players = PlayerRoomModel.objects.filter(room=self.room_id)
+        rooms_data = await room_list(players)
         await self.send(text_data=rooms_data)
     
     #async def game_loop(self):
