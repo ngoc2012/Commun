@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import RoomsModel, PlayersModel
+from .models import RoomsModel, PlayersModel, PlayerRoomModel
 
 from pong.data import pong_data
 
@@ -30,6 +30,13 @@ def new_game(request):
     else:
         data = {}
     new_room.save()
+    player_room = PlayerRoomModel(
+        player=owner,
+        room=new_room,
+        side=0,
+        position=0
+    )
+    player_room.save()
     return (JsonResponse({
         'id': str(new_room),
         'game': new_room.game,
