@@ -9,7 +9,7 @@ from .models import RoomsModel, PlayersModel
 def room_list(rooms):
     return json.dumps([
         {
-            "id": i.id,
+            "id": str(i),
             "name": i.name
             } for i in rooms])
 
