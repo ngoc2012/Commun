@@ -65,16 +65,16 @@ export class Lobby
                 }
                 else
                 {
-                    this.main.set_status(info.name);
-                if (this.socket !== -1)
-                    this.socket.send('update');
-                /*
-                switch (info.game) {
-                    case 'pong':
-                        this.pong_game(info);
-                        break;
-                }
-                */
+                    this.main.set_status('Game ' + info.name + ' created.');
+                    if (this.socket !== -1)
+                        this.socket.send('update');
+                    /*
+                    switch (info.game) {
+                        case 'pong':
+                            this.pong_game(info);
+                            break;
+                    }
+                    */
                 }
                 
             },
@@ -83,7 +83,6 @@ export class Lobby
     }
 
     delete_game() {
-        console.log("delete_game");
         this.main.set_status('');
         if (this.main.login === '')
         {
