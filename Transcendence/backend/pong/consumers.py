@@ -13,24 +13,13 @@ def room_list(rooms):
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_id = self.scope['url_route']['kwargs']['room_id']
-        user_id = self.scope.get('user')
 
         # Join room group
         await self.channel_layer.group_add(
             self.room_id,
             self.channel_name
         )
-
-        # Update game state (new paddle)
-        await self.channel_layer.group_send(
-            self.room_id,
-            {
-                'type': 'update_state',
-                'state': {},
-            }
-        )
         await self.accept()
-
         # Start a loop to continuously update the game state
         await self.game_loop()
 
