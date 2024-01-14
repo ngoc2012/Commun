@@ -31,5 +31,6 @@ class RoomsModel(models.Model):
             self.delete()
 
 class PlayerRoomModel(models.Model):
+    id = models.AutoField(primary_key=True)
     player = models.ForeignKey(PlayersModel, on_delete=models.CASCADE)
     room = models.ForeignKey(RoomsModel, on_delete=models.CASCADE)

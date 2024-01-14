@@ -33,10 +33,6 @@ class PongConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         # Handle user input (if needed)
         pass
-
-    async def update_state(self):
-        # Send the updated game state back to all clients in the room
-        
     
     async def game_loop(self):
         # Simulate a game loop that updates the state every 1 second
