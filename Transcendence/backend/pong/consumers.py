@@ -1,6 +1,7 @@
 import json
 from asgiref.sync import sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
+from .models import RoomsModel, PlayersModel, PlayerRoomModel
 
 @sync_to_async
 def room_list(rooms):
@@ -33,6 +34,11 @@ class PongConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         # Handle user input (if needed)
         pass
+    
+    async def group_data(self, event):
+        rooms = RoomsModel.objects.all()
+        rooms_data = await room_list(rooms)
+        await self.send(text_data=rooms_data)
     
     #async def game_loop(self):
     #    # Simulate a game loop that updates the state every 1 second
