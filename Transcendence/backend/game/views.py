@@ -11,17 +11,19 @@ def new_player(request):
         return (HttpResponse("Error: No login!"))
     if 'name' not in request.POST:
         return (HttpResponse("Error: No name!"))
-    if PlayersModel.objects.filter(login=request.POST['login']).exists():
-        return (HttpResponse("Error: Login '" + request.POST['login'] + "' exist."))
-    new_player = PlayersModel(
-            login=request.POST['login'],
-            password=request.POST['password'],
-            name=request.POST['name'],
-            x=0,
-            y=0
-            )
-    new_player.save()
+    if not PlayersModel.objects.filter(login=request.POST['login']).exists():
+        return (HttpResponse("Error: Login '" + request.POST['login'] + "' does not exist!"))
+    owner = PlayersModel.objects.get(login=action['login'])
+    if (action['action'] == "new"):
+        RoomsModel(
+                game=action['game'],
+                name=action['name'],
+                nplayers=1,
+                owner=owner
+                ).save()
+    if (action['action'] == "delete"):
+        RoomsModel.objects.get(id=action['id']).delete()
     return (JsonResponse({
-        'login': new_player.login,
-        'name': new_player.name
+        'id': new_game.id,
+        'name': new_game.name
         }))
