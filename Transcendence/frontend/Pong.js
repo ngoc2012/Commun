@@ -42,6 +42,7 @@ export class Pong
             + window.location.host
             + '/ws/pong/'
             + this.room.data.room
+            + '/'
         );
 
         this.socket.onmessage = (e) => {
