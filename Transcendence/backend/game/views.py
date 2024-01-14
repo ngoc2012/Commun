@@ -25,7 +25,7 @@ def new_game(request):
     )
     if new_room.game == 'pong':
         data = pong_data
-        new_room.x = data['PADDLE_WIDTH'] + data['PADDLE_WIDTH']RADIUS
+        new_room.x = data['PADDLE_WIDTH'] + data['RADIUS']
         new_room.y = data['HEIGHT'] / 2
     else:
         data = {}
@@ -44,7 +44,7 @@ def new_game(request):
         'id': str(new_room),
         'game': new_room.game,
         'name': new_room.name,
-        'data': pong_data
+        'data': data
         }))
 
 @csrf_exempt
@@ -68,7 +68,7 @@ def join(request):
         side = 1
         position = n1
     player = PlayersModel.objects.get(login=request.POST['login'])
-    player.x = n0 * 
+    player.x = position * data['PADDLE_WIDTH'] + position * data['PADDLE_DISTANCE']
     owner.y = data['HEIGHT'] / 2 - data['PADDLE_HEIGHT'] / 2
     owner.save()
     player_room = PlayerRoomModel(
