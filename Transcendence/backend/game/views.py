@@ -24,7 +24,8 @@ def new_game(request):
     return (JsonResponse({
         'id': str(new_game),
         'game': new_game.game,
-        'name': new_game.name
+        'name': new_game.name,
+        'data': data
         }))
 
 @csrf_exempt
