@@ -19,23 +19,6 @@ from game.consumers import RoomsConsumer
 from chat.consumers import ChatConsumer
 from pong.consumers import PongConsumer
 
-#os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
-#
-#application = ProtocolTypeRouter({
-#    # Django's ASGI application to handle traditional HTTP requests
-#    "http": get_asgi_application(),
-#
-#    # WebSocket handler
-#    "websocket": AllowedHostsOriginValidator(
-#        AuthMiddlewareStack(
-#            URLRouter([
-#                path("ws/rooms/", RoomsConsumer.as_asgi()),
-#            ])
-#        )
-#    ),
-#})
-
-
 #from chat.routing import websocket_urlpatterns
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
@@ -57,12 +40,3 @@ application = ProtocolTypeRouter(
         ),
     }
 )
-
-#application = ProtocolTypeRouter(
-#    {
-#        "http": django_asgi_app,
-#        "websocket": AllowedHostsOriginValidator(
-#            AuthMiddlewareStack(URLRouter(websocket_urlpatterns))
-#        ),
-#    }
-#)

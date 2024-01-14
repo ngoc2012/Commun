@@ -9,13 +9,13 @@ class PongConsumer(AsyncWebsocketConsumer):
 
         # Join room group
         await self.channel_layer.group_add(
-            self.room_name,
+            self.room_id,
             self.channel_name
         )
 
         # Update game state (new paddle)
         await self.channel_layer.group_send(
-            self.room_name,
+            self.room_id,
             {
                 'type': 'update_state',
                 'state': {},
@@ -46,7 +46,7 @@ class PongConsumer(AsyncWebsocketConsumer):
                 'state': self.state,
             }
         )
-        
+
     async def channel_layer(self):
         """
         This method is automatically called by Channels to get the channel layer.
