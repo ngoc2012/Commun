@@ -23,6 +23,10 @@ def new_game(request):
         owner=owner
     )
     new_game.save()
+    if new_game.game == 'pong':
+        data = pong_data
+    else:
+        data = {}
     return (JsonResponse({
         'id': str(new_game),
         'game': new_game.game,
