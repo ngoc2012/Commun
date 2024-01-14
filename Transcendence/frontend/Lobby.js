@@ -68,6 +68,33 @@ export class Lobby
             },
             error: (error) => this.main.set_status('Error: Can not join game')
         });
+    }
+
+    delete_game() {
+        console.log("new_game");
+        this.main.set_status('');
+        if (this.main.login === '')
+        {
+            this.main.set_status('Please login or sign up');
+            return;
+        }
+        $.ajax({
+            url: '/new_game',
+            method: 'POST',
+            data: {
+                'name': 'Game name here',
+                'game': game,
+                'login': this.main.login
+            },
+            success: (info) => {
+                switch (info.game) {
+                    case 'pong':
+                        this.pong_game(info);
+                        break;
+                }
+            },
+            error: (error) => this.main.set_status('Error: Can not join game')
+        });
         /*
         if (this.socket === -1)
         {
