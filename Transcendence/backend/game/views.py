@@ -28,13 +28,6 @@ def new_game(request):
         owner=owner,
         server=owner
     )
-    if new_room.game == 'pong':
-        data = pong_data
-        new_room.x = data['PADDLE_WIDTH'] + data['RADIUS']
-        new_room.y = data['HEIGHT'] / 2
-    else:
-        data = {}
-    new_room.save()
     player_room = PlayerRoomModel(
         player=owner,
         room=new_room,
@@ -42,8 +35,13 @@ def new_game(request):
         position=0
     )
     player_room.save()
-    owner.x = 0
-    owner.y = data['HEIGHT'] / 2 - data['PADDLE_HEIGHT'] / 2
+    data = get_data(new_room.game)
+    if new_room.game == 'pong':
+        new_room.x = pong_data['PADDLE_WIDTH'] + pong_data['RADIUS']
+        new_room.y = pong_data['HEIGHT'] / 2
+        owner.x = 0
+        owner.y = pong_data['HEIGHT'] / 2 - pong_data['PADDLE_HEIGHT'] / 2
+    new_room.save()
     owner.save()
     return (JsonResponse({
         'id': str(new_room),
