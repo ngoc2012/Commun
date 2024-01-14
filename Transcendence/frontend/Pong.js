@@ -1,9 +1,9 @@
 export class Pong
 {
-	constructor(m, l, i) {
+	constructor(m, l, g) {
         this.main = m;
         this.lobby = l;
-        this.info = i;
+        this.game = g;
         this.connected = false;
         this.socket = -1;
     }
