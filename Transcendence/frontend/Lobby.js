@@ -10,12 +10,14 @@ export class Lobby
     
     events() {
         this.game = null;
+        this.dom_rooms = document.getElementById("rooms");
+        this.dom_join = document.querySelector("#join");
         this.dom_pong = document.querySelector("#pong");
         this.dom_pew = document.querySelector("#pew");
-        this.dom_join = document.querySelector("#join");
-        this.dom_rooms = document.getElementById("rooms");
+        this.dom_delete = document.querySelector("#delete");
         this.dom_pong.addEventListener("click", () => this.new_game("pong"));
         this.dom_pew.addEventListener("click", () => this.new_game("pew"));
+        this.dom_delete.addEventListener("click", () => this.delete_game());
         this.dom_join.addEventListener("click", () => this.join());
         this.rooms_update();
     }
