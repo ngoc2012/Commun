@@ -50,11 +50,12 @@ export class Lobby
             return;
         }
         $.ajax({
-            url: '/join_game',
+            url: '/new_game',
             method: 'POST',
             data: {
-                "user": this.main.user,
-                "id": this.dom_rooms.options[this.dom_rooms.selectedIndex].value
+                'name': 'Game name here',
+                'game': game,
+                'login': this.main.login
             },
             success: (info) => {
                 switch (info.game) {

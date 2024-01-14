@@ -1,22 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from game.models import PlayersModel
-
-def index(request):
-	return (render(request, 'index.html'))
-
-def lobby(request):
-	return (render(request, 'lobby.html'))
-
-def signup(request):
-	return (render(request, 'signup.html'))
-
-def login(request):
-	return (render(request, 'login.html'))
+from .models import RoomsModel, PlayersModel
 
 @csrf_exempt
 def new_player(request):
+    if 'game' not in action.keys():
+        print("Error: No game.")
+        return None
+    if 'login' not in action.keys():
+        print("Error: No login.")
+        return None
     if 'login' not in request.POST or 'password' not in request.POST or 'name' not in request.POST:
           return (HttpResponse({'Error: Form not correct!'}))
     if request.POST['login'] == "" or request.POST['password'] == "" or request.POST['name'] == "":
