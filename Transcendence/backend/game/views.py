@@ -37,6 +37,8 @@ def new_game(request):
         position=0
     )
     player_room.save()
+    owner.x = data['PADDLE_WIDTH'] / 2
+    owner.y = data['HEIGHT'] / 2
     return (JsonResponse({
         'id': str(new_room),
         'game': new_room.game,
