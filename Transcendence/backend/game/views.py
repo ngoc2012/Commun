@@ -5,14 +5,14 @@ from .models import RoomsModel, PlayersModel
 
 @csrf_exempt
 def new_player(request):
-    if 'game' not in action.keys():
+    if 'game' not in request.POST:
         print("Error: No game.")
         return None
-    if 'login' not in action.keys():
+    if 'login' not in request.POST:
         print("Error: No login.")
         return None
     if 'login' not in request.POST or 'password' not in request.POST or 'name' not in request.POST:
-          return (HttpResponse({'Error: Form not correct!'}))
+          return (HttpResponse('Error: Form not correct!'))
     if request.POST['login'] == "" or request.POST['password'] == "" or request.POST['name'] == "":
         return (HttpResponse({'Error : Form not correct!'}))
     if PlayersModel.objects.filter(login=request.POST['login']).exists():

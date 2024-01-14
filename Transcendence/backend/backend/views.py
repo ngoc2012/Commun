@@ -18,11 +18,11 @@ def login(request):
 @csrf_exempt
 def new_player(request):
     if 'login' not in request.POST or 'password' not in request.POST or 'name' not in request.POST:
-          return (HttpResponse({'Error: Form not correct!'}))
+          return (HttpResponse('Error: Form not correct!'))
     if request.POST['login'] == "" or request.POST['password'] == "" or request.POST['name'] == "":
-        return (HttpResponse({'Error : Form not correct!'}))
+        return (HttpResponse('Error : Form not correct!'))
     if PlayersModel.objects.filter(login=request.POST['login']).exists():
-        return (HttpResponse({"Error: Login '" + request.POST['login'] + "' exist."}))
+        return (HttpResponse("Error: Login '" + request.POST['login'] + "' exist."))
     new_player = PlayersModel(
             login=request.POST['login'],
             password=request.POST['password'],
@@ -39,13 +39,13 @@ def new_player(request):
 @csrf_exempt
 def log_in(request):
     if 'login' not in request.POST or 'password' not in request.POST:
-        return (HttpResponse({'Error: Form not correct!'}))
+        return (HttpResponse('Error: Form not correct!'))
     if not PlayersModel.objects.filter(login=request.POST['login']).exists():
-        return (HttpResponse({"Error: Login '" + request.POST['login'] + "' does not exist!"}))
+        return (HttpResponse("Error: Login '" + request.POST['login'] + "' does not exist!"))
     user = PlayersModel.objects.get(login=request.POST['login'])
     if user.password == request.POST['password']:
         return (JsonResponse({
             'login': user.login,
             'name': user.name
         }))
-    return (HttpResponse({'Error: Password not correct!'}))
+    return (HttpResponse('Error: Password not correct!'))
