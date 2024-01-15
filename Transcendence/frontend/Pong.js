@@ -85,20 +85,12 @@ export class Pong
                     */
                 }
             },
-            error: () => this.main.set_status('Error: Can not join game')
+            error: () => this.main.set_status('Error: Can not set state')
         });
     }
 
-    update_state(data) {
-        this.data = data;
-        if (this.connected && this.lobby.socket !== -1)
-        {
-            this.socket.send("got");
-            this.draw();
-        }
-    }
-
 	draw(data) {
+        console.log(this.room);
         console.log(data);
 		// Clear the canvas
 		this.ctx.clearRect(0, 0, this.room.data.WIDTH, this.room.data.HEIGHT);
