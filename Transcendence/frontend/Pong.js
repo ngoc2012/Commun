@@ -17,7 +17,7 @@ export class Pong
         this.ctx.canvas.height = this.room.data.HEIGHT;
         this.dom_start = document.getElementById("start");
         this.dom_quit = document.getElementById("quit");
-        this.dom_start.addEventListener("click", () => this.set_state("start"));
+        this.dom_start.addEventListener("click", () => this.start());
         this.dom_quit.addEventListener("click", () => this.quit());
         document.addEventListener('keydown', (event) => {
             switch (event.key) {
@@ -31,6 +31,11 @@ export class Pong
         });
         this.connect();
 	}
+
+    start() {
+        if (this.socket !== -1)
+            this.socket.send('start');
+    }
 
     quit() {
         if (this.socket !== -1)
