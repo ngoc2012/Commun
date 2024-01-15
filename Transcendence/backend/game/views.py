@@ -24,7 +24,6 @@ def new_game(request):
     new_room = RoomsModel(
         game=request.POST['game'],
         name=request.POST['name'],
-        nplayers=1,
         owner=owner,
         server=owner
     )
