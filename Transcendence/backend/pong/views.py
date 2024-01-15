@@ -58,7 +58,7 @@ def start(request):
         return (HttpResponse("Error: Player is not playing this game!"))
     player_room = PlayerRoomModel.objects.get(player=player,room=room)
     channel_layer = get_channel_layer()
-    #await channel_layer.send(room.id, {
-    #    'type': 'group_data'
-    #})
+    await channel_layer.send(room.id, {
+        'type': 'group_data'
+    })
 
