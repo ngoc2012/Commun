@@ -43,7 +43,7 @@ export class Pong
             'ws://'
             + window.location.host
             + '/ws/pong/'
-            + this.room.data.room
+            + this.room.id
             + '/'
         );
 
@@ -81,7 +81,6 @@ export class Pong
 
 		// Draw paddles
 		this.ctx.fillStyle = '#8b3a62';
-        //this.data.position.forEach((p, i) => {
         this.data.players.forEach((p) => {
 		    this.ctx.fillRect(
                 p.x,
