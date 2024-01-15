@@ -29,10 +29,14 @@ def state(request):
         print(request.POST['action'])
         if request.POST['action'] == 'down' and player_room.y < pong_data['HEIGHT'] - pong_data['PADDLE_HEIGHT']:
             player_room.y += pong_data['STEP']
+            player_room.save()
             if room.server == player:
                 room.y += pong_data['STEP']
+                room.save()
         if request.POST['action'] == 'up' and player_room.y > 0:
             player_room.y -= pong_data['STEP']
+            player_room.save()
             if room.server == player:
                 room.y -= pong_data['STEP']
+                room.save()
     return (HttpResponse("Done"))
