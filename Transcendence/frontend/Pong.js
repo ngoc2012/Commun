@@ -50,7 +50,7 @@ export class Pong
         this.socket.onmessage = (e) => {
             if (!('data' in e))
                 return;
-            draw(JSON.parse(e.data));
+            this.draw(JSON.parse(e.data));
         };
 
         this.socket.onclose = (e) => {
