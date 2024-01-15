@@ -18,3 +18,6 @@ def state(request):
     if not RoomsModel.objects.filter(id=request.POST['game_id']).exists():
         return (HttpResponse("Error: Room with id '" + request.POST['game_id'] + "' does not exist!"))
     room = RoomsModel.objects.get(id=request.POST['game_id'])
+    player_room = PlayerRoomModel.objects.get(player=player,room=room)
+    if player_room == None:
+        return (HttpResponse("Error: No login!"))
