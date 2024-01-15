@@ -72,7 +72,7 @@ export class Pong
             method: 'POST',
             data: {
                 'login': this.main.login,
-                "game_id": this.dom_rooms.options[this.dom_rooms.selectedIndex].value
+                "game_id": this.room.id
             },
             success: (info) => {
                 if (typeof info === 'string')
