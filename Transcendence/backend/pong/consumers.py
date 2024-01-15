@@ -77,6 +77,10 @@ class PongConsumer(AsyncWebsocketConsumer):
                         dx = -1
             room.save()
             if room.x <= 0 or room.x >= pong_data['WIDTH']:
+                room.x = room.server.x + pong_data['RADIUS']
+                room.y = room.server.y
+                room.started = False
+                room.save()
                 return
             await self.channel_layer.group_send(
                 self.room_id,
