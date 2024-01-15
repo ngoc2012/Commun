@@ -82,8 +82,6 @@ export class Lobby
                     switch (info.game) {
                         case 'pong':
                             this.pong_game(info);
-                            if (this.socket !== -1)
-                                this.socket.close();
                             break;
                     }
                 }
@@ -120,6 +118,7 @@ export class Lobby
     }
 
     pong_game(info) {
+        this.quit();
         this.game = new Pong(this.main, this, info);
         this.main.load('/pong', () => this.game.init());
     }
@@ -151,5 +150,10 @@ export class Lobby
         this.socket.onclose = (e) => {
             //console.error('Chat socket closed unexpectedly');
         };
+    }
+
+    quit() {
+        if (this.socket !== -1)
+            this.socket.close();
     }
 }
