@@ -53,11 +53,8 @@ class PongConsumer(AsyncWebsocketConsumer):
         i = 0
         while i < 1000:
             await asyncio.sleep(1)  # Sleep for 1 second
-#
-            # Update the game state (this is just an example, actual logic depends on your game)
             self.state['ball_position']['x'] += 1
             self.state['ball_position']['y'] += 1
-#
             # Notify all clients about the updated state
             await self.channel_layer.group_send(
                 self.room_id,
@@ -65,10 +62,4 @@ class PongConsumer(AsyncWebsocketConsumer):
                     'type': 'group_data'
                 }
             )
-
-    #async def game_update_state(self, event):
-    #    # Handle the event when the game state is updated
-    #    state = event['state']
-    #    await self.send(text_data=json.dumps({
-    #        'state': state,
-    #    }))
+            i = i + 1
