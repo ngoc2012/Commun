@@ -35,3 +35,4 @@ def state(request):
             player_room.y -= pong_data['STEP']
             if room.server == player:
                 room.y -= pong_data['STEP']
+    return (HttpResponse("Done"))
