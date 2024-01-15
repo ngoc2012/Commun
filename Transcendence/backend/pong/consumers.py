@@ -56,10 +56,11 @@ class PongConsumer(AsyncWebsocketConsumer):
         room = RoomsModel.objects.get(id=room_id)
         i = 0
         dx = 1
+        dy = 1
         while i < 1000:
             await asyncio.sleep(1)
-            self.state['ball_position']['x'] += pong_data['STEP']
-            self.state['ball_position']['y'] += pong_data['STEP']
+            room.x += pong_data['DX']
+            room.y += pong_data['DY']
             # Notify all clients about the updated state
             await self.channel_layer.group_send(
                 self.room_id,
