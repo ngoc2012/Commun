@@ -40,12 +40,13 @@ class PongConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         if text_data == 'start':
             await self.game_loop()
-        await self.channel_layer.group_send(
-            self.room_id,
-            {
-                'type': 'group_data'
-            }
-        )
+        else
+            await self.channel_layer.group_send(
+                self.room_id,
+                {
+                    'type': 'group_data'
+                }
+            )
     
     async def group_data(self, event):
         players = PlayerRoomModel.objects.filter(room=self.room_id)
@@ -61,7 +62,7 @@ class PongConsumer(AsyncWebsocketConsumer):
         i = 0
         dx = 1
         dy = 1
-        while i < 1000:
+        while i < 100:
             await asyncio.sleep(1)
             room.x += dx * pong_data['DX']
             room.y += dy * pong_data['DY']
