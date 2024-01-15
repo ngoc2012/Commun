@@ -7,7 +7,7 @@ class PlayersModel(models.Model):
     login = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
-    session_id = models.CharField(max_length=40)
+    session_id = models.CharField(max_length=40, null=True)
     expires = models.DateTimeField(null=True)
     
     def __str__(self):
