@@ -22,7 +22,6 @@ class RoomsModel(models.Model):
     expires = models.DateTimeField(default=timezone.now() + timezone.timedelta(minutes=15))
     x = models.IntegerField(blank=True, null=True)
     y = models.IntegerField(blank=True, null=True)
-    dx = models.IntegerField(blank=True, null=True)
     def __str__(self):
         return str(self.id)
     def check_expired(self):
