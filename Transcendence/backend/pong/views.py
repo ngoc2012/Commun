@@ -1,10 +1,7 @@
 from django.shortcuts import render
 #from django.http import HttpResponse
-#from django.http import JsonResponse
-#from django.views.decorators.csrf import csrf_exempt
-#from django.shortcuts import redirect
-#import time
-#from random import randrange
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def index(request):
@@ -14,3 +11,4 @@ def index(request):
 def state(request):
     if 'login' not in request.POST or request.POST['login'] == "":
         return (HttpResponse("Error: No login!"))
+    player = PlayersModel.objects.get(login=request.POST['login'])
