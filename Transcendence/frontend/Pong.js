@@ -13,8 +13,8 @@ export class Pong
         this.dom_game_name.innerHTML = this.room.name;
 		this.canvas = document.getElementById('pongCanvas');
 		this.ctx = this.canvas.getContext('2d');
-        this.ctx.canvas.width  = this.room.data.width;
-        this.ctx.canvas.height = this.room.data.height;
+        this.ctx.canvas.width  = this.room.data.WIDTH;
+        this.ctx.canvas.height = this.room.data.HEIGHT;
         this.dom_start = document.getElementById("start");
         this.dom_quit = document.getElementById("quit");
         this.dom_start.addEventListener("click", () => this.set_state("start"));
