@@ -80,8 +80,8 @@ export class Pong
     }
 
 	draw(data) {
-        console.log(this.room);
-        console.log(data);
+        //console.log(this.room);
+        //console.log(data);
 		// Clear the canvas
 		this.ctx.clearRect(0, 0, this.room.data.WIDTH, this.room.data.HEIGHT);
 
