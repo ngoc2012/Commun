@@ -3,6 +3,8 @@ from asgiref.sync import sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
 from game.models import RoomsModel, PlayerRoomModel
 
+import asyncio
+
 from .data import pong_data
 
 @sync_to_async
