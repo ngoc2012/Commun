@@ -51,6 +51,7 @@ class PongConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=room_data)
     
     async def game_loop(self):
+        room = RoomsModel.objects.get(id=room_id)
         i = 0
         while i < 1000:
             await asyncio.sleep(1)
