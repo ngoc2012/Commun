@@ -9,14 +9,16 @@ export class Pong
     }
 
 	init() {
+        this.dom_game_name = document.getElementById("game_name");
+        this.dom_game_name.innerHTML = this.room.name;
 		this.canvas = document.getElementById('pongCanvas');
 		this.ctx = this.canvas.getContext('2d');
         this.ctx.canvas.width  = this.room.data.width;
         this.ctx.canvas.height = this.room.data.height;
-        let dom_start = document.getElementById("start");
-        let dom_quit = document.getElementById("quit");
-        dom_start.addEventListener("click", () => this.set_state("start"));
-        dom_quit.addEventListener("click", () => this.quit());
+        this.dom_start = document.getElementById("start");
+        this.dom_quit = document.getElementById("quit");
+        this.start.addEventListener("click", () => this.set_state("start"));
+        this.quit.addEventListener("click", () => this.quit());
         document.addEventListener('keydown', (event) => {
             switch (event.key) {
                 case 'ArrowUp':
