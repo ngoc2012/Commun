@@ -25,5 +25,8 @@ def state(request):
     if not PlayerRoomModel.objects.filter(player=player,room=room).exists():
         return (HttpResponse("Error: Player is not playing this game!"))
     player_room = PlayerRoomModel.objects.get(player=player,room=room)
-    if request.POST['action'] == 'up':
-        player_room.y += pong_data['STEP']
+    if room.game == 'pong':
+        if request.POST['action'] == 'down' and player_room.y < pong_data['HEIGHT']:
+            player_room.y += pong_data['STEP']
+        if request.POST['action'] == 'up' and player_room.y > 0:
+            player_room.y -= pong_data['STEP']
