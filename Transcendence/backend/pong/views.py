@@ -9,3 +9,7 @@ from django.shortcuts import render
 # Create your views here.
 def index(request):
     return render(request, "pong.html")
+
+@csrf_exempt
+def state(request):
+    if 'login' not in request.POST or request.POST['login'] == "":
