@@ -10,6 +10,8 @@ def index(request):
 
 @csrf_exempt
 def state(request):
+    if 'action' not in request.POST:
+        return (HttpResponse("Error: No action!"))
     if 'game_id' not in request.POST:
         return (HttpResponse("Error: No game id!"))
     if 'login' not in request.POST or request.POST['login'] == "":
@@ -21,3 +23,5 @@ def state(request):
     if not PlayerRoomModel.objects.filter(player=player,room=room).exists():
         return (HttpResponse("Error: Player is not playing this game!"))
     player_room = PlayerRoomModel.objects.get(player=player,room=room)
+    if request.POST['action'] == 'up':
+        player_room.y += 
