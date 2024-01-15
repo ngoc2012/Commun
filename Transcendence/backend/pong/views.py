@@ -4,6 +4,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from game.models import RoomsModel, PlayersModel, PlayerRoomModel
 
+from pong.data import pong_data
+
 # Create your views here.
 def index(request):
     return render(request, "pong.html")
@@ -24,4 +26,4 @@ def state(request):
         return (HttpResponse("Error: Player is not playing this game!"))
     player_room = PlayerRoomModel.objects.get(player=player,room=room)
     if request.POST['action'] == 'up':
-        player_room.y += 
+        player_room.y += pong_data['STEP']
