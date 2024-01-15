@@ -54,6 +54,7 @@ class PongConsumer(AsyncWebsocketConsumer):
     
     async def game_loop(self):
         room = RoomsModel.objects.get(id=room_id)
+        players = PlayerRoomModel.objects.filter(room=room_id)
         i = 0
         dx = 1
         dy = 1
@@ -61,6 +62,8 @@ class PongConsumer(AsyncWebsocketConsumer):
             await asyncio.sleep(1)
             room.x += dx * pong_data['DX']
             room.y += dy * pong_data['DY']
+            if room.y + pong_data['RADIUS'] >= pong_data['HEIGHT'] or room.y - pong_data['RADIUS'] <= 0:
+                dy *= -1
             # Notify all clients about the updated state
             await self.channel_layer.group_send(
                 self.room_id,
@@ -68,4 +71,4 @@ class PongConsumer(AsyncWebsocketConsumer):
                     'type': 'group_data'
                 }
             )
-            i = i + 1
+            i += 1
