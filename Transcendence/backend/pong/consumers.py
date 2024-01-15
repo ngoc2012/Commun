@@ -3,6 +3,7 @@ from asgiref.sync import sync_to_async
 from channels.generic.websocket import AsyncWebsocketConsumer
 from game.models import RoomsModel, PlayersModel, PlayerRoomModel
 
+
 @sync_to_async
 def get_room_data(players, room_id):
     room = RoomsModel.objects.get(id=room_id)
@@ -53,9 +54,10 @@ class PongConsumer(AsyncWebsocketConsumer):
     async def game_loop(self):
         room = RoomsModel.objects.get(id=room_id)
         i = 0
+        dx = 1
         while i < 1000:
             await asyncio.sleep(1)
-            self.state['ball_position']['x'] += 1
+            self.state['ball_position']['x'] += dx * 
             self.state['ball_position']['y'] += 1
             # Notify all clients about the updated state
             await self.channel_layer.group_send(
