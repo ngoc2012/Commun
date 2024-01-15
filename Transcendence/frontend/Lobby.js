@@ -79,9 +79,6 @@ export class Lobby
                 else
                 {
                     //this.main.set_status('Game ' + info.name + ' created.');
-                    if (this.socket !== -1)
-                        this.socket.send('update');
-                    /*
                     switch (info.game) {
                         case 'pong':
                             this.pong_game(info);
@@ -89,7 +86,6 @@ export class Lobby
                                 this.socket.close();
                             break;
                     }
-                    */
                 }
             },
             error: () => this.main.set_status('Error: Can not create game')
