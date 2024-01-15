@@ -67,7 +67,7 @@ class PongConsumer(AsyncWebsocketConsumer):
                 dy *= -1
             if dx == -1:
                 for p in players0:
-                    if room.x - pong_data['RADIUS'] == p.x and room.y >= p.y and room.y <= p.y + pong_data['PADDLE_HEIGHT']:
+                    if room.x - pong_data['RADIUS'] == p.x + pong_data['PADDLE_WIDTH'] and room.y >= p.y and room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                         dx = 1
             else:
                 for p in players1:
