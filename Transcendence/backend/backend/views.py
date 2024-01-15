@@ -26,12 +26,10 @@ def new_player(request):
     if PlayersModel.objects.filter(login=request.POST['login']).exists():
         return (HttpResponse("Error: Login '" + request.POST['login'] + "' exist."))
     new_player = PlayersModel(
-            login=request.POST['login'],
-            password=request.POST['password'],
-            name=request.POST['name'],
-            x=0,
-            y=0
-            )
+        login=request.POST['login'],
+        password=request.POST['password'],
+        name=request.POST['name']
+    )
     new_player.save()
     return (JsonResponse({
         'login': new_player.login,
