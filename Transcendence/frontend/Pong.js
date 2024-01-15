@@ -50,7 +50,8 @@ export class Pong
         this.socket.onmessage = (e) => {
             if (!('data' in e))
                 return;
-            const rooms = JSON.parse(e.data);
+            draw(JSON.parse(e.data));
+            const rooms = ;
             var options_rooms = this.dom_rooms && this.dom_rooms.options;
             this.dom_rooms.innerHTML = "";
             if (options_rooms && rooms && rooms.length > 0) {
