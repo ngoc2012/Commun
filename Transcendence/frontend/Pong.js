@@ -67,11 +67,34 @@ export class Pong
     }
 
     set_state(e) {
-        if (this.connected && this.socket !== -1)
-            this.socket.send(JSON.stringify({ 
+        $.ajax({
+            url: '/pong/state',
+            method: 'POST',
+            data: {
                 'login': this.main.login,
-                'action': e
-        }));
+                "game_id": this.dom_rooms.options[this.dom_rooms.selectedIndex].value
+            },
+            success: (info) => {
+                if (typeof info === 'string')
+                {
+                    this.main.set_status(info);
+                }
+                else
+                {
+                    //this.main.set_status('Game ' + info.name + ' created.');
+                    if (this.socket !== -1)
+                        this.socket.send('update');
+                    /*
+                    switch (info.game) {
+                        case 'pong':
+                            this.pong_game(info);
+                            break;
+                    }
+                    */
+                }
+            },
+            error: () => this.main.set_status('Error: Can not join game')
+        });
     }
 
     update_state(data) {
