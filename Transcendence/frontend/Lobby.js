@@ -45,6 +45,8 @@ export class Lobby
                     switch (info.game) {
                         case 'pong':
                             this.pong_game(info);
+                            if (this.socket !== -1)
+                                this.socket.close();
                             break;
                     }
                     */
@@ -83,6 +85,8 @@ export class Lobby
                     switch (info.game) {
                         case 'pong':
                             this.pong_game(info);
+                            if (this.socket !== -1)
+                                this.socket.close();
                             break;
                     }
                     */
