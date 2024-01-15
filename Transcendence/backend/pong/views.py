@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from game.models import RoomsModel, PlayersModel, PlayerRoomModel
 
 from pong.data import pong_data
+from channels.layers import get_channel_layer
 
 # Create your views here.
 def index(request):
@@ -55,10 +56,8 @@ def start(request):
     if not PlayerRoomModel.objects.filter(player=player,room=room).exists():
         return (HttpResponse("Error: Player is not playing this game!"))
     player_room = PlayerRoomModel.objects.get(player=player,room=room)
-    from channels.layers import get_channel_layer
     channel_layer = get_channel_layer()
     await channel_layer.send(room.id, {
-        "type": "chat.message",
-        "text": "Hello there!",
+        'type': 'group_data'
     })
 
