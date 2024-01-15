@@ -41,24 +41,23 @@ def state(request):
             room.save()
     return (HttpResponse("Done"))
 
-@csrf_exempt
-@sync_to_async
-def start(request):
-    if 'action' not in request.POST:
-        return (HttpResponse("Error: No action!"))
-    if 'game_id' not in request.POST:
-        return (HttpResponse("Error: No game id!"))
-    if 'login' not in request.POST or request.POST['login'] == "":
-        return (HttpResponse("Error: No login!"))
-    player = PlayersModel.objects.get(login=request.POST['login'])
-    if not RoomsModel.objects.filter(id=request.POST['game_id']).exists():
-        return (HttpResponse("Error: Room with id '" + request.POST['game_id'] + "' does not exist!"))
-    room = RoomsModel.objects.get(id=request.POST['game_id'])
-    if not PlayerRoomModel.objects.filter(player=player,room=room).exists():
-        return (HttpResponse("Error: Player is not playing this game!"))
-    player_room = PlayerRoomModel.objects.get(player=player,room=room)
-    channel_layer = get_channel_layer()
-    await channel_layer.send(room.id, {
-        'type': 'group_data'
-    })
-
+#@csrf_exempt
+#@sync_to_async
+#def start(request):
+#    if 'action' not in request.POST:
+#        return (HttpResponse("Error: No action!"))
+#    if 'game_id' not in request.POST:
+#        return (HttpResponse("Error: No game id!"))
+#    if 'login' not in request.POST or request.POST['login'] == "":
+#        return (HttpResponse("Error: No login!"))
+#    player = PlayersModel.objects.get(login=request.POST['login'])
+#    if not RoomsModel.objects.filter(id=request.POST['game_id']).exists():
+#        return (HttpResponse("Error: Room with id '" + request.POST['game_id'] + "' does not exist!"))
+#    room = RoomsModel.objects.get(id=request.POST['game_id'])
+#    if not PlayerRoomModel.objects.filter(player=player,room=room).exists():
+#        return (HttpResponse("Error: Player is not playing this game!"))
+#    player_room = PlayerRoomModel.objects.get(player=player,room=room)
+#    channel_layer = get_channel_layer()
+#    await channel_layer.send(room.id, {
+#        'type': 'group_data'
+#    })
