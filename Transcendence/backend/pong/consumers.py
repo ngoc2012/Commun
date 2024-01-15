@@ -65,15 +65,16 @@ class PongConsumer(AsyncWebsocketConsumer):
             room.y += dy * pong_data['DY']
             if room.y + pong_data['RADIUS'] >= pong_data['HEIGHT'] or room.y - pong_data['RADIUS'] <= 0:
                 dy *= -1
-            if dx < 0:
+            if dx == -1:
                 for p in players0:
                     if room.x - pong_data['RADIUS'] == p.x and room.y >= p.y and room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                         dx = 1
             else:
                 for p in players1:
                     if room.x + pong_data['RADIUS'] == p.x and room.y >= p.y and room.y <= p.y + pong_data['PADDLE_HEIGHT']:
-                        dx = 1
+                        dx = -1
             # Notify all clients about the updated state
+            room.save()
             await self.channel_layer.group_send(
                 self.room_id,
                 {
