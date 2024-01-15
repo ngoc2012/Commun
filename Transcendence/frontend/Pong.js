@@ -51,17 +51,6 @@ export class Pong
             if (!('data' in e))
                 return;
             draw(JSON.parse(e.data));
-            const rooms = ;
-            var options_rooms = this.dom_rooms && this.dom_rooms.options;
-            this.dom_rooms.innerHTML = "";
-            if (options_rooms && rooms && rooms.length > 0) {
-                rooms.forEach((room) => {
-                    var option = document.createElement("option");
-                    option.value = room.id;
-                    option.text = room.name + " - " + room.id;
-                    this.dom_rooms.add(option);
-                });
-            }
         };
 
         this.socket.onclose = (e) => {
@@ -109,19 +98,20 @@ export class Pong
         }
     }
 
-	draw() {
+	draw(data) {
+        console.log(data);
 		// Clear the canvas
-		this.ctx.clearRect(0, 0, this.room.data.width, this.room.data.height);
+		this.ctx.clearRect(0, 0, this.room.data.WIDTH, this.room.data.HEIGHT);
 
 		// Draw paddles
 		this.ctx.fillStyle = '#8b3a62';
         //this.data.position.forEach((p, i) => {
-        this.data.position.forEach((p) => {
+        this.data.players.forEach((p) => {
 		    this.ctx.fillRect(
                 p.x,
                 p.y,
-                this.room.data.paddle_width,
-                this.room.data.paddle_height);
+                this.room.data.PADDLE_WIDTH,
+                this.room.data.PADDLE_HEIGHT);
         });
 
 		// Draw this.ball
