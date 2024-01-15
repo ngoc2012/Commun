@@ -6,6 +6,5 @@ app_name = 'pong'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('state', views.state, name='state'),
-    path('start', views.start, name='start')
+    path('state', views.state, name='state')
 ]
