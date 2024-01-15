@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from game.models import RoomsModel, PlayersModel, PlayerRoomModel
 
@@ -42,6 +41,7 @@ def state(request):
     return (HttpResponse("Done"))
 
 @csrf_exempt
+@sync_to_async
 def start(request):
     if 'action' not in request.POST:
         return (HttpResponse("Error: No action!"))
@@ -57,7 +57,7 @@ def start(request):
         return (HttpResponse("Error: Player is not playing this game!"))
     player_room = PlayerRoomModel.objects.get(player=player,room=room)
     channel_layer = get_channel_layer()
-    await channel_layer.send(room.id, {
-        'type': 'group_data'
-    })
+    #await channel_layer.send(room.id, {
+    #    'type': 'group_data'
+    #})
 
