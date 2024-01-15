@@ -13,3 +13,4 @@ def index(request):
 @csrf_exempt
 def state(request):
     if 'login' not in request.POST or request.POST['login'] == "":
+        return (HttpResponse("Error: No login!"))
