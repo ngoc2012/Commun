@@ -17,8 +17,8 @@ export class Pong
         this.ctx.canvas.height = this.room.data.height;
         this.dom_start = document.getElementById("start");
         this.dom_quit = document.getElementById("quit");
-        this.start.addEventListener("click", () => this.set_state("start"));
-        this.quit.addEventListener("click", () => this.quit());
+        this.dom_start.addEventListener("click", () => this.set_state("start"));
+        this.dom_quit.addEventListener("click", () => this.quit());
         document.addEventListener('keydown', (event) => {
             switch (event.key) {
                 case 'ArrowUp':
