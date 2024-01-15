@@ -147,6 +147,9 @@ export class Lobby
 
     quit() {
         if (this.socket !== -1)
+        {
             this.socket.close();
+            this.socket = -1;
+        }
     }
 }

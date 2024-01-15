@@ -34,7 +34,10 @@ export class Pong
 
     quit() {
         if (this.socket !== -1)
+        {
             this.socket.close();
+            this.socket = -1;
+        }
         this.main.load('/lobby', () => this.lobby.events());
     }
 
@@ -69,6 +72,8 @@ export class Pong
             },
             success: (info) => {
                 this.main.set_status(info);
+                if (this.socket !== -1)
+                    this.socket.send('update');
             },
             error: () => this.main.set_status('Error: Can not set state')
         });
