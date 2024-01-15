@@ -71,7 +71,10 @@ export class Pong
                 'action': e
             },
             success: (info) => {
-                this.main.set_status(info);
+                if (!info.includes('Done'))
+                {
+                    this.main.set_status(info);
+                }
                 if (this.socket !== -1)
                     this.socket.send('update');
             },
