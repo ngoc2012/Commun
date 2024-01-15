@@ -91,7 +91,7 @@ export class Pong
 
 		// Draw this.ball
 		this.ctx.beginPath();
-		this.ctx.arc(this.data.ball.x, this.data.ball.y, this.room.data.RADIUS, 0, Math.PI * 2);
+		this.ctx.arc(data.ball.x, data.ball.y, this.room.data.RADIUS, 0, Math.PI * 2);
 		this.ctx.fillStyle = '#00ffcc';
 		this.ctx.fill();
 		this.ctx.closePath();
