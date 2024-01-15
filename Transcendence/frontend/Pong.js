@@ -64,7 +64,8 @@ export class Pong
             method: 'POST',
             data: {
                 'login': this.main.login,
-                "game_id": this.room.id
+                "game_id": this.room.id,
+                'action': e
             },
             success: (info) => {
                 this.main.set_status(info);
