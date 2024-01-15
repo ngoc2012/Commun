@@ -54,6 +54,8 @@ class PongConsumer(AsyncWebsocketConsumer):
     
     async def game_loop(self):
         room = RoomsModel.objects.get(id=room_id)
+        room.started = True
+        room.save()
         players0 = PlayerRoomModel.objects.filter(room=room_id, side=0)
         players1 = PlayerRoomModel.objects.filter(room=room_id, side=1)
         i = 0
