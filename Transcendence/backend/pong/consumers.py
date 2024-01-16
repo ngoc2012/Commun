@@ -34,6 +34,7 @@ def check_collision(consumer, dx):
             if consumer.room.x + pong_data['RADIUS'] == p.x and consumer.room.y >= p.y and consumer.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                 dx = -1
     return dx
+    consumer.room.save()
 
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -90,7 +91,6 @@ class PongConsumer(AsyncWebsocketConsumer):
             if self.room.y + pong_data['RADIUS'] >= pong_data['HEIGHT'] or self.room.y - pong_data['RADIUS'] <= 0:
                 dy *= -1
             dx = await check_collision(self, dx)
-            self.room.save()
             if self.room.x <= 0 or self.room.x >= pong_data['WIDTH']:
                 self.room.x = self.room.server.x + pong_data['RADIUS']
                 self.room.y = self.room.server.y
