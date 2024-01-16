@@ -38,7 +38,6 @@ def check_collision(consumer, dx):
             if consumer.room.x + pong_data['RADIUS'] == p.x and consumer.room.y >= p.y and consumer.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                 dx = -1
     return dx
-    consumer.room.save()
 
 @sync_to_async
 def end_game(consumer):
