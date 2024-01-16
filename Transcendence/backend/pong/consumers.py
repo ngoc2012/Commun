@@ -57,12 +57,18 @@ def up(consumer):
     if consumer.player.y > 0:
         consumer.player.y -= pong_data['STEP']
         consumer.player.save()
+        if not consumer.room.started and consumer.server == consumer.player:
+            consumer.room.y -= pong_data['STEP']
+            consumer.room.save()
 
 @sync_to_async
 def down(consumer):
     if consumer.player.y < pong_data['HEIGHT'] - pong_data['PADDLE_HEIGHT']:
         consumer.player.y += pong_data['STEP']
         consumer.player.save()
+        if not consumer.room.started and consumer.server == consumer.player:
+            consumer.room.y += pong_data['STEP']
+            consumer.room.save()
 
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
