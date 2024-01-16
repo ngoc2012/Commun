@@ -8,9 +8,9 @@ import asyncio
 from .data import pong_data
 
 @sync_to_async
-def get_room_data(players, room_id):
+def get_info(consumer,room_id, player_id):
     room = RoomsModel.objects.get(id=room_id)
-    
+
 @sync_to_async
 def get_room_data(players, room_id):
     room = RoomsModel.objects.get(id=room_id)
