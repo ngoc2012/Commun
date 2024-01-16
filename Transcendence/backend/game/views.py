@@ -25,8 +25,7 @@ def new_game(request):
         game=request.POST['game'],
         name=request.POST['name'],
         owner=owner,
-        server=owner,
-        dx=1
+        server=owner
     )
     if new_room.game == 'pong':
         new_room.x = pong_data['PADDLE_WIDTH'] + pong_data['RADIUS']
