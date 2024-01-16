@@ -50,6 +50,7 @@ def sync_room(consumer):
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_id = self.scope['url_route']['kwargs']['room_id']
+        self.player_id = self.scope['url_route']['kwargs']['player_id']
         self.room = None
         self.players0 = None
         self.players1 = None
