@@ -30,7 +30,7 @@ class RoomsModel(models.Model):
             self.delete()
 
 class PlayerRoomModel(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     player = models.ForeignKey(PlayersModel, on_delete=models.CASCADE)
     room = models.ForeignKey(RoomsModel, on_delete=models.CASCADE)
     side = models.IntegerField(blank=True, null=True)
