@@ -80,6 +80,7 @@ class PongConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         if text_data == 'start':
             await self.game_loop()
+        
         await self.channel_layer.group_send(
             self.room_id,
             {
