@@ -11,6 +11,7 @@ from .data import pong_data
 def get_info(consumer):
     consumer.room = RoomsModel.objects.get(id=consumer.room_id)
     consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
+    
 
 @sync_to_async
 def get_room_data(players, room_id):
@@ -26,6 +27,7 @@ def get_room_players(consumer):
     consumer.room.save()
     consumer.players0 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=0)
     consumer.players1 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=1)
+    consumer.server = PlayerRoomModel.objects.get(id=consumer.room.server)
 
 @sync_to_async
 def check_collision(consumer, dx):
@@ -41,8 +43,8 @@ def check_collision(consumer, dx):
 
 @sync_to_async
 def end_game(consumer):
-    consumer.room.x = consumer.room.server.x + pong_data['RADIUS']
-    consumer.room.y = consumer.room.server.y
+    consumer.room.x = consumer.server.x + pong_data['RADIUS']
+    consumer.room.y = consumer.server.y
     consumer.room.started = False
     consumer.room.save()
 
@@ -68,6 +70,7 @@ class PongConsumer(AsyncWebsocketConsumer):
         self.player_id = self.scope['url_route']['kwargs']['player_id']
         self.room = None
         self.player = None
+        self.server = None
         self.players0 = None
         self.players1 = None
         await get_info(self)
