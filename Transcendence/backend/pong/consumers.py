@@ -46,7 +46,7 @@ def check_collision(consumer, dx):
 
 @sync_to_async
 def end_game(consumer):
-    print("end_game " + str(consumer.server.x) + " " + str(consumer.server.y))
+    #print("end_game " + str(consumer.server.x) + " " + str(consumer.server.y))
     consumer.room.x = consumer.server.x + pong_data['PADDLE_WIDTH'] + pong_data['RADIUS']
     consumer.room.y = consumer.server.y + pong_data['PADDLE_HEIGHT'] / 2
     consumer.room.started = False
