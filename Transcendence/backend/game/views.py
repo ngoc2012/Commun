@@ -45,6 +45,7 @@ def new_game(request):
         'id': str(new_room),
         'game': new_room.game,
         'name': new_room.name,
+        'player_id': str(player_room),
         'data': get_data(new_room.game)
         }))
 
