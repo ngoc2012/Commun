@@ -123,7 +123,6 @@ class PongConsumer(AsyncWebsocketConsumer):
     
     async def game_loop(self):
         await get_room_players(self)
-        i = 0
         dx = 1
         dy = 1
         while True:
@@ -135,18 +134,7 @@ class PongConsumer(AsyncWebsocketConsumer):
             dx = await check_collision(self, dx)
             if self.room.x <= 0 or self.room.x >= pong_data['WIDTH']:
                 await end_game(self)
-                await self.channel_layer.group_send(
-                self.room_id,
-                {
-                    'type': 'group_data'
-                }
-                )
+                await self.channel_layer.group_send(self.room_id, {'type': 'group_data'})
                 return
             await sync_room(self)
-            await self.channel_layer.group_send(
-                self.room_id,
-                {
-                    'type': 'group_data'
-                }
-            )
-            i += 1
+            await self.channel_layer.group_send(self.room_id, {'type': 'group_data'})
