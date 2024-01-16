@@ -89,6 +89,7 @@ class PongConsumer(AsyncWebsocketConsumer):
             self.room.y += dy * pong_data['DY']
             if self.room.y + pong_data['RADIUS'] >= pong_data['HEIGHT'] or self.room.y - pong_data['RADIUS'] <= 0:
                 dy *= -1
+            dx = await check_collision(self, dx)
             self.room.save()
             if self.room.x <= 0 or self.room.x >= pong_data['WIDTH']:
                 self.room.x = self.room.server.x + pong_data['RADIUS']
