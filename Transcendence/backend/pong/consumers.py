@@ -73,24 +73,24 @@ class PongConsumer(AsyncWebsocketConsumer):
         dy = 1
         while i < 100:
             await asyncio.sleep(1)
-            this.room.x += dx * pong_data['DX']
-            this.room.y += dy * pong_data['DY']
-            if this.room.y + pong_data['RADIUS'] >= pong_data['HEIGHT'] or this.room.y - pong_data['RADIUS'] <= 0:
+            self.room.x += dx * pong_data['DX']
+            self.room.y += dy * pong_data['DY']
+            if self.room.y + pong_data['RADIUS'] >= pong_data['HEIGHT'] or self.room.y - pong_data['RADIUS'] <= 0:
                 dy *= -1
             if dx == -1:
-                for p in players0:
-                    if this.room.x - pong_data['RADIUS'] == p.x + pong_data['PADDLE_WIDTH'] and this.room.y >= p.y and this.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
+                for p in self.players0:
+                    if self.room.x - pong_data['RADIUS'] == p.x + pong_data['PADDLE_WIDTH'] and self.room.y >= p.y and self.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                         dx = 1
             else:
-                for p in players1:
-                    if this.room.x + pong_data['RADIUS'] == p.x and this.room.y >= p.y and this.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
+                for p in self.players1:
+                    if self.room.x + pong_data['RADIUS'] == p.x and self.room.y >= p.y and self.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                         dx = -1
-            this.room.save()
-            if this.room.x <= 0 or this.room.x >= pong_data['WIDTH']:
-                this.room.x = this.room.server.x + pong_data['RADIUS']
-                this.room.y = this.room.server.y
-                this.room.started = False
-                this.room.save()
+            self.room.save()
+            if self.room.x <= 0 or self.room.x >= pong_data['WIDTH']:
+                self.room.x = self.room.server.x + pong_data['RADIUS']
+                self.room.y = self.room.server.y
+                self.room.started = False
+                self.room.save()
                 return
             await self.channel_layer.group_send(
                 self.room_id,
