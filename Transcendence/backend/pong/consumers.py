@@ -86,7 +86,8 @@ class PongConsumer(AsyncWebsocketConsumer):
             )
     
     async def group_data(self, event):
-        print(str(self.room.x) + " " + str(self.room.y))
+        if self.room:
+            print(str(self.room.x) + " " + str(self.room.y))
         players = PlayerRoomModel.objects.filter(room=self.room_id)
         room_data = await get_room_data(players, self.room_id)
         await self.send(text_data=room_data)
