@@ -60,7 +60,7 @@ def up(consumer):
 
 @sync_to_async
 def down(consumer):
-    if consumer.player.y < pong_data['HEIGHT']:
+    if consumer.player.y < pong_data['HEIGHT'] - pong_data['PADDLE_HEIGHT']:
         consumer.player.y += pong_data['STEP']
         consumer.player.save()
 
