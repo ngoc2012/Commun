@@ -8,8 +8,9 @@ import asyncio
 from .data import pong_data
 
 @sync_to_async
-def get_info(consumer,room_id, player_id):
-    room = RoomsModel.objects.get(id=room_id)
+def get_info(consumer):
+    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
+    consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
 
 @sync_to_async
 def get_room_data(players, room_id):
@@ -56,9 +57,10 @@ class PongConsumer(AsyncWebsocketConsumer):
         self.room_id = self.scope['url_route']['kwargs']['room_id']
         self.player_id = self.scope['url_route']['kwargs']['player_id']
         self.room = None
+        self.player = None
+        await get_info(self)
         self.players0 = None
         self.players1 = None
-        # Join room group
         await self.channel_layer.group_add(
             self.room_id,
             self.channel_name
@@ -70,8 +72,6 @@ class PongConsumer(AsyncWebsocketConsumer):
                 'type': 'group_data'
             }
         )
-        # Start a loop to continuously update the game state
-        #await self.game_loop()
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(
