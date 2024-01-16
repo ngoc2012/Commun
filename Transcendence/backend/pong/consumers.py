@@ -32,8 +32,6 @@ def get_room_players(consumer):
 
 @sync_to_async
 def check_collision(consumer, dx):
-    consumer.players0 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=0)
-    consumer.players1 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=1)
     if dx == -1:
         for p in consumer.players0:
             print(str(p.y))
@@ -118,12 +116,8 @@ class PongConsumer(AsyncWebsocketConsumer):
             await up(self)
         elif text_data == 'down':
             await down(self)
-        await self.channel_layer.group_send(
-            self.room_id,
-            {
-                'type': 'group_data'
-            }
-        )
+        else:
+            await self.channel_layer.group_send(self.room_id, {'type': 'group_data'})
     
     async def group_data(self, event):
         players = PlayerRoomModel.objects.filter(room=self.room_id)
