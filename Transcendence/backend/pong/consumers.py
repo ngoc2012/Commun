@@ -15,6 +15,13 @@ def get_room_data(players, room_id):
         'players': [{'x': i.x, 'y': i.y} for i in players]
     })
 
+@sync_to_async
+def get_room_players(consumer):
+    room = RoomsModel.objects.get(id=self.room_id)
+        room.started = True
+        room.save()
+        players0 = PlayerRoomModel.objects.filter(room=self.room_id, side=0)
+        players1 = PlayerRoomModel.objects.filter(room=self.room_id, side=1)
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_id = self.scope['url_route']['kwargs']['room_id']
@@ -59,11 +66,7 @@ class PongConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=room_data)
     
     async def game_loop(self):
-        room = RoomsModel.objects.get(id=self.room_id)
-        room.started = True
-        room.save()
-        players0 = PlayerRoomModel.objects.filter(room=self.room_id, side=0)
-        players1 = PlayerRoomModel.objects.filter(room=self.room_id, side=1)
+        
         i = 0
         dx = 1
         dy = 1
