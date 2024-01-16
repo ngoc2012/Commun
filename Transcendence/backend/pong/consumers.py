@@ -95,9 +95,9 @@ class PongConsumer(AsyncWebsocketConsumer):
                 self.room.x = self.room.server.x + pong_data['RADIUS']
                 self.room.y = self.room.server.y
                 self.room.started = False
-                self.room.save()
+                await self.room.save()
                 return
-            self.room.save()
+            await self.room.save()
             await self.channel_layer.group_send(
                 self.room_id,
                 {
