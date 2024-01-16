@@ -55,8 +55,13 @@ def end_game(consumer):
     consumer.room.save()
 
 @sync_to_async
-def sync_room(consumer):
+def sync_room(consumer, dx, dy):
+    consumer.room.x += dx * pong_data['DX']
+    consumer.room.y += dy * pong_data['DY']
     consumer.room.save()
+    if consumer.room.y + pong_data['RADIUS'] >= pong_data['HEIGHT'] or consumer.room.y - pong_data['RADIUS'] <= 0:
+        dy *= -1
+    return dy
 
 @sync_to_async
 def up(consumer):
@@ -129,14 +134,11 @@ class PongConsumer(AsyncWebsocketConsumer):
         dy = 1
         while True:
             await asyncio.sleep(0.02)
-            self.room.x += dx * pong_data['DX']
-            self.room.y += dy * pong_data['DY']
-            if self.room.y + pong_data['RADIUS'] >= pong_data['HEIGHT'] or self.room.y - pong_data['RADIUS'] <= 0:
-                dy *= -1
+            dy = await sync_room(self, dx, dy)
             dx = await check_collision(self, dx)
             if self.room.x <= 0 or self.room.x >= pong_data['WIDTH']:
                 await end_game(self)
                 await self.channel_layer.group_send(self.room_id, {'type': 'group_data'})
                 return
-            await sync_room(self)
+            
             await self.channel_layer.group_send(self.room_id, {'type': 'group_data'})
