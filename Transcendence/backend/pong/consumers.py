@@ -17,11 +17,12 @@ def get_room_data(players, room_id):
 
 @sync_to_async
 def get_room_players(consumer):
-    room = RoomsModel.objects.get(id=self.room_id)
-        room.started = True
-        room.save()
-        players0 = PlayerRoomModel.objects.filter(room=self.room_id, side=0)
-        players1 = PlayerRoomModel.objects.filter(room=self.room_id, side=1)
+    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
+    consumer.room.started = True
+    consumer.room.save()
+    consumer.players0 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=0)
+    consumer.players1 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=1)
+
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_id = self.scope['url_route']['kwargs']['room_id']
@@ -66,30 +67,30 @@ class PongConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=room_data)
     
     async def game_loop(self):
-        
+        await get_room_players(this)
         i = 0
         dx = 1
         dy = 1
         while i < 100:
             await asyncio.sleep(1)
-            room.x += dx * pong_data['DX']
-            room.y += dy * pong_data['DY']
-            if room.y + pong_data['RADIUS'] >= pong_data['HEIGHT'] or room.y - pong_data['RADIUS'] <= 0:
+            this.room.x += dx * pong_data['DX']
+            this.room.y += dy * pong_data['DY']
+            if this.room.y + pong_data['RADIUS'] >= pong_data['HEIGHT'] or this.room.y - pong_data['RADIUS'] <= 0:
                 dy *= -1
             if dx == -1:
                 for p in players0:
-                    if room.x - pong_data['RADIUS'] == p.x + pong_data['PADDLE_WIDTH'] and room.y >= p.y and room.y <= p.y + pong_data['PADDLE_HEIGHT']:
+                    if this.room.x - pong_data['RADIUS'] == p.x + pong_data['PADDLE_WIDTH'] and this.room.y >= p.y and this.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                         dx = 1
             else:
                 for p in players1:
-                    if room.x + pong_data['RADIUS'] == p.x and room.y >= p.y and room.y <= p.y + pong_data['PADDLE_HEIGHT']:
+                    if this.room.x + pong_data['RADIUS'] == p.x and this.room.y >= p.y and this.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                         dx = -1
-            room.save()
-            if room.x <= 0 or room.x >= pong_data['WIDTH']:
-                room.x = room.server.x + pong_data['RADIUS']
-                room.y = room.server.y
-                room.started = False
-                room.save()
+            this.room.save()
+            if this.room.x <= 0 or this.room.x >= pong_data['WIDTH']:
+                this.room.x = this.room.server.x + pong_data['RADIUS']
+                this.room.y = this.room.server.y
+                this.room.started = False
+                this.room.save()
                 return
             await self.channel_layer.group_send(
                 self.room_id,
