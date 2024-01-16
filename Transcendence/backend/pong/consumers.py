@@ -32,8 +32,6 @@ def get_room_players(consumer):
 
 @sync_to_async
 def check_collision(consumer, dx):
-    consumer.players0 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=0)
-    consumer.players1 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=1)
     if dx == -1:
         for p in consumer.players0:
             if consumer.room.x - pong_data['RADIUS'] == p.x + pong_data['PADDLE_WIDTH'] and consumer.room.y >= p.y and consumer.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
