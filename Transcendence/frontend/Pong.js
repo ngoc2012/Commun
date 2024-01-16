@@ -69,6 +69,9 @@ export class Pong
     }
 
     set_state(e) {
+        if (this.socket !== -1)
+            this.socket.send(e);
+        /*
         $.ajax({
             url: '/pong/state',
             method: 'POST',
@@ -87,6 +90,7 @@ export class Pong
             },
             error: () => this.main.set_status('Error: Can not set state')
         });
+        */
     }
 
 	draw(data) {
