@@ -23,6 +23,18 @@ def get_room_players(consumer):
     consumer.players0 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=0)
     consumer.players1 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=1)
 
+@sync_to_async
+def check_collision(consumer, dx):
+    if dx == -1:
+        for p in self.players0:
+            if self.room.x - pong_data['RADIUS'] == p.x + pong_data['PADDLE_WIDTH'] and self.room.y >= p.y and self.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
+                dx = 1
+    else:
+        for p in self.players1:
+            if self.room.x + pong_data['RADIUS'] == p.x and self.room.y >= p.y and self.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
+                dx = -1
+    return dx
+
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_id = self.scope['url_route']['kwargs']['room_id']
@@ -77,14 +89,6 @@ class PongConsumer(AsyncWebsocketConsumer):
             self.room.y += dy * pong_data['DY']
             if self.room.y + pong_data['RADIUS'] >= pong_data['HEIGHT'] or self.room.y - pong_data['RADIUS'] <= 0:
                 dy *= -1
-            if dx == -1:
-                for p in self.players0:
-                    if self.room.x - pong_data['RADIUS'] == p.x + pong_data['PADDLE_WIDTH'] and self.room.y >= p.y and self.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
-                        dx = 1
-            else:
-                for p in self.players1:
-                    if self.room.x + pong_data['RADIUS'] == p.x and self.room.y >= p.y and self.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
-                        dx = -1
             self.room.save()
             if self.room.x <= 0 or self.room.x >= pong_data['WIDTH']:
                 self.room.x = self.room.server.x + pong_data['RADIUS']
