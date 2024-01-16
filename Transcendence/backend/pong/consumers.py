@@ -26,12 +26,12 @@ def get_room_players(consumer):
 @sync_to_async
 def check_collision(consumer, dx):
     if dx == -1:
-        for p in self.players0:
-            if self.room.x - pong_data['RADIUS'] == p.x + pong_data['PADDLE_WIDTH'] and self.room.y >= p.y and self.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
+        for p in consumer.players0:
+            if consumer.room.x - pong_data['RADIUS'] == p.x + pong_data['PADDLE_WIDTH'] and consumer.room.y >= p.y and consumer.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                 dx = 1
     else:
-        for p in self.players1:
-            if self.room.x + pong_data['RADIUS'] == p.x and self.room.y >= p.y and self.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
+        for p in consumer.players1:
+            if consumer.room.x + pong_data['RADIUS'] == p.x and consumer.room.y >= p.y and consumer.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                 dx = -1
     return dx
 
