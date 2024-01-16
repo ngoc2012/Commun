@@ -99,6 +99,7 @@ class PongConsumer(AsyncWebsocketConsumer):
             await asyncio.sleep(1)
             self.room.x += dx * pong_data['DX']
             self.room.y += dy * pong_data['DY']
+            print(self.room.x + " " + self.room.y)
             if self.room.y + pong_data['RADIUS'] >= pong_data['HEIGHT'] or self.room.y - pong_data['RADIUS'] <= 0:
                 dy *= -1
             dx = await check_collision(self, dx)
