@@ -87,6 +87,7 @@ class PongConsumer(AsyncWebsocketConsumer):
         self.player_id = self.scope['url_route']['kwargs']['player_id']
         self.room = None
         self.player = None
+        self.players = None
         self.server = None
         self.players0 = None
         self.players1 = None
