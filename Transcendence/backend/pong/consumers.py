@@ -22,7 +22,6 @@ def get_room_data(players, room_id):
 
 @sync_to_async
 def get_room_players(consumer):
-    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
     consumer.room.started = True
     consumer.room.save()
     consumer.players0 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=0)
@@ -58,9 +57,9 @@ class PongConsumer(AsyncWebsocketConsumer):
         self.player_id = self.scope['url_route']['kwargs']['player_id']
         self.room = None
         self.player = None
-        await get_info(self)
         self.players0 = None
         self.players1 = None
+        await get_info(self)
         await self.channel_layer.group_add(
             self.room_id,
             self.channel_name
