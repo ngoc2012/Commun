@@ -36,6 +36,12 @@ def check_collision(consumer, dx):
     return dx
     consumer.room.save()
 
+@sync_to_async
+def end_game(consumer, dx):
+    consumer.room.x = consumer.room.server.x + pong_data['RADIUS']
+    consumer.room.y = consumer.room.server.y
+    consumer.room.started = False
+    consumer.room.save()
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_id = self.scope['url_route']['kwargs']['room_id']
@@ -92,10 +98,6 @@ class PongConsumer(AsyncWebsocketConsumer):
                 dy *= -1
             dx = await check_collision(self, dx)
             if self.room.x <= 0 or self.room.x >= pong_data['WIDTH']:
-                self.room.x = self.room.server.x + pong_data['RADIUS']
-                self.room.y = self.room.server.y
-                self.room.started = False
-                await self.room.save()
                 return
             await self.room.save()
             await self.channel_layer.group_send(
