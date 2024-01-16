@@ -34,6 +34,8 @@ def get_room_players(consumer):
 def check_collision(consumer, dx):
     if dx == -1:
         for p in consumer.players0:
+            if consumer.room.x < 40:
+                print(consumer.room.x - pong_data['RADIUS'] + " " + consumer.room.y + " ")
             if consumer.room.x - pong_data['RADIUS'] == p.x + pong_data['PADDLE_WIDTH'] and consumer.room.y >= p.y and consumer.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                 dx = 1
     else:
