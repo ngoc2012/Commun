@@ -11,7 +11,7 @@ from .data import pong_data
 def get_info(consumer):
     consumer.room = RoomsModel.objects.get(id=consumer.room_id)
     consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
-    consumer.server = PlayerRoomModel.objects.get(id=consumer.room.server)
+    consumer.server = PlayerRoomModel.objects.get(player=consumer.room.server)
     
 
 @sync_to_async
@@ -28,7 +28,7 @@ def get_room_players(consumer):
     consumer.room.save()
     consumer.players0 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=0)
     consumer.players1 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=1)
-    consumer.server = PlayerRoomModel.objects.get(id=consumer.room.server)
+    consumer.server = PlayerRoomModel.objects.get(player=consumer.room.server)
 
 @sync_to_async
 def check_collision(consumer, dx):
