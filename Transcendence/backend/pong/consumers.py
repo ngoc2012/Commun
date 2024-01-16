@@ -10,6 +10,10 @@ from .data import pong_data
 @sync_to_async
 def get_room_data(players, room_id):
     room = RoomsModel.objects.get(id=room_id)
+    
+@sync_to_async
+def get_room_data(players, room_id):
+    room = RoomsModel.objects.get(id=room_id)
     return json.dumps({
         'ball': {'x': room.x, 'y':room.y},
         'players': [{'x': i.x, 'y': i.y} for i in players]
