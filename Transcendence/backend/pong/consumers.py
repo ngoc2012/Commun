@@ -32,7 +32,7 @@ def get_room_players(consumer):
 
 @sync_to_async
 def check_collision(consumer, dx):
-    print(str(consumer.room.x) + " " + str(consumer.room.y))
+    print(str(consumer.room.x) + " " + str(consumer.room.y) + " " + str(consumer.player.x) + " " + str(consumer.player.y))
     consumer.players0 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=0)
     consumer.players1 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=1)
     if dx == -1:
