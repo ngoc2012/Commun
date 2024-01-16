@@ -27,6 +27,9 @@ export class Pong
                 case 'ArrowDown':
                     this.set_state("down");
                     break;
+                case ' ':
+                    this.start();
+                    break;
             }
         });
         this.connect();
