@@ -67,7 +67,7 @@ class PongConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=room_data)
     
     async def game_loop(self):
-        await get_room_players(this)
+        await get_room_players(self)
         i = 0
         dx = 1
         dy = 1
