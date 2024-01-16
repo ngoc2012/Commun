@@ -18,6 +18,9 @@ def get_room_data(players, room_id):
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_id = self.scope['url_route']['kwargs']['room_id']
+        self.room = None
+        self.players0 = None
+        self.players1 = None
         # Join room group
         await self.channel_layer.group_add(
             self.room_id,
