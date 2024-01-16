@@ -11,6 +11,7 @@ from .data import pong_data
 def get_info(consumer):
     consumer.room = RoomsModel.objects.get(id=consumer.room_id)
     consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
+    consumer.server = PlayerRoomModel.objects.get(id=consumer.room.server)
     
 
 @sync_to_async
