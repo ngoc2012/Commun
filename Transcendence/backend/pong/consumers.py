@@ -56,6 +56,12 @@ def up(consumer):
         consumer.player.y -= pong_data['STEP']
         consumer.player.save()
 
+@sync_to_async
+def down(consumer):
+    if consumer.player.y < pong_data['HEIGHT']:
+        consumer.player.y += pong_data['STEP']
+        consumer.player.save()
+
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_id = self.scope['url_route']['kwargs']['room_id']
@@ -86,7 +92,10 @@ class PongConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         if text_data == 'start':
             await self.game_loop()
-        else if text_data == 'up':
+        elif text_data == 'up':
+            await up(self)
+        elif text_data == 'down':
+            await down(self)
         await self.channel_layer.group_send(
             self.room_id,
             {
