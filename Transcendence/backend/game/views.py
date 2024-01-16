@@ -87,6 +87,7 @@ def join(request):
         'id': str(room),
         'game': room.game,
         'name': room.name,
+        'player_id': str(player_room),
         'data': get_data(room.game)
         }))
 

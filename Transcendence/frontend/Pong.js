@@ -53,6 +53,8 @@ export class Pong
             + '/ws/pong/'
             + this.room.id
             + '/'
+            + this.room.player_id
+            + '/'
         );
 
         this.socket.onmessage = (e) => {
