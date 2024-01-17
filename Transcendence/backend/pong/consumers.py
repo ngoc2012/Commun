@@ -70,6 +70,7 @@ def update_ball(consumer, dx, dy):
 
 @sync_to_async
 def up(consumer):
+    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
     consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
     if consumer.player.y > 0:
         consumer.player.y -= pong_data['STEP']
@@ -80,6 +81,7 @@ def up(consumer):
 
 @sync_to_async
 def down(consumer):
+    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
     consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
     if consumer.player.y < pong_data['HEIGHT'] - pong_data['PADDLE_HEIGHT']:
         consumer.player.y += pong_data['STEP']
