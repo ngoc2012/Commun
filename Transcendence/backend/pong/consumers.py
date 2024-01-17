@@ -89,7 +89,7 @@ class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_id = self.scope['url_route']['kwargs']['room_id']
         self.player_id = self.scope['url_route']['kwargs']['player_id']
-        self.choices = [5, 10, 20]
+        self.choices = [5, 10]
         self.ddy = random.choice(self.choices)
         self.room = None
         self.player = None
