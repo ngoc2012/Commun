@@ -32,17 +32,18 @@ def get_room_players(consumer):
 
 @sync_to_async
 def check_collision(consumer, dx):
-    print(str(consumer.room.x) + " " + str(consumer.room.y) + " " + str(consumer.player.x) + " " + str(consumer.player.y) + " " + consumer.players0.first().x + " " + consumer.players0.filter().y)
+    #print(str(consumer.room.x) + " " + str(consumer.room.y) + " " + str(consumer.player.x) + " " + str(consumer.player.y) + " " + consumer.players0.first().x + " " + consumer.players0.filter().y)
     consumer.players0 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=0)
     consumer.players1 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=1)
     if dx == -1:
         for p in consumer.players0:
             #if consumer.room.x < 40:
-            #    print(str(consumer.room.x - pong_data['RADIUS']) + " " + str(consumer.room.y) + " " + str(p.x) + " " + str(pong_data['PADDLE_WIDTH']) + " " + str(p.y) + " " + str(p.y + pong_data['PADDLE_HEIGHT']))
+            print(str(consumer.room.x - pong_data['RADIUS']) + " " + str(consumer.room.y) + " " + str(p.x) + " " + str(pong_data['PADDLE_WIDTH']) + " " + str(p.y) + " " + str(p.y + pong_data['PADDLE_HEIGHT']))
             if consumer.room.x - pong_data['RADIUS'] == p.x + pong_data['PADDLE_WIDTH'] and consumer.room.y >= p.y and consumer.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                 dx = 1
     else:
         for p in consumer.players1:
+            print(str(consumer.room.x - pong_data['RADIUS']) + " " + str(consumer.room.y) + " " + str(p.x) + " " + str(pong_data['PADDLE_WIDTH']) + " " + str(p.y) + " " + str(p.y + pong_data['PADDLE_HEIGHT']))
             if consumer.room.x + pong_data['RADIUS'] == p.x and consumer.room.y >= p.y and consumer.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                 dx = -1
     return dx
