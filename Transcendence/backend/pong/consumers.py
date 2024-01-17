@@ -65,23 +65,21 @@ def update_ball(consumer, dx, dy):
 
 @sync_to_async
 def up(consumer):
-    #consumer.room = RoomsModel.objects.get(id=consumer.room_id)
-    #consumer.room, consumer.player= RoomsModel.objects.get(id=consumer.room_id), PlayerRoomModel.objects.get(id=consumer.player_id)
     if consumer.player.y > 0:
         consumer.player.y -= pong_data['STEP']
         consumer.player.save()
         if not consumer.room.started and consumer.server == consumer.player:
+            consumer.room = RoomsModel.objects.get(id=consumer.room_id)
             consumer.room.y -= pong_data['STEP']
             consumer.room.save()
 
 @sync_to_async
 def down(consumer):
-    #consumer.room = RoomsModel.objects.get(id=consumer.room_id)
-    #consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
     if consumer.player.y < pong_data['HEIGHT'] - pong_data['PADDLE_HEIGHT']:
         consumer.player.y += pong_data['STEP']
         consumer.player.save()
         if not consumer.room.started and consumer.server == consumer.player:
+            consumer.room = RoomsModel.objects.get(id=consumer.room_id)
             consumer.room.y += pong_data['STEP']
             consumer.room.save()
 
@@ -90,12 +88,20 @@ def left(consumer):
     if consumer.player.x > 0:
         consumer.player.x -= pong_data['STEP_X']
         consumer.player.save()
+        if not consumer.room.started and consumer.server == consumer.player:
+            consumer.room = RoomsModel.objects.get(id=consumer.room_id)
+            consumer.room.x -= pong_data['STEP']
+            consumer.room.save()
 
 @sync_to_async
 def right(consumer):
     if consumer.player.x < pong_data['WIDTH']:
         consumer.player.x += pong_data['STEP_X']
         consumer.player.save()
+        if not consumer.room.started and consumer.server == consumer.player:
+            consumer.room = RoomsModel.objects.get(id=consumer.room_id)
+            consumer.room.x += pong_data['STEP']
+            consumer.room.save()
 
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
