@@ -33,6 +33,7 @@ def get_room_players(consumer):
 @sync_to_async
 def check_collision(consumer, dx):
     #print(str(consumer.room.x) + " " + str(consumer.room.y) + " " + str(consumer.player.x) + " " + str(consumer.player.y) + " " + consumer.players0.first().x + " " + consumer.players0.filter().y)
+    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
     consumer.players0 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=0)
     consumer.players1 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=1)
     if dx == -1:
@@ -59,6 +60,7 @@ def end_game(consumer):
 
 @sync_to_async
 def update_ball(consumer, dx, dy):
+    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
     consumer.room.x += dx * pong_data['DX']
     consumer.room.y += dy * pong_data['DY']
     consumer.room.save()
@@ -68,6 +70,7 @@ def update_ball(consumer, dx, dy):
 
 @sync_to_async
 def up(consumer):
+    consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
     if consumer.player.y > 0:
         consumer.player.y -= pong_data['STEP']
         consumer.player.save()
@@ -77,6 +80,7 @@ def up(consumer):
 
 @sync_to_async
 def down(consumer):
+    consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
     if consumer.player.y < pong_data['HEIGHT'] - pong_data['PADDLE_HEIGHT']:
         consumer.player.y += pong_data['STEP']
         consumer.player.save()
