@@ -27,6 +27,12 @@ export class Pong
                 case 'ArrowDown':
                     this.set_state("down");
                     break;
+                case 'ArrowLeft':
+                    this.set_state("left");
+                    break;
+                case 'ArrowRight':
+                    this.set_state("right");
+                    break;
                 case ' ':
                     this.start();
                     break;
