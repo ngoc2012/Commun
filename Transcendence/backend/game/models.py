@@ -10,7 +10,7 @@ class PlayersModel(models.Model):
     session_id = models.CharField(max_length=40, null=True)
     expires = models.DateTimeField(null=True)
     def __str__(self):
-        return self.id
+        return str(self.id)
 
 class RoomsModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
