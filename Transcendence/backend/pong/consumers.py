@@ -65,7 +65,7 @@ def update_ball(consumer, dx, dy):
 
 @sync_to_async
 def up(consumer):
-    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
+    #consumer.room = RoomsModel.objects.get(id=consumer.room_id)
     #consumer.room, consumer.player= RoomsModel.objects.get(id=consumer.room_id), PlayerRoomModel.objects.get(id=consumer.player_id)
     if consumer.player.y > 0:
         consumer.player.y -= pong_data['STEP']
@@ -76,7 +76,7 @@ def up(consumer):
 
 @sync_to_async
 def down(consumer):
-    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
+    #consumer.room = RoomsModel.objects.get(id=consumer.room_id)
     #consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
     if consumer.player.y < pong_data['HEIGHT'] - pong_data['PADDLE_HEIGHT']:
         consumer.player.y += pong_data['STEP']
@@ -84,6 +84,18 @@ def down(consumer):
         if not consumer.room.started and consumer.server == consumer.player:
             consumer.room.y += pong_data['STEP']
             consumer.room.save()
+
+@sync_to_async
+def left(consumer):
+    if consumer.room.started and consumer.player.x > 0:
+        consumer.player.x -= pong_data['STEP']
+        consumer.player.save()
+
+@sync_to_async
+def right(consumer):
+    if consumer.room.started and consumer.player.x < pong_data['WIDTH']:
+        consumer.player.x += pong_data['STEP']
+        consumer.player.save()
 
 class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
@@ -118,6 +130,10 @@ class PongConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         if text_data == 'start' and not self.room.started:
             asyncio.create_task(self.game_loop())
+        elif text_data == 'left':
+            await left(self)
+        elif text_data == 'right':
+            await right(self)
         elif text_data == 'up':
             await up(self)
         elif text_data == 'down':
