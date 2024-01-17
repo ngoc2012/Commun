@@ -88,13 +88,13 @@ def down(consumer):
 @sync_to_async
 def left(consumer):
     if consumer.room.started and consumer.player.x > 0:
-        consumer.player.x -= pong_data['STEP']
+        consumer.player.x -= pong_data['STEP_X']
         consumer.player.save()
 
 @sync_to_async
 def right(consumer):
     if consumer.room.started and consumer.player.x < pong_data['WIDTH']:
-        consumer.player.x += pong_data['STEP']
+        consumer.player.x += pong_data['STEP_X']
         consumer.player.save()
 
 class PongConsumer(AsyncWebsocketConsumer):

@@ -36,6 +36,9 @@ export class Pong
                 case ' ':
                     this.start();
                     break;
+                case 'q':
+                    this.quit();
+                    break;
             }
         });
         this.connect();
