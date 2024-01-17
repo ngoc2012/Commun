@@ -7,9 +7,9 @@ import asyncio
 
 from .data import pong_data
 
-#@sync_to_async
-#def get_info(consumer):
-#    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
+@sync_to_async
+def get_info(consumer):
+    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
 #    consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
 #    consumer.server = PlayerRoomModel.objects.get(player=consumer.room.server)
     
@@ -26,9 +26,6 @@ def get_room_data(players, room_id):
 def get_room_players(consumer):
     consumer.room.started = True
     consumer.room.save()
-    consumer.players0 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=0)
-    consumer.players1 = PlayerRoomModel.objects.filter(room=consumer.room_id, side=1)
-    consumer.server = PlayerRoomModel.objects.get(player=consumer.room.server)
 
 @sync_to_async
 def check_collision(consumer, dx):
@@ -133,7 +130,7 @@ class PongConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=room_data)
     
     async def game_loop(self):
-        await get_room_players(self)
+        await start_game(self)
         dx = 1
         dy = 1
         while True:
