@@ -87,13 +87,13 @@ def down(consumer):
 
 @sync_to_async
 def left(consumer):
-    if consumer.room.started and consumer.player.x > 0:
+    if consumer.player.x > 0:
         consumer.player.x -= pong_data['STEP_X']
         consumer.player.save()
 
 @sync_to_async
 def right(consumer):
-    if consumer.room.started and consumer.player.x < pong_data['WIDTH']:
+    if consumer.player.x < pong_data['WIDTH']:
         consumer.player.x += pong_data['STEP_X']
         consumer.player.save()
 
@@ -128,7 +128,7 @@ class PongConsumer(AsyncWebsocketConsumer):
         )
 
     async def receive(self, text_data):
-        print(text_data)
+        #print(text_data)
         if text_data == 'start' and not self.room.started:
             asyncio.create_task(self.game_loop())
         elif text_data == 'left':
