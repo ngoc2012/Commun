@@ -119,11 +119,6 @@ class PongConsumer(AsyncWebsocketConsumer):
         )
 
     async def receive(self, text_data):
-        print(text_data)
-        #elif text_data == 'up':
-        #    await up(self)
-        #elif text_data == 'down':
-        #    await down(self)
         if text_data == 'start':
             asyncio.create_task(self.game_loop())
         elif text_data == 'up':
