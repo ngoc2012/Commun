@@ -39,10 +39,12 @@ def check_collision(consumer, dx):
         for p in consumer.players0:
             if consumer.room.x - pong_data['RADIUS'] == p.x + pong_data['PADDLE_WIDTH'] and consumer.room.y >= p.y and consumer.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                 dx = 1
+                consumer.ddy = random.choice(consumer.choices)
     else:
         for p in consumer.players1:
             if consumer.room.x + pong_data['RADIUS'] == p.x and consumer.room.y >= p.y and consumer.room.y <= p.y + pong_data['PADDLE_HEIGHT']:
                 dx = -1
+                consumer.ddy = random.choice(consumer.choices)
     return dx
 
 @sync_to_async
