@@ -7,9 +7,9 @@ import asyncio
 
 from .data import pong_data
 
-@sync_to_async
-def get_info(consumer):
-    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
+#@sync_to_async
+#def get_info(consumer):
+#    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
 #    consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
 #    consumer.server = PlayerRoomModel.objects.get(player=consumer.room.server)
     
@@ -23,7 +23,8 @@ def get_room_data(players, room_id):
     })
 
 @sync_to_async
-def get_room_players(consumer):
+def start_game(consumer):
+    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
     consumer.room.started = True
     consumer.room.save()
 
