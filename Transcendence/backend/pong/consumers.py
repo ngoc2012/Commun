@@ -86,7 +86,7 @@ def down(consumer):
 @sync_to_async
 def left(consumer):
     if  (consumer.player.side == 0 and consumer.player.x > 0) \
-        or (consumer.player.side == 1 and consumer.player.x < 3 * pong_data['WIDTH'] / 4):
+        or (consumer.player.side == 1 and consumer.player.x > 3 * pong_data['WIDTH'] / 4):
         consumer.player.x -= pong_data['STEP_X']
         consumer.player.save()
         if not consumer.room.started and consumer.server == consumer.player:
