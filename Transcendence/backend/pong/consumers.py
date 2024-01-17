@@ -123,8 +123,7 @@ class PongConsumer(AsyncWebsocketConsumer):
             await up(self)
         elif text_data == 'down':
             await down(self)
-        else:
-            await self.channel_layer.group_send(self.room_id, {'type': 'group_data'})
+        await self.channel_layer.group_send(self.room_id, {'type': 'group_data'})
     
     async def group_data(self, event):
         players = PlayerRoomModel.objects.filter(room=self.room_id)
