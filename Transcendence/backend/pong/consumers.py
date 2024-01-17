@@ -25,6 +25,7 @@ def get_room_data(players, room_id):
 @sync_to_async
 def start_game(consumer):
     consumer.room = RoomsModel.objects.get(id=consumer.room_id)
+    consumer.server = PlayerRoomModel.objects.get(player=consumer.room.server)
     consumer.room.started = True
     consumer.room.save()
 
