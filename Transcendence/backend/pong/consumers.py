@@ -136,7 +136,7 @@ class PongConsumer(AsyncWebsocketConsumer):
         dx = 1
         dy = 1
         while True:
-            await asyncio.sleep(0.02)
+            #await asyncio.sleep(0.01)
             dy = await update_ball(self, dx, dy)
             dx = await check_collision(self, dx)
             if self.room.x <= 0 or self.room.x >= pong_data['WIDTH']:
