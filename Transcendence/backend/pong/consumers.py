@@ -116,7 +116,7 @@ class PongConsumer(AsyncWebsocketConsumer):
         )
 
     async def receive(self, text_data):
-        if text_data == 'start':
+        if text_data == 'start' and not self.room.started:
             asyncio.create_task(self.game_loop())
         elif text_data == 'up':
             await up(self)
