@@ -7,11 +7,11 @@ import asyncio
 
 from .data import pong_data
 
-@sync_to_async
-def get_info(consumer):
-    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
-    consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
-    consumer.server = PlayerRoomModel.objects.get(player=consumer.room.server)
+#@sync_to_async
+#def get_info(consumer):
+#    consumer.room = RoomsModel.objects.get(id=consumer.room_id)
+#    consumer.player = PlayerRoomModel.objects.get(id=consumer.player_id)
+#    consumer.server = PlayerRoomModel.objects.get(player=consumer.room.server)
     
 
 @sync_to_async
@@ -97,7 +97,7 @@ class PongConsumer(AsyncWebsocketConsumer):
         self.server = None
         self.players0 = None
         self.players1 = None
-        await get_info(self)
+        #await get_info(self)
         await self.channel_layer.group_add(
             self.room_id,
             self.channel_name
