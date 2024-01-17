@@ -6,6 +6,7 @@ from game.models import RoomsModel, PlayerRoomModel
 import asyncio
 
 from .data import pong_data
+import random
 
 @sync_to_async
 def get_info(consumer):
@@ -56,7 +57,7 @@ def end_game(consumer):
 def update_ball(consumer, dx, dy):
     consumer.room = RoomsModel.objects.get(id=consumer.room_id)
     consumer.room.x += dx * pong_data['DX']
-    consumer.room.y += dy * pong_data['DY']
+    consumer.room.y += dy * consumer.ddy
     consumer.room.save()
     if consumer.room.y + pong_data['RADIUS'] >= pong_data['HEIGHT'] or consumer.room.y - pong_data['RADIUS'] <= 0:
         dy *= -1
@@ -88,6 +89,8 @@ class PongConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_id = self.scope['url_route']['kwargs']['room_id']
         self.player_id = self.scope['url_route']['kwargs']['player_id']
+        self.choices = [5, 10, 20]
+        self.ddy = random.choice(self.choices)
         self.room = None
         self.player = None
         self.server = None
