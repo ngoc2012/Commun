@@ -20,7 +20,7 @@
 
 class Bureaucrat
 {
-	protected:
+	private:
 		const std::string	_name;
 		int					_grade;
 	public:
