@@ -18,13 +18,13 @@ Form&	Form::operator=( Form const & src )
 	return (*this);
 }
 
-Form::Form(const std::string n, int sg, int eg) : name(n), sign_grade(sg), exec_grade(eg)
+Form::Form(const std::string n, int sg, int eg) : _name(n), _sign_grade(sg), _exec_grade(eg)
 {
-	sign = false;
-	std::cout << "Form " << name << " (sign grade: " << sign_grade << ", execute grade: " << exec_grade << ") constructor with parameters." << std::endl;
+	_sign = false;
+	std::cout << "Form " << _name << " (sign grade: " << _sign_grade << ", execute grade: " << _exec_grade << ") constructor with parameters." << std::endl;
 }
 
-Form::~Form() { std::cout << "Form " << name << " destructor." << std::endl; }
+Form::~Form() { std::cout << "Form " << _name << " destructor." << std::endl; }
 
 std::string	Form::getName( void ) const {return (_name);}
 bool		Form::getSign( void ) const {return (_sign);}
@@ -40,18 +40,18 @@ std::ostream&   operator<<(std::ostream& o, const Form& b)
 
 void		Form::beSigned( Bureaucrat& b)
 {
-	if (sign)
+	if (_sign)
 	{
-		std::cout << "Form " << name << " already signed." << std::endl;
+		std::cout << "Form " << _name << " already signed." << std::endl;
 		return ;
 	}
 	if (b.getGrade() > sign_grade)
 	{
-		std::cerr << "Form " << name << " could not be signed by " << b.getName() << " because: ";
+		std::cerr << "Form " << _name << " could not be signed by " << b.getName() << " because: ";
 		throw Form::GradeTooLowException();
 	}
-	sign = true;
-	std::cout << "Form " << name << " signed by " << b.getName() <<  "." << std::endl;
+	_sign = true;
+	std::cout << "Form " << _name << " signed by " << b.getName() <<  "." << std::endl;
 }
 const char* Form::GradeTooHighException::what() const throw() { return ("Grade is too high."); }
 const char* Form::GradeTooLowException::what() const throw() { return ("Grade is too low."); }
