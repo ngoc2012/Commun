@@ -24,8 +24,8 @@ class AForm;
 class Bureaucrat
 {
 	protected:
-		std::string	name;
-		int		grade;
+		const std::string	name;
+		int					grade;
 	public:
 		Bureaucrat();
 		Bureaucrat(const Bureaucrat&);
