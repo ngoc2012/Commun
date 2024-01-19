@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 SRCS = main.cpp Bureaucrat.cpp Form.cpp
+INCS = ${wildcard *.hpp}
 OBJS = ${SRCS:.c=.o}
 MANDA = main
 CC = c++
@@ -18,7 +19,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
 .cpp.o:
 	$(CC) $(FLAGS) -g -c $< -o ${<:.cpp=.o} -I.
-$(MANDA): $(SRCS)
+$(MANDA): $(SRCS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
 	make re && valgrind ./main
