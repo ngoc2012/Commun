@@ -12,8 +12,6 @@
 
 #include "Form.hpp"
 
-Form::Form() {std::cout << "Form " << _name << " default constructor." << std::endl;}
-
 Form::Form(const Form& src) {
 	*this = src;
 	std::cout << "Form " << _name << " copy constructor." << std::endl;
