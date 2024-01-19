@@ -12,19 +12,19 @@
 
 #include "Form.hpp"
 
-Form::Form() {std::cout << "Form " << name << " default constructor." << std::endl;}
+Form::Form() {std::cout << "Form " << _name << " default constructor." << std::endl;}
 
 Form::Form(const Form& src) {
 	*this = src;
-	std::cout << "Form " << name << " copy constructor." << std::endl;
+	std::cout << "Form " << _name << " copy constructor." << std::endl;
 }
 
 Form&	Form::operator=( Form const & src )
 {
-	name = src.name;
-	sign = src.sign;
-	sign_grade = src.sign_grade;
-	exec_grade = src.exec_grade;
+	_name = src.getName();
+	_sign = src.getSign();
+	_sign_grade = src.sign_grade;
+	_exec_grade = src.exec_grade;
 	return (*this);
 }
 

@@ -40,11 +40,11 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat " << name << " destructor." << std::endl;
+	std::cout << "Bureaucrat " << _name << " destructor." << std::endl;
 }
 
-std::string	Bureaucrat::getName( void ) const {return (name);}
-int		Bureaucrat::getGrade( void ) const {return (grade);}
+std::string	Bureaucrat::getName( void ) const {return (_name);}
+int		Bureaucrat::getGrade( void ) const {return (_grade);}
 std::ostream&   operator<<(std::ostream& o, const Bureaucrat& b)
 {
 	o << b.getName() << ", bureaucrat grade " << b.getGrade()<< std::endl;
