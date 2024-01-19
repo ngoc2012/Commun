@@ -12,11 +12,6 @@
 
 #include "Form.hpp"
 
-Form::Form(const Form& src) {
-	*this = src;
-	std::cout << "Form " << _name << " copy constructor." << std::endl;
-}
-
 Form&	Form::operator=( Form const & src )
 {
 	_sign = src.getSign();
