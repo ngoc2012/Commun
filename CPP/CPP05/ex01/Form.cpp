@@ -19,10 +19,7 @@ Form::Form(const Form& src) {
 
 Form&	Form::operator=( Form const & src )
 {
-	_name = src.getName();
 	_sign = src.getSign();
-	_sign_grade = src.getSignGrade();
-	_exec_grade = src.getExecGrade();
 	return (*this);
 }
 

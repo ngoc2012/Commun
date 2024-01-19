@@ -24,7 +24,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat& src) {
 
 Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & src )
 {
-	_name = src.getName();
 	_grade = src.getGrade();
 	return (*this);
 }
