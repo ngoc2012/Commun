@@ -21,10 +21,10 @@ class Bureaucrat;
 class Form
 {
 	private:
-		std::string	name;
-		bool		sign;
-		int		sign_grade;
-		int		exec_grade;
+		const std::string	name;
+		bool				sign;
+		const int			sign_grade;
+		const int			exec_grade;
 		Form();
 	public:
 		Form(const Form&);
