@@ -21,8 +21,8 @@ class Bureaucrat;
 class AForm
 {
 	protected:
-		std::string	name;
-		std::string	target;
+		const std::string	name;
+		std::string			target;
 		bool		sign;
 		int		sign_grade;
 		int		exec_grade;
