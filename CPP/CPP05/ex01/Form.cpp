@@ -45,7 +45,7 @@ void		Form::beSigned( Bureaucrat& b)
 		std::cout << "Form " << _name << " already signed." << std::endl;
 		return ;
 	}
-	if (b.getGrade() > sign_grade)
+	if (b.getGrade() > _sign_grade)
 	{
 		std::cerr << "Form " << _name << " could not be signed by " << b.getName() << " because: ";
 		throw Form::GradeTooLowException();
