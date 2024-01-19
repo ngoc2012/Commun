@@ -14,27 +14,27 @@
 
 Bureaucrat::Bureaucrat()
 {
-	std::cout << "Bureaucrat " << name << " default constructor." << std::endl;
+	std::cout << "Bureaucrat " << _name << " default constructor." << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& src) {
 	*this = src;
-	std::cout << "Bureaucrat " << name << " copy constructor." << std::endl;
+	std::cout << "Bureaucrat " << _name << " copy constructor." << std::endl;
 }
 
 Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & src )
 {
-	name = src.name;
-	grade = src.grade;
+	_name = src.name;
+	_grade = src.grade;
 	return (*this);
 }
 
-Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name(_name), grade(_grade)
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade)
 {
-	std::cout << "Bureaucrat " << name << " (grade: " << grade << ") constructor with parameters." << std::endl;
-	if (grade < MAX_GRADE)
+	std::cout << "Bureaucrat " << _name << " (grade: " << _grade << ") constructor with parameters." << std::endl;
+	if (_grade < MAX_GRADE)
 		throw Bureaucrat::GradeTooHighException();
-	if (grade > MIN_GRADE)
+	if (_grade > MIN_GRADE)
 		throw Bureaucrat::GradeTooLowException();
 }
 
