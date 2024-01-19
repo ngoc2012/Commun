@@ -23,7 +23,7 @@ class AForm;
 
 class Bureaucrat
 {
-	protected:
+	private:
 		const std::string	name;
 		int					grade;
 	public:
