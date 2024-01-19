@@ -24,8 +24,8 @@ Bureaucrat::Bureaucrat(const Bureaucrat& src) {
 
 Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & src )
 {
-	_name = src.name;
-	_grade = src.grade;
+	_name = src.getName();
+	_grade = src.getGrade();
 	return (*this);
 }
 
@@ -52,17 +52,17 @@ std::ostream&   operator<<(std::ostream& o, const Bureaucrat& b)
 }
 void		Bureaucrat::upGrade( void )
 {
-	if (grade - 1 < MAX_GRADE)
+	if (_grade - 1 < MAX_GRADE)
 		throw Bureaucrat::GradeTooHighException();
-	grade--;
+	_grade--;
 	std::cout << "Up grade succesful : " << *this;
 }
 
 void		Bureaucrat::downGrade( void )
 {
-	if (grade + 1 > MIN_GRADE)
+	if (_grade + 1 > MIN_GRADE)
 		throw Bureaucrat::GradeTooLowException();
-	grade++;
+	_grade++;
 	std::cout << "Down grade succesful : " << *this;
 }
 

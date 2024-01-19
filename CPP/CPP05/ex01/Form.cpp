@@ -23,8 +23,8 @@ Form&	Form::operator=( Form const & src )
 {
 	_name = src.getName();
 	_sign = src.getSign();
-	_sign_grade = src.sign_grade;
-	_exec_grade = src.exec_grade;
+	_sign_grade = src.getSignGrade();
+	_exec_grade = src.getExecGrade();
 	return (*this);
 }
 
@@ -36,11 +36,11 @@ Form::Form(const std::string n, int sg, int eg) : name(n), sign_grade(sg), exec_
 
 Form::~Form() { std::cout << "Form " << name << " destructor." << std::endl; }
 
-std::string	Form::getName( void ) const {return (name);}
-bool		Form::getSign( void ) const {return (sign);}
-int		Form::getSignGrade( void ) const {return (sign_grade);}
-int		Form::getExecGrade( void ) const {return (exec_grade);}
-void		Form::setSign( void ) {sign = true;}
+std::string	Form::getName( void ) const {return (_name);}
+bool		Form::getSign( void ) const {return (_sign);}
+int		Form::getSignGrade( void ) const {return (_sign_grade);}
+int		Form::getExecGrade( void ) const {return (_exec_grade);}
+void		Form::setSign( void ) {_sign = true;}
 
 std::ostream&   operator<<(std::ostream& o, const Form& b)
 {
