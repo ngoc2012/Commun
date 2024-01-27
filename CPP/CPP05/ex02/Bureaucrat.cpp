@@ -74,7 +74,7 @@ void		Bureaucrat::signForm( AForm& f )
 	f.beSigned(*this);
 }
 
-void    Bureaucrat::executeForm( const Form& form ) const {
+void    Bureaucrat::executeForm( const AForm& form ) const {
     try {
         form.execute( *this );
     } catch ( std::exception& e ) {
