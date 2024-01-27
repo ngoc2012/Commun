@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/27 18:33:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/27 18:36:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string t): AForm("RobotomyRequestForm", 72, 45), _target(t) {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src): AForm(src)
-{
-	std::cout << "RobotomyRequestForm " << _name << " copy constructor." << std::endl;
-}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src): AForm(src) { }
 
 RobotomyRequestForm&	RobotomyRequestForm::operator=( RobotomyRequestForm const & src )
 {
