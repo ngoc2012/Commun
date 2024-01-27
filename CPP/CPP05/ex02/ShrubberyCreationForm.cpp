@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/27 18:35:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/27 18:38:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 //ShrubberyCreationForm::ShrubberyCreationForm(std::string t) : target(t)
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string t): AForm("RobotomyRequestForm", 72, 45), _target(t) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src): AForm(src)
-{
-	std::cout << "ShrubberyCreationForm " << _name << " copy constructor." << std::endl;
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src): AForm(src) { }
 
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=( ShrubberyCreationForm const & src )
 {
@@ -26,7 +23,7 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=( ShrubberyCreationForm c
 	return (*this);
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm() { std::cout << "ShrubberyCreationForm " << _name << " destructor." << std::endl; }
+ShrubberyCreationForm::~ShrubberyCreationForm() { }
 
 void	ShrubberyCreationForm::beExecuted() const
 {
