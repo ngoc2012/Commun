@@ -13,7 +13,7 @@
 #include "ShrubberyCreationForm.hpp"
 
 //ShrubberyCreationForm::ShrubberyCreationForm(std::string t) : target(t)
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string t): AForm("RobotomyRequestForm", 72, 45), _target(t) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string t): AForm("ShrubberyCreationForm", 145, 137), _target(t) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src): AForm(src) { }
 
