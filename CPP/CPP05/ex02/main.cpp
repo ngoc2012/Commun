@@ -47,7 +47,7 @@ int	main()
 	}
 	try {
 		std::cout << "s0.execute(b70);" << std::endl;
-		b70.executeForm(s0)
+		b70.executeForm(s0);
 		s0.execute(b70);
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
