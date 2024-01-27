@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/27 18:32:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/27 18:43:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &t): AForm("PresidentialPardonForm", 25, 5), _target(t) {}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src): AForm(src)
-{
-	std::cout << "PresidentialPardonForm " << _name << " copy constructor." << std::endl;
-}
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src): AForm(src) {}
 
 PresidentialPardonForm&	PresidentialPardonForm::operator=( PresidentialPardonForm const & src )
 {
@@ -25,7 +22,7 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=( PresidentialPardonFor
 	return (*this);
 }
 
-PresidentialPardonForm::~PresidentialPardonForm() { std::cout << "PresidentialPardonForm " << _name << " destructor." << std::endl; }
+PresidentialPardonForm::~PresidentialPardonForm() {}
 
 void	PresidentialPardonForm::beExecuted() const
 {
