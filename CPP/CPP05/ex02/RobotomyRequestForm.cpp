@@ -6,20 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/27 14:48:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/27 18:33:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(std::string t)
-{
-	_sign = false;
-	_target = t;
-	_sign_grade = 72;
-	_exec_grade = 45;
-	std::cout << "RobotomyRequestForm " << _name << " default constructor." << std::endl;
-}
+RobotomyRequestForm::RobotomyRequestForm(const std::string t): AForm("RobotomyRequestForm", 72, 45), _target(t) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src): AForm(src)
 {

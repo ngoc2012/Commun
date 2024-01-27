@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/27 12:27:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/27 18:32:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &t): AForm("Pre
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src): AForm(src)
 {
-	_target = src.get
 	std::cout << "PresidentialPardonForm " << _name << " copy constructor." << std::endl;
 }
 
