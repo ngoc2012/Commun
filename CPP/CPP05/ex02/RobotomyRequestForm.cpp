@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/30 10:55:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/27 14:48:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 RobotomyRequestForm::RobotomyRequestForm(std::string t)
 {
-	sign = false;
-	target = t;
-	sign_grade = 72;
-	exec_grade = 45;
-	std::cout << "RobotomyRequestForm " << name << " default constructor." << std::endl;
+	_sign = false;
+	_target = t;
+	_sign_grade = 72;
+	_exec_grade = 45;
+	std::cout << "RobotomyRequestForm " << _name << " default constructor." << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& src): AForm(src)
 {
-	std::cout << "RobotomyRequestForm " << name << " copy constructor." << std::endl;
+	std::cout << "RobotomyRequestForm " << _name << " copy constructor." << std::endl;
 }
 
 RobotomyRequestForm&	RobotomyRequestForm::operator=( RobotomyRequestForm const & src )
@@ -32,7 +32,7 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=( RobotomyRequestForm const &
 	return (*this);
 }
 
-RobotomyRequestForm::~RobotomyRequestForm() { std::cout << "RobotomyRequestForm " << name << " destructor." << std::endl; }
+RobotomyRequestForm::~RobotomyRequestForm() { std::cout << "RobotomyRequestForm " << _name << " destructor." << std::endl; }
 
 void	RobotomyRequestForm::beExecuted() const
 {
