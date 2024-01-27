@@ -22,13 +22,13 @@ AForm::AForm(const AForm& src) {
 AForm&	AForm::operator=( AForm const & src )
 {
 	_name = src.getName();
-	sign = src.getSign();
-	sign_grade = src.sign_grade;
-	exec_grade = src.exec_grade;
+	_sign = src.getSign();
+	_sign_grade = src.getSignGrade();
+	_exec_grade = src.getExecGrade();
 	return (*this);
 }
 
-AForm::AForm(const std::string n, int sg, int eg) : _name(n), sign_grade(sg), exec_grade(eg)
+AForm::AForm(const std::string n, int sg, int eg) : _name(n), _sign_grade(sg), _exec_grade(eg)
 {
 	sign = false;
 	std::cout << "AForm " << _name << " (sign grade: " << sign_grade << ", execute grade: " << exec_grade << ") constructor with parameters." << std::endl;
