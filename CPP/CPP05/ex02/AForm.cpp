@@ -19,17 +19,14 @@ AForm::AForm(const AForm& src): _name(src.getName()), _sign_grade(src.getSignGra
 
 AForm&	AForm::operator=( AForm const & src )
 {
-	
 	_sign = src.getSign();
-	
-	;
 	return (*this);
 }
 
 AForm::AForm(const std::string n, int sg, int eg) : _name(n), _sign_grade(sg), _exec_grade(eg)
 {
-	sign = false;
-	std::cout << "AForm " << _name << " (sign grade: " << sign_grade << ", execute grade: " << exec_grade << ") constructor with parameters." << std::endl;
+	_sign = false;
+	std::cout << "AForm " << _name << " (sign grade: " << _sign_grade << ", execute grade: " << exec_grade << ") constructor with parameters." << std::endl;
 }
 
 AForm::~AForm() { std::cout << "AForm " << _name << " destructor." << std::endl; }
