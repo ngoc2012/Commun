@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/27 12:23:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/27 12:25:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ Bureaucrat::Bureaucrat(const Bureaucrat& src) {
 
 Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & src )
 {
-	_name = src.getName();
 	_grade = src.getGrade();
 	return (*this);
 }
