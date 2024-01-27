@@ -6,21 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/27 14:48:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/27 18:35:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 //ShrubberyCreationForm::ShrubberyCreationForm(std::string t) : target(t)
-ShrubberyCreationForm::ShrubberyCreationForm(std::string t)
-{
-	_sign = false;
-	_target = t;
-	_sign_grade = 145;
-	_exec_grade = 137;
-	std::cout << "ShrubberyCreationForm " << _name << " default constructor." << std::endl;
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string t): AForm("RobotomyRequestForm", 72, 45), _target(t) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src): AForm(src)
 {
