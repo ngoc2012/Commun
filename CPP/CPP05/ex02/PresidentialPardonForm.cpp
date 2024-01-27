@@ -16,7 +16,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &t): AForm("Pre
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src): AForm(src)
 {
-	_target = src.
+	_target = src.get
 	std::cout << "PresidentialPardonForm " << _name << " copy constructor." << std::endl;
 }
 
