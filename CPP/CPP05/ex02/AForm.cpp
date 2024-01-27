@@ -26,16 +26,16 @@ AForm&	AForm::operator=( AForm const & src )
 AForm::AForm(const std::string n, int sg, int eg) : _name(n), _sign_grade(sg), _exec_grade(eg)
 {
 	_sign = false;
-	std::cout << "AForm " << _name << " (sign grade: " << _sign_grade << ", execute grade: " << exec_grade << ") constructor with parameters." << std::endl;
+	std::cout << "AForm " << _name << " (sign grade: " << _sign_grade << ", execute grade: " << _exec_grade << ") constructor with parameters." << std::endl;
 }
 
 AForm::~AForm() { std::cout << "AForm " << _name << " destructor." << std::endl; }
 
 std::string	AForm::getName( void ) const {return (_name);}
-bool		AForm::getSign( void ) const {return (sign);}
-int		AForm::getSignGrade( void ) const {return (sign_grade);}
-int		AForm::getExecGrade( void ) const {return (exec_grade);}
-void		AForm::setSign( void ) {sign = true;}
+bool		AForm::getSign( void ) const {return (_sign);}
+int		AForm::getSignGrade( void ) const {return (_sign_grade);}
+int		AForm::getExecGrade( void ) const {return (_exec_grade);}
+void		AForm::setSign( void ) {_sign = true;}
 
 std::ostream&   operator<<(std::ostream& o, const AForm& b)
 {
@@ -45,12 +45,12 @@ std::ostream&   operator<<(std::ostream& o, const AForm& b)
 
 void		AForm::beSigned( Bureaucrat& b)
 {
-	if (sign)
+	if (_sign)
 	{
 		std::cout << "AForm " << _name << " already signed." << std::endl;
 		return ;
 	}
-	if (b.getGrade() > sign_grade)
+	if (b.getGrade() > _sign_grade)
 	{
 		std::cerr << "AForm " << _name << " could not be signed by " << b.getName() << " because: ";
 		throw AForm::GradeTooLowException();
@@ -65,7 +65,7 @@ void		AForm::execute(Bureaucrat const & executor) const
 {
 	if (!sign)
 		throw AForm:: FormNotSigned();
-	else if (executor.getGrade() > exec_grade)
+	else if (executor.getGrade() > _exec_grade)
 		throw AForm::GradeTooLowException();
 	beExecuted();
 }
