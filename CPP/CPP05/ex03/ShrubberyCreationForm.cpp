@@ -6,26 +6,16 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 18:15:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/27 18:41:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 //ShrubberyCreationForm::ShrubberyCreationForm(std::string t) : target(t)
-ShrubberyCreationForm::ShrubberyCreationForm(std::string t)
-{
-	sign = false;
-	target = t;
-	sign_grade = 145;
-	exec_grade = 137;
-	std::cout << "ShrubberyCreationForm " << name << " default constructor." << std::endl;
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string t): AForm("ShrubberyCreationForm", 145, 137), _target(t) {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src): AForm(src)
-{
-	std::cout << "ShrubberyCreationForm " << name << " copy constructor." << std::endl;
-}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src): AForm(src) { }
 
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=( ShrubberyCreationForm const & src )
 {
@@ -33,13 +23,13 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=( ShrubberyCreationForm c
 	return (*this);
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm() { std::cout << "ShrubberyCreationForm " << name << " destructor." << std::endl; }
+ShrubberyCreationForm::~ShrubberyCreationForm() { }
 
 void	ShrubberyCreationForm::beExecuted() const
 {
 	std::ofstream file;
 
-	file.open(std::string(target + "_shrubbery").c_str(),
+	file.open(std::string(_target + "_shrubbery").c_str(),
 		std::ios::out | std::ios::trunc);
 	// https://ascii.co.uk/art/tree
 	if(file.is_open())

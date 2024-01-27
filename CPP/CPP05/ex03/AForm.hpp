@@ -20,14 +20,14 @@ class Bureaucrat;
 
 class AForm
 {
-	protected:
-		std::string	name;
-		std::string	target;
-		bool		sign;
-		int		sign_grade;
-		int		exec_grade;
+	private:
+		const std::string	_name;
+		bool				_sign;
+		const int			_sign_grade;
+		const int			_exec_grade;
 		virtual void		beExecuted() const = 0;
 		AForm();
+
 	public:
 		AForm(const AForm&);
 		AForm &operator=(const AForm& op);

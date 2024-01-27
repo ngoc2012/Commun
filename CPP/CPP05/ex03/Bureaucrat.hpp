@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 17:47:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/27 12:23:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ class AForm;
 
 class Bureaucrat
 {
-	protected:
-		std::string	name;
-		int		grade;
+	private:
+		const std::string	_name;
+		int					_grade;
 	public:
 		Bureaucrat();
 		Bureaucrat(const Bureaucrat&);
