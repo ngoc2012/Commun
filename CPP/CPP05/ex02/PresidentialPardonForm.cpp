@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/31 08:50:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/27 12:27:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 PresidentialPardonForm::PresidentialPardonForm(std::string t)
 {
-	sign = false;
-	target = t;
-	sign_grade = 25;
-	exec_grade = 5;
-	std::cout << "PresidentialPardonForm " << name << " default constructor." << std::endl;
+	_sign = false;
+	_target = t;
+	_sign_grade = 25;
+	_exec_grade = 5;
+	std::cout << "PresidentialPardonForm " << _name << " default constructor." << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src): AForm(src)
 {
-	std::cout << "PresidentialPardonForm " << name << " copy constructor." << std::endl;
+	std::cout << "PresidentialPardonForm " << _name << " copy constructor." << std::endl;
 }
 
 PresidentialPardonForm&	PresidentialPardonForm::operator=( PresidentialPardonForm const & src )
@@ -32,9 +32,9 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=( PresidentialPardonFor
 	return (*this);
 }
 
-PresidentialPardonForm::~PresidentialPardonForm() { std::cout << "PresidentialPardonForm " << name << " destructor." << std::endl; }
+PresidentialPardonForm::~PresidentialPardonForm() { std::cout << "PresidentialPardonForm " << _name << " destructor." << std::endl; }
 
 void	PresidentialPardonForm::beExecuted() const
 {
-	std::cout << target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
