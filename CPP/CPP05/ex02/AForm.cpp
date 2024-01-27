@@ -6,37 +6,37 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:16:32 by ngoc              #+#    #+#             */
-/*   Updated: 2023/10/28 18:02:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/27 12:22:26 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
-AForm::AForm() {std::cout << "AForm " << name << " default constructor." << std::endl;}
+AForm::AForm() {std::cout << "AForm " << _name << " default constructor." << std::endl;}
 
 AForm::AForm(const AForm& src) {
 	*this = src;
-	std::cout << "AForm " << name << " copy constructor." << std::endl;
+	std::cout << "AForm " << _name << " copy constructor." << std::endl;
 }
 
 AForm&	AForm::operator=( AForm const & src )
 {
-	name = src.name;
-	sign = src.sign;
+	_name = src.getName();
+	sign = src.getSign();
 	sign_grade = src.sign_grade;
 	exec_grade = src.exec_grade;
 	return (*this);
 }
 
-AForm::AForm(const std::string n, int sg, int eg) : name(n), sign_grade(sg), exec_grade(eg)
+AForm::AForm(const std::string n, int sg, int eg) : _name(n), sign_grade(sg), exec_grade(eg)
 {
 	sign = false;
-	std::cout << "AForm " << name << " (sign grade: " << sign_grade << ", execute grade: " << exec_grade << ") constructor with parameters." << std::endl;
+	std::cout << "AForm " << _name << " (sign grade: " << sign_grade << ", execute grade: " << exec_grade << ") constructor with parameters." << std::endl;
 }
 
-AForm::~AForm() { std::cout << "AForm " << name << " destructor." << std::endl; }
+AForm::~AForm() { std::cout << "AForm " << _name << " destructor." << std::endl; }
 
-std::string	AForm::getName( void ) const {return (name);}
+std::string	AForm::getName( void ) const {return (_name);}
 bool		AForm::getSign( void ) const {return (sign);}
 int		AForm::getSignGrade( void ) const {return (sign_grade);}
 int		AForm::getExecGrade( void ) const {return (exec_grade);}
@@ -52,16 +52,16 @@ void		AForm::beSigned( Bureaucrat& b)
 {
 	if (sign)
 	{
-		std::cout << "AForm " << name << " already signed." << std::endl;
+		std::cout << "AForm " << _name << " already signed." << std::endl;
 		return ;
 	}
 	if (b.getGrade() > sign_grade)
 	{
-		std::cerr << "AForm " << name << " could not be signed by " << b.getName() << " because: ";
+		std::cerr << "AForm " << _name << " could not be signed by " << b.getName() << " because: ";
 		throw AForm::GradeTooLowException();
 	}
 	sign = true;
-	std::cout << "AForm " << name << " signed by " << b.getName() <<  "." << std::endl;
+	std::cout << "AForm " << _name << " signed by " << b.getName() <<  "." << std::endl;
 }
 const char* AForm::GradeTooHighException::what() const throw() { return ("Grade is too high."); }
 const char* AForm::GradeTooLowException::what() const throw() { return ("Grade is too low."); }
