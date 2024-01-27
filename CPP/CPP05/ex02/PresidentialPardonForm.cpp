@@ -12,7 +12,7 @@
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(std::string t)
+PresidentialPardonForm::PresidentialPardonForm(const std::string &t)
 {
 	_sign = false;
 	_target = t;
