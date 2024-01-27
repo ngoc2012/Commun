@@ -12,19 +12,17 @@
 
 #include "AForm.hpp"
 
-AForm::AForm() {std::cout << "AForm " << _name << " default constructor." << std::endl;}
-
-AForm::AForm(const AForm& src) {
-	*this = src;
+AForm::AForm(const AForm& src): _name(src.getName()), _sign_grade(src.getSignGrade()), _exec_grade(src.getExecGrade())
+{
 	std::cout << "AForm " << _name << " copy constructor." << std::endl;
 }
 
 AForm&	AForm::operator=( AForm const & src )
 {
-	_name = src.getName();
+	
 	_sign = src.getSign();
-	_sign_grade = src.getSignGrade();
-	_exec_grade = src.getExecGrade();
+	
+	;
 	return (*this);
 }
 
