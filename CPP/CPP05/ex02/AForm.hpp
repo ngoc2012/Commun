@@ -28,6 +28,7 @@ class AForm
 		const int			_exec_grade;
 		virtual void		beExecuted() const = 0;
 		AForm();
+		
 	public:
 		AForm(const AForm&);
 		AForm &operator=(const AForm& op);
