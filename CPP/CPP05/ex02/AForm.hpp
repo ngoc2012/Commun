@@ -22,13 +22,13 @@ class AForm
 {
 	private:
 		const std::string	_name;
-		std::string			_target;
+		const std::string	_target;
 		bool				_sign;
 		const int			_sign_grade;
 		const int			_exec_grade;
 		virtual void		beExecuted() const = 0;
 		AForm();
-		
+
 	public:
 		AForm(const AForm&);
 		AForm &operator=(const AForm& op);
