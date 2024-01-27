@@ -22,7 +22,6 @@ class AForm
 {
 	private:
 		const std::string	_name;
-		const std::string	_target;
 		bool				_sign;
 		const int			_sign_grade;
 		const int			_exec_grade;
