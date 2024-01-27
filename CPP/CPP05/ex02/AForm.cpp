@@ -55,7 +55,7 @@ void		AForm::beSigned( Bureaucrat& b)
 		std::cerr << "AForm " << _name << " could not be signed by " << b.getName() << " because: ";
 		throw AForm::GradeTooLowException();
 	}
-	sign = true;
+	_sign = true;
 	std::cout << "AForm " << _name << " signed by " << b.getName() <<  "." << std::endl;
 }
 const char* AForm::GradeTooHighException::what() const throw() { return ("Grade is too high."); }
@@ -63,7 +63,7 @@ const char* AForm::GradeTooLowException::what() const throw() { return ("Grade i
 const char* AForm::FormNotSigned::what() const throw() { return ("Form not signed."); }
 void		AForm::execute(Bureaucrat const & executor) const
 {
-	if (!sign)
+	if (!_sign)
 		throw AForm:: FormNotSigned();
 	else if (executor.getGrade() > _exec_grade)
 		throw AForm::GradeTooLowException();

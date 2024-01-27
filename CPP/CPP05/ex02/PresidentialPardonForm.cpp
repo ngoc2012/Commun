@@ -12,13 +12,13 @@
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string &t)
+PresidentialPardonForm::PresidentialPardonForm(const std::string &t): Form("PresidentialPardonForm", 25, 5), _target(t)
 {
 	_sign = false;
 	_target = t;
 	_sign_grade = 25;
 	_exec_grade = 5;
-	std::cout << "PresidentialPardonForm " << _name << " default constructor." << std::endl;
+	std::cout <<  " << _name << " default constructor." << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src): AForm(src)
