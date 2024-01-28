@@ -12,13 +12,14 @@
 
 #include "Base.hpp"
 
-class A: public Base {};
-class B: public Base {};
-class C: public Base {};
-
 int	main()
 {
-	for i 
+	Base*	x;
+
+	for (int i  = 0; i < 10; i++)
+	{
+		Base
+	}
 
 	return (0);
 }
