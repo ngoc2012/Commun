@@ -26,14 +26,13 @@ Base::~Base() {}
 
 Base*	Base::generate(void)
 {
-	// Seed the random number generator with the current time
 	std::srand(static_cast<unsigned int>(std::time(0)));
 
 	if (std::rand() % 4 == 1)
 		return (new A);
 	else if (std::rand() % 4 == 2)
 		return (new B);
-	else if (std::rand() % 4 == 2)
+	else if (std::rand() % 4 == 3)
 		return (new B);
 	else
 		return (new C);

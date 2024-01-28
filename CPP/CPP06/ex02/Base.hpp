@@ -12,6 +12,7 @@
 
 #include <cstdlib> // For rand() and srand()
 #include <ctime>   // For time()
+#include <iostream>
 
 #ifndef BASE_HPP
 # define BASE_HPP
@@ -27,6 +28,7 @@ class Base
 
 		Base*	generate(void);
 		void	identify(Base* b);
+		void	identify(Base& b);
 };
 
 class A: public Base {};
