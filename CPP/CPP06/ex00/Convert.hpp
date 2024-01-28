@@ -30,7 +30,7 @@ class Convert
 	private:
 		e_types		type;
 		char		_char;
-		int		_int;
+		int			_int;
 		float		_float;
 		double		_double;
 		//long double	_ldouble;
