@@ -40,13 +40,13 @@ Base*	Base::generate(void)
 void	Base::identify(Base* b)
 {
 	if (dynamic_cast<A*>(b))
-		std::cout << "A" << std::endl;
+		std::cout << "A";
 	else if (dynamic_cast<B*>(b))
-		std::cout << "B" << std::endl;
+		std::cout << "B";
 	else if (dynamic_cast<C*>(b))
-		std::cout << "C" << std::endl;
+		std::cout << "C";
 	else
-		std::cout << "unknown" << std::endl;
+		std::cout << "unknown";
 }
 
 void	Base::identify(Base& b)

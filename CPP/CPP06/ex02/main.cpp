@@ -22,6 +22,7 @@ int	main()
 		x = b.generate();
 		std::cout << "*x = "; b.identify(x);
 		std::cout << ", &a = "; b.identify(*x);
+		std::cout << std::endl;
 	}
 
 	return (0);
