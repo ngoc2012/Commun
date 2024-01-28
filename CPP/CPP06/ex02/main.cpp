@@ -17,6 +17,7 @@ int	main()
 	Base*	x;
 	Base	b;
 
+	std::srand(static_cast<unsigned>(std::time(0)));
 	for (int i  = 0; i < 10; i++)
 	{
 		x = b.generate();
