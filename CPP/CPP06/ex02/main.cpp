@@ -15,10 +15,12 @@
 int	main()
 {
 	Base*	x;
+	Base	b;
 
 	for (int i  = 0; i < 10; i++)
 	{
-		Base
+		x = b.generate();
+		std::cout << "*x = " << b.identify(x) << ", &a = " << b.identify(*x) << std::endl;
 	}
 
 	return (0);
