@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp Serializer.cpp
+SRCS = main.cpp Base.cpp
 OBJS = ${SRCS:.cpp=.o}
 INCS = $(wildcard *.hpp)
 MANDA = main

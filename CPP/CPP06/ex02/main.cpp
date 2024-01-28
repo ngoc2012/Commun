@@ -20,7 +20,8 @@ int	main()
 	for (int i  = 0; i < 10; i++)
 	{
 		x = b.generate();
-		std::cout << "*x = " << b.identify(x) << ", &a = " << b.identify(*x) << std::endl;
+		std::cout << "*x = "; b.identify(x);
+		std::cout << ", &a = "; b.identify(*x);
 	}
 
 	return (0);

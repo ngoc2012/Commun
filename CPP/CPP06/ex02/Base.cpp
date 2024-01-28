@@ -28,11 +28,13 @@ Base*	Base::generate(void)
 {
 	std::srand(static_cast<unsigned int>(std::time(0)));
 
-	if (std::rand() % 3 == 1)
+	if (std::rand() % 4 == 1)
 		return (new A);
-	else if (std::rand() % 3 == 2)
+	else if (std::rand() % 4 == 2)
 		return (new B);
-	return (new C);
+	else if (std::rand() % 4 == 3)
+		return (new C);
+	return (0);
 }
 
 void	Base::identify(Base* b)
@@ -53,7 +55,7 @@ void	Base::identify(Base& b)
 	try
 	{
 		A& a = dynamic_cast<A&>(b);
-		std::cout << "A" << std::endl;
+		std::cout << "A";
 		err = false;
 		(void) a;
 	}
@@ -61,7 +63,7 @@ void	Base::identify(Base& b)
 	try
 	{
 		B& a = dynamic_cast<B&>(b);
-		std::cout << "B" << std::endl;
+		std::cout << "B";
 		err = false;
 		(void) a;
 	}
@@ -69,11 +71,11 @@ void	Base::identify(Base& b)
 	try
 	{
 		C& a = dynamic_cast<C&>(b);
-		std::cout << "C" << std::endl;
+		std::cout << "C";
 		err = false;
 		(void) a;
 	}
 	catch(const std::exception& e) {}
 	if (err)
-		std::cout << "unknown" << std::endl;
+		std::cout << "unknown";
 }
