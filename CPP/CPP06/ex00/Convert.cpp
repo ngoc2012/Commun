@@ -75,7 +75,7 @@ void	Convert::get_str(char *n)
 	_int = static_cast<int>(c);
 	_float = static_cast<float>(c);
 	_double = static_cast<double>(c);
-
+	std::cout << "1:" << n << std::endl;
 	get_char();
 	get_int(n);
 	get_float(n);
@@ -107,6 +107,7 @@ void     Convert::get_char()
 
 void     Convert::get_int( char* n )
 {
+	std::cout << n << std::endl;
 	std::string s = std::string(n);
 	std::cout << "int: ";
 	if (s == "-inf" || s == "-inff")
