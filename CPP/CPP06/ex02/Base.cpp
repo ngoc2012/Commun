@@ -28,14 +28,11 @@ Base*	Base::generate(void)
 {
 	std::srand(static_cast<unsigned int>(std::time(0)));
 
-	if (std::rand() % 4 == 1)
+	if (std::rand() % 3 == 1)
 		return (new A);
-	else if (std::rand() % 4 == 2)
+	else if (std::rand() % 3 == 2)
 		return (new B);
-	else if (std::rand() % 4 == 3)
-		return (new B);
-	else
-		return (new C);
+	return (new C);
 }
 
 void	Base::identify(Base* b)
