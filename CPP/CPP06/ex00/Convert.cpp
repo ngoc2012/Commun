@@ -38,7 +38,8 @@ Convert::Convert(char *n)
 	//std::cout << "strlen: " << std::string(n).length() << std::endl;
 	if (std::string(n).length() > 405)
 		type = NONE;
-	else if (n[strlen(n) - 1] == 'f')
+	else if (n[strlen(n) - 1] == 'f' && strlen(n) > 1
+			&& isNumber(std::string(n).substr(0,strlen(n) - 1)))
 	{
 		type = FLOAT;
 		n[strlen(n) - 1] = 0;
@@ -75,7 +76,6 @@ void	Convert::get_str(char *n)
 	_int = static_cast<int>(c);
 	_float = static_cast<float>(c);
 	_double = static_cast<double>(c);
-	std::cout << "1:" << n << std::endl;
 	get_char();
 	get_int(n);
 	get_float(n);
@@ -107,7 +107,6 @@ void     Convert::get_char()
 
 void     Convert::get_int( char* n )
 {
-	std::cout << n << std::endl;
 	std::string s = std::string(n);
 	std::cout << "int: ";
 	if (s == "-inf" || s == "-inff")
