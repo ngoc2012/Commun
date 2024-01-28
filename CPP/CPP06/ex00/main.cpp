@@ -23,23 +23,6 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
-	std::stringstream ss(argv[1]);
-	long double ld;
-	ss >> ld;
-
 	Convert		c(argv[1]);
-/*
-	Convert		c;
-	//double	flt_max = atof("340282346638528859811704183484516925440");
-	//int	i = 0;
-	//while (flt_max++ <= std::numeric_limits<float>::max())
-	//	i++;
-	//std::cout << i << std::endl;
-	std::cout << "atof: " << atof(argv[1]) << std::endl;
-	std::cout << "char: "; c.getChar(argv[1]);	std::cout << std::endl;
-	std::cout << "int: "; c.getInt(argv[1]);	std::cout << std::endl;
-	std::cout << "float: "; c.getFloat(argv[1]);	std::cout << std::endl;
-	std::cout << "double: "; c.getDouble(argv[1]);	std::cout << std::endl;
-	*/
 	return (0);
 }
