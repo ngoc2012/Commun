@@ -33,7 +33,6 @@ class Convert
 		int			_int;
 		float		_float;
 		double		_double;
-		//long double	_ldouble;
 
 		Convert();
 		Convert(const Convert&);
