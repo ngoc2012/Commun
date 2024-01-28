@@ -28,7 +28,7 @@ Base::~Base() {}
 
 Base*	Base::generate(void)
 {
-	//std::srand(static_cast<unsigned int>(std::time(0)));
+	std::srand(static_cast<unsigned int>(std::time(0)));
 	
 
 	if (std::rand() % 4 == 1)

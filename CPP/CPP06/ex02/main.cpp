@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <chrono>
+#include <thread>
+
 #include "Base.hpp"
 
 int	main()
@@ -17,13 +20,13 @@ int	main()
 	Base*	x;
 	Base	b;
 
-	std::srand(static_cast<unsigned>(std::time(0)));
 	for (int i  = 0; i < 10; i++)
 	{
 		x = b.generate();
 		std::cout << "*x = "; b.identify(x);
 		std::cout << ", &a = "; b.identify(*x);
 		std::cout << std::endl;
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
 
 	return (0);
