@@ -10,8 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <unistd.h>
 
 #include "Base.hpp"
 
@@ -26,7 +28,7 @@ int	main()
 		std::cout << "*x = "; b.identify(x);
 		std::cout << ", &a = "; b.identify(*x);
 		std::cout << std::endl;
-		usleep(100000);
+		usleep(1000000);
 	}
 
 	return (0);
