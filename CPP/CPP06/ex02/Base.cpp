@@ -12,7 +12,9 @@
 
 #include "Base.hpp"
 
-Base::Base() {}
+Base::Base() {
+	srand((unsigned) time(NULL));
+}
 
 Base::Base(const Base& src) { *this = src; }
 
@@ -27,7 +29,7 @@ Base::~Base() {}
 Base*	Base::generate(void)
 {
 	//std::srand(static_cast<unsigned int>(std::time(0)));
-	srand((unsigned) time(NULL));
+	
 
 	if (std::rand() % 4 == 1)
 		return (new A);
