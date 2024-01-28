@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <chrono>
-#include <thread>
+#include <cstdlib>
+#include <ctime>
 
 #include "Base.hpp"
 
@@ -26,7 +26,7 @@ int	main()
 		std::cout << "*x = "; b.identify(x);
 		std::cout << ", &a = "; b.identify(*x);
 		std::cout << std::endl;
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		usleep(100000);
 	}
 
 	return (0);
