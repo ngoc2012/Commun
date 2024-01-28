@@ -75,13 +75,7 @@ void	Convert::get_str(char *n)
 	_int = static_cast<int>(c);
 	_float = static_cast<float>(c);
 	_double = static_cast<double>(c);
-	/*
-	std::string data = std::string(n);
-	std::stringstream ss(data);
-	long double _ldouble;
-	ss >> _ldouble;
-	std::cout << "long double: " << _ldouble << std::endl;
-	*/
+
 	get_char();
 	get_int(n);
 	get_float(n);
