@@ -29,4 +29,8 @@ class Base
 		void	identify(Base* b);
 };
 
+class A: public Base {};
+class B: public Base {};
+class C: public Base {};
+
 #endif
