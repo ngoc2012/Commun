@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cstdlib> // For rand() and srand()
+#include <ctime>   // For time()
+#include <iostream>
+
 #include "Base.hpp"
 
 Base::Base() {

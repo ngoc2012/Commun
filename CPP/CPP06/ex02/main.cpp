@@ -29,6 +29,7 @@ int	main()
 		std::cout << ", &a = "; b.identify(*x);
 		std::cout << std::endl;
 		usleep(1000000);
+		delete x;
 	}
 
 	return (0);

@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cstdlib> // For rand() and srand()
-#include <ctime>   // For time()
-#include <iostream>
-
 #ifndef BASE_HPP
 # define BASE_HPP
 
