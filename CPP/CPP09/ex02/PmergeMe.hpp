@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 19:19:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 19:20:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ class   PairedValue
             return *larger > *(other.larger);
         }
 };
+
+//std::ostream& operator<<(std::ostream& s, PairedValue
 
 class PmergeMe
 {
