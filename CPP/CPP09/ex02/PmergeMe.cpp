@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 19:16:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 19:17:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(std::vector<T>& a) { _a = &a; }
+PmergeMe::PmergeMe(std::vector<int>& a) { _a = &a; }
 
 PmergeMe::~PmergeMe() {}
 
 void    PmergeMe::sort()
 {
-    for (size_t i = 0; i < a->size() / 2 - 1; ++i)
-        _p.push_back(PmergeMe((*_a)[i * 2], (*_a)[i * 2 + 1]));
+    for (size_t i = 0; i < _a->size() / 2 - 1; ++i)
+        _p.push_back(PairedValue((*_a)[i * 2], (*_a)[i * 2 + 1]));
 }
 
 int     PmergeMe::binarySearch(std::vector<int>& arr, int target)

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 19:13:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 19:17:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,11 @@ class   PairedValue
         }
 };
 
-template <typename T>
 class PmergeMe
 {
 	private:
-        std::vector<int>*               _a;
-        std::vector<PairedValue<T> >    _p;
+        std::vector<int>*                   _a;
+        std::vector<PairedValue<int> >      _p;
 
 		PmergeMe();
 		PmergeMe(const PmergeMe&);
@@ -61,7 +60,7 @@ class PmergeMe
         void        insertInSortedArray(std::vector<int>& arr, int num);
 
 	public:
-		PmergeMe(std::vector<T>&);
+		PmergeMe(std::vector<int>&);
 		virtual ~PmergeMe();
 
         bool        isSorted(std::vector<int>& arr);
