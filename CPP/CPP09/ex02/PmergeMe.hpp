@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 19:03:59 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 19:04:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ class   PairedValue
         }
 
         bool operator<(const PairedValue& other) const {
-            return larger < other.larger;
+            return *larger < *(other.larger);
         }
 
         bool operator>(const PairedValue& other) const {
-            return larger > other.larger;
+            return *larger > *(other.larger);
         }
 };
 
