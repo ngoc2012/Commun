@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 13:56:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 14:21:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	main(int argc, char **argv)
     p.print();
     p.insertInSortedArray(a, std::atoi(argv[1]));
     p.print();
+            std<<cout << "Not sorted" << std::endl;
+    std<<cout << "Sorted" << std::endl;
 
 	return (0);
 }
