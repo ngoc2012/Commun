@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 18:09:33 by ngoc             ###   ########.fr       */
+/*   Created: 2024/01/29 06:19:06 by ngoc              #+#    #+#             */
+/*   Updated: 2024/01/29 06:20:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
-
-int	main()
+template<typename T>
+void    swap(T& a, T& b)
 {
-	Data data;
-	data.login = "minh-ngu";
-	data.level = 4.5;
-	
-	Serializer seri;
-
-	std::cout << "Login: " << seri.deserialize( seri.serialize( &data ) )->login << std::endl;
-	std::cout << "Level: " << seri.deserialize( seri.serialize( &data ) )->level << std::endl;
-
-	return (0);
+    T tmp = a;
+    a = b;
+    b = tmp;
 }
+
+template<typename T>
+T   min(T& a, T& b) { return ( a < b ? a : b ); }
+
+template<typename T>
+T   max(T& a, T& b) { return ( a > b ? a : b ); }
