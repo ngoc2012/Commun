@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 19:34:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 19:36:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "PmergeMe.hpp"
 
 template <typename T>
-PmergeMe<T>::PmergeMe(std::vector<int>& a) { _a = &a; }
+PmergeMe<T>::PmergeMe(std::vector<T>& a) { _a = &a; }
 
 template <typename T>
 PmergeMe<T>::~PmergeMe() {}
