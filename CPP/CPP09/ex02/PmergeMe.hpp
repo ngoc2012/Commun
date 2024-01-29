@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 19:26:29 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 19:28:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,28 @@ class   PairedValue
 
 //std::ostream& operator<<(std::ostream& s, PairedValue
 
+template <typename T>
 class PmergeMe
 {
 	private:
-        std::vector<int>*                   _a;
+        std::vector<T>*                   _a;
 
 		PmergeMe();
 		PmergeMe(const PmergeMe&);
 		PmergeMe	&operator=(const PmergeMe& op);
 
-        int         binarySearch(std::vector<int>& arr, int target);
-        void        insertInSortedArray(std::vector<int>& arr, int num);
+        int         binarySearch(std::vector<T>& arr, T target);
+        void        insertInSortedArray(std::vector<T>& arr, T num);
 
 	public:
-        std::vector<PairedValue<int> >      _p;
-		PmergeMe(std::vector<int>&);
+        std::vector<PairedValue<T> >      _p;
+		PmergeMe(std::vector<T>&);
 		virtual ~PmergeMe();
 
-        bool        isSorted(std::vector<int>& arr);
+        bool        isSorted(std::vector<T>& arr);
         void        sort();
         void        print();
         void        print_p();
-
-        std::vector<int>*   get_a(void) const;
 };
 
 #endif

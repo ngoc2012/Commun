@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 19:21:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 19:29:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ PmergeMe::~PmergeMe() {}
 void    PmergeMe::sort()
 {
     for (size_t i = 0; i < _a->size() / 2 - 1; ++i)
-        _p.push_back(PairedValue<int>((*_a)[i * 2], (*_a)[i * 2 + 1]));
+        _p.push_back(PairedValue<T>((*_a)[i * 2], (*_a)[i * 2 + 1]));
 }
 
-int     PmergeMe::binarySearch(std::vector<int>& arr, int target)
+int     PmergeMe::binarySearch(std::vector<T>& arr, T target)
 {
     int low = 0;
     int high = arr.size() - 1;
@@ -45,13 +45,13 @@ int     PmergeMe::binarySearch(std::vector<int>& arr, int target)
     return low;
 }
 
-void    PmergeMe::insertInSortedArray(std::vector<int>& arr, int num)
+void    PmergeMe::insertInSortedArray(std::vector<T>& arr, T num)
 {
     int insertPos = binarySearch(arr, num);
     arr.insert(arr.begin() + insertPos, num);
 }
 
-bool    PmergeMe::isSorted(std::vector<int>& arr)
+bool    PmergeMe::isSorted(std::vector<T>& arr)
 {
     for (size_t i = 0; i < arr.size() - 1; ++i)
         if (arr[i] > arr[i + 1])
@@ -75,5 +75,3 @@ void    PmergeMe::print_p()
     }
     std::cout << std::endl;
 }
-
-std::vector<int>*   PmergeMe::get_a(void) const {return (_a);}
