@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 17:53:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 18:01:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ class PmergeMe
         int         binarySearch(std::vector<int>& arr, int target);
 
 	public:
+		PmergeMe(std::vector<int>&);
 		PmergeMe();
 		virtual ~PmergeMe();
 
