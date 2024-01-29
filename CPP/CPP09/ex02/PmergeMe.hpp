@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 19:28:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 21:19:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ class PmergeMe
         void        insertInSortedArray(std::vector<T>& arr, T num);
 
 	public:
-        std::vector<PairedValue<T> >      _p;
+        std::vector<PairedValue<T> >    _p;
+        std::vector<T>                  _S;
 		PmergeMe(std::vector<T>&);
 		virtual ~PmergeMe();
 
