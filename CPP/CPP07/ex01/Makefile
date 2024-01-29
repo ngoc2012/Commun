@@ -13,7 +13,7 @@
 SRCS = main.cpp Serializer.cpp
 OBJS = ${SRCS:.cpp=.o}
 INCS = $(wildcard *.hpp)
-MANDA = main
+MANDA = exe
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
@@ -22,7 +22,8 @@ all:	$(MANDA)
 $(MANDA): $(SRCS) $(OBJS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
-	make re && valgrind ./main
+	make re
+	valgrind ./exe `shuf -i 1-1000 -n 20 | tr "\n" " "`
 gits:
 	git add Makefile
 	git add *.cpp
