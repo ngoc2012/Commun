@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.cpp                                           :+:      :+:    :+:   */
+/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 21:22:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 13:18:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 #include <ctime>   // For time()
 #include <iostream>
 
-#include "Base.hpp"
+#include "PmergeMe.hpp"
 
-Base::Base() {
+PmergeMe::PmergeMe() {
 	srand((unsigned) time(NULL));
 }
 
-Base::Base(const Base& src) { *this = src; }
+PmergeMe::PmergeMe(const PmergeMe& src) { *this = src; }
 
-Base&	Base::operator=( Base const & src )
+PmergeMe&	PmergeMe::operator=( PmergeMe const & src )
 {
 	(void) src;
 	return (*this);
 }
 
-Base::~Base() {}
+PmergeMe::~PmergeMe() {}
 
-Base*	Base::generate(void)
+PmergeMe*	PmergeMe::generate(void)
 {
 	std::srand(static_cast<unsigned int>(std::time(0)));
 	
@@ -44,7 +44,7 @@ Base*	Base::generate(void)
 	return (0);
 }
 
-void	Base::identify(Base* b)
+void	PmergeMe::identify(PmergeMe* b)
 {
 	if (dynamic_cast<A*>(b))
 		std::cout << "A";
@@ -56,7 +56,7 @@ void	Base::identify(Base* b)
 		std::cout << "unknown";
 }
 
-void	Base::identify(Base& b)
+void	PmergeMe::identify(PmergeMe& b)
 {
 	bool	err = true;
 	try

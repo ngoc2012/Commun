@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 19:12:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 13:19:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-# define BASE_HPP
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
-class Base
+class PmergeMe
 {
 	private:
-		Base(const Base&);
-		Base	&operator=(const Base& op);
+		PmergeMe(const PmergeMe&);
+		PmergeMe	&operator=(const PmergeMe& op);
 	public:
-		Base();
-		virtual ~Base();
+		PmergeMe();
+		virtual ~PmergeMe();
 
-		Base*	generate(void);
-		void	identify(Base* b);
-		void	identify(Base& b);
+		PmergeMe*	generate(void);
+		void	identify(PmergeMe* b);
+		void	identify(PmergeMe& b);
 };
 
-class A: public Base {};
-class B: public Base {};
-class C: public Base {};
+class A: public PmergeMe {};
+class B: public PmergeMe {};
+class C: public PmergeMe {};
 
 #endif
