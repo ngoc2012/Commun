@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 06:19:06 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 07:19:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 07:21:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,4 @@ void    iter(T& a, size_t len, void (*f)(T &))
 }
 
 template<typename T>
-T   min(T& a, T& b) { return ( a < b ? a : b ); }
-
-template<typename T>
-T   max(T& a, T& b) { return ( a > b ? a : b ); }
+void    print(T& x) {std::cout << x << " ";}
