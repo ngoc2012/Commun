@@ -6,14 +6,14 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/21 17:58:13 by ngoc             ###   ########.fr        #
+#    Updated: 2024/01/29 12:28:59 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = main.cpp Base.cpp
 OBJS = ${SRCS:.cpp=.o}
 INCS = $(wildcard *.hpp)
-MANDA = main
+MANDA = exe
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
@@ -22,7 +22,7 @@ all:	$(MANDA)
 $(MANDA): $(SRCS) $(OBJS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
-	make re && valgrind ./main
+	make re && valgrind ./exe `shuf -i 1-100 -n 5 | tr "\n" " "`
 gits:
 	git add Makefile
 	git add *.cpp
