@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 21:37:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 21:38:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ PmergeMe<T>::~PmergeMe() {}
 template <typename T>
 void    PmergeMe<T>::sort()
 {
-    if (_a.size() == 1)
+    if (_a->size() == 1)
         return ;
-    if (_a.size() == 2)
+    if (_a->size() == 2)
     {
         if (_a[0] > _a[1])
-            std::swap(a[0], a[1]);
+            std::swap(_a[0], _a[1]);
         return ;
     }
 
@@ -51,7 +51,8 @@ void    PmergeMe<T>::sort()
     std::cout << std::endl;
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < n; ++i)
-        std::cout << _S[i] << " ";
+        std::cout << _p[i]._smaller << " ";
+    std::cout << std::endl;
 }
 
 template <typename T>
