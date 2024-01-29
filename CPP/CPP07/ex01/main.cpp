@@ -6,22 +6,21 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 18:09:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 07:13:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+
 #include "iter.hpp"
 
-int	main()
+int	main(int argc, char **argv)
 {
-	Data data;
-	data.login = "minh-ngu";
-	data.level = 4.5;
-	
-	Serializer seri;
-
-	std::cout << "Login: " << seri.deserialize( seri.serialize( &data ) )->login << std::endl;
-	std::cout << "Level: " << seri.deserialize( seri.serialize( &data ) )->level << std::endl;
+    for (int i = 0; i < argc; i++)
+    {
+        std::cout << argv[i] << " ";
+    }
+    std::endl;
 
 	return (0);
 }
