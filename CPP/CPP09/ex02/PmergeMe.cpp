@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 18:25:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 18:28:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@
 
 PmergeMe::PmergeMe() {}
 
-PmergeMe::PmergeMe(std::vector<int>& a)
-{
-    _a = &a;
-}
+PmergeMe::PmergeMe(std::vector<int>& a) { _a = &a; }
 
 PmergeMe::~PmergeMe() {}
 
