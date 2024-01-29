@@ -24,5 +24,7 @@ int	main(int argc, char **argv)
     std::cout << std::endl;
     iter(argv + 1, argc - 1, print);
 	std::cout << std::endl;
+	iter(argv + 1, argc - 1, double_it);
+	std::cout << std::endl;
 	return (0);
 }

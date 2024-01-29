@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <cstdlib> // Required for atoi function
+
 template<typename T>
 void    iter(T* a, size_t len, void (&f)(T &))
 {
@@ -21,4 +23,4 @@ template<typename T>
 void    print(T& x) {std::cout << x << " ";}
 
 template<typename T>
-void    double_it(T& x) {std::cout << x*2 << " ";}
+void    double_it(T& x) {std::cout << std::atoi(x)*2 << " ";}
