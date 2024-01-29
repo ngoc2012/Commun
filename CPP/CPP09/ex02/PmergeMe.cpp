@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 19:29:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 19:34:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,21 @@
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(std::vector<int>& a) { _a = &a; }
+template <typename T>
+PmergeMe<T>::PmergeMe(std::vector<int>& a) { _a = &a; }
 
-PmergeMe::~PmergeMe() {}
+template <typename T>
+PmergeMe<T>::~PmergeMe() {}
 
-void    PmergeMe::sort()
+template <typename T>
+void    PmergeMe<T>::sort()
 {
     for (size_t i = 0; i < _a->size() / 2 - 1; ++i)
         _p.push_back(PairedValue<T>((*_a)[i * 2], (*_a)[i * 2 + 1]));
 }
 
-int     PmergeMe::binarySearch(std::vector<T>& arr, T target)
+template <typename T>
+int     PmergeMe<T>::binarySearch(std::vector<T>& arr, T target)
 {
     int low = 0;
     int high = arr.size() - 1;
@@ -45,13 +49,15 @@ int     PmergeMe::binarySearch(std::vector<T>& arr, T target)
     return low;
 }
 
-void    PmergeMe::insertInSortedArray(std::vector<T>& arr, T num)
+template <typename T>
+void    PmergeMe<T>::insertInSortedArray(std::vector<T>& arr, T num)
 {
     int insertPos = binarySearch(arr, num);
     arr.insert(arr.begin() + insertPos, num);
 }
 
-bool    PmergeMe::isSorted(std::vector<T>& arr)
+template <typename T>
+bool    PmergeMe<T>::isSorted(std::vector<T>& arr)
 {
     for (size_t i = 0; i < arr.size() - 1; ++i)
         if (arr[i] > arr[i + 1])
@@ -59,14 +65,16 @@ bool    PmergeMe::isSorted(std::vector<T>& arr)
     return true;
 }
 
-void    PmergeMe::print()
+template <typename T>
+void    PmergeMe<T>::print()
 {
     for (size_t i = 0; i < _a->size(); i++)
         std::cout << (*_a)[i] << " ";
     std::cout << std::endl;
 }
 
-void    PmergeMe::print_p()
+template <typename T>
+void    PmergeMe<T>::print_p()
 {
     for (size_t i = 0; i < _p.size(); i++)
     {
