@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 18:01:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 18:04:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class PmergeMe
 	private:
         std::vector<int>*    _a;
 
+		PmergeMe();
 		PmergeMe(const PmergeMe&);
 		PmergeMe	&operator=(const PmergeMe& op);
 
@@ -43,7 +44,6 @@ class PmergeMe
 
 	public:
 		PmergeMe(std::vector<int>&);
-		PmergeMe();
 		virtual ~PmergeMe();
 
         void        insertInSortedArray(std::vector<int>& arr, int num);
