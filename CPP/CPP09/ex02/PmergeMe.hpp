@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 17:51:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 17:53:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,20 @@
 
 // Class for paired values
 template <typename T>
-class PairedValue {
-public:
-    T smaller;
-    T larger;
+class   PairedValue
+{
+    public:
+        T smaller;
+        T larger;
 
-    PairedValue(const T& first, const T& second) : smaller(std::min(first, second)), larger(std::max(first, second)) {}
+        // Define comparison operations as needed
+        bool operator<(const PairedValue& other) const {
+            return larger < other.larger;
+        }
 
-    // Define comparison operations as needed
-    bool operator<(const PairedValue& other) const {
-        return smaller < other.smaller;
-    }
-
-    bool operator>(const PairedValue& other) const {
-        return larger > other.larger;
-    }
+        bool operator>(const PairedValue& other) const {
+            return larger > other.larger;
+        }
 };
 
 class PmergeMe
