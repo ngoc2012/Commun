@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 19:08:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 19:11:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,15 @@ bool    PmergeMe::isSorted(std::vector<int>& arr)
 
 void    PmergeMe::print()
 {
-    for (long unsigned int i = 0; i < _a->size(); i++)
+    for (size_t i = 0; i < _a->size(); i++)
         std::cout << (*_a)[i] << " ";
+    std::cout << std::endl;
+}
+
+void    PmergeMe::print_p()
+{
+    for (size_t i = 0; i < _p->size(); i++)
+        _p[i]->print();
     std::cout << std::endl;
 }
 

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 18:10:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 19:11:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ int	main(int argc, char **argv)
         a.push_back(std::atoi(argv[i]));
     PmergeMe    p(a);
     p.print();
-    std::sort(a.begin(), a.end());
-    p.print();
-    if (p.isSorted(a))
-        std::cout << "Sorted" << std::endl;
-    else
-        std::cout << "Not sorted" << std::endl;
+    p.sort();
+    p.print_p();
+    //std::sort(a.begin(), a.end());
+    //p.print();
+    //if (p.isSorted(a))
+    //    std::cout << "Sorted" << std::endl;
+    //else
+    //    std::cout << "Not sorted" << std::endl;
 
     return (0);
 }
