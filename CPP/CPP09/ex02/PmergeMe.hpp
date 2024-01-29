@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 18:57:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 19:00:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class   PairedValue
         T smaller;
         T larger;
 
-        // Define comparison operations as needed
         bool operator<(const PairedValue& other) const {
             return larger < other.larger;
         }
