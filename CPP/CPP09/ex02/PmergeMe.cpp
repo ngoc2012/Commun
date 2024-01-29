@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 13:42:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 13:45:44 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,11 @@ void    PmergeMe::insertInSortedArray(std::vector<int>& arr, int num)
     arr.insert(arr.begin() + insertPos, num);
 }
 
-void        set_a(std::vector* a) {_a = a;}
+void    PmergeMe::print()
+{
+    for (int i = 0; i < _a->size(); i++)
+        std::cout << _a[i] << " ";
+    std::cout << std::endl;
+}
+
+void        PmergeMe::set_a(std::vector<int>* a) {_a = a;}
