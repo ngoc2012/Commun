@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 07:22:44 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 07:24:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
         std::cout << std::atoi(argv[i]) << " ";
     }
     std::cout << std::endl;
-    iter(argv[1], argc - 1, print)
+    iter(argv[1], argc - 1, print);
 
 	return (0);
 }
