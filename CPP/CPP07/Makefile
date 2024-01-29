@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-EXOS = ex00 ex01 ex02 ex03
+EXOS = ex00 ex01 ex02
 gits:
 	git add $(addsuffix /Makefile, $(EXOS))
 	git add $(addsuffix /*.cpp, $(EXOS))

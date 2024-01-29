@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 09:21:05 by ngoc             ###   ########.fr       */
+/*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
+/*   Updated: 2023/11/21 19:12:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Convert.hpp"
+#ifndef BASE_HPP
+# define BASE_HPP
 
-#include <cmath>
-#include <cfloat>
-
-int main(int argc, char **argv)
+class Base
 {
-	if (argc != 2)
-	{
-		std::cerr << "Usage: convert [0..1]" << std::endl;
-		return (1);
-	}
+	private:
+		Base(const Base&);
+		Base	&operator=(const Base& op);
+	public:
+		Base();
+		virtual ~Base();
 
-	Convert		c(argv[1]);
-	return (0);
-}
+		Base*	generate(void);
+		void	identify(Base* b);
+		void	identify(Base& b);
+};
+
+class A: public Base {};
+class B: public Base {};
+class C: public Base {};
+
+#endif

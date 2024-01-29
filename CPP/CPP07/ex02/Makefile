@@ -6,19 +6,20 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/10/10 15:04:42 by ngoc             ###   ########.fr        #
+#    Updated: 2023/11/21 17:58:13 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
-OBJS = ${SRCS:.c=.o}
+SRCS = main.cpp Base.cpp
+OBJS = ${SRCS:.cpp=.o}
+INCS = $(wildcard *.hpp)
 MANDA = main
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
 .cpp.o:
 	$(CC) $(FLAGS) -g -c $< -o ${<:.cpp=.o} -I.
-$(MANDA): $(SRCS)
+$(MANDA): $(SRCS) $(OBJS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
 	make re && valgrind ./main
@@ -29,7 +30,7 @@ gits:
 	git commit -m "all"
 	git push
 clean:
-	rm -f $(MANDA)
+	rm -f $(OBJS)
 fclean: clean
 	rm -f $(MANDA)
 re: fclean all

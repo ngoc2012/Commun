@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/13 09:21:05 by ngoc             ###   ########.fr       */
+/*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
+/*   Updated: 2023/11/21 18:10:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Convert.hpp"
+#include <stdint.h>
 
-#include <cmath>
-#include <cfloat>
+#include <iostream>
 
-int main(int argc, char **argv)
+#include "Data.hpp"
+
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
+
+class Serializer
 {
-	if (argc != 2)
-	{
-		std::cerr << "Usage: convert [0..1]" << std::endl;
-		return (1);
-	}
+	private:
+		Serializer(const Serializer&);
+		Serializer &operator=(const Serializer& op);
+	public:
+		Serializer();
+		virtual ~Serializer();
 
-	Convert		c(argv[1]);
-	return (0);
-}
+		uintptr_t	serialize( Data *data );
+		Data*		deserialize( uintptr_t data );
+};
+
+#endif
