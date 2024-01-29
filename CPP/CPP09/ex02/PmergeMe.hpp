@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 18:04:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 18:20:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ class PmergeMe
 		PmergeMe(const PmergeMe&);
 		PmergeMe	&operator=(const PmergeMe& op);
 
-        int         binarySearch(std::vector<int>& arr, int target);
+        int         binarySearch(std::vector<PairedValue<int> int>& arr, int target);
 
 	public:
 		PmergeMe(std::vector<int>&);
 		virtual ~PmergeMe();
 
-        void        insertInSortedArray(std::vector<int>& arr, int num);
-        bool        isSorted(std::vector<int>& arr);
+        void        insertInSortedArray(std::vector<PairedValue<int> >& arr, int num);
+        bool        isSorted(std::vector<PairedValue<int> int>& arr);
         void        print();
 
         std::vector<int>*   get_a(void) const;
