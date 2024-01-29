@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 19:17:02 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 19:19:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ template <typename T>
 class   PairedValue
 {
     public:
-        T*   smaller;
-        T*   larger;
+        T   smaller;
+        T   larger;
 
         PairedValue(T& a, T& b)
         {

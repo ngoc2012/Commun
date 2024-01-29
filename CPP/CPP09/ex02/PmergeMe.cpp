@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 19:17:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 19:18:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ PmergeMe::~PmergeMe() {}
 void    PmergeMe::sort()
 {
     for (size_t i = 0; i < _a->size() / 2 - 1; ++i)
-        _p.push_back(PairedValue((*_a)[i * 2], (*_a)[i * 2 + 1]));
+        _p.push_back(PairedValue<int>((*_a)[i * 2], (*_a)[i * 2 + 1]));
 }
 
 int     PmergeMe::binarySearch(std::vector<int>& arr, int target)
@@ -68,8 +68,8 @@ void    PmergeMe::print()
 
 void    PmergeMe::print_p()
 {
-    for (size_t i = 0; i < _p->size(); i++)
-        _p[i]->print();
+    for (size_t i = 0; i < _p.size(); i++)
+        _p[i].print();
     std::cout << std::endl;
 }
 
