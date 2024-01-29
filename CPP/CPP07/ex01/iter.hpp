@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 template<typename T>
-void    iter(T& a, size_t len, void (&f)(T &))
+void    iter(T* a, size_t len, void (&f)(T &))
 {
     for (size_t i = 0; i < len; i++)
         f(a[i]);
@@ -19,3 +19,6 @@ void    iter(T& a, size_t len, void (&f)(T &))
 
 template<typename T>
 void    print(T& x) {std::cout << x << " ";}
+
+template<typename T>
+void    double_it(T& x) {std::cout << x*2 << " ";}

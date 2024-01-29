@@ -15,7 +15,6 @@
 
 #include "iter.hpp"
 
-
 int	main(int argc, char **argv)
 {
     for (int i = 1; i < argc; i++)
@@ -24,6 +23,6 @@ int	main(int argc, char **argv)
     }
     std::cout << std::endl;
     iter(argv + 1, argc - 1, print);
-
+	std::cout << std::endl;
 	return (0);
 }
