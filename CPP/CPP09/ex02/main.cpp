@@ -6,24 +6,25 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 13:45:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 13:47:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <cstdlib>
+#include <vector>
 
 #include "PmergeMe.hpp"
 
 int	main(int argc, char **argv)
 {
     PmergeMe    p;
-    std::vector a;
+    std::vector<int> a;
 
 	for (int i = 1; i < argc; i++)
 	{
         std::cout << std::atoi(argv[i]) << " ";
-        a.insert(argv[i]);
+        a.push_back(argv[i]);
 	}
     std::cout << std::endl;
     p.set_a(a);
