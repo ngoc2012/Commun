@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 18:11:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 18:12:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ PmergeMe::PmergeMe(std::vector<int>& a)
 
 PmergeMe::~PmergeMe() {}
 
-int     PmergeMe::binarySearch(std::vector<PairedValue>& arr, int target)
+int     PmergeMe::binarySearch(std::vector<PairedValue<int, int>>& arr, int target)
 {
     int low = 0;
     int high = arr.size() - 1;
@@ -50,7 +50,7 @@ void    PmergeMe::insertInSortedArray(std::vector<PairedValue<int, int>>& arr, i
     arr.insert(arr.begin() + insertPos, num);
 }
 
-bool    PmergeMe::isSorted(std::vector<PairedValue>& arr)
+bool    PmergeMe::isSorted(std::vector<PairedValue<int, int>>& arr)
 {
     for (size_t i = 0; i < arr.size() - 1; ++i)
         if (arr[i] > arr[i + 1])
