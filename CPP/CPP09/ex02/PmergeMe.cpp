@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 13:33:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 13:37:07 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ PmergeMe&	PmergeMe::operator=( PmergeMe const & src )
 
 PmergeMe::~PmergeMe() {}
 
-int binarySearch(const std::vector<int>& arr, int target)
+int PmergeMe::binarySearch(std::vector<int>& arr, int target)
 {
     int low = 0;
     int high = arr.size() - 1;
@@ -36,7 +36,7 @@ int binarySearch(const std::vector<int>& arr, int target)
         int mid = low + (high - low) / 2;
 
         if (arr[mid] == target) {
-            return mid;  // Element already exists in the array
+            return mid;
         } else if (arr[mid] < target) {
             low = mid + 1;
         } else {
@@ -44,12 +44,11 @@ int binarySearch(const std::vector<int>& arr, int target)
         }
     }
 
-    return low;  // Position where the element should be inserted
+    return low;
 }
 
-void insertInSortedArray(std::vector<int>& arr, int num) {
+void PmergeMe::insertInSortedArray(std::vector<int>& arr, int num)
+{
     int insertPos = binarySearch(arr, num);
-
-    // Shift elements to make room for the new element
     arr.insert(arr.begin() + insertPos, num);
 }
