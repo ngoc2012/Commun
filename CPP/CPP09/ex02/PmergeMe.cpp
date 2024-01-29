@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 13:31:47 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 13:33:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe() {
-	srand((unsigned) time(NULL));
-}
+PmergeMe::PmergeMe() {}
 
 PmergeMe::PmergeMe(const PmergeMe& src) { *this = src; }
 
@@ -29,7 +27,8 @@ PmergeMe&	PmergeMe::operator=( PmergeMe const & src )
 
 PmergeMe::~PmergeMe() {}
 
-int binarySearch(const std::vector<int>& arr, int target) {
+int binarySearch(const std::vector<int>& arr, int target)
+{
     int low = 0;
     int high = arr.size() - 1;
 
