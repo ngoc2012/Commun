@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 13:38:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 13:40:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 int	main(int argc, char **argv)
 {
+    PmergeMe    p;
     std::vector a;
 
 	for (int i = 1; i < argc; i++)
@@ -25,6 +26,7 @@ int	main(int argc, char **argv)
         a.insert(argv[i]);
 	}
     std::cout << std::endl;
+
 
 	return (0);
 }
