@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/12 03:20:11 by ael-khni          #+#    #+#             */
-/*   Updated: 2022/08/12 03:40:17 by ael-khni         ###   ########.fr       */
+/*   Created: 2024/01/29 06:21:20 by ngoc              #+#    #+#             */
+/*   Updated: 2024/01/29 06:21:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <istream>
+#include <iostream>
 
 #include "whatever.hpp"
 
