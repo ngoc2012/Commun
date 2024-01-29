@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 13:47:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 13:52:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ class PmergeMe
         void        insertInSortedArray(std::vector<int>& arr, int num);
         void        print();
 
-        //std::vector*    get_a(void) const;
-        void        set_a(std::vector<int>*);
+        std::vector<int>*   get_a(void) const;
+        void                set_a(std::vector<int>*);
 };
 
 #endif
