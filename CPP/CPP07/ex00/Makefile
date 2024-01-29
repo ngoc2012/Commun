@@ -13,7 +13,7 @@
 SRCS = main.cpp
 OBJS = ${SRCS:.cpp=.o}
 INCS = $(wildcard *.hpp)
-MANDA = test
+MANDA = exe
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
@@ -22,7 +22,7 @@ all:	$(MANDA)
 $(MANDA): $(SRCS) $(OBJS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
-	make re && ./test
+	make re && ./exe
 gits:
 	git add Makefile
 	git add *.cpp
