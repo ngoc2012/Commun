@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 21:19:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 21:28:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,31 @@ template <typename T>
 class   PairedValue
 {
     public:
-        T   smaller;
-        T   larger;
+        T   _smaller;
+        T   _larger;
 
         PairedValue(T& a, T& b)
         {
             if (a > b)
             {
-                larger = a;
-                smaller = b;
+                _larger = a;
+                _smaller = b;
             }
             else
             {
-                larger = b;
-                smaller = a;
+                _larger = b;
+                _smaller = a;
             }
         }
 
-        void    print() { std::cout << "(" << smaller << ", " << larger << ")";}
+        void    print() { std::cout << "(" << _smaller << ", " << _larger << ")";}
 
         bool operator<(const PairedValue& other) const {
-            return larger < other.larger;
+            return _larger < other._larger;
         }
 
         bool operator>(const PairedValue& other) const {
-            return larger > other.larger;
+            return _larger > other._larger;
         }
 };
 
