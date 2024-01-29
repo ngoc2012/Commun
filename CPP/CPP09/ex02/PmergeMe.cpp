@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 18:23:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 18:25:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void    PmergeMe::insertInSortedArray(std::vector<int>& arr, int num)
     arr.insert(arr.begin() + insertPos, num);
 }
 
-bool    PmergeMe::isSorted(std::vector<PairedValue>& arr)
+bool    PmergeMe::isSorted(std::vector<int>& arr)
 {
     for (size_t i = 0; i < arr.size() - 1; ++i)
         if (arr[i] > arr[i + 1])
