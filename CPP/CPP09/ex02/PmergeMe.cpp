@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 13:18:24 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/29 13:25:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,59 +30,28 @@ PmergeMe&	PmergeMe::operator=( PmergeMe const & src )
 
 PmergeMe::~PmergeMe() {}
 
-PmergeMe*	PmergeMe::generate(void)
-{
-	std::srand(static_cast<unsigned int>(std::time(0)));
-	
+int binarySearch(const std::vector<int>& arr, int target) {
+    int low = 0;
+    int high = arr.size() - 1;
 
-	if (std::rand() % 4 == 1)
-		return (new A);
-	else if (std::rand() % 4 == 2)
-		return (new B);
-	else if (std::rand() % 4 == 3)
-		return (new C);
-	return (0);
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == target) {
+            return mid;  // Element already exists in the array
+        } else if (arr[mid] < target) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    return low;  // Position where the element should be inserted
 }
 
-void	PmergeMe::identify(PmergeMe* b)
-{
-	if (dynamic_cast<A*>(b))
-		std::cout << "A";
-	else if (dynamic_cast<B*>(b))
-		std::cout << "B";
-	else if (dynamic_cast<C*>(b))
-		std::cout << "C";
-	else
-		std::cout << "unknown";
-}
+void insertInSortedArray(std::vector<int>& arr, int num) {
+    int insertPos = binarySearch(arr, num);
 
-void	PmergeMe::identify(PmergeMe& b)
-{
-	bool	err = true;
-	try
-	{
-		A& a = dynamic_cast<A&>(b);
-		std::cout << "A";
-		err = false;
-		(void) a;
-	}
-	catch(const std::exception& e) {}
-	try
-	{
-		B& a = dynamic_cast<B&>(b);
-		std::cout << "B";
-		err = false;
-		(void) a;
-	}
-	catch(const std::exception& e) {}
-	try
-	{
-		C& a = dynamic_cast<C&>(b);
-		std::cout << "C";
-		err = false;
-		(void) a;
-	}
-	catch(const std::exception& e) {}
-	if (err)
-		std::cout << "unknown";
+    // Shift elements to make room for the new element
+    arr.insert(arr.begin() + insertPos, num);
 }
