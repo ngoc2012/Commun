@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/30 10:03:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 10:05:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ PmergeMe<T>::~PmergeMe() {}
 template <typename T>
 void    PmergeMe<T>::sort()
 {
+    if (!_a->size())
+        return ;
     if (_a->size() == 1)
     {
         _S = *_a;
