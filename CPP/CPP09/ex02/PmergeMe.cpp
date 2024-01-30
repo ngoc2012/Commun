@@ -6,12 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/29 21:42:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 07:03:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 #include "PmergeMe.hpp"
 
@@ -38,7 +39,7 @@ void    PmergeMe<T>::sort()
         _p.push_back(PairedValue<T>((*_a)[i * 2], (*_a)[i * 2 + 1]));
     if (_a->size() > n * 2)
     {
-        _p.push_back(PairedValue<T>(0, (*_a)[n * 2 + 1]));
+        _p.push_back(PairedValue<T>((*_a)[n * 2 + 1]));
         n++;
     }
     _S.push_back(_p[0]._smaller);
