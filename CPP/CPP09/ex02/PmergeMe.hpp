@@ -20,6 +20,7 @@ class   PairedValue
     public:
         T       _smaller;
         T       _larger;
+        int     _pos;
         bool    _nan;
 
         PairedValue(T& a, T& b)
