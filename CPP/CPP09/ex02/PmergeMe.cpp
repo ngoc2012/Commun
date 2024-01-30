@@ -146,12 +146,12 @@ void    PmergeMe<T>::print_p()
 }
 
 template <typename T>
-struct IsInt {
+struct isInt {
     static const bool value = false;
 };
 
 template <>
-struct IsInt<int> {
+struct isInt<int> {
     static const bool value = true;
 };
 
@@ -165,8 +165,7 @@ void    PmergeMe<T>::print_s()
     //bool                    isInt = (typeInfo == typeid(int));
     for (size_t i = 0; i < _S.size(); i++)
     {
-        if (isInt)
-            std::cout << _S[i] << " ";
+        std::cout << _S[i] << " ";
         //else
         //    _S[i].print();
         std::cout << " ";
