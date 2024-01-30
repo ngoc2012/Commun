@@ -3,12 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Cgi.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/05 17:19:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/26 16:38:56 by nbechon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <sys/types.h>
+#include <sys/wait.h>
+
 
 #include <cstring>
 #include <unistd.h>
@@ -42,7 +46,7 @@ Cgi::~Cgi()
         delete[] _envs;
 }
 
-void    Cgi::execute()
+int    Cgi::execute()
 {
     Response*       response;
 
@@ -50,10 +54,10 @@ void    Cgi::execute()
     if (!get_envs())
     {
         response->set_status_code(500);
-        return ;
+        return 500;
     }
 
-    std::cout << "Cgi execute" << std::endl;
+    //std::cout << "Cgi execute" << std::endl;
     
     int pipe_in[2];
     int pipe_out[2];
@@ -61,7 +65,7 @@ void    Cgi::execute()
     if (pipe(pipe_in) == -1 || pipe(pipe_out) == -1) {
         std::cerr << "Error: pipe" << std::endl;
         perror("pipe");
-        return ;
+        return 500;
     }
 
     _pid = fork();
@@ -69,38 +73,65 @@ void    Cgi::execute()
     if (_pid == -1)
     {
         std::cerr << "Error: fork" << std::endl;
-        return ;
+        return 500;
     }
     else if (!_pid)
     {
         close(pipe_in[1]);
-        close(pipe_out[0]);
         dup2(pipe_in[0], STDIN_FILENO);
-        dup2(pipe_out[1], STDOUT_FILENO);
         close(pipe_in[0]);
+        close(pipe_out[0]);
+        dup2(pipe_out[1], STDOUT_FILENO);
         close(pipe_out[1]);
+        //std::cout << _pass.c_str() << std::endl;
+        //std::cout << _file.c_str() << std::endl;
+        
         char*   argv[3];
         argv[0] = (char*) _pass.c_str();
         argv[1] = (char*) _file.c_str();
         argv[2] = 0;
-        execve(argv[0], argv, _envs);
+        //execve(argv[0], argv, _envs);
+        execve(argv[0], argv, 0);
+        //execlp("cat", "cat", nullptr);
+        
+        std::cerr << "Execution error" << std::endl;
+        return -1;
     }
     else
     {
+        char    buffer[BUFFER_SIZE + 1];
+        ssize_t bytesRead;
+
         close(pipe_in[0]);
         close(pipe_out[1]);
         int     fd_in = _request->get_fd_in();
-        if (lseek(fd_in, 0, SEEK_SET) == -1) {
-            std::cerr << "Error: using lseek" << std::endl;
-            return ;
+        if (fd_in != -1)
+        {
+            if (lseek(fd_in, 0, SEEK_SET) == -1) {
+                std::cerr << "Error: using lseek" << std::endl;
+                return 500;
+            }
+            while ((bytesRead = read(fd_in, buffer, BUFFER_SIZE)) > 0)
+            {
+                buffer[bytesRead] = 0;
+                //std::cout << buffer;
+                if (write(pipe_in[1], buffer, bytesRead) == -1)
+                    return 500;
+            }
         }
-        char    buffer[BUFFER_SIZE];
-        size_t  bytesRead;
-        while ((bytesRead = read(fd_in, buffer, BUFFER_SIZE)) > 0)
-            write(pipe_in[1], buffer, bytesRead);
+        close(pipe_in[1]);
+        /*
+        std::cerr << "fork output" << std::endl;
+        while ((bytesRead = read(pipe_out[0], buffer, BUFFER_SIZE)) > 0)
+        {
+            buffer[bytesRead] = 0;
+            std::cout << buffer;
+        }
+        close(pipe_out[0]);
+        */
         _request->get_response()->set_fd_out(pipe_out[0]);
+        return 200;
     }
-    
 }
 
 bool    Cgi::get_envs()
@@ -160,7 +191,7 @@ bool    Cgi::get_envs()
     for (std::vector<std::string>::iterator it = envs.begin();
             it != envs.end(); it++)
     {
-        std::cout << *it << std::endl;
+        //std::cout << *it << std::endl;
         _envs[i++] = (char*) it->c_str();
     }
     _envs[i] = 0;
@@ -170,3 +201,5 @@ bool    Cgi::get_envs()
 int         Cgi::get_pid(void) const {return (_pid);}
 
 void        Cgi::set_request(Request* r) {_request = r;}
+void        Cgi::set_file(std::string f) {_file = f;}
+void        Cgi::set_pass(std::string p) {_pass = p;}

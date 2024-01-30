@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 21:21:18 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/04 15:46:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 15:19:15 by nbechon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,18 @@ void	main_signal_handler(int sig)
 	if (sig == SIGINT)
 	{
 		write(STDOUT_FILENO, "", 0);
-		//g_host->end();
+		if (g_host)
+			delete g_host;
+		exit(0);
 	}
-	if (sig == SIGPIPE)
-	{
-		/*
-		std::map<int, Response*>	sk_response = g_host->get_sk_response();
-		std::map<int, Request*>	sk_request = g_host->get_sk_request();
-		for (std::map<int, Response*>::iterator	it = sk_response.begin();
-			it != sk_response.end(); ++it)
-			g_host->delete_response(it->first);
-		for (std::map<int, Request*>::iterator	it = sk_request.begin();
-			it != sk_request.end(); ++it)
-			g_host->close_client_sk(it->first);
-			*/
-	}
+	if (sig == SIGPIPE)	{}
 }
 
-int	main()
+int	main(int argc, char *argv[])
 {
+    if (argc > 2)
+        return (printf("Error: too many arguments.\n"), 0);
+    (void)argv;
     struct sigaction	act;
     act.sa_flags = SA_RESTART;
     act.sa_handler = main_signal_handler;
@@ -49,10 +42,10 @@ int	main()
     sigaction(SIGINT, &act, NULL);
     sigaction(SIGPIPE, &act, NULL);
 
-    Host	host;
-    if (!Configuration::parser(&host, ".conf"))
+    Host*	host = new Host();
+    if (!Configuration::parser(host, ".conf"))
         return (1);
-    g_host = &host;
-    host.start();
+    g_host = host;
+    host->start();
     return (0);
 }

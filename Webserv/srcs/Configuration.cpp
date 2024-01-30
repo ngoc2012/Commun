@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/10 08:02:22 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/28 08:13:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,6 +276,29 @@ bool	Configuration::location_parser(std::string cmd, Location* loc, std::vector<
 			return (true);
 		}
 		loc->set_cgi_pass(words[1]);
+	}
+	else if (words[0] == "return")
+	{
+    	if (words.size() == 3)
+    	{
+       		int status_code = atoi(words[1].c_str());
+
+        	if (status_code == 301 || status_code == 302)
+            {
+            	loc->set_redirection(status_code);
+            	loc->set_link(words[2]);
+            }
+        	else
+        	{
+            	std::cerr << "Error: Invalid status code for redirection: " << words[1] << std::endl;
+            	return true;
+        	}
+    	}
+    	else
+    	{
+        	std::cerr << "Error: Invalid 'return' syntax for redirection" << std::endl;
+        	return true;
+    	}
 	}
 	else
 		return (true);

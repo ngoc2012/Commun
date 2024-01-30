@@ -93,13 +93,14 @@ void	Host::start_server(void)
 bool	Host::select_available_sk(void)
 {
 	//std::cout << "Waiting on select() ..." << std::endl;
-	_sk_ready = select(_max_sk + 1, &_read_set, &_write_set, NULL, NULL);// No timeout
+	int sk = select(_max_sk + 1, &_read_set, &_write_set, NULL, NULL);// No timeout
 	//std::cout << "_sk_ready = " << _sk_ready << std::endl;
-	if (_sk_ready < 0)
+	if (sk < 0)
 	{
         std::cerr << "Error: select() failed" << std::endl;
 		return (false);
 	}
+    _sk_ready = sk;
 	return (true);
 }
 
@@ -147,7 +148,7 @@ void	Host::new_response_sk(int new_sk)
 
 void	Host::close_client_sk(int i)
 {
-    std::cout << "close_client_sk " << i << std::endl;
+    //std::cout << "close_client_sk " << i << std::endl;
 	FD_CLR(i, &_master_write_set);
 	delete (_sk_request[i]);
 	_sk_request.erase(i);

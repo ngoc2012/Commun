@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Request.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/10 13:11:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 15:33:12 by lbastian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <unistd.h>
 
 #include "Host.hpp"
 #include "Address.hpp"
@@ -17,6 +19,8 @@
 #include "Request.hpp"
 #include "Header.hpp"
 #include "Cgi.hpp"
+
+#define BUFFER_SIZE 65792
 
 Request::Request()
 {
@@ -51,6 +55,7 @@ Request::Request(int sk, Host* h, Address* a) : _socket(sk), _host(h), _address(
 	_body_size = 0;
     _header.set_host(h);
     _header.set_str(&_str_header);
+    _session_id = "";
 
 	_fd_in = -1;
 	_full_file_name = "";
@@ -70,6 +75,8 @@ Request::~Request()
         delete (_cgi);
     if (_socket > 0)
         close(_socket);
+    if (_fd_in > 0)
+        close(_fd_in);
     if (_tmp_file != "" && std::remove(_tmp_file.c_str()))
         std::cerr << "Error: Can not delete file " << _tmp_file << std::endl;
 }
@@ -95,6 +102,23 @@ int     Request::read_header()
     process_fd_in();
     if (_status_code != 200)
         return (end_read());
+    if (!_content_length || _content_length == NPOS)
+        end_read();
+    //std::cout << _body_size << " " << _body_left << " " << _content_length << std::endl;
+    if (_method == POST && _content_length == _body_left)
+    {
+        // Écrire le contenu de _buffer[] dans le fichier associé à _fd_in
+        _buffer[_content_length] = 0;
+        ssize_t bytes_written = write(_fd_in, _buffer, _content_length);
+        if (bytes_written == -1)
+        {
+            std::cerr << "Error: Unable to write to file " << _tmp_file << std::endl;
+            _status_code = 500;
+            end_read();
+        }
+        end_read();
+    }
+        
     return (0);
 }
 
@@ -123,6 +147,8 @@ bool	Request::receive_header(void)
         }
     }
     std::cout << "Request header: " << _str_header.size() << std::endl << _str_header << std::endl;
+    if (!_str_header.size())
+        std::cerr << "Error: No header found." << std::endl;
     if (body_position == NPOS)
     {
         std::cerr << "Error: No end header found.\n" << std::endl;
@@ -143,6 +169,8 @@ bool	Request::parse_header(void)
         _status_code = 400;	// Bad Request
         return (false);
     }
+    std::cout << _location->get_method_str(_method) << " ";
+    std::cout << _url << std::endl;
     _host_name = _header.parse_host_name();
     if (_host_name == "")
     {
@@ -161,16 +189,32 @@ bool	Request::parse_header(void)
             if (_host_name == *it)
                 _server = *sv;
     }
+	_response.set_server(_server);
     if (!check_location())
         return (false);
-    if (_method == POST)
+    if (_location->get_redirection())
+    {
+        _status_code = _location->get_redirection();
+        return (false);
+    }
+    if (_location->get_cgi_pass() != "")
+    {
         _cgi = new Cgi(this);
+        _cgi->set_pass(_location->get_cgi_pass());
+        _cgi->set_file(_full_file_name);
+    }
     _chunked = _header.parse_transfer_encoding();
     //std::cout << "_chunked: " << _chunked << std::endl;
     if (_chunked)
         return (true);
     _content_length = _header.parse_content_length();
-    std::cout << "Content-Length: " << _content_length << std::endl;
+    //std::cout << "Content-Length: " << _content_length << std::endl;
+    _cookies = _header.parse_cookies();
+    if (_cookies.find("session_id") != _cookies.end())
+        _session_id = _cookies["session_id"];
+    if (_cookies.find("sid") != _cookies.end())
+        _session_id = _cookies["sid"];
+    std::cout << "Session id: " << _session_id << std::endl;
     if (_method == GET)
     {
         if (_content_length == NPOS)
@@ -178,7 +222,7 @@ bool	Request::parse_header(void)
         return (true);
     }
     _content_type = _header.parse_content_type();
-    std::cout << "Content-Type: " << _content_type << std::endl;
+    //std::cout << "Content-Type: " << _content_type << std::endl;
     if (_method == PUT && _content_length != NPOS)
         return (true);
     if (_method == POST)
@@ -189,11 +233,11 @@ bool	Request::parse_header(void)
         return (false);
     }
     if (_content_length > _body_max)
-	{
+    {
         _status_code = 400;	// Bad Request
         std::cerr << "Error: Content length bigger than " << _body_max << std::endl;
         return (false);
-	}
+    }
     return (true);
 }
 
@@ -302,22 +346,31 @@ bool	Request::check_location()
     //std::cout << "============================" << std::endl;
     _location = Location::find_location(_url,
             _server->get_locations(), _method, _status_code);
-
-    if (!_location || _status_code != 200)
+    //std::cout << _location << std::endl;
+    if (!_location)
         return (false);
+    if (_location->get_redirection())
+        return (true);
+
+    // if (!_location || _status_code != 200)
+    //     return (false);
 
     _full_file_name = _location->get_full_file_name(_url,
             _server->get_root(), _method);
+    std::cout << _full_file_name << std::endl;
 
-    //std::cout << "check_location " << _socket << " " << _full_file_name << std::endl;
-
-	struct stat info;
-	if (_method != PUT
+    struct stat info;
+    if (_method != PUT
             && stat(_full_file_name.c_str(), &info) != 0)
     {
-		_status_code = 404; // Not found
+        _status_code = 404; // Not found
         return (false);             
     }
+    return (true);
+}
+
+bool	Request::check_session()
+{
     return (true);
 }
 
@@ -327,6 +380,7 @@ void	Request::process_fd_in()
     int i = 0;
     switch (_method)
     {
+		case OPTIONS:
         case GET:
             break;
         case PUT:
@@ -340,13 +394,12 @@ void	Request::process_fd_in()
             struct stat buffer;
             while (stat(_tmp_file.c_str(), &buffer) == 0)
                 _tmp_file = "/tmp/" + ft::itos(++i);
-            std::cout << _tmp_file << std::endl;
-            _fd_in = open(_tmp_file.c_str(),
-                    O_CREAT | O_WRONLY | O_TRUNC, 0664);
+            _fd_in = open(_tmp_file.c_str(), O_CREAT | O_RDWR | O_TRUNC, 0664);
             if (_fd_in == -1)
+            {
                 _status_code = 500;
-            if (!_content_length || _content_length == NPOS)
                 end_read();
+            }
             break;
         case DELETE:
             if (std::remove(_full_file_name.c_str()))
@@ -355,36 +408,43 @@ void	Request::process_fd_in()
         case NONE:
             break;
     }
+    std::cout << "end process_fd_in" << std::endl;
 }
 
 int     Request::end_read(void)
 {
-    std::cout << "end_read " << _socket << " " << _body_size << " " << _full_file_name << std::endl;
+    //std::cout << "end_read " << _socket << " " << _body_size << " " << _full_file_name << std::endl;
 
-    if (_method != POST && _fd_in > 0)
+    if (!_cgi && _fd_in > 0)
         close(_fd_in);
     _read_queue = false;
     _host->new_response_sk(_socket);
     _response.set_status_code(_status_code);
-    if (_status_code == 200 && _method == POST)
-        _cgi->execute();
+    if (_status_code == 200 && _cgi)
+        _status_code = _cgi->execute();
+    if (_status_code == -1)
+    {
+        delete _host;
+        exit(1);
+    }
     _response.set_write_queue(true);
     return (0);
 }
 
-Host*		Request::get_host(void) const {return (_host);}
-Server*		Request::get_server(void) const {return (_server);}
-e_method	Request::get_method(void) const {return (_method);}
-std::string	Request::get_url(void) const {return (_url);}
-Response*	Request::get_response(void) {return (&_response);}
-Cgi*        Request::get_cgi(void) const {return (_cgi);}
-int		    Request::get_status_code(void) const {return (_status_code);}
-std::string	Request::get_content_type(void) const {return (_content_type);}
-size_t		Request::get_content_length(void) const {return (_content_length);}
-size_t		Request::get_body_size(void) const {return (_body_size);}
-std::string	Request::get_str_header(void) const {return (_str_header);}
-std::string	Request::get_full_file_name(void) const {return (_full_file_name);}
-Location*	Request::get_location(void) const {return (_location);}
-int		    Request::get_fd_in(void) const {return (_fd_in);}
+Host*		    Request::get_host(void) const {return (_host);}
+Server*		    Request::get_server(void) const {return (_server);}
+e_method	    Request::get_method(void) const {return (_method);}
+std::string	    Request::get_url(void) const {return (_url);}
+Response*	    Request::get_response(void) {return (&_response);}
+Cgi*            Request::get_cgi(void) const {return (_cgi);}
+int		        Request::get_status_code(void) const {return (_status_code);}
+std::string	    Request::get_content_type(void) const {return (_content_type);}
+size_t		    Request::get_content_length(void) const {return (_content_length);}
+size_t		    Request::get_body_size(void) const {return (_body_size);}
+std::string	    Request::get_str_header(void) const {return (_str_header);}
+std::string	    Request::get_full_file_name(void) const {return (_full_file_name);}
+Location*	    Request::get_location(void) const {return (_location);}
+int		        Request::get_fd_in(void) const {return (_fd_in);}
+std::string	    Request::get_session_id(void) const {return (_session_id);}
 
-void		Request::set_fd_in(int f) {_fd_in = f;}
+void		    Request::set_fd_in(int f) {_fd_in = f;}

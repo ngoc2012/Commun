@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Response.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/10 10:17:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 15:34:55 by lbastian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <time.h>
 
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -20,6 +22,7 @@
 #include "Header.hpp"
 #include "Cgi.hpp"
 #include "Listing.hpp"
+#include "webserv.hpp"
 
 #include "Response.hpp"
 
@@ -75,11 +78,31 @@ void     Response::write_header()
     }
     if (_status_code != 200)
     {
-        std::string mess = (*_host->get_status_message())[_status_code];
-        mess_body(ft::itos(_status_code) + " " + mess, mess);
+        if (_status_code == 301 || _status_code == 302)
+        {
+            mess_body(ft::itos(_status_code) + " Redirection",
+                   "This page has moved. If you are not redirected, <a href=\""
+                   + _request->get_location()->get_link() + "\">click here</a>.");
+        } else {
+            std::string mess = (*_host->get_status_message())[_status_code];
+            mess_body(ft::itos(_status_code) + " " + mess, mess);
+        }
     }
     else if (_request->get_method() == DELETE)
         mess_body("Delete", "File deleted");
+    std::string     sid = _request->get_session_id();
+    if (sid != "")
+    {
+        Sessions*       sessions = _server->get_sessions();
+        if (!sessions->verify(sid))
+        {
+            std::string token = sessions->create_token();
+            sessions->add(token, std::time(0) + 30);
+            header.set_session_id(token);
+        }
+		else
+			sessions->add(sid, std::time(0) + 30);
+    }
     _header = header.generate();
     //std::cout << "Response Header:\n" << _header << std::endl;
     if (send(_socket, _header.c_str(), _header.length(), 0) < 0)
@@ -96,13 +119,10 @@ void     Response::mess_body(std::string title, std::string body)
     _body += "    <title>" + title + "</title>\n";
     _body += "    </head>\n";
     _body += "    <body>\n";
-    _body += "    <h1>" + body + "</h1>\n";
-    //_body += "    <p>The requested URL /example-page was not found on this server.</p>\n";
+    _body += "    <p>" + body + "</p>\n";
     _body += "    </body>\n";
     _body += "    </html>\n";
-    //_body = (*_host->get_status_message())[_status_code];
     _content_length = _body.size();
-    //std::cout << "error_body " << _body << std::endl;
 }
 
 void     Response::get_file_size()
@@ -150,13 +170,33 @@ int     Response::write_body()
     }
     if (_fd_out == -1)
         return (end_connection());
-    char	buffer[RESPONSE_BUFFER * 1028];
+    //std::cerr << "_fd_out:" << _fd_out << std::endl;
+    char	buffer[RESPONSE_BUFFER * 1028 + 20];
     int ret = read(_fd_out, buffer, RESPONSE_BUFFER * 1028);
-
+    //std::cout << _request->get_cgi() << std::endl;
     if (ret <= 0)
+    {
+        if (_request->get_cgi())
+        {
+            //std::cout << "0\r\n" << std::endl;
+            send(_socket, "0\r\n", 3, 0);
+        }
         return (end_connection());
-
+    }
+    buffer[ret] = 0;
+    //std::cout << ret << ":" << buffer;
     _body_size += ret;
+
+    if (_request->get_cgi())
+    {
+        std::string     s = ft::itoa_base(ret, "0123456789abcdef") + "\r\n";
+        memmove(buffer + s.size(), buffer, ret);
+        memcpy(buffer, s.c_str(), s.size());
+        memcpy(buffer + s.size() + ret, "\r\n", 2);
+        ret += s.size() + 2;
+        buffer[ret] = 0;
+        //std::cout << "here:" << buffer << std::endl;
+    }
     if (send(_socket, buffer, ret, 0) < 0)
         return (end_connection());
     return (0);
@@ -164,13 +204,15 @@ int     Response::write_body()
 
 int     Response::end_connection(void)
 {
-    if (_request->get_method() == POST
-        && _request->get_cgi()->get_pid() != -1)
-        waitpid(_request->get_cgi()->get_pid(), NULL, 0);
-    std::cout << "end_connection " << _socket << " " << _full_file_name << std::endl;
+    int     status;
+    if (_request->get_cgi() && _request->get_cgi()->get_pid() != -1)
+        waitpid(_request->get_cgi()->get_pid(), &status, 0);
+    //std::cout << "end_connection " << _socket << " " << _full_file_name << std::endl;
     if (_fd_out > 0)
         close(_fd_out);
     _write_queue = false;
+    std::cout << _status_code << " ";
+    std::cout << _request->get_url() << std::endl;
     _host->close_client_sk(_socket);
     return (0);
 }

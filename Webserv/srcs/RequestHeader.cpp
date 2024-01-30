@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/10 10:03:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 15:33:56 by lbastian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ bool	RequestHeader::parse_method_url(std::string& url, e_method& m)
         m = PUT;
     else if (words[0] == "DELETE")
         m = DELETE;
+	else if (words[0] == "OPTIONS")
+		m = OPTIONS;
     else
     {
         std::cerr << "Error: Method unknown : " << words[0] << std::endl;
@@ -136,6 +138,46 @@ bool    RequestHeader::parse_transfer_encoding()
     if (_str->substr(last_pos, 7) == "chunked")
         return (true);
     return (false);
+}
+
+//https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cookie
+//Cookie: name=value; name2=value2; name3=value3
+//Cookie: PHPSESSID=298zf09hf012fh2; csrftoken=u32t4o3tb3gg43; _gat=1
+std::map<std::string, std::string>    RequestHeader::parse_cookies()
+{
+    std::map<std::string, std::string>  cookies;
+    (void) cookies;
+    size_t  last_pos = _str->find("Cookie:", _pos);
+    if (last_pos == NPOS)
+        return (cookies);
+    last_pos += 8;
+    size_t  pos = _str->find("\r\n", last_pos);
+    if (pos == NPOS)
+    {
+        std::cerr << "Error: No newline for Cookie." << std::endl;
+        return (cookies);
+    }
+    std::string     str_cookies = _str->substr(last_pos, pos - last_pos);
+
+    std::vector<std::string> cookie_pairs = ft::split_string(str_cookies, ";");
+
+    for (std::vector<std::string>::iterator it = cookie_pairs.begin();
+         it != cookie_pairs.end(); ++it)
+    {
+        // fonction trim_string pour éliminer les espaces
+        std::string trimmed_cookie = ft::trim_string(*it);
+
+        // séparer le nom et la valeur
+        size_t equal_pos = trimmed_cookie.find('=');
+        if (equal_pos != std::string::npos)
+        {
+            // Extraire le nom et la valeur
+            std::string name = trimmed_cookie.substr(0, equal_pos);
+            std::string value = trimmed_cookie.substr(equal_pos + 1);
+            cookies[name] = value;
+        }
+    }
+    return (cookies);
 }
 
 void	RequestHeader::set_host(Host* h) {_host = h;}

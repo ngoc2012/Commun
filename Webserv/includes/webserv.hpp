@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 22:38:19 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/01 15:49:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 15:25:22 by lbastian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 # define NPOS std::string::npos
 
-enum	e_method {GET, POST, PUT, DELETE, NONE};
+enum	e_method {GET, POST, PUT, DELETE, OPTIONS, NONE};
 
 namespace ft {
 
@@ -37,6 +37,7 @@ size_t                      atoi_base(const char *str, const char *base);
 std::string                 itoa_base(int nbr, const char *base);
 std::string                 str_replace(std::string src, std::string find, std::string rep);
 std::string                 to_upper(std::string s);
+std::string                 trim_string(const std::string& str);
 
 }
 

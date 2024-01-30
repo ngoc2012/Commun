@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/10 10:10:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/26 11:57:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ Server::Server()
 	_port = 4242;
 	_socket = -1;
 	_host = 0;
+	_root = "";
 }
 Server::Server(const Server& src) { *this = src; }
 Server&	Server::operator=( Server const & src )
@@ -28,6 +29,7 @@ Server&	Server::operator=( Server const & src )
 	_port = src.get_port();
 	_socket = src.get_socket();
 	_host = src.get_host();
+	_root = src.get_root();
 	return (*this);
 }
 Server::Server(Host* host): _host(host)
@@ -35,6 +37,7 @@ Server::Server(Host* host): _host(host)
 	_ip_address = std::string("127.0.0.1");
 	_port = 4242;
 	_socket = -1;
+	_root = "";
 }
 Server::~Server()
 {
@@ -67,3 +70,4 @@ void			Server::set_port(short unsigned int p) {_port = p;}
 void			Server::set_root(std::string r) {_root = r;}
 void			Server::set_host(Host* h) {_host = h;}
 void			Server::set_server_name(std::string s) {_server_names.push_back(s);}
+Sessions*		Server::get_sessions(void) {return (&_sessions);}

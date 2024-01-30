@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/10 09:54:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 15:40:54 by lbastian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ Header::Header(Response* r, std::string ext) :
     _host = _response->get_host();
     _mimes = _host->get_mimes();
     _status_message = _host->get_status_message();
+	_session_id = "";
 	init();
 }
 Header::~Header() { }
@@ -59,28 +60,31 @@ std::string	Header::generate(void)
             str += "Content-Type: " + (*_mimes)[_extension] + "\r\n";
     }
     else
-        str += "Content-Type: text/html\r\n";
-    str += "Content-Length: " + ft::itos(_response->get_content_length()) + "\r\n";
-    str += "Date: " + get_current_time() + "\r\n\r\n";
+    	str += "Content-Type: text/html\r\n";
+    if (_status_code == 200 &&_response->get_request()->get_cgi())
+        str += "Transfer-Encoding: chunked\r\n";
+    else
+	{
+        str += "Content-Length: " + ft::itos(_response->get_content_length()) + "\r\n";
+	}
+	if (_session_id != "")
+		str += "Set-Cookies: seesion_id=" + _session_id + " ;\r\n";
+    //str += "Date: " + get_current_time() + "\r\n";
 	//std::cout << str << std::endl;
+	/*
+	str += "Access-Control-Allow-Origin: http://127.0.0.1:4141/\r\n";
+	//str += "Access-Control-Allow-Origin: *\r\n";
+	str += "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS\r\n";
+	str += "Access-Control-Allow-Headers: Content-Type, Cookie, Authorization\r\n";
+	str += "Access-Control-Allow-Credentials: true\r\n\r\n";
+	*/
 	return (str);
 }
 
 void	Header::init(void)
 {
 }
-/*
-std::string     Header::date() {
-    struct timeval tv;
-    char buf[32];
-    gettimeofday(&tv, NULL);
 
-    struct tm	*tm;
-    tm = gmtime(&tv.tv_sec);
-    int ret = strftime(buf, 32, "%a, %d %b %Y %T GMT", tm);
-    return std::string(buf, ret);
-}
-*/
 std::string	Header::get_current_time(void)
 {
 	std::time_t currentTime = std::time(0);
@@ -105,3 +109,4 @@ std::string	Header::file_last_modified_time(std::string file_name)
 
 void		Header::set_status_code(int s) {_status_code = s;}
 void		Header::set_allow(std::string a) {_allow = a;}
+void	    Header::set_session_id(std::string s) {_session_id = s;}

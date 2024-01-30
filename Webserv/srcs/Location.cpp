@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Location.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: nbechon <nbechon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:57:07 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/02 22:06:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 15:29:12 by lbastian         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 Location::Location()
 {
     _autoindex = false;
+    _cgi_pass = "";
+	_redirection = 0;
 }
 Location::Location(const Location& src) { *this = src; }
 Location&	Location::operator=( Location const & src )
@@ -26,6 +28,8 @@ Location&	Location::operator=( Location const & src )
 Location::Location(std::string u): _url(u)
 {
     _autoindex = false;
+    _cgi_pass = "";
+	_redirection = 0;
 }
 Location::~Location() {}
 
@@ -58,17 +62,10 @@ Location*	Location::find_location(std::string url, std::vector<Location*> locati
 bool	Location::compare_url(std::string url, std::string l_url)
 {
 	//std::cout << url << "==" << l_url << std::endl;
-	// Folder
-	if (l_url[l_url.size() - 1] == '/')
-	{
-		if (url == l_url || url == l_url.substr(0, l_url.size() - 1)
-			|| (url.size() > l_url.size()
-                && url.substr(0, l_url.size()) == l_url))
-			return (true);
-	}
-	// File
-	else if (url == l_url)
+	if (url == l_url)
 		return (true);
+    if (_url.size() < url.size() && _url == url.substr(0, _url.size()))
+        return (true);
     if (l_url.find('*') != NPOS
             && ft::match_wildcard(url.c_str(), l_url.c_str()))
 		return (true);
@@ -91,15 +88,11 @@ std::string	Location::get_full_file_name(std::string url, std::string root, e_me
     std::string file_name;
 
     if (_alias == "")
-        file_name = root + url.substr(1);
+        file_name = root;
     else
-    {
-        file_name = _alias + "/";
-        int     pos = 0;
-        while (url[pos] == _url[pos])
-            pos++;
-        file_name += url.substr(pos);
-    }
+        file_name = _alias;
+    if (_url.size() < url.size())
+        file_name += url.substr(_url.size());
     if (_autoindex || e == PUT || e == POST)
         return (file_name);
     struct stat	info;
@@ -136,6 +129,8 @@ std::string	Location::get_methods_str(void)
 std::string	Location::get_method_str(e_method e) {
     switch (e)
     {
+		case OPTIONS:
+			return ("OPTIONS");
         case GET:
             return ("GET");
         case POST:
@@ -150,6 +145,11 @@ std::string	Location::get_method_str(e_method e) {
     return ("");
 }
 
+// bool    Location::verifieExtension(const std::string& nomFichier) {
+//     std::string extension = nomFichier.substr(nomFichier.length() - 5);
+//     return (extension == "*.bla");
+// }
+
 void        Location::push_back_index(std::string s) { _index.push_back(s); }
 
 std::vector<e_method>		Location::get_methods(void) const {return (_methods);}
@@ -157,9 +157,13 @@ std::string			        Location::get_alias(void) const {return (_alias);}
 std::string			        Location::get_url(void) const {return (_url);}
 std::string			        Location::get_cgi_pass(void) const {return (_cgi_pass);}
 bool                        Location::get_autoindex(void) const {return (_autoindex);}
+int							Location::get_redirection(void) const {return (_redirection);}
+std::string			        Location::get_link(void) const {return (_link);}
 
 void				Location::insert_methods(e_method e) {_methods.push_back(e);}
 void				Location::set_alias(std::string s) {_alias = s;}
 void				Location::set_url(std::string u) {_url = u;}
 void			    Location::set_cgi_pass(std::string c) {_cgi_pass = c;}
 void                Location::set_autoindex(bool a) {_autoindex = a;}
+void				Location::set_redirection(int r) {_redirection = r;}
+void                Location::set_link(std::string l) {_link = l;}
