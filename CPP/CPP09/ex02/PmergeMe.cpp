@@ -74,6 +74,7 @@ void    PmergeMe<T>::sort()
     if (!_p[0]._nan)
         _S.push_back(_p[0]._smaller);
     int     j = 2;
+    int     k = 2;
     int     nn = 2;
     while (j < 1000)
     {
