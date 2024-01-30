@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/30 10:05:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 10:20:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void    PmergeMe<T>::sort()
         std::cout << " ";
     }
     std::cout << std::endl;
-    // NO RECURSIVE TEST
+    // NO RECURSIVE TEST end
     _S.push_back(_p[0]._smaller);
     for (size_t i = 0; i < n; i++)
         _S.push_back(_p[i]._larger);
