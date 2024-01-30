@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/30 08:13:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 09:04:14 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ class PmergeMe
 	public:
         std::vector<PairedValue<T> >    _p;
         std::vector<T>                  _S;
+        std::vector<T>                  _Y;
 		PmergeMe(std::vector<T>&);
 		virtual ~PmergeMe();
 
