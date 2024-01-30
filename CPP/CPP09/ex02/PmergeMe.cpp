@@ -73,6 +73,12 @@ void    PmergeMe<T>::sort()
     // NO RECURSIVE TEST end
     if (!_p[0]._nan)
         _S.push_back(_p[0]._smaller);
+    int     j = 2;
+    while (j < 1000)
+    {
+        std::cout << j << " ";
+    }
+    std::cout << std::endl;
     for (size_t i = 0; i < n; i++)
     {
         _S.push_back(_p[i]._larger);
