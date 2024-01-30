@@ -74,12 +74,12 @@ void    PmergeMe<T>::sort()
     if (!_p[0]._nan)
         _S.push_back(_p[0]._smaller);
     int     j = 2;
-    int     n = 2;
+    int     nn = 2;
     while (j < 1000)
     {
         std::cout << j << " ";
-        n *= 2;
-        j = n - j;
+        nn *= 2;
+        j = nn - j;
     }
     std::cout << std::endl;
     for (size_t i = 0; i < n; i++)
