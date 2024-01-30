@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/30 09:56:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 10:01:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,13 +144,29 @@ void    PmergeMe<T>::print_p()
 }
 
 template <typename T>
+struct IsInt {
+    static const bool value = false;
+};
+
+template <>
+struct IsInt<int> {
+    static const bool value = true;
+};
+
+template <typename T>
 void    PmergeMe<T>::print_s()
 {
+    if (!_S.size())
+        return ;
+    const std::type_info&   typeInfo = typeid(_S[0]);
+    bool                    isInt = (typeInfo == typeid(int));
     std::cout << "S:" << std::endl;
     for (size_t i = 0; i < _S.size(); i++)
     {
-        //std::cout << i << " ";
-        _S[i].print();
+        if (isInt)
+            std::cout << i << " ";
+        //else
+        //    _S[i].print();
         std::cout << " ";
     }
     std::cout << std::endl;
