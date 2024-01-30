@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/30 07:02:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 07:09:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ class   PairedValue
     public:
         T       _smaller;
         T       _larger;
-        bool    _nan;
 
         PairedValue(T& a, T& b)
         {
@@ -34,14 +33,12 @@ class   PairedValue
                 _larger = b;
                 _smaller = a;
             }
-            _nan = false;
         }
 
         PairedValue(T& b)
         {
             _larger = b;
             _smaller = b;
-            _nan = true;
         }
 
         void    print() { std::cout << "(" << _smaller << ", " << _larger << ")";}

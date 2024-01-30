@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/30 07:05:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 07:08:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ void    PmergeMe<T>::sort()
         return ;
     }
 
-    size_t n = _a->size() / 2;
+    size_t  n = _a->size() / 2;
+    size_t  ny = n;
+
     for (size_t i = 0; i < n; ++i)
         _p.push_back(PairedValue<T>((*_a)[i * 2], (*_a)[i * 2 + 1]));
     if (_a->size() > n * 2)
@@ -57,7 +59,7 @@ void    PmergeMe<T>::sort()
         std::cout << _S[i] << " ";
     std::cout << std::endl;
     std::cout << "Y:" << std::endl;
-    for (size_t i = 0; i < n; ++i)
+    for (size_t i = 0; i < ny; ++i)
         std::cout << _p[i]._smaller << " ";
     std::cout << std::endl;
 }
