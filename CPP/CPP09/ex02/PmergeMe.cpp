@@ -78,8 +78,9 @@ void    PmergeMe<T>::sort()
     int     nn = 2;
     while (j < 1000)
     {
-        for (int m = 0; m < j; j++)
-        std::cout << k << " ";
+        k += j;
+        for (int m = 0; m < j; m++)
+            std::cout << k - m << " ";
         nn *= 2;
         j = nn - j;
     }
