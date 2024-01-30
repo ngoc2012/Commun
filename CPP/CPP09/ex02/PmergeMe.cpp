@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/30 09:19:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 09:21:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ void    PmergeMe<T>::sort()
     std::sort(_p.begin(), _p.end());
     std::cout << "========================================================" << std::endl;
     print_p();
+    std::cout << "(x0=" << _smaller << ", x1=" << _larger << ")";}
     for (size_t i = 1; i < _p.size(); i++)
     {
-        //std::cout << i << " ";
-        _p[i].print();
+        std::cout << "(y" << i - 1 << "=" << _smaller << ", x" << i + 1 << "=" << _larger << ")";}
         std::cout << " ";
     }
     std::cout << std::endl;
