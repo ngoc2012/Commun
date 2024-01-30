@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/01/30 07:24:46 by ngoc             ###   ########.fr        #
+#    Updated: 2024/01/30 07:54:49 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,12 @@ all:	$(MANDA)
 $(MANDA): $(SRCS) $(OBJS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
-	make re && valgrind ./exe `shuf -i 1-10000 -n 1 | tr "\n" " "`
-	make re && valgrind ./exe `shuf -i 1-10000 -n 2 | tr "\n" " "`
-	make re && valgrind ./exe `shuf -i 1-10000 -n 2 | tr "\n" " "`
-	make re && valgrind ./exe `shuf -i 1-10000 -n 2 | tr "\n" " "`
+	#make re && valgrind ./exe `shuf -i 1-10000 -n 1 | tr "\n" " "`
+	#make re && valgrind ./exe `shuf -i 1-10000 -n 2 | tr "\n" " "`
+	#make re && valgrind ./exe `shuf -i 1-10000 -n 2 | tr "\n" " "`
+	#make re && valgrind ./exe `shuf -i 1-10000 -n 2 | tr "\n" " "`
 	#make re && valgrind ./exe `shuf -i 1-10000 -n 100 | tr "\n" " "`
-	#make re && valgrind ./exe `shuf -i 1-10000 -n 101 | tr "\n" " "`
+	make re && valgrind ./exe `shuf -i 1-10000 -n 101 | tr "\n" " "`
 gits:
 	git add Makefile
 	git add *.cpp
