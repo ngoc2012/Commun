@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/30 10:01:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/30 10:03:57 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,15 +156,15 @@ struct IsInt<int> {
 template <typename T>
 void    PmergeMe<T>::print_s()
 {
+    std::cout << "S:" << std::endl;
     if (!_S.size())
         return ;
-    const std::type_info&   typeInfo = typeid(_S[0]);
-    bool                    isInt = (typeInfo == typeid(int));
-    std::cout << "S:" << std::endl;
+    //const std::type_info&   typeInfo = typeid(_S[0]);
+    //bool                    isInt = (typeInfo == typeid(int));
     for (size_t i = 0; i < _S.size(); i++)
     {
         if (isInt)
-            std::cout << i << " ";
+            std::cout << _S[i] << " ";
         //else
         //    _S[i].print();
         std::cout << " ";
