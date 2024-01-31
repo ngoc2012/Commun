@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
     p.sort();
     std::cout << "========================================================" << std::endl;
     p.print_s();
-    
+    p._S.size();
     
 
     return (0);

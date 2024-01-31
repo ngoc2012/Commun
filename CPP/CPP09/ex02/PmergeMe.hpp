@@ -69,7 +69,7 @@ template <typename T>
 class PmergeMe
 {
 	private:
-        std::vector<T>*                   _a;
+        std::vector<T>*                 _a;
 
 		PmergeMe();
 		PmergeMe(const PmergeMe&);
