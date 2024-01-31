@@ -75,17 +75,23 @@ void    PmergeMe<T>::sort()
         _S.push_back(_p[0]._smaller);
     int     j = 2;
     int     k = 2;
+    int     k0 = k;
     int     nn = 2;
     int     j_max = _p.size() - 1;
     int     m_min = 0;
     while (j <= j_max)
     {
+        k0 = k;
         k += j;
         m_min = 0;
         if (k > j_max)
             m_min = k - j_max;
         for (int m = m_min; m < j; m++)
+        {
             std::cout << k - m << " ";
+
+        }
+            
         nn *= 2;
         j = nn - j;
     }
