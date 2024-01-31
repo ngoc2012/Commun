@@ -83,7 +83,7 @@ void    PmergeMe<T>::sort()
             k = k_max;
         for (int m = k0 + 1; m < k; m++)
         {
-            std::cout << m + 2 << " ";
+            std::cout << m + 2 << ":" << _S.size() << " ";
             _p[m]._pos = _S.size();
             _S.push_back(_p[m]._x);
         }
