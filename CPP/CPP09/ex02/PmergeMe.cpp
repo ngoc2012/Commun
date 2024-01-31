@@ -101,9 +101,11 @@ void    PmergeMe<T>::sort()
             std::cout << k - m << " ";
         }
         std::cout << std::endl;
+        _S.push_back(_p[(k - 2)]._x);
+        print_s();
+
         nn *= 2;
         j = nn - j;
-        print_s();
     }
     
     for (size_t i = 1; i < n; i++)
