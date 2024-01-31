@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/30 10:20:09 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/31 09:51:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,20 @@ void    PmergeMe<T>::sort()
     std::sort(_p.begin(), _p.end());
     std::cout << "========================================================" << std::endl;
     print_p();
-    //std::cout << "(x0=" << _p[0]._smaller << ", x1=" << _p[0]._larger << ") ";
+    //std::cout << "(x0=" << _p[0]._y << ", x1=" << _p[0]._x << ") ";
     for (size_t i = 0; i < _p.size(); i++)
     {
         if (i == 0)
-            std::cout << "(x" << i + 1 << "=" << _p[i]._smaller << ", x" << i + 2 << "=" << _p[i]._larger << ")";
+            std::cout << "(x" << i + 1 << "=" << _p[i]._y << ", x" << i + 2 << "=" << _p[i]._x << ")";
         else
-            std::cout << "(y" << i + 2 << "=" << _p[i]._smaller << ", x" << i + 2 << "=" << _p[i]._larger << ")";
+            std::cout << "(y" << i + 2 << "=" << _p[i]._y << ", x" << i + 2 << "=" << _p[i]._x << ")";
         std::cout << " ";
     }
     std::cout << std::endl;
     // NO RECURSIVE TEST end
     if (!_p[0]._nan)
-        _S.push_back(_p[0]._smaller);
-    _S.push_back(_p[0]._larger);
+        _S.push_back(_p[0]._y);
+    _S.push_back(_p[0]._x);
     int     j = 2;
     int     k = 2;
     int     k0 = k;
@@ -87,7 +87,7 @@ void    PmergeMe<T>::sort()
         m_min = 0;
         if (k > j_max)
             m_min = k - j_max;
-        // push to S from 
+        // push to S from (k0 - 2) + 1 to (k - 2) - 1
         for (int m = m_min; m < j; m++)
         {
             std::cout << k - m << " ";
@@ -101,20 +101,20 @@ void    PmergeMe<T>::sort()
     
     for (size_t i = 0; i < n; i++)
     {
-        _S.push_back(_p[i]._larger);
+        _S.push_back(_p[i]._x);
     }
         
     print_s();
     for (size_t i = 1; i < n; i++)
         if (!_p[i]._nan)
-            _Y.push_back(_p[i]._smaller);
+            _Y.push_back(_p[i]._y);
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < _Y.size(); i++)
         std::cout << _Y[i] << " ";
     std::cout << std::endl;
     //size_t i = 1;
     //for (size_t i = 1; i < ny; ++i)
-    //    std::cout << _p[i]._smaller << " ";
+    //    std::cout << _p[i]._y << " ";
     //std::cout << std::endl;
 }
 
