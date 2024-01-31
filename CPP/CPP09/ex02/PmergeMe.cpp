@@ -104,6 +104,7 @@ void    PmergeMe<T>::sort()
         for (int m = m_min; m < j; m++)
         {
             std::cout << k - m << " ";
+            
         }
         std::cout << std::endl;
         _S.push_back(_p[k_max]._x);
