@@ -22,12 +22,16 @@ int	main(int argc, char **argv)
     if (argc < 2)
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
     std::vector<int> a;
+
+    // Check insert sort
+    for (int i = 2; i < argc; i++)
+        a.push_back(std::atoi(argv[i]));
+    PmergeMe<int>    p(a);
+
+    /*
     for (int i = 1; i < argc; i++)
         a.push_back(std::atoi(argv[i]));
-    
     PmergeMe<int>    p(a);
-    // Check insert sort
-    /*
     p.sort();
     std::cout << "========================================================" << std::endl;
     p.print_s();
