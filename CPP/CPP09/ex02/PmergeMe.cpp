@@ -90,7 +90,11 @@ void    PmergeMe<T>::sort()
         {
             std::cout << m + 2 << " ";
             if (!_p[m]._nan)
+            {
                 _Y.push_back(_p[m]._y);
+                insertPos = binarySearch(_S, _p[m]._y, 0, _p[m]._pos - 1);
+                _S.insert(_S.begin() + insertPos, _p[m]._y);
+            }
         }
         std::cout << std::endl;
         _S.push_back(_p[k]._x);
