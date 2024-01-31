@@ -104,7 +104,7 @@ void    PmergeMe<T>::sort()
         for (int m = m_min; m < j; m++)
         {
             std::cout << k - m << " ";
-            
+
         }
         std::cout << std::endl;
         _S.push_back(_p[k_max]._x);
@@ -128,16 +128,15 @@ void    PmergeMe<T>::sort()
 }
 
 template <typename T>
-int     PmergeMe<T>::binarySearch(std::vector<T>& arr, T target)
-{
-    int low = 0;
-    int high = arr.size() - 1;
+int binarySearch(const std::vector<T>& arr, T target, int start, int end) {
+    int low = start;
+    int high = end;
 
     while (low <= high) {
         int mid = low + (high - low) / 2;
 
         if (arr[mid] == target) {
-            return mid;
+            return mid; // Element found at position mid.
         } else if (arr[mid] < target) {
             low = mid + 1;
         } else {
@@ -145,13 +144,13 @@ int     PmergeMe<T>::binarySearch(std::vector<T>& arr, T target)
         }
     }
 
-    return low;
+    return low; // Element not found, but this is the position where it should be inserted.
 }
 
 template <typename T>
-void    PmergeMe<T>::insertInSortedArray(std::vector<T>& arr, T num)
+void    PmergeMe<T>::insertInSortedArray(std::vector<T>& arr, T num, int start, int end)
 {
-    int insertPos = binarySearch(arr, num);
+    int insertPos = binarySearch(arr, num, start, end);
     arr.insert(arr.begin() + insertPos, num);
 }
 
