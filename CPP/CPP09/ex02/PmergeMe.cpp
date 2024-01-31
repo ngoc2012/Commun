@@ -93,13 +93,10 @@ void    PmergeMe<T>::sort()
                 _Y.push_back(_p[m]._y);
         }
         std::cout << std::endl;
-        //if (j < j_max)
-        //{
-            _S.push_back(_p[k]._x);
-            print_p();
-            print_s();
-        //}
-    } while (j <= j_max);
+        _S.push_back(_p[k]._x);
+        print_p();
+        print_s();
+    } while (k < j_max);
             
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < _Y.size(); i++)
