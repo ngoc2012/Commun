@@ -28,7 +28,6 @@ void    PmergeMe<T>::sort()
         _S = *_a;
         return ;
     }
-    print();
     if (_a->size() == 2)
     {
         _S = *_a;
@@ -94,7 +93,7 @@ void    PmergeMe<T>::sort()
         {
             std::cout << m << " ";
             _S.push_back(_p[m]._x);
-            _p[m]._pos = _S.size();
+            _p[m]._pos = _S.size() - 1;
         }
         std::cout << std::endl;
         for (int m = m_min; m < j; m++)
@@ -164,7 +163,6 @@ bool    PmergeMe<T>::isSorted(std::vector<T>& arr)
 template <typename T>
 void    PmergeMe<T>::print()
 {
-    std::cout << "P:" << std::endl;
     for (size_t i = 0; i < _a->size(); i++)
         std::cout << (*_a)[i] << " ";
     std::cout << std::endl;
@@ -173,6 +171,7 @@ void    PmergeMe<T>::print()
 template <typename T>
 void    PmergeMe<T>::print_p()
 {
+    std::cout << "P:" << std::endl;
     for (size_t i = 0; i < _p.size(); i++)
     {
         std::cout << _p[i]._pos << ":";
