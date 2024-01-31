@@ -66,10 +66,10 @@ void    PmergeMe<T>::sort()
     if (!_p[0]._nan)
         _S.push_back(_p[0]._y);
     _S.push_back(_p[0]._x);
-    int     j = 0;
-    int     k = 0;
+    int     j = 2;
+    int     k = 2;
     int     k0 = k;
-    int     nn = 1;
+    int     nn = 2;
     int     j_max = _p.size() - 1;
     //int     m_min = 0;
     int     k_max = j_max;
