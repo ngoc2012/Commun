@@ -76,7 +76,7 @@ void    PmergeMe<T>::sort()
     int     j = 2;
     int     k = 2;
     int     nn = 2;
-    int     j_max = 1000;
+    int     j_max = _p.size() - 1;
     int     m_min = 0;
     while (j <= j_max)
     {
