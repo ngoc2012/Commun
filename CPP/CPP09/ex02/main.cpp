@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
     PmergeMe<int>    p(a);
     std::sort(a.begin(), a.end());
     p.print();
-    p.insertInSortedArray(a, b, 0, argc - 2);
+    p.insertInSortedArray(a, b, 0, argc - 15);
     p.print();
     if (p.isSorted(a))
         std::cout << "Sorted" << std::endl;

@@ -123,7 +123,7 @@ void    PmergeMe<T>::sort()
 }
 
 template <typename T>
-int binarySearch(const std::vector<T>& arr, T target, int start, int end) {
+int PmergeMe<T>::binarySearch(std::vector<T>& arr, T target, int start, int end) {
     int low = start;
     int high = end;
 
