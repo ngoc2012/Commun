@@ -40,6 +40,7 @@ class   PairedValue
                 _x = b;
                 _y = a;
             }
+            _pos = -1;
             _nan = false;
         }
 
@@ -47,6 +48,7 @@ class   PairedValue
         {
             _x = b;
             _y = b;
+            _pos = -1;
             _nan = true;
         }
 

@@ -94,6 +94,7 @@ void    PmergeMe<T>::sort()
         {
             std::cout << m << " ";
             _S.push_back(_p[m]._x);
+            _p[m]._pos = _S.size();
         }
         std::cout << std::endl;
         for (int m = m_min; m < j; m++)
@@ -199,7 +200,7 @@ void    PmergeMe<T>::print_s()
     //bool                    isInt = (typeInfo == typeid(int));
     for (size_t i = 0; i < _S.size(); i++)
     {
-        std::cout << _S[i] << " ";
+        std::cout << _S[i]._pos << ":" << _S[i] << " ";
         //else
         //    _S[i].print();
         std::cout << " ";
