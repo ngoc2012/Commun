@@ -87,6 +87,7 @@ void    PmergeMe<T>::sort()
             _p[m]._pos = _S.size();
             _S.push_back(_p[m]._x);
         }
+        _p[k]._pos = _S.size();
         std::cout << std::endl;
         for (int m = k; m > k0; m--)
         {
@@ -97,7 +98,7 @@ void    PmergeMe<T>::sort()
                 std::cout << "Insert: " << _p[m]._y << " " << k - 1 << " " << _p[k - 1]._pos - 1 << std::endl;
                 insertPos = binarySearch(_S, _p[m]._y, 0, _p[k - 1]._pos);
                 _S.insert(_S.begin() + insertPos, _p[m]._y);
-                for (int i = k0 + 1; i < k; i++)
+                for (int i = k0 + 1; i <= k; i++)
                     if (_p[i]._pos > insertPos)
                         _p[i]._pos++;
             }
