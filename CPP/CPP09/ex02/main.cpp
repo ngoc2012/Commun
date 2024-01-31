@@ -13,6 +13,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
+#include <algorithm>
 
 #include "PmergeMe.hpp"
 #include "PmergeMe.cpp"
@@ -28,6 +29,8 @@ int	main(int argc, char **argv)
         a.push_back(std::atoi(argv[i]));
     int     b = std::atoi(argv[1]);
     PmergeMe<int>    p(a);
+    std::sort(a);
+    p.insertInSortedArray(a, b, 0, argc - 2);
     if (p.isSorted(a))
         std::cout << "Sorted" << std::endl;
     else

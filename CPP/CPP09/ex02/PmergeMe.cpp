@@ -10,11 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <typeinfo>
-
 #include "PmergeMe.hpp"
 
 template <typename T>

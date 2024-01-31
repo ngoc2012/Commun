@@ -10,6 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <typeinfo>
+
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
