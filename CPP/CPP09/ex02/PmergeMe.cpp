@@ -37,8 +37,6 @@ void    PmergeMe<T>::sort()
     }
 
     size_t  n = _a->size() / 2;
-    //size_t  ny = n;
-
     for (size_t i = 0; i < n; i++)
         _p.push_back(PairedValue<T>((*_a)[i * 2], (*_a)[i * 2 + 1]));
     if (_a->size() > n * 2)
@@ -88,7 +86,6 @@ void    PmergeMe<T>::sort()
         }
         // push to S from (k0 - 2) + 1 to (k - 2) - 1
         // and get the position
-        //std::cout << (k0 - 2) + 1 << " " << (k - 2) - 1 << std::endl;
         for (int m = (k0 - 2) + 1; m < k_max; m++)
         {
             std::cout << m << " ";
