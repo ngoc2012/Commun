@@ -23,8 +23,8 @@ int	main(int argc, char **argv)
     if (argc < 2)
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
     std::vector<int> a;
+
     
-    /*
     // Check insert sort
     for (int i = 2; i < argc; i++)
         a.push_back(std::atoi(argv[i]));
@@ -32,20 +32,21 @@ int	main(int argc, char **argv)
     PmergeMe<int>    p(a);
     std::sort(a.begin(), a.end());
     p.print();
-    p.insertInSortedArray(a, b, 0, argc - 15);
+    p.insertInSortedArray(a, b*b, 0, argc - 15);
     p.print();
     if (p.isSorted(a))
         std::cout << "Sorted" << std::endl;
     else
         std::cout << "Not sorted" << std::endl;
-    */
     
+    /*
     for (int i = 1; i < argc; i++)
         a.push_back(std::atoi(argv[i]));
     PmergeMe<int>    p(a);
     p.sort();
     std::cout << "========================================================" << std::endl;
     p.print_s();
+    */
     
 
     return (0);

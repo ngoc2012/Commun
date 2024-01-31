@@ -142,6 +142,7 @@ int PmergeMe<T>::binarySearch(std::vector<T>& arr, T target, int start, int end)
     return low; // Element not found, but this is the position where it should be inserted.
 }
 
+// start end included
 template <typename T>
 void    PmergeMe<T>::insertInSortedArray(std::vector<T>& arr, T num, int start, int end)
 {
