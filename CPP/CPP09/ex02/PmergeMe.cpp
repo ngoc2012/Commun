@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/31 09:51:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/01/31 18:29:47 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void    PmergeMe<T>::sort()
         _p.push_back(PairedValue<T>((*_a)[n * 2]));
         n++;
     }
+    /*
     std::cout << "========================================================" << std::endl;
     print();
     std::cout << "========================================================" << std::endl;
@@ -52,7 +53,6 @@ void    PmergeMe<T>::sort()
     std::sort(_p.begin(), _p.end());
     std::cout << "========================================================" << std::endl;
     print_p();
-    //std::cout << "(x0=" << _p[0]._y << ", x1=" << _p[0]._x << ") ";
     for (size_t i = 0; i < _p.size(); i++)
     {
         if (i == 0)
@@ -62,6 +62,7 @@ void    PmergeMe<T>::sort()
         std::cout << " ";
     }
     std::cout << std::endl;
+    */
     // NO RECURSIVE TEST end
     if (!_p[0]._nan)
         _S.push_back(_p[0]._y);
