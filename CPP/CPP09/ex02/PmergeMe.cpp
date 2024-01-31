@@ -97,7 +97,7 @@ void    PmergeMe<T>::sort()
         {
             std::cout << k - m << " ";
             if (!_p[k - m - 2]._nan)
-                _Y.push_back(_p[i]._y);
+                _Y.push_back(_p[k - m - 2]._y);
         }
         std::cout << std::endl;
         _S.push_back(_p[k_max]._x);
