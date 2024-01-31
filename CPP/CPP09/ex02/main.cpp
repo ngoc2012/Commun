@@ -26,7 +26,12 @@ int	main(int argc, char **argv)
     // Check insert sort
     for (int i = 2; i < argc; i++)
         a.push_back(std::atoi(argv[i]));
+    int     b = std::atoi(argv[1]);
     PmergeMe<int>    p(a);
+    if (p.isSorted(a))
+        std::cout << "Sorted" << std::endl;
+    else
+        std::cout << "Not sorted" << std::endl;
 
     /*
     for (int i = 1; i < argc; i++)
@@ -36,10 +41,7 @@ int	main(int argc, char **argv)
     std::cout << "========================================================" << std::endl;
     p.print_s();
     */
-    //if (p.isSorted(a))
-    //    std::cout << "Sorted" << std::endl;
-    //else
-    //    std::cout << "Not sorted" << std::endl;
+    
 
     return (0);
 }
