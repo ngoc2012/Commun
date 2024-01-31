@@ -68,8 +68,8 @@ class PmergeMe
 		PmergeMe(const PmergeMe&);
 		PmergeMe	&operator=(const PmergeMe& op);
 
-        int         binarySearch(std::vector<T>& arr, T target);
-        void        insertInSortedArray(std::vector<T>& arr, T num);
+        int         binarySearch(std::vector<T>& arr, T target, int start, int end);
+        
 
 	public:
         std::vector<PairedValue<T> >    _p;
@@ -83,6 +83,7 @@ class PmergeMe
         void        print();
         void        print_p();
         void        print_s();
+        void        insertInSortedArray(std::vector<T>& arr, T num, int start, int end);
 };
 
 #endif
