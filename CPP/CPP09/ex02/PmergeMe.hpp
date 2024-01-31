@@ -89,6 +89,7 @@ class PmergeMe
         void        print();
         void        print_p();
         void        print_s();
+        void        print_y();
         void        insertInSortedArray(std::vector<T>& arr, T num, int start, int end);
 };
 

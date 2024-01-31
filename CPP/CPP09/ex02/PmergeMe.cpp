@@ -103,12 +103,10 @@ void    PmergeMe<T>::sort()
         _S.push_back(_p[k]._x);
         print_p();
         print_s();
+        print_y();
     } while (k < j_max);
             
-    std::cout << "Y:" << std::endl;
-    for (size_t i = 0; i < _Y.size(); i++)
-        std::cout << _Y[i] << " ";
-    std::cout << std::endl;
+    
 }
 
 template <typename T>
@@ -194,5 +192,14 @@ void    PmergeMe<T>::print_s()
         //    _S[i].print();
         std::cout << " ";
     }
+    std::cout << std::endl;
+}
+
+template <typename T>
+void    PmergeMe<T>::print_y()
+{
+    std::cout << "Y:" << std::endl;
+    for (size_t i = 0; i < _Y.size(); i++)
+        std::cout << _Y[i] << " ";
     std::cout << std::endl;
 }
