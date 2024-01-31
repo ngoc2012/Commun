@@ -24,10 +24,12 @@ int	main(int argc, char **argv)
     std::vector<int> a;
     for (int i = 1; i < argc; i++)
         a.push_back(std::atoi(argv[i]));
+    /*
     PmergeMe<int>    p(a);
     p.sort();
     std::cout << "========================================================" << std::endl;
     p.print_s();
+    */
     //if (p.isSorted(a))
     //    std::cout << "Sorted" << std::endl;
     //else
