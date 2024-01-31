@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/01/30 19:48:23 by ngoc             ###   ########.fr        #
+#    Updated: 2024/01/31 22:00:30 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ test:
 	#make re && valgrind ./exe `shuf -i 1-10000 -n 2 | tr "\n" " "`
 	#make re && valgrind ./exe `shuf -i 1-100000 -n 11 | tr "\n" " "`
 	#make re && valgrind ./exe 0 `shuf -i 1-10000 -n 10 | tr "\n" " "` 1000
+	make re && bash test.sh
 	make clean
 gits:
 	git add Makefile

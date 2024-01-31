@@ -44,8 +44,8 @@ void    PmergeMe<T>::sort()
         _p.push_back(PairedValue<T>((*_a)[n * 2]));
         n++;
     }
-    //std::sort(_p.begin(), _p.end());
-    
+    std::sort(_p.begin(), _p.end());
+    /*
     std::cout << "========================================================" << std::endl;
     print();
     std::cout << "========================================================" << std::endl;
@@ -63,7 +63,7 @@ void    PmergeMe<T>::sort()
         std::cout << " ";
     }
     std::cout << std::endl;
-    
+    */
     // NO RECURSIVE TEST end
     if (!_p[0]._nan)
         _S.push_back(_p[0]._y);
