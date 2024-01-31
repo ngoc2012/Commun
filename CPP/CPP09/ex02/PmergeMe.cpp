@@ -87,6 +87,7 @@ void    PmergeMe<T>::sort()
         m_min = 0;
         if (k > j_max)
             m_min = k - j_max;
+        // push to S from 
         for (int m = m_min; m < j; m++)
         {
             std::cout << k - m << " ";
