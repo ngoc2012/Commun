@@ -104,6 +104,7 @@ void    PmergeMe<T>::sort()
         }
         std::cout << std::endl;
         _S.push_back(_p[k_max]._x);
+        print_p();
         print_s();
 
         nn *= 2;
@@ -163,6 +164,7 @@ bool    PmergeMe<T>::isSorted(std::vector<T>& arr)
 template <typename T>
 void    PmergeMe<T>::print()
 {
+    std::cout << "P:" << std::endl;
     for (size_t i = 0; i < _a->size(); i++)
         std::cout << (*_a)[i] << " ";
     std::cout << std::endl;
@@ -173,7 +175,7 @@ void    PmergeMe<T>::print_p()
 {
     for (size_t i = 0; i < _p.size(); i++)
     {
-        //std::cout << i << " ";
+        std::cout << _p[i]._pos << ":";
         _p[i].print();
         std::cout << " ";
     }
@@ -200,7 +202,7 @@ void    PmergeMe<T>::print_s()
     //bool                    isInt = (typeInfo == typeid(int));
     for (size_t i = 0; i < _S.size(); i++)
     {
-        std::cout << _S[i]._pos << ":" << _S[i] << " ";
+        std::cout << _S[i] << " ";
         //else
         //    _S[i].print();
         std::cout << " ";
