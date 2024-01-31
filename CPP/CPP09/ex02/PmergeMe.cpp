@@ -71,7 +71,7 @@ void    PmergeMe<T>::sort()
     int     k0 = k;
     int     nn = 2;
     int     j_max = _p.size() - 1;
-    int     m_min = 0;
+    //int     m_min = 0;
     int     k_max = j_max;
     while (j <= j_max)
     {
@@ -80,7 +80,6 @@ void    PmergeMe<T>::sort()
         k_max = k - 2;
         if (k > j_max)
         {
-            m_min = k - j_max;
             k_max = j_max;
         }
         // push to S from (k0 - 2) + 1 to (k - 2) - 1
@@ -94,6 +93,7 @@ void    PmergeMe<T>::sort()
         std::cout << std::endl;
         for (int m = k_max; m > k0 - 2; m--)
         {
+            std::cout << m + 2 << " ";
             if (!_p[m]._nan)
                 _Y.push_back(_p[m]._y);
         }
