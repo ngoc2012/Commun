@@ -106,7 +106,7 @@ void    PmergeMe<T>::sort()
         print_s();
 
         
-    } while (j <= j_max)
+    } while (j <= j_max);
             
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < _Y.size(); i++)
