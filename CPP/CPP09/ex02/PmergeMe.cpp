@@ -92,11 +92,9 @@ void    PmergeMe<T>::sort()
             m_min = k - j_max;
             k_max = j_max;
         }
-            
         // push to S from (k0 - 2) + 1 to (k - 2) - 1
         // and get the position
         //std::cout << (k0 - 2) + 1 << " " << (k - 2) - 1 << std::endl;
-        
         for (int m = (k0 - 2) + 1; m < k_max; m++)
         {
             std::cout << m << " ";
@@ -108,7 +106,7 @@ void    PmergeMe<T>::sort()
             std::cout << k - m << " ";
         }
         std::cout << std::endl;
-        _S.push_back(_p[(k - 2)]._x);
+        _S.push_back(_p[k_max]._x);
         print_s();
 
         nn *= 2;
