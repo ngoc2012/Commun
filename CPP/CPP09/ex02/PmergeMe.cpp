@@ -86,7 +86,7 @@ void    PmergeMe<T>::sort()
         // and get the position
         for (int m = k0 - 2 + 1; m < k_max; m++)
         {
-            std::cout << m << " ";
+            std::cout << m + 2 << " ";
             _S.push_back(_p[m]._x);
             _p[m]._pos = _S.size() - 1;
         }
