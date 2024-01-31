@@ -72,15 +72,15 @@ void    PmergeMe<T>::sort()
     int     k = 0;
     int     k0 = k;
     int     nn = 1;
-    int     j_max = _p.size() - 1;
+    int     k_max = _p.size() - 1;
     int     insertPos;
     do {
         nn *= 2;
         j = nn - j;
         k0 = k;
         k += j;
-        if (k > j_max)
-            k = j_max;
+        if (k > k_max)
+            k = k_max;
         for (int m = k0 + 1; m < k; m++)
         {
             std::cout << m + 2 << " ";
@@ -109,7 +109,7 @@ void    PmergeMe<T>::sort()
         print_p();
         print_s();
         print_y();
-    } while (k < j_max);
+    } while (k < k_max);
 }
 
 template <typename T>
