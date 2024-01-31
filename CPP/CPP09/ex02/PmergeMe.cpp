@@ -43,7 +43,7 @@ void    PmergeMe<T>::sort()
     }
 
     size_t  n = _a->size() / 2;
-    size_t  ny = n;
+    //size_t  ny = n;
 
     for (size_t i = 0; i < n; i++)
         _p.push_back(PairedValue<T>((*_a)[i * 2], (*_a)[i * 2 + 1]));
@@ -96,7 +96,7 @@ void    PmergeMe<T>::sort()
     }
         
     print_s();
-    for (size_t i = 1; i < ny; i++)
+    for (size_t i = 1; i < n; i++)
         if (!_p[i]._nan)
             _Y.push_back(_p[i]._smaller);
     std::cout << "Y:" << std::endl;
