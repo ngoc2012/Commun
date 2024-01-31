@@ -74,7 +74,6 @@ class PmergeMe
 		PmergeMe	&operator=(const PmergeMe& op);
 
         int         binarySearch(std::vector<T>& arr, T target, int start, int end);
-        
 
 	public:
         std::vector<PairedValue<T> >    _p;

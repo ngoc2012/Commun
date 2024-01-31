@@ -29,8 +29,10 @@ int	main(int argc, char **argv)
         a.push_back(std::atoi(argv[i]));
     int     b = std::atoi(argv[1]);
     PmergeMe<int>    p(a);
-    std::sort(a);
+    std::sort(a.begin(), a.end());
+    p.print();
     p.insertInSortedArray(a, b, 0, argc - 2);
+    p.print();
     if (p.isSorted(a))
         std::cout << "Sorted" << std::endl;
     else
