@@ -73,25 +73,28 @@ void    PmergeMe<T>::sort()
     int     j_max = _p.size() - 1;
     //int     m_min = 0;
     int     k_max = j_max;
-    while (j <= j_max)
-    {
+    
+    do {
+        nn *= 2;
+        j = nn - j;
+
         k0 = k;
         k += j;
-        k_max = k - 2;
+        k_max = k;
         if (k > j_max)
         {
             k_max = j_max;
         }
         // push to S from (k0 - 2) + 1 to (k - 2) - 1
         // and get the position
-        for (int m = k0 - 2 + 1; m < k_max; m++)
+        for (int m = k0 + 1; m < k_max; m++)
         {
             std::cout << m + 2 << " ";
             _S.push_back(_p[m]._x);
             _p[m]._pos = _S.size() - 1;
         }
         std::cout << std::endl;
-        for (int m = k_max; m > k0 - 2; m--)
+        for (int m = k_max; m > k0; m--)
         {
             std::cout << m + 2 << " ";
             if (!_p[m]._nan)
@@ -102,9 +105,8 @@ void    PmergeMe<T>::sort()
         print_p();
         print_s();
 
-        nn *= 2;
-        j = nn - j;
-    }
+        
+    } while (j <= j_max)
             
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < _Y.size(); i++)
