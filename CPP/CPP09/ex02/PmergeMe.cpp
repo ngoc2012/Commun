@@ -93,7 +93,7 @@ void    PmergeMe<T>::sort()
             _p[m]._pos = _S.size() - 1;
         }
         std::cout << std::endl;
-        for (int m = m_min; m < j; m++)
+        for (int m = k_max - 1; m < k_max; m++)
         {
             std::cout << k - m << " ";
             if (!_p[k - m - 2]._nan)
