@@ -40,15 +40,17 @@ int	main(int argc, char **argv)
         std::cout << "Not sorted" << std::endl;
     */
     
-    
     for (int i = 1; i < argc; i++)
         a.push_back(std::atoi(argv[i]));
     PmergeMe<int>    p(a);
     p.sort();
     std::cout << "========================================================" << std::endl;
     p.print_s();
-    p._S.size();
-    
+    std::cout << p._S.size() << std::endl;
+    if (p.isSorted(p._S))
+        std::cout << "Sorted" << std::endl;
+    else
+        std::cout << "Not sorted" << std::endl;
 
     return (0);
 }
