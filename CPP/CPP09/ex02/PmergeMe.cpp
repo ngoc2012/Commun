@@ -92,8 +92,8 @@ void    PmergeMe<T>::sort()
             if (!_p[m]._nan)
             {
                 _Y.push_back(_p[m]._y);
-                std::cout << "Insert: " << _p[m]._y << " " << _p[m - 1]._pos - 1 << std::endl;
-                insertPos = binarySearch(_S, _p[m]._y, 0, _p[m - 1]._pos);
+                //std::cout << "Insert: " << _p[m]._y << " " << _p[k - 1]._pos - 1 << std::endl;
+                insertPos = binarySearch(_S, _p[m]._y, 0, _p[k - 1]._pos);
                 _S.insert(_S.begin() + insertPos, _p[m]._y);
                 for (int i = k0 + 1; i < k; i++)
                     if (_p[i]._pos > insertPos)
@@ -106,8 +106,6 @@ void    PmergeMe<T>::sort()
         print_s();
         print_y();
     } while (k < j_max);
-            
-    
 }
 
 template <typename T>
@@ -119,15 +117,14 @@ int PmergeMe<T>::binarySearch(std::vector<T>& arr, T target, int start, int end)
         int mid = low + (high - low) / 2;
 
         if (arr[mid] == target) {
-            return mid; // Element found at position mid.
+            return mid;
         } else if (arr[mid] < target) {
             low = mid + 1;
         } else {
             high = mid - 1;
         }
     }
-
-    return low; // Element not found, but this is the position where it should be inserted.
+    return low;
 }
 
 // start end included
