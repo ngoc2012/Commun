@@ -50,7 +50,12 @@ int	main(int argc, char **argv)
     if (p.isSorted(p._S))
         std::cout << "Sorted" << std::endl;
     else
+    {
         std::cout << "Not sorted" << std::endl;
+        p.print();
+        p.print_s();
+    }
+        
 
     return (0);
 }
