@@ -191,7 +191,7 @@ void    PmergeMe::print(std::vector<PairedValue<T> >& _a)
 }
 
 template <typename T>
-void    PmergeMe::printp(std::vector<PairedValue<T> >& p)
+void    PmergeMe::print_p(std::vector<PairedValue<T> >& p)
 {
     std::cout << "P:" << std::endl;
     for (size_t i = 0; i < p.size(); i++)
