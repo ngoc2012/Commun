@@ -105,4 +105,6 @@ class PmergeMe
         void        print_y(std::vector<T>&);
 };
 
+#include "PmergeMe.cpp"
+
 #endif
