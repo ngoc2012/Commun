@@ -23,6 +23,23 @@ int	main(int argc, char **argv)
     if (argc < 2)
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
 
+    /*
+    
+    */
+    
+    std::list<int> aL;
+
+    for (int i = 1; i < argc; i++)
+        aL.push_back(std::atoi(argv[i]));
+
+    
+        
+
+    return (0);
+}
+
+void    vector_sort(int argc, char **argv)
+{
     std::vector<int> a;
     for (int i = 1; i < argc; i++)
         a.push_back(std::atoi(argv[i]));
@@ -30,6 +47,7 @@ int	main(int argc, char **argv)
     //p._debug = true;
     std::vector<int>    S;
     p.sort(a, S);
+
     std::cout << S.size() << " ";
     if (p.isSorted(S))
         std::cout << "Sorted" << std::endl;
@@ -39,7 +57,4 @@ int	main(int argc, char **argv)
         p.print(a);
         p.print(S);
     }
-        
-
-    return (0);
 }
