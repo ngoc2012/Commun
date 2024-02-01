@@ -197,7 +197,7 @@ void    PmergeMe::print_p(std::vector<T>& p)
     std::cout << "P:" << std::endl;
     for (size_t i = 0; i < p.size(); i++)
     {
-        std::cout << i << ":" << p[i].pos << ":";
+        std::cout << i << ":" << p[i]._pos << ":";
         p[i].print();
         std::cout << " ";
     }
