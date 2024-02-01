@@ -56,6 +56,10 @@ void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
         n++;
     }
     if (!_debug)
+    {
+        PmergeMe            pp;
+        std::vector<T>      SS;
+    }
         std::sort(_p.begin(), _p.end());
     else
     {
