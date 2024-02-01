@@ -40,8 +40,8 @@ void    PmergeMe<T>::sort()
     if (n <= 4)
     {
         _S = *_a;
-        for (int i = 1; i < n; i++)
-            for (int j = 0; j < i; j++)
+        for (size_t i = 1; i < n; i++)
+            for (size_t j = 0; j < i; j++)
                 if (_S[i] < _S[j])
                     std::swap(_S[i], _S[j]);
         return ;
