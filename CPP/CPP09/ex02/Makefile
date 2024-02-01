@@ -26,7 +26,8 @@ test:
 	#make re && valgrind ./exe `shuf -i 1-10000 -n 2 | tr "\n" " "`
 	#make re && valgrind ./exe `shuf -i 1-100000 -n 11 | tr "\n" " "`
 	#make re && valgrind ./exe 0 `shuf -i 1-10000 -n 10 | tr "\n" " "` 1000
-	make re && bash test.sh
+	#make re && bash test.sh
+	make re && valgrind ./exe `shuf -i 1-10000 -n 2 | tr "\n" " "`
 	make clean
 gits:
 	git add Makefile
