@@ -69,18 +69,17 @@ class   PairedValue
 class PmergeMe
 {
 	private:
-		PmergeMe();
+		
 		PmergeMe(const PmergeMe&);
 		PmergeMe	&operator=(const PmergeMe& op);
 
+        template <typename T>
         int         binarySearch(std::vector<T>& arr, T target, int start, int end);
 
 	public:
-        std::vector<PairedValue<T> >    _p;
-        std::vector<T>                  _S;
         std::vector<T>                  _Y;
         bool                            _debug;
-		PmergeMe(std::vector<T>&);
+        PmergeMe();
 		virtual ~PmergeMe();
 
         template <typename T>

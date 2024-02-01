@@ -19,7 +19,7 @@ template <typename T>
 PmergeMe<T>::~PmergeMe() {}
 
 template <typename T>
-void    PmergeMe<T>::sort(std::vector<T>* _a)
+void    PmergeMe<T>::sort(std::vector<T>* _a, std::vector<T> _S)
 {
     std::vector<PairedValue<T> >    _p;
     size_t  n = _a->size();
