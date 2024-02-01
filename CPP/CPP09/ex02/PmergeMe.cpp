@@ -6,22 +6,21 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 10:41:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:46:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-template <typename T>
-PmergeMe<T>::PmergeMe() {_debug = false;}
+PmergeMe::PmergeMe() {_debug = false;}
+
+PmergeMe::~PmergeMe() {}
 
 template <typename T>
-PmergeMe<T>::~PmergeMe() {}
-
-template <typename T>
-void    PmergeMe<T>::sort(std::vector<T>& _a, std::vector<T>& _S)
+void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
 {
     std::vector<PairedValue<T> >    _p;
+    std::vector<T>                  _Y;
     size_t  n = _a->size();
     if (!n)
         return ;
@@ -61,13 +60,13 @@ void    PmergeMe<T>::sort(std::vector<T>& _a, std::vector<T>& _S)
     else
     {
         std::cout << "========================================================" << std::endl;
-        print();
+        print(_a);
         std::cout << "========================================================" << std::endl;
-        print_p();
+        print_p(_p);
         // NO RECURSIVE TEST
         std::sort(_p.begin(), _p.end());
         std::cout << "========================================================" << std::endl;
-        print_p();
+        print_p(_p);
         for (size_t i = 0; i < _p.size(); i++)
         {
             if (i == 0)
@@ -125,8 +124,8 @@ void    PmergeMe<T>::sort(std::vector<T>& _a, std::vector<T>& _S)
             }
             if (_debug)
             {
-                print_s();
-                print_p();
+                print_s(_S);
+                print_p(_p);
             }
                 
         }
@@ -137,15 +136,15 @@ void    PmergeMe<T>::sort(std::vector<T>& _a, std::vector<T>& _S)
 
         if (_debug)
         {
-            print_p();
-            print_s();
-            print_y();
+            print_p(_p);
+            print_s(_S);
+            print_y(_Y);
         }
     } while (k < k_max);
 }
 
 template <typename T>
-int PmergeMe<T>::binarySearch(std::vector<T>& arr, T target, int start, int end) {
+int PmergeMe::binarySearch(std::vector<T>& arr, T target, int start, int end) {
     int low = start;
     int high = end;
 
@@ -165,14 +164,14 @@ int PmergeMe<T>::binarySearch(std::vector<T>& arr, T target, int start, int end)
 
 // start end included
 template <typename T>
-void    PmergeMe<T>::insertInSortedArray(std::vector<T>& arr, T num, int start, int end)
+void    PmergeMe::insertInSortedArray(std::vector<T>& arr, T num, int start, int end)
 {
     int insertPos = binarySearch(arr, num, start, end);
     arr.insert(arr.begin() + insertPos, num);
 }
 
 template <typename T>
-bool    PmergeMe<T>::isSorted(std::vector<T>& arr)
+bool    PmergeMe::isSorted(std::vector<T>& arr)
 {
     for (size_t i = 0; i < arr.size() - 1; i++)
         if (arr[i] > arr[i + 1])
@@ -181,7 +180,7 @@ bool    PmergeMe<T>::isSorted(std::vector<T>& arr)
 }
 
 template <typename T>
-void    PmergeMe<T>::print(std::vector<T>& arr)
+void    PmergeMe::print(std::vector<T>& _a)
 {
     for (size_t i = 0; i < _a->size(); i++)
         std::cout << (*_a)[i] << " ";
@@ -189,7 +188,7 @@ void    PmergeMe<T>::print(std::vector<T>& arr)
 }
 
 template <typename T>
-void    PmergeMe<T>::print_p(std::vector<PairedValue<T> >&)
+void    PmergeMe::print_p(std::vector<PairedValue<T> >& _p)
 {
     std::cout << "P:" << std::endl;
     for (size_t i = 0; i < _p.size(); i++)
@@ -212,7 +211,7 @@ struct isInt<int> {
 };
 
 template <typename T>
-void    PmergeMe<T>::print_s(std::vector<T>& arr)
+void    PmergeMe::print_s(std::vector<T>& _S)
 {
     std::cout << "S:" << std::endl;
     if (!_S.size())
@@ -230,7 +229,7 @@ void    PmergeMe<T>::print_s(std::vector<T>& arr)
 }
 
 template <typename T>
-void    PmergeMe<T>::print_y(std::vector<T> _Y)
+void    PmergeMe::print_y(std::vector<T> _Y)
 {
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < _Y.size(); i++)
