@@ -44,8 +44,8 @@ void    PmergeMe<T>::sort()
         _p.push_back(PairedValue<T>((*_a)[n * 2]));
         n++;
     }
-    //std::sort(_p.begin(), _p.end());
-    
+    std::sort(_p.begin(), _p.end());
+    /*
     std::cout << "========================================================" << std::endl;
     print();
     std::cout << "========================================================" << std::endl;
@@ -63,7 +63,7 @@ void    PmergeMe<T>::sort()
         std::cout << " ";
     }
     std::cout << std::endl;
-    
+    */
     // NO RECURSIVE TEST end
     if (!_p[0]._nan)
         _S.push_back(_p[0]._y);
@@ -84,19 +84,19 @@ void    PmergeMe<T>::sort()
             k = k_max;
         for (int m = k0 + 1; m < k; m++)
         {
-            std::cout << m + 2 << ":" << _S.size() << " ";
+            //std::cout << m + 2 << ":" << _S.size() << " ";
             _p[m]._pos = _S.size();
             _S.push_back(_p[m]._x);
         }
         _p[k]._pos = _S.size();
-        std::cout << std::endl;
+        //std::cout << std::endl;
         for (int m = k; m > k0; m--)
         {
             std::cout << m + 2 << " ";
             if (!_p[m]._nan)
             {
                 _Y.push_back(_p[m]._y);
-                std::cout << "Insert: " << _p[m]._y << " " << k - 1 << " " << _p[k - 1]._pos - 1 << std::endl;
+                //std::cout << "Insert: " << _p[m]._y << " " << k - 1 << " " << _p[k - 1]._pos - 1 << std::endl;
                 insertPos = binarySearch(_S, _p[m]._y, 0, _p[k - 1]._pos);
                 _S.insert(_S.begin() + insertPos, _p[m]._y);
                 for (int i = k0 + 1; i <= k; i++)
@@ -104,7 +104,7 @@ void    PmergeMe<T>::sort()
                         _p[i]._pos++;
             }
         }
-        std::cout << std::endl;
+        //std::cout << std::endl;
 
         _S.push_back(_p[k]._x);
 

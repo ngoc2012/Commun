@@ -44,9 +44,9 @@ int	main(int argc, char **argv)
         a.push_back(std::atoi(argv[i]));
     PmergeMe<int>    p(a);
     p.sort();
-    std::cout << "========================================================" << std::endl;
-    p.print_s();
-    std::cout << p._S.size() << std::endl;
+    //std::cout << "========================================================" << std::endl;
+    //p.print_s();
+    std::cout << p._S.size() << " ";
     if (p.isSorted(p._S))
         std::cout << "Sorted" << std::endl;
     else
