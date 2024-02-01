@@ -168,7 +168,9 @@ void    PmergeMe::print_p(std::vector<PairedValue>& p)
     std::cout << std::endl;
 }
 
-int PmergeMe::binarySearch(std::list<int>& lst, int target, int start, int end) {
+
+
+int PmergeMe::binarySearchL(std::list<int>& lst, int target, int start, int end) {
     int low = start;
     int high = end;
 
