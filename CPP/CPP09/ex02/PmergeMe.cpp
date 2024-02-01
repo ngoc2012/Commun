@@ -36,13 +36,19 @@ void    PmergeMe<T>::sort()
             std::swap(_S[0], _S[1]);
         return ;
     }
-    /*
+    
     if (n <= 4)
     {
         _S = *_a;
-        for 
+        for (int i = 1; i < n; i++)
+        {
+            for (int j = 1; j < i; j++)
+            {
+                
+            }
+        }
     }
-    */
+    
     n /= 2;
     for (size_t i = 0; i < n; i++)
         _p.push_back(PairedValue<T>((*_a)[i * 2], (*_a)[i * 2 + 1]));
