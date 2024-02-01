@@ -112,7 +112,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
                 insertPos = binarySearch(S, VP[m]._y, 0, VP[k - 1]._pos);
                 if (_debug)
                     std::cout << "Insert: " << VP[m]._y << " " << k - 1 << " " << VP[k - 1]._pos << " " << insertPos << std::endl;
-                _S.insert(_S.begin() + insertPos, VP[m]._y);
+                S.insert(S.begin() + insertPos, VP[m]._y);
                 for (int i = k0 + 1; i <= k; i++)
                     if (VP[i]._pos >= insertPos)
                         VP[i]._pos++;
@@ -127,7 +127,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
         if (_debug)
             std::cout << std::endl;
 
-        _S.push_back(_p[k]._x);
+        S.push_back(VP[k]._x);
 
         if (_debug)
         {
@@ -173,16 +173,14 @@ bool    PmergeMe::isSorted(std::vector<T>& a)
     return true;
 }
 
-template <typename T>
-void    PmergeMe::print(std::vector<T>& _a)
+void    PmergeMe::print(std::vector<int>& _a)
 {
     for (size_t i = 0; i < _a.size(); i++)
         std::cout << _a[i] << " ";
     std::cout << std::endl;
 }
 
-template <typename T>
-void    PmergeMe::print_p(std::vector<T>& p)
+void    PmergeMe::print_p(std::vector<PairedValue>& p)
 {
     std::cout << "P:" << std::endl;
     for (size_t i = 0; i < p.size(); i++)
@@ -194,29 +192,5 @@ void    PmergeMe::print_p(std::vector<T>& p)
     std::cout << std::endl;
 }
 
-template <typename T>
-void    PmergeMe::print_s(std::vector<T>& S)
-{
-    std::cout << "S:" << std::endl;
-    if (!S.size())
-        return ;
-    //const std::type_info&   typeInfo = typeid(S[0]);
-    //bool                    isInt = (typeInfo == typeid(int));
-    for (size_t i = 0; i < S.size(); i++)
-    {
-        std::cout << i << ":" << S[i] << " ";
-        std::cout << " ";
-    }
-    std::cout << std::endl;
-}
-
-template <typename T>
-void    PmergeMe::print_y(std::vector<T>& Y)
-{
-    std::cout << "Y:" << std::endl;
-    for (size_t i = 0; i < Y.size(); i++)
-        std::cout << Y[i] << " ";
-    std::cout << std::endl;
-}
 
 #endif
