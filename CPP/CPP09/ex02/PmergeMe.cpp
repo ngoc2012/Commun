@@ -56,18 +56,23 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
             X.push_back(A[i * 2 + 1]);
             P[A[i * 2 + 1]] = A[i * 2];
         }
+        else
+        {
+            X.push_back(A[i * 2]);
+            P[A[i * 2]] = A[i * 2 + 1];
+        }
         
     }
     if (n > n2 * 2)
     {
         X.push_back(A[n2 * 2]);
+        P[A[n2 * 2]] = -1;
     }
-        
     if (!_debug)
     {
         //PmergeMe            pm;
         //pm.sort(_p0, _p);
-        std::sort(_p.begin(), _p.end());
+        std::sort(X.begin(), X.end());
     }
     else
     {
