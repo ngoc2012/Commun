@@ -22,8 +22,8 @@ PmergeMe::~PmergeMe() {}
 template <typename T>
 void    PmergeMe::sort(std::vector<PairedValue<T> >& _a, std::vector<PairedValue<T> >& _S)
 {
-    std::vector<PairedValue<PairedValue<int> > >    _p;
-    std::vector<PairedValue<int> >    _Y;
+    std::vector<PairedValue<T> >    _p;
+    std::vector<PairedValue<T> >    _Y;
 
     size_t  n = _a.size();
     if (!n)
@@ -53,10 +53,10 @@ void    PmergeMe::sort(std::vector<PairedValue<T> >& _a, std::vector<PairedValue
     
     n /= 2;
     for (size_t i = 0; i < n; i++)
-        _p.push_back(PairedValue<PairedValue<int> >(_a[i * 2], _a[i * 2 + 1]));
+        _p.push_back(PairedValue<T >(_a[i * 2], _a[i * 2 + 1]));
     if (_a.size() > n * 2)
     {
-        _p.push_back(PairedValue<PairedValue<int> >(_a[n * 2]));
+        _p.push_back(PairedValue<T >(_a[n * 2]));
         n++;
     }
     if (!_debug)
@@ -147,6 +147,7 @@ void    PmergeMe::sort(std::vector<PairedValue<T> >& _a, std::vector<PairedValue
     } while (k < k_max);
 }
 
+template <typename T>
 int PmergeMe::binarySearch(std::vector<PairedValue<int> >& arr, PairedValue<int> target, int start, int end) {
     int low = start;
     int high = end;
