@@ -41,12 +41,10 @@ void    PmergeMe<T>::sort()
     {
         _S = *_a;
         for (int i = 1; i < n; i++)
-        {
-            for (int j = 1; j < i; j++)
-            {
-                
-            }
-        }
+            for (int j = 0; j < i; j++)
+                if (_S[i] < _S[j])
+                    std::swap(_S[i], _S[j]);
+        return ;
     }
     
     n /= 2;
