@@ -21,7 +21,7 @@ PmergeMe::~PmergeMe() {}
 
 void    PmergeMe::sort(std::vector<PairedValue<int> >& _a, std::vector<PairedValue<int> >& _S)
 {
-    std::vector<PairedValue<int> >    _p;
+    std::vector<PairedValue<PairedValue<int> > >    _p;
     std::vector<PairedValue<int> >    _Y;
 
     size_t  n = _a.size();
