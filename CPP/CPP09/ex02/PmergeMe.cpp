@@ -182,7 +182,7 @@ void    PmergeMe<T>::print_p()
     std::cout << "P:" << std::endl;
     for (size_t i = 0; i < _p.size(); i++)
     {
-        std::cout << _p[i]._pos << ":";
+        std::cout << i << ":" << _p[i]._pos << ":";
         _p[i].print();
         std::cout << " ";
     }
@@ -209,7 +209,7 @@ void    PmergeMe<T>::print_s()
     //bool                    isInt = (typeInfo == typeid(int));
     for (size_t i = 0; i < _S.size(); i++)
     {
-        std::cout << _S[i] << " ";
+        std::cout << i << ":" << _S[i] << " ";
         //else
         //    _S[i].print();
         std::cout << " ";
