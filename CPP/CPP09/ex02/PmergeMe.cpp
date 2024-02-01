@@ -19,7 +19,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
 {
     // x, y with x is bigger
     std::map<int, int>              P;
-    std::vector<PairedValue<int> >    VP;
+    std::vector<PairedValue>    VP;
     std::vector<int>                X;
     std::vector<int>                XX;
     std::vector<int>                Y;
@@ -76,7 +76,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
     for (size_t i = 0; i < XX.size(); i++)
         VP.push_back(PairedValue(XX[i], P[XX[i]]));
 
-    if (!VP[0]._y != -1)
+    if (VP[0]._y != -1)
         S.push_back(VP[0]._y);
     S.push_back(VP[0]._x);
     int     j = 0;
@@ -106,7 +106,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
         {
             if (_debug)
                 std::cout << m + 2 << " ";
-            if (!VP[m]._nan)
+            if (VP[m]._y != -1)
             {
                 Y.push_back(VP[m]._y);
                 insertPos = binarySearch(S, VP[m]._y, 0, VP[k - 1]._pos);
@@ -119,8 +119,8 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
             }
             if (_debug)
             {
-                print_s(_S);
-                print_p(_p);
+                print(S);
+                print_p(VP);
             }
                 
         }
@@ -131,9 +131,9 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
 
         if (_debug)
         {
-            print_p(_p);
-            print_s(_S);
-            print_y(_Y);
+            print_p(VP);
+            print(S);
+            print(Y);
         }
     } while (k < k_max);
 }
