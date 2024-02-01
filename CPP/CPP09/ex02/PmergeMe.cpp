@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 13:18:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 13:22:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ PmergeMe::~PmergeMe() {}
 template <typename T>
 void    PmergeMe::sort(std::vector<PairedValue>& _a, std::vector<PairedValue>& _S)
 {
-    std::vector<PairedValue<PairedValue> >    _p;
-    std::vector<PairedValue>                  _Y;
+    std::vector<PairedValue>    _p;
+    std::vector<PairedValue>    _Y;
+
     size_t  n = _a.size();
     if (!n)
         return ;
@@ -146,8 +147,7 @@ void    PmergeMe::sort(std::vector<PairedValue>& _a, std::vector<PairedValue>& _
     } while (k < k_max);
 }
 
-template <typename T>
-int PmergeMe::binarySearch(std::vector<PairedValue>& arr, T target, int start, int end) {
+int PmergeMe::binarySearch(std::vector<PairedValue>& arr, PairedValue target, int start, int end) {
     int low = start;
     int high = end;
 
@@ -166,23 +166,20 @@ int PmergeMe::binarySearch(std::vector<PairedValue>& arr, T target, int start, i
 }
 
 // start end included
-template <typename T>
-void    PmergeMe::insertInSortedArray(std::vector<PairedValue>& arr, T num, int start, int end)
+void    PmergeMe::insertInSortedArray(std::vector<PairedValue>& arr, PairedValue num, int start, int end)
 {
     int insertPos = binarySearch(arr, num, start, end);
     arr.insert(arr.begin() + insertPos, num);
 }
 
-template <typename T>
-bool    PmergeMe::isSorted(std::vector<PairedValue>& arr)
+bool    PmergeMe::isSorted(std::vector<PairedValue>& a)
 {
-    for (size_t i = 0; i < arr.size() - 1; i++)
-        if (arr[i] > arr[i + 1])
+    for (size_t i = 0; i < a.size() - 1; i++)
+        if (a[i] > a[i + 1])
             return false;
     return true;
 }
 
-template <typename T>
 void    PmergeMe::print(std::vector<PairedValue>& _a)
 {
     for (size_t i = 0; i < _a.size(); i++)
@@ -190,53 +187,38 @@ void    PmergeMe::print(std::vector<PairedValue>& _a)
     std::cout << std::endl;
 }
 
-template <typename T>
-void    PmergeMe::print_p(std::vector<PairedValue<PairedValue> >& _p)
+void    PmergeMe::printp(std::vector<PairedValue<PairedValue> >& p)
 {
     std::cout << "P:" << std::endl;
-    for (size_t i = 0; i < _p.size(); i++)
+    for (size_t i = 0; i < p.size(); i++)
     {
-        std::cout << i << ":" << _p[i]._pos << ":";
-        _p[i].print();
+        std::cout << i << ":" << p[i].pos << ":";
+        p[i].print();
         std::cout << " ";
     }
     std::cout << std::endl;
 }
 
-template <typename T>
-struct isInt {
-    static const bool value = false;
-};
-
-template <>
-struct isInt<int> {
-    static const bool value = true;
-};
-
-template <typename T>
-void    PmergeMe::print_s(std::vector<PairedValue>& _S)
+void    PmergeMe::print_s(std::vector<PairedValue>& S)
 {
     std::cout << "S:" << std::endl;
-    if (!_S.size())
+    if (!S.size())
         return ;
-    //const std::type_info&   typeInfo = typeid(_S[0]);
+    //const std::type_info&   typeInfo = typeid(S[0]);
     //bool                    isInt = (typeInfo == typeid(int));
-    for (size_t i = 0; i < _S.size(); i++)
+    for (size_t i = 0; i < S.size(); i++)
     {
-        std::cout << i << ":" << _S[i] << " ";
-        //else
-        //    _S[i].print();
+        std::cout << i << ":" << S[i].print() << " ";
         std::cout << " ";
     }
     std::cout << std::endl;
 }
 
-template <typename T>
-void    PmergeMe::print_y(std::vector<PairedValue>& _Y)
+void    PmergeMe::print_y(std::vector<PairedValue>& Y)
 {
     std::cout << "Y:" << std::endl;
-    for (size_t i = 0; i < _Y.size(); i++)
-        std::cout << _Y[i] << " ";
+    for (size_t i = 0; i < Y.size(); i++)
+        std::cout << Y[i] << " ";
     std::cout << std::endl;
 }
 
