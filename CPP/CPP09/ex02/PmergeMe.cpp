@@ -6,14 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/01/31 18:30:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 08:41:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
 template <typename T>
-PmergeMe<T>::PmergeMe(std::vector<T>& a) { _a = &a; }
+PmergeMe<T>::PmergeMe(std::vector<T>& a) { _a = &a; _debug = false;}
 
 template <typename T>
 PmergeMe<T>::~PmergeMe() {}
@@ -44,25 +44,29 @@ void    PmergeMe<T>::sort()
         _p.push_back(PairedValue<T>((*_a)[n * 2]));
         n++;
     }
-    std::sort(_p.begin(), _p.end());
-    /*
-    std::cout << "========================================================" << std::endl;
-    print();
-    std::cout << "========================================================" << std::endl;
-    print_p();
-    // NO RECURSIVE TEST
-    std::sort(_p.begin(), _p.end());
-    std::cout << "========================================================" << std::endl;
-    print_p();
-    for (size_t i = 0; i < _p.size(); i++)
+    if (!_debug)
+        std::sort(_p.begin(), _p.end());
+    else
     {
-        if (i == 0)
-            std::cout << "(x" << i + 1 << "=" << _p[i]._y << ", x" << i + 2 << "=" << _p[i]._x << ")";
-        else
-            std::cout << "(y" << i + 2 << "=" << _p[i]._y << ", x" << i + 2 << "=" << _p[i]._x << ")";
-        std::cout << " ";
+        std::cout << "========================================================" << std::endl;
+        print();
+        std::cout << "========================================================" << std::endl;
+        print_p();
+        // NO RECURSIVE TEST
+        std::sort(_p.begin(), _p.end());
+        std::cout << "========================================================" << std::endl;
+        print_p();
+        for (size_t i = 0; i < _p.size(); i++)
+        {
+            if (i == 0)
+                std::cout << "(x" << i + 1 << "=" << _p[i]._y << ", x" << i + 2 << "=" << _p[i]._x << ")";
+            else
+                std::cout << "(y" << i + 2 << "=" << _p[i]._y << ", x" << i + 2 << "=" << _p[i]._x << ")";
+            std::cout << " ";
+        }
+        std::cout << std::endl;
     }
-    std::cout << std::endl;
+    /*
     */
     // NO RECURSIVE TEST end
     if (!_p[0]._nan)
@@ -84,19 +88,23 @@ void    PmergeMe<T>::sort()
             k = k_max;
         for (int m = k0 + 1; m < k; m++)
         {
-            //std::cout << m + 2 << ":" << _S.size() << " ";
+            if (_debug)
+                std::cout << m + 2 << ":" << _S.size() << " ";
             _p[m]._pos = _S.size();
             _S.push_back(_p[m]._x);
         }
         _p[k]._pos = _S.size();
-        //std::cout << std::endl;
+        if (_debug)
+            std::cout << std::endl;
         for (int m = k; m > k0; m--)
         {
-            //std::cout << m + 2 << " ";
+            if (_debug)
+                std::cout << m + 2 << " ";
             if (!_p[m]._nan)
             {
                 _Y.push_back(_p[m]._y);
-                //std::cout << "Insert: " << _p[m]._y << " " << k - 1 << " " << _p[k - 1]._pos - 1 << std::endl;
+                if (_debug)
+                    std::cout << "Insert: " << _p[m]._y << " " << k - 1 << " " << _p[k - 1]._pos - 1 << std::endl;
                 insertPos = binarySearch(_S, _p[m]._y, 0, _p[k - 1]._pos);
                 _S.insert(_S.begin() + insertPos, _p[m]._y);
                 for (int i = k0 + 1; i <= k; i++)
@@ -104,13 +112,17 @@ void    PmergeMe<T>::sort()
                         _p[i]._pos++;
             }
         }
-        //std::cout << std::endl;
+        if (_debug)
+            std::cout << std::endl;
 
         _S.push_back(_p[k]._x);
 
-        //print_p();
-        //print_s();
-        //print_y();
+        if (_debug)
+        {
+            print_p();
+            print_s();
+            print_y();
+        }
     } while (k < k_max);
 }
 
