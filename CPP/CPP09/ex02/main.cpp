@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
         a.push_back(std::atoi(argv[i]));
     PmergeMe<int>    p(a);
 
-    p._debug = true;
+    //p._debug = true;
     p.sort();
     
     //std::cout << "========================================================" << std::endl;

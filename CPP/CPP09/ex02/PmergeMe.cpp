@@ -108,7 +108,7 @@ void    PmergeMe<T>::sort()
                     std::cout << "Insert: " << _p[m]._y << " " << k - 1 << " " << _p[k - 1]._pos << " " << insertPos << std::endl;
                 _S.insert(_S.begin() + insertPos, _p[m]._y);
                 for (int i = k0 + 1; i <= k; i++)
-                    if (_p[i]._pos > insertPos)
+                    if (_p[i]._pos >= insertPos)
                         _p[i]._pos++;
             }
             if (_debug)
