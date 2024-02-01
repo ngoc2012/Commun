@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 10:46:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:49:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
 {
     std::vector<PairedValue<T> >    _p;
     std::vector<T>                  _Y;
-    size_t  n = _a->size();
+    size_t  n = _a.size();
     if (!n)
         return ;
     if (n == 1)
@@ -50,7 +50,7 @@ void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
     n /= 2;
     for (size_t i = 0; i < n; i++)
         _p.push_back(PairedValue<T>((*_a)[i * 2], (*_a)[i * 2 + 1]));
-    if (_a->size() > n * 2)
+    if (_a.size() > n * 2)
     {
         _p.push_back(PairedValue<T>((*_a)[n * 2]));
         n++;
@@ -182,7 +182,7 @@ bool    PmergeMe::isSorted(std::vector<T>& arr)
 template <typename T>
 void    PmergeMe::print(std::vector<T>& _a)
 {
-    for (size_t i = 0; i < _a->size(); i++)
+    for (size_t i = 0; i < _a.size(); i++)
         std::cout << (*_a)[i] << " ";
     std::cout << std::endl;
 }
