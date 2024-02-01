@@ -64,8 +64,6 @@ int	main(int argc, char **argv)
         p.print(a);
         p.print_s(S);
     }
-    p.print(a);
-    p.print_s(S);
         
 
     return (0);
