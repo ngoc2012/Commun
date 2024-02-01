@@ -42,6 +42,9 @@ class PmergeMe
         int         binarySearch(std::vector<int>& arr, int target, int start, int end);
         void        insertInSortedArray(std::vector<int>& arr, int num, int start, int end);
 
+        int         binarySearchL(std::list<int>& lst, int target, int start, int end);
+        void        insertInSortedArrayL(std::list<int>& lst, int num, int start, int end);
+
 	public:
         bool        _debug;
         PmergeMe() {_debug = false;}
