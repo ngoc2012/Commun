@@ -18,9 +18,9 @@
 void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
 {
     // x, y with x is bigger
-    std::map<int, PairedValue<T>*>   P;
+    std::map<int, int>              P;
     std::vector<PairedValue<T> >    _p;
-    std::vector<int>       X;
+    std::vector<int>                X;
 
     size_t  n = A.size();
     if (!n)
@@ -48,17 +48,10 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
         return ;
     }
     
-    n /= 2;
-    for (size_t i = 0; i < n; i++)
+    size_t  n2 = n / 2;
+    for (size_t i = 0; i < n2; i++)
     {
-        if (A[i * 2 + 1] > A[i * 2])
-            P[A[i * 2 + 1]] = A[i * 2]
-    }
-        _p.push_back(PairedValue<T>(_a[i * 2], _a[i * 2 + 1]));
-    if (_a.size() > n * 2)
-    {
-        _p.push_back(PairedValue<T>(_a[n * 2]));
-        n++;
+
     }
     if (!_debug)
     {
@@ -89,6 +82,18 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
     /*
     */
     // NO RECURSIVE TEST end
+
+    for (size_t i = 0; i < n; i++)
+    {
+        _p.push_back(PairedValue<T>(_a[i * 2], _a[i * 2 + 1]));
+    }
+        
+    if (_a.size() > n * 2)
+    {
+        _p.push_back(PairedValue<T>(_a[n * 2]));
+        n++;
+    }
+
     if (!_p[0]._nan)
         _S.push_back(_p[0]._y);
     _S.push_back(_p[0]._x);
