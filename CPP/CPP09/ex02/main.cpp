@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 10:37:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:39:37 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,19 @@ int	main(int argc, char **argv)
     PmergeMe    p();
 
     //p._debug = true;
-    std::vector<int>    _S;
-    p.sort(a, _S);
+    std::vector<int>    S;
+    p.sort(a, S);
     
     //std::cout << "========================================================" << std::endl;
     //p.print_s();
-    std::cout << p._S.size() << " ";
-    if (p.isSorted(p._S))
+    std::cout << S.size() << " ";
+    if (p.isSorted(S))
         std::cout << "Sorted" << std::endl;
     else
     {
         std::cout << "Not sorted" << std::endl;
-        p.print();
-        p.print_s();
+        p.print(a);
+        p.print_s(S);
     }
         
 

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 10:36:43 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:38:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ class PmergeMe
 
         template <typename T>
         int         binarySearch(std::vector<T>& arr, T target, int start, int end);
+        template <typename T>
+        void        insertInSortedArray(std::vector<T>& arr, T num, int start, int end);
 
 	public:
         bool        _debug;
@@ -85,11 +87,14 @@ class PmergeMe
         bool        isSorted(std::vector<T>& arr);
         template <typename T>
         void        sort(std::vector<T>&);
+        template <typename T>
         void        print(std::vector<T>&);
-        void        print_p(std::vector<T>&);
+        template <typename T>
+        void        print_p(std::vector<PairedValue<T> >&);
+        template <typename T>
         void        print_s(std::vector<T>&);
+        template <typename T>
         void        print_y(std::vector<T>&);
-        void        insertInSortedArray(std::vector<T>& arr, T num, int start, int end);
 };
 
 #endif
