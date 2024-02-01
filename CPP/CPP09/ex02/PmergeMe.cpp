@@ -51,7 +51,12 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
     size_t  n2 = n / 2;
     for (size_t i = 0; i < n2; i++)
     {
-        X.push_back(A[i * 2 + 1]);
+        if (A[i * 2 + 1] > A[i * 2])
+        {
+            X.push_back(A[i * 2 + 1]);
+            P[A[i * 2 + 1]] = A[i * 2];
+        }
+        
     }
     if (n > n2 * 2)
     {
