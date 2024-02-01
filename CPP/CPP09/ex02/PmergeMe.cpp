@@ -76,9 +76,14 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
     for (size_t i = 0; i < XX.size(); i++)
         VP.push_back(PairedValue(XX[i], P[XX[i]]));
 
+    int     pos = 0;
     if (VP[0]._y != -1)
+    {
         S.push_back(VP[0]._y);
+        pos++;
+    }
     S.push_back(VP[0]._x);
+    pos++;
     int     j = 0;
     int     k = 0;
     int     k0 = k;
@@ -96,8 +101,10 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
         {
             if (_debug)
                 std::cout << m + 2 << ":" << S.size() << " ";
-            VP[m]._pos = S.size();
+            //VP[m]._pos = S.size();
+            VP[m]._pos = pos;
             S.push_back(VP[m]._x);
+            pos++;
         }
         VP[k]._pos = S.size();
         if (_debug)
@@ -128,6 +135,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
             std::cout << std::endl;
 
         S.push_back(VP[k]._x);
+        pos++;
 
         if (_debug)
         {
