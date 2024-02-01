@@ -100,15 +100,11 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
             k = k_max;
         for (int m = k0 + 1; m < k; m++)
         {
-            if (_debug)
-                std::cout << m + 2 << ":" << S.size() << " ";
             VP[m]._pos = pos;
             S.push_back(VP[m]._x);
             pos++;
         }
         VP[k]._pos = S.size();
-        if (_debug)
-            std::cout << std::endl;
         for (int m = k; m > k0; m--)
         {
             if (_debug)
@@ -129,18 +125,8 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
             }
                 
         }
-        if (_debug)
-            std::cout << std::endl;
-
         S.push_back(VP[k]._x);
         pos++;
-
-        if (_debug)
-        {
-            print_p(VP);
-            print(S);
-            print(Y);
-        }
     } while (k < k_max);
 }
 
