@@ -101,7 +101,6 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
         {
             if (_debug)
                 std::cout << m + 2 << ":" << S.size() << " ";
-            //VP[m]._pos = S.size();
             VP[m]._pos = pos;
             S.push_back(VP[m]._x);
             pos++;
@@ -120,6 +119,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
                 if (_debug)
                     std::cout << "Insert: " << VP[m]._y << " " << k - 1 << " " << VP[k - 1]._pos << " " << insertPos << std::endl;
                 S.insert(S.begin() + insertPos, VP[m]._y);
+                pos++;
                 for (int i = k0 + 1; i <= k; i++)
                     if (VP[i]._pos >= insertPos)
                         VP[i]._pos++;
