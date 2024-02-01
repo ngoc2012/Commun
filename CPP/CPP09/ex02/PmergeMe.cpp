@@ -6,11 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 10:54:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:57:29 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+#ifndef PMERGEME_CPP
+# define PMERGEME_CPP
 
 PmergeMe::PmergeMe() {_debug = false;}
 
@@ -236,3 +239,5 @@ void    PmergeMe::print_y(std::vector<T>& _Y)
         std::cout << _Y[i] << " ";
     std::cout << std::endl;
 }
+
+#endif
