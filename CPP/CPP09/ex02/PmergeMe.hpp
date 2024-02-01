@@ -18,6 +18,67 @@
 #include <algorithm>
 #include <map>
 
+class   PairedValue
+{
+    public:
+        int       _y;
+        int       _x;
+        int     _pos;
+        bool    _nan;
+
+        PairedValue	&operator=(const PairedValue& op)
+        {
+            _y = op._y;
+            _x = op._x;
+            _pos = op._pos;
+            _nan = op._nan;
+        }
+
+        PairedValue(int& a, int& b)
+        {
+            if (a > b)
+            {
+                _x = a;
+                _y = b;
+            }
+            else
+            {
+                _x = b;
+                _y = a;
+            }
+            _pos = -1;
+            _nan = false;
+        }
+
+        PairedValue(int& b)
+        {
+            _x = b;
+            _y = b;
+            _pos = -1;
+            _nan = true;
+        }
+
+        void    print() { std::cout << "(" << _y << ", " << _x << ")";}
+
+        bool operator<(const PairedValue& other) const {
+            return _x < other._x;
+        }
+
+        bool operator==(const PairedValue& other) const {
+            return _x == other._x;
+        }
+
+        bool operator>(const PairedValue& other) const {
+            return _x > other._x;
+        }
+};
+
+template <typename T>
+std::ostream& operator<<(std::ostream& s, PairedValue& a)
+{
+    return s << "(" << a._y << ", " << a._x << ")";
+}
+
 class PmergeMe
 {
 	private:

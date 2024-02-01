@@ -21,6 +21,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
     std::map<int, int>              P;
     std::vector<PairedValue<T> >    _p;
     std::vector<int>                X;
+    std::vector<int>                XX;
 
     size_t  n = A.size();
     if (!n)
@@ -68,36 +69,9 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
         X.push_back(A[n2 * 2]);
         P[A[n2 * 2]] = -1;
     }
-    if (!_debug)
-    {
-        //PmergeMe            pm;
-        //pm.sort(_p0, _p);
-        std::sort(X.begin(), X.end());
-    }
-    else
-    {
-        std::cout << "========================================================" << std::endl;
-        print(_a);
-        std::cout << "========================================================" << std::endl;
-        print_p(_p);
-        // NO RECURSIVE TEST
-        std::sort(_p.begin(), _p.end());
-        std::cout << "========================================================" << std::endl;
-        print_p(_p);
-        for (size_t i = 0; i < _p.size(); i++)
-        {
-            if (i == 0)
-                std::cout << "(x" << i + 1 << "=" << _p[i]._y << ", x" << i + 2 << "=" << _p[i]._x << ")";
-            else
-                std::cout << "(y" << i + 2 << "=" << _p[i]._y << ", x" << i + 2 << "=" << _p[i]._x << ")";
-            std::cout << " ";
-        }
-        std::cout << std::endl;
-    }
-    /*
-    */
-    // NO RECURSIVE TEST end
-
+    std::sort(X.begin(), X.end());
+    XX = X;
+    
     for (size_t i = 0; i < n; i++)
     {
         _p.push_back(PairedValue<T>(_a[i * 2], _a[i * 2 + 1]));
