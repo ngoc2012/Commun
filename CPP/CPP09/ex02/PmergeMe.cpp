@@ -19,7 +19,8 @@ PmergeMe::PmergeMe() {_debug = false;}
 
 PmergeMe::~PmergeMe() {}
 
-void    PmergeMe::sort(std::vector<PairedValue<int> >& _a, std::vector<PairedValue<int> >& _S)
+template <typename T>
+void    PmergeMe::sort(std::vector<PairedValue<T> >& _a, std::vector<PairedValue<T> >& _S)
 {
     std::vector<PairedValue<PairedValue<int> > >    _p;
     std::vector<PairedValue<int> >    _Y;
