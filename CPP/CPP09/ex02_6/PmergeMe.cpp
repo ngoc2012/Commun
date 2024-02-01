@@ -70,11 +70,8 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
         X.push_back(A[n2 * 2]);
         P[A[n2 * 2]] = -1;
     }
-    //std::sort(X.begin(), X.end());
-    //XX = X;
-
-    PmergeMe    p;
-    p.sort(X, XX)
+    std::sort(X.begin(), X.end());
+    XX = X;
 
     for (size_t i = 0; i < XX.size(); i++)
         VP.push_back(PairedValue(XX[i], P[XX[i]]));
