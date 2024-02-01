@@ -71,15 +71,15 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
     }
     std::sort(X.begin(), X.end());
     XX = X;
-    
-    for (size_t i = 0; i < n; i++)
+
+    for (size_t i = 0; i < XX.size(); i++)
     {
-        _p.push_back(PairedValue<T>(_a[i * 2], _a[i * 2 + 1]));
+        _p.push_back(PairedValue(X[i], _a[i * 2 + 1]));
     }
         
-    if (_a.size() > n * 2)
+    if (n > n2 * 2)
     {
-        _p.push_back(PairedValue<T>(_a[n * 2]));
+        _p.push_back(PairedValue(X[n2 * 2]));
         n++;
     }
 

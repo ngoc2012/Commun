@@ -21,8 +21,8 @@
 class   PairedValue
 {
     public:
-        int       _y;
         int       _x;
+        int       _y;
         int     _pos;
 
         PairedValue(int& x, int& y): _x(x), _y(y)
