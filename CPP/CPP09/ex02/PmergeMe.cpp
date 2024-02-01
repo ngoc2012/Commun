@@ -15,40 +15,43 @@
 
 #include "PmergeMe.hpp"
 
-void    PmergeMe::sort(std::vector<int>& _a, std::vector<int>& _S)
+void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
 {
     // x, y with x is bigger
-    std::map<int, int >    p;
-    std::vector<int>       Y;
+    std::map<int, int >    P;
+    std::vector<int>       X;
 
-    size_t  n = _a.size();
+    size_t  n = A.size();
     if (!n)
         return ;
     if (n == 1)
     {
-        _S = _a;
+        S = A;
         return ;
     }
     if (n == 2)
     {
-        _S = _a;
-        if (_S[0] > _S[1])
-            std::swap(_S[0], _S[1]);
+        S = A;
+        if (S[0] > S[1])
+            std::swap(S[0], S[1]);
         return ;
     }
     
     if (n <= 4)
     {
-        _S = _a;
+        S = A;
         for (size_t i = 1; i < n; i++)
             for (size_t j = 0; j < i; j++)
-                if (_S[i] < _S[j])
-                    std::swap(_S[i], _S[j]);
+                if (S[i] < S[j])
+                    std::swap(S[i], S[j]);
         return ;
     }
     
     n /= 2;
     for (size_t i = 0; i < n; i++)
+    {
+
+    }
         _p.push_back(PairedValue<T>(_a[i * 2], _a[i * 2 + 1]));
     if (_a.size() > n * 2)
     {
