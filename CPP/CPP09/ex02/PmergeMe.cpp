@@ -111,6 +111,8 @@ void    PmergeMe<T>::sort()
                     if (_p[i]._pos > insertPos)
                         _p[i]._pos++;
             }
+            if (_debug)
+                print_p();
         }
         if (_debug)
             std::cout << std::endl;
