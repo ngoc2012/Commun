@@ -41,7 +41,8 @@ int	main(int argc, char **argv)
     
     for (int i = 1; i < argc; i++)
     {
-        PairedValue<int>    b(std::atoi(argv[i]));
+        int     n = std::atoi(argv[i]);
+        PairedValue<int>    b(n);
         a.push_back(b);
     }
         
