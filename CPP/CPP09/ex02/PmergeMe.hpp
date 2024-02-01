@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 10:40:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:46:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ class PmergeMe
         template <typename T>
         bool        isSorted(std::vector<T>& arr);
         template <typename T>
-        void        sort(std::vector<T>&);
+        void        sort(std::vector<T>&, std::vector<T>&);
         template <typename T>
         void        print(std::vector<T>&);
         template <typename T>

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 10:46:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:46:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,7 +229,7 @@ void    PmergeMe::print_s(std::vector<T>& _S)
 }
 
 template <typename T>
-void    PmergeMe::print_y(std::vector<T> _Y)
+void    PmergeMe::print_y(std::vector<T>& _Y)
 {
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < _Y.size(); i++)
