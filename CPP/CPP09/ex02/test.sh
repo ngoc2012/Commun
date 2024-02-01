@@ -8,7 +8,7 @@
 
 for i in {2..5}
 do
-    for i in {1..20}; do
+    for j in {1..50}; do
         ./exe `shuf -i 1-100000 -n $i | tr "\n" " "`
     done
 done
