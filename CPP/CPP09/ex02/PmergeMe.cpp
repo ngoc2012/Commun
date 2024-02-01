@@ -15,12 +15,11 @@
 
 #include "PmergeMe.hpp"
 
-template <typename T>
 void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
 {
-    //std::vector<PairedValue<T> >    _p0;
-    std::vector<PairedValue<T> >    _p;
-    std::vector<T>                  _Y;
+    // x, y with x is bigger
+    std::map<int, int >    p;
+    std::vector<int>       Y;
 
     size_t  n = _a.size();
     if (!n)

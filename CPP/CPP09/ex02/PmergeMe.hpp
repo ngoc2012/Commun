@@ -99,12 +99,8 @@ class PmergeMe
         void        print(std::vector<T>&);
         template <typename T>
         void        print_p(std::vector<T>&);
-        template <typename T>
         void        print_s(std::vector<T>&);
-        template <typename T>
         void        print_y(std::vector<T>&);
 };
-
-#include "PmergeMe.cpp"
 
 #endif
