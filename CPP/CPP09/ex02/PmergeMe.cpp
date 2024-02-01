@@ -191,7 +191,7 @@ void    PmergeMe::print(std::vector<T>& _a)
 }
 
 template <typename T>
-void    PmergeMe::print_p(std::vector<PairedValue<T> >& p)
+void    PmergeMe::print_p(std::vector<T>& p)
 {
     std::cout << "P:" << std::endl;
     for (size_t i = 0; i < p.size(); i++)
@@ -204,7 +204,7 @@ void    PmergeMe::print_p(std::vector<PairedValue<T> >& p)
 }
 
 template <typename T>
-void    PmergeMe::print_s(std::vector<PairedValue<T> >& S)
+void    PmergeMe::print_s(std::vector<T>& S)
 {
     std::cout << "S:" << std::endl;
     if (!S.size())
@@ -220,7 +220,7 @@ void    PmergeMe::print_s(std::vector<PairedValue<T> >& S)
 }
 
 template <typename T>
-void    PmergeMe::print_y(std::vector<PairedValue<T> >& Y)
+void    PmergeMe::print_y(std::vector<T>& Y)
 {
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < Y.size(); i++)
