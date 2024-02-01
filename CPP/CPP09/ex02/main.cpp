@@ -62,7 +62,7 @@ int	main(int argc, char **argv)
     {
         std::cout << "Not sorted" << std::endl;
         p.print(a);
-        p.print_s(S);
+        p.print(S);
     }
         
 
