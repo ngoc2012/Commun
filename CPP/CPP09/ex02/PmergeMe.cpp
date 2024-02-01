@@ -19,7 +19,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
 {
     // x, y with x is bigger
     std::map<int, int>              P;
-    std::vector<PairedValue<T> >    _p;
+    std::vector<PairedValue<T> >    VP;
     std::vector<int>                X;
     std::vector<int>                XX;
 
@@ -73,18 +73,10 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
     XX = X;
 
     for (size_t i = 0; i < XX.size(); i++)
-    {
-        _p.push_back(PairedValue(X[i], _a[i * 2 + 1]));
-    }
-        
-    if (n > n2 * 2)
-    {
-        _p.push_back(PairedValue(X[n2 * 2]));
-        n++;
-    }
+        VP.push_back(PairedValue(XX[i], P[XX[i]]));
 
-    if (!_p[0]._nan)
-        _S.push_back(_p[0]._y);
+    if (!VP[0]._y != -1)
+        S.push_back(_p[0]._y);
     _S.push_back(_p[0]._x);
     int     j = 0;
     int     k = 0;
