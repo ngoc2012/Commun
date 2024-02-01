@@ -32,6 +32,8 @@ class   PairedValue
         {
             _y = op._y;
             _x = op._x;
+            _pos = op._pos;
+            _nan = op._nan;
         }
 
         PairedValue(T& a, T& b)
