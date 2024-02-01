@@ -89,7 +89,7 @@ class PmergeMe
         bool        isSorted(std::vector<PairedValue<int> >& arr);
 
         template <typename T>
-        void        sort(std::vector<PairedValue<T> >&, std::vector<PairedValue<T> >&);
+        void        sort(std::vector<T >&, std::vector<T >&);
         template <typename T>
         void        print(std::vector<PairedValue<T> >&);
         template <typename T>
