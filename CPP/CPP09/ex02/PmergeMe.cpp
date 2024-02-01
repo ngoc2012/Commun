@@ -6,12 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 10:58:56 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 11:03:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PMERGEME_CPP
 # define PMERGEME_CPP
+
+#include "PmergeMe.hpp"
 
 PmergeMe::PmergeMe() {_debug = false;}
 
