@@ -22,6 +22,7 @@ all:	$(MANDA)
 $(MANDA): $(SRCS) $(OBJS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
+	clear
 	#make re && valgrind ./exe `shuf -i 1-10000 -n 1 | tr "\n" " "`
 	#make re && valgrind ./exe `shuf -i 1-10000 -n 2 | tr "\n" " "`
 	#make re && valgrind ./exe `shuf -i 1-100000 -n 11 | tr "\n" " "`
