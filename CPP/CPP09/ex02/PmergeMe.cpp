@@ -20,7 +20,7 @@ PmergeMe::PmergeMe() {_debug = false;}
 PmergeMe::~PmergeMe() {}
 
 template <typename T>
-void    PmergeMe::sort(std::vector<PairedValue>& _a, std::vector<PairedValue>& _S)
+void    PmergeMe::sort(std::vector<PairedValue<int> >& _a, std::vector<PairedValue<int> >& _S)
 {
     std::vector<PairedValue>    _p;
     std::vector<PairedValue>    _Y;
@@ -53,10 +53,10 @@ void    PmergeMe::sort(std::vector<PairedValue>& _a, std::vector<PairedValue>& _
     
     n /= 2;
     for (size_t i = 0; i < n; i++)
-        _p.push_back(PairedValue<PairedValue>(_a[i * 2], _a[i * 2 + 1]));
+        _p.push_back(PairedValue<int>(_a[i * 2], _a[i * 2 + 1]));
     if (_a.size() > n * 2)
     {
-        _p.push_back(PairedValue<PairedValue>(_a[n * 2]));
+        _p.push_back(PairedValue<int>(_a[n * 2]));
         n++;
     }
     if (!_debug)
@@ -147,7 +147,7 @@ void    PmergeMe::sort(std::vector<PairedValue>& _a, std::vector<PairedValue>& _
     } while (k < k_max);
 }
 
-int PmergeMe::binarySearch(std::vector<PairedValue>& arr, PairedValue target, int start, int end) {
+int PmergeMe::binarySearch(std::vector<PairedValue<int> >& arr, PairedValue<int> target, int start, int end) {
     int low = start;
     int high = end;
 
@@ -166,13 +166,13 @@ int PmergeMe::binarySearch(std::vector<PairedValue>& arr, PairedValue target, in
 }
 
 // start end included
-void    PmergeMe::insertInSortedArray(std::vector<PairedValue>& arr, PairedValue num, int start, int end)
+void    PmergeMe::insertInSortedArray(std::vector<PairedValue<int> >& arr, PairedValue<int> num, int start, int end)
 {
     int insertPos = binarySearch(arr, num, start, end);
     arr.insert(arr.begin() + insertPos, num);
 }
 
-bool    PmergeMe::isSorted(std::vector<PairedValue>& a)
+bool    PmergeMe::isSorted(std::vector<PairedValue<int> >& a)
 {
     for (size_t i = 0; i < a.size() - 1; i++)
         if (a[i] > a[i + 1])
@@ -180,14 +180,14 @@ bool    PmergeMe::isSorted(std::vector<PairedValue>& a)
     return true;
 }
 
-void    PmergeMe::print(std::vector<PairedValue>& _a)
+void    PmergeMe::print(std::vector<PairedValue<int> >& _a)
 {
     for (size_t i = 0; i < _a.size(); i++)
         std::cout << _a[i].print() << " ";
     std::cout << std::endl;
 }
 
-void    PmergeMe::printp(std::vector<PairedValue<PairedValue> >& p)
+void    PmergeMe::printp(std::vector<PairedValue<int> >& p)
 {
     std::cout << "P:" << std::endl;
     for (size_t i = 0; i < p.size(); i++)
@@ -199,7 +199,7 @@ void    PmergeMe::printp(std::vector<PairedValue<PairedValue> >& p)
     std::cout << std::endl;
 }
 
-void    PmergeMe::print_s(std::vector<PairedValue>& S)
+void    PmergeMe::print_s(std::vector<PairedValue<int> >& S)
 {
     std::cout << "S:" << std::endl;
     if (!S.size())
@@ -214,7 +214,7 @@ void    PmergeMe::print_s(std::vector<PairedValue>& S)
     std::cout << std::endl;
 }
 
-void    PmergeMe::print_y(std::vector<PairedValue>& Y)
+void    PmergeMe::print_y(std::vector<PairedValue<int> >& Y)
 {
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < Y.size(); i++)
