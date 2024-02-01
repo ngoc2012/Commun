@@ -19,7 +19,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
 {
     // x, y with x is bigger
     std::map<int, int>              P;
-    std::vector<PairedValue<T> >    VP;
+    std::vector<PairedValue<int> >    VP;
     std::vector<int>                X;
     std::vector<int>                XX;
     std::vector<int>                Y;
@@ -138,7 +138,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
     } while (k < k_max);
 }
 
-int PmergeMe::binarySearch(std::vector<int>& arr, T target, int start, int end) {
+int     PmergeMe::binarySearch(std::vector<int>& arr, int target, int start, int end) {
     int low = start;
     int high = end;
 
@@ -157,15 +157,13 @@ int PmergeMe::binarySearch(std::vector<int>& arr, T target, int start, int end) 
 }
 
 // start end included
-template <typename T>
-void    PmergeMe::insertInSortedArray(std::vector<T>& arr, T num, int start, int end)
+void    PmergeMe::insertInSortedArray(std::vector<int>& arr, int num, int start, int end)
 {
     int insertPos = binarySearch(arr, num, start, end);
     arr.insert(arr.begin() + insertPos, num);
 }
 
-template <typename T>
-bool    PmergeMe::isSorted(std::vector<T>& a)
+bool    PmergeMe::isSorted(std::vector<int>& a)
 {
     for (size_t i = 0; i < a.size() - 1; i++)
         if (a[i] > a[i + 1])
@@ -184,11 +182,7 @@ void    PmergeMe::print_p(std::vector<PairedValue>& p)
 {
     std::cout << "P:" << std::endl;
     for (size_t i = 0; i < p.size(); i++)
-    {
-        std::cout << i << ":" << p[i]._pos << ":";
-        p[i].print();
-        std::cout << " ";
-    }
+        std::cout << i << ":" << p[i]._pos << ":" << p[i] << " ";
     std::cout << std::endl;
 }
 
