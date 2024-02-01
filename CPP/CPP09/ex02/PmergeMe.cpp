@@ -148,7 +148,7 @@ void    PmergeMe::sort(std::vector<PairedValue<T> >& _a, std::vector<PairedValue
 }
 
 template <typename T>
-int PmergeMe::binarySearch(std::vector<PairedValue<int> >& arr, PairedValue<int> target, int start, int end) {
+int PmergeMe::binarySearch(std::vector<PairedValue<T> >& arr, PairedValue<T> target, int start, int end) {
     int low = start;
     int high = end;
 
@@ -167,7 +167,8 @@ int PmergeMe::binarySearch(std::vector<PairedValue<int> >& arr, PairedValue<int>
 }
 
 // start end included
-void    PmergeMe::insertInSortedArray(std::vector<PairedValue<int> >& arr, PairedValue<int> num, int start, int end)
+template <typename T>
+void    PmergeMe::insertInSortedArray(std::vector<PairedValue<T> >& arr, PairedValue<T> num, int start, int end)
 {
     int insertPos = binarySearch(arr, num, start, end);
     arr.insert(arr.begin() + insertPos, num);
@@ -181,14 +182,16 @@ bool    PmergeMe::isSorted(std::vector<PairedValue<int> >& a)
     return true;
 }
 
-void    PmergeMe::print(std::vector<PairedValue<int> >& _a)
+template <typename T>
+void    PmergeMe::print(std::vector<PairedValue<T> >& _a)
 {
     for (size_t i = 0; i < _a.size(); i++)
         std::cout << _a[i] << " ";
     std::cout << std::endl;
 }
 
-void    PmergeMe::printp(std::vector<PairedValue<int> >& p)
+template <typename T>
+void    PmergeMe::printp(std::vector<PairedValue<T> >& p)
 {
     std::cout << "P:" << std::endl;
     for (size_t i = 0; i < p.size(); i++)
@@ -200,7 +203,8 @@ void    PmergeMe::printp(std::vector<PairedValue<int> >& p)
     std::cout << std::endl;
 }
 
-void    PmergeMe::print_s(std::vector<PairedValue<int> >& S)
+template <typename T>
+void    PmergeMe::print_s(std::vector<PairedValue<T> >& S)
 {
     std::cout << "S:" << std::endl;
     if (!S.size())
@@ -215,7 +219,8 @@ void    PmergeMe::print_s(std::vector<PairedValue<int> >& S)
     std::cout << std::endl;
 }
 
-void    PmergeMe::print_y(std::vector<PairedValue<int> >& Y)
+template <typename T>
+void    PmergeMe::print_y(std::vector<PairedValue<T> >& Y)
 {
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < Y.size(); i++)
