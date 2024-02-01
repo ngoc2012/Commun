@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 10:46:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 11:00:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,7 @@ class PmergeMe
         template <typename T>
         void        print_y(std::vector<T>&);
 };
+
+#include "PmergeMe.cpp"
 
 #endif
