@@ -17,17 +17,6 @@
 
 #include "PmergeMe.hpp"
 
-int	main(int argc, char **argv)
-{
-    if (argc < 2)
-        std::cout << "Use: ./exe 1 2 .. " << std::endl;
-
-    //vector_sort(argc, argv);
-    list_sort(argc, argv);
-
-    return (0);
-}
-
 void    vector_sort(int argc, char **argv)
 {
     std::vector<int> a;
@@ -68,4 +57,15 @@ void    list_sort(int argc, char **argv)
         p.printL(S);
     }
 
+}
+
+int	main(int argc, char **argv)
+{
+    if (argc < 2)
+        std::cout << "Use: ./exe 1 2 .. " << std::endl;
+
+    //vector_sort(argc, argv);
+    list_sort(argc, argv);
+
+    return (0);
 }

@@ -168,7 +168,92 @@ void    PmergeMe::print_p(std::vector<PairedValue>& p)
     std::cout << std::endl;
 }
 
+void PmergeMe::sortL(std::list<int>& A, std::list<int>& S) {
+    size_t n = A.size();
+    if (!n)
+        return;
+    if (n == 1) {
+        S = A;
+        return;
+    }
+    if (n == 2) {
+        S = A;
+        S.sort();
+        return;
+    }
 
+    if (n <= 4) {
+        S = A;
+        S.sort();
+        return;
+    }
+
+    // x, y with x is bigger
+    std::map<int, int> P;
+    std::list<int> X;
+    size_t n2 = n / 2;
+    for (size_t i = 0; i < n2; i++) {
+        if (A.front() < A.back()) {
+            X.push_back(A.front());
+            P[A.front()] = A.back();
+        } else {
+            X.push_back(A.back());
+            P[A.back()] = A.front();
+        }
+        A.pop_front();
+        A.pop_back();
+    }
+    if (n > n2 * 2) {
+        X.push_back(A.front());
+        P[A.front()] = -1;
+        A.pop_front();
+    }
+
+    X.sort();
+    std::list<PairedValue> VP;
+    for (std::list<int>::iterator it = X.begin(); it != X.end(); ++it)
+        VP.push_back(PairedValue(*it, P[*it]));
+
+    int pos = 0;
+    if (VP.front()._y != -1) {
+        S.push_back(VP.front()._y);
+        pos++;
+    }
+    S.push_back(VP.front()._x);
+    pos++;
+    int j = 0;
+    int k = 0;
+    int k0 = k;
+    int nn = 1;
+    int k_max = VP.size() - 1;
+    int insertPos;
+    do {
+        nn *= 2;
+        j = nn - j;
+        k0 = k;
+        k += j;
+        if (k > k_max)
+            k = k_max;
+        for (int m = k0 + 1; m < k; m++) {
+            VP[m]._pos = pos;
+            S.push_back(VP[m]._x);
+            pos++;
+        }
+        VP[k]._pos = S.size();
+        for (int m = k; m > k0; m--) {
+            if (VP[m]._y != -1) {
+                insertPos = binarySearch(S, VP[m]._y, 0, VP[k - 1]._pos);
+                insertInSortedArray(S, VP[m]._y, 0, VP[k - 1]._pos);
+                pos++;
+                for (std::list<PairedValue>::iterator it = VP.begin(); it != VP.end(); ++it)
+                    if (it->_pos >= insertPos)
+                        it->_pos++;
+            }
+        }
+        S.push_back(VP[k]._x);
+        pos++;
+    } while (k < k_max);
+}
 
 int PmergeMe::binarySearchL(std::list<int>& lst, int target, int start, int end) {
     int low = start;
