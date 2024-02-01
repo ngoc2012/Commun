@@ -15,10 +15,6 @@
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe() {_debug = false;}
-
-PmergeMe::~PmergeMe() {}
-
 template <typename T>
 void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
 {

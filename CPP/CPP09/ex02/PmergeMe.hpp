@@ -87,8 +87,9 @@ class PmergeMe
 
 	public:
         bool        _debug;
-        PmergeMe();
-		virtual     ~PmergeMe();
+        PmergeMe() {_debug = false;}
+
+		virtual     ~PmergeMe() {}
 
         template <typename T>
         bool        isSorted(std::vector<T>& arr);
