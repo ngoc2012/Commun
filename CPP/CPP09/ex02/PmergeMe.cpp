@@ -15,7 +15,7 @@
 
 #include "PmergeMe.hpp"
 
-void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
+void    PmergeMe::sort(std::vector<int>& _a, std::vector<int>& _S)
 {
     // x, y with x is bigger
     std::map<int, int >    p;
