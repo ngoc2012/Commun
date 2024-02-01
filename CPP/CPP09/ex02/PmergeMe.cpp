@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 08:41:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:41:27 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ template <typename T>
 PmergeMe<T>::~PmergeMe() {}
 
 template <typename T>
-void    PmergeMe<T>::sort(std::vector<T>* _a, std::vector<T> _S)
+void    PmergeMe<T>::sort(std::vector<T>& _a, std::vector<T>& _S)
 {
     std::vector<PairedValue<T> >    _p;
     size_t  n = _a->size();
@@ -181,7 +181,7 @@ bool    PmergeMe<T>::isSorted(std::vector<T>& arr)
 }
 
 template <typename T>
-void    PmergeMe<T>::print()
+void    PmergeMe<T>::print(std::vector<T>& arr)
 {
     for (size_t i = 0; i < _a->size(); i++)
         std::cout << (*_a)[i] << " ";
@@ -189,7 +189,7 @@ void    PmergeMe<T>::print()
 }
 
 template <typename T>
-void    PmergeMe<T>::print_p()
+void    PmergeMe<T>::print_p(std::vector<PairedValue<T> >&)
 {
     std::cout << "P:" << std::endl;
     for (size_t i = 0; i < _p.size(); i++)
@@ -212,7 +212,7 @@ struct isInt<int> {
 };
 
 template <typename T>
-void    PmergeMe<T>::print_s()
+void    PmergeMe<T>::print_s(std::vector<T>& arr)
 {
     std::cout << "S:" << std::endl;
     if (!_S.size())
