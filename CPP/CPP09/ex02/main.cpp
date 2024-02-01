@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
         
     PmergeMe    p;
 
-    //p._debug = true;
+    p._debug = true;
     std::vector<int>    S;
     p.sort(a, S);
     

@@ -58,9 +58,9 @@ void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
     }
     if (!_debug)
     {
-        PmergeMe            pm;
-        pm.sort(_p0, _p);
-        //std::sort(_p.begin(), _p.end());
+        //PmergeMe            pm;
+        //pm.sort(_p0, _p);
+        std::sort(_p.begin(), _p.end());
     }
     else
     {

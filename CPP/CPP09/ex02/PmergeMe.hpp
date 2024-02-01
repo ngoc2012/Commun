@@ -28,14 +28,6 @@ class   PairedValue
         int     _pos;
         bool    _nan;
 
-        PairedValue	&operator=(const PairedValue& op)
-        {
-            _y = op._y;
-            _x = op._x;
-            _pos = op._pos;
-            _nan = op._nan;
-        }
-
         PairedValue(T& a, T& b)
         {
             if (a > b)
