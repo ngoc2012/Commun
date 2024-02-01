@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 {
     if (argc < 2)
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
-    std::vector<PairedValue<int> > a;
+    std::vector<int> a;
 
     /*
     // Check insert sort
@@ -42,15 +42,15 @@ int	main(int argc, char **argv)
     
     for (int i = 1; i < argc; i++)
     {
-        int     n = std::atoi(argv[i]);
-        PairedValue<int>    b(n);
-        a.push_back(b);
+        //int     n = std::atoi(argv[i]);
+        //PairedValue<int>    b(n);
+        a.push_back(std::atoi(argv[i]));
     }
         
     PmergeMe    p;
 
     //p._debug = true;
-    std::vector<PairedValue<int> >    S;
+    std::vector<int>    S;
     p.sort(a, S);
     
     //std::cout << "========================================================" << std::endl;

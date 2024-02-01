@@ -174,7 +174,8 @@ void    PmergeMe::insertInSortedArray(std::vector<T>& arr, T num, int start, int
     arr.insert(arr.begin() + insertPos, num);
 }
 
-bool    PmergeMe::isSorted(std::vector<PairedValue<int> >& a)
+template <typename T>
+bool    PmergeMe::isSorted(std::vector<T>& a)
 {
     for (size_t i = 0; i < a.size() - 1; i++)
         if (a[i] > a[i + 1])
