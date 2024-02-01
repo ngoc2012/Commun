@@ -22,11 +22,10 @@ int	main(int argc, char **argv)
 {
     if (argc < 2)
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
+
     std::vector<int> a;
-    
     for (int i = 1; i < argc; i++)
         a.push_back(std::atoi(argv[i]));
-        
     PmergeMe    p;
     //p._debug = true;
     std::vector<int>    S;
