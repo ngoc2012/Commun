@@ -65,12 +65,10 @@ class   PairedValue
 
 //std::ostream& operator<<(std::ostream& s, PairedValue
 
-template <typename T>
+
 class PmergeMe
 {
 	private:
-        std::vector<T>*                 _a;
-
 		PmergeMe();
 		PmergeMe(const PmergeMe&);
 		PmergeMe	&operator=(const PmergeMe& op);
@@ -85,8 +83,10 @@ class PmergeMe
 		PmergeMe(std::vector<T>&);
 		virtual ~PmergeMe();
 
+        template <typename T>
         bool        isSorted(std::vector<T>& arr);
-        void        sort();
+        template <typename T>
+        void        sort(std::vector<T>*);
         void        print();
         void        print_p();
         void        print_s();

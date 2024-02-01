@@ -13,14 +13,15 @@
 #include "PmergeMe.hpp"
 
 template <typename T>
-PmergeMe<T>::PmergeMe(std::vector<T>& a) { _a = &a; _debug = false;}
+PmergeMe<T>::PmergeMe() {_debug = false;}
 
 template <typename T>
 PmergeMe<T>::~PmergeMe() {}
 
 template <typename T>
-void    PmergeMe<T>::sort()
+void    PmergeMe<T>::sort(std::vector<T>* _a)
 {
+    std::vector<PairedValue<T> >    _p;
     size_t  n = _a->size();
     if (!n)
         return ;

@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
     
     for (int i = 1; i < argc; i++)
         a.push_back(std::atoi(argv[i]));
-    PmergeMe<int>    p();
+    PmergeMe    p();
 
     //p._debug = true;
     p.sort(a);
