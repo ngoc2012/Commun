@@ -22,6 +22,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
     std::vector<PairedValue<T> >    VP;
     std::vector<int>                X;
     std::vector<int>                XX;
+    std::vector<int>                Y;
 
     size_t  n = A.size();
     if (!n)
@@ -76,15 +77,14 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
         VP.push_back(PairedValue(XX[i], P[XX[i]]));
 
     if (!VP[0]._y != -1)
-        S.push_back(_p[0]._y);
-    _S.push_back(_p[0]._x);
+        S.push_back(VP[0]._y);
+    S.push_back(VP[0]._x);
     int     j = 0;
     int     k = 0;
     int     k0 = k;
     int     nn = 1;
-    int     k_max = _p.size() - 1;
+    int     k_max = VP.size() - 1;
     int     insertPos;
-    //_p[1]._pos = _S.size();
     do {
         nn *= 2;
         j = nn - j;
@@ -95,27 +95,27 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
         for (int m = k0 + 1; m < k; m++)
         {
             if (_debug)
-                std::cout << m + 2 << ":" << _S.size() << " ";
-            _p[m]._pos = _S.size();
-            _S.push_back(_p[m]._x);
+                std::cout << m + 2 << ":" << S.size() << " ";
+            VP[m]._pos = S.size();
+            S.push_back(VP[m]._x);
         }
-        _p[k]._pos = _S.size();
+        VP[k]._pos = S.size();
         if (_debug)
             std::cout << std::endl;
         for (int m = k; m > k0; m--)
         {
             if (_debug)
                 std::cout << m + 2 << " ";
-            if (!_p[m]._nan)
+            if (!VP[m]._nan)
             {
-                _Y.push_back(_p[m]._y);
-                insertPos = binarySearch(_S, _p[m]._y, 0, _p[k - 1]._pos);
+                Y.push_back(VP[m]._y);
+                insertPos = binarySearch(S, VP[m]._y, 0, VP[k - 1]._pos);
                 if (_debug)
-                    std::cout << "Insert: " << _p[m]._y << " " << k - 1 << " " << _p[k - 1]._pos << " " << insertPos << std::endl;
-                _S.insert(_S.begin() + insertPos, _p[m]._y);
+                    std::cout << "Insert: " << VP[m]._y << " " << k - 1 << " " << VP[k - 1]._pos << " " << insertPos << std::endl;
+                _S.insert(_S.begin() + insertPos, VP[m]._y);
                 for (int i = k0 + 1; i <= k; i++)
-                    if (_p[i]._pos >= insertPos)
-                        _p[i]._pos++;
+                    if (VP[i]._pos >= insertPos)
+                        VP[i]._pos++;
             }
             if (_debug)
             {
