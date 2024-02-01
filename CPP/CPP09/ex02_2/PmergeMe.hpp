@@ -72,8 +72,10 @@ class PmergeMe
 		PmergeMe(const PmergeMe&);
 		PmergeMe	&operator=(const PmergeMe& op);
 
-        int         binarySearch(std::vector<PairedValue>& arr, PairedValue target, int start, int end);
-        void        insertInSortedArray(std::vector<PairedValue>& arr, PairedValue num, int start, int end);
+        template <typename T>
+        int         binarySearch(std::vector<T>& arr, T target, int start, int end);
+        template <typename T>
+        void        insertInSortedArray(std::vector<T>& arr, T num, int start, int end);
 
 	public:
         bool        _debug;
@@ -81,7 +83,7 @@ class PmergeMe
 		virtual     ~PmergeMe();
 
         template <typename T>
-        bool        isSorted(std::vector<PairedValue>& arr);
+        bool        isSorted(std::vector<T>& arr);
         template <typename T>
         void        sort(std::vector<T>&, std::vector<T>&);
         template <typename T>
@@ -93,5 +95,7 @@ class PmergeMe
         template <typename T>
         void        print_y(std::vector<T>&);
 };
+
+#include "PmergeMe.cpp"
 
 #endif
