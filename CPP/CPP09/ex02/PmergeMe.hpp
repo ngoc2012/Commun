@@ -37,18 +37,6 @@ class   PairedValue
         }
 
         void    print() { std::cout << "(" << _y << ", " << _x << ")";}
-
-        bool operator<(const PairedValue& other) const {
-            return _x < other._x;
-        }
-
-        bool operator==(const PairedValue& other) const {
-            return _x == other._x;
-        }
-
-        bool operator>(const PairedValue& other) const {
-            return _x > other._x;
-        }
 };
 
 std::ostream& operator<<(std::ostream& s, PairedValue& a);
