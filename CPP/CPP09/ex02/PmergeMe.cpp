@@ -230,7 +230,7 @@ void    PmergeMe<T>::print_s()
 }
 
 template <typename T>
-void    PmergeMe<T>::print_y()
+void    PmergeMe<T>::print_y(std::vector<T> _Y)
 {
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < _Y.size(); i++)
