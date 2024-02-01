@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 {
     if (argc < 2)
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
-    std::vector<PairedValue> a;
+    std::vector<PairedValue<int>> a;
 
     /*
     // Check insert sort
