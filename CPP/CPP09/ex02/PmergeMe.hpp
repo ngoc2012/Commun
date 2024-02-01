@@ -6,17 +6,17 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 11:00:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 11:05:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 
 #include <iostream>
 #include <vector>
 #include <algorithm>
 #include <typeinfo>
-
-#ifndef PMERGEME_HPP
-# define PMERGEME_HPP
 
 // Class for paired values
 template <typename T>
