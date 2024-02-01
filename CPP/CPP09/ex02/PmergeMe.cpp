@@ -21,22 +21,29 @@ PmergeMe<T>::~PmergeMe() {}
 template <typename T>
 void    PmergeMe<T>::sort()
 {
-    if (!_a->size())
+    size_t  n = _a->size();
+    if (!n)
         return ;
-    if (_a->size() == 1)
+    if (n == 1)
     {
         _S = *_a;
         return ;
     }
-    if (_a->size() == 2)
+    if (n == 2)
     {
         _S = *_a;
         if (_S[0] > _S[1])
             std::swap(_S[0], _S[1]);
         return ;
     }
-
-    size_t  n = _a->size() / 2;
+    /*
+    if (n <= 4)
+    {
+        _S = *_a;
+        for 
+    }
+    */
+    n /= 2;
     for (size_t i = 0; i < n; i++)
         _p.push_back(PairedValue<T>((*_a)[i * 2], (*_a)[i * 2 + 1]));
     if (_a->size() > n * 2)
