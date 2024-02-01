@@ -112,7 +112,11 @@ void    PmergeMe<T>::sort()
                         _p[i]._pos++;
             }
             if (_debug)
+            {
+                print_s();
                 print_p();
+            }
+                
         }
         if (_debug)
             std::cout << std::endl;
