@@ -19,7 +19,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
 {
     // x, y with x is bigger
     std::map<int, int>              P;
-    std::vector<PairedValue>    VP;
+    std::vector<PairedValue>        VP;
     std::vector<int>                X;
     std::vector<int>                XX;
     std::vector<int>                Y;
@@ -186,5 +186,8 @@ void    PmergeMe::print_p(std::vector<PairedValue>& p)
     std::cout << std::endl;
 }
 
-
+std::ostream& operator<<(std::ostream& s, PairedValue& a)
+{
+    return s << "(" << a._y << ", " << a._x << ")";
+}
 #endif

@@ -51,10 +51,7 @@ class   PairedValue
         }
 };
 
-std::ostream& operator<<(std::ostream& s, PairedValue& a)
-{
-    return s << "(" << a._y << ", " << a._x << ")";
-}
+std::ostream& operator<<(std::ostream& s, PairedValue& a);
 
 class PmergeMe
 {
@@ -75,7 +72,7 @@ class PmergeMe
         bool        isSorted(std::vector<int>&);
         void        sort(std::vector<int>&, std::vector<int>&);
         void        print(std::vector<int>&);
-        void        print_p(std::map<int, int>&);
+        void        print_p(std::vector<PairedValue>&);
 };
 
 #endif
