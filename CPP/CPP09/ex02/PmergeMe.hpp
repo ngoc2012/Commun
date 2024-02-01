@@ -18,9 +18,6 @@
 #include <algorithm>
 #include <typeinfo>
 
-template <typename T>
-class   PairedValue;
-
 // Class for paired values
 template <typename T>
 class   PairedValue
@@ -70,7 +67,11 @@ class   PairedValue
         }
 };
 
-//std::ostream& operator<<(std::ostream& s, PairedValue& a)
+template <typename T>
+std::ostream& operator<<(std::ostream& s, PairedValue<T>& a)
+{
+    return s << "(" << a._y << ", " << a._x << ")";
+}
 
 class PmergeMe
 {
