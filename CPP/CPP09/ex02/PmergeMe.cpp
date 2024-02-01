@@ -66,8 +66,6 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
         X.push_back(A[n2 * 2]);
         P[A[n2 * 2]] = -1;
     }
-    //std::sort(X.begin(), X.end());
-    //XX = X;
 
     std::vector<int>    XX;
     PmergeMe            p;
@@ -107,8 +105,6 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
         VP[k]._pos = S.size();
         for (int m = k; m > k0; m--)
         {
-            if (_debug)
-                std::cout << m + 2 << " ";
             if (VP[m]._y != -1)
             {
                 insertPos = binarySearch(S, VP[m]._y, 0, VP[k - 1]._pos);
@@ -118,12 +114,6 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
                     if (VP[i]._pos >= insertPos)
                         VP[i]._pos++;
             }
-            if (_debug)
-            {
-                print(S);
-                print_p(VP);
-            }
-                
         }
         S.push_back(VP[k]._x);
         pos++;
