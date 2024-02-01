@@ -58,6 +58,10 @@ class   PairedValue
             return _x < other._x;
         }
 
+        bool operator==(const PairedValue& other) const {
+            return _x == other._x;
+        }
+
         bool operator>(const PairedValue& other) const {
             return _x > other._x;
         }

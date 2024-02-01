@@ -19,7 +19,6 @@ PmergeMe::PmergeMe() {_debug = false;}
 
 PmergeMe::~PmergeMe() {}
 
-template <typename T>
 void    PmergeMe::sort(std::vector<PairedValue<int> >& _a, std::vector<PairedValue<int> >& _S)
 {
     std::vector<PairedValue>    _p;
@@ -183,7 +182,7 @@ bool    PmergeMe::isSorted(std::vector<PairedValue<int> >& a)
 void    PmergeMe::print(std::vector<PairedValue<int> >& _a)
 {
     for (size_t i = 0; i < _a.size(); i++)
-        std::cout << _a[i].print() << " ";
+        std::cout << _a[i] << " ";
     std::cout << std::endl;
 }
 
@@ -208,7 +207,7 @@ void    PmergeMe::print_s(std::vector<PairedValue<int> >& S)
     //bool                    isInt = (typeInfo == typeid(int));
     for (size_t i = 0; i < S.size(); i++)
     {
-        std::cout << i << ":" << S[i].print() << " ";
+        std::cout << i << ":" << S[i] << " ";
         std::cout << " ";
     }
     std::cout << std::endl;
@@ -218,7 +217,7 @@ void    PmergeMe::print_y(std::vector<PairedValue<int> >& Y)
 {
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < Y.size(); i++)
-        std::cout << Y[i].print() << " ";
+        std::cout << Y[i] << " ";
     std::cout << std::endl;
 }
 
