@@ -147,8 +147,7 @@ void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
     } while (k < k_max);
 }
 
-template <typename T>
-int PmergeMe::binarySearch(std::vector<T>& arr, T target, int start, int end) {
+int PmergeMe::binarySearch(std::vector<int>& arr, T target, int start, int end) {
     int low = start;
     int high = end;
 
