@@ -19,6 +19,7 @@ template <typename T>
 void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
 {
     std::vector<PairedValue<T> >    _p;
+    std::vector<PairedValue<T> >    _pp;
     std::vector<T>                  _Y;
 
     size_t  n = _a.size();
@@ -57,8 +58,9 @@ void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
     }
     if (!_debug)
     {
-        PmergeMe            pp;
-        std::vector<T>      SS;
+        PmergeMe            p_p;
+        std::vector<T>      S_S;
+        p_p.sort(_p, _pp);
     }
         std::sort(_p.begin(), _p.end());
     else
