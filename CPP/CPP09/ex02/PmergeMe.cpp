@@ -18,7 +18,8 @@
 void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
 {
     // x, y with x is bigger
-    std::map<int, int>    P;
+    std::map<int, PairedValue<T>>   P;
+    std::vector<PairedValue<T> >    _p;
     std::vector<int>       X;
 
     size_t  n = A.size();
