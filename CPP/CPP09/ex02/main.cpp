@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 10:56:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:59:38 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <algorithm>
 
 #include "PmergeMe.hpp"
-#include "PmergeMe.cpp"
 
 int	main(int argc, char **argv)
 {
