@@ -183,7 +183,7 @@ bool    PmergeMe::isSorted(std::vector<PairedValue>& a)
 void    PmergeMe::print(std::vector<PairedValue>& _a)
 {
     for (size_t i = 0; i < _a.size(); i++)
-        std::cout << _a[i] << " ";
+        std::cout << _a[i].print() << " ";
     std::cout << std::endl;
 }
 
@@ -218,7 +218,7 @@ void    PmergeMe::print_y(std::vector<PairedValue>& Y)
 {
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < Y.size(); i++)
-        std::cout << Y[i] << " ";
+        std::cout << Y[i].print() << " ";
     std::cout << std::endl;
 }
 
