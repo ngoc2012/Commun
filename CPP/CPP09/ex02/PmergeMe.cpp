@@ -17,13 +17,6 @@
 
 void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
 {
-    // x, y with x is bigger
-    std::map<int, int>              P;
-    std::vector<PairedValue>        VP;
-    std::vector<int>                X;
-    std::vector<int>                XX;
-    std::vector<int>                Y;
-
     size_t  n = A.size();
     if (!n)
         return ;
@@ -50,6 +43,9 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
         return ;
     }
     
+    // x, y with x is bigger
+    std::map<int, int>  P;
+    std::vector<int>    X;
     size_t  n2 = n / 2;
     for (size_t i = 0; i < n2; i++)
     {
@@ -73,9 +69,11 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
     //std::sort(X.begin(), X.end());
     //XX = X;
 
-    PmergeMe    p;
-    p.sort(X, XX)
+    std::vector<int>    XX;
+    PmergeMe            p;
+    p.sort(X, XX);
 
+    std::vector<PairedValue>        VP;
     for (size_t i = 0; i < XX.size(); i++)
         VP.push_back(PairedValue(XX[i], P[XX[i]]));
 
@@ -117,10 +115,7 @@ void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
                 std::cout << m + 2 << " ";
             if (VP[m]._y != -1)
             {
-                Y.push_back(VP[m]._y);
                 insertPos = binarySearch(S, VP[m]._y, 0, VP[k - 1]._pos);
-                if (_debug)
-                    std::cout << "Insert: " << VP[m]._y << " " << k - 1 << " " << VP[k - 1]._pos << " " << insertPos << std::endl;
                 S.insert(S.begin() + insertPos, VP[m]._y);
                 pos++;
                 for (int i = k0 + 1; i <= k; i++)
