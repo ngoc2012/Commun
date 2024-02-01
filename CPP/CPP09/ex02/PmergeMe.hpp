@@ -18,12 +18,17 @@
 #include <algorithm>
 #include <map>
 
-struct   PairedValue
+class   PairedValue
 {
     public:
         int       _x;
         int       _y;
         int     _pos;
+
+        PairedValue(int& x, int& y): _x(x), _y(y)
+        {
+            _pos = -1;
+        }
 };
 
 std::ostream& operator<<(std::ostream& s, PairedValue& a);
