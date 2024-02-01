@@ -74,7 +74,7 @@ void    PmergeMe<T>::sort()
     int     nn = 1;
     int     k_max = _p.size() - 1;
     int     insertPos;
-    _p[1]._pos = _S.size();
+    //_p[1]._pos = _S.size();
     do {
         nn *= 2;
         j = nn - j;
