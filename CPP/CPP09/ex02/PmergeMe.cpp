@@ -92,7 +92,7 @@ void    PmergeMe<T>::sort()
         //std::cout << std::endl;
         for (int m = k; m > k0; m--)
         {
-            std::cout << m + 2 << " ";
+            //std::cout << m + 2 << " ";
             if (!_p[m]._nan)
             {
                 _Y.push_back(_p[m]._y);
@@ -108,9 +108,9 @@ void    PmergeMe<T>::sort()
 
         _S.push_back(_p[k]._x);
 
-        print_p();
-        print_s();
-        print_y();
+        //print_p();
+        //print_s();
+        //print_y();
     } while (k < k_max);
 }
 

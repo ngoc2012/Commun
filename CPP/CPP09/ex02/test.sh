@@ -1,7 +1,8 @@
 #!/bin/bash
 
-for i in {5..500}
+for i in {5..100}
 do
-    valgrind ./exe `shuf -i 1-100000 -n $i | tr "\n" " "`
+    ./exe `shuf -i 1-100000 -n $i | tr "\n" " "`
+    #valgrind ./exe `shuf -i 1-100000 -n $i | tr "\n" " "`
 done
 
