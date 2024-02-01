@@ -53,10 +53,10 @@ void    PmergeMe::sort(std::vector<PairedValue<T> >& _a, std::vector<PairedValue
     
     n /= 2;
     for (size_t i = 0; i < n; i++)
-        _p.push_back(PairedValue<T >(_a[i * 2], _a[i * 2 + 1]));
+        _p.push_back(PairedValue<PairedValue<T> >(_a[i * 2], _a[i * 2 + 1]));
     if (_a.size() > n * 2)
     {
-        _p.push_back(PairedValue<T >(_a[n * 2]));
+        _p.push_back(PairedValue<PairedValue<T> >(_a[n * 2]));
         n++;
     }
     if (!_debug)
