@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 11:05:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 13:18:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,18 +80,12 @@ class PmergeMe
         PmergeMe();
 		virtual     ~PmergeMe();
 
-        template <typename T>
         bool        isSorted(std::vector<PairedValue>& arr);
-        template <typename T>
-        void        sort(std::vector<T>&, std::vector<T>&);
-        template <typename T>
-        void        print(std::vector<T>&);
-        template <typename T>
-        void        print_p(std::vector<PairedValue<T> >&);
-        template <typename T>
-        void        print_s(std::vector<T>&);
-        template <typename T>
-        void        print_y(std::vector<T>&);
+        void        sort(std::vector<PairedValue>&, std::vector<PairedValue>&);
+        void        print(std::vector<PairedValue>&);
+        void        print_p(std::vector<PairedValue<PairedValue> >&);
+        void        print_s(std::vector<PairedValue>&);
+        void        print_y(std::vector<PairedValue>&);
 };
 
 #endif

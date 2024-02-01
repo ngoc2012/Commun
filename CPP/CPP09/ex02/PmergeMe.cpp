@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 11:03:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 13:18:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ PmergeMe::PmergeMe() {_debug = false;}
 PmergeMe::~PmergeMe() {}
 
 template <typename T>
-void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
+void    PmergeMe::sort(std::vector<PairedValue>& _a, std::vector<PairedValue>& _S)
 {
-    std::vector<PairedValue<T> >    _p;
-    std::vector<T>                  _Y;
+    std::vector<PairedValue<PairedValue> >    _p;
+    std::vector<PairedValue>                  _Y;
     size_t  n = _a.size();
     if (!n)
         return ;
@@ -52,10 +52,10 @@ void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
     
     n /= 2;
     for (size_t i = 0; i < n; i++)
-        _p.push_back(PairedValue<T>(_a[i * 2], _a[i * 2 + 1]));
+        _p.push_back(PairedValue<PairedValue>(_a[i * 2], _a[i * 2 + 1]));
     if (_a.size() > n * 2)
     {
-        _p.push_back(PairedValue<T>(_a[n * 2]));
+        _p.push_back(PairedValue<PairedValue>(_a[n * 2]));
         n++;
     }
     if (!_debug)
@@ -147,7 +147,7 @@ void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
 }
 
 template <typename T>
-int PmergeMe::binarySearch(std::vector<T>& arr, T target, int start, int end) {
+int PmergeMe::binarySearch(std::vector<PairedValue>& arr, T target, int start, int end) {
     int low = start;
     int high = end;
 
@@ -167,14 +167,14 @@ int PmergeMe::binarySearch(std::vector<T>& arr, T target, int start, int end) {
 
 // start end included
 template <typename T>
-void    PmergeMe::insertInSortedArray(std::vector<T>& arr, T num, int start, int end)
+void    PmergeMe::insertInSortedArray(std::vector<PairedValue>& arr, T num, int start, int end)
 {
     int insertPos = binarySearch(arr, num, start, end);
     arr.insert(arr.begin() + insertPos, num);
 }
 
 template <typename T>
-bool    PmergeMe::isSorted(std::vector<T>& arr)
+bool    PmergeMe::isSorted(std::vector<PairedValue>& arr)
 {
     for (size_t i = 0; i < arr.size() - 1; i++)
         if (arr[i] > arr[i + 1])
@@ -183,7 +183,7 @@ bool    PmergeMe::isSorted(std::vector<T>& arr)
 }
 
 template <typename T>
-void    PmergeMe::print(std::vector<T>& _a)
+void    PmergeMe::print(std::vector<PairedValue>& _a)
 {
     for (size_t i = 0; i < _a.size(); i++)
         std::cout << _a[i] << " ";
@@ -191,7 +191,7 @@ void    PmergeMe::print(std::vector<T>& _a)
 }
 
 template <typename T>
-void    PmergeMe::print_p(std::vector<PairedValue<T> >& _p)
+void    PmergeMe::print_p(std::vector<PairedValue<PairedValue> >& _p)
 {
     std::cout << "P:" << std::endl;
     for (size_t i = 0; i < _p.size(); i++)
@@ -214,7 +214,7 @@ struct isInt<int> {
 };
 
 template <typename T>
-void    PmergeMe::print_s(std::vector<T>& _S)
+void    PmergeMe::print_s(std::vector<PairedValue>& _S)
 {
     std::cout << "S:" << std::endl;
     if (!_S.size())
@@ -232,7 +232,7 @@ void    PmergeMe::print_s(std::vector<T>& _S)
 }
 
 template <typename T>
-void    PmergeMe::print_y(std::vector<T>& _Y)
+void    PmergeMe::print_y(std::vector<PairedValue>& _Y)
 {
     std::cout << "Y:" << std::endl;
     for (size_t i = 0; i < _Y.size(); i++)
