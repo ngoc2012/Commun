@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/01 10:49:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/01 10:54:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
         return ;
     if (n == 1)
     {
-        _S = *_a;
+        _S = _a;
         return ;
     }
     if (n == 2)
     {
-        _S = *_a;
+        _S = _a;
         if (_S[0] > _S[1])
             std::swap(_S[0], _S[1]);
         return ;
@@ -39,7 +39,7 @@ void    PmergeMe::sort(std::vector<T>& _a, std::vector<T>& _S)
     
     if (n <= 4)
     {
-        _S = *_a;
+        _S = _a;
         for (size_t i = 1; i < n; i++)
             for (size_t j = 0; j < i; j++)
                 if (_S[i] < _S[j])
