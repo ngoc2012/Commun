@@ -168,6 +168,54 @@ void    PmergeMe::print_p(std::vector<PairedValue>& p)
     std::cout << std::endl;
 }
 
+int PmergeMe::binarySearch(std::list<int>& lst, int target, int start, int end) {
+    int low = start;
+    int high = end;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        std::list<int>::iterator it = lst.begin();
+        std::advance(it, mid);
+
+        if (*it == target) {
+            return mid;
+        } else if (*it < target) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return low;
+}
+
+void PmergeMe::insertInSortedArrayL(std::list<int>& lst, int num, int start, int end) {
+    int insertPos = binarySearch(lst, num, start, end);
+    std::list<int>::iterator it = lst.begin();
+    std::advance(it, insertPos);
+    lst.insert(it, num);
+}
+
+bool PmergeMe::isSortedL(std::list<int>& a) {
+    for (std::list<int>::iterator it = a.begin(); std::next(it) != a.end(); ++it)
+        if (*it > *std::next(it))
+            return false;
+    return true;
+}
+
+void PmergeMe::printL(std::list<int>& lst) {
+    for (std::list<int>::iterator it = lst.begin(); it != lst.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+}
+
+void PmergeMe::print_pL(std::list<PairedValue>& p) {
+    std::cout << "P:" << std::endl;
+    for (std::list<PairedValue>::iterator it = p.begin(); it != p.end(); ++it)
+        std::cout << it->_pos << ":" << *it << " ";
+    std::cout << std::endl;
+}
+
 std::ostream& operator<<(std::ostream& s, PairedValue& a)
 {
     return s << "(" << a._y << ", " << a._x << ")";
