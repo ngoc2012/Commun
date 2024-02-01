@@ -24,38 +24,16 @@ class   PairedValue
         int       _y;
         int       _x;
         int     _pos;
-        bool    _nan;
 
-        PairedValue	&operator=(const PairedValue& op)
+        PairedValue(int& x, int& y): _x(x), _y(y)
         {
-            _y = op._y;
-            _x = op._x;
-            _pos = op._pos;
-            _nan = op._nan;
+            _pos = -1;
         }
 
-        PairedValue(int& a, int& b)
+        PairedValue(int& x): _x(x)
         {
-            if (a > b)
-            {
-                _x = a;
-                _y = b;
-            }
-            else
-            {
-                _x = b;
-                _y = a;
-            }
+            _y = -1;
             _pos = -1;
-            _nan = false;
-        }
-
-        PairedValue(int& b)
-        {
-            _x = b;
-            _y = b;
-            _pos = -1;
-            _nan = true;
         }
 
         void    print() { std::cout << "(" << _y << ", " << _x << ")";}
@@ -73,7 +51,6 @@ class   PairedValue
         }
 };
 
-template <typename T>
 std::ostream& operator<<(std::ostream& s, PairedValue& a)
 {
     return s << "(" << a._y << ", " << a._x << ")";
