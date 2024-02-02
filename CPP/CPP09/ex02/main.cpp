@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
     }
 
     int     e;
-    std::set<int>    s;
+    std::vector<int>    s;
     for (int i = 1; i < argc; i++)
     {
         e = std::atoi(argv[i]);
@@ -92,8 +92,8 @@ int	main(int argc, char **argv)
     p.print(a);
     double time1 = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
     double time2 = static_cast<double>(end2 - start2) / CLOCKS_PER_SEC * 1e6;
-    std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector :" << time1 << " us" << std::endl;
-    std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque :" << time2 << " us" << std::endl;
+    std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << time1 << " us" << std::endl;
+    std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque : " << time2 << " us" << std::endl;
 
     /*
     std::cout << S.size() << " ";
