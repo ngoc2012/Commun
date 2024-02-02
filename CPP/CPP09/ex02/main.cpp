@@ -17,14 +17,45 @@
 
 #include "PmergeMe.hpp"
 
-void    vector_sort(int argc, char **argv, std::vector<int>& a, std::vector<int>& S)
+void    vector_sort(int argc, char **argv, std::vector<int>& a, std::vector<int>& S, PmergeMe& p)
 {
     ;
     for (int i = 1; i < argc; i++)
         a.push_back(std::atoi(argv[i]));
-    PmergeMe    p;
-    
     p.sort(a, S);
+
+}
+
+void    deque_sort(int argc, char **argv, std::deque<int>& a, std::deque<int>& S, PmergeMe& p)
+{
+    for (int i = 1; i < argc; i++)
+        a.push_back(std::atoi(argv[i]));
+    p.sortD(a, S);
+}
+
+int	main(int argc, char **argv)
+{
+    if (argc < 2)
+    {
+        std::cout << "Use: ./exe 1 2 .. " << std::endl;
+        return (1);
+    }
+    PmergeMe    p;
+
+    clock_t start1 = clock();
+    std::vector<int>    a;
+    std::vector<int>    S;
+    vector_sort(argc, argv, a, S, p);
+    clock_t end1 = clock();
+    double time1 = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
+    std::cout << "Elapsed time: " << time1 << " microseconds" << std::endl;
+
+    clock_t start1 = clock();
+    std::deque<int>    aD;
+    std::deque<int>    SD;
+    deque_sort(argc, argv, aD, SD, p);
+    clock_t end1 = clock();
+
     /*
     std::cout << S.size() << " ";
     if (p.isSorted(S))
@@ -36,44 +67,6 @@ void    vector_sort(int argc, char **argv, std::vector<int>& a, std::vector<int>
         p.print(S);
     }
     */
-}
-
-void    deque_sort(int argc, char **argv, std::deque<int>& a, std::deque<int>& S)
-{
-    for (int i = 1; i < argc; i++)
-        a.push_back(std::atoi(argv[i]));
-    PmergeMe    p;
-    p.sortD(a, S);
-    /*
-    std::cout << S.size() << " ";
-    if (p.isSortedD(S))
-        std::cout << "Sorted" << std::endl;
-    else
-    {
-        std::cout << "Not sorted" << std::endl;
-        p.printD(a);
-        p.printD(S);
-    }
-    */
-}
-
-int	main(int argc, char **argv)
-{
-    if (argc < 2)
-    {
-        std::cout << "Use: ./exe 1 2 .. " << std::endl;
-        return (1);
-    }
-    
-    clock_t start1 = clock();
-    std::vector<int>    a;
-    std::vector<int>    S;
-    vector_sort(argc, argv, a, S);
-    clock_t end1 = clock();
-    double time1 = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
-    std::cout << "Elapsed time: " << time1 << " microseconds" << std::endl;
-
-    deque_sort(argc, argv);
 
     return (0);
 }
