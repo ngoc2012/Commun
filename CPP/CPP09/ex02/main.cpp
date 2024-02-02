@@ -18,6 +18,14 @@
 
 #include "PmergeMe.hpp"
 
+template <typename T>
+void    PmergeMe::print(T& _a)
+{
+    for (T::iterator it = s.begin(); it != s.end(); ++it)
+        std::cout << *it << " ";
+    std::cout << std::endl;
+}
+
 bool    isPositiveNumber(const char* str) {
     const char*     s = str;
     if (!str || !*str)

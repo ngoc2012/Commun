@@ -153,14 +153,6 @@ bool    PmergeMe::isSorted(std::vector<int>& a)
     return true;
 }
 
-template <typename T>
-void    PmergeMe::print(T& _a)
-{
-    for (T::iterator it = s.begin(); it != s.end(); ++it)
-        std::cout << *it << " ";
-    std::cout << std::endl;
-}
-
 void    PmergeMe::print_p(std::vector<PairedValue>& p)
 {
     std::cout << "P:" << std::endl;

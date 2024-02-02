@@ -51,8 +51,6 @@ class PmergeMe
 
         bool        isSorted(std::vector<int>&);
         void        sort(std::vector<int>&, std::vector<int>&);
-        template <typename T>
-        void        print(T&);
         void        print_p(std::vector<PairedValue>&);
         bool        isSortedD(std::deque<int>&);
         void        sortD(std::deque<int>&, std::deque<int>&);
