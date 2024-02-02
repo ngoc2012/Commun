@@ -26,6 +26,23 @@ void    print(T& s)
     std::cout << std::endl;
 }
 
+template <typename T>
+bool    isSorted(T& a)
+{
+    for (size_t i = 0; i < a.size() - 1; i++)
+        if (a[i] > a[i + 1])
+            return false;
+    return true;
+}
+
+void    print_p(std::vector<PairedValue>& p)
+{
+    std::cout << "P:" << std::endl;
+    for (size_t i = 0; i < p.size(); i++)
+        std::cout << i << ":" << p[i]._pos << ":" << p[i] << " ";
+    std::cout << std::endl;
+}
+
 bool    isPositiveNumber(const char* str) {
     const char*     s = str;
     if (!str || !*str)
@@ -107,13 +124,13 @@ int	main(int argc, char **argv)
 
     /*
     std::cout << S.size() << " ";
-    if (p.isSorted(S))
+    if (isSorted(S))
         std::cout << "Sorted" << std::endl;
     else
     {
         std::cout << "Not sorted" << std::endl;
-        p.print(a);
-        p.print(S);
+        print(a);
+        print(S);
     }
     */
 

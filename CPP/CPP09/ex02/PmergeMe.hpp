@@ -49,12 +49,8 @@ class PmergeMe
 
 		virtual     ~PmergeMe() {}
 
-        bool        isSorted(std::vector<int>&);
         void        sort(std::vector<int>&, std::vector<int>&);
-        void        print_p(std::vector<PairedValue>&);
-        bool        isSortedD(std::deque<int>&);
         void        sortD(std::deque<int>&, std::deque<int>&);
-        void        print_pD(std::deque<PairedValue>&);
 };
 
 #endif

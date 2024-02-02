@@ -145,22 +145,6 @@ void    PmergeMe::insertInSortedArray(std::vector<int>& arr, int num, int start,
     arr.insert(arr.begin() + insertPos, num);
 }
 
-bool    PmergeMe::isSorted(std::vector<int>& a)
-{
-    for (size_t i = 0; i < a.size() - 1; i++)
-        if (a[i] > a[i + 1])
-            return false;
-    return true;
-}
-
-void    PmergeMe::print_p(std::vector<PairedValue>& p)
-{
-    std::cout << "P:" << std::endl;
-    for (size_t i = 0; i < p.size(); i++)
-        std::cout << i << ":" << p[i]._pos << ":" << p[i] << " ";
-    std::cout << std::endl;
-}
-
 void    PmergeMe::sortD(std::deque<int>& A, std::deque<int>& S)
 {
     size_t  n = A.size();
@@ -289,22 +273,6 @@ void    PmergeMe::insertInSortedArrayD(std::deque<int>& arr, int num, int start,
 {
     int insertPos = binarySearchD(arr, num, start, end);
     arr.insert(arr.begin() + insertPos, num);
-}
-
-bool    PmergeMe::isSortedD(std::deque<int>& a)
-{
-    for (size_t i = 0; i < a.size() - 1; i++)
-        if (a[i] > a[i + 1])
-            return false;
-    return true;
-}
-
-void    PmergeMe::print_pD(std::deque<PairedValue>& p)
-{
-    std::cout << "P:" << std::endl;
-    for (size_t i = 0; i < p.size(); i++)
-        std::cout << i << ":" << p[i]._pos << ":" << p[i] << " ";
-    std::cout << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& s, PairedValue& a)
