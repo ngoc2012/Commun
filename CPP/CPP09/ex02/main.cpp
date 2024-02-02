@@ -46,7 +46,7 @@ void    deque_sort(int argc, char **argv)
     PmergeMe    p;
     std::deque<int>    S;
     p.sortD(a, S);
-
+    /*
     std::cout << S.size() << " ";
     if (p.isSortedD(S))
         std::cout << "Sorted" << std::endl;
@@ -56,6 +56,7 @@ void    deque_sort(int argc, char **argv)
         p.printD(a);
         p.printD(S);
     }
+    */
 }
 
 int	main(int argc, char **argv)
