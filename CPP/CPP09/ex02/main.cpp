@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/02 06:07:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/02 06:11:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	main(int argc, char **argv)
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
 
     vector_sort(argc, argv);
+    deque_sort(argc, argv);
 
     return (0);
 }

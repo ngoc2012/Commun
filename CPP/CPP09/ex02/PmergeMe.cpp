@@ -222,7 +222,7 @@ void    PmergeMe::sortD(std::deque<int>& A, std::deque<int>& S)
 
     std::deque<int>    XX;
     PmergeMe            p;
-    p.sort(X, XX);
+    p.sortD(X, XX);
 
     std::deque<PairedValue>        VP;
     for (size_t i = 0; i < XX.size(); i++)
@@ -260,7 +260,7 @@ void    PmergeMe::sortD(std::deque<int>& A, std::deque<int>& S)
         {
             if (VP[m]._y != -1)
             {
-                insertPos = binarySearch(S, VP[m]._y, 0, VP[k - 1]._pos);
+                insertPos = binarySearchD(S, VP[m]._y, 0, VP[k - 1]._pos);
                 S.insert(S.begin() + insertPos, VP[m]._y);
                 pos++;
                 for (int i = k0 + 1; i <= k; i++)
@@ -294,7 +294,7 @@ int     PmergeMe::binarySearchD(std::deque<int>& arr, int target, int start, int
 // start end included
 void    PmergeMe::insertInSortedArrayD(std::deque<int>& arr, int num, int start, int end)
 {
-    int insertPos = binarySearch(arr, num, start, end);
+    int insertPos = binarySearchD(arr, num, start, end);
     arr.insert(arr.begin() + insertPos, num);
 }
 
