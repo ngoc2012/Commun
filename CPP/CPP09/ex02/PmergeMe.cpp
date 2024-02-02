@@ -148,9 +148,4 @@ void    PmergeMe<T,U>::insertInSortedArray(T& arr, int num, int start, int end)
     arr.insert(arr.begin() + insertPos, num);
 }
 
-std::ostream& operator<<(std::ostream& s, PairedValue& a)
-{
-    return s << "(" << a._y << ", " << a._x << ")";
-}
-
 #endif

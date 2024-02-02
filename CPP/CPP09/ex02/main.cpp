@@ -18,6 +18,11 @@
 
 #include "PmergeMe.hpp"
 
+std::ostream& operator<<(std::ostream& s, PairedValue& a)
+{
+    return s << "(" << a._y << ", " << a._x << ")";
+}
+
 template <typename T>
 void    print(T& s)
 {
