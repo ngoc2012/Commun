@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/02 10:19:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/02 10:20:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void    eval(const std::string& expression)
                 std::cerr << "Error: Number too long" << std::endl;
                 return ;
             }
-            if (!std::isdigit(c))
+            if (!std::isdigit(token[0]))
             {
                 std::cerr << "Error: Not a number" << std::endl;
                 return ;
