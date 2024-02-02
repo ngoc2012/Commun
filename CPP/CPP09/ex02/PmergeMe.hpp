@@ -33,7 +33,7 @@ class   PairedValue
 
 std::ostream& operator<<(std::ostream& s, PairedValue& a);
 
-template <typename T>
+template <typename T, typename U>
 class PmergeMe
 {
 	private:
@@ -41,14 +41,14 @@ class PmergeMe
 		PmergeMe(const PmergeMe&);
 		PmergeMe	&operator=(const PmergeMe& op);
 
-        int         binarySearch(T<int>& arr, int target, int start, int end);
-        void        insertInSortedArray(T<int>& arr, int num, int start, int end);
+        int         binarySearch(T& arr, int target, int start, int end);
+        void        insertInSortedArray(T& arr, int num, int start, int end);
 	public:
         PmergeMe() {}
 
 		virtual     ~PmergeMe() {}
 
-        void        sort(T<int>&, T<int>&);
+        void        sort(T&, T&);
 };
 
 #include "PmergeMe.cpp"

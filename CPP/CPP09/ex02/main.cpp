@@ -101,8 +101,8 @@ int	main(int argc, char **argv)
     std::cout << "Before: ";
     print(a0);
 
-    PmergeMe<std::vector>   p;
-    PmergeMe<std::deque>    pD;
+    PmergeMe<std::vector<int>, std::vector<PairedValue> >   p;
+    PmergeMe<std::deque<int>, std::deque<PairedValue> >    pD;
     
     clock_t start1 = clock();
     std::vector<int>    a;
@@ -113,7 +113,7 @@ int	main(int argc, char **argv)
     clock_t start2 = clock();
     std::deque<int>    aD;
     std::deque<int>    SD;
-    deque_sort(a0, aD, SD, p);
+    deque_sort(a0, aD, SD, pD);
     clock_t end2 = clock();
 
     std::cout << "After:  ";
