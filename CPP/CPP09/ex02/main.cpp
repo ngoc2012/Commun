@@ -25,7 +25,7 @@ void    vector_sort(int argc, char **argv)
     PmergeMe    p;
     std::vector<int>    S;
     p.sort(a, S);
-
+    /*
     std::cout << S.size() << " ";
     if (p.isSorted(S))
         std::cout << "Sorted" << std::endl;
@@ -35,6 +35,7 @@ void    vector_sort(int argc, char **argv)
         p.print(a);
         p.print(S);
     }
+    */
 }
 
 void    deque_sort(int argc, char **argv)
@@ -64,8 +65,9 @@ int	main(int argc, char **argv)
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
         return (1);
     }
-
+    clock_t start_time = clock();
     vector_sort(argc, argv);
+     clock_t end_time = clock();
     deque_sort(argc, argv);
 
     return (0);
