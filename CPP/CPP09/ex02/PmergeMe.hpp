@@ -55,11 +55,12 @@ class PmergeMe
         void        sort(std::vector<int>&, std::vector<int>&);
         void        print(std::vector<int>&);
         void        print_p(std::vector<PairedValue>&);
-
+/*
         bool        isSortedL(std::list<int>&);
         void        sortL(std::list<int>&, std::list<int>&);
         void        printL(std::list<int>&);
         void        print_pL(std::list<PairedValue>&);
+        */
 };
 
 #endif

@@ -37,24 +37,29 @@ void    vector_sort(int argc, char **argv)
     }
 }
 
-void    list_sort(int argc, char **argv)
+void    array_sort(int argc, char **argv)
 {
     std::list<int> a;
 
+    std::array<int, 100> a; // Assuming a maximum of 100 elements
+
     for (int i = 1; i < argc; i++)
-        a.push_back(std::atoi(argv[i]));
+        a[i-1] = std::atoi(argv[i]);
 
     PmergeMe p;
-    std::list<int> S;
-    p.sortL(a, S);
+    //p._debug = true;
+
+    std::array<int, 100> S;
+    p.sort(a, S);
 
     std::cout << S.size() << " ";
-    if (p.isSortedL(S))
+    if (p.isSorted(S))
         std::cout << "Sorted" << std::endl;
-    else {
+    else
+    {
         std::cout << "Not sorted" << std::endl;
-        p.printL(a);
-        p.printL(S);
+        p.print(a);
+        p.print(S);
     }
 
 }
