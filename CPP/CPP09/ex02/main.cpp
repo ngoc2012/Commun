@@ -59,8 +59,11 @@ void    deque_sort(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-    if (argc < 2 || argc > 4001)
+    if (argc < 2)
+    {
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
+        return (1);
+    }
 
     vector_sort(argc, argv);
     deque_sort(argc, argv);
