@@ -31,18 +31,18 @@ bool    isPositiveNumber(const char* str) {
     return (atoi(s) > 0);
 }
 
-void    vector_sort(std::set<int>& s, std::vector<int>& a, std::vector<int>& S, PmergeMe& p)
+void    vector_sort(int argc, char **argv, std::vector<int>& a, std::vector<int>& S, PmergeMe& p)
 {
-    for (std::set<int>::iterator it = s.begin(); it != s.end(); ++it)
-        a.push_back(*it);
+    for (int i = 1; i < argc; i++)
+        a.push_back(argv[i]);
     p.sort(a, S);
 
 }
 
-void    deque_sort(std::set<int>& s, std::deque<int>& a, std::deque<int>& S, PmergeMe& p)
+void    deque_sort(int argc, char **argv, std::deque<int>& a, std::deque<int>& S, PmergeMe& p)
 {
-    for (std::set<int>::iterator it = s.begin(); it != s.end(); ++it)
-        a.push_back(*it);
+    for (int i = 1; i < argc; i++)
+        a.push_back(argv[i]);
     p.sortD(a, S);
 }
 
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
     }
 
     int     e;
-    std::vector<int>    s;
+    std::set<int>    s;
     for (int i = 1; i < argc; i++)
     {
         e = std::atoi(argv[i]);
@@ -77,13 +77,13 @@ int	main(int argc, char **argv)
     clock_t start1 = clock();
     std::vector<int>    a;
     std::vector<int>    S;
-    vector_sort(s, a, S, p);
+    vector_sort(argc, argv, a, S, p);
     clock_t end1 = clock();
 
     clock_t start2 = clock();
     std::deque<int>    aD;
     std::deque<int>    SD;
-    deque_sort(s, aD, SD, p);
+    deque_sort(argc, argv, aD, SD, p);
     clock_t end2 = clock();
 
     std::cout << "Before: ";
