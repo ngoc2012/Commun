@@ -84,7 +84,7 @@ int	main(int argc, char **argv)
         return (1);
     }
 
-    int     e;
+    int                 e;
     std::set<int>       s;
     std::vector<int>    a0;
     for (int i = 1; i < argc; i++)
@@ -128,11 +128,12 @@ int	main(int argc, char **argv)
     std::cout << "Time to process a range of " << S.size() << " elements with std::vector : " << time1 << " us" << std::endl;
     std::cout << "Time to process a range of " << SD.size() << " elements with std::deque  : " << time2 << " us" << std::endl;
 
+    /*
     std::cout << argc - 1 << ": ";
     if (isSorted(S) && isSorted(SD))
         std::cout << "Sorted" << std::endl;
     else
         std::cout << "Not sorted" << std::endl;
-
+    */
     return (0);
 }
