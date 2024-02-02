@@ -46,7 +46,7 @@ void    PmergeMe<T,U>::sort(T& A, T& S)
     
     // x, y with x is bigger
     std::map<int, int>  P;
-    std::vector<int>    X;
+    T    X;
     size_t  n2 = n / 2;
     for (size_t i = 0; i < n2; i++)
     {
@@ -68,11 +68,11 @@ void    PmergeMe<T,U>::sort(T& A, T& S)
         P[A[n2 * 2]] = -1;
     }
 
-    std::vector<int>    XX;
+    T    XX;
     PmergeMe            p;
     p.sort(X, XX);
 
-    std::vector<PairedValue>        VP;
+    U        VP;
     for (size_t i = 0; i < XX.size(); i++)
         VP.push_back(PairedValue(XX[i], P[XX[i]]));
 
@@ -121,8 +121,8 @@ void    PmergeMe<T,U>::sort(T& A, T& S)
     } while (k < k_max);
 }
 
-template <typename T>
-int     PmergeMe<T>::binarySearch(T& arr, int target, int start, int end) {
+template <typename T, typename U>
+int     PmergeMe<T,U>::binarySearch(T& arr, int target, int start, int end) {
     int low = start;
     int high = end;
 
@@ -141,8 +141,8 @@ int     PmergeMe<T>::binarySearch(T& arr, int target, int start, int end) {
 }
 
 // start end included
-template <typename T>
-void    PmergeMe<T>::insertInSortedArray(T& arr, int num, int start, int end)
+template <typename T, typename U>
+void    PmergeMe<T,U>::insertInSortedArray(T& arr, int num, int start, int end)
 {
     int insertPos = binarySearch(arr, num, start, end);
     arr.insert(arr.begin() + insertPos, num);

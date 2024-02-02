@@ -31,8 +31,6 @@ class   PairedValue
         }
 };
 
-std::ostream& operator<<(std::ostream& s, PairedValue& a);
-
 template <typename T, typename U>
 class PmergeMe
 {

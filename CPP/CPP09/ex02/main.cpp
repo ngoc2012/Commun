@@ -56,7 +56,7 @@ bool    isPositiveNumber(const char* str) {
     return (atoi(s) > 0);
 }
 
-void    vector_sort(std::vector<int>& s, std::vector<int>& a, std::vector<int>& S, PmergeMe<std::vector>& p)
+void    vector_sort(std::vector<int>& s, std::vector<int>& a, std::vector<int>& S, PmergeMe<std::vector<int>, std::vector<PairedValue> >& p)
 {
     for (std::vector<int>::iterator it = s.begin(); it != s.end(); ++it)
         a.push_back(*it);
@@ -64,7 +64,7 @@ void    vector_sort(std::vector<int>& s, std::vector<int>& a, std::vector<int>& 
 
 }
 
-void    deque_sort(std::vector<int>& s, std::deque<int>& a, std::deque<int>& S, PmergeMe<std::deque>& p)
+void    deque_sort(std::vector<int>& s, std::deque<int>& a, std::deque<int>& S, PmergeMe<std::deque<int>, std::deque<PairedValue> >& p)
 {
     for (std::vector<int>::iterator it = s.begin(); it != s.end(); ++it)
         a.push_back(*it);
