@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
     clock_t start1 = clock();
     std::vector<int>    a;
     std::vector<int>    S;
-    vector_sort(argc, argv, a, S, p);
+    vector_sort(s, a, S, p);
     clock_t end1 = clock();
     
     
@@ -68,10 +68,13 @@ int	main(int argc, char **argv)
     clock_t start2 = clock();
     std::deque<int>    aD;
     std::deque<int>    SD;
-    deque_sort(argc, argv, aD, SD, p);
+    deque_sort(s, aD, SD, p);
     clock_t end2 = clock();
 
-    std::cout << "Before "
+    std::cout << "Before: ";
+    p.print(a);
+    std::cout << "After: ";
+    p.print(a);
     double time1 = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
     double time2 = static_cast<double>(end2 - start2) / CLOCKS_PER_SEC * 1e6;
     std::cout << "Elapsed time: " << time1 << " microseconds" << std::endl;
