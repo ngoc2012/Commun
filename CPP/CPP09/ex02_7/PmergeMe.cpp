@@ -15,8 +15,7 @@
 
 #include "PmergeMe.hpp"
 
-template <typename T>
-void    PmergeMe<T>::sort(T& A, T& S)
+void    PmergeMe::sort(std::vector<int>& A, std::vector<int>& S)
 {
     size_t  n = A.size();
     if (!n)
