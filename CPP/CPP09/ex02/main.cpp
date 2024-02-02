@@ -37,16 +37,23 @@ int	main(int argc, char **argv)
 {
     if (argc < 2)
     {
-        std::cout << "Use: ./exe 1 2 .. " << std::endl;
+        std::cerr << "Use: ./exe 1 2 .. " << std::endl;
         return (1);
     }
 
+    int     e;
     std::set<int>    s;
     for (int i = 1; i < argc; i++)
     {
-
+        e = std::atoi(argv[i]);
+        if (s.find(e) != s.end())
+        {
+            std::cerr << "Error" << std::endl;
+            return (1);
+        }
+        s.insert(e);
     }
-        s.push_back(std::atoi(argv[i]));
+        
 
     PmergeMe    p;
 
