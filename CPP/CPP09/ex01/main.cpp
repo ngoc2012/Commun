@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/02 10:01:49 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/02 10:02:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <iostream>
@@ -16,15 +16,15 @@
 void    evaluateRPN(const std::string& expression)
 {
     std::stack<int> stack;
-
-    std::istringstream iss(expression);
-    std::string token;
+    std::istringstream      iss(expression);
+    std::string             token;
 
     while (iss >> token) {
         if (token == "+" || token == "-" || token == "*" || token == "/") {
-            if (stack.size() < 2) {
+            if (stack.size() < 2)
+            {
                 std::cerr << "Error: Insufficient operands for operator " << token << std::endl;
-                return -1;
+                return ;
             }
 
             int operand2 = stack.top();
@@ -41,15 +41,18 @@ void    evaluateRPN(const std::string& expression)
             else if (token == "*")
                 result = operand1 * operand2;
             else if (token == "/") {
-                if (operand2 == 0) {
+                if (operand2 == 0)
+                {
                     std::cerr << "Error: Division by zero" << std::endl;
-                    return -1;
+                    return ;
                 }
                 result = operand1 / operand2;
             }
 
             stack.push(result);
-        } else {
+        }
+        else
+        {
             int number;
             std::istringstream(token) >> number;
             stack.push(number);
