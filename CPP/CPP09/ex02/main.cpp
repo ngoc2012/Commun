@@ -123,7 +123,6 @@ int	main(int argc, char **argv)
     std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << time1 << " us" << std::endl;
     std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque  : " << time2 << " us" << std::endl;
 
-    /*
     std::cout << S.size() << " ";
     if (isSorted(S))
         std::cout << "Sorted" << std::endl;
@@ -133,7 +132,6 @@ int	main(int argc, char **argv)
         print(a);
         print(S);
     }
-    */
 
     return (0);
 }
