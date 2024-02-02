@@ -58,7 +58,11 @@ int	main(int argc, char **argv)
     for (int i = 1; i < argc; i++)
     {
         e = std::atoi(argv[i]);
-        if (s.find(e) != s.end() || !isPositiveNumber(argv[i]))
+        if (s.find(e) != s.end())
+        {
+
+        }
+        if (!isPositiveNumber(argv[i]))
         {
             std::cerr << "Error" << std::endl;
             return (1);
