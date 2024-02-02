@@ -61,11 +61,11 @@ void    list_sort(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-    if (argc < 2)
+    if (argc < 2 || argc > 4001)
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
 
     //vector_sort(argc, argv);
-    list_sort(argc, argv);
+    array_sort(argc, argv);
 
     return (0);
 }
