@@ -74,7 +74,7 @@ int	main(int argc, char **argv)
     PmergeMe    p;
 
     std::cout << "Before: ";
-    p.print(a);
+    p.print(s);
 
     clock_t start1 = clock();
     std::vector<int>    a;

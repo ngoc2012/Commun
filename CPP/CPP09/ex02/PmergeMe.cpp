@@ -153,10 +153,14 @@ bool    PmergeMe::isSorted(std::vector<int>& a)
     return true;
 }
 
-void    PmergeMe::print(std::vector<int>& _a)
+
+void    PmergeMe::print(T& _a)
 {
+    for (T::iterator it = s.begin(); it != s.end(); ++it)
+        std::cout << *it << " ";
+        a.push_back();
     for (size_t i = 0; i < _a.size(); i++)
-        std::cout << _a[i] << " ";
+        
     std::cout << std::endl;
 }
 
@@ -304,13 +308,6 @@ bool    PmergeMe::isSortedD(std::deque<int>& a)
         if (a[i] > a[i + 1])
             return false;
     return true;
-}
-
-void    PmergeMe::printD(std::deque<int>& _a)
-{
-    for (size_t i = 0; i < _a.size(); i++)
-        std::cout << _a[i] << " ";
-    std::cout << std::endl;
 }
 
 void    PmergeMe::print_pD(std::deque<PairedValue>& p)
