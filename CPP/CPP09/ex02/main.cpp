@@ -53,8 +53,7 @@ int	main(int argc, char **argv)
         }
         s.insert(e);
     }
-        
-
+    
     PmergeMe    p;
 
     clock_t start1 = clock();
@@ -62,8 +61,6 @@ int	main(int argc, char **argv)
     std::vector<int>    S;
     vector_sort(s, a, S, p);
     clock_t end1 = clock();
-    
-    
 
     clock_t start2 = clock();
     std::deque<int>    aD;
@@ -77,7 +74,8 @@ int	main(int argc, char **argv)
     p.print(a);
     double time1 = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
     double time2 = static_cast<double>(end2 - start2) / CLOCKS_PER_SEC * 1e6;
-    std::cout << "Elapsed time: " << time1 << " microseconds" << std::endl;
+    std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector :" << time1 << " us" << std::endl;
+    std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector :" << time2 << " us" << std::endl;
 
     /*
     std::cout << S.size() << " ";
