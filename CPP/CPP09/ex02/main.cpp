@@ -13,7 +13,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
-#include <list>
+#include <deque>
 
 #include "PmergeMe.hpp"
 
@@ -37,40 +37,12 @@ void    vector_sort(int argc, char **argv)
     }
 }
 
-void    array_sort(int argc, char **argv)
-{
-    std::list<int> a;
-
-    std::array<int, 4000> a;
-
-    for (int i = 1; i < argc; i++)
-        a[i-1] = std::atoi(argv[i]);
-
-    PmergeMe p;
-    //p._debug = true;
-
-    std::array<int, 4000> S;
-    p.sortA(a, S, argc - 1);
-
-    std::cout << S.size() << " ";
-    if (p.isSortedA(S, argc - 1))
-        std::cout << "Sorted" << std::endl;
-    else
-    {
-        std::cout << "Not sorted" << std::endl;
-        p.printA(a, argc - 1);
-        p.printA(S, argc - 1);
-    }
-
-}
-
 int	main(int argc, char **argv)
 {
     if (argc < 2 || argc > 4001)
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
 
-    //vector_sort(argc, argv);
-    array_sort(argc, argv);
+    vector_sort(argc, argv);
 
     return (0);
 }

@@ -168,8 +168,6 @@ void    PmergeMe::print_p(std::vector<PairedValue>& p)
     std::cout << std::endl;
 }
 
-
-
 std::ostream& operator<<(std::ostream& s, PairedValue& a)
 {
     return s << "(" << a._y << ", " << a._x << ")";
