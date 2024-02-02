@@ -153,14 +153,11 @@ bool    PmergeMe::isSorted(std::vector<int>& a)
     return true;
 }
 
-
+template <typename T>
 void    PmergeMe::print(T& _a)
 {
     for (T::iterator it = s.begin(); it != s.end(); ++it)
         std::cout << *it << " ";
-        a.push_back();
-    for (size_t i = 0; i < _a.size(); i++)
-        
     std::cout << std::endl;
 }
 
