@@ -41,7 +41,7 @@ void    array_sort(int argc, char **argv)
 {
     std::list<int> a;
 
-    std::array<int, 100> a; // Assuming a maximum of 100 elements
+    std::array<int, 4000> a;
 
     for (int i = 1; i < argc; i++)
         a[i-1] = std::atoi(argv[i]);
@@ -49,8 +49,8 @@ void    array_sort(int argc, char **argv)
     PmergeMe p;
     //p._debug = true;
 
-    std::array<int, 100> S;
-    p.sort(a, S);
+    std::array<int, 4000> S;
+    p.sortA(a, S, argc - 1);
 
     std::cout << S.size() << " ";
     if (p.isSorted(S))
