@@ -98,12 +98,12 @@ int	main(int argc, char **argv)
     deque_sort(a0, aD, SD, p);
     clock_t end2 = clock();
 
-    std::cout << "After: ";
+    std::cout << "After:  ";
     print(S);
     double time1 = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
     double time2 = static_cast<double>(end2 - start2) / CLOCKS_PER_SEC * 1e6;
     std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << time1 << " us" << std::endl;
-    std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque : " << time2 << " us" << std::endl;
+    std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque  : " << time2 << " us" << std::endl;
 
     /*
     std::cout << S.size() << " ";
