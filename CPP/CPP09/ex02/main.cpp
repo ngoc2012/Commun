@@ -17,13 +17,13 @@
 
 #include "PmergeMe.hpp"
 
-void    vector_sort(int argc, char **argv)
+void    vector_sort(int argc, char **argv, std::vector<int>& a, std::vector<int>& S)
 {
-    std::vector<int> a;
+    ;
     for (int i = 1; i < argc; i++)
         a.push_back(std::atoi(argv[i]));
     PmergeMe    p;
-    std::vector<int>    S;
+    
     p.sort(a, S);
     /*
     std::cout << S.size() << " ";
@@ -38,13 +38,11 @@ void    vector_sort(int argc, char **argv)
     */
 }
 
-void    deque_sort(int argc, char **argv)
+void    deque_sort(int argc, char **argv, std::deque<int>& a, std::deque<int>& S)
 {
-    std::deque<int> a;
     for (int i = 1; i < argc; i++)
         a.push_back(std::atoi(argv[i]));
     PmergeMe    p;
-    std::deque<int>    S;
     p.sortD(a, S);
     /*
     std::cout << S.size() << " ";
@@ -66,11 +64,14 @@ int	main(int argc, char **argv)
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
         return (1);
     }
+    
     clock_t start1 = clock();
-    vector_sort(argc, argv);
+    std::vector<int>    a;
+    std::vector<int>    S;
+    vector_sort(argc, argv, a, S);
     clock_t end1 = clock();
-    double elapsed_time = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
-    std::cout << "Elapsed time: " << elapsed_time << " microseconds" << std::endl;
+    double time1 = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
+    std::cout << "Elapsed time: " << time1 << " microseconds" << std::endl;
 
     deque_sort(argc, argv);
 
