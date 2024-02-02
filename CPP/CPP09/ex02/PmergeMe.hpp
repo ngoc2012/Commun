@@ -43,8 +43,8 @@ class PmergeMe
         int         binarySearch(std::vector<int>& arr, int target, int start, int end);
         void        insertInSortedArray(std::vector<int>& arr, int num, int start, int end);
 
-        int         binarySearchL(std::list<int>& lst, int target, int start, int end);
-        void        insertInSortedArrayL(std::list<int>& lst, int num, int start, int end);
+        int         binarySearchA(std::list<int>& lst, int target, int start, int end);
+        void        insertInSortedArrayA(std::list<int>& lst, int num, int start, int end);
 
 	public:
         PmergeMe() {}
@@ -55,12 +55,12 @@ class PmergeMe
         void        sort(std::vector<int>&, std::vector<int>&);
         void        print(std::vector<int>&);
         void        print_p(std::vector<PairedValue>&);
-/*
-        bool        isSortedL(std::list<int>&);
-        void        sortL(std::list<int>&, std::list<int>&);
-        void        printL(std::list<int>&);
-        void        print_pL(std::list<PairedValue>&);
-        */
+
+        bool        isSortedA(std::list<int>&, int);
+        void        sortA(std::list<int>&, std::list<int>&, int);
+        void        printA(std::list<int>&, int);
+        void        print_pA(std::list<PairedValue>&, int);
+        
 };
 
 #endif
