@@ -18,18 +18,18 @@
 
 #include "PmergeMe.hpp"
 
-void    vector_sort(int argc, char **argv, std::vector<int>& a, std::vector<int>& S, PmergeMe& p)
+void    vector_sort(std::set<int>& s, std::vector<int>& a, std::vector<int>& S, PmergeMe& p)
 {
-    for (int i = 1; i < argc; i++)
-        a.push_back(std::atoi(argv[i]));
+    for (std::set<int>::iterator it = s.begin(); it != s.end(); ++it)
+        a.push_back(*it);
     p.sort(a, S);
 
 }
 
-void    deque_sort(int argc, char **argv, std::deque<int>& a, std::deque<int>& S, PmergeMe& p)
+void    deque_sort(std::set<int>& s, std::deque<int>& a, std::deque<int>& S, PmergeMe& p)
 {
-    for (int i = 1; i < argc; i++)
-        a.push_back(std::atoi(argv[i]));
+    for (std::set<int>::iterator it = s.begin(); it != s.end(); ++it)
+        a.push_back(*it);
     p.sortD(a, S);
 }
 
