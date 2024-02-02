@@ -41,14 +41,14 @@ class PmergeMe
 		PmergeMe(const PmergeMe&);
 		PmergeMe	&operator=(const PmergeMe& op);
 
-        int         binarySearch(T& arr, int target, int start, int end);
-        void        insertInSortedArray(T& arr, int num, int start, int end);
+        int         binarySearch(T<int>& arr, int target, int start, int end);
+        void        insertInSortedArray(T<int>& arr, int num, int start, int end);
 	public:
         PmergeMe() {}
 
 		virtual     ~PmergeMe() {}
 
-        void        sort(T&, T&);
+        void        sort(T<int>&, T<int>&);
 };
 
 #include "PmergeMe.cpp"

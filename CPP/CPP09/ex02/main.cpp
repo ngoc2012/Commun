@@ -64,11 +64,11 @@ void    vector_sort(std::vector<int>& s, std::vector<int>& a, std::vector<int>& 
 
 }
 
-void    deque_sort(std::vector<int>& s, std::deque<int>& a, std::deque<int>& S, PmergeMe& p)
+void    deque_sort(std::vector<int>& s, std::deque<int>& a, std::deque<int>& S, PmergeMe<std::deque>& p)
 {
     for (std::vector<int>::iterator it = s.begin(); it != s.end(); ++it)
         a.push_back(*it);
-    p.sortD(a, S);
+    p.sort(a, S);
 }
 
 int	main(int argc, char **argv)
