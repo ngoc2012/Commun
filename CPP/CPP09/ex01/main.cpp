@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/02 10:23:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/02 10:24:09 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void    eval(const std::string& expression)
 {
     std::stack<int>         st;
     std::istringstream      iss(expression);
-    std::string             token;
+    std::string             tk;
 
     while (iss >> tk) {
         if (tk == "+" || tk == "-" || tk == "*" || tk == "/") {
