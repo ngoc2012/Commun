@@ -19,9 +19,9 @@
 #include "PmergeMe.hpp"
 
 template <typename T>
-void    print(T& _a)
+void    print(T& s)
 {
-    for (T::iterator it = s.begin(); it != s.end(); ++it)
+    for (typename T::iterator it = s.begin(); it != s.end(); ++it)
         std::cout << *it << " ";
     std::cout << std::endl;
 }
