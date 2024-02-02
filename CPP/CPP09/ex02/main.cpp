@@ -66,9 +66,12 @@ int	main(int argc, char **argv)
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
         return (1);
     }
-    clock_t start_time = clock();
+    clock_t start1 = clock();
     vector_sort(argc, argv);
-     clock_t end_time = clock();
+    clock_t end1 = clock();
+    double elapsed_time = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
+    std::cout << "Elapsed time: " << elapsed_time << " microseconds" << std::endl;
+
     deque_sort(argc, argv);
 
     return (0);
