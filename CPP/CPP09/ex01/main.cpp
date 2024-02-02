@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/02 09:57:07 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/02 09:59:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <iostream>
@@ -65,8 +65,10 @@ int evaluateRPN(const std::string& expression) {
 
 int main(int argc, char* argv[])
 {
-    if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " \"RPN expression\"" << std::endl;
+    if (argc != 2)
+    {
+        std::cerr << "Usage: .\\" << argv[0] << " \"RPN expression\"" << std::endl;
+        std::cerr << "Example: .\\" << argv[0] << " \"8 9 * 9 - 9 - 9 - 4 - 1 +\"" << std::endl;
         return 1;
     }
 
