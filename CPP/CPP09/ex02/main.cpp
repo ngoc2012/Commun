@@ -53,13 +53,13 @@ void    array_sort(int argc, char **argv)
     p.sortA(a, S, argc - 1);
 
     std::cout << S.size() << " ";
-    if (p.isSorted(S))
+    if (p.isSortedA(S, argc - 1))
         std::cout << "Sorted" << std::endl;
     else
     {
         std::cout << "Not sorted" << std::endl;
-        p.print(a);
-        p.print(S);
+        p.printA(a, argc - 1);
+        p.printA(S, argc - 1);
     }
 
 }
