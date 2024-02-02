@@ -19,7 +19,7 @@
 #include "PmergeMe.hpp"
 
 template <typename T>
-void    PmergeMe::print(T& _a)
+void    print(T& _a)
 {
     for (T::iterator it = s.begin(); it != s.end(); ++it)
         std::cout << *it << " ";
@@ -79,11 +79,11 @@ int	main(int argc, char **argv)
         }
         s.insert(e);
     }
-    PmergeMe    p;
-
     std::cout << "Before: ";
-    p.print(s);
+    print(s);
 
+    PmergeMe    p;
+    
     clock_t start1 = clock();
     std::vector<int>    a;
     std::vector<int>    S;
@@ -98,7 +98,7 @@ int	main(int argc, char **argv)
 
     
     std::cout << "After: ";
-    p.print(a);
+    print(a);
     double time1 = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
     double time2 = static_cast<double>(end2 - start2) / CLOCKS_PER_SEC * 1e6;
     std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector : " << time1 << " us" << std::endl;
