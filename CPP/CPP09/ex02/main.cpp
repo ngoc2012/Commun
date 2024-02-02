@@ -14,12 +14,12 @@
 #include <cstdlib>
 #include <vector>
 #include <deque>
+#include <set>
 
 #include "PmergeMe.hpp"
 
 void    vector_sort(int argc, char **argv, std::vector<int>& a, std::vector<int>& S, PmergeMe& p)
 {
-    ;
     for (int i = 1; i < argc; i++)
         a.push_back(std::atoi(argv[i]));
     p.sort(a, S);
@@ -40,6 +40,14 @@ int	main(int argc, char **argv)
         std::cout << "Use: ./exe 1 2 .. " << std::endl;
         return (1);
     }
+
+    std::set<int>    s;
+    for (int i = 1; i < argc; i++)
+    {
+
+    }
+        s.push_back(std::atoi(argv[i]));
+
     PmergeMe    p;
 
     clock_t start1 = clock();
@@ -56,6 +64,7 @@ int	main(int argc, char **argv)
     deque_sort(argc, argv, aD, SD, p);
     clock_t end2 = clock();
 
+    std::cout << "Before "
     double time1 = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
     double time2 = static_cast<double>(end2 - start2) / CLOCKS_PER_SEC * 1e6;
     std::cout << "Elapsed time: " << time1 << " microseconds" << std::endl;
