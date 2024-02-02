@@ -42,7 +42,7 @@ class PmergeMe
 		PmergeMe	&operator=(const PmergeMe& op);
 
         int         binarySearch(T& arr, int target, int start, int end);
-        void        insertInSortedArray(T<int>& arr, int num, int start, int end);
+        void        insertInSortedArray(T& arr, int num, int start, int end);
 	public:
         PmergeMe() {}
 
@@ -50,5 +50,7 @@ class PmergeMe
 
         void        sort(T&, T&);
 };
+
+#include "PmergeMe.cpp"
 
 #endif
