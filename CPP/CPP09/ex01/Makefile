@@ -6,14 +6,14 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/02/02 09:55:29 by ngoc             ###   ########.fr        #
+#    Updated: 2024/02/02 09:56:32 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = main.cpp
 OBJS = ${SRCS:.cpp=.o}
 INCS = $(wildcard *.hpp)
-MANDA = PmergeMe
+MANDA = RPN
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
@@ -23,12 +23,11 @@ $(MANDA): $(SRCS) $(OBJS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
 	clear
-	#make re && valgrind ./PmergeMe `shuf -i 1-10000 -n 1 | tr "\n" " "`
-	#make re && valgrind ./PmergeMe `shuf -i 1-10000 -n 2 | tr "\n" " "`
-	#make re && valgrind ./PmergeMe `shuf -i 1-100000 -n 11 | tr "\n" " "`
-	#make re && valgrind ./PmergeMe 0 `shuf -i 1-10000 -n 10 | tr "\n" " "` 1000
-	#make re && bash test.sh
-	make re && valgrind ./PmergeMe `shuf -i 1-10000 -n 21 | tr "\n" " "`
+	make re
+	./RPN "8 9 * 9 - 9 - 9 - 4 - 1 +"
+	./RPN "7 7 * 7 -"
+	./RPN "1 2 * 2 / 2 * 2 4 - +"
+	./RPN "(1 + 1)"
 	make clean
 gits:
 	git add Makefile
