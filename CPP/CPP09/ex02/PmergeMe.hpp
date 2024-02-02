@@ -31,10 +31,7 @@ class   PairedValue
         }
 };
 
-std::ostream& operator<<(std::ostream& s, PairedValue& a)
-{
-    return s << "(" << a._y << ", " << a._x << ")";
-}
+std::ostream& operator<<(std::ostream& s, PairedValue& a);
 
 template <typename T, typename U>
 class PmergeMe
