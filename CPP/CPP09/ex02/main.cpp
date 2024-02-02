@@ -19,6 +19,7 @@
 #include "PmergeMe.hpp"
 
 bool    isPositiveNumber(const char* str) {
+    const char*     s = str;
     if (!str || !*str)
         return false;
     while (*str)
@@ -27,7 +28,7 @@ bool    isPositiveNumber(const char* str) {
             return false;
         ++str;
     }
-    return (atoi(str) > 0);
+    return (atoi(s) > 0);
 }
 
 void    vector_sort(std::set<int>& s, std::vector<int>& a, std::vector<int>& S, PmergeMe& p)
@@ -60,11 +61,12 @@ int	main(int argc, char **argv)
         e = std::atoi(argv[i]);
         if (s.find(e) != s.end())
         {
-
+            std::cerr << "Error: Duplicates" << std::endl;
+            return (1);
         }
         if (!isPositiveNumber(argv[i]))
         {
-            std::cerr << "Error" << std::endl;
+            std::cerr << "Error: Non positive number" << std::endl;
             return (1);
         }
         s.insert(e);
@@ -91,7 +93,7 @@ int	main(int argc, char **argv)
     double time1 = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
     double time2 = static_cast<double>(end2 - start2) / CLOCKS_PER_SEC * 1e6;
     std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector :" << time1 << " us" << std::endl;
-    std::cout << "Time to process a range of " << argc - 1 << " elements with std::vector :" << time2 << " us" << std::endl;
+    std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque :" << time2 << " us" << std::endl;
 
     /*
     std::cout << S.size() << " ";
