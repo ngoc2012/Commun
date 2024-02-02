@@ -47,14 +47,18 @@ int	main(int argc, char **argv)
     std::vector<int>    S;
     vector_sort(argc, argv, a, S, p);
     clock_t end1 = clock();
-    double time1 = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
-    std::cout << "Elapsed time: " << time1 << " microseconds" << std::endl;
+    
+    
 
-    clock_t start1 = clock();
+    clock_t start2 = clock();
     std::deque<int>    aD;
     std::deque<int>    SD;
     deque_sort(argc, argv, aD, SD, p);
-    clock_t end1 = clock();
+    clock_t end2 = clock();
+
+    double time1 = static_cast<double>(end1 - start1) / CLOCKS_PER_SEC * 1e6;
+    double time2 = static_cast<double>(end2 - start2) / CLOCKS_PER_SEC * 1e6;
+    std::cout << "Elapsed time: " << time1 << " microseconds" << std::endl;
 
     /*
     std::cout << S.size() << " ";
