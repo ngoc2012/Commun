@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/02 10:12:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/02 10:14:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <iostream>
@@ -17,13 +17,13 @@ void    eval(const std::string& expression)
 {
     std::stack<int>         st;
     std::istringstream      iss(expression);
-    std::string             c;
+    std::string             token;
 
-    while (iss >> c) {
-        if (c == "+" || c == "-" || c == "*" || c == "/") {
+    while (iss >> token) {
+        if (token == "+" || token == "-" || token == "*" || token == "/") {
             if (st.size() < 2)
             {
-                std::cerr << "Error: Insufficient operands for operator " << c << std::endl;
+                std::cerr << "Error: Insufficient operands for operator " << token << std::endl;
                 return ;
             }
 
@@ -34,13 +34,13 @@ void    eval(const std::string& expression)
             st.pop();
 
             int result;
-            if (c == "+")
+            if (token == "+")
                 result = operand1 + operand2;
-            else if (c == "-")
+            else if (token == "-")
                 result = operand1 - operand2;
-            else if (c == "*")
+            else if (token == "*")
                 result = operand1 * operand2;
-            else if (c == "/") {
+            else if (token == "/") {
                 if (operand2 == 0)
                 {
                     std::cerr << "Error: Division by zero" << std::endl;
@@ -54,7 +54,7 @@ void    eval(const std::string& expression)
         else
         {
             int number;
-            std::istringstream(c) >> number;
+            std::istringstream(token) >> number;
             st.push(number);
         }
     }
