@@ -6,12 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/02 10:14:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/02 10:19:48 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <iostream>
 #include <stack>
 #include <sstream>
+#include <cctype>
 
 void    eval(const std::string& expression)
 {
@@ -53,6 +55,16 @@ void    eval(const std::string& expression)
         }
         else
         {
+            if (token.size() > 1)
+            {
+                std::cerr << "Error: Number too long" << std::endl;
+                return ;
+            }
+            if (!std::isdigit(c))
+            {
+                std::cerr << "Error: Not a number" << std::endl;
+                return ;
+            }
             int number;
             std::istringstream(token) >> number;
             st.push(number);
