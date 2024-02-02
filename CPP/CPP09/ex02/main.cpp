@@ -18,7 +18,7 @@
 
 #include "PmergeMe.hpp"
 
-bool isPositiveNumber(const char* str) {
+bool    isPositiveNumber(const char* str) {
     if (!str || !*str)
         return false;
     while (*str)
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
     for (int i = 1; i < argc; i++)
     {
         e = std::atoi(argv[i]);
-        if (s.find(e) != s.end())
+        if (s.find(e) != s.end() || !isPositiveNumber(argv[i]))
         {
             std::cerr << "Error" << std::endl;
             return (1);
