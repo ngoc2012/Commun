@@ -18,6 +18,18 @@
 
 #include "PmergeMe.hpp"
 
+bool isPositiveNumber(const char* str) {
+    if (!str || !*str)
+        return false;
+    while (*str)
+    {
+        if (!isdigit(*str))
+            return false;
+        ++str;
+    }
+    return (atoi(str) > 0);
+}
+
 void    vector_sort(std::set<int>& s, std::vector<int>& a, std::vector<int>& S, PmergeMe& p)
 {
     for (std::set<int>::iterator it = s.begin(); it != s.end(); ++it)
@@ -53,7 +65,7 @@ int	main(int argc, char **argv)
         }
         s.insert(e);
     }
-    
+
     PmergeMe    p;
 
     clock_t start1 = clock();
