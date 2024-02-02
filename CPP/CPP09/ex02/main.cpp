@@ -44,16 +44,16 @@ void    deque_sort(int argc, char **argv)
         a.push_back(std::atoi(argv[i]));
     PmergeMe    p;
     std::deque<int>    S;
-    p.sort(a, S);
+    p.sortD(a, S);
 
     std::cout << S.size() << " ";
-    if (p.isSorted(S))
+    if (p.isSortedD(S))
         std::cout << "Sorted" << std::endl;
     else
     {
         std::cout << "Not sorted" << std::endl;
-        p.print(a);
-        p.print(S);
+        p.printD(a);
+        p.printD(S);
     }
 }
 

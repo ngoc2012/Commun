@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/02 06:07:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/02 06:08:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ class PmergeMe
 
         int         binarySearch(std::vector<int>& arr, int target, int start, int end);
         void        insertInSortedArray(std::vector<int>& arr, int num, int start, int end);
-        int         binarySearchD(std::vector<int>& arr, int target, int start, int end);
-        void        insertInSortedArrayD(std::vector<int>& arr, int num, int start, int end);
+        int         binarySearchD(std::deque<int>& arr, int target, int start, int end);
+        void        insertInSortedArrayD(std::deque<int>& arr, int num, int start, int end);
 	public:
         PmergeMe() {}
 
@@ -53,10 +53,10 @@ class PmergeMe
         void        sort(std::vector<int>&, std::vector<int>&);
         void        print(std::vector<int>&);
         void        print_p(std::vector<PairedValue>&);
-        bool        isSortedD(std::vector<int>&);
-        void        sortD(std::vector<int>&, std::vector<int>&);
-        void        printD(std::vector<int>&);
-        void        print_pD(std::vector<PairedValue>&);
+        bool        isSortedD(std::deque<int>&);
+        void        sortD(std::deque<int>&, std::deque<int>&);
+        void        printD(std::deque<int>&);
+        void        print_pD(std::deque<PairedValue>&);
         bool        isSorted(std::vector<int>&);
         void        sort(std::vector<int>&, std::vector<int>&);
         void        print(std::vector<int>&);
