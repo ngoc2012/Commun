@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/10/07 17:22:34 by minh-ngu         ###   ########.fr        #
+#    Updated: 2024/02/10 08:10:29 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-EXOS = ex00 ex01 ex02 ex03
+EXOS = ex00 ex01 ex02
 gits:
 	git add $(addsuffix /Makefile, $(EXOS))
 	git add $(addsuffix /*.cpp, $(EXOS))
