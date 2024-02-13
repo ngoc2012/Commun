@@ -12,12 +12,14 @@
 
 #include "Array.hpp"
 
-Array::Array() {
+template <typename T>
+Array<T>::Array() {
 	_a = new T();
 	_size = 0;
 }
 
-Array::Array(size_t n) {
+template <typename T>
+Array<T>::Array(size_t n) {
 	_a = new T[n];
 	_size = n;
 }

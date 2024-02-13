@@ -25,6 +25,7 @@ class Array
 		Array	&operator=(const Array& op);
 	public:
 		Array();
+		Array(size_t);
 		virtual ~Array();
 
 		class IndexError : public std::exception {
