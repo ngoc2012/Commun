@@ -11,20 +11,16 @@
 # **************************************************************************** #
 
 SRCS = main.cpp
-SRCST = Array.tpp
 OBJS = ${SRCS:.cpp=.o}
-OBJST = ${SRCST:.tpp=.o}
 INCS = $(wildcard *.hpp)
 MANDA = main
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
 .cpp.o:
-	$(CC) $(FLAGS) -g -c $< -o $@ -I.
-.tpp.o:
-	$(CC) $(FLAGS) -g -c $< -o ${<:.tpp=.o} -I.
-$(MANDA): $(OBJS) $(OBJST) $(INCS)
-	$(CC) $(FLAGS) $(OBJS) $(OBJST) -o $(MANDA)
+	$(CC) $(FLAGS) -g -c $< -o ${<:.cpp=.o} -I.
+$(MANDA): $(SRCS) $(OBJS) $(INCS)
+	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test: all
 	valgrind ./$(MANDA)
 gits:
@@ -34,7 +30,7 @@ gits:
 	git commit -m "all"
 	git push
 clean:
-	rm -f $(OBJS) $(OBJST)
+	rm -f $(OBJS)
 fclean: clean
 	rm -f $(MANDA)
 re: fclean all
