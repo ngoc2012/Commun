@@ -30,6 +30,12 @@ class Array
 		void	identify(Array& b);
 };
 
+T& Array::operator[]( unsigned int i ) const {
+    if ( i >= _size )
+        throw OutOfBoundsException();
+    return _arr[i];
+}
+
 template <typename T>
 std::ostream& operator<<( std::ostream& out, const Array<T>& a )
 {
