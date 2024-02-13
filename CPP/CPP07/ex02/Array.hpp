@@ -26,33 +26,12 @@ class Array
 	public:
 		Array();
 		virtual ~Array();
-
-		Array*	generate(void);
-		void	identify(Array* b);
-		void	identify(Array& b);
-
+		
 		class IndexError : public std::exception {
         public:
-            virtual const char* what() const throw() { return "Index is out of bounds";}
+            virtual const char* what() const throw() { return "Index too big";}
     	};
 };
 
-template <typename T>
-Array::~Array() { delete [] _a; }
-
-template <typename T>
-T& Array::operator[](size_t i) const {
-    if (i >= _size)
-        throw OutOfBoundsException();
-    return _a[i];
-}
-
-template <typename T>
-std::ostream& operator<<( std::ostream& out, const Array<T>& a )
-{
-    for (size_t i = 0;i < a.size();i++)
-        out << a[i] << ", ";
-    return out;
-}
 
 #endif
