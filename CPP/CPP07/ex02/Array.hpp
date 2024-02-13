@@ -19,6 +19,8 @@ template <typename T>
 class Array
 {
 	private:
+		T*			_a;
+		size_t		_size;
 		Array(const Array&);
 		Array	&operator=(const Array& op);
 	public:
@@ -28,12 +30,20 @@ class Array
 		Array*	generate(void);
 		void	identify(Array* b);
 		void	identify(Array& b);
+
+		class OutOfBoundsException : public std::exception {
+        public:
+            virtual const char* what() const throw() { return "Index is out of bounds";}
+    	};
 };
 
-T& Array::operator[]( unsigned int i ) const {
-    if ( i >= _size )
+Array::~Array( void ) { delete [] _arr; }
+
+template <typename T>
+T& Array<typename T>::operator[](size_t i) const {
+    if (i >= _size)
         throw OutOfBoundsException();
-    return _arr[i];
+    return _a[i];
 }
 
 template <typename T>
