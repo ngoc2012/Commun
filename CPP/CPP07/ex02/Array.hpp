@@ -13,6 +13,9 @@
 #ifndef ARRAY_HPP
 # define ARRAY_HPP
 
+#include <iostream>
+
+template <typename T>
 class Array
 {
 	private:
@@ -26,5 +29,12 @@ class Array
 		void	identify(Array* b);
 		void	identify(Array& b);
 };
+
+template <typename T>
+std::ostream& operator<<( std::ostream& out, const Array<T>& arr ) {
+    for (size_t i = 0; i < arr.size(); i++ )
+        out << arr[i] << " ";
+    return out;
+}
 
 #endif
