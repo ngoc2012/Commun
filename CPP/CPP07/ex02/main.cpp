@@ -16,7 +16,7 @@
 
 int	main()
 {
-	Array<int>	a_int[10];
+	Array<int>	a_int(10);
 
 	for (size_t i = 0; i < 10; i++)
 		a_int[i] = i + 1;
