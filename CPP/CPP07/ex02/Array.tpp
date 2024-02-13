@@ -29,15 +29,13 @@ Array::Array(const Array& src)
 
 Array&	Array::operator=( Array const & src )
 {
-	(void) src;
+	for ( size_t i = 0; i < src.size(); i++ )
+        _arr[i] = rhs._arr[i];
 	return (*this);
 }
 
-Array::~Array() {}
-
     Array( const Array& rhs ) : _arr( new T[rhs.size()] ), _size( rhs.size() ) {
-        for ( unsigned int i( 0 ); i < _size; i++ )
-            _arr[i] = rhs._arr[i];
+        
     };
 
 template <typename T>
