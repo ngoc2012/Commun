@@ -24,7 +24,7 @@ int	main()
 
 	Array<double>	a_d(10);
 	for (size_t i = 0; i < 10; i++)
-		a_int[i] = i + 1;
+		a_d[i] = i + 1;
 	std::cout << a_d << std::endl;
 	return (0);
 }
