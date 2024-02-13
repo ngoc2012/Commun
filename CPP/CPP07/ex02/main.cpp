@@ -11,25 +11,15 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <unistd.h>
 
-#include "Base.hpp"
+#include "Array.hpp"
 
 int	main()
 {
-	Base*	x;
-	Base	b;
-
-	for (int i  = 0; i < 10; i++)
+	Array<int>	a_int[10];
+	for (int i = 0; i < 10; i++)
 	{
-		x = b.generate();
-		std::cout << "*x = "; b.identify(x);
-		std::cout << ", &a = "; b.identify(*x);
-		std::cout << std::endl;
-		usleep(1000000);
-		delete x;
+		a_int[i] = i + 1;
 	}
 
 	return (0);
