@@ -6,11 +6,11 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2023/11/21 17:58:13 by ngoc             ###   ########.fr        #
+#    Updated: 2024/02/13 17:39:36 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp Base.cpp
+SRCS = main.cpp Array.tpp
 OBJS = ${SRCS:.cpp=.o}
 INCS = $(wildcard *.hpp)
 MANDA = main
