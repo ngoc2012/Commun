@@ -30,13 +30,9 @@ Array::Array(const Array& src)
 Array&	Array::operator=( Array const & src )
 {
 	for ( size_t i = 0; i < src.size(); i++ )
-        _arr[i] = rhs._arr[i];
+        _arr[i] = src[i];
 	return (*this);
 }
-
-    Array( const Array& rhs ) : _arr( new T[rhs.size()] ), _size( rhs.size() ) {
-        
-    };
 
 template <typename T>
 Array::~Array() { delete [] _a; }
