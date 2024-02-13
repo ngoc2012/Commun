@@ -52,7 +52,7 @@ T& Array<T>::operator[](size_t i) const
 }
 
 template <typename T>
-size_t	Array<T>::size() { return (_size);}
+size_t	Array<T>::size() const { return (_size);}
 
 template <typename T>
 std::ostream& operator<<( std::ostream& out, const Array<T>& a )
