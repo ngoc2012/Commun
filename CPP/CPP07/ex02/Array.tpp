@@ -19,10 +19,13 @@ Array::Array() {
 
 Array::Array(size_t n) {
 	_a = new T[n];
-	_size = 0;
+	_size = n;
 }
 
-Array::Array(const Array& src) { *this = src; }
+Array::Array(const Array& src)
+{
+	*this = src;
+}
 
 Array&	Array::operator=( Array const & src )
 {
@@ -32,8 +35,25 @@ Array&	Array::operator=( Array const & src )
 
 Array::~Array() {}
 
-    Array( unsigned int n ) : _arr( new T[n] ), _size( n ) {};
     Array( const Array& rhs ) : _arr( new T[rhs.size()] ), _size( rhs.size() ) {
         for ( unsigned int i( 0 ); i < _size; i++ )
             _arr[i] = rhs._arr[i];
     };
+
+template <typename T>
+Array::~Array() { delete [] _a; }
+
+template <typename T>
+T& Array::operator[](size_t i) const {
+    if (i >= _size)
+        throw IndexError();
+    return _a[i];
+}
+
+template <typename T>
+std::ostream& operator<<( std::ostream& out, const Array<T>& a )
+{
+    for (size_t i = 0;i < a.size();i++)
+        out << a[i] << ", ";
+    return out;
+}

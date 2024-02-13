@@ -31,7 +31,7 @@ class Array
 		void	identify(Array* b);
 		void	identify(Array& b);
 
-		class OutOfBoundsException : public std::exception {
+		class IndexError : public std::exception {
         public:
             virtual const char* what() const throw() { return "Index is out of bounds";}
     	};
