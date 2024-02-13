@@ -83,8 +83,10 @@ size_t	Array<T>::size() const { return (_size);}
 template <typename T>
 std::ostream& operator<<( std::ostream& out, const Array<T>& a )
 {
-    for (size_t i = 0;i < a.size();i++)
+	out << "[";
+    for (size_t i = 0;i < a.size() - 1;i++)
         out << a[i] << ", ";
+	out << a[a.size() - 1] << "]";
     return out;
 }
 
