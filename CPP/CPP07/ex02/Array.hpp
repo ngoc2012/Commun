@@ -31,9 +31,10 @@ class Array
 };
 
 template <typename T>
-std::ostream& operator<<( std::ostream& out, const Array<T>& arr ) {
-    for (size_t i = 0; i < arr.size(); i++ )
-        out << arr[i] << " ";
+std::ostream& operator<<( std::ostream& out, const Array<T>& a )
+{
+    for (size_t i = 0;i < a.size();i++)
+        out << a[i] << ", ";
     return out;
 }
 
