@@ -33,9 +33,9 @@ class Array
 		size_t	size() const;
 
 		class IndexError : public std::exception {
-        public:
-            virtual const char* what() const throw() { return "Index too big";}
-    	};
+		public:
+			virtual const char* what() const throw() { return "Index too big";}
+		};
 };
 
 template <typename T>
@@ -62,7 +62,7 @@ template <typename T>
 Array<T>&	Array<T>::operator=( Array const & src )
 {
 	for (size_t i = 0; i < src.size(); i++ )
-        _a[i] = src[i];
+		_a[i] = src[i];
 	return (*this);
 }
 
@@ -72,9 +72,9 @@ Array<T>::~Array() { delete [] _a; }
 template <typename T>
 T& Array<T>::operator[](size_t i) const
 {
-    if (i >= _size)
-        throw IndexError();
-    return _a[i];
+	if (i >= _size)
+		throw IndexError();
+	return _a[i];
 }
 
 template <typename T>
@@ -89,10 +89,10 @@ std::ostream& operator<<( std::ostream& out, const Array<T>& a )
 		return (out);
 	}
 	out << "[";
-    for (size_t i = 0;i < a.size() - 1;i++)
-        out << a[i] << ", ";
+	for (size_t i = 0;i < a.size() - 1;i++)
+		out << a[i] << ", ";
 	out << a[a.size() - 1] << "]";
-    return (out);
+	return (out);
 }
 
 #endif
