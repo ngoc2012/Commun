@@ -24,12 +24,14 @@ Array<T>::Array(size_t n) {
 	_size = n;
 }
 
-Array::Array(const Array& src)
+template <typename T>
+Array<T>::Array(const Array& src)
 {
 	*this = src;
 }
 
-Array&	Array::operator=( Array const & src )
+template <typename T>
+Array<T>&	Array<T>::operator=( Array const & src )
 {
 	for ( size_t i = 0; i < src.size(); i++ )
         _arr[i] = src[i];
@@ -37,10 +39,10 @@ Array&	Array::operator=( Array const & src )
 }
 
 template <typename T>
-Array::~Array() { delete [] _a; }
+Array<T>::~Array() { delete [] _a; }
 
 template <typename T>
-T& Array::operator[](size_t i) const {
+T& Array<T>::operator[](size_t i) const {
     if (i >= _size)
         throw IndexError();
     return _a[i];
