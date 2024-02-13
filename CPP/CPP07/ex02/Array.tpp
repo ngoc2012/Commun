@@ -36,7 +36,7 @@ template <typename T>
 Array<T>&	Array<T>::operator=( Array const & src )
 {
 	for ( size_t i = 0; i < src.size(); i++ )
-        _arr[i] = src[i];
+        _a[i] = src[i];
 	return (*this);
 }
 
@@ -50,6 +50,9 @@ T& Array<T>::operator[](size_t i) const
         throw IndexError();
     return _a[i];
 }
+
+template <typename T>
+size_t	Array<T>::size() { return _size;}
 
 template <typename T>
 std::ostream& operator<<( std::ostream& out, const Array<T>& a )
