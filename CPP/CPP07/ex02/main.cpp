@@ -26,5 +26,12 @@ int	main()
 	for (size_t i = 0; i < 10; i++)
 		a_d[i] = i + 1;
 	std::cout << a_d << std::endl;
+
+	try {
+		a_int[10] = 5;
+	} catch (Array<int>::IndexError& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	return (0);
 }
