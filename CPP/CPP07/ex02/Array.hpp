@@ -26,12 +26,13 @@ class Array
 	public:
 		Array();
 		virtual ~Array();
-		
+
 		class IndexError : public std::exception {
         public:
             virtual const char* what() const throw() { return "Index too big";}
     	};
 };
 
+#include "Array.tpp"
 
 #endif
