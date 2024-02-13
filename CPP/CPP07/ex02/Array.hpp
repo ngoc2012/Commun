@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Base.hpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2023/11/21 19:12:37 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/13 17:37:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BASE_HPP
-# define BASE_HPP
+#ifndef ARRAY_HPP
+# define ARRAY_HPP
 
-class Base
+class Array
 {
 	private:
-		Base(const Base&);
-		Base	&operator=(const Base& op);
+		Array(const Array&);
+		Array	&operator=(const Array& op);
 	public:
-		Base();
-		virtual ~Base();
+		Array();
+		virtual ~Array();
 
-		Base*	generate(void);
-		void	identify(Base* b);
-		void	identify(Base& b);
+		Array*	generate(void);
+		void	identify(Array* b);
+		void	identify(Array& b);
 };
-
-class A: public Base {};
-class B: public Base {};
-class C: public Base {};
 
 #endif
