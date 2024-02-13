@@ -20,6 +20,6 @@ int	main()
 
 	for (size_t i = 0; i < 10; i++)
 		a_int[i] = i + 1;
-
+	std::cout << a_int << std::endl;
 	return (0);
 }
