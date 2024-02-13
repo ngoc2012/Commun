@@ -24,8 +24,8 @@ all:	$(MANDA)
 	$(CC) $(FLAGS) -g -c $< -o ${<:.tpp=.o} -I.
 $(MANDA): $(SRCS) $(OBJS) $(OBJST) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) $(OBJST) -o $(MANDA)
-test:
-	make re && valgrind ./main
+test: all
+	valgrind ./$(MANDA)
 gits:
 	git add Makefile
 	git add *.cpp
