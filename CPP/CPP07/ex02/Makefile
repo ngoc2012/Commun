@@ -22,7 +22,7 @@ all:	$(MANDA)
 .cpp.o:
 	$(CC) $(FLAGS) -g -c $< -o $@ -I.
 .tpp.o:
-	$(CC) $(FLAGS) -g -c $< -o $@ -I.
+	$(CC) $(FLAGS) -g -c $< -o ${<:.tpp=.o} -I.
 $(MANDA): $(OBJS) $(OBJST) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) $(OBJST) -o $(MANDA)
 test: all
@@ -34,7 +34,7 @@ gits:
 	git commit -m "all"
 	git push
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJST)
 fclean: clean
 	rm -f $(MANDA)
 re: fclean all
