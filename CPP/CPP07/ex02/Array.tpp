@@ -13,13 +13,15 @@
 #include "Array.hpp"
 
 template <typename T>
-Array<T>::Array() {
+Array<T>::Array()
+{
 	_a = new T();
 	_size = 0;
 }
 
 template <typename T>
-Array<T>::Array(size_t n) {
+Array<T>::Array(size_t n)
+{
 	_a = new T[n];
 	_size = n;
 }
@@ -42,7 +44,8 @@ template <typename T>
 Array<T>::~Array() { delete [] _a; }
 
 template <typename T>
-T& Array<T>::operator[](size_t i) const {
+T& Array<T>::operator[](size_t i) const
+{
     if (i >= _size)
         throw IndexError();
     return _a[i];

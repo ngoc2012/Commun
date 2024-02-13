@@ -29,7 +29,7 @@ class Array
 		Array	&operator=(const Array& op);
 		virtual ~Array();
 
-		T& operator[](size_t i) const
+		T& operator[](size_t) const;
 		
 
 		class IndexError : public std::exception {
