@@ -21,12 +21,16 @@ class Array
 	private:
 		T*			_a;
 		size_t		_size;
-		Array(const Array&);
-		Array	&operator=(const Array& op);
+		
 	public:
 		Array();
 		Array(size_t);
+		Array(const Array&);
+		Array	&operator=(const Array& op);
 		virtual ~Array();
+
+		T& operator[](size_t i) const
+		
 
 		class IndexError : public std::exception {
         public:
