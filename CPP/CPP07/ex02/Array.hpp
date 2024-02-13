@@ -37,10 +37,11 @@ class Array
     	};
 };
 
-Array::~Array( void ) { delete [] _arr; }
+template <typename T>
+Array::~Array() { delete [] _a; }
 
 template <typename T>
-T& Array<typename T>::operator[](size_t i) const {
+T& Array::operator[](size_t i) const {
     if (i >= _size)
         throw OutOfBoundsException();
     return _a[i];
