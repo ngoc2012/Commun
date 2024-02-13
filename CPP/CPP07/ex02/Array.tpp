@@ -17,8 +17,8 @@ Array::Array() {
 	_size = 0;
 }
 
-Array::Array() {
-	_a = new T();
+Array::Array(size_t n) {
+	_a = new T[n];
 	_size = 0;
 }
 
@@ -32,7 +32,6 @@ Array&	Array::operator=( Array const & src )
 
 Array::~Array() {}
 
-Array( void ) : _arr( new T() ), _size( 0 ) {};
     Array( unsigned int n ) : _arr( new T[n] ), _size( n ) {};
     Array( const Array& rhs ) : _arr( new T[rhs.size()] ), _size( rhs.size() ) {
         for ( unsigned int i( 0 ); i < _size; i++ )
