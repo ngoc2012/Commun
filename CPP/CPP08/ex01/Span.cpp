@@ -71,8 +71,11 @@ const char* Span::TooManyElements::what() const throw()
 const char* Span::TooFewElements::what() const throw()
 { return ("Error: Too few elements."); }
 
+std::vector<int>*    Span::get_v() {return (&_v);}
+
 std::ostream& operator<<( std::ostream& out, const Span& a )
 {
+	std::vector<int>*	v = a.get_v();
 	if (!a.size())
 	{
 		out << "[]";

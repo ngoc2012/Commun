@@ -36,6 +36,8 @@ class Span
         int     longestSpan() const;
 		int     binarySearch(std::vector<int>& arr, int target, int start, int end);
 
+		std::vector<int>*    get_v();
+
         class TooManyElements : public std::exception
 		{
 			public: virtual const char* what() const throw();
