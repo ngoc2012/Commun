@@ -19,6 +19,7 @@
 int	main(int argc, char **argv)
 {
     Span sp = Span(5);
+    
     sp.addNumber(6);
     sp.addNumber(3);
     sp.addNumber(17);
