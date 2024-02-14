@@ -1,12 +1,12 @@
 template <typename T>
-easyfind<T>::easyfind()
+Array<T>::Array()
 {
 	_a = new T();
 	_size = 0;
 }
 
 template <typename T>
-easyfind<T>::easyfind(size_t n)
+Array<T>::Array(size_t n)
 {
 	_a = new T[n];
 	_size = n;
@@ -15,13 +15,13 @@ easyfind<T>::easyfind(size_t n)
 }
 
 template <typename T>
-easyfind<T>::easyfind(const easyfind& src)
+Array<T>::Array(const Array& src)
 {
 	*this = src;
 }
 
 template <typename T>
-easyfind<T>&	easyfind<T>::operator=( easyfind const & src )
+Array<T>&	Array<T>::operator=( Array const & src )
 {
 	for (size_t i = 0; i < src.size(); i++ )
 		_a[i] = src[i];
@@ -29,10 +29,10 @@ easyfind<T>&	easyfind<T>::operator=( easyfind const & src )
 }
 
 template <typename T>
-easyfind<T>::~easyfind() { delete [] _a; }
+Array<T>::~Array() { delete [] _a; }
 
 template <typename T>
-T& easyfind<T>::operator[](size_t i) const
+T& Array<T>::operator[](size_t i) const
 {
 	if (i >= _size)
 		throw IndexError();
@@ -40,10 +40,10 @@ T& easyfind<T>::operator[](size_t i) const
 }
 
 template <typename T>
-size_t	easyfind<T>::size() const { return (_size);}
+size_t	Array<T>::size() const { return (_size);}
 
 template <typename T>
-std::ostream& operator<<( std::ostream& out, const easyfind<T>& a )
+std::ostream& operator<<( std::ostream& out, const Array<T>& a )
 {
 	if (!a.size())
 	{
