@@ -17,9 +17,12 @@
 #include <algorithm>
 
 template <typename T>
-typename T::iterator    easyfind(T& c, int v )
+T    easyfind(T& c, int v )
 {
-    return (std::find(c.begin(), c.end(), v));
+    typename T::iterator   it = std::find(c.begin(), c.end(), v);
+    if (it == c.end())
+        throw std::exception();
+    static_cast<T> (*it)
 }
 
 #endif
