@@ -16,11 +16,16 @@ Span::Span(unsigned int n): _N(n) {}
 
 Span::Span(Span& s)
 {
+    this = s;
+}
+
+Span&	Span::operator=( Span const & s )
+{
     std::vector<int>*	v = s.get_v();
     _N = s.get_N();
     for (int i = 0; i < _N; i++)
         this->addNumber((*v)[i]);
-    return (this);
+	return (*this);
 }
 
 Span::~Span() {}
