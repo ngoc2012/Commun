@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 09:57:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 09:59:30 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ void    Span::addNumber(int i)
 	if (_N == _v.size())
         throw std::exception();
     _v.push_back();
-	int insertPos = binarySearch(_sorted, i, 0, _v.size());
-    arr.insert(arr.begin() + insertPos, num);
+	int     pos = binarySearch(_sorted, i, 0, _sorted.size());
+    _sorted.insert(_sorted.begin() + pos, i);
 }
 
 int     Span::shortestSpan() const
 {
+	if (_N == _v.size())
+        throw std::exception();
 }
 
 int     Span::longestSpan() const;
