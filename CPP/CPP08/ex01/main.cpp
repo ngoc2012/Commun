@@ -42,12 +42,21 @@ int	main(int argc, char **argv)
     
     std::cout << s << std::endl;
     try {
-    std::cout << "Shortest span: " << s.shortestSpan() << std::endl;
-    std::cout << "Longest span: " << s.longestSpan() << std::endl;
-    } catch (std::exception &e) {std::cout << e.what() << std::endl;}
+        std::cout << "Shortest span: " << s.shortestSpan() << std::endl;
+        std::cout << "Longest span: " << s.longestSpan() << std::endl;
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
 
     try {
-        s.addNumber(v.begin(), v.end());
+        s.addNumber(-14);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    try {
+        std::cout << "Shortest span: " << s.shortestSpan() << std::endl;
+        std::cout << "Longest span: " << s.longestSpan() << std::endl;
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }
