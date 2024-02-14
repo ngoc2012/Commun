@@ -42,6 +42,11 @@ void MutantStack<T>::push(const T &value) {
 }
 
 template <typename T>
+T& MutantStack<T>::top() {
+    return this->top();
+}
+
+template <typename T>
 const T& MutantStack<T>::top() const {
     return this->top();
 }
