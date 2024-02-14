@@ -6,39 +6,21 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 09:01:57 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 09:03:02 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <iostream>
 
 #include "Span.hpp"
 
 int	main(int argc, char **argv)
 {
     std::vector<int>	v;
-    std::list<int>	    l;
 
-	for (size_t i = 0; i < 10; i++)
+    for (int i = 1; i < argc; i++)
     {
-		v.push_back(i + 1);
-		l.push_back(i + 1);
+        int     n = std::atoi(argv[i]);
     }
-
-    try
-    {
-        for (int i = 1; i < argc; i++)
-        {
-            int     n = std::atoi(argv[i]);
-            std::cout << easyfind(v, n) << " found in vector" << std::endl;
-        }
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << "Not found" << std::endl;
-    }
-    
-	
+        std::cout << easyfind(v, n) << " found in vector" << std::endl;
 
 	return (0);
 }
