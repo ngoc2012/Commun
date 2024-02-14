@@ -1,12 +1,23 @@
-template <typename T>
-Array<T>::Array()
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
+/*   Updated: 2024/02/14 08:54:31 by ngoc             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+Span<T>::Span()
 {
 	_a = new T();
 	_size = 0;
 }
 
 template <typename T>
-Array<T>::Array(size_t n)
+Span<T>::Span(size_t n)
 {
 	_a = new T[n];
 	_size = n;
@@ -15,13 +26,13 @@ Array<T>::Array(size_t n)
 }
 
 template <typename T>
-Array<T>::Array(const Array& src)
+Span<T>::Span(const Span& src)
 {
 	*this = src;
 }
 
 template <typename T>
-Array<T>&	Array<T>::operator=( Array const & src )
+Span<T>&	Span<T>::operator=( Span const & src )
 {
 	for (size_t i = 0; i < src.size(); i++ )
 		_a[i] = src[i];
@@ -29,21 +40,11 @@ Array<T>&	Array<T>::operator=( Array const & src )
 }
 
 template <typename T>
-Array<T>::~Array() { delete [] _a; }
+Span<T>::~Span() { delete [] _a; }
 
-template <typename T>
-T& Array<T>::operator[](size_t i) const
-{
-	if (i >= _size)
-		throw IndexError();
-	return _a[i];
-}
+size_t	Span<T>::size() const { return (_size);}
 
-template <typename T>
-size_t	Array<T>::size() const { return (_size);}
-
-template <typename T>
-std::ostream& operator<<( std::ostream& out, const Array<T>& a )
+std::ostream& operator<<( std::ostream& out, const Span<T>& a )
 {
 	if (!a.size())
 	{

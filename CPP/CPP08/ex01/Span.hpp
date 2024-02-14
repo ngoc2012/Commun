@@ -6,12 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 08:53:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 08:55:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARRAY_HPP
-# define ARRAY_HPP
+#ifndef SPAN_HPP
+# define SPAN_HPP
 
 #include <iostream>
 
@@ -22,11 +22,11 @@ class Span
 		T*			_a;
 		size_t		_size;
 		
-	public:
 		Span();
-		Span(size_t);
 		Span(const Span&);
 		Span	&operator=(const Span& op);
+	public:
+		Span(unsigned int);
 		virtual ~Span();
 
 		T& operator[](size_t) const;
