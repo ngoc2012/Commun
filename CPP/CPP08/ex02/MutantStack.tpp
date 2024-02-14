@@ -2,8 +2,8 @@
 
 MutantStack& MutantStack::operator=(const MutantStack &m)
 {
-    if (*this == m)
+    if (this == &m)
         return (*this);
-    std::stack<T>::operator=(op);
+    std::stack<T>::operator=(m);
     return (*this);
 };
