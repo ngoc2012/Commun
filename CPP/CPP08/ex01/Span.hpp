@@ -56,8 +56,6 @@ std::ostream& operator<<( std::ostream& out, Span& a );
 template <class Iterator>
 void    Span::addNumber(Iterator start, Iterator end)
 {
-	if (end - start > _N)
-		throw Span::TooManyElements();
     while (start != end)
         addNumber(*start++);
 }
