@@ -6,19 +6,18 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/02/14 10:04:59 by ngoc             ###   ########.fr        #
+#    Updated: 2024/02/14 10:32:24 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp
-TEMP = Array.tpp
+SRCS = main.cpp Span.cpp
 OBJS = ${SRCS:.cpp=.o}
 INCS = $(wildcard *.hpp)
 MANDA = main
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
-%.o: %.cpp $(TEMP)
+%.o: %.cpp
 	$(CC) $(FLAGS) -g -c $< -o ${<:.cpp=.o} -I.
 $(MANDA): $(SRCS) $(OBJS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
