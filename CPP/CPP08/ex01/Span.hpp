@@ -43,10 +43,6 @@ class Span
 		{
 			public: virtual const char* what() const throw();
 		};
-        const char* TooManyElements::what() const throw()
-        { return ("Error: Too many elements."); }
-        const char* TooFewElements::what() const throw()
-        { return ("Error: Too few elements."); }
 };
 
 std::ostream& operator<<( std::ostream& out, const Span& a );

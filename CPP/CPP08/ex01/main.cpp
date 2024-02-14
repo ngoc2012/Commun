@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Span.hpp"
 
 int	main(int argc, char **argv)
