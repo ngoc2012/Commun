@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 07:33:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 07:35:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <vector>
 #include <list>
 
-#include "Array.hpp"
+#include "easyfind.hpp"
 
 int	main(int argc, char **argv)
 {
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 		l.push_back(i + 1);
     }
 
-	for (size_t i = 1; i < argc; i++)
+	for (int i = 1; i < argc; i++)
     {
         int     n = std::atoi(argv[i]);
         if (easyfind(v, n))
