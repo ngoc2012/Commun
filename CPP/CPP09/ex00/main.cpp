@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 17:49:12 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 17:51:11 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int argc, char **argv)
 	while (std::getline(f, line))
 	{
         std::cout << line << std::endl;
+        std::cout << line.find(" | ") << std::endl;
     }
     
 	return (0);
