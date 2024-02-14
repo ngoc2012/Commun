@@ -3,53 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 21:13:09 by ngoc             ###   ########.fr       */
+/*   Created: 2022/08/17 18:21:41 by ael-khni          #+#    #+#             */
+/*   Updated: 2022/08/25 14:30:38 by ael-khni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MUTANTSTACK_HPP
-# define MUTANTSTACK_HPP
+#pragma once
 
 #include <iostream>
+#include <algorithm>
+#include <list>
 #include <stack>
+#include <deque>
 
-template <typename T>
-class MutantStack
-{		
-	public:
-		typedef typename std::stack<T>::container_type::iterator iterator;
-        typedef typename std::stack<T>::container_type::const_iterator const_iterator;
-        typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
-        typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
+template< typename T, class Container = std::deque< T > > 
+class MutantStack : public std::stack< T, Container >
+{
 
-		MutantStack();
-		MutantStack(size_t);
-		MutantStack(const MutantStack&);
-		MutantStack	&operator=(const MutantStack& op);
-		virtual ~MutantStack();
+private:
 
-		iterator begin();
-		const_iterator begin() const;
-		iterator end();
-		const_iterator end() const;
-		reverse_iterator rbegin();
-		const_reverse_iterator rbegin() const;
-		reverse_iterator rend();
-		const_reverse_iterator rend() const;
+public:
 
-        void        push(const T &value);
-        T&          top();
-        const T&    top() const;
-        void        pop();
-        size_t      size() const;
+    MutantStack( void ) {};
+    ~MutantStack( void ) {};
+
+    MutantStack( const MutantStack& rhs ) { *this = rhs; }
+    MutantStack&    operator=( const MutantStack& rhs ) {
+        std::stack< T, Container >::operator=( rhs );
+        return *this;
+    }
+
+    typedef typename Container::iterator    iterator;
+
+    iterator    begin() { return this->c.begin(); }
+    iterator    end() { return this->c.end(); }
 };
-
-template <typename T>
-std::ostream& operator<<( std::ostream& out, const MutantStack<T>& a );
-
-#include "MutantStack.tpp"
-
-#endif
