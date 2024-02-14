@@ -39,7 +39,7 @@ class Bureaucrat
 		void		upGrade( void );
 		void		downGrade( void );
 		void		signForm( Form& );
-
+		int     	binarySearch(std::vector<int>& arr, int target, int start, int end);
 		class GradeTooHighException : public std::exception
 		{
 			public: virtual const char* what() const throw();

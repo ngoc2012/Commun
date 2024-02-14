@@ -39,7 +39,7 @@ int     Span::binarySearch(std::vector<int>& arr, int target, int start, int end
 void    Span::addNumber(int i)
 {
 	if (_N == _v.size())
-        throw std::TooFewElements();
+        throw Span::TooFewElements();
     _v.push_back();
 	int     pos = binarySearch(_sorted, i, 0, _sorted.size());
     _sorted.insert(_sorted.begin() + pos, i);
