@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 06:17:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 08:53:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 #include <iostream>
 
 template <typename T>
-class Array
+class Span
 {
 	private:
 		T*			_a;
 		size_t		_size;
 		
 	public:
-		Array();
-		Array(size_t);
-		Array(const Array&);
-		Array	&operator=(const Array& op);
-		virtual ~Array();
+		Span();
+		Span(size_t);
+		Span(const Span&);
+		Span	&operator=(const Span& op);
+		virtual ~Span();
 
 		T& operator[](size_t) const;
 		size_t	size() const;
@@ -39,8 +39,8 @@ class Array
 };
 
 template <typename T>
-std::ostream& operator<<( std::ostream& out, const Array<T>& a );
+std::ostream& operator<<( std::ostream& out, const Span<T>& a );
 
-#include "Array.tpp"
+#include "Span.tpp"
 
 #endif
