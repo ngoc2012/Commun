@@ -17,11 +17,7 @@
 
 template <typename T>
 class MutantStack
-{
-	private:
-		T*			_a;
-		size_t		_size;
-		
+{		
 	public:
 		typedef typename std::stack<T>::container_type::iterator iterator;
         typedef typename std::stack<T>::container_type::const_iterator const_iterator;
@@ -34,13 +30,15 @@ class MutantStack
 		MutantStack	&operator=(const MutantStack& op);
 		virtual ~MutantStack();
 
-		T& operator[](size_t) const;
-		size_t	size() const;
+		iterator begin() { return (std::stack<T>::c.begin()); }
+		const_iterator begin() const { return (std::stack<T>::c.begin()); }
+		iterator end() { return (std::stack<T>::c.end()); }
+		const_iterator end() const { return (std::stack<T>::c.end()); }
+		reverse_iterator rbegin() { return (std::stack<T>::c.rbegin()); }
+		const_reverse_iterator rbegin() const { return (std::stack<T>::c.rbegin()); }
+		reverse_iterator rend() { return (std::stack<T>::c.rend()); }
+		const_reverse_iterator rend() const { return (std::stack<T>::c.rend()); } 
 
-		class IndexError : public std::exception {
-		public:
-			virtual const char* what() const throw() { return "Error: Index too big";}
-		};
 };
 
 template <typename T>
