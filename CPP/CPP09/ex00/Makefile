@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/02/14 14:11:12 by minh-ngu         ###   ########.fr        #
+#    Updated: 2024/02/14 17:47:43 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,7 @@ $(MANDA): $(SRCS) $(OBJS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
 	clear
-	make re && valgrind ./$(MANDA) `shuf -i 1-10000 -n 3 | tr "\n" " "`
-	make re && valgrind ./$(MANDA) `shuf -i 1-10000 -n 5 | tr "\n" " "`
-	make re && valgrind ./$(MANDA) `shuf -i 1-10000 -n 21 | tr "\n" " "`
-	make re && ./$(MANDA) `shuf -i 1-1000000 -n 10000 | tr "\n" " "`
+	make re && ./$(MANDA) input.txt
 	make clean
 gits:
 	git add Makefile
