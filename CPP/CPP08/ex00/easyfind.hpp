@@ -6,41 +6,23 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 07:13:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 07:19:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARRAY_HPP
-# define ARRAY_HPP
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
 #include <iostream>
+#include <algorithm>
 
 template <typename T>
-class easyfind
+void    easyfind(T& c, int v )
 {
-	private:
-		T*			_a;
-		size_t		_size;
-		
-	public:
-		easyfind();
-		easyfind(size_t);
-		easyfind(const easyfind&);
-		easyfind	&operator=(const easyfind& op);
-		virtual ~easyfind();
-
-		T& operator[](size_t) const;
-		size_t	size() const;
-
-		class IndexError : public std::exception {
-		public:
-			virtual const char* what() const throw() { return "Error: Index too big";}
-		};
-};
-
-template <typename T>
-std::ostream& operator<<( std::ostream& out, const easyfind<T>& a );
-
-#include "easyfind.tpp"
+    if (std::find(c.begin(), c.end(), v) != c.end())
+        std::cout << "Found." << std::endl;
+    else
+        std::cout << "Not found." << std::endl;
+}
 
 #endif
