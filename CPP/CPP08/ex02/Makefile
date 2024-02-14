@@ -6,12 +6,12 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/02/14 06:26:21 by ngoc             ###   ########.fr        #
+#    Updated: 2024/02/14 14:15:37 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = main.cpp
-TEMP = Array.tpp
+TEMP = MutantStack.tpp
 OBJS = ${SRCS:.cpp=.o}
 INCS = $(wildcard *.hpp)
 MANDA = main
