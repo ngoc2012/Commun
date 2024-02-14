@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 09:08:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 09:48:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class Span
 	private:
 		unsigned int		_N;
         std::vector<int>    _v;
+        std::vector<int>    _sorted;
 		
 		Span();
 		Span(const Span&);
@@ -31,6 +32,8 @@ class Span
 
         int     size() const;
         void    addNumber(int);
+        int     shortestSpan() const;
+        int     longestSpan() const;
 
 };
 
