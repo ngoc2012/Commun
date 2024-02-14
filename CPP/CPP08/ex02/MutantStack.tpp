@@ -6,14 +6,14 @@ MutantStack& MutantStack::operator=(const MutantStack &m):std::stack<T>::operato
 template <typename T>
 MutantStack::MutantStack(const MutantStack& m) : std::stack<T>(m){}
 
-typename MutantStack<T>::iterator begin() { return (std::stack<T>::c.begin()); }
-typename MutantStack<T>::const_iterator begin() const { return (std::stack<T>::c.begin()); }
-typename MutantStack<T>::iterator end() { return (std::stack<T>::c.end()); }
-typename MutantStack<T>::const_iterator end() const { return (std::stack<T>::c.end()); }
-typename MutantStack<T>::reverse_iterator rbegin() { return (std::stack<T>::c.rbegin()); }
-typename MutantStack<T>::const_reverse_iterator rbegin() const { return (std::stack<T>::c.rbegin()); }
-typename MutantStack<T>::reverse_iterator rend() { return (std::stack<T>::c.rend()); }
-typename MutantStack<T>::const_reverse_iterator rend() const { return (std::stack<T>::c.rend()); } 
+typename MutantStack<T>::iterator MutantStack<T>::begin() { return (std::stack<T>::c.begin()); }
+typename MutantStack<T>::const_iterator MutantStack<T>::begin() const { return (std::stack<T>::c.begin()); }
+typename MutantStack<T>::iterator MutantStack<T>::end() { return (std::stack<T>::c.end()); }
+typename MutantStack<T>::const_iterator MutantStack<T>::end() const { return (std::stack<T>::c.end()); }
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin() { return (std::stack<T>::c.rbegin()); }
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rbegin() const { return (std::stack<T>::c.rbegin()); }
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rend() { return (std::stack<T>::c.rend()); }
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rend() const { return (std::stack<T>::c.rend()); } 
 
 template <typename T>
 std::ostream& operator<<( std::ostream& out, const MutantStack<T>& a )
