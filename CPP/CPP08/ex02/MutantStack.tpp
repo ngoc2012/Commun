@@ -42,6 +42,26 @@ void MutantStack<T>::push(const T &value) {
 }
 
 template <typename T>
+T& MutantStack<T>::top() {
+    return std::stack<T>::top();
+}
+
+template <typename T>
+const T& MutantStack<T>::top() const {
+    return std::stack<T>::top();
+}
+
+template <typename T>
+void MutantStack<T>::pop() {
+    std::stack<T>::pop();
+}
+
+template <typename T>
+size_t MutantStack<T>::size() const {
+    return std::stack<T>::size();
+}
+
+template <typename T>
 std::ostream& operator<<( std::ostream& out, const MutantStack<T>& a )
 {
 	if (!a.size())

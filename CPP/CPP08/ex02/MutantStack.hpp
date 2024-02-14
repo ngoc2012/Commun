@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 15:32:29 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:39:41 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ class MutantStack
 		reverse_iterator rend();
 		const_reverse_iterator rend() const;
 
-        void push(const T &value);
+        void        push(const T &value);
+        const T&    top() const;
+        void        pop();
+        size_t      size() const;
 };
 
 template <typename T>
