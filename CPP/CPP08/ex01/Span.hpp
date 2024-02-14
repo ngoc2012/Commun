@@ -48,6 +48,6 @@ class Span
 		};
 };
 
-std::ostream& operator<<( std::ostream& out, const Span& a );
+std::ostream& operator<<( std::ostream& out, Span& a );
 
 #endif

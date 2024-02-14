@@ -73,7 +73,7 @@ const char* Span::TooFewElements::what() const throw()
 
 std::vector<int>*    Span::get_v() {return (&_v);}
 
-std::ostream& operator<<( std::ostream& out, const Span& a )
+std::ostream& operator<<( std::ostream& out, Span& a )
 {
 	std::vector<int>*	v = a.get_v();
 	if (!a.size())
@@ -82,8 +82,8 @@ std::ostream& operator<<( std::ostream& out, const Span& a )
 		return (out);
 	}
 	out << "[";
-	for (int i = 0;i < a.size() - 1;i++)
-		out << a[i] << ", ";
-	out << a[a.size() - 1] << "]";
+	for (size_t i = 0;i < v->size() - 1;i++)
+		out << (*v)[i] << ", ";
+	out << (*v)[v->size() - 1] << "]";
 	return (out);
 }
