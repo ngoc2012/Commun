@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
+
 #include "Span.hpp"
 
 int	main(int argc, char **argv)

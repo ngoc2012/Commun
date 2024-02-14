@@ -34,6 +34,7 @@ class Span
         void    addNumber(int);
         int     shortestSpan() const;
         int     longestSpan() const;
+		int     binarySearch(std::vector<int>& arr, int target, int start, int end);
 
         class TooManyElements : public std::exception
 		{
