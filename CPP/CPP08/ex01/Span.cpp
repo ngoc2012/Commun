@@ -14,9 +14,10 @@
 
 Span::Span(unsigned int n): _N(n) {}
 
-Span::Span(const Span&)
+Span::Span(Span& s)
 {
-    _N = 
+    _N = s.get_N();
+
     return (*this);
 }
 
