@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 10:01:51 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 10:03:55 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ int	main(int argc, char **argv)
         catch {std::cout << e.what() << std::endl;}
     }
     std::cout << s << std::endl;
+    try { s.addNumber(std::atoi(argv[i]));}
     std::cout << "Shortest span: " << s.shortestSpan() << std::endl;
     std::cout << "Longest span: " << s.longestSpan() << std::endl;
+    catch {std::cout << e.what() << std::endl;}
 
 	return (0);
 }
