@@ -37,6 +37,11 @@ template <typename T>
 typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rend() const { return (std::stack<T>::c.rend()); } 
 
 template <typename T>
+void MutantStack<T>::push(const T &value) {
+    this->c.push_back(value);
+}
+
+template <typename T>
 std::ostream& operator<<( std::ostream& out, const MutantStack<T>& a )
 {
 	if (!a.size())
