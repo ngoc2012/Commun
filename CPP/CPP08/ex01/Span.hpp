@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 10:11:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 10:12:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,14 @@ class Span
         int     shortestSpan() const;
         int     longestSpan() const;
 
+        class TooManyElements : public std::exception
+		{
+			public: virtual const char* what() const throw();
+		};
+		class TooFewElements : public std::exception
+		{
+			public: virtual const char* what() const throw();
+		};
         const char* TooManyElements::what() const throw()
         { return ("Error: Too many elements."); }
         const char* TooFewElements::what() const throw()
