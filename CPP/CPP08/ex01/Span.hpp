@@ -27,9 +27,9 @@ class Span
 		
 	public:
 
-		Span(unsigned int);
+		Span(unsigned int const &);
 		Span(Span&);
-		Span	&operator=(Span& op);
+		Span	&operator=(const Span& op);
 		virtual ~Span();
 
         int     size() const;

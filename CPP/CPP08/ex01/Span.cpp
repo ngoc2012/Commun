@@ -12,19 +12,17 @@
 
 #include "Span.hpp"
 
-Span::Span(unsigned int n): _N(n) {}
+Span::Span(unsigned int const & n): _N(n) {}
 
 Span::Span(Span& s)
 {
     *this = s;
 }
 
-Span&	Span::operator=( Span& s )
+Span&	Span::operator=( const Span& s )
 {
-    std::vector<int>*	v = s.get_v();
-    _N = s.get_N();
-    for (int i = 0; i < _N; i++)
-        this->addNumber((*v)[i]);
+    for (int i = 0; i < s._N; i++)
+        this->addNumber(s._v[i]);
 	return (*this);
 }
 
