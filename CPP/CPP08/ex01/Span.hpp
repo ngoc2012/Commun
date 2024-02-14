@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 10:03:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 10:11:08 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ class Span
         int     shortestSpan() const;
         int     longestSpan() const;
 
-        const char* Bureaucrat::TooManyElements::what() const throw()
+        const char* TooManyElements::what() const throw()
         { return ("Error: Too many elements."); }
-        const char* Bureaucrat::TooFewElements::what() const throw()
+        const char* TooFewElements::what() const throw()
         { return ("Error: Too few elements."); }
 };
 

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 10:06:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 10:10:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,20 @@ int     Span::shortestSpan() const
 {
 	if (_v.size() < 2)
         throw std::TooFewElements();
+    int _min = longestSpan();
+    for (int    i = 1; i < _sorted.size(); i++)
+    {
+        if (_sorted[i] - _sorted[i - 1] < _min)
+            _min = _sorted[i] - _sorted[i - 1];
+    }
+    return (_min);
 }
 
 int     Span::longestSpan() const;
 {
 	if (_v.size() < 2)
         throw std::TooFewElements();
+    return (_sorted[_sorted.size() - 1] - _sorted[0]);
 }
 
 std::ostream& operator<<( std::ostream& out, const Span& a )
