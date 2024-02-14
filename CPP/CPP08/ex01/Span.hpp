@@ -38,6 +38,18 @@ class Span
 
 		std::vector<int>*    get_v();
 
+		template < class Iterator >
+        void        addNumber(Iterator begin, Iterator end);
+        {
+            if (end - begin <= _max_values)
+                std::copy(begin, end, std::back_inserter(this->_values));
+            else
+            {
+                throw(NotEnoughSpace());
+            }
+            std::sort(this->_values.begin(), this->_values.end());
+        }
+
         class TooManyElements : public std::exception
 		{
 			public: virtual const char* what() const throw();
