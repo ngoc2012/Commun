@@ -24,9 +24,9 @@ class Span
         std::vector<int>    _sorted;
 		
 		Span();
-		Span(const Span&);
 		Span	&operator=(const Span& op);
 	public:
+		Span(const Span&);
 		Span(unsigned int);
 		virtual ~Span();
 
