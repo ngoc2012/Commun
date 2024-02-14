@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Span.hpp                                           :+:      :+:    :+:   */
+/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 10:12:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 15:55:47 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@
 #include <iostream>
 #include <vector>
 
-class Span
+class BitcoinExchange
 {
 	private:
 		unsigned int		_N;
         std::vector<int>    _v;
         std::vector<int>    _sorted;
 		
-		Span();
+		BitcoinExchange();
 		
 	public:
 
-		Span(unsigned int const &);
-		Span(const Span&);
-		Span	&operator=(const Span& op);
-		virtual ~Span();
+		BitcoinExchange(unsigned int const &);
+		BitcoinExchange(const BitcoinExchange&);
+		BitcoinExchange	&operator=(const BitcoinExchange& op);
+		virtual ~BitcoinExchange();
 
         int     size() const;
         void    addNumber(int);
-        int     shortestSpan() const;
-        int     longestSpan() const;
+        int     shortestBitcoinExchange() const;
+        int     longestBitcoinExchange() const;
 		int     binarySearch(std::vector<int>& arr, int target, int start, int end);
 
 		std::vector<int>*    	get_v();
@@ -54,10 +54,10 @@ class Span
 		};
 };
 
-std::ostream& operator<<( std::ostream& out, Span& a );
+std::ostream& operator<<( std::ostream& out, BitcoinExchange& a );
 
 template <class Iterator>
-void    Span::addNumber(Iterator start, Iterator end)
+void    BitcoinExchange::addNumber(Iterator start, Iterator end)
 {
     while (start != end)
         addNumber(*start++);
