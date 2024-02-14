@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 09:56:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 09:57:51 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ int     Span::binarySearch(std::vector<int>& arr, int target, int start, int end
 
 void    Span::addNumber(int i)
 {
-	if (it == c.end())
+	if (_N == _v.size())
         throw std::exception();
-	int insertPos = binarySearch(arr, num, start, end);
+    _v.push_back();
+	int insertPos = binarySearch(_sorted, i, 0, _v.size());
     arr.insert(arr.begin() + insertPos, num);
 }
 
