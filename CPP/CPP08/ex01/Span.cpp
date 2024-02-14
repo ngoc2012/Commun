@@ -50,6 +50,7 @@ int     Span::binarySearch(std::vector<int>& arr, int target, int start, int end
 
 void    Span::addNumber(int i)
 {
+    std::cout << _N << ":" << _v.size() << std::endl;
 	if (_N == _v.size())
         throw Span::TooManyElements();
     _v.push_back(i);
