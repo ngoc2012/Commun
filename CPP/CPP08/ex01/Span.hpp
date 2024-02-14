@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 08:55:23 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 08:57:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 
 #include <iostream>
 
-template <typename T>
 class Span
 {
 	private:
-		T*			_a;
-		size_t		_size;
+		unsigned int		_N;
+        std::vector<int>    _v;
 		
 		Span();
 		Span(const Span&);
@@ -29,18 +28,10 @@ class Span
 		Span(unsigned int);
 		virtual ~Span();
 
-		T& operator[](size_t) const;
-		size_t	size() const;
+        addNumber();
 
-		class IndexError : public std::exception {
-		public:
-			virtual const char* what() const throw() { return "Error: Index too big";}
-		};
 };
 
-template <typename T>
-std::ostream& operator<<( std::ostream& out, const Span<T>& a );
-
-#include "Span.tpp"
+std::ostream& operator<<( std::ostream& out, const Span& a );
 
 #endif
