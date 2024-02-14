@@ -45,7 +45,7 @@ std::ostream& operator<<( std::ostream& out, const MutantStack<T>& a )
 		return (out);
 	}
 	out << "[";
-	for (MutantStack<T>::iterator i = a.begin();i != a.end(); a++)
+	for (typename MutantStack<T>::iterator i = a.begin();i != a.end(); a++)
 	{
 		if (a + 1 != a.end())
 			out << *a << ", ";
