@@ -41,7 +41,7 @@ void    Span::addNumber(int i)
 	if (_N == _v.size())
         throw Span::TooFewElements();
     _v.push_back(i);
-	int     pos = binarySearch(_sorted, i, 0, _sorted.size());
+	int     pos = binarySearch(_sorted, i, 0, _sorted.size() - 1);
     _sorted.insert(_sorted.begin() + pos, i);
 }
 
