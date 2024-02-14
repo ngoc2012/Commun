@@ -14,6 +14,12 @@
 
 Span::Span(unsigned int n): _N(n) {}
 
+Span::Span(const Span&)
+{
+    _N = 
+    return (*this);
+}
+
 Span::~Span() {}
 
 int     Span::size() const {return (_N);}
@@ -71,7 +77,8 @@ const char* Span::TooManyElements::what() const throw()
 const char* Span::TooFewElements::what() const throw()
 { return ("Error: Too few elements."); }
 
-std::vector<int>*    Span::get_v() {return (&_v);}
+std::vector<int>*       Span::get_v() {return (&_v);}
+unsigned int	        Span::get_N() {return (_N);}
 
 std::ostream& operator<<( std::ostream& out, Span& a )
 {
