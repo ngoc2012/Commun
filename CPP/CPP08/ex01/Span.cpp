@@ -40,7 +40,7 @@ void    Span::addNumber(int i)
 {
 	if (_N == _v.size())
         throw Span::TooFewElements();
-    _v.push_back();
+    _v.push_back(i);
 	int     pos = binarySearch(_sorted, i, 0, _sorted.size());
     _sorted.insert(_sorted.begin() + pos, i);
 }
@@ -50,7 +50,7 @@ int     Span::shortestSpan() const
 	if (_v.size() < 2)
         throw Span::TooFewElements();
     int _min = longestSpan();
-    for (int    i = 1; i < _sorted.size(); i++)
+    for (size_t    i = 1; i < _sorted.size(); i++)
     {
         if (_sorted[i] - _sorted[i - 1] < _min)
             _min = _sorted[i] - _sorted[i - 1];
@@ -58,7 +58,7 @@ int     Span::shortestSpan() const
     return (_min);
 }
 
-int     Span::longestSpan() const;
+int     Span::longestSpan() const
 {
 	if (_v.size() < 2)
         throw Span::TooFewElements();
@@ -79,7 +79,7 @@ std::ostream& operator<<( std::ostream& out, const Span& a )
 		return (out);
 	}
 	out << "[";
-	for (size_t i = 0;i < a.size() - 1;i++)
+	for (int i = 0;i < a.size() - 1;i++)
 		out << a[i] << ", ";
 	out << a[a.size() - 1] << "]";
 	return (out);
