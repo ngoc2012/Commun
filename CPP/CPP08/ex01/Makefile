@@ -26,6 +26,7 @@ test:
 	make re && valgrind ./$(MANDA) `shuf -i 1-10000 -n 3 | tr "\n" " "`
 	make re && valgrind ./$(MANDA) `shuf -i 1-10000 -n 5 | tr "\n" " "`
 	make re && valgrind ./$(MANDA) `shuf -i 1-10000 -n 21 | tr "\n" " "`
+	make re && ./$(MANDA) `shuf -i 1-1000000 -n 10000 | tr "\n" " "`
 	make clean
 gits:
 	git add Makefile
