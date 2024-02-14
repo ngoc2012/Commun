@@ -30,6 +30,8 @@ int	main(int argc, char **argv)
 	for (int i = 1; i < argc; i++)
     {
         int     n = std::atoi(argv[i]);
+        std::cout << "Found " << easyfind(v, n) << " in vector" << std::endl;
+        /*
         if (easyfind(v, n) != v.end())
             std::cout << "Found " << n << " in vector" << std::endl;
         else
@@ -38,6 +40,7 @@ int	main(int argc, char **argv)
             std::cout << "Found " << n << " in list" << std::endl;
         else
             std::cout << "Not found " << n << " in list" << std::endl;
+            */
     }
 
 	return (0);

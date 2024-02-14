@@ -22,7 +22,7 @@ T    easyfind(T& c, int v )
     typename T::iterator   it = std::find(c.begin(), c.end(), v);
     if (it == c.end())
         throw std::exception();
-    static_cast<T> (*it)
+    return (static_cast<T> (*it));
 }
 
 #endif
