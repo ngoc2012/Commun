@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 14:16:16 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:50:29 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ class MutantStack
 		MutantStack	&operator=(const MutantStack& op);
 		virtual ~MutantStack();
 
-		iterator begin() { return (std::stack<T>::c.begin()); }
-		const_iterator begin() const { return (std::stack<T>::c.begin()); }
-		iterator end() { return (std::stack<T>::c.end()); }
-		const_iterator end() const { return (std::stack<T>::c.end()); }
-		reverse_iterator rbegin() { return (std::stack<T>::c.rbegin()); }
-		const_reverse_iterator rbegin() const { return (std::stack<T>::c.rbegin()); }
-		reverse_iterator rend() { return (std::stack<T>::c.rend()); }
-		const_reverse_iterator rend() const { return (std::stack<T>::c.rend()); } 
+		iterator begin();
+		const_iterator begin();
+		iterator end();
+		const_iterator end();
+		reverse_iterator rbegin();
+		const_reverse_iterator rbegin();
+		reverse_iterator rend();
+		const_reverse_iterator rend();
 
 };
 
