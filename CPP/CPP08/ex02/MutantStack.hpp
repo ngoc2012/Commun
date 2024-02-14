@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 19:22:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 21:11:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@
 template <typename T>
 class MutantStack
 {		
+    private:
+		MutantStack();
+
 	public:
 		typedef typename std::stack<T>::container_type::iterator iterator;
         typedef typename std::stack<T>::container_type::const_iterator const_iterator;
         typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
         typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 
-		MutantStack();
 		MutantStack(size_t);
 		MutantStack(const MutantStack&);
 		MutantStack	&operator=(const MutantStack& op);
