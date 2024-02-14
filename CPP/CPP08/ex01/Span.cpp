@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 09:49:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 09:51:33 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@ Span::~Span() {}
 int     Span::size() const {return (_N);}
 
 void    Span::addNumber(int i) {}
+
 int     Span::shortestSpan() const
 {
 }
+
 int     Span::longestSpan() const;
 {
 }
