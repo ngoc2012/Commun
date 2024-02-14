@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 09:51:33 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 09:56:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,31 @@ Span::~Span() {}
 
 int     Span::size() const {return (_N);}
 
-void    Span::addNumber(int i) {}
+int     Span::binarySearch(std::vector<int>& arr, int target, int start, int end) {
+    int low = start;
+    int high = end;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == target) {
+            return mid;
+        } else if (arr[mid] < target) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return low;
+}
+
+void    Span::addNumber(int i)
+{
+	if (it == c.end())
+        throw std::exception();
+	int insertPos = binarySearch(arr, num, start, end);
+    arr.insert(arr.begin() + insertPos, num);
+}
 
 int     Span::shortestSpan() const
 {
