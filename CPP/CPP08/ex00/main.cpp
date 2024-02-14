@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 07:35:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 07:38:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	main(int argc, char **argv)
 	for (int i = 1; i < argc; i++)
     {
         int     n = std::atoi(argv[i]);
-        if (easyfind(v, n))
+        if (easyfind(v, n) != 0)
             std::cout << "Found " << n << " in vector" << std::endl;
         else
             std::cout << "Not found " << n << " in vector" << std::endl;
-        if (easyfind(l, n))
+        if (easyfind(l, n) != 0)
             std::cout << "Found " << n << " in list" << std::endl;
         else
             std::cout << "Not found " << n << " in list" << std::endl;
