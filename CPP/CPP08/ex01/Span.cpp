@@ -45,13 +45,6 @@ void    Span::addNumber(int i)
     _sorted.insert(_sorted.begin() + pos, i);
 }
 
-template <class Iterator>
-void    Span::addNumber(Iterator start, Iterator end)
-{
-    while (start != end)
-        addNumber(*start++)
-}
-
 int     Span::shortestSpan() const
 {
 	if (_v.size() < 2)

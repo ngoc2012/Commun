@@ -23,10 +23,10 @@ int	main(int argc, char **argv)
 
     for (int i = 1; i < argc; i++)
         v.push_back(std::atoi(argv[i]));
-        
+
     for (int i = 1; i < argc; i++)
     {
-        try { s.addNumber(std::atoi(argv[i]));}
+        try { s.addNumber(v.begin(), v.end());}
         catch (std::exception &e) {std::cout << e.what() << std::endl;}
     }
 

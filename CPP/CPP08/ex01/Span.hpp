@@ -53,4 +53,11 @@ class Span
 
 std::ostream& operator<<( std::ostream& out, Span& a );
 
+template <class Iterator>
+void    Span::addNumber(Iterator start, Iterator end)
+{
+    while (start != end)
+        addNumber(*start++);
+}
+
 #endif
