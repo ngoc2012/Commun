@@ -34,17 +34,23 @@ int	main(int argc, char **argv)
     for (int i = 1; i < argc; i++)
         v.push_back(std::atoi(argv[i]));
 
-    for (int i = 1; i < argc; i++)
-    {
-        try { s.addNumber(v.begin(), v.end());}
-        catch (std::exception &e) {std::cout << e.what() << std::endl;}
+    try {
+        s.addNumber(v.begin(), v.end());
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
     }
-
+    
     std::cout << s << std::endl;
     try {
     std::cout << "Shortest span: " << s.shortestSpan() << std::endl;
     std::cout << "Longest span: " << s.longestSpan() << std::endl;
     } catch (std::exception &e) {std::cout << e.what() << std::endl;}
 
+    try {
+        s.addNumber(v.begin(), v.end());
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    
 	return (0);
 }
