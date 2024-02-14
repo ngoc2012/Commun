@@ -1,12 +1,12 @@
 template <typename T>
-Array<T>::Array()
+MutantStack<T>::MutantStack()
 {
 	_a = new T();
 	_size = 0;
 }
 
 template <typename T>
-Array<T>::Array(size_t n)
+MutantStack<T>::MutantStack(size_t n)
 {
 	_a = new T[n];
 	_size = n;
@@ -15,13 +15,13 @@ Array<T>::Array(size_t n)
 }
 
 template <typename T>
-Array<T>::Array(const Array& src)
+MutantStack<T>::MutantStack(const MutantStack& src)
 {
 	*this = src;
 }
 
 template <typename T>
-Array<T>&	Array<T>::operator=( Array const & src )
+MutantStack<T>&	MutantStack<T>::operator=( MutantStack const & src )
 {
 	for (size_t i = 0; i < src.size(); i++ )
 		_a[i] = src[i];
@@ -29,10 +29,10 @@ Array<T>&	Array<T>::operator=( Array const & src )
 }
 
 template <typename T>
-Array<T>::~Array() { delete [] _a; }
+MutantStack<T>::~MutantStack() { delete [] _a; }
 
 template <typename T>
-T& Array<T>::operator[](size_t i) const
+T& MutantStack<T>::operator[](size_t i) const
 {
 	if (i >= _size)
 		throw IndexError();
@@ -40,10 +40,10 @@ T& Array<T>::operator[](size_t i) const
 }
 
 template <typename T>
-size_t	Array<T>::size() const { return (_size);}
+size_t	MutantStack<T>::size() const { return (_size);}
 
 template <typename T>
-std::ostream& operator<<( std::ostream& out, const Array<T>& a )
+std::ostream& operator<<( std::ostream& out, const MutantStack<T>& a )
 {
 	if (!a.size())
 	{

@@ -6,12 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 14:15:58 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:16:16 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARRAY_HPP
-# define ARRAY_HPP
+#ifndef MUTANTSTACK_HPP
+# define MUTANTSTACK_HPP
 
 #include <iostream>
 
