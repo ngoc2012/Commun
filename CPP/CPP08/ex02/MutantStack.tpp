@@ -38,22 +38,22 @@ typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rend() const { r
 
 template <typename T>
 void MutantStack<T>::push(const T &value) {
-    this->c.push_back(value);
+    this->push_back(value);
 }
 
 template <typename T>
 const T& MutantStack<T>::top() const {
-    return std::stack<T>::top();
+    return this->top();
 }
 
 template <typename T>
 void MutantStack<T>::pop() {
-    std::stack<T>::pop();
+    this->pop();
 }
 
 template <typename T>
 size_t MutantStack<T>::size() const {
-    return std::stack<T>::size();
+    return this->size();
 }
 
 template <typename T>
