@@ -17,9 +17,9 @@
 #include <algorithm>
 
 template <typename T>
-T::iterator    easyfind(T& c, int v )
+typename T::iterator    easyfind(T& c, int v )
 {
-    std::find(c.begin(), c.end(), v)
+    return (std::find(c.begin(), c.end(), v));
 }
 
 #endif
