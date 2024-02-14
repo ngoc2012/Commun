@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 10:21:27 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 10:24:32 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int     Span::longestSpan() const;
 
 const char* Span::TooManyElements::what() const throw()
 { return ("Error: Too many elements."); }
+
 const char* Span::TooFewElements::what() const throw()
 { return ("Error: Too few elements."); }
 
