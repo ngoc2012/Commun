@@ -1,6 +1,12 @@
 #include "MutantStack.hpp"
 
 template <typename T>
+MutantStack<T>::MutantStack() {}
+
+template <typename T>
+MutantStack<T>::~MutantStack() {}
+
+template <typename T>
 MutantStack<T>& MutantStack<T>::operator=(const MutantStack &m)
 {
     if (this != &m) {
