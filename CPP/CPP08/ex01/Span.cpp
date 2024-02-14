@@ -14,16 +14,16 @@
 
 Span::Span(unsigned int const & n): _N(n) {}
 
-Span::Span(Span& s)
+Span::Span(const Span& s)
 {
     *this = s;
 }
 
 Span&	Span::operator=( const Span& s )
 {
-    for (int i = 0; i < s._N; i++)
+    for (unsigned int i = 0; i < s._N; i++)
         this->addNumber(s._v[i]);
-	return (*this);
+    return (*this);
 }
 
 Span::~Span() {}
