@@ -1,10 +1,10 @@
 #include "MutantStack.hpp"
 
 template <typename T>
-MutantStack& MutantStack::operator=(const MutantStack &m):std::stack<T>::operator=(m) {}
+MutantStack<T>& MutantStack<T>::operator=(const MutantStack &m):std::stack<T>::operator=(m) {}
 
 template <typename T>
-MutantStack::MutantStack(const MutantStack& m) : std::stack<T>(m){}
+MutantStack<T>::MutantStack(const MutantStack& m) : std::stack<T>(m){}
 
 template <typename T>
 typename MutantStack<T>::iterator MutantStack<T>::begin() { return (std::stack<T>::c.begin()); }
