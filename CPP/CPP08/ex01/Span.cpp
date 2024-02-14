@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 09:59:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 10:05:56 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,14 @@ void    Span::addNumber(int i)
 
 int     Span::shortestSpan() const
 {
-	if (_N == _v.size())
-        throw std::exception();
+	if (_v.size() < 2)
+        throw std::TooFewElements();
 }
 
 int     Span::longestSpan() const;
 {
+	if (_v.size() < 2)
+        throw std::TooFewElements();
 }
 
 std::ostream& operator<<( std::ostream& out, const Span& a )
