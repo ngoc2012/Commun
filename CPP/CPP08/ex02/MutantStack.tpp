@@ -13,28 +13,28 @@ template <typename T>
 MutantStack<T>::MutantStack(const MutantStack& m) : std::stack<T>(m){}
 
 template <typename T>
-typename MutantStack<T>::iterator MutantStack<T>::begin() { return (c.begin()); }
+typename MutantStack<T>::iterator MutantStack<T>::begin() { return (this->c.begin()); }
 
 template <typename T>
-typename MutantStack<T>::const_iterator MutantStack<T>::begin() const { return (c.begin()); }
+typename MutantStack<T>::const_iterator MutantStack<T>::begin() const { return (this->c.begin()); }
 
 template <typename T>
-typename MutantStack<T>::iterator MutantStack<T>::end() { return (c.end()); }
+typename MutantStack<T>::iterator MutantStack<T>::end() { return (this->c.end()); }
 
 template <typename T>
-typename MutantStack<T>::const_iterator MutantStack<T>::end() const { return (c.end()); }
+typename MutantStack<T>::const_iterator MutantStack<T>::end() const { return (this->c.end()); }
 
 template <typename T>
-typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin() { return (c.rbegin()); }
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin() { return (this->c.rbegin()); }
 
 template <typename T>
-typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rbegin() const { return (c.rbegin()); }
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rbegin() const { return (this->c.rbegin()); }
 
 template <typename T>
-typename MutantStack<T>::reverse_iterator MutantStack<T>::rend() { return (c.rend()); }
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rend() { return (this->c.rend()); }
 
 template <typename T>
-typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rend() const { return (c.rend()); } 
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rend() const { return (this->c.rend()); } 
 
 template <typename T>
 void MutantStack<T>::push(const T &value) {
@@ -42,7 +42,7 @@ void MutantStack<T>::push(const T &value) {
 }
 
 template <typename T>
-T& MutantStack<T>::top() {
+T& MutantStack<T>::top() const {
     return std::stack<T>::top();
 }
 
