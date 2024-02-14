@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 15:55:47 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:35:28 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,9 @@
 class BitcoinExchange
 {
 	private:
-		unsigned int		_N;
-        std::vector<int>    _v;
-        std::vector<int>    _sorted;
+        std::<std::string, float>    _prices;
 		
 		BitcoinExchange();
-		
 	public:
 
 		BitcoinExchange(unsigned int const &);
