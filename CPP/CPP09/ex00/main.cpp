@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 17:41:14 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 17:42:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int	main(int argc, char **argv)
         std::cerr << "Usage: ./btc filename." << std::endl;
         return (1);
     }
-    std::string     file_name = std::string(argv[1]);
     struct stat	info;
     if (stat(argv[1], &info) || S_ISDIR(info.st_mode))
-        return (file_name);
-    if ()
-        return (file_name);
+    {
+        std::cerr << "Error: File does not exist." << std::endl;
+        return (1);
+    }
 
         
     Span sp = Span(5);
