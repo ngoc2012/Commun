@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 09:01:53 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 09:07:20 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ class Span
 		Span(unsigned int);
 		virtual ~Span();
 
-        addNumber(int);
+        int     size();
+        void    addNumber(int);
 
 };
 

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 08:59:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/14 09:07:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 Span::Span(unsigned int n): _N(n) {}
 
 Span::~Span() {}
+
+int     Span::size() const {return (_N);}
+
+Span::addNumber(int i) {}
 
 std::ostream& operator<<( std::ostream& out, const Span& a )
 {
