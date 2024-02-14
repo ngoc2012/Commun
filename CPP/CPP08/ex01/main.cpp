@@ -18,13 +18,18 @@
 
 int	main(int argc, char **argv)
 {
-    Span    s(argc - 1);
+    Span                s(argc - 1);
+    std::vector<int>    v;
 
+    for (int i = 1; i < argc; i++)
+        v.push_back(std::atoi(argv[i]));
+        
     for (int i = 1; i < argc; i++)
     {
         try { s.addNumber(std::atoi(argv[i]));}
         catch (std::exception &e) {std::cout << e.what() << std::endl;}
     }
+
     std::cout << s << std::endl;
     try {
     std::cout << "Shortest span: " << s.shortestSpan() << std::endl;
