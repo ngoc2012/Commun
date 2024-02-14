@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 14:57:00 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/14 21:01:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,6 @@ int	main()
         std::cout << *it << std::endl;
         ++it;
     }
-    std::stack<int>     s(mstack);
+    //std::stack<int>     s(mstack);
     return 0;
 }
