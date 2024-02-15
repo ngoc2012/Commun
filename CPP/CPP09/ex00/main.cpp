@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 10:36:44 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:43:27 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ int	main(int argc, char **argv)
     while (std::getline(f, line))
     {
         std::cout << line << std::endl;
+        size_t  pos = line.find(" | ");
+        if (pos == std::string::npos)
+        {
+            std::cout << line << std::endl;
+            continue;
+        }
         std::cout << line.find(" | ") << std::endl;
     }
     
