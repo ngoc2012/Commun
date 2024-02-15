@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 11:49:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 11:50:22 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 BitcoinExchange::BitcoinExchange(const char *data)
 {
+    std::ifstream	        f(data);
+    if (!f.is_open())
+    {
+        std::cerr << "Error: could not open file." << std::endl;
+        throw DataError;
+    }
     std::string     line;
     if (!std::getline(f, line))
     {
