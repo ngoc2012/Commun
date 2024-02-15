@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 14:13:20 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:17:25 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ BitcoinExchange::BitcoinExchange(const char *data)
     if (!f.is_open())
     {
         std::cerr << "Error: could not open file." << std::endl;
-        throw DataError;
+        throw BitcoinExchange::DataError();
     }
     std::string     line;
     if (!std::getline(f, line))
     {
         std::cerr << "Error: Input file empty." << std::endl;
-        throw DataError;
+        throw BitcoinExchange::DataError();
     }
     while (std::getline(f, line))
     {
@@ -34,14 +34,14 @@ BitcoinExchange::BitcoinExchange(const char *data)
         if (pos != 10)
         {
             std::cerr << "Error: data form invalid => " << line << std::endl;
-            throw DataError;
+            throw BitcoinExchange::DataError();
         }
         b = std::atof(line.substr(pos + 1).c_str());
         date = line.substr(0, pos);
         if (b < 0)
         {
             std::cerr << "Error: not a positive number." << std::endl;
-            throw DataError;
+            throw BitcoinExchange::DataError();
         }
     }
 }
@@ -51,7 +51,7 @@ BitcoinExchange::~BitcoinExchange() {}
 float   BitcoinExchange::exchange(std::string date, float b) const
 {
     if (_prices.find(date) == _prices.end())
-        throw OutOfDate;
+        throw BitcoinExchange::OutOfDate();
     return (b * _prices[date]);
 }
 
