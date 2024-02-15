@@ -6,7 +6,7 @@
 /*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:21:41 by ael-khni          #+#    #+#             */
-/*   Updated: 2024/02/15 08:47:28 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 08:50:53 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ public:
     MutantStack( const MutantStack& rhs );
     MutantStack&    operator=( const MutantStack& rhs );
 
-    typedef typename Container::iterator                                    iterator;
-    typedef typename std::stack<T>::container_type::const_iterator          const_iterator;
-    typedef typename std::stack<T>::container_type::reverse_iterator        reverse_iterator;
-    typedef typename std::stack<T>::container_type::const_reverse_iterator  const_reverse_iterator;
+    typedef typename Container::iterator                iterator;
+    typedef typename Container::const_iterator          const_iterator;
+    typedef typename Container::reverse_iterator        reverse_iterator;
+    typedef typename Container::const_reverse_iterator  const_reverse_iterator;
 
     iterator                begin();
     iterator                end();
