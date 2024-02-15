@@ -6,7 +6,7 @@
 /*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:21:41 by ael-khni          #+#    #+#             */
-/*   Updated: 2024/02/15 06:45:30 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 08:43:34 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,9 @@
 #include <stack>
 #include <deque>
 
-template< typename T, class Container = std::deque< T > > 
+template<typename T, class Container = std::deque<T> > 
 class MutantStack : public std::stack< T, Container >
 {
-
-private:
-
 public:
 
     MutantStack( void ) {};
@@ -34,6 +31,9 @@ public:
     MutantStack&    operator=( const MutantStack& rhs );
 
     typedef typename Container::iterator    iterator;
+    typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+    typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
+    typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 
     iterator    begin();
     iterator    end();
