@@ -15,6 +15,8 @@
 #include <vector>
 #include <deque>
 #include <set>
+#include <algorithm>
+
 
 #include "PmergeMe.hpp"
 
@@ -90,7 +92,7 @@ int	main(int argc, char **argv)
     for (int i = 1; i < argc; i++)
     {
         e = std::atoi(argv[i]);
-        if (a0.find(e) != a0.end())
+        if (std::find(a0.begin(), a0.end(), e) != a0.end())
         {
             std::cerr << "Error: Duplicates" << std::endl;
             return (1);
