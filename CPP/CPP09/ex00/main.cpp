@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <iostream>
+#include <fstream> // Add this line for ifstream
 #include <map>
 
 //#include "Span.hpp"
