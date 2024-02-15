@@ -6,13 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 21:55:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 21:56:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream> // Add this line for ifstream
 #include <algorithm>
-#include <climits>  // For INT_MAX
 #include <cstdlib>  // For std::atoi
 
 #include "BitcoinExchange.hpp"
@@ -27,6 +26,7 @@ int     date2int(std::string& date)
 
 BitcoinExchange::BitcoinExchange(const char *data)
 {
+    _max_date = 0;
     std::ifstream	        f(data);
     if (!f.is_open())
     {
