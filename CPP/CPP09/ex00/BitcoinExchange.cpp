@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 14:24:39 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:38:16 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ BitcoinExchange::BitcoinExchange(const char *data)
             std::cerr << "Error: not a positive number." << std::endl;
             throw BitcoinExchange::DataError();
         }
-        std::cout << "'" << date << "'|'" << b << "'" << std::endl;
+        //std::cout << "'" << date << "'|'" << b << "'" << std::endl;
         _prices[date] = b;
     }
 }
