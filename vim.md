@@ -20,6 +20,7 @@ Short keys:
 * `Ctrl+W` `_`:     set height (ex. `50<C-w>_`)
 * `Ctrl+W` `|`:     set width (ex. `50<C-w>|`)
 * `Ctrl+W` `=`:     equalize width and height of all windows
+* `Ctrl+W Shift+N`: change terminal to file then press `i` to go back
 
 Resize commands
 * `:resize 60` or `:res 4`

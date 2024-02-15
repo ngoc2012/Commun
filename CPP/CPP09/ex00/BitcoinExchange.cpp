@@ -6,10 +6,12 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 13:58:14 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:13:20 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fstream> // Add this line for ifstream
+                   //
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange(const char *data)
