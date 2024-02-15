@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 22:15:21 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 22:17:03 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,10 @@ static float     search(std::list<int>& dates, std::list<float>& prices, int dat
 
 float   BitcoinExchange::exchange(std::string date, float b)
 {
+    if (!isValidDateFormat(date))
+        throw BitcoinExchange::DateError();
     return (b * search(_dates, _prices, date2int(date)));
 }
 
 const char* BitcoinExchange::DataError::what() const throw() { return ("Data Error: "); }
-const char* BitcoinExchange::OutOfDate::what() const throw() { return ("Error: Data on this date not found."); }
+const char* BitcoinExchange::DateError::what() const throw() { return ("Error: Date error."); }
