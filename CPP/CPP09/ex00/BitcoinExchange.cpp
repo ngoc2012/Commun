@@ -6,12 +6,13 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 14:17:25 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:19:43 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fstream> // Add this line for ifstream
-                   //
+#include <algorithm>
+
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange(const char *data)
@@ -28,6 +29,8 @@ BitcoinExchange::BitcoinExchange(const char *data)
         std::cerr << "Error: Input file empty." << std::endl;
         throw BitcoinExchange::DataError();
     }
+    float           b;
+    std::string     date;
     while (std::getline(f, line))
     {
         size_t  pos = line.find(",");
@@ -43,12 +46,13 @@ BitcoinExchange::BitcoinExchange(const char *data)
             std::cerr << "Error: not a positive number." << std::endl;
             throw BitcoinExchange::DataError();
         }
+        _prices[date] = b;
     }
 }
 
 BitcoinExchange::~BitcoinExchange() {}
 
-float   BitcoinExchange::exchange(std::string date, float b) const
+float   BitcoinExchange::exchange(std::string date, float b)
 {
     if (_prices.find(date) == _prices.end())
         throw BitcoinExchange::OutOfDate();

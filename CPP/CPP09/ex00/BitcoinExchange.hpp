@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 14:00:09 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:19:51 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class BitcoinExchange
 		BitcoinExchange(const char *);
 		virtual ~BitcoinExchange();
 
-        float   exchange(std::string, float) const;
+        float   exchange(std::string, float);
 
         class OutOfDate : public std::exception
 		{
