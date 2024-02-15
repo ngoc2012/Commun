@@ -6,20 +6,20 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 11:39:38 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 14:00:09 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SPAN_HPP
-# define SPAN_HPP
+#ifndef BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
 
 #include <iostream>
-#include <vector>
+#include <map>
 
 class BitcoinExchange
 {
 	private:
-        std::<std::string, float>    _prices;
+        std::map<std::string, float>    _prices;
 		
 		BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange&);
