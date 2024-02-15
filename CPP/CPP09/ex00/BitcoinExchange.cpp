@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 21:59:42 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 22:01:00 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ static int     binarySearch(std::list<int>& dates, int target, int start, int en
     while (low <= high) {
         int mid = low + (high - low) / 2;
 
-        if (arr[mid] == target) {
+        if (dates[mid] == target) {
             return mid;
-        } else if (arr[mid] < target) {
+        } else if (dates[mid] < target) {
             low = mid + 1;
         } else {
             high = mid - 1;
@@ -105,7 +105,7 @@ static int     binarySearch(std::list<int>& dates, int target, int start, int en
 
 float   BitcoinExchange::exchange(std::string date, float b)
 {
-    int pos = binarySearch(_dates, date, 0, _dates.size() - 1)
+    int pos = binarySearch(_dates, date2int(date), 0, _dates.size() - 1)
     return (b * _prices[pos]);
 }
 

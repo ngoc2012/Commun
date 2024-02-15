@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 21:56:08 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 22:00:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define BITCOINEXCHANGE_HPP
 
 #include <iostream>
-#include <map>
+#include <list>
 
 class BitcoinExchange
 {
