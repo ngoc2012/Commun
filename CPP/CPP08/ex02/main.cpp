@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 08:37:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 08:38:39 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int	main()
     mstack0.push_back(5);
     mstack0.push_back(737);
     mstack0.push_back(0);
-    std::list<int>::iterator  it = mstack0.begin();
-    std::list<int>::iterator  ite = mstack0.end();
-    ++it;
-    --it;
-    while (it != ite)
+    std::list<int>::iterator  itt = mstack0.begin();
+    std::list<int>::iterator  itte = mstack0.end();
+    ++itt;
+    --itt;
+    while (itt != itte)
     {
-        std::cout << *it << std::endl;
-        ++it;
+        std::cout << *itt << std::endl;
+        ++itt;
     }
     //std::stack<int>     s(mstack0);
 
