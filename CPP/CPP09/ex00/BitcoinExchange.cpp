@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 21:56:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 21:59:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,8 @@ static int     binarySearch(std::list<int>& dates, int target, int start, int en
 
 float   BitcoinExchange::exchange(std::string date, float b)
 {
-    if (_prices.find(date) == _prices.end())
-        throw BitcoinExchange::OutOfDate();
-    return (b * _prices[date]);
+    int pos = binarySearch(_dates, date, 0, _dates.size() - 1)
+    return (b * _prices[pos]);
 }
 
 const char* BitcoinExchange::DataError::what() const throw() { return ("Data Error: "); }
