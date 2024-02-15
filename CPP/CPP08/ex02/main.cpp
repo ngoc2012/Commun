@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 08:41:46 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 08:55:12 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	main()
         std::cout << *itt << std::endl;
         ++itt;
     }
-    //std::stack<int>     s(mstack0);
 
     std::cout << "============== MutantStack ===============" << std::endl;
     MutantStack<int>    mstack;
@@ -61,5 +60,16 @@ int	main()
         ++it;
     }
     std::stack<int>     s(mstack);
+
+    std::cout << "============== MutantStack reverse_iterator ===============" << std::endl;
+    MutantStack<int>::reverse_iterator  rit = mstack.rbegin();
+    MutantStack<int>::reverse_iterator  rite = mstack.rend();
+    std::cout << "[ ";
+    while (it != ite)
+    {
+        std::cout << *it << std::endl;
+        ++it;
+    }
+    std::cout << " ]";
     return 0;
 }
