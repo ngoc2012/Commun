@@ -85,12 +85,12 @@ int	main(int argc, char **argv)
     }
 
     int                 e;
-    std::set<int>       s;
+    //std::set<int>       s;
     std::vector<int>    a0;
     for (int i = 1; i < argc; i++)
     {
         e = std::atoi(argv[i]);
-        if (s.find(e) != s.end())
+        if (a0.find(e) != a0.end())
         {
             std::cerr << "Error: Duplicates" << std::endl;
             return (1);
@@ -100,7 +100,7 @@ int	main(int argc, char **argv)
             std::cerr << "Error: Non positive number" << std::endl;
             return (1);
         }
-        s.insert(e);
+        //s.insert(e);
         a0.push_back(e);
     }
     std::cout << "Before: ";
