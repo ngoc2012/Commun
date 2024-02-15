@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 13:57:35 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 13:58:14 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ BitcoinExchange::~BitcoinExchange() {}
 float   BitcoinExchange::exchange(std::string date, float b) const
 {
     if (_prices.find(date) == _prices.end())
-        throw DataError;
+        throw OutOfDate;
     return (b * _prices[date]);
 }
 
