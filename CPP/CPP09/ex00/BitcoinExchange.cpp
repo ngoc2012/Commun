@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 17:49:41 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 17:51:15 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ std::string     findLowerDate(std::string& inputDate)
     std::string lowerDate;
     int minDifference = INT_MAX;
 
-    std::map<std::string, double>::const_iterator it;
-    for (it = data.begin(); it != data.end(); ++it) {
+    std::map<std::string, float>::iterator it;
+    for (it = _prices.begin(); it != _prices.end(); ++it) {
         int currentNumericValue = std::atoi(it->first.substr(5, 2).c_str()) * 100 + std::atoi(it->first.substr(8, 2).c_str());
         int difference = inputNumericValue - currentNumericValue;
 
