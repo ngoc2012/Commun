@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 14:00:41 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:05:59 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,11 @@ int	main(int argc, char **argv)
         return (1);
     }
     
+    BitcoinExchange*    ex;
     try
     {
-        BitcoinExchange ex("data.csv");
+        BitcoinExchange ex0("data.csv");
+        ex = &ex0;
     }
     catch (std::exception & e)
     {
@@ -73,7 +75,7 @@ int	main(int argc, char **argv)
         std::cout << "'" << date << "'|'" << b << "'" << std::endl;
         try
         {
-            std::cout << date << " => " << b << " = " << ex.exchange(date, b);
+            std::cout << date << " => " << b << " = " << ex->exchange(date, b);
         }
         catch (std::exception & e)
         {
