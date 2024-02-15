@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 17:55:17 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 21:53:45 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ BitcoinExchange::BitcoinExchange(const char *data)
             throw BitcoinExchange::DataError();
         }
         //std::cout << "'" << date << "'|'" << b << "'" << std::endl;
-        _prices[date] = b;
+        _prices.push_back(b);
+        _dates.push_back(date2int(date));
     }
 }
 
@@ -84,25 +85,23 @@ static bool    isValidDateFormat(std::string& date)
     return true;
 }
 
-std::string     findLowerDate(std::string& inputDate)
-{
-    int inputNumericValue = std::atoi(inputDate.substr(5, 2).c_str()) * 100 + std::atoi(inputDate.substr(8, 2).c_str());
+template <typename T, typename U>
+int     PmergeMe<T,U>::binarySearch(T& arr, int target, int start, int end) {
+    int low = start;
+    int high = end;
 
-    std::string lowerDate;
-    int minDifference = INT_MAX;
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
 
-    std::map<std::string, float>::iterator it;
-    for (it = _prices.begin(); it != _prices.end(); ++it) {
-        int currentNumericValue = std::atoi(it->first.substr(5, 2).c_str()) * 100 + std::atoi(it->first.substr(8, 2).c_str());
-        int difference = inputNumericValue - currentNumericValue;
-
-        if (difference > 0 && difference < minDifference) {
-            minDifference = difference;
-            lowerDate = it->first;
+        if (arr[mid] == target) {
+            return mid;
+        } else if (arr[mid] < target) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
         }
     }
-
-    return lowerDate;
+    return low;
 }
 
 float   BitcoinExchange::exchange(std::string date, float b)
