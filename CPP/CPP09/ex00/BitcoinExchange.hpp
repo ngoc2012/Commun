@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 11:12:48 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:14:48 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,14 @@ class BitcoinExchange
 		template <class Iterator>
         void        addNumber(Iterator start, Iterator end);
 
-        class TooManyElements : public std::exception
-		{
-			public: virtual const char* what() const throw();
-		};
-		class TooFewElements : public std::exception
-		{
-			public: virtual const char* what() const throw();
-		};
+        //class TooManyElements : public std::exception
+		//{
+		//	public: virtual const char* what() const throw();
+		//};
+		//class TooFewElements : public std::exception
+		//{
+		//	public: virtual const char* what() const throw();
+		//};
 };
-
-std::ostream& operator<<( std::ostream& out, BitcoinExchange& a );
-
-template <class Iterator>
-void    BitcoinExchange::addNumber(Iterator start, Iterator end)
-{
-    while (start != end)
-        addNumber(*start++);
-}
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 11:12:36 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:14:09 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <algorithm>
 #include <map>
 
-//#include "BitcoinExchange.hpp"
+#include "BitcoinExchange.hpp"
 
 int	main(int argc, char **argv)
 {
