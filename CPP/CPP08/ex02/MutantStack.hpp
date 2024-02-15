@@ -6,7 +6,7 @@
 /*   By: ael-khni <ael-khni@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 18:21:41 by ael-khni          #+#    #+#             */
-/*   Updated: 2024/02/15 08:43:34 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 08:45:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,14 @@ public:
     typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
     typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 
-    iterator    begin();
-    iterator    end();
+    iterator                begin();
+    iterator                end();
+    const_iterator          begin() const;
+    const_iterator          end() const;
+    reverse_iterator        rbegin();
+    reverse_iterator        rend();
+    const_reverse_iterator  rbegin() const;
+    const_reverse_iterator  rend() const;
 };
 
 #include "MutantStack.tpp"
