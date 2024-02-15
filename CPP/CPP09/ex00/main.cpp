@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 14:21:29 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:23:05 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
             std::cerr << e.what() << " => " << line << std::endl;
             continue;
         }
-        std::cout << date << " => " << b << " = " << p;
+        std::cout << date << " => " << b << " = " << p << std::endl;
     }
     
 	return (0);
