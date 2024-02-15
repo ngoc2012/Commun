@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 21:53:45 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 21:55:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,7 @@ static bool    isValidDateFormat(std::string& date)
     return true;
 }
 
-template <typename T, typename U>
-int     PmergeMe<T,U>::binarySearch(T& arr, int target, int start, int end) {
+static int     binarySearch(std::list<int>& dates, int target, int start, int end) {
     int low = start;
     int high = end;
 
@@ -101,7 +100,7 @@ int     PmergeMe<T,U>::binarySearch(T& arr, int target, int start, int end) {
             high = mid - 1;
         }
     }
-    return low;
+    return high;
 }
 
 float   BitcoinExchange::exchange(std::string date, float b)
