@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 14:48:06 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:51:12 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,27 @@ BitcoinExchange::BitcoinExchange(const char *data)
 }
 
 BitcoinExchange::~BitcoinExchange() {}
+
+static bool    isValidDateFormat(std::string& date)
+{
+    if (date.length() != 10) {
+        return (false);
+    }
+
+    for (int i = 0; i < 10; ++i)
+    {
+        if (i == 4 || i == 7)
+        {
+            if (date[i] != '-')
+                return (false);
+        } else {
+            if (!isdigit(date[i]))
+                return (false);
+        }
+    }
+
+    return true;
+}
 
 float   BitcoinExchange::exchange(std::string date, float b)
 {
