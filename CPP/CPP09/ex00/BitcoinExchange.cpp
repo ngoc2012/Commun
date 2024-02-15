@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 12:00:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 13:57:35 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,14 @@ BitcoinExchange::BitcoinExchange(const char *data)
         if (pos != 10)
         {
             std::cerr << "Error: data form invalid => " << line << std::endl;
-            continue;
+            throw DataError;
+        }
+        b = std::atof(line.substr(pos + 1).c_str());
+        date = line.substr(0, pos);
+        if (b < 0)
+        {
+            std::cerr << "Error: not a positive number." << std::endl;
+            throw DataError;
         }
     }
 }
