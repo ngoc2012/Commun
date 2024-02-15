@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/02/14 17:48:30 by ngoc             ###   ########.fr        #
+#    Updated: 2024/02/15 11:03:44 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,11 @@ $(MANDA): $(SRCS) $(OBJS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
 	clear
-	make re && ./$(MANDA) input.txt
+	make re
+	#./$(MANDA)
+	./$(MANDA) nut dsfsdf
+	./$(MANDA) nut
+	./$(MANDA) input.txt
 	make clean
 gits:
 	git add Makefile

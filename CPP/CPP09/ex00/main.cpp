@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 11:01:12 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:04:01 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,23 @@ int	main(int argc, char **argv)
 {
     if (argc != 2)
     {
-        std::cerr << "Usage: ./btc filename." << std::endl;
+        std::cerr << "Usage: ./btc filename" << std::endl;
         return (1);
     }
     std::ifstream	        f(argv[1]);
     if (!f.is_open())
     {
-        std::cerr << "Error: Opening the file." << std::endl;
+        std::cerr << "Error: could not open file." << std::endl;
         return (1);
     }
 
     std::string     line;
     if (!std::getline(f, line))
     {
-        std::cerr << "Error: File empty." << std::endl;
+        std::cerr << "Error: Input file empty." << std::endl;
         return (1);
     }
+
     float           b;
     std::string     date;
     while (std::getline(f, line))
