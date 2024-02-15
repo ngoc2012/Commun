@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 10:59:45 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:01:12 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	main(int argc, char **argv)
         std::cerr << "Error: File empty." << std::endl;
         return (1);
     }
-    float   b;
+    float           b;
+    std::string     date;
     while (std::getline(f, line))
     {
         size_t  pos = line.find(" | ");
@@ -47,10 +48,16 @@ int	main(int argc, char **argv)
             continue;
         }
         b = std::atof(line.substr(pos + 3).c_str());
-        std::cout << "'" << line.substr(0, pos) << "'|'" << b << "'" << std::endl;
+        date = line.substr(0, pos);
+        std::cout << "'" << date << "'|'" << b << "'" << std::endl;
         if (b < 0)
         {
             std::cerr << "Error: not a positive number." << std::endl;
+            continue;
+        }
+        if (b > 1000)
+        {
+            std::cerr << "Error: too large a number." << std::endl;
             continue;
         }
     }
