@@ -1,15 +1,16 @@
 #include "MutantStack.hpp"
 
 template<typename T, class Container = std::deque<T> > 
-MutantStack( const MutantStack& rhs ) { *this = rhs; }
+MutantStack<T>::MutantStack( const MutantStack<T>& rhs ) { *this = rhs; }
 
-    MutantStack&    operator=( const MutantStack& rhs ) {
-        std::stack< T, Container >::operator=( rhs );
-        return *this;
-    }
+template<typename T, class Container = std::deque<T> > 
+MutantStack<T>&    MutantStack<T>::operator=( const MutantStack<T>& rhs ) {
+    std::stack< T, Container >::operator=( rhs );
+    return *this;
+}
 
-    typedef typename Container::iterator    iterator;
+template<typename T, class Container = std::deque<T> > 
+typename MutantStack<T>::iterator    MutantStack<T>::begin() { return this->c.begin(); }
 
-    iterator    begin() { return this->c.begin(); }
-    iterator    end() { return this->c.end(); }
-};
+template<typename T, class Container = std::deque<T> > 
+typename MutantStack<T>::iterator    MutantStack<T>::end() { return this->c.end(); }
