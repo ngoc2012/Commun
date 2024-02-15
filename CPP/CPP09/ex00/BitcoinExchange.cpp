@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 22:09:58 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 22:10:50 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ static bool    isValidDateFormat(std::string& date)
     return true;
 }
 
-static size_t     search(std::list<int>& dates, int target)
+static int     search(std::list<int>& dates, int date)
 {
-    size_t     pos = 0;
+    int     pos = 0;
     std::list<int>::iterator it;
     while (it != dates.end())
     {
@@ -96,12 +96,12 @@ static size_t     search(std::list<int>& dates, int target)
         it++;
     }
     if (it == dates.end())
-        return (_dates.size() - 1);
+        return (dates.size() - 1);
 }
 
 float   BitcoinExchange::exchange(std::string date, float b)
 {
-    size_t pos = search(_dates, date2int(date));
+    int     pos = search(_dates, date2int(date));
     std::list<int>::iterator it;
     it = _prices.begin() + pos;
     return (b * (*it));
