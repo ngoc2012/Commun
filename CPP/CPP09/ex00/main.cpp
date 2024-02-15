@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 14:23:05 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:25:46 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(int argc, char **argv)
             std::cerr << "Error: too large a number." << std::endl;
             continue;
         }
-        std::cout << "'" << date << "'|'" << b << "'" << std::endl;
+        //std::cout << "'" << date << "'|'" << b << "'" << std::endl;
         try
         {
             p = ex->exchange(date, b);
