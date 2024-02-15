@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/02/15 14:06:42 by minh-ngu         ###   ########.fr        #
+#    Updated: 2024/02/15 14:31:57 by minh-ngu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ test:
 	#./$(MANDA)
 	#./$(MANDA) nut dsfsdf
 	#./$(MANDA) nut
-	./$(MANDA) input.txt
+	valgrind ./$(MANDA) input.txt
 	make clean
 gits:
 	git add Makefile
