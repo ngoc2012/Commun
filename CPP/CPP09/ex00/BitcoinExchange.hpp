@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 11:11:59 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:12:48 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ class BitcoinExchange
         std::<std::string, float>    _prices;
 		
 		BitcoinExchange();
-	public:
-
-		BitcoinExchange(const char *);
 		BitcoinExchange(const BitcoinExchange&);
 		BitcoinExchange	&operator=(const BitcoinExchange& op);
+	public:
+		BitcoinExchange(const char *);
 		virtual ~BitcoinExchange();
 
         int     size() const;

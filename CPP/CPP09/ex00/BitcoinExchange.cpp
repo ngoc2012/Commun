@@ -6,24 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/14 15:55:32 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:13:40 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(unsigned int const & n): _N(n) {}
-
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& s)
+BitcoinExchange::BitcoinExchange(const char *data)
 {
-    *this = s;
-}
-
-BitcoinExchange&	BitcoinExchange::operator=( const BitcoinExchange& s )
-{
-    for (unsigned int i = 0; i < s._N; i++)
-        this->addNumber(s._v[i]);
-    return (*this);
 }
 
 BitcoinExchange::~BitcoinExchange() {}

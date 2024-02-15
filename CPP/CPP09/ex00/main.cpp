@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 11:11:06 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:12:36 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	main(int argc, char **argv)
         std::cerr << "Error: Input file empty." << std::endl;
         return (1);
     }
+    
+    BitcoinExchange ex("data.csv");
 
     float           b;
     std::string     date;
