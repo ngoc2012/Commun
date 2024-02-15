@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 11:14:09 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:43:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,14 @@ int	main(int argc, char **argv)
             continue;
         }
         std::cout << "'" << date << "'|'" << b << "'" << std::endl;
+        try
+        {
+            std::cout << data << " => " << b << " = " << ex.exchange(date, b);
+        }
+        catch (std::exception & e)
+        {
+            std::cerr << "[3] Exception : " << e.what() << std::endl;
+        }
     }
     
 	return (0);
