@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 22:01:00 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 22:09:58 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,28 +85,26 @@ static bool    isValidDateFormat(std::string& date)
     return true;
 }
 
-static int     binarySearch(std::list<int>& dates, int target, int start, int end) {
-    int low = start;
-    int high = end;
-
-    while (low <= high) {
-        int mid = low + (high - low) / 2;
-
-        if (dates[mid] == target) {
-            return mid;
-        } else if (dates[mid] < target) {
-            low = mid + 1;
-        } else {
-            high = mid - 1;
-        }
+static size_t     search(std::list<int>& dates, int target)
+{
+    size_t     pos = 0;
+    std::list<int>::iterator it;
+    while (it != dates.end())
+    {
+        if (*it > date)
+            return (pos);
+        it++;
     }
-    return high;
+    if (it == dates.end())
+        return (_dates.size() - 1);
 }
 
 float   BitcoinExchange::exchange(std::string date, float b)
 {
-    int pos = binarySearch(_dates, date2int(date), 0, _dates.size() - 1)
-    return (b * _prices[pos]);
+    size_t pos = search(_dates, date2int(date));
+    std::list<int>::iterator it;
+    it = _prices.begin() + pos;
+    return (b * (*it));
 }
 
 const char* BitcoinExchange::DataError::what() const throw() { return ("Data Error: "); }
