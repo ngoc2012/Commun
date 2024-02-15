@@ -14,7 +14,6 @@
 #include <cstdlib>
 #include <vector>
 #include <deque>
-#include <set>
 #include <algorithm>
 
 
@@ -87,7 +86,6 @@ int	main(int argc, char **argv)
     }
 
     int                 e;
-    //std::set<int>       s;
     std::vector<int>    a0;
     for (int i = 1; i < argc; i++)
     {
@@ -102,7 +100,6 @@ int	main(int argc, char **argv)
             std::cerr << "Error: Non positive number" << std::endl;
             return (1);
         }
-        //s.insert(e);
         a0.push_back(e);
     }
     std::cout << "Before: ";
