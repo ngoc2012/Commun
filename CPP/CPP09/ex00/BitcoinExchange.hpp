@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 11:14:48 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:16:42 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,12 @@ class BitcoinExchange
 		BitcoinExchange(const char *);
 		virtual ~BitcoinExchange();
 
-        int     size() const;
-        void    addNumber(int);
-        int     shortestBitcoinExchange() const;
-        int     longestBitcoinExchange() const;
-		int     binarySearch(std::vector<int>& arr, int target, int start, int end);
+        float   exchange(std::string, float) const;
 
-		std::vector<int>*    	get_v();
-		unsigned int			get_N();
-
-		template <class Iterator>
-        void        addNumber(Iterator start, Iterator end);
-
-        //class TooManyElements : public std::exception
-		//{
-		//	public: virtual const char* what() const throw();
-		//};
-		//class TooFewElements : public std::exception
-		//{
-		//	public: virtual const char* what() const throw();
-		//};
+        class OutOfDate : public std::exception
+		{
+			public: virtual const char* what() const throw();
+		};
 };
 
 #endif
