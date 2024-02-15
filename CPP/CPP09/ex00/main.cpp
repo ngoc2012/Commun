@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 10:53:33 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 10:55:58 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ int	main(int argc, char **argv)
             std::cerr << "Error: bad input => " << line << std::endl;
             continue;
         }
-        std::cout << line << std::endl;
-        std::cout << line.find(" | ") << std::endl;
+        std::cout << "'" << line.substr(0, pos) << "'|'" << std::atoi(line.substr(pos + 3)) << "'" << std::endl;
     }
     
 	return (0);
