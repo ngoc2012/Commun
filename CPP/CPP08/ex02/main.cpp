@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 08:38:39 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 08:41:46 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main()
     std::list<int>    mstack0;
     mstack0.push_back(5);
     mstack0.push_back(17);
-    std::cout << mstack0.front() << std::endl;
-    mstack0.pop_front();
+    std::cout << mstack0.back() << std::endl;
+    mstack0.pop_back();
     std::cout << mstack0.size() << std::endl;
     mstack0.push_back(3);
     mstack0.push_back(5);
