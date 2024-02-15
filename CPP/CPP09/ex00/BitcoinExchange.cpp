@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 22:10:50 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 22:15:21 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,26 +85,24 @@ static bool    isValidDateFormat(std::string& date)
     return true;
 }
 
-static int     search(std::list<int>& dates, int date)
+static float     search(std::list<int>& dates, std::list<float>& prices, int date)
 {
-    int     pos = 0;
-    std::list<int>::iterator it;
+    std::list<int>::iterator it = dates.begin();
+    std::list<float>::iterator itp = prices.begin();
     while (it != dates.end())
     {
         if (*it > date)
-            return (pos);
+            return (*itp);
         it++;
+        itp++;
     }
-    if (it == dates.end())
-        return (dates.size() - 1);
+    itp--;
+    return (*itp);
 }
 
 float   BitcoinExchange::exchange(std::string date, float b)
 {
-    int     pos = search(_dates, date2int(date));
-    std::list<int>::iterator it;
-    it = _prices.begin() + pos;
-    return (b * (*it));
+    return (b * search(_dates, _prices, date2int(date)));
 }
 
 const char* BitcoinExchange::DataError::what() const throw() { return ("Data Error: "); }
