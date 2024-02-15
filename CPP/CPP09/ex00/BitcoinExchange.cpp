@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 17:51:15 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 17:55:17 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 #include <cstdlib>  // For std::atoi
 
 #include "BitcoinExchange.hpp"
+
+int     date2int(std::string& date)
+{
+    int     v = std::atoi(date.substr(8, 2).c_str());
+    v += std::atoi(date.substr(5, 2).c_str()) * 100;
+    v += std::atoi(date.substr(4).c_str()) * 10000;
+    return (v);
+}
 
 BitcoinExchange::BitcoinExchange(const char *data)
 {
