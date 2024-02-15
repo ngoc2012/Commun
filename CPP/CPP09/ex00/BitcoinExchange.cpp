@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 14:53:48 by minh-ngu         ###   ########.fr       */
+/*   Updated: 2024/02/15 15:28:45 by minh-ngu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,27 @@ static bool    isValidDateFormat(std::string& date)
     }
 
     return true;
+}
+
+std::string     findLowerDate(const std::map<std::string, double>& data, const std::string& inputDate)
+{
+    int inputNumericValue = std::stoi(inputDate.substr(5, 2) + inputDate.substr(8, 2));
+
+    std::string lowerDate;
+    int minDifference = INT_MAX;
+
+    std::map<std::string, double>::const_iterator it;
+    for (it = data.begin(); it != data.end(); ++it) {
+        int currentNumericValue = std::stoi(it->first.substr(5, 2) + it->first.substr(8, 2));
+        int difference = inputNumericValue - currentNumericValue;
+
+        if (difference > 0 && difference < minDifference) {
+            minDifference = difference;
+            lowerDate = it->first;
+        }
+    }
+
+    return lowerDate
 }
 
 float   BitcoinExchange::exchange(std::string date, float b)
