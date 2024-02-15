@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 11:48:01 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/15 11:48:24 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ BitcoinExchange::BitcoinExchange(const char *data)
     if (!std::getline(f, line))
     {
         std::cerr << "Error: Input file empty." << std::endl;
-        return (1);
+        throw DataError;
     }
 }
 
