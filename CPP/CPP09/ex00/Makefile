@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/02/15 14:31:57 by minh-ngu         ###   ########.fr        #
+#    Updated: 2024/02/16 10:24:36 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,9 @@ $(MANDA): $(SRCS) $(OBJS) $(INCS)
 test:
 	clear
 	make re
-	#./$(MANDA)
-	#./$(MANDA) nut dsfsdf
-	#./$(MANDA) nut
+	-./$(MANDA)
+	-./$(MANDA) nut dsfsdf
+	-./$(MANDA) nut
 	valgrind ./$(MANDA) input.txt
 	make clean
 gits:
