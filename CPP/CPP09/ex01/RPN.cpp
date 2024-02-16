@@ -1,151 +1,110 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.cpp                                       :+:      :+:    :+:   */
+/*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/02 06:09:19 by ngoc             ###   ########.fr       */
+/*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
+/*   Updated: 2024/02/16 09:33:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PMERGEME_CPP
-# define PMERGEME_CPP
+#include <fstream> // Add this line for ifstream
+#include <algorithm>
+#include <cstdlib>  // For std::atoi
 
-#include "PmergeMe.hpp"
+#include "RPN.hpp"
 
-template <typename T, typename U>
-void    PmergeMe<T,U>::sort(T& A, T& S)
+static double     date2int(std::string& date)
 {
-    size_t  n = A.size();
-    if (!n)
-        return ;
-    if (n == 1)
-    {
-        S = A;
-        return ;
-    }
-    if (n == 2)
-    {
-        S = A;
-        if (S[0] > S[1])
-            std::swap(S[0], S[1]);
-        return ;
-    }
-    
-    if (n <= 4)
-    {
-        S = A;
-        for (size_t i = 1; i < n; i++)
-            for (size_t j = 0; j < i; j++)
-                if (S[i] < S[j])
-                    std::swap(S[i], S[j]);
-        return ;
-    }
-    
-    // x, y with x is bigger
-    std::map<int, int>  P;
-    T    X;
-    size_t  n2 = n / 2;
-    for (size_t i = 0; i < n2; i++)
-    {
-        if (A[i * 2 + 1] > A[i * 2])
-        {
-            X.push_back(A[i * 2 + 1]);
-            P[A[i * 2 + 1]] = A[i * 2];
-        }
-        else
-        {
-            X.push_back(A[i * 2]);
-            P[A[i * 2]] = A[i * 2 + 1];
-        }
-        
-    }
-    if (n > n2 * 2)
-    {
-        X.push_back(A[n2 * 2]);
-        P[A[n2 * 2]] = -1;
-    }
-
-    T    XX;
-    PmergeMe            p;
-    p.sort(X, XX);
-
-    U        VP;
-    for (size_t i = 0; i < XX.size(); i++)
-        VP.push_back(PairedValue(XX[i], P[XX[i]]));
-
-    int     pos = 0;
-    if (VP[0]._y != -1)
-    {
-        S.push_back(VP[0]._y);
-        pos++;
-    }
-    S.push_back(VP[0]._x);
-    pos++;
-    int     j = 0;
-    int     k = 0;
-    int     k0 = k;
-    int     nn = 1;
-    int     k_max = VP.size() - 1;
-    int     insertPos;
-    do {
-        nn *= 2;
-        j = nn - j;
-        k0 = k;
-        k += j;
-        if (k > k_max)
-            k = k_max;
-        for (int m = k0 + 1; m < k; m++)
-        {
-            VP[m]._pos = pos;
-            S.push_back(VP[m]._x);
-            pos++;
-        }
-        VP[k]._pos = S.size();
-        for (int m = k; m > k0; m--)
-        {
-            if (VP[m]._y != -1)
-            {
-                insertPos = binarySearch(S, VP[m]._y, 0, VP[k - 1]._pos);
-                S.insert(S.begin() + insertPos, VP[m]._y);
-                pos++;
-                for (int i = k0 + 1; i <= k; i++)
-                    if (VP[i]._pos >= insertPos)
-                        VP[i]._pos++;
-            }
-        }
-        S.push_back(VP[k]._x);
-        pos++;
-    } while (k < k_max);
+    double     v = std::atoi(date.substr(8, 2).c_str());
+    v += std::atoi(date.substr(5, 2).c_str()) * 100;
+    v += std::atoi(date.substr(0, 4).c_str()) * 10000;
+    return (v);
 }
 
-template <typename T, typename U>
-int     PmergeMe<T,U>::binarySearch(T& arr, int target, int start, int end) {
-    int low = start;
-    int high = end;
+RPN::RPN(const char *data)
+{
+    _max_date = 0;
+    std::ifstream	        f(data);
+    if (!f.is_open())
+    {
+        std::cerr << "Error: could not open file." << std::endl;
+        throw RPN::DataError();
+    }
+    std::string     line;
+    if (!std::getline(f, line))
+    {
+        std::cerr << "Error: Input file empty." << std::endl;
+        throw RPN::DataError();
+    }
+    float           b;
+    std::string     date;
+    while (std::getline(f, line))
+    {
+        size_t  pos = line.find(",");
+        if (pos != 10)
+        {
+            std::cerr << "Error: data form invalid => " << line << std::endl;
+            throw RPN::DataError();
+        }
+        b = std::atof(line.substr(pos + 1).c_str());
+        date = line.substr(0, pos);
+        if (b < 0)
+        {
+            std::cerr << "Error: not a positive number." << std::endl;
+            throw RPN::DataError();
+        }
+        //std::cout << "'" << date << "'|'" << b << "'" << std::endl;
+        _prices.push_back(b);
+        _dates.push_back(date2int(date));
+    }
+}
 
-    while (low <= high) {
-        int mid = low + (high - low) / 2;
+RPN::~RPN() {}
 
-        if (arr[mid] == target) {
-            return mid;
-        } else if (arr[mid] < target) {
-            low = mid + 1;
+static bool    isValidDateFormat(std::string& date)
+{
+    if (date.length() != 10) {
+        return (false);
+    }
+
+    for (int i = 0; i < 10; ++i)
+    {
+        if (i == 4 || i == 7)
+        {
+            if (date[i] != '-')
+                return (false);
         } else {
-            high = mid - 1;
+            if (!isdigit(date[i]))
+                return (false);
         }
     }
-    return low;
+
+    return true;
 }
 
-// start end included
-template <typename T, typename U>
-void    PmergeMe<T,U>::insertInSortedArray(T& arr, int num, int start, int end)
+static float     search(std::list<double>& dates, std::list<float>& prices, int date)
 {
-    int insertPos = binarySearch(arr, num, start, end);
-    arr.insert(arr.begin() + insertPos, num);
+    std::list<double>::iterator it = dates.begin();
+    std::list<float>::iterator itp = prices.begin();
+    while (it != dates.end() && *it <= date)
+    {
+        it++;
+        itp++;
+    }
+    if (itp != prices.begin())
+        itp--;
+    return (*itp);
 }
 
-#endif
+float   RPN::exchange(std::string date, float b)
+{
+    if (!isValidDateFormat(date))
+        throw RPN::DateError();
+    return (b * search(_dates, _prices, date2int(date)));
+}
+
+const char* RPN::DataError::what() const throw() { return ("Data Error: "); }
+const char* RPN::DateError::what() const throw() { return ("Error: Date error."); }

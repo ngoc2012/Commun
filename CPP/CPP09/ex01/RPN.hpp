@@ -1,54 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
+/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/02 06:08:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 08:53:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PMERGEME_HPP
-# define PMERGEME_HPP
+#ifndef BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
 
 #include <iostream>
-#include <vector>
-#include <map>
-#include <deque>
+#include <list>
 
-class   PairedValue
-{
-    public:
-        int       _x;
-        int       _y;
-        int     _pos;
-
-        PairedValue(int& x, int& y): _x(x), _y(y)
-        {
-            _pos = -1;
-        }
-};
-
-template <typename T, typename U>
-class PmergeMe
+class BitcoinExchange
 {
 	private:
+        double                  _max_date;
+        std::list<double>       _dates;
+        std::list<float>        _prices;
 		
-		PmergeMe(const PmergeMe&);
-		PmergeMe	&operator=(const PmergeMe& op);
-
-        int         binarySearch(T& arr, int target, int start, int end);
-        void        insertInSortedArray(T& arr, int num, int start, int end);
+		BitcoinExchange();
+		BitcoinExchange(const BitcoinExchange&);
+		BitcoinExchange	&operator=(const BitcoinExchange& op);
 	public:
-        PmergeMe() {}
+		BitcoinExchange(const char *);
+		virtual ~BitcoinExchange();
 
-		virtual     ~PmergeMe() {}
+        float   exchange(std::string, float);
 
-        void        sort(T&, T&);
+        class DateError : public std::exception
+		{
+			public: virtual const char* what() const throw();
+		};
+        class DataError : public std::exception
+		{
+			public: virtual const char* what() const throw();
+		};
 };
-
-#include "PmergeMe.cpp"
 
 #endif
