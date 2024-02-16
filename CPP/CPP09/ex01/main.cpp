@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 10:14:48 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 10:22:13 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
     RPN     r;
     try
     {
-        r.eval(std::string(argv[1]));
+        std::cout << r.eval(std::string(argv[1])) << std::endl;
     }
     catch (std::exception & e)
     {
