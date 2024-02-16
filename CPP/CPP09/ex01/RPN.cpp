@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 10:16:40 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 10:18:31 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ RPN::RPN() {}
 
 RPN::~RPN() {}
 
-void    RPN::eval(const std::string& expression)
+int    RPN::eval(const std::string& expression)
 {
     std::stack<int>         st;
     std::istringstream      iss(expression);
@@ -30,11 +30,7 @@ void    RPN::eval(const std::string& expression)
     while (iss >> tk) {
         if (tk == "+" || tk == "-" || tk == "*" || tk == "/") {
             if (st.size() < 2)
-            {
-                std::cerr << "Error: Insufficient operands for operator " << tk << std::endl;
-                return ;
-            }
-
+                throw RPN::DivisionZero();
             int op2 = st.top();
             st.pop();
 
@@ -82,3 +78,4 @@ void    RPN::eval(const std::string& expression)
 
 const char* RPN::DivisionZero::what() const throw() { return ("Error: Division by zero."); }
 const char* RPN::NumberFormat::what() const throw() { return ("Error: Number format."); }
+const char* RPN::OperandsError::what() const throw() { return ("Error: Operands."); }
