@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/02/16 11:09:45 by ngoc             ###   ########.fr        #
+#    Updated: 2024/02/16 11:10:26 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ test:
 	valgrind ./PmergeMe `shuf -i 1-100000 -n 11 | tr "\n" " "`
 	valgrind ./PmergeMe 0 `shuf -i 1-10000 -n 10 | tr "\n" " "` 1000
 	valgrind ./PmergeMe `shuf -i 1-10000 -n 21 | tr "\n" " "`
+	bash test.sh
 	make clean
 gits:
 	git add Makefile
