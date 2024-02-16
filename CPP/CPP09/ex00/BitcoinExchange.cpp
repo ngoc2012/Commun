@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 09:03:10 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 09:07:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static double     date2int(std::string& date)
     double     v = std::atoi(date.substr(8, 2).c_str());
     v += std::atoi(date.substr(5, 2).c_str()) * 100;
     v += std::atoi(date.substr(0, 4).c_str()) * 10000;
-    //std::cout << v << " ";
     return (v);
 }
 
@@ -90,14 +89,13 @@ static float     search(std::list<double>& dates, std::list<float>& prices, int 
 {
     std::list<double>::iterator it = dates.begin();
     std::list<float>::iterator itp = prices.begin();
-    while (it != dates.end())
+    while (it != dates.end() && *it <= date)
     {
-        if (*it > date)
-            return (*itp);
         it++;
         itp++;
     }
-    itp--;
+    if (itp != dates.begin())
+        itp--;
     return (*itp);
 }
 
