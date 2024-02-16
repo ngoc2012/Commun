@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 09:07:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 09:08:18 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static float     search(std::list<double>& dates, std::list<float>& prices, int 
         it++;
         itp++;
     }
-    if (itp != dates.begin())
+    if (itp != prices.begin())
         itp--;
     return (*itp);
 }
