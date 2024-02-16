@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 09:37:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 09:39:25 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,86 +16,70 @@
 
 #include "RPN.hpp"
 
-RPN::RPN(const char *data)
-{
-    _max_date = 0;
-    std::ifstream	        f(data);
-    if (!f.is_open())
-    {
-        std::cerr << "Error: could not open file." << std::endl;
-        throw RPN::DataError();
-    }
-    std::string     line;
-    if (!std::getline(f, line))
-    {
-        std::cerr << "Error: Input file empty." << std::endl;
-        throw RPN::DataError();
-    }
-    float           b;
-    std::string     date;
-    while (std::getline(f, line))
-    {
-        size_t  pos = line.find(",");
-        if (pos != 10)
-        {
-            std::cerr << "Error: data form invalid => " << line << std::endl;
-            throw RPN::DataError();
-        }
-        b = std::atof(line.substr(pos + 1).c_str());
-        date = line.substr(0, pos);
-        if (b < 0)
-        {
-            std::cerr << "Error: not a positive number." << std::endl;
-            throw RPN::DataError();
-        }
-        //std::cout << "'" << date << "'|'" << b << "'" << std::endl;
-        _prices.push_back(b);
-        _dates.push_back(date2int(date));
-    }
-}
+RPN::RPN() {}
 
 RPN::~RPN() {}
 
-static bool    isValidDateFormat(std::string& date)
+void    RPN::eval(const std::string& expression)
 {
-    if (date.length() != 10) {
-        return (false);
-    }
+    std::stack<int>         st;
+    std::istringstream      iss(expression);
+    std::string             tk;
 
-    for (int i = 0; i < 10; ++i)
-    {
-        if (i == 4 || i == 7)
+    while (iss >> tk) {
+        if (tk == "+" || tk == "-" || tk == "*" || tk == "/") {
+            if (st.size() < 2)
+            {
+                std::cerr << "Error: Insufficient operands for operator " << tk << std::endl;
+                return ;
+            }
+
+            int op2 = st.top();
+            st.pop();
+
+            int op1 = st.top();
+            st.pop();
+
+            int r;
+            if (tk == "+")
+                r = op1 + op2;
+            else if (tk == "-")
+                r = op1 - op2;
+            else if (tk == "*")
+                r = op1 * op2;
+            else if (tk == "/") {
+                if (op2 == 0)
+                {
+                    std::cerr << "Error: Division by zero" << std::endl;
+                    return ;
+                }
+                r = op1 / op2;
+            }
+
+            st.push(r);
+        }
+        else
         {
-            if (date[i] != '-')
-                return (false);
-        } else {
-            if (!isdigit(date[i]))
-                return (false);
+            if (tk.size() > 1)
+            {
+                std::cerr << "Error: Number too long" << std::endl;
+                return ;
+            }
+            if (!std::isdigit(tk[0]))
+            {
+                std::cerr << "Error: Not a number" << std::endl;
+                return ;
+            }
+            int number;
+            std::istringstream(tk) >> number;
+            st.push(number);
         }
     }
 
-    return true;
-}
-
-static float     search(std::list<double>& dates, std::list<float>& prices, int date)
-{
-    std::list<double>::iterator it = dates.begin();
-    std::list<float>::iterator itp = prices.begin();
-    while (it != dates.end() && *it <= date)
-    {
-        it++;
-        itp++;
-    }
-    if (itp != prices.begin())
-        itp--;
-    return (*itp);
-}
-
-float   RPN::exchange(std::string date, float b)
-{
-    if (!isValidDateFormat(date))
-        throw RPN::DateError();
-    return (b * search(_dates, _prices, date2int(date)));
+    if (st.size() == 1)
+        std::cout << st.top() << std::endl;
+    else
+        std::cerr << "Error: Invalid expression" << std::endl;
 }
 
 const char* RPN::DivisionZero::what() const throw() { return ("Error: Division by zero."); }
