@@ -6,13 +6,14 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 09:39:25 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 10:08:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fstream> // Add this line for ifstream
-#include <algorithm>
-#include <cstdlib>  // For std::atoi
+#include <iostream>
+#include <stack>
+#include <sstream>
+#include <cctype>
 
 #include "RPN.hpp"
 
