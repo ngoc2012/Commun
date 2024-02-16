@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/02/16 10:25:31 by ngoc             ###   ########.fr        #
+#    Updated: 2024/02/16 10:26:33 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,14 +24,14 @@ $(MANDA): $(SRCS) $(OBJS) $(INCS)
 test:
 	clear
 	make re
-	./$(MANDA) "8 9 * 9 - 9 - 9 - 4 - 1 +"
-	./$(MANDA) "7 7 * 7 -"
-	./$(MANDA) "1 2 * 2 / 2 * 2 4 - +"
-	./$(MANDA) "1 1 +"
-	-./$(MANDA) "1 1 + +"
-	-./$(MANDA) "(1 + 1)"
-	-./$(MANDA) "21 1 +"
-	-./$(MANDA) "21 1 #"
+	valgrind ./$(MANDA) "8 9 * 9 - 9 - 9 - 4 - 1 +"
+	valgrind ./$(MANDA) "7 7 * 7 -"
+	valgrind ./$(MANDA) "1 2 * 2 / 2 * 2 4 - +"
+	valgrind ./$(MANDA) "1 1 +"
+	-valgrind ./$(MANDA) "1 1 + +"
+	-valgrind ./$(MANDA) "(1 + 1)"
+	-valgrind ./$(MANDA) "21 1 +"
+	-valgrind ./$(MANDA) "21 1 #"
 	make clean
 gits:
 	git add Makefile
