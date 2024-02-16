@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 10:18:31 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 10:21:42 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int    RPN::eval(const std::string& expression)
                     throw RPN::DivisionZero();
                 r = op1 / op2;
             }
-
             st.push(r);
         }
         else
@@ -71,11 +70,11 @@ int    RPN::eval(const std::string& expression)
     }
 
     if (st.size() == 1)
-        std::cout << st.top() << std::endl;
-    else
-        std::cerr << "Error: Invalid expression" << std::endl;
+        return (st.top());
+    throw RPN::ExpressionError();
 }
 
 const char* RPN::DivisionZero::what() const throw() { return ("Error: Division by zero."); }
 const char* RPN::NumberFormat::what() const throw() { return ("Error: Number format."); }
 const char* RPN::OperandsError::what() const throw() { return ("Error: Operands."); }
+const char* RPN::ExpressionError::what() const throw() { return ("Error: Invalid expression."); }
