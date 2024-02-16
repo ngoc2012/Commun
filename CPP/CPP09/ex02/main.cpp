@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/02 06:11:55 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 11:08:10 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool    isPositiveNumber(const char* str) {
             return false;
         ++str;
     }
-    return (atoi(s) > 0);
+    return (atoi(s) >= 0);
 }
 
 void    vector_sort(std::vector<int>& s, std::vector<int>& a, std::vector<int>& S, PmergeMe<std::vector<int>, std::vector<PairedValue> >& p)

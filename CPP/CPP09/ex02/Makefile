@@ -6,7 +6,7 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/01/31 22:00:30 by ngoc             ###   ########.fr        #
+#    Updated: 2024/02/16 11:09:45 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,12 +23,12 @@ $(MANDA): $(SRCS) $(OBJS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
 	clear
-	#make re && valgrind ./PmergeMe `shuf -i 1-10000 -n 1 | tr "\n" " "`
-	#make re && valgrind ./PmergeMe `shuf -i 1-10000 -n 2 | tr "\n" " "`
-	#make re && valgrind ./PmergeMe `shuf -i 1-100000 -n 11 | tr "\n" " "`
-	#make re && valgrind ./PmergeMe 0 `shuf -i 1-10000 -n 10 | tr "\n" " "` 1000
-	#make re && bash test.sh
-	make re && valgrind ./PmergeMe `shuf -i 1-10000 -n 21 | tr "\n" " "`
+	make re
+	valgrind ./PmergeMe `shuf -i 1-10000 -n 1 | tr "\n" " "`
+	valgrind ./PmergeMe `shuf -i 1-10000 -n 2 | tr "\n" " "`
+	valgrind ./PmergeMe `shuf -i 1-100000 -n 11 | tr "\n" " "`
+	valgrind ./PmergeMe 0 `shuf -i 1-10000 -n 10 | tr "\n" " "` 1000
+	valgrind ./PmergeMe `shuf -i 1-10000 -n 21 | tr "\n" " "`
 	make clean
 gits:
 	git add Makefile
