@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 10:11:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 10:12:05 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void    RPN::eval(const std::string& expression)
             }
             if (!std::isdigit(tk[0]))
             {
-                std::cerr << "Error: Not a number" << std::endl;
+                std::cerr << "Error: Not a number: " << tk << std::endl;
                 return ;
             }
             int number;
