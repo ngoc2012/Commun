@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 10:08:36 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 10:11:54 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void    RPN::eval(const std::string& expression)
         {
             if (tk.size() > 1)
             {
-                std::cerr << "Error: Number too long" << std::endl;
+                std::cerr << "Error: Number too long: " << tk << std::endl;
                 return ;
             }
             if (!std::isdigit(tk[0]))

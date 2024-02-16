@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 10:08:26 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 10:10:23 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int main(int argc, char* argv[])
         std::cerr << "Example: .\\" << argv[0] << " \"8 9 * 9 - 9 - 9 - 4 - 1 +\"" << std::endl;
         return 1;
     }
+    RPN     r;
     try
     {
-        eval(std::string(argv[1]));
+        r.eval(std::string(argv[1]));
     }
     catch (std::exception & e)
     {
