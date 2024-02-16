@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 09:34:35 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 09:37:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,5 @@ float   RPN::exchange(std::string date, float b)
     return (b * search(_dates, _prices, date2int(date)));
 }
 
-const char* RPN::DataError::what() const throw() { return ("Data Error: "); }
-const char* RPN::DateError::what() const throw() { return ("Error: Date error."); }
+const char* RPN::DivisionZero::what() const throw() { return ("Error: Division by zero."); }
+const char* RPN::NumberFormat::what() const throw() { return ("Error: Number format."); }
