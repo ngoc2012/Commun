@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:17:48 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/02 06:09:19 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 11:05:49 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define PMERGEME_CPP
 
 #include "PmergeMe.hpp"
+
+template <typename T, typename U>
+PmergeMe<T,U>::PmergeMe() {}
+
+template <typename T, typename U>
+PmergeMe<T,U>::~PmergeMe() {}
 
 template <typename T, typename U>
 void    PmergeMe<T,U>::sort(T& A, T& S)
