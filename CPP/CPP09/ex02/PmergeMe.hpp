@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 11:04:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 11:06:36 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ class PmergeMe
         int         binarySearch(T& arr, int target, int start, int end);
         void        insertInSortedArray(T& arr, int num, int start, int end);
 	public:
-        PmergeMe() {}
-		virtual     ~PmergeMe() {}
+        PmergeMe();
+		virtual     ~PmergeMe();
 
         void        sort(T&, T&);
 };
