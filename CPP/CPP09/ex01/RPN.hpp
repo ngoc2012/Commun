@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 10:09:54 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 10:18:01 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,17 @@ class RPN
 		RPN();
 		virtual ~RPN();
 
-        void    eval(const std::string& expression);
+        int    eval(const std::string& expression);
 
         class DivisionZero : public std::exception
 		{
 			public: virtual const char* what() const throw();
 		};
         class NumberFormat : public std::exception
+		{
+			public: virtual const char* what() const throw();
+		};
+        class OperandsError : public std::exception
 		{
 			public: virtual const char* what() const throw();
 		};

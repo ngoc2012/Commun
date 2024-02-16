@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 10:12:05 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 10:16:40 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ void    RPN::eval(const std::string& expression)
                 r = op1 * op2;
             else if (tk == "/") {
                 if (op2 == 0)
-                {
-                    std::cerr << "Error: Division by zero" << std::endl;
-                    return ;
-                }
+                    throw RPN::DivisionZero();
                 r = op1 / op2;
             }
 
@@ -63,13 +60,13 @@ void    RPN::eval(const std::string& expression)
         {
             if (tk.size() > 1)
             {
-                std::cerr << "Error: Number too long: " << tk << std::endl;
-                return ;
+                //std::cerr << "Error: Number too long: " << tk << std::endl;
+                throw RPN::NumberFormat();
             }
             if (!std::isdigit(tk[0]))
             {
-                std::cerr << "Error: Not a number: " << tk << std::endl;
-                return ;
+                //std::cerr << "Error: Not a number: " << tk << std::endl;
+                throw RPN::NumberFormat();
             }
             int number;
             std::istringstream(tk) >> number;
