@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 08:55:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 08:57:06 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static double     date2int(std::string& date)
     double     v = std::atoi(date.substr(8, 2).c_str());
     v += std::atoi(date.substr(5, 2).c_str()) * 100;
     v += std::atoi(date.substr(4).c_str()) * 10000;
+    std::cout << v << " ";
     return (v);
 }
 
