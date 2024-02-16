@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 22:16:32 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 08:53:16 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class BitcoinExchange
 {
 	private:
-        int                     _max_date;
-        std::list<int>          _dates;
+        double                  _max_date;
+        std::list<double>       _dates;
         std::list<float>        _prices;
 		
 		BitcoinExchange();
