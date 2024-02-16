@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 19:50:42 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 08:53:16 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 09:35:04 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BITCOINEXCHANGE_HPP
-# define BITCOINEXCHANGE_HPP
+#ifndef RPN_HPP
+# define RPN_HPP
 
 #include <iostream>
 #include <list>
 
-class BitcoinExchange
+class RPN
 {
 	private:
-        double                  _max_date;
-        std::list<double>       _dates;
-        std::list<float>        _prices;
-		
-		BitcoinExchange();
-		BitcoinExchange(const BitcoinExchange&);
-		BitcoinExchange	&operator=(const BitcoinExchange& op);
+		RPN();
+		RPN(const RPN&);
+		RPN	&operator=(const RPN& op);
 	public:
-		BitcoinExchange(const char *);
-		virtual ~BitcoinExchange();
+		RPN(const char *);
+		virtual ~RPN();
 
         float   exchange(std::string, float);
 

@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/16 09:33:52 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 09:34:35 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,6 @@
 #include <cstdlib>  // For std::atoi
 
 #include "RPN.hpp"
-
-static double     date2int(std::string& date)
-{
-    double     v = std::atoi(date.substr(8, 2).c_str());
-    v += std::atoi(date.substr(5, 2).c_str()) * 100;
-    v += std::atoi(date.substr(0, 4).c_str()) * 10000;
-    return (v);
-}
 
 RPN::RPN(const char *data)
 {
