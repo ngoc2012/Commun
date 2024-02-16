@@ -6,7 +6,7 @@
 /*   By: ngoc <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 08:54:04 by ngoc              #+#    #+#             */
-/*   Updated: 2024/02/15 22:17:03 by ngoc             ###   ########.fr       */
+/*   Updated: 2024/02/16 08:55:52 by ngoc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 #include "BitcoinExchange.hpp"
 
-int     date2int(std::string& date)
+static double     date2int(std::string& date)
 {
-    int     v = std::atoi(date.substr(8, 2).c_str());
+    double     v = std::atoi(date.substr(8, 2).c_str());
     v += std::atoi(date.substr(5, 2).c_str()) * 100;
     v += std::atoi(date.substr(4).c_str()) * 10000;
     return (v);
@@ -85,9 +85,9 @@ static bool    isValidDateFormat(std::string& date)
     return true;
 }
 
-static float     search(std::list<int>& dates, std::list<float>& prices, int date)
+static float     search(std::list<double>& dates, std::list<float>& prices, int date)
 {
-    std::list<int>::iterator it = dates.begin();
+    std::list<double>::iterator it = dates.begin();
     std::list<float>::iterator itp = prices.begin();
     while (it != dates.end())
     {
