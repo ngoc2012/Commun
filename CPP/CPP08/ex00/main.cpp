@@ -18,29 +18,25 @@
 
 int	main(int argc, char **argv)
 {
-    std::vector<int>	v;
-    std::list<int>	    l;
+	std::vector<int>	v;
+	std::list<int>	    l;
 
 	for (size_t i = 0; i < 10; i++)
-    {
+	{
 		v.push_back(i + 1);
 		l.push_back(i + 1);
-    }
-
-    try
-    {
-        for (int i = 1; i < argc; i++)
-        {
-            int     n = std::atoi(argv[i]);
-            std::cout << easyfind(v, n) << " found in vector" << std::endl;
-        }
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << "Not found" << std::endl;
-    }
-    
-	
-
+	}
+	for (int i = 1; i < argc; i++)
+	{
+		try
+		{
+			int     n = std::atoi(argv[i]);
+			std::cout << easyfind(v, n) << " found in vector" << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << "Not found" << std::endl;
+		}
+	}
 	return (0);
 }

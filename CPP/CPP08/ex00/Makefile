@@ -22,8 +22,7 @@ all:	$(MANDA)
 $(MANDA): $(SRCS) $(OBJS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test: all
-	valgrind ./$(MANDA) 5 15
-	valgrind ./$(MANDA) 15 5
+	valgrind ./$(MANDA) 5 15 3 7 2 1 4 6 8 9
 gits:
 	git add Makefile
 	git add *.cpp
