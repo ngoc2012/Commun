@@ -1,3 +1,5 @@
+#include <cstring> // memset
+
 template <typename T>
 Array<T>::Array()
 {
@@ -9,6 +11,9 @@ template <typename T>
 Array<T>::Array(size_t n)
 {
 	_a = new T[n];
+	for (size_t i = 0; i < n; ++i) {
+        _a[i] = T();
+    }
 	_size = n;
 }
 
