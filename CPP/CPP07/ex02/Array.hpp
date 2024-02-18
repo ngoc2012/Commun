@@ -24,7 +24,7 @@ class Array
 		
 	public:
 		Array();
-		Array(size_t);
+		Array(int);
 		Array(const Array&);
 		Array	&operator=(const Array& op);
 		virtual ~Array();

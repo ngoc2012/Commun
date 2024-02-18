@@ -30,21 +30,67 @@ std::ostream& operator<<( std::ostream& out, const data& a )
 #include <vector>
 int	main()
 {
-	Array<int>	a_int(10);
+	try
+	{
+		Array<int>		b_int(0);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	try
+	{
+		Array<int>		d_int(-1);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	int * a = new int();
+	std::cout << *a << std::endl;
+	delete a;
+
+	Array<int> * b = new Array<int>();
+	std::cout << *b << std::endl;
+	delete b;
+
+	Array<int>		a_int(10);
 	std::vector<int> v(10);
 
 	std::cout << v[0] << std::endl;
 	std::cout << a_int[0] << std::endl;
 	for (size_t i = 0; i < 10; i++)
 		a_int[i] = i + 1;
-	std::cout << a_int << std::endl;
+	std::cout << "a_int = " << a_int << std::endl;
+
+	Array<int>	c(a_int);
+	std::cout << "c = " << c << std::endl;
+
+	Array<int>	d(10);
+	d = c;
+	std::cout << "d = " << d << std::endl;
+
+	try
+	{
+		Array<int>	e(12);
+		e = d;
+		std::cout << "e = " << e << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 
 	Array<double>	a_d(10);
 	for (size_t i = 0; i < 10; i++)
 		a_d[i] = i + 1;
-	std::cout << a_d << std::endl;
+	std::cout << "a_d = " << a_d << std::endl;
 
 	Array<data>	datas(10);
+
+	std::cout << datas[0] << std::endl;
 
 	for (size_t i = 0; i < 10; i++)
 	{
