@@ -13,7 +13,7 @@
 SRCS = main.cpp
 OBJS = ${SRCS:.cpp=.o}
 INCS = $(wildcard *.hpp)
-MANDA = exe
+MANDA = iter
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)
@@ -23,7 +23,7 @@ $(MANDA): $(SRCS) $(OBJS) $(INCS)
 	$(CC) $(FLAGS) $(OBJS) -o $(MANDA)
 test:
 	make re
-	valgrind ./exe `shuf -i 1-1000 -n 20 | tr "\n" " "`
+	valgrind ./$(MANDA) `shuf -i 1-1000 -n 20 | tr "\n" " "`
 gits:
 	git add Makefile
 	git add *.cpp
