@@ -12,10 +12,10 @@
 
 EXOS = ex00 ex01 ex02
 gits:
-	git add $(addsuffix /Makefile, $(EXOS))
-	git add $(addsuffix /*.cpp, $(EXOS))
-	git add $(addsuffix /*.tpp, $(EXOS))
-	git add $(addsuffix /*.hpp, $(EXOS))
+	git add $(wildcard $(addsuffix /Makefile, $(EXOS)))
+	git add $(wildcard $(addsuffix /*.cpp, $(EXOS)))
+	git add $(wildcard $(addsuffix /*.tpp, $(EXOS)))
+	git add $(wildcard $(addsuffix /*.hpp, $(EXOS)))
 	git commit -m "all"
 	git push
 .PHONY: all clean fclean re
