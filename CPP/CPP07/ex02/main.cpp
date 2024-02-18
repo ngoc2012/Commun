@@ -27,10 +27,14 @@ std::ostream& operator<<( std::ostream& out, const data& a )
 	return (out);
 }
 
+#include <vector>
 int	main()
 {
 	Array<int>	a_int(10);
+	std::vector<int> v(10);
 
+	std::cout << v[0] << std::endl;
+	std::cout << a_int[0] << std::endl;
 	for (size_t i = 0; i < 10; i++)
 		a_int[i] = i + 1;
 	std::cout << a_int << std::endl;
@@ -51,6 +55,12 @@ int	main()
 
 	try {
 		a_int[10] = 5;
+	} catch (Array<int>::IndexError& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		a_int[-1] = 5;
 	} catch (Array<int>::IndexError& e)
 	{
 		std::cerr << e.what() << std::endl;
