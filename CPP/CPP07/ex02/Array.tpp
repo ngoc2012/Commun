@@ -10,8 +10,6 @@ Array<T>::Array(size_t n)
 {
 	_a = new T[n];
 	_size = n;
-	for (size_t i = 0; i < n; i++ )
-		_a[i] = 0;
 }
 
 template <typename T>
