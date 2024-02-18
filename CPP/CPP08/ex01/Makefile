@@ -6,14 +6,14 @@
 #    By: minh-ngu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 10:56:09 by minh-ngu          #+#    #+#              #
-#    Updated: 2024/02/14 14:11:12 by minh-ngu         ###   ########.fr        #
+#    Updated: 2024/02/18 17:21:36 by ngoc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = main.cpp Span.cpp
 OBJS = ${SRCS:.cpp=.o}
 INCS = $(wildcard *.hpp)
-MANDA = main
+MANDA = span
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 all:	$(MANDA)

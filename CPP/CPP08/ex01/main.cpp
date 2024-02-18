@@ -25,6 +25,15 @@ int	main(int argc, char **argv)
     sp.addNumber(17);
     sp.addNumber(9);
     sp.addNumber(11);
+    try
+    {
+        sp.addNumber(12);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
     std::cout << sp.shortestSpan() << std::endl;
     std::cout << sp.longestSpan() << std::endl;
 
