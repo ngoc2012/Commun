@@ -12,7 +12,6 @@
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 #include "Span.hpp"
 

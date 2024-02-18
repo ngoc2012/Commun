@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <algorithm>
+
 #include "Span.hpp"
 
 Span::Span(unsigned int const & n): _N(n) {}
@@ -32,11 +34,11 @@ int     Span::size() const {return (_N);}
 
 void    Span::addNumber(int i)
 {
-    //std::cout << _N << ":" << _v.size() << std::endl;
 	if (_N == _v.size())
         throw Span::TooManyElements();
     _v.push_back(i);
-    _sorted.insert(_sorted.begin() + pos, i);
+    _sorted.push_back(i);
+    std::sort(_sorted.begin(), _sorted.end());
 }
 
 int     Span::shortestSpan() const
