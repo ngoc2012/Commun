@@ -13,14 +13,14 @@
 #include <cstdlib> // Required for atoi function
 
 template<typename T>
-void    iter(T* a, size_t len, void (&f)(T &))
+void    iter(T* a, size_t len, void (&f)(T const &))
 {
     for (size_t i = 0; i < len; i++)
         f(a[i]);
 }
 
 template<typename T>
-void    print(T& x) {std::cout << x << " ";}
+void    print(T const & x) {std::cout << x << " ";}
 
 template<typename T>
-void    double_it(T& x) {std::cout << std::atoi(x)*2 << " ";}
+void    double_it(T const & x) {std::cout << std::atoi(x)*2 << " ";}
