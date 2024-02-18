@@ -65,13 +65,13 @@ int	main()
     MutantStack<int>::reverse_iterator  rit = mstack.rbegin();
     MutantStack<int>::reverse_iterator  rite = mstack.rend();
     std::cout << "[ ";
-    while (it != ite)
+    while (rit != rite)
     {
-        if (it + 1 != ite)
-            std::cout << *it << ", ";
+        if (rit + 1 != rite)
+            std::cout << *rit << ", ";
         else
-            std::cout << *it << ", ";
-        ++it;
+            std::cout << *rit;
+        ++rit;
     }
     std::cout << " ]";
     return 0;
