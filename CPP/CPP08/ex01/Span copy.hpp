@@ -36,7 +36,8 @@ class Span
         void    addNumber(int);
         int     shortestSpan() const;
         int     longestSpan() const;
-		
+		int     binarySearch(std::vector<int>& arr, int target, int start, int end);
+
 		std::vector<int>*    	get_v();
 		unsigned int			get_N();
 

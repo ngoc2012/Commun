@@ -30,12 +30,31 @@ Span::~Span() {}
 
 int     Span::size() const {return (_N);}
 
+int     Span::binarySearch(std::vector<int>& arr, int target, int start, int end) {
+    int low = start;
+    int high = end;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+
+        if (arr[mid] == target) {
+            return mid;
+        } else if (arr[mid] < target) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return low;
+}
+
 void    Span::addNumber(int i)
 {
     //std::cout << _N << ":" << _v.size() << std::endl;
 	if (_N == _v.size())
         throw Span::TooManyElements();
     _v.push_back(i);
+	int     pos = binarySearch(_sorted, i, 0, _sorted.size() - 1);
     _sorted.insert(_sorted.begin() + pos, i);
 }
 
