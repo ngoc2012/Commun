@@ -33,6 +33,11 @@ template <typename T>
 Array<T>::Array(const Array& src)
 {
 	_a = new T[src._size];
+	if (!_a)
+	{
+		_size = 0;
+		throw std::bad_alloc();
+	}
 	_size = src._size;
 	*this = src;
 }

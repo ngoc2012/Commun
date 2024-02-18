@@ -16,7 +16,16 @@ template<typename T>
 void    iter(T* a, size_t len, void (&f)(T const &))
 {
     for (size_t i = 0; i < len; i++)
-        f(a[i]);
+    {
+        try
+        {
+            f(a[i]);
+        }
+        catch(const std::exception& e)
+        {
+            std::cerr << e.what() << '\n';
+        }
+    }
 }
 
 template<typename T>
