@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	std::vector<int>	v;
 	std::list<int>	    l;
 
-	for (size_t i = 0; i < 10; i++)
+	for (size_t i = 0; i < 8; i++)
 	{
 		v.push_back(i + 1);
 		l.push_back(i + 1);
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 		}
 		catch(const std::exception& e)
 		{
-			std::cerr << "Not found" << std::endl;
+			std::cerr << argv[i] << " not found" << std::endl;
 		}
 	}
 	return (0);
