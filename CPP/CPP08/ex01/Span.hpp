@@ -34,9 +34,9 @@ class Span
 
         int     size() const;
         void    addNumber(int);
-        int     shortestSpan() const;
-        int     longestSpan() const;
-		
+        int     shortestSpan();
+        int     longestSpan();
+
 		std::vector<int>*    	get_v();
 		unsigned int			get_N();
 

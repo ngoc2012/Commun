@@ -38,10 +38,9 @@ void    Span::addNumber(int i)
         throw Span::TooManyElements();
     _v.push_back(i);
     _sorted.push_back(i);
-    std::sort(_sorted.begin(), _sorted.end());
 }
 
-int     Span::shortestSpan() const
+int     Span::shortestSpan()
 {
 	if (_v.size() < 2)
         throw Span::TooFewElements();
@@ -54,8 +53,9 @@ int     Span::shortestSpan() const
     return (_min);
 }
 
-int     Span::longestSpan() const
+int     Span::longestSpan()
 {
+    std::sort(_sorted.begin(), _sorted.end());
 	if (_v.size() < 2)
         throw Span::TooFewElements();
     return (_sorted[_sorted.size() - 1] - _sorted[0]);
