@@ -20,7 +20,7 @@ void    iter(T* a, size_t len, void (&f)(T const &))
 }
 
 template<typename T>
-void    print(T const & x) {std::cout << x << " ";}
+void    printx(T const & x) {std::cout << x << " ";}
 
 template<typename T>
 void    double_it(T const & x) {std::cout << std::atoi(x)*2 << " ";}
