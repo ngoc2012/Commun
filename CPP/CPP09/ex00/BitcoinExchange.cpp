@@ -64,7 +64,7 @@ BitcoinExchange::BitcoinExchange(const char *data)
 
 BitcoinExchange::~BitcoinExchange() {}
 
-static bool    isValidDateFormat(std::string& date)
+bool    BitcoinExchange::isValidDateFormat(std::string& date)
 {
     if (date.length() != 10) {
         return (false);

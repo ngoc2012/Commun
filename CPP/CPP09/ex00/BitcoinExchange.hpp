@@ -30,6 +30,7 @@ class BitcoinExchange
 		BitcoinExchange(const char *);
 		virtual ~BitcoinExchange();
 
+		bool	isValidDateFormat(std::string&);
         float   exchange(std::string, float);
 
         class DateError : public std::exception
