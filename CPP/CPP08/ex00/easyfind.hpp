@@ -16,13 +16,13 @@
 #include <iostream>
 #include <algorithm>
 
-template <typename T, typename U>
-U    easyfind(T& c, U v )
+template <typename T>
+int    easyfind(T& c, int v )
 {
     typename T::iterator   it = std::find(c.begin(), c.end(), v);
     if (it == c.end())
         throw std::exception();
-    return (static_cast<U> (*it));
+    return (static_cast<int> (*it));
 }
 
 #endif
