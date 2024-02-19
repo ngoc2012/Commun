@@ -69,7 +69,6 @@ int	main(int argc, char **argv)
                 std::cerr << "Error: too large a number." << std::endl;
                 continue;
             }
-            //std::cout << "'" << date << "'|'" << b << "'" << std::endl;
             if (!ex.isValidDateFormat(date))
             {
                 std::cerr << "Error: bad date format." << std::endl;
