@@ -65,6 +65,11 @@ int	main(int argc, char **argv)
                 continue;
             }
             //std::cout << "'" << date << "'|'" << b << "'" << std::endl;
+            if (!ex.isValidDateFormat(date))
+            {
+                std::cerr << "Error: bad date format." << std::endl;
+                continue;
+            }
             try
             {
                 p = ex.exchange(date, b);
