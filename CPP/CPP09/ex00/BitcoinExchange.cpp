@@ -42,6 +42,7 @@ BitcoinExchange::BitcoinExchange(const char *data)
     }
     float           b;
     std::string     date;
+    const char*     number;
     while (std::getline(f, line))
     {
         size_t  pos = line.find(",");
@@ -50,8 +51,14 @@ BitcoinExchange::BitcoinExchange(const char *data)
             std::cerr << "Error: data form invalid => " << line << std::endl;
             throw BitcoinExchange::DataError();
         }
-        b = std::atof(line.substr(pos + 1).c_str());
+        number = line.substr(pos + 1).c_str();
+        b = std::atof(number);
         date = line.substr(0, pos);
+        if (!isValidNumber(number))
+        {
+            std::cerr << "Error: not a number." << std::endl;
+            throw BitcoinExchange::DataError();
+        }
         if (b < 0)
         {
             std::cerr << "Error: not a positive number." << std::endl;
@@ -70,7 +77,6 @@ bool    BitcoinExchange::isValidDateFormat(std::string& date)
     if (date.length() != 10) {
         return (false);
     }
-
     for (int i = 0; i < 10; ++i)
     {
         if (i == 4 || i == 7)
@@ -87,26 +93,22 @@ bool    BitcoinExchange::isValidDateFormat(std::string& date)
 }
 
 bool    BitcoinExchange::isValidNumber(const char* str) {
-    // Check if the string is empty
     if (std::strlen(str) == 0) {
         return false;
     }
 
-    char* endptr; // to be used by strtol and strtod functions
-
-    // Try to convert the string to an integer
+    char* endptr;
     std::strtol(str, &endptr, 10);
     if (*endptr == '\0') {
-        return true; // It's a valid integer
+        return true;
     }
 
-    // Try to convert the string to a double
     std::strtod(str, &endptr);
     if (*endptr == '\0') {
-        return true; // It's a valid decimal number
+        return true;
     }
 
-    return false; // Not a valid number
+    return false;
 }
 
 static float     search(std::list<double>& dates, std::list<float>& prices, int date)
