@@ -44,6 +44,7 @@ int	main(int argc, char **argv)
         float           b;
         float           p;
         std::string     date;
+        const char*     number;
         while (std::getline(f, line))
         {
             size_t  pos = line.find(" | ");
@@ -52,28 +53,31 @@ int	main(int argc, char **argv)
                 std::cerr << "Error: bad input => " << line << std::endl;
                 continue;
             }
-            b = std::atof(line.substr(pos + 3).c_str());
             date = line.substr(0, pos);
-            if (!ex.isValidNumber(line.substr(pos + 3).c_str()))
-            {
-                std::cerr << "Error: Not a valid number." << std::endl;
-                continue;
-            }
-            if (b < 0)
-            {
-                std::cerr << "Error: not a positive number." << std::endl;
-                continue;
-            }
-            if (b > 1000)
-            {
-                std::cerr << "Error: too large a number." << std::endl;
-                continue;
-            }
             if (!ex.isValidDateFormat(date))
             {
                 std::cerr << "Error: bad date format." << std::endl;
                 continue;
             }
+
+            number = line.substr(pos + 3).c_str();
+            if (!ex.isValidNumber(number))
+            {
+                std::cerr << "Error: Not a valid number."  << number << std::endl;
+                continue;
+            }
+            b = std::atof(number);
+            if (b < 0)
+            {
+                std::cerr << "Error: not a positive number." << b << std::endl;
+                continue;
+            }
+            if (b > 1000)
+            {
+                std::cerr << "Error: too large a number." << b << std::endl;
+                continue;
+            }
+            
             try
             {
                 p = ex.exchange(date, b);

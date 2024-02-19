@@ -51,14 +51,19 @@ BitcoinExchange::BitcoinExchange(const char *data)
             std::cerr << "Error: data form invalid => " << line << std::endl;
             throw BitcoinExchange::DataError();
         }
-        number = line.substr(pos + 1).c_str();
-        b = std::atof(number);
         date = line.substr(0, pos);
-        if (!isValidNumber(number))
+        if (!isValidDateFormat(date))
         {
-            std::cerr << "Error: not a number." << std::endl;
+            std::cerr << "Error: invalid date format: " << date << std::endl;
             throw BitcoinExchange::DataError();
         }
+        number = line.substr(pos + 1).c_str();
+        if (!isValidNumber(number))
+        {
+            std::cerr << "Error: not a number: " << number << std::endl;
+            throw BitcoinExchange::DataError();
+        }
+        b = std::atof(number);
         if (b < 0)
         {
             std::cerr << "Error: not a positive number." << std::endl;
