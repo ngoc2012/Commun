@@ -13,6 +13,7 @@
 #include <fstream> // Add this line for ifstream
 #include <algorithm>
 #include <cstdlib>  // For std::atoi
+#include <cstring>
 
 #include "BitcoinExchange.hpp"
 
@@ -83,6 +84,29 @@ bool    BitcoinExchange::isValidDateFormat(std::string& date)
     }
 
     return true;
+}
+
+bool    BitcoinExchange::isValidNumber(const char* str) {
+    // Check if the string is empty
+    if (std::strlen(str) == 0) {
+        return false;
+    }
+
+    char* endptr; // to be used by strtol and strtod functions
+
+    // Try to convert the string to an integer
+    std::strtol(str, &endptr, 10);
+    if (*endptr == '\0') {
+        return true; // It's a valid integer
+    }
+
+    // Try to convert the string to a double
+    std::strtod(str, &endptr);
+    if (*endptr == '\0') {
+        return true; // It's a valid decimal number
+    }
+
+    return false; // Not a valid number
 }
 
 static float     search(std::list<double>& dates, std::list<float>& prices, int date)
