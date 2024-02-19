@@ -24,14 +24,19 @@ $(MANDA): $(SRCS) $(OBJS) $(INCS)
 test:
 	clear
 	make re
+	valgrind ./$(MANDA) " 1 2 * 2 / 2 + 5 * 6 - 1 3 * - 4 5 * * 8 / "
+	valgrind ./$(MANDA) "9 8 * 4 * 4 / 2 + 9 - 8 - 8 - 1 - 6 -"
 	valgrind ./$(MANDA) "8 9 * 9 - 9 - 9 - 4 - 1 +"
 	valgrind ./$(MANDA) "7 7 * 7 -"
 	valgrind ./$(MANDA) "1 2 * 2 / 2 * 2 4 - +"
 	valgrind ./$(MANDA) "1 1 +"
+	-valgrind ./$(MANDA) "1 1 +" "1 1 +"
 	-valgrind ./$(MANDA) "1 1 + +"
 	-valgrind ./$(MANDA) "(1 + 1)"
 	-valgrind ./$(MANDA) "21 1 +"
 	-valgrind ./$(MANDA) "21 1 #"
+	-valgrind ./$(MANDA) "" 
+	-valgrind ./$(MANDA)
 	make clean
 gits:
 	git add Makefile

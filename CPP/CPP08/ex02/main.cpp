@@ -61,6 +61,20 @@ int	main()
     }
     std::stack<int>     s(mstack);
 
+    std::cout << "============== MutantStack const_reverse_iterator ===============" << std::endl;
+    MutantStack<int>::const_iterator  cit = mstack.begin();
+    MutantStack<int>::const_iterator  cite = mstack.end();
+    std::cout << "[ ";
+    while (cit != cite)
+    {
+        if (cit + 1 != cite)
+            std::cout << *cit << ", ";
+        else
+            std::cout << *cit;
+        ++cit;
+    }
+    std::cout << " ]" << std::endl;
+
     std::cout << "============== MutantStack reverse_iterator ===============" << std::endl;
     MutantStack<int>::reverse_iterator  rit = mstack.rbegin();
     MutantStack<int>::reverse_iterator  rite = mstack.rend();
@@ -73,6 +87,20 @@ int	main()
             std::cout << *rit;
         ++rit;
     }
-    std::cout << " ]";
+    std::cout << " ]" << std::endl;
+
+    std::cout << "============== MutantStack const_reverse_iterator ===============" << std::endl;
+    MutantStack<int>::const_reverse_iterator  crit = mstack.rbegin();
+    MutantStack<int>::const_reverse_iterator  crite = mstack.rend();
+    std::cout << "[ ";
+    while (crit != crite)
+    {
+        if (crit + 1 != crite)
+            std::cout << *crit << ", ";
+        else
+            std::cout << *crit;
+        ++crit;
+    }
+    std::cout << " ]" << std::endl;
     return 0;
 }

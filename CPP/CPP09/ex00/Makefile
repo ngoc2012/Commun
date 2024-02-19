@@ -27,6 +27,7 @@ test:
 	-./$(MANDA)
 	-./$(MANDA) nut dsfsdf
 	-./$(MANDA) nut
+	-valgrind ./$(MANDA) empty
 	valgrind ./$(MANDA) input.txt
 	make clean
 gits:

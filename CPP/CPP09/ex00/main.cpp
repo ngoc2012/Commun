@@ -54,6 +54,11 @@ int	main(int argc, char **argv)
             }
             b = std::atof(line.substr(pos + 3).c_str());
             date = line.substr(0, pos);
+            if (!ex.isValidNumber(line.substr(pos + 3).c_str()))
+            {
+                std::cerr << "Error: Not a valid number." << std::endl;
+                continue;
+            }
             if (b < 0)
             {
                 std::cerr << "Error: not a positive number." << std::endl;
