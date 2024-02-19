@@ -132,5 +132,5 @@ float   BitcoinExchange::exchange(std::string date, float b)
     return (b * search(_dates, _prices, date2int(date)));
 }
 
-const char* BitcoinExchange::DataError::what() const throw() { return ("Data Error: "); }
+const char* BitcoinExchange::DataError::what() const throw() { return ("Data Error "); }
 const char* BitcoinExchange::DateError::what() const throw() { return ("Error: Date error."); }
