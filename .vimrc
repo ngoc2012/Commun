@@ -7,7 +7,7 @@ set smartindent
 ""set shiftwidth=4
 "" On pressing tab, insert 4 spaces
 ""set expandtab
-autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
+"autocmd FileType javascript setlocal shiftwidth=4 tabstop=4
 set wildmenu
 set wildmode=longest:full,full
 set mouse=n
