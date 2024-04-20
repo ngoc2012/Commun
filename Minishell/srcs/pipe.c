@@ -77,12 +77,12 @@ static int	arg_pipe(t_m *m, int i, int *pid)
 		free_heredoc(m);
 		return (0);
 	}
-	printf("arg_pipe X %d, m->fin = %d\n", i, m->fin);
-	printf("arg_pipe X %d, m->fout = %d\n", i, m->fout);
+	// printf("arg_pipe X %d, m->fin = %d\n", i, m->fin);
+	// printf("arg_pipe X %d, m->fout = %d\n", i, m->fout);
 	if (m->args && *m->args && !m->syntaxe_error)
 	{
-		printf("arg_pipe %d, m->fin = %d\n", i, m->fin);
-		printf("arg_pipe %d, m->fout = %d\n", i, m->fout);
+		// printf("arg_pipe %d, m->fin = %d\n", i, m->fin);
+		// printf("arg_pipe %d, m->fout = %d\n", i, m->fout);
 		if (builtins(m, i))
 			*pid = -1;
 		else

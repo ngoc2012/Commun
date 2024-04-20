@@ -125,7 +125,7 @@ int	split_args(char *s, t_m *m)
 		else if (!check_in(m, &cur))
 			return (0);
 	}
-	printf("split_args m->fin = %d\n", m->fin);
-	printf("split_args m->fout = %d\n", m->fout);
+	// printf("split_args m->fin = %d\n", m->fin);
+	// printf("split_args m->fout = %d\n", m->fout);
 	return (1);
 }
